@@ -1,0 +1,217 @@
+id: "20260824-01-foundation-lifecycle-kernel"
+createdAt: "2026-08-24"
+branch: "delivery/20260824-01-foundation-lifecycle-kernel"
+
+goal: "建立最小、稳定、可验证并可晋升的 Flowkit Foundation Lifecycle Kernel；本 Delivery 由外部 authority 管理，完成并经 Owner promotion 后才可作为 Delivery 02 的 stable manager。"
+
+delivery:
+  state: active
+  fullTestStatus: not-ready
+
+scope:
+  included:
+    - "canonical Owner / Author / Reviewer / Verification authority and identity contracts"
+    - "Action lifecycle domain contract with prepared / resumed / terminal semantics"
+    - "durable Run / Result persistence and integrity validation"
+    - "ActionPackage and exact Result admission boundary"
+    - "resume and exactly-one-current-Action terminal boundary"
+    - "Policy and deterministic next-boundary contract"
+    - "mutation authority and explicit Git checkpoint boundary"
+    - "exact managed OpenSpec 1.10.0 / Archify 2.15.0 toolchain resolution"
+    - "thin OpenSpec integration without duplicating OpenSpec lifecycle authority"
+    - "minimal Flowkit CLI surface over Core"
+    - "Windows Native and Linux x64 detached whole-manager acceptance"
+  excluded:
+    - "Delivery 01 self-management by the candidate runtime"
+    - "automatic Owner decisions"
+    - "automatic Author / Reviewer loop"
+    - "automatic next-Action execution"
+    - "multi-Agent orchestration platform"
+    - "dynamic Agent / Provider / Skill / Tool / Gate registries"
+    - "generic evidence platform"
+    - "web management console"
+    - "background daemon"
+    - "large plugin framework"
+    - "Flowkit replacement of OpenSpec authority"
+    - "Archify as lifecycle truth"
+    - "runtime binaries, node_modules or pnpm store in Git"
+
+architecture:
+  impact: true
+  archifyPlan: "required"
+
+changes:
+  - id: "establish-lifecycle-authority-and-identity-contracts"
+    group: "foundation"
+    goal: "建立 Owner、Role、Delivery、Change、Action 的 canonical authority / identity contract 与 fail-closed domain rules。"
+    required: true
+    dependsOn:
+      []
+    state: planned
+    architectureImpact: true
+    outputs:
+      - "authority and identity domain contract"
+      - "role separation invariants"
+
+  - id: "establish-action-lifecycle-domain-contract"
+    group: "foundation"
+    goal: "定义 prepared、resumed、terminal、current Action identity 与 single-current-Action invariant。"
+    required: true
+    dependsOn:
+      - "establish-lifecycle-authority-and-identity-contracts"
+    state: planned
+    architectureImpact: true
+    outputs:
+      - "Action lifecycle domain contract"
+      - "legal transition invariants"
+
+  - id: "establish-run-result-persistence"
+    group: "execution"
+    goal: "建立真实 durable Run / Result persistence、serialization、read/write 与 resume-safe integrity validation。"
+    required: true
+    dependsOn:
+      - "establish-action-lifecycle-domain-contract"
+    state: planned
+    architectureImpact: true
+    outputs:
+      - "Run persistence"
+      - "Result persistence"
+      - "integrity validation"
+
+  - id: "establish-action-package-and-result-admission"
+    group: "execution"
+    goal: "建立 Core prepare exact ActionPackage、external execution 与 exact Result admission boundary。"
+    required: true
+    dependsOn:
+      - "establish-run-result-persistence"
+    state: planned
+    architectureImpact: true
+    outputs:
+      - "ActionPackage contract"
+      - "Result admission contract"
+
+  - id: "establish-resume-and-single-action-terminal-boundary"
+    group: "execution"
+    goal: "固定 prepare/resume → execute exactly one current Action → terminal → report next boundary → STOP。"
+    required: true
+    dependsOn:
+      - "establish-action-package-and-result-admission"
+    state: planned
+    architectureImpact: true
+    outputs:
+      - "resume contract"
+      - "single-Action terminal boundary"
+
+  - id: "establish-policy-and-next-boundary-contract"
+    group: "governance"
+    goal: "建立 deterministic legal-boundary Policy，计算当前合法 Action、下一 boundary 与 blocked diagnosis。"
+    required: true
+    dependsOn:
+      - "establish-lifecycle-authority-and-identity-contracts"
+      - "establish-resume-and-single-action-terminal-boundary"
+    state: planned
+    architectureImpact: true
+    outputs:
+      - "Policy decision contract"
+      - "next-boundary contract"
+
+  - id: "establish-mutation-and-git-checkpoint-boundary"
+    group: "governance"
+    goal: "建立 mutation declaration/scope、repository path contract、checkpoint eligibility 与 explicit Git authorization boundary。"
+    required: true
+    dependsOn:
+      - "establish-policy-and-next-boundary-contract"
+    state: planned
+    architectureImpact: true
+    outputs:
+      - "mutation authority contract"
+      - "Git checkpoint boundary"
+
+  - id: "establish-managed-toolchain-resolution"
+    group: "integration"
+    goal: "让 candidate 读取 toolchain.lock、解析 FLOWKIT_HOME、精确识别 OpenSpec/Archify runtime 并 fail closed。"
+    required: true
+    dependsOn:
+      - "establish-lifecycle-authority-and-identity-contracts"
+    state: planned
+    architectureImpact: true
+    outputs:
+      - "managed toolchain resolution"
+      - "runtime identity diagnostics"
+
+  - id: "establish-openspec-thin-integration"
+    group: "integration"
+    goal: "建立 Flowkit 对 OpenSpec formal Change artifacts/operations 的 thin integration，不复制其 state machine。"
+    required: true
+    dependsOn:
+      - "establish-managed-toolchain-resolution"
+      - "establish-policy-and-next-boundary-contract"
+    state: planned
+    architectureImpact: true
+    outputs:
+      - "OpenSpec thin adapter boundary"
+      - "formal artifact observation"
+
+  - id: "establish-foundation-cli-surface"
+    group: "integration"
+    goal: "将已存在的 Core contract 暴露为最小 CLI，CLI 不成为第二套 lifecycle implementation。"
+    required: true
+    dependsOn:
+      - "establish-resume-and-single-action-terminal-boundary"
+      - "establish-policy-and-next-boundary-contract"
+      - "establish-mutation-and-git-checkpoint-boundary"
+      - "establish-openspec-thin-integration"
+    state: planned
+    architectureImpact: true
+    outputs:
+      - "minimal Flowkit CLI surface"
+
+  - id: "validate-foundation-manager-cross-platform"
+    group: "acceptance"
+    goal: "完成 Windows Native 与 Linux x64 detached whole-manager acceptance，并形成独立验收 evidence。"
+    required: true
+    dependsOn:
+      - "establish-foundation-cli-surface"
+    state: planned
+    architectureImpact: false
+    outputs:
+      - "Windows acceptance evidence"
+      - "Linux detached acceptance evidence"
+
+ownerDecisions:
+  - ref: "owner:c24904563ce5e0af501005cba26b7987f1f303525d839ebad39d1fdbd97a591a"
+    decision: "create-delivery"
+    deliveryId: "20260824-01-foundation-lifecycle-kernel"
+    sourceRef: "owner-input:2026-08-24:authorize-delivery-start:20260824-01-foundation-lifecycle-kernel"
+
+verification:
+  change:
+    requireApplicableChecks: true
+  fullTest:
+    requiresOwnerAuthorization: true
+    execution:
+      state: deferred
+      reason: "Delivery Start 时 Foundation CLI / whole-manager verification commands 尚未实现；不得伪造 command contract。正式 Full Test authorization 前必须由已实现能力冻结 exact execution contract。"
+    plan:
+      - "targeted Change verification selected by actual risk"
+      - "whole-manager type/build/lint/test gates once those commands exist"
+      - "OpenSpec 1.10.0 thin integration"
+      - "single-Action prepare/resume/terminal/STOP behavior"
+      - "Run / Result durability and exact admission"
+      - "Policy and blocked diagnosis"
+      - "mutation and Git checkpoint safety"
+      - "Windows Native acceptance"
+      - "Linux x64 detached acceptance"
+      - "baseline/candidate regression classification"
+
+acceptance:
+  - "Delivery 01 candidate never becomes authority for its own lifecycle."
+  - "Owner, Author, Reviewer and Verification authority remain distinct and fail closed."
+  - "Exactly one current Action can be prepared/resumed/executed to terminal, then execution stops at the next boundary."
+  - "Run / Result facts are durable, real and integrity-checked; no fake terminal artifacts are admitted."
+  - "Policy computes one legal boundary or a deterministic blocked diagnosis and never auto-executes next."
+  - "Mutation and Git checkpoint permission require explicit authority and are not inferred from Verification or Review alone."
+  - "Managed OpenSpec 1.10.0 and Archify 2.15.0 resolve from exact external identities without silent PATH fallback."
+  - "OpenSpec remains formal Change authority and Archify remains derived/non-authoritative."
+  - "Windows Native and Linux x64 detached acceptance both pass before Owner promotion."
+  - "Only Delivery Final plus explicit Owner promotion makes the Foundation Manager eligible to manage Delivery 02."

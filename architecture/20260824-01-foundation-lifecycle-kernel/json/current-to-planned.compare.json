@@ -1,0 +1,263 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "compare",
+  "type": "architecture",
+  "comparatorVersion": 1,
+  "canonicalVersion": 1,
+  "completeness": "complete",
+  "proofLevel": "revision-pinned",
+  "base": {
+    "title": "flowkit-next 当前系统架构 — Delivery 01 Start",
+    "rawSha256": "4e542db96a61231faec68e2d79f47224a9d411f6e8207976a98821f5cf59d02d",
+    "semanticSha256": "f0cef178bcbba682a6ae863c66ace6e41493c9b689e74463a2dcd9489af62b7d",
+    "bytes": 6264,
+    "revision": "ad88c4d691be2ced13483bdf716e70619b7d8cc9"
+  },
+  "head": {
+    "title": "flowkit-next 计划系统架构 — Foundation Lifecycle Kernel",
+    "rawSha256": "f2e52b5033942b828a215c2101abd66ed6f9e7b11df1ae2674dba4ed50bf7fd6",
+    "semanticSha256": "a3017258f3f15c133177f38b40fecbec3493b919507514b2e59b4539db9ef8d6",
+    "bytes": 11251,
+    "revision": "ad88c4d691be2ced13483bdf716e70619b7d8cc9"
+  },
+  "summary": {
+    "components": {
+      "added": 8,
+      "changed": 0,
+      "evidenceChanged": 0,
+      "removed": 0,
+      "moved": 0
+    },
+    "connections": {
+      "added": 8,
+      "changed": 0,
+      "removed": 0,
+      "rerouted": 0
+    },
+    "boundaries": {
+      "added": 1,
+      "changed": 0,
+      "removed": 0,
+      "geometryChanged": 0
+    },
+    "presentationChanged": true,
+    "provenanceChanged": false
+  },
+  "changes": {
+    "components": [
+      {
+        "id": "acceptance",
+        "headLabel": "Review / Verification",
+        "status": "added",
+        "classifications": [
+          "semantic"
+        ],
+        "changedFields": []
+      },
+      {
+        "id": "cli",
+        "headLabel": "Minimal Flowkit CLI",
+        "status": "added",
+        "classifications": [
+          "semantic"
+        ],
+        "changedFields": []
+      },
+      {
+        "id": "execution",
+        "headLabel": "Single-Action Execution",
+        "status": "added",
+        "classifications": [
+          "semantic"
+        ],
+        "changedFields": []
+      },
+      {
+        "id": "governance",
+        "headLabel": "Mutation / Git Boundary",
+        "status": "added",
+        "classifications": [
+          "semantic"
+        ],
+        "changedFields": []
+      },
+      {
+        "id": "lifecycle",
+        "headLabel": "Lifecycle Domain",
+        "status": "added",
+        "classifications": [
+          "semantic"
+        ],
+        "changedFields": []
+      },
+      {
+        "id": "persistence",
+        "headLabel": "Run / Result Persistence",
+        "status": "added",
+        "classifications": [
+          "semantic"
+        ],
+        "changedFields": []
+      },
+      {
+        "id": "policy",
+        "headLabel": "Policy / Next Boundary",
+        "status": "added",
+        "classifications": [
+          "semantic"
+        ],
+        "changedFields": []
+      },
+      {
+        "id": "toolchain-resolution",
+        "headLabel": "Managed Toolchain Resolver",
+        "status": "added",
+        "classifications": [
+          "semantic"
+        ],
+        "changedFields": []
+      }
+    ],
+    "connections": [
+      {
+        "id": "p1",
+        "head": {
+          "from": "cli",
+          "to": "policy",
+          "label": "formal request"
+        },
+        "status": "added",
+        "classifications": [
+          "topology"
+        ],
+        "changedFields": []
+      },
+      {
+        "id": "p2",
+        "head": {
+          "from": "policy",
+          "to": "lifecycle",
+          "label": "legal boundary"
+        },
+        "status": "added",
+        "classifications": [
+          "topology"
+        ],
+        "changedFields": []
+      },
+      {
+        "id": "p3",
+        "head": {
+          "from": "lifecycle",
+          "to": "execution",
+          "label": "exact current Action"
+        },
+        "status": "added",
+        "classifications": [
+          "topology"
+        ],
+        "changedFields": []
+      },
+      {
+        "id": "p4",
+        "head": {
+          "from": "execution",
+          "to": "persistence",
+          "label": "real Run / Result"
+        },
+        "status": "added",
+        "classifications": [
+          "topology"
+        ],
+        "changedFields": []
+      },
+      {
+        "id": "p5",
+        "head": {
+          "from": "acceptance",
+          "to": "policy",
+          "label": "verdict / evidence"
+        },
+        "status": "added",
+        "classifications": [
+          "topology"
+        ],
+        "changedFields": []
+      },
+      {
+        "id": "p6",
+        "head": {
+          "from": "policy",
+          "to": "governance",
+          "label": "mutation authority"
+        },
+        "status": "added",
+        "classifications": [
+          "topology"
+        ],
+        "changedFields": []
+      },
+      {
+        "id": "p7",
+        "head": {
+          "from": "toolchain-resolution",
+          "to": "execution",
+          "label": "exact tool runtime"
+        },
+        "status": "added",
+        "classifications": [
+          "topology"
+        ],
+        "changedFields": []
+      },
+      {
+        "id": "p8",
+        "head": {
+          "from": "owner",
+          "to": "cli",
+          "label": "explicit request / authority"
+        },
+        "status": "added",
+        "classifications": [
+          "topology"
+        ],
+        "changedFields": []
+      }
+    ],
+    "boundaries": [
+      {
+        "key": "region:新增 Foundation Lifecycle Kernel candidate",
+        "kind": "region",
+        "label": "新增 Foundation Lifecycle Kernel candidate",
+        "status": "added",
+        "classifications": [
+          "scope"
+        ],
+        "changedFields": []
+      }
+    ]
+  },
+  "identity": {
+    "components": "components[].id",
+    "connections": "connections[].id (required)",
+    "boundaries": "boundaries[].kind + boundaries[].label (derived)"
+  },
+  "view": {
+    "visualPreset": "classic"
+  },
+  "limitations": [
+    "Authored Architecture IR only; no runtime impact, causality, risk, or mergeability is inferred.",
+    "Boundary identity is conservatively derived from kind + label."
+  ],
+  "artifact": {
+    "sha256": "56204c54ec3713b9d5ac8e7292a2547a48fbd6c3f672c8a299195a1ee1661a64",
+    "bytes": 1897303
+  },
+  "validation": {
+    "checksPassed": 28,
+    "checkCount": 28,
+    "baseComposition": "pass",
+    "headComposition": "pass"
+  }
+}
