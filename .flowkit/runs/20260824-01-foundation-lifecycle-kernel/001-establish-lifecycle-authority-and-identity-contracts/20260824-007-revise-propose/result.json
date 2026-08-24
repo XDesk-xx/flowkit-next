@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "kind": "external-bootstrap-action-result",
+  "run": {
+    "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+    "changeId": "establish-lifecycle-authority-and-identity-contracts",
+    "runId": "20260824-007-revise-propose",
+    "action": "revise-propose",
+    "role": "author"
+  },
+  "executionStatus": "completed",
+  "summary": "已关闭 Reviewer blocking finding NEXT-RP-001：planning bundle 现已冻结 canonical SemanticId grammar、OwnerAuthorityFact 完整 wire shape、字段必填/可选性、ref/sourceRef/scope structural rules，并明确 structural validation 不赋予后续 Policy recognition/eligibility。tasks 2.1/3.2 已对齐；OpenSpec 仍为 4/4 complete，strict validation 1/1 PASS；未执行 production/test implementation 或 Apply。",
+  "ownerAuthorizationRefs": [
+    "owner:1593d4fbe636d0afc08711794647464fff0df0496b316795f823299fcb18fe6e",
+    "owner:11cffd71771d89e9f9c7ced1ed0e2f5f22018c2782e63501c001a60a5a225b24"
+  ],
+  "sourceReview": {
+    "runId": "20260824-006-review-propose",
+    "verdict": "changes-requested",
+    "blockingFindings": [
+      "NEXT-RP-001"
+    ]
+  },
+  "findingConvergence": [
+    {
+      "findingId": "NEXT-RP-001",
+      "state": "resolved",
+      "blockingAuthority": "author",
+      "resolution": "Frozen implementable semantic identifier grammar and serialization-safe Owner authority wire contract in design/spec, with tasks aligned and Policy eligibility explicitly deferred."
+    }
+  ],
+  "producedResultRefs": [
+    "openspec/changes/establish-lifecycle-authority-and-identity-contracts/proposal.md",
+    "openspec/changes/establish-lifecycle-authority-and-identity-contracts/design.md",
+    "openspec/changes/establish-lifecycle-authority-and-identity-contracts/specs/lifecycle-authority-and-identity/spec.md",
+    "openspec/changes/establish-lifecycle-authority-and-identity-contracts/tasks.md",
+    ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/establish-lifecycle-authority-and-identity-contracts/20260824-007-revise-propose/action.md",
+    ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/establish-lifecycle-authority-and-identity-contracts/20260824-007-revise-propose/context.json",
+    ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/establish-lifecycle-authority-and-identity-contracts/20260824-007-revise-propose/result.json"
+  ],
+  "verification": {
+    "openSpecVersion": "1.10.0",
+    "planningStatus": "4/4 artifacts complete",
+    "strictValidation": "PASS",
+    "strictValidationItems": 1,
+    "proposalSha256": "61642c7a1ffd68aeb813e1640c17b268ad61687fa38bf5e59b52a8a4a2b74d6f",
+    "designSha256": "f747d8c43a20e4a428ccb3288028c570f21ba5f71fe9038a1f52beacc2a179d2",
+    "specSha256": "f4818f499afb20e6fe300346f7f3b8cbeae4990d15c65256018ab86748069c54",
+    "tasksSha256": "5716cf8106dd346c888d3bf0c63ec00ff29f33f718879fff7c0d6467b3d8d250",
+    "carriedOwnerAuthorizationStructuralValidation": "PASS (2/2)"
+  },
+  "nextBoundary": {
+    "recommendedAction": "review-propose",
+    "reason": "Author-owned planning blocker is resolved; independent Reviewer must approve the revised Proposal before Apply authorization."
+  },
+  "forbiddenNext": [
+    "apply-before-approved-review-propose",
+    "production-mutation",
+    "test-implementation-mutation",
+    "commit",
+    "push"
+  ]
+}

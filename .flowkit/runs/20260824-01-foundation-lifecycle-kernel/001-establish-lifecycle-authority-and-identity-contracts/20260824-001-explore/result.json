@@ -1,0 +1,186 @@
+{
+  "schemaVersion": 1,
+  "kind": "external-bootstrap-action-result",
+  "run": {
+    "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+    "changeId": "establish-lifecycle-authority-and-identity-contracts",
+    "runId": "20260824-001-explore",
+    "action": "explore",
+    "role": "author"
+  },
+  "executionStatus": "completed",
+  "summary": "已完成第一个 Foundation Change 的 Flowkit proof-based Explore，并生成可供独立 Reviewer 审阅的 explore.md：确认 semantic Change id 单一身份、authority 与 execution role 分离、Owner decision 为显式不可推断事实；第一 Change 只建立 authority/identity 与 Delivery/Change 基础 fail-closed contract，不提前实现 Action lifecycle / Run persistence / Policy。",
+  "activation": {
+    "changeStateAfter": "active",
+    "ownerDecisionRef": "owner:1593d4fbe636d0afc08711794647464fff0df0496b316795f823299fcb18fe6e",
+    "openSpecChangeScaffold": "openspec/changes/establish-lifecycle-authority-and-identity-contracts/.openspec.yaml",
+    "openSpecArtifactsCreated": []
+  },
+  "proofEvidence": [
+    {
+      "id": "NEXT-PROOF-001",
+      "kind": "repository",
+      "source": "src/README.md",
+      "sha256": "a70d21a42eece063bf6b92695fb194bc9beeb4d93e61b9de8cb7cd348fb1b33e",
+      "fact": "flowkit-next 当前没有 production implementation；Source layering 明确留到 Foundation 后续 Change 物化。",
+      "implication": "本 Change 应从纯 domain contract 起步，不能假设 candidate lifecycle runtime 已存在。"
+    },
+    {
+      "id": "NEXT-PROOF-002",
+      "kind": "repository",
+      "source": "tests/README.md",
+      "sha256": "929e6241049a410ae74119a7dc3105b81e474f18ffc3bf38a1e39f6c8a7d15ef",
+      "fact": "当前没有 formal tests；初始化只预留 tests 结构。",
+      "implication": "Proposal 必须为新增 domain rules 定义首批 targeted unit tests，而不能声称已有测试护栏。"
+    },
+    {
+      "id": "NEXT-PROOF-003",
+      "kind": "repository",
+      "source": "openspec/delivery-groups/20260824-01-foundation-lifecycle-kernel.yaml",
+      "sha256": "31140e544dc7203b1ab48676a00412b6902325e9800baa3bbe24db1c5c214148",
+      "fact": "第一个 Change id 为 establish-lifecycle-authority-and-identity-contracts，dependsOn=[]，输出限定为 authority/identity domain contract 与 role separation invariants。",
+      "implication": "该 Change 可以独立激活；不得吸收后续 Run persistence、Policy、CLI 或 OpenSpec adapter 工作。"
+    },
+    {
+      "id": "NEXT-PROOF-004",
+      "kind": "repository",
+      "source": "openspec/config.yaml",
+      "sha256": "0fc12801eb7ae14037f23f09dbe4cbd70b348826b9ed81611f935b9e375710f5",
+      "fact": "OpenSpec 是 formal Change authority；Change identity 是 semantic id；group 仅组织元数据；Owner/Reviewer/Verification/Git authority 必须分离。",
+      "implication": "新 domain type 必须遵守 semantic-id-only 与 authority separation，不能引入 group lifecycle 或第二份 Change identity。"
+    },
+    {
+      "id": "NEXT-PROOF-005",
+      "kind": "repository",
+      "source": "skills/actions/README.md",
+      "sha256": "640d30549e0f5468fc18214c774f0b77cc78eb1c598f187715fd55cd47095515",
+      "fact": "project-owned Standard Action Skills 目前只有 reserved README，没有 explore proof skill。",
+      "implication": "本次 proof 是 bootstrap 外部治理行为；后续若需要 project-owned proof skill，必须由正式 Change 另行设计/接受。"
+    },
+    {
+      "id": "NEXT-PROOF-006",
+      "kind": "historical-reference",
+      "repository": "XDesk-xx/flowkit",
+      "commit": "110c2a24ba0561271493278bce4dce58b3a85e45",
+      "path": "src/domain/types.ts",
+      "blob": "5ba374f324f0dc201a7581bd2ee2bb1992b32487",
+      "fact": "旧 Flowkit 的 ChangeSummary / Change 同时持有 key 与 id；Role 为 owner|author|reviewer；Verification 是独立 domain evidence。",
+      "implication": "不得把 key+id 双重 Change identity 原样迁移；需要显式区分 actor role 与独立 Verification authority。"
+    },
+    {
+      "id": "NEXT-PROOF-007",
+      "kind": "historical-reference",
+      "repository": "XDesk-xx/flowkit",
+      "commit": "110c2a24ba0561271493278bce4dce58b3a85e45",
+      "path": "src/domain/a1-types.ts",
+      "blob": "19be368f077d864fbd2c3fdb5dedbc7d461af7ca",
+      "fact": "旧 Flowkit OwnerDecisionRecord 已区分 create-delivery/create-change/activate-change 与 authorize-apply/archive/checkpoint 等显式 Owner decision；旧 ChangeCreateInput 仍要求 key+id。",
+      "implication": "可复用“Owner decision 是 durable 显式事实”的方向，但 identity contract 必须去掉 key。"
+    },
+    {
+      "id": "NEXT-PROOF-008",
+      "kind": "historical-reference",
+      "repository": "XDesk-xx/flowkit",
+      "commit": "110c2a24ba0561271493278bce4dce58b3a85e45",
+      "path": "src/domain/actions.ts",
+      "blob": "56c858f2916f0dfd838381fec54aa57dc8677fb8",
+      "fact": "旧 Standard Change Action 的执行 role 只有 author/reviewer；owner 不执行 Standard Action；explore 的 terminal contract 不允许 Git checkpoint output。",
+      "implication": "Owner authority 与 Action execution role 必须概念分离；Explore completion 不能推导 commit/checkpoint 权限。"
+    },
+    {
+      "id": "NEXT-PROOF-009",
+      "kind": "historical-reference",
+      "repository": "XDesk-xx/flowkit",
+      "commit": "110c2a24ba0561271493278bce4dce58b3a85e45",
+      "path": "src/domain/states.ts",
+      "blob": "2feb005422498acdaa0d09dc9884f34a7b04f488",
+      "fact": "旧结构状态表只定义 planned→active/cancelled、active→completed/cancelled；Owner authorization、dependency、Verification 等语义 precondition 明确留给 Policy。",
+      "implication": "本 Change 可冻结结构状态与 fail-closed identity validation，但不能提前实现后续 Policy Change 的 semantic eligibility。"
+    },
+    {
+      "id": "NEXT-PROOF-010",
+      "kind": "architecture",
+      "source": "architecture/20260824-01-foundation-lifecycle-kernel/json/planned.architecture.json",
+      "sha256": "f2e52b5033942b828a215c2101abd66ed6f9e7b11df1ae2674dba4ed50bf7fd6",
+      "fact": "Planned architecture 将 Lifecycle Domain 标为独立新增组件，sublabel=authority / identity / Action state，并把 Policy、Execution、Persistence 分为独立后续组件。",
+      "implication": "第一 Change 应建立最小 shared domain vocabulary 与 authority identity，不应把 Policy/Execution/Persistence 实现耦合进来。"
+    }
+  ],
+  "findings": [
+    {
+      "id": "EXP-001",
+      "title": "Change identity 必须只有 semantic id",
+      "status": "resolved-direction",
+      "decision": "Flowkit-next 的 Change canonical identity 只使用 changeId/semantic id；group 不是 identity，禁止恢复旧 key+id 双轨。"
+    },
+    {
+      "id": "EXP-002",
+      "title": "Authority 与 execution role 必须分层",
+      "status": "resolved-direction",
+      "decision": "Owner 是显式 authority source；Author/Reviewer 是 Standard Action execution roles；Verification 是独立 evidence authority，不伪装成 Reviewer 或 Owner。"
+    },
+    {
+      "id": "EXP-003",
+      "title": "Owner decisions 必须显式、可引用、不可由终态推断",
+      "status": "resolved-direction",
+      "decision": "至少 create-delivery/create-change/activate-change 等 lifecycle fact 与后续 authorize-* 必须具有 deterministic ref + sourceRef；Review PASS / Verification PASS / Run terminal 不产生 Owner authority。"
+    },
+    {
+      "id": "EXP-004",
+      "title": "第一 Change 不拥有 Action lifecycle implementation",
+      "status": "scope-boundary",
+      "decision": "本 Change 只定义 Action identity/role vocabulary 所需的最小部分；prepared/resumed/terminal/current Action invariant 留给 establish-action-lifecycle-domain-contracts。"
+    },
+    {
+      "id": "EXP-005",
+      "title": "结构状态与 Policy semantic eligibility 分离",
+      "status": "scope-boundary",
+      "decision": "可定义 Delivery/Change state enum 与结构 transition/fail-closed validation；dependencies completed、授权是否足够、下一 Action 计算留给后续 Policy。"
+    },
+    {
+      "id": "EXP-006",
+      "title": "AGENTS.md 当前仍含初始化期动态状态文本",
+      "status": "proposal-attention",
+      "decision": "不得继续把动态 Delivery/Change 状态写进 AGENTS.md。Proposal 应明确是否在本 Change 清理这些初始化期动态陈述，仅保留长期 authority rules；Explore 本身不修改 AGENTS.md。"
+    },
+    {
+      "id": "EXP-007",
+      "title": "Flowkit Explore Skill v2 尚未 vendored 到 flowkit-next",
+      "status": "known-bootstrap-gap-nonblocking",
+      "decision": "已有 Flowkit Explore Skill v2 作为既定外部 Author guidance，并要求生成 explore.md；当前 flowkit-next 仓库尚未 vendored/productized 该 skill。本 Run 按 v2 contract 执行，但不得在本 Change 顺带新增通用 Skill。"
+    }
+  ],
+  "proposalConstraints": [
+    "semantic Change id only; no key alias or A1/B1 identity layer",
+    "group remains organization metadata only",
+    "Owner authorization is explicit durable fact with deterministic ref/sourceRef",
+    "Owner / Author / Reviewer / Verification responsibilities remain distinct",
+    "Standard Action completion never implies Git checkpoint authority",
+    "first Change may define Delivery/Change structural states and identity validation but not Policy semantic eligibility",
+    "do not implement prepared/resumed/terminal/current Action lifecycle here",
+    "do not implement Run/Result persistence, Policy, CLI, managed toolchain, OpenSpec adapter or Git checkpoint logic here",
+    "fail closed on malformed/unknown identity and authority literals",
+    "new behavior must receive targeted unit tests because current tests are empty"
+  ],
+  "openQuestionsForProposal": [
+    "是否由本 Change 顺手移除 AGENTS.md 中已经过时的初始化动态状态段，只保留稳定 authority rules？若修改，应严格限定为 guidance cleanup，而不是建立第二套 lifecycle truth。",
+    "Role 类型是否采用 ActorRole(owner|author|reviewer) + ActionExecutionRole(author|reviewer) 两层，还是仅保留一个 Role 并通过 helper 排除 owner？Proposal 需要选择单一形式，避免旧模型语义含混。"
+  ],
+  "nextBoundary": {
+    "recommendedAction": "review-explore",
+    "authoritativePolicyAvailable": false,
+    "reason": "Delivery 01 candidate Policy 尚未实现；按外部治理流程，Explore payload 应先交独立 Reviewer。"
+  },
+  "notes": [
+    "OpenSpec 1.10.0 upstream new-change implementation verified: new change scaffolds .openspec.yaml with schema + local creation date before artifacts.",
+    "Flowkit Explore Skill v2 is a Flowkit-specific Author guidance layer on top of OpenSpec explore and defines explore.md as the reviewable Explore output.",
+    "The Flowkit Explore Skill v2 is not yet vendored into the current flowkit-next repository; this Run uses it as external bootstrap guidance only.",
+    "This environment could not execute the packaged OpenSpec CLI because the official npm tgz does not bundle node_modules; scaffold bytes must be validated by the local exact 1.10.0 runtime when applying the payload.",
+    "Historical XDesk-xx/flowkit evidence is reference material only and does not become flowkit-next authority."
+  ],
+  "flowkitExploreArtifact": {
+    "path": "openspec/changes/establish-lifecycle-authority-and-identity-contracts/explore.md",
+    "kind": "flowkit-specific-explore-artifact",
+    "openSpecNativeArtifact": false
+  }
+}

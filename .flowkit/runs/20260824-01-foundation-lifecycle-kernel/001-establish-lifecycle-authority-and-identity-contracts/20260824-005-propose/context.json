@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "kind": "external-bootstrap-action-context",
+  "run": {
+    "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+    "changeId": "establish-lifecycle-authority-and-identity-contracts",
+    "runId": "20260824-005-propose",
+    "action": "propose",
+    "role": "author",
+    "entryHead": "23ca52715df7c52738edeb59206f496c7bf2d2a9",
+    "branch": "delivery/20260824-01-foundation-lifecycle-kernel"
+  },
+  "ownerAuthorizationRefs": [
+    {
+      "ref": "owner:1593d4fbe636d0afc08711794647464fff0df0496b316795f823299fcb18fe6e",
+      "decision": "activate-change",
+      "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+      "changeId": "establish-lifecycle-authority-and-identity-contracts",
+      "sourceRef": "owner-input:2026-08-24:authorize-activate-and-explore:establish-lifecycle-authority-and-identity-contracts",
+      "scope": [
+        "activate-change",
+        "explore"
+      ]
+    },
+    {
+      "ref": "owner:11cffd71771d89e9f9c7ced1ed0e2f5f22018c2782e63501c001a60a5a225b24",
+      "decision": "authorize-propose",
+      "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+      "changeId": "establish-lifecycle-authority-and-identity-contracts",
+      "sourceRef": "owner-input:2026-08-24:authorize-propose:establish-lifecycle-authority-and-identity-contracts",
+      "scope": [
+        "propose"
+      ]
+    }
+  ],
+  "sourceReview": {
+    "runId": "20260824-004-review-explore",
+    "packageSha256": "abaf08aa627ef496bb4a389faeb28a9d7134b76fcdb66c4b9cb82ded0abf8a55",
+    "resultSha256": "fdfa795fe525a9c8f20f40297de5d6d60160975e4d467d994dfc6d33f175c037",
+    "verdict": "approved",
+    "blockingFindings": [],
+    "nextBoundary": "propose"
+  },
+  "toolchain": {
+    "openspec": {
+      "version": "1.10.0",
+      "entrypoint": "${FLOWKIT_HOME}/tools/openspec/1.10.0/bin/openspec.js",
+      "skill": "skills/vendors/openspec/openspec-propose/SKILL.md"
+    }
+  },
+  "planning": {
+    "schema": "spec-driven",
+    "statusBefore": "0/4 artifacts complete",
+    "artifactOrder": [
+      "proposal",
+      "specs",
+      "design",
+      "tasks"
+    ],
+    "capabilities": [
+      "lifecycle-authority-and-identity"
+    ],
+    "statusAfter": "4/4 artifacts complete",
+    "strictValidation": {
+      "command": "node ${FLOWKIT_HOME}/tools/openspec/1.10.0/bin/openspec.js validate establish-lifecycle-authority-and-identity-contracts --strict --json",
+      "passed": 1,
+      "failed": 0
+    }
+  },
+  "planningBoundary": {
+    "productionMutationAllowed": false,
+    "testImplementationMutationAllowed": false,
+    "applyAllowed": false,
+    "gitMutationAllowed": false,
+    "autoNextAllowed": false
+  }
+}

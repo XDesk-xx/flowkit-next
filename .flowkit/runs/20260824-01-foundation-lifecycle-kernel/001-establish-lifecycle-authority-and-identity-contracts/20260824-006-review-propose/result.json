@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "kind": "external-bootstrap-review-result",
+  "run": {
+    "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+    "changeId": "establish-lifecycle-authority-and-identity-contracts",
+    "runId": "20260824-006-review-propose",
+    "action": "review-propose",
+    "role": "reviewer"
+  },
+  "reviewedRun": {
+    "runId": "20260824-005-propose",
+    "packageSha256": "e60d2e4f69caa9ac2cf4fc9467a04d9de0ece32ea46f09959f66b499e49d22fd",
+    "resultSha256": "457a339098b65d5ec6700864f200e14553b5ff3e8628ef9327d341b9046a7f1f"
+  },
+  "executionStatus": "completed",
+  "verdict": "changes-requested",
+  "summary": "005 Propose 的 planning boundary、历史完整性与 OpenSpec 形式验证均通过：proposal/spec/design/tasks 为 4/4 complete，strict validation 1/1 PASS，001–004 与 approved Explore byte-identical，且没有 production/tests/Apply/Git 越权 mutation。唯一 blocking gap 是本 Change 自称冻结 canonical、deterministic、fail-closed 的 identity/authority validator contract，但 Proposal/Design/Spec 尚未定义 validator 所依据的具体 semantic identifier grammar，以及 Owner authority fact 的完整可序列化字段类型/可选性/scope representation。若直接进入 Apply，Author 必须临时发明这些基础语义，违反 Proposal 应先冻结 contract 的边界。",
+  "findings": [
+    {
+      "id": "NEXT-RP-001",
+      "severity": "blocking",
+      "blockingAuthority": "author",
+      "title": "Canonical identity grammar and Owner authority fact wire shape are not frozen",
+      "problem": "Design Decision 1 requires boundary validators for DeliveryId/ChangeId and Decision 3 requires an explicit serialization-safe Owner authority fact/ref with decision and scope. The spec additionally requires malformed semantic identities to fail closed and repeated validation to yield the same canonical fact. However the planning bundle never defines what syntax is canonical/invalid for the semantic identifiers it will validate, and it does not define the concrete Owner authority fact field types/optionality or the representation of scope. Tasks 2.1 and 3.2 therefore ask Apply to test 'illegal format' and 'malformed fact' without a frozen rule that decides those cases.",
+      "contractRefs": [
+        "design.md#1-使用-semantic-string--boundary-validator-而不是-key--id-或进程内-registry",
+        "design.md#3-owner-authority-fact-使用显式-ref--decision--scope不把-eligibility-写进本-change",
+        "specs/lifecycle-authority-and-identity/spec.md#requirement-canonical-semantic-identity",
+        "specs/lifecycle-authority-and-identity/spec.md#requirement-owner-authority-facts-are-explicit-and-referenceable",
+        "specs/lifecycle-authority-and-identity/spec.md#requirement-identity-and-authority-validation-is-deterministic-and-serialization-safe",
+        "tasks.md#2-canonical-identity-contract",
+        "tasks.md#3-authority-separation-contract"
+      ],
+      "invariant": "Apply must implement the approved planning contract; it must not invent foundational identity or authority wire semantics that Proposal left materially ambiguous.",
+      "requiredOutcome": "Revise the planning bundle so the runtime-validation boundary is implementable without guessing. Freeze the normative accepted/rejected semantic identifier rules needed by DeliveryId/ChangeId and any decision/ref identifiers that this Change itself validates; freeze the Owner authority fact/ref serialization shape including concrete field types, required/optional fields, and scope representation. Keep decision recognition/eligibility in the later Policy Change as already intended.",
+      "acceptance": [
+        "Design or spec defines deterministic canonical identifier validation rules sufficient to classify valid vs invalid examples used by tasks/tests.",
+        "Design or spec defines the concrete serialization-safe Owner authority fact/ref shape, including the type and optionality of deliveryId/changeId/sourceRef/decision/ref/scope (or explicitly removes a field from this Change's validator contract).",
+        "The revised spec clearly separates structural fact validation from later Policy decision recognition/eligibility.",
+        "Tasks 2.1 and 3.2 are aligned to the frozen rules and no longer require Apply to choose unspecified semantics.",
+        "OpenSpec status remains 4/4 and strict validation remains PASS after revision.",
+        "No production/test implementation or Apply work is introduced during revise-propose."
+      ]
+    }
+  ],
+  "nonBlockingObservations": [
+    {
+      "id": "NEXT-RP-006-NB-001",
+      "title": "Planning scope separation is otherwise clean",
+      "detail": "The proposal correctly keeps semantic Change id as the sole Change identity, group as metadata only, Owner outside Standard Action execution roles, Verification independent, and Action lifecycle/Run persistence/Policy/Git checkpoint/OpenSpec adapter/CLI outside this Change."
+    },
+    {
+      "id": "NEXT-RP-006-NB-002",
+      "title": "OpenSpec artifact graph is structurally complete",
+      "detail": "Packaged OpenSpec 1.10.0 reports proposal/specs/design/tasks all done and strict validation passes 1/1; this finding is contract completeness, not OpenSpec syntax failure."
+    }
+  ],
+  "nextBoundary": {
+    "recommendedAction": "revise-propose",
+    "reason": "One Author-fixable blocking contract gap remains. Apply is not authorized until a subsequent review-propose approves the revised planning bundle."
+  },
+  "forbiddenNext": [
+    "apply-before-approved-review-propose",
+    "production-mutation",
+    "test-implementation-mutation",
+    "commit",
+    "push"
+  ]
+}

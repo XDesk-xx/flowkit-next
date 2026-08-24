@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "kind": "external-bootstrap-action-result",
+  "run": {
+    "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+    "changeId": "establish-lifecycle-authority-and-identity-contracts",
+    "runId": "20260824-005-propose",
+    "action": "propose",
+    "role": "author"
+  },
+  "executionStatus": "completed",
+  "summary": "已依据 approved Explore 与 Owner propose authorization 完成本 Change 的 OpenSpec planning bundle。proposal/spec/design/tasks 全部生成，OpenSpec status 为 4/4 artifacts complete，strict validation 1/1 PASS；未执行 production/test implementation、Apply 或 Git mutation。",
+  "ownerAuthorizationRefs": [
+    "owner:11cffd71771d89e9f9c7ced1ed0e2f5f22018c2782e63501c001a60a5a225b24"
+  ],
+  "sourceReview": {
+    "runId": "20260824-004-review-explore",
+    "verdict": "approved",
+    "blockingFindings": []
+  },
+  "producedResultRefs": [
+    "openspec/changes/establish-lifecycle-authority-and-identity-contracts/proposal.md",
+    "openspec/changes/establish-lifecycle-authority-and-identity-contracts/specs/lifecycle-authority-and-identity/spec.md",
+    "openspec/changes/establish-lifecycle-authority-and-identity-contracts/design.md",
+    "openspec/changes/establish-lifecycle-authority-and-identity-contracts/tasks.md",
+    ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/establish-lifecycle-authority-and-identity-contracts/20260824-005-propose/action.md",
+    ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/establish-lifecycle-authority-and-identity-contracts/20260824-005-propose/context.json",
+    ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/establish-lifecycle-authority-and-identity-contracts/20260824-005-propose/result.json"
+  ],
+  "verification": {
+    "openSpecVersion": "1.10.0",
+    "planningStatus": "4/4 artifacts complete",
+    "strictValidation": "PASS",
+    "strictValidationItems": 1,
+    "proposalSha256": "d48802111e1a32dc050af15ef085f0c0665b308a21115f7840ff8ebe3f4d5920",
+    "specSha256": "dacadcaef0bfce4266ec0e0e1d73df23e37ff2ea45dc5e0ebd82092ff3002afd",
+    "designSha256": "b76730b7a95d09d74841a3a490fdf351e623303ed526cecb0d5dd28a0a742e00",
+    "tasksSha256": "a5e57dea89240a62de4d040c397f0b0c6e5302bba49ea4804549f01df84d4466"
+  },
+  "nextBoundary": {
+    "recommendedAction": "review-propose",
+    "reason": "Planning artifacts are complete and strictly valid; independent Reviewer must review Proposal before any Apply authorization."
+  },
+  "forbiddenNext": [
+    "apply-before-review-propose",
+    "production-mutation",
+    "commit",
+    "push"
+  ]
+}

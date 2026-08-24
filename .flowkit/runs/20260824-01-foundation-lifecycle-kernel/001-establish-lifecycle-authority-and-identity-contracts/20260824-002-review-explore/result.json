@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "kind": "external-bootstrap-review-result",
+  "run": {
+    "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+    "changeId": "establish-lifecycle-authority-and-identity-contracts",
+    "runId": "20260824-002-review-explore",
+    "action": "review-explore",
+    "role": "reviewer"
+  },
+  "reviewedRun": {
+    "runId": "20260824-001-explore",
+    "packageSha256": "f43de588aec64203399341acbed5793b3b4eb53541d32773cdff7ce09541ba1b",
+    "resultSha256": "8730361d7b1b6ae424df9c0afca0da1f481dd210ec7a8559dee27f44baa0b1f4",
+    "exploreSha256": "0dc6c74c1895ebbbf0cce381131053e9e1975c70fe3255069e23c8892f870ecd"
+  },
+  "executionStatus": "completed",
+  "verdict": "changes-requested",
+  "summary": "Explore 的 scope、repository SHA、historical blob 证据、semantic-id-only 与 authority separation 方向均可复现，且未发现 production/tests/Git 越权 mutation；但 OpenSpec Change scaffold 的形成违反 exact-runtime/real-execution boundary：Author 明确记录 packaged OpenSpec CLI 未能执行，却仍形成 .openspec.yaml、把 Run 标为 completed，并将 Proof F 标为 PASS。该过程问题是 blocking，不能由 metadata 字节碰巧正确来替代真实 OpenSpec 1.10.0 new-change execution。",
+  "findings": [
+    {
+      "id": "NEXT-RE-001",
+      "severity": "blocking",
+      "blockingAuthority": "author",
+      "title": "OpenSpec scaffold 在 exact runtime 未执行时被当作真实 mutation 接纳",
+      "problem": "Author result 明确写明当前环境无法执行 packaged OpenSpec CLI，但 payload 已包含 OpenSpec change scaffold，Run executionStatus=completed，Proof F=PASS。当前 AGENTS 要求：当前工作必须使用 exact runtime 而 runtime 缺失/不匹配时必须 STOP；OpenSpec 1.10.0 Explore skill 又明确禁止手工 scaffold，要求先运行 `openspec new change <name>`。因此该 Explore 把 source-level shape verification 当成了 real external-tool mutation evidence。",
+      "contractRefs": [
+        "AGENTS.md §5 Toolchain 与 runtime",
+        "AGENTS.md §11 .flowkit/ 与 Run integrity",
+        "skills/vendors/openspec/openspec-explore/SKILL.md:111",
+        "skills/vendors/openspec/openspec-explore/SKILL.md:304",
+        ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/establish-lifecycle-authority-and-identity-contracts/20260824-001-explore/result.json:notes"
+      ],
+      "invariant": "required exact external mutation must come from real exact-runtime execution; missing required runtime is STOP, not completed/PASS; OpenSpec change scaffold must be created by `openspec new change`, not manually synthesized.",
+      "evidence": [
+        "Author notes: packaged OpenSpec CLI could not execute because npm tgz does not bundle node_modules.",
+        "Author payload nevertheless contains openspec/changes/establish-lifecycle-authority-and-identity-contracts/.openspec.yaml.",
+        "Author result executionStatus is completed and Proof F is PASS.",
+        "Exact OpenSpec 1.10.0 source confirms the scaffold shape is plausible, but this only verifies bytes/semantics, not the mandated execution provenance."
+      ],
+      "requiredOutcome": "Revise Explore using a real exact managed OpenSpec 1.10.0 runtime. Execute `openspec new change establish-lifecycle-authority-and-identity-contracts` from the clean authorized base/overlay boundary and record exact runtime identity plus command/result evidence. Rebuild the Explore evidence so Proof F is PASS only after that real mutation. If exact runtime still cannot execute, the Action must report blocked/STOP rather than completed and must not claim a valid OpenSpec scaffold mutation.",
+      "acceptance": [
+        "Exact OpenSpec runtime identity resolves to 1.10.0 from the locked managed-tool boundary.",
+        "A real `openspec new change establish-lifecycle-authority-and-identity-contracts` execution is evidenced.",
+        "The resulting `.openspec.yaml` is bound to that execution, not only to source inspection/manual bytes.",
+        "Revised Run no longer claims completed/PASS when required runtime execution is unavailable.",
+        "No proposal/design/specs/tasks or production/test mutations are introduced during revise-explore."
+      ]
+    }
+  ],
+  "nonBlockingObservations": [
+    {
+      "id": "NEXT-RE-NB-001",
+      "title": "其余 Explore evidence 方向可接受",
+      "detail": "Author manifest 中 6 个 payload file hash 全部匹配；base evidence SHA 全部匹配；旧 Flowkit types/a1-types/actions/states 的 exact commit/blob facts 已独立核验；overlay 只改变 Delivery activation + Change scaffold/explore + ignored Run state，未发现 production/tests/AGENTS/Git 越权修改。"
+    },
+    {
+      "id": "NEXT-RE-NB-002",
+      "title": "外部 Flowkit Explore Skill v2 仍是 bootstrap guidance",
+      "detail": "当前仓库未 vendored project-owned proof Explore Skill。现有 explore.md 已把 Risk Scan/Proof structure 显式化，因此本 Review 可以审查内容；但该外部 guidance 不能被描述为当前 flowkit-next 已产品化的 Skill authority。"
+    }
+  ],
+  "nextBoundary": {
+    "recommendedAction": "revise-explore",
+    "reason": "存在 1 个 Author-owned blocking finding；不得进入 propose。"
+  }
+}

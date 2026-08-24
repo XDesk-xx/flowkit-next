@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "kind": "external-bootstrap-action-context",
+  "run": {
+    "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+    "changeId": "establish-lifecycle-authority-and-identity-contracts",
+    "runId": "20260824-007-revise-propose",
+    "action": "revise-propose",
+    "role": "author",
+    "entryHead": "23ca52715df7c52738edeb59206f496c7bf2d2a9",
+    "branch": "delivery/20260824-01-foundation-lifecycle-kernel"
+  },
+  "ownerAuthorizationRefs": [
+    {
+      "ref": "owner:1593d4fbe636d0afc08711794647464fff0df0496b316795f823299fcb18fe6e",
+      "decision": "activate-change",
+      "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+      "changeId": "establish-lifecycle-authority-and-identity-contracts",
+      "sourceRef": "owner-input:2026-08-24:authorize-activate-and-explore:establish-lifecycle-authority-and-identity-contracts",
+      "scope": [
+        "activate-change",
+        "explore"
+      ]
+    },
+    {
+      "ref": "owner:11cffd71771d89e9f9c7ced1ed0e2f5f22018c2782e63501c001a60a5a225b24",
+      "decision": "authorize-propose",
+      "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+      "changeId": "establish-lifecycle-authority-and-identity-contracts",
+      "sourceRef": "owner-input:2026-08-24:authorize-propose:establish-lifecycle-authority-and-identity-contracts",
+      "scope": [
+        "propose"
+      ]
+    }
+  ],
+  "sourceReview": {
+    "runId": "20260824-006-review-propose",
+    "packageSha256": "cea2fb9b0bf6684df6ede7db09c4ae035fe6560b729c8a0387daafca01f3d2bc",
+    "resultSha256": "6f45d99ea9b2e51af9541067ed93beaa8fcd5e950d930e3a73b20c58cc2eda5f",
+    "verdict": "changes-requested",
+    "blockingFindings": [
+      "NEXT-RP-001"
+    ]
+  },
+  "findingClosure": {
+    "NEXT-RP-001": {
+      "state": "resolved-by-author-candidate",
+      "changes": [
+        "SemanticId frozen as ASCII 1..128 chars matching ^[a-z0-9]+(?:-[a-z0-9]+)*$ with no normalization.",
+        "OwnerAuthorityFact frozen to ref/decision/deliveryId/changeId?/sourceRef/scope only.",
+        "Owner ref frozen as ^owner:[0-9a-f]{64}$; sourceRef as printable ASCII 1..512 chars.",
+        "scope frozen as 1..32 unique SemanticId tokens in strict bytewise ASCII lexicographic order.",
+        "Structural validation explicitly separated from later Policy decision/scope recognition and eligibility.",
+        "tasks 2.1 and 3.2 aligned to the frozen rules."
+      ]
+    }
+  },
+  "toolchain": {
+    "openspec": {
+      "version": "1.10.0",
+      "entrypoint": "${FLOWKIT_HOME}/tools/openspec/1.10.0/bin/openspec.js",
+      "hostNodeObserved": "22.16.0",
+      "exactNode22232ReproductionClaimed": false
+    }
+  },
+  "verification": {
+    "openSpecStatus": "4/4 artifacts complete",
+    "strictValidation": {
+      "passed": 1,
+      "failed": 0
+    },
+    "productionOrTestImplementationMutationObserved": false,
+    "applyObserved": false,
+    "gitHistoryMutationObserved": false,
+    "carriedOwnerAuthorizationStructuralValidation": {
+      "status": "PASS",
+      "factsChecked": 2,
+      "ruleSet": "revised NEXT-RP-001 wire contract"
+    }
+  },
+  "planningBoundary": {
+    "applyAllowed": false,
+    "productionMutationAllowed": false,
+    "testImplementationMutationAllowed": false,
+    "autoNextAllowed": false
+  }
+}

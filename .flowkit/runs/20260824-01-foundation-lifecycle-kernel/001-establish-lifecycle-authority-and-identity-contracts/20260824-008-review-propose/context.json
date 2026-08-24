@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "kind": "external-bootstrap-review-context",
+  "run": {
+    "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+    "changeId": "establish-lifecycle-authority-and-identity-contracts",
+    "runId": "20260824-008-review-propose",
+    "action": "review-propose",
+    "role": "reviewer",
+    "entryBase": "23ca52715df7c52738edeb59206f496c7bf2d2a9",
+    "branch": "delivery/20260824-01-foundation-lifecycle-kernel"
+  },
+  "reviewed": {
+    "runId": "20260824-007-revise-propose",
+    "packageSha256": "9a6fb1c55ce8889e3b1147d022c4de566ae936e8cb16acaa4c7a342463ebb032",
+    "resultSha256": "e08126f20029963f3498f6036afc66b1b5dde1a4242cf8bed65fcee4744a7ce7",
+    "sourceReviewRunId": "20260824-006-review-propose",
+    "sourceReviewPackageSha256": "cea2fb9b0bf6684df6ede7db09c4ae035fe6560b729c8a0387daafca01f3d2bc",
+    "sourceReviewResultSha256": "6f45d99ea9b2e51af9541067ed93beaa8fcd5e950d930e3a73b20c58cc2eda5f",
+    "sourceBlockingFinding": "NEXT-RP-001"
+  },
+  "exactRuntimeVerification": {
+    "platform": "linux-x64",
+    "nodeVersion": "22.23.2",
+    "nodeRuntimeArtifact": "node-22.23.2-linux-x64-runtime-v1.tar.gz",
+    "nodeRuntimeArtifactSha256": "5b89fbeea27f90b331ddd99ddc8f420c9fff33c97c615400d74f67d86f32938f",
+    "nodeExecutableFormat": "ELF 64-bit x86-64",
+    "openSpecVersion": "1.10.0",
+    "openSpecRuntimeArtifact": "openspec-1.10.0-linux-x64-node22.23.2-pnpm11.22.0-runtime-v1.tar.gz",
+    "openSpecRuntimeArtifactSha256": "4fb0b870d9523daebda8becaf4202397da342bc39dde3961d8dd4392c72e2b68",
+    "status": "4/4 artifacts complete",
+    "strictValidation": {
+      "passed": 1,
+      "failed": 0
+    },
+    "gitHead": "23ca52715df7c52738edeb59206f496c7bf2d2a9"
+  },
+  "artifactIntegrity": {
+    "proposalSha256": "61642c7a1ffd68aeb813e1640c17b268ad61687fa38bf5e59b52a8a4a2b74d6f",
+    "designSha256": "f747d8c43a20e4a428ccb3288028c570f21ba5f71fe9038a1f52beacc2a179d2",
+    "specSha256": "f4818f499afb20e6fe300346f7f3b8cbeae4990d15c65256018ab86748069c54",
+    "tasksSha256": "5716cf8106dd346c888d3bf0c63ec00ff29f33f718879fff7c0d6467b3d8d250",
+    "priorRuns001Through006": "byte-identical-to-006-review-package",
+    "deliveryManifest": "byte-identical-to-006-review-package"
+  },
+  "deltaVs006": {
+    "added": [
+      ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/establish-lifecycle-authority-and-identity-contracts/20260824-007-revise-propose/action.md",
+      ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/establish-lifecycle-authority-and-identity-contracts/20260824-007-revise-propose/context.json",
+      ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/establish-lifecycle-authority-and-identity-contracts/20260824-007-revise-propose/result.json"
+    ],
+    "modified": [
+      "openspec/changes/establish-lifecycle-authority-and-identity-contracts/proposal.md",
+      "openspec/changes/establish-lifecycle-authority-and-identity-contracts/design.md",
+      "openspec/changes/establish-lifecycle-authority-and-identity-contracts/specs/lifecycle-authority-and-identity/spec.md",
+      "openspec/changes/establish-lifecycle-authority-and-identity-contracts/tasks.md"
+    ],
+    "productionMutationObserved": false,
+    "testImplementationMutationObserved": false,
+    "applyObserved": false,
+    "gitHistoryMutationObserved": false
+  },
+  "findingReview": {
+    "NEXT-RP-001": {
+      "previousState": "open-blocking",
+      "currentState": "resolved",
+      "reviewerJudgment": "accepted",
+      "semanticId": "ASCII 1..128; ^[a-z0-9]+(?:-[a-z0-9]+)*$; no normalization",
+      "ownerAuthorityFact": "only ref/decision/deliveryId/changeId?/sourceRef/scope; unknown extras rejected; null optional value rejected",
+      "scope": "JSON array 1..32 unique SemanticId tokens, strict bytewise ASCII lexicographic order; no repair",
+      "policySeparation": "structural validity does not imply decision/scope recognition or lifecycle eligibility",
+      "tasksAlignment": "tasks 2.1 and 3.2 directly test the frozen rules"
+    }
+  },
+  "reviewerBoundary": {
+    "authorArtifactsModified": false,
+    "productionModified": false,
+    "testsModified": false,
+    "applyExecuted": false,
+    "ownerAuthorityCreated": false
+  }
+}

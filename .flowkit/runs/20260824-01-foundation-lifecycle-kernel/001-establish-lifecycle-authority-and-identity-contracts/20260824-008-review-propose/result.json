@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "kind": "external-bootstrap-review-result",
+  "run": {
+    "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+    "changeId": "establish-lifecycle-authority-and-identity-contracts",
+    "runId": "20260824-008-review-propose",
+    "action": "review-propose",
+    "role": "reviewer"
+  },
+  "reviewedRun": {
+    "runId": "20260824-007-revise-propose",
+    "packageSha256": "9a6fb1c55ce8889e3b1147d022c4de566ae936e8cb16acaa4c7a342463ebb032",
+    "resultSha256": "e08126f20029963f3498f6036afc66b1b5dde1a4242cf8bed65fcee4744a7ce7"
+  },
+  "executionStatus": "completed",
+  "verdict": "approved",
+  "summary": "007 Revise Propose 完整关闭 NEXT-RP-001。Reviewer 在精确 Linux x64 Node 22.23.2 + OpenSpec 1.10.0 下独立复验：4/4 planning artifacts complete、strict validation 1/1 PASS、base HEAD 精确为 23ca52715df7c52738edeb59206f496c7bf2d2a9。SemanticId grammar 与 OwnerAuthorityFact wire shape/requiredness/ref/sourceRef/scope canonical rules 已冻结，structural validation 与后续 Policy recognition/eligibility 分界明确，tasks 2.1/3.2 已对齐。007 相对 006 仅修改允许的 planning artifacts 并新增自身 Run；未发现 production/tests/Apply/Git history 越界。",
+  "findingConvergence": [
+    {
+      "findingId": "NEXT-RP-001",
+      "sourceReviewRunId": "20260824-006-review-propose",
+      "previousState": "open-blocking",
+      "state": "resolved",
+      "blockingAuthority": "author",
+      "reviewerJudgment": "accepted",
+      "evidence": "Canonical SemanticId grammar and complete serialization-safe OwnerAuthorityFact wire contract are now normative in design/spec and directly reflected in tasks 2.1/3.2; Policy recognition/eligibility remains explicitly deferred."
+    }
+  ],
+  "findings": [],
+  "verification": {
+    "nodeVersion": "22.23.2",
+    "openSpecVersion": "1.10.0",
+    "planningStatus": "4/4 artifacts complete",
+    "strictValidation": "PASS",
+    "strictValidationItems": 1,
+    "exactRuntime": true
+  },
+  "nextBoundary": {
+    "recommendedAction": "owner-authorize-apply",
+    "reason": "Proposal is approved. A new explicit Owner authorization is required before any Author Apply action."
+  },
+  "forbiddenNext": [
+    "reviewer-executes-apply",
+    "apply-without-owner-authorization",
+    "auto-next",
+    "commit",
+    "push"
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "kind": "external-bootstrap-review-context",
+  "run": {
+    "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+    "changeId": "establish-lifecycle-authority-and-identity-contracts",
+    "runId": "20260824-004-review-explore",
+    "action": "review-explore",
+    "role": "reviewer",
+    "entryBase": "23ca52715df7c52738edeb59206f496c7bf2d2a9",
+    "branch": "delivery/20260824-01-foundation-lifecycle-kernel"
+  },
+  "reviewed": {
+    "runId": "20260824-003-revise-explore",
+    "packageSha256": "bf2c2fe33e1f2b134bd838a0c988919ed6f72dccf246fcb4d8c3fff52746e8a8",
+    "authorResultSha256": "af45d36af493bfcb90273487d45e611bafb5762be340c61894c57d538c3f57b8",
+    "exploreSha256": "924c58696759402c04f7e85fa64e3efe41e71cf7b431abca423430ba7b842956",
+    "sourceReviewRunId": "20260824-002-review-explore",
+    "sourceReviewPackageSha256": "12d01b6e7921f7a3ab87623d93ff07b5bf2fe1d073d48f9d46c1df1a13e877c7",
+    "sourceBlockingFinding": "NEXT-RE-001"
+  },
+  "integrity": {
+    "authorManifestFileHashes": "all-match",
+    "priorRuns001And002": "byte-identical-to-source-review-package",
+    "baseHead": "23ca52715df7c52738edeb59206f496c7bf2d2a9",
+    "baseBranch": "delivery/20260824-01-foundation-lifecycle-kernel",
+    "managedOpenSpecRuntimeArtifact": "openspec-1.10.0-linux-x64-node22.23.2-pnpm11.22.0-runtime-v1.tar.gz",
+    "managedOpenSpecRuntimeSha256": "4fb0b870d9523daebda8becaf4202397da342bc39dde3961d8dd4392c72e2b68"
+  },
+  "independentRuntimeReproduction": {
+    "entrypoint": "tools/openspec/1.10.0/bin/openspec.js",
+    "version": "1.10.0",
+    "timezone": "Asia/Shanghai",
+    "command": "TZ=Asia/Shanghai node <managed-runtime>/tools/openspec/1.10.0/bin/openspec.js new change establish-lifecycle-authority-and-identity-contracts",
+    "exitCode": 0,
+    "stdout": "Created change 'establish-lifecycle-authority-and-identity-contracts' at openspec/changes/establish-lifecycle-authority-and-identity-contracts/; Schema: spec-driven; Next: openspec status --change establish-lifecycle-authority-and-identity-contracts",
+    "stderr": "- Creating change 'establish-lifecycle-authority-and-identity-contracts' with schema 'spec-driven'...",
+    "generatedScaffoldSha256": "5f408ebe6a8c4d9c4c5e85f9e84c9ac47aa1192c4424a5f5f2224781c6f85fd7",
+    "generatedScaffoldMatchesAuthorPayload": true,
+    "status": {
+      "progress": "0/4 artifacts complete",
+      "proposal": "pending",
+      "specs": "blocked-by-proposal",
+      "design": "blocked-by-proposal",
+      "tasks": "blocked-by-specs-and-design"
+    }
+  },
+  "overlayBoundary": {
+    "trackedDiff": [
+      "openspec/delivery-groups/20260824-01-foundation-lifecycle-kernel.yaml"
+    ],
+    "addedTrackedCandidates": [
+      "openspec/changes/establish-lifecycle-authority-and-identity-contracts/.openspec.yaml",
+      "openspec/changes/establish-lifecycle-authority-and-identity-contracts/explore.md"
+    ],
+    "deliveryManifestChange": "planned -> active plus exact Owner activate-change record",
+    "productionOrTestMutationObserved": false,
+    "agentsMutationObserved": false,
+    "proposalDesignSpecsTasksObserved": false,
+    "gitHistoryMutationObserved": false
+  },
+  "revisionBoundary": {
+    "exploreDiff": "only Proof F runtime provenance/evidence closure plus Reviewer Handoff item 10",
+    "scopeCreepObserved": false
+  },
+  "reviewEvidence": [
+    {
+      "id": "REV004-EV-001",
+      "fact": "Managed runtime archive SHA-256 exactly matches Author manifest and executes `--version` as 1.10.0."
+    },
+    {
+      "id": "REV004-EV-002",
+      "fact": "Independent real `new change` execution from clean base returned exit 0 and generated the exact same `.openspec.yaml` SHA-256 as the Author payload."
+    },
+    {
+      "id": "REV004-EV-003",
+      "fact": "Independent `status --change` reports 0/4 artifacts complete, proving proposal/specs/design/tasks were not created."
+    },
+    {
+      "id": "REV004-EV-004",
+      "fact": "All Author manifest file hashes match; 001/002 durable Run files are byte-identical to the accepted source-review package."
+    },
+    {
+      "id": "REV004-EV-005",
+      "fact": "Repository overlay contains only authorized Delivery activation plus Change scaffold/explore; no production/tests/AGENTS mutation was observed."
+    }
+  ]
+}
