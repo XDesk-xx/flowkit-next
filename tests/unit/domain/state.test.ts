@@ -29,8 +29,9 @@ test("accepts exactly the closed Change structural state literals", () => {
   }
 });
 
-test("state module does not expose Action lifecycle transition machinery", async () => {
+test("state module remains separate from Action lifecycle literals and transitions", async () => {
   const state = await import("../../../src/domain/state.js");
-  assert.equal("canTransition" in state, false);
-  assert.equal("ACTION_STATES" in state, false);
+  assert.equal("ACTION_LIFECYCLE_STATES" in state, false);
+  assert.equal("transitionCurrentAction" in state, false);
+  assert.equal("isActionLifecycleState" in state, false);
 });

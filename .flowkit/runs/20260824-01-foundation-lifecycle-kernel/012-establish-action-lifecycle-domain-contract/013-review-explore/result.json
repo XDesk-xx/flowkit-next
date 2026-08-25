@@ -1,0 +1,77 @@
+{
+  "runNumber": 13,
+  "kind": "external-orchestrator-review-explore-result",
+  "role": "reviewer",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-action-lifecycle-domain-contract",
+  "action": "review-explore",
+  "finishedAt": "2026-08-25T10:45:34+08:00",
+  "executionStatus": "completed",
+  "authorConclusionObserved": "PASS",
+  "reviewerVerdict": "changes-requested",
+  "verificationVerdict": null,
+  "nextBoundary": "revise-explore",
+  "nextBoundaryAuthority": "handoff-advisory-only",
+  "reviewSummary": {
+    "factsTraceable": "PASS",
+    "scopeBoundary": "PASS",
+    "dependencyRiskCoverage": "PASS",
+    "persistenceRiskCoverage": "PASS",
+    "verificationRiskCoverage": "PASS",
+    "compatibilityRiskCoverage": "PASS",
+    "openspecAuthorityBoundary": "PASS",
+    "stableTransferContract": "PASS",
+    "proposalReadiness": "BLOCKED_BY_ONE_FINDING"
+  },
+  "findings": [
+    {
+      "id": "RE-013-001",
+      "severity": "blocking",
+      "category": "transition-invariant-proof-gap",
+      "title": "Terminal absorbing invariant does not explicitly reject same-identity re-prepare",
+      "basis": [
+        "Explore states that terminal is absorbing for the same current Action.",
+        "Explore describes terminal replacement as terminal A -> prepare another/new canonical identity B.",
+        "The transition matrix only says terminal A + prepare canonical B is allowed and does not state B != A.",
+        "Proof D tests terminal A -> prepare B, terminal -> resume rejection, terminal -> terminal rejection, and unknown action rejection, but does not test terminal A -> prepare A.",
+        "A literal implementation of the written matrix accepts terminal A -> prepare A and reopens the terminal semantic identity as prepared."
+      ],
+      "impact": "Proposal could encode a transition that contradicts the stated terminal absorbing invariant and weakens the duplicate/terminal boundary before Run occurrence identity exists.",
+      "requiredRevision": [
+        "State explicitly that terminal A -> prepare A MUST reject.",
+        "Define terminal replacement as allowed only when the new canonical semantic ActionIdentity is different from the current terminal identity.",
+        "Add the negative controlled-proof case terminal A -> prepare A reject.",
+        "Keep RunId/attempt identity out of this Change; this correction does not require introducing occurrence identity."
+      ]
+    }
+  ],
+  "verifiedFacts": [
+    "012 payload SHA-256 matches the supplied checksum.",
+    "Base archive SHA-256 matches the identity recorded by the Author.",
+    "Exact Node 22.23.2 and OpenSpec 1.10.0 runtimes reproduce successfully in detached Linux.",
+    "Typecheck passes and domain tests pass 13/13.",
+    "The repository-declared Prettier check scope passes.",
+    "OpenSpec remains 0/4 formal artifacts complete with proposal ready and later artifacts blocked.",
+    "No production source/test/package/lock/architecture mutation exists between the base and the 012 Explore overlay.",
+    "012 stable-transfer payload contains only the expected Run/OpenSpec/delivery overlay and none of the currently prohibited payload additions."
+  ],
+  "limitations": [
+    "This review does not modify Author artifacts; revision belongs to the Author role.",
+    "This verdict is not Owner authority and not Verification PASS.",
+    "Execution-local reviewer proof files are intentionally excluded from stable transfer.",
+    "The detached checks cover this source snapshot and provided exact Linux bundles, not whole-manager cross-platform acceptance.",
+    "The Explore markdown itself is not part of the repository-declared format-check script; the PASS refers to the declared code/config format-check scope."
+  ],
+  "artifacts": {
+    "inputExplore": "openspec/changes/establish-action-lifecycle-domain-contract/explore.md",
+    "inputRunAction": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/012-establish-action-lifecycle-domain-contract/012-explore/action.md",
+    "inputRunContext": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/012-establish-action-lifecycle-domain-contract/012-explore/context.json",
+    "inputRunResult": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/012-establish-action-lifecycle-domain-contract/012-explore/result.json",
+    "reviewRunAction": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/012-establish-action-lifecycle-domain-contract/013-review-explore/action.md",
+    "reviewRunContext": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/012-establish-action-lifecycle-domain-contract/013-review-explore/context.json",
+    "reviewRunResult": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/012-establish-action-lifecycle-domain-contract/013-review-explore/result.json"
+  },
+  "productionMutation": false,
+  "runId": "20260824-013-review-explore",
+  "stableTransfer": true
+}

@@ -1,0 +1,67 @@
+{
+  "runNumber": 15,
+  "kind": "external-orchestrator-review-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-action-lifecycle-domain-contract",
+  "action": "review-explore",
+  "startedAt": "2026-08-25T10:59:40+08:00",
+  "inputAction": {
+    "runId": "20260824-014-revise-explore",
+    "payloadArchive": "flowkit-next-delivery-20260824-01-foundation-lifecycle-kernel-014-revise-explore-author-payload.zip",
+    "payloadSha256": "d9ba402877429afe420d0b5792c8d2d7d42390bf7596a94955c1d456618295a1",
+    "authorRevisionConclusion": "PASS",
+    "priorBlockingFindingIds": [
+      "RE-013-001"
+    ]
+  },
+  "base": {
+    "archive": "flowkit-next-delivery-20260824-01-foundation-lifecycle-kernel-a2f4bf9.zip",
+    "sha256": "385cd4588a1817d51d4c7cdd916f4a5985f2b4adb44bced8bf7866f0b8945a39",
+    "gitRevisionHint": "a2f4bf9",
+    "gitRevisionVerified": false
+  },
+  "executionMode": "detached-linux-independent-review-explore-no-flowkit-lifecycle",
+  "reviewContract": {
+    "skill": ".agents/skills/review-explore/SKILL.md",
+    "skillName": "Review Explore Skill v2",
+    "stableTransferContract": "flowkit-next-stable-transfer-payload-contract-v1.md",
+    "stableTransferContractSha256": "6acc010b5af86054a67a4523de31c009f1e5e3657d1cca63edb2b1eaafc9fcde"
+  },
+  "runtime": {
+    "node": "22.23.2",
+    "openspec": "1.10.0",
+    "nodeModules": "provided exact offline snapshot reused from prior detached review"
+  },
+  "independentProof": {
+    "cases": "16/16 PASS",
+    "requiredNegativeCase": "terminal A -> prepare A rejected",
+    "differentIdentityReplacement": "terminal A -> prepare B where B != A structurally allowed",
+    "extraFailClosedCoverage": [
+      "unknown state rejected",
+      "malformed current identity rejected",
+      "semantic object-copy of same terminal identity rejected"
+    ],
+    "modelSha256": "4382eb4b573be7bb5018efeefe8da740864f2b90b9e9cbe7a3213ee8ed3bbebc",
+    "resultSha256": "c8493c12f5532ba1e11d63cf244244a55f048c63003e3c442c45c527bc43da73",
+    "includedInStableTransfer": false
+  },
+  "validation": {
+    "payloadSha256": "PASS",
+    "inputChainHashes": "PASS",
+    "typecheck": "PASS",
+    "domainTests": "13/13 PASS",
+    "formatCheck": "PASS on repository-declared scope",
+    "openspecFormalArtifacts": "0/4; proposal ready; specs/design/tasks blocked",
+    "authorMutationAgainstPriorReview": "revised explore.md plus 014 Run record; no production source/test/package/lock/architecture mutation"
+  },
+  "notes": [
+    "Reviewer independently re-derived the transition model rather than inheriting the Author PASS.",
+    "The exact Author execution-local proof files are not present by design under the frozen stable-transfer evidence policy; their recorded hashes are therefore not treated as independently verified evidence.",
+    "Independent reviewer proof directly covers the prior blocker and additional malformed-input boundaries.",
+    "An initial pnpm run attempt tried to rebuild copied node_modules and access the network; validation was rerun successfully with the provided offline dependency snapshot and direct local tool entrypoints."
+  ],
+  "runId": "20260824-015-review-explore",
+  "stableTransfer": true
+}

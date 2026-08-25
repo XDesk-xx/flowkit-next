@@ -1,0 +1,74 @@
+{
+  "runNumber": 17,
+  "kind": "external-orchestrator-review-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-action-lifecycle-domain-contract",
+  "action": "review-propose",
+  "startedAt": "2026-08-25T11:16:00+08:00",
+  "inputAction": {
+    "runId": "20260824-016-propose",
+    "payloadArchive": "flowkit-next-delivery-20260824-01-foundation-lifecycle-kernel-016-propose-author-payload.zip",
+    "payloadSha256": "ff29b6dc6b5eef0755c13ac389e088a8d3ab549a5efef7f393874b64536672dc",
+    "proposalStatus": "complete",
+    "nextBoundary": "review-propose"
+  },
+  "priorApprovedBoundary": {
+    "runId": "20260824-015-review-explore",
+    "reviewerVerdict": "approved",
+    "nextBoundary": "propose"
+  },
+  "base": {
+    "archive": "flowkit-next-delivery-20260824-01-foundation-lifecycle-kernel-a2f4bf9.zip",
+    "sha256": "385cd4588a1817d51d4c7cdd916f4a5985f2b4adb44bced8bf7866f0b8945a39",
+    "gitRevisionHint": "a2f4bf9",
+    "gitRevisionVerified": false
+  },
+  "executionMode": "detached-linux-independent-review-propose-no-flowkit-lifecycle",
+  "reviewContract": {
+    "skill": ".agents/skills/review-propose/SKILL.md",
+    "skillName": "Review Propose Skill v2",
+    "skillSha256": "36b515c0cdd3b052c4c83e52c4bcbc07139efcbcc3be9cbaf6f06fd38afa136b",
+    "stableTransferContract": "flowkit-next-stable-transfer-payload-contract-v1.md",
+    "stableTransferContractSha256": "6acc010b5af86054a67a4523de31c009f1e5e3657d1cca63edb2b1eaafc9fcde"
+  },
+  "runtime": {
+    "node": "22.23.2",
+    "openspec": "1.10.0",
+    "nodeModules": "exact provided offline snapshot"
+  },
+  "planningArtifactHashes": {
+    "proposal.md": "60cd32cb2631a484725fddcfe6762ab50918dea90bdb387db8fe4b0d2e66d36f",
+    "specs/action-lifecycle/spec.md": "afce8a55f35d0c542fda69b8929649b70c83f0c94bbf785711bc067b07fab69d",
+    "design.md": "2d185e2e24055a4545418970a1bc4fe43330ce956f86651d212689f59b6f0e54",
+    "tasks.md": "c3540fccc3f3fc8e8a1c89febb2bce81d4f3bb29be6054c05f15d2ec6ea6df9c"
+  },
+  "validation": {
+    "payloadSha256": "PASS",
+    "prior012To015RunsPreserved": "PASS",
+    "approvedExplorePreserved": "PASS",
+    "deliveryGroupPreservedFrom015": "PASS",
+    "openspecPlanningArtifacts": "4/4 complete",
+    "openspecStrictValidate": "PASS",
+    "typecheck": "PASS",
+    "domainTests": "13/13 PASS baseline",
+    "formatCheck": "PASS on repository-declared scope",
+    "productionMutationAgainstBase": "none outside .flowkit/openspec planning overlay"
+  },
+  "reviewDimensions": {
+    "exploreAlignment": "PASS",
+    "contractCompleteness": "PASS",
+    "designQuality": "PASS",
+    "verificationClosure": "PASS"
+  },
+  "notes": [
+    "The reviewer independently read the approved Explore and all four OpenSpec planning artifacts rather than inheriting the Author's completion claim.",
+    "OpenSpec status reports proposal/specs/design/tasks done and strict validation succeeds under the exact 1.10.0 runtime.",
+    "The Proposal retains RE-013-001 closure: terminal A -> prepare A is rejected and terminal replacement requires a different canonical semantic ActionIdentity.",
+    "No RunId/attempt identity, Result admission, Policy next-action ordering, OpenSpec adapter, CLI, mutation/Git checkpoint, or automatic-next behavior is introduced by this Proposal.",
+    "Baseline domain tests are not implementation evidence for the planned lifecycle module; implementation evidence is explicitly deferred to the Apply tasks."
+  ],
+  "runId": "20260824-017-review-propose",
+  "stableTransfer": true
+}

@@ -1,0 +1,31 @@
+{
+  "runNumber": 20,
+  "kind": "external-orchestrator-archive-rematerialized-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-action-lifecycle-domain-contract",
+  "action": "archive",
+  "runId": "20260824-020-archive",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/012-establish-action-lifecycle-domain-contract/020-archive",
+  "executionMode": "external-orchestrator-packaging-rematerialization-of-accepted-020-archive-closure",
+  "authorizationReference": null,
+  "authorizationReferenceRecovered": false,
+  "authorityCaveat": "The exact Owner authorization ref/sourceRef for 020 was not recoverable from supplied durable inputs; it is intentionally not fabricated.",
+  "acceptedClosureEvidence": {
+    "archivePayloadSha256": "f4309262a6e3c78a34ceaa5eb6b5cdf276044e98d7010830aae9c541e591f0e4",
+    "previousArchiveClosureSnapshotSha256": "c3f6f521f2cc7b284779d9c13a0ea971650bfb82b836948d0f76c8c05bcc9f5b",
+    "previousHandoffRecordedArchiveSuccess": true,
+    "reviewApplyVerdict": "approved"
+  },
+  "runtimeReference": {
+    "node": "22.23.2",
+    "openspec": "1.10.0",
+    "pnpm": "11.22.0"
+  },
+  "packagingCorrection": {
+    "newLifecycleAction": false,
+    "reason": "Correct physical .flowkit/runs topology and shorten transport names without changing accepted lifecycle outcome."
+  },
+  "stableTransfer": true
+}

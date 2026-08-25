@@ -1,0 +1,58 @@
+{
+  "runNumber": 19,
+  "kind": "external-orchestrator-review-apply-result",
+  "role": "reviewer",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-action-lifecycle-domain-contract",
+  "action": "review-apply",
+  "finishedAt": "2026-08-25T11:39:00+08:00",
+  "executionStatus": "completed",
+  "authorApplyStatusObserved": "complete",
+  "reviewerVerdict": "approved",
+  "verificationVerdict": null,
+  "nextBoundary": "archive",
+  "nextBoundaryAuthority": "handoff-advisory-only-requires-explicit-owner-authorization",
+  "reviewSummary": {
+    "scopeCompliance": "PASS",
+    "implementationCorrectness": "PASS",
+    "verificationEvidence": "PASS",
+    "regression": "PASS",
+    "openspecApplyClosure": "PASS",
+    "stableTransferContract": "PASS",
+    "archiveReadiness": "REVIEW_APPROVED_AWAITING_OWNER_AUTHORITY"
+  },
+  "findings": [],
+  "verifiedFacts": [
+    "018 payload SHA-256 matches the supplied checksum.",
+    "Relative to the approved 017 baseline, the Apply changes exactly eight files: three 018 Run-record files, tasks.md, src/domain/action-lifecycle.ts, src/domain/index.ts, tests/unit/domain/action-lifecycle.test.ts, and tests/unit/domain/state.test.ts.",
+    "No package.json, lockfile, architecture, unrelated domain module, delivery-group, or planning/spec content mutation is introduced by Apply.",
+    "The implementation exposes exactly prepared/resumed/terminal lifecycle states, canonical semantic ActionIdentity composition, a zero-or-one CurrentAction slot type, runtime validators, and one pure fail-closed transition reducer.",
+    "The reducer implements the approved transition matrix, including terminal A -> prepare A rejection and structural terminal A -> prepare canonical B only when B differs semantically from A.",
+    "The reducer contains no Owner/Review/Verification/OpenSpec/Policy eligibility input or Standard Action next-ordering logic.",
+    "Reviewer independently reproduced the targeted lifecycle suite at 12/12 PASS and the full domain suite at 25/25 PASS under Node 22.23.2.",
+    "Reviewer independently reproduced tsc --noEmit and the repository-declared Prettier check successfully.",
+    "OpenSpec 1.10.0 strict validation passes and instructions apply reports 10/10 tasks complete with state all_done.",
+    "An independent reviewer matrix enumeration covering legal, illegal, same/different-identity, and malformed cases passes 29/29.",
+    "The 018 Apply record truthfully stops before review-apply/archive and does not claim Verification PASS or Owner authority."
+  ],
+  "limitations": [
+    "Review-Apply approval is not Verification PASS; verificationVerdict remains null.",
+    "The reviewer does not grant Owner archive, checkpoint, or promotion authority and does not perform archive.",
+    "The OpenSpec task 3.3 wording inherited from the approved Proposal says 'stop at the pre-apply boundary'; this is an editorial inconsistency in the already-approved task text, not an implementation deviation, because OpenSpec apply instructions, the other tasks, and the actual Apply boundary all unambiguously require and report implementation completion before review-apply.",
+    "Detached checks cover this supplied Linux snapshot and exact provided runtimes; they are not whole-manager cross-platform acceptance."
+  ],
+  "artifacts": {
+    "reviewedImplementation": "src/domain/action-lifecycle.ts",
+    "reviewedTests": "tests/unit/domain/action-lifecycle.test.ts",
+    "reviewedTasks": "openspec/changes/establish-action-lifecycle-domain-contract/tasks.md",
+    "inputRunAction": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/012-establish-action-lifecycle-domain-contract/018-apply/action.md",
+    "inputRunContext": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/012-establish-action-lifecycle-domain-contract/018-apply/context.json",
+    "inputRunResult": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/012-establish-action-lifecycle-domain-contract/018-apply/result.json",
+    "reviewRunAction": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/012-establish-action-lifecycle-domain-contract/019-review-apply/action.md",
+    "reviewRunContext": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/012-establish-action-lifecycle-domain-contract/019-review-apply/context.json",
+    "reviewRunResult": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/012-establish-action-lifecycle-domain-contract/019-review-apply/result.json"
+  },
+  "productionMutation": false,
+  "runId": "20260824-019-review-apply",
+  "stableTransfer": true
+}

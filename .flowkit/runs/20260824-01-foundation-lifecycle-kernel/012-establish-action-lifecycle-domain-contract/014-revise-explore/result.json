@@ -1,0 +1,61 @@
+{
+  "runNumber": 14,
+  "kind": "external-orchestrator-revise-explore-result",
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-action-lifecycle-domain-contract",
+  "action": "revise-explore",
+  "finishedAt": "2026-08-25T10:53:00+08:00",
+  "executionStatus": "completed",
+  "inputReviewerVerdict": "changes-requested",
+  "authorRevisionConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-explore",
+  "nextBoundaryAuthority": "handoff-advisory-only",
+  "resolvedFindings": [
+    {
+      "id": "RE-013-001",
+      "status": "resolved-by-author",
+      "corrections": [
+        "Transition matrix now explicitly rejects terminal A -> prepare canonical A.",
+        "Terminal replacement now requires a different canonical semantic ActionIdentity (B != A).",
+        "Controlled proof now includes terminal A -> prepare A reject and passes 13/13 cases.",
+        "RunId/attempt identity remains out of scope."
+      ]
+    }
+  ],
+  "proofSummary": {
+    "transitionInvariantCorrection": "PASS",
+    "sameIdentityTerminalReprepare": "REJECTED",
+    "differentIdentityTerminalReplacement": "STRUCTURALLY_ALLOWED",
+    "controlledModel": "13/13 PASS",
+    "typecheck": "PASS",
+    "openspecBoundary": "PASS; 0/4 formal artifacts",
+    "noProductionMutation": "PASS"
+  },
+  "artifacts": {
+    "revisedExplore": "openspec/changes/establish-action-lifecycle-domain-contract/explore.md",
+    "inputReviewAction": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/012-establish-action-lifecycle-domain-contract/013-review-explore/action.md",
+    "inputReviewContext": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/012-establish-action-lifecycle-domain-contract/013-review-explore/context.json",
+    "inputReviewResult": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/012-establish-action-lifecycle-domain-contract/013-review-explore/result.json",
+    "runAction": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/012-establish-action-lifecycle-domain-contract/014-revise-explore/action.md",
+    "runContext": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/012-establish-action-lifecycle-domain-contract/014-revise-explore/context.json",
+    "runResult": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/012-establish-action-lifecycle-domain-contract/014-revise-explore/result.json"
+  },
+  "formalOpenSpecArtifacts": {
+    "proposal": "ready-not-created",
+    "specs": "blocked-not-created",
+    "design": "blocked-not-created",
+    "tasks": "blocked-not-created"
+  },
+  "productionMutation": false,
+  "limitations": [
+    "This is Author revise-explore completion, not Reviewer approval or Verification PASS.",
+    "The controlled model proves contract consistency only; it is not production implementation.",
+    "Execution-local proof artifacts are intentionally excluded from stable transfer.",
+    "Policy next-action eligibility and Run occurrence identity remain owned by later Changes."
+  ],
+  "runId": "20260824-014-revise-explore",
+  "stableTransfer": true
+}

@@ -59,7 +59,7 @@ changes:
     required: true
     dependsOn:
       - "establish-lifecycle-authority-and-identity-contracts"
-    state: planned
+    state: completed
     architectureImpact: true
     outputs:
       - "Action lifecycle domain contract"
@@ -205,6 +205,14 @@ ownerDecisions:
     sourceRef: "owner-input:2026-08-24T09:08+08:00:authorize-checkpoint:20260824-01-foundation-lifecycle-kernel:establish-lifecycle-authority-and-identity-contracts:after-archive"
     scope:
       - "checkpoint"
+
+  - ref: "owner:78f2d96bf54dd7e6b4729a53d7f603480353624b4deaea174a172bec4fa80856"
+    decision: "activate-change"
+    deliveryId: "20260824-01-foundation-lifecycle-kernel"
+    changeId: "establish-action-lifecycle-domain-contract"
+    sourceRef: "owner-input:2026-08-25T10:04+08:00:authorize-direct-explore:establish-action-lifecycle-domain-contract"
+    scope:
+      - "explore"
 
 verification:
   change:
