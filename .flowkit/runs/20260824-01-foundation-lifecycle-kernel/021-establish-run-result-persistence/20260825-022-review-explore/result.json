@@ -1,0 +1,83 @@
+{
+  "runNumber": 22,
+  "kind": "external-orchestrator-review-explore-result",
+  "role": "reviewer",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-run-result-persistence",
+  "action": "review-explore",
+  "runId": "20260825-022-review-explore",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/021-establish-run-result-persistence/20260825-022-review-explore",
+  "finishedAt": "2026-08-25T17:31:00+08:00",
+  "executionStatus": "completed",
+  "authorConclusionObserved": "PASS",
+  "reviewerVerdict": "changes-requested",
+  "verificationVerdict": null,
+  "nextBoundary": "revise-explore",
+  "nextBoundaryAuthority": "handoff-advisory-only",
+  "reviewSummary": {
+    "factsTraceable": "PASS WITH NON-BLOCKING GIT-IDENTITY LIMITATION",
+    "scopeRiskCoverage": "PASS",
+    "dependencyRiskCoverage": "PASS",
+    "persistenceRiskCoverage": "FAIL — repository path-address safety omitted",
+    "verificationRiskCoverage": "PASS",
+    "compatibilityRiskCoverage": "PARTIAL — topology compatibility observed, but cross-platform path canonicality not proved",
+    "proofQuality": "CHANGES REQUESTED",
+    "proposalReadiness": "FAIL UNTIL RE-022-001 IS CLOSED"
+  },
+  "findings": [
+    {
+      "id": "RE-022-001",
+      "severity": "blocking",
+      "title": "Run occurrence identity has no proved repository path-address safety contract",
+      "problem": "Explore correctly requires an independent Run occurrence identity and proposes persistence under .flowkit/runs/<delivery>/<change-root>/<action-occurrence>/, but it leaves occurrence identity opaque without identifying or proving the filesystem-address boundary. A caller-supplied occurrence/address containing traversal or path separators can escape the intended Change root or create alias/nested addresses, especially across POSIX and Windows semantics.",
+      "reviewEvidence": [
+        "POSIX controlled counterexample: path join with ../022-review-explore resolves outside the Change root.",
+        "Windows controlled counterexample: path join with ..\\022-review-explore resolves outside the Change root.",
+        "Windows controlled counterexample: nested\\022-review-explore becomes multiple path segments even if treated as one opaque logical id.",
+        "Existing Explore risk R6 covers topology drift but not untrusted/canonical path-address construction or path aliasing."
+      ],
+      "requiredRevision": [
+        "Add an explicit persistence/path-address risk covering traversal, slash/backslash separators, empty/dot segments, absolute/drive-qualified forms, and cross-platform aliases.",
+        "Separate logical Run occurrence identity from repository address/path-segment validation, or define an equivalent canonical path-safe occurrence representation.",
+        "Add controlled negative proof showing malformed/adversarial occurrence/address inputs fail closed on both POSIX and Windows path semantics while canonical current topology remains accepted.",
+        "Keep final RunId display/sequence allocation design open for Proposal; do not solve this by parsing lifecycle authority from a display string."
+      ],
+      "nonRequirements": [
+        "No production implementation is required in revise-explore.",
+        "No database/WAL/scheduler/multi-Agent recovery design is required.",
+        "No final RunId string format needs to be chosen at Explore if path safety can be proved independently."
+      ]
+    }
+  ],
+  "verifiedFacts": [
+    "The exact supplied checkpoint archive SHA-256 matches the Author-declared base snapshot hash.",
+    "The 021 payload computes to SHA-256 b6d2a555722add16f95aef05a5741c385fdb9637f433cca84f533d55198cfcdc.",
+    "Detached Node 22.23.2 and pnpm 11.22.0 execute successfully.",
+    "Typecheck passes, domain tests pass 25/25, and repository-declared Prettier check passes.",
+    "OpenSpec remains at the intended Explore boundary: 0/4 formal artifacts, proposal ready, specs/design/tasks blocked.",
+    "Both existing canonical OpenSpec specs validate strict 2/2.",
+    "021 adds only the Explore scaffold/artifact, delivery activation, and its stable Run record; no production implementation is present.",
+    "Repeated semantic ActionIdentity cannot distinguish multiple review-explore occurrences; a separate Run occurrence identity is required.",
+    "Existing OwnerAuthorityFact round-trips through JSON with exact validator acceptance and malformed/extra fields fail closed.",
+    "Opaque JSON Result payload can be persisted without interpreting reviewer/verification/next-boundary semantics, preserving separation from later admission and Policy changes.",
+    "The repository already demonstrates repeated Action history under one Change root, so a second runtime storage tree is unnecessary."
+  ],
+  "limitations": [
+    "This is Review Explore only; it is neither Verification PASS nor Owner authority.",
+    "The Author's execution-local proof hashes cannot be independently recomputed because raw proof is intentionally excluded from the handoff payload; reviewer evidence comes from independent reproduction.",
+    "The supplied checkpoint has no .git directory, so Git commit existence/byte equivalence was not independently verified.",
+    "The exact stable-transfer v4 contract artifact was not supplied; its declared hash was recorded but not independently opened. This is non-blocking because the repository topology relevant to this finding is directly observable.",
+    "Symlink/reparse-point hardening was not elevated to a blocker in this Explore review; RE-022-001 is limited to canonical logical-to-physical path addressing and traversal/alias safety."
+  ],
+  "artifacts": {
+    "reviewedExplore": "openspec/changes/establish-run-result-persistence/explore.md",
+    "inputRunAction": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/021-establish-run-result-persistence/20260825-021-explore/action.md",
+    "inputRunContext": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/021-establish-run-result-persistence/20260825-021-explore/context.json",
+    "inputRunResult": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/021-establish-run-result-persistence/20260825-021-explore/result.json",
+    "reviewRunAction": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/021-establish-run-result-persistence/20260825-022-review-explore/action.md",
+    "reviewRunContext": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/021-establish-run-result-persistence/20260825-022-review-explore/context.json",
+    "reviewRunResult": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/021-establish-run-result-persistence/20260825-022-review-explore/result.json"
+  },
+  "productionMutation": false,
+  "stableTransfer": true
+}

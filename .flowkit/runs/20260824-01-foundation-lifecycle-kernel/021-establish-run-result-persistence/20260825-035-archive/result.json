@@ -1,0 +1,41 @@
+{
+  "runNumber": 35,
+  "kind": "external-orchestrator-archive-result",
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-run-result-persistence",
+  "action": "archive",
+  "runId": "20260825-035-archive",
+  "finishedAt": "2026-08-25T23:12:30+08:00",
+  "executionStatus": "completed",
+  "archiveStatus": "succeeded",
+  "authorConclusion": "PASS",
+  "reviewerVerdictObserved": "approved",
+  "verificationVerdict": null,
+  "nextBoundary": "checkpoint",
+  "nextBoundaryAuthority": "explicit-checkpoint-authority-required",
+  "archiveTarget": "openspec/changes/archive/2026-08-25-establish-run-result-persistence",
+  "canonicalSpec": "openspec/specs/run-result-persistence/spec.md",
+  "deliveryChangeState": "completed",
+  "archiveVerification": {
+    "activeOpenSpecChanges": "0",
+    "openspecStrict": "3/3 PASS",
+    "typecheck": "PASS",
+    "domainTests": "35/35 PASS",
+    "formatCheck": "PASS",
+    "archivedChangeArtifactBytePreservation": "6/6 byte-identical"
+  },
+  "archiveSpecSync": {
+    "added": 8,
+    "modified": 0,
+    "removed": 0,
+    "renamed": 0
+  },
+  "limitations": [
+    "Archive success is not Delivery Full Test Verification PASS.",
+    "This Run does not create checkpoint authority or a Git checkpoint commit.",
+    "Detached runtime bundles and node_modules are execution-local and excluded from the Archive Closure Snapshot."
+  ],
+  "stableTransfer": true,
+  "packageClass": "archive-closure-snapshot"
+}

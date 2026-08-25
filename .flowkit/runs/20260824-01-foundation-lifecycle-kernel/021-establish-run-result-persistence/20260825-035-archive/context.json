@@ -1,0 +1,46 @@
+{
+  "runNumber": 35,
+  "kind": "external-orchestrator-archive-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-run-result-persistence",
+  "action": "archive",
+  "runId": "20260825-035-archive",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/021-establish-run-result-persistence/20260825-035-archive",
+  "inputRunId": "20260825-034-review-apply",
+  "inputPayload": {
+    "archive": "034-review-apply.zip",
+    "sha256": "6f468911e6fd8ab35e6f4011725ecfe788befc541315c2dbf4d28a433b51cd82",
+    "reviewerVerdict": "approved"
+  },
+  "checkpointBase": {
+    "archive": "flowkit-next-delivery-20260824-01-foundation-lifecycle-kernel-1c8c2fb.zip",
+    "gitRevision": "1c8c2fb3aca904c522a49a8e4eda2a3545c18972"
+  },
+  "authorization": {
+    "ref": "owner:f1673eee0f0cc906461be34328fec9b8e6f86adc94087b36303ac17aadf67c0a",
+    "decision": "authorize-archive",
+    "sourceRef": "owner-input:2026-08-25T23:08+08:00:authorize-archive:20260824-01-foundation-lifecycle-kernel:establish-run-result-persistence:after:20260825-034-review-apply",
+    "scope": [
+      "archive"
+    ]
+  },
+  "executionMode": "detached-linux-direct-openspec-archive-no-flowkit-lifecycle",
+  "runtime": {
+    "node": "22.23.2",
+    "openspec": "1.10.0"
+  },
+  "archive": {
+    "archivedAs": "2026-08-25-establish-run-result-persistence",
+    "specsUpdated": true,
+    "specTotals": {
+      "added": 8,
+      "modified": 0,
+      "removed": 0,
+      "renamed": 0
+    }
+  },
+  "stableTransfer": true,
+  "packageClass": "archive-closure-snapshot"
+}

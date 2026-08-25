@@ -1,0 +1,32 @@
+{
+  "runNumber": 30,
+  "kind": "external-orchestrator-review-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-run-result-persistence",
+  "action": "review-propose",
+  "runId": "20260825-030-review-propose",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/021-establish-run-result-persistence/20260825-030-review-propose",
+  "startedAt": "2026-08-25T21:46:00+08:00",
+  "inputAction": {
+    "runId": "20260825-029-propose",
+    "payloadArchive": "029-propose.zip",
+    "payloadSha256": "a0683a8a041192299ff58b4c20e9d3a9f968697bf81f7fd75f281a9858080f35",
+    "authorConclusion": "PASS",
+    "nextBoundary": "review-propose"
+  },
+  "executionMode": "detached-linux-review-propose",
+  "runtime": {
+    "node": "22.23.2",
+    "openspec": "1.10.0",
+    "pnpmContract": "11.22.0"
+  },
+  "skills": ["review-propose"],
+  "ownerScopeCorrectionPreserved": true,
+  "stableTransfer": true,
+  "notes": [
+    "The author-declared stable-transfer-contract-v4.md artifact was not independently opened in this review; its prior declared identity is not upgraded into a new reviewer claim.",
+    "Reviewer scope remains sequential Author/Reviewer Change-scoped Run/Result persistence only."
+  ]
+}

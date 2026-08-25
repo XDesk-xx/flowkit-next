@@ -1,0 +1,88 @@
+{
+  "runNumber": 27,
+  "kind": "external-orchestrator-revise-explore-result",
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-run-result-persistence",
+  "action": "revise-explore",
+  "runId": "20260825-027-revise-explore",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/021-establish-run-result-persistence/20260825-027-revise-explore",
+  "finishedAt": "2026-08-25T20:14:00+08:00",
+  "executionStatus": "completed",
+  "authorRevisionConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-explore",
+  "nextBoundaryAuthority": "handoff-advisory-only",
+  "scopeCorrection": {
+    "status": "applied",
+    "coreGoal": "Sequential Author/Reviewer Action execution with durable .flowkit/runs handoff facts",
+    "runAddressModel": "Flowkit-controlled canonical generation",
+    "arbitraryExternalRunIdInScope": false,
+    "multiAgentOrchestrationInScope": false,
+    "crashRecoveryInScope": false,
+    "genericFilesystemSubsystemInScope": false
+  },
+  "findingDisposition": [
+    {
+      "id": "RE-022-001",
+      "status": "retained-as-historical-design-constraint",
+      "disposition": "Do not accept arbitrary logical occurrence strings as filesystem path authority; controlled generator supersedes generic path proof burden."
+    },
+    {
+      "id": "RE-024-001",
+      "status": "retained-as-historical-design-constraint",
+      "disposition": "Reserved-name proof remains useful evidence against arbitrary input; controlled known-action generator prevents this class from driving current scope."
+    },
+    {
+      "id": "RE-026-001",
+      "status": "owner-scope-disposition-applied",
+      "disposition": "Owner explicitly says filesystem/path-expansion findings must not remain Proposal-readiness blockers. Exact 026 reviewer bytes/wording were not supplied and are not fabricated."
+    }
+  ],
+  "requiredQuestions": {
+    "uniqueRunOccurrence": "PASS; independent Change-scoped Flowkit-generated occurrence distinct from ActionIdentity",
+    "durableRunFacts": "PASS; Run/role/action/authority/context and Result linkage are identified",
+    "authorReviewerHandoff": "PASS; one durable Run per Action followed by STOP and next-actor read",
+    "roundTripWithoutDrift": "PASS; strict serialization/read/validation direction with role/verdict separation",
+    "changeScopedTopology": "PASS; .flowkit/runs/<delivery>/<change-root>/<generated-occurrence>/",
+    "nonGoalsBounded": "PASS; multi-Agent/concurrency/recovery/arbitrary path API and later lifecycle capabilities explicitly excluded"
+  },
+  "proofSummary": {
+    "controlledScopeProof": "PASS",
+    "generatedAddressModel": "PASS",
+    "ownerAuthorityRoundTrip": "PASS",
+    "roleVerdictSeparation": "PASS",
+    "typecheck": "PASS",
+    "domainTests": "25/25 PASS",
+    "formatCheck": "PASS",
+    "openspecBoundary": "PASS; 0/4 formal artifacts",
+    "canonicalSpecsStrict": "2/2 PASS",
+    "noProductionMutation": "PASS"
+  },
+  "proposalReadiness": {
+    "status": "READY-FOR-REVIEW",
+    "statement": "No known blocker remains for the Owner-corrected minimal Author <-> Reviewer durable Run/Result persistence scope."
+  },
+  "artifacts": {
+    "revisedExplore": "openspec/changes/establish-run-result-persistence/explore.md",
+    "runAction": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/021-establish-run-result-persistence/20260825-027-revise-explore/action.md",
+    "runContext": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/021-establish-run-result-persistence/20260825-027-revise-explore/context.json",
+    "runResult": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/021-establish-run-result-persistence/20260825-027-revise-explore/result.json"
+  },
+  "formalOpenSpecArtifacts": {
+    "proposal": "ready-not-created",
+    "specs": "blocked-not-created",
+    "design": "blocked-not-created",
+    "tasks": "blocked-not-created"
+  },
+  "productionMutation": false,
+  "limitations": [
+    "This is Author revise-explore completion, not Reviewer approval or Verification PASS.",
+    "The exact durable 026 reviewer package/Run referenced by Owner as RE-026-001 was not supplied; no 026 reviewer history was fabricated.",
+    "Generic filesystem, symlink/junction/reparse, concurrency and crash-recovery hardening are intentionally outside current Proposal readiness.",
+    "Result admission and Policy next-boundary legality remain later Change responsibilities.",
+    "Raw proof files are execution-local and excluded from stable transfer."
+  ],
+  "stableTransfer": true
+}

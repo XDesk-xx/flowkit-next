@@ -1,0 +1,32 @@
+{
+  "runNumber": 32,
+  "kind": "external-orchestrator-review-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-run-result-persistence",
+  "action": "review-propose",
+  "runId": "20260825-032-review-propose",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/021-establish-run-result-persistence/20260825-032-review-propose",
+  "startedAt": "2026-08-25T22:30:00+08:00",
+  "inputAction": {
+    "runId": "20260825-031-revise-propose",
+    "payloadArchive": "031-revise-propose.zip",
+    "payloadSha256": "7335bf3ec75143c3cfdfcc174094e19fc9b60debba8706889c1f5f27c1696d6c",
+    "authorConclusion": "PASS",
+    "nextBoundary": "review-propose"
+  },
+  "executionMode": "detached-linux-review-propose",
+  "runtime": {
+    "node": "22.23.2",
+    "openspec": "1.10.0",
+    "pnpmContract": "11.22.0"
+  },
+  "skills": ["review-propose"],
+  "ownerScopeCorrectionPreserved": true,
+  "stableTransfer": true,
+  "notes": [
+    "Review remained within the sequential single-writer Author/Reviewer persistence boundary.",
+    "RP-030-001 accepted either duplicate-sequence prevention or fail-closed rejection; the revised contract uses create-time prevention within the exact Change history and does not require a concurrency subsystem."
+  ]
+}

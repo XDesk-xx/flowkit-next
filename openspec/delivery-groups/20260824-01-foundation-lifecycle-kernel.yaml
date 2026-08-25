@@ -71,7 +71,7 @@ changes:
     required: true
     dependsOn:
       - "establish-action-lifecycle-domain-contract"
-    state: planned
+    state: completed
     architectureImpact: true
     outputs:
       - "Run persistence"
@@ -213,6 +213,30 @@ ownerDecisions:
     sourceRef: "owner-input:2026-08-25T10:04+08:00:authorize-direct-explore:establish-action-lifecycle-domain-contract"
     scope:
       - "explore"
+
+  - ref: "owner:e48a1af6923c922b5f83368accbfdc7a477a804d5093659451fd571307b1b5b3"
+    decision: "activate-change"
+    deliveryId: "20260824-01-foundation-lifecycle-kernel"
+    changeId: "establish-run-result-persistence"
+    sourceRef: "owner-input:2026-08-25T17:08+08:00:authorize-activate-and-explore:establish-run-result-persistence"
+    scope:
+      - "explore"
+
+  - ref: "owner:77debb2537d2faad156f802dd615f326f1728e4900a268af60c9b36357c95b5b"
+    decision: "authorize-apply"
+    deliveryId: "20260824-01-foundation-lifecycle-kernel"
+    changeId: "establish-run-result-persistence"
+    sourceRef: "owner-input:2026-08-25T22:36+08:00:authorize-apply:establish-run-result-persistence:after:20260825-032-review-propose"
+    scope:
+      - "apply"
+
+  - ref: "owner:f1673eee0f0cc906461be34328fec9b8e6f86adc94087b36303ac17aadf67c0a"
+    decision: "authorize-archive"
+    deliveryId: "20260824-01-foundation-lifecycle-kernel"
+    changeId: "establish-run-result-persistence"
+    sourceRef: "owner-input:2026-08-25T23:08+08:00:authorize-archive:20260824-01-foundation-lifecycle-kernel:establish-run-result-persistence:after:20260825-034-review-apply"
+    scope:
+      - "archive"
 
 verification:
   change:

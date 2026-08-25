@@ -1,0 +1,38 @@
+{
+  "runNumber": 31,
+  "kind": "external-orchestrator-revise-propose-result",
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-run-result-persistence",
+  "action": "revise-propose",
+  "runId": "20260825-031-revise-propose",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/021-establish-run-result-persistence/20260825-031-revise-propose",
+  "finishedAt": "2026-08-25T22:28:00+08:00",
+  "executionStatus": "completed",
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-propose",
+  "nextBoundaryAuthority": "handoff-advisory-only",
+  "findingResolution": [
+    {
+      "id": "RP-030-001",
+      "status": "addressed",
+      "summary": "Defined generated Run occurrences as create-once/non-overwritable; existing target collision fails closed without modifying prior bytes; duplicate controlled sequence in one Change history is rejected; focused measurable tests added to tasks/spec."
+    }
+  ],
+  "verification": {
+    "openspecPlanning": "4/4 complete",
+    "openspecChangeStrict": "PASS",
+    "openspecAllStrict": "3/3 PASS",
+    "typecheck": "PASS",
+    "domainTests": "25/25 PASS",
+    "formatCheck": "PASS",
+    "productionMutation": "NONE"
+  },
+  "limitations": [
+    "This is Author revise-propose completion, not Reviewer approval, Apply, Verification PASS, archive, or checkpoint.",
+    "Collision semantics are for the current sequential/single-writer contract and do not claim multi-process locking or transaction guarantees."
+  ],
+  "stableTransfer": true
+}

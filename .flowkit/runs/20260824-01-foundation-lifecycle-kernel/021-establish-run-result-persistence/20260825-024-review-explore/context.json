@@ -1,0 +1,84 @@
+{
+  "runNumber": 24,
+  "kind": "external-orchestrator-review-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-run-result-persistence",
+  "action": "review-explore",
+  "runId": "20260825-024-review-explore",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/021-establish-run-result-persistence/20260825-024-review-explore",
+  "startedAt": "2026-08-25T18:01:00+08:00",
+  "inputAction": {
+    "runId": "20260825-023-revise-explore",
+    "payloadArchive": "023-revise-explore.zip",
+    "payloadSha256": "03995929421fc9ed873012a75e8a4e74cba70c3d8479989b7f10d21b17b246a7",
+    "authorRevisionConclusion": "PASS",
+    "claimedResolvedFindingIds": [
+      "RE-022-001"
+    ]
+  },
+  "base": {
+    "archive": "flowkit-next-delivery-20260824-01-foundation-lifecycle-kernel-1c8c2fb.zip",
+    "sha256": "870d1a12a73d6367fce34a7ab036348cafcd2e01531af9847b0b046a87154758",
+    "gitRevisionHint": "1c8c2fb3aca904c522a49a8e4eda2a3545c18972",
+    "gitRevisionIndependentlyVerified": false,
+    "reason": "Checkpoint archive contains no .git directory; archive SHA-256 is the detached base identity."
+  },
+  "executionMode": "detached-linux-independent-review-explore-no-flowkit-lifecycle",
+  "reviewContract": {
+    "skill": ".agents/skills/review-explore/SKILL.md",
+    "skillName": "Review Explore Skill v2",
+    "authorDeclaredStableTransferContract": "stable-transfer-contract-v4.md",
+    "authorDeclaredStableTransferContractSha256": "235f6029ac58d3b91c1d0f7b2b2ed1b54d4cc35f3c50786382bcf27f3e228ecd",
+    "stableTransferContractArtifactIndependentlyOpened": false,
+    "observedPhysicalTopology": ".flowkit/runs/<delivery>/<change-root>/<dated-action-occurrence>/"
+  },
+  "runtime": {
+    "node": "22.23.2",
+    "openspec": "1.10.0",
+    "nodeModules": "flowkit-next-node-modules-linux-x64-node22.23.2-pnpm11.22.0-7efa1e934c45-v1.tar.gz"
+  },
+  "independentValidation": {
+    "inputPayloadSha256": "PASS",
+    "inputPayloadSha256Computed": "03995929421fc9ed873012a75e8a4e74cba70c3d8479989b7f10d21b17b246a7",
+    "prior021RunByteIdentity": "PASS",
+    "prior022RunByteIdentity": "PASS",
+    "typecheck": "PASS",
+    "domainTests": "25/25 PASS",
+    "formatCheck": "PASS",
+    "openspecFormalArtifacts": "0/4; proposal ready; specs/design/tasks blocked",
+    "canonicalSpecsStrict": "2/2 PASS",
+    "productionMutation": "NONE"
+  },
+  "independentProof": {
+    "declaredPathCases": "18/18 PASS",
+    "originalRE022CounterexamplesClosed": true,
+    "extendedWindowsReservedDeviceCases": "8/8 candidate gate ACCEPTED (unexpected for portable Windows repository addressing)",
+    "scriptSha256": "a04cb3fe0f9b5537dff37b7c04d61e9f22c6393be768803fb942c8ce4f10cce3",
+    "resultSha256": "db0535ffc695b3f7f391355b257ef7260be25e0b09acb33a9c2c9e2bec2f12c9",
+    "includedInStableTransfer": false,
+    "materialCounterexamples": [
+      "con",
+      "prn",
+      "aux",
+      "nul",
+      "com1",
+      "com9",
+      "lpt1",
+      "lpt9"
+    ]
+  },
+  "externalPlatformVerification": {
+    "source": "Microsoft Learn — Naming Files, Paths, and Namespaces",
+    "url": "https://learn.microsoft.com/windows/win32/fileio/naming-a-file",
+    "verifiedRule": "Windows reserves CON, PRN, AUX, NUL, COM1-COM9 and LPT1-LPT9 (plus additional superscript-digit device forms) as device names; they are not portable ordinary repository path names."
+  },
+  "notes": [
+    "RE-022-001 traversal/separator/absolute/drive/UNC examples are materially repaired.",
+    "A new portability gap remains because the Explore proof vehicle accepts Windows reserved device basenames under its lowercase ASCII token grammar.",
+    "This does not require freezing the logical RunId format: Proposal readiness can be restored by requiring an address representation that cannot equal reserved device names, or by explicit case-insensitive device-name rejection.",
+    "Raw reviewer proof files remain execution-local."
+  ],
+  "stableTransfer": true
+}

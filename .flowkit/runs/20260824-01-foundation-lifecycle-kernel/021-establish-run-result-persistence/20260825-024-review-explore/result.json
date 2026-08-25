@@ -1,0 +1,79 @@
+{
+  "runNumber": 24,
+  "kind": "external-orchestrator-review-explore-result",
+  "role": "reviewer",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-run-result-persistence",
+  "action": "review-explore",
+  "runId": "20260825-024-review-explore",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/021-establish-run-result-persistence/20260825-024-review-explore",
+  "finishedAt": "2026-08-25T18:04:30+08:00",
+  "executionStatus": "completed",
+  "authorRevisionConclusionObserved": "PASS",
+  "reviewerVerdict": "changes-requested",
+  "verificationVerdict": null,
+  "nextBoundary": "revise-explore",
+  "nextBoundaryAuthority": "handoff-advisory-only",
+  "reviewSummary": {
+    "factsTraceable": "PASS",
+    "scopeRiskCoverage": "PASS",
+    "dependencyRiskCoverage": "PASS",
+    "persistenceRiskCoverage": "CHANGES REQUESTED — Windows reserved device namespace omitted from portable segment proof",
+    "verificationRiskCoverage": "PASS",
+    "compatibilityRiskCoverage": "CHANGES REQUESTED — lexical containment alone does not establish Windows-portable addressability",
+    "proofQuality": "CHANGES REQUESTED",
+    "proposalReadiness": "FAIL UNTIL RE-024-001 IS CLOSED"
+  },
+  "findings": [
+    {
+      "id": "RE-024-001",
+      "severity": "blocking",
+      "title": "Portable Run address proof still accepts Windows reserved device names",
+      "problem": "The revised Explore separates logical Run occurrence identity from physical addressing and independently closes traversal/separator/absolute/drive/UNC cases. However its conservative lowercase-ASCII-token physical-segment gate still accepts values such as con, prn, aux, nul, com1 and lpt1. Those values pass path.win32 basename/normalize/join containment checks but are reserved Win32 device names, so the proof does not yet establish the claimed portable canonical repository segment.",
+      "reviewEvidence": [
+        "Reviewer independently reproduced the declared 18 path cases: 18/18 PASS.",
+        "Under the described candidate grammar/gate, con, prn, aux, nul, com1, com9, lpt1 and lpt9 are all accepted.",
+        "Microsoft Win32 naming rules reserve CON, PRN, AUX, NUL, COM1-COM9 and LPT1-LPT9 as device names."
+      ],
+      "requiredRevision": [
+        "Extend R7 / path-address contract to cover Windows reserved device basenames as a portability/canonical-address risk.",
+        "Either require a physical address representation that structurally cannot equal a reserved device name, or explicitly reject reserved device basenames case-insensitively before filesystem use.",
+        "Add controlled negative proof for the reserved device-name class while preserving acceptance of canonical current dated Action segments.",
+        "Keep logical Run occurrence identity/display format and sequence allocation open; this correction is only for the physical repository address boundary."
+      ],
+      "nonRequirements": [
+        "No production implementation is required in revise-explore.",
+        "No Windows whole-manager Full Test is required at this boundary.",
+        "No symlink/junction/reparse-point hardening is added by this finding.",
+        "No Result admission, Policy, scheduler, database/WAL, or multi-Agent recovery work is required."
+      ]
+    }
+  ],
+  "verifiedFacts": [
+    "023 ZIP SHA-256 matches its supplied checksum.",
+    "023 preserves the prior 021 Author Run and 022 Reviewer Run byte-for-byte.",
+    "Detached Node 22.23.2 baseline passes typecheck, 25/25 domain tests, and repository-declared Prettier check.",
+    "OpenSpec remains at intended Explore boundary: 0/4 formal artifacts; proposal ready; specs/design/tasks blocked.",
+    "Both existing canonical OpenSpec specs validate strict 2/2.",
+    "No production source/test/package/lock/architecture mutation is present in the revise-explore overlay.",
+    "RE-022-001's original traversal/separator/absolute/drive/UNC counterexamples are closed by the revised logical-to-physical separation and lexical path gate."
+  ],
+  "limitations": [
+    "This is Review Explore only; it is neither Verification PASS nor Owner authority.",
+    "Raw Author proof files are excluded from stable transfer, so their declared hashes are not independent reviewer evidence.",
+    "The detached reviewer host is Linux; the Windows reserved-name finding is grounded in Win32 naming rules plus independent lexical-gate reproduction, not a Windows filesystem write test.",
+    "The exact stable-transfer v4 artifact was not supplied/opened; the repository topology needed for this review is directly observable.",
+    "Symlink/junction/reparse-point containment remains outside this finding, consistent with the revised Explore limitation."
+  ],
+  "artifacts": {
+    "reviewedExplore": "openspec/changes/establish-run-result-persistence/explore.md",
+    "inputRunAction": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/021-establish-run-result-persistence/20260825-023-revise-explore/action.md",
+    "inputRunContext": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/021-establish-run-result-persistence/20260825-023-revise-explore/context.json",
+    "inputRunResult": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/021-establish-run-result-persistence/20260825-023-revise-explore/result.json",
+    "reviewRunAction": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/021-establish-run-result-persistence/20260825-024-review-explore/action.md",
+    "reviewRunContext": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/021-establish-run-result-persistence/20260825-024-review-explore/context.json",
+    "reviewRunResult": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/021-establish-run-result-persistence/20260825-024-review-explore/result.json"
+  },
+  "productionMutation": false,
+  "stableTransfer": true
+}
