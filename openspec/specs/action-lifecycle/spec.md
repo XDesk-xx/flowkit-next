@@ -1,7 +1,7 @@
 # action-lifecycle Specification
 
 ## Purpose
-为 Flowkit Foundation 提供独立、可序列化且 fail-closed 的 current Standard Action lifecycle contract，使后续 persistence、resume、Result admission 与 Policy 能共享同一套 `prepared/resumed/terminal` 结构事实，而不把 Action lifecycle 混入 Change state 或提前引入 Run/attempt identity。
+为 Flowkit Foundation 提供独立、可序列化且 fail-closed 的 current Standard Action lifecycle contract，使后续 persistence、Result admission、single-Action execution 与 Policy 能共享同一套 `prepared/terminal` 结构事实，而不把 Action lifecycle 混入 Change state 或提前引入 Run/attempt identity。
 
 ## Requirements
 

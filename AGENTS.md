@@ -283,7 +283,7 @@ description only → NOT a Run
 
 ## 12. Single-Action boundary
 
-当前 canonical Action lifecycle 仍包含 `prepared / resumed / terminal`，直到后续正式 Change 修改该 contract。仓库级指导不得提前把 `resumed` 解释成 crash recovery、进程中断恢复或必须实现的执行机制。
+当前 canonical Action lifecycle 已收缩为 `prepared / terminal`；`resumed` 已由已完成的 `establish-single-action-execution-terminal-boundary` 正式移除并应 fail closed。仓库级指导不得重新引入 resume/crash-recovery 语义。
 
 当前 Foundation 的最小 single-Action 目标边界是一次完整的 Standard Action invocation：
 
@@ -305,7 +305,7 @@ STOP
 
 `prepare` 只允许作为内部 structural lifecycle event / Core seam，用于建立唯一的 `CurrentAction/prepared`；它不得成为 `StandardActionId`、独立 Run/Result、Owner/Reviewer boundary、普通用户可见阶段或独立 STOP 点。
 
-计划中的 `establish-single-action-execution-terminal-boundary` 必须 proof `resumed` 是否存在真实必要性；若无必要，应通过正式 OpenSpec Change 收缩既有 lifecycle contract，而不是由本文件静默删除。
+已完成的 `establish-single-action-execution-terminal-boundary` 已证明当前 Foundation 不需要独立 `resumed` lifecycle state；重复执行同一 semantic Action 由新的 exact Run occurrence 区分，而不是重新引入 resume state。
 
 不得因为 internal prepare/package formation 完成就提前 STOP，不得因为 non-terminal state 提前宣称 Action 完成，也不得 terminal 后自动执行下一 Action。Policy 负责后续 legal next-boundary 判断。
 

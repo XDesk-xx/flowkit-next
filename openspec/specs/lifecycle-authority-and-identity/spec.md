@@ -109,7 +109,7 @@ interface OwnerAuthorityFact {
 - **THEN** Foundation structural validator MAY 接受该 wire fact，但系统 SHALL NOT 因此推导 Owner authorization eligibility
 
 ### Requirement: Delivery and Change structural state literals are closed
-系统 SHALL 为 Delivery 与 Change 使用封闭的结构状态 literal 集，并 SHALL 拒绝未知状态值；本 capability 只定义基础结构状态与 identity，不定义 Standard Action 的 prepared/resumed/terminal state machine。
+系统 SHALL 为 Delivery 与 Change 使用封闭的结构状态 literal 集，并 SHALL 拒绝未知状态值；本 capability 只定义基础结构状态与 identity，不定义 Standard Action 的 prepared/terminal state machine。
 
 #### Scenario: Accept a known Change state
 - **WHEN** Change state 为 `planned`、`active`、`completed` 或 `cancelled` 之一
