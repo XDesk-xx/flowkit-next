@@ -1,0 +1,38 @@
+{
+  "runNumber": 61,
+  "kind": "external-orchestrator-revise-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-policy-and-next-boundary-contract",
+  "action": "revise-explore",
+  "runId": "20260826-061-revise-explore",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/057-establish-policy-and-next-boundary-contract/20260826-061-revise-explore",
+  "inputRunId": "20260826-060-review-explore",
+  "checkpointBase": {
+    "archive": "flowkit-next-delivery-20260824-01-foundation-lifecycle-kernel-120731b.zip",
+    "gitRevision": "120731bbf0521508ef108db18b33ce728185adb2"
+  },
+  "reviewFindings": [
+    "RE-060-001"
+  ],
+  "executionMode": "external-orchestrator-detached-linux-revise-explore-proof-based",
+  "runtime": {
+    "node": "22.23.2",
+    "pnpm": "11.22.0",
+    "openspec": "1.10.0"
+  },
+  "skillsUsed": [
+    "revise-explore",
+    "explore-proof-based"
+  ],
+  "focusedProof": {
+    "scriptSha256": "39729c1172e15b1c2d9d2b48539e50a7e5b0fc88b21a624869e29a73db7625dd",
+    "resultSha256": "c0f28d4d7285ddbae281d3f2e24f4ee340576ef45543b6bd6a67d4002e838c1f",
+    "includedInStableTransfer": false,
+    "normalTransitionCompatibility": "12/12 PASS",
+    "ownerCorrectionCompatibility": "15/18 structurally enterable; 3 exact-same terminal revise candidates intentionally blocked"
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

@@ -111,7 +111,7 @@ changes:
     dependsOn:
       - "establish-lifecycle-authority-and-identity-contracts"
       - "establish-single-action-execution-terminal-boundary"
-    state: planned
+    state: completed
     architectureImpact: true
     outputs:
       - "Policy decision contract"
@@ -302,6 +302,14 @@ ownerDecisions:
       - "treat prepare as internal structural lifecycle event, not Standard Action / independent Run / ordinary STOP boundary"
       - "redesign Explore around one complete Standard Action invocation while preserving resumed-state necessity proof"
 
+
+  - ref: "owner:28ba37b3475208c3a1741cc9dc0f352fe504b97a67c22cf83b87d5ecf81796ad"
+    decision: "activate-change"
+    deliveryId: "20260824-01-foundation-lifecycle-kernel"
+    changeId: "establish-policy-and-next-boundary-contract"
+    sourceRef: "owner-input:2026-08-26:check-base-and-enter-next-change:establish-policy-and-next-boundary-contract"
+    scope:
+      - "explore"
 
 verification:
   change:

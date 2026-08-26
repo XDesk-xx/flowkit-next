@@ -1,0 +1,42 @@
+{
+  "runNumber": 67,
+  "kind": "external-orchestrator-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-policy-and-next-boundary-contract",
+  "action": "apply",
+  "runId": "20260827-067-apply",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/057-establish-policy-and-next-boundary-contract/20260827-067-apply",
+  "inputRunId": "20260827-066-review-propose",
+  "checkpointBase": {
+    "gitRevision": "120731bbf0521508ef108db18b33ce728185adb2"
+  },
+  "executionBasis": {
+    "reviewerVerdict": "approved",
+    "reviewRunId": "20260827-066-review-propose",
+    "userInstruction": "apply change; protect the file-size gate and use an auxiliary Change only if the gate actually requires bounded refactor",
+    "newOwnerAuthorityFactCreated": false
+  },
+  "executionMode": "detached-linux-openspec-apply-with-implementation-convergence",
+  "runtime": {
+    "node": "22.23.2",
+    "pnpm": "11.22.0",
+    "openspec": "1.10.0"
+  },
+  "skillsUsed": [
+    "openspec-apply-change",
+    "implementation-convergence"
+  ],
+  "qualityGate": {
+    "baselineOversizedTypeScript": "src/domain/run-result-persistence.ts:588",
+    "baselineOversizedFileByteUnchanged": true,
+    "newPolicyModuleLines": 438,
+    "policyTestModuleLines": [316, 323],
+    "newOrModifiedTypeScriptOver500": [],
+    "auxiliaryChangeTriggered": false,
+    "auxiliaryChangeReason": "not required: approved Apply introduces no file-size regression and does not need the pre-existing oversized module to change"
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

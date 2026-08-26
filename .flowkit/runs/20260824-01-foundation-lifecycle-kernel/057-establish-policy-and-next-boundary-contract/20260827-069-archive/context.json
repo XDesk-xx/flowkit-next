@@ -1,0 +1,44 @@
+{
+  "runNumber": 69,
+  "kind": "external-orchestrator-archive-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-policy-and-next-boundary-contract",
+  "action": "archive",
+  "runId": "20260827-069-archive",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/057-establish-policy-and-next-boundary-contract/20260827-069-archive",
+  "inputRunId": "20260827-068-review-apply",
+  "checkpointBase": {
+    "gitRevision": "120731bbf0521508ef108db18b33ce728185adb2"
+  },
+  "executionBasis": {
+    "reviewerVerdict": "approved",
+    "reviewRunId": "20260827-068-review-apply",
+    "userInstruction": "archive and generate AI handoff",
+    "newOwnerAuthorityFactCreated": false
+  },
+  "executionMode": "detached-linux-direct-openspec-archive-no-flowkit-lifecycle",
+  "runtime": {
+    "node": "22.23.2",
+    "pnpm": "11.22.0",
+    "openspec": "1.10.0"
+  },
+  "skillsUsed": [
+    "openspec-archive-change",
+    "openspec-sync-specs"
+  ],
+  "archive": {
+    "archivedAs": "2026-08-27-006-establish-policy-and-next-boundary-contract",
+    "ordinalNamingAppliedAtArchive": true,
+    "specsUpdated": true,
+    "specTotals": {
+      "added": 7,
+      "modified": 0,
+      "removed": 0,
+      "renamed": 0
+    }
+  },
+  "stableTransfer": true,
+  "packageClass": "archive-closure-snapshot"
+}

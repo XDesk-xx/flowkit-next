@@ -1,0 +1,57 @@
+{
+  "runNumber": 65,
+  "kind": "external-orchestrator-revise-propose-result",
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-policy-and-next-boundary-contract",
+  "action": "revise-propose",
+  "runId": "20260826-065-revise-propose",
+  "finishedAt": "2026-08-26T23:57:00+08:00",
+  "executionStatus": "completed",
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-propose",
+  "findingClosure": [
+    {
+      "findingId": "RP-064-001",
+      "state": "addressed",
+      "correction": "Policy now requires the exact current terminal RunContextRecord plus RunResultRecord and reuses hasMatchingRunLinkage before reading outcome/nextBoundary, so a stale prior occurrence of the same Standard Action cannot influence Policy evaluation."
+    }
+  ],
+  "proposalConvergence": {
+    "verdict": "PASS",
+    "scopeRegression": "NONE",
+    "newCapabilityIntroduced": false,
+    "existingCapabilityModified": false,
+    "newIdentityIntroduced": false,
+    "packageIdOrResultIdIntroduced": false,
+    "runContextAndExistingLinkageReused": true,
+    "persistenceFormatChanged": false,
+    "registryWalLockingIntroduced": false,
+    "schedulerOrAutomaticExecutionAdded": false,
+    "newContractChangingUnknowns": false
+  },
+  "focusedProof": {
+    "twoValidSameActionOccurrences": true,
+    "freshCurrentContextAndResultLinked": true,
+    "stalePriorResultAgainstCurrentContextRejected": true,
+    "blockedReasonTarget": "terminal-result-missing-or-mismatched"
+  },
+  "checks": {
+    "openspecPlanning": "4/4 complete",
+    "changeStrict": "PASS",
+    "openspecAllStrict": "6/6 PASS",
+    "typecheck": "PASS",
+    "domainTests": "51/51 PASS",
+    "formatCheck": "PASS",
+    "productionMutation": "NONE",
+    "testMutation": "NONE"
+  },
+  "limitations": [
+    "This is Author revise-propose completion, not independent Reviewer approval or Apply authority.",
+    "The exact current terminal RunContextRecord is the existing current Run occurrence fact supplied to Policy; this Change does not create a latest-run registry or persistence pointer."
+  ],
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

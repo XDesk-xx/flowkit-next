@@ -1,0 +1,67 @@
+{
+  "runNumber": 59,
+  "kind": "external-orchestrator-revise-explore-result",
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-policy-and-next-boundary-contract",
+  "action": "revise-explore",
+  "runId": "20260826-059-revise-explore",
+  "finishedAt": "2026-08-26T22:16:15+08:00",
+  "executionStatus": "completed",
+  "authorRevisionConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-explore",
+  "resolvedFindings": {
+    "RE-058-001": "Exact completed + terminal archive + matching PASS Result is recognized before generic non-active blocking; active archive PASS and all other non-active shapes fail closed.",
+    "RE-058-002": "Policy computes normal boundary first, validates reported nextBoundary against normal, then applies matching bounded Owner revise correction.",
+    "RE-058-003": "42/42 history is limited to ordering evidence; legal-boundary calculation is explicitly separated from external invocation and durable OwnerAuthorityFact semantics."
+  },
+  "proof": {
+    "focusedPrecedenceCases": "10/10 PASS",
+    "postArchiveCheckpointReachable": true,
+    "otherNonActiveStatesFailClosed": true,
+    "activeArchiveCannotPrematurelyCheckpoint": true,
+    "ownerCorrectionAfterNormalConsistency": true,
+    "reportedConflictBlocksBeforeCorrection": true,
+    "historicalOrderingUsedAsAuthorityProof": false,
+    "canonicalOutcomeVocabularyGroundedInCurrentContract": true
+  },
+  "decisions": [
+    "Policy computes legal boundary only; actual host invocation is a separate concern and is not implied by READY(action).",
+    "Exact completed + terminal archive + matching PASS Result is the only post-archive exception to generic non-active blocking and yields checkpoint-evaluation.",
+    "Active + terminal archive + PASS is blocked until Change materialization is completed.",
+    "Reported nextBoundary consistency is evaluated against the deterministic normal boundary before optional Owner correction.",
+    "Owner correction remains revise-only, stage-bounded, requires matching explicit OwnerAuthorityFact, and cannot hide a conflicting reported boundary.",
+    "Normal ordering does not require Policy to create or consume fresh authorize-apply/archive Owner facts; external invocation semantics remain outside this Change.",
+    "Policy outcome vocabulary uses canonical RunResultRecord authorConclusion/reviewerVerdict semantics rather than legacy external wire field names."
+  ],
+  "nonGoals": [
+    "scheduler",
+    "automatic next Action execution",
+    "generic host invocation authorization framework",
+    "automatic Owner decisions",
+    "retry or resumed state",
+    "generic workflow DSL",
+    "OpenSpec adapter",
+    "Git checkpoint authorization implementation",
+    "Cross-Delivery Memo",
+    "CLI",
+    "Delivery Full Test",
+    "promotion",
+    "multi-Agent orchestration"
+  ],
+  "checks": {
+    "focusedPrecedenceProof": "10/10 PASS",
+    "typecheck": "PASS",
+    "domainTests": "51/51 PASS",
+    "projectFormatCheck": "PASS",
+    "canonicalOpenSpecSpecs": "5/5 strict PASS",
+    "archivedOpenSpecChanges": "5/5 strict PASS",
+    "formalPlanningArtifacts": "0/4; Proposal not created; specs/design/tasks blocked as expected",
+    "productionMutation": "NONE",
+    "testMutation": "NONE"
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

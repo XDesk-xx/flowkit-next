@@ -1,0 +1,52 @@
+{
+  "runNumber": 67,
+  "kind": "external-orchestrator-apply-result",
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-policy-and-next-boundary-contract",
+  "action": "apply",
+  "runId": "20260827-067-apply",
+  "finishedAt": "2026-08-27T02:15:47+08:00",
+  "executionStatus": "completed",
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-apply",
+  "tasks": {
+    "total": 10,
+    "complete": 10,
+    "state": "all_done"
+  },
+  "implementation": {
+    "addedSource": [
+      "src/domain/policy-and-next-boundary.ts"
+    ],
+    "modifiedSource": [
+      "src/domain/index.ts"
+    ],
+    "addedTests": [
+      "tests/unit/domain/policy-and-next-boundary.test.ts",
+      "tests/unit/domain/policy-owner-correction.test.ts"
+    ],
+    "newDependencies": false,
+    "persistenceMutation": false,
+    "lifecycleMutation": false,
+    "executionMutation": false,
+    "cliMutation": false,
+    "gitBoundaryMutation": false
+  },
+  "checks": {
+    "typecheck": "PASS",
+    "domainTests": "63/63 PASS",
+    "formatCheck": "PASS",
+    "changeStrict": "PASS",
+    "openspecAllStrict": "6/6 PASS",
+    "tasks": "10/10 all_done",
+    "dependencyFiles": "UNCHANGED",
+    "runResultPersistenceBaseHash": "2cedf17ec00b0c5626904bc686c78be65b2a8986a37272dccb5fe146965ca88c",
+    "runResultPersistenceCurrentHash": "2cedf17ec00b0c5626904bc686c78be65b2a8986a37272dccb5fe146965ca88c",
+    "fileSizeGate": "PASS: no new/modified TypeScript file >500 lines"
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

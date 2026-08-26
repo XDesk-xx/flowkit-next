@@ -1,0 +1,66 @@
+{
+  "runNumber": 61,
+  "kind": "external-orchestrator-revise-explore-result",
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-policy-and-next-boundary-contract",
+  "action": "revise-explore",
+  "runId": "20260826-061-revise-explore",
+  "finishedAt": "2026-08-26T23:03:53+08:00",
+  "executionStatus": "completed",
+  "authorRevisionConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-explore",
+  "resolvedFindings": {
+    "RE-060-001": "Policy now applies a final structural-enterability gate to every READY_ACTION candidate using the existing lifecycle/prepared-reuse contract. Exact-same terminal revise corrections fail closed instead of advertising an Action Core cannot prepare."
+  },
+  "proof": {
+    "normalTerminalTransitionsStructurallyEnterable": "12/12 PASS",
+    "ownerCorrectionCombinationsStructurallyEnterable": "15/18",
+    "sameTerminalReviseCorrectionsBlocked": [
+      "revise-explore->revise-explore",
+      "revise-propose->revise-propose",
+      "revise-apply->revise-apply"
+    ],
+    "sameTerminalReviseReadyAdvertised": false,
+    "existingLifecycleContractChanged": false,
+    "terminalAbsorptionPreserved": true,
+    "resumedRestored": false
+  },
+  "decisions": [
+    "A Policy READY_ACTION candidate must be structurally enterable from the exact current Action slot before it can be emitted.",
+    "For a null slot, structural entry reuses the existing lifecycle prepare transition; for prepared A, only exact A reuse is legal; for terminal A, structural entry reuses the existing lifecycle prepare transition.",
+    "Owner correction remains stage-bounded and revise-only, but exact same terminal revise targets are not immediately legal because current lifecycle rejects terminal A to prepare A.",
+    "The real 049 explore to 050 revise-explore correction remains legal because terminal explore and revise-explore are different Action identities.",
+    "If Owner wants the exact same revise Action again, Foundation must first pass through another different lifecycle Action; Policy does not invent retry, reset, resume, or terminal-loosening behavior."
+  ],
+  "nonGoals": [
+    "scheduler",
+    "automatic next Action execution",
+    "generic host invocation authorization framework",
+    "automatic Owner decisions",
+    "retry/reset/resumed state",
+    "generic workflow DSL",
+    "OpenSpec adapter",
+    "Git checkpoint authorization implementation",
+    "Cross-Delivery Memo",
+    "CLI",
+    "Delivery Full Test",
+    "promotion",
+    "multi-Agent orchestration"
+  ],
+  "checks": {
+    "focusedLifecycleCompatibilityProof": "PASS",
+    "typecheck": "PASS",
+    "domainTests": "51/51 PASS",
+    "projectFormatCheck": "PASS",
+    "canonicalOpenSpecSpecs": "5/5 strict PASS",
+    "archivedOpenSpecChanges": "5/5 strict PASS",
+    "formalPlanningArtifacts": "0/4; Proposal ready; specs/design/tasks blocked as expected",
+    "productionMutation": "NONE",
+    "testMutation": "NONE"
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

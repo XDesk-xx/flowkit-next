@@ -1,0 +1,44 @@
+{
+  "runNumber": 64,
+  "kind": "external-orchestrator-review-propose-result",
+  "role": "reviewer",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-policy-and-next-boundary-contract",
+  "action": "review-propose",
+  "runId": "20260826-064-review-propose",
+  "executionStatus": "completed",
+  "authorConclusion": null,
+  "reviewerVerdict": "changes-requested",
+  "verificationVerdict": null,
+  "nextBoundary": "revise-propose",
+  "blockingFindings": [
+    {
+      "id": "RP-064-001",
+      "title": "Terminal Policy Result is not bound to the exact current Run occurrence",
+      "requiredRevision": "Reuse existing Run occurrence/linkage truth so Policy proves terminalResult.runId belongs to the exact current terminal occurrence before interpreting outcome/nextBoundary; add a stale prior same-Action occurrence negative test."
+    }
+  ],
+  "closedExploreFindings": [
+    "RE-058-001",
+    "RE-058-002",
+    "RE-058-003",
+    "RE-060-001"
+  ],
+  "checks": {
+    "chain057To063Traceability": "PASS",
+    "exploreTraceability": "PASS",
+    "scopeConvergence": "PASS",
+    "minimality": "PASS",
+    "designDiscipline": "PASS",
+    "openspecPlanning": "4/4 complete",
+    "changeStrict": "PASS",
+    "openspecAllStrict": "6/6 PASS",
+    "typecheck": "PASS",
+    "domainTests": "51/51 PASS",
+    "formatCheck": "PASS",
+    "productionMutation": "NONE",
+    "contractCompleteness": "BLOCKED by RP-064-001"
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}
