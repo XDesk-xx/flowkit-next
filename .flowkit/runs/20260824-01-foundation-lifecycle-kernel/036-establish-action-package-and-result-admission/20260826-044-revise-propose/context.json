@@ -1,0 +1,56 @@
+{
+  "runNumber": 44,
+  "kind": "external-orchestrator-revise-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-action-package-and-result-admission",
+  "action": "revise-propose",
+  "runId": "20260826-044-revise-propose",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/036-establish-action-package-and-result-admission/20260826-044-revise-propose",
+  "startedAt": "2026-08-26T13:20:00+08:00",
+  "previousRunId": "20260826-043-review-propose",
+  "inputAction": {
+    "runId": "20260826-043-review-propose",
+    "payloadArchive": "043-review-propose.zip",
+    "payloadSha256": "9e5944fb9018905f022ec3eec3c3edcbb03c393d7b77f59dc8ba5aefe60e7bde",
+    "reviewerVerdict": "changes-requested",
+    "blockingFindings": [
+      "RP-043-001"
+    ],
+    "nextBoundary": "revise-propose"
+  },
+  "base": {
+    "archive": "flowkit-next-delivery-20260824-01-foundation-lifecycle-kernel-f03fb67.zip",
+    "archiveSha256": "fe26ecda693678f395eac1ea04788e7e421b2239b8a97a2973b8b8bc3dbd4290",
+    "gitRevision": "f03fb6756ffa4f7ad759113568a10dee48bfe28f"
+  },
+  "executionAuthorization": {
+    "sourceRef": "user-input:2026-08-26T13:20+08:00:revise-propose:establish-action-package-and-result-admission:after:20260826-043-review-propose",
+    "ownerAuthorityClaimed": false,
+    "scope": [
+      "revise-propose"
+    ]
+  },
+  "runtime": {
+    "node": "22.23.2",
+    "openspec": "1.10.0",
+    "pnpmContract": "11.22.0"
+  },
+  "skills": [
+    "revise-propose",
+    "proposal-convergence"
+  ],
+  "revision": {
+    "finding": "RP-043-001",
+    "classification": "task/spec/design mismatch: missing package-formation operation",
+    "correction": "explicit pure package-formation seam over exact CurrentAction plus current RunContextRecord with exact identity/state/expected-role checks",
+    "scopeExpansion": false,
+    "newIdentityIntroduced": false
+  },
+  "stableTransfer": {
+    "contract": "stable-transfer-contract-v4.md",
+    "contractSha256": "235f6029ac58d3b91c1d0f7b2b2ed1b54d4cc35f3c50786382bcf27f3e228ecd",
+    "packageClass": "delta-action-handoff"
+  }
+}

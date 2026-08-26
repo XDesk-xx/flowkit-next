@@ -1,0 +1,64 @@
+{
+  "runNumber": 42,
+  "kind": "external-orchestrator-openspec-propose-result",
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-action-package-and-result-admission",
+  "action": "propose",
+  "runId": "20260826-042-propose",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/036-establish-action-package-and-result-admission/20260826-042-propose",
+  "finishedAt": "2026-08-26T12:35:16+08:00",
+  "executionStatus": "completed",
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-propose",
+  "nextBoundaryAuthority": "handoff-advisory-only",
+  "openspec": {
+    "version": "1.10.0",
+    "planningArtifacts": "4/4 complete",
+    "strictChangeValidation": "PASS",
+    "validateAllStrict": "4/4 PASS"
+  },
+  "proposalConvergence": {
+    "verdict": "PASS",
+    "requirementTraceability": "6/6 sourced from approved Explore/reviewer closure",
+    "scopeRegression": "NONE",
+    "newIdentityIntroduced": false,
+    "previousRunIdRenamed": false,
+    "policyOrchestrationIntroduced": false,
+    "transportOrReplaySubsystemIntroduced": false
+  },
+  "artifacts": {
+    "explore": "openspec/changes/establish-action-package-and-result-admission/explore.md",
+    "proposal": "openspec/changes/establish-action-package-and-result-admission/proposal.md",
+    "deltaSpec": "openspec/changes/establish-action-package-and-result-admission/specs/action-package-and-result-admission/spec.md",
+    "design": "openspec/changes/establish-action-package-and-result-admission/design.md",
+    "tasks": "openspec/changes/establish-action-package-and-result-admission/tasks.md",
+    "runAction": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/036-establish-action-package-and-result-admission/20260826-042-propose/action.md",
+    "runContext": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/036-establish-action-package-and-result-admission/20260826-042-propose/context.json",
+    "runResult": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/036-establish-action-package-and-result-admission/20260826-042-propose/result.json"
+  },
+  "baselineChecks": {
+    "typecheck": "PASS",
+    "domainTests": "35/35 PASS",
+    "formatCheck": "PASS"
+  },
+  "productionMutation": false,
+  "scopeGuards": {
+    "packageIdOrResultId": "NOT INTRODUCED",
+    "previousRunIdRename": "NOT INTRODUCED",
+    "replayNonceRegistry": "NOT INTRODUCED",
+    "policy": "NOT INTRODUCED",
+    "resumeTerminalStopOrchestration": "NOT INTRODUCED",
+    "providerTransport": "NOT INTRODUCED",
+    "schedulerOrAutomaticNext": "NOT INTRODUCED",
+    "cliOrManagedToolchain": "NOT INTRODUCED"
+  },
+  "limitations": [
+    "This is Author Propose completion, not Reviewer approval, Apply completion, Verification PASS, Archive or checkpoint authority.",
+    "No production implementation or test mutation was performed by this Action.",
+    "Exact current Run acquisition and execute-to-terminal composition remain later execution-boundary work; this Change only formalizes package/admission semantics."
+  ],
+  "stableTransfer": true
+}

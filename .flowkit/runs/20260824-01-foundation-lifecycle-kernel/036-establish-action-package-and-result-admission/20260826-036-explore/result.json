@@ -1,0 +1,62 @@
+{
+  "runNumber": 36,
+  "kind": "external-orchestrator-explore-result",
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-action-package-and-result-admission",
+  "action": "explore",
+  "runId": "20260826-036-explore",
+  "finishedAt": "2026-08-26T11:52:17+08:00",
+  "executionStatus": "completed",
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-explore",
+  "proof": {
+    "status": "PASS",
+    "productionMutation": false,
+    "newPackageIdRequired": false,
+    "runOccurrenceSufficientForExecutionCorrelation": true,
+    "resultMustMatchExactRunIdAndActionIdentity": true,
+    "executionRoleOutcomeSlotSeparationRequired": true,
+    "standardActionMayPopulateFormalVerificationVerdict": false,
+    "previousRunIdMeaning": "sequential-predecessor-provenance",
+    "previousRunIdIsCompleteActionInput": false
+  },
+  "decisions": [
+    "Keep previousRunId as sequential predecessor provenance; do not rename it to inputRunId merely for naming consistency.",
+    "Define ActionPackage as a closed machine boundary built by reusing existing Run occurrence, Action identity, execution role, prepared/resumed state, Owner authority and predecessor facts.",
+    "Do not introduce PackageId or ResultId in the current single-writer model; the existing Change-scoped Run occurrence is the execution-correlation identity.",
+    "Result admission must fail closed on wrong Run occurrence, wrong Action identity, wrong execution role/outcome authority slot, terminal/stale package state, or a Standard Action candidate that claims formal Verification verdict.",
+    "Result admission does not interpret nextBoundary or verdict meaning as Policy legality and does not own the later resume/terminal/STOP orchestration loop."
+  ],
+  "nonGoals": [
+    "multi-Agent orchestration",
+    "provider or Agent registry",
+    "parallel execution or locking",
+    "scheduler or automatic next",
+    "network transport protocol",
+    "cryptographic package identity",
+    "legacy Run migration",
+    "filesystem hardening subsystem",
+    "managed toolchain resolution",
+    "OpenSpec thin integration",
+    "CLI",
+    "Policy next-boundary legality",
+    "resume/terminal/STOP orchestration",
+    "Git checkpoint",
+    "Delivery Full Test Verification"
+  ],
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff",
+  "checks": {
+    "baselineBeforeActivation": "OpenSpec active 0; canonical specs 3/3 PASS; typecheck PASS; domain 35/35 PASS; format PASS",
+    "postExploreTypecheck": "PASS",
+    "postExploreDomainTests": "35/35 PASS",
+    "postExploreFormatCheck": "PASS",
+    "canonicalOpenSpecSpecs": "3/3 PASS",
+    "activeChangeStatus": "proposal ready; specs/design/tasks blocked by proposal as expected at Explore boundary",
+    "activeChangeStrictValidation": "expected not-yet-valid before Proposal because no spec delta exists",
+    "repositoryMutationAudit": "only Delivery activation/Owner authority, OpenSpec scaffold+explore.md, and 036 Explore Run; src/tests unchanged"
+  }
+}

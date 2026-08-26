@@ -1,0 +1,60 @@
+{
+  "runNumber": 37,
+  "kind": "external-orchestrator-review-explore-result",
+  "role": "reviewer",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-action-package-and-result-admission",
+  "action": "review-explore",
+  "runId": "20260826-037-review-explore",
+  "executionStatus": "completed",
+  "authorConclusionObserved": "PASS",
+  "reviewerVerdict": "changes-requested",
+  "verificationVerdict": null,
+  "nextBoundary": "revise-explore",
+  "nextBoundaryAuthority": "handoff-advisory-only",
+  "reviewSummary": {
+    "realUseCaseAlignment": "PASS",
+    "factsAndAssumptions": "PASS",
+    "scopeDiscipline": "PASS",
+    "riskCoverage": "CHANGES REQUESTED",
+    "proofQuality": "CHANGES REQUESTED",
+    "stopDiscipline": "BLOCKED BY ONE CONTRACT-CHANGING UNKNOWN",
+    "proposalReadiness": "NOT READY"
+  },
+  "findings": [
+    {
+      "id": "RE-037-001",
+      "severity": "blocking",
+      "title": "Exact Result admission does not yet fail closed on stale package lifecycle state",
+      "observation": "Explore requires package/current Action identity equality and allows package state prepared|resumed, but does not require the package's captured lifecycle state to equal the exact current Action lifecycle state at admission.",
+      "counterexample": "ActionPackage captures prepared A. Current Action later becomes resumed A. Candidate Result still has the exact package runId, ActionIdentity, expected role/outcome slot, and null Verification verdict. All explicitly listed admission invariants pass even though the package is stale.",
+      "impact": "A late Result from the pre-resume package can be admitted after the current Action has advanced, weakening the claimed exact-package/current-Action boundary and making the next resume/terminal Change ambiguous.",
+      "requiredRevision": "Define a bounded freshness invariant: admission must reject package/current lifecycle-state mismatch (or an equivalent exact-current-package freshness rule), and add negative proof for prepared-package versus resumed-current state. Do not add PackageId/ResultId or generic replay infrastructure unless independently necessary."
+    }
+  ],
+  "verifiedFacts": [
+    "036 ZIP SHA-256 matches the supplied checksum.",
+    "The new base archive SHA-256 matches the checkpointBase SHA recorded by 036.",
+    "036 activates the expected fourth Delivery Change and uses the correct Change-scoped Run topology.",
+    "The 036 overlay contains only delivery activation, OpenSpec scaffold/explore.md, and the 036 Explore Run; src/tests/package/lock/architecture remain unchanged.",
+    "Detached Node 22.23.2 passes typecheck, 35/35 domain tests, and repository-declared Prettier check.",
+    "OpenSpec remains at the intended Explore boundary: 0/4 formal artifacts; proposal ready; specs/design/tasks blocked.",
+    "All three canonical OpenSpec specs validate strict.",
+    "Existing Run occurrence identity is sufficient to distinguish repeated semantic Action executions in the current single-writer scope.",
+    "previousRunId is correctly treated as sequential predecessor provenance rather than complete ActionPackage input.",
+    "The Explore keeps role/outcome-slot ownership and formal Verification authority separate from Policy interpretation.",
+    "An independent stale-state counterexample using the repository's real validators passes every admission invariant explicitly listed by the Explore while package.state=prepared and current.state=resumed."
+  ],
+  "proposalReadiness": {
+    "status": "CHANGES_REQUESTED",
+    "statement": "The Explore is bounded and nearly ready, but exact Result admission must explicitly bind package freshness to the exact current Action lifecycle state before Proposal."
+  },
+  "limitations": [
+    "This Review Explore verdict is neither Verification PASS nor Owner authority.",
+    "Reviewer does not require repository snapshot identity, transport ZIP content, provider registry, cryptographic attestation, Policy legality, scheduler, or resume/terminal orchestration in this Change.",
+    "Raw reviewer proof files are execution-local and excluded from stable transfer."
+  ],
+  "productionMutation": false,
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

@@ -1,0 +1,52 @@
+{
+  "runNumber": 42,
+  "kind": "external-orchestrator-openspec-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-action-package-and-result-admission",
+  "action": "propose",
+  "runId": "20260826-042-propose",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/036-establish-action-package-and-result-admission/20260826-042-propose",
+  "startedAt": "2026-08-26T12:08:00+08:00",
+  "previousRunId": "20260826-041-review-explore",
+  "inputAction": {
+    "runId": "20260826-041-review-explore",
+    "payloadArchive": "041-review-explore.zip",
+    "payloadSha256": "0b7f817d6287ac464c4d8005968a44872e94368e4ab93c66608b8057101f2b5d",
+    "reviewerVerdict": "approved",
+    "proposalReadiness": "READY",
+    "nextBoundary": "propose"
+  },
+  "base": {
+    "archive": "flowkit-next-delivery-20260824-01-foundation-lifecycle-kernel-f03fb67.zip",
+    "archiveSha256": "fe26ecda693678f395eac1ea04788e7e421b2239b8a97a2973b8b8bc3dbd4290",
+    "gitRevision": "f03fb6756ffa4f7ad759113568a10dee48bfe28f"
+  },
+  "executionAuthorization": {
+    "sourceRef": "user-input:2026-08-26T12:08+08:00:execute-openspec-propose-with-proposal-convergence:establish-action-package-and-result-admission",
+    "ownerAuthorityClaimed": false,
+    "scope": ["propose"]
+  },
+  "runtime": {
+    "node": "22.23.2",
+    "openspec": "1.10.0",
+    "pnpmContract": "11.22.0"
+  },
+  "skills": ["openspec-propose", "proposal-convergence"],
+  "convergence": {
+    "requirementTraceability": "PASS",
+    "scopeRegression": "PASS",
+    "minimality": "PASS",
+    "nonGoalEnforcement": "PASS",
+    "newContractChangingUnknowns": "NONE",
+    "requirements": 6,
+    "newCapabilities": ["action-package-and-result-admission"],
+    "modifiedCapabilities": []
+  },
+  "stableTransfer": {
+    "contract": "stable-transfer-contract-v4.md",
+    "contractSha256": "235f6029ac58d3b91c1d0f7b2b2ed1b54d4cc35f3c50786382bcf27f3e228ecd",
+    "packageClass": "delta-action-handoff"
+  }
+}

@@ -84,7 +84,7 @@ changes:
     required: true
     dependsOn:
       - "establish-run-result-persistence"
-    state: planned
+    state: completed
     architectureImpact: true
     outputs:
       - "ActionPackage contract"
@@ -235,6 +235,30 @@ ownerDecisions:
     deliveryId: "20260824-01-foundation-lifecycle-kernel"
     changeId: "establish-run-result-persistence"
     sourceRef: "owner-input:2026-08-25T23:08+08:00:authorize-archive:20260824-01-foundation-lifecycle-kernel:establish-run-result-persistence:after:20260825-034-review-apply"
+    scope:
+      - "archive"
+
+  - ref: "owner:585262e33c2d6af0b6cb3fc5900f9097d6d984a68cb4088bd630df5cd9722937"
+    decision: "activate-change"
+    deliveryId: "20260824-01-foundation-lifecycle-kernel"
+    changeId: "establish-action-package-and-result-admission"
+    sourceRef: "owner-input:2026-08-26:authorize-activate-and-explore:20260824-01-foundation-lifecycle-kernel:establish-action-package-and-result-admission"
+    scope:
+      - "explore"
+
+  - ref: "owner:2b50dd70dfcf838b2ea2cf3cda7ce5465979b02b5ef129ec9bb39a358fe722ce"
+    decision: "authorize-apply"
+    deliveryId: "20260824-01-foundation-lifecycle-kernel"
+    changeId: "establish-action-package-and-result-admission"
+    sourceRef: "owner-input:2026-08-26T13:20+08:00:authorize-apply:establish-action-package-and-result-admission:after:20260826-045-review-propose"
+    scope:
+      - "apply"
+
+  - ref: "owner:f62ccac2782d5bc97d14da1afd53550e79c48d7df845dc6f69c6d89e56e97cb1"
+    decision: "authorize-archive"
+    deliveryId: "20260824-01-foundation-lifecycle-kernel"
+    changeId: "establish-action-package-and-result-admission"
+    sourceRef: "owner-input:2026-08-26T13:20+08:00:authorize-archive:20260824-01-foundation-lifecycle-kernel:establish-action-package-and-result-admission:after:20260826-047-review-apply"
     scope:
       - "archive"
 

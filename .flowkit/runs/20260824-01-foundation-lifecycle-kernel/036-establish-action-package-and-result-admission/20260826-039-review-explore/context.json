@@ -1,0 +1,49 @@
+{
+  "runNumber": 39,
+  "kind": "external-orchestrator-review-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-action-package-and-result-admission",
+  "action": "review-explore",
+  "runId": "20260826-039-review-explore",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/036-establish-action-package-and-result-admission/20260826-039-review-explore",
+  "previousRunId": "20260826-038-revise-explore",
+  "input": {
+    "payloadArchive": "038-revise-explore.zip",
+    "payloadSha256": "f81e44ada1da58c43cd811aacab65fd466fdabd430350596a8fd860bd9048d91",
+    "baseArchive": "flowkit-next-delivery-20260824-01-foundation-lifecycle-kernel-f03fb67.zip",
+    "baseArchiveSha256": "fe26ecda693678f395eac1ea04788e7e421b2239b8a97a2973b8b8bc3dbd4290",
+    "baseGitRevision": "f03fb6756ffa4f7ad759113568a10dee48bfe28f"
+  },
+  "chainAudit": {
+    "fromBase": true,
+    "run036ZipSha256": "ecedd3ed141ab491f80aebdb9f60278976188db0d46111d96e425649f03003c6",
+    "run037ZipSha256": "9056f467f691b3744f60c1aaabb9f8d2e3781c9dfb2a7972d26b3c40931d6ab3",
+    "run037ResultSha256": "dfa2c14c325af0a581cb70c1989ccb22f1072174962e1ceb9c315c9f68f49de3",
+    "run036CarriedInto038ByteIdentical": true,
+    "run037CarriedInto038ByteIdentical": true,
+    "run037ReviewerDidNotModify036AuthorArtifacts": true,
+    "re037001Status": "closed-by-038"
+  },
+  "runtime": {
+    "node": "22.23.2",
+    "openspec": "1.10.0"
+  },
+  "reviewContract": {
+    "skill": ".agents/skills/review-explore/SKILL.md",
+    "mode": "from-scratch-chain-trace"
+  },
+  "independentProof": {
+    "verdict": "FAIL-EXACT-CURRENT-OCCURRENCE",
+    "scenario": "review-explore occurrence R37 terminal; revise-explore terminal; later review-explore occurrence R39 prepared; stale R37 package and Result satisfy all 038 listed identity/state/role/slot invariants because CurrentAction has no Run occurrence",
+    "listed038Admission": true,
+    "packageRunId": "20260826-037-review-explore",
+    "exactCurrentRunId": "20260826-039-review-explore",
+    "sameSemanticAction": true,
+    "sameLifecycleState": true,
+    "exactCurrentOccurrenceMatch": false
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

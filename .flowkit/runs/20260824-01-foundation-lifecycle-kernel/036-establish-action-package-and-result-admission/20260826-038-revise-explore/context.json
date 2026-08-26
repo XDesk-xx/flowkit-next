@@ -1,0 +1,66 @@
+{
+  "runNumber": 38,
+  "kind": "external-orchestrator-revise-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-action-package-and-result-admission",
+  "action": "revise-explore",
+  "runId": "20260826-038-revise-explore",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/036-establish-action-package-and-result-admission/20260826-038-revise-explore",
+  "previousRunId": "20260826-037-review-explore",
+  "inputReview": {
+    "payloadArchive": "037-review-explore.zip",
+    "payloadSha256": "9056f467f691b3744f60c1aaabb9f8d2e3781c9dfb2a7972d26b3c40931d6ab3",
+    "resultSha256": "dfa2c14c325af0a581cb70c1989ccb22f1072174962e1ceb9c315c9f68f49de3",
+    "reviewerVerdict": "changes-requested",
+    "blockingFindings": ["RE-037-001"]
+  },
+  "base": {
+    "archive": "flowkit-next-delivery-20260824-01-foundation-lifecycle-kernel-f03fb67.zip",
+    "sha256": "fe26ecda693678f395eac1ea04788e7e421b2239b8a97a2973b8b8bc3dbd4290",
+    "gitRevisionHint": "f03fb6756ffa4f7ad759113568a10dee48bfe28f"
+  },
+  "authorization": {
+    "source": "current-user-message:revise-explore",
+    "ownerAuthorityFactRef": null,
+    "refStatus": "no new literal OwnerAuthorityFact supplied; not fabricated"
+  },
+  "executionMode": "detached-linux-direct-revise-explore-no-flowkit-lifecycle",
+  "runtime": {
+    "node": "22.23.2",
+    "openspec": "1.10.0",
+    "nodeModulesArtifact": "flowkit-next-node-modules-linux-x64-node22.23.2-pnpm11.22.0-7efa1e934c45-v1.tar.gz"
+  },
+  "revisionContract": {
+    "skill": ".agents/skills/revise-explore/SKILL.md",
+    "proofAuxiliary": ".agents/skills/explore-proof-based/SKILL.md",
+    "stableTransferContract": "stable-transfer-contract-v4.md",
+    "stableTransferContractSha256": "235f6029ac58d3b91c1d0f7b2b2ed1b54d4cc35f3c50786382bcf27f3e228ecd"
+  },
+  "revisionClassification": "missing exact-current-package freshness invariant",
+  "focusedProof": {
+    "verdict": "PASS",
+    "validPreparedPrepared": "PASS",
+    "validResumedResumed": "PASS",
+    "rejectPreparedPackageResumedCurrent": "PASS",
+    "rejectResumedPackagePreparedCurrent": "PASS",
+    "rejectTerminalCurrentOrPackage": "PASS",
+    "invariant": "package.lifecycleState === current.state && both are prepared|resumed",
+    "scriptSha256": "1d2b3fef35b22a2942eabd79786af3f3b8c464b9ea13d4c6d60b875d58b56746",
+    "resultSha256": "b6ce327aa0116378391efd4968090e1729836fdcf2a16fe8fb3c7900f94ea733",
+    "includedInStableTransfer": false
+  },
+  "revisedExplore": {
+    "path": "openspec/changes/establish-action-package-and-result-admission/explore.md",
+    "sha256": "50f828f0490a215a80eb13dc889936a3525d80ba6376cb79434394d3322af9a4"
+  },
+  "mutationBoundary": {
+    "productionOrTestMutationAllowed": false,
+    "proposalArtifactsAllowed": false,
+    "gitMutationAllowed": false,
+    "autoProposeAllowed": false
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

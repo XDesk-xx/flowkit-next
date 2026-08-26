@@ -1,0 +1,59 @@
+{
+  "runNumber": 40,
+  "kind": "external-orchestrator-revise-explore-result",
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-action-package-and-result-admission",
+  "action": "revise-explore",
+  "runId": "20260826-040-revise-explore",
+  "executionStatus": "completed",
+  "authorRevisionConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-explore",
+  "nextBoundaryAuthority": "handoff-advisory-only",
+  "sourceReview": {
+    "runId": "20260826-039-review-explore",
+    "verdict": "changes-requested",
+    "blockingFindings": [
+      "RE-039-001"
+    ]
+  },
+  "findingConvergence": [
+    {
+      "findingId": "RE-039-001",
+      "state": "resolved-for-re-review",
+      "resolution": "Result admission now requires the ActionPackage Run occurrence/runId to equal the exact current Run occurrence supplied by the execution boundary. Focused proof reproduces stale 037 review-explore versus current 039 review-explore: all prior identity/state/role/result-linkage checks pass, then the stale package is rejected by exact current runId mismatch; a fresh 039 package remains admissible."
+    }
+  ],
+  "proofSummary": {
+    "sameActionOccurrenceFreshness": "PASS",
+    "stalePriorPackageReproduced": "PASS",
+    "old038InvariantGapConfirmed": "PASS",
+    "stalePriorPackageRejectedWithExactCurrentRun": "PASS",
+    "freshExactCurrentPackageAccepted": "PASS",
+    "newPackageOrResultIdentityRequired": false,
+    "genericReplayInfrastructureRequired": false,
+    "currentActionContractExpansionRequiredByExplore": false
+  },
+  "proposalReadiness": {
+    "status": "READY-FOR-REVIEW",
+    "statement": "The sole 039 blocking finding is closed by reusing the existing Run occurrence as an exact current-execution correlation fact. No new package identity, replay registry, Policy or orchestration scope is required."
+  },
+  "formalOpenSpecArtifacts": {
+    "proposal": "ready-not-created",
+    "specs": "blocked-not-created",
+    "design": "blocked-not-created",
+    "tasks": "blocked-not-created"
+  },
+  "productionMutation": false,
+  "limitations": [
+    "This is Author revise-explore completion, not Reviewer approval or Verification PASS.",
+    "The exact-current-Run proof is an exploration-only model using current repository lifecycle/Run validators; production admission code is intentionally not implemented in Explore.",
+    "Proposal still owns the smallest API shape for supplying the exact current Run occurrence alongside CurrentAction; Explore does not mandate a registry or mutate CurrentAction.",
+    "PackageId/ResultId, nonce/replay registries, locking, Policy and resume/terminal orchestration remain outside this revision.",
+    "Raw proof files are execution-local and excluded from stable transfer."
+  ],
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

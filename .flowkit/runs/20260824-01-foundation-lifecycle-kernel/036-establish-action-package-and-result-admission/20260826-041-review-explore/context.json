@@ -1,0 +1,52 @@
+{
+  "runNumber": 41,
+  "kind": "external-orchestrator-review-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-action-package-and-result-admission",
+  "action": "review-explore",
+  "runId": "20260826-041-review-explore",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/036-establish-action-package-and-result-admission/20260826-041-review-explore",
+  "previousRunId": "20260826-040-revise-explore",
+  "input": {
+    "payloadArchive": "040-revise-explore.zip",
+    "payloadSha256": "3e2691fa19ce43c4bc18c5a7c2b56878727accdbd3b08cf2dd2b280a3c4b70e6",
+    "baseArchive": "flowkit-next-delivery-20260824-01-foundation-lifecycle-kernel-f03fb67.zip",
+    "baseArchiveSha256": "fe26ecda693678f395eac1ea04788e7e421b2239b8a97a2973b8b8bc3dbd4290",
+    "baseGitRevision": "f03fb6756ffa4f7ad759113568a10dee48bfe28f"
+  },
+  "chainAudit": {
+    "fromBase": true,
+    "runs036Through039CarriedByteIdenticalToAuthentic039Payload": true,
+    "run039InputShaMatches040Metadata": true,
+    "run039ResultShaMatches040Metadata": true,
+    "re037001Status": "closed",
+    "re039001Status": "closed-by-040"
+  },
+  "runtime": {
+    "node": "22.23.2",
+    "openspec": "1.10.0"
+  },
+  "reviewContract": {
+    "skill": ".agents/skills/review-explore/SKILL.md",
+    "mode": "from-scratch-chain-trace-and-independent-proof"
+  },
+  "independentProof": {
+    "verdict": "PASS",
+    "cases": "12/12",
+    "freshPreparedExactOccurrence": "PASS",
+    "freshResumedExactOccurrence": "PASS",
+    "stalePriorSameActionOccurrenceRejected": "PASS",
+    "preparedResumedMismatchRejected": "PASS",
+    "resumedPreparedMismatchRejected": "PASS",
+    "terminalRejected": "PASS",
+    "wrongCurrentOccurrenceActionRejected": "PASS",
+    "wrongExecutionRoleRejected": "PASS",
+    "crossOutcomeSlotRejected": "PASS",
+    "verificationVerdictClaimRejected": "PASS",
+    "wrongResultRunLinkRejected": "PASS"
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

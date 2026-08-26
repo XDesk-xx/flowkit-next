@@ -1,0 +1,30 @@
+{
+  "runNumber": 47,
+  "kind": "external-orchestrator-review-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-action-package-and-result-admission",
+  "action": "review-apply",
+  "runId": "20260826-047-review-apply",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/036-establish-action-package-and-result-admission/20260826-047-review-apply",
+  "previousRunId": "20260826-046-apply",
+  "input": {
+    "payloadArchive": "046-apply.zip",
+    "payloadSha256": "a785181ae2f79e7a3faef07116eaba68d25af4846c70b116fdd5c3a934e2ec88",
+    "baseArchive": "flowkit-next-delivery-20260824-01-foundation-lifecycle-kernel-f03fb67.zip",
+    "baseArchiveSha256": "fe26ecda693678f395eac1ea04788e7e421b2239b8a97a2973b8b8bc3dbd4290",
+    "baseGitRevision": "f03fb6756ffa4f7ad759113568a10dee48bfe28f"
+  },
+  "runtime": {
+    "node": "22.23.2",
+    "pnpm": "11.22.0",
+    "openspec": "1.10.0"
+  },
+  "reviewContract": {
+    "skill": ".agents/skills/review-apply/SKILL.md",
+    "mode": "proposal-fidelity-minimality-independent-evidence"
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}
