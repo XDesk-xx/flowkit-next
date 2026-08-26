@@ -11,11 +11,12 @@ delivery:
 scope:
   included:
     - "canonical Owner / Author / Reviewer / Verification authority and identity contracts"
-    - "Action lifecycle domain contract with prepared / resumed / terminal semantics"
+    - "Action lifecycle domain contract and minimal single-current-Action semantics"
     - "durable Run / Result persistence and integrity validation"
     - "ActionPackage and exact Result admission boundary"
-    - "resume and exactly-one-current-Action terminal boundary"
+    - "single-current-Action execution / exact admission / terminal / STOP boundary"
     - "Policy and deterministic next-boundary contract"
+    - "cross-Delivery Memo contract surfaced primarily at Delivery Start"
     - "mutation authority and explicit Git checkpoint boundary"
     - "exact managed OpenSpec 1.10.0 / Archify 2.15.0 toolchain resolution"
     - "thin OpenSpec integration without duplicating OpenSpec lifecycle authority"
@@ -90,17 +91,18 @@ changes:
       - "ActionPackage contract"
       - "Result admission contract"
 
-  - id: "establish-resume-and-single-action-terminal-boundary"
+  - id: "establish-single-action-execution-terminal-boundary"
     group: "execution"
-    goal: "固定 prepare/resume → execute exactly one current Action → terminal → report next boundary → STOP。"
+    goal: "固定一次完整 Standard Action invocation：Core 内部 establish CurrentAction/prepared + form exact ActionPackage → execute exactly one Standard Action → Core 内部 exact Result admission + terminal → report continuation fact → STOP；prepare 不成为独立 Action/Run/STOP，并 proof 既有 resumed lifecycle state 是否仍有必要。"
     required: true
     dependsOn:
       - "establish-action-package-and-result-admission"
-    state: planned
+    state: completed
     architectureImpact: true
     outputs:
-      - "resume contract"
-      - "single-Action terminal boundary"
+      - "single-Action invocation / terminal / STOP boundary"
+      - "internal prepare boundary contract"
+      - "resumed-state necessity decision"
 
   - id: "establish-policy-and-next-boundary-contract"
     group: "governance"
@@ -108,19 +110,31 @@ changes:
     required: true
     dependsOn:
       - "establish-lifecycle-authority-and-identity-contracts"
-      - "establish-resume-and-single-action-terminal-boundary"
+      - "establish-single-action-execution-terminal-boundary"
     state: planned
     architectureImpact: true
     outputs:
       - "Policy decision contract"
       - "next-boundary contract"
 
+  - id: "establish-cross-delivery-memo-contract"
+    group: "governance"
+    goal: "建立重要但不属于当前 Delivery 的 cross-Delivery Memo durable contract，并在未来 Delivery Start 主要暴露 open Memos 供 Owner 决定纳入、继续延后或 dismiss；Memo 不成为 blocker、当前 backlog 或 specification truth。"
+    required: true
+    dependsOn:
+      - "establish-policy-and-next-boundary-contract"
+    state: planned
+    architectureImpact: true
+    outputs:
+      - "cross-Delivery Memo durable contract"
+      - "Delivery Start Memo exposure contract"
+
   - id: "establish-mutation-and-git-checkpoint-boundary"
     group: "governance"
     goal: "建立 mutation declaration/scope、repository path contract、checkpoint eligibility 与 explicit Git authorization boundary。"
     required: true
     dependsOn:
-      - "establish-policy-and-next-boundary-contract"
+      - "establish-cross-delivery-memo-contract"
     state: planned
     architectureImpact: true
     outputs:
@@ -157,7 +171,7 @@ changes:
     goal: "将已存在的 Core contract 暴露为最小 CLI，CLI 不成为第二套 lifecycle implementation。"
     required: true
     dependsOn:
-      - "establish-resume-and-single-action-terminal-boundary"
+      - "establish-single-action-execution-terminal-boundary"
       - "establish-policy-and-next-boundary-contract"
       - "establish-mutation-and-git-checkpoint-boundary"
       - "establish-openspec-thin-integration"
@@ -262,6 +276,33 @@ ownerDecisions:
     scope:
       - "archive"
 
+  - ref: "owner:421b658f34c85ff2c12a081ecf545f223ce74f3ac688c3ce42a31f06cf00210a"
+    decision: "refine-delivery-plan"
+    deliveryId: "20260824-01-foundation-lifecycle-kernel"
+    sourceRef: "owner-input:2026-08-26T16:25+08:00:refine-delivery-plan:remove-resume-preset:add-cross-delivery-memo"
+    scope:
+      - "replace planned resume-presupposing Change 5 with bounded single-Action execution/terminal Change"
+      - "insert establish-cross-delivery-memo-contract after Policy and before mutation/checkpoint"
+
+
+  - ref: "owner:877f623baf32e76a3b5e1c45fa40a3b3b16d36b856ade136ba15b77f6e42c01f"
+    decision: "activate-change"
+    deliveryId: "20260824-01-foundation-lifecycle-kernel"
+    changeId: "establish-single-action-execution-terminal-boundary"
+    sourceRef: "owner-input:2026-08-26T16:25+08:00:continue-change-5-after-plan-correction:establish-single-action-execution-terminal-boundary"
+    scope:
+      - "explore"
+
+  - ref: "owner:9496aa06cd4c354743a79bbe156eb24cbc469a1f3815ae1874c9baf3ff371718"
+    decision: "refine-change-scope"
+    deliveryId: "20260824-01-foundation-lifecycle-kernel"
+    changeId: "establish-single-action-execution-terminal-boundary"
+    sourceRef: "owner-input:2026-08-26T17:28+08:00:refine-change-5-explore:prepare-is-internal-not-stop-boundary"
+    scope:
+      - "treat prepare as internal structural lifecycle event, not Standard Action / independent Run / ordinary STOP boundary"
+      - "redesign Explore around one complete Standard Action invocation while preserving resumed-state necessity proof"
+
+
 verification:
   change:
     requireApplicableChecks: true
@@ -274,7 +315,7 @@ verification:
       - "targeted Change verification selected by actual risk"
       - "whole-manager type/build/lint/test gates once those commands exist"
       - "OpenSpec 1.10.0 thin integration"
-      - "single-Action prepare/resume/terminal/STOP behavior"
+      - "single-Action invocation with internal prepare/package/admission/terminal and one final STOP"
       - "Run / Result durability and exact admission"
       - "Policy and blocked diagnosis"
       - "mutation and Git checkpoint safety"
@@ -285,7 +326,7 @@ verification:
 acceptance:
   - "Delivery 01 candidate never becomes authority for its own lifecycle."
   - "Owner, Author, Reviewer and Verification authority remain distinct and fail closed."
-  - "Exactly one current Action can be prepared/resumed/executed to terminal, then execution stops at the next boundary."
+  - "Exactly one current Action can be prepared, executed through an exact ActionPackage, admitted to terminal by an exact Result, then execution stops after reporting the continuation fact."
   - "Run / Result facts are durable, real and integrity-checked; no fake terminal artifacts are admitted."
   - "Policy computes one legal boundary or a deterministic blocked diagnosis and never auto-executes next."
   - "Mutation and Git checkpoint permission require explicit authority and are not inferred from Verification or Review alone."

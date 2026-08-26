@@ -19,7 +19,7 @@ import {
   type RunResultRecord,
 } from "./run-result-persistence.js";
 
-export type ExecutableActionLifecycleState = "prepared" | "resumed";
+export type ExecutableActionLifecycleState = "prepared";
 
 export interface ActionPackage extends RunContextRecord {
   readonly lifecycleState: ExecutableActionLifecycleState;
@@ -36,7 +36,7 @@ function sameActionIdentity(a: ActionIdentity, b: ActionIdentity): boolean {
 function isExecutableState(
   value: unknown,
 ): value is ExecutableActionLifecycleState {
-  return value === "prepared" || value === "resumed";
+  return value === "prepared";
 }
 
 export function expectedExecutionRoleForAction(

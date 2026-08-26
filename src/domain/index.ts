@@ -4,3 +4,5 @@ export * from "./identity.js";
 export * from "./state.js";
 export * from "./run-result-persistence.js";
 export * from "./action-package-result-admission.js";
+
+export * from "./single-action-execution.js";

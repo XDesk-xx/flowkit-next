@@ -6,11 +6,7 @@ import {
   type StandardActionId,
 } from "./identity.js";
 
-export const ACTION_LIFECYCLE_STATES = [
-  "prepared",
-  "resumed",
-  "terminal",
-] as const;
+export const ACTION_LIFECYCLE_STATES = ["prepared", "terminal"] as const;
 
 export type ActionLifecycleState = (typeof ACTION_LIFECYCLE_STATES)[number];
 
@@ -29,7 +25,6 @@ export type CurrentActionSlot = CurrentAction | null;
 
 export type ActionLifecycleEvent =
   | { readonly type: "prepare"; readonly identity: ActionIdentity }
-  | { readonly type: "resume"; readonly identity: ActionIdentity }
   | { readonly type: "terminal"; readonly identity: ActionIdentity };
 
 const IDENTITY_FIELDS = ["deliveryId", "changeId", "actionId"] as const;
@@ -85,11 +80,7 @@ function isActionLifecycleEvent(value: unknown): value is ActionLifecycleEvent {
   if (!isRecord(value) || !hasExactlyFields(value, EVENT_FIELDS)) return false;
   if (!isActionIdentity(value.identity)) return false;
 
-  return (
-    value.type === "prepare" ||
-    value.type === "resume" ||
-    value.type === "terminal"
-  );
+  return value.type === "prepare" || value.type === "terminal";
 }
 
 function sameActionIdentity(a: ActionIdentity, b: ActionIdentity): boolean {
@@ -134,16 +125,8 @@ export function transitionCurrentAction(
     return nextCurrentAction(event.identity, "prepared");
   }
 
-  if (current.state === "terminal") return null;
+  if (current.state !== "prepared") return null;
   if (!sameActionIdentity(current.identity, event.identity)) return null;
 
-  if (event.type === "resume") {
-    return nextCurrentAction(event.identity, "resumed");
-  }
-
-  if (event.type === "terminal") {
-    return nextCurrentAction(event.identity, "terminal");
-  }
-
-  return null;
+  return nextCurrentAction(event.identity, "terminal");
 }

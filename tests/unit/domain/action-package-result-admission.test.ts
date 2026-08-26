@@ -91,28 +91,25 @@ test("maps every Standard Action to one closed execution role", () => {
   assert.equal(expectedExecutionRoleForAction("verify"), null);
 });
 
-test("forms minimal prepared and resumed packages from exact current facts", () => {
-  for (const state of ["prepared", "resumed"] as const) {
-    const current = currentAction("apply", state);
-    const currentContext = context(46, "apply", {
-      lifecycleState: state,
-      previousRunId: "20260826-045-review-propose",
-    });
-    const formed = formActionPackage(current, currentContext);
+test("forms a minimal prepared package from exact current facts", () => {
+  const current = currentAction("apply");
+  const currentContext = context(46, "apply", {
+    previousRunId: "20260826-045-review-propose",
+  });
+  const formed = formActionPackage(current, currentContext);
 
-    assert.notEqual(formed, null);
-    assert.equal(isActionPackage(formed), true);
-    assert.equal(formed!.runId, currentContext.runId);
-    assert.deepEqual(formed!.occurrence, currentContext.occurrence);
-    assert.deepEqual(formed!.actionIdentity, current.identity);
-    assert.equal(formed!.role, "author");
-    assert.equal(formed!.lifecycleState, state);
-    assert.equal(formed!.previousRunId, currentContext.previousRunId);
-  }
+  assert.notEqual(formed, null);
+  assert.equal(isActionPackage(formed), true);
+  assert.equal(formed!.runId, currentContext.runId);
+  assert.deepEqual(formed!.occurrence, currentContext.occurrence);
+  assert.deepEqual(formed!.actionIdentity, current.identity);
+  assert.equal(formed!.role, "author");
+  assert.equal(formed!.lifecycleState, "prepared");
+  assert.equal(formed!.previousRunId, currentContext.previousRunId);
 });
 
-test("formation fails closed for terminal, null, identity, state or role mismatch", () => {
-  const exact = currentAction("apply", "prepared");
+test("formation rejects terminal, removed resumed, null, identity, state or role mismatch", () => {
+  const exact = currentAction("apply");
   const exactContext = context(46, "apply");
 
   assert.equal(
@@ -140,10 +137,14 @@ test("formation fails closed for terminal, null, identity, state or role mismatc
   );
 });
 
-test("ActionPackage validator rejects terminal and role-invalid packages", () => {
+test("ActionPackage validator accepts only prepared role-valid packages", () => {
   assert.equal(isActionPackage(context(46, "apply")), true);
   assert.equal(
     isActionPackage(context(46, "apply", { lifecycleState: "terminal" })),
+    false,
+  );
+  assert.equal(
+    isActionPackage({ ...context(46, "apply"), lifecycleState: "resumed" }),
     false,
   );
   assert.equal(
@@ -152,34 +153,27 @@ test("ActionPackage validator rejects terminal and role-invalid packages", () =>
   );
 });
 
-test("admits exact prepared and resumed results and preserves opaque nextBoundary", () => {
-  for (const state of ["prepared", "resumed"] as const) {
-    const current = currentAction("apply", state);
-    const runOccurrence = occurrence(46, "apply");
-    const actionPackage = formActionPackage(
-      current,
-      context(46, "apply", { lifecycleState: state }),
-    )!;
-    const candidate = result(46, "apply", { nextBoundary: "review-apply" });
-
-    assert.equal(
-      admitActionResult(actionPackage, current, runOccurrence, candidate),
-      candidate,
-    );
-    assert.equal(candidate.nextBoundary, "review-apply");
-    assert.equal(current.state, state);
-  }
-});
-
-test("rejects stale prepared-to-resumed package without changing Action identity", () => {
-  const prepared = currentAction("apply", "prepared");
-  const stalePackage = formActionPackage(prepared, context(46, "apply"))!;
-  const resumed = currentAction("apply", "resumed");
+test("admits exact prepared results and preserves opaque nextBoundary", () => {
+  const current = currentAction("apply");
+  const runOccurrence = occurrence(46, "apply");
+  const actionPackage = formActionPackage(current, context(46, "apply"))!;
+  const candidate = result(46, "apply", { nextBoundary: "review-apply" });
 
   assert.equal(
+    admitActionResult(actionPackage, current, runOccurrence, candidate),
+    candidate,
+  );
+  assert.equal(candidate.nextBoundary, "review-apply");
+  assert.equal(current.state, "prepared");
+});
+
+test("rejects removed resumed current state at admission", () => {
+  const current = currentAction("apply");
+  const actionPackage = formActionPackage(current, context(46, "apply"))!;
+  assert.equal(
     admitActionResult(
-      stalePackage,
-      resumed,
+      actionPackage,
+      { identity: identity("apply"), state: "resumed" },
       occurrence(46, "apply"),
       result(46, "apply"),
     ),
@@ -188,7 +182,7 @@ test("rejects stale prepared-to-resumed package without changing Action identity
 });
 
 test("rejects stale prior occurrence of the same Standard Action", () => {
-  const current = currentAction("review-explore", "prepared");
+  const current = currentAction("review-explore");
   const stalePackage = formActionPackage(
     current,
     context(37, "review-explore"),
@@ -206,7 +200,7 @@ test("rejects stale prior occurrence of the same Standard Action", () => {
 });
 
 test("rejects wrong candidate Run or Action linkage", () => {
-  const current = currentAction("apply", "prepared");
+  const current = currentAction("apply");
   const actionPackage = formActionPackage(current, context(46, "apply"))!;
 
   assert.equal(
