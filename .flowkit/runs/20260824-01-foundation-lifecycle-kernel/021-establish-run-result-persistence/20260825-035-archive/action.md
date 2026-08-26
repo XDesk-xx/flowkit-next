@@ -16,7 +16,7 @@ Owner explicitly authorized Archive after Reviewer approval. OpenSpec 1.10.0 arc
 
 ## Stable output boundary
 
-- archived Change: `openspec/changes/archive/2026-08-25-establish-run-result-persistence/`
+- archived Change: `openspec/changes/archive/2026-08-25-003-establish-run-result-persistence/`
 - canonical spec: `openspec/specs/run-result-persistence/spec.md`
 - Delivery-group Change state: `completed`
 - this Archive Run record

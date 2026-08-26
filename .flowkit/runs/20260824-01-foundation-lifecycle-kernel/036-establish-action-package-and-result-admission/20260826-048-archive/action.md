@@ -16,7 +16,7 @@ Owner explicitly authorized Archive after Reviewer approval. OpenSpec 1.10.0 arc
 
 ## Stable output boundary
 
-- archived Change: `openspec/changes/archive/2026-08-26-establish-action-package-and-result-admission/`
+- archived Change: `openspec/changes/archive/2026-08-26-004-establish-action-package-and-result-admission/`
 - canonical spec: `openspec/specs/action-package-and-result-admission/spec.md`
 - Delivery-group Change state: `completed`
 - this Archive Run record

@@ -15,7 +15,7 @@ Durable closure facts preserved here:
 
 - `019 review-apply` was approved.
 - `020 archive` succeeded.
-- OpenSpec archive target: `openspec/changes/archive/2026-08-25-establish-action-lifecycle-domain-contract/`.
+- OpenSpec archive target: `openspec/changes/archive/2026-08-25-002-establish-action-lifecycle-domain-contract/`.
 - Canonical spec: `openspec/specs/action-lifecycle/spec.md`.
 - Delivery-group state for this Change is `completed`.
 - Next boundary is `checkpoint`.
@@ -23,7 +23,7 @@ Durable closure facts preserved here:
 
 ## Stable output boundary
 
-- `openspec/changes/archive/2026-08-25-establish-action-lifecycle-domain-contract/`
+- `openspec/changes/archive/2026-08-25-002-establish-action-lifecycle-domain-contract/`
 - `openspec/specs/action-lifecycle/spec.md`
 - `openspec/delivery-groups/20260824-01-foundation-lifecycle-kernel.yaml`
 - `.flowkit/runs/20260824-01-foundation-lifecycle-kernel/012-establish-action-lifecycle-domain-contract/020-archive/context.json`

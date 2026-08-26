@@ -15,7 +15,7 @@ Reviewer approved the Apply. The user explicitly requested Archive, and OpenSpec
 
 ## Stable output boundary
 
-- archived Change: `openspec/changes/archive/2026-08-26-establish-single-action-execution-terminal-boundary/`
+- archived Change: `openspec/changes/archive/2026-08-26-005-establish-single-action-execution-terminal-boundary/`
 - modified canonical specs: `action-lifecycle`, `action-package-and-result-admission`
 - added canonical spec: `single-action-execution-terminal-boundary`
 - Delivery-group Change state: `completed`
