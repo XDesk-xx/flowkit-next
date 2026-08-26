@@ -1,119 +1,176 @@
-# Explore Proof-Based Skill v2
+---
+name: explore-proof-based
+description: Proof-based Explore for Flowkit changes. Use to investigate contract-changing unknowns, bound real scope, and stop exploration before it drifts into non-goal subsystems.
+metadata:
+  author: flowkit
+---
+
+# Explore Proof-Based Skill
 
 ## Purpose
 
-Execute Explore as a proof-based investigation before any Proposal.
+Execute Explore as a bounded, proof-based investigation before Proposal.
 
-Explore answers:
+Explore exists to answer:
 
-Can this change be safely proposed?
+> What must be true for this Change to be proposed safely, and what is the smallest real problem boundary?
 
-Explore does not:
-- implement production changes
-- create final design
-- decide authority
-- approve execution
+Explore may broaden the question space temporarily, but it MUST NOT silently broaden the product input domain or turn the Change into a generic subsystem.
 
 ## Authority Boundary
 
-Policy decides whether an Action is legal.
+Policy / Owner authority decides whether an Action is legal.
 
-Skill only defines HOW to perform Explore.
+This skill defines HOW Explore is performed.
 
-Explore Result is evidence, not approval.
+Explore evidence is not approval. Reviewer approval is still required before Proposal.
+
+Owner scope correction overrides prior exploratory direction. When Owner narrows the real use case, obsolete proof branches become historical risk evidence, not mandatory Proposal blockers.
 
 ## Core Principle
 
-Every important claim must map:
+For each material uncertainty:
 
+```text
 Risk
 → Question
 → Proof
 → Evidence
+→ Decision impact
 → Boundary
+```
 
-Do not treat:
-- example success as universal proof
-- current environment success as detached proof
-- test pass as acceptance closure without boundary analysis
+Proof budget follows decision impact.
+
+Do not prove edge cases merely because they exist. Continue proof only when the uncertainty can change the current contract, block the real use case, or invalidate an important assumption.
 
 ## Process
 
-### 1. Establish Facts
+### 1. Establish the real use case
 
-Collect:
+Record:
 
-- repository state
-- current contract
-- existing specs
-- relevant code/tests
-- environment facts
+- Owner-stated goal
+- current Delivery / Change scope
+- real actors and inputs
+- existing contracts/specs
+- known non-goals
 
 Separate:
 
-Known facts
+```text
+Facts
 Assumptions
 Unknowns
+Future possibilities
+```
 
-### 2. Risk Scan
+Do not treat a future possibility as a current input domain without authority.
 
-Always consider:
+### 2. Scan material risks
 
-- scope expansion
-- authority conflict
-- persistence/state impact
-- migration impact
-- compatibility impact
+Consider only risks relevant to the current Change, including when applicable:
+
+- authority / identity
+- lifecycle boundary
+- persistence/state integrity
+- compatibility
+- migration
 - verification closure
-- future consumer impact
+- future direct consumer impact
+- scope expansion
 
-### 3. Proof Planning
+### 3. Prioritize proof
 
-For each important risk define:
+For each important risk ask:
 
-Question:
-What uncertainty must be removed?
+1. Is it inside the real authorized input domain?
+2. Can it change the contract?
+3. Can it block the minimum real use case?
 
-Evidence:
-What observation answers it?
+If all three are no:
 
-Boundary:
-What does this evidence NOT prove?
+```text
+record as limitation / future risk if valuable
+→ stop exploring that branch
+```
 
-### 4. Execute Minimum Proof
+### 4. Execute minimum decisive proof
 
 Allowed:
 
-- targeted source inspection
+- targeted source/spec inspection
 - controlled experiment
-- fixture
-- focused test
-- prototype
+- focused fixture/test
+- counterexample
+- small non-production prototype
 
 Forbidden:
 
 - unrelated refactor
-- production mutation
+- production implementation
 - architecture expansion
+- generic subsystem design not required by the real use case
+- exhaustive proof of explicitly deferred input domains
 
-### 5. Result Contract
+### 5. Reduce proof into decisions
 
-Output:
+For every proof, record:
 
-- Problem
-- Facts
-- Risks
-- Proof performed
-- Evidence
-- Limitations
+- what it established
+- what decision it changes or supports
+- what it does NOT establish
+
+A proof with no decision impact should not become a Proposal requirement by default.
+
+### 6. Produce Proposal-ready boundary
+
+Explore should end with:
+
+- problem statement
+- durable facts
+- required invariants
+- resolved key unknowns
+- remaining limitations
+- explicit non-goals / deferred concerns
+- minimum Proposal direction
 - PASS / FAIL / UNKNOWN
 
 ## Stop Conditions
 
-Stop when:
+Stop Explore successfully when:
 
-- required authority is missing
-- proof cannot support conclusion
-- scope cannot be bounded
+- the minimum real use case is bounded;
+- key contract-changing unknowns are resolved;
+- remaining unknowns are outside the authorized input domain or explicitly deferred;
+- a Proposal can be written without inventing new scope.
+
+Stop Explore as blocked when:
+
+- required authority is missing;
+- a key claim cannot be supported;
+- the real scope cannot be bounded;
+- a newly discovered issue requires Owner scope/priority decision.
 
 Never convert UNKNOWN into PASS.
+
+## Anti-Drift Rules
+
+Reject these patterns:
+
+```text
+edge case discovered
+→ enlarge input domain
+→ discover more edge cases
+→ build generic subsystem
+```
+
+Prefer:
+
+```text
+edge case discovered
+→ ask whether input is real
+→ constrain generation/ownership when appropriate
+→ prove the bounded model
+→ defer non-goals
+```

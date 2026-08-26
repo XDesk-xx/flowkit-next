@@ -1,68 +1,105 @@
-# Review Propose Skill v2
+---
+name: review-propose
+description: Review a Proposal for Explore traceability, minimality, contract completeness, non-goal enforcement, and readiness for Apply.
+metadata:
+  author: flowkit
+---
+
+# Review Propose Skill
 
 ## Purpose
 
-Review OpenSpec Proposal before Apply.
+Review whether Proposal has correctly converged the approved Explore into a minimal, complete, testable contract before Apply.
 
 ## Authority Boundary
 
-OpenSpec owns Change contract.
+Reviewer validates the Proposal but does not replace the specification authority.
 
-Reviewer validates the Proposal but does not replace OpenSpec.
+Reviewer may request correction of contract holes or scope regression.
+
+Reviewer must not use review-propose to restart open-ended exploration or introduce unrelated future architecture.
 
 ## Review Dimensions
 
-### Explore Alignment
+### 1. Explore traceability
+
+For every material requirement ask:
+
+> Why is this required?
+
+Valid sources include:
+
+- Owner decision
+- approved Explore invariant/decision
+- decisive proof
+- accepted reviewer blocker
+- existing canonical requirement
+
+Reject untraceable "while here" requirements.
+
+### 2. Scope convergence
+
+Confirm:
+
+- Proposal scope equals the approved Explore boundary;
+- Owner scope corrections are honored;
+- deferred/non-goal branches have not silently returned;
+- the real input domain has not been generalized.
+
+### 3. Minimal contract
+
+Check whether a smaller invariant can satisfy the same approved use case.
+
+Reject unnecessary subsystem growth, especially abstractions introduced only for hypothetical future cases.
+
+### 4. Contract completeness
 
 Check:
 
-Proposal scope equals approved Explore boundary.
+- problem is clear;
+- requirements are normative/testable;
+- observable failure behavior is defined where material;
+- acceptance criteria are measurable;
+- tasks cover the requirements without adding new scope.
 
-Reject:
-
-- hidden requirements
-- unrelated refactor
-- architecture expansion
-
-### Contract Completeness
+### 5. Design discipline
 
 Check:
 
-- problem is clear
-- requirements are testable
-- acceptance criteria are measurable
+- ownership is clear;
+- persistence/migration impact is considered when relevant;
+- design does not create a second authority/state machine;
+- implementation mechanism is proportional to the approved model.
 
-### Design Quality
+### 6. Verification closure
 
-Check:
+Acceptance must have a plausible matching verification path.
 
-- ownership is clear
-- persistence impact is considered
-- migration impact is considered
-- unnecessary abstraction is avoided
+Do not require Delivery-level verification inside an ordinary Change unless the contract says so.
 
-### Verification Closure
+## Finding Discipline
 
-Check:
+A blocking finding should describe a contract hole in the approved model.
 
-Acceptance has matching evidence.
+Prefer the smallest correction. Example:
 
-Evidence boundary must cover acceptance boundary.
+```text
+history must not be overwritten
+→ require create-once / duplicate rejection
+```
 
-## Common Failures
+Do not automatically escalate to:
 
-Reject:
+```text
+locking + WAL + database + distributed coordination
+```
 
-"Improve stability"
-
-without measurable acceptance.
-
-Reject:
-
-"While here" changes.
+unless the approved input model requires them.
 
 ## Verdict
 
+```text
 approved
 changes-requested
 rejected
+```

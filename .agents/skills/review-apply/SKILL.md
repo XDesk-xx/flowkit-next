@@ -1,62 +1,104 @@
-# Review Apply Skill v2
+---
+name: review-apply
+description: Review whether an approved Change was implemented faithfully and minimally, with real evidence and without redesigning the Proposal during Apply.
+metadata:
+  author: flowkit
+---
+
+# Review Apply Skill
 
 ## Purpose
 
-Review whether an approved Change was actually implemented correctly.
+Review whether the approved Proposal was implemented faithfully, minimally, and verifiably.
+
+Apply review is not a new design stage.
 
 ## Authority Boundary
 
 Reviewer checks implementation evidence.
 
 Reviewer does not:
-- modify implementation
-- grant missing authority
-- replace verification
+
+- modify implementation;
+- grant missing authority;
+- replace Delivery Verification;
+- redesign Proposal from scratch;
+- approve hidden scope expansion.
 
 ## Review Dimensions
 
-### Scope Compliance
+### 1. Proposal fidelity
 
 Compare:
 
-Approved Change
+```text
+Approved requirements/design/tasks
 vs
-Actual Diff
+Actual source/test/config mutations
+```
+
+Every meaningful implementation mutation should trace to the approved contract.
+
+### 2. Scope compliance
 
 Check:
 
-- only authorized files changed
-- no hidden expansion
+- only required files/areas changed;
+- no deferred/non-goal capability was added;
+- Apply did not turn a minimal contract into a generic subsystem.
 
-### Implementation Correctness
-
-Check:
-
-- code matches contract
-- edge cases considered
-- existing behavior preserved
-
-### Verification Evidence
+### 3. Implementation correctness
 
 Check:
 
-- tests/checks actually ran
-- evidence matches acceptance
-- failures are honestly reported
+- code satisfies normative requirements;
+- fail-closed behavior is correct where specified;
+- edge cases required by the Proposal are covered;
+- existing canonical behavior remains intact.
 
-Reject:
+### 4. Verification evidence
 
-chat description as proof.
+Confirm checks actually ran and match Change acceptance.
 
-### Regression
+Reject chat claims as proof when repository/test evidence is required.
 
-Check:
+Keep semantic separation between:
 
-- existing contract not broken
-- new behavior does not violate boundaries
+- Author conclusion
+- Reviewer verdict
+- Verification verdict
+
+`review-apply = approved` is not Delivery Verification PASS.
+
+### 5. Contract-defect detection
+
+If implementation reveals that the approved Proposal itself is materially wrong or impossible:
+
+```text
+STOP
+→ report contract blocker
+→ recommend Owner-authorized boundary return (for example revise-propose)
+```
+
+Do not demand that Apply silently redesign the contract.
 
 ## Verdict
 
+```text
 approved
 changes-requested
 rejected
+```
+
+## Implementation Convergence Check
+
+Apply the `implementation-convergence` discipline during review:
+
+- every material mutation must trace to an approved requirement or necessary verification;
+- existing seams should be reused before new abstractions are introduced;
+- unrelated cleanup, speculative framework work, and future-scope code are review findings;
+- new dependencies or architectural layers require clear approved-contract necessity;
+- a Proposal defect must be reported as a boundary-return issue, not accepted because the code "works";
+- prefer the smallest implementation that faithfully satisfies the approved contract.
+
+Do not reject a simple implementation merely because a more generalized architecture is imaginable.
