@@ -1,0 +1,70 @@
+{
+  "runNumber": 95,
+  "kind": "external-orchestrator-apply-result",
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-openspec-thin-integration",
+  "action": "apply",
+  "runId": "20260828-095-apply",
+  "executionStatus": "completed",
+  "applyStatus": "complete",
+  "openspecApplyState": "all_done",
+  "openspecTasks": "9/9 complete",
+  "implementation": {
+    "created": [
+      "src/domain/openspec-observation.ts",
+      "tests/unit/domain/openspec-observation.test.ts",
+      "tests/unit/domain/openspec-observation-boundary.test.ts"
+    ],
+    "modified": [
+      "src/domain/index.ts",
+      "openspec/changes/establish-openspec-thin-integration/tasks.md"
+    ],
+    "dependencyMutation": false
+  },
+  "contractFactsImplemented": [
+    "Production OpenSpec observation exposes only closed read-only list/status observations and no generic arbitrary-command executor.",
+    "OpenSpec invocation consumes only the exact managed openspec runtime, current host Node, argument-array process execution and canonical requested repository cwd; PATH/global/shell executable selection is not used.",
+    "Successful observations exact-bind OpenSpec root.path to the canonical requested repository root and reject nearest-root drift.",
+    "Non-zero exit with valid JSON remains a closed openspec-formal-outcome diagnostic distinct from process, malformed-output, invalid-shape and root-mismatch failures.",
+    "Active OpenSpec Change observation projects only canonical Change identifiers and does not interpret them as Flowkit ChangeState.",
+    "Exact Change status projects only change identity, schema/change root, planning/complete booleans and artifact id/status/requires/missingDeps machine facts.",
+    "Artifact readiness is accepted from OpenSpec machine output and is not re-derived from Markdown/filesystem state.",
+    "Observations are transient and add no .flowkit OpenSpec-state mirror, Policy/authority coupling, OpenSpec mutation, .agents runtime dependency, Skill migration or self-hosting behavior."
+  ],
+  "verification": {
+    "focusedObservationTests": "14/14 PASS",
+    "domainTests": "105/105 PASS",
+    "typecheck": "PASS",
+    "formatCheck": "PASS",
+    "openspecChangeStrict": "PASS",
+    "openspecAllStrict": "9/9 PASS",
+    "realOpenSpecExactRootListStatus": "PASS",
+    "missingChangeFormalOutcome": "PASS",
+    "fakePathIsolation": "PASS",
+    "nestedRootRejection": "PASS",
+    "codeGate": {
+      "status": "PASS",
+      "changedTypeScript": {
+        "src/domain/index.ts": 14,
+        "src/domain/openspec-observation.ts": 320,
+        "tests/unit/domain/openspec-observation.test.ts": 270,
+        "tests/unit/domain/openspec-observation-boundary.test.ts": 231
+      },
+      "historicalOverLimitFile": "src/domain/run-result-persistence.ts remains byte-identical at 588 lines"
+    }
+  },
+  "productionMutation": true,
+  "reviewApplyPerformed": false,
+  "archivePerformed": false,
+  "nextBoundary": "review-apply",
+  "nextBoundaryAuthority": "handoff-advisory-only",
+  "limitations": [
+    "Independent review-apply has not yet been performed.",
+    "This Apply grants no Verification PASS, Owner archive authority, checkpoint authority or promotion authority.",
+    "Current .agents OpenSpec Skills remain bootstrap development orchestration only; production observation does not depend on them.",
+    "Foundation CLI, mutating OpenSpec integration and Flowkit self-hosting remain outside this Change."
+  ],
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

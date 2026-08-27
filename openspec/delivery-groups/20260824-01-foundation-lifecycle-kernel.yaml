@@ -160,7 +160,7 @@ changes:
     dependsOn:
       - "establish-managed-toolchain-resolution"
       - "establish-policy-and-next-boundary-contract"
-    state: planned
+    state: completed
     architectureImpact: true
     outputs:
       - "OpenSpec thin adapter boundary"
@@ -355,6 +355,14 @@ ownerDecisions:
     scope:
       - "explore"
 
+
+  - ref: "owner:4ccae943be38129c515abb36bb29f6723df36ff83346f12c069c68ee91f50bc6"
+    decision: "activate-change"
+    deliveryId: "20260824-01-foundation-lifecycle-kernel"
+    changeId: "establish-openspec-thin-integration"
+    sourceRef: "owner-input:2026-08-28T00:10+08:00:activate-openspec-thin-integration:explore-proof-based"
+    scope:
+      - "explore"
 
 verification:
   change:

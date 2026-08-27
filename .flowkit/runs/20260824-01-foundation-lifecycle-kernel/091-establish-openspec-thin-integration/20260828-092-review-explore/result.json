@@ -1,0 +1,40 @@
+{
+  "runNumber": 92,
+  "kind": "external-orchestrator-review-explore-result",
+  "role": "reviewer",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-openspec-thin-integration",
+  "action": "review-explore",
+  "runId": "20260828-092-review-explore",
+  "executionStatus": "completed",
+  "authorConclusion": null,
+  "reviewerVerdict": "approved",
+  "verificationVerdict": null,
+  "nextBoundary": "propose",
+  "blockingFindings": [],
+  "checks": {
+    "realUseCaseAlignment": "PASS",
+    "implementationScopeContainment": "PASS with explicit Proposal constraints",
+    "factsAndAssumptions": "PASS",
+    "riskCoverage": "PASS",
+    "proofQuality": "PASS",
+    "stopDiscipline": "PASS",
+    "proposalReadiness": "PASS",
+    "typecheck": "PASS",
+    "domainTests": "91/91 PASS",
+    "formatCheck": "PASS",
+    "canonicalOpenSpecSpecs": "8/8 strict PASS",
+    "realOpenSpecObservationProof": "6/6 PASS",
+    "productionMutation": "NONE"
+  },
+  "proposalGuidance": [
+    "Expose only the two closed read-only observations justified by this Change; do not expose a generic OpenSpec command executor.",
+    "Project only required machine fields into Flowkit types; do not turn raw stdout/stderr/nextSteps/actionContext/arbitrary CLI results into stable public contract.",
+    "Invoke only the resolved managed OpenSpec entrypoint via process.execPath and argument-array child process without shell/PATH fallback.",
+    "Canonicalize and exact-match requested repository root against OpenSpec-reported root.path on successful observations.",
+    "Keep non-zero valid OpenSpec machine outcomes distinct from transport/malformed-output failures without recreating OpenSpec lifecycle semantics.",
+    "Do not modify Policy, Memo, Action lifecycle, Run/Result, authority, Skills or self-hosting behavior in this Change."
+  ],
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

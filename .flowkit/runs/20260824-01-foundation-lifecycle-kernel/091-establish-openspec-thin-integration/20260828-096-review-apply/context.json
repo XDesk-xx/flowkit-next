@@ -1,0 +1,51 @@
+{
+  "runNumber": 96,
+  "kind": "external-orchestrator-review-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-openspec-thin-integration",
+  "action": "review-apply",
+  "runId": "20260828-096-review-apply",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/091-establish-openspec-thin-integration/20260828-096-review-apply",
+  "inputRunId": "20260828-095-apply",
+  "reviewChainStartRunId": "20260828-091-explore",
+  "reviewModel": "review-apply-skill",
+  "chainIntegrity": {
+    "runs091To094ByteIdentical": "12/12 PASS",
+    "approvedExploreProposalDesignSpecUnchanged": true,
+    "deliveryManifestUnchanged": true,
+    "sharedFilesAgainst094ReviewerPayload": 19,
+    "sharedFilesChanged": [
+      "openspec/changes/establish-openspec-thin-integration/tasks.md"
+    ]
+  },
+  "runtime": {
+    "node": "22.23.2",
+    "repositoryNodeEngine": ">=22.20.0",
+    "openspec": "1.10.0"
+  },
+  "independentChecks": {
+    "typecheck": "PASS",
+    "domainTests": "105/105 PASS",
+    "formatCheck": "PASS",
+    "openspecPlanning": "4/4 complete",
+    "changeStrict": "PASS",
+    "openspecAllStrict": "9/9 PASS",
+    "tasks": "9/9 all_done",
+    "realOpenSpecList": "PASS",
+    "realOpenSpecExactStatus": "PASS",
+    "realMissingChangeFormalOutcome": "PASS",
+    "genericPublicExecutorAdded": false,
+    "adjacentCommandWrappersAdded": false,
+    "policyMemoRunAuthorityCouplingAdded": false,
+    "skillsSelfHostingCouplingAdded": false,
+    "arbitraryNonZeroEmptyObject": "MISCLASSIFIED as openspec-formal-outcome",
+    "arbitraryNonZeroUnrelatedObject": "MISCLASSIFIED as openspec-formal-outcome",
+    "nonZeroArray": "invalid-machine-shape",
+    "dependencyMutation": "NONE",
+    "scopeExpansion": "NONE"
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

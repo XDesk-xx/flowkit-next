@@ -1,0 +1,51 @@
+{
+  "runNumber": 92,
+  "kind": "external-orchestrator-review-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-openspec-thin-integration",
+  "action": "review-explore",
+  "runId": "20260828-092-review-explore",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/091-establish-openspec-thin-integration/20260828-092-review-explore",
+  "inputRunId": "20260828-091-explore",
+  "reviewChainStartRunId": "20260828-091-explore",
+  "reviewModel": "review-explore-skill",
+  "deliveryState": {
+    "completed": 8,
+    "cancelled": 1,
+    "active": 1,
+    "planned": 2,
+    "activeChange": "establish-openspec-thin-integration",
+    "activeDependencies": {
+      "establish-managed-toolchain-resolution": "completed",
+      "establish-policy-and-next-boundary-contract": "completed"
+    }
+  },
+  "runtime": {
+    "nodeProofFixture": "22.23.2",
+    "repositoryNodeEngine": ">=22.20.0",
+    "openspec": "1.10.0"
+  },
+  "independentChecks": {
+    "productionSourceMutationBy091": "NONE",
+    "productionTestMutationBy091": "NONE",
+    "proposalArtifactsCreatedBy091": "NONE",
+    "typecheck": "PASS",
+    "domainTests": "91/91 PASS",
+    "formatCheck": "PASS",
+    "canonicalOpenSpecSpecs": "8/8 strict PASS after reconstructed preceding archives",
+    "currentChangePlanningState": "0/4; proposal ready",
+    "realOpenSpecObservationProof": "6/6 PASS",
+    "nestedRootCounterexample": "REPRODUCED",
+    "nonZeroValidJsonFormalOutcome": "REPRODUCED"
+  },
+  "checkpointBaseReviewLimitation": {
+    "claimedArchive": "flowkit-next-delivery-20260824-01-foundation-lifecycle-kernel-91d1271.zip",
+    "exactArchivePresentInThisReviewTurn": false,
+    "exactArchiveShaAndGitRevisionIndependentlyReverified": false,
+    "impact": "non-blocking for Explore readiness"
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

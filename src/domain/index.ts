@@ -10,3 +10,5 @@ export * from "./policy-and-next-boundary.js";
 export * from "./cross-delivery-memo.js";
 export * from "./cross-delivery-memo-persistence.js";
 export * from "./managed-tool-resolution.js";
+
+export * from "./openspec-observation.js";

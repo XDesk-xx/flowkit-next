@@ -1,0 +1,48 @@
+{
+  "runNumber": 99,
+  "kind": "external-orchestrator-archive-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-openspec-thin-integration",
+  "action": "archive",
+  "runId": "20260828-099-archive",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/091-establish-openspec-thin-integration/20260828-099-archive",
+  "inputRunId": "20260828-098-review-apply",
+  "checkpointBase": {
+    "archive": "flowkit-next-delivery-20260824-01-foundation-lifecycle-kernel-91d1271.zip",
+    "gitRevision": "91d1271",
+    "gitRevisionVerification": "owner-supplied-prefix-only; detached source snapshot excludes .git",
+    "archiveSha256": "fcde8952bcf937991089343703e8fb0d00b1b7e089f2f15e3b759adf1491c227"
+  },
+  "executionBasis": {
+    "reviewerVerdict": "approved",
+    "reviewRunId": "20260828-098-review-apply",
+    "userInstruction": "archive and generate local AI handoff",
+    "newOwnerAuthorityFactCreated": false
+  },
+  "executionMode": "detached-linux-direct-openspec-archive-no-flowkit-lifecycle",
+  "runtime": {
+    "detachedProofNode": "22.23.2",
+    "repositoryNodeEngine": ">=22.20.0",
+    "pnpmPackageManagerPin": "11.22.0",
+    "openspec": "1.10.0"
+  },
+  "skillsUsed": [
+    "openspec-archive-change",
+    "openspec-sync-specs"
+  ],
+  "archive": {
+    "archivedAs": "2026-08-28-010-establish-openspec-thin-integration",
+    "ordinalNamingAppliedAtArchive": true,
+    "specsUpdated": true,
+    "specTotals": {
+      "added": 8,
+      "modified": 0,
+      "removed": 0,
+      "renamed": 0
+    }
+  },
+  "stableTransfer": true,
+  "packageClass": "archive-closure-snapshot"
+}

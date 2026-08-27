@@ -1,0 +1,65 @@
+{
+  "runNumber": 95,
+  "kind": "external-orchestrator-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-openspec-thin-integration",
+  "action": "apply",
+  "runId": "20260828-095-apply",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/091-establish-openspec-thin-integration/20260828-095-apply",
+  "recordedAt": "2026-08-28T01:25:37+08:00",
+  "inputAction": {
+    "runId": "20260828-094-review-propose",
+    "payloadArchive": "094-review-propose.zip",
+    "payloadSha256": "2455bf98262c2d3f83ada0d4e9991dc2679cfe379f43f572fd6f13c920e25092",
+    "reviewerVerdict": "approved",
+    "nextBoundary": "apply"
+  },
+  "checkpointBase": {
+    "archive": "flowkit-next-delivery-20260824-01-foundation-lifecycle-kernel-91d1271.zip",
+    "gitRevision": "91d1271d20925b7346aa36e7135c5f99b391c672",
+    "gitRevisionVerification": "full SHA is present in owner-supplied checkpoint archive metadata; detached snapshot excludes .git",
+    "archiveSha256": "fcde8952bcf937991089343703e8fb0d00b1b7e089f2f15e3b759adf1491c227"
+  },
+  "ownerAuthority": null,
+  "applyContract": {
+    "openspecSkill": ".agents/skills/openspec-apply-change/SKILL.md",
+    "openspecSkillSha256": "9a8c4451009e64f6b8ad0e8e382afb5ad0ff74e262be9e6486ae4d9cc67827cb",
+    "convergenceSkill": ".agents/skills/implementation-convergence/SKILL.md",
+    "convergenceSkillSha256": "88b8252dd146a71ea3d189f4c2f651bc8e96db6dbb64e454769eb22ace18a68d",
+    "schema": "spec-driven",
+    "initialProgress": "0/9",
+    "finalProgress": "9/9",
+    "finalState": "all_done"
+  },
+  "runtime": {
+    "nodeFixture": "22.23.2",
+    "repositoryNodeEngine": ">=22.20.0",
+    "nodeRuntimeSnapshotSha256": "29331fa22523b7fce59965e46627ecbc87019ac74e0e6abf9f61284e0760f755",
+    "openspec": "1.10.0",
+    "openspecRuntimeSnapshotSha256": "4fb0b870d9523daebda8becaf4202397da342bc39dde3961d8dd4392c72e2b68",
+    "nodeModules": "exact supplied offline snapshot",
+    "nodeModulesSnapshotSha256": "96e1c2cd74b1bba7e706100f01ed149727453b03a22aefbffb7e5c7175b18406"
+  },
+  "verification": {
+    "focusedObservationTests": "14/14 PASS",
+    "domainTests": "105/105 PASS",
+    "typecheck": "PASS",
+    "formatCheck": "PASS",
+    "changeStrict": "PASS",
+    "openspecAllStrict": "9/9 PASS",
+    "realOpenSpecExactRootListStatus": "PASS",
+    "missingChangeFormalOutcome": "PASS",
+    "fakePathIsolation": "PASS",
+    "nestedRootRejection": "PASS",
+    "codeGate": "PASS",
+    "dependencyMutation": "NONE"
+  },
+  "skillsUsed": [
+    "openspec-apply-change",
+    "implementation-convergence"
+  ],
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

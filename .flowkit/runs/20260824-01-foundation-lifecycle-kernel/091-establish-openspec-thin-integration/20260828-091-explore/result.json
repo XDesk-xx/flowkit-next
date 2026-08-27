@@ -1,0 +1,61 @@
+{
+  "runNumber": 91,
+  "kind": "external-orchestrator-explore-result",
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-openspec-thin-integration",
+  "action": "explore",
+  "runId": "20260828-091-explore",
+  "executionStatus": "completed",
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-explore",
+  "problemBoundary": "read-only OpenSpec 1.10.0 machine observation over the existing managed-tool entrypoint; no workflow ownership or Skill/self-hosting integration",
+  "durableFacts": [
+    "OpenSpec remains the only formal Change artifact authority.",
+    "The existing managed-tool resolver is the required OpenSpec runtime selection seam and does not itself invoke tools.",
+    "Policy must remain free of OpenSpec filesystem/CLI reads.",
+    "OpenSpec 1.10.0 list/status JSON provides the current formal active-Change and artifact-readiness facts required by downstream integration.",
+    "OpenSpec formal command failure can be represented as valid JSON on a non-zero exit and must not be collapsed into transport failure.",
+    "Successful observations must bind OpenSpec root.path to the exact requested repository root.",
+    ".agents OpenSpec Skills remain bootstrap development tools and are not a product runtime dependency."
+  ],
+  "proposalDirection": [
+    "Add a small read-only OpenSpec integration module outside Policy.",
+    "Invoke only the validated managed OpenSpec entrypoint using the current host Node and exact repository cwd.",
+    "Expose only active Change observation and exact Change artifact-status observation justified by current consumers.",
+    "Validate the machine fields Flowkit consumes and fail closed on malformed JSON/root mismatch.",
+    "Keep observations transient; do not persist or mirror OpenSpec lifecycle state in .flowkit."
+  ],
+  "explicitNonGoals": [
+    "OpenSpec state-machine/workflow reimplementation",
+    "OpenSpec mutation commands or automatic explore/propose/apply/archive",
+    "generic arbitrary OpenSpec command executor",
+    "Policy reading OpenSpec",
+    "Markdown/filesystem status inference",
+    "persistent OpenSpec-state mirror/cache",
+    ".agents Skill execution or migration",
+    "Flowkit self-hosting",
+    "Foundation CLI implementation",
+    "Git checkpoint implementation",
+    "cross-platform whole-manager acceptance"
+  ],
+  "checks": {
+    "typecheck": "PASS",
+    "domainTests": "91/91 PASS",
+    "formatCheck": "PASS",
+    "canonicalOpenSpecSpecsStrict": "8/8 PASS",
+    "productionSourceMutation": "NONE",
+    "productionTestMutation": "NONE",
+    "proposalArtifactsCreated": "NONE"
+  },
+  "limitations": [
+    "Product wrappers for OpenSpec instructions/validate/show remain deferred until a concrete Flowkit runtime consumer proves they are needed.",
+    "Mutating OpenSpec operations remain driven by existing bootstrap OpenSpec Skills during current development.",
+    "Standalone OpenSpec store support is outside the current repo-local Foundation input domain.",
+    "Whole-manager Windows/Linux acceptance remains a later Delivery Change."
+  ],
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}
