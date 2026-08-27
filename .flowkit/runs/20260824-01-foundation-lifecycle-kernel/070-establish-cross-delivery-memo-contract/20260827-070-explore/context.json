@@ -1,0 +1,45 @@
+{
+  "runNumber": 70,
+  "kind": "external-orchestrator-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-cross-delivery-memo-contract",
+  "action": "explore",
+  "runId": "20260827-070-explore",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/070-establish-cross-delivery-memo-contract/20260827-070-explore",
+  "inputRunId": null,
+  "checkpointBase": {
+    "archive": "flowkit-next-delivery-20260824-01-foundation-lifecycle-kernel-2cc6a6c.zip",
+    "gitRevision": "2cc6a6c0cdcad771ed7d5503c1e7197ffee553d3"
+  },
+  "authorization": {
+    "ref": "owner:11bc5f5b33b63b1f24fa6309ac7ac9b12c0a3f65d64eb576d2fe8df31aeb34de",
+    "decision": "activate-change",
+    "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+    "changeId": "establish-cross-delivery-memo-contract",
+    "sourceRef": "owner-input:2026-08-27:activate-cross-delivery-memo-contract:explore-proof-based",
+    "scope": [
+      "explore"
+    ]
+  },
+  "executionMode": "external-orchestrator-detached-linux-openspec-explore-proof-based",
+  "runtime": {
+    "node": "22.23.2",
+    "pnpm": "11.22.0",
+    "openspec": "1.10.0"
+  },
+  "skillsUsed": [
+    "openspec-explore",
+    "explore-proof-based"
+  ],
+  "focusedProof": {
+    "boundaryScriptSha256": "3d440d177a509fe508f347e0bdb542d86b098cc86bffb816af3d184dca96a516",
+    "boundaryResultSha256": "a2214c39cd01f019ed3a24c2c37092c8e0316631670ec4acd5a0ddbdf735085e",
+    "stateScriptSha256": "8347198dc3560ebbdf603493726e65536697f558864baea576d813ce99cabf15",
+    "stateResultSha256": "b461355df661f369c7d1786ce878952d1f3d88caafef3b1c99832e9c212dc91a",
+    "includedInStableTransfer": false
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

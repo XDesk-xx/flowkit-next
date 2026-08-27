@@ -52,6 +52,10 @@ export interface OwnerAuthorityFact {
 }
 
 const OWNER_REF_PATTERN = /^owner:[0-9a-f]{64}$/;
+
+export function isOwnerAuthorityRef(value: unknown): value is string {
+  return typeof value === "string" && OWNER_REF_PATTERN.test(value);
+}
 const SOURCE_REF_PATTERN = /^[!-~]{1,512}$/;
 const REQUIRED_FIELDS = [
   "ref",
@@ -88,8 +92,7 @@ export function isOwnerAuthorityFact(
   if (keys.some((key) => !ALLOWED_FIELDS.has(key))) return false;
   if (REQUIRED_FIELDS.some((key) => !Object.hasOwn(value, key))) return false;
 
-  if (typeof value.ref !== "string" || !OWNER_REF_PATTERN.test(value.ref))
-    return false;
+  if (!isOwnerAuthorityRef(value.ref)) return false;
   if (!isSemanticId(value.decision) || !isSemanticId(value.deliveryId))
     return false;
   if (Object.hasOwn(value, "changeId") && !isSemanticId(value.changeId))

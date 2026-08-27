@@ -8,6 +8,7 @@ import {
   isActorRole,
   isAuthoritySource,
   isOwnerAuthorityFact,
+  isOwnerAuthorityRef,
 } from "../../../src/domain/index.js";
 
 const baseFact = {
@@ -101,4 +102,10 @@ test("Review, Verification, or terminal facts do not implicitly create Owner aut
     false,
   );
   assert.equal(hasExplicitOwnerAuthorityFact(baseFact), true);
+});
+
+test("validates canonical Owner authority refs through the reusable helper", () => {
+  assert.equal(isOwnerAuthorityRef(`owner:${"c".repeat(64)}`), true);
+  assert.equal(isOwnerAuthorityRef(`owner:${"C".repeat(64)}`), false);
+  assert.equal(isOwnerAuthorityRef("owner:abc"), false);
 });

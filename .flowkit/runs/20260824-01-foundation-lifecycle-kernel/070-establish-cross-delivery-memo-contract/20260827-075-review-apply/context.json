@@ -1,0 +1,54 @@
+{
+  "runNumber": 75,
+  "kind": "external-orchestrator-review-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-cross-delivery-memo-contract",
+  "action": "review-apply",
+  "runId": "20260827-075-review-apply",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/070-establish-cross-delivery-memo-contract/20260827-075-review-apply",
+  "inputRunId": "20260827-074-apply",
+  "reviewChainStartRunId": "20260827-070-explore",
+  "reviewModel": "review-apply-skill-v2",
+  "checkpointBase": {
+    "archive": "flowkit-next-delivery-20260824-01-foundation-lifecycle-kernel-2cc6a6c.zip",
+    "gitRevisionClaimedByInput": "2cc6a6c0cdcad771ed7d5503c1e7197ffee553d3",
+    "gitRevisionIndependentlyVerified": false,
+    "reason": "supplied checkpoint snapshot contains no .git metadata"
+  },
+  "chainIntegrity": {
+    "runs070To073ByteIdentical": true,
+    "approvedExploreUnchanged": true,
+    "approvedProposalUnchanged": true,
+    "approvedDesignUnchanged": true,
+    "approvedSpecUnchanged": true,
+    "deliveryGroupUnchangedFrom073": true,
+    "tasksOnlyChangedToComplete": true
+  },
+  "runtime": {
+    "node": "22.23.2",
+    "openspec": "1.10.0"
+  },
+  "independentChecks": {
+    "typecheck": "PASS",
+    "domainTests": "79/79 PASS",
+    "formatCheck": "PASS",
+    "changeStrict": "PASS",
+    "openspecAllStrict": "7/7 PASS",
+    "tasks": "8/8 all_done",
+    "independentMemoFilesystemAuthorityProof": "12/12 PASS",
+    "historicalRuns": "070-073 byte-identical",
+    "newDependencies": false,
+    "policyMutation": false,
+    "runResultPersistenceMutation": false,
+    "standardActionMutation": false,
+    "runLifecycleMutation": false,
+    "openspecTargetCreation": false,
+    "gitBoundaryMutation": false,
+    "newOrModifiedTypeScriptOver500Lines": "NONE",
+    "detachedLinuxTempReplacement": "PASS"
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

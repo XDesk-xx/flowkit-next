@@ -1,0 +1,37 @@
+{
+  "runNumber": 73,
+  "kind": "external-orchestrator-review-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-cross-delivery-memo-contract",
+  "action": "review-propose",
+  "runId": "20260827-073-review-propose",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/070-establish-cross-delivery-memo-contract/20260827-073-review-propose",
+  "inputRunId": "20260827-072-propose",
+  "reviewChainStartRunId": "20260827-070-explore",
+  "reviewModel": "review-propose-skill-v2",
+  "chainIntegrity": {
+    "runs070And071ByteIdentical": true,
+    "approvedExploreUnchanged": true,
+    "deliveryGroupUnchangedFrom071": true
+  },
+  "runtime": {
+    "node": "22.23.2",
+    "openspec": "1.10.0"
+  },
+  "independentChecks": {
+    "openspecPlanning": "4/4 complete",
+    "changeStrict": "PASS",
+    "openspecAllStrict": "7/7 PASS",
+    "typecheck": "PASS",
+    "domainTests": "63/63 PASS",
+    "formatCheck": "PASS",
+    "ownerAuthoritySeamReusableWithoutContractChange": true,
+    "runOccurrenceParserReusableForMemoProvenance": true,
+    "proposalConstraintsFrom071": "4/4 formalized",
+    "productionMutationBy072": "NONE"
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

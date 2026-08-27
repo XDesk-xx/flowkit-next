@@ -1,0 +1,60 @@
+{
+  "runNumber": 74,
+  "kind": "external-orchestrator-apply-result",
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-cross-delivery-memo-contract",
+  "action": "apply",
+  "runId": "20260827-074-apply",
+  "finishedAt": "2026-08-27T09:22:44+08:00",
+  "executionStatus": "completed",
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-apply",
+  "tasks": {
+    "total": 8,
+    "complete": 8,
+    "state": "all_done"
+  },
+  "implementation": {
+    "addedSource": [
+      "src/domain/cross-delivery-memo.ts",
+      "src/domain/cross-delivery-memo-persistence.ts"
+    ],
+    "modifiedSource": [
+      "src/domain/authority.ts",
+      "src/domain/index.ts"
+    ],
+    "addedTests": [
+      "tests/unit/domain/cross-delivery-memo.test.ts",
+      "tests/unit/domain/cross-delivery-memo-persistence.test.ts"
+    ],
+    "modifiedTests": [
+      "tests/unit/domain/authority.test.ts"
+    ],
+    "newDependencies": false,
+    "policyMutation": false,
+    "runResultPersistenceMutation": false,
+    "standardActionMutation": false,
+    "runLifecycleMutation": false,
+    "openspecTargetCreation": false,
+    "gitBoundaryMutation": false
+  },
+  "checks": {
+    "typecheck": "PASS",
+    "domainTests": "79/79 PASS",
+    "formatCheck": "PASS",
+    "changeStrict": "PASS",
+    "openspecAllStrict": "7/7 PASS",
+    "tasks": "8/8 all_done",
+    "dependencyFiles": "UNCHANGED",
+    "runResultPersistenceBaseHash": "2cedf17ec00b0c5626904bc686c78be65b2a8986a37272dccb5fe146965ca88c",
+    "runResultPersistenceCurrentHash": "2cedf17ec00b0c5626904bc686c78be65b2a8986a37272dccb5fe146965ca88c",
+    "policyBaseHash": "36b4e6ec74fe3f01b3377c15491ed1832b419a7ea275a8eded57507129a0001a",
+    "policyCurrentHash": "36b4e6ec74fe3f01b3377c15491ed1832b419a7ea275a8eded57507129a0001a",
+    "fileSizeGate": "PASS: no new/modified TypeScript file >500 lines"
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

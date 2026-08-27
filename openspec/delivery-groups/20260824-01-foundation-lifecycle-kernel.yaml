@@ -123,7 +123,7 @@ changes:
     required: true
     dependsOn:
       - "establish-policy-and-next-boundary-contract"
-    state: planned
+    state: completed
     architectureImpact: true
     outputs:
       - "cross-Delivery Memo durable contract"
@@ -310,6 +310,15 @@ ownerDecisions:
     sourceRef: "owner-input:2026-08-26:check-base-and-enter-next-change:establish-policy-and-next-boundary-contract"
     scope:
       - "explore"
+
+  - ref: "owner:11bc5f5b33b63b1f24fa6309ac7ac9b12c0a3f65d64eb576d2fe8df31aeb34de"
+    decision: "activate-change"
+    deliveryId: "20260824-01-foundation-lifecycle-kernel"
+    changeId: "establish-cross-delivery-memo-contract"
+    sourceRef: "owner-input:2026-08-27:activate-cross-delivery-memo-contract:explore-proof-based"
+    scope:
+      - "explore"
+
 
 verification:
   change:
