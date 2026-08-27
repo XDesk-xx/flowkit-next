@@ -77,22 +77,30 @@ orchestrate the whole workflow
 
 ## 5. Toolchain 与 runtime
 
-Exact identity 读取：
+Managed external-tool exact identity 读取：
 
 ```text
 config/tools/toolchain.lock.json
 ```
 
-当前锁定：
+当前 managed tools：
 
 ```text
-Node      22.23.2
-pnpm      11.22.0
 OpenSpec  1.10.0
 Archify   2.15.0
 ```
 
-不得因本机 PATH 有其他版本就静默使用；不得在无关任务里自动升级或下载 `latest`。
+Host/runtime truth 分离：
+
+```text
+package.json#engines.node   → Node host compatibility
+package.json#packageManager → repository pnpm identity
+.node-version               → developer/detached reproducibility fixture
+```
+
+Node `22.23.2` 可以作为当前 reproducible fixture，但不是 managed-tool exact runtime authority；兼容的其他 Node patch 不应仅因与该 fixture 不同而被拒绝。pnpm 也不是 managed runtime resolution target。
+
+Managed OpenSpec/Archify 不得因本机 PATH 有其他版本就静默使用；不得在无关任务里自动升级或下载 `latest`。
 
 Executable runtime 放在外部：
 

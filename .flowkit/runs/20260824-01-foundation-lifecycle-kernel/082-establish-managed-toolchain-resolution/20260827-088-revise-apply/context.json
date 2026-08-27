@@ -1,0 +1,67 @@
+{
+  "runNumber": 88,
+  "kind": "external-orchestrator-revise-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-managed-toolchain-resolution",
+  "action": "revise-apply",
+  "runId": "20260827-088-revise-apply",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/082-establish-managed-toolchain-resolution/20260827-088-revise-apply",
+  "recordedAt": "2026-08-27T20:30:15+08:00",
+  "inputAction": {
+    "runId": "20260827-087-review-apply",
+    "payloadArchive": "087-review-apply.zip",
+    "payloadSha256": "11c0e78f96fc498b0ecbb27b89a87630e1905cf05e2c1b7dffc95c84d7bf7c72",
+    "reviewerVerdict": "changes-requested",
+    "nextBoundary": "revise-apply",
+    "blockingFinding": "RA-087-001"
+  },
+  "base": {
+    "gitRevisionHint": "853c622",
+    "gitRevisionVerified": false,
+    "reason": "detached transfer snapshot excludes .git; exact Git revision is an external base hint"
+  },
+  "revisionContract": {
+    "reviseApplySkill": ".agents/skills/revise-apply/SKILL.md",
+    "reviseApplySkillSha256": "69fb9ee64e76b140d31e6073bbf9266ea236fbc40be539b5b7dffa2bfc6321cf",
+    "convergenceSkill": ".agents/skills/implementation-convergence/SKILL.md",
+    "convergenceSkillSha256": "88b8252dd146a71ea3d189f4c2f651bc8e96db6dbb64e454769eb22ace18a68d",
+    "findingClass": "implementation-defect",
+    "proposalChangeRequired": false
+  },
+  "runtime": {
+    "nodeFixture": "22.23.2",
+    "openspec": "1.10.0",
+    "nodeModules": "existing supplied offline snapshot"
+  },
+  "qualityGate": {
+    "baselineOversizedTypeScript": "src/domain/run-result-persistence.ts:588",
+    "baselineOversizedFileByteUnchanged": true,
+    "policyModuleByteUnchanged": true,
+    "changeTypeScriptLines": {
+      "src/domain/index.ts": 12,
+      "src/domain/managed-tool-resolution.ts": 430,
+      "tests/unit/domain/managed-tool-resolution.test.ts": 355
+    },
+    "newOrModifiedTypeScriptOver500": [],
+    "auxiliaryChangeTriggered": false,
+    "auxiliaryChangeReason": "not required: the minimal reviewer-requested fix stays below the file-size gate and does not touch the pre-existing oversized baseline module"
+  },
+  "verification": {
+    "openspecApplyState": "8/8 all_done",
+    "focusedManagedToolTests": "12/12 PASS",
+    "domainTests": "91/91 PASS",
+    "typecheck": "PASS",
+    "formatCheck": "PASS",
+    "changeStrict": "PASS",
+    "openspecAllStrict": "8/8 PASS",
+    "realOpenSpecFixture": "PASS",
+    "realArchifyFixture": "PASS",
+    "onDemandOpenSpecOnlyFixture": "PASS",
+    "onDemandArchifyOnlyFixture": "PASS",
+    "dependencyMutation": "NONE"
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

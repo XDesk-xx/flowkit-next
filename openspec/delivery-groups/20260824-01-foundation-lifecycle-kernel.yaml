@@ -147,7 +147,7 @@ changes:
     required: true
     dependsOn:
       - "establish-lifecycle-authority-and-identity-contracts"
-    state: planned
+    state: completed
     architectureImpact: true
     outputs:
       - "managed toolchain resolution"
@@ -345,6 +345,15 @@ ownerDecisions:
       - "dependencies"
       - "scope"
       - "verification"
+
+
+  - ref: "owner:e38686db4a2e40359d96bcc19497cd7fe3ce62e2598e90c50691526d8849fd7a"
+    decision: "activate-change"
+    deliveryId: "20260824-01-foundation-lifecycle-kernel"
+    changeId: "establish-managed-toolchain-resolution"
+    sourceRef: "owner-input:2026-08-27T19:00+08:00:activate-managed-toolchain-resolution:explore-proof-based"
+    scope:
+      - "explore"
 
 
 verification:

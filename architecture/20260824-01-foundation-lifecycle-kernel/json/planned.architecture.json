@@ -43,20 +43,11 @@
       {
         "id": "authority",
         "label": "Authority 边界",
-        "focus": [
-          "owner",
-          "policy",
-          "governance",
-          "git",
-          "acceptance"
-        ],
+        "focus": ["owner", "policy", "governance", "git", "acceptance"],
         "note": "Owner/Review/Verification/Git checkpoint authority 分离；OpenSpec Change/contract 保持 mutation semantic authority；candidate 不自管 Delivery 01。"
       }
     ],
-    "viewBox": [
-      1660,
-      1050
-    ],
+    "viewBox": [1660, 1050],
     "subtitle": "以 Delivery 01 Start current 为固定布局锚点；保留组件位置不变，仅在下方扩展 Foundation Lifecycle Kernel 目标能力。"
   },
   "components": [
@@ -65,14 +56,8 @@
       "type": "external",
       "label": "Owner",
       "sublabel": "显式授权 / scope / promotion",
-      "pos": [
-        60,
-        120
-      ],
-      "size": [
-        170,
-        68
-      ],
+      "pos": [60, 120],
+      "size": [170, 68],
       "tag": "现有"
     },
     {
@@ -80,14 +65,8 @@
       "type": "database",
       "label": "Git Repository",
       "sublabel": "bytes / branch / commit / history",
-      "pos": [
-        320,
-        120
-      ],
-      "size": [
-        190,
-        68
-      ],
+      "pos": [320, 120],
+      "size": [190, 68],
       "tag": "现有"
     },
     {
@@ -95,14 +74,8 @@
       "type": "backend",
       "label": "Project Initialization",
       "sublabel": ".flowkit/project.json / skeleton",
-      "pos": [
-        600,
-        120
-      ],
-      "size": [
-        210,
-        68
-      ],
+      "pos": [600, 120],
+      "size": [210, 68],
       "tag": "已完成",
       "sources": [
         {
@@ -120,14 +93,8 @@
       "type": "database",
       "label": "Dependency Truth",
       "sublabel": "package.json + pnpm-lock.yaml",
-      "pos": [
-        885,
-        120
-      ],
-      "size": [
-        210,
-        68
-      ],
+      "pos": [885, 120],
+      "size": [210, 68],
       "tag": "已完成",
       "sources": [
         {
@@ -143,21 +110,15 @@
     {
       "id": "toolchain-lock",
       "type": "security",
-      "label": "Toolchain Identity",
-      "sublabel": "Node / pnpm / OpenSpec / Archify",
-      "pos": [
-        600,
-        340
-      ],
-      "size": [
-        210,
-        68
-      ],
+      "label": "Managed Tool Identity",
+      "sublabel": "OpenSpec / Archify exact managed identity",
+      "pos": [600, 340],
+      "size": [210, 68],
       "tag": "已锁定",
       "sources": [
         {
           "path": "config/tools/toolchain.lock.json",
-          "label": "exact toolchain lock"
+          "label": "exact managed-tool lock"
         }
       ]
     },
@@ -166,14 +127,8 @@
       "type": "backend",
       "label": "Canonical Skills",
       "sublabel": "skills/vendors + tools + actions",
-      "pos": [
-        320,
-        340
-      ],
-      "size": [
-        190,
-        68
-      ],
+      "pos": [320, 340],
+      "size": [190, 68],
       "tag": "HOW only",
       "sources": [
         {
@@ -187,14 +142,8 @@
       "type": "external",
       "label": "OpenSpec 1.10.0",
       "sublabel": "formal Change authority / external runtime",
-      "pos": [
-        885,
-        340
-      ],
-      "size": [
-        210,
-        68
-      ],
+      "pos": [885, 340],
+      "size": [210, 68],
       "tag": "环境前置"
     },
     {
@@ -202,14 +151,8 @@
       "type": "external",
       "label": "Archify 2.15.0",
       "sublabel": "derived architecture validation",
-      "pos": [
-        1165,
-        340
-      ],
-      "size": [
-        200,
-        68
-      ],
+      "pos": [1165, 340],
+      "size": [200, 68],
       "tag": "环境前置"
     },
     {
@@ -218,14 +161,8 @@
       "label": "Minimal Flowkit CLI",
       "sublabel": "thin interface over Core",
       "tag": "新增",
-      "pos": [
-        50,
-        590
-      ],
-      "size": [
-        190,
-        68
-      ]
+      "pos": [50, 590],
+      "size": [190, 68]
     },
     {
       "id": "policy",
@@ -233,14 +170,8 @@
       "label": "Policy / Next Boundary",
       "sublabel": "one legal Action or blocked",
       "tag": "新增",
-      "pos": [
-        320,
-        590
-      ],
-      "size": [
-        210,
-        68
-      ]
+      "pos": [320, 590],
+      "size": [210, 68]
     },
     {
       "id": "lifecycle",
@@ -248,14 +179,8 @@
       "label": "Lifecycle Domain",
       "sublabel": "authority / identity / Action state",
       "tag": "新增",
-      "pos": [
-        600,
-        590
-      ],
-      "size": [
-        210,
-        68
-      ]
+      "pos": [600, 590],
+      "size": [210, 68]
     },
     {
       "id": "execution",
@@ -263,14 +188,8 @@
       "label": "Single-Action Execution",
       "sublabel": "internal prepare / ActionPackage / exact admission / terminal / STOP",
       "tag": "新增",
-      "pos": [
-        880,
-        590
-      ],
-      "size": [
-        220,
-        68
-      ]
+      "pos": [880, 590],
+      "size": [220, 68]
     },
     {
       "id": "persistence",
@@ -278,14 +197,8 @@
       "label": "Run / Result Persistence",
       "sublabel": "durable .flowkit/runs",
       "tag": "新增",
-      "pos": [
-        1175,
-        590
-      ],
-      "size": [
-        210,
-        68
-      ]
+      "pos": [1175, 590],
+      "size": [210, 68]
     },
     {
       "id": "acceptance",
@@ -293,14 +206,8 @@
       "label": "Review / Verification",
       "sublabel": "verdict / evidence / cross-platform acceptance",
       "tag": "新增",
-      "pos": [
-        50,
-        800
-      ],
-      "size": [
-        210,
-        68
-      ]
+      "pos": [50, 800],
+      "size": [210, 68]
     },
     {
       "id": "governance",
@@ -308,33 +215,21 @@
       "label": "Git Checkpoint Boundary",
       "sublabel": "terminal authorization seam",
       "tag": "新增",
-      "pos": [
-        320,
-        800
-      ],
-      "size": [
-        210,
-        68
-      ]
+      "pos": [320, 800],
+      "size": [210, 68]
     },
     {
       "id": "toolchain-resolution",
       "type": "backend",
       "label": "Managed Toolchain Resolver",
-      "sublabel": "FLOWKIT_HOME exact runtime resolution",
+      "sublabel": "OpenSpec / Archify via FLOWKIT_HOME",
       "tag": "新增",
-      "pos": [
-        877.5,
-        800
-      ],
-      "size": [
-        225,
-        68
-      ],
+      "pos": [877.5, 800],
+      "size": [225, 68],
       "sources": [
         {
           "path": "config/tools/toolchain.lock.json",
-          "label": "exact toolchain identity"
+          "label": "exact managed-tool identity"
         }
       ]
     }
@@ -411,19 +306,10 @@
       "fromSide": "bottom",
       "toSide": "bottom",
       "via": [
-        [
-          705,
-          480
-        ],
-        [
-          1265,
-          480
-        ]
+        [705, 480],
+        [1265, 480]
       ],
-      "labelAt": [
-        985,
-        495
-      ]
+      "labelAt": [985, 495]
     },
     {
       "id": "p1",
@@ -431,10 +317,7 @@
       "to": "policy",
       "label": "formal request",
       "route": "straight",
-      "labelAt": [
-        280,
-        570
-      ]
+      "labelAt": [280, 570]
     },
     {
       "id": "p2",
@@ -443,10 +326,7 @@
       "label": "legal boundary",
       "route": "straight",
       "variant": "emphasis",
-      "labelAt": [
-        565,
-        570
-      ]
+      "labelAt": [565, 570]
     },
     {
       "id": "p3",
@@ -454,10 +334,7 @@
       "to": "execution",
       "label": "exact current Action",
       "route": "straight",
-      "labelAt": [
-        845,
-        570
-      ]
+      "labelAt": [845, 570]
     },
     {
       "id": "p4",
@@ -465,10 +342,7 @@
       "to": "persistence",
       "label": "real Run / Result",
       "route": "straight",
-      "labelAt": [
-        1138,
-        570
-      ]
+      "labelAt": [1138, 570]
     },
     {
       "id": "p5",
@@ -479,23 +353,11 @@
       "fromSide": "top",
       "toSide": "left",
       "via": [
-        [
-          155,
-          700
-        ],
-        [
-          290,
-          700
-        ],
-        [
-          290,
-          624
-        ]
+        [155, 700],
+        [290, 700],
+        [290, 624]
       ],
-      "labelAt": [
-        225,
-        715
-      ],
+      "labelAt": [225, 715],
       "variant": "dashed"
     },
     {
@@ -504,10 +366,7 @@
       "to": "governance",
       "label": "checkpoint eligibility",
       "route": "straight",
-      "labelAt": [
-        535,
-        730
-      ]
+      "labelAt": [535, 730]
     },
     {
       "id": "p7",
@@ -515,10 +374,7 @@
       "to": "execution",
       "label": "exact tool runtime",
       "route": "straight",
-      "labelAt": [
-        1095,
-        730
-      ]
+      "labelAt": [1095, 730]
     },
     {
       "id": "p8",
@@ -527,10 +383,7 @@
       "label": "explicit request / authority",
       "route": "straight",
       "variant": "security",
-      "labelAt": [
-        145,
-        500
-      ]
+      "labelAt": [145, 500]
     }
   ],
   "cards": [

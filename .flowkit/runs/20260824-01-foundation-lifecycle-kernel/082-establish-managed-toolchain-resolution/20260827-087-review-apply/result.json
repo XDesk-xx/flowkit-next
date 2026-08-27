@@ -1,0 +1,38 @@
+{
+  "runNumber": 87,
+  "kind": "external-orchestrator-review-apply-result",
+  "role": "reviewer",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-managed-toolchain-resolution",
+  "action": "review-apply",
+  "runId": "20260827-087-review-apply",
+  "executionStatus": "completed",
+  "authorConclusion": null,
+  "reviewerVerdict": "changes-requested",
+  "verificationVerdict": null,
+  "nextBoundary": "revise-apply",
+  "blockingFindings": [
+    {
+      "id": "RA-087-001",
+      "title": "Peer lock/config invalidity incorrectly blocks on-demand requested-tool resolution",
+      "requiredRevision": "Make managed-tool lock entry validation request-scoped so malformed or absent peer entry does not block a valid requested tool; add both malformed-peer direction tests."
+    }
+  ],
+  "checks": {
+    "chain082To086Traceability": "PASS",
+    "proposalFidelity": "PASS except RA-087-001",
+    "scopeCompliance": "PASS",
+    "minimality": "PASS",
+    "implementationCorrectness": "BLOCKED by RA-087-001",
+    "verificationEvidence": "PASS but missing malformed-peer coverage",
+    "typecheck": "PASS",
+    "domainTests": "90/90 PASS",
+    "formatCheck": "PASS",
+    "changeStrict": "PASS",
+    "openspecAllStrict": "8/8 PASS",
+    "tasks": "8/8 all_done",
+    "productionMutationScope": "APPROVED / BOUNDED"
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

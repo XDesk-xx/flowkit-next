@@ -1,0 +1,63 @@
+{
+  "runNumber": 86,
+  "kind": "external-orchestrator-apply-result",
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-managed-toolchain-resolution",
+  "action": "apply",
+  "runId": "20260827-086-apply",
+  "executionStatus": "completed",
+  "applyStatus": "complete",
+  "openspecApplyState": "all_done",
+  "openspecTasks": "8/8 complete",
+  "implementation": {
+    "created": [
+      "src/domain/managed-tool-resolution.ts",
+      "tests/unit/domain/managed-tool-resolution.test.ts"
+    ],
+    "modified": [
+      "src/domain/index.ts",
+      "config/tools/toolchain.lock.json",
+      "AGENTS.md",
+      "architecture/20260824-01-foundation-lifecycle-kernel/json/planned.architecture.json",
+      "openspec/changes/establish-managed-toolchain-resolution/tasks.md"
+    ],
+    "dependencyMutation": false
+  },
+  "contractFactsImplemented": [
+    "Managed tool ids are closed to openspec and archify.",
+    "Managed runtime resolution uses repository-tracked identity plus explicit FLOWKIT_HOME and never falls back to PATH/global installations.",
+    "Configured runtime roots and entrypoints are fail-closed and confined to the expected managed location.",
+    "Exact runtime package name/version and entrypoint file presence are validated before success.",
+    "Resolution is on demand for only the requested managed tool; a missing peer does not block it.",
+    "Successful resolution returns immutable tool id/version/runtime-root/entrypoint facts and never invokes the tool.",
+    "Failure behavior uses the approved closed deterministic diagnostic catalog.",
+    "toolchain.lock no longer carries Node/pnpm exact resolver authority; Node host compatibility remains package.json#engines.node and pnpm identity remains package.json#packageManager.",
+    "Node 22.23.2 remains only a reproducibility fixture and is not enforced by managed-tool resolution.",
+    "Artifact hashes remain provenance metadata and are not required as live runtime attestation."
+  ],
+  "verification": {
+    "focusedManagedToolTests": "11/11 PASS",
+    "domainTests": "90/90 PASS",
+    "typecheck": "PASS",
+    "formatCheck": "PASS",
+    "openspecChangeStrict": "PASS",
+    "openspecAllStrict": "8/8 PASS",
+    "suppliedRuntimeProof": "PASS",
+    "fakePathConflict": "PASS",
+    "onDemandMissingPeer": "PASS"
+  },
+  "productionMutation": true,
+  "reviewApplyPerformed": false,
+  "archivePerformed": false,
+  "nextBoundary": "review-apply",
+  "nextBoundaryAuthority": "handoff-advisory-only",
+  "limitations": [
+    "Independent review-apply has not yet been performed.",
+    "This Apply grants no Verification PASS, Owner archive authority, checkpoint authority, or promotion authority.",
+    "The exact Node 22.23.2 used here is a detached proof fixture, not a new managed-runtime product constraint.",
+    "Run 086 is an external stable-transfer record and is not claimed to have been emitted by the candidate Flowkit runtime."
+  ],
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

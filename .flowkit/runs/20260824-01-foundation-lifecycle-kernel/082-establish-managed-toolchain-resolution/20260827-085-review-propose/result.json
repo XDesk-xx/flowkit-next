@@ -1,0 +1,41 @@
+{
+  "runNumber": 85,
+  "kind": "external-orchestrator-review-propose-result",
+  "role": "reviewer",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-managed-toolchain-resolution",
+  "action": "review-propose",
+  "runId": "20260827-085-review-propose",
+  "executionStatus": "completed",
+  "authorConclusion": null,
+  "reviewerVerdict": "approved",
+  "verificationVerdict": null,
+  "nextBoundary": "apply",
+  "blockingFindings": [],
+  "checks": {
+    "chain082To084Traceability": "PASS",
+    "exploreTraceability": "PASS",
+    "scopeConvergence": "PASS",
+    "minimality": "PASS",
+    "contractCompleteness": "PASS",
+    "designDiscipline": "PASS",
+    "verificationClosure": "PASS",
+    "openspecPlanning": "4/4 complete",
+    "changeStrict": "PASS",
+    "openspecAllStrict": "8/8 PASS",
+    "typecheck": "PASS",
+    "domainTests": "79/79 PASS",
+    "formatCheck": "PASS",
+    "productionMutation": "NONE"
+  },
+  "approvedBoundaries": {
+    "managedToolIdsClosed": true,
+    "nodeExactPatchOutsideManagedAuthority": true,
+    "pnpmOutsideManagedRuntimeResolution": true,
+    "flowkitHomeOnlyNoPathFallback": true,
+    "resolutionOnlyNoInvocation": true,
+    "artifactHashesAreProvenanceOnly": true
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

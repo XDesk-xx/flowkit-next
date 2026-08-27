@@ -1,0 +1,42 @@
+{
+  "runNumber": 87,
+  "kind": "external-orchestrator-review-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-managed-toolchain-resolution",
+  "action": "review-apply",
+  "runId": "20260827-087-review-apply",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/082-establish-managed-toolchain-resolution/20260827-087-review-apply",
+  "inputRunId": "20260827-086-apply",
+  "reviewChainStartRunId": "20260827-082-explore",
+  "reviewModel": "review-apply-skill",
+  "chainIntegrity": {
+    "sharedFilesAgainst085ReviewerPayload": 19,
+    "sharedFilesByteIdenticalExceptTasksCompletion": 18,
+    "approvedExploreProposalDesignSpecUnchanged": true,
+    "deliveryManifestUnchanged": true
+  },
+  "runtime": {
+    "node": "22.23.2",
+    "openspec": "1.10.0"
+  },
+  "independentChecks": {
+    "typecheck": "PASS",
+    "domainTests": "90/90 PASS",
+    "formatCheck": "PASS",
+    "openspecPlanning": "4/4 complete",
+    "changeStrict": "PASS",
+    "openspecAllStrict": "8/8 PASS",
+    "tasks": "8/8 all_done",
+    "realOpenSpecRuntimeResolution": "PASS",
+    "realArchifyRuntimeResolution": "PASS",
+    "artifactHashesAgainstLock": "4/4 PASS",
+    "fakePathIsolation": "PASS",
+    "missingPeerRuntimeIsolation": "PASS",
+    "malformedPeerLockIsolation": "FAIL; reproduced both directions",
+    "dependencyMutation": "NONE"
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

@@ -1,0 +1,54 @@
+{
+  "runNumber": 82,
+  "kind": "external-orchestrator-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-managed-toolchain-resolution",
+  "action": "explore",
+  "runId": "20260827-082-explore",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/082-establish-managed-toolchain-resolution/20260827-082-explore",
+  "inputRunId": null,
+  "checkpointBase": {
+    "archive": "flowkit-next-delivery-20260824-01-foundation-lifecycle-kernel-853c622.zip",
+    "gitRevision": "853c622",
+    "gitRevisionVerification": "owner-supplied-prefix-only; source snapshot excludes .git so the full Git revision is not independently derivable here",
+    "archiveSha256": "eee48fd6d1852f9c994d105ee362b4b21df3c004b4d5a81287714ab6753f210c"
+  },
+  "authorization": {
+    "ref": "owner:e38686db4a2e40359d96bcc19497cd7fe3ce62e2598e90c50691526d8849fd7a",
+    "decision": "activate-change",
+    "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+    "changeId": "establish-managed-toolchain-resolution",
+    "sourceRef": "owner-input:2026-08-27T19:00+08:00:activate-managed-toolchain-resolution:explore-proof-based",
+    "scope": ["explore"]
+  },
+  "ownerScopeClarification": {
+    "managedExactTools": ["openspec@1.10.0", "archify@2.15.0"],
+    "nodeBoundary": "host runtime compatibility, not exact patch identity"
+  },
+  "executionMode": "external-orchestrator-detached-linux-openspec-explore-proof-based",
+  "runtime": {
+    "detachedProofNode": "22.23.2",
+    "repositoryNodeEngine": ">=22.20.0",
+    "pnpmPackageManagerPin": "11.22.0",
+    "openspec": "1.10.0",
+    "archify": "2.15.0"
+  },
+  "skillsUsed": [
+    "openspec-explore",
+    "explore-proof-based"
+  ],
+  "focusedProof": {
+    "managedArtifactHashesMatchedLock": true,
+    "fakePathOpenSpecVersion": "9.9.9",
+    "resolvedOpenSpecVersion": "1.10.0",
+    "resolvedArchifyVersion": "2.15.0",
+    "missingRuntimeFailsClosed": true,
+    "wrongPackageVersionFailsClosed": true,
+    "missingEntrypointFailsClosed": true,
+    "proofWorkspaceIncludedInStableTransfer": false
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}
