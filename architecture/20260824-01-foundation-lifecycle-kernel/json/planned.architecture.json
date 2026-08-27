@@ -50,7 +50,7 @@
           "git",
           "acceptance"
         ],
-        "note": "Owner、Review/Verification 与 Git mutation authority 保持分离；candidate 在 Delivery 01 中不管理自身。"
+        "note": "Owner/Review/Verification/Git checkpoint authority 分离；OpenSpec Change/contract 保持 mutation semantic authority；candidate 不自管 Delivery 01。"
       }
     ],
     "viewBox": [
@@ -305,8 +305,8 @@
     {
       "id": "governance",
       "type": "security",
-      "label": "Mutation / Git Boundary",
-      "sublabel": "scope / checkpoint authority",
+      "label": "Git Checkpoint Boundary",
+      "sublabel": "terminal authorization seam",
       "tag": "新增",
       "pos": [
         320,
@@ -502,7 +502,7 @@
       "id": "p6",
       "from": "policy",
       "to": "governance",
-      "label": "mutation authority",
+      "label": "checkpoint eligibility",
       "route": "straight",
       "labelAt": [
         535,
@@ -548,7 +548,8 @@
       "title": "Authority 不变量",
       "items": [
         "Review approved ≠ Owner authorization",
-        "Verification PASS ≠ mutation / commit authority",
+        "Verification PASS ≠ Git checkpoint / commit authority",
+        "Approved OpenSpec Change / contract remains semantic mutation authority",
         "Delivery 01 candidate 不成为自身 lifecycle authority"
       ]
     }

@@ -17,7 +17,7 @@ scope:
     - "single-current-Action execution / exact admission / terminal / STOP boundary"
     - "Policy and deterministic next-boundary contract"
     - "cross-Delivery Memo contract surfaced primarily at Delivery Start"
-    - "mutation authority and explicit Git checkpoint boundary"
+    - "explicit Git checkpoint authorization boundary at the terminal host/CLI seam"
     - "exact managed OpenSpec 1.10.0 / Archify 2.15.0 toolchain resolution"
     - "thin OpenSpec integration without duplicating OpenSpec lifecycle authority"
     - "minimal Flowkit CLI surface over Core"
@@ -132,10 +132,10 @@ changes:
   - id: "establish-mutation-and-git-checkpoint-boundary"
     group: "governance"
     goal: "建立 mutation declaration/scope、repository path contract、checkpoint eligibility 与 explicit Git authorization boundary。"
-    required: true
+    required: false
     dependsOn:
       - "establish-cross-delivery-memo-contract"
-    state: planned
+    state: cancelled
     architectureImpact: true
     outputs:
       - "mutation authority contract"
@@ -168,17 +168,17 @@ changes:
 
   - id: "establish-foundation-cli-surface"
     group: "integration"
-    goal: "将已存在的 Core contract 暴露为最小 CLI，CLI 不成为第二套 lifecycle implementation。"
+    goal: "将已存在的 Core contract 与 terminal Git checkpoint authorization seam 暴露为最小 CLI/host surface，CLI 不成为第二套 lifecycle implementation。"
     required: true
     dependsOn:
       - "establish-single-action-execution-terminal-boundary"
       - "establish-policy-and-next-boundary-contract"
-      - "establish-mutation-and-git-checkpoint-boundary"
       - "establish-openspec-thin-integration"
     state: planned
     architectureImpact: true
     outputs:
       - "minimal Flowkit CLI surface"
+      - "terminal Git checkpoint authorization surface"
 
   - id: "validate-foundation-manager-cross-platform"
     group: "acceptance"
@@ -319,6 +319,33 @@ ownerDecisions:
     scope:
       - "explore"
 
+  - ref: "owner:a154f3039ffc491c6b3839002ba81b24949852a5243bd5e43083e920bdd83965"
+    decision: "activate-change"
+    deliveryId: "20260824-01-foundation-lifecycle-kernel"
+    changeId: "establish-mutation-and-git-checkpoint-boundary"
+    sourceRef: "owner-input:2026-08-27:activate-mutation-and-git-checkpoint-boundary:explore-proof-based"
+    scope:
+      - "explore"
+
+
+  - ref: "owner:86b0fe526dce6e2d85fb56c521966fe5f2116dd485f60a0f2ebad69beedc984c"
+    decision: "cancel-change"
+    deliveryId: "20260824-01-foundation-lifecycle-kernel"
+    changeId: "establish-mutation-and-git-checkpoint-boundary"
+    sourceRef: "owner-input:2026-08-27T13:44+08:00:cancel-change:establish-mutation-and-git-checkpoint-boundary"
+    scope:
+      - "cancel"
+
+  - ref: "owner:91dd8bac1b2f04c659075a50434c634859a9b6adb91fdd854d8b744db617d074"
+    decision: "refine-delivery-plan"
+    deliveryId: "20260824-01-foundation-lifecycle-kernel"
+    sourceRef: "owner-input:2026-08-27T13:44+08:00:refine-delivery-plan:cancel-establish-mutation-and-git-checkpoint-boundary"
+    scope:
+      - "acceptance"
+      - "dependencies"
+      - "scope"
+      - "verification"
+
 
 verification:
   change:
@@ -335,7 +362,7 @@ verification:
       - "single-Action invocation with internal prepare/package/admission/terminal and one final STOP"
       - "Run / Result durability and exact admission"
       - "Policy and blocked diagnosis"
-      - "mutation and Git checkpoint safety"
+      - "Git checkpoint authorization and safety"
       - "Windows Native acceptance"
       - "Linux x64 detached acceptance"
       - "baseline/candidate regression classification"
@@ -346,7 +373,8 @@ acceptance:
   - "Exactly one current Action can be prepared, executed through an exact ActionPackage, admitted to terminal by an exact Result, then execution stops after reporting the continuation fact."
   - "Run / Result facts are durable, real and integrity-checked; no fake terminal artifacts are admitted."
   - "Policy computes one legal boundary or a deterministic blocked diagnosis and never auto-executes next."
-  - "Mutation and Git checkpoint permission require explicit authority and are not inferred from Verification or Review alone."
+  - "Approved OpenSpec Change / contract remains the semantic mutation authority; Flowkit does not add a second durable per-Run or per-file mutation authority."
+  - "Git checkpoint permission requires an explicit legal checkpoint boundary and explicit Owner authorization; Verification or Review alone never creates Git permission."
   - "Managed OpenSpec 1.10.0 and Archify 2.15.0 resolve from exact external identities without silent PATH fallback."
   - "OpenSpec remains formal Change authority and Archify remains derived/non-authoritative."
   - "Windows Native and Linux x64 detached acceptance both pass before Owner promotion."

@@ -1,0 +1,75 @@
+{
+  "runNumber": 79,
+  "kind": "external-orchestrator-delivery-plan-correction-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-mutation-and-git-checkpoint-boundary",
+  "action": "delivery-plan-correction",
+  "runId": "20260827-079-delivery-plan-correction",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/077-establish-mutation-and-git-checkpoint-boundary/20260827-079-delivery-plan-correction",
+  "inputRunId": "20260827-078-review-explore",
+  "checkpointBase": {
+    "archive": "flowkit-next-delivery-20260824-01-foundation-lifecycle-kernel-8c0c150.zip",
+    "gitRevision": "8c0c150b4bd15e837c3f579a91e0303678fbbe4b",
+    "gitRevisionIndependentlyVerifiedInDetachedSnapshot": false
+  },
+  "ownerAuthorities": [
+    {
+      "ref": "owner:86b0fe526dce6e2d85fb56c521966fe5f2116dd485f60a0f2ebad69beedc984c",
+      "decision": "cancel-change",
+      "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+      "changeId": "establish-mutation-and-git-checkpoint-boundary",
+      "sourceRef": "owner-input:2026-08-27T13:44+08:00:cancel-change:establish-mutation-and-git-checkpoint-boundary",
+      "scope": [
+        "cancel"
+      ]
+    },
+    {
+      "ref": "owner:91dd8bac1b2f04c659075a50434c634859a9b6adb91fdd854d8b744db617d074",
+      "decision": "refine-delivery-plan",
+      "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+      "sourceRef": "owner-input:2026-08-27T13:44+08:00:refine-delivery-plan:cancel-establish-mutation-and-git-checkpoint-boundary",
+      "scope": [
+        "acceptance",
+        "dependencies",
+        "scope",
+        "verification"
+      ]
+    }
+  ],
+  "correctionBoundary": {
+    "cancelledChange": "establish-mutation-and-git-checkpoint-boundary",
+    "cancelledRequired": false,
+    "remainingRequiredPlannedChanges": 4,
+    "removedDownstreamDependencyFrom": "establish-foundation-cli-surface",
+    "completedCanonicalChangesModified": false,
+    "mutationDeclarationSubsystemIntroduced": false,
+    "genericCancellationSubsystemIntroduced": false,
+    "crossDeliveryMemoCreated": false,
+    "checkpointAuthorizationSeamReassignedTo": "establish-foundation-cli-surface",
+    "derivedPlannedArchitectureCorrected": true,
+    "retainedCurrentArchitectureModified": false
+  },
+  "historicalEvidence": {
+    "preservedRuns": [
+      "20260827-077-explore",
+      "20260827-078-review-explore"
+    ],
+    "openSpecExploreScaffoldPreservedForIndependentReview": true,
+    "openSpecArchivePerformed": false
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff",
+  "verification": {
+    "typecheck": "PASS",
+    "domainTests": "79/79 PASS",
+    "formatCheck": "PASS",
+    "canonicalOpenSpecSpecs": "7/7 strict PASS",
+    "deliveryManifestYaml": "PASS",
+    "dependencyGraph": "PASS",
+    "archifyPlannedArchitecture": "schema/semantic render validation reached repository-evidence stage; blocked because detached snapshot has no .git",
+    "architectureJsonParse": "PASS",
+    "archifyCompareRegeneration": "BLOCKED by detached snapshot lacking .git; no repository evidence was fabricated"
+  }
+}

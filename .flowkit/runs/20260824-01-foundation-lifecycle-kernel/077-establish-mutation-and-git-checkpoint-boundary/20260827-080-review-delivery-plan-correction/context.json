@@ -1,0 +1,47 @@
+{
+  "runNumber": 80,
+  "kind": "external-orchestrator-review-delivery-plan-correction-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-mutation-and-git-checkpoint-boundary",
+  "action": "review-delivery-plan-correction",
+  "runId": "20260827-080-review-delivery-plan-correction",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/077-establish-mutation-and-git-checkpoint-boundary/20260827-080-review-delivery-plan-correction",
+  "inputRunId": "20260827-079-delivery-plan-correction",
+  "reviewChainStartRunId": "20260827-077-explore",
+  "reviewType": "special-governance-plan-correction",
+  "ownerAuthorities": {
+    "cancelChange": {
+      "ref": "owner:86b0fe526dce6e2d85fb56c521966fe5f2116dd485f60a0f2ebad69beedc984c",
+      "structuralValidation": "PASS"
+    },
+    "refineDeliveryPlan": {
+      "ref": "owner:91dd8bac1b2f04c659075a50434c634859a9b6adb91fdd854d8b744db617d074",
+      "structuralValidation": "PASS"
+    }
+  },
+  "independentChecks": {
+    "run077ByteIdentity": "3/3 PASS against 078 reviewer payload",
+    "run078ByteIdentity": "3/3 PASS against 078 reviewer payload",
+    "openSpecExploreScaffoldByteIdentity": "2/2 PASS against 078 reviewer payload",
+    "deltaSince078": "079 Run + delivery manifest + derived planned/compare architecture only",
+    "deliveryManifestYaml": "PASS",
+    "deliveryStateCounts": "7 completed / 1 cancelled / 4 planned / 0 active",
+    "dependencyGraph": "PASS",
+    "dependenciesOnCancelledChange": 0,
+    "onlyImmediatelyEligibleRequiredPlannedChange": "establish-managed-toolchain-resolution",
+    "completedCanonicalChangesModified": false,
+    "productionSourceOrTestsModified": false,
+    "mutationDeclarationSubsystemIntroduced": false,
+    "genericCancellationSubsystemIntroduced": false,
+    "crossDeliveryMemoCreated": false,
+    "openSpecArchivePerformed": false,
+    "currentArchitectureCarriedOrModifiedBy079": false,
+    "plannedArchitectureJsonParse": "PASS",
+    "compareArchitectureJsonParse": "PASS",
+    "checkpointSeamOwner": "establish-foundation-cli-surface"
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}
