@@ -21,7 +21,7 @@ scope:
     - "exact managed OpenSpec 1.10.0 / Archify 2.15.0 toolchain resolution"
     - "thin OpenSpec integration without duplicating OpenSpec lifecycle authority"
     - "minimal Flowkit CLI surface over Core"
-    - "Windows Native and Linux x64 detached whole-manager acceptance"
+    - "Linux x64 detached whole-manager acceptance plus Windows compatibility simulation"
   excluded:
     - "Delivery 01 self-management by the candidate runtime"
     - "automatic Owner decisions"
@@ -182,15 +182,16 @@ changes:
 
   - id: "validate-foundation-manager-cross-platform"
     group: "acceptance"
-    goal: "完成 Windows Native 与 Linux x64 detached whole-manager acceptance，并形成独立验收 evidence。"
+    goal: "在 detached 主开发环境完成 Linux x64 whole-manager real acceptance 与 Windows compatibility simulation，并冻结可复用的 Delivery Full Test execution contract。"
     required: true
     dependsOn:
       - "establish-foundation-cli-surface"
-    state: planned
+    state: completed
     architectureImpact: false
     outputs:
-      - "Windows acceptance evidence"
-      - "Linux detached acceptance evidence"
+      - "Windows compatibility simulation evidence"
+      - "Linux detached real acceptance evidence"
+      - "frozen Delivery Full Test execution contract"
 
 ownerDecisions:
   - ref: "owner:c24904563ce5e0af501005cba26b7987f1f303525d839ebad39d1fdbd97a591a"
@@ -372,6 +373,24 @@ ownerDecisions:
     scope:
       - "explore"
 
+  - ref: "owner:6d05f241f930490ba7caed05b083ab2649ed7c70e602da5fdafa5c8737462a76"
+    decision: "refine-delivery-plan"
+    deliveryId: "20260824-01-foundation-lifecycle-kernel"
+    changeId: "validate-foundation-manager-cross-platform"
+    sourceRef: "owner-input:2026-08-28T13:44+08:00:refine-final-acceptance:detached-primary-windows-compatibility-simulation"
+    scope:
+      - "treat detached Linux x64 as the real primary whole-manager acceptance environment"
+      - "replace Windows Native requirement with bounded Windows compatibility simulation"
+      - "freeze the exact reusable Delivery Full Test execution contract in this final acceptance Change"
+
+  - ref: "owner:b6eb3b434dd7b1dbdde2da3c0ffb0a17d58ee6c065e924750342b6d8d443850d"
+    decision: "activate-change"
+    deliveryId: "20260824-01-foundation-lifecycle-kernel"
+    changeId: "validate-foundation-manager-cross-platform"
+    sourceRef: "owner-input:2026-08-28T13:44+08:00:activate-change:validate-foundation-manager-cross-platform:explore-proof-based"
+    scope:
+      - "explore"
+
 verification:
   change:
     requireApplicableChecks: true
@@ -379,18 +398,30 @@ verification:
     requiresOwnerAuthorization: true
     execution:
       state: deferred
-      reason: "Delivery Start 时 Foundation CLI / whole-manager verification commands 尚未实现；不得伪造 command contract。正式 Full Test authorization 前必须由已实现能力冻结 exact execution contract。"
+      reason: "Exact Delivery Full Test execution contract 已冻结；formal Verification 继续等待 final Change archive → exact checkpoint candidate → explicit Owner Full Test authorization。"
+      environment:
+        nodeCompatibility: ">=22.20.0"
+        deterministicNodeFixture: "22.23.2"
+        packageManagerFixture: "pnpm@11.22.0"
+        dependencies: "repository dependencies are restored before execution"
+        pnpmScriptDependencyCheck: "pnpm_config_verify_deps_before_run=false for the restored offline node_modules fixture so gate execution cannot trigger pnpm install"
+        flowkitHome: "FLOWKIT_HOME must be explicit"
+        managedTools:
+          - "OpenSpec 1.10.0 exact managed runtime"
+          - "Archify 2.15.0 exact managed runtime"
+        fallback: "no install/update/download/network/PATH/global managed-tool fallback"
+      gates:
+        - "pnpm typecheck"
+        - "pnpm format:check"
+        - "pnpm build"
+        - "pnpm test:domain"
+        - "exact managed OpenSpec 1.10.0: validate --all --strict"
+        - "pnpm test:acceptance"
     plan:
-      - "targeted Change verification selected by actual risk"
-      - "whole-manager type/build/lint/test gates once those commands exist"
-      - "OpenSpec 1.10.0 thin integration"
-      - "single-Action invocation with internal prepare/package/admission/terminal and one final STOP"
-      - "Run / Result durability and exact admission"
-      - "Policy and blocked diagnosis"
-      - "Git checkpoint authorization and safety"
-      - "Windows Native acceptance"
-      - "Linux x64 detached acceptance"
-      - "baseline/candidate regression classification"
+      - "pnpm test:acceptance includes real Linux x64 detached whole-manager acceptance plus windows-compatibility-simulation"
+      - "lint is intentionally absent because this repository has no executable lint contract"
+      - "Change-stage Author/Reviewer acceptance evidence is not formal Delivery Verification"
+      - "Windows compatibility simulation does not claim cmd.exe, PowerShell, NTFS-specific, .cmd shim, or native Windows process coverage"
 
 acceptance:
   - "Delivery 01 candidate never becomes authority for its own lifecycle."
@@ -402,5 +433,5 @@ acceptance:
   - "Git checkpoint permission requires an explicit legal checkpoint boundary and explicit Owner authorization; Verification or Review alone never creates Git permission."
   - "Managed OpenSpec 1.10.0 and Archify 2.15.0 resolve from exact external identities without silent PATH fallback."
   - "OpenSpec remains formal Change authority and Archify remains derived/non-authoritative."
-  - "Windows Native and Linux x64 detached acceptance both pass before Owner promotion."
+  - "Linux x64 detached real acceptance and Windows compatibility simulation both pass before Owner promotion."
   - "Only Delivery Final plus explicit Owner promotion makes the Foundation Manager eligible to manage Delivery 02."

@@ -1,0 +1,52 @@
+{
+  "runNumber": 113,
+  "kind": "external-orchestrator-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "validate-foundation-manager-cross-platform",
+  "action": "explore",
+  "runId": "20260828-113-explore",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/113-validate-foundation-manager-cross-platform/20260828-113-explore",
+  "inputRunId": null,
+  "checkpointBase": {
+    "archive": "flowkit-next-delivery-20260824-01-foundation-lifecycle-kernel-9592a30.zip",
+    "gitRevision": "9592a3042dd8b49b35920850038753ae10b67348",
+    "gitRevisionVerification": "full SHA is present in the supplied checkpoint archive comment; detached snapshot excludes .git so git rev-parse is not independently available",
+    "archiveSha256": "1c32fc62e4cb5421807c69861a18a8cdd9c94f772fa27dedad4ecbfa6cab70b3"
+  },
+  "authorization": {
+    "ref": "owner:b6eb3b434dd7b1dbdde2da3c0ffb0a17d58ee6c065e924750342b6d8d443850d",
+    "decision": "activate-change",
+    "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+    "changeId": "validate-foundation-manager-cross-platform",
+    "sourceRef": "owner-input:2026-08-28T13:44+08:00:activate-change:validate-foundation-manager-cross-platform:explore-proof-based",
+    "scope": ["explore"]
+  },
+  "ownerScopeRefinement": {
+    "ref": "owner:6d05f241f930490ba7caed05b083ab2649ed7c70e602da5fdafa5c8737462a76",
+    "decision": "refine-delivery-plan",
+    "sourceRef": "owner-input:2026-08-28T13:44+08:00:refine-final-acceptance:detached-primary-windows-compatibility-simulation",
+    "facts": [
+      "detached Linux x64 is the real primary whole-manager acceptance environment",
+      "Windows Native acceptance is replaced by bounded Windows compatibility simulation",
+      "the final acceptance Change freezes the reusable Delivery Full Test execution contract"
+    ]
+  },
+  "executionMode": "external-orchestrator-detached-linux-openspec-explore-proof-based",
+  "runtime": {
+    "detachedProofNode": "22.23.2",
+    "repositoryNodeEngine": ">=22.20.0",
+    "openspec": "1.10.0",
+    "archify": "2.15.0"
+  },
+  "skillsUsed": ["openspec-explore", "explore-proof-based"],
+  "proof": {
+    "detachedWholeManagerScriptSha256": "63c12d4cb344619825e6594161ad724ca0e72a16ea44fc99e9b52ad6976579b1",
+    "detachedWholeManagerOutputSha256": "d5cfdfc8adac6151d802d003437b1505a5c5dcc290f8a73ca4c7385b55c0de87",
+    "windowsCompatibilityScriptSha256": "b5e1aed3289a90f24e438f91e7344c8d337ffa0f8405af96e9abc84340acb265",
+    "windowsCompatibilityOutputSha256": "8dc7fe73092f56d4c1041331b8f1538c145454f34bfcc416d8456d532d7e9a94"
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

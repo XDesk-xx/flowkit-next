@@ -1,0 +1,58 @@
+{
+  "runNumber": 119,
+  "kind": "external-orchestrator-archive-result",
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "validate-foundation-manager-cross-platform",
+  "action": "archive",
+  "runId": "20260828-119-archive",
+  "finishedAt": "2026-08-28T17:53:00+08:00",
+  "executionStatus": "completed",
+  "archiveStatus": "succeeded",
+  "authorConclusion": "PASS",
+  "reviewerVerdictObserved": "approved",
+  "verificationVerdict": null,
+  "nextBoundary": "checkpoint",
+  "nextBoundaryAuthority": "explicit Git checkpoint authorization remains required before formal Delivery Full Test",
+  "archiveTarget": "openspec/changes/archive/2026-08-28-012-validate-foundation-manager-cross-platform",
+  "canonicalSpecs": [],
+  "deliveryChangeState": "completed",
+  "deliveryChangeSummary": {
+    "completed": 11,
+    "cancelled": 1,
+    "planned": 0,
+    "active": 0
+  },
+  "archiveVerification": {
+    "activeOpenSpecChanges": "0",
+    "openspecStrict": "10/10 canonical specs PASS",
+    "typecheck": "PASS",
+    "domainTests": "116/116 PASS",
+    "build": "PASS",
+    "formatCheck": "PASS",
+    "acceptance": "4/4 PASS",
+    "archivedChangeArtifactBytePreservation": "5/5 byte-identical after move",
+    "productionSourceBytePreservation": "PASS; src/** unchanged by archive",
+    "reviewedAcceptanceImplementationBytePreservation": "2/2 package.json + acceptance harness byte-identical",
+    "codeGate": "PASS; acceptance TypeScript file is 403 lines; no production TypeScript file changed"
+  },
+  "archiveSpecSync": {
+    "required": false,
+    "reason": "skip_specs true; no delta specs"
+  },
+  "executionAuthorityModel": {
+    "reviewApplyApproved": true,
+    "userRequestedArchive": true,
+    "newOwnerAuthorityFactCreated": false,
+    "formalDeliveryVerificationPerformed": false
+  },
+  "limitations": [
+    "Archive success is not Delivery Full Test Verification PASS.",
+    "Post-archive acceptance rerun is regression evidence only and does not create formal Verification authority.",
+    "This Run does not create Git checkpoint authority or a Git checkpoint commit.",
+    "All required Changes are terminal, but Delivery Final, Archify Final materialization, and Owner promotion remain outstanding.",
+    "Detached runtime bundles, dist, and node_modules are execution-local and excluded from the Archive Closure Snapshot; durable .flowkit/runs records are included."
+  ],
+  "stableTransfer": true,
+  "packageClass": "archive-closure-snapshot"
+}

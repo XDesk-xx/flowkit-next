@@ -1,0 +1,60 @@
+{
+  "runNumber": 117,
+  "kind": "external-orchestrator-apply-result",
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "validate-foundation-manager-cross-platform",
+  "action": "apply",
+  "runId": "20260828-117-apply",
+  "executionStatus": "completed",
+  "applyStatus": "complete",
+  "openspecApplyState": "all_done",
+  "openspecTasks": "14/14 complete",
+  "implementation": {
+    "created": [
+      "tests/acceptance/foundation-manager.acceptance.test.ts"
+    ],
+    "modified": [
+      "package.json",
+      "openspec/delivery-groups/20260824-01-foundation-lifecycle-kernel.yaml",
+      "openspec/changes/validate-foundation-manager-cross-platform/tasks.md"
+    ],
+    "productionSourceMutation": false,
+    "canonicalProductSpecMutation": false,
+    "runtimeDependencyMutation": false
+  },
+  "acceptanceFacts": [
+    "The decisive suite consumes built dist output, explicit FLOWKIT_HOME and exact managed OpenSpec 1.10.0 / Archify 2.15.0.",
+    "Disposable candidate-generated canonical Runs prove Single Action terminal execution, durable Run round-trip and emitted CLI composition without using Delivery 01 bootstrap Runs as self-management evidence.",
+    "Exact terminal Apply drives ready-action(review-apply), explicit currentRunId:null drives ready-action(explore), and terminal Archive plus exact Owner checkpoint authority drives ready-checkpoint-evaluation plus authorized=true without Git.",
+    "Fake PATH OpenSpec/Archify executables are not invoked; Archify is resolved only and not materialized.",
+    "windows-compatibility-simulation covers the current bounded Node/path/request/managed-entrypoint portability contract and makes no native Windows claim.",
+    "The exact Delivery Full Test environment and gate order are frozen but formal execution remains deferred pending archive, exact checkpoint and explicit Owner authorization.",
+    "No lint gate was invented because no executable repository lint contract exists."
+  ],
+  "verification": {
+    "typecheck": "PASS",
+    "formatCheck": "PASS",
+    "build": "PASS",
+    "domainTests": "116/116 PASS",
+    "openspecAllStrict": "11/11 PASS",
+    "acceptance": "4/4 PASS",
+    "codeGate": {
+      "status": "PASS",
+      "tests/acceptance/foundation-manager.acceptance.test.ts": 403
+    },
+    "sourceAndCanonicalSpecBaseline": "PASS / byte-identical"
+  },
+  "formalDeliveryVerificationPerformed": false,
+  "deliveryFullTestStatus": "not-ready",
+  "reviewApplyPerformed": false,
+  "archivePerformed": false,
+  "checkpointPerformed": false,
+  "archifyFinalPerformed": false,
+  "deliveryFinalPerformed": false,
+  "ownerPromotionPerformed": false,
+  "nextBoundary": "review-apply",
+  "nextBoundaryAuthority": "handoff-advisory-only",
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}
