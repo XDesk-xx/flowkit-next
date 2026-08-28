@@ -1,0 +1,52 @@
+{
+  "runNumber": 107,
+  "kind": "external-orchestrator-review-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-foundation-cli-surface",
+  "action": "review-propose",
+  "runId": "20260828-107-review-propose",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/100-establish-foundation-cli-surface/20260828-107-review-propose",
+  "inputRunId": "20260828-106-revise-propose",
+  "reviewChainStartRunId": "20260828-100-explore",
+  "reviewModel": "review-propose-skill",
+  "chainIntegrity": {
+    "runs100To105ByteIdentical": "18/18 PASS",
+    "approvedExploreUnchanged": true,
+    "deliveryManifestUnchanged": true,
+    "deltaFrom105ReviewerPayload": [
+      "proposal.md",
+      "specs/foundation-cli-surface/spec.md",
+      "design.md",
+      "tasks.md",
+      "20260828-106-revise-propose Run"
+    ]
+  },
+  "runtime": {
+    "nodeProofFixture": "22.23.2",
+    "repositoryNodeEngine": ">=22.20.0",
+    "openspec": "1.10.0"
+  },
+  "independentChecks": {
+    "openspecPlanning": "4/4 complete",
+    "changeStrict": "PASS",
+    "openspecAllStrict": "10/10 PASS",
+    "typecheck": "PASS",
+    "domainTests": "107/107 PASS",
+    "formatCheck": "PASS",
+    "canonicalPolicyNoCurrentState": "ready-action(explore)",
+    "rp105001FormalizedAcrossPlanning": "PASS",
+    "exactCurrentRunBranchPreserved": true,
+    "explicitNullBranchAdded": true,
+    "missingInputNormalizedToNull": false,
+    "historyScanIntroduced": false,
+    "automaticRunSelectionIntroduced": false,
+    "currentRegistryAdded": false,
+    "runLineageSubsystemAdded": false,
+    "deliveryDiscoveryAdded": false,
+    "productionMutationBy106": "NONE"
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

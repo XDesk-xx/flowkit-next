@@ -1,0 +1,47 @@
+{
+  "runNumber": 16,
+  "kind": "external-orchestrator-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-action-lifecycle-domain-contract",
+  "action": "propose",
+  "startedAt": "2026-08-25T11:11:02+08:00",
+  "inputAction": {
+    "runId": "20260824-015-review-explore",
+    "payloadArchive": "flowkit-next-delivery-20260824-01-foundation-lifecycle-kernel-015-review-explore-reviewer-payload.zip",
+    "payloadSha256": "820e3944dab8514241b584c0de565adedb65e62b969d6eceae40ba6d9256b819",
+    "reviewerVerdict": "approved",
+    "nextBoundary": "propose"
+  },
+  "base": {
+    "archive": "flowkit-next-delivery-20260824-01-foundation-lifecycle-kernel-a2f4bf9.zip",
+    "sha256": "385cd4588a1817d51d4c7cdd916f4a5985f2b4adb44bced8bf7866f0b8945a39",
+    "gitRevisionHint": "a2f4bf9",
+    "gitRevisionVerified": false
+  },
+  "executionMode": "detached-linux-openspec-propose-only-no-flowkit-lifecycle",
+  "proposalContract": {
+    "skill": ".agents/skills/openspec-propose/SKILL.md",
+    "skillSha256": "9c57136297e26a183046d33a555a9e7a9bbe7752b77486e94338e34810ce2ef4",
+    "skillGeneratedBy": "OpenSpec 1.10.0",
+    "schema": "spec-driven",
+    "planningOnly": true,
+    "stableTransferContract": "flowkit-next-stable-transfer-payload-contract-v1.md",
+    "stableTransferContractSha256": "6acc010b5af86054a67a4523de31c009f1e5e3657d1cca63edb2b1eaafc9fcde"
+  },
+  "runtime": {
+    "node": "22.23.2",
+    "openspec": "1.10.0"
+  },
+  "validation": {
+    "inputPayloadSha256": "PASS",
+    "reviewExploreApproved": "PASS",
+    "openspecPlanningArtifacts": "4/4 complete",
+    "openspecStrictValidate": "PASS",
+    "baselineProductionFilesCompared": 20,
+    "baselineProductionMutation": "none"
+  },
+  "runId": "20260824-016-propose",
+  "stableTransfer": true
+}

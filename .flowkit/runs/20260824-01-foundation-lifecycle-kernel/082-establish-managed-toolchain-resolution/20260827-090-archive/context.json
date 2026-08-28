@@ -1,0 +1,48 @@
+{
+  "runNumber": 90,
+  "kind": "external-orchestrator-archive-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-managed-toolchain-resolution",
+  "action": "archive",
+  "runId": "20260827-090-archive",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/082-establish-managed-toolchain-resolution/20260827-090-archive",
+  "inputRunId": "20260827-089-review-apply",
+  "checkpointBase": {
+    "archive": "flowkit-next-delivery-20260824-01-foundation-lifecycle-kernel-853c622.zip",
+    "gitRevision": "853c622",
+    "gitRevisionVerification": "owner-supplied-prefix-only; detached source snapshot excludes .git",
+    "archiveSha256": "eee48fd6d1852f9c994d105ee362b4b21df3c004b4d5a81287714ab6753f210c"
+  },
+  "executionBasis": {
+    "reviewerVerdict": "approved",
+    "reviewRunId": "20260827-089-review-apply",
+    "userInstruction": "archive and generate local AI handoff",
+    "newOwnerAuthorityFactCreated": false
+  },
+  "executionMode": "detached-linux-direct-openspec-archive-no-flowkit-lifecycle",
+  "runtime": {
+    "detachedProofNode": "22.23.2",
+    "repositoryNodeEngine": ">=22.20.0",
+    "pnpmPackageManagerPin": "11.22.0",
+    "openspec": "1.10.0"
+  },
+  "skillsUsed": [
+    "openspec-archive-change",
+    "openspec-sync-specs"
+  ],
+  "archive": {
+    "archivedAs": "2026-08-27-009-establish-managed-toolchain-resolution",
+    "ordinalNamingAppliedAtArchive": true,
+    "specsUpdated": true,
+    "specTotals": {
+      "added": 8,
+      "modified": 0,
+      "removed": 0,
+      "renamed": 0
+    }
+  },
+  "stableTransfer": true,
+  "packageClass": "archive-closure-snapshot"
+}

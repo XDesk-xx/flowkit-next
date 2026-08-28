@@ -1,0 +1,58 @@
+{
+  "runNumber": 30,
+  "kind": "external-orchestrator-review-propose-result",
+  "role": "reviewer",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-run-result-persistence",
+  "action": "review-propose",
+  "runId": "20260825-030-review-propose",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/021-establish-run-result-persistence/20260825-030-review-propose",
+  "finishedAt": "2026-08-25T21:50:00+08:00",
+  "executionStatus": "completed",
+  "authorConclusionObserved": "PASS",
+  "reviewerVerdict": "changes-requested",
+  "verificationVerdict": null,
+  "nextBoundary": "revise-propose",
+  "nextBoundaryAuthority": "handoff-advisory-only",
+  "reviewSummary": {
+    "exploreAlignment": "PASS",
+    "contractCompleteness": "CHANGES REQUESTED",
+    "designQuality": "PASS EXCEPT FOR WRITE/COLLISION SEMANTICS",
+    "verificationClosure": "CHANGES REQUESTED FOR COLLISION INVARIANT"
+  },
+  "findings": [
+    {
+      "id": "RP-030-001",
+      "severity": "blocking",
+      "title": "Durable Run creation and occurrence-sequence collision semantics are undefined",
+      "problem": "The Proposal separates semantic ActionIdentity from Run occurrence, but does not state what happens when the generated occurrence directory already exists, nor whether the controlled sequence is unique within one Change history. Therefore an implementation may overwrite an existing durable Run or admit two occurrences with the same sequence while still appearing to satisfy the current write/read and history-order requirements.",
+      "risk": "Author/Reviewer handoff history can cease to be durable: previously reviewed bytes may change, or sequence-based history ordering can become ambiguous.",
+      "requiredRevision": [
+        "Define Run occurrence persistence as create-once/non-overwritable, or an equally strict immutable equivalent.",
+        "A write targeting an existing generated occurrence must fail closed and preserve the existing action.md/context.json/result.json bytes unchanged.",
+        "Define duplicate controlled sequence handling within the exact Change history so ordering cannot contain an unresolved same-sequence tie; prevention or fail-closed rejection are both acceptable.",
+        "Add measurable tests for existing-occurrence collision and duplicate-sequence history behavior."
+      ],
+      "explicitNonRequirements": [
+        "No lock manager or multi-writer concurrency protocol is required.",
+        "No WAL/database/crash-recovery transaction is required.",
+        "No global Delivery-wide Run registry or scheduler is required.",
+        "No reopening of arbitrary external filesystem path scope is required."
+      ]
+    }
+  ],
+  "verifiedFacts": [
+    "029 ZIP SHA-256 matches the supplied checksum.",
+    "029 relative to 028 adds only the 029 Run record and proposal/spec/design/tasks planning artifacts; carried 021-028 Run history, explore.md, and delivery-group bytes are unchanged.",
+    "Owner-corrected minimal sequential Author/Reviewer scope is preserved; generic filesystem, multi-Agent, scheduler, locking, WAL/database, Result admission, Policy, CLI, OpenSpec adapter, and Git checkpoint behavior are not introduced by the Proposal.",
+    "OpenSpec 1.10.0 reports 4/4 planning artifacts complete.",
+    "OpenSpec strict validation passes for establish-run-result-persistence and validate-all strict passes 3/3.",
+    "Detached Node 22.23.2 baseline passes typecheck, 25/25 domain tests, and repository-declared Prettier format check.",
+    "No production source/test/package/lock/architecture mutation is present in the Propose payload."
+  ],
+  "limitations": [
+    "This is Review Propose only; it is not Apply, Verification PASS, archive, checkpoint, or Owner authority.",
+    "The blocking finding concerns single-writer durable-history semantics only and must not be expanded into concurrency or storage-engine scope."
+  ],
+  "stableTransfer": true
+}

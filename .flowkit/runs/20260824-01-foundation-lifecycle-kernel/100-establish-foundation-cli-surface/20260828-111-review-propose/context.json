@@ -1,0 +1,53 @@
+{
+  "runNumber": 111,
+  "kind": "external-orchestrator-review-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-foundation-cli-surface",
+  "action": "review-propose",
+  "runId": "20260828-111-review-propose",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/100-establish-foundation-cli-surface/20260828-111-review-propose",
+  "inputRunId": "20260828-110-revise-propose",
+  "reviewChainStartRunId": "20260828-100-explore",
+  "reviewType": "owner-authorized-post-apply-pre-archive-contract-cleanup",
+  "ownerCorrection": {
+    "removeUnnecessaryVersionTerminology": true,
+    "preserveApprovedBehavior": true,
+    "introduceInternalVersionHierarchy": false,
+    "modifyProductionSourceOrTests": false,
+    "rewriteHistoricalRuns": false,
+    "preserve109ReviewApplyApproval": true,
+    "requireIndependentReviewBeforeArchive": true
+  },
+  "chainIntegrity": {
+    "runs100To109ByteIdentical": true,
+    "historicalRunFileCount": 30,
+    "reviewApply109Preserved": true
+  },
+  "conformance": {
+    "productionSourceTestsPackageBuildTasksManifestByteIdentical": true,
+    "normativeSpecRequirementScenarioNamesUnchanged": true,
+    "functionalContractChanged": false,
+    "implementationBoundaryChanged": false,
+    "newCapabilityIntroduced": false,
+    "internalVersionHierarchyIntroduced": false
+  },
+  "runtime": {
+    "node": "22.23.2",
+    "openspec": "1.10.0"
+  },
+  "independentChecks": {
+    "openspecPlanning": "4/4 complete",
+    "changeStrict": "PASS",
+    "openspecAllStrict": "10/10 PASS",
+    "typecheck": "PASS",
+    "domainTests": "116/116 PASS",
+    "formatCheck": "PASS",
+    "build": "PASS",
+    "versionedTerminologyInCurrentChangeArtifacts": "NONE",
+    "implementationConformsToRevisedContract": "PASS"
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

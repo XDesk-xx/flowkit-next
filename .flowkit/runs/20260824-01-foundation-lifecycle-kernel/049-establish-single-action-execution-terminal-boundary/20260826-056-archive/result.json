@@ -1,0 +1,53 @@
+{
+  "runNumber": 56,
+  "kind": "external-orchestrator-archive-result",
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-single-action-execution-terminal-boundary",
+  "action": "archive",
+  "runId": "20260826-056-archive",
+  "finishedAt": "2026-08-26T19:50:00+08:00",
+  "executionStatus": "completed",
+  "archiveStatus": "succeeded",
+  "authorConclusion": "PASS",
+  "reviewerVerdictObserved": "approved",
+  "verificationVerdict": null,
+  "nextBoundary": "checkpoint",
+  "nextBoundaryAuthority": "explicit-git-authority-still-required-by-current-repository-contract",
+  "archiveTarget": "openspec/changes/archive/2026-08-26-005-establish-single-action-execution-terminal-boundary",
+  "canonicalSpecs": [
+    "openspec/specs/action-lifecycle/spec.md",
+    "openspec/specs/action-package-and-result-admission/spec.md",
+    "openspec/specs/single-action-execution-terminal-boundary/spec.md"
+  ],
+  "deliveryChangeState": "completed",
+  "archiveVerification": {
+    "activeOpenSpecChanges": "0",
+    "openspecStrict": "5/5 PASS",
+    "typecheck": "PASS",
+    "domainTests": "51/51 PASS",
+    "formatCheck": "PASS",
+    "archivedChangeArtifactBytePreservation": "8/8 byte-identical",
+    "preArchiveRunAndSourceTestBytePreservation": "38/38 files byte-identical",
+    "cleanExtractReplay": "PASS"
+  },
+  "archiveSpecSync": {
+    "added": 8,
+    "modified": 4,
+    "removed": 4,
+    "renamed": 0
+  },
+  "executionAuthorityModel": {
+    "reviewerApproved": true,
+    "userRequestedArchive": true,
+    "newOwnerAuthorityFactCreated": false
+  },
+  "limitations": [
+    "Archive success is not Delivery Full Test Verification PASS.",
+    "This Run does not create Git checkpoint authority or a Git checkpoint commit.",
+    "Current repository AGENTS.md still requires explicit legal Git boundary / Owner authorization before commit; that contract is not changed by this Archive.",
+    "Detached runtime bundles and node_modules are execution-local and excluded from the Archive Closure Snapshot."
+  ],
+  "stableTransfer": true,
+  "packageClass": "archive-closure-snapshot"
+}

@@ -1,0 +1,43 @@
+{
+  "runNumber": 58,
+  "kind": "external-orchestrator-review-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-policy-and-next-boundary-contract",
+  "action": "review-explore",
+  "runId": "20260826-058-review-explore",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/057-establish-policy-and-next-boundary-contract/20260826-058-review-explore",
+  "inputRunId": "20260826-057-explore",
+  "checkpointBase": {
+    "gitRevisionClaimedByInput": "120731bbf0521508ef108db18b33ce728185adb2",
+    "exactCheckpointArchiveAvailableInReviewTurn": false,
+    "sourceBaselineReconstructedFromAcceptedChain": [
+      "flowkit-next-delivery-20260824-01-foundation-lifecycle-kernel-f03fb67.zip",
+      "046-apply.zip",
+      "054-apply.zip"
+    ]
+  },
+  "reviewModel": "review-explore-skill-v2",
+  "runtime": {
+    "node": "22.23.2",
+    "pnpm": "11.22.0",
+    "openspec": "1.10.0"
+  },
+  "independentChecks": {
+    "activationOwnerAuthorityFact": "PASS",
+    "sourceTypecheck": "PASS",
+    "domainTests": "51/51 PASS",
+    "formatCheck": "PASS",
+    "replayedPreviousArchives": "PASS",
+    "canonicalOpenSpecSpecs": "5/5 strict PASS",
+    "currentChangePlanningState": "0/4; proposal ready",
+    "historicalTransitionOrdering": "42/42 PASS across 11 observed branches",
+    "archiveCompletedStateContradiction": "REPRODUCED",
+    "ownerCorrectionReportedBoundaryConflict": "REPRODUCED",
+    "ownerAuthorityHistory": "MIXED; ordering evidence does not decide authorization semantics",
+    "productionMutationBy057": "NONE"
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

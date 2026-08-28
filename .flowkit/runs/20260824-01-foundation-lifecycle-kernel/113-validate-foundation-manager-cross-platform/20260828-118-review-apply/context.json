@@ -1,0 +1,60 @@
+{
+  "runNumber": 118,
+  "kind": "external-orchestrator-review-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "validate-foundation-manager-cross-platform",
+  "action": "review-apply",
+  "runId": "20260828-118-review-apply",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/113-validate-foundation-manager-cross-platform/20260828-118-review-apply",
+  "inputRunId": "20260828-117-apply",
+  "reviewChainStartRunId": "20260828-113-explore",
+  "reviewModel": "review-apply-skill",
+  "chainIntegrity": {
+    "runs113To116ByteIdentical": "12/12 PASS",
+    "approvedExploreUnchanged": true,
+    "approvedProposalDesignUnchanged": true
+  },
+  "implementationDelta": {
+    "created": [
+      "tests/acceptance/foundation-manager.acceptance.test.ts"
+    ],
+    "modified": [
+      "package.json",
+      "openspec/delivery-groups/20260824-01-foundation-lifecycle-kernel.yaml",
+      "openspec/changes/validate-foundation-manager-cross-platform/tasks.md"
+    ],
+    "productionSourceMutation": false,
+    "canonicalProductSpecMutation": false,
+    "runtimeDependencyMutation": false
+  },
+  "runtime": {
+    "node": "22.23.2",
+    "repositoryNodeEngine": ">=22.20.0",
+    "pnpm": "11.22.0",
+    "openspec": "1.10.0",
+    "archify": "2.15.0"
+  },
+  "independentChecks": {
+    "typecheck": "PASS",
+    "formatCheck": "PASS",
+    "build": "PASS",
+    "domainTests": "116/116 PASS",
+    "acceptance": "4/4 PASS",
+    "currentChangeStrict": "PASS",
+    "openspecAllStrict": "11/11 PASS after accepted archive replay",
+    "codeGate": "403 < 500",
+    "packageDependenciesChanged": false,
+    "lintContractAdded": false,
+    "genericVerificationPlatformAdded": false,
+    "genericTestOrchestratorAdded": false,
+    "gitExecutionAdded": false,
+    "selfHostingAdded": false,
+    "windowsNativePassClaimed": false,
+    "deliveryFullTestStatus": "not-ready",
+    "formalFullTestState": "deferred"
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

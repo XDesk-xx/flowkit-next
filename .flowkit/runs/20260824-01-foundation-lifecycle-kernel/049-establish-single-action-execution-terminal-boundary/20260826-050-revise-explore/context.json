@@ -1,0 +1,42 @@
+{
+  "runNumber": 50,
+  "kind": "external-orchestrator-revise-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-single-action-execution-terminal-boundary",
+  "action": "revise-explore",
+  "runId": "20260826-050-revise-explore",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/049-establish-single-action-execution-terminal-boundary/20260826-050-revise-explore",
+  "inputRunId": "20260826-049-explore",
+  "checkpointBase": {
+    "archive": "flowkit-next-delivery-20260824-01-foundation-lifecycle-kernel-b0a3884.zip",
+    "gitRevision": "b0a38849aed94476e67245d89a31c7106f9d266d"
+  },
+  "ownerScopeCorrection": {
+    "ref": "owner:9496aa06cd4c354743a79bbe156eb24cbc469a1f3815ae1874c9baf3ff371718",
+    "decision": "refine-change-scope",
+    "sourceRef": "owner-input:2026-08-26T17:28+08:00:refine-change-5-explore:prepare-is-internal-not-stop-boundary",
+    "scope": [
+      "prepare is internal structural lifecycle event, not Standard Action / independent Run / ordinary STOP boundary",
+      "preserve and refine the existing resumed-state necessity proof"
+    ]
+  },
+  "executionMode": "external-orchestrator-detached-linux-revise-explore-proof-based",
+  "runtime": {
+    "node": "22.23.2",
+    "pnpm": "11.22.0",
+    "openspec": "1.10.0"
+  },
+  "skillsUsed": [
+    "revise-explore",
+    "explore-proof-based"
+  ],
+  "focusedProof": {
+    "scriptSha256": "817c1cbf16f850306e7e38158c4e96dec7ca6e1dfc9f60063b23d57d434e6d6a",
+    "resultSha256": "3276631eae8e5bb578497e8d43cfeb10cb3e652483940dc1de37d5bf03f0b901",
+    "includedInStableTransfer": false
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

@@ -4,12 +4,10 @@ coverage/
 .tmp/
 *.log
 
-# Runtime state is durable for detached handoff but not repository truth.
-.flowkit/runs/*
-!.flowkit/runs/.gitkeep
-
 # External managed runtime/dependency artifacts never belong in source Git.
 /tools/
 /runtime/
 *.node-modules.tar.gz
 *.pnpm-store.tar.gz
+
+/.codebuddy/

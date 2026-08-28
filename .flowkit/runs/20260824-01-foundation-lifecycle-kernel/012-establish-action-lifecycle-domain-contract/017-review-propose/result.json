@@ -1,0 +1,56 @@
+{
+  "runNumber": 17,
+  "kind": "external-orchestrator-review-propose-result",
+  "role": "reviewer",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-action-lifecycle-domain-contract",
+  "action": "review-propose",
+  "finishedAt": "2026-08-25T11:16:00+08:00",
+  "executionStatus": "completed",
+  "authorProposalStatusObserved": "complete",
+  "reviewerVerdict": "approved",
+  "verificationVerdict": null,
+  "nextBoundary": "apply",
+  "nextBoundaryAuthority": "handoff-advisory-only",
+  "reviewSummary": {
+    "exploreAlignment": "PASS",
+    "contractCompleteness": "PASS",
+    "designQuality": "PASS",
+    "verificationClosure": "PASS",
+    "openspecFormalValidation": "PASS",
+    "stableTransferContract": "PASS",
+    "applyReadiness": "PASS"
+  },
+  "findings": [],
+  "verifiedFacts": [
+    "016 payload SHA-256 matches the supplied checksum.",
+    "Prior 012-015 Run records, approved explore.md, .openspec.yaml, and the active delivery-group state are unchanged from the 015 reviewer payload.",
+    "OpenSpec 1.10.0 reports all four spec-driven planning artifacts complete and strict validation passes.",
+    "The Proposal scope matches the approved Explore boundary and excludes Run/Result persistence, RunId/attempt identity, ActionPackage/Result admission, external execution, Policy ordering/eligibility, OpenSpec adapter, CLI, mutation/Git checkpoint, and automatic next.",
+    "The action-lifecycle spec contains testable scenarios for closed lifecycle literals, canonical semantic identity, zero-or-one current slot, prepare/resume/terminal transitions, terminal absorbing behavior, structural-vs-Policy separation, and serialization-safe semantic equality.",
+    "RE-013-001 remains closed across proposal/spec/design/tasks: terminal A -> prepare A is rejected and only canonical B != A can structurally replace a terminal current Action.",
+    "The design keeps Action lifecycle in a dedicated src/domain/action-lifecycle.ts module, reuses existing semantic/Standard Action validators, and uses one pure reducer as the transition truth.",
+    "The task plan maps material requirements to targeted tests or observable verification, then closes with the domain suite, typecheck, format check, and OpenSpec strict validation.",
+    "Detached baseline typecheck passes, existing domain tests pass 13/13, and the repository-declared format check passes.",
+    "No production source/test/package/lock/architecture mutation is introduced by the 016 Propose overlay relative to the supplied base; only .flowkit Run records and OpenSpec planning/lifecycle artifacts differ."
+  ],
+  "limitations": [
+    "Review-Propose approval authorizes no implementation by itself; Apply remains a separate next Action boundary.",
+    "The 13/13 baseline domain tests prove the pre-Apply repository remains healthy, not that the planned Action lifecycle implementation already exists.",
+    "Future Apply must produce the targeted lifecycle tests described in tasks.md before implementation correctness can be reviewed.",
+    "This reviewer verdict is neither Verification PASS nor Owner authorization for archive/checkpoint/promotion.",
+    "Detached validation covers the supplied Linux snapshot and exact provided runtimes; it is not whole-manager cross-platform acceptance."
+  ],
+  "artifacts": {
+    "reviewedProposal": "openspec/changes/establish-action-lifecycle-domain-contract/proposal.md",
+    "reviewedSpec": "openspec/changes/establish-action-lifecycle-domain-contract/specs/action-lifecycle/spec.md",
+    "reviewedDesign": "openspec/changes/establish-action-lifecycle-domain-contract/design.md",
+    "reviewedTasks": "openspec/changes/establish-action-lifecycle-domain-contract/tasks.md",
+    "reviewRunAction": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/012-establish-action-lifecycle-domain-contract/017-review-propose/action.md",
+    "reviewRunContext": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/012-establish-action-lifecycle-domain-contract/017-review-propose/context.json",
+    "reviewRunResult": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/012-establish-action-lifecycle-domain-contract/017-review-propose/result.json"
+  },
+  "productionMutation": false,
+  "runId": "20260824-017-review-propose",
+  "stableTransfer": true
+}

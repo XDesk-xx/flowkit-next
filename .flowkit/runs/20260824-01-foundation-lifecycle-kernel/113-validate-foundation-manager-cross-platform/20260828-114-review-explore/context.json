@@ -1,0 +1,63 @@
+{
+  "runNumber": 114,
+  "kind": "external-orchestrator-review-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "validate-foundation-manager-cross-platform",
+  "action": "review-explore",
+  "runId": "20260828-114-review-explore",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/113-validate-foundation-manager-cross-platform/20260828-114-review-explore",
+  "inputRunId": "20260828-113-explore",
+  "reviewChainStartRunId": "20260828-113-explore",
+  "reviewModel": "review-explore-skill",
+  "inputArchiveSha256": "34480215e82d5a310035bdff1aa8822a2cf85f7eadde0f28d5b270d3509adb69",
+  "deliveryState": {
+    "activeChange": "validate-foundation-manager-cross-platform",
+    "precedingFoundationCliState": "completed",
+    "fullTestStatus": "not-ready"
+  },
+  "activationChecks": {
+    "ownerActivateChangeAuthorityStructuralValidation": "PASS",
+    "ownerAcceptanceRefinementHonored": true,
+    "productionMutationBy113": "NONE",
+    "testMutationBy113": "NONE",
+    "proposalArtifactsCreatedBy113": "NONE"
+  },
+  "runtime": {
+    "nodeProofFixture": "22.23.2",
+    "repositoryNodeEngine": ">=22.20.0",
+    "openspec": "1.10.0",
+    "archify": "2.15.0"
+  },
+  "independentChecks": {
+    "typecheck": "PASS",
+    "domainTests": "116/116 PASS",
+    "formatCheck": "PASS",
+    "build": "PASS",
+    "canonicalOpenSpecSpecs": "10/10 strict PASS after accepted archive replay",
+    "currentChangePlanningState": "0/4; proposal ready",
+    "managedArtifactHashes": "4/4 PASS",
+    "realWholeManagerComposition": "PASS",
+    "realCliStatus": "PASS",
+    "realCliNextExactRun": "ready-action(review-apply)",
+    "realCliNextExplicitNull": "ready-action(explore)",
+    "realCliDoctor": "PASS",
+    "fakePathTakeover": "NONE",
+    "checkpointAuthorization": "ready-checkpoint-evaluation + authorized=true",
+    "checkpointProofCreatedGitRepository": false,
+    "windowsCompatibilitySimulation": "PASS",
+    "eslintConfigPresent": false,
+    "lintScriptPresent": false,
+    "directEslintSrc": "exit 2; no eslint config"
+  },
+  "checkpointBaseReviewLimitation": {
+    "claimedArchive": "flowkit-next-delivery-20260824-01-foundation-lifecycle-kernel-9592a30.zip",
+    "exactArchivePresentInThisReviewTurn": false,
+    "exactArchiveShaAndGitRevisionIndependentlyReverified": false,
+    "authorProofScriptsPresentIn113Transfer": false,
+    "impact": "non-blocking; material claims independently reproduced"
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

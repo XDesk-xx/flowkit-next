@@ -1,0 +1,70 @@
+{
+  "runNumber": 25,
+  "kind": "external-orchestrator-revise-explore-result",
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-run-result-persistence",
+  "action": "revise-explore",
+  "runId": "20260825-025-revise-explore",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/021-establish-run-result-persistence/20260825-025-revise-explore",
+  "finishedAt": "2026-08-25T18:15:00+08:00",
+  "executionStatus": "completed",
+  "inputReviewerVerdict": "changes-requested",
+  "authorRevisionConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-explore",
+  "nextBoundaryAuthority": "handoff-advisory-only",
+  "resolvedFindings": [
+    {
+      "id": "RE-024-001",
+      "status": "resolved-by-author",
+      "corrections": [
+        "Extended R7 to include Win32 reserved device basenames as a portable repository-address risk.",
+        "Required case-insensitive rejection of CON/PRN/AUX/NUL/COM1-COM9/LPT1-LPT9 before filesystem use.",
+        "Added controlled proof with 40/40 segment cases, including the complete 22-name ASCII reserved-device class, plus 9/9 mixed/uppercase reserved-name checks.",
+        "Preserved acceptance of canonical current dated Action segments and prior traversal/separator/absolute/drive/UNC/alias negatives.",
+        "Kept final logical Run occurrence identity/display format and sequence allocation open for Proposal."
+      ]
+    }
+  ],
+  "proofSummary": {
+    "reservedDeviceRiskCorrection": "PASS",
+    "controlledSegmentCases": "40/40 PASS",
+    "reservedBasenamesCovered": 22,
+    "caseInsensitiveReservedChecks": "9/9 PASS",
+    "posixContainment": "PASS",
+    "windowsContainment": "PASS",
+    "typecheck": "PASS",
+    "domainTests": "25/25 PASS",
+    "formatCheck": "PASS",
+    "openspecBoundary": "PASS; 0/4 formal artifacts",
+    "canonicalSpecsStrict": "2/2 PASS",
+    "noProductionMutation": "PASS"
+  },
+  "artifacts": {
+    "revisedExplore": "openspec/changes/establish-run-result-persistence/explore.md",
+    "inputReviewAction": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/021-establish-run-result-persistence/20260825-024-review-explore/action.md",
+    "inputReviewContext": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/021-establish-run-result-persistence/20260825-024-review-explore/context.json",
+    "inputReviewResult": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/021-establish-run-result-persistence/20260825-024-review-explore/result.json",
+    "runAction": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/021-establish-run-result-persistence/20260825-025-revise-explore/action.md",
+    "runContext": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/021-establish-run-result-persistence/20260825-025-revise-explore/context.json",
+    "runResult": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/021-establish-run-result-persistence/20260825-025-revise-explore/result.json"
+  },
+  "formalOpenSpecArtifacts": {
+    "proposal": "ready-not-created",
+    "specs": "blocked-not-created",
+    "design": "blocked-not-created",
+    "tasks": "blocked-not-created"
+  },
+  "productionMutation": false,
+  "limitations": [
+    "This is Author revise-explore completion, not Reviewer approval or Verification PASS.",
+    "The controlled proof validates the bounded lexical physical-address contract; it is not production Windows filesystem execution.",
+    "Symlink/junction/reparse-point containment hardening is not claimed.",
+    "Final logical RunId display/string format and sequence allocation remain Proposal decisions.",
+    "Execution-local proof artifacts are intentionally excluded from stable transfer.",
+    "Result admission and Policy next-boundary legality remain owned by later Changes."
+  ],
+  "stableTransfer": true
+}

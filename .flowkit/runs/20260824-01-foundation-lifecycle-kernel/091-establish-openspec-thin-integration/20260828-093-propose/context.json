@@ -1,0 +1,31 @@
+{
+  "runNumber": 93,
+  "kind": "external-orchestrator-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-openspec-thin-integration",
+  "action": "propose",
+  "runId": "20260828-093-propose",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/091-establish-openspec-thin-integration/20260828-093-propose",
+  "inputRunId": "20260828-092-review-explore",
+  "checkpointBase": {
+    "archive": "flowkit-next-delivery-20260824-01-foundation-lifecycle-kernel-91d1271.zip",
+    "gitRevision": "91d1271d20925b7346aa36e7135c5f99b391c672",
+    "gitRevisionVerification": "full SHA is present in the owner-supplied checkpoint archive metadata; detached snapshot excludes .git",
+    "archiveSha256": "fcde8952bcf937991089343703e8fb0d00b1b7e089f2f15e3b759adf1491c227"
+  },
+  "ownerAuthority": null,
+  "executionMode": "external-orchestrator-detached-linux-openspec-propose-with-proposal-convergence",
+  "runtime": {
+    "detachedNode": "22.23.2",
+    "repositoryNodeEngine": ">=22.20.0",
+    "openspec": "1.10.0"
+  },
+  "skillsUsed": [
+    "openspec-propose",
+    "proposal-convergence"
+  ],
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

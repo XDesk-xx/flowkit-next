@@ -1,6 +1,16 @@
 # OpenSpec
 
-Reserved OpenSpec project root.
+This is the canonical OpenSpec project root for `flowkit-next`.
 
-This initialization state intentionally does not create a Change or enter the OpenSpec lifecycle.
-Formal OpenSpec project initialization should use the exact managed OpenSpec 1.10.0 runtime after the initialization skeleton is accepted.
+Current managed OpenSpec identity is exact `1.10.0` as locked by `config/tools/toolchain.lock.json` and restored through external `FLOWKIT_HOME`.
+
+Repository roles:
+
+```text
+openspec/specs/             → canonical synchronized specifications
+openspec/changes/           → active Changes (normally empty when no Change is active)
+openspec/changes/archive/   → archived Change history
+openspec/delivery-groups/   → external Delivery planning/finalization facts
+```
+
+Flowkit integrates with OpenSpec thinly and must not create a second proposal/design/tasks/archive state machine.

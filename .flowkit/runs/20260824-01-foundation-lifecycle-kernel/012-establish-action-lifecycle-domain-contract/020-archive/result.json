@@ -1,0 +1,36 @@
+{
+  "runNumber": 20,
+  "kind": "external-orchestrator-archive-rematerialized-result",
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-action-lifecycle-domain-contract",
+  "action": "archive",
+  "runId": "20260824-020-archive",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/012-establish-action-lifecycle-domain-contract/020-archive",
+  "executionStatus": "completed",
+  "archiveStatus": "succeeded",
+  "reviewerVerdictObserved": "approved",
+  "verificationVerdict": null,
+  "nextBoundary": "checkpoint",
+  "nextBoundaryAuthority": "requires explicit checkpoint authority; this package does not create the Git checkpoint",
+  "archiveTarget": "openspec/changes/archive/2026-08-25-002-establish-action-lifecycle-domain-contract",
+  "canonicalSpec": "openspec/specs/action-lifecycle/spec.md",
+  "deliveryChangeState": "completed",
+  "productionSourceMutation": false,
+  "repositoryArchiveMutation": true,
+  "packagingCorrectionOnly": true,
+  "limitations": [
+    "Exact 020 Owner authorization ref/sourceRef is not recoverable from the supplied durable inputs and is not fabricated.",
+    "This record preserves the accepted 020 closure while correcting transport/run topology; it is not a new lifecycle Action.",
+    "The reconstructed snapshot does not contain the user-local 001 Change run-history subtree because those exact bytes were not present in the supplied base/payload chain; checkpoint restore must preserve that existing local sibling subtree."
+  ],
+  "artifacts": {
+    "archiveRunAction": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/012-establish-action-lifecycle-domain-contract/020-archive/action.md",
+    "archiveRunContext": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/012-establish-action-lifecycle-domain-contract/020-archive/context.json",
+    "archiveRunResult": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/012-establish-action-lifecycle-domain-contract/020-archive/result.json",
+    "archiveTarget": "openspec/changes/archive/2026-08-25-002-establish-action-lifecycle-domain-contract",
+    "canonicalSpec": "openspec/specs/action-lifecycle/spec.md",
+    "deliveryGroup": "openspec/delivery-groups/20260824-01-foundation-lifecycle-kernel.yaml"
+  },
+  "stableTransfer": true
+}

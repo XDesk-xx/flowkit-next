@@ -1,0 +1,50 @@
+{
+  "runNumber": 12,
+  "kind": "external-orchestrator-explore-result",
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-action-lifecycle-domain-contract",
+  "action": "explore",
+  "finishedAt": "2026-08-25T10:10:43+08:00",
+  "executionStatus": "completed",
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-explore",
+  "nextBoundaryAuthority": "handoff-advisory-only",
+  "proofSummary": {
+    "detachedBaseline": "PASS",
+    "prerequisiteClosure": "PASS",
+    "stateVocabularyNonCollision": "PASS",
+    "transitionMatrix": "PASS",
+    "singleCurrentActionShape": "PASS",
+    "identityBoundary": "PASS",
+    "policySeparation": "PASS",
+    "openspecAuthorityBoundary": "PASS",
+    "noProductionImplementation": "PASS"
+  },
+  "artifacts": {
+    "explore": "openspec/changes/establish-action-lifecycle-domain-contract/explore.md",
+    "openspecScaffold": "openspec/changes/establish-action-lifecycle-domain-contract/.openspec.yaml",
+    "deliveryActivation": "openspec/delivery-groups/20260824-01-foundation-lifecycle-kernel.yaml",
+    "runAction": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/012-establish-action-lifecycle-domain-contract/012-explore/action.md",
+    "runContext": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/012-establish-action-lifecycle-domain-contract/012-explore/context.json",
+    "runResult": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/012-establish-action-lifecycle-domain-contract/012-explore/result.json"
+  },
+  "formalOpenSpecArtifacts": {
+    "proposal": "ready-not-created",
+    "specs": "blocked-not-created",
+    "design": "blocked-not-created",
+    "tasks": "blocked-not-created"
+  },
+  "productionMutation": false,
+  "limitations": [
+    "This is Author Explore completion, not Reviewer approval or Verification PASS.",
+    "This Run is a stable-transfer bridge record and was not emitted by the candidate Flowkit runtime.",
+    "Proof execution artifacts are intentionally not part of the stable-transfer payload; durable conclusions are carried by explore.md and result.json.",
+    "Detached proof covers the current source snapshot and exact Linux bundles, not whole-manager cross-platform acceptance.",
+    "Normal pnpm script entry was not accepted as offline-stable because it attempted registry access; direct exact-Node checks passed."
+  ],
+  "runId": "20260824-012-explore",
+  "stableTransfer": true
+}

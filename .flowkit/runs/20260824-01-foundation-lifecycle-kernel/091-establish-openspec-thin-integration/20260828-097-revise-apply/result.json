@@ -1,0 +1,48 @@
+{
+  "runNumber": 97,
+  "kind": "external-orchestrator-revise-apply-result",
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-openspec-thin-integration",
+  "action": "revise-apply",
+  "runId": "20260828-097-revise-apply",
+  "executionStatus": "completed",
+  "authorConclusion": "PASS",
+  "reviewFinding": {
+    "id": "RA-096-001",
+    "status": "corrected",
+    "correction": "Non-zero OpenSpec output is classified as openspec-formal-outcome only after validating the closed OpenSpec 1.10.0 status/list failure machine envelope; arbitrary JSON objects fail as invalid-machine-shape."
+  },
+  "implementation": {
+    "modified": [
+      "src/domain/openspec-observation.ts",
+      "tests/unit/domain/openspec-observation-boundary.test.ts"
+    ],
+    "proposalArtifactsModified": false,
+    "dependencyMutation": false,
+    "newCommandWrapper": false,
+    "newLifecycleSemantics": false
+  },
+  "verification": {
+    "focusedObservationTests": "16/16 PASS",
+    "domainTests": "107/107 PASS",
+    "typecheck": "PASS",
+    "formatCheck": "PASS",
+    "openspecChangeStrict": "PASS",
+    "openspecAllStrict": "9/9 PASS",
+    "realManagedOpenSpecProof": "PASS",
+    "formalOutcomeEnvelope": "PASS",
+    "codeGate": "PASS; no new/modified TypeScript file exceeds 500 lines"
+  },
+  "reviewApplyPerformed": false,
+  "archivePerformed": false,
+  "nextBoundary": "review-apply",
+  "nextBoundaryAuthority": "handoff-advisory-only",
+  "limitations": [
+    "Independent re-review-apply has not yet been performed.",
+    "Run 097 grants no archive, checkpoint, Owner or Git authority.",
+    "The revision validates OpenSpec machine structure only and deliberately does not interpret diagnostic message/code semantics."
+  ],
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

@@ -1,0 +1,69 @@
+{
+  "runNumber": 23,
+  "kind": "external-orchestrator-revise-explore-result",
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-run-result-persistence",
+  "action": "revise-explore",
+  "runId": "20260825-023-revise-explore",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/021-establish-run-result-persistence/20260825-023-revise-explore",
+  "finishedAt": "2026-08-25T17:58:17+08:00",
+  "executionStatus": "completed",
+  "inputReviewerVerdict": "changes-requested",
+  "authorRevisionConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-explore",
+  "nextBoundaryAuthority": "handoff-advisory-only",
+  "resolvedFindings": [
+    {
+      "id": "RE-022-001",
+      "status": "resolved-by-author",
+      "corrections": [
+        "Added explicit filesystem repository path-address risk for Run occurrence persistence.",
+        "Separated logical Run occurrence identity from a canonical validated repository address segment.",
+        "Added POSIX and Windows adversarial negative proof covering traversal, slash/backslash nesting, absolute/drive/UNC forms and cross-platform aliases.",
+        "Canonical current dated Action segments remain accepted and confined to one direct child of the exact Change root.",
+        "Final logical RunId display/string format and sequence allocation remain open for Proposal; no lifecycle authority is parsed from display ids."
+      ]
+    }
+  ],
+  "proofSummary": {
+    "pathAddressRiskCorrection": "PASS",
+    "controlledPathCases": "18/18 PASS",
+    "posixContainment": "PASS",
+    "windowsContainment": "PASS",
+    "logicalIdentityAddressSeparation": "PASS",
+    "typecheck": "PASS",
+    "domainTests": "25/25 PASS",
+    "formatCheck": "PASS",
+    "openspecBoundary": "PASS; 0/4 formal artifacts",
+    "canonicalSpecsStrict": "2/2 PASS",
+    "noProductionMutation": "PASS"
+  },
+  "artifacts": {
+    "revisedExplore": "openspec/changes/establish-run-result-persistence/explore.md",
+    "inputReviewAction": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/021-establish-run-result-persistence/20260825-022-review-explore/action.md",
+    "inputReviewContext": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/021-establish-run-result-persistence/20260825-022-review-explore/context.json",
+    "inputReviewResult": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/021-establish-run-result-persistence/20260825-022-review-explore/result.json",
+    "runAction": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/021-establish-run-result-persistence/20260825-023-revise-explore/action.md",
+    "runContext": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/021-establish-run-result-persistence/20260825-023-revise-explore/context.json",
+    "runResult": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/021-establish-run-result-persistence/20260825-023-revise-explore/result.json"
+  },
+  "formalOpenSpecArtifacts": {
+    "proposal": "ready-not-created",
+    "specs": "blocked-not-created",
+    "design": "blocked-not-created",
+    "tasks": "blocked-not-created"
+  },
+  "productionMutation": false,
+  "limitations": [
+    "This is Author revise-explore completion, not Reviewer approval or Verification PASS.",
+    "The controlled path proof validates logical-to-physical address containment for the tested POSIX/Windows semantics; it is not production implementation.",
+    "Symlink/junction/reparse-point containment hardening is not claimed by this revision.",
+    "Final logical RunId display/string format and sequence allocation remain Proposal decisions.",
+    "Execution-local proof artifacts are intentionally excluded from stable transfer.",
+    "Result admission and Policy next-boundary legality remain owned by later Changes."
+  ],
+  "stableTransfer": true
+}

@@ -1,0 +1,47 @@
+{
+  "runNumber": 120,
+  "kind": "external-orchestrator-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "normalize-foundation-contract-terminology",
+  "action": "explore",
+  "runId": "20260828-120-explore",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/120-normalize-foundation-contract-terminology/20260828-120-explore",
+  "inputRunId": null,
+  "checkpointBase": {
+    "archive": "flowkit-next-delivery-20260824-01-foundation-lifecycle-kernel-246a653.zip",
+    "gitRevision": "246a653",
+    "gitRevisionVerification": "Owner supplied checkpoint short revision in archive name; detached snapshot has no .git authority",
+    "archiveSha256": "25d22c642bfeb373a01ad1ac381a7fa9f6298dacfaf4eabebe2cdc778b72eeef"
+  },
+  "preChangeMemoSnapshot": {
+    "archive": "memo-full-test-correction.zip",
+    "archiveSha256": "a7b3779b48842abcebbd689a5c3f45c3cc3e3c31c5b6e000446edeefbe1a46f4",
+    "memoDocumentSha256": "a87c8cdd34f9efcc76276f49b9f1ef943af57c02a997d97c0d93205b5ce6bc0c",
+    "memoId": "future-full-test-correction-model",
+    "boundary": "memo is preserved byte-identically and is not part of this Change"
+  },
+  "authorization": {
+    "ref": "owner:1a738a5e2f77e965dcf8295183bc8047f1336f87781aee7497814674cbbda2fc",
+    "decision": "activate-change",
+    "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+    "changeId": "normalize-foundation-contract-terminology",
+    "sourceRef": "owner-input:2026-08-28T18:55+08:00:activate-change:normalize-foundation-contract-terminology:explore-proof-based",
+    "scope": ["explore"]
+  },
+  "executionMode": "external-orchestrator-detached-linux-openspec-explore-proof-based",
+  "runtime": {
+    "detachedProofNode": "22.23.2",
+    "repositoryNodeEngine": ">=22.20.0",
+    "openspec": "1.10.0"
+  },
+  "skillsUsed": ["openspec-explore", "explore-proof-based"],
+  "proof": {
+    "exploreArtifactSha256": "79521ea8397612b24de830b08f2bfd0b298ad1a2fb82046c2874054a8cf24acd",
+    "canonicalInternalVersionOccurrences": 2,
+    "canonicalSpecsValidated": 10
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

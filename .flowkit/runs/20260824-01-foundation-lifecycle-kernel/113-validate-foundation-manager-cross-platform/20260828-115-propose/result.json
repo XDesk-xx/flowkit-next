@@ -1,0 +1,54 @@
+{
+  "runNumber": 115,
+  "kind": "external-orchestrator-propose-result",
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "validate-foundation-manager-cross-platform",
+  "action": "propose",
+  "runId": "20260828-115-propose",
+  "finishedAt": "2026-08-28T15:53:24+08:00",
+  "executionStatus": "completed",
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-propose",
+  "planning": {
+    "proposal": "done",
+    "specs": "skipped",
+    "design": "done",
+    "tasks": "done"
+  },
+  "capabilities": {
+    "new": [],
+    "modified": []
+  },
+  "convergence": {
+    "status": "PASS",
+    "requirementsTraceable": true,
+    "reviewExploreVerdict": "approved",
+    "skipSpecs": true,
+    "productSemanticChange": false,
+    "productionSourceMutationPlanned": false,
+    "windowsNativePassClaimed": false,
+    "windowsCompatibilitySimulationRequired": true,
+    "detachedRealAcceptanceRequired": true,
+    "genericVerificationPlatformAdded": false,
+    "genericTestOrchestratorAdded": false,
+    "lintGateInvented": false,
+    "bootstrapRunsUsedAsSelfHostingEvidence": false,
+    "formalFullTestExecuted": false,
+    "newContractChangingUnknowns": false,
+    "productionMutation": false
+  },
+  "checks": {
+    "openspecPlanning": "proposal/design/tasks complete; specs skipped by skip_specs",
+    "openspecAllStrict": "11/11 PASS (10 canonical specs + current skip_specs Change)",
+    "typecheck": "PASS",
+    "domainTests": "116/116 PASS",
+    "productionBuild": "PASS",
+    "formatCheck": "PASS",
+    "productionMutation": "NONE"
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

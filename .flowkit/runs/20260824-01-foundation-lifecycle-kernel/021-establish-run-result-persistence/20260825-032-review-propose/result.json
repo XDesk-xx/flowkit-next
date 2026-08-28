@@ -1,0 +1,46 @@
+{
+  "runNumber": 32,
+  "kind": "external-orchestrator-review-propose-result",
+  "role": "reviewer",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-run-result-persistence",
+  "action": "review-propose",
+  "runId": "20260825-032-review-propose",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/021-establish-run-result-persistence/20260825-032-review-propose",
+  "finishedAt": "2026-08-25T22:34:00+08:00",
+  "executionStatus": "completed",
+  "authorConclusionObserved": "PASS",
+  "reviewerVerdict": "approved",
+  "verificationVerdict": null,
+  "nextBoundary": "apply",
+  "nextBoundaryAuthority": "handoff-advisory-only",
+  "reviewSummary": {
+    "exploreAlignment": "PASS",
+    "contractCompleteness": "PASS",
+    "designQuality": "PASS",
+    "verificationClosure": "PASS"
+  },
+  "findingResolution": [
+    {
+      "id": "RP-030-001",
+      "status": "closed",
+      "summary": "Generated Run occurrences are now create-once/non-overwritable; existing-target writes fail closed without changing prior bytes; occupied controlled Action sequences cannot be reused within one Change history; focused spec scenarios/tasks cover the collision behavior."
+    }
+  ],
+  "findings": [],
+  "verifiedFacts": [
+    "031 ZIP SHA-256 matches the supplied checksum: 7335bf3ec75143c3cfdfcc174094e19fc9b60debba8706889c1f5f27c1696d6c.",
+    "Relative to 030, 031 changes only proposal.md, design.md, specs/run-result-persistence/spec.md, tasks.md and adds the 031 revise-propose Run record; carried 021-030 Run records, explore.md, and delivery-group bytes are unchanged.",
+    "Proposal/spec/design/tasks consistently define create-once existing-occurrence collision rejection with existing three-file bytes preserved.",
+    "Duplicate controlled sequence handling is defined as fail-closed prevention before creating a second occurrence in the exact Change history, which satisfies RP-030-001 without introducing locking or multi-writer coordination.",
+    "Owner-corrected minimal sequential Author/Reviewer scope remains intact; no generic filesystem API, Result admission, Policy, scheduler, locking, WAL/database, multi-Agent coordination, CLI, OpenSpec adapter, or Git checkpoint behavior is introduced by the Proposal.",
+    "OpenSpec 1.10.0 reports 4/4 planning artifacts complete; strict validation passes for establish-run-result-persistence; validate-all strict passes 3/3.",
+    "Detached Node 22.23.2 baseline passes typecheck, 25/25 domain tests, and repository-declared Prettier format check.",
+    "No production source/test/package/lock/architecture mutation is present in the revise-propose payload."
+  ],
+  "limitations": [
+    "This is Review Propose approval only; it is not Apply, Verification PASS, archive, checkpoint, or Owner authority.",
+    "The accepted collision contract is sequential/single-writer and does not claim multi-process race freedom or crash-atomic transactions."
+  ],
+  "stableTransfer": true
+}

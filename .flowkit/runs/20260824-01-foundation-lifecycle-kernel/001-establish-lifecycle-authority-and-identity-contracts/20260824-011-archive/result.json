@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "kind": "external-bootstrap-action-result",
+  "run": {
+    "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+    "changeId": "establish-lifecycle-authority-and-identity-contracts",
+    "runId": "20260824-011-archive",
+    "action": "archive",
+    "role": "author"
+  },
+  "executionStatus": "completed",
+  "summary": "Canonical 010-v2 review-apply 已批准，Owner 显式 authorize-archive 后，exact OpenSpec 1.10.0 已成功同步 lifecycle-authority-and-identity main spec 并归档 Change；Delivery manifest 中该 Change 已收敛为 completed。未执行 Git commit/push，也未启动下一个 Change。",
+  "sourceReview": {
+    "canonicalPackage": "flowkit-next-delivery-20260824-01-foundation-lifecycle-kernel-010-review-apply-reviewer-v2.zip",
+    "packageSha256": "c760067a340697325aed43c35d1038f032f8401348659422f5ac7244c02ab64c",
+    "resultSha256": "32f3ccb01d6146afa7d1ec83b20b57a90be0c89e3331ad75cf340fae5aff6e37",
+    "runId": "20260824-010-review-apply",
+    "verdict": "approved"
+  },
+  "ownerAuthorizationRefs": [
+    "owner:e60e1a1aab88a78b723e9b4f5e6c62d9430a9c641694ef81cad7f0707f05c776"
+  ],
+  "checkpointAuthorizationRef": "owner:52101061dd07c7344c59e4d29ebcde0e49149e128472d4dccdc67eb9887d5f6a",
+  "archive": {
+    "openSpecVersion": "1.10.0",
+    "command": "TZ=Asia/Shanghai node ${FLOWKIT_HOME}/tools/openspec/1.10.0/bin/openspec.js archive establish-lifecycle-authority-and-identity-contracts --yes --json",
+    "exitCode": 0,
+    "archivedAs": "2026-08-24-establish-lifecycle-authority-and-identity-contracts",
+    "archivedPath": "openspec/changes/archive/2026-08-24-establish-lifecycle-authority-and-identity-contracts",
+    "specsUpdated": true,
+    "specDelta": {
+      "added": 7,
+      "modified": 0,
+      "removed": 0,
+      "renamed": 0
+    },
+    "mainSpecPath": "openspec/specs/lifecycle-authority-and-identity/spec.md",
+    "mainSpecSha256": "8c4e5c87955d103afa514eab42b5c1dfe7efb86b200de8e4b6a90314b2b8af4d",
+    "archiveTreeFingerprint": "b1636c6e034060a6eedbdcc26eae524da01a00d54f055604f92862afe5a0442f"
+  },
+  "deliveryState": {
+    "delivery": "active",
+    "change": "completed"
+  },
+  "verification": {
+    "runtime": {
+      "platform": "linux-x64",
+      "node": "22.23.2",
+      "pnpm": "11.22.0",
+      "openspec": "1.10.0"
+    },
+    "typecheck": "PASS",
+    "targetedDomainTests": "13/13 PASS",
+    "format": "PASS",
+    "gitDiffCheck": "PASS",
+    "openSpecAllStrict": "1/1 PASS",
+    "openSpecArchivedStrict": "1/1 PASS",
+    "activeOpenSpecChanges": 0,
+    "ownerFacts": "2/2 structural-valid"
+  },
+  "nextBoundary": {
+    "recommendedAction": "git-checkpoint",
+    "authorizationRef": "owner:52101061dd07c7344c59e4d29ebcde0e49149e128472d4dccdc67eb9887d5f6a",
+    "execution": "local-ai-handoff",
+    "stopAfterCheckpoint": true
+  },
+  "forbiddenNext": [
+    "activate-next-change-before-checkpoint",
+    "push-without-explicit-owner-authorization",
+    "auto-next"
+  ]
+}

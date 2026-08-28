@@ -1,0 +1,68 @@
+{
+  "runNumber": 126,
+  "kind": "external-orchestrator-archive-result",
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "normalize-foundation-contract-terminology",
+  "action": "archive",
+  "runId": "20260828-126-archive",
+  "finishedAt": "2026-08-28T21:08:00+08:00",
+  "executionStatus": "completed",
+  "archiveStatus": "succeeded",
+  "authorConclusion": "PASS",
+  "reviewerVerdictObserved": "approved",
+  "verificationVerdict": null,
+  "nextBoundary": "checkpoint",
+  "nextBoundaryAuthority": "explicit Git checkpoint authorization remains required before formal Delivery Full Test",
+  "archiveTarget": "openspec/changes/archive/2026-08-28-013-normalize-foundation-contract-terminology",
+  "canonicalSpecs": [
+    "openspec-thin-integration",
+    "policy-and-next-boundary"
+  ],
+  "deliveryChangeState": "completed",
+  "deliveryChangeSummary": {
+    "completed": 12,
+    "cancelled": 1,
+    "planned": 0,
+    "active": 0
+  },
+  "archiveVerification": {
+    "activeOpenSpecChanges": "0",
+    "openspecStrict": "10/10 canonical specs PASS",
+    "typecheck": "PASS",
+    "domainTests": "116/116 PASS",
+    "build": "PASS",
+    "formatCheck": "PASS",
+    "acceptance": "4/4 PASS",
+    "canonicalInternalVersionHierarchyResidue": "0 occurrences of internal V1/V2/V3 in openspec/specs/**",
+    "archivedChangeArtifactBytePreservation": "7/7 byte-identical after move",
+    "productionSourceAndTestsBytePreservation": "PASS; src/** and tests/** unchanged by archive",
+    "memoBytePreservation": "PASS; .flowkit/memos.json unchanged",
+    "packageAndBuildConfigBytePreservation": "PASS"
+  },
+  "archiveSpecSync": {
+    "required": true,
+    "performed": true,
+    "totals": {
+      "added": 0,
+      "modified": 1,
+      "removed": 0,
+      "renamed": 1
+    }
+  },
+  "executionAuthorityModel": {
+    "reviewApplyApproved": true,
+    "userRequestedArchive": true,
+    "newOwnerAuthorityFactCreated": false,
+    "formalDeliveryVerificationPerformed": false
+  },
+  "limitations": [
+    "Archive success is not Delivery Full Test Verification PASS.",
+    "Post-archive acceptance rerun is regression evidence only and does not create formal Verification authority.",
+    "This Run does not create Git checkpoint authority or a Git checkpoint commit.",
+    "All Change obligations are terminal, but Delivery Final, Archify Final materialization, repository guidance convergence, and Owner promotion remain outstanding.",
+    "The open future-full-test-correction-model Memo is preserved and non-blocking."
+  ],
+  "stableTransfer": true,
+  "packageClass": "archive-closure-snapshot"
+}

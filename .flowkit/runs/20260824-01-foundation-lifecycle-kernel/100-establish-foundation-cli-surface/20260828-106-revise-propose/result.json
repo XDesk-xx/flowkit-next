@@ -1,0 +1,58 @@
+{
+  "runNumber": 106,
+  "kind": "external-orchestrator-revise-propose-result",
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-foundation-cli-surface",
+  "action": "revise-propose",
+  "runId": "20260828-106-revise-propose",
+  "finishedAt": "2026-08-28T09:40:56+08:00",
+  "executionStatus": "completed",
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-propose",
+  "findingClosure": [
+    {
+      "findingId": "RP-105-001",
+      "state": "addressed",
+      "correction": "The CLI request now represents the canonical active-Change/no-current-Run branch explicitly with currentRunId:null, maps it directly to null CurrentAction/RunContext/Result for canonical Policy, keeps omitted/malformed input invalid, and never scans Run history to infer currentness or absence."
+    }
+  ],
+  "proposalConvergence": {
+    "verdict": "PASS",
+    "scopeRegression": "NONE",
+    "newCapabilityIntroduced": false,
+    "existingCanonicalCapabilityModified": false,
+    "explicitNoCurrentRunBranchAdded": true,
+    "exactCurrentRunBranchPreserved": true,
+    "historySelectionIntroduced": false,
+    "currentRegistryIntroduced": false,
+    "runLineageSubsystemIntroduced": false,
+    "deliveryDiscoveryIntroduced": false,
+    "policyTransitionDuplicationIntroduced": false,
+    "newContractChangingUnknowns": false
+  },
+  "focusedProof": {
+    "canonicalPolicyActiveNoCurrent": "ready-action(explore)",
+    "explicitNullMapsToNullPolicyFacts": true,
+    "missingInputRemainsInvalidByContract": true,
+    "higherSequenceHistoryNonAuthoritative": true
+  },
+  "checks": {
+    "openspecPlanning": "4/4 complete",
+    "changeStrict": "PASS",
+    "openspecAllStrict": "10/10 PASS",
+    "typecheck": "PASS",
+    "domainTests": "107/107 PASS",
+    "formatCheck": "PASS",
+    "productionMutation": "NONE",
+    "testMutation": "NONE"
+  },
+  "limitations": [
+    "This is Author revise-propose completion, not independent Reviewer approval or Apply authority.",
+    "The explicit no-current-run form is caller-owned input for the canonical empty CurrentAction slot; this Change does not prove emptiness by scanning repository history."
+  ],
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

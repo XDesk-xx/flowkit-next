@@ -1,0 +1,39 @@
+{
+  "runNumber": 105,
+  "kind": "external-orchestrator-review-propose-result",
+  "role": "reviewer",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-foundation-cli-surface",
+  "action": "review-propose",
+  "runId": "20260828-105-review-propose",
+  "executionStatus": "completed",
+  "authorConclusion": null,
+  "reviewerVerdict": "changes-requested",
+  "verificationVerdict": null,
+  "nextBoundary": "revise-propose",
+  "blockingFindings": [
+    {
+      "id": "RP-105-001",
+      "title": "CLI next cannot represent the canonical active Change with no current Run",
+      "requiredRevision": "Keep explicit caller authority but allow an explicit no-current-run request form (for example currentRunId:null) that maps directly to currentAction=null and null terminal facts before calling canonical Policy; do not scan history or add current-state persistence."
+    }
+  ],
+  "checks": {
+    "chain100To104Traceability": "PASS",
+    "exploreTraceability": "PASS",
+    "scopeConvergence": "PASS",
+    "minimality": "PASS",
+    "contractCompleteness": "BLOCKED by RP-105-001",
+    "designDiscipline": "PASS",
+    "verificationClosure": "BLOCKED only for canonical no-current Policy branch",
+    "openspecPlanning": "4/4 complete",
+    "changeStrict": "PASS",
+    "openspecAllStrict": "10/10 PASS",
+    "typecheck": "PASS",
+    "domainTests": "107/107 PASS",
+    "formatCheck": "PASS",
+    "productionMutation": "NONE"
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

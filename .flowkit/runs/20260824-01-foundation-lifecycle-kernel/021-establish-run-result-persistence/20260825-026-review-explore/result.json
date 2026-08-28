@@ -1,0 +1,91 @@
+{
+  "runNumber": 26,
+  "kind": "external-orchestrator-review-explore-result",
+  "role": "reviewer",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-run-result-persistence",
+  "action": "review-explore",
+  "runId": "20260825-026-review-explore",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/021-establish-run-result-persistence/20260825-026-review-explore",
+  "finishedAt": "2026-08-25T18:50:00+08:00",
+  "executionStatus": "completed",
+  "authorRevisionConclusionObserved": "PASS",
+  "reviewerVerdict": "changes-requested",
+  "verificationVerdict": null,
+  "nextBoundary": "revise-explore",
+  "nextBoundaryAuthority": "handoff-advisory-only",
+  "reviewSummary": {
+    "factsTraceable": "PASS",
+    "scopeRiskCoverage": "PASS",
+    "dependencyRiskCoverage": "PASS",
+    "persistenceRiskCoverage": "CHANGES REQUESTED — physical path-component length is unbounded",
+    "verificationRiskCoverage": "PASS",
+    "compatibilityRiskCoverage": "CHANGES REQUESTED — arbitrary-length lexical segments are not portable filesystem components",
+    "proofQuality": "CHANGES REQUESTED",
+    "proposalReadiness": "FAIL UNTIL RE-026-001 IS CLOSED"
+  },
+  "findings": [
+    {
+      "id": "RE-026-001",
+      "severity": "blocking",
+      "title": "Portable Run address gate has no physical path-component length bound",
+      "problem": "025 closes the Win32 reserved-device-name gap, but the Explore candidate gate still accepts arbitrarily long lowercase ASCII segments because its grammar/basename/normalize/reserved-name checks define no length limit. A 256-character segment passes that gate and both POSIX/Win32 lexical checks, yet the detached Linux filesystem reports NAME_MAX=255 and rejects creation with ENAMETOOLONG. Windows documentation likewise bounds individual NTFS/exFAT path components at 255 characters. Therefore the current proof still does not establish the claimed portable canonical repository segment.",
+      "reviewEvidence": [
+        "025 ZIP SHA-256 matches its supplied checksum.",
+        "RE-024-001 reserved-device class is independently reproduced as rejected while canonical dated Action segments remain accepted.",
+        "A 255-character lowercase ASCII segment passes the documented gate and can be created on the detached Linux filesystem.",
+        "A 256-character lowercase ASCII segment also passes the documented gate, path.posix/path.win32 basename and normalize checks, but actual directory creation fails with ENAMETOOLONG.",
+        "getconf NAME_MAX for the detached filesystem reports 255.",
+        "Microsoft documents individual NTFS/exFAT file-name/path-component limits of 255 characters."
+      ],
+      "requiredRevision": [
+        "Extend R7 / repository-address contract to include physical path-component length as a portability risk.",
+        "Define an explicit bounded canonical physical segment before filesystem use: at most 255 ASCII characters under the current proof grammar, or a stricter project-defined cap.",
+        "Add boundary proof demonstrating the maximum accepted length and rejection immediately beyond the bound, while preserving the previous traversal/separator/absolute/drive/UNC/alias/reserved-device negatives.",
+        "State explicitly that total repository path length / checkout-root constraints are environment or later Windows acceptance concerns if they are not being claimed by this Change; do not silently treat lexical containment as proof of total-path portability.",
+        "Keep final logical Run occurrence identity/display format and sequence allocation open."
+      ],
+      "nonRequirements": [
+        "No production implementation is required in revise-explore.",
+        "No final logical RunId display/string schema must be frozen.",
+        "No Windows whole-manager Full Test is required at this boundary.",
+        "No symlink/junction/reparse-point hardening is added by this finding.",
+        "No Result admission, Policy, scheduler, database/WAL, or multi-Agent recovery work is required."
+      ]
+    }
+  ],
+  "resolvedFindings": [
+    {
+      "id": "RE-024-001",
+      "status": "closed-by-reviewer",
+      "evidence": "025 explicitly rejects the complete ASCII Win32 reserved-device basename class case-insensitively and preserves prior path-safety negatives."
+    }
+  ],
+  "verifiedFacts": [
+    "025 ZIP SHA-256 matches its supplied checksum.",
+    "025 preserves the prior 021–024 Run records byte-for-byte.",
+    "Detached Node 22.23.2 baseline passes typecheck, 25/25 domain tests, and repository-declared Prettier check.",
+    "OpenSpec remains at intended Explore boundary: 0/4 formal artifacts; proposal ready; specs/design/tasks blocked.",
+    "Both existing canonical OpenSpec specs validate strict 2/2.",
+    "No production source/test/package/lock/architecture mutation is present in the revise-explore overlay.",
+    "RE-024-001's reserved-device-name counterexamples are materially closed."
+  ],
+  "limitations": [
+    "This is Review Explore only; it is neither Verification PASS nor Owner authority.",
+    "Raw Author proof files are excluded from stable transfer, so their declared hashes are not independent reviewer evidence.",
+    "The detached reviewer host is Linux; Windows component-length evidence is grounded in Microsoft platform documentation, not a Windows filesystem write test.",
+    "The exact stable-transfer v4 artifact was not supplied/opened; the repository topology needed for this review is directly observable.",
+    "Total path length, symlink/junction/reparse-point containment and Windows whole-manager acceptance remain outside this bounded finding."
+  ],
+  "artifacts": {
+    "reviewedExplore": "openspec/changes/establish-run-result-persistence/explore.md",
+    "inputRunAction": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/021-establish-run-result-persistence/20260825-025-revise-explore/action.md",
+    "inputRunContext": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/021-establish-run-result-persistence/20260825-025-revise-explore/context.json",
+    "inputRunResult": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/021-establish-run-result-persistence/20260825-025-revise-explore/result.json",
+    "reviewRunAction": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/021-establish-run-result-persistence/20260825-026-review-explore/action.md",
+    "reviewRunContext": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/021-establish-run-result-persistence/20260825-026-review-explore/context.json",
+    "reviewRunResult": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/021-establish-run-result-persistence/20260825-026-review-explore/result.json"
+  },
+  "productionMutation": false,
+  "stableTransfer": true
+}

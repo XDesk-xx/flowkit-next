@@ -1,0 +1,57 @@
+{
+  "runNumber": 86,
+  "kind": "external-orchestrator-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-managed-toolchain-resolution",
+  "action": "apply",
+  "runId": "20260827-086-apply",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/082-establish-managed-toolchain-resolution/20260827-086-apply",
+  "recordedAt": "2026-08-27T20:07:09+08:00",
+  "inputAction": {
+    "runId": "20260827-085-review-propose",
+    "payloadArchive": "085-review-propose.zip",
+    "payloadSha256": "469caada484353cf50eea4379d3a304bed23406e6d66cad2d34a2d47e0da98ac",
+    "reviewerVerdict": "approved",
+    "nextBoundary": "apply"
+  },
+  "base": {
+    "gitRevisionHint": "853c622",
+    "gitRevisionVerified": false,
+    "reason": "detached transfer snapshot excludes .git; exact Git revision is an external base hint"
+  },
+  "applyContract": {
+    "openspecSkill": ".agents/skills/openspec-apply-change/SKILL.md",
+    "openspecSkillSha256": "9a8c4451009e64f6b8ad0e8e382afb5ad0ff74e262be9e6486ae4d9cc67827cb",
+    "convergenceSkill": ".agents/skills/implementation-convergence/SKILL.md",
+    "convergenceSkillSha256": "88b8252dd146a71ea3d189f4c2f651bc8e96db6dbb64e454769eb22ace18a68d",
+    "schema": "spec-driven",
+    "initialProgress": "0/8",
+    "finalProgress": "8/8",
+    "finalState": "all_done"
+  },
+  "runtime": {
+    "nodeFixture": "22.23.2",
+    "nodeRuntimeSnapshotSha256": "29331fa22523b7fce59965e46627ecbc87019ac74e0e6abf9f61284e0760f755",
+    "openspec": "1.10.0",
+    "openspecRuntimeSnapshotSha256": "4fb0b870d9523daebda8becaf4202397da342bc39dde3961d8dd4392c72e2b68",
+    "nodeModules": "exact supplied offline snapshot",
+    "nodeModulesSnapshotSha256": "96e1c2cd74b1bba7e706100f01ed149727453b03a22aefbffb7e5c7175b18406"
+  },
+  "verification": {
+    "focusedManagedToolTests": "11/11 PASS",
+    "domainTests": "90/90 PASS",
+    "typecheck": "PASS",
+    "formatCheck": "PASS",
+    "changeStrict": "PASS",
+    "openspecAllStrict": "8/8 PASS",
+    "realOpenSpecFixture": "@fission-ai/openspec@1.10.0 PASS",
+    "realArchifyFixture": "archify@2.15.0 PASS",
+    "fakePathConflict": "PASS",
+    "onDemandMissingPeer": "PASS",
+    "dependencyMutation": "NONE"
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

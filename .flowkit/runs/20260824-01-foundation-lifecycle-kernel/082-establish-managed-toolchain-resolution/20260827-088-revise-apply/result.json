@@ -1,0 +1,47 @@
+{
+  "runNumber": 88,
+  "kind": "external-orchestrator-revise-apply-result",
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-managed-toolchain-resolution",
+  "action": "revise-apply",
+  "runId": "20260827-088-revise-apply",
+  "executionStatus": "completed",
+  "authorConclusion": "PASS",
+  "reviewFinding": {
+    "id": "RA-087-001",
+    "status": "corrected",
+    "correction": "Managed-tool lock root validation remains closed, but only the requested tool entry is fully parsed and validated for the current resolution request; absent or malformed peer entries no longer block a valid requested tool."
+  },
+  "implementation": {
+    "modified": [
+      "src/domain/managed-tool-resolution.ts",
+      "tests/unit/domain/managed-tool-resolution.test.ts"
+    ],
+    "proposalArtifactsModified": false,
+    "dependencyMutation": false,
+    "newAbstraction": false
+  },
+  "verification": {
+    "focusedManagedToolTests": "12/12 PASS",
+    "domainTests": "91/91 PASS",
+    "typecheck": "PASS",
+    "formatCheck": "PASS",
+    "openspecChangeStrict": "PASS",
+    "openspecAllStrict": "8/8 PASS",
+    "suppliedRuntimeProof": "PASS",
+    "malformedOrAbsentPeerIsolation": "PASS both directions",
+    "codeGate": "PASS; no new/modified TypeScript file exceeds 500 lines"
+  },
+  "reviewApplyPerformed": false,
+  "archivePerformed": false,
+  "nextBoundary": "review-apply",
+  "nextBoundaryAuthority": "handoff-advisory-only",
+  "limitations": [
+    "Independent re-review-apply has not yet been performed.",
+    "Run 088 does not grant archive, checkpoint, Owner or Git authority.",
+    "The pre-existing 588-line run-result-persistence module remains baseline debt and was not modified or broadened by this revision."
+  ],
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

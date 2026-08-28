@@ -1,0 +1,55 @@
+{
+  "runNumber": 93,
+  "kind": "external-orchestrator-propose-result",
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-openspec-thin-integration",
+  "action": "propose",
+  "runId": "20260828-093-propose",
+  "finishedAt": "2026-08-28T00:34:00+08:00",
+  "executionStatus": "completed",
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-propose",
+  "planning": {
+    "proposal": "done",
+    "specs": "done",
+    "design": "done",
+    "tasks": "done"
+  },
+  "capabilities": {
+    "new": ["openspec-thin-integration"],
+    "modified": []
+  },
+  "convergence": {
+    "status": "PASS",
+    "requirementsTraceable": true,
+    "reviewExploreVerdict": "approved",
+    "readOnlyObservationCount": 2,
+    "genericOpenSpecExecutorAdded": false,
+    "adjacentOpenSpecCommandsAdded": false,
+    "pathFallbackAllowed": false,
+    "exactRootBindingRequired": true,
+    "rawTransportPromotedToContract": false,
+    "formalNonZeroOutcomeDistinguished": true,
+    "openSpecStateMirrorAdded": false,
+    "policyModified": false,
+    "memoModified": false,
+    "agentsRuntimeDependencyAdded": false,
+    "selfHostingIntroduced": false,
+    "newContractChangingUnknowns": false,
+    "productionMutation": false
+  },
+  "checks": {
+    "openspecPlanning": "4/4 complete",
+    "changeStrict": "PASS",
+    "canonicalOpenSpecSpecs": "8/8 strict PASS",
+    "openspecAllStrict": "9/9 PASS (8 canonical specs + current Change)",
+    "typecheck": "PASS",
+    "domainTests": "91/91 PASS",
+    "formatCheck": "PASS"
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

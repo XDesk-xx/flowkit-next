@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "kind": "external-bootstrap-review-context",
+  "run": {
+    "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+    "changeId": "establish-lifecycle-authority-and-identity-contracts",
+    "runId": "20260824-002-review-explore",
+    "action": "review-explore",
+    "role": "reviewer",
+    "entryBase": "23ca52715df7c52738edeb59206f496c7bf2d2a9",
+    "branch": "delivery/20260824-01-foundation-lifecycle-kernel"
+  },
+  "reviewed": {
+    "runId": "20260824-001-explore",
+    "packageSha256": "f43de588aec64203399341acbed5793b3b4eb53541d32773cdff7ce09541ba1b",
+    "authorResultSha256": "8730361d7b1b6ae424df9c0afca0da1f481dd210ec7a8559dee27f44baa0b1f4",
+    "exploreSha256": "0dc6c74c1895ebbbf0cce381131053e9e1975c70fe3255069e23c8892f870ecd"
+  },
+  "baseFacts": {
+    "workingTreeBeforeOverlay": "clean",
+    "overlayTrackedDiff": [
+      "openspec/delivery-groups/20260824-01-foundation-lifecycle-kernel.yaml"
+    ],
+    "overlayAddedTrackedCandidates": [
+      "openspec/changes/establish-lifecycle-authority-and-identity-contracts/.openspec.yaml",
+      "openspec/changes/establish-lifecycle-authority-and-identity-contracts/explore.md"
+    ],
+    "productionOrTestMutationObserved": false
+  },
+  "integrity": {
+    "authorManifestFileHashes": "all-match",
+    "baseEvidenceSha256": "all-match",
+    "historicalBlobRefs": "verified-at-exact-commit",
+    "toolchainArtifacts": {
+      "OpenSpec-1.10.0.zip": "8085b07b4bafbdc09fceedbcb4ccd04c800c488d8588754d97946b462e142b51",
+      "fission-ai-openspec-1.10.0.tgz": "fefcf1b7d1e38cf06a3279c6245170dcb0d261d8d6c8ead3f3096b41f4b971fc"
+    }
+  },
+  "reviewEvidence": [
+    {
+      "id": "REV-EV-001",
+      "source": "AGENTS.md@23ca52715df7c52738edeb59206f496c7bf2d2a9",
+      "sha256": "6721f84264ad3c324b565d6e16db25be243eb42441444cb2656e70dd6c4c24b4",
+      "fact": "若 exact runtime 不匹配或缺失且当前工作必须使用它，必须 STOP 并报告 expected/actual/missing；Run 必须来自真实执行，禁止伪造成功 artifact。"
+    },
+    {
+      "id": "REV-EV-002",
+      "source": "skills/vendors/openspec/openspec-explore/SKILL.md@23ca52715df7c52738edeb59206f496c7bf2d2a9",
+      "sha256": "7e0281fc4f094dcced0c5469e7cbceba2dce9f113f22a4e34efcdce4315edf81",
+      "fact": "OpenSpec Explore 明确要求先运行 `openspec new change <name>`，并明确禁止手工创建 change directory/scaffold。"
+    },
+    {
+      "id": "REV-EV-003",
+      "source": ".flowkit/runs/.../20260824-001-explore/result.json",
+      "sha256": "8730361d7b1b6ae424df9c0afca0da1f481dd210ec7a8559dee27f44baa0b1f4",
+      "fact": "Author 明确记录当前环境无法执行 packaged OpenSpec CLI，但仍将 Run 标为 completed，并将 External OpenSpec Mutation Boundary 记为 PASS。"
+    },
+    {
+      "id": "REV-EV-004",
+      "source": "OpenSpec-1.10.0 source artifact",
+      "sha256": "8085b07b4bafbdc09fceedbcb4ccd04c800c488d8588754d97946b462e142b51",
+      "fact": "1.10.0 createChange() 真实执行会创建 change directory 并通过 writeChangeMetadata 写入 schema/created metadata；payload 的 metadata 形状本身与该实现一致，但 source inspection 不能替代要求的 CLI mutation execution。"
+    }
+  ]
+}

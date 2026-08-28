@@ -1,0 +1,57 @@
+{
+  "runNumber": 124,
+  "kind": "external-orchestrator-apply-result",
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "normalize-foundation-contract-terminology",
+  "action": "apply",
+  "runId": "20260828-124-apply",
+  "executionStatus": "completed",
+  "applyStatus": "complete",
+  "openspecApplyState": "all_done",
+  "openspecTasks": "5/5 complete",
+  "implementation": {
+    "created": [],
+    "modified": [
+      "openspec/changes/normalize-foundation-contract-terminology/tasks.md"
+    ],
+    "canonicalCorrectionCarrier": [
+      "openspec/changes/normalize-foundation-contract-terminology/specs/openspec-thin-integration/spec.md",
+      "openspec/changes/normalize-foundation-contract-terminology/specs/policy-and-next-boundary/spec.md"
+    ],
+    "canonicalSpecsDirectMutation": false,
+    "productionSourceMutation": false,
+    "testMutation": false,
+    "memoMutation": false,
+    "fullTestSemanticsMutation": false
+  },
+  "applyFacts": [
+    "The approved terminology correction is fully represented by one RENAMED and one MODIFIED OpenSpec delta; there is no runtime implementation mechanism.",
+    "Real OpenSpec 1.10.0 archive simulation proves the deltas materialize as exactly 0 added / 1 modified / 0 removed / 1 renamed canonical changes.",
+    "The renamed read-only-observation requirement preserves its body and three scenarios byte-identically; OpenSpec archive ordering movement is non-semantic.",
+    "The Owner-correction requirement differs only by Policy V1 SHALL -> Policy SHALL and preserves every predicate and all four scenarios.",
+    "No source, tests, package/build, skills, memo, repository guidance, historical archive or prior Run was modified.",
+    "Formal Delivery Full Test is not executed by this Apply."
+  ],
+  "verification": {
+    "typecheck": "PASS",
+    "formatCheck": "PASS",
+    "build": "PASS",
+    "domainTests": "116/116 PASS",
+    "changeStrict": "PASS",
+    "openspecAllStrict": "11/11 PASS",
+    "postArchiveSimulationCanonicalStrict": "10/10 PASS",
+    "postArchiveInternalVersionScan": "NONE"
+  },
+  "formalDeliveryVerificationPerformed": false,
+  "reviewApplyPerformed": false,
+  "archivePerformed": false,
+  "checkpointPerformed": false,
+  "archifyFinalPerformed": false,
+  "deliveryFinalPerformed": false,
+  "ownerPromotionPerformed": false,
+  "nextBoundary": "review-apply",
+  "nextBoundaryAuthority": "handoff-advisory-only",
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

@@ -1,0 +1,83 @@
+{
+  "runNumber": 108,
+  "kind": "external-orchestrator-apply-result",
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-foundation-cli-surface",
+  "action": "apply",
+  "runId": "20260828-108-apply",
+  "executionStatus": "completed",
+  "applyStatus": "complete",
+  "openspecApplyState": "all_done",
+  "openspecTasks": "13/13 complete",
+  "implementation": {
+    "created": [
+      "src/cli/checkpoint-authorization.ts",
+      "src/cli/request.ts",
+      "src/cli/foundation-cli.ts",
+      "src/cli/entrypoint.ts",
+      "tests/unit/domain/foundation-cli-surface.test.ts",
+      "tests/unit/domain/foundation-cli-entrypoint.test.ts",
+      "tsconfig.build.json"
+    ],
+    "modified": [
+      "package.json",
+      "openspec/changes/establish-foundation-cli-surface/tasks.md"
+    ],
+    "dependencyMutation": false
+  },
+  "contractFactsImplemented": [
+    "The package exposes one real flowkit bin target built by a dedicated TypeScript emit configuration while the existing typecheck remains no-emit.",
+    "The command catalog is closed to status, next and doctor and all commands consume explicit JSON request documents through --input.",
+    "Current-Run authority is explicit: exact runId uses canonical occurrence parsing plus exact durable Run read, while next currentRunId:null performs no Run read and maps directly to the canonical empty CurrentAction slot.",
+    "No max-sequence, mtime, directory-order, Git-history or other implicit latest heuristic selects current Run or infers its absence.",
+    "next delegates lifecycle legality only to canonical Policy and preserves blocked/ready-action/ready-checkpoint-evaluation as formal machine outcomes.",
+    "Checkpoint authorization is a separate pure exact Owner gate and performs no Git operation.",
+    "doctor resolves managed OpenSpec and Archify plus exact-root OpenSpec observation; Archify is resolved only and never invoked or treated as architecture truth.",
+    "CLI errors are deterministic machine envelopes with non-zero transport exits, while bounded domain outcomes remain successful machine results.",
+    "Production CLI has no self-hosting, Skill execution, OpenSpec mutation, Archify materialization, Delivery discovery or Git mutation behavior."
+  ],
+  "verification": {
+    "focusedCliTests": "9/9 PASS",
+    "domainTests": "116/116 PASS",
+    "typecheck": "PASS",
+    "build": "PASS",
+    "formatCheck": "PASS",
+    "openspecChangeStrict": "PASS",
+    "openspecAllStrict": "10/10 PASS",
+    "realEmittedCli": {
+      "status": "PASS",
+      "nextExactRun": "ready-action(apply)",
+      "nextExplicitNull": "ready-action(explore)",
+      "checkpointAuthorization": "authorized=true with no .git repository",
+      "doctor": "PASS",
+      "fakePathOpenSpecUsed": false,
+      "fakePathArchifyUsed": false
+    },
+    "codeGate": {
+      "status": "PASS",
+      "changedTypeScript": {
+        "src/cli/checkpoint-authorization.ts": 58,
+        "src/cli/entrypoint.ts": 65,
+        "src/cli/foundation-cli.ts": 337,
+        "src/cli/request.ts": 260,
+        "tests/unit/domain/foundation-cli-entrypoint.test.ts": 80,
+        "tests/unit/domain/foundation-cli-surface.test.ts": 428
+      },
+      "historicalOverLimitFile": "src/domain/run-result-persistence.ts remains byte-identical at 588 lines"
+    }
+  },
+  "productionMutation": true,
+  "reviewApplyPerformed": false,
+  "archivePerformed": false,
+  "nextBoundary": "review-apply",
+  "nextBoundaryAuthority": "handoff-advisory-only",
+  "limitations": [
+    "Independent review-apply has not yet been performed.",
+    "Final Windows/Linux whole-manager acceptance and Delivery Full Test belong to the following Change.",
+    "Archify Delivery Start/Final projection remains Delivery-level bootstrap work and is not part of this CLI Change.",
+    "This Apply grants no Verification PASS, Owner archive authority, checkpoint authority or promotion authority."
+  ],
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

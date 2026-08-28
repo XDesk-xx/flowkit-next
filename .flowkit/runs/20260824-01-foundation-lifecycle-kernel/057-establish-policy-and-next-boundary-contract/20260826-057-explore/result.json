@@ -1,0 +1,63 @@
+{
+  "runNumber": 57,
+  "kind": "external-orchestrator-explore-result",
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-policy-and-next-boundary-contract",
+  "action": "explore",
+  "runId": "20260826-057-explore",
+  "finishedAt": "2026-08-26T21:42:36+08:00",
+  "executionStatus": "completed",
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-explore",
+  "proof": {
+    "baselineCommitScopeExpected": true,
+    "baselineTypecheck": "PASS",
+    "baselineDomainTests": "51/51 PASS",
+    "baselineFormatCheck": "PASS",
+    "baselineCanonicalOpenSpec": "5/5 strict PASS",
+    "baselineActiveChangesBeforeActivation": 0,
+    "historicalNormalTransitionMatches": "42/42",
+    "historicalNormalMatrixBranchesObserved": "11/13",
+    "missingBranchesAreCanonicalReviseApplySymmetry": true,
+    "preparedCurrentActionHasSingleStructuralContinuation": true,
+    "reportedNextBoundaryIsAuthority": false,
+    "ownerDirectedPreReviewCorrectionObserved": true
+  },
+  "decisions": [
+    "Normal happy-path Standard Action progression should be deterministic and must not require fresh Owner authorization at apply/archive boundaries.",
+    "An active Change with no current Action starts at explore; a prepared current Action A can only continue as A and Policy must not introduce resumed/retry semantics.",
+    "Terminal Author outcomes advance only on exact PASS; terminal Reviewer outcomes branch only on exact approved or changes-requested; unknown outcomes block.",
+    "Policy computes legality independently from reported nextBoundary; a conflicting reported boundary should produce a fail-closed diagnosis rather than override Policy.",
+    "Owner-authorized deviation is bounded to revise-family correction at the current or an earlier reached stage and must not permit forward-skip of independent Review.",
+    "Archive completion yields a checkpoint-evaluation boundary only; actual Git checkpoint permission remains deferred to the mutation/checkpoint Change.",
+    "Policy remains a pure decision seam and never executes the selected Action or mutates repository state."
+  ],
+  "nonGoals": [
+    "scheduler",
+    "queue or daemon",
+    "automatic next Action execution",
+    "automatic Owner decisions",
+    "resume or retry framework",
+    "generic workflow DSL",
+    "dynamic Policy registry",
+    "OpenSpec filesystem/CLI adapter",
+    "Git mutation/checkpoint authorization implementation",
+    "Change ordering or Delivery scheduling",
+    "Cross-Delivery Memo",
+    "CLI",
+    "Delivery Full Test",
+    "promotion",
+    "multi-Agent orchestration"
+  ],
+  "checks": {
+    "openspecChangeScaffold": "created by OpenSpec 1.10.0",
+    "formalPlanningArtifacts": "0/4; proposal ready; specs/design/tasks blocked",
+    "productionMutation": "NONE",
+    "testMutation": "NONE"
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

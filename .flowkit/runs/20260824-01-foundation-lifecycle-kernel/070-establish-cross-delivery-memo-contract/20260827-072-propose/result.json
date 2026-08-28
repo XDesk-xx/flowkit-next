@@ -1,0 +1,59 @@
+{
+  "runNumber": 72,
+  "kind": "external-orchestrator-propose-result",
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-cross-delivery-memo-contract",
+  "action": "propose",
+  "runId": "20260827-072-propose",
+  "finishedAt": "2026-08-27T08:37:00+08:00",
+  "executionStatus": "completed",
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-propose",
+  "planning": {
+    "proposal": "done",
+    "specs": "done",
+    "design": "done",
+    "tasks": "done"
+  },
+  "capabilities": {
+    "new": [
+      "cross-delivery-memo"
+    ],
+    "modified": []
+  },
+  "convergence": {
+    "status": "PASS",
+    "requirementsTraceable": true,
+    "reviewExploreVerdict": "approved",
+    "promotionTargetBoundToOwnerAuthority": true,
+    "memoMintsOrPersistsAuthorityFacts": false,
+    "memoSidecarGrantsGenericMutationOrGitAuthority": false,
+    "runProvenanceReusesCanonicalParser": true,
+    "singleProjectJson": true,
+    "states": [
+      "open",
+      "promoted",
+      "dismissed"
+    ],
+    "deferMutationAdded": false,
+    "memoAddedToStandardActionOrPolicy": false,
+    "automaticTargetCreationAdded": false,
+    "projectScopedOwnerAuthorityVariantAdded": false,
+    "newContractChangingUnknowns": false,
+    "productionMutation": false
+  },
+  "checks": {
+    "openspecPlanning": "4/4 complete",
+    "changeStrict": "PASS",
+    "canonicalOpenSpecSpecs": "6/6 strict PASS",
+    "openspecAllStrict": "7/7 PASS (6 canonical specs + current Change)",
+    "typecheck": "PASS",
+    "domainTests": "63/63 PASS",
+    "formatCheck": "PASS"
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

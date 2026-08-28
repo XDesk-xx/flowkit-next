@@ -1,0 +1,45 @@
+{
+  "runNumber": 103,
+  "kind": "external-orchestrator-review-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-foundation-cli-surface",
+  "action": "review-explore",
+  "runId": "20260828-103-review-explore",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/100-establish-foundation-cli-surface/20260828-103-review-explore",
+  "inputRunId": "20260828-102-revise-explore",
+  "reviewChainStartRunId": "20260828-100-explore",
+  "reviewModel": "review-explore-skill",
+  "chainIntegrity": {
+    "runs100And101ByteIdentical": "6/6 PASS",
+    "deliveryManifestUnchanged": true,
+    "openSpecChangeScaffoldUnchanged": true,
+    "deltaFrom101ReviewerPayload": [
+      "openspec/changes/establish-foundation-cli-surface/explore.md",
+      "20260828-102-revise-explore Run"
+    ]
+  },
+  "runtime": {
+    "nodeProofFixture": "22.23.2",
+    "repositoryNodeEngine": ">=22.20.0",
+    "openspec": "1.10.0"
+  },
+  "independentChecks": {
+    "typecheck": "PASS",
+    "domainTests": "107/107 PASS",
+    "formatCheck": "PASS",
+    "canonicalOpenSpecSpecs": "9/9 strict PASS on archive-replayed baseline",
+    "currentChangePlanningState": "0/4; proposal ready",
+    "disconnectedHigherSequenceCounterexample": "REPRODUCED",
+    "explicitExactRunSelection": "PASS",
+    "explicitSelectedRunPolicyDecision": "ready-action(archive)",
+    "unsafeLatestRunPolicyDecision": "ready-checkpoint-evaluation",
+    "currentActionRegistryAdded": false,
+    "runLineageSubsystemAdded": false,
+    "automaticRunSelectionAdded": false,
+    "productionMutationBy102": "NONE"
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

@@ -1,0 +1,48 @@
+{
+  "runNumber": 58,
+  "kind": "external-orchestrator-review-explore-result",
+  "role": "reviewer",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-policy-and-next-boundary-contract",
+  "action": "review-explore",
+  "runId": "20260826-058-review-explore",
+  "executionStatus": "completed",
+  "authorConclusion": null,
+  "reviewerVerdict": "changes-requested",
+  "verificationVerdict": null,
+  "nextBoundary": "revise-explore",
+  "blockingFindings": [
+    {
+      "id": "RE-058-001",
+      "title": "Post-archive completed Change is blocked before checkpoint-evaluation",
+      "requiredRevision": "Define explicit precedence/state semantics so exact completed + terminal archive + PASS can reach checkpoint-evaluation while other non-active combinations remain fail closed."
+    },
+    {
+      "id": "RE-058-002",
+      "title": "Reported-boundary conflict can reject legitimate Owner correction",
+      "requiredRevision": "Validate reported nextBoundary against the deterministic normal boundary before applying a bounded Owner correction, or define equivalent non-conflicting precedence."
+    },
+    {
+      "id": "RE-058-003",
+      "title": "Historical transition ordering does not prove Owner execution-authority removal",
+      "requiredRevision": "Separate legal next-boundary calculation from actual external invocation/Owner authority semantics and stop using 42/42 ordering evidence as proof that apply/archive require no fresh authority."
+    }
+  ],
+  "reviewNotes": [
+    "The 42/42 audit independently supports deterministic ordering for the 11 observed branches; the two revise-apply branches remain symmetry-based rather than historically observed.",
+    "Legacy external-orchestrator Run payloads do not uniformly use canonical authorConclusion; canonical Policy outcome vocabulary should be grounded in the current RunResultRecord contract rather than legacy wire shapes.",
+    "No blocker was found in the reconstructed current source baseline, lifecycle contraction, ActionPackage admission, or single-Action execution seams."
+  ],
+  "checks": {
+    "activationAuthority": "PASS",
+    "typecheck": "PASS",
+    "domainTests": "51/51 PASS",
+    "formatCheck": "PASS",
+    "canonicalOpenSpecSpecs": "5/5 strict PASS",
+    "historicalTransitionOrdering": "42/42 PASS",
+    "currentChangeFormalArtifacts": "0/4 as expected for Explore",
+    "productionMutation": "NONE"
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

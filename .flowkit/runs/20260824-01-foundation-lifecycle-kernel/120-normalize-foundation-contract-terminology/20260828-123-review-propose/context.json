@@ -1,0 +1,32 @@
+{
+  "runNumber": 123,
+  "kind": "external-orchestrator-review-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "normalize-foundation-contract-terminology",
+  "action": "review-propose",
+  "runId": "20260828-123-review-propose",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/120-normalize-foundation-contract-terminology/20260828-123-review-propose",
+  "inputRunId": "20260828-122-propose",
+  "reviewChainStartRunId": "20260828-120-explore",
+  "checkpointBase": {
+    "archive": "flowkit-next-delivery-20260824-01-foundation-lifecycle-kernel-246a653.zip",
+    "gitRevision": "246a653",
+    "gitRevisionVerification": "Inherited stable base identity from 122; detached delta handoff excludes .git and does not embed the full checkpoint archive"
+  },
+  "inputArchive": {
+    "name": "122-propose.zip",
+    "sha256": "3830e63b27e24c34264860dfee22b4222cb4f82e3de806b16b99456e7d48b2fb"
+  },
+  "runtime": {
+    "reviewNode": "22.16.0",
+    "openspec": "1.10.0"
+  },
+  "skillsUsed": [
+    "review-propose"
+  ],
+  "reviewMode": "external-orchestrator-detached-review-propose",
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

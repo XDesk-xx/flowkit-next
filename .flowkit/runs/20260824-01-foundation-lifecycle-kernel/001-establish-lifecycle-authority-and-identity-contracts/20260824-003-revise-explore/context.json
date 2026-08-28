@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "kind": "external-bootstrap-action-context",
+  "run": {
+    "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+    "changeId": "establish-lifecycle-authority-and-identity-contracts",
+    "runId": "20260824-003-revise-explore",
+    "action": "revise-explore",
+    "role": "author",
+    "entryHead": "23ca52715df7c52738edeb59206f496c7bf2d2a9",
+    "branch": "delivery/20260824-01-foundation-lifecycle-kernel"
+  },
+  "sourceReview": {
+    "runId": "20260824-002-review-explore",
+    "packageSha256": "12d01b6e7921f7a3ab87623d93ff07b5bf2fe1d073d48f9d46c1df1a13e877c7",
+    "resultSha256": "c0a98ce4926cfd064deeacf1a8dcb34b681d838f0f2e7fbae5cbafdf3e427cc4",
+    "verdict": "changes-requested",
+    "blockingFindings": [
+      "NEXT-RE-001"
+    ]
+  },
+  "findingClosureTarget": {
+    "findingId": "NEXT-RE-001",
+    "requiredOutcome": "Real exact managed OpenSpec 1.10.0 new-change execution provenance must bind the Change scaffold before Proof F may PASS."
+  },
+  "detachedEnvironment": {
+    "repositorySnapshotHead": "23ca52715df7c52738edeb59206f496c7bf2d2a9",
+    "projectLinuxNodeModulesArtifact": "flowkit-next-node-modules-linux-x64-node22.23.2-pnpm11.22.0-7efa1e934c45-v1.tar.gz",
+    "managedOpenSpecRuntimeArtifact": "openspec-1.10.0-linux-x64-node22.23.2-pnpm11.22.0-runtime-v1.tar.gz",
+    "managedOpenSpecRuntimeSha256": "4fb0b870d9523daebda8becaf4202397da342bc39dde3961d8dd4392c72e2b68",
+    "flowkitHome": "/mnt/data/detached-flowkit-next-v2/flowkit-home"
+  },
+  "managedOpenSpecExecution": {
+    "expectedEntrypoint": "${FLOWKIT_HOME}/tools/openspec/1.10.0/bin/openspec.js",
+    "observedEntrypoint": "/mnt/data/detached-flowkit-next-v2/flowkit-home/tools/openspec/1.10.0/bin/openspec.js",
+    "version": "1.10.0",
+    "timezone": "Asia/Shanghai",
+    "command": "TZ=Asia/Shanghai node ${FLOWKIT_HOME}/tools/openspec/1.10.0/bin/openspec.js new change establish-lifecycle-authority-and-identity-contracts",
+    "exitCode": 0,
+    "stdout": "Created change 'establish-lifecycle-authority-and-identity-contracts' at openspec/changes/establish-lifecycle-authority-and-identity-contracts/\nSchema: spec-driven\nNext: openspec status --change establish-lifecycle-authority-and-identity-contracts",
+    "stderr": "- Creating change 'establish-lifecycle-authority-and-identity-contracts' with schema 'spec-driven'...",
+    "generatedScaffold": "openspec/changes/establish-lifecycle-authority-and-identity-contracts/.openspec.yaml",
+    "generatedScaffoldSha256": "5f408ebe6a8c4d9c4c5e85f9e84c9ac47aa1192c4424a5f5f2224781c6f85fd7",
+    "statusCheck": {
+      "command": "node ${FLOWKIT_HOME}/tools/openspec/1.10.0/bin/openspec.js status --change establish-lifecycle-authority-and-identity-contracts",
+      "progress": "0/4 artifacts complete",
+      "proposal": "pending",
+      "specs": "blocked-by-proposal",
+      "design": "blocked-by-proposal",
+      "tasks": "blocked-by-specs-and-design"
+    }
+  },
+  "flowkitExploreArtifact": {
+    "path": "openspec/changes/establish-lifecycle-authority-and-identity-contracts/explore.md",
+    "sha256AfterRevision": "924c58696759402c04f7e85fa64e3efe41e71cf7b431abca423430ba7b842956"
+  },
+  "mutationBoundary": {
+    "productionOrTestMutationAllowed": false,
+    "proposalArtifactsAllowed": false,
+    "gitMutationAllowed": false,
+    "autoProposeAllowed": false
+  }
+}

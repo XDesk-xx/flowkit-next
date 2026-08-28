@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "kind": "architecture-thin-compare",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "pair": "planned-to-actual",
+  "left": {
+    "ref": "./planned.architecture.json",
+    "sha256": "66d63a37e34f44b077248be28947980ad46a357e81155832b7342763e3ad737f",
+    "bytes": 11432
+  },
+  "right": {
+    "ref": "./actual.architecture.json",
+    "sha256": "9cb22a80256c563ea4c6abebb38b15f66246b30f9373623aa7df96ec4ff82f0a",
+    "bytes": 14604
+  },
+  "classification": [
+    "semantic",
+    "presentation"
+  ],
+  "summary": {
+    "semantic": "Planned → verified actual: Cross-Delivery Memo is added; Git Checkpoint Boundary narrows to Checkpoint Authorization Boundary; the planned resolver→execution direct edge is absent in actual; planned-state tags/labels converge to verified final roles.",
+    "presentation": "Planned was layout-converged against actual without changing planned architecture semantics."
+  },
+  "presentation": {
+    "mode": "side-by-side",
+    "renderer": "flowkit-reference-side-by-side",
+    "leftPosition": "before",
+    "rightPosition": "after",
+    "equalFrame": true,
+    "interactive": true,
+    "overlay": false,
+    "deltaColumn": false,
+    "artifactPolicy": "disposable-html-not-retained-in-git",
+    "resolution": "resolve-left-right-ref-to-architecture-render"
+  }
+}

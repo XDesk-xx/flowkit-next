@@ -1,0 +1,63 @@
+{
+  "runNumber": 33,
+  "kind": "external-orchestrator-openspec-apply-result",
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-run-result-persistence",
+  "action": "apply",
+  "runId": "20260825-033-apply",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/021-establish-run-result-persistence/20260825-033-apply",
+  "finishedAt": "2026-08-25T22:42:50+08:00",
+  "executionStatus": "completed",
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-apply",
+  "nextBoundaryAuthority": "handoff-advisory-only",
+  "openspecApply": {
+    "state": "all_done",
+    "tasksComplete": 10,
+    "tasksTotal": 10
+  },
+  "verification": {
+    "typecheck": "PASS",
+    "domainTests": "35/35 PASS",
+    "formatCheck": "PASS",
+    "openspecStrict": "1/1 PASS",
+    "openspecAllStrict": "3/3 PASS",
+    "scopeAudit": "PASS"
+  },
+  "implementation": {
+    "source": [
+      "src/domain/run-result-persistence.ts",
+      "src/domain/index.ts"
+    ],
+    "tests": [
+      "tests/unit/domain/run-result-persistence.test.ts"
+    ],
+    "capabilities": [
+      "Change-scoped Run occurrence identity",
+      "Flowkit-controlled dated Run address generation",
+      "exact context/result runtime validation",
+      "create-once three-file Run persistence",
+      "Run/Result linkage validation",
+      "Change-local ordered history read"
+    ]
+  },
+  "scopeExclusionsVerified": [
+    "Result admission",
+    "Policy",
+    "scheduler",
+    "locking/WAL/database",
+    "multi-Agent coordination",
+    "generic filesystem path API",
+    "CLI/OpenSpec adapter",
+    "Git checkpoint behavior"
+  ],
+  "limitations": [
+    "This is Author Apply completion, not Review Apply approval, formal Verification PASS, archive, or checkpoint.",
+    "The persistence contract is sequential/single-writer and does not claim crash-atomic or multi-process race-free behavior.",
+    "Historical external-orchestrator Run records are not migrated into the candidate runtime machine envelope by this Change."
+  ],
+  "stableTransfer": true
+}

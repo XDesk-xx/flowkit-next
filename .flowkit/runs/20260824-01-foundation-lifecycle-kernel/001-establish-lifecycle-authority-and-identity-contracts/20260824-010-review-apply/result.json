@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "kind": "external-bootstrap-review-result",
+  "run": {
+    "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+    "changeId": "establish-lifecycle-authority-and-identity-contracts",
+    "runId": "20260824-010-review-apply",
+    "action": "review-apply",
+    "role": "reviewer"
+  },
+  "reviewedRun": {
+    "runId": "20260824-009-apply",
+    "packageSha256": "2437793168e2ae7bcebdb6411f3c575f29451a3037c599aea0080c54ab1c7e94",
+    "resultSha256": "26e9765bfa694cf8f99e119bbf6928f3d7f03b8c9929e46dca544f9328adce7d"
+  },
+  "executionStatus": "completed",
+  "verdict": "approved",
+  "summary": "009(2) correctly repairs the prior authority-sequencing defect: it binds canonical 008-review-propose-reviewer-v2 and a fresh post-review Owner authorize-apply ref owner:717f5e...ba4. Reviewer independently verified exact Node 22.23.2, pnpm 11.22.0 and OpenSpec 1.10.0; typecheck PASS, 13/13 targeted tests PASS, formatting PASS, git diff check PASS, OpenSpec 10/10 tasks complete and strict validation 1/1 PASS. Implementation remains within the approved Foundation identity/authority/state boundary. No blocking findings remain.",
+  "verificationSummary": {
+    "status": "PASS",
+    "exactRuntime": true,
+    "nodeVersion": "22.23.2",
+    "pnpmVersion": "11.22.0",
+    "openSpecVersion": "1.10.0",
+    "typecheck": "PASS",
+    "targetedTests": "13/13 PASS",
+    "format": "PASS",
+    "gitDiffCheck": "PASS",
+    "openSpecApply": "10/10 complete",
+    "openSpecStrict": "1/1 PASS"
+  },
+  "findingConvergence": [
+    {
+      "findingId": "NEXT-RA-001",
+      "sourceReviewRunId": "20260824-010-review-apply",
+      "previousState": "open-blocking",
+      "state": "resolved",
+      "reviewerJudgment": "accepted",
+      "evidence": "009(2) records a new Owner authorize-apply fact whose sourceRef explicitly binds 008-review-propose-reviewer-v2; its ref digest is newly derived and is not the stale owner:85b9125... authorization."
+    }
+  ],
+  "findings": [],
+  "nonBlockingObservations": [
+    {
+      "id": "NEXT-RA-010-NB-001",
+      "title": "Derived node_modules relocation can trigger pnpm revalidation",
+      "detail": "The supplied node_modules archive embeds workspace-state rooted at /build. This can cause pnpm 11.22.0 to attempt reinstall after relocation. Reviewer reproduced the scripts with pnpm dependency auto-repair disabled and independently executed the exact underlying verification commands; all passed. Track this as a detached environment packaging concern, not a blocker for this Change."
+    }
+  ],
+  "nextBoundary": {
+    "recommendedAction": "owner-authorize-archive",
+    "reason": "Apply is independently approved. Archive still requires a fresh explicit Owner authorization and Author execution."
+  },
+  "forbiddenNext": [
+    "archive-without-owner-authorization",
+    "reviewer-executes-archive",
+    "commit",
+    "push",
+    "auto-next"
+  ]
+}

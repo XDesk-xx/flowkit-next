@@ -1,0 +1,54 @@
+{
+  "runNumber": 14,
+  "kind": "external-orchestrator-revise-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-action-lifecycle-domain-contract",
+  "action": "revise-explore",
+  "startedAt": "2026-08-25T10:53:00+08:00",
+  "inputAction": {
+    "runId": "20260824-013-review-explore",
+    "payloadArchive": "flowkit-next-delivery-20260824-01-foundation-lifecycle-kernel-013-review-explore-reviewer-payload.zip",
+    "payloadSha256": "6cf8d90a5ee99c4c615945993426f379805e63283de0a092396c81147ae11349",
+    "reviewerVerdict": "changes-requested",
+    "blockingFindingIds": [
+      "RE-013-001"
+    ]
+  },
+  "executionMode": "detached-linux-direct-revise-explore-no-flowkit-lifecycle",
+  "revisionContract": {
+    "skill": ".agents/skills/revise-explore/SKILL.md",
+    "skillName": "Revise Explore Skill v2",
+    "stableTransferContract": "flowkit-next-stable-transfer-payload-contract-v1.md",
+    "stableTransferContractSha256": "6acc010b5af86054a67a4523de31c009f1e5e3657d1cca63edb2b1eaafc9fcde"
+  },
+  "revisionScope": {
+    "finding": "RE-013-001",
+    "classification": "invalid-boundary / transition-invariant-proof-gap",
+    "minimumCorrection": true,
+    "productionMutation": false,
+    "runIdOrAttemptIdentityIntroduced": false,
+    "policyEligibilityIntroduced": false
+  },
+  "controlledProof": {
+    "cases": "13/13 PASS",
+    "newNegativeCase": "terminal A -> prepare A rejects",
+    "differentIdentityReplacement": "terminal A -> prepare B where B != A remains structurally allowed",
+    "modelSha256": "1c1af8bd80c0f5fff2dbe03ecff5e9c0daa9110b06b49817e6180903d011d85a",
+    "resultSha256": "f39660d5a797495a90765e1f61ee8834fdeeff03ad0304883f6a110626487c94",
+    "includedInStableTransfer": false
+  },
+  "validation": {
+    "typecheck": "PASS",
+    "openspecFormalArtifacts": "0/4; proposal ready; specs/design/tasks blocked",
+    "sourceTestPackageArchitectureMutationAgainst012": "NONE"
+  },
+  "notes": [
+    "The 013 blocking finding is accepted as valid and is repaired directly rather than argued away.",
+    "The revised Explore explicitly distinguishes same-identity terminal re-prepare from different-identity terminal replacement.",
+    "The original 012 proof gap remains traceable in the revision note; raw proof files remain execution-local."
+  ],
+  "runId": "20260824-014-revise-explore",
+  "stableTransfer": true
+}

@@ -1,0 +1,44 @@
+{
+  "runNumber": 76,
+  "kind": "external-orchestrator-archive-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-cross-delivery-memo-contract",
+  "action": "archive",
+  "runId": "20260827-076-archive",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/070-establish-cross-delivery-memo-contract/20260827-076-archive",
+  "inputRunId": "20260827-075-review-apply",
+  "checkpointBase": {
+    "gitRevision": "2cc6a6c0cdcad771ed7d5503c1e7197ffee553d3"
+  },
+  "executionBasis": {
+    "reviewerVerdict": "approved",
+    "reviewRunId": "20260827-075-review-apply",
+    "userInstruction": "archive, invoke archive skill, and generate AI handoff",
+    "newOwnerAuthorityFactCreated": false
+  },
+  "executionMode": "detached-linux-direct-openspec-archive-no-flowkit-lifecycle",
+  "runtime": {
+    "node": "22.23.2",
+    "pnpm": "11.22.0",
+    "openspec": "1.10.0"
+  },
+  "skillsUsed": [
+    "openspec-archive-change",
+    "openspec-sync-specs"
+  ],
+  "archive": {
+    "archivedAs": "2026-08-27-007-establish-cross-delivery-memo-contract",
+    "ordinalNamingAppliedAtArchive": true,
+    "specsUpdated": true,
+    "specTotals": {
+      "added": 7,
+      "modified": 0,
+      "removed": 0,
+      "renamed": 0
+    }
+  },
+  "stableTransfer": true,
+  "packageClass": "archive-closure-snapshot"
+}

@@ -1,0 +1,61 @@
+{
+  "runNumber": 49,
+  "kind": "external-orchestrator-explore-result",
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-single-action-execution-terminal-boundary",
+  "action": "explore",
+  "runId": "20260826-049-explore",
+  "finishedAt": "2026-08-26T16:25:00+08:00",
+  "executionStatus": "completed",
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-explore",
+  "proof": {
+    "allTenStandardActionsPreparedHappyPath": "10/10 PASS",
+    "resumedRequiredForHappyPath": false,
+    "reexecutionCanRemainPreparedWithNewRunOccurrence": true,
+    "stalePriorRunPackageRejectedByExactCurrentOccurrence": true,
+    "independentCurrentCapabilityRequiresResumed": false,
+    "recommendRemoveResumedStateAndResumeEvent": true,
+    "policyLegalityEvaluated": false,
+    "crashRecoveryIntroduced": false
+  },
+  "decisions": [
+    "Do not treat resume/interruption recovery as a Foundation requirement.",
+    "Use prepared as the only executable current-Action lifecycle state; terminal remains the completion state.",
+    "Use exact Run occurrence, not resumed state, to distinguish repeated executions of the same semantic Standard Action.",
+    "Proposal should modify action-lifecycle and action-package-and-result-admission to remove resumed/resume semantics.",
+    "Add only a minimal single-Action completion composition: exact admission success -> terminal exact current Action -> expose admitted Result/reported continuation fact -> STOP.",
+    "Keep reported continuation fact opaque; Policy later decides legal next boundary."
+  ],
+  "nonGoals": [
+    "crash recovery",
+    "process interruption recovery",
+    "resume/retry framework",
+    "WAL/transaction",
+    "retry registry",
+    "scheduler",
+    "automatic next Action",
+    "Policy legality",
+    "Owner happy-path authorization policy",
+    "multi-Agent orchestration",
+    "provider transport",
+    "Git checkpoint",
+    "OpenSpec adapter",
+    "CLI",
+    "Delivery Full Test"
+  ],
+  "checks": {
+    "baselineTypecheck": "PASS",
+    "baselineDomainTests": "45/45 PASS",
+    "baselineProjectFormatCheck": "PASS",
+    "baselineCanonicalOpenSpecSpecs": "4/4 PASS",
+    "baselineActiveChanges": "0 before activation",
+    "productionMutation": "NONE",
+    "formalPlanningArtifacts": "0/4; proposal ready after scaffold"
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

@@ -1,0 +1,66 @@
+{
+  "runNumber": 121,
+  "kind": "external-orchestrator-review-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "normalize-foundation-contract-terminology",
+  "action": "review-explore",
+  "runId": "20260828-121-review-explore",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/120-normalize-foundation-contract-terminology/20260828-121-review-explore",
+  "inputRunId": "20260828-120-explore",
+  "reviewChainStartRunId": "20260828-120-explore",
+  "reviewModel": "review-explore-skill",
+  "inputArchiveSha256": "fdde1cc977b2070e81af0755963849d1af83021d166cf63af263899f3e8364d4",
+  "activationChecks": {
+    "activeChange": "normalize-foundation-contract-terminology",
+    "precedingAcceptanceChangeState": "completed",
+    "ownerActivationStructurallyCoherent": true,
+    "productionMutationBy120": "NONE",
+    "canonicalSpecMutationBy120": "NONE",
+    "memoMutationBy120": "NONE"
+  },
+  "runtime": {
+    "nodeProofFixture": "22.23.2",
+    "repositoryNodeEngine": ">=22.20.0",
+    "openspec": "1.10.0"
+  },
+  "independentChecks": {
+    "canonicalReplay": "PASS using real OpenSpec archive semantics",
+    "canonicalCapabilityCount": 10,
+    "canonicalOpenSpecStrict": "10/10 PASS",
+    "canonicalInternalVNumberOccurrences": 2,
+    "occurrences": [
+      "openspec-thin-integration: Requirement heading",
+      "policy-and-next-boundary: Owner-correction requirement sentence"
+    ],
+    "historicalCliV1AlreadyCleanedBeforeArchive": true,
+    "exactTransformDiffScope": "2 lines / two V1 tokens only",
+    "postTransformResidualInternalVNumberOccurrences": 0,
+    "postTransformCanonicalStrict": "10/10 PASS",
+    "deltaMechanismProof": {
+      "changeStrict": "PASS",
+      "deltaCount": 2,
+      "operations": [
+        "RENAMED openspec-thin-integration requirement",
+        "MODIFIED policy-and-next-boundary requirement"
+      ],
+      "archive": "PASS",
+      "postArchiveStrict": "10/10 PASS"
+    },
+    "productionBehaviorVersionBranchScan": "NONE",
+    "typecheck": "PASS",
+    "formatCheck": "PASS",
+    "build": "PASS",
+    "domainTests": "116/116 PASS"
+  },
+  "checkpointBaseReviewLimitation": {
+    "claimedArchive": "flowkit-next-delivery-20260824-01-foundation-lifecycle-kernel-246a653.zip",
+    "exactArchivePresentInThisReviewTurn": false,
+    "exactArchiveShaAndGitRevisionIndependentlyReverified": false,
+    "memoSnapshotArchivePresentInThisReviewTurn": false,
+    "impact": "non-blocking; material current canonical/spec/code claims independently reproduced"
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

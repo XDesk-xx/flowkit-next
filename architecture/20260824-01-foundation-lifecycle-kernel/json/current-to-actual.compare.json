@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "kind": "architecture-thin-compare",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "pair": "current-to-actual",
+  "left": {
+    "ref": "./current.architecture.json",
+    "sha256": "4648928a0c81d6cdfd72155b7749616ac37a76905c61533d0cdfb54585bb71d3",
+    "bytes": 6264
+  },
+  "right": {
+    "ref": "./actual.architecture.json",
+    "sha256": "9cb22a80256c563ea4c6abebb38b15f66246b30f9373623aa7df96ec4ff82f0a",
+    "bytes": 14604
+  },
+  "classification": [
+    "semantic",
+    "presentation"
+  ],
+  "summary": {
+    "semantic": "Delivery Start current → verified actual: the planned Foundation kernel capabilities are realized, Cross-Delivery Memo is present, OpenSpec/Archify roles are finalized, and checkpoint handling is represented as authorization-only.",
+    "presentation": "Current was layout-converged to make stable-id comparison against actual direct; no current semantic facts were changed."
+  },
+  "presentation": {
+    "mode": "side-by-side",
+    "renderer": "flowkit-reference-side-by-side",
+    "leftPosition": "before",
+    "rightPosition": "after",
+    "equalFrame": true,
+    "interactive": true,
+    "overlay": false,
+    "deltaColumn": false,
+    "artifactPolicy": "disposable-html-not-retained-in-git",
+    "resolution": "resolve-left-right-ref-to-architecture-render"
+  }
+}

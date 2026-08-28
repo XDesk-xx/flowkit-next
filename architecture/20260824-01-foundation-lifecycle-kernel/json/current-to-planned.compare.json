@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "kind": "architecture-thin-compare",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "pair": "current-to-planned",
+  "left": {
+    "ref": "./current.architecture.json",
+    "sha256": "4648928a0c81d6cdfd72155b7749616ac37a76905c61533d0cdfb54585bb71d3",
+    "bytes": 6264
+  },
+  "right": {
+    "ref": "./planned.architecture.json",
+    "sha256": "66d63a37e34f44b077248be28947980ad46a357e81155832b7342763e3ad737f",
+    "bytes": 11432
+  },
+  "classification": [
+    "semantic",
+    "presentation"
+  ],
+  "summary": {
+    "semantic": "Delivery Start current → planned Foundation Lifecycle Kernel target: adds CLI, Policy, Lifecycle, single-Action execution, Run/Result persistence, Review/Verification, checkpoint boundary, and managed-tool resolver while retaining initialization/toolchain baseline.",
+    "presentation": "Current and planned were layout-converged against the final actual view; their architecture semantics were preserved."
+  },
+  "presentation": {
+    "mode": "side-by-side",
+    "renderer": "flowkit-reference-side-by-side",
+    "leftPosition": "before",
+    "rightPosition": "after",
+    "equalFrame": true,
+    "interactive": true,
+    "overlay": false,
+    "deltaColumn": false,
+    "artifactPolicy": "disposable-html-not-retained-in-git",
+    "resolution": "resolve-left-right-ref-to-architecture-render"
+  }
+}

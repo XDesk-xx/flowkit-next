@@ -1,0 +1,46 @@
+{
+  "runNumber": 43,
+  "kind": "external-orchestrator-review-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-action-package-and-result-admission",
+  "action": "review-propose",
+  "runId": "20260826-043-review-propose",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/036-establish-action-package-and-result-admission/20260826-043-review-propose",
+  "previousRunId": "20260826-042-propose",
+  "input": {
+    "payloadArchive": "042-propose.zip",
+    "payloadSha256": "ce0cb822ce2b39f684c9b40b1ec37fc1769211ebedeb151e7f8d730f5147ad98",
+    "baseArchive": "flowkit-next-delivery-20260824-01-foundation-lifecycle-kernel-f03fb67.zip",
+    "baseArchiveSha256": "fe26ecda693678f395eac1ea04788e7e421b2239b8a97a2973b8b8bc3dbd4290",
+    "baseGitRevision": "f03fb6756ffa4f7ad759113568a10dee48bfe28f"
+  },
+  "chainAudit": {
+    "fromBaseAndApprovedExplore": true,
+    "runs036Through041ByteIdenticalToAuthentic041Payload": true,
+    "approvedExploreByteIdenticalTo041": true,
+    "re037001Status": "closed-and-preserved",
+    "re039001Status": "closed-and-preserved"
+  },
+  "runtime": {
+    "node": "22.23.2",
+    "pnpm": "11.22.0",
+    "openspec": "1.10.0"
+  },
+  "reviewContract": {
+    "skill": ".agents/skills/review-propose/SKILL.md",
+    "mode": "from-scratch-chain-trace-contract-and-verification-closure"
+  },
+  "independentChecks": {
+    "typecheck": "PASS",
+    "domainTests": "35/35 PASS",
+    "formatCheck": "PASS",
+    "openspecPlanning": "4/4 complete",
+    "openspecChangeStrict": "PASS",
+    "openspecValidateAllStrict": "4/4 PASS",
+    "productionMutation": false
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

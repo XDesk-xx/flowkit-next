@@ -1,0 +1,62 @@
+{
+  "runNumber": 122,
+  "kind": "external-orchestrator-propose-result",
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "normalize-foundation-contract-terminology",
+  "action": "propose",
+  "runId": "20260828-122-propose",
+  "finishedAt": "2026-08-28T20:09:01+08:00",
+  "executionStatus": "completed",
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-propose",
+  "planning": {
+    "proposal": "done",
+    "specs": "done",
+    "design": "done",
+    "tasks": "done"
+  },
+  "capabilities": {
+    "new": [],
+    "modified": [
+      "openspec-thin-integration",
+      "policy-and-next-boundary"
+    ]
+  },
+  "convergence": {
+    "status": "PASS",
+    "requirementsTraceable": true,
+    "reviewExploreVerdict": "approved",
+    "canonicalInternalVersionOccurrences": 2,
+    "deltaOperations": {
+      "renamed": 1,
+      "modified": 1
+    },
+    "newProductVersionHierarchyIntroduced": false,
+    "productionSourceMutationPlanned": false,
+    "testMutationPlanned": false,
+    "fullTestSemanticsModified": false,
+    "memoModified": false,
+    "historicalRecordsRewritten": false,
+    "newContractChangingUnknowns": false,
+    "productionMutation": false
+  },
+  "checks": {
+    "openspecPlanning": "4/4 complete",
+    "changeStrict": "PASS",
+    "parsedDeltas": "2 (1 RENAMED + 1 MODIFIED)",
+    "openspecAllStrict": "11/11 PASS (10 canonical specs + current Change)",
+    "archiveSimulation": "PASS; 0 added / 1 modified / 0 removed / 1 renamed",
+    "postArchiveSimulationCanonicalStrict": "10/10 PASS",
+    "postArchiveInternalVersionScan": "NONE",
+    "typecheck": "PASS",
+    "domainTests": "116/116 PASS",
+    "productionBuild": "PASS",
+    "formatCheck": "PASS",
+    "productionMutation": "NONE"
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

@@ -1,0 +1,16 @@
+{
+  "formatVersion": 1,
+  "memos": [
+    {
+      "memoId": "future-full-test-correction-model",
+      "state": "open",
+      "title": "Future Full Test correction and finalization model",
+      "note": "当前 Foundation 不实现额外的 Full Test correction/finalization 机器机制。\n现阶段处理原则：Formal Full Test 只负责 Verification；若失败仅来自 verification environment、fixture 或 command setup，则修复验证环境并对同一 exact candidate 重跑，不创建 Change；若发现必须改变 promoted repository truth 的真实产品、canonical contract 或 repository truth 缺陷，则创建普通 corrective OpenSpec Change，走正常 Change lifecycle，archive 后形成新的 exact checkpoint candidate，并对新 candidate 从头重新执行 Formal Full Test。\n未来只有在实际自动化需求出现时，才评估更完整的机器化模型，例如 Verification finding persistence、finding 与 corrective Change 的关联、candidate 改变后旧 Verification evidence 的失效、Delivery verification/correction/finalization 机器语义，以及 planned/corrective 来源表达。\n这些都是 future candidate ideas，不属于当前 Foundation contract，不阻塞当前 Delivery finalization，也不会自动转换成 Change。",
+      "source": {
+        "deliveryId": "20260824-01-foundation-lifecycle-kernel"
+      },
+      "createdByOwnerAuthorityRef": "owner:9fbc973a3b75d813c1d9571fb50572ff1461aab7085ae351ebf4a8cc5b73d3b8",
+      "resolution": null
+    }
+  ]
+}

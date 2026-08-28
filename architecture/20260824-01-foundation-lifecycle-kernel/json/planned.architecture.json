@@ -1,0 +1,557 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "flowkit-next 计划系统架构 — Foundation Lifecycle Kernel",
+    "output": "planned.html",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/XDesk-xx/flowkit-next",
+      "revision": "ad88c4d691be2ced13483bdf716e70619b7d8cc9"
+    },
+    "views": [
+      {
+        "id": "retained",
+        "label": "保留基础",
+        "focus": [
+          "owner",
+          "git",
+          "project-init",
+          "dependency-truth",
+          "skills",
+          "toolchain-lock",
+          "openspec",
+          "archify"
+        ],
+        "note": "与 Current 相同 ID 的组件保持同一位置，便于左右对比时直接识别 retained foundation。"
+      },
+      {
+        "id": "kernel",
+        "label": "新增内核",
+        "focus": [
+          "cli",
+          "policy",
+          "lifecycle",
+          "execution",
+          "persistence",
+          "governance",
+          "toolchain-resolution",
+          "acceptance"
+        ],
+        "note": "新增能力集中在下方 Foundation Kernel 区域，不移动 Current 已存在的组件。"
+      },
+      {
+        "id": "authority",
+        "label": "Authority 边界",
+        "focus": [
+          "owner",
+          "policy",
+          "governance",
+          "git",
+          "acceptance"
+        ],
+        "note": "Owner/Review/Verification/Git checkpoint authority 分离；OpenSpec Change/contract 保持 mutation semantic authority；candidate 不自管 Delivery 01。"
+      }
+    ],
+    "viewBox": [
+      1660,
+      1100
+    ],
+    "subtitle": "以 Delivery 01 Start current 为固定布局锚点；保留组件位置不变，仅在下方扩展 Foundation Lifecycle Kernel 目标能力。"
+  },
+  "components": [
+    {
+      "id": "owner",
+      "type": "external",
+      "label": "Owner",
+      "sublabel": "显式授权 / scope / promotion",
+      "pos": [
+        60,
+        120
+      ],
+      "size": [
+        170,
+        68
+      ],
+      "tag": "现有"
+    },
+    {
+      "id": "git",
+      "type": "database",
+      "label": "Git Repository",
+      "sublabel": "bytes / branch / commit / history",
+      "pos": [
+        320,
+        120
+      ],
+      "size": [
+        190,
+        68
+      ],
+      "tag": "现有"
+    },
+    {
+      "id": "project-init",
+      "type": "backend",
+      "label": "Project Initialization",
+      "sublabel": ".flowkit/project.json / skeleton",
+      "pos": [
+        600,
+        120
+      ],
+      "size": [
+        210,
+        68
+      ],
+      "tag": "已完成",
+      "sources": [
+        {
+          "path": ".flowkit/project.json",
+          "label": "project identity"
+        },
+        {
+          "path": "FOUNDATION-INIT.md",
+          "label": "initialization reference"
+        }
+      ]
+    },
+    {
+      "id": "dependency-truth",
+      "type": "database",
+      "label": "Dependency Truth",
+      "sublabel": "package.json + pnpm-lock.yaml",
+      "pos": [
+        885,
+        120
+      ],
+      "size": [
+        210,
+        68
+      ],
+      "tag": "已完成",
+      "sources": [
+        {
+          "path": "package.json",
+          "label": "package identity"
+        },
+        {
+          "path": "pnpm-lock.yaml",
+          "label": "dependency lock"
+        }
+      ]
+    },
+    {
+      "id": "toolchain-lock",
+      "type": "security",
+      "label": "Managed Tool Identity",
+      "sublabel": "OpenSpec / Archify exact managed identity",
+      "pos": [
+        600,
+        340
+      ],
+      "size": [
+        210,
+        68
+      ],
+      "tag": "已锁定",
+      "sources": [
+        {
+          "path": "config/tools/toolchain.lock.json",
+          "label": "exact managed-tool lock"
+        }
+      ]
+    },
+    {
+      "id": "skills",
+      "type": "backend",
+      "label": "Canonical Skills",
+      "sublabel": "skills/vendors + tools + actions",
+      "pos": [
+        320,
+        340
+      ],
+      "size": [
+        190,
+        68
+      ],
+      "tag": "HOW only",
+      "sources": [
+        {
+          "path": "skills/README.md",
+          "label": "skill root"
+        }
+      ]
+    },
+    {
+      "id": "openspec",
+      "type": "external",
+      "label": "OpenSpec 1.10.0",
+      "sublabel": "formal Change authority / external runtime",
+      "pos": [
+        885,
+        340
+      ],
+      "size": [
+        210,
+        68
+      ],
+      "tag": "环境前置"
+    },
+    {
+      "id": "archify",
+      "type": "external",
+      "label": "Archify 2.15.0",
+      "sublabel": "derived architecture validation",
+      "pos": [
+        1165,
+        340
+      ],
+      "size": [
+        200,
+        68
+      ],
+      "tag": "环境前置"
+    },
+    {
+      "id": "cli",
+      "type": "frontend",
+      "label": "Minimal Flowkit CLI",
+      "sublabel": "thin interface over Core",
+      "tag": "新增",
+      "pos": [
+        50,
+        590
+      ],
+      "size": [
+        190,
+        68
+      ]
+    },
+    {
+      "id": "policy",
+      "type": "security",
+      "label": "Policy / Next Boundary",
+      "sublabel": "one legal Action or blocked",
+      "tag": "新增",
+      "pos": [
+        320,
+        590
+      ],
+      "size": [
+        210,
+        68
+      ]
+    },
+    {
+      "id": "lifecycle",
+      "type": "backend",
+      "label": "Lifecycle Domain",
+      "sublabel": "authority / identity / Action state",
+      "tag": "新增",
+      "pos": [
+        600,
+        590
+      ],
+      "size": [
+        210,
+        68
+      ]
+    },
+    {
+      "id": "execution",
+      "type": "backend",
+      "label": "Single-Action Execution",
+      "sublabel": "internal prepare / ActionPackage / exact admission / terminal / STOP",
+      "tag": "新增",
+      "pos": [
+        880,
+        590
+      ],
+      "size": [
+        260,
+        68
+      ]
+    },
+    {
+      "id": "persistence",
+      "type": "database",
+      "label": "Run / Result Persistence",
+      "sublabel": "durable .flowkit/runs",
+      "tag": "新增",
+      "pos": [
+        1175,
+        590
+      ],
+      "size": [
+        210,
+        68
+      ]
+    },
+    {
+      "id": "acceptance",
+      "type": "cloud",
+      "label": "Review / Verification",
+      "sublabel": "verdict / evidence / cross-platform acceptance",
+      "tag": "新增",
+      "pos": [
+        50,
+        800
+      ],
+      "size": [
+        210,
+        68
+      ]
+    },
+    {
+      "id": "governance",
+      "type": "security",
+      "label": "Git Checkpoint Boundary",
+      "sublabel": "terminal authorization seam",
+      "tag": "新增",
+      "pos": [
+        320,
+        800
+      ],
+      "size": [
+        210,
+        68
+      ]
+    },
+    {
+      "id": "toolchain-resolution",
+      "type": "backend",
+      "label": "Managed Toolchain Resolver",
+      "sublabel": "OpenSpec / Archify via FLOWKIT_HOME",
+      "tag": "新增",
+      "pos": [
+        897.5,
+        800
+      ],
+      "size": [
+        225,
+        68
+      ],
+      "sources": [
+        {
+          "path": "config/tools/toolchain.lock.json",
+          "label": "exact managed-tool identity"
+        }
+      ]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "Git-tracked initialization state",
+      "wraps": [
+        "git",
+        "project-init",
+        "dependency-truth",
+        "skills",
+        "toolchain-lock"
+      ]
+    },
+    {
+      "kind": "region",
+      "label": "新增 Foundation Lifecycle Kernel candidate",
+      "wraps": [
+        "cli",
+        "policy",
+        "lifecycle",
+        "execution",
+        "persistence",
+        "governance",
+        "toolchain-resolution"
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "c1",
+      "from": "owner",
+      "to": "git",
+      "label": "authorized Git boundary",
+      "variant": "security",
+      "labelDy": 58
+    },
+    {
+      "id": "c2",
+      "from": "git",
+      "to": "project-init",
+      "label": "repository facts",
+      "labelDy": -28
+    },
+    {
+      "id": "c3",
+      "from": "project-init",
+      "to": "dependency-truth",
+      "label": "dependency baseline",
+      "labelDy": 58
+    },
+    {
+      "id": "c4",
+      "from": "skills",
+      "to": "project-init",
+      "label": "execution guidance",
+      "variant": "dashed",
+      "labelDy": 24
+    },
+    {
+      "id": "c5",
+      "from": "toolchain-lock",
+      "to": "openspec",
+      "label": "exact runtime identity",
+      "labelDy": 64
+    },
+    {
+      "id": "c6",
+      "from": "toolchain-lock",
+      "to": "archify",
+      "label": "exact runtime identity",
+      "fromSide": "bottom",
+      "toSide": "bottom",
+      "via": [
+        [
+          705,
+          480
+        ],
+        [
+          1265,
+          480
+        ]
+      ],
+      "labelAt": [
+        985,
+        495
+      ]
+    },
+    {
+      "id": "p1",
+      "from": "cli",
+      "to": "policy",
+      "label": "formal request",
+      "route": "straight",
+      "labelAt": [
+        280,
+        570
+      ]
+    },
+    {
+      "id": "p2",
+      "from": "policy",
+      "to": "lifecycle",
+      "label": "legal boundary",
+      "route": "straight",
+      "variant": "emphasis",
+      "labelAt": [
+        565,
+        570
+      ]
+    },
+    {
+      "id": "p3",
+      "from": "lifecycle",
+      "to": "execution",
+      "label": "exact current Action",
+      "route": "straight",
+      "labelAt": [
+        845,
+        570
+      ]
+    },
+    {
+      "id": "p4",
+      "from": "execution",
+      "to": "persistence",
+      "label": "real Run / Result",
+      "route": "straight",
+      "labelAt": [
+        1138,
+        570
+      ]
+    },
+    {
+      "id": "p5",
+      "from": "acceptance",
+      "to": "policy",
+      "label": "verdict / evidence",
+      "route": "orthogonal-v",
+      "fromSide": "top",
+      "toSide": "left",
+      "via": [
+        [
+          155,
+          700
+        ],
+        [
+          290,
+          700
+        ],
+        [
+          290,
+          624
+        ]
+      ],
+      "labelAt": [
+        225,
+        715
+      ],
+      "variant": "dashed"
+    },
+    {
+      "id": "p6",
+      "from": "policy",
+      "to": "governance",
+      "label": "checkpoint eligibility",
+      "route": "straight",
+      "labelAt": [
+        535,
+        730
+      ]
+    },
+    {
+      "id": "p7",
+      "from": "toolchain-resolution",
+      "to": "execution",
+      "label": "exact tool runtime",
+      "route": "straight",
+      "labelAt": [
+        1110,
+        730
+      ]
+    },
+    {
+      "id": "p8",
+      "from": "owner",
+      "to": "cli",
+      "label": "explicit request / authority",
+      "route": "straight",
+      "variant": "security",
+      "labelAt": [
+        145,
+        500
+      ]
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "布局规则",
+      "items": [
+        "Current 已有组件在 Planned 中保持相同 stable id 与相同位置",
+        "新增 Foundation Kernel 统一放在下方区域",
+        "Current / Planned 使用同一 viewBox，左右对比时缩放一致"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Authority 不变量",
+      "items": [
+        "Review approved ≠ Owner authorization",
+        "Verification PASS ≠ Git checkpoint / commit authority",
+        "Approved OpenSpec Change / contract remains semantic mutation authority",
+        "Delivery 01 candidate 不成为自身 lifecycle authority"
+      ]
+    }
+  ]
+}

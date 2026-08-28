@@ -1,0 +1,40 @@
+{
+  "runNumber": 29,
+  "kind": "external-orchestrator-openspec-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-run-result-persistence",
+  "action": "propose",
+  "runId": "20260825-029-propose",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/021-establish-run-result-persistence/20260825-029-propose",
+  "startedAt": "2026-08-25T21:16:00+08:00",
+  "inputAction": {
+    "runId": "20260825-028-review-explore",
+    "payloadArchive": "028-review-explore.zip",
+    "payloadSha256": "128cd6efa7bc96bbfed8dce8fc5afb424604b51e43e5965b1400153199b93bb5",
+    "reviewerVerdict": "approved",
+    "nextBoundary": "propose"
+  },
+  "executionAuthorization": {
+    "sourceRef": "user-input:2026-08-25T21:16+08:00:execute-openspec-propose:establish-run-result-persistence",
+    "ownerAuthorityClaimed": false,
+    "scope": ["propose"]
+  },
+  "executionMode": "detached-linux-direct-openspec-propose-no-flowkit-lifecycle",
+  "runtime": {
+    "node": "22.23.2",
+    "openspec": "1.10.0",
+    "pnpmContract": "11.22.0"
+  },
+  "skills": ["openspec-propose"],
+  "stableTransfer": {
+    "contract": "stable-transfer-contract-v4.md",
+    "contractSha256": "235f6029ac58d3b91c1d0f7b2b2ed1b54d4cc35f3c50786382bcf27f3e228ecd",
+    "packageClass": "delta-action-handoff"
+  },
+  "scopeCorrection": {
+    "preserved": true,
+    "summary": "Proposal remains limited to sequential Author/Reviewer Change-scoped Run/Result persistence and controlled Run address generation."
+  }
+}

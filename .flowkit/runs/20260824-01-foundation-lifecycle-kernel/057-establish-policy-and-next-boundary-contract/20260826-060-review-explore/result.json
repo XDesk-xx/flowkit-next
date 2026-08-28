@@ -1,0 +1,45 @@
+{
+  "runNumber": 60,
+  "kind": "external-orchestrator-review-explore-result",
+  "role": "reviewer",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-policy-and-next-boundary-contract",
+  "action": "review-explore",
+  "runId": "20260826-060-review-explore",
+  "executionStatus": "completed",
+  "authorConclusion": null,
+  "reviewerVerdict": "changes-requested",
+  "verificationVerdict": null,
+  "nextBoundary": "revise-explore",
+  "closedFindings": [
+    "RE-058-001",
+    "RE-058-002",
+    "RE-058-003"
+  ],
+  "blockingFindings": [
+    {
+      "id": "RE-060-001",
+      "title": "Bounded Owner correction can return a READY revise Action that exact terminal lifecycle structurally rejects",
+      "counterexamples": [
+        "terminal revise-explore -> correction revise-explore",
+        "terminal revise-propose -> correction revise-propose",
+        "terminal revise-apply -> correction revise-apply"
+      ],
+      "requiredRevision": "Exclude exact current terminal Action identity from correction eligibility, or equivalently require correction target to be structurally preparable from the exact current terminal slot. Keep terminal absorption and removed resumed state unchanged."
+    }
+  ],
+  "checks": {
+    "chain057To059Traceability": "PASS",
+    "priorReviewerFindings": "3/3 CLOSED",
+    "typecheck": "PASS",
+    "domainTests": "51/51 PASS",
+    "formatCheck": "PASS",
+    "canonicalOpenSpecSpecs": "5/5 strict PASS after replay",
+    "currentChangeFormalArtifacts": "0/4 as expected for Explore",
+    "normalTransitionCompatibility": "12/12 PASS",
+    "ownerCorrectionCompatibility": "15/18 PASS",
+    "productionMutationByReview": "NONE"
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

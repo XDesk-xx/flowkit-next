@@ -1,0 +1,484 @@
+id: "20260824-01-foundation-lifecycle-kernel"
+createdAt: "2026-08-24"
+branch: "delivery/20260824-01-foundation-lifecycle-kernel"
+
+goal: "建立最小、稳定、可验证的 Flowkit Foundation Lifecycle Kernel；本 Delivery 由外部 authority 管理，Owner 明确授权并形成 exact Delivery Final Git checkpoint 后，该 checkpoint 直接具备作为 Delivery 02 stable manager/base 的资格。"
+
+delivery:
+  state: completed
+  fullTestStatus: passed
+  finalizationStatus: completed
+  formalVerificationCandidate: "aa6735f247ed89777dc2eae20d3011cbdb25faa7"
+  finalizedAt: "2026-08-28"
+
+scope:
+  included:
+    - "canonical Owner / Author / Reviewer / Verification authority and identity contracts"
+    - "Action lifecycle domain contract and minimal single-current-Action semantics"
+    - "durable Run / Result persistence and integrity validation"
+    - "ActionPackage and exact Result admission boundary"
+    - "single-current-Action execution / exact admission / terminal / STOP boundary"
+    - "Policy and deterministic next-boundary contract"
+    - "cross-Delivery Memo contract surfaced primarily at Delivery Start"
+    - "explicit Git checkpoint authorization boundary at the terminal host/CLI seam"
+    - "exact managed OpenSpec 1.10.0 / Archify 2.15.0 toolchain resolution"
+    - "thin OpenSpec integration without duplicating OpenSpec lifecycle authority"
+    - "minimal Flowkit CLI surface over Core"
+    - "Linux x64 detached whole-manager acceptance plus Windows compatibility simulation"
+  excluded:
+    - "Delivery 01 self-management by the candidate runtime"
+    - "automatic Owner decisions"
+    - "automatic Author / Reviewer loop"
+    - "automatic next-Action execution"
+    - "multi-Agent orchestration platform"
+    - "dynamic Agent / Provider / Skill / Tool / Gate registries"
+    - "generic evidence platform"
+    - "web management console"
+    - "background daemon"
+    - "large plugin framework"
+    - "Flowkit replacement of OpenSpec authority"
+    - "Archify as lifecycle truth"
+    - "runtime binaries, node_modules or pnpm store in Git"
+
+architecture:
+  impact: true
+  archifyPlan: "required"
+  finalStatus: "materialized"
+  actualRef: "architecture/20260824-01-foundation-lifecycle-kernel/json/actual.architecture.json"
+  compareRefs:
+    - "architecture/20260824-01-foundation-lifecycle-kernel/json/current-to-planned.compare.json"
+    - "architecture/20260824-01-foundation-lifecycle-kernel/json/current-to-actual.compare.json"
+    - "architecture/20260824-01-foundation-lifecycle-kernel/json/planned-to-actual.compare.json"
+  htmlPolicy: "disposable-not-retained-in-git"
+
+changes:
+  - id: "establish-lifecycle-authority-and-identity-contracts"
+    group: "foundation"
+    goal: "建立 Owner、Role、Delivery、Change、Action 的 canonical authority / identity contract 与 fail-closed domain rules。"
+    required: true
+    dependsOn:
+      []
+    state: completed
+    architectureImpact: true
+    outputs:
+      - "authority and identity domain contract"
+      - "role separation invariants"
+
+  - id: "establish-action-lifecycle-domain-contract"
+    group: "foundation"
+    goal: "定义 prepared、resumed、terminal、current Action identity 与 single-current-Action invariant。"
+    required: true
+    dependsOn:
+      - "establish-lifecycle-authority-and-identity-contracts"
+    state: completed
+    architectureImpact: true
+    outputs:
+      - "Action lifecycle domain contract"
+      - "legal transition invariants"
+
+  - id: "establish-run-result-persistence"
+    group: "execution"
+    goal: "建立真实 durable Run / Result persistence、serialization、read/write 与 resume-safe integrity validation。"
+    required: true
+    dependsOn:
+      - "establish-action-lifecycle-domain-contract"
+    state: completed
+    architectureImpact: true
+    outputs:
+      - "Run persistence"
+      - "Result persistence"
+      - "integrity validation"
+
+  - id: "establish-action-package-and-result-admission"
+    group: "execution"
+    goal: "建立 Core prepare exact ActionPackage、external execution 与 exact Result admission boundary。"
+    required: true
+    dependsOn:
+      - "establish-run-result-persistence"
+    state: completed
+    architectureImpact: true
+    outputs:
+      - "ActionPackage contract"
+      - "Result admission contract"
+
+  - id: "establish-single-action-execution-terminal-boundary"
+    group: "execution"
+    goal: "固定一次完整 Standard Action invocation：Core 内部 establish CurrentAction/prepared + form exact ActionPackage → execute exactly one Standard Action → Core 内部 exact Result admission + terminal → report continuation fact → STOP；prepare 不成为独立 Action/Run/STOP，并 proof 既有 resumed lifecycle state 是否仍有必要。"
+    required: true
+    dependsOn:
+      - "establish-action-package-and-result-admission"
+    state: completed
+    architectureImpact: true
+    outputs:
+      - "single-Action invocation / terminal / STOP boundary"
+      - "internal prepare boundary contract"
+      - "resumed-state necessity decision"
+
+  - id: "establish-policy-and-next-boundary-contract"
+    group: "governance"
+    goal: "建立 deterministic legal-boundary Policy，计算当前合法 Action、下一 boundary 与 blocked diagnosis。"
+    required: true
+    dependsOn:
+      - "establish-lifecycle-authority-and-identity-contracts"
+      - "establish-single-action-execution-terminal-boundary"
+    state: completed
+    architectureImpact: true
+    outputs:
+      - "Policy decision contract"
+      - "next-boundary contract"
+
+  - id: "establish-cross-delivery-memo-contract"
+    group: "governance"
+    goal: "建立重要但不属于当前 Delivery 的 cross-Delivery Memo durable contract，并在未来 Delivery Start 主要暴露 open Memos 供 Owner 决定纳入、继续延后或 dismiss；Memo 不成为 blocker、当前 backlog 或 specification truth。"
+    required: true
+    dependsOn:
+      - "establish-policy-and-next-boundary-contract"
+    state: completed
+    architectureImpact: true
+    outputs:
+      - "cross-Delivery Memo durable contract"
+      - "Delivery Start Memo exposure contract"
+
+  - id: "establish-mutation-and-git-checkpoint-boundary"
+    group: "governance"
+    goal: "建立 mutation declaration/scope、repository path contract、checkpoint eligibility 与 explicit Git authorization boundary。"
+    required: false
+    dependsOn:
+      - "establish-cross-delivery-memo-contract"
+    state: cancelled
+    architectureImpact: true
+    outputs:
+      - "mutation authority contract"
+      - "Git checkpoint boundary"
+
+  - id: "establish-managed-toolchain-resolution"
+    group: "integration"
+    goal: "让 candidate 读取 toolchain.lock、解析 FLOWKIT_HOME、精确识别 OpenSpec/Archify runtime 并 fail closed。"
+    required: true
+    dependsOn:
+      - "establish-lifecycle-authority-and-identity-contracts"
+    state: completed
+    architectureImpact: true
+    outputs:
+      - "managed toolchain resolution"
+      - "runtime identity diagnostics"
+
+  - id: "establish-openspec-thin-integration"
+    group: "integration"
+    goal: "建立 Flowkit 对 OpenSpec formal Change artifacts/operations 的 thin integration，不复制其 state machine。"
+    required: true
+    dependsOn:
+      - "establish-managed-toolchain-resolution"
+      - "establish-policy-and-next-boundary-contract"
+    state: completed
+    architectureImpact: true
+    outputs:
+      - "OpenSpec thin adapter boundary"
+      - "formal artifact observation"
+
+  - id: "establish-foundation-cli-surface"
+    group: "integration"
+    goal: "将已存在的 Core contract 与 terminal Git checkpoint authorization seam 暴露为最小 CLI/host surface，CLI 不成为第二套 lifecycle implementation。"
+    required: true
+    dependsOn:
+      - "establish-single-action-execution-terminal-boundary"
+      - "establish-policy-and-next-boundary-contract"
+      - "establish-openspec-thin-integration"
+    state: completed
+    architectureImpact: true
+    outputs:
+      - "minimal Flowkit CLI surface"
+      - "terminal Git checkpoint authorization surface"
+
+  - id: "validate-foundation-manager-cross-platform"
+    group: "acceptance"
+    goal: "在 detached 主开发环境完成 Linux x64 whole-manager real acceptance 与 Windows compatibility simulation，并冻结可复用的 Delivery Full Test execution contract。"
+    required: true
+    dependsOn:
+      - "establish-foundation-cli-surface"
+    state: completed
+    architectureImpact: false
+    outputs:
+      - "Windows compatibility simulation evidence"
+      - "Linux detached real acceptance evidence"
+      - "frozen Delivery Full Test execution contract"
+
+  - id: "normalize-foundation-contract-terminology"
+    group: "governance"
+    goal: "清理 canonical Foundation OpenSpec contracts 中残留的无意义内部版本化措辞，保持既有功能语义不变，不建立 V1/V2/V3 内部版本体系。"
+    required: true
+    dependsOn:
+      - "validate-foundation-manager-cross-platform"
+    state: completed
+    architectureImpact: false
+    outputs:
+      - "non-versioned canonical Foundation contract terminology"
+
+ownerDecisions:
+  - ref: "owner:c24904563ce5e0af501005cba26b7987f1f303525d839ebad39d1fdbd97a591a"
+    decision: "create-delivery"
+    deliveryId: "20260824-01-foundation-lifecycle-kernel"
+    sourceRef: "owner-input:2026-08-24:authorize-delivery-start:20260824-01-foundation-lifecycle-kernel"
+
+  - ref: "owner:1593d4fbe636d0afc08711794647464fff0df0496b316795f823299fcb18fe6e"
+    decision: "activate-change"
+    deliveryId: "20260824-01-foundation-lifecycle-kernel"
+    changeId: "establish-lifecycle-authority-and-identity-contracts"
+    sourceRef: "owner-input:2026-08-24:authorize-activate-and-explore:establish-lifecycle-authority-and-identity-contracts"
+
+  - ref: "owner:e60e1a1aab88a78b723e9b4f5e6c62d9430a9c641694ef81cad7f0707f05c776"
+    decision: "authorize-archive"
+    deliveryId: "20260824-01-foundation-lifecycle-kernel"
+    changeId: "establish-lifecycle-authority-and-identity-contracts"
+    sourceRef: "owner-input:2026-08-24T09:08+08:00:authorize-archive:20260824-01-foundation-lifecycle-kernel:establish-lifecycle-authority-and-identity-contracts:after:20260824-010-review-apply-reviewer-v2"
+    scope:
+      - "archive"
+
+  - ref: "owner:52101061dd07c7344c59e4d29ebcde0e49149e128472d4dccdc67eb9887d5f6a"
+    decision: "authorize-checkpoint"
+    deliveryId: "20260824-01-foundation-lifecycle-kernel"
+    changeId: "establish-lifecycle-authority-and-identity-contracts"
+    sourceRef: "owner-input:2026-08-24T09:08+08:00:authorize-checkpoint:20260824-01-foundation-lifecycle-kernel:establish-lifecycle-authority-and-identity-contracts:after-archive"
+    scope:
+      - "checkpoint"
+
+  - ref: "owner:78f2d96bf54dd7e6b4729a53d7f603480353624b4deaea174a172bec4fa80856"
+    decision: "activate-change"
+    deliveryId: "20260824-01-foundation-lifecycle-kernel"
+    changeId: "establish-action-lifecycle-domain-contract"
+    sourceRef: "owner-input:2026-08-25T10:04+08:00:authorize-direct-explore:establish-action-lifecycle-domain-contract"
+    scope:
+      - "explore"
+
+  - ref: "owner:e48a1af6923c922b5f83368accbfdc7a477a804d5093659451fd571307b1b5b3"
+    decision: "activate-change"
+    deliveryId: "20260824-01-foundation-lifecycle-kernel"
+    changeId: "establish-run-result-persistence"
+    sourceRef: "owner-input:2026-08-25T17:08+08:00:authorize-activate-and-explore:establish-run-result-persistence"
+    scope:
+      - "explore"
+
+  - ref: "owner:77debb2537d2faad156f802dd615f326f1728e4900a268af60c9b36357c95b5b"
+    decision: "authorize-apply"
+    deliveryId: "20260824-01-foundation-lifecycle-kernel"
+    changeId: "establish-run-result-persistence"
+    sourceRef: "owner-input:2026-08-25T22:36+08:00:authorize-apply:establish-run-result-persistence:after:20260825-032-review-propose"
+    scope:
+      - "apply"
+
+  - ref: "owner:f1673eee0f0cc906461be34328fec9b8e6f86adc94087b36303ac17aadf67c0a"
+    decision: "authorize-archive"
+    deliveryId: "20260824-01-foundation-lifecycle-kernel"
+    changeId: "establish-run-result-persistence"
+    sourceRef: "owner-input:2026-08-25T23:08+08:00:authorize-archive:20260824-01-foundation-lifecycle-kernel:establish-run-result-persistence:after:20260825-034-review-apply"
+    scope:
+      - "archive"
+
+  - ref: "owner:585262e33c2d6af0b6cb3fc5900f9097d6d984a68cb4088bd630df5cd9722937"
+    decision: "activate-change"
+    deliveryId: "20260824-01-foundation-lifecycle-kernel"
+    changeId: "establish-action-package-and-result-admission"
+    sourceRef: "owner-input:2026-08-26:authorize-activate-and-explore:20260824-01-foundation-lifecycle-kernel:establish-action-package-and-result-admission"
+    scope:
+      - "explore"
+
+  - ref: "owner:2b50dd70dfcf838b2ea2cf3cda7ce5465979b02b5ef129ec9bb39a358fe722ce"
+    decision: "authorize-apply"
+    deliveryId: "20260824-01-foundation-lifecycle-kernel"
+    changeId: "establish-action-package-and-result-admission"
+    sourceRef: "owner-input:2026-08-26T13:20+08:00:authorize-apply:establish-action-package-and-result-admission:after:20260826-045-review-propose"
+    scope:
+      - "apply"
+
+  - ref: "owner:f62ccac2782d5bc97d14da1afd53550e79c48d7df845dc6f69c6d89e56e97cb1"
+    decision: "authorize-archive"
+    deliveryId: "20260824-01-foundation-lifecycle-kernel"
+    changeId: "establish-action-package-and-result-admission"
+    sourceRef: "owner-input:2026-08-26T13:20+08:00:authorize-archive:20260824-01-foundation-lifecycle-kernel:establish-action-package-and-result-admission:after:20260826-047-review-apply"
+    scope:
+      - "archive"
+
+  - ref: "owner:421b658f34c85ff2c12a081ecf545f223ce74f3ac688c3ce42a31f06cf00210a"
+    decision: "refine-delivery-plan"
+    deliveryId: "20260824-01-foundation-lifecycle-kernel"
+    sourceRef: "owner-input:2026-08-26T16:25+08:00:refine-delivery-plan:remove-resume-preset:add-cross-delivery-memo"
+    scope:
+      - "replace planned resume-presupposing Change 5 with bounded single-Action execution/terminal Change"
+      - "insert establish-cross-delivery-memo-contract after Policy and before mutation/checkpoint"
+
+
+  - ref: "owner:877f623baf32e76a3b5e1c45fa40a3b3b16d36b856ade136ba15b77f6e42c01f"
+    decision: "activate-change"
+    deliveryId: "20260824-01-foundation-lifecycle-kernel"
+    changeId: "establish-single-action-execution-terminal-boundary"
+    sourceRef: "owner-input:2026-08-26T16:25+08:00:continue-change-5-after-plan-correction:establish-single-action-execution-terminal-boundary"
+    scope:
+      - "explore"
+
+  - ref: "owner:9496aa06cd4c354743a79bbe156eb24cbc469a1f3815ae1874c9baf3ff371718"
+    decision: "refine-change-scope"
+    deliveryId: "20260824-01-foundation-lifecycle-kernel"
+    changeId: "establish-single-action-execution-terminal-boundary"
+    sourceRef: "owner-input:2026-08-26T17:28+08:00:refine-change-5-explore:prepare-is-internal-not-stop-boundary"
+    scope:
+      - "treat prepare as internal structural lifecycle event, not Standard Action / independent Run / ordinary STOP boundary"
+      - "redesign Explore around one complete Standard Action invocation while preserving resumed-state necessity proof"
+
+
+  - ref: "owner:28ba37b3475208c3a1741cc9dc0f352fe504b97a67c22cf83b87d5ecf81796ad"
+    decision: "activate-change"
+    deliveryId: "20260824-01-foundation-lifecycle-kernel"
+    changeId: "establish-policy-and-next-boundary-contract"
+    sourceRef: "owner-input:2026-08-26:check-base-and-enter-next-change:establish-policy-and-next-boundary-contract"
+    scope:
+      - "explore"
+
+  - ref: "owner:11bc5f5b33b63b1f24fa6309ac7ac9b12c0a3f65d64eb576d2fe8df31aeb34de"
+    decision: "activate-change"
+    deliveryId: "20260824-01-foundation-lifecycle-kernel"
+    changeId: "establish-cross-delivery-memo-contract"
+    sourceRef: "owner-input:2026-08-27:activate-cross-delivery-memo-contract:explore-proof-based"
+    scope:
+      - "explore"
+
+  - ref: "owner:a154f3039ffc491c6b3839002ba81b24949852a5243bd5e43083e920bdd83965"
+    decision: "activate-change"
+    deliveryId: "20260824-01-foundation-lifecycle-kernel"
+    changeId: "establish-mutation-and-git-checkpoint-boundary"
+    sourceRef: "owner-input:2026-08-27:activate-mutation-and-git-checkpoint-boundary:explore-proof-based"
+    scope:
+      - "explore"
+
+
+  - ref: "owner:86b0fe526dce6e2d85fb56c521966fe5f2116dd485f60a0f2ebad69beedc984c"
+    decision: "cancel-change"
+    deliveryId: "20260824-01-foundation-lifecycle-kernel"
+    changeId: "establish-mutation-and-git-checkpoint-boundary"
+    sourceRef: "owner-input:2026-08-27T13:44+08:00:cancel-change:establish-mutation-and-git-checkpoint-boundary"
+    scope:
+      - "cancel"
+
+  - ref: "owner:91dd8bac1b2f04c659075a50434c634859a9b6adb91fdd854d8b744db617d074"
+    decision: "refine-delivery-plan"
+    deliveryId: "20260824-01-foundation-lifecycle-kernel"
+    sourceRef: "owner-input:2026-08-27T13:44+08:00:refine-delivery-plan:cancel-establish-mutation-and-git-checkpoint-boundary"
+    scope:
+      - "acceptance"
+      - "dependencies"
+      - "scope"
+      - "verification"
+
+
+  - ref: "owner:e38686db4a2e40359d96bcc19497cd7fe3ce62e2598e90c50691526d8849fd7a"
+    decision: "activate-change"
+    deliveryId: "20260824-01-foundation-lifecycle-kernel"
+    changeId: "establish-managed-toolchain-resolution"
+    sourceRef: "owner-input:2026-08-27T19:00+08:00:activate-managed-toolchain-resolution:explore-proof-based"
+    scope:
+      - "explore"
+
+
+  - ref: "owner:4ccae943be38129c515abb36bb29f6723df36ff83346f12c069c68ee91f50bc6"
+    decision: "activate-change"
+    deliveryId: "20260824-01-foundation-lifecycle-kernel"
+    changeId: "establish-openspec-thin-integration"
+    sourceRef: "owner-input:2026-08-28T00:10+08:00:activate-openspec-thin-integration:explore-proof-based"
+    scope:
+      - "explore"
+
+  - ref: "owner:58f5817b9acb80e197ffd6cf9c5340761c9e4c4fe67efff2eb9cc8c79a67f710"
+    decision: "activate-change"
+    deliveryId: "20260824-01-foundation-lifecycle-kernel"
+    changeId: "establish-foundation-cli-surface"
+    sourceRef: "owner-input:2026-08-28T02:20+08:00:activate-foundation-cli-surface:explore-proof-based"
+    scope:
+      - "explore"
+
+  - ref: "owner:6d05f241f930490ba7caed05b083ab2649ed7c70e602da5fdafa5c8737462a76"
+    decision: "refine-delivery-plan"
+    deliveryId: "20260824-01-foundation-lifecycle-kernel"
+    changeId: "validate-foundation-manager-cross-platform"
+    sourceRef: "owner-input:2026-08-28T13:44+08:00:refine-final-acceptance:detached-primary-windows-compatibility-simulation"
+    scope:
+      - "treat detached Linux x64 as the real primary whole-manager acceptance environment"
+      - "replace Windows Native requirement with bounded Windows compatibility simulation"
+      - "freeze the exact reusable Delivery Full Test execution contract in this final acceptance Change"
+
+  - ref: "owner:b6eb3b434dd7b1dbdde2da3c0ffb0a17d58ee6c065e924750342b6d8d443850d"
+    decision: "activate-change"
+    deliveryId: "20260824-01-foundation-lifecycle-kernel"
+    changeId: "validate-foundation-manager-cross-platform"
+    sourceRef: "owner-input:2026-08-28T13:44+08:00:activate-change:validate-foundation-manager-cross-platform:explore-proof-based"
+    scope:
+      - "explore"
+
+  - ref: "owner:1a738a5e2f77e965dcf8295183bc8047f1336f87781aee7497814674cbbda2fc"
+    decision: "activate-change"
+    deliveryId: "20260824-01-foundation-lifecycle-kernel"
+    changeId: "normalize-foundation-contract-terminology"
+    sourceRef: "owner-input:2026-08-28T18:55+08:00:activate-change:normalize-foundation-contract-terminology:explore-proof-based"
+    scope:
+      - "explore"
+
+verification:
+  change:
+    requireApplicableChecks: true
+  fullTest:
+    requiresOwnerAuthorization: true
+    execution:
+      state: passed
+      verifiedCandidate: "aa6735f247ed89777dc2eae20d3011cbdb25faa7"
+      checkpointArchiveSha256: "9a3a02a568632df8b20a273e423c9c7862d975a12f5db5b82e9d78536f69b3d6"
+      verificationEvidenceSha256: "8d478cce594eb00d85e68009b968c8a96655d3301589ffb7200e7b1fd17c5f7b"
+      verifiedAt: "2026-08-28"
+      resultAuthority: "verification"
+      reason: "Owner 已对 exact candidate 明确授权 Formal Full Test；冻结的 6 个 gates 全部 PASS。Delivery Final 仅在该 PASS 之后收敛 repository guidance 与 derived Archify assets，未改变已验证 product/canonical contract。"
+      environment:
+        nodeCompatibility: ">=22.20.0"
+        deterministicNodeFixture: "22.23.2"
+        packageManagerFixture: "pnpm@11.22.0"
+        dependencies: "repository dependencies are restored before execution"
+        pnpmScriptDependencyCheck: "pnpm_config_verify_deps_before_run=false for the restored offline node_modules fixture so gate execution cannot trigger pnpm install"
+        flowkitHome: "FLOWKIT_HOME must be explicit"
+        managedTools:
+          - "OpenSpec 1.10.0 exact managed runtime"
+          - "Archify 2.15.0 exact managed runtime"
+        fallback: "no install/update/download/network/PATH/global managed-tool fallback"
+      gates:
+        - "pnpm typecheck"
+        - "pnpm format:check"
+        - "pnpm build"
+        - "pnpm test:domain"
+        - "exact managed OpenSpec 1.10.0: validate --all --strict"
+        - "pnpm test:acceptance"
+    plan:
+      - "pnpm test:acceptance includes real Linux x64 detached whole-manager acceptance plus windows-compatibility-simulation"
+      - "lint is intentionally absent because this repository has no executable lint contract"
+      - "Change-stage Author/Reviewer acceptance evidence is not formal Delivery Verification"
+      - "Windows compatibility simulation does not claim cmd.exe, PowerShell, NTFS-specific, .cmd shim, or native Windows process coverage"
+
+finalization:
+  state: completed
+  formalFullTest: "PASS"
+  verifiedCandidate: "aa6735f247ed89777dc2eae20d3011cbdb25faa7"
+  guidanceConvergence: "completed"
+  archifyDeliveryFinal: "completed"
+  productMutationAfterFormalVerification: false
+  historicalRunRewrite: false
+  generatedHtmlRetainedInGit: false
+  openMemoPolicy: "preserved-non-blocking"
+  gitCheckpoint: "completed"
+  deterministicCommitMessage: "delivery(20260824-01-foundation-lifecycle-kernel): finalize foundation lifecycle kernel"
+
+acceptance:
+  - "Delivery 01 candidate never becomes authority for its own lifecycle."
+  - "Owner, Author, Reviewer and Verification authority remain distinct and fail closed."
+  - "Exactly one current Action can be prepared, executed through an exact ActionPackage, admitted to terminal by an exact Result, then execution stops after reporting the continuation fact."
+  - "Run / Result facts are durable, real and integrity-checked; no fake terminal artifacts are admitted."
+  - "Policy computes one legal boundary or a deterministic blocked diagnosis and never auto-executes next."
+  - "Approved OpenSpec Change / contract remains the semantic mutation authority; Flowkit does not add a second durable per-Run or per-file mutation authority."
+  - "Git checkpoint permission requires an explicit legal checkpoint boundary and explicit Owner authorization; Verification or Review alone never creates Git permission."
+  - "Managed OpenSpec 1.10.0 and Archify 2.15.0 resolve from exact external identities without silent PATH fallback."
+  - "OpenSpec remains formal Change authority and Archify remains derived/non-authoritative."
+  - "Linux x64 detached real acceptance and Windows compatibility simulation both pass before Delivery Final closure."
+  - "Delivery Final alone does not create Git checkpoint authority; after Owner explicitly authorizes and forms the exact Delivery Final Git checkpoint, that checkpoint is directly eligible to manage Delivery 02, with no additional post-Final lifecycle gate."

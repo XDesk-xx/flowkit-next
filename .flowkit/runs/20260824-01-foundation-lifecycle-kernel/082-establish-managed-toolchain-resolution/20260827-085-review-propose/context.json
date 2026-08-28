@@ -1,0 +1,46 @@
+{
+  "runNumber": 85,
+  "kind": "external-orchestrator-review-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-managed-toolchain-resolution",
+  "action": "review-propose",
+  "runId": "20260827-085-review-propose",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/082-establish-managed-toolchain-resolution/20260827-085-review-propose",
+  "inputRunId": "20260827-084-propose",
+  "reviewChainStartRunId": "20260827-082-explore",
+  "reviewModel": "review-propose-skill",
+  "chainIntegrity": {
+    "runs082And083ByteIdentical": true,
+    "approvedExploreUnchanged": true,
+    "deliveryManifestUnchangedFrom083": true,
+    "deltaFrom083": "proposal/spec/design/tasks + 084 Run only"
+  },
+  "runtime": {
+    "node": "22.23.2",
+    "openspec": "1.10.0"
+  },
+  "independentChecks": {
+    "openspecPlanning": "4/4 complete",
+    "changeStrict": "PASS",
+    "openspecAllStrict": "8/8 PASS",
+    "typecheck": "PASS",
+    "domainTests": "79/79 PASS",
+    "formatCheck": "PASS",
+    "proposalGuidanceFormalized": "6/6 PASS",
+    "managedToolIds": [
+      "openspec",
+      "archify"
+    ],
+    "exactNodePatchManaged": false,
+    "pnpmManagedRuntimeTarget": false,
+    "pathFallbackAllowed": false,
+    "resolutionInvokesTool": false,
+    "genericToolRegistryAdded": false,
+    "liveDirectoryAttestationAdded": false,
+    "productionMutationBy084": "NONE"
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

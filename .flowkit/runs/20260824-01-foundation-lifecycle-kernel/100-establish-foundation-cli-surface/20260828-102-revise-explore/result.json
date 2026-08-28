@@ -1,0 +1,48 @@
+{
+  "runNumber": 102,
+  "kind": "external-orchestrator-revise-explore-result",
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-foundation-cli-surface",
+  "action": "revise-explore",
+  "runId": "20260828-102-revise-explore",
+  "finishedAt": "2026-08-28T08:59:38+08:00",
+  "executionStatus": "completed",
+  "authorRevisionConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-explore",
+  "resolvedFindings": {
+    "RE-101-001": "V1 no longer infers current Action from latest/highest Run. Caller/host must provide an exact authoritative current Run reference; CLI reads that exact occurrence and composes Policy only from that selected Run. History ordering remains non-authoritative reporting data."
+  },
+  "proof": {
+    "reviewerDisconnectedHigherSequenceCounterexample": "CONFIRMED",
+    "exactCallerSelectedRunRead": "PASS",
+    "disconnectedHigherSequenceIgnoredByExplicitSelection": "PASS",
+    "exactSelectedRunPolicyDecision": "ready-action(archive)",
+    "hypotheticalMaxSequencePolicyDecision": "ready-checkpoint-evaluation",
+    "currentActionRegistryAdded": false,
+    "runLineageSubsystemAdded": false,
+    "automaticRunSelectionAdded": false
+  },
+  "decisions": [
+    "Run sequence ordering is durable history order only and MUST NOT create current-Action authority.",
+    "Foundation CLI V1 requires an exact caller/host-supplied current Run reference and reads only that exact controlled occurrence.",
+    "Terminal selected Run contributes its exact linked context/result to Policy; prepared selected Run contributes no manufactured terminal facts.",
+    "listChangeRunHistory remains available for reporting/history but not authoritative current selection.",
+    "Automatic Run-currentness/lineage remains a later self-hosting concern and is outside this Change."
+  ],
+  "checks": {
+    "focusedExactRunSelectionProof": "PASS",
+    "typecheck": "PASS",
+    "domainTests": "107/107 PASS",
+    "formatCheck": "PASS",
+    "canonicalOpenSpecSpecs": "9/9 strict PASS",
+    "archivedOpenSpecChanges": "9/9 strict PASS",
+    "formalPlanningArtifacts": "0/4; Proposal ready; specs/design/tasks blocked as expected",
+    "productionMutation": "NONE",
+    "testMutation": "NONE"
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

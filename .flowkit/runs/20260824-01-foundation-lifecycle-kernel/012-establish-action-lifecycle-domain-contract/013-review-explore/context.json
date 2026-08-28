@@ -1,0 +1,63 @@
+{
+  "runNumber": 13,
+  "kind": "external-orchestrator-review-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-action-lifecycle-domain-contract",
+  "action": "review-explore",
+  "startedAt": "2026-08-25T10:42:00+08:00",
+  "base": {
+    "archive": "flowkit-next-delivery-20260824-01-foundation-lifecycle-kernel-a2f4bf9.zip",
+    "sha256": "385cd4588a1817d51d4c7cdd916f4a5985f2b4adb44bced8bf7866f0b8945a39",
+    "gitRevisionHint": "a2f4bf9",
+    "gitRevisionVerified": false,
+    "reason": "input snapshot contains no .git directory; archive SHA-256 is the verified base identity"
+  },
+  "inputAction": {
+    "runId": "20260824-012-explore",
+    "payloadArchive": "flowkit-next-delivery-20260824-01-foundation-lifecycle-kernel-012-explore-author-payload-v2.zip",
+    "payloadSha256": "283f028876fdbee9e18c82f2f12cbad96e9bdb4545b10b8ba09770a1956190d3",
+    "authorConclusion": "PASS"
+  },
+  "roleAssignment": {
+    "sourceRef": "user-input:2026-08-25T10:42+08:00:role:reviewer:review-explore:establish-action-lifecycle-domain-contract",
+    "ownerAuthorityClaimed": false
+  },
+  "executionMode": "detached-linux-direct-review-explore-no-flowkit-lifecycle",
+  "runtime": {
+    "node": "22.23.2",
+    "openspec": "1.10.0",
+    "nodeRuntimeSha256": "29331fa22523b7fce59965e46627ecbc87019ac74e0e6abf9f61284e0760f755",
+    "openspecRuntimeSha256": "4fb0b870d9523daebda8becaf4202397da342bc39dde3961d8dd4392c72e2b68",
+    "nodeModulesSha256": "96e1c2cd74b1bba7e706100f01ed149727453b03a22aefbffb7e5c7175b18406"
+  },
+  "reviewContract": {
+    "skill": ".agents/skills/review-explore/SKILL.md",
+    "skillName": "Review Explore Skill v2",
+    "stableTransferContract": "flowkit-next-stable-transfer-payload-contract-v1.md",
+    "stableTransferContractSha256": "6acc010b5af86054a67a4523de31c009f1e5e3657d1cca63edb2b1eaafc9fcde"
+  },
+  "independentChecks": {
+    "typecheck": "PASS",
+    "domainTests": "13/13 PASS",
+    "repositoryDeclaredFormatCheck": "PASS",
+    "openspecVersion": "1.10.0",
+    "openspecFormalArtifacts": "0/4; proposal ready; specs/design/tasks blocked",
+    "productionMutationAgainstBase": "NONE for src/tests/package/pnpm-lock/architecture",
+    "payloadContractShape": "PASS",
+    "terminalSameIdentityPrepareCounterexample": "OBSERVED under literal transition matrix unless B != A is explicit"
+  },
+  "executionLocalProof": {
+    "reviewerTransitionModelSha256": "cdc0adcd7edbce2ad97603c9e3a5ea9b984a21aa29e71835a1bc59becf0c7d22",
+    "reviewerTransitionResultSha256": "a8b361ca127bb0da2d403a72f49586766433d2c39f9fa5048b33a09136438c76",
+    "includedInStableTransfer": false
+  },
+  "notes": [
+    "The reviewer independently reproduced the detached baseline instead of inheriting the Author PASS.",
+    "The Author wording says terminal replacement uses another/new canonical identity, but the transition matrix and controlled proof do not explicitly reject terminal A -> prepare A.",
+    "Raw reviewer proof remains execution-local under the frozen stable-transfer contract."
+  ],
+  "runId": "20260824-013-review-explore",
+  "stableTransfer": true
+}

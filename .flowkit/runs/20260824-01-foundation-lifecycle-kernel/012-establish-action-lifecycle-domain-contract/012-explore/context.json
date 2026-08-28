@@ -1,0 +1,47 @@
+{
+  "runNumber": 12,
+  "kind": "external-orchestrator-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-action-lifecycle-domain-contract",
+  "action": "explore",
+  "startedAt": "2026-08-25T10:04:00+08:00",
+  "base": {
+    "archive": "flowkit-next-delivery-20260824-01-foundation-lifecycle-kernel-a2f4bf9.zip",
+    "sha256": "385cd4588a1817d51d4c7cdd916f4a5985f2b4adb44bced8bf7866f0b8945a39",
+    "gitRevisionHint": "a2f4bf9",
+    "gitRevisionVerified": false,
+    "reason": "input snapshot contains no .git directory; archive SHA-256 is the verified base identity"
+  },
+  "authorization": {
+    "ref": "owner:78f2d96bf54dd7e6b4729a53d7f603480353624b4deaea174a172bec4fa80856",
+    "decision": "activate-change",
+    "scope": [
+      "explore"
+    ],
+    "sourceRef": "owner-input:2026-08-25T10:04+08:00:authorize-direct-explore:establish-action-lifecycle-domain-contract"
+  },
+  "executionMode": "detached-linux-direct-openspec-no-flowkit-lifecycle",
+  "runtime": {
+    "node": "22.23.2",
+    "pnpm": "11.22.0",
+    "openspec": "1.10.0",
+    "openspecSourceZipSha256": "8085b07b4bafbdc09fceedbcb4ccd04c800c488d8588754d97946b462e142b51",
+    "openspecRuntimeSha256": "4fb0b870d9523daebda8becaf4202397da342bc39dde3961d8dd4392c72e2b68",
+    "nodeRuntimeSha256": "29331fa22523b7fce59965e46627ecbc87019ac74e0e6abf9f61284e0760f755",
+    "nodeModulesSha256": "96e1c2cd74b1bba7e706100f01ed149727453b03a22aefbffb7e5c7175b18406"
+  },
+  "skills": [
+    "openspec-explore",
+    "explore-proof-based"
+  ],
+  "notes": [
+    "OpenSpec was invoked directly with the exact 1.10.0 runtime; Flowkit lifecycle CLI was not used.",
+    "This Run is a stable-transfer bridge record created by the external process connector, not a claim that the candidate Flowkit runtime produced the Run.",
+    "Proof-based Explore evidence was used during execution but temporary evidence files are intentionally excluded from the stable-transfer payload.",
+    "Normal pnpm script invocation attempted dependency recreation/network access; stable offline checks therefore used exact Node direct tool entrypoints."
+  ],
+  "runId": "20260824-012-explore",
+  "stableTransfer": true
+}

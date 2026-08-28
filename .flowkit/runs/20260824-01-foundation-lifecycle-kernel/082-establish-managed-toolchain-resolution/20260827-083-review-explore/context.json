@@ -1,0 +1,47 @@
+{
+  "runNumber": 83,
+  "kind": "external-orchestrator-review-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-managed-toolchain-resolution",
+  "action": "review-explore",
+  "runId": "20260827-083-review-explore",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/082-establish-managed-toolchain-resolution/20260827-083-review-explore",
+  "inputRunId": "20260827-082-explore",
+  "reviewChainStartRunId": "20260827-082-explore",
+  "reviewModel": "review-explore-skill",
+  "runtime": {
+    "node": "22.23.2",
+    "openspec": "1.10.0",
+    "pnpmObserved": "11.22.0"
+  },
+  "activationChecks": {
+    "manifestSemanticDelta": "PASS: planned->active plus one Owner activation fact only",
+    "ownerAuthorityStructuralValidation": "PASS"
+  },
+  "independentChecks": {
+    "typecheck": "PASS",
+    "domainTests": "79/79 PASS",
+    "formatCheck": "PASS",
+    "canonicalOpenSpecSpecs": "7/7 strict PASS",
+    "currentChangePlanningState": "0/4; proposal ready",
+    "currentChangeStrictAtExplore": "expected not applicable yet: no delta/spec artifacts",
+    "artifactHashes": "4/4 exact match",
+    "packageIdentities": "2/2 exact match",
+    "entrypointsExecute": "OpenSpec version output PASS; Archify CLI entrypoint PASS",
+    "fakePathIsolation": "PASS: PATH openspec=9.9.9 did not affect FLOWKIT_HOME OpenSpec 1.10.0",
+    "focusedResolverMatrix": "8/8 PASS",
+    "onDemandResolution": "2/2 PASS",
+    "nodeBoundary": "Flowkit >=22.20.0; OpenSpec >=20.19.0; Archify >=18",
+    "productionMutationBy082": "NONE"
+  },
+  "checkpointBaseReviewLimitation": {
+    "claimedArchive": "flowkit-next-delivery-20260824-01-foundation-lifecycle-kernel-853c622.zip",
+    "exactArchivePresentInThisReviewTurn": false,
+    "exactArchiveShaAndGitRevisionIndependentlyReverified": false,
+    "impact": "non-blocking for Explore readiness"
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

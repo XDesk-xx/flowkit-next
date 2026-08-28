@@ -1,0 +1,72 @@
+{
+  "runNumber": 117,
+  "kind": "external-orchestrator-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "validate-foundation-manager-cross-platform",
+  "action": "apply",
+  "runId": "20260828-117-apply",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/113-validate-foundation-manager-cross-platform/20260828-117-apply",
+  "recordedAt": "2026-08-28T16:11:52+08:00",
+  "inputAction": {
+    "runId": "20260828-116-review-propose",
+    "payloadArchive": "116-review-propose.zip",
+    "payloadSha256": "cff228501214bfa87b55063039689c74d151c4507213aab477d787beed7e7cf7",
+    "reviewerVerdict": "approved",
+    "nextBoundary": "apply"
+  },
+  "checkpointBase": {
+    "archive": "flowkit-next-delivery-20260824-01-foundation-lifecycle-kernel-9592a30.zip",
+    "gitRevision": "9592a30",
+    "gitRevisionVerification": "owner-supplied checkpoint prefix; detached snapshot excludes .git",
+    "archiveSha256": "1c32fc62e4cb5421807c69861a18a8cdd9c94f772fa27dedad4ecbfa6cab70b3"
+  },
+  "applyContract": {
+    "openspecSkill": ".agents/skills/openspec-apply-change/SKILL.md",
+    "openspecSkillSha256": "9a8c4451009e64f6b8ad0e8e382afb5ad0ff74e262be9e6486ae4d9cc67827cb",
+    "convergenceSkill": ".agents/skills/implementation-convergence/SKILL.md",
+    "convergenceSkillSha256": "88b8252dd146a71ea3d189f4c2f651bc8e96db6dbb64e454769eb22ace18a68d",
+    "schema": "spec-driven",
+    "skipSpecs": true,
+    "initialProgress": "0/14",
+    "finalProgress": "14/14",
+    "finalState": "all_done"
+  },
+  "runtime": {
+    "nodeFixture": "22.23.2",
+    "repositoryNodeEngine": ">=22.20.0",
+    "pnpmFixture": "11.22.0",
+    "pnpmScriptDependencyCheck": "pnpm_config_verify_deps_before_run=false",
+    "flowkitHome": "explicit external fixture",
+    "openspec": "1.10.0",
+    "archify": "2.15.0",
+    "networkFallback": false
+  },
+  "changeEvidence": {
+    "typecheck": "PASS",
+    "formatCheck": "PASS",
+    "build": "PASS",
+    "domainTests": "116/116 PASS",
+    "openspecAllStrict": "11/11 PASS",
+    "acceptance": "4/4 PASS",
+    "candidateGeneratedDurableRun": "PASS",
+    "emittedCliStatus": "PASS",
+    "emittedCliNextExactApply": "ready-action(review-apply)",
+    "emittedCliNextExplicitNull": "ready-action(explore)",
+    "checkpointAuthorizationWithoutGit": "authorized=true",
+    "managedToolDoctor": "PASS",
+    "fakePathTakeover": "NONE",
+    "windowsCompatibilitySimulation": "PASS",
+    "nativeWindowsClaim": false,
+    "productionSourceAndCanonicalSpecs": "BYTE_IDENTICAL",
+    "codeGate": "403 < 500",
+    "formalDeliveryVerification": "NOT_PERFORMED"
+  },
+  "skillsUsed": [
+    "openspec-apply-change",
+    "implementation-convergence"
+  ],
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

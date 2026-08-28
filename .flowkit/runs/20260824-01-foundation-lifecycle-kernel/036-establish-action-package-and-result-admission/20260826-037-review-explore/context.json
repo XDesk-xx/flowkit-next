@@ -1,0 +1,64 @@
+{
+  "runNumber": 37,
+  "kind": "external-orchestrator-review-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-action-package-and-result-admission",
+  "action": "review-explore",
+  "runId": "20260826-037-review-explore",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/036-establish-action-package-and-result-admission/20260826-037-review-explore",
+  "inputAction": {
+    "runId": "20260826-036-explore",
+    "payloadArchive": "036-explore.zip",
+    "payloadSha256": "ecedd3ed141ab491f80aebdb9f60278976188db0d46111d96e425649f03003c6",
+    "authorConclusion": "PASS"
+  },
+  "base": {
+    "archive": "flowkit-next-delivery-20260824-01-foundation-lifecycle-kernel-f03fb67.zip",
+    "sha256": "fe26ecda693678f395eac1ea04788e7e421b2239b8a97a2973b8b8bc3dbd4290",
+    "gitRevisionHint": "f03fb6756ffa4f7ad759113568a10dee48bfe28f",
+    "gitRevisionIndependentlyVerified": false,
+    "reason": "Detached checkpoint archive contains no .git directory; archive SHA-256 is the independently verified base identity."
+  },
+  "executionMode": "detached-linux-independent-review-explore-no-flowkit-lifecycle",
+  "reviewContract": {
+    "skill": ".agents/skills/review-explore/SKILL.md",
+    "observedPhysicalTopology": ".flowkit/runs/<delivery>/<change-root>/<dated-action-occurrence>/"
+  },
+  "runtime": {
+    "node": "22.23.2",
+    "pnpm": "11.22.0",
+    "openspec": "1.10.0"
+  },
+  "independentValidation": {
+    "inputPayloadSha256": "PASS",
+    "baseArchiveSha256": "PASS",
+    "typecheck": "PASS",
+    "domainTests": "35/35 PASS",
+    "formatCheck": "PASS",
+    "openspecFormalArtifacts": "0/4; proposal ready; specs/design/tasks blocked",
+    "canonicalSpecsStrict": "3/3 PASS",
+    "activeChangeStrict": "expected FAIL at Explore boundary because no formal spec delta exists yet",
+    "productionMutation": "NONE"
+  },
+  "independentProof": {
+    "question": "Can a stale prepared package be admitted after the exact current Action advances to resumed while runId/ActionIdentity/role/result linkage remain exact?",
+    "packageLifecycleState": "prepared",
+    "currentActionLifecycleState": "resumed",
+    "sameActionIdentity": true,
+    "candidateRunResultStructurallyValid": true,
+    "admittedByExploreListedInvariants": true,
+    "staleStateMismatch": true,
+    "decisionImpact": "Blocking: exact Result admission needs an explicit package/current-state freshness invariant before Proposal.",
+    "proofScriptSha256": "90afcec4655f3ba375887f2d5858169a2055a6647490757b3e02956955bdbf63",
+    "proofResultSha256": "6dd0324504ef3f839db0a684c85c582d932c799f86f122128e6ebf36234675a1",
+    "includedInStableTransfer": false
+  },
+  "notes": [
+    "Reviewer does not reopen generic ActionPackage transport/repository-manifest design; transport remains an explicit non-goal of this Change.",
+    "The blocking counterexample is inside the authorized single-current-Action input domain and directly affects composition with the next resume/single-action-terminal Change."
+  ],
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

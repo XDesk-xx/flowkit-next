@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "kind": "external-bootstrap-review-context",
+  "run": {
+    "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+    "changeId": "establish-lifecycle-authority-and-identity-contracts",
+    "runId": "20260824-006-review-propose",
+    "action": "review-propose",
+    "role": "reviewer",
+    "entryBase": "23ca52715df7c52738edeb59206f496c7bf2d2a9",
+    "branch": "delivery/20260824-01-foundation-lifecycle-kernel"
+  },
+  "reviewed": {
+    "runId": "20260824-005-propose",
+    "packageSha256": "e60d2e4f69caa9ac2cf4fc9467a04d9de0ece32ea46f09959f66b499e49d22fd",
+    "authorResultSha256": "457a339098b65d5ec6700864f200e14553b5ff3e8628ef9327d341b9046a7f1f",
+    "sourceApprovedReviewRunId": "20260824-004-review-explore",
+    "sourceApprovedReviewPackageSha256": "abaf08aa627ef496bb4a389faeb28a9d7134b76fcdb66c4b9cb82ded0abf8a55"
+  },
+  "integrity": {
+    "baseHead": "23ca52715df7c52738edeb59206f496c7bf2d2a9",
+    "baseBranch": "delivery/20260824-01-foundation-lifecycle-kernel",
+    "priorRuns001Through004": "byte-identical-to-004-review-package",
+    "approvedExplore": "byte-identical-to-004-review-package",
+    "deliveryManifest": "byte-identical-to-004-review-package",
+    "proposalSha256": "d48802111e1a32dc050af15ef085f0c0665b308a21115f7840ff8ebe3f4d5920",
+    "specSha256": "dacadcaef0bfce4266ec0e0e1d73df23e37ff2ea45dc5e0ebd82092ff3002afd",
+    "designSha256": "b76730b7a95d09d74841a3a490fdf351e623303ed526cecb0d5dd28a0a742e00",
+    "tasksSha256": "a5e57dea89240a62de4d040c397f0b0c6e5302bba49ea4804549f01df84d4466"
+  },
+  "independentOpenSpecCheck": {
+    "runtimeArtifact": "openspec-1.10.0-linux-x64-node22.23.2-pnpm11.22.0-runtime-v1.tar.gz",
+    "runtimeArtifactSha256": "4fb0b870d9523daebda8becaf4202397da342bc39dde3961d8dd4392c72e2b68",
+    "openSpecVersion": "1.10.0",
+    "reviewerHostNode": "22.16.0",
+    "exactNode22232ReproductionClaimed": false,
+    "status": "4/4 artifacts complete",
+    "strictValidation": {
+      "passed": 1,
+      "failed": 0
+    },
+    "note": "Reviewer independently re-ran the packaged OpenSpec 1.10.0 artifact graph and strict validator. This check confirms planning validity but does not claim a fresh reproduction of the locked Node 22.23.2 host; accepted 004 runtime evidence remains immutable history."
+  },
+  "overlayBoundary": {
+    "newSince004": [
+      ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/establish-lifecycle-authority-and-identity-contracts/20260824-005-propose/action.md",
+      ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/establish-lifecycle-authority-and-identity-contracts/20260824-005-propose/context.json",
+      ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/establish-lifecycle-authority-and-identity-contracts/20260824-005-propose/result.json",
+      "openspec/changes/establish-lifecycle-authority-and-identity-contracts/proposal.md",
+      "openspec/changes/establish-lifecycle-authority-and-identity-contracts/specs/lifecycle-authority-and-identity/spec.md",
+      "openspec/changes/establish-lifecycle-authority-and-identity-contracts/design.md",
+      "openspec/changes/establish-lifecycle-authority-and-identity-contracts/tasks.md"
+    ],
+    "productionOrTestImplementationMutationObserved": false,
+    "agentsMutationObserved": false,
+    "applyObserved": false,
+    "gitHistoryMutationObserved": false
+  },
+  "contractReview": {
+    "exploreDecisionOD1": "resolved: ActorRole + ActionExecutionRole two-layer model",
+    "exploreDecisionOD2": "partially resolved: semantic string + boundary validator selected, but canonical accepted/rejected grammar is not frozen",
+    "scopeSeparation": "pass",
+    "keyPlusIdReintroduced": false,
+    "groupLifecycleReintroduced": false,
+    "authorityConflationObserved": false,
+    "blockingGap": "The planning bundle requires deterministic fail-closed validators but leaves the canonical identifier grammar and the Owner authority fact wire shape/scope representation materially undefined."
+  }
+}

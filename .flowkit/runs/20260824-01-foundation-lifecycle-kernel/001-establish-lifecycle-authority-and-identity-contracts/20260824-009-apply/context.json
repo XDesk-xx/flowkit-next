@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "kind": "external-bootstrap-action-context",
+  "run": {
+    "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+    "changeId": "establish-lifecycle-authority-and-identity-contracts",
+    "runId": "20260824-009-apply",
+    "action": "apply",
+    "role": "author",
+    "canonicalBase": "23ca52715df7c52738edeb59206f496c7bf2d2a9",
+    "branch": "delivery/20260824-01-foundation-lifecycle-kernel"
+  },
+  "canonicalSourceReview": {
+    "runId": "20260824-008-review-propose",
+    "package": "flowkit-next-delivery-20260824-01-foundation-lifecycle-kernel-008-review-propose-reviewer-v2.zip",
+    "packageRef": "sha256:ebb668e879e9f83633516d84ea351bed6801af3c2f969c7946290b3dc3433e53",
+    "packageSha256": "ebb668e879e9f83633516d84ea351bed6801af3c2f969c7946290b3dc3433e53",
+    "resultRef": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/establish-lifecycle-authority-and-identity-contracts/20260824-008-review-propose/result.json#sha256=0bff6faaaece164fe60d201b3cd6014e019e6d00683c8eba91d74bf1bc6d8922",
+    "resultSha256": "0bff6faaaece164fe60d201b3cd6014e019e6d00683c8eba91d74bf1bc6d8922",
+    "verdict": "approved",
+    "blockingFindings": []
+  },
+  "ownerAuthorizationRefs": [
+    {
+      "ref": "owner:1593d4fbe636d0afc08711794647464fff0df0496b316795f823299fcb18fe6e",
+      "decision": "activate-change",
+      "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+      "changeId": "establish-lifecycle-authority-and-identity-contracts",
+      "sourceRef": "owner-input:2026-08-24:authorize-activate-and-explore:establish-lifecycle-authority-and-identity-contracts",
+      "scope": [
+        "activate-change",
+        "explore"
+      ]
+    },
+    {
+      "ref": "owner:11cffd71771d89e9f9c7ced1ed0e2f5f22018c2782e63501c001a60a5a225b24",
+      "decision": "authorize-propose",
+      "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+      "changeId": "establish-lifecycle-authority-and-identity-contracts",
+      "sourceRef": "owner-input:2026-08-24:authorize-propose:establish-lifecycle-authority-and-identity-contracts",
+      "scope": [
+        "propose"
+      ]
+    },
+    {
+      "ref": "owner:717f5e224185cdc59be791c881fab2949642702ab956f1acbfeab8908d923ba4",
+      "decision": "authorize-apply",
+      "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+      "changeId": "establish-lifecycle-authority-and-identity-contracts",
+      "sourceRef": "owner-input:2026-08-24T05:08+08:00:authorize-apply:20260824-01-foundation-lifecycle-kernel:establish-lifecycle-authority-and-identity-contracts:008-review-propose-reviewer-v2",
+      "scope": [
+        "apply"
+      ]
+    }
+  ],
+  "currentOwnerAuthorizeApply": {
+    "ref": "owner:717f5e224185cdc59be791c881fab2949642702ab956f1acbfeab8908d923ba4",
+    "decision": "authorize-apply",
+    "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+    "changeId": "establish-lifecycle-authority-and-identity-contracts",
+    "sourceRef": "owner-input:2026-08-24T05:08+08:00:authorize-apply:20260824-01-foundation-lifecycle-kernel:establish-lifecycle-authority-and-identity-contracts:008-review-propose-reviewer-v2",
+    "scope": [
+      "apply"
+    ]
+  },
+  "exactDetachedRuntime": {
+    "platform": "linux-x64",
+    "node": {
+      "version": "22.23.2",
+      "artifact": "node-22.23.2-linux-x64-runtime-v1.tar.gz",
+      "artifactSha256": "29331fa22523b7fce59965e46627ecbc87019ac74e0e6abf9f61284e0760f755",
+      "binaryEvidence": "ELF 64-bit LSB executable, x86-64, GNU/Linux"
+    },
+    "pnpm": {
+      "version": "11.22.0",
+      "bundledWithNodeRuntime": true
+    },
+    "projectNodeModules": {
+      "artifact": "flowkit-next-node-modules-linux-x64-node22.23.2-pnpm11.22.0-7efa1e934c45-v1.tar.gz",
+      "artifactSha256": "96e1c2cd74b1bba7e706100f01ed149727453b03a22aefbffb7e5c7175b18406"
+    },
+    "openspec": {
+      "version": "1.10.0",
+      "entrypoint": "${FLOWKIT_HOME}/tools/openspec/1.10.0/bin/openspec.js",
+      "artifact": "openspec-1.10.0-linux-x64-node22.23.2-pnpm11.22.0-runtime-v1.tar.gz",
+      "artifactSha256": "4fb0b870d9523daebda8becaf4202397da342bc39dde3961d8dd4392c72e2b68"
+    }
+  },
+  "mutationBoundary": {
+    "allowed": [
+      "package.json",
+      "tsconfig.json",
+      "src/domain/identity.ts",
+      "src/domain/authority.ts",
+      "src/domain/state.ts",
+      "src/domain/index.ts",
+      "tests/unit/domain/identity.test.ts",
+      "tests/unit/domain/authority.test.ts",
+      "tests/unit/domain/state.test.ts",
+      "openspec/changes/establish-lifecycle-authority-and-identity-contracts/tasks.md"
+    ],
+    "forbiddenAreas": [
+      "Policy",
+      "persistence",
+      "CLI",
+      "Action lifecycle engine",
+      "group lifecycle",
+      "Git checkpoint"
+    ]
+  },
+  "verificationPlan": [
+    "pnpm run typecheck",
+    "pnpm run test:domain",
+    "pnpm run format:check",
+    "git diff --check",
+    "openspec instructions apply --change establish-lifecycle-authority-and-identity-contracts --json",
+    "openspec status --change establish-lifecycle-authority-and-identity-contracts --json",
+    "openspec validate establish-lifecycle-authority-and-identity-contracts --strict --json"
+  ]
+}

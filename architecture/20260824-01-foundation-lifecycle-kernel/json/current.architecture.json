@@ -1,0 +1,297 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "flowkit-next 当前系统架构 — Delivery 01 Start",
+    "output": "current.html",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/XDesk-xx/flowkit-next",
+      "revision": "ad88c4d691be2ced13483bdf716e70619b7d8cc9"
+    },
+    "views": [
+      {
+        "id": "authority",
+        "label": "当前 authority",
+        "focus": [
+          "owner",
+          "git",
+          "project-init"
+        ],
+        "note": "Delivery 01 开始前，Owner 与 Git 已存在；Flowkit lifecycle kernel 尚未实现。"
+      },
+      {
+        "id": "dependency",
+        "label": "初始化依赖",
+        "focus": [
+          "project-init",
+          "dependency-truth",
+          "toolchain-lock"
+        ],
+        "note": "package/lock 与 exact toolchain identity 已冻结，platform node_modules 仍是 derived artifact。"
+      },
+      {
+        "id": "external-tools",
+        "label": "外部工具边界",
+        "focus": [
+          "toolchain-lock",
+          "openspec",
+          "archify"
+        ],
+        "note": "OpenSpec / Archify executable runtime 位于 FLOWKIT_HOME，当前项目只持有 identity contract 与 Skills。"
+      }
+    ],
+    "viewBox": [
+      1660,
+      1100
+    ]
+  },
+  "components": [
+    {
+      "id": "owner",
+      "type": "external",
+      "label": "Owner",
+      "sublabel": "显式授权 / scope / promotion",
+      "pos": [
+        60,
+        120
+      ],
+      "size": [
+        170,
+        68
+      ],
+      "tag": "现有"
+    },
+    {
+      "id": "git",
+      "type": "database",
+      "label": "Git Repository",
+      "sublabel": "bytes / branch / commit / history",
+      "pos": [
+        320,
+        120
+      ],
+      "size": [
+        190,
+        68
+      ],
+      "tag": "现有"
+    },
+    {
+      "id": "project-init",
+      "type": "backend",
+      "label": "Project Initialization",
+      "sublabel": ".flowkit/project.json / skeleton",
+      "pos": [
+        600,
+        120
+      ],
+      "size": [
+        210,
+        68
+      ],
+      "tag": "已完成",
+      "sources": [
+        {
+          "path": ".flowkit/project.json",
+          "label": "project identity"
+        },
+        {
+          "path": "FOUNDATION-INIT.md",
+          "label": "initialization reference"
+        }
+      ]
+    },
+    {
+      "id": "dependency-truth",
+      "type": "database",
+      "label": "Dependency Truth",
+      "sublabel": "package.json + pnpm-lock.yaml",
+      "pos": [
+        885,
+        120
+      ],
+      "size": [
+        210,
+        68
+      ],
+      "tag": "已完成",
+      "sources": [
+        {
+          "path": "package.json",
+          "label": "package identity"
+        },
+        {
+          "path": "pnpm-lock.yaml",
+          "label": "dependency lock"
+        }
+      ]
+    },
+    {
+      "id": "toolchain-lock",
+      "type": "security",
+      "label": "Toolchain Identity",
+      "sublabel": "Node / pnpm / OpenSpec / Archify",
+      "pos": [
+        600,
+        340
+      ],
+      "size": [
+        210,
+        68
+      ],
+      "tag": "已锁定",
+      "sources": [
+        {
+          "path": "config/tools/toolchain.lock.json",
+          "label": "exact toolchain lock"
+        }
+      ]
+    },
+    {
+      "id": "skills",
+      "type": "backend",
+      "label": "Canonical Skills",
+      "sublabel": "skills/vendors + tools + actions",
+      "pos": [
+        320,
+        340
+      ],
+      "size": [
+        190,
+        68
+      ],
+      "tag": "HOW only",
+      "sources": [
+        {
+          "path": "skills/README.md",
+          "label": "skill root"
+        }
+      ]
+    },
+    {
+      "id": "openspec",
+      "type": "external",
+      "label": "OpenSpec 1.10.0",
+      "sublabel": "formal Change authority / external runtime",
+      "pos": [
+        885,
+        340
+      ],
+      "size": [
+        210,
+        68
+      ],
+      "tag": "环境前置"
+    },
+    {
+      "id": "archify",
+      "type": "external",
+      "label": "Archify 2.15.0",
+      "sublabel": "derived architecture validation",
+      "pos": [
+        1165,
+        340
+      ],
+      "size": [
+        200,
+        68
+      ],
+      "tag": "环境前置"
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "Git-tracked initialization state",
+      "wraps": [
+        "git",
+        "project-init",
+        "dependency-truth",
+        "skills",
+        "toolchain-lock"
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "c1",
+      "from": "owner",
+      "to": "git",
+      "label": "authorized Git boundary",
+      "variant": "security",
+      "labelDy": 58
+    },
+    {
+      "id": "c2",
+      "from": "git",
+      "to": "project-init",
+      "label": "repository facts",
+      "labelDy": -28
+    },
+    {
+      "id": "c3",
+      "from": "project-init",
+      "to": "dependency-truth",
+      "label": "dependency baseline",
+      "labelDy": 58
+    },
+    {
+      "id": "c4",
+      "from": "skills",
+      "to": "project-init",
+      "label": "execution guidance",
+      "variant": "dashed",
+      "labelDy": 24
+    },
+    {
+      "id": "c5",
+      "from": "toolchain-lock",
+      "to": "openspec",
+      "label": "exact runtime identity",
+      "labelDy": 64
+    },
+    {
+      "id": "c6",
+      "from": "toolchain-lock",
+      "to": "archify",
+      "label": "exact runtime identity",
+      "fromSide": "bottom",
+      "toSide": "bottom",
+      "via": [
+        [
+          705,
+          480
+        ],
+        [
+          1265,
+          480
+        ]
+      ],
+      "labelAt": [
+        985,
+        495
+      ]
+    }
+  ],
+  "cards": [
+    {
+      "dot": "emerald",
+      "title": "Delivery Start 前已经具备",
+      "items": [
+        "初始化 Git history 与 project identity",
+        "package.json + pnpm-lock.yaml dependency truth",
+        "Node 22.23.2 / pnpm 11.22.0 / OpenSpec 1.10.0 / Archify 2.15.0 identity lock"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "尚未实现",
+      "items": [
+        "Flowkit authority/lifecycle domain",
+        "Run / Result execution kernel、Policy、mutation/checkpoint",
+        "stable Flowkit CLI 与 self-management capability"
+      ]
+    }
+  ]
+}

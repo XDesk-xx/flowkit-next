@@ -1,0 +1,52 @@
+{
+  "runNumber": 69,
+  "kind": "external-orchestrator-archive-result",
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-policy-and-next-boundary-contract",
+  "action": "archive",
+  "runId": "20260827-069-archive",
+  "finishedAt": "2026-08-27T02:28:06+08:00",
+  "executionStatus": "completed",
+  "archiveStatus": "succeeded",
+  "authorConclusion": "PASS",
+  "reviewerVerdictObserved": "approved",
+  "verificationVerdict": null,
+  "nextBoundary": "checkpoint",
+  "nextBoundaryAuthority": "explicit-git-authority-still-required-by-current-repository-contract",
+  "archiveTarget": "openspec/changes/archive/2026-08-27-006-establish-policy-and-next-boundary-contract",
+  "canonicalSpecs": [
+    "openspec/specs/policy-and-next-boundary/spec.md"
+  ],
+  "deliveryChangeState": "completed",
+  "archiveVerification": {
+    "activeOpenSpecChanges": "0",
+    "openspecStrict": "6/6 canonical specs PASS",
+    "typecheck": "PASS",
+    "domainTests": "63/63 PASS",
+    "formatCheck": "PASS",
+    "archivedChangeArtifactBytePreservation": "6/6 byte-identical",
+    "preArchiveRunAndSourceTestBytePreservation": "54/54 files byte-identical",
+    "cleanExtractReplay": "PASS"
+  },
+  "archiveSpecSync": {
+    "added": 7,
+    "modified": 0,
+    "removed": 0,
+    "renamed": 0
+  },
+  "executionAuthorityModel": {
+    "reviewerApproved": true,
+    "userRequestedArchive": true,
+    "policyReadyMeansLegalityOnly": true,
+    "newOwnerAuthorityFactCreated": false
+  },
+  "limitations": [
+    "Archive success is not Delivery Full Test Verification PASS.",
+    "This Run does not create Git checkpoint authority or a Git checkpoint commit.",
+    "The next planned Change is not activated by this Archive Run.",
+    "Detached runtime bundles and node_modules are execution-local and excluded from the Archive Closure Snapshot."
+  ],
+  "stableTransfer": true,
+  "packageClass": "archive-closure-snapshot"
+}

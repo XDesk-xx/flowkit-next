@@ -1,0 +1,44 @@
+{
+  "runNumber": 74,
+  "kind": "external-orchestrator-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-cross-delivery-memo-contract",
+  "action": "apply",
+  "runId": "20260827-074-apply",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/070-establish-cross-delivery-memo-contract/20260827-074-apply",
+  "inputRunId": "20260827-073-review-propose",
+  "checkpointBase": {
+    "gitRevision": "2cc6a6c0cdcad771ed7d5503c1e7197ffee553d3"
+  },
+  "executionBasis": {
+    "reviewerVerdict": "approved",
+    "reviewRunId": "20260827-073-review-propose",
+    "userInstruction": "开始 apply，并调用 openspec 技能和 Flowkit implementation-convergence skill",
+    "newOwnerAuthorityFactCreated": false
+  },
+  "executionMode": "detached-linux-openspec-apply-with-implementation-convergence",
+  "runtime": {
+    "node": "22.23.2",
+    "pnpm": "11.22.0",
+    "openspec": "1.10.0"
+  },
+  "skillsUsed": [
+    "openspec-apply-change",
+    "implementation-convergence"
+  ],
+  "qualityGate": {
+    "baselineOversizedTypeScript": "src/domain/run-result-persistence.ts:588",
+    "baselineOversizedFileByteUnchanged": true,
+    "policyModuleLines": 438,
+    "policyModuleByteUnchanged": true,
+    "memoDomainModuleLines": 287,
+    "memoPersistenceModuleLines": 154,
+    "memoTestModuleLines": [246, 191],
+    "newOrModifiedTypeScriptOver500": [],
+    "auxiliaryChangeTriggered": false
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

@@ -1,0 +1,37 @@
+{
+  "runNumber": 125,
+  "kind": "external-orchestrator-review-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "normalize-foundation-contract-terminology",
+  "action": "review-apply",
+  "runId": "20260828-125-review-apply",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/120-normalize-foundation-contract-terminology/20260828-125-review-apply",
+  "inputRunId": "20260828-124-apply",
+  "reviewChainStartRunId": "20260828-120-explore",
+  "checkpointBase": {
+    "archive": "flowkit-next-delivery-20260824-01-foundation-lifecycle-kernel-246a653.zip",
+    "gitRevision": "246a653",
+    "gitRevisionVerification": "Inherited stable base identity; exact full checkpoint is not embedded in the delta handoff"
+  },
+  "inputArchive": {
+    "name": "124-apply.zip",
+    "sha256": "0c89258de752702e8ba3dfbfb0c975a3ffaf7ddd0d101c1c7d2d57c1f7400574"
+  },
+  "inputChain": {
+    "expectedPreviousArchive": "123-review-propose.zip",
+    "expectedPreviousArchiveSha256": "387df766b96e5335f3c8519adf48ec95448bad81c7bbc1e1d497ab3aad7684b2",
+    "applyRecordedPreviousArchiveSha256Matches": true
+  },
+  "runtime": {
+    "nodeFixture": "22.23.2",
+    "openspec": "1.10.0"
+  },
+  "skillsUsed": [
+    "review-apply"
+  ],
+  "reviewMode": "external-orchestrator-detached-review-apply",
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

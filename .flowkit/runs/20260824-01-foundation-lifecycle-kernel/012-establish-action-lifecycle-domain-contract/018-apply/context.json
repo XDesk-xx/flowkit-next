@@ -1,0 +1,57 @@
+{
+  "runNumber": 18,
+  "kind": "external-orchestrator-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-action-lifecycle-domain-contract",
+  "action": "apply",
+  "recordedAt": "2026-08-25T11:27:04+08:00",
+  "inputAction": {
+    "runId": "20260824-017-review-propose",
+    "payloadArchive": "flowkit-next-delivery-20260824-01-foundation-lifecycle-kernel-017-review-propose-reviewer-payload.zip",
+    "payloadSha256": "7f8b3dd76be127fe91602a8cc861945ac70c07af97169add9e5209bfb8611360",
+    "reviewerVerdict": "approved",
+    "nextBoundary": "apply"
+  },
+  "base": {
+    "archive": "flowkit-next-delivery-20260824-01-foundation-lifecycle-kernel-a2f4bf9.zip",
+    "sha256": "385cd4588a1817d51d4c7cdd916f4a5985f2b4adb44bced8bf7866f0b8945a39",
+    "gitRevisionHint": "a2f4bf9",
+    "gitRevisionVerified": false
+  },
+  "executionMode": "detached-linux-openspec-apply-only-no-flowkit-lifecycle",
+  "applyContract": {
+    "skill": ".agents/skills/openspec-apply-change/SKILL.md",
+    "skillSha256": "9a8c4451009e64f6b8ad0e8e382afb5ad0ff74e262be9e6486ae4d9cc67827cb",
+    "skillGeneratedBy": "OpenSpec 1.10.0",
+    "schema": "spec-driven",
+    "initialProgress": "0/10",
+    "finalProgress": "10/10",
+    "stableTransferContract": "flowkit-next-stable-transfer-payload-contract-v1.md",
+    "stableTransferContractSha256": "6acc010b5af86054a67a4523de31c009f1e5e3657d1cca63edb2b1eaafc9fcde"
+  },
+  "runtime": {
+    "node": "22.23.2",
+    "nodeRuntimeSnapshotSha256": "29331fa22523b7fce59965e46627ecbc87019ac74e0e6abf9f61284e0760f755",
+    "openspec": "1.10.0",
+    "openspecRuntimeSnapshotSha256": "4fb0b870d9523daebda8becaf4202397da342bc39dde3961d8dd4392c72e2b68",
+    "nodeModules": "exact provided offline snapshot",
+    "nodeModulesSnapshotSha256": "96e1c2cd74b1bba7e706100f01ed149727453b03a22aefbffb7e5c7175b18406"
+  },
+  "verification": {
+    "inputPayloadSha256": "PASS",
+    "reviewProposeApproved": "PASS",
+    "openspecApplyState": "all_done",
+    "openspecTasks": "10/10 complete",
+    "targetedLifecycleTests": "12/12 PASS",
+    "domainTests": "25/25 PASS",
+    "typecheck": "PASS",
+    "formatCheck": "PASS",
+    "openspecStrictValidate": "PASS",
+    "packageJsonMutation": "none",
+    "lockfileMutation": "none"
+  },
+  "runId": "20260824-018-apply",
+  "stableTransfer": true
+}

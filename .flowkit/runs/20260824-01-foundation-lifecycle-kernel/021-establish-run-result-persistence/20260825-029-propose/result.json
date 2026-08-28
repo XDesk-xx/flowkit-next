@@ -1,0 +1,53 @@
+{
+  "runNumber": 29,
+  "kind": "external-orchestrator-openspec-propose-result",
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-run-result-persistence",
+  "action": "propose",
+  "runId": "20260825-029-propose",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/021-establish-run-result-persistence/20260825-029-propose",
+  "finishedAt": "2026-08-25T21:20:53+08:00",
+  "executionStatus": "completed",
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-propose",
+  "nextBoundaryAuthority": "handoff-advisory-only",
+  "openspec": {
+    "version": "1.10.0",
+    "planningArtifacts": "4/4 complete",
+    "strictValidation": "PASS",
+    "validateAllStrict": "3/3 PASS"
+  },
+  "artifacts": {
+    "explore": "openspec/changes/establish-run-result-persistence/explore.md",
+    "proposal": "openspec/changes/establish-run-result-persistence/proposal.md",
+    "deltaSpec": "openspec/changes/establish-run-result-persistence/specs/run-result-persistence/spec.md",
+    "design": "openspec/changes/establish-run-result-persistence/design.md",
+    "tasks": "openspec/changes/establish-run-result-persistence/tasks.md",
+    "runAction": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/021-establish-run-result-persistence/20260825-029-propose/action.md",
+    "runContext": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/021-establish-run-result-persistence/20260825-029-propose/context.json",
+    "runResult": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/021-establish-run-result-persistence/20260825-029-propose/result.json"
+  },
+  "baselineChecks": {
+    "typecheck": "PASS",
+    "domainTests": "25/25 PASS",
+    "formatCheck": "PASS"
+  },
+  "productionMutation": false,
+  "scopeGuards": {
+    "resultAdmission": "NOT INTRODUCED",
+    "policy": "NOT INTRODUCED",
+    "multiAgentConcurrency": "NOT INTRODUCED",
+    "schedulerOrAutomaticNext": "NOT INTRODUCED",
+    "lockingWalDatabase": "NOT INTRODUCED",
+    "genericFilesystemPathApi": "NOT INTRODUCED"
+  },
+  "limitations": [
+    "This is Author Propose completion, not Reviewer approval, Apply completion, Verification PASS, archive or checkpoint authority.",
+    "OpenSpec planning artifacts define the intended behavior; no production source/test mutation was made by this Action.",
+    "Whole-manager cross-platform filesystem acceptance remains outside this Change's Proposal boundary."
+  ],
+  "stableTransfer": true
+}

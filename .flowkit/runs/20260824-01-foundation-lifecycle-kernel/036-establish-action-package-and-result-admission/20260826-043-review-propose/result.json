@@ -1,0 +1,70 @@
+{
+  "runNumber": 43,
+  "kind": "external-orchestrator-review-propose-result",
+  "role": "reviewer",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-action-package-and-result-admission",
+  "action": "review-propose",
+  "runId": "20260826-043-review-propose",
+  "executionStatus": "completed",
+  "authorConclusionObserved": "PASS",
+  "reviewerVerdict": "changes-requested",
+  "verificationVerdict": null,
+  "nextBoundary": "revise-propose",
+  "nextBoundaryAuthority": "handoff-advisory-only",
+  "reviewSummary": {
+    "chainTrace": "PASS",
+    "exploreTraceability": "PASS",
+    "scopeConvergence": "PASS",
+    "minimality": "PASS",
+    "contractCompleteness": "CHANGES REQUESTED",
+    "designDiscipline": "CHANGES REQUESTED",
+    "verificationClosure": "CHANGES REQUESTED",
+    "applyReadiness": "NOT READY"
+  },
+  "priorFindingConvergence": [
+    {
+      "findingId": "RE-037-001",
+      "state": "closed-and-preserved",
+      "reviewerDecision": "Proposal keeps exact package/current non-terminal lifecycle-state equality as a normative admission invariant."
+    },
+    {
+      "findingId": "RE-039-001",
+      "state": "closed-and-preserved",
+      "reviewerDecision": "Proposal keeps package runId bound to the exact current Run occurrence as a normative admission invariant."
+    }
+  ],
+  "findings": [
+    {
+      "id": "RP-043-001",
+      "severity": "blocking",
+      "title": "Planning requires ActionPackage formation but does not plan a Core package-preparation seam",
+      "observation": "The approved Explore asks how Core freezes existing exact current Action/Run/role/authority/predecessor facts into an ActionPackage, the Delivery goal says Core prepares an exact ActionPackage, and the Spec requires the system to form a closed ActionPackage. However Task 1.1 only adds an ActionPackage type/validator and tests that manually supplied prepared/resumed packages are accepted; Design likewise does not identify a concrete package-formation operation. The current task list can therefore be completed without Core gaining any operation that actually constructs the package handed to an external executor.",
+      "impact": "Apply could produce a validator/admission library while leaving the prepare half of the ActionPackage boundary absent. A later execution host would still have to invent package construction semantics, risking drift in run/action/state/role/authority/predecessor linkage and recreating the old prepare-to-executor integration gap at the domain boundary.",
+      "requiredRevision": "Add the smallest pure package-preparation/formation seam to Design and Tasks, and tighten the package contract as needed so it emits the closed canonical ActionPackage from already-validated current facts. Reusing RunContextRecord plus exact CurrentAction, or an equivalent minimal canonical input, is sufficient. Verify prepared/resumed formation and fail-closed terminal/mismatched inputs. Do not add persistence I/O, Policy, transport, Agent invocation, new package identity, replay infrastructure, or terminal orchestration."
+    }
+  ],
+  "verifiedFacts": [
+    "042 preserves Runs 036-041 byte-identically and preserves the 041-approved explore.md byte-identically.",
+    "042 adds only the 042 Propose Run and proposal/spec/design/tasks relative to 041; delivery-group state is unchanged.",
+    "Detached Node 22.23.2 typecheck passes.",
+    "Detached domain tests pass 35/35.",
+    "Repository-declared Prettier check passes.",
+    "OpenSpec planning is 4/4 complete.",
+    "OpenSpec strict change validation passes.",
+    "OpenSpec validate --all --strict passes 4/4.",
+    "No production source/test/package/lock mutation exists in 042.",
+    "The Proposal preserves both approved exact-freshness invariants and keeps deferred/non-goal subsystems out of scope."
+  ],
+  "applyReadiness": {
+    "status": "CHANGES_REQUESTED",
+    "statement": "The Proposal is scoped and otherwise coherent, but Apply readiness requires an explicit plan for Core to construct the ActionPackage that the Spec says it can form; type validation alone does not satisfy the prepare half of this Change."
+  },
+  "limitations": [
+    "This finding does not require provider transport, external Agent invocation, repository synchronization, Policy, resume/terminal/STOP orchestration, or CLI integration in this Change.",
+    "This Review Propose verdict is neither Verification PASS nor Owner authority."
+  ],
+  "productionMutation": false,
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

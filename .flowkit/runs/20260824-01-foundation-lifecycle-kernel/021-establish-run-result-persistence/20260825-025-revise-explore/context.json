@@ -1,0 +1,88 @@
+{
+  "runNumber": 25,
+  "kind": "external-orchestrator-revise-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-run-result-persistence",
+  "action": "revise-explore",
+  "runId": "20260825-025-revise-explore",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/021-establish-run-result-persistence/20260825-025-revise-explore",
+  "startedAt": "2026-08-25T18:11:00+08:00",
+  "inputAction": {
+    "runId": "20260825-024-review-explore",
+    "payloadArchive": "024-review-explore.zip",
+    "payloadSha256": "63041e7b1737259115faafc7b0e0c05a3fa4aa2d8aac53d34f0f711ff16967e4",
+    "reviewerVerdict": "changes-requested",
+    "blockingFindingIds": [
+      "RE-024-001"
+    ]
+  },
+  "base": {
+    "archive": "flowkit-next-delivery-20260824-01-foundation-lifecycle-kernel-1c8c2fb.zip",
+    "sha256": "870d1a12a73d6367fce34a7ab036348cafcd2e01531af9847b0b046a87154758",
+    "gitRevisionHint": "1c8c2fb3aca904c522a49a8e4eda2a3545c18972",
+    "gitRevisionVerifiedFromArchive": false,
+    "reason": "Checkpoint archive has no .git directory; archive SHA-256 is the detached base identity."
+  },
+  "executionMode": "detached-linux-direct-revise-explore-no-flowkit-lifecycle",
+  "runtime": {
+    "node": "22.23.2",
+    "openspec": "1.10.0",
+    "nodeModules": "flowkit-next-node-modules-linux-x64-node22.23.2-pnpm11.22.0-7efa1e934c45-v1.tar.gz"
+  },
+  "revisionContract": {
+    "skill": ".agents/skills/revise-explore/SKILL.md",
+    "skillName": "Revise Explore Skill v2",
+    "proofAuxiliary": ".agents/skills/explore-proof-based/SKILL.md",
+    "proofAuxiliaryName": "Explore Proof-Based Skill v2",
+    "stableTransferContract": "stable-transfer-contract-v4.md",
+    "stableTransferContractSha256": "235f6029ac58d3b91c1d0f7b2b2ed1b54d4cc35f3c50786382bcf27f3e228ecd"
+  },
+  "revisionScope": {
+    "finding": "RE-024-001",
+    "classification": "missing-portability-risk / missing-windows-reserved-device-proof",
+    "minimumCorrection": true,
+    "productionMutation": false,
+    "logicalRunIdFormatFrozen": false,
+    "resultAdmissionIntroduced": false,
+    "policyIntroduced": false,
+    "symlinkOrReparseHardeningClaimed": false
+  },
+  "controlledProof": {
+    "segmentCases": "40/40 PASS",
+    "windowsReservedDeviceBasenamesCovered": 22,
+    "caseInsensitiveReservedChecks": "9/9 PASS",
+    "posixAndWindowsJoinContainment": "PASS",
+    "canonicalAccepted": [
+      "20260825-021-explore",
+      "20260825-024-review-explore"
+    ],
+    "rejectedReservedClasses": [
+      "CON",
+      "PRN",
+      "AUX",
+      "NUL",
+      "COM1-COM9",
+      "LPT1-LPT9"
+    ],
+    "scriptSha256": "d50442d32271056fbbd1b9f628a2913a92c68e1178a6646b9602db26613cde28",
+    "resultSha256": "522ad7c9a653b69407619d98edc8ad03258f3bef616a767c017f7a4727b3ec6f",
+    "includedInStableTransfer": false
+  },
+  "validation": {
+    "typecheck": "PASS",
+    "domainTests": "25/25 PASS",
+    "formatCheck": "PASS",
+    "openspecFormalArtifacts": "0/4; proposal ready; specs/design/tasks blocked",
+    "canonicalSpecsStrict": "2/2 PASS",
+    "productionMutation": "NONE"
+  },
+  "notes": [
+    "RE-024-001 is accepted as a material Windows portability gap and repaired directly.",
+    "The correction is confined to physical repository address validation; logical Run occurrence identity/display format remains open.",
+    "Reserved device basenames are rejected case-insensitively before filesystem use; current lowercase-ASCII proof grammar also rejects non-ASCII variants but is not claimed as a universal Win32 naming model.",
+    "Raw proof files remain execution-local under stable-transfer v4."
+  ],
+  "stableTransfer": true
+}

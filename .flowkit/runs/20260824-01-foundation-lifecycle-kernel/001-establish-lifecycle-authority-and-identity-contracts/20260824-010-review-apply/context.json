@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "kind": "external-bootstrap-review-context",
+  "run": {
+    "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+    "changeId": "establish-lifecycle-authority-and-identity-contracts",
+    "runId": "20260824-010-review-apply",
+    "action": "review-apply",
+    "role": "reviewer",
+    "entryBase": "23ca52715df7c52738edeb59206f496c7bf2d2a9",
+    "branch": "delivery/20260824-01-foundation-lifecycle-kernel"
+  },
+  "reviewed": {
+    "runId": "20260824-009-apply",
+    "packageSha256": "2437793168e2ae7bcebdb6411f3c575f29451a3037c599aea0080c54ab1c7e94",
+    "resultSha256": "26e9765bfa694cf8f99e119bbf6928f3d7f03b8c9929e46dca544f9328adce7d",
+    "contextSha256": "51e6e464dfcc20e31778702c0e07d4c58973643eaefea83a12e073b242693b92"
+  },
+  "canonicalSourceReview": {
+    "runId": "20260824-008-review-propose",
+    "packageSha256": "ebb668e879e9f83633516d84ea351bed6801af3c2f969c7946290b3dc3433e53",
+    "resultSha256": "0bff6faaaece164fe60d201b3cd6014e019e6d00683c8eba91d74bf1bc6d8922",
+    "verdict": "approved"
+  },
+  "ownerAuthorization": {
+    "ref": "owner:717f5e224185cdc59be791c881fab2949642702ab956f1acbfeab8908d923ba4",
+    "decision": "authorize-apply",
+    "sourceRef": "owner-input:2026-08-24T05:08+08:00:authorize-apply:20260824-01-foundation-lifecycle-kernel:establish-lifecycle-authority-and-identity-contracts:008-review-propose-reviewer-v2",
+    "sourceRefSha256": "717f5e224185cdc59be791c881fab2949642702ab956f1acbfeab8908d923ba4",
+    "freshAfterCanonical008V2": true,
+    "staleAuthorizationReused": false
+  },
+  "independentVerification": {
+    "platform": "linux-x64",
+    "nodeVersion": "22.23.2",
+    "pnpmVersion": "11.22.0",
+    "openSpecVersion": "1.10.0",
+    "nodeRuntimeArtifactSha256": "29331fa22523b7fce59965e46627ecbc87019ac74e0e6abf9f61284e0760f755",
+    "nodeModulesArtifactSha256": "96e1c2cd74b1bba7e706100f01ed149727453b03a22aefbffb7e5c7175b18406",
+    "openSpecRuntimeArtifactSha256": "4fb0b870d9523daebda8becaf4202397da342bc39dde3961d8dd4392c72e2b68",
+    "gitHead": "23ca52715df7c52738edeb59206f496c7bf2d2a9",
+    "typecheck": "PASS",
+    "targetedDomainTests": {
+      "status": "PASS",
+      "passed": 13,
+      "failed": 0
+    },
+    "formatCheck": "PASS",
+    "gitDiffCheck": "PASS",
+    "openSpecApply": {
+      "complete": 10,
+      "total": 10,
+      "state": "all_done"
+    },
+    "openSpecStatus": {
+      "complete": 4,
+      "total": 4
+    },
+    "openSpecStrict": {
+      "status": "PASS",
+      "passed": 1,
+      "failed": 0
+    }
+  },
+  "mutationReview": {
+    "canonical008HistoryPreserved": true,
+    "canonical008ResultPreserved": true,
+    "tasksChange": "checkbox-only",
+    "implementationWithinApprovedBoundary": true,
+    "forbiddenImplementationObserved": false
+  },
+  "nonBlockingObservations": [
+    {
+      "id": "NEXT-RA-010-NB-001",
+      "title": "Relocated node_modules bundle triggers pnpm dependency revalidation",
+      "detail": "The derived node_modules archive carries pnpm workspace-state rooted at /build. At another extraction path, pnpm 11.22.0 default verify-deps-before-run=install may attempt reinstall. Reviewer disabled that derived-state repair for package-script reproduction and independently ran the exact underlying Node/TypeScript/test/format checks. All passed. This is an environment artifact portability issue, not a Change implementation defect."
+    }
+  ],
+  "reviewerBoundary": {
+    "authorArtifactsModified": false,
+    "productionModified": false,
+    "testsModified": false,
+    "archiveExecuted": false,
+    "ownerAuthorityCreated": false
+  }
+}

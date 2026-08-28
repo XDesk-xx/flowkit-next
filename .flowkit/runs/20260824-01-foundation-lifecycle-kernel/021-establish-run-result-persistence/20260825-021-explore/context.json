@@ -1,0 +1,77 @@
+{
+  "runNumber": 21,
+  "kind": "external-orchestrator-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-run-result-persistence",
+  "action": "explore",
+  "runId": "20260825-021-explore",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/021-establish-run-result-persistence/20260825-021-explore",
+  "startedAt": "2026-08-25T17:08:00+08:00",
+  "base": {
+    "archive": "flowkit-next-delivery-20260824-01-foundation-lifecycle-kernel-1c8c2fb.zip",
+    "sha256": "870d1a12a73d6367fce34a7ab036348cafcd2e01531af9847b0b046a87154758",
+    "gitRevision": "1c8c2fb3aca904c522a49a8e4eda2a3545c18972",
+    "gitCommitExistenceVerified": true,
+    "snapshotByteEquivalenceToGitCommitIndependentlyVerified": false,
+    "reason": "The Owner supplied this checkpoint snapshot together with the GitHub commit identity; detached Explore verifies the exact input archive hash but does not fabricate an independent whole-repository Git-byte comparison."
+  },
+  "authorization": {
+    "ref": "owner:e48a1af6923c922b5f83368accbfdc7a477a804d5093659451fd571307b1b5b3",
+    "decision": "activate-change",
+    "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+    "changeId": "establish-run-result-persistence",
+    "sourceRef": "owner-input:2026-08-25T17:08+08:00:authorize-activate-and-explore:establish-run-result-persistence",
+    "scope": [
+      "explore"
+    ]
+  },
+  "executionMode": "detached-linux-direct-openspec-explore-no-flowkit-lifecycle",
+  "runtime": {
+    "node": "22.23.2",
+    "pnpm": "11.22.0",
+    "openspec": "1.10.0",
+    "nodeRuntimeSha256": "29331fa22523b7fce59965e46627ecbc87019ac74e0e6abf9f61284e0760f755",
+    "openspecSourceZipSha256": "8085b07b4bafbdc09fceedbcb4ccd04c800c488d8588754d97946b462e142b51",
+    "openspecRuntimeSha256": "4fb0b870d9523daebda8becaf4202397da342bc39dde3961d8dd4392c72e2b68",
+    "nodeModulesSha256": "96e1c2cd74b1bba7e706100f01ed149727453b03a22aefbffb7e5c7175b18406"
+  },
+  "skills": [
+    "openspec-explore",
+    "explore-proof-based"
+  ],
+  "stableTransfer": {
+    "contract": "stable-transfer-contract-v4.md",
+    "sha256": "235f6029ac58d3b91c1d0f7b2b2ed1b54d4cc35f3c50786382bcf27f3e228ecd",
+    "packageClass": "delta-action-handoff",
+    "transportName": "021-explore.zip"
+  },
+  "baselineChecks": {
+    "typecheck": "PASS",
+    "domainTests": "25/25 PASS",
+    "formatCheck": "PASS",
+    "openspecBeforeActivation": "no active changes"
+  },
+  "proof": {
+    "verdict": "PASS",
+    "cases": 15,
+    "scriptSha256": "48329a8b86ad795212c6c2fc8b51b58ef427bdecf3b682e0100052a4c5b7a242",
+    "resultSha256": "87f1422c5a04108194b746609856846e4bc39f2f2e4430ec173d6bd40f752e29",
+    "includedInStableTransfer": false
+  },
+  "notes": [
+    "The current Owner requirement is a lightweight Author/Reviewer handoff through durable Runs, not multi-Agent orchestration.",
+    "Explicit Owner authority must survive handoff as a durable fact; persistence does not decide Policy eligibility.",
+    "A repeated Standard Action occurrence needs an identity distinct from semantic ActionIdentity.",
+    "Raw proof/debug files remain execution-local under stable-transfer v4."
+  ],
+  "postExploreChecks": {
+    "typecheck": "PASS",
+    "domainTests": "25/25 PASS",
+    "formatCheck": "PASS",
+    "openspecStatus": "0/4 formal artifacts; proposal ready; specs/design/tasks blocked",
+    "canonicalSpecsStrict": "2/2 PASS",
+    "openspecValidateAllStrict": "EXPECTED PRE-PROPOSAL FAILURE for active change because no delta specs exist yet; not treated as Explore blocker"
+  }
+}

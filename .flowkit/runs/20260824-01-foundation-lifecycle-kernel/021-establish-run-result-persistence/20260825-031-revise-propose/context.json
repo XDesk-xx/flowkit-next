@@ -1,0 +1,33 @@
+{
+  "runNumber": 31,
+  "kind": "external-orchestrator-revise-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-run-result-persistence",
+  "action": "revise-propose",
+  "runId": "20260825-031-revise-propose",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/021-establish-run-result-persistence/20260825-031-revise-propose",
+  "startedAt": "2026-08-25T22:26:00+08:00",
+  "inputAction": {
+    "runId": "20260825-030-review-propose",
+    "reviewerVerdict": "changes-requested",
+    "blockingFindingIds": ["RP-030-001"]
+  },
+  "roleAssignment": {
+    "sourceRef": "user-input:2026-08-25:revise-propose:establish-run-result-persistence",
+    "ownerAuthorityClaimed": false
+  },
+  "executionMode": "detached-linux-revise-propose",
+  "runtime": {
+    "node": "22.23.2",
+    "openspec": "1.10.0"
+  },
+  "skills": ["revise-propose"],
+  "stableTransferContract": "stable-transfer-contract-v4",
+  "notes": [
+    "Revision is limited to the single blocking create-once/sequence-collision contract gap.",
+    "No locking, WAL, crash-recovery, multi-Agent, scheduler, global registry, or generic filesystem path scope is introduced."
+  ],
+  "stableTransfer": true
+}

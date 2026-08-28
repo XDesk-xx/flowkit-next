@@ -1,0 +1,54 @@
+{
+  "runNumber": 19,
+  "kind": "external-orchestrator-review-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-action-lifecycle-domain-contract",
+  "action": "review-apply",
+  "recordedAt": "2026-08-25T11:39:00+08:00",
+  "inputAction": {
+    "runId": "20260824-018-apply",
+    "payloadArchive": "flowkit-next-delivery-20260824-01-foundation-lifecycle-kernel-018-apply-author-payload.zip",
+    "payloadSha256": "3289f933080efb103b966f07dbd54060bddeb106efe4ee4b6a726c3392355594",
+    "applyStatus": "complete",
+    "nextBoundary": "review-apply"
+  },
+  "approvedProposal": {
+    "runId": "20260824-017-review-propose",
+    "reviewerVerdict": "approved"
+  },
+  "base": {
+    "archive": "flowkit-next-delivery-20260824-01-foundation-lifecycle-kernel-a2f4bf9.zip",
+    "sha256": "385cd4588a1817d51d4c7cdd916f4a5985f2b4adb44bced8bf7866f0b8945a39",
+    "gitRevisionHint": "a2f4bf9",
+    "gitRevisionVerified": false
+  },
+  "executionMode": "detached-linux-review-apply-no-flowkit-lifecycle",
+  "reviewContract": {
+    "skill": ".agents/skills/review-apply/SKILL.md",
+    "stableTransferContract": "flowkit-next-stable-transfer-payload-contract-v1.md",
+    "stableTransferContractSha256": "6acc010b5af86054a67a4523de31c009f1e5e3657d1cca63edb2b1eaafc9fcde"
+  },
+  "runtime": {
+    "node": "22.23.2",
+    "openspec": "1.10.0",
+    "nodeModules": "exact provided offline snapshot"
+  },
+  "independentChecks": {
+    "payloadSha256": "PASS",
+    "scopeDiff": "PASS; exactly 8 changed files relative to 017 baseline",
+    "targetedLifecycleTests": "12/12 PASS",
+    "domainTests": "25/25 PASS",
+    "typecheck": "PASS",
+    "formatCheck": "PASS",
+    "openspecStrictValidate": "PASS",
+    "openspecApplyProgress": "10/10 complete; state=all_done",
+    "reviewerMatrixProof": "29/29 PASS",
+    "packageJsonMutation": "none",
+    "lockfileMutation": "none",
+    "architectureMutation": "none"
+  },
+  "runId": "20260824-019-review-apply",
+  "stableTransfer": true
+}

@@ -7,7 +7,14 @@
   "engines": {
     "node": ">=22.20.0"
   },
-  "scripts": {},
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test:domain": "node --import tsx --test tests/unit/domain/*.test.ts",
+    "format": "prettier --write src/domain src/cli tests/unit/domain tests/acceptance tsconfig.json tsconfig.build.json package.json",
+    "format:check": "prettier --check src/domain src/cli tests/unit/domain tests/acceptance tsconfig.json tsconfig.build.json package.json",
+    "build": "tsc -p tsconfig.build.json",
+    "test:acceptance": "node --import tsx --test tests/acceptance/*.test.ts"
+  },
   "devDependencies": {
     "@eslint/js": "^9.0.0",
     "@types/node": "^22.0.0",
@@ -16,5 +23,8 @@
     "tsx": "^4.0.0",
     "typescript": "^5.5.0",
     "typescript-eslint": "^8.0.0"
+  },
+  "bin": {
+    "flowkit": "dist/cli/entrypoint.js"
   }
 }

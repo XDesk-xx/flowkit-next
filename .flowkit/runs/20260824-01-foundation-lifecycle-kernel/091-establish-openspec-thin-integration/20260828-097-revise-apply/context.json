@@ -1,0 +1,68 @@
+{
+  "runNumber": 97,
+  "kind": "external-orchestrator-revise-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-openspec-thin-integration",
+  "action": "revise-apply",
+  "runId": "20260828-097-revise-apply",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/091-establish-openspec-thin-integration/20260828-097-revise-apply",
+  "recordedAt": "2026-08-28T01:47:00+08:00",
+  "inputAction": {
+    "runId": "20260828-096-review-apply",
+    "payloadArchive": "096-review-apply.zip",
+    "payloadSha256": "d19ac4e10b3698dff26211b2ab5d69c757dccd23b806aa6ebb806df0d5654821",
+    "reviewerVerdict": "changes-requested",
+    "nextBoundary": "revise-apply",
+    "blockingFinding": "RA-096-001"
+  },
+  "checkpointBase": {
+    "gitRevision": "91d1271d20925b7346aa36e7135c5f99b391c672",
+    "gitRevisionVerified": false,
+    "reason": "detached transfer snapshot excludes .git; exact Git revision remains the owner-supplied checkpoint base"
+  },
+  "revisionContract": {
+    "reviseApplySkill": ".agents/skills/revise-apply/SKILL.md",
+    "reviseApplySkillSha256": "69fb9ee64e76b140d31e6073bbf9266ea236fbc40be539b5b7dffa2bfc6321cf",
+    "convergenceSkill": ".agents/skills/implementation-convergence/SKILL.md",
+    "convergenceSkillSha256": "88b8252dd146a71ea3d189f4c2f651bc8e96db6dbb64e454769eb22ace18a68d",
+    "findingClass": "implementation-defect",
+    "proposalChangeRequired": false
+  },
+  "runtime": {
+    "nodeFixture": "22.23.2",
+    "repositoryNodeEngine": ">=22.20.0",
+    "openspec": "1.10.0"
+  },
+  "qualityGate": {
+    "changeTypeScriptLines": {
+      "src/domain/index.ts": 14,
+      "src/domain/openspec-observation.ts": 401,
+      "tests/unit/domain/openspec-observation.test.ts": 270,
+      "tests/unit/domain/openspec-observation-boundary.test.ts": 273
+    },
+    "newOrModifiedTypeScriptOver500": [],
+    "historicalOversizedTypeScript": "src/domain/run-result-persistence.ts:588",
+    "historicalOversizedFileByteUnchanged": true,
+    "auxiliaryChangeTriggered": false
+  },
+  "verification": {
+    "openspecApplyState": "9/9 all_done",
+    "focusedObservationTests": "16/16 PASS",
+    "domainTests": "107/107 PASS",
+    "typecheck": "PASS",
+    "formatCheck": "PASS",
+    "changeStrict": "PASS",
+    "openspecAllStrict": "9/9 PASS",
+    "realOpenSpecExactRootListStatus": "PASS",
+    "realMissingChangeFormalOutcome": "PASS",
+    "fakePathIsolation": "PASS",
+    "nestedRootRejection": "PASS",
+    "arbitraryNonZeroEmptyObject": "invalid-machine-shape PASS",
+    "arbitraryNonZeroUnrelatedObject": "invalid-machine-shape PASS",
+    "dependencyMutation": "NONE"
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

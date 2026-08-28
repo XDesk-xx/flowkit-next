@@ -1,0 +1,38 @@
+{
+  "runNumber": 96,
+  "kind": "external-orchestrator-review-apply-result",
+  "role": "reviewer",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-openspec-thin-integration",
+  "action": "review-apply",
+  "runId": "20260828-096-review-apply",
+  "executionStatus": "completed",
+  "authorConclusion": null,
+  "reviewerVerdict": "changes-requested",
+  "verificationVerdict": null,
+  "nextBoundary": "revise-apply",
+  "blockingFindings": [
+    {
+      "id": "RA-096-001",
+      "title": "Arbitrary non-zero JSON object is misclassified as an OpenSpec formal outcome",
+      "requiredRevision": "Before classifying a non-zero result as openspec-formal-outcome, validate the minimal closed OpenSpec 1.10.0 formal machine envelope; reject arbitrary object-shaped JSON and add focused negative tests without parsing message text or adding lifecycle/error semantics."
+    }
+  ],
+  "checks": {
+    "chain091To095Traceability": "PASS",
+    "proposalFidelity": "PASS except RA-096-001",
+    "scopeCompliance": "PASS",
+    "minimality": "PASS",
+    "implementationCorrectness": "BLOCKED by RA-096-001",
+    "verificationEvidence": "PASS but missing arbitrary-object non-zero coverage",
+    "typecheck": "PASS",
+    "domainTests": "105/105 PASS",
+    "formatCheck": "PASS",
+    "changeStrict": "PASS",
+    "openspecAllStrict": "9/9 PASS",
+    "tasks": "9/9 all_done",
+    "productionMutationScope": "APPROVED / BOUNDED"
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

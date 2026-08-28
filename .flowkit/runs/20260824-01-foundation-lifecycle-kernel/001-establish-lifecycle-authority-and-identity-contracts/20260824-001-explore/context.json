@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "kind": "external-bootstrap-action-context",
+  "run": {
+    "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+    "changeId": "establish-lifecycle-authority-and-identity-contracts",
+    "runId": "20260824-001-explore",
+    "action": "explore",
+    "role": "author",
+    "entryHead": "23ca52715df7c52738edeb59206f496c7bf2d2a9",
+    "branch": "delivery/20260824-01-foundation-lifecycle-kernel"
+  },
+  "ownerAuthorizationRefs": [
+    {
+      "ref": "owner:1593d4fbe636d0afc08711794647464fff0df0496b316795f823299fcb18fe6e",
+      "decision": "activate-change",
+      "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+      "changeId": "establish-lifecycle-authority-and-identity-contracts",
+      "sourceRef": "owner-input:2026-08-24:authorize-activate-and-explore:establish-lifecycle-authority-and-identity-contracts",
+      "scope": [
+        "activate-change",
+        "explore"
+      ]
+    }
+  ],
+  "toolchain": {
+    "openspec": "1.10.0",
+    "archify": "2.15.0",
+    "identitySource": "config/tools/toolchain.lock.json"
+  },
+  "skills": {
+    "openspecNewChange": "skills/vendors/openspec/openspec-new-change/SKILL.md",
+    "openspecExplore": "skills/vendors/openspec/openspec-explore/SKILL.md",
+    "projectOwnedProofExplore": "external-bootstrap:flowkit-explore-skill-v2.md",
+    "projectOwnedActionSkillStatus": "flowkit-explore-v2-known-but-not-vendored-into-flowkit-next"
+  },
+  "proofContract": {
+    "mode": "flowkit-explore-v2-external-bootstrap-guidance",
+    "rule": "Every Explore performs Risk Scan; applicable proofs require Question/Acceptance Boundary/Method/Evidence/Evidence Boundary/Gap/Result/Implication; PASS only when evidence boundary covers acceptance boundary.",
+    "productizedSkillInCurrentRepository": false,
+    "flowkitSpecificArtifact": "openspec/changes/establish-lifecycle-authority-and-identity-contracts/explore.md"
+  },
+  "entryFacts": {
+    "workingTree": "clean",
+    "deliveryState": "active",
+    "changeStateBefore": "planned",
+    "activeOpenSpecChangeBefore": null,
+    "sourceImplementation": "absent; src/README.md only",
+    "formalTests": "absent; tests/README.md only"
+  },
+  "localEvidenceSha256": {
+    "AGENTS.md": "6721f84264ad3c324b565d6e16db25be243eb42441444cb2656e70dd6c4c24b4",
+    "skills/actions/README.md": "640d30549e0f5468fc18214c774f0b77cc78eb1c598f187715fd55cd47095515",
+    "src/README.md": "a70d21a42eece063bf6b92695fb194bc9beeb4d93e61b9de8cb7cd348fb1b33e",
+    "tests/README.md": "929e6241049a410ae74119a7dc3105b81e474f18ffc3bf38a1e39f6c8a7d15ef",
+    "openspec/config.yaml": "0fc12801eb7ae14037f23f09dbe4cbd70b348826b9ed81611f935b9e375710f5",
+    "openspec/delivery-groups/20260824-01-foundation-lifecycle-kernel.yaml": "31140e544dc7203b1ab48676a00412b6902325e9800baa3bbe24db1c5c214148",
+    "architecture/20260824-01-foundation-lifecycle-kernel/json/planned.architecture.json": "f2e52b5033942b828a215c2101abd66ed6f9e7b11df1ae2674dba4ed50bf7fd6",
+    "skills/vendors/openspec/openspec-explore/SKILL.md": "7e0281fc4f094dcced0c5469e7cbceba2dce9f113f22a4e34efcdce4315edf81",
+    "skills/vendors/openspec/openspec-new-change/SKILL.md": "0752814373e90dc368eb1f4c7fd4b15c3df1b26fa2d6a0e99232b15a29fe4f22"
+  }
+}

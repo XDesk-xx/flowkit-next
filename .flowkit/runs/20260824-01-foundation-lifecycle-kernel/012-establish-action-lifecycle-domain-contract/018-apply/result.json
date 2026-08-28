@@ -1,0 +1,55 @@
+{
+  "runNumber": 18,
+  "kind": "external-orchestrator-apply-result",
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-action-lifecycle-domain-contract",
+  "action": "apply",
+  "finishedAt": "2026-08-25T11:27:04+08:00",
+  "executionStatus": "completed",
+  "applyStatus": "complete",
+  "openspecApplyState": "all_done",
+  "openspecTasks": "10/10 complete",
+  "verification": {
+    "targetedLifecycleTests": "12/12 PASS",
+    "domainTests": "25/25 PASS",
+    "typecheck": "PASS",
+    "formatCheck": "PASS",
+    "openspecStrictValidation": "PASS"
+  },
+  "implementation": {
+    "created": [
+      "src/domain/action-lifecycle.ts",
+      "tests/unit/domain/action-lifecycle.test.ts"
+    ],
+    "modified": [
+      "src/domain/index.ts",
+      "tests/unit/domain/state.test.ts",
+      "openspec/changes/establish-action-lifecycle-domain-contract/tasks.md"
+    ],
+    "dependencyMutation": false
+  },
+  "contractFactsImplemented": [
+    "Action lifecycle state vocabulary is exactly prepared/resumed/terminal.",
+    "Current Action identity reuses canonical DeliveryId + ChangeId + StandardActionId.",
+    "Current Action remains a zero-or-one slot with no RunId/attempt identity.",
+    "transitionCurrentAction is a pure fail-closed structural reducer.",
+    "prepared/resumed same-identity resume and terminal transitions are accepted.",
+    "non-terminal replacement and identity-mismatch resume/terminal transitions are rejected.",
+    "terminal is absorbing for resume/terminal and same-identity re-prepare.",
+    "terminal A -> prepare B is structurally accepted only for canonical semantic B != A.",
+    "Lifecycle structural legality consumes no Owner/Review/Verification/OpenSpec/Policy eligibility facts and encodes no Standard Action next ordering."
+  ],
+  "productionMutation": true,
+  "reviewApplyPerformed": false,
+  "archivePerformed": false,
+  "nextBoundary": "review-apply",
+  "nextBoundaryAuthority": "handoff-advisory-only",
+  "limitations": [
+    "OpenSpec reports all implementation tasks complete, but independent review-apply has not yet been performed.",
+    "This Apply does not grant Verification PASS, Owner archive authority, checkpoint authority, or promotion authority.",
+    "Run 018 is an external stable-transfer bridge record and is not claimed to have been emitted by the candidate Flowkit runtime."
+  ],
+  "runId": "20260824-018-apply",
+  "stableTransfer": true
+}

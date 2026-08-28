@@ -1,14 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedFor": "flowkit-next-initialization",
-  "node": {
-    "version": "22.23.2",
-    "channel": "22 LTS"
-  },
-  "pnpm": {
-    "version": "11.22.0"
-  },
+  "generatedFor": "flowkit-next-managed-tools",
   "openspec": {
+    "packageName": "@fission-ai/openspec",
     "version": "1.10.0",
     "runtimeRoot": "${FLOWKIT_HOME}/tools/openspec/1.10.0",
     "entrypoint": "bin/openspec.js",
@@ -18,6 +12,7 @@
     "skillSourceSha256": "8085b07b4bafbdc09fceedbcb4ccd04c800c488d8588754d97946b462e142b51"
   },
   "archify": {
+    "packageName": "archify",
     "version": "2.15.0",
     "runtimeRoot": "${FLOWKIT_HOME}/tools/archify/2.15.0",
     "entrypoint": "bin/archify.mjs",

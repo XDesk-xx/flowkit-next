@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "kind": "external-bootstrap-action-result",
+  "run": {
+    "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+    "changeId": "establish-lifecycle-authority-and-identity-contracts",
+    "runId": "20260824-003-revise-explore",
+    "action": "revise-explore",
+    "role": "author"
+  },
+  "executionStatus": "completed",
+  "summary": "已按 Reviewer NEXT-RE-001 重新执行 revise-explore：在 detached repository 中使用 managed OpenSpec 1.10.0 真实执行 new change，exit=0；OpenSpec 生成的 .openspec.yaml 已绑定命令、版本、stdout/stderr 与 SHA-256，Proof F 据此重新成立。未生成 proposal/design/specs/tasks，未修改 production/tests/AGENTS/Git history。",
+  "sourceReview": {
+    "runId": "20260824-002-review-explore",
+    "verdict": "changes-requested",
+    "blockingFindings": [
+      "NEXT-RE-001"
+    ]
+  },
+  "findingConvergence": [
+    {
+      "findingId": "NEXT-RE-001",
+      "state": "resolved",
+      "resolution": "The previously untrusted scaffold was removed, then recreated by a real managed OpenSpec 1.10.0 `new change` execution. The generated .openspec.yaml is bound to version/command/exit/output/SHA evidence; Proof F was revised only after this execution succeeded."
+    }
+  ],
+  "proofEvidence": [
+    {
+      "id": "NEXT-REVISE-PROOF-001",
+      "kind": "managed-runtime-identity",
+      "source": "${FLOWKIT_HOME}/tools/openspec/1.10.0/bin/openspec.js",
+      "fact": "`--version` returned 1.10.0 before mutation.",
+      "result": "PASS"
+    },
+    {
+      "id": "NEXT-REVISE-PROOF-002",
+      "kind": "real-external-mutation",
+      "command": "TZ=Asia/Shanghai node ${FLOWKIT_HOME}/tools/openspec/1.10.0/bin/openspec.js new change establish-lifecycle-authority-and-identity-contracts",
+      "exitCode": 0,
+      "stdout": "Created change 'establish-lifecycle-authority-and-identity-contracts' at openspec/changes/establish-lifecycle-authority-and-identity-contracts/; Schema: spec-driven",
+      "result": "PASS"
+    },
+    {
+      "id": "NEXT-REVISE-PROOF-003",
+      "kind": "generated-artifact-binding",
+      "source": "openspec/changes/establish-lifecycle-authority-and-identity-contracts/.openspec.yaml",
+      "sha256": "5f408ebe6a8c4d9c4c5e85f9e84c9ac47aa1192c4424a5f5f2224781c6f85fd7",
+      "content": {
+        "schema": "spec-driven",
+        "created": "2026-08-24"
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "NEXT-REVISE-PROOF-004",
+      "kind": "openspec-status-boundary",
+      "fact": "OpenSpec status reports 0/4 artifacts complete; proposal pending and specs/design/tasks blocked.",
+      "implication": "revise-explore did not create proposal/design/specs/tasks.",
+      "result": "PASS"
+    },
+    {
+      "id": "NEXT-REVISE-PROOF-005",
+      "kind": "mutation-scope",
+      "fact": "Tracked candidate changes remain Delivery activation manifest plus .openspec.yaml + explore.md; production/tests/AGENTS are untouched. .flowkit/runs is durable ignored state.",
+      "result": "PASS"
+    }
+  ],
+  "proofF": {
+    "status": "PASS",
+    "evidenceBoundary": "Exact managed OpenSpec 1.10.0 real `new change` execution provenance now covers the scaffold authority boundary required by NEXT-RE-001.",
+    "gap": null
+  },
+  "producedResultRefs": [
+    "openspec/changes/establish-lifecycle-authority-and-identity-contracts/.openspec.yaml",
+    "openspec/changes/establish-lifecycle-authority-and-identity-contracts/explore.md",
+    ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/establish-lifecycle-authority-and-identity-contracts/20260824-003-revise-explore/action.md",
+    ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/establish-lifecycle-authority-and-identity-contracts/20260824-003-revise-explore/context.json",
+    ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/establish-lifecycle-authority-and-identity-contracts/20260824-003-revise-explore/result.json"
+  ],
+  "nextBoundary": {
+    "recommendedAction": "review-explore",
+    "reason": "Author-owned blocking finding NEXT-RE-001 is resolved by real execution evidence; independent Reviewer must judge the revised Explore before propose."
+  },
+  "forbiddenNext": [
+    "propose-before-review-explore",
+    "production-mutation",
+    "commit",
+    "push"
+  ]
+}

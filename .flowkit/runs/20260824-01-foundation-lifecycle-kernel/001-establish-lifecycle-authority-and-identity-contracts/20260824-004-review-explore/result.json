@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "kind": "external-bootstrap-review-result",
+  "run": {
+    "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+    "changeId": "establish-lifecycle-authority-and-identity-contracts",
+    "runId": "20260824-004-review-explore",
+    "action": "review-explore",
+    "role": "reviewer"
+  },
+  "reviewedRun": {
+    "runId": "20260824-003-revise-explore",
+    "packageSha256": "bf2c2fe33e1f2b134bd838a0c988919ed6f72dccf246fcb4d8c3fff52746e8a8",
+    "resultSha256": "af45d36af493bfcb90273487d45e611bafb5762be340c61894c57d538c3f57b8",
+    "exploreSha256": "924c58696759402c04f7e85fa64e3efe41e71cf7b431abca423430ba7b842956"
+  },
+  "executionStatus": "completed",
+  "verdict": "approved",
+  "summary": "Revise Explore 已独立复验通过。Reviewer 使用与 Author manifest SHA 一致的 managed OpenSpec runtime 实际执行 `--version`、`new change` 与 `status --change`：版本为 1.10.0，new-change exit=0，生成 scaffold SHA-256 与 Author payload 精确一致，status 为 0/4 artifacts complete。001/002 Run history 保持 byte-identical，Explore 只修订 NEXT-RE-001/Proof F 相关证据，未发现 production/tests/AGENTS/proposal artifacts/Git history 越权 mutation。上一轮唯一 blocking finding NEXT-RE-001 已关闭。",
+  "findingConvergence": [
+    {
+      "findingId": "NEXT-RE-001",
+      "sourceReviewRunId": "20260824-002-review-explore",
+      "previousState": "open-blocking",
+      "state": "resolved",
+      "reviewerJudgment": "accepted",
+      "evidence": "Exact managed OpenSpec 1.10.0 real-execution provenance is independently reproducible and binds the scaffold bytes."
+    }
+  ],
+  "findings": [],
+  "nonBlockingObservations": [
+    {
+      "id": "NEXT-RE-004-NB-001",
+      "title": "Explore approval is bounded to the current domain-contract evidence",
+      "detail": "Approval does not claim Proposal/Design/Specs/Tasks or lifecycle runtime implementation exists; OpenSpec status remains 0/4 and the next formal boundary is propose."
+    }
+  ],
+  "nextBoundary": {
+    "recommendedAction": "propose",
+    "reason": "Explore has no remaining blocking finding. Reviewer approval permits the Owner/Author workflow to proceed to Proposal when authorized; this Review does not auto-run propose."
+  }
+}
