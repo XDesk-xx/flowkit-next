@@ -2,11 +2,14 @@ id: "20260824-01-foundation-lifecycle-kernel"
 createdAt: "2026-08-24"
 branch: "delivery/20260824-01-foundation-lifecycle-kernel"
 
-goal: "建立最小、稳定、可验证并可晋升的 Flowkit Foundation Lifecycle Kernel；本 Delivery 由外部 authority 管理，完成并经 Owner promotion 后才可作为 Delivery 02 的 stable manager。"
+goal: "建立最小、稳定、可验证的 Flowkit Foundation Lifecycle Kernel；本 Delivery 由外部 authority 管理，Owner 明确授权并形成 exact Delivery Final Git checkpoint 后，该 checkpoint 直接具备作为 Delivery 02 stable manager/base 的资格。"
 
 delivery:
-  state: active
-  fullTestStatus: not-ready
+  state: completed
+  fullTestStatus: passed
+  finalizationStatus: completed
+  formalVerificationCandidate: "aa6735f247ed89777dc2eae20d3011cbdb25faa7"
+  finalizedAt: "2026-08-28"
 
 scope:
   included:
@@ -40,6 +43,13 @@ scope:
 architecture:
   impact: true
   archifyPlan: "required"
+  finalStatus: "materialized"
+  actualRef: "architecture/20260824-01-foundation-lifecycle-kernel/json/actual.architecture.json"
+  compareRefs:
+    - "architecture/20260824-01-foundation-lifecycle-kernel/json/current-to-planned.compare.json"
+    - "architecture/20260824-01-foundation-lifecycle-kernel/json/current-to-actual.compare.json"
+    - "architecture/20260824-01-foundation-lifecycle-kernel/json/planned-to-actual.compare.json"
+  htmlPolicy: "disposable-not-retained-in-git"
 
 changes:
   - id: "establish-lifecycle-authority-and-identity-contracts"
@@ -416,8 +426,13 @@ verification:
   fullTest:
     requiresOwnerAuthorization: true
     execution:
-      state: deferred
-      reason: "Exact Delivery Full Test execution contract 已冻结；所有 Change obligations 已终态，formal Verification 继续等待本次 archive 后的新 exact checkpoint candidate → explicit Owner Full Test authorization。"
+      state: passed
+      verifiedCandidate: "aa6735f247ed89777dc2eae20d3011cbdb25faa7"
+      checkpointArchiveSha256: "9a3a02a568632df8b20a273e423c9c7862d975a12f5db5b82e9d78536f69b3d6"
+      verificationEvidenceSha256: "8d478cce594eb00d85e68009b968c8a96655d3301589ffb7200e7b1fd17c5f7b"
+      verifiedAt: "2026-08-28"
+      resultAuthority: "verification"
+      reason: "Owner 已对 exact candidate 明确授权 Formal Full Test；冻结的 6 个 gates 全部 PASS。Delivery Final 仅在该 PASS 之后收敛 repository guidance 与 derived Archify assets，未改变已验证 product/canonical contract。"
       environment:
         nodeCompatibility: ">=22.20.0"
         deterministicNodeFixture: "22.23.2"
@@ -442,6 +457,19 @@ verification:
       - "Change-stage Author/Reviewer acceptance evidence is not formal Delivery Verification"
       - "Windows compatibility simulation does not claim cmd.exe, PowerShell, NTFS-specific, .cmd shim, or native Windows process coverage"
 
+finalization:
+  state: completed
+  formalFullTest: "PASS"
+  verifiedCandidate: "aa6735f247ed89777dc2eae20d3011cbdb25faa7"
+  guidanceConvergence: "completed"
+  archifyDeliveryFinal: "completed"
+  productMutationAfterFormalVerification: false
+  historicalRunRewrite: false
+  generatedHtmlRetainedInGit: false
+  openMemoPolicy: "preserved-non-blocking"
+  gitCheckpoint: "completed"
+  deterministicCommitMessage: "delivery(20260824-01-foundation-lifecycle-kernel): finalize foundation lifecycle kernel"
+
 acceptance:
   - "Delivery 01 candidate never becomes authority for its own lifecycle."
   - "Owner, Author, Reviewer and Verification authority remain distinct and fail closed."
@@ -452,5 +480,5 @@ acceptance:
   - "Git checkpoint permission requires an explicit legal checkpoint boundary and explicit Owner authorization; Verification or Review alone never creates Git permission."
   - "Managed OpenSpec 1.10.0 and Archify 2.15.0 resolve from exact external identities without silent PATH fallback."
   - "OpenSpec remains formal Change authority and Archify remains derived/non-authoritative."
-  - "Linux x64 detached real acceptance and Windows compatibility simulation both pass before Owner promotion."
-  - "Only Delivery Final plus explicit Owner promotion makes the Foundation Manager eligible to manage Delivery 02."
+  - "Linux x64 detached real acceptance and Windows compatibility simulation both pass before Delivery Final closure."
+  - "Delivery Final alone does not create Git checkpoint authority; after Owner explicitly authorizes and forms the exact Delivery Final Git checkpoint, that checkpoint is directly eligible to manage Delivery 02, with no additional post-Final lifecycle gate."

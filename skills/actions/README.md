@@ -1,5 +1,5 @@
 # Project Action Skills
 
-Reserved for project-owned Standard Action Skills such as `explore`, `apply`, and `review`.
+Project-owned Action execution guidance may be added here only when formally accepted as reusable repository guidance.
 
-This initialization state intentionally does not import legacy Flowkit Action Skills as authority. They should be redesigned/accepted by the new project's formal lifecycle work.
+During Foundation bootstrap, `.agents/skills/**` contains repository-managed Agent execution aids used by the external orchestrator. Neither location is lifecycle authority: Policy/Owner/OpenSpec/Reviewer/Verification boundaries remain independent.

@@ -2,16 +2,16 @@
   "schema_version": 1,
   "diagram_type": "architecture",
   "meta": {
-    "title": "flowkit-next 计划系统架构 — Foundation Lifecycle Kernel",
-    "output": "planned.html",
+    "title": "flowkit-next 实际系统架构 — Delivery 01 Formal Full Test PASS",
+    "output": "actual.html",
     "quality_profile": "showcase",
     "repository": {
       "url": "https://github.com/XDesk-xx/flowkit-next",
-      "revision": "ad88c4d691be2ced13483bdf716e70619b7d8cc9"
+      "revision": "aa6735f247ed89777dc2eae20d3011cbdb25faa7"
     },
     "views": [
       {
-        "id": "retained",
+        "id": "foundation",
         "label": "保留基础",
         "focus": [
           "owner",
@@ -23,11 +23,11 @@
           "openspec",
           "archify"
         ],
-        "note": "与 Current 相同 ID 的组件保持同一位置，便于左右对比时直接识别 retained foundation。"
+        "note": "Delivery Start 已存在的 repository、dependency、skill 与 managed-tool identity 基础。"
       },
       {
         "id": "kernel",
-        "label": "新增内核",
+        "label": "已验证内核",
         "focus": [
           "cli",
           "policy",
@@ -35,10 +35,18 @@
           "execution",
           "persistence",
           "governance",
-          "toolchain-resolution",
-          "acceptance"
+          "toolchain-resolution"
         ],
-        "note": "新增能力集中在下方 Foundation Kernel 区域，不移动 Current 已存在的组件。"
+        "note": "Foundation Lifecycle Kernel 的实际实现；Formal Full Test 已完成 whole-manager verification。"
+      },
+      {
+        "id": "memo",
+        "label": "跨 Delivery Memo",
+        "focus": [
+          "owner",
+          "memo"
+        ],
+        "note": "Memo 是独立、durable、non-blocking governance fact，不成为 lifecycle、execution 或 specification truth。"
       },
       {
         "id": "authority",
@@ -48,23 +56,24 @@
           "policy",
           "governance",
           "git",
-          "acceptance"
+          "acceptance",
+          "openspec"
         ],
-        "note": "Owner/Review/Verification/Git checkpoint authority 分离；OpenSpec Change/contract 保持 mutation semantic authority；candidate 不自管 Delivery 01。"
+        "note": "Owner、Review/Verification、checkpoint authorization 与 OpenSpec semantic authority 保持分离。"
       }
     ],
     "viewBox": [
       1660,
       1100
     ],
-    "subtitle": "以 Delivery 01 Start current 为固定布局锚点；保留组件位置不变，仅在下方扩展 Foundation Lifecycle Kernel 目标能力。"
+    "subtitle": "Formal Full Test PASS 后的 verified actual；OpenSpec 是 canonical truth，Archify 仅为 derived architecture projection。"
   },
   "components": [
     {
       "id": "owner",
       "type": "external",
       "label": "Owner",
-      "sublabel": "显式授权 / scope / promotion",
+      "sublabel": "显式授权 / scope / checkpoint",
       "pos": [
         60,
         120
@@ -195,7 +204,17 @@
         210,
         68
       ],
-      "tag": "环境前置"
+      "tag": "formal authority",
+      "sources": [
+        {
+          "path": "openspec/specs/openspec-thin-integration/spec.md",
+          "label": "thin integration contract"
+        },
+        {
+          "path": "src/domain/openspec-observation.ts",
+          "label": "read-only observation"
+        }
+      ]
     },
     {
       "id": "archify",
@@ -210,14 +229,14 @@
         200,
         68
       ],
-      "tag": "环境前置"
+      "tag": "derived only"
     },
     {
       "id": "cli",
       "type": "frontend",
       "label": "Minimal Flowkit CLI",
       "sublabel": "thin interface over Core",
-      "tag": "新增",
+      "tag": "已验证",
       "pos": [
         50,
         590
@@ -225,6 +244,16 @@
       "size": [
         190,
         68
+      ],
+      "sources": [
+        {
+          "path": "src/cli/foundation-cli.ts",
+          "label": "thin CLI surface"
+        },
+        {
+          "path": "src/cli/entrypoint.ts",
+          "label": "runnable entrypoint"
+        }
       ]
     },
     {
@@ -232,7 +261,7 @@
       "type": "security",
       "label": "Policy / Next Boundary",
       "sublabel": "one legal Action or blocked",
-      "tag": "新增",
+      "tag": "已验证",
       "pos": [
         320,
         590
@@ -240,6 +269,16 @@
       "size": [
         210,
         68
+      ],
+      "sources": [
+        {
+          "path": "src/domain/policy-and-next-boundary.ts",
+          "label": "canonical Policy seam"
+        },
+        {
+          "path": "openspec/specs/policy-and-next-boundary/spec.md",
+          "label": "canonical contract"
+        }
       ]
     },
     {
@@ -247,7 +286,7 @@
       "type": "backend",
       "label": "Lifecycle Domain",
       "sublabel": "authority / identity / Action state",
-      "tag": "新增",
+      "tag": "已验证",
       "pos": [
         600,
         590
@@ -255,6 +294,20 @@
       "size": [
         210,
         68
+      ],
+      "sources": [
+        {
+          "path": "src/domain/action-lifecycle.ts",
+          "label": "Action lifecycle"
+        },
+        {
+          "path": "src/domain/authority.ts",
+          "label": "authority contract"
+        },
+        {
+          "path": "src/domain/identity.ts",
+          "label": "semantic identity"
+        }
       ]
     },
     {
@@ -262,7 +315,7 @@
       "type": "backend",
       "label": "Single-Action Execution",
       "sublabel": "internal prepare / ActionPackage / exact admission / terminal / STOP",
-      "tag": "新增",
+      "tag": "已验证",
       "pos": [
         880,
         590
@@ -270,6 +323,16 @@
       "size": [
         260,
         68
+      ],
+      "sources": [
+        {
+          "path": "src/domain/single-action-execution.ts",
+          "label": "single Action invocation"
+        },
+        {
+          "path": "src/domain/action-package-result-admission.ts",
+          "label": "ActionPackage / Result admission"
+        }
       ]
     },
     {
@@ -277,7 +340,7 @@
       "type": "database",
       "label": "Run / Result Persistence",
       "sublabel": "durable .flowkit/runs",
-      "tag": "新增",
+      "tag": "已验证",
       "pos": [
         1175,
         590
@@ -285,6 +348,12 @@
       "size": [
         210,
         68
+      ],
+      "sources": [
+        {
+          "path": "src/domain/run-result-persistence.ts",
+          "label": "durable Run / Result"
+        }
       ]
     },
     {
@@ -292,7 +361,7 @@
       "type": "cloud",
       "label": "Review / Verification",
       "sublabel": "verdict / evidence / cross-platform acceptance",
-      "tag": "新增",
+      "tag": "PASS",
       "pos": [
         50,
         800
@@ -300,14 +369,20 @@
       "size": [
         210,
         68
+      ],
+      "sources": [
+        {
+          "path": "tests/acceptance/foundation-manager.acceptance.test.ts",
+          "label": "whole-manager acceptance"
+        }
       ]
     },
     {
       "id": "governance",
       "type": "security",
-      "label": "Git Checkpoint Boundary",
-      "sublabel": "terminal authorization seam",
-      "tag": "新增",
+      "label": "Checkpoint Authorization Boundary",
+      "sublabel": "eligibility + explicit Owner gate / no Git execution",
+      "tag": "已验证",
       "pos": [
         320,
         800
@@ -315,6 +390,16 @@
       "size": [
         210,
         68
+      ],
+      "sources": [
+        {
+          "path": "src/cli/checkpoint-authorization.ts",
+          "label": "checkpoint authorization seam"
+        },
+        {
+          "path": "openspec/specs/foundation-cli-surface/spec.md",
+          "label": "canonical CLI contract"
+        }
       ]
     },
     {
@@ -322,7 +407,7 @@
       "type": "backend",
       "label": "Managed Toolchain Resolver",
       "sublabel": "OpenSpec / Archify via FLOWKIT_HOME",
-      "tag": "新增",
+      "tag": "已验证",
       "pos": [
         897.5,
         800
@@ -333,8 +418,41 @@
       ],
       "sources": [
         {
+          "path": "src/domain/managed-tool-resolution.ts",
+          "label": "exact managed-tool resolver"
+        },
+        {
           "path": "config/tools/toolchain.lock.json",
           "label": "exact managed-tool identity"
+        }
+      ]
+    },
+    {
+      "id": "memo",
+      "type": "database",
+      "label": "Cross-Delivery Memo",
+      "sublabel": ".flowkit/memos.json / durable non-blocking governance",
+      "pos": [
+        600,
+        800
+      ],
+      "size": [
+        220,
+        68
+      ],
+      "tag": "已验证",
+      "sources": [
+        {
+          "path": "src/domain/cross-delivery-memo.ts",
+          "label": "Memo domain contract"
+        },
+        {
+          "path": "src/domain/cross-delivery-memo-persistence.ts",
+          "label": "durable Memo persistence"
+        },
+        {
+          "path": ".flowkit/memos.json",
+          "label": "project Memo document"
         }
       ]
     }
@@ -353,7 +471,7 @@
     },
     {
       "kind": "region",
-      "label": "新增 Foundation Lifecycle Kernel candidate",
+      "label": "Verified Foundation Lifecycle Kernel",
       "wraps": [
         "cli",
         "policy",
@@ -361,7 +479,8 @@
         "execution",
         "persistence",
         "governance",
-        "toolchain-resolution"
+        "toolchain-resolution",
+        "memo"
       ]
     }
   ],
@@ -510,17 +629,6 @@
       ]
     },
     {
-      "id": "p7",
-      "from": "toolchain-resolution",
-      "to": "execution",
-      "label": "exact tool runtime",
-      "route": "straight",
-      "labelAt": [
-        1110,
-        730
-      ]
-    },
-    {
       "id": "p8",
       "from": "owner",
       "to": "cli",
@@ -535,22 +643,30 @@
   ],
   "cards": [
     {
-      "dot": "cyan",
-      "title": "布局规则",
+      "dot": "emerald",
+      "title": "Formal Full Test",
       "items": [
-        "Current 已有组件在 Planned 中保持相同 stable id 与相同位置",
-        "新增 Foundation Kernel 统一放在下方区域",
-        "Current / Planned 使用同一 viewBox，左右对比时缩放一致"
+        "exact candidate aa6735f247ed89777dc2eae20d3011cbdb25faa7",
+        "6/6 frozen gates PASS",
+        "domain 116/116；OpenSpec strict 10/10；acceptance 4/4"
+      ]
+    },
+    {
+      "dot": "cyan",
+      "title": "Planned → Actual 关键事实",
+      "items": [
+        "Cross-Delivery Memo 成为独立 durable governance 能力",
+        "checkpoint 最终是 authorization seam，不执行 Git",
+        "managed resolver 服务 exact OpenSpec/Archify identity；OpenSpec integration 保持 read-only thin observation"
       ]
     },
     {
       "dot": "rose",
       "title": "Authority 不变量",
       "items": [
-        "Review approved ≠ Owner authorization",
-        "Verification PASS ≠ Git checkpoint / commit authority",
-        "Approved OpenSpec Change / contract remains semantic mutation authority",
-        "Delivery 01 candidate 不成为自身 lifecycle authority"
+        "OpenSpec 仍是 formal Change / contract authority",
+        "Archify 仅是 derived visualization，不是真相源",
+        "Verification PASS 不等于 Git checkpoint authorization"
       ]
     }
   ]

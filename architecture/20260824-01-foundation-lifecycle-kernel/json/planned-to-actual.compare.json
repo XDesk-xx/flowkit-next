@@ -2,24 +2,24 @@
   "schemaVersion": 1,
   "kind": "architecture-thin-compare",
   "deliveryId": "20260824-01-foundation-lifecycle-kernel",
-  "pair": "current-to-planned",
+  "pair": "planned-to-actual",
   "left": {
-    "ref": "./current.architecture.json",
-    "sha256": "4648928a0c81d6cdfd72155b7749616ac37a76905c61533d0cdfb54585bb71d3",
-    "bytes": 6264
-  },
-  "right": {
     "ref": "./planned.architecture.json",
     "sha256": "66d63a37e34f44b077248be28947980ad46a357e81155832b7342763e3ad737f",
     "bytes": 11432
+  },
+  "right": {
+    "ref": "./actual.architecture.json",
+    "sha256": "9cb22a80256c563ea4c6abebb38b15f66246b30f9373623aa7df96ec4ff82f0a",
+    "bytes": 14604
   },
   "classification": [
     "semantic",
     "presentation"
   ],
   "summary": {
-    "semantic": "Delivery Start current → planned Foundation Lifecycle Kernel target: adds CLI, Policy, Lifecycle, single-Action execution, Run/Result persistence, Review/Verification, checkpoint boundary, and managed-tool resolver while retaining initialization/toolchain baseline.",
-    "presentation": "Current and planned were layout-converged against the final actual view; their architecture semantics were preserved."
+    "semantic": "Planned → verified actual: Cross-Delivery Memo is added; Git Checkpoint Boundary narrows to Checkpoint Authorization Boundary; the planned resolver→execution direct edge is absent in actual; planned-state tags/labels converge to verified final roles.",
+    "presentation": "Planned was layout-converged against actual without changing planned architecture semantics."
   },
   "presentation": {
     "mode": "side-by-side",
