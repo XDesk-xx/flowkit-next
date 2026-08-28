@@ -1,0 +1,70 @@
+{
+  "runNumber": 100,
+  "kind": "external-orchestrator-explore-result",
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-foundation-cli-surface",
+  "action": "explore",
+  "runId": "20260828-100-explore",
+  "executionStatus": "completed",
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-explore",
+  "problemBoundary": "buildable machine-first flowkit CLI/host surface over existing Core; closed status/next/doctor commands plus pure checkpoint authorization evaluation; no self-hosting, Skill execution, Archify materialization or Git mutation",
+  "durableFacts": [
+    "The public CLI name is flowkit and repository guidance already reserves status, next and doctor for the first stable lifecycle CLI.",
+    "A real CLI requires a production emit/build/bin contract because the current TypeScript project is noEmit and direct Node source execution cannot resolve emitted .js imports.",
+    "Existing canonical Run history plus RunContextRecord.lifecycleState can provide CurrentAction/terminal facts at STOP boundaries without a second durable CurrentAction mirror.",
+    "Policy remains the only lifecycle legality calculator; CLI must call it rather than duplicate its transition table.",
+    "OpenSpec formal observation remains read-only and is consumed through the existing thin integration.",
+    "Existing OwnerAuthorityFact is sufficient for an exact checkpoint authorization evaluator after Policy reports ready-checkpoint-evaluation.",
+    "Checkpoint authorization is distinct from Git execution; this Change does not add git add/commit/push/merge/tag.",
+    "Archify remains a Delivery-level/long-term derived projection; this CLI Change only needs its exact managed runtime identity for doctor diagnostics, not architecture materialization.",
+    ".agents Skills remain bootstrap development tools and are not a product runtime dependency."
+  ],
+  "proposalDirection": [
+    "Add a minimal production build config and package bin entrypoint for flowkit without adding a runtime framework.",
+    "Expose exactly status, next and doctor as the Foundation V1 CLI command family with deterministic machine-readable output.",
+    "Keep Delivery/Change structural context explicit and compose existing durable Run, Policy, managed-tool and OpenSpec observation seams.",
+    "Add one pure checkpoint authorization evaluator outside Policy that requires ready-checkpoint-evaluation plus exact authorize-checkpoint Owner authority.",
+    "Keep doctor limited to environment/runtime diagnostics; it may resolve OpenSpec and Archify exact identities but must not render architecture."
+  ],
+  "explicitNonGoals": [
+    "Delivery 01 self-management",
+    "Flowkit self-hosting",
+    "product reading/executing .agents Skills",
+    "Agent/provider execution transport",
+    "automatic Author/Reviewer loop or automatic next Action",
+    "scheduler/daemon/background process",
+    "new durable CurrentAction or current Delivery registry",
+    "Delivery-group YAML parser or automatic Delivery discovery",
+    "OpenSpec mutation commands or generic executor",
+    "Policy rewrite",
+    "Archify rendering/materialization or Archify as truth",
+    "Delivery actual/reference generation",
+    "Git mutation/commit orchestration",
+    "MutationDeclaration/per-file authority",
+    "Windows/Linux final acceptance",
+    "Delivery Full Test execution or Owner promotion"
+  ],
+  "checks": {
+    "typecheck": "PASS",
+    "domainTests": "107/107 PASS",
+    "formatCheck": "PASS",
+    "canonicalOpenSpecSpecsStrict": "9/9 PASS",
+    "activeChangeStatus": "0/4 formal planning artifacts; proposal ready; specs/design/tasks blocked",
+    "productionSourceMutation": "NONE",
+    "productionTestMutation": "NONE",
+    "proposalArtifactsCreated": "NONE"
+  },
+  "limitations": [
+    "Current Delivery 01 external-orchestrator Run payloads are bootstrap handoff records; this Explore does not claim the candidate CLI can self-manage Delivery 01.",
+    "Exact CLI flag/input schema and human-vs-JSON presentation remain Proposal/design decisions, but Delivery/Change context must remain explicit in V1.",
+    "Actual Git checkpoint execution remains an external host action after authorization; only the authorization seam belongs here.",
+    "Archify Delivery Final actual/compare materialization and long-term reference refresh remain Delivery-level operations outside this Change.",
+    "Whole-manager Windows/Linux acceptance and exact Full Test command freeze remain the final planned Change."
+  ],
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

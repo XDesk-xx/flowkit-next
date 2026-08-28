@@ -1,0 +1,65 @@
+{
+  "runNumber": 108,
+  "kind": "external-orchestrator-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-foundation-cli-surface",
+  "action": "apply",
+  "runId": "20260828-108-apply",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/100-establish-foundation-cli-surface/20260828-108-apply",
+  "recordedAt": "2026-08-28T10:16:43+08:00",
+  "inputAction": {
+    "runId": "20260828-107-review-propose",
+    "payloadArchive": "107-review-propose.zip",
+    "payloadSha256": "710da41a2987485ad523ec290f7812189eea4992538c207489629a723d78dd94",
+    "reviewerVerdict": "approved",
+    "nextBoundary": "apply"
+  },
+  "checkpointBase": {
+    "archive": "flowkit-next-delivery-20260824-01-foundation-lifecycle-kernel-698538c.zip",
+    "gitRevision": "698538c",
+    "gitRevisionVerification": "owner-supplied checkpoint prefix; detached snapshot excludes .git",
+    "archiveSha256": "361c5e49f9207af54643f22d1d8c841cf0f3e8a9b449fe1a0b219bf61ff5c578"
+  },
+  "ownerAuthority": null,
+  "applyContract": {
+    "openspecSkill": ".agents/skills/openspec-apply-change/SKILL.md",
+    "openspecSkillSha256": "9a8c4451009e64f6b8ad0e8e382afb5ad0ff74e262be9e6486ae4d9cc67827cb",
+    "convergenceSkill": ".agents/skills/implementation-convergence/SKILL.md",
+    "convergenceSkillSha256": "88b8252dd146a71ea3d189f4c2f651bc8e96db6dbb64e454769eb22ace18a68d",
+    "schema": "spec-driven",
+    "initialProgress": "0/13",
+    "finalProgress": "13/13",
+    "finalState": "all_done"
+  },
+  "runtime": {
+    "nodeFixture": "22.23.2",
+    "repositoryNodeEngine": ">=22.20.0",
+    "openspec": "1.10.0",
+    "archify": "2.15.0"
+  },
+  "verification": {
+    "focusedCliTests": "9/9 PASS",
+    "domainTests": "116/116 PASS",
+    "typecheck": "PASS",
+    "build": "PASS",
+    "formatCheck": "PASS",
+    "changeStrict": "PASS",
+    "openspecAllStrict": "10/10 PASS",
+    "emittedCliStatus": "PASS",
+    "emittedCliNextExactRun": "ready-action(apply)",
+    "emittedCliNextExplicitNull": "ready-action(explore)",
+    "checkpointAuthorizationWithoutGitRepository": "PASS",
+    "emittedCliDoctor": "PASS",
+    "fakePathTakeover": "NONE",
+    "codeGate": "PASS",
+    "dependencyMutation": "NONE"
+  },
+  "skillsUsed": [
+    "openspec-apply-change",
+    "implementation-convergence"
+  ],
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

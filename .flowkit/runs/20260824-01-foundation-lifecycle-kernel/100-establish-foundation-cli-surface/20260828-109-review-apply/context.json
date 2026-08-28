@@ -1,0 +1,58 @@
+{
+  "runNumber": 109,
+  "kind": "external-orchestrator-review-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-foundation-cli-surface",
+  "action": "review-apply",
+  "runId": "20260828-109-review-apply",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/100-establish-foundation-cli-surface/20260828-109-review-apply",
+  "inputRunId": "20260828-108-apply",
+  "reviewChainStartRunId": "20260828-100-explore",
+  "reviewModel": "review-apply-skill",
+  "chainIntegrity": {
+    "runs100To107ByteIdentical": "24/24 PASS",
+    "approvedExploreProposalDesignSpecUnchanged": true,
+    "deliveryManifestUnchanged": true,
+    "sharedFilesAgainst107ReviewerPayload": 31,
+    "sharedFilesChanged": [
+      "openspec/changes/establish-foundation-cli-surface/tasks.md"
+    ]
+  },
+  "runtime": {
+    "nodeProofFixture": "22.23.2",
+    "repositoryNodeEngine": ">=22.20.0",
+    "openspec": "1.10.0",
+    "archify": "2.15.0"
+  },
+  "independentChecks": {
+    "typecheck": "PASS",
+    "domainTests": "116/116 PASS",
+    "formatCheck": "PASS",
+    "build": "PASS",
+    "tasks": "13/13 all_done",
+    "openspecPlanning": "4/4 complete",
+    "changeStrict": "PASS",
+    "openspecAllStrict": "10/10 PASS",
+    "emittedCliDoctorRealManagedTools": "PASS",
+    "emittedCliExactRun": "ready-action(apply)",
+    "emittedCliExplicitNull": "ready-action(explore)",
+    "omittedCurrentRun": "exit 2 invalid-request",
+    "checkpointAuthorization": "authorized=true",
+    "checkpointProofCreatedGitRepository": false,
+    "fakePathTakeover": "NONE",
+    "unknownCommand": "exit 2 invalid-command",
+    "malformedJson": "exit 2 invalid-request-json",
+    "invalidCheckpointAuthority": "exit 2 invalid-checkpoint-authority",
+    "newDependency": false,
+    "genericExecutorAdded": false,
+    "automaticRunSelectionAdded": false,
+    "automaticDeliveryDiscoveryAdded": false,
+    "gitExecutionAdded": false,
+    "skillRuntimeCouplingAdded": false,
+    "codeGate": "PASS"
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

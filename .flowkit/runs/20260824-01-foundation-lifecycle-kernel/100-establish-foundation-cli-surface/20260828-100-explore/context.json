@@ -1,0 +1,57 @@
+{
+  "runNumber": 100,
+  "kind": "external-orchestrator-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-foundation-cli-surface",
+  "action": "explore",
+  "runId": "20260828-100-explore",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/100-establish-foundation-cli-surface/20260828-100-explore",
+  "inputRunId": null,
+  "checkpointBase": {
+    "archive": "flowkit-next-delivery-20260824-01-foundation-lifecycle-kernel-698538c.zip",
+    "gitRevision": "698538c0588dab9737e91bff77595d591258880d",
+    "gitRevisionVerification": "full SHA is present in the supplied checkpoint archive comment; detached snapshot excludes .git so git rev-parse is not independently available",
+    "archiveSha256": "361c5e49f9207af54643f22d1d8c841cf0f3e8a9b449fe1a0b219bf61ff5c578"
+  },
+  "authorization": {
+    "ref": "owner:58f5817b9acb80e197ffd6cf9c5340761c9e4c4fe67efff2eb9cc8c79a67f710",
+    "decision": "activate-change",
+    "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+    "changeId": "establish-foundation-cli-surface",
+    "sourceRef": "owner-input:2026-08-28T02:20+08:00:activate-foundation-cli-surface:explore-proof-based",
+    "scope": ["explore"]
+  },
+  "executionMode": "external-orchestrator-detached-linux-openspec-explore-proof-based",
+  "runtime": {
+    "detachedProofNode": "22.23.2",
+    "repositoryNodeEngine": ">=22.20.0",
+    "openspec": "1.10.0",
+    "archify": "2.15.0"
+  },
+  "skillsUsed": [
+    "openspec-explore",
+    "explore-proof-based"
+  ],
+  "focusedProof": {
+    "directNodeSourceExecutionFailsWithoutEmit": "PASS",
+    "executionLocalTypeScriptEmit": "PASS",
+    "emittedCoreLoadsUnderNodeFixture": "PASS",
+    "canonicalRunHistoryReconstructsTerminalCurrentAction": "PASS",
+    "policyCheckpointEvaluation": "PASS",
+    "exactCheckpointOwnerAuthority": "PASS",
+    "wrongCheckpointAuthorityRejected": "PASS",
+    "managedOpenSpecResolution": "PASS",
+    "managedArchifyResolution": "PASS",
+    "proofScriptSha256": "85ff1b969d59b55f65f567de7bfb34876a9ce647dca455ca879afde8e67c3315"
+  },
+  "bootstrapBoundary": {
+    "agentsSkills": "development-time only; unchanged",
+    "productRuntimeDependsOnAgents": false,
+    "selfHostingIntroduced": false,
+    "archifyLifecycleAuthorityIntroduced": false
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

@@ -1,0 +1,37 @@
+{
+  "runNumber": 106,
+  "kind": "external-orchestrator-revise-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "establish-foundation-cli-surface",
+  "action": "revise-propose",
+  "runId": "20260828-106-revise-propose",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/100-establish-foundation-cli-surface/20260828-106-revise-propose",
+  "inputRunId": "20260828-105-review-propose",
+  "reviewFinding": "RP-105-001",
+  "checkpointBase": {
+    "gitRevision": "698538c0588dab9737e91bff77595d591258880d",
+    "gitRevisionVerification": "from prior owner-supplied checkpoint archive metadata; detached snapshot excludes .git"
+  },
+  "executionMode": "external-orchestrator-detached-linux-revise-propose-with-proposal-convergence",
+  "runtime": {
+    "detachedNode": "22.23.2",
+    "repositoryNodeEngine": ">=22.20.0",
+    "openspec": "1.10.0"
+  },
+  "skillsUsed": [
+    "revise-propose",
+    "proposal-convergence"
+  ],
+  "scopeGuards": {
+    "historyScanForCurrentness": false,
+    "currentRegistryAdded": false,
+    "runLineageSubsystemAdded": false,
+    "deliveryDiscoveryAdded": false,
+    "policyContractModified": false,
+    "productionImplementationModified": false
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}
