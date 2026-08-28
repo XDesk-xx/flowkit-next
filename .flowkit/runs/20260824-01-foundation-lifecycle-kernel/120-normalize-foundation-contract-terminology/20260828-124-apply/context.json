@@ -1,0 +1,61 @@
+{
+  "runNumber": 124,
+  "kind": "external-orchestrator-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "normalize-foundation-contract-terminology",
+  "action": "apply",
+  "runId": "20260828-124-apply",
+  "physicalRunPath": ".flowkit/runs/20260824-01-foundation-lifecycle-kernel/120-normalize-foundation-contract-terminology/20260828-124-apply",
+  "recordedAt": "2026-08-28T20:34:52+08:00",
+  "inputAction": {
+    "runId": "20260828-123-review-propose",
+    "payloadArchive": "123-review-propose.zip",
+    "payloadSha256": "387df766b96e5335f3c8519adf48ec95448bad81c7bbc1e1d497ab3aad7684b2",
+    "reviewerVerdict": "approved",
+    "nextBoundary": "apply"
+  },
+  "checkpointBase": {
+    "archive": "flowkit-next-delivery-20260824-01-foundation-lifecycle-kernel-246a653.zip",
+    "gitRevision": "246a653",
+    "gitRevisionVerification": "Owner-supplied checkpoint prefix; detached delta handoff excludes .git"
+  },
+  "applyContract": {
+    "openspecSkill": ".agents/skills/openspec-apply-change/SKILL.md",
+    "openspecSkillSha256": "9a8c4451009e64f6b8ad0e8e382afb5ad0ff74e262be9e6486ae4d9cc67827cb",
+    "convergenceSkill": ".agents/skills/implementation-convergence/SKILL.md",
+    "convergenceSkillSha256": "88b8252dd146a71ea3d189f4c2f651bc8e96db6dbb64e454769eb22ace18a68d",
+    "schema": "spec-driven",
+    "initialProgress": "0/5",
+    "finalProgress": "5/5",
+    "finalState": "all_done"
+  },
+  "runtime": {
+    "nodeFixture": "22.23.2",
+    "repositoryNodeEngine": ">=22.20.0",
+    "pnpmFixture": "11.22.0",
+    "openspec": "1.10.0"
+  },
+  "applyEvidence": {
+    "canonicalDirectEdit": false,
+    "archiveSimulation": "PASS; 0 added / 1 modified / 0 removed / 1 renamed",
+    "renamedRequirementBodyAndScenarios": "BYTE_IDENTICAL",
+    "policyRequirementTransform": "EXACT_SINGLE_TOKEN_SUBSTITUTION",
+    "postArchiveInternalVersionOccurrences": 0,
+    "postArchiveCanonicalStrict": "10/10 PASS",
+    "typecheck": "PASS",
+    "formatCheck": "PASS",
+    "build": "PASS",
+    "domainTests": "116/116 PASS",
+    "changeStrict": "PASS",
+    "openspecAllStrict": "11/11 PASS",
+    "formalDeliveryVerification": "NOT_PERFORMED"
+  },
+  "skillsUsed": [
+    "openspec-apply-change",
+    "implementation-convergence"
+  ],
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

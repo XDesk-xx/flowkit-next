@@ -21,21 +21,6 @@
 - **WHEN** existing managed-tool resolver 因 lock、`FLOWKIT_HOME`、runtime identity 或 entrypoint 问题 fail closed
 - **THEN** observation SHALL 停止并保留该 managed-tool resolution failure，而 MUST NOT fallback 到其他 OpenSpec runtime
 
-### Requirement: V1 exposes only two closed read-only observations
-系统 SHALL 只提供两个 repo-local read-only OpenSpec observation：观察当前 active Change 集合，以及观察一个 exact Change 的 formal artifact/planning status。系统 MUST NOT 暴露 generic arbitrary OpenSpec command executor，也 MUST NOT 在本 capability 中执行 mutating/workflow-driving OpenSpec operations。
-
-#### Scenario: Observe active Change set
-- **WHEN** caller 请求 repository 的 active OpenSpec Change observation
-- **THEN** 系统 SHALL 基于 OpenSpec `list --json` 返回 machine-validated Change identifiers，而不扫描 `openspec/changes/**`
-
-#### Scenario: Observe exact Change status
-- **WHEN** caller 提供 canonical Change identifier 并请求其 formal status observation
-- **THEN** 系统 SHALL 基于 OpenSpec `status --change <id> --json` 返回该 Change 的 machine-validated schema/planning/artifact observation
-
-#### Scenario: Arbitrary OpenSpec command is requested
-- **WHEN** caller 试图通过本 capability 请求 `instructions`、`context`、`validate`、`show`、`new change`、`archive` 或任意自定义 argument sequence
-- **THEN** 系统 SHALL 不提供该 command surface，且 MUST NOT 将请求转发给 OpenSpec
-
 ### Requirement: Successful observations bind exactly to the requested repository root
 系统 SHALL 将 caller 提供的 repository root 与成功 OpenSpec observation 返回的 `root.path` 使用当前 host canonical path semantics 进行精确比较。二者不完全一致时 observation MUST fail closed；系统 MUST NOT 接受 OpenSpec nearest-root 向上解析到另一个 parent project 的结果。
 
@@ -109,3 +94,18 @@ Exact Change status observation SHALL 投影 OpenSpec 返回的 exact Change ide
 #### Scenario: Current development workflow uses an OpenSpec Skill
 - **WHEN** Author/Reviewer AI 在当前 bootstrap 阶段调用 `.agents/skills/openspec-*`
 - **THEN** 该 Skill 使用 SHALL 保持 development orchestration concern，且 MUST NOT 改变本 production capability 的 contract
+
+### Requirement: Exposes only two closed read-only observations
+系统 SHALL 只提供两个 repo-local read-only OpenSpec observation：观察当前 active Change 集合，以及观察一个 exact Change 的 formal artifact/planning status。系统 MUST NOT 暴露 generic arbitrary OpenSpec command executor，也 MUST NOT 在本 capability 中执行 mutating/workflow-driving OpenSpec operations。
+
+#### Scenario: Observe active Change set
+- **WHEN** caller 请求 repository 的 active OpenSpec Change observation
+- **THEN** 系统 SHALL 基于 OpenSpec `list --json` 返回 machine-validated Change identifiers，而不扫描 `openspec/changes/**`
+
+#### Scenario: Observe exact Change status
+- **WHEN** caller 提供 canonical Change identifier 并请求其 formal status observation
+- **THEN** 系统 SHALL 基于 OpenSpec `status --change <id> --json` 返回该 Change 的 machine-validated schema/planning/artifact observation
+
+#### Scenario: Arbitrary OpenSpec command is requested
+- **WHEN** caller 试图通过本 capability 请求 `instructions`、`context`、`validate`、`show`、`new change`、`archive` 或任意自定义 argument sequence
+- **THEN** 系统 SHALL 不提供该 command surface，且 MUST NOT 将请求转发给 OpenSpec

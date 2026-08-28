@@ -1,0 +1,61 @@
+{
+  "runNumber": 120,
+  "kind": "external-orchestrator-explore-result",
+  "role": "author",
+  "deliveryId": "20260824-01-foundation-lifecycle-kernel",
+  "changeId": "normalize-foundation-contract-terminology",
+  "action": "explore",
+  "runId": "20260828-120-explore",
+  "executionStatus": "completed",
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-explore",
+  "problemBoundary": "Exactly two canonical OpenSpec wording occurrences imply an unnecessary internal V1 hierarchy. Normalize those two existing requirements only; preserve all approved behavior, historical artifacts, external/runtime versions and the separate Full Test correction memo.",
+  "durableFacts": [
+    "Canonical openspec/specs/** contains exactly two Flowkit-internal V-number occurrences: one in openspec-thin-integration and one in policy-and-next-boundary.",
+    "Removing the V1 qualifier from each occurrence leaves every normative SHALL/MUST predicate, exact literal, scenario and behavior boundary unchanged.",
+    "Production src/**, tests/** and package/build configuration contain no V1/V2/V3 product branch or compatibility logic tied to these phrases.",
+    "External/runtime versions such as OpenSpec 1.10.0, Archify 2.15.0 and Node 22.23.2 are legitimate facts and must remain.",
+    "Archived Change artifacts and prior .flowkit/runs contain historical V1 wording and must not be rewritten.",
+    "The future-full-test-correction-model memo remains byte-identical and is outside this corrective Change."
+  ],
+  "proposalDirection": [
+    "Modify only the existing openspec-thin-integration and policy-and-next-boundary canonical capabilities through delta specs.",
+    "Remove the V1 qualifier from the affected requirement heading/sentence without changing requirement bodies, scenarios, authority predicates or closed observation scope.",
+    "Plan no src/**, tests/**, package/build, .agents/**, memo, Full Test semantics or repository-guidance mutations.",
+    "If any behavioral change becomes necessary, stop and re-scope rather than expanding this terminology Change."
+  ],
+  "explicitNonGoals": [
+    "Full Test correction/finalization machine model",
+    "planned/corrective Change type machinery",
+    "Delivery state enum changes",
+    "memo mechanism changes",
+    "repository guidance convergence",
+    "CLI/runtime/API versioning",
+    "replacement V2/V3 hierarchy",
+    "production code or test refactoring",
+    "rewriting archived Change or Run history"
+  ],
+  "checks": {
+    "typecheck": "PASS",
+    "formatCheck": "PASS",
+    "build": "PASS",
+    "domainTests": "116/116 PASS",
+    "canonicalOpenSpecSpecs": "10/10 strict PASS",
+    "activeChangeStatus": "proposal ready; specs/design/tasks blocked as expected at Explore boundary",
+    "openspecAllStrict": "expected incomplete-change failure because the newly activated Change has no Proposal yet; all 10 canonical specs pass",
+    "productionSourceMutation": "NONE",
+    "productionTestMutation": "NONE",
+    "canonicalSpecMutation": "NONE",
+    "memoMutation": "NONE",
+    "proposalArtifactsCreated": "NONE"
+  },
+  "limitations": [
+    "This Explore does not rewrite historical archived artifacts even where they use V1 wording.",
+    "This Explore does not assert that every occurrence of the English word version is undesirable; exact tool/runtime/schema versions remain legitimate.",
+    "Formal Full Test remains deferred until this corrective Change is reviewed, proposed, applied, archived and checkpointed."
+  ],
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}
