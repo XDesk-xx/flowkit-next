@@ -1,0 +1,110 @@
+id: "20260829-02-lightweight-incremental-engineering-quality"
+createdAt: "2026-08-29"
+branch: "delivery/20260829-02-lightweight-incremental-engineering-quality"
+base: "main@af67f60c9094333bcb3b575bd351874e77bb518a"
+
+goal: "在已完成的 Foundation Lifecycle Kernel 上建立 small but complete、轻量、增量、高可信度的 repository engineering-quality protection，防止 AI 持续开发引入新的机械质量退化，同时不建设 Quality Platform 或新的控制面。"
+
+delivery:
+  state: active
+  fullTestStatus: pending
+  finalizationStatus: pending
+
+scope:
+  included:
+    - "Incremental Quality Ratchet：无关历史债务不自动阻塞 bounded Change，新增/修改代码不得引入选定的新机械退化"
+    - "cheap / high-signal / interactive Lightweight Engineering Gate"
+    - "generic Structural Dependency Health for bad dependency edges"
+    - "high-confidence Repository Entropy Hygiene for dead/stale material"
+    - "exact execution of already-required applicable correctness checks with real Result facts"
+    - "simple same-candidate fact reuse when exact candidate/check/config/tool identity remains valid"
+    - "repository-local ownership for engineering quality tooling"
+  excluded:
+    - "Quality Dashboard / quality score platform"
+    - "Gate Registry / Check Registry / Verification Planner / Evidence Platform"
+    - "smart test selection or automatic test recommendation authority"
+    - "project-specific architecture layer law / path-level mutation policy"
+    - "coverage KPI / mutation testing / complexity KPI / duplicate-code hard threshold"
+    - "automatic refactor / dependency upgrade / network-dependent security platform"
+    - "Agent Runtime / Skill Router / automatic Author-Reviewer loop"
+    - "automatic Git authority / promotion lifecycle"
+
+architecture:
+  impact: true
+  archifyPlan: "required"
+  startStatus: "materialized"
+  finalStatus: "pending"
+  currentRef: "architecture/20260829-02-lightweight-incremental-engineering-quality/json/current.architecture.json"
+  plannedRef: "architecture/20260829-02-lightweight-incremental-engineering-quality/json/planned.architecture.json"
+  compareRefs:
+    - "architecture/20260829-02-lightweight-incremental-engineering-quality/json/current-to-planned.compare.json"
+  htmlPolicy: "disposable-not-retained-in-git"
+
+changes:
+  - id: "establish-lightweight-incremental-engineering-gate"
+    group: "engineering-quality"
+    goal: "建立 cheap / high-signal / low-friction / interactive 的日常 mechanical engineering boundary，防止 changed-code obvious mechanical regression。"
+    required: true
+    dependsOn: []
+    state: planned
+    architectureImpact: true
+    outputs:
+      - "Lightweight Engineering Gate contract"
+      - "incremental mechanical regression boundary"
+
+  - id: "establish-structural-dependency-health-fitness"
+    group: "engineering-quality"
+    goal: "建立 generic structural dependency health，检测 unresolved imports、new runtime cycles、prod→test/spec、runtime→dev-only 等高价值 bad edges。"
+    required: true
+    dependsOn: []
+    state: planned
+    architectureImpact: true
+    outputs:
+      - "Structural Dependency Health contract"
+      - "incremental bad-edge detection"
+
+  - id: "establish-high-confidence-repository-entropy-hygiene"
+    group: "engineering-quality"
+    goal: "建立 conservative high-confidence repository entropy hygiene，减少 dead nodes、stale declarations 与 AI context noise。"
+    required: true
+    dependsOn: []
+    state: planned
+    architectureImpact: true
+    outputs:
+      - "Repository Entropy Hygiene contract"
+      - "high-confidence dead/stale material detection"
+
+  - id: "establish-explicit-applicable-check-execution"
+    group: "engineering-quality"
+    goal: "确保 formal input 已明确要求的 correctness checks 被 exact execution，并形成绑定 exact candidate/check identity 的真实 Result fact。"
+    required: true
+    dependsOn: []
+    state: planned
+    architectureImpact: true
+    outputs:
+      - "Explicit Applicable Check Execution contract"
+      - "same-candidate fact consumption boundary"
+
+proofConcerns:
+  - id: "coordination-state-authority-source-binding"
+    status: "proof-first"
+    statement: "earliest applicable proof must verify Owner activation authority → trusted Delivery-Change coordination fact → Policy input; do not pre-create a corrective Change."
+
+recommendedOrder:
+  - "establish-lightweight-incremental-engineering-gate"
+  - "establish-structural-dependency-health-fitness"
+  - "establish-high-confidence-repository-entropy-hygiene"
+  - "establish-explicit-applicable-check-execution"
+
+acceptance:
+  - "Lightweight Gate catches representative selected regressions and remains interactive rather than becoming a mini Full Test"
+  - "selected generic dependency-graph corruption is detected"
+  - "high-confidence repository entropy is detected with acceptable false-positive behavior"
+  - "explicit required checks execute exactly and produce real candidate-bound Result facts"
+  - "unrelated historical debt does not automatically block bounded Changes"
+  - "no Gate Registry, Verification Planner, Evidence Platform, Quality Dashboard, smart test planner, architecture-rule platform or new lifecycle state machine is introduced"
+
+ownerDecisions:
+  - ref: "owner:4428d7623a379f3392b3a49983e34f18e12d92c2ec52dd7f9ba2b38ad92ea0c3"
+    decision: "create-delivery"
+    deliveryId: "20260829-02-lightweight-incremental-engineering-quality"

@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "kind": "architecture-thin-compare",
+  "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+  "pair": "current-to-planned",
+  "left": {
+    "ref": "./current.architecture.json",
+    "sha256": "229e251cf8f480c772b837818ef85f49eece327375aea70df78760514fcbeef9",
+    "bytes": 14879
+  },
+  "right": {
+    "ref": "./planned.architecture.json",
+    "sha256": "6e6a36ab8f10b5ac578319278da72725c773b5f8501bebf90dbcd67e53f101b4",
+    "bytes": 17118
+  },
+  "classification": [
+    "semantic",
+    "presentation"
+  ],
+  "summary": {
+    "semantic": "Current preserves all 17 verified Delivery 01 Actual component identities after rechecking accepted main@af67f60 facts. Planned adds exactly four D02 sibling engineering-quality capabilities; no speculative runtime coupling or hard Change dependency is frozen. Only the approved Applicable Checks → existing Result persistence fact flow is shown.",
+    "presentation": "Current keeps the D01 Actual architecture granularity. Planned keeps the same foundation and adds one D02 quality region."
+  },
+  "presentation": {
+    "mode": "side-by-side",
+    "renderer": "flowkit-reference-side-by-side",
+    "leftPosition": "before",
+    "rightPosition": "after",
+    "equalFrame": true,
+    "interactive": true,
+    "overlay": false,
+    "deltaColumn": false,
+    "artifactPolicy": "disposable-html-not-retained-in-git",
+    "resolution": "resolve-left-right-ref-to-architecture-render"
+  }
+}
