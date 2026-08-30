@@ -1,4 +1,4 @@
-{
+﻿{
   "formatVersion": 1,
   "memos": [
     {
@@ -24,15 +24,31 @@
       "resolution": null
     },
     {
-      "memoId": "structural-dependency-023-historical-continuity-gap",
+      "memoId": "future-uncommitted-change-continuation-integrity",
       "state": "open",
+      "title": "Future uncommitted Change continuation integrity across sessions",
+      "note": "D02 observed a real cross-session continuation gap during\nestablish-structural-dependency-health-fitness.\n\nThe original create-once 20260830-023-explore execution existed and was\nindependently reviewed by 20260830-024-review-explore, but the exact 023\nRun / explore payload bytes were not carried into a later detached Author\ncontinuation and became unavailable. The surviving 024 Reviewer Run preserves\nthe original 023 input identity/hashes and approval evidence. The missing 023\nbytes must never be regenerated, reconstructed, or fabricated.\n\nThe reusable concern is not the specific occurrence number 023. The observed\nproof is that:\n\nexact committed pre-Change Git base\n+\nlatest delta Action payload\n\nis not by itself sufficient to guarantee complete continuation of an\nuncommitted Change across AI sessions / detached environments when that latest\ndelta references earlier create-once Run artifacts whose exact bytes are not\nalso carried or durably retrievable.\n\nFuture proof should start in D03 Action Guidance / handoff discipline rather\nthan immediately expanding Flowkit Core. A continuation should have an exact,\nbounded way to obtain all materially required uncommitted ancestor state,\nfor example by carrying cumulative uncommitted Change state or by preserving\nexact ancestor payloads in a durable retrievable location. The implementation\nshape is intentionally not frozen by this Memo.\n\nIf D03 guidance / packaging discipline proves sufficient in real use, this\nconcern should be resolved without a new Core subsystem. Only if repeated real\nproof shows that guidance and repository-owned handoff discipline cannot\nreliably preserve the required continuation truth should D04 evaluate whether\na bounded lifecycle / continuity contract is missing.\n\nDo not introduce a payload registry, evidence platform, background sync,\nautomatic continuation engine, or second lifecycle merely to close this Memo.\nThis Memo is non-blocking and does not itself create a Change.",
+      "source": {
+        "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+        "changeId": "establish-structural-dependency-health-fitness",
+        "runId": "20260830-024-review-explore"
+      },
+      "createdByOwnerAuthorityRef": "owner:09dfebba36e1ef0184c8ae4de324f07d9a704f3665d5c7f540c06a47eb2f073c",
+      "resolution": null
+    },
+    {
+      "memoId": "structural-dependency-023-historical-continuity-gap",
+      "state": "dismissed",
       "title": "establish-structural-dependency-health-fitness 023 create-once Explore artifact missing (continuity exception)",
       "note": "D02 Change establish-structural-dependency-health-fitness 的原始 create-once 023 Explore Run (20260830-023-explore) 字节已确认不可用：原始 payload d02-023-explore-author.zip 在本机及整机范围内均不存在，其 SHA-256 1c177e096e23b21403adae4b5e8cb7b9765d845fb2b6ecad4600edc3f3ae1383 无法从任何源恢复。\n\nOwner 于 2026-08-30 授权一次性历史连续性例外（A 方式）：不重建、不重构、不伪造缺失的 023 Run / explore.md / Owner ref / payload。保留 024 Reviewer 对原始 023 执行的精确引用与哈希证言（original 023 archive SHA-256 = 1c177e09...；Explore content SHA-256 = 3ed5e0dc...；coordination truth at Explore: establish-structural-dependency-health-fitness = active；activation provenance: exact Owner activate-change authority for this Delivery + Change + scope=[explore]）。\n\n因此本 Change 的 durable Run 链自 024-review-explore 起（024-029 完整），023 Explore 作为已知缺失历史 artifact，其 identity/hash 由下游 Reviewer 024 记录佐证，不进入 Git。archived Change history 接受此连续性缺口。\n\n未来 Delivery continuity / D03 工作应将此缺口视为已知历史不连续点，不应尝试回填伪造 023，而应依赖 024 Reviewer 证言与现有 024-029 链维持变更可信性。",
       "source": {
         "deliveryId": "20260829-02-lightweight-incremental-engineering-quality"
       },
       "createdByOwnerAuthorityRef": "owner:a2c375347a37c5a53b62b49a27b3530b4ffd72400d97fbaacea42d86475445f6",
-      "resolution": null
+      "resolution": {
+        "kind": "dismissed",
+        "ownerAuthorityRef": "owner:6c8896b03096f13d6ccd891c6c36447160d5f4a378b48b60bf540d8913beb3b0"
+      }
     }
   ]
 }
