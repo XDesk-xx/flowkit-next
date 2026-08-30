@@ -1,0 +1,65 @@
+{
+  "runNumber": 27,
+  "kind": "external-orchestrator-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+  "changeId": "establish-structural-dependency-health-fitness",
+  "action": "apply",
+  "runId": "20260830-027-apply",
+  "physicalRunPath": ".flowkit/runs/20260829-02-lightweight-incremental-engineering-quality/023-establish-structural-dependency-health-fitness/20260830-027-apply",
+  "inputRunId": "20260830-026-review-propose",
+  "inputReviewArchiveSha256": "ed43d51d5485099f75b43060700660eb531b7703ecc21d90dd91b81d9a918016",
+  "checkpointClaim": "cd043cec52b5712d171a6bac72e246466a7c27b9",
+  "skillsUsed": [
+    "openspec-apply-change",
+    "implementation-convergence"
+  ],
+  "toolIdentity": {
+    "node": "22.23.2",
+    "pnpm": "11.22.0",
+    "dependencyCruiser": "18.2.0",
+    "openspec": "1.10.0"
+  },
+  "implementationBoundary": {
+    "selectedRules": 5,
+    "qualityGateMutation": false,
+    "productionSourceMutation": false,
+    "knipOrEntropyOwnership": false,
+    "changedFilePlanner": false,
+    "baselineCacheWaiver": false,
+    "newRegistryPlannerLifecycleState": false
+  },
+  "verification": {
+    "disposableFixtureCases": "PASS 10/10",
+    "qualityGate": "PASS",
+    "dependencyHealth": "PASS 0 violations",
+    "dependencyHealthElapsedSeconds": 1.72,
+    "typecheck": "PASS",
+    "build": "PASS",
+    "openspecChangeStrict": "PASS",
+    "openspecAllStrict": "PASS 12/12",
+    "gitDiffCheck": "PASS"
+  },
+  "packageTruth": {
+    "dependencyCruiserSpecifier": "^18.2.0",
+    "dependencyCruiserLockedVersion": "18.2.0",
+    "lockIntegrityPresent": true,
+    "knipPresent": false,
+    "dependencyGraphChanged": true,
+    "detachedNodeModulesArchiveInChange": false
+  },
+  "environmentConstraint": {
+    "directPnpmAdd": "blocked by sandbox offline registry/store metadata",
+    "lockMaterialization": "exact dependency-cruiser closure from supplied prepared pnpm virtual-store lock",
+    "repositoryTruthVerified": true
+  },
+  "artifactHashes": {
+    "packageJsonSha256": "f1ac95ce548d8aa23fe5dfafd7b69169d6898f8c539654a50711dce976b79b95",
+    "pnpmLockSha256": "bf5ef071f2b4b8140f05493ebd53098660250f2cd5a834fe321ce8685bdb65e5",
+    "dependencyCruiserConfigSha256": "b2faff94dd1bb58d59f645ebdde50788c976da9ff638ba3c5ce16500e256b833",
+    "tasksSha256": "7aa161dc233a3dfa44772bccab658413f4780d32e9dcf259e1945057d956d339"
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

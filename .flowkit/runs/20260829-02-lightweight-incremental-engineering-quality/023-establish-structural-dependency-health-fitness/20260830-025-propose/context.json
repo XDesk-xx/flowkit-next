@@ -1,0 +1,60 @@
+{
+  "runNumber": 25,
+  "kind": "external-orchestrator-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+  "changeId": "establish-structural-dependency-health-fitness",
+  "action": "propose",
+  "runId": "20260830-025-propose",
+  "physicalRunPath": ".flowkit/runs/20260829-02-lightweight-incremental-engineering-quality/023-establish-structural-dependency-health-fitness/20260830-025-propose",
+  "inputRunId": "20260830-024-review-explore",
+  "inputReviewArchiveSha256": "90776fdb867640583d060738131b0c09166b74dd31e681462acedac9d532ba02",
+  "approvedExploreSha256": "3ed5e0dc327d7ee6d818adf6151f02a7f1790d4955cf5a75e125b19449980c7d",
+  "checkpointClaim": "cd043cec52b5712d171a6bac72e246466a7c27b9",
+  "changeStartSequence": 23,
+  "reviewerVerdict": "approved",
+  "skillsUsed": [
+    "openspec-propose",
+    "proposal-convergence"
+  ],
+  "proposalConstraintsPreserved": {
+    "exactSelectedRules": true,
+    "runtimeCycleExcludesTypeOnlyBrokenPath": true,
+    "productionDevDependencyRuntimeOnly": true,
+    "productionToTestSpecOneWay": true,
+    "undeclaredPackageSeparateFromUnusedDependency": true,
+    "broaderRecommendedBundle": false,
+    "wholeGraphExecution": true,
+    "changedFilePlanning": false,
+    "baselineCacheWaiver": false,
+    "repositoryLocalDependencyCruiser": true,
+    "qualityGateMutation": false,
+    "knipOrEntropyOwnership": false,
+    "newLifecycleOrRegistryPlanner": false
+  },
+  "configurationShapeProbe": {
+    "tool": "dependency-cruiser",
+    "toolVersion": "18.2.0",
+    "surface": "src + tests",
+    "selectedViolations": 0,
+    "purpose": "proposal configuration-shape sanity only; not repository adoption"
+  },
+  "validation": {
+    "openspecChangeStrict": "PASS",
+    "openspecAllStrict": "PASS 12/12",
+    "gitDiffCheck": "PASS",
+    "productionMutation": "NONE",
+    "packageMutation": "NONE"
+  },
+  "artifacts": {
+    "openspecMetadataSha256": "9187547d8cc17017ebd44132527d2d5e096d1ef9705de80cc4f1cf34531f6976",
+    "proposalSha256": "2dac59b1afa42a7da3a08990f3cfc8f128df2f7e0884e93fe1d4f9cfae889509",
+    "designSha256": "52be05a2f5f4024329332403d27f27179fd92bb543387f57ec2bbc038c9d11ca",
+    "specSha256": "46d384c4a86e944050b37f9fa758b86e39dae96cfec2ca625ecaaea73913710f",
+    "tasksSha256": "dc1fb400d0413a6d080e3349ee51d22ee9a86689cdd561726bef892e70ad7271"
+  },
+  "blockingFindingIds": [],
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

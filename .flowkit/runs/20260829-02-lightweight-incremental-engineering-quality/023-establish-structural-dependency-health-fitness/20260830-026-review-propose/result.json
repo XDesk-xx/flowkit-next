@@ -1,0 +1,38 @@
+{
+  "runNumber": 26,
+  "kind": "external-orchestrator-review-propose-result",
+  "role": "reviewer",
+  "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+  "changeId": "establish-structural-dependency-health-fitness",
+  "action": "review-propose",
+  "runId": "20260830-026-review-propose",
+  "executionStatus": "completed",
+  "reviewerVerdict": "approved",
+  "verificationVerdict": null,
+  "nextBoundary": "apply",
+  "blockingFindings": [],
+  "checks": {
+    "openspecStrictValidation": "PASS",
+    "artifactIntegrity": "PASS",
+    "exploreToProposalConvergence": "PASS",
+    "selectedRuleSemantics": "PASS",
+    "runtimeTypeOnlyBoundary": "PASS",
+    "packageDeclarationBoundary": "PASS",
+    "scopeDiscipline": "PASS",
+    "nonGoalAudit": "PASS",
+    "applyReadiness": "READY"
+  },
+  "applyConstraints": [
+    "Implement exactly the five selected dependency-cruiser rules/options frozen in design.md.",
+    "Preserve viaOnly.dependencyTypesNot=['type-only'] for runtime cycles.",
+    "Keep production devDependency enforcement runtime-only.",
+    "Keep production-to-test/spec one-way.",
+    "Keep undeclared-package health separate from unused-dependency entropy ownership.",
+    "Adopt dependency-cruiser through package.json/pnpm-lock truth; prepared environment is not repository truth.",
+    "Keep quality:dependency-health separate from quality:gate.",
+    "Do not add changed-file planning, baseline/cache, waivers, recommended bundle, Knip/orphan/unused ownership, Registry, Planner, or lifecycle state.",
+    "Keep detached node_modules archive regeneration outside this Change lifecycle."
+  ],
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

@@ -22,6 +22,17 @@
       },
       "createdByOwnerAuthorityRef": "owner:a2c375347a37c5a53b62b49a27b3530b4ffd72400d97fbaacea42d86475445f6",
       "resolution": null
+    },
+    {
+      "memoId": "structural-dependency-023-historical-continuity-gap",
+      "state": "open",
+      "title": "establish-structural-dependency-health-fitness 023 create-once Explore artifact missing (continuity exception)",
+      "note": "D02 Change establish-structural-dependency-health-fitness 的原始 create-once 023 Explore Run (20260830-023-explore) 字节已确认不可用：原始 payload d02-023-explore-author.zip 在本机及整机范围内均不存在，其 SHA-256 1c177e096e23b21403adae4b5e8cb7b9765d845fb2b6ecad4600edc3f3ae1383 无法从任何源恢复。\n\nOwner 于 2026-08-30 授权一次性历史连续性例外（A 方式）：不重建、不重构、不伪造缺失的 023 Run / explore.md / Owner ref / payload。保留 024 Reviewer 对原始 023 执行的精确引用与哈希证言（original 023 archive SHA-256 = 1c177e09...；Explore content SHA-256 = 3ed5e0dc...；coordination truth at Explore: establish-structural-dependency-health-fitness = active；activation provenance: exact Owner activate-change authority for this Delivery + Change + scope=[explore]）。\n\n因此本 Change 的 durable Run 链自 024-review-explore 起（024-029 完整），023 Explore 作为已知缺失历史 artifact，其 identity/hash 由下游 Reviewer 024 记录佐证，不进入 Git。archived Change history 接受此连续性缺口。\n\n未来 Delivery continuity / D03 工作应将此缺口视为已知历史不连续点，不应尝试回填伪造 023，而应依赖 024 Reviewer 证言与现有 024-029 链维持变更可信性。",
+      "source": {
+        "deliveryId": "20260829-02-lightweight-incremental-engineering-quality"
+      },
+      "createdByOwnerAuthorityRef": "owner:a2c375347a37c5a53b62b49a27b3530b4ffd72400d97fbaacea42d86475445f6",
+      "resolution": null
     }
   ]
 }
