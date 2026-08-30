@@ -1,0 +1,85 @@
+{
+  "runNumber": 37,
+  "kind": "external-orchestrator-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+  "changeId": "establish-high-confidence-repository-entropy-hygiene",
+  "action": "apply",
+  "runId": "20260830-037-apply",
+  "physicalRunPath": ".flowkit/runs/20260829-02-lightweight-incremental-engineering-quality/030-establish-high-confidence-repository-entropy-hygiene/20260830-037-apply",
+  "inputRunId": "20260830-036-review-propose",
+  "inputReviewArchiveSha256": "220cec672cd8ad5ed492295e867ffd54ab10644c05e7ea56beae34dbed44c4be",
+  "checkpointClaim": "45bf8355448ef8a279cc68405cf1d9b89ab2c5c7",
+  "skillsUsed": [
+    "openspec-apply-change",
+    "implementation-convergence"
+  ],
+  "toolIdentity": {
+    "node": "22.23.2",
+    "pnpm": "11.22.0",
+    "dependencyCruiser": "18.2.0",
+    "openspec": "1.10.0"
+  },
+  "implementationBoundary": {
+    "productionRoots": [
+      "src/cli/entrypoint.ts",
+      "src/domain/index.ts"
+    ],
+    "dependencyCruiserGraphExtractionOnly": true,
+    "orphanSemanticUsed": false,
+    "typeOnlyLocalEdgesAreLiveness": true,
+    "qualityGateMutation": false,
+    "dependencyHealthMutation": false,
+    "productionSourceMutation": false,
+    "knipAdoption": false,
+    "unusedPackageScanner": false,
+    "baselineWaiverCacheChangedFilePlanner": false,
+    "automaticCleanup": false,
+    "newRegistryPlatformLifecycleState": false
+  },
+  "verification": {
+    "focusedEntropyTests": "PASS 7/7",
+    "healthyBaseline": "PASS 18/18 reachable",
+    "isolatedDeadCounterexample": "PASS expected exit 1",
+    "connectedDeadSubgraphCounterexample": "PASS expected exit 1; all modules reported sorted",
+    "testOnlyReferenceCounterexample": "PASS expected exit 1",
+    "typeOnlyLiveness": "PASS",
+    "qualityEntropy": "PASS 18/18 reachable",
+    "qualityGate": "PASS",
+    "dependencyHealth": "PASS 0 violations; 46 modules / 160 dependencies",
+    "typecheck": "PASS",
+    "build": "PASS",
+    "openspecChangeStrict": "PASS",
+    "openspecAllStrict": "PASS 13/13",
+    "gitDiffCheck": "PASS"
+  },
+  "packageTruth": {
+    "dependencyCruiserSpecifier": "^18.2.0",
+    "dependencyCruiserLockedVersion": "18.2.0",
+    "knipPresent": false,
+    "pnpmLockChanged": false,
+    "dependencyGraphChanged": false,
+    "newPackageDependencies": 0,
+    "detachedNodeModulesArchiveInChange": false
+  },
+  "environmentConstraint": {
+    "suppliedNodeModulesSnapshotExactForCurrentPackageTruth": false,
+    "snapshotContainsRejectedExploreKnipMaterial": true,
+    "snapshotInitiallyMissingRootYamlLink": true,
+    "yamlCanonicalPackageTruthAlreadyPresent": true,
+    "executionOnlyYamlLinkRestored": true,
+    "pnpmVerificationMode": "execution-only verify-deps-before-run=warn",
+    "repositoryPackageTruthMutatedByEnvironmentRepair": false
+  },
+  "artifactHashes": {
+    "packageJsonSha256": "c79508605c34371eea6903f7dad39d388531f6b84e04c74d10ecd4938b4a9d76",
+    "pnpmLockSha256": "bf5ef071f2b4b8140f05493ebd53098660250f2cd5a834fe321ce8685bdb65e5",
+    "dependencyCruiserConfigSha256": "b2faff94dd1bb58d59f645ebdde50788c976da9ff638ba3c5ce16500e256b833",
+    "reachabilityScriptSha256": "af35327c5fb35fe6c6db7f50fa3c9dbaabff5ff51c757636d2a222a034887ea7",
+    "reachabilityTestSha256": "da3f7a2e29fa7899c660332f51ea8eb4c5b463e8bb034dc307f4231083d1f28f",
+    "tasksSha256": "04042bcae8a1e3037adaa7f956cf8170be618061fd5d6c665e04d07922dc295a"
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

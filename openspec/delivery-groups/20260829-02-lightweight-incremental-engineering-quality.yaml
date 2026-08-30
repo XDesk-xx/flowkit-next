@@ -83,7 +83,7 @@ changes:
     required: true
     dependsOn:
       - "establish-trusted-change-coordination-state-binding"
-    state: planned
+    state: completed
     architectureImpact: true
     outputs:
       - "Repository Entropy Hygiene contract"
@@ -156,5 +156,13 @@ ownerDecisions:
     deliveryId: "20260829-02-lightweight-incremental-engineering-quality"
     changeId: "establish-lightweight-incremental-engineering-gate"
     sourceRef: "owner-input:2026-08-30:activate-change:establish-lightweight-incremental-engineering-gate:explore"
+    scope:
+      - "explore"
+
+  - ref: "owner:80a65e4f9741fab0908c353d88cc654711a235139af1df303b94ccefff360203"
+    decision: "activate-change"
+    deliveryId: "20260829-02-lightweight-incremental-engineering-quality"
+    changeId: "establish-high-confidence-repository-entropy-hygiene"
+    sourceRef: "owner-input:2026-08-30:activate-change:establish-high-confidence-repository-entropy-hygiene:explore"
     scope:
       - "explore"

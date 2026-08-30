@@ -1,0 +1,43 @@
+{
+  "runNumber": 32,
+  "kind": "external-orchestrator-revise-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+  "changeId": "establish-high-confidence-repository-entropy-hygiene",
+  "action": "revise-explore",
+  "runId": "20260830-032-revise-explore",
+  "physicalRunPath": ".flowkit/runs/20260829-02-lightweight-incremental-engineering-quality/030-establish-high-confidence-repository-entropy-hygiene/20260830-032-revise-explore",
+  "inputRunId": "20260830-031-review-explore",
+  "reviewChainStartRunId": "20260830-030-explore",
+  "triggerFindingId": "RE-031-001",
+  "skillUsed": ".agents/skills/revise-explore",
+  "checkpointClaim": "45bf8355448ef8a279cc68405cf1d9b89ab2c5c7",
+  "inputReviewerArchiveSha256": "03254d992c2c607c50d5466b3d7c416bfeeb573b5c08499c0df075622b654f21",
+  "inputExploreSha256": "e66b036796a9382f43fe97b245ad5391d77898abbeb272b9c39695da5d923bef",
+  "focusedProof": {
+    "rejectedMechanicalClaim": "dependency-cruiser orphan=true is not equivalent to unreachable-from-production-roots",
+    "correctedMechanism": "dependency-cruiser src graph plus bounded explicit-root reachability walk",
+    "productionRoots": [
+      "src/cli/entrypoint.ts",
+      "src/domain/index.ts"
+    ],
+    "currentProductionModules": 18,
+    "currentReachableModules": 18,
+    "currentUnreachableModules": 0,
+    "currentBaselineExit": 0,
+    "connectedDeadSubgraphModules": 2,
+    "connectedDeadSubgraphDetected": true,
+    "connectedDeadSubgraphExit": 1,
+    "rootReachabilityRuntimeSeconds": 1.03,
+    "rootReachabilityMaxRssKb": 164556,
+    "knipDependencyOnlyBranchReopened": false,
+    "baselineWaiverCacheChangedFilePlannerAdded": false,
+    "qualityGateChanged": false
+  },
+  "exploreArtifactSha256": "27a99bc621748103bd5aeeb8ceed866721be7675bdfedbf75a58d44259c81ca8",
+  "productionMutation": "NONE",
+  "proposalArtifactsCreated": "NONE",
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

@@ -17,7 +17,9 @@
     "lint": "eslint src tests",
     "check:forbidden-tracked-artifacts": "node scripts/check-forbidden-tracked-artifacts.mjs",
     "quality:gate": "git diff --check HEAD && pnpm format:check && pnpm lint && pnpm check:forbidden-tracked-artifacts",
-    "quality:dependency-health": "depcruise --config dependency-cruiser.config.mjs --output-type err src tests"
+    "quality:dependency-health": "depcruise --config dependency-cruiser.config.mjs --output-type err src tests",
+    "test:entropy": "node --test tests/unit/quality/production-reachability.test.mjs",
+    "quality:entropy": "node scripts/check-production-reachability.mjs"
   },
   "dependencies": {
     "yaml": "^2.9.0"

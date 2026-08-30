@@ -1,0 +1,37 @@
+{
+  "runNumber": 32,
+  "kind": "external-orchestrator-revise-explore-result",
+  "role": "author",
+  "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+  "changeId": "establish-high-confidence-repository-entropy-hygiene",
+  "action": "revise-explore",
+  "runId": "20260830-032-revise-explore",
+  "executionStatus": "completed",
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-explore",
+  "resolvedFindings": [
+    {
+      "id": "RE-031-001",
+      "resolution": "Removed dependency-cruiser orphan=true as the production dead-node contract. The revised proof uses dependency-cruiser only as the src graph extractor and a bounded explicit-root reachability walk; the Reviewer-required internally connected dead two-module subgraph is detected and fails while the accepted repository remains 18/18 reachable."
+    }
+  ],
+  "checks": {
+    "currentRootReachabilityBaseline": "PASS: 18 production modules / 18 reachable / 0 unreachable",
+    "connectedDeadSubgraphCounterexample": "PASS: 2 internally connected unreachable production modules detected; exit 1",
+    "orphanSemanticMismatchCorrected": "PASS",
+    "knipDependencyOnlyBranch": "PRESERVED / NOT REOPENED",
+    "broadExportTypeFindings": "STILL EXCLUDED",
+    "dependencyHealthOwnershipOverlap": "NONE",
+    "baselineWaiverCacheChangedFilePlanner": "NONE",
+    "qualityGateMutation": "NONE",
+    "productionSourceMutation": "NONE",
+    "productionTestMutation": "NONE",
+    "packageLockMutation": "NONE",
+    "proposalArtifactsCreated": "NONE"
+  },
+  "proposalReadiness": "READY FOR INDEPENDENT RE-REVIEW; RE-031-001 resolved by decisive connected-dead-subgraph proof",
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

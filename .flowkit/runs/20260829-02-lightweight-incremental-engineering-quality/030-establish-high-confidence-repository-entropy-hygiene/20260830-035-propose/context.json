@@ -1,0 +1,71 @@
+{
+  "runNumber": 35,
+  "kind": "external-orchestrator-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+  "changeId": "establish-high-confidence-repository-entropy-hygiene",
+  "action": "propose",
+  "runId": "20260830-035-propose",
+  "physicalRunPath": ".flowkit/runs/20260829-02-lightweight-incremental-engineering-quality/030-establish-high-confidence-repository-entropy-hygiene/20260830-035-propose",
+  "inputRunId": "20260830-034-review-explore",
+  "inputReviewArchiveSha256": "c5e741fdd6447c6fbcc3632ab94f0c62db1ecfb47ef89758efaba3c322ab1cb1",
+  "approvedExploreSha256": "480bd34ba99a4ceaecfbebfcdc302650833f821bbb3ea87afe3f0d3fa83c0cd6",
+  "checkpointClaim": "45bf8355448ef8a279cc68405cf1d9b89ab2c5c7",
+  "changeStartSequence": 30,
+  "reviewerVerdict": "approved",
+  "skillsUsed": [
+    "openspec-propose",
+    "proposal-convergence"
+  ],
+  "proposalConstraintsPreserved": {
+    "exactProductionRoots": [
+      "src/cli/entrypoint.ts",
+      "src/domain/index.ts"
+    ],
+    "dependencyCruiserGraphExtractionOnly": true,
+    "orphanSemanticRejected": true,
+    "boundedLocalSrcReachability": true,
+    "unreachableSrcFails": true,
+    "healthyZeroBaseline": true,
+    "isolatedUnreachableFixture": true,
+    "connectedDeadSubgraphFixture": true,
+    "testOnlyReferenceDoesNotCreateProductionLiveness": true,
+    "independentQualityEntropyCommand": true,
+    "knipAdoption": false,
+    "homegrownUnusedPackageScanner": false,
+    "unusedDependenciesExportsTypes": "DEFERRED_OR_EXCLUDED",
+    "baselineWaiverCacheChangedFilePlanner": false,
+    "qualityGateMutation": false,
+    "dependencyHealthOwnershipDuplication": false,
+    "newLifecycleOrRegistryPlatform": false
+  },
+  "proposalSanityProbe": {
+    "tool": "dependency-cruiser",
+    "toolVersion": "18.2.0",
+    "surface": "src",
+    "productionModules": 18,
+    "reachableModules": 18,
+    "unreachableModules": 0,
+    "purpose": "proposal graph-semantics sanity only; no implementation mutation"
+  },
+  "validation": {
+    "planningArtifacts": "4/4 DONE",
+    "openspecChangeStrict": "PASS",
+    "openspecAllStrict": "PASS 13/13",
+    "gitDiffCheck": "PASS",
+    "productionMutation": "NONE",
+    "packageMutation": "NONE",
+    "knipPackageTruth": "ABSENT"
+  },
+  "artifacts": {
+    "openspecMetadataSha256": "9187547d8cc17017ebd44132527d2d5e096d1ef9705de80cc4f1cf34531f6976",
+    "proposalSha256": "dc2976f8e3df55ffe1e7e562cc7a8ee8b1def063501346229030fcdc8f59c820",
+    "designSha256": "1d0ed824945254202c02d08035e851d1e8649a6f7d129733d18207fd47eabd6d",
+    "specSha256": "0de879c222a421b85e5e119f795dcda1fce01146ce36bfa13f801de5da114b72",
+    "tasksSha256": "e34394f18899a0e1fb03ec1bafaa2343a2e2890a9bf30e8381ef743146a56461"
+  },
+  "blockingFindingIds": [],
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}
