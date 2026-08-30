@@ -1,0 +1,53 @@
+{
+  "runNumber": 12,
+  "kind": "external-orchestrator-review-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+  "changeId": "establish-trusted-change-coordination-state-binding",
+  "action": "review-apply",
+  "runId": "20260830-012-review-apply",
+  "physicalRunPath": ".flowkit/runs/20260829-02-lightweight-incremental-engineering-quality/001-establish-trusted-change-coordination-state-binding/20260830-012-review-apply",
+  "inputRunId": "20260830-011-apply",
+  "reviewChainStartRunId": "20260830-001-explore",
+  "inputArchiveSha256": "7feef45d69bcbfaf521fe857837097520f3b14103b4613848f80a41a9ae46991",
+  "checkpointClaim": "0e6f74617300f13fd8676d8bda8c7904909f7dc4",
+  "independentChecks": {
+    "artifactHashes": "PASS",
+    "proposalFidelity": "PASS",
+    "trustedResolverImplementation": "PASS",
+    "activeOnlyDependencyCompletion": "PASS",
+    "plannedStateReportable": "PASS",
+    "exactActivationProvenance": "PASS",
+    "statusNextSharedResolver": "PASS",
+    "callerChangeStateRemoved": "PASS",
+    "policyImplementationDiff": "EMPTY",
+    "checkpointAuthoritySeparate": "PASS",
+    "packageLockDirectYamlTruth": "PASS",
+    "gitDiffCheck": "PASS",
+    "openspecChangeStrict": "PASS",
+    "openspecAllStrict": "11/11 PASS",
+    "preparedArchiveAsIsYamlResolution": {
+      "status": "FAIL",
+      "topLevelNodeModulesYaml": "MISSING",
+      "directImport": "ERR_MODULE_NOT_FOUND",
+      "typecheck": "TS2307 Cannot find module 'yaml'"
+    },
+    "reviewerExternalRelinkReproduction": {
+      "environmentMutationClass": "external execution-environment preparation only",
+      "yamlLink": "node_modules/yaml -> .pnpm/yaml@2.9.0/node_modules/yaml",
+      "formatCheck": "PASS",
+      "typecheck": "PASS",
+      "build": "PASS",
+      "domainTests": "124/124 PASS",
+      "acceptanceTests": "4/4 PASS"
+    },
+    "genericSubsystemExpansion": "NONE",
+    "internalVersionFamilies": "NONE"
+  },
+  "blockingFindingIds": [
+    "RA-012-001"
+  ],
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

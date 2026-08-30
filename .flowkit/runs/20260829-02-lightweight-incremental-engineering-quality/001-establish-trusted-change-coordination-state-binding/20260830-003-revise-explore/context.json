@@ -1,0 +1,36 @@
+{
+  "runNumber": 3,
+  "kind": "external-orchestrator-revise-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+  "changeId": "establish-trusted-change-coordination-state-binding",
+  "action": "revise-explore",
+  "runId": "20260830-003-revise-explore",
+  "physicalRunPath": ".flowkit/runs/20260829-02-lightweight-incremental-engineering-quality/001-establish-trusted-change-coordination-state-binding/20260830-003-revise-explore",
+  "inputRunId": "20260830-002-review-explore",
+  "reviewChainStartRunId": "20260830-001-explore",
+  "triggerFindingId": "RE-002-001",
+  "skillUsed": ".agents/skills/revise-explore",
+  "checkpointClaim": "0e6f74617300f13fd8676d8bda8c7904909f7dc4",
+  "focusedProof": {
+    "structuralValidator": {
+      "scopeExplore": true,
+      "scopeCheckpoint": true,
+      "scopePropose": true,
+      "conclusion": "structural validity does not establish activation eligibility"
+    },
+    "currentD02ActivationScope": ["explore"],
+    "d01PostInitialBootstrapDistinctActivationChanges": 11,
+    "d01PostInitialBootstrapAllExactExploreScope": true,
+    "initialD01BootstrapScopeObserved": ["activate-change", "explore"],
+    "frozenCurrentEligibility": "decision=activate-change + exact Delivery/Change + exact scope=[explore]",
+    "wrongScopeNegativeCase": "structural-valid scope=[checkpoint] must not yield lifecycle-enterable active"
+  },
+  "exploreArtifactSha256": "6e9a5f05c042be359c3f4d8d02490b20f4189c4d798ad011b3674e9249ae5042",
+  "openSpecStatus": "0/4 formal Proposal artifacts complete; proposal remains next only after independent review-explore approval",
+  "productionMutation": "NONE",
+  "proposalArtifactsCreated": "NONE",
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

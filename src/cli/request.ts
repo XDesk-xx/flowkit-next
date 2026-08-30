@@ -6,7 +6,6 @@ import {
   type DeliveryId,
 } from "../domain/identity.js";
 import { isRunSequence } from "../domain/run-result-persistence.js";
-import { isChangeState, type ChangeState } from "../domain/state.js";
 
 export type FoundationCliCommand = "status" | "next" | "doctor";
 
@@ -32,7 +31,6 @@ interface CommonRunRequest {
   readonly repositoryRoot: string;
   readonly deliveryId: DeliveryId;
   readonly changeId: ChangeId;
-  readonly changeState: ChangeState;
   readonly changeStartSequence: number;
   readonly flowkitHome: string;
 }
@@ -61,7 +59,6 @@ const COMMON_FIELDS = new Set([
   "repositoryRoot",
   "deliveryId",
   "changeId",
-  "changeState",
   "changeStartSequence",
   "currentRunId",
   "flowkitHome",
@@ -125,9 +122,6 @@ function parseCommon(
       "deliveryId/changeId must be canonical semantic ids",
     );
   }
-  if (!isChangeState(value.changeState)) {
-    fail("invalid-request", "changeState is invalid");
-  }
   if (!isRunSequence(value.changeStartSequence)) {
     fail("invalid-request", "changeStartSequence is invalid");
   }
@@ -135,7 +129,6 @@ function parseCommon(
     repositoryRoot,
     deliveryId,
     changeId,
-    changeState: value.changeState,
     changeStartSequence: value.changeStartSequence,
     flowkitHome,
   };

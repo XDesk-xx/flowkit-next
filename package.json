@@ -15,6 +15,9 @@
     "build": "tsc -p tsconfig.build.json",
     "test:acceptance": "node --import tsx --test tests/acceptance/*.test.ts"
   },
+  "dependencies": {
+    "yaml": "^2.9.0"
+  },
   "devDependencies": {
     "@eslint/js": "^9.0.0",
     "@types/node": "^22.0.0",

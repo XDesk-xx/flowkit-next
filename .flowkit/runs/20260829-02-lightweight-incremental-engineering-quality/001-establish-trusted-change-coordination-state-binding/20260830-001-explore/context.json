@@ -1,0 +1,83 @@
+{
+  "runNumber": 1,
+  "kind": "external-orchestrator-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "bootstrapAuthorityBoundary": "Owner explicitly authorized D02 composition revision plus exact corrective Change activation/Explore; the pre-correction CLI is only the bootstrap execution transport and is not claimed to prove its own activation authority.",
+  "role": "author",
+  "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+  "changeId": "establish-trusted-change-coordination-state-binding",
+  "action": "explore",
+  "runId": "20260830-001-explore",
+  "physicalRunPath": ".flowkit/runs/20260829-02-lightweight-incremental-engineering-quality/001-establish-trusted-change-coordination-state-binding/20260830-001-explore",
+  "inputRunId": null,
+  "checkpointBase": {
+    "bundle": "flowkit-next-delivery-20260829-02-lightweight-incremental-engineering-quality-0e6f746.bundle",
+    "bundleSha256": "d15dfd72a9d8a6ad5259b960f479c4eaf87a3b01823057df18101895e87b7724",
+    "gitRevision": "0e6f74617300f13fd8676d8bda8c7904909f7dc4",
+    "gitRevisionVerification": "verified by local git clone from uploaded bundle and exact git rev-parse HEAD",
+    "branch": "delivery/20260829-02-lightweight-incremental-engineering-quality"
+  },
+  "reviewBasis": {
+    "artifact": "20260830-d02-foundation-coordination-authority-gap-refined-correction-final-reviewer-to-author.md",
+    "sha256": "5fae6eb4c7e5e53aaefaab87ead2a29a15d0302800a3b094751566925c7724e3",
+    "verdict": "APPROVED",
+    "approvedChangeId": "establish-trusted-change-coordination-state-binding",
+    "approvedCompositionRule": "all four normal D02 quality Changes hard-depend on corrective Change completion"
+  },
+  "authorization": {
+    "compositionRevision": {
+      "ref": "owner:3a07ac55214b53fb966a75a342e84ebcd2a65f3e561786030f7974e1490f83b2",
+      "decision": "refine-delivery-plan",
+      "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+      "sourceRef": "owner-input:2026-08-30:authorize-d02-composition-revision-and-activate-corrective-change:establish-trusted-change-coordination-state-binding:explore-proof-based:composition",
+      "scope": [
+        "add-corrective-change",
+        "add-dependencies"
+      ]
+    },
+    "activation": {
+      "ref": "owner:99278633f9fdd98d434cf7072e516eda70cda792ea36ad3979d34a30e8024e53",
+      "decision": "activate-change",
+      "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+      "changeId": "establish-trusted-change-coordination-state-binding",
+      "sourceRef": "owner-input:2026-08-30:authorize-d02-composition-revision-and-activate-corrective-change:establish-trusted-change-coordination-state-binding:explore-proof-based:activation",
+      "scope": [
+        "explore"
+      ]
+    }
+  },
+  "executionMode": "external-orchestrator-bootstrap-detached-linux-openspec-explore-proof-based",
+  "runtime": {
+    "node": "22.23.2",
+    "repositoryNodeEngine": ">=22.20.0",
+    "pnpmFixture": "11.22.0",
+    "openspec": "1.10.0",
+    "archify": "2.15.0"
+  },
+  "skillsUsed": [
+    "openspec-explore",
+    "explore-proof-based"
+  ],
+  "proof": {
+    "exploreArtifactSha256": "400c36cf5bc55fa889f7769577f6c921d034633d076ab3b59308ecb8b9410b06",
+    "plannedArchitectureSha256": "41e28c9b22952d17c51bea6c77bcd70d175357f932b2e7aaaa7382b36ba7efde",
+    "compareSha256": "7751cd7a2377d35a9f467a78b6d9d20920ec0ba5b86a6651c2a023a65f8caef5",
+    "currentCliBypassProof": {
+      "durableGateState": "planned",
+      "callerGateState": "active",
+      "observedDecision": "READY_ACTION(explore)",
+      "durableCorrectiveState": "active",
+      "callerCorrectiveState": "planned",
+      "observedCorrectiveDecision": "BLOCKED(change-not-active)"
+    },
+    "matchingActivationOwnerFactStructuralValidation": "PASS",
+    "productionDeliveryGroupReaders": 0,
+    "productionDependsOnReaders": 0,
+    "canonicalOpenSpecSpecs": "10/10 strict PASS",
+    "archifyPlanned": "9/9 PASS, 0 errors, 0 warnings",
+    "archifyCurrentToPlanned": "28/28 PASS"
+  },
+  "detachedValidationNote": "pnpm script invocation was intentionally not used after pnpm attempted to recreate detached node_modules and reach the network; the exact pre-D02 node_modules snapshot was restored and repository checks were executed directly through the archived binaries.",
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

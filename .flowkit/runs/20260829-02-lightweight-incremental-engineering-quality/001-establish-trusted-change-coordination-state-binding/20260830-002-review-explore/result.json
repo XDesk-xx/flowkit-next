@@ -1,0 +1,46 @@
+{
+  "runNumber": 2,
+  "kind": "external-orchestrator-review-explore-result",
+  "role": "reviewer",
+  "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+  "changeId": "establish-trusted-change-coordination-state-binding",
+  "action": "review-explore",
+  "runId": "20260830-002-review-explore",
+  "executionStatus": "completed",
+  "authorConclusion": null,
+  "reviewerVerdict": "changes-requested",
+  "verificationVerdict": null,
+  "nextBoundary": "revise-explore",
+  "blockingFindings": [
+    {
+      "id": "RE-002-001",
+      "title": "Structural OwnerAuthorityFact validity is not activation eligibility",
+      "requiredRevision": "Prove and freeze the concrete activate-change decision/scope eligibility used as trusted active-state provenance for the exact Delivery+Change identity, and add a fail-closed negative proof for a structurally-valid but non-eligible/wrong-scope authority fact. Do not create a generic authority registry or broaden checkpoint authority."
+    }
+  ],
+  "checks": {
+    "realUseCaseAlignment": "PASS",
+    "scopeDiscipline": "PASS",
+    "factsAndAssumptions": "PASS except active-provenance eligibility overclaim",
+    "riskCoverage": "BLOCKED by RE-002-001",
+    "proofQuality": "PASS except Proof C scope/eligibility gap",
+    "stopDiscipline": "PASS after smallest missing proof is addressed",
+    "proposalReadiness": "NOT READY",
+    "bootstrapGapReproduction": "PASS",
+    "policyPurity": "PASS",
+    "deliveryManifestReuseBoundary": "PASS",
+    "dependencyLegalityBoundary": "PASS",
+    "statusNextConsistency": "PASS",
+    "internalVersioningBoundary": "PASS",
+    "productionMutation": "NONE in supplied delta payload"
+  },
+  "revisionGuidance": [
+    "Keep the existing correction scope and all approved proof branches.",
+    "Revise Proof C so that structural validation is explicitly separated from activation eligibility.",
+    "Derive the eligible activate-change scope semantics from current authority/lifecycle evidence; do not guess or generalize.",
+    "Add a negative wrong-scope OwnerAuthorityFact proof that must fail closed.",
+    "Do not reopen Policy purity, status/next seam, D02 hard dependsOn, parser/tooling, or other D02 quality Changes."
+  ],
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

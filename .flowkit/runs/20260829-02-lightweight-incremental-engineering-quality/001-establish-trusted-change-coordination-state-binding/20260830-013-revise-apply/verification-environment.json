@@ -1,0 +1,47 @@
+{
+  "runNumber": 13,
+  "kind": "external-execution-environment-evidence",
+  "purpose": "RA-012-001 reproducible Apply verification environment",
+  "candidateCheckpointClaim": "0e6f74617300f13fd8676d8bda8c7904909f7dc4",
+  "candidatePackageIdentity": {
+    "packageJsonSha256": "ce6a10f122bcb0f592a666ece00acc56a54ae507e7ffdc792b699839964c35fc",
+    "pnpmLockSha256": "3b7b74ced93cce9e7b0e14cc51feeb2354e57b74ba1c611c0a4ffc6b6e8ce8d9",
+    "declaredYaml": "^2.9.0",
+    "lockedYaml": "2.9.0"
+  },
+  "basePreparedDependencyArchive": {
+    "fileName": "flowkit-next-d02-dependency-environment-linux-x64-node22.23.2-pnpm11.22.0-runtime-v1.tar.gz",
+    "sha256": "7e258d8781ce53ef768f01023f47ff4be6c94696167ac1fe1bd92114c98bd801",
+    "asIsDirectYamlLink": "MISSING",
+    "transitiveYamlPackage": "node_modules/.pnpm/yaml@2.9.0/node_modules/yaml"
+  },
+  "externalPreparation": {
+    "class": "external detached execution-environment preparation only",
+    "workingPathUsedForVerification": "/mnt/data/d02-013-exact-env",
+    "steps": [
+      "Copy the exact 011 candidate working tree excluding node_modules.",
+      "Restore the prepared D02 dependency archive as-is.",
+      "Assert node_modules/yaml is absent before preparation.",
+      "Create node_modules/yaml -> .pnpm/yaml@2.9.0/node_modules/yaml to reflect the candidate direct dependency layout.",
+      "Run verification with direct Node/tool binaries so pnpm does not reconstruct node_modules from a missing content-addressable store."
+    ],
+    "directYamlLink": "node_modules/yaml -> .pnpm/yaml@2.9.0/node_modules/yaml",
+    "archiveRegenerated": false,
+    "changeTask": false,
+    "changeCompletionCondition": false
+  },
+  "runtimeIdentity": {
+    "nodeVersion": "22.23.2",
+    "nodeRuntimeArchiveSha256": "29331fa22523b7fce59965e46627ecbc87019ac74e0e6abf9f61284e0760f755",
+    "openspecVersion": "1.10.0",
+    "openspecRuntimeArchiveSha256": "4fb0b870d9523daebda8becaf4202397da342bc39dde3961d8dd4392c72e2b68",
+    "archifyVersionPresentInFlowkitHome": "2.15.0",
+    "flowkitHomeUsedForAcceptance": "/mnt/data/d02-runtime-011"
+  },
+  "importantBoundary": {
+    "oldPreparedArchiveAsIsDirectImportYaml": "FAIL / not claimed",
+    "exactExternallyPreparedEnvironmentDirectImportYaml": "PASS",
+    "cleanOfflineNodeModulesReconstruction": "NOT CLAIMED",
+    "reason": "The supplied prepared dependency artifact is a node_modules snapshot rather than a pnpm content-addressable store. Detached archive/store regeneration remains outside this OpenSpec Change."
+  }
+}

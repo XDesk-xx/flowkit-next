@@ -1,0 +1,43 @@
+{
+  "runNumber": 4,
+  "kind": "external-orchestrator-review-explore-result",
+  "role": "reviewer",
+  "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+  "changeId": "establish-trusted-change-coordination-state-binding",
+  "action": "review-explore",
+  "runId": "20260830-004-review-explore",
+  "executionStatus": "completed",
+  "reviewerVerdict": "changes-requested",
+  "nextBoundary": "revise-explore",
+  "resolvedFindings": [
+    "RE-002-001"
+  ],
+  "blockingFindings": [
+    {
+      "id": "RE-004-001",
+      "title": "Canonical authority-eligibility ownership is not reconciled",
+      "requiredRevision": "Prove and freeze the minimal canonical ownership refinement: structural validator owns wire validity; trusted coordination resolver owns activate-change provenance recognition used to derive canonical ChangeState; pure Policy owns legal next-boundary calculation from canonical resolved facts and retains existing Policy-specific Owner correction eligibility. Reconcile the existing lifecycle-authority-and-identity normative wording before Proposal."
+    }
+  ],
+  "checks": {
+    "focusedRevision": "PASS",
+    "priorBlockerClosure": "PASS",
+    "historicalActivationScopeEvidence": "PASS",
+    "wrongScopeNegativeProof": "PASS",
+    "policyPurity": "PASS",
+    "statusNextConsistency": "PASS",
+    "dependencyLegality": "PASS",
+    "scopeDiscipline": "PASS",
+    "canonicalContractConsistency": "BLOCKED by RE-004-001",
+    "proposalReadiness": "NOT READY"
+  },
+  "revisionGuidance": [
+    "Do not reopen Proof C or change the exact scope=[explore] result.",
+    "Add only the missing canonical ownership proof and expected spec-delta wording.",
+    "Explicitly reconcile lifecycle-authority-and-identity's current 'eligibility by later Policy contract' wording with pre-Policy activation-provenance recognition.",
+    "Keep Policy IO-free and do not create a general authority resolver/registry.",
+    "Do not reopen D02 dependency composition, status/next seam, parser/tooling, or any normal D02 quality Change."
+  ],
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

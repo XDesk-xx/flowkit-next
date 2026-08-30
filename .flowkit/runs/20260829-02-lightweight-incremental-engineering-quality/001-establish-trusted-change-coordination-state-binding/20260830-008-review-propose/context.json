@@ -1,0 +1,38 @@
+{
+  "runNumber": 8,
+  "kind": "external-orchestrator-review-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+  "changeId": "establish-trusted-change-coordination-state-binding",
+  "action": "review-propose",
+  "runId": "20260830-008-review-propose",
+  "physicalRunPath": ".flowkit/runs/20260829-02-lightweight-incremental-engineering-quality/001-establish-trusted-change-coordination-state-binding/20260830-008-review-propose",
+  "inputRunId": "20260830-007-propose",
+  "reviewChainStartRunId": "20260830-001-explore",
+  "inputArchiveSha256": "919ffcdc943a79d3cba27e0710f562a7e112a5dff5e8795aad30b832531d6fc9",
+  "checkpointClaim": "0e6f74617300f13fd8676d8bda8c7904909f7dc4",
+  "independentChecks": {
+    "openspecChangeStrict": "PASS",
+    "openspecAllStrict": "11/11 PASS",
+    "proposalArtifactHashes": "PASS; all six hashes match Author context",
+    "canonicalAuthorityOwnership": "PASS",
+    "activationScopeExactExplore": "PASS",
+    "wrongScopeFailClosed": "PASS",
+    "policyPurity": "PASS",
+    "statusNextSharedResolver": "PASS",
+    "callerChangeStateDeauthoritization": "PASS",
+    "d02HardDependencyComposition": "PASS",
+    "genericAuthoritySubsystem": "NONE",
+    "secondCoordinationStore": "NONE",
+    "internalVersionFamilies": "NONE",
+    "dependencyCompletionScope": "BLOCKING: foundation-cli spec over-broadens active-only Explore proof",
+    "environmentPackagingBoundary": "BLOCKING: tasks/design pull detached node_modules packaging into OpenSpec Change scope"
+  },
+  "blockingFindingIds": [
+    "RP-008-001",
+    "RP-008-002"
+  ],
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

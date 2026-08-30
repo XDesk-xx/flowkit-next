@@ -39,6 +39,31 @@ interface Fixture {
   readonly archifyMarker: string;
 }
 
+async function writeCoordinationManifest(
+  repositoryRoot: string,
+  state: "planned" | "active" | "completed" | "cancelled" = "active",
+): Promise<void> {
+  const dir = path.join(repositoryRoot, "openspec", "delivery-groups");
+  await mkdir(dir, { recursive: true });
+  await writeFile(
+    path.join(dir, `${DELIVERY}.yaml`),
+    `id: ${DELIVERY}
+changes:
+  - id: ${CHANGE}
+    state: ${state}
+    dependsOn: []
+ownerDecisions:
+  - ref: owner:${"a".repeat(64)}
+    decision: activate-change
+    deliveryId: ${DELIVERY}
+    changeId: ${CHANGE}
+    sourceRef: owner-test
+    scope:
+      - explore
+`,
+  );
+}
+
 async function createFixture(): Promise<Fixture> {
   const root = await mkdtemp(path.join(os.tmpdir(), "flowkit-cli-"));
   const repositoryRoot = path.join(root, "repo");
@@ -122,6 +147,7 @@ process.exit(1);
     }
   }
 
+  await writeCoordinationManifest(repositoryRoot);
   return { root, repositoryRoot, flowkitHome, archifyMarker };
 }
 
@@ -192,7 +218,6 @@ function common(fixture: Fixture) {
     repositoryRoot: fixture.repositoryRoot,
     deliveryId: DELIVERY,
     changeId: CHANGE,
-    changeState: "active" as const,
     changeStartSequence: START,
     flowkitHome: fixture.flowkitHome,
   };
@@ -213,7 +238,6 @@ test("command and request parsing stay closed and distinguish explicit null", ()
     repositoryRoot: "/repo",
     deliveryId: DELIVERY,
     changeId: CHANGE,
-    changeState: "active",
     changeStartSequence: START,
     currentRunId: null,
     flowkitHome: "/home",
@@ -227,6 +251,20 @@ test("command and request parsing stay closed and distinguish explicit null", ()
         deliveryId: DELIVERY,
         changeId: CHANGE,
         changeState: "active",
+        changeStartSequence: START,
+        currentRunId: null,
+        flowkitHome: "/home",
+      }),
+    (error: unknown) =>
+      error instanceof FoundationCliInputError &&
+      error.kind === "invalid-request",
+  );
+  assert.throws(
+    () =>
+      parseFoundationCliRequest("next", {
+        repositoryRoot: "/repo",
+        deliveryId: DELIVERY,
+        changeId: CHANGE,
         changeStartSequence: START,
         flowkitHome: "/home",
       }),
@@ -317,6 +355,38 @@ test("malformed or mismatched exact Run fails closed without alternate selection
       nextBoundary: "apply",
     });
     await writeRun(fixture, 101, other);
+    await writeFile(
+      path.join(
+        fixture.repositoryRoot,
+        "openspec",
+        "delivery-groups",
+        `${DELIVERY}.yaml`,
+      ),
+      `id: ${DELIVERY}
+changes:
+  - id: ${CHANGE}
+    state: active
+    dependsOn: []
+  - id: other-change
+    state: active
+    dependsOn: []
+ownerDecisions:
+  - ref: owner:${"a".repeat(64)}
+    decision: activate-change
+    deliveryId: ${DELIVERY}
+    changeId: ${CHANGE}
+    sourceRef: owner-test
+    scope:
+      - explore
+  - ref: owner:${"b".repeat(64)}
+    decision: activate-change
+    deliveryId: ${DELIVERY}
+    changeId: other-change
+    sourceRef: owner-test-other
+    scope:
+      - explore
+`,
+    );
     await assert.rejects(
       executeFoundationCliRequest({
         command: "next",
@@ -386,6 +456,7 @@ test("status reports exact selected Run and approved OpenSpec facts only", async
       request: { ...common(fixture), currentRunId: selected.context.runId },
     });
     assert.equal(result.kind, "status");
+    assert.equal(result.changeState, "active");
     assert.equal(result.currentRun.runId, selected.context.runId);
     assert.equal(result.openSpec.exactChange?.changeId, CHANGE);
     assert.deepEqual(result.openSpec.activeChangeIds, [CHANGE]);

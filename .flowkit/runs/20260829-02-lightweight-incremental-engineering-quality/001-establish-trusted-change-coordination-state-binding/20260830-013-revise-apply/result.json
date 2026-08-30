@@ -1,0 +1,50 @@
+{
+  "runNumber": 13,
+  "kind": "external-orchestrator-revise-apply-result",
+  "role": "author",
+  "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+  "changeId": "establish-trusted-change-coordination-state-binding",
+  "action": "revise-apply",
+  "runId": "20260830-013-revise-apply",
+  "executionStatus": "completed",
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-apply",
+  "resolvedFindings": [
+    {
+      "id": "RA-012-001",
+      "resolution": "Corrected 011 environment claim; prepared a reproducible external exact candidate environment from the documented D02 dependency archive plus the direct yaml link required by exact candidate package/lock truth; reran declared checks without production/spec/task changes."
+    }
+  ],
+  "checks": {
+    "oldPreparedArchiveAsIsDirectYamlResolution": "NOT CLAIMED / Reviewer-confirmed FAIL",
+    "externalExactEnvironmentDirectYamlResolution": "PASS",
+    "packageLockDirectYamlTruth": "PASS",
+    "formatCheck": "PASS",
+    "typecheck": "PASS",
+    "build": "PASS",
+    "domainTests": "124/124 PASS",
+    "acceptanceTests": "4/4 PASS",
+    "openspecChangeStrict": "PASS",
+    "openspecAllStrict": "11/11 PASS",
+    "gitDiffCheck": "PASS",
+    "policyImplementationDiff": "EMPTY",
+    "nonGoalAudit": "PASS",
+    "cleanOfflineNodeModulesReconstruction": "NOT CLAIMED \u2014 detached environment/store packaging remains outside Change completion"
+  },
+  "environmentIdentity": {
+    "dependencyArchiveSha256": "7e258d8781ce53ef768f01023f47ff4be6c94696167ac1fe1bd92114c98bd801",
+    "packageJsonSha256": "ce6a10f122bcb0f592a666ece00acc56a54ae507e7ffdc792b699839964c35fc",
+    "pnpmLockSha256": "3b7b74ced93cce9e7b0e14cc51feeb2354e57b74ba1c611c0a4ffc6b6e8ce8d9",
+    "nodeVersion": "22.23.2",
+    "yamlVersion": "2.9.0",
+    "directLink": "node_modules/yaml -> .pnpm/yaml@2.9.0/node_modules/yaml",
+    "flowkitHome": "/mnt/data/d02-runtime-011",
+    "openspecVersion": "1.10.0"
+  },
+  "productionMutation": "NONE",
+  "contractMutation": "NONE",
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

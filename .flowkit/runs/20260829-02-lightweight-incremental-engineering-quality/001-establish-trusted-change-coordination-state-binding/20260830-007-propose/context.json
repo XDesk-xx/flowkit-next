@@ -1,0 +1,37 @@
+{
+  "runNumber": 7,
+  "kind": "external-orchestrator-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+  "changeId": "establish-trusted-change-coordination-state-binding",
+  "action": "propose",
+  "runId": "20260830-007-propose",
+  "physicalRunPath": ".flowkit/runs/20260829-02-lightweight-incremental-engineering-quality/001-establish-trusted-change-coordination-state-binding/20260830-007-propose",
+  "inputRunId": "20260830-006-review-explore",
+  "reviewChainStartRunId": "20260830-001-explore",
+  "inputReviewArchiveSha256": "a18b91376040297a6382a43d0f4d32a3b4919941e6f7c76d50791dcc2edd51a9",
+  "skillUsed": ".agents/skills/openspec-propose",
+  "checkpointClaim": "0e6f74617300f13fd8676d8bda8c7904909f7dc4",
+  "proposalArtifactsSha256": {
+    "openspec/changes/establish-trusted-change-coordination-state-binding/proposal.md": "0458eacd2a6793629e40d951bab016050fd0d645804c260309ff9cc38f4d3b81",
+    "openspec/changes/establish-trusted-change-coordination-state-binding/design.md": "095496600ca0ee8ba9d179ab518aebd9e9bccb88c09663b2e4a582ee2ff5f163",
+    "openspec/changes/establish-trusted-change-coordination-state-binding/tasks.md": "06924cd49bd23687db21b7244cb32448647a9503418395e094f276d69403f999",
+    "openspec/changes/establish-trusted-change-coordination-state-binding/specs/lifecycle-authority-and-identity/spec.md": "04ecaeca1b0fdf1f423ed30480d74a84289a50f122b4412e5748eea73b9902e8",
+    "openspec/changes/establish-trusted-change-coordination-state-binding/specs/foundation-cli-surface/spec.md": "34378f7e62e4b3d3b11052c7ea88fc51ec46282f2c72fff168cbdac72e6f9698",
+    "openspec/changes/establish-trusted-change-coordination-state-binding/specs/policy-and-next-boundary/spec.md": "9e988ab99c94f165ef1852bc0241a738f48987a59631d4e2bf947ec2a9f843df"
+  },
+  "proposalConstraints": [
+    "Reconcile canonical authority ownership; do not leave all lifecycle eligibility assigned to Policy.",
+    "Keep Policy pure and repository-IO free.",
+    "Trusted resolver recognizes only exact activate-change provenance needed for canonical ChangeState.",
+    "Preserve Policy-specific revise-action Owner correction eligibility.",
+    "Preserve exact activation scope=[explore] and wrong-scope fail-closed behavior.",
+    "Preserve all four normal D02 quality Changes hard-depending on this correction.",
+    "Do not reopen normal D02 engineering-quality capability scope."
+  ],
+  "productionMutation": "NONE",
+  "packageLockMutation": "NONE during Propose",
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

@@ -1,0 +1,46 @@
+{
+  "runNumber": 8,
+  "kind": "external-orchestrator-review-propose-result",
+  "role": "reviewer",
+  "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+  "changeId": "establish-trusted-change-coordination-state-binding",
+  "action": "review-propose",
+  "runId": "20260830-008-review-propose",
+  "executionStatus": "completed",
+  "reviewerVerdict": "changes-requested",
+  "verificationVerdict": null,
+  "nextBoundary": "revise-propose",
+  "blockingFindings": [
+    {
+      "id": "RP-008-001",
+      "title": "Dependency completion requirement exceeds approved active-only proof",
+      "requiredRevision": "Scope dependency-completion fail-closed behavior to durable state=active when deriving lifecycle-enterable active. A normal planned Change with an incomplete dependency must remain reportable as planned. Do not add general non-active dependency legality beyond Explore proof."
+    },
+    {
+      "id": "RP-008-002",
+      "title": "Detached node_modules packaging is incorrectly inside OpenSpec Change tasks",
+      "requiredRevision": "Remove node_modules archive regeneration/identification from Change tasks and Change completion/acceptance. Keep package.json/pnpm-lock mutation inside the Change; leave detached archive regeneration as external execution-environment preparation, optionally noted as a non-blocking later handoff."
+    }
+  ],
+  "checks": {
+    "openspecStrictValidation": "PASS",
+    "artifactIntegrity": "PASS",
+    "exploreToProposalConvergence": "PASS except RP-008-001/RP-008-002",
+    "authorityOwnership": "PASS",
+    "policyPurity": "PASS",
+    "statusNextConsistency": "PASS",
+    "activationEligibility": "PASS",
+    "dependencyLegality": "BLOCKED by RP-008-001",
+    "environmentOwnership": "BLOCKED by RP-008-002",
+    "scopeDiscipline": "CHANGES REQUESTED",
+    "applyReadiness": "NOT READY"
+  },
+  "revisionGuidance": [
+    "Do not reopen the trusted coordination-state source, activation scope, Policy ownership, status/next shared seam, or caller changeState decision.",
+    "Revise foundation-cli dependency wording/scenario only enough to preserve active-only dependency completion eligibility.",
+    "Remove detached node_modules archive work from tasks and Change acceptance; package/lock mutation remains in scope.",
+    "Re-run OpenSpec strict validation after the bounded edits."
+  ],
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

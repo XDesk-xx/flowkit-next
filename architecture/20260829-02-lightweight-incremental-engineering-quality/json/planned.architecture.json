@@ -36,7 +36,7 @@
           "governance",
           "acceptance"
         ],
-        "note": "Owner、Git、OpenSpec、Flowkit Policy、Review/Verification 的 authority/truth 边界保持不变。"
+        "note": "Owner activation remains explicit; planned correction resolves trusted exact Delivery+Change state before pure Policy."
       },
       {
         "id": "execution",
@@ -73,14 +73,14 @@
           "persistence",
           "acceptance"
         ],
-        "note": "4 个独立 capability；无 hard dependsOn。Applicable Checks 只执行 formal input 要求的 exact check，结果复用既有 Run/Result；工具候选不是 architecture truth。"
+        "note": "4 quality capabilities all depend on correction completion; they remain mutually independent afterward."
       }
     ],
     "viewBox": [
       1660,
       1360
     ],
-    "subtitle": "在 accepted D01 Foundation Current 上仅新增 Delivery 02 的 4 个工程质量 capability；推荐执行顺序不表示 hard dependsOn。",
+    "subtitle": "在 accepted D01 Foundation Current 上补齐 trusted Change coordination binding，并规划 D02 的 4 个工程质量 capability；4 个 quality Changes 仅共同依赖该 bounded correction，彼此不形成 hard chain。",
     "repository": {
       "url": "https://github.com/XDesk-xx/flowkit-next",
       "revision": "af67f60c9094333bcb3b575bd351874e77bb518a"
@@ -253,8 +253,8 @@
       "id": "cli",
       "type": "frontend",
       "label": "Minimal Flowkit CLI",
-      "sublabel": "thin interface over Core",
-      "tag": "已验证",
+      "sublabel": "trusted ChangeState before Policy",
+      "tag": "planned correction",
       "pos": [
         50,
         590
@@ -636,7 +636,7 @@
       "id": "p1",
       "from": "cli",
       "to": "policy",
-      "label": "formal request",
+      "label": "trusted canonical facts",
       "route": "straight",
       "labelAt": [
         280,
@@ -755,12 +755,14 @@
   "cards": [
     {
       "dot": "violet",
-      "title": "4 个 Planned Semantic Changes",
+      "title": "Foundation correction + 4 D02 quality capabilities",
       "items": [
+        "Trusted coordination binding → exact Delivery+Change durable state before pure Policy",
         "Lightweight Gate → changed-code mechanical regression",
         "Dependency Health → bad dependency edges",
         "Entropy Hygiene → dead/stale nodes",
-        "Applicable Checks → exact execution of already-required proof"
+        "Applicable Checks → exact execution of already-required proof",
+        "All four quality Changes depend on correction completion; no hard chain among the four"
       ]
     },
     {
