@@ -63,10 +63,6 @@ interface ProcessOutcome {
   readonly stdout: string;
 }
 
-interface OpenSpecRootPayload {
-  readonly path: string;
-}
-
 const ARTIFACT_STATUSES = new Set<OpenSpecArtifactStatus>([
   "ready",
   "blocked",

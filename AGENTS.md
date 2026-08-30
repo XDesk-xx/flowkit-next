@@ -338,6 +338,12 @@ baseline FAIL → candidate PASS       = improvement
 
 ## 13. `.flowkit/` 与 durable execution integrity
 
+> **Temporary D03 bridge:** 在 D03 `Action Guidance & Bounded Agent Execution`
+> 正式收敛 Run surface / evidence guidance 之前，所有新 Author / Reviewer Run
+> 还必须遵守仓库根目录 `TEMPORARY-RUN-SURFACE-GUIDANCE.md`。
+> 该临时文档只约束 HOW，不覆盖 canonical authority/contract；
+> D03 正式 contract 落地后必须删除该临时文档与本引用。
+
 `.flowkit/` 保持极薄：
 
 ```text

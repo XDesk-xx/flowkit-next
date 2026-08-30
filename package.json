@@ -10,10 +10,13 @@
   "scripts": {
     "typecheck": "tsc --noEmit",
     "test:domain": "node --import tsx --test tests/unit/domain/*.test.ts",
-    "format": "prettier --write src/domain src/cli tests/unit/domain tests/acceptance tsconfig.json tsconfig.build.json package.json",
-    "format:check": "prettier --check src/domain src/cli tests/unit/domain tests/acceptance tsconfig.json tsconfig.build.json package.json",
+    "format": "prettier --write src tests tsconfig.json tsconfig.build.json package.json eslint.config.mjs scripts/check-forbidden-tracked-artifacts.mjs",
+    "format:check": "prettier --check src tests tsconfig.json tsconfig.build.json package.json eslint.config.mjs scripts/check-forbidden-tracked-artifacts.mjs",
     "build": "tsc -p tsconfig.build.json",
-    "test:acceptance": "node --import tsx --test tests/acceptance/*.test.ts"
+    "test:acceptance": "node --import tsx --test tests/acceptance/*.test.ts",
+    "lint": "eslint src tests",
+    "check:forbidden-tracked-artifacts": "node scripts/check-forbidden-tracked-artifacts.mjs",
+    "quality:gate": "git diff --check HEAD && pnpm format:check && pnpm lint && pnpm check:forbidden-tracked-artifacts"
   },
   "dependencies": {
     "yaml": "^2.9.0"

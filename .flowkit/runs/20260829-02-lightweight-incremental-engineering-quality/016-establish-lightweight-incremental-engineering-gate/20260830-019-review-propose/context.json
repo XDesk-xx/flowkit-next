@@ -1,0 +1,43 @@
+{
+  "runNumber": 19,
+  "kind": "external-orchestrator-review-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+  "changeId": "establish-lightweight-incremental-engineering-gate",
+  "action": "review-propose",
+  "runId": "20260830-019-review-propose",
+  "physicalRunPath": ".flowkit/runs/20260829-02-lightweight-incremental-engineering-quality/016-establish-lightweight-incremental-engineering-gate/20260830-019-review-propose",
+  "inputRunId": "20260830-018-propose",
+  "reviewChainStartRunId": "20260830-016-explore",
+  "inputArchiveSha256": "10187d3900ce1d790e13afe6cbb8354f9c7681cb958c609a5e6d712dcfb6ce97",
+  "checkpointClaim": "e2c0e4ed21ac872993197aaf17c006c41cb448ba",
+  "artifactHashes": {
+    "proposalSha256": "8446c51191796ccf43f0ac5670b1644c2461543a7d8d7ba51d0ae9d4191e0c5c",
+    "designSha256": "0d72fcb16aec01d41c33bf7fc4f1cadfad7f9307385fdcbfc6b8a5d062409eeb",
+    "specSha256": "01b87ca69d0388a7b67b6b1ce39e5bf4d92ae6b7809ca49f54b771f61fc9b4aa",
+    "tasksSha256": "76a21b4a2a6e263da3cfa4c9a87e92e9462fec75ea7cdfb5c7429570090a2015"
+  },
+  "independentChecks": {
+    "proposalArtifactHashes": "PASS",
+    "exploreToProposalConvergence": "PASS",
+    "openspecChangeStrict": "PASS",
+    "openspecAllStrict": "11/11 PASS on reconstructed current canonical set",
+    "eslintRuleSurface": "PASS",
+    "sourceSizeBoundary": "PASS",
+    "sixCleanupScope": "PASS",
+    "forbiddenMatcherBoundary": "PASS",
+    "gateMechanicalOnly": "PASS",
+    "correctnessChecksOutsideGate": "PASS",
+    "changedFilePlanner": "NONE",
+    "baselineWaiverState": "NONE",
+    "qualityPlatformExpansion": "NONE",
+    "newLifecycleAuthoritySurface": "NONE",
+    "internalVersionFamilies": "NONE",
+    "productionMutation": "NONE",
+    "packageMutation": "NONE"
+  },
+  "blockingFindingIds": [],
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

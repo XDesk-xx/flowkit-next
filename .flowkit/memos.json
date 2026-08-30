@@ -11,6 +11,17 @@
       },
       "createdByOwnerAuthorityRef": "owner:9fbc973a3b75d813c1d9571fb50572ff1461aab7085ae351ebf4a8cc5b73d3b8",
       "resolution": null
+    },
+    {
+      "memoId": "future-run-history-concision-and-repository-growth",
+      "state": "open",
+      "title": "Future Flowkit Run surface concision and repository growth control",
+      "note": "在 D02 的 establish-trusted-change-coordination-state-binding 完成后复核 Git diff 时发现：单个 Change 经历 15 次 durable Run，在 .flowkit/runs 中形成 46 个文件、约 2914 行执行历史。当前 durable Run 的 create-once history 以及 action.md + context.json + result.json 三文件 stable surface 本身属于既有正式 contract，不应删除，也不应把 Git 改造成每个 Action 一个 commit。\n\n真实需要未来收敛的是两类相互关联的问题：\n\n1. Run 内容粒度过重。action.md 与重复 evidence / narrative 容易逐轮膨胀，尤其当完整 proof、Reviewer reasoning、verification matrix 或可由 canonical truth 重建的内容被重复复制进 durable Run 时，会造成 repository execution-history 长期增长。\n\n2. Run stable surface 被 ad-hoc evidence 扩张。D02 013-revise-apply 为解决一次环境可复现性 finding，额外写入 verification-environment.json。这一文件可作为历史性 ad-hoc evidence 保留，但不应被解释为新的第四种标准 Run artifact，也不应成为后续 Run 的默认模板。未来新的 Run 应继续以 action.md + context.json + result.json 为 stable surface；必要的环境 identity、artifact hash、verification conclusion 优先压入 context/result。只有 materially required 且无法合理承载时，才允许引用独立 external evidence artifact，并由 Run 保存 evidenceRef/hash，而不是不断扩展 Run directory 的默认 durable file set。\n\n未来优先在 D03 Action Guidance & Bounded Agent Execution 中 proof 并考虑固定：\n- action.md 仅作为 concise human/AI-readable Action descriptor；\n- context.json / result.json 承担 machine continuation truth；\n- stable Run surface 默认严格保持三文件；\n- execution-local proof / verification 不因一次 review 需求自动升级为 durable Run artifact；\n- 大型 evidence 仅在 materially required 时外置并引用；\n- 避免重复复制 OpenSpec artifacts、Reviewer reasoning 与可由 canonical truth 重建的内容；\n- 保留历史 Run create-once / immutable，不回写已 committed 的 013 anomaly。\n\n目标是在不改变 Run persistence、authority、Policy、lifecycle、Git checkpoint 模型或现有三文件 contract 的前提下，降低长期 repository execution-history growth，并防止 ad-hoc evidence 逐步演化成未经设计的新 Run surface。\n\n该 concern 当前仅作为 future guidance/engineering-health candidate，不阻塞 D02，不自动创建 Change，也不改变当前 Gate activation readiness。\n\n临时桥接状态（D02 后续立即生效）：\n- 仓库根目录增加 `TEMPORARY-RUN-SURFACE-GUIDANCE.md`，在 D03 正式契约落地前临时约束新的 Author / Reviewer Run 继续使用 `action.md + context.json + result.json` 三文件 stable surface，并限制 action.md / durable evidence 膨胀。\n- 根 `AGENTS.md` 增加一条 Temporary D03 bridge 引用，使 Agent 在 D03 正式处理前必须读取该临时 guidance。\n- 这两处都属于 temporary HOW guidance，不是新的 canonical authority/contract，也不能长期与 D03 正式 contract 并存。\n\nD03 正式处理该 Memo 时必须包含 cleanup acceptance：\n1. proof 并建立正式的 Run surface / evidence / concision guidance；\n2. 确认正式 contract 已覆盖临时文档承担的全部约束；\n3. 删除仓库根目录 `TEMPORARY-RUN-SURFACE-GUIDANCE.md`；\n4. 删除 `AGENTS.md` 中对应的 Temporary D03 bridge 引用；\n5. 验证仓库中不存在对该临时文档的残留引用；\n6. 不回写已 committed 的历史 Run（包括 013 的 `verification-environment.json`）；\n7. 不允许临时 guidance 与正式 D03 guidance 形成双重 truth。\n\n因此，该 Memo 的未来完成条件不仅是“正式设计 Run concision”，还包括“正式 contract 接管后清除所有 temporary bridge materialization”。",
+      "source": {
+        "deliveryId": "20260829-02-lightweight-incremental-engineering-quality"
+      },
+      "createdByOwnerAuthorityRef": "owner:a2c375347a37c5a53b62b49a27b3530b4ffd72400d97fbaacea42d86475445f6",
+      "resolution": null
     }
   ]
 }

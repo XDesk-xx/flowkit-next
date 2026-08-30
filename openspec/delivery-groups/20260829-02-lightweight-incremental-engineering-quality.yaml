@@ -59,7 +59,7 @@ changes:
     required: true
     dependsOn:
       - "establish-trusted-change-coordination-state-binding"
-    state: planned
+    state: completed
     architectureImpact: true
     outputs:
       - "Lightweight Engineering Gate contract"
@@ -150,3 +150,11 @@ ownerDecisions:
     sourceRef: "owner-input:2026-08-30:authorize-archive:establish-trusted-change-coordination-state-binding"
     scope:
       - "archive"
+
+  - ref: "owner:0880bb56c1407e2a5a4a5814106a1349a316b553af51ce00294e666e499da646"
+    decision: "activate-change"
+    deliveryId: "20260829-02-lightweight-incremental-engineering-quality"
+    changeId: "establish-lightweight-incremental-engineering-gate"
+    sourceRef: "owner-input:2026-08-30:activate-change:establish-lightweight-incremental-engineering-gate:explore"
+    scope:
+      - "explore"
