@@ -1,0 +1,44 @@
+{
+  "runNumber": 9,
+  "kind": "external-orchestrator-apply-result",
+  "role": "author",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "establish-action-guidance-execution-contract",
+  "action": "apply",
+  "runId": "20260831-009-apply",
+  "executionStatus": "completed",
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-apply",
+  "summary": "Approved Change 1 implementation completed with deterministic content-bound product Guidance resolution, Guidance-bound exact ActionPackage formation, existing ActionPackageRef/ApplicableCheck identity propagation, no durable Run schema change, no .agents production fallback, and no new control plane.",
+  "tasks": {
+    "complete": 14,
+    "total": 14
+  },
+  "checks": {
+    "domain": "154 PASS / 0 FAIL / 1 host-permission SKIP",
+    "detachedAcceptance": "4/4 PASS",
+    "typecheck": "PASS",
+    "build": "PASS",
+    "prettier": "PASS",
+    "eslint": "PASS",
+    "forbiddenTrackedArtifacts": "PASS",
+    "dependencyHealth": "PASS",
+    "repositoryEntropy": "PASS",
+    "openspecChangeStrict": "PASS",
+    "openspecAllStrict": "15/15 PASS"
+  },
+  "scopeAssessment": {
+    "approvedScopePreserved": true,
+    "registryRouterRuntimeIntroduced": false,
+    "secondExecutionIdentityIntroduced": false,
+    "runPersistenceSchemaChanged": false,
+    "laterGuidanceBodyConvergencePulledForward": false,
+    "selfHostingTakeover": false
+  },
+  "complexityAssessment": "MINIMAL_REQUIRED; one resolver contract plus package-only Guidance identity extension, reusing existing execution and identity seams.",
+  "archiveAllowed": false,
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

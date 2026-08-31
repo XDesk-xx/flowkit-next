@@ -52,7 +52,7 @@ changes:
     goal: "把 already-decided exact StandardActionId 与 trusted、canonical、content-bound Action Guidance identity 绑定进同一个 exact ActionPackage，并自然复用现有 ActionPackageRef / executionInputRef identity chain。"
     required: true
     dependsOn: []
-    state: planned
+    state: completed
     architectureImpact: true
     outputs:
       - "trusted Action → canonical Guidance binding contract"
@@ -145,3 +145,10 @@ ownerDecisions:
     sourceRef: "owner-input:2026-08-31:authorize-delivery-start:20260831-03-action-guidance-bounded-agent-execution:base-4b45552b90ee"
     scope:
       - "delivery-start"
+  - ref: "owner:d3156f52525224087fefb4d50fb0177eb11a55a4bde06476f1d9d189415266c4"
+    decision: "activate-change"
+    deliveryId: "20260831-03-action-guidance-bounded-agent-execution"
+    changeId: "establish-action-guidance-execution-contract"
+    sourceRef: "owner-input:2026-08-31:activate-change:establish-action-guidance-execution-contract:proof-explore:agents-bootstrap-boundary-confirmed"
+    scope:
+      - "explore"

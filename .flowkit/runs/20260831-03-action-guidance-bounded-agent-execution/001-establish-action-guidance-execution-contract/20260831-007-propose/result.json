@@ -1,0 +1,41 @@
+{
+  "runNumber": 7,
+  "kind": "external-orchestrator-propose-result",
+  "role": "author",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "establish-action-guidance-execution-contract",
+  "action": "propose",
+  "runId": "20260831-007-propose",
+  "executionStatus": "completed",
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-propose",
+  "proposalReadiness": "READY FOR INDEPENDENT REVIEW-PROPOSE",
+  "artifacts": {
+    "proposal": "done",
+    "specs": "done",
+    "design": "done",
+    "tasks": "done"
+  },
+  "validation": {
+    "planningArtifactsComplete": "4/4 PASS",
+    "changeStrict": "1/1 PASS",
+    "allOpenSpecStrict": "15/15 PASS",
+    "productionSourceMutation": "NONE",
+    "productionTestMutation": "NONE",
+    "applyStarted": "NO",
+    "inventedCoreVersionBoundary": "NONE"
+  },
+  "scope": {
+    "newCapability": ["action-guidance-execution"],
+    "modifiedCapability": ["action-package-and-result-admission"],
+    "newRegistryRouterRuntime": "NONE",
+    "runContextSchemaChange": "NONE",
+    "finalGuidanceBodyMigration": "NOT IN THIS CHANGE",
+    "agentsBootstrapConvergence": "NOT IN STABLE CORE SCOPE"
+  },
+  "complexityAssessment": "MINIMAL; one new bounded Guidance-binding capability plus the required ActionPackage contract modification, reusing existing ActionPackageRef/executionInputRef identity chain.",
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

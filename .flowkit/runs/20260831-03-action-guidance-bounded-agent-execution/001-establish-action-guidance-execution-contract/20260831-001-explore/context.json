@@ -1,0 +1,51 @@
+{
+  "runNumber": 1,
+  "kind": "external-orchestrator-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "establish-action-guidance-execution-contract",
+  "action": "explore",
+  "runId": "20260831-001-explore",
+  "physicalRunPath": ".flowkit/runs/20260831-03-action-guidance-bounded-agent-execution/001-establish-action-guidance-execution-contract/20260831-001-explore",
+  "checkpointClaim": "9b32b98db8c989f85ac0e1e5894a91b7e04f05df",
+  "stableManagerBase": "4b45552b90ee327488bde3141c51c556e65a2e95",
+  "ownerActivation": {
+    "ref": "owner:d3156f52525224087fefb4d50fb0177eb11a55a4bde06476f1d9d189415266c4",
+    "decision": "activate-change",
+    "sourceRef": "owner-input:2026-08-31:activate-change:establish-action-guidance-execution-contract:proof-explore:agents-bootstrap-boundary-confirmed",
+    "scope": [
+      "explore"
+    ]
+  },
+  "skillsUsed": [
+    ".agents/skills/openspec-explore",
+    ".agents/skills/explore-proof-based"
+  ],
+  "skillBoundary": {
+    "currentExternalAgentExecution": ".agents/skills/** bootstrap/development aids",
+    "targetCanonicalFlowkitManagedGuidance": "skills/actions/<StandardActionId>/SKILL.md",
+    "productionAgentsFallbackAllowed": false,
+    "laterAgentsSurface": "absent or thin compatibility/bootstrap pointer only if proven necessary"
+  },
+  "proofSummary": {
+    "trustedCoordinationViaStableManager": "active",
+    "baseToStartSourceTestPackageConfigDelta": "NONE",
+    "missingGuidanceIdentityInCurrentActionPackage": true,
+    "standardActionCount": 10,
+    "invalidTraversalStandardActionAccepted": false,
+    "currentCanonicalActionBodiesPresent": false,
+    "currentRunContextAcceptsAddedGuidanceRef": false,
+    "currentActionPackageAcceptsAddedGuidanceRef": false,
+    "hypotheticalGuidanceContentChangeChangesPackageHash": true,
+    "actionPackageRefChangeChangesExecutionInputHash": true,
+    "focusedRegressionTests": "43/43 PASS",
+    "foundationCorrectiveChangeRequired": false,
+    "registryRouterRuntimeRequired": false
+  },
+  "exploreArtifactSha256": "fae5feb0037f62438ac11e067bc1b45a90dbdac242c3f749035a7cc9c5bb6d26",
+  "productionMutationInExplore": false,
+  "proposalArtifactsInExplore": false,
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

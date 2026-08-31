@@ -1,0 +1,69 @@
+{
+  "runNumber": 12,
+  "kind": "external-orchestrator-review-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "establish-action-guidance-execution-contract",
+  "action": "review-apply",
+  "runId": "20260901-012-review-apply",
+  "inputRunId": "20260901-011-revise-apply",
+  "reviewChainStartRunId": "20260831-001-explore",
+  "approvedExploreReviewRunId": "20260831-006-review-explore",
+  "approvedProposalReviewRunId": "20260831-008-review-propose",
+  "priorReviewApplyRunId": "20260901-010-review-apply",
+  "checkpointClaim": "9b32b98db8c989f85ac0e1e5894a91b7e04f05df",
+  "stableManagerBase": "4b45552b90ee327488bde3141c51c556e65a2e95",
+  "inputPackageSha256": "29847c21c04527c864495c9919f355be6f1a0f1649a719fef535d642279633f6",
+  "reviewChain": {
+    "006-review-explore": "APPROVED",
+    "008-review-propose": "APPROVED",
+    "010-review-apply": "CHANGES_REQUESTED: D03-RA-001 only",
+    "011-revise-apply": "test-only correction",
+    "012-review-apply": "APPROVED"
+  },
+  "resolvedFindings": [
+    "D03-RA-001"
+  ],
+  "independentVerification": {
+    "node": "22.23.2",
+    "targetedActionGuidanceTests": {
+      "pass": 7,
+      "fail": 0,
+      "skip": 0
+    },
+    "domain": {
+      "total": 155,
+      "pass": 155,
+      "fail": 0,
+      "skip": 0
+    },
+    "typecheck": "PASS",
+    "prettierRevisedTest": "PASS",
+    "eslintRevisedTest": "PASS",
+    "gitDiffCheck": "PASS",
+    "testArtifactSha256": "7eb47f6b2a2ca8f7e5553dd4ac13dee2c960e0fc8e1d0b2685608fdbeb1a2e6e",
+    "reused010ProductionFacts": true
+  },
+  "complexityAssessment": {
+    "increasedBy011": false,
+    "productionComplexity": "MINIMAL_REQUIRED",
+    "newSubsystem": false,
+    "summary": "Test-only permission simulation; zero production complexity growth."
+  },
+  "scopeDriftAssessment": {
+    "productionMutation": false,
+    "proposalMutation": false,
+    "openspecMutation": false,
+    "deliveryManifestMutation": false,
+    "newCapability": false,
+    "newAuthority": false,
+    "newLifecycle": false,
+    "selfHostingTakeover": false,
+    "laterChangeContentPulledForward": false,
+    "summary": "NONE"
+  },
+  "findings": [],
+  "productionMutationByReviewer": false,
+  "authorArtifactMutationByReviewer": false
+}

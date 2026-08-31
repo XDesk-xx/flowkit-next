@@ -1,0 +1,44 @@
+{
+  "runNumber": 2,
+  "kind": "external-orchestrator-review-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "establish-action-guidance-execution-contract",
+  "action": "review-explore",
+  "runId": "20260831-002-review-explore",
+  "inputRunId": "20260831-001-explore",
+  "checkpointClaim": "9b32b98db8c989f85ac0e1e5894a91b7e04f05df",
+  "stableManagerBase": "4b45552b90ee327488bde3141c51c556e65a2e95",
+  "inputPackageSha256": "6175381146552406929528dcdc413f01a09957412009f7e17e50fd8bf45ef478",
+  "ownerCorrectionSha256": "3150b79323311b17aade4b35c785806b545060e666e5dc44cf16bb03a4a530e9",
+  "independentProof": {
+    "restoredHead": "9b32b98db8c989f85ac0e1e5894a91b7e04f05df",
+    "restoredParent": "4b45552b90ee327488bde3141c51c556e65a2e95",
+    "trustedCoordinationResolvedState": "active",
+    "focusedRegressionTests": "43/43 PASS",
+    "node": "22.23.2",
+    "currentCanonicalActionBodiesPresent": false,
+    "bootstrapAgentsSkillsPresent": true,
+    "runContextRejectsAddedGuidanceRef": true,
+    "currentActionPackageRejectsAddedGuidanceRef": true,
+    "existingActionPackageRefChainReusable": true
+  },
+  "findings": [
+    {
+      "id": "D03-RE-001",
+      "severity": "blocking",
+      "kind": "handoff-integrity",
+      "claimedExploreArtifactSha256": "fae5feb0037f62438ac11e067bc1b45a90dbdac242c3f749035a7cc9c5bb6d26",
+      "actualExploreArtifactSha256": "a258689c02a653474a3166b7cf6ceae50117e085450fd1b91d2388e2ff555afa"
+    },
+    {
+      "id": "D03-RE-002",
+      "severity": "blocking",
+      "kind": "owner-boundary-consistency",
+      "staleField": "skillBoundary.laterAgentsSurface"
+    }
+  ],
+  "productionMutationByReviewer": false,
+  "authorArtifactMutationByReviewer": false
+}

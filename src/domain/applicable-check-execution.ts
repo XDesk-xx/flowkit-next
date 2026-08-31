@@ -217,6 +217,10 @@ function cloneActionPackage(actionPackage: ActionPackage): ActionPackage {
             scope: [...actionPackage.ownerAuthority.scope],
           },
     previousRunId: actionPackage.previousRunId,
+    guidanceRef: {
+      path: actionPackage.guidanceRef.path,
+      contentSha256: actionPackage.guidanceRef.contentSha256,
+    },
   };
 }
 

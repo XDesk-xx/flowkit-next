@@ -1,0 +1,88 @@
+{
+  "runNumber": 9,
+  "kind": "external-orchestrator-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "establish-action-guidance-execution-contract",
+  "action": "apply",
+  "runId": "20260831-009-apply",
+  "inputRunId": "20260831-008-review-propose",
+  "approvedExploreReviewRunId": "20260831-006-review-explore",
+  "approvedProposalReviewRunId": "20260831-008-review-propose",
+  "checkpointClaim": "9b32b98db8c989f85ac0e1e5894a91b7e04f05df",
+  "stableManagerBase": "4b45552b90ee327488bde3141c51c556e65a2e95",
+  "reviewerInputPackageSha256": "0bee7b263a08931d35d8678e6d4b33fa88800b13e663af6da8f7188454672d00",
+  "skillsUsed": [
+    ".agents/skills/openspec-apply-change",
+    ".agents/skills/implementation-convergence"
+  ],
+  "implementationFiles": [
+    "src/domain/action-guidance-execution.ts",
+    "src/domain/action-package-result-admission.ts",
+    "src/domain/applicable-check-execution.ts",
+    "src/domain/index.ts",
+    "src/domain/single-action-execution.ts",
+    "tests/unit/domain/action-guidance-execution.test.ts",
+    "tests/unit/domain/action-package-result-admission.test.ts",
+    "tests/unit/domain/applicable-check-execution.test.ts",
+    "tests/unit/domain/single-action-execution.test.ts",
+    "tests/acceptance/foundation-manager.acceptance.test.ts"
+  ],
+  "approvedApplyGuard": "Do not expand canonical SKILL.md entry identity into a transitive Guidance dependency graph or Registry without fresh proof.",
+  "taskProgress": {
+    "total": 14,
+    "complete": 14,
+    "remaining": 0
+  },
+  "verification": {
+    "node": "22.23.2",
+    "domainTests": {
+      "total": 155,
+      "pass": 154,
+      "fail": 0,
+      "skip": 1
+    },
+    "unreadableFixtureSkipReason": "Detached host privilege prevents reliable unreadable regular-file fixture enforcement.",
+    "detachedAcceptance": {
+      "total": 4,
+      "pass": 4,
+      "fail": 0
+    },
+    "gitDiffCheck": "PASS",
+    "prettier": "PASS",
+    "eslint": "PASS",
+    "forbiddenTrackedArtifacts": "PASS",
+    "dependencyHealth": {
+      "status": "PASS",
+      "modules": 57,
+      "dependencies": 204,
+      "violations": 0
+    },
+    "repositoryEntropy": {
+      "status": "PASS",
+      "reachable": 25,
+      "total": 25
+    },
+    "typecheck": "PASS",
+    "build": "PASS",
+    "openspecChangeStrict": "PASS",
+    "openspecAllStrict": "15/15 PASS"
+  },
+  "durableRunContract": {
+    "runResultPersistenceSourceChanged": false,
+    "contextJsonGuidanceFieldAdded": false,
+    "resultJsonGuidanceFieldAdded": false,
+    "newRunArtifactAdded": false
+  },
+  "selfHostingBoundary": {
+    "currentFlowkitNextDevelopmentPlane": ".agents/skills/**",
+    "productManagedGuidancePlane": "skills/actions/**",
+    "productionAgentsFallbackAllowed": false,
+    "selfHostingBeforeStableCoreClosureAllowed": false
+  },
+  "productionMutation": "BOUNDED_APPROVED_CHANGE",
+  "nextBoundary": "review-apply",
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

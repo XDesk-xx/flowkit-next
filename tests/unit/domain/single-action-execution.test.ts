@@ -1,10 +1,15 @@
 import assert from "node:assert/strict";
-import test from "node:test";
+import { mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import path from "node:path";
+import test, { after, before } from "node:test";
 
 import {
   admitActionResult,
+  canonicalActionGuidancePath,
   formActionPackage,
   invokeSingleAction,
+  type ActionGuidanceRef,
   type ActionIdentity,
   type CurrentAction,
   type RunContextRecord,
@@ -25,6 +30,38 @@ const reviewIdentity: ActionIdentity = {
   changeId,
   actionId: "review-apply",
 };
+
+let guidanceRoot = "";
+
+before(async () => {
+  guidanceRoot = await mkdtemp(
+    path.join(tmpdir(), "flowkit-single-action-guidance-"),
+  );
+  for (const actionId of ["apply", "review-apply"] as const) {
+    const entry = path.join(
+      guidanceRoot,
+      "skills",
+      "actions",
+      actionId,
+      "SKILL.md",
+    );
+    await mkdir(path.dirname(entry), { recursive: true });
+    await writeFile(entry, `# ${actionId}\n`, "utf8");
+  }
+});
+
+after(async () => {
+  if (guidanceRoot.length > 0) {
+    await rm(guidanceRoot, { recursive: true, force: true });
+  }
+});
+
+function guidanceRef(actionId: "apply" | "review-apply"): ActionGuidanceRef {
+  return {
+    path: canonicalActionGuidancePath(actionId)!,
+    contentSha256: "a".repeat(64),
+  };
+}
 
 function occurrence(
   sequence: number,
@@ -84,12 +121,17 @@ function terminal(identity: ActionIdentity = applyIdentity): CurrentAction {
 test("internally prepares an empty slot and completes one invocation", async () => {
   let calls = 0;
   const outcome = await invokeSingleAction(
+    guidanceRoot,
     null,
     applyIdentity,
     context(54),
     (actionPackage) => {
       calls += 1;
       assert.equal(actionPackage.lifecycleState, "prepared");
+      assert.equal(
+        actionPackage.guidanceRef.path,
+        "skills/actions/apply/SKILL.md",
+      );
       return result(54);
     },
   );
@@ -103,6 +145,7 @@ test("internally prepares an empty slot and completes one invocation", async () 
 test("reuses exact prepared A without duplicate prepare", async () => {
   const current = prepared();
   const outcome = await invokeSingleAction(
+    guidanceRoot,
     current,
     { ...applyIdentity },
     context(54),
@@ -115,6 +158,7 @@ test("reuses exact prepared A without duplicate prepare", async () => {
 
 test("prepares a different target after terminal but rejects a different target over prepared", async () => {
   const afterTerminal = await invokeSingleAction(
+    guidanceRoot,
     terminal(reviewIdentity),
     applyIdentity,
     context(54),
@@ -124,6 +168,7 @@ test("prepares a different target after terminal but rejects a different target 
 
   let calls = 0;
   const rejected = await invokeSingleAction(
+    guidanceRoot,
     prepared(reviewIdentity),
     applyIdentity,
     context(54),
@@ -140,6 +185,7 @@ test("prepares a different target after terminal but rejects a different target 
 test("package formation failure invokes host callback zero times", async () => {
   let calls = 0;
   const outcome = await invokeSingleAction(
+    guidanceRoot,
     prepared(),
     applyIdentity,
     context(54, reviewIdentity),
@@ -155,9 +201,44 @@ test("package formation failure invokes host callback zero times", async () => {
   assert.equal(calls, 0);
 });
 
+test("missing canonical Guidance fails package formation before callback", async () => {
+  const emptyRoot = await mkdtemp(
+    path.join(tmpdir(), "flowkit-single-action-missing-guidance-"),
+  );
+  try {
+    await mkdir(path.join(emptyRoot, ".agents", "skills", "apply"), {
+      recursive: true,
+    });
+    await writeFile(
+      path.join(emptyRoot, ".agents", "skills", "apply", "SKILL.md"),
+      "# bootstrap only\n",
+      "utf8",
+    );
+
+    let calls = 0;
+    const outcome = await invokeSingleAction(
+      emptyRoot,
+      prepared(),
+      applyIdentity,
+      context(54),
+      () => {
+        calls += 1;
+        return result(54);
+      },
+    );
+
+    assert.equal(outcome.status, "failed");
+    assert.equal(outcome.reason, "package-formation-rejected");
+    assert.equal(calls, 0);
+  } finally {
+    await rm(emptyRoot, { recursive: true, force: true });
+  }
+});
+
 test("callback failure preserves prepared Action and stops", async () => {
   let calls = 0;
   const outcome = await invokeSingleAction(
+    guidanceRoot,
     prepared(),
     applyIdentity,
     context(54),
@@ -176,6 +257,7 @@ test("callback failure preserves prepared Action and stops", async () => {
 test("admission failure leaves exact Action prepared and executes callback only once", async () => {
   let calls = 0;
   const outcome = await invokeSingleAction(
+    guidanceRoot,
     prepared(),
     applyIdentity,
     context(54),
@@ -195,6 +277,7 @@ test("later invocation reuses same prepared A with a new Run occurrence", async 
   const current = prepared();
 
   const first = await invokeSingleAction(
+    guidanceRoot,
     current,
     applyIdentity,
     context(54),
@@ -203,7 +286,11 @@ test("later invocation reuses same prepared A with a new Run occurrence", async 
   assert.equal(first.status, "failed");
   assert.deepEqual(first.currentAction, current);
 
-  const stalePackage = formActionPackage(current, context(54))!;
+  const stalePackage = formActionPackage(
+    current,
+    context(54),
+    guidanceRef("apply"),
+  )!;
   assert.equal(
     admitActionResult(
       stalePackage,
@@ -216,6 +303,7 @@ test("later invocation reuses same prepared A with a new Run occurrence", async 
 
   let secondCalls = 0;
   const second = await invokeSingleAction(
+    guidanceRoot,
     current,
     applyIdentity,
     context(55),
@@ -232,6 +320,7 @@ test("later invocation reuses same prepared A with a new Run occurrence", async 
 test("successful invocation preserves opaque nextBoundary and never executes a second callback", async () => {
   let calls = 0;
   const outcome = await invokeSingleAction(
+    guidanceRoot,
     prepared(),
     applyIdentity,
     context(54),

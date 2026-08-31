@@ -77,6 +77,10 @@ function actionPackage(sequence = 62): ActionPackage {
     lifecycleState: "prepared",
     ownerAuthority: null,
     previousRunId: null,
+    guidanceRef: {
+      path: "skills/actions/apply/SKILL.md",
+      contentSha256: "a".repeat(64),
+    },
   };
   assert.equal(isActionPackage(value), true);
   return value;
@@ -223,6 +227,38 @@ test("execution input is deterministic for a check set and changes with set/pack
     assert.notEqual(first.executionInputRef, changed.executionInputRef);
     const otherPackage = await resolve(root, plan(a, b), actionPackage(63));
     assert.notEqual(first.executionInputRef, otherPackage.executionInputRef);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("Guidance identity naturally changes ActionPackageRef and executionInputRef", async () => {
+  const root = await createGitFixture();
+  try {
+    const firstPackage = actionPackage();
+    const secondPackage: ActionPackage = {
+      ...firstPackage,
+      guidanceRef: {
+        ...firstPackage.guidanceRef,
+        contentSha256: "b".repeat(64),
+      },
+    };
+
+    const first = await resolve(
+      root,
+      plan(declaration("typecheck")),
+      firstPackage,
+    );
+    const second = await resolve(
+      root,
+      plan(declaration("typecheck")),
+      secondPackage,
+    );
+
+    assert.notEqual(first.actionPackageRef, second.actionPackageRef);
+    assert.notEqual(first.executionInputRef, second.executionInputRef);
+    assert.equal(first.candidateRef, second.candidateRef);
+    assert.deepEqual(first.checks, second.checks);
   } finally {
     await rm(root, { recursive: true, force: true });
   }

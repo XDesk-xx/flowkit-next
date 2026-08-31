@@ -164,6 +164,17 @@ async function makeFixture(flowkitHome: string) {
     path.join(repositoryRoot, "openspec", "changes", CHANGE, "proposal.md"),
     "## Why\nacceptance\n\n## What Changes\n- fixture\n\n## Capabilities\n\n### New Capabilities\n- fixture\n\n## Impact\n- disposable\n",
   );
+  for (const actionId of ["apply", "archive"] as const) {
+    const guidanceEntry = path.join(
+      repositoryRoot,
+      "skills",
+      "actions",
+      actionId,
+      "SKILL.md",
+    );
+    await mkdir(path.dirname(guidanceEntry), { recursive: true });
+    await writeFile(guidanceEntry, `# ${actionId}\n`);
+  }
   await writeCoordinationManifest(repositoryRoot);
   return { root, repositoryRoot, flowkitHome };
 }
@@ -205,6 +216,7 @@ async function persistTerminal(
 ) {
   const context = preparedContext(sequence, actionId);
   const outcome = await domain.invokeSingleAction(
+    repositoryRoot,
     null,
     context.actionIdentity,
     context,

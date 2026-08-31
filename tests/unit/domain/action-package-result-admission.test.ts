@@ -4,9 +4,11 @@ import test from "node:test";
 import {
   STANDARD_ACTIONS,
   admitActionResult,
+  canonicalActionGuidancePath,
   expectedExecutionRoleForAction,
   formActionPackage,
   isActionPackage,
+  type ActionGuidanceRef,
   type ActionIdentity,
   type CurrentAction,
   type RunContextRecord,
@@ -57,6 +59,16 @@ function context(
   };
 }
 
+function guidanceRef(
+  actionId: StandardActionId,
+  contentSha256 = "a".repeat(64),
+): ActionGuidanceRef {
+  return {
+    path: canonicalActionGuidancePath(actionId)!,
+    contentSha256,
+  };
+}
+
 function result(
   sequence: number,
   actionId: StandardActionId,
@@ -96,7 +108,11 @@ test("forms a minimal prepared package from exact current facts", () => {
   const currentContext = context(46, "apply", {
     previousRunId: "20260826-045-review-propose",
   });
-  const formed = formActionPackage(current, currentContext);
+  const formed = formActionPackage(
+    current,
+    currentContext,
+    guidanceRef("apply"),
+  );
 
   assert.notEqual(formed, null);
   assert.equal(isActionPackage(formed), true);
@@ -106,6 +122,7 @@ test("forms a minimal prepared package from exact current facts", () => {
   assert.equal(formed!.role, "author");
   assert.equal(formed!.lifecycleState, "prepared");
   assert.equal(formed!.previousRunId, currentContext.previousRunId);
+  assert.deepEqual(formed!.guidanceRef, guidanceRef("apply"));
 });
 
 test("formation rejects terminal, removed resumed, null, identity, state or role mismatch", () => {
@@ -113,42 +130,91 @@ test("formation rejects terminal, removed resumed, null, identity, state or role
   const exactContext = context(46, "apply");
 
   assert.equal(
-    formActionPackage(currentAction("apply", "terminal"), exactContext),
+    formActionPackage(
+      currentAction("apply", "terminal"),
+      exactContext,
+      guidanceRef("apply"),
+    ),
     null,
   );
   assert.equal(
-    formActionPackage(exact, { ...exactContext, lifecycleState: null }),
+    formActionPackage(
+      exact,
+      { ...exactContext, lifecycleState: null },
+      guidanceRef("apply"),
+    ),
     null,
   );
   assert.equal(
-    formActionPackage(exact, {
-      ...exactContext,
-      actionIdentity: identity("revise-apply"),
-    }),
+    formActionPackage(
+      exact,
+      {
+        ...exactContext,
+        actionIdentity: identity("revise-apply"),
+      },
+      guidanceRef("apply"),
+    ),
     null,
   );
   assert.equal(
-    formActionPackage(exact, { ...exactContext, lifecycleState: "resumed" }),
+    formActionPackage(
+      exact,
+      { ...exactContext, lifecycleState: "resumed" },
+      guidanceRef("apply"),
+    ),
     null,
   );
   assert.equal(
-    formActionPackage(exact, { ...exactContext, role: "reviewer" }),
+    formActionPackage(
+      exact,
+      { ...exactContext, role: "reviewer" },
+      guidanceRef("apply"),
+    ),
     null,
   );
 });
 
-test("ActionPackage validator accepts only prepared role-valid packages", () => {
-  assert.equal(isActionPackage(context(46, "apply")), true);
+test("formation rejects missing, malformed, and wrong-Action Guidance identity", () => {
+  const exact = currentAction("apply");
+  const exactContext = context(46, "apply");
+
+  assert.equal(formActionPackage(exact, exactContext, null), null);
   assert.equal(
-    isActionPackage(context(46, "apply", { lifecycleState: "terminal" })),
+    formActionPackage(exact, exactContext, {
+      path: "skills/actions/apply/SKILL.md",
+      contentSha256: "not-a-sha",
+    }),
+    null,
+  );
+  assert.equal(
+    formActionPackage(exact, exactContext, guidanceRef("review-apply")),
+    null,
+  );
+});
+
+test("ActionPackage validator accepts only the exact prepared Guidance-bound envelope", () => {
+  const valid = {
+    ...context(46, "apply"),
+    guidanceRef: guidanceRef("apply"),
+  };
+  assert.equal(isActionPackage(valid), true);
+  assert.equal(isActionPackage(context(46, "apply")), false);
+  assert.equal(isActionPackage({ ...valid, unexpected: true }), false);
+  assert.equal(
+    isActionPackage({ ...valid, lifecycleState: "terminal" }),
+    false,
+  );
+  assert.equal(isActionPackage({ ...valid, lifecycleState: "resumed" }), false);
+  assert.equal(isActionPackage({ ...valid, role: "reviewer" }), false);
+  assert.equal(
+    isActionPackage({ ...valid, guidanceRef: guidanceRef("review-apply") }),
     false,
   );
   assert.equal(
-    isActionPackage({ ...context(46, "apply"), lifecycleState: "resumed" }),
-    false,
-  );
-  assert.equal(
-    isActionPackage(context(46, "apply", { role: "reviewer" })),
+    isActionPackage({
+      ...valid,
+      guidanceRef: { ...guidanceRef("apply"), contentSha256: "ABC" },
+    }),
     false,
   );
 });
@@ -156,7 +222,11 @@ test("ActionPackage validator accepts only prepared role-valid packages", () => 
 test("admits exact prepared results and preserves opaque nextBoundary", () => {
   const current = currentAction("apply");
   const runOccurrence = occurrence(46, "apply");
-  const actionPackage = formActionPackage(current, context(46, "apply"))!;
+  const actionPackage = formActionPackage(
+    current,
+    context(46, "apply"),
+    guidanceRef("apply"),
+  )!;
   const candidate = result(46, "apply", { nextBoundary: "review-apply" });
 
   assert.equal(
@@ -169,7 +239,11 @@ test("admits exact prepared results and preserves opaque nextBoundary", () => {
 
 test("rejects removed resumed current state at admission", () => {
   const current = currentAction("apply");
-  const actionPackage = formActionPackage(current, context(46, "apply"))!;
+  const actionPackage = formActionPackage(
+    current,
+    context(46, "apply"),
+    guidanceRef("apply"),
+  )!;
   assert.equal(
     admitActionResult(
       actionPackage,
@@ -186,6 +260,7 @@ test("rejects stale prior occurrence of the same Standard Action", () => {
   const stalePackage = formActionPackage(
     current,
     context(37, "review-explore"),
+    guidanceRef("review-explore"),
   )!;
 
   assert.equal(
@@ -201,7 +276,11 @@ test("rejects stale prior occurrence of the same Standard Action", () => {
 
 test("rejects wrong candidate Run or Action linkage", () => {
   const current = currentAction("apply");
-  const actionPackage = formActionPackage(current, context(46, "apply"))!;
+  const actionPackage = formActionPackage(
+    current,
+    context(46, "apply"),
+    guidanceRef("apply"),
+  )!;
 
   assert.equal(
     admitActionResult(
@@ -223,7 +302,11 @@ test("rejects wrong candidate Run or Action linkage", () => {
 
 test("enforces Author and Reviewer outcome-slot ownership", () => {
   const authorCurrent = currentAction("apply");
-  const authorPackage = formActionPackage(authorCurrent, context(46, "apply"))!;
+  const authorPackage = formActionPackage(
+    authorCurrent,
+    context(46, "apply"),
+    guidanceRef("apply"),
+  )!;
   assert.notEqual(
     admitActionResult(
       authorPackage,
@@ -247,6 +330,7 @@ test("enforces Author and Reviewer outcome-slot ownership", () => {
   const reviewerPackage = formActionPackage(
     reviewerCurrent,
     context(47, "review-apply"),
+    guidanceRef("review-apply"),
   )!;
   assert.notEqual(
     admitActionResult(
@@ -271,7 +355,11 @@ test("enforces Author and Reviewer outcome-slot ownership", () => {
 test("rejects formal Verification verdict from every Standard Action", () => {
   for (const actionId of STANDARD_ACTIONS) {
     const current = currentAction(actionId);
-    const actionPackage = formActionPackage(current, context(46, actionId))!;
+    const actionPackage = formActionPackage(
+      current,
+      context(46, actionId),
+      guidanceRef(actionId),
+    )!;
     assert.equal(
       admitActionResult(
         actionPackage,

@@ -11,6 +11,7 @@ import {
   formActionPackage,
   type ActionPackage,
 } from "./action-package-result-admission.js";
+import { resolveActionGuidanceRef } from "./action-guidance-execution.js";
 import {
   isRunContextRecord,
   type RunResultRecord,
@@ -92,6 +93,7 @@ function failure(
 }
 
 export async function invokeSingleAction(
+  repositoryRoot: unknown,
   currentAction: unknown,
   target: unknown,
   currentContext: unknown,
@@ -109,7 +111,19 @@ export async function invokeSingleAction(
     return failure(prepared, "package-formation-rejected");
   }
 
-  const actionPackage = formActionPackage(prepared, currentContext);
+  const guidanceRef = await resolveActionGuidanceRef(
+    repositoryRoot,
+    prepared.identity.actionId,
+  );
+  if (guidanceRef === null) {
+    return failure(prepared, "package-formation-rejected");
+  }
+
+  const actionPackage = formActionPackage(
+    prepared,
+    currentContext,
+    guidanceRef,
+  );
   if (actionPackage === null) {
     return failure(prepared, "package-formation-rejected");
   }
