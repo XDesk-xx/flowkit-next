@@ -1,4 +1,4 @@
-﻿{
+{
   "formatVersion": 1,
   "memos": [
     {
@@ -21,6 +21,19 @@
         "deliveryId": "20260829-02-lightweight-incremental-engineering-quality"
       },
       "createdByOwnerAuthorityRef": "owner:a2c375347a37c5a53b62b49a27b3530b4ffd72400d97fbaacea42d86475445f6",
+      "resolution": null
+    },
+    {
+      "memoId": "future-semantic-invariant-and-literal-discipline",
+      "state": "open",
+      "title": "Future semantic invariant and literal discipline for AI implementation/review",
+      "note": "D02 observed a concrete AI implementation/review failure mode during correct-openspec-observation-process-failure-portability. The repository-entropy focused test had encoded the current production-module count as the literal 18. A normal, valid addition of one reachable production module changed the current count to 19 and caused a false failure even though the actual repository-entropy contract remained satisfied. Reviewer 20260831-047-review-apply identified the stale literal, and 20260831-048-revise-apply corrected the assertion to the real invariant: reachable.length === total and unreachable.length === 0.\n\nThe reusable concern is broader than the number 18 or one test. AI implementation/review can accidentally promote an incidental current observation into a durable test, check, script, or contract. Future D03 Author/Reviewer guidance should require an explicit classification before encoding a literal:\n\n1. Incidental current observation -> do not preserve the literal as contract; express the semantic invariant instead. Example: reachable.length === total, not reachable.length === 18. Merely renaming the incidental value (for example const EXPECTED_MODULES = 18) does not make it correct.\n\n2. Stable semantic contract constant -> if the exact value is intentionally owned by an accepted contract, prefer one clearly named semantic constant rather than scattered magic literals, with implementation/tests referring to the same semantic owner where practical.\n\n3. Project/deployment/runtime-variable parameter -> use explicit configuration rather than a compile-time magic literal when the value is intended to vary by repository/environment.\n\nReviewer guidance should explicitly challenge literals by asking whether they are real contract constants, configurable parameters, or merely today's observed repository state. Author guidance should prefer invariants over snapshot-value assertions and avoid duplicating one semantic constant across implementation/tests/scripts.\n\nThis is primarily execution HOW and should be handled in D03 Action Guidance / Author+Reviewer guidance first. Do not create a generic hardcode scanner, magic-number Gate, AST platform, waiver registry, or new Flowkit Core subsystem from this Memo. Mechanical enforcement should be considered only if repeated real proof later identifies a narrow high-confidence pattern. This Memo is non-blocking and does not itself create a Change.",
+      "source": {
+        "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+        "changeId": "correct-openspec-observation-process-failure-portability",
+        "runId": "20260831-047-review-apply"
+      },
+      "createdByOwnerAuthorityRef": "owner:b6700b0f0a9f6d7524602cb7b68abee13b6d39bb96110fa5a5a49085a66949a1",
       "resolution": null
     },
     {

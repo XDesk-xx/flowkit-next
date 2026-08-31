@@ -106,7 +106,7 @@ changes:
     required: true
     dependsOn:
       - "establish-trusted-change-coordination-state-binding"
-    state: planned
+    state: completed
     architectureImpact: true
     outputs:
       - "Explicit Applicable Check Execution contract"
@@ -195,5 +195,12 @@ ownerDecisions:
     deliveryId: "20260829-02-lightweight-incremental-engineering-quality"
     changeId: "correct-openspec-observation-process-failure-portability"
     sourceRef: "owner-input:2026-08-31:proof-confirmed-openspec-observation-process-failure-portability:activate-explore"
+    scope:
+      - "explore"
+  - ref: "owner:653cf92c01403ebd2f74bb67f15a59124018c70ff367b0a0d01dbe86352741c0"
+    decision: "activate-change"
+    deliveryId: "20260829-02-lightweight-incremental-engineering-quality"
+    changeId: "establish-explicit-applicable-check-execution"
+    sourceRef: "owner-input:2026-08-31:activate-change:establish-explicit-applicable-check-execution:explore-proof-based"
     scope:
       - "explore"

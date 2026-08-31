@@ -1,0 +1,39 @@
+{
+  "runNumber": 54,
+  "kind": "external-orchestrator-review-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+  "changeId": "establish-explicit-applicable-check-execution",
+  "action": "review-explore",
+  "runId": "20260831-054-review-explore",
+  "physicalRunPath": ".flowkit/runs/20260829-02-lightweight-incremental-engineering-quality/051-establish-explicit-applicable-check-execution/20260831-054-review-explore",
+  "inputRunId": "20260831-053-revise-explore",
+  "reviewChainStartRunId": "20260831-051-explore",
+  "checkpointClaim": "d9399c7ee23cffe0ee3926236489135f87ffdd95",
+  "inputArchiveSha256": "301f4023407f8a9adbe0025d95d75bb13dbcb6515a314692ac877b333e99693d",
+  "inputExploreSha256": "997866f6f6cdddbd6fa3014497615419e5240581b555ab184603829281c6d6d4",
+  "chainChecks": {
+    "053InputReviewerArchiveHashMatches052": true,
+    "RE_052_001_originalCallerTrustDefect": "RESOLVED",
+    "RE_052_002": "RESOLVED",
+    "RE_052_003": "RESOLVED"
+  },
+  "independentChecks": {
+    "runOnlyMutationCandidateStable": "PASS",
+    "sourceByteMutationChangesCandidate": "PASS",
+    "staleCallerCandidateOverride": "REJECTED",
+    "environmentChangeChangesCheckRef": "PASS",
+    "planSetChangeChangesExecutionInputRef": "PASS",
+    "candidateModeChange100755To100644": "BLOCKING: candidateRef unchanged under described digest",
+    "gitRecognizesModeChange": "PASS: mode change 100755 => 100644",
+    "registryPlannerPlatformExpansion": "NONE",
+    "proposalArtifactsInInput": "NONE",
+    "productionMutationInExplore": "NONE"
+  },
+  "blockingFindingIds": [
+    "RE-054-001"
+  ],
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

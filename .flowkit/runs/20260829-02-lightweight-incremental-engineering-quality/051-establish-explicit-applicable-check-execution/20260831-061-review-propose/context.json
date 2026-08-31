@@ -1,0 +1,46 @@
+{
+  "runNumber": 61,
+  "kind": "external-orchestrator-review-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+  "changeId": "establish-explicit-applicable-check-execution",
+  "action": "review-propose",
+  "runId": "20260831-061-review-propose",
+  "physicalRunPath": ".flowkit/runs/20260829-02-lightweight-incremental-engineering-quality/051-establish-explicit-applicable-check-execution/20260831-061-review-propose",
+  "inputRunId": "20260831-060-revise-propose",
+  "reviewChainStartRunId": "20260831-051-explore",
+  "checkpointClaim": "d9399c7ee23cffe0ee3926236489135f87ffdd95",
+  "inputArchiveSha256": "0b548c6568728cf976a79570b412b7115cef17dd1241490e03d93e8513df9b3e",
+  "chainChecks": {
+    "060ActualSemanticReviewerRun": true,
+    "060ActualSemanticReviewerArchive": true,
+    "060ProvenanceCorrectionReviewRun": true,
+    "060ProvenanceCorrectionReviewArchive": true,
+    "RP_058_001": "RESOLVED",
+    "RP_059_001": "RESOLVED",
+    "runNumberUnique": true
+  },
+  "artifactHashes": {
+    "proposalSha256": "2827edbcd4f80180a5bea35a281e7ba42d7bec7844c685862410b961b5093f5a",
+    "designSha256": "09bec4535b20b7aa1a2bc7ad23db31cb5037e005715c54f163f520d540d05ece",
+    "specSha256": "f46cff5eb1f26ab591f441c496beaf4ad98fdd0425be610820676dabc814df18",
+    "tasksSha256": "ceae2f3b1aabf26067dd392d6b211eb7b69a4c42418271b88c0ddd97656bd8d5"
+  },
+  "artifactHashClaimsMatch": true,
+  "semanticArtifactsByteForByteUnchangedFrom058RevisedProposal": true,
+  "independentChecks": {
+    "proposalSemanticConvergence": "PASS",
+    "durableReviewChain": "PASS",
+    "findingProvenance": "PASS",
+    "repositoryRootOwnership": "PASS / preserved",
+    "ignoredCandidateBoundary": "PASS / preserved",
+    "identityReuseModel": "PASS / preserved",
+    "newSubsystem": "NONE",
+    "productionMutation": "NONE",
+    "packageLockMutation": "NONE"
+  },
+  "blockingFindingIds": [],
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

@@ -1,0 +1,47 @@
+{
+  "runNumber": 54,
+  "kind": "external-orchestrator-review-explore-result",
+  "role": "reviewer",
+  "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+  "changeId": "establish-explicit-applicable-check-execution",
+  "action": "review-explore",
+  "runId": "20260831-054-review-explore",
+  "executionStatus": "completed",
+  "reviewerVerdict": "changes-requested",
+  "verificationVerdict": null,
+  "nextBoundary": "revise-explore",
+  "resolvedFindings": [
+    "RE-052-002",
+    "RE-052-003"
+  ],
+  "partiallyResolvedFindings": [
+    "RE-052-001: caller-trust defect resolved; exact candidate material still misses executable mode"
+  ],
+  "blockingFindings": [
+    {
+      "id": "RE-054-001",
+      "title": "Candidate identity omits Git-visible executable file mode, allowing stale same-bytes reuse across 100755/100644 changes",
+      "requiredRevision": "Include the materially relevant Git-visible executable/canonical file-mode distinction in the candidate manifest and prove a same-bytes 100755→100644 change changes candidateRef and prevents prior-success reuse. Keep the existing one-shot worktree digest design; do not add a candidate registry/snapshot/history subsystem."
+    }
+  ],
+  "checks": {
+    "realUseCaseAlignment": "PASS",
+    "candidateTrustOwnership": "PASS",
+    "candidateMaterialCompleteness": "BLOCKED by RE-054-001",
+    "environmentIdentityInvalidation": "PASS",
+    "executionAdmissionBinding": "PASS",
+    "runnerProof": "PASS",
+    "resultFactDirection": "PASS",
+    "scopeDiscipline": "PASS",
+    "stopDiscipline": "REVISE ONE MATERIAL-IDENTITY GAP ONLY",
+    "proposalReadiness": "NOT READY"
+  },
+  "revisionGuidance": [
+    "Do not reopen environmentRefs, executionInputRef, exact-argv runner, Result.facts, or Verification authority separation.",
+    "Add only the Git-visible executable/file-mode material required to make candidate identity exact enough for reuse.",
+    "Required proof: same bytes with 100755→100644 changes candidateRef and forces rerun.",
+    "Do not add Git snapshot DB, temp index, candidate history store, Registry, Planner, or Evidence Platform."
+  ],
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

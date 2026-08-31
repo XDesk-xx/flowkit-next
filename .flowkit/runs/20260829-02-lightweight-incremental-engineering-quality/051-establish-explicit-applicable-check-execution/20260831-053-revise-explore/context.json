@@ -1,0 +1,35 @@
+{
+  "runNumber": 53,
+  "kind": "external-orchestrator-revise-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+  "changeId": "establish-explicit-applicable-check-execution",
+  "action": "revise-explore",
+  "runId": "20260831-053-revise-explore",
+  "physicalRunPath": ".flowkit/runs/20260829-02-lightweight-incremental-engineering-quality/051-establish-explicit-applicable-check-execution/20260831-053-revise-explore",
+  "inputRunId": "20260831-052-review-explore",
+  "reviewChainStartRunId": "20260831-051-explore",
+  "checkpointClaim": "d9399c7ee23cffe0ee3926236489135f87ffdd95",
+  "inputReviewerArchiveSha256": "0be1fc5fc2cdae3e1d1cd6500193434df7e396aa315988156c2285006a539140",
+  "resolvedFindings": {
+    "RE-052-001": "CLOSED: candidateRef is Flowkit-derived from actual Git-visible worktree material; raw formal input cannot carry candidateRef; stale prior candidate identity cannot override current derivation.",
+    "RE-052-002": "CLOSED: explicit materially relevant environmentRefs are included in canonical checkRef; environment change changes checkRef and forces rerun.",
+    "RE-052-003": "CLOSED: one separate closed ApplicableCheckExecutionInput is selected, bound to exact ActionPackage/candidate/declaration set and shared by execution/admission via executionInputRef."
+  },
+  "proof": {
+    "candidateProducer": "Flowkit Action execution host",
+    "candidateMaterial": "Git-visible non-ignored worktree content excluding .flowkit/runs/**",
+    "candidateDigestPrototype": "PASS: Run-only change stable; source-byte change changes ref; current repo derivation ~0.02s evidence only",
+    "staleCandidateOverride": "PASS: candidateRef is not a raw plan field; stale prior success mismatches host-derived current ref",
+    "environmentInvalidation": "PASS: explicit environmentRefs change derived checkRef",
+    "closedInputValidation": "PASS: duplicate declarations and unknown candidateRef field rejected",
+    "executionAdmissionBinding": "PASS: executionInputRef + exact fact-set completeness rejects changed plan/missing fact",
+    "targetedFoundationTests": "28/28 PASS",
+    "canonicalSpecsStrict": "13/13 PASS",
+    "proposalArtifacts": "NONE",
+    "productionMutation": "NONE"
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

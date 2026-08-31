@@ -1,0 +1,50 @@
+{
+  "runNumber": 52,
+  "kind": "external-orchestrator-review-explore-result",
+  "role": "reviewer",
+  "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+  "changeId": "establish-explicit-applicable-check-execution",
+  "action": "review-explore",
+  "runId": "20260831-052-review-explore",
+  "executionStatus": "completed",
+  "reviewerVerdict": "changes-requested",
+  "verificationVerdict": null,
+  "nextBoundary": "revise-explore",
+  "blockingFindings": [
+    {
+      "id": "RE-052-001",
+      "title": "Cryptographic-looking caller candidateRef is not proven to be bound to the actual material candidate",
+      "requiredRevision": "Prove a minimal trusted candidate-identity producer/attestation seam and the stale-ref counterexample. Arbitrary caller text must not become same-candidate reuse authority merely because it matches a hash grammar."
+    },
+    {
+      "id": "RE-052-002",
+      "title": "Material environment identity does not currently invalidate reusable check facts",
+      "requiredRevision": "Bind explicit materially relevant environment identity into checkRef or compare it separately during reuse, and prove an environment change forces rerun."
+    },
+    {
+      "id": "RE-052-003",
+      "title": "Closed required-check execution/admission input seam is still deferred to Proposal",
+      "requiredRevision": "Freeze one bounded closed input contract tied to exact ActionPackage/run identity so execution and Result admission consume the same declared checks/candidate identity and fail closed on omission, duplication, or mismatch."
+    }
+  ],
+  "checks": {
+    "realUseCaseAlignment": "PASS",
+    "factsAndAssumptions": "CHANGES REQUESTED",
+    "runnerProof": "PASS",
+    "resultFactDirection": "PASS",
+    "candidateIdentityProof": "BLOCKED",
+    "reuseIdentityCompleteness": "BLOCKED",
+    "executionAdmissionBinding": "BLOCKED",
+    "scopeDiscipline": "PASS",
+    "stopDiscipline": "REVISE ONLY THE THREE BINDING PROOFS",
+    "proposalReadiness": "NOT READY"
+  },
+  "revisionGuidance": [
+    "Do not add candidate snapshot DB, temp Git authority, Registry, Planner, Evidence Platform, or history scan.",
+    "Do not reopen exact argv execution, Result.facts storage direction, or Verification authority separation.",
+    "Resolve actual candidate identity trust, material environment invalidation, and one closed execution/admission input seam.",
+    "Add decisive stale-candidateRef, changed-environment, and execution/admission-plan mismatch counterexamples."
+  ],
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

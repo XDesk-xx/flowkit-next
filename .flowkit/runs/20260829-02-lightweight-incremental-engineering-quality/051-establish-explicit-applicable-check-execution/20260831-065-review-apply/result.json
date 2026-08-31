@@ -1,0 +1,37 @@
+{
+  "runNumber": 65,
+  "kind": "external-orchestrator-review-apply-result",
+  "role": "reviewer",
+  "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+  "changeId": "establish-explicit-applicable-check-execution",
+  "action": "review-apply",
+  "runId": "20260831-065-review-apply",
+  "executionStatus": "completed",
+  "reviewerVerdict": "approved",
+  "verificationVerdict": null,
+  "nextBoundary": "archive",
+  "resolvedFindings": [
+    "RA-063-001"
+  ],
+  "blockingFindings": [],
+  "checks": {
+    "fullReviewChainIntegrity": "PASS",
+    "proposalFidelity": "PASS",
+    "reuseSemantics": "PASS",
+    "realExecutionCounterexample": "PASS",
+    "integrationRegression": "PASS",
+    "packageTruth": "PASS",
+    "scopeCompliance": "PASS",
+    "complexityExpansion": "NONE; recursive reuse complexity removed",
+    "archiveReadiness": "READY"
+  },
+  "archiveConstraints": [
+    "Archive through the normal Author-owned Archive Action.",
+    "Use canonical nextBoundary=archive; do not introduce owner-authorized-archive.",
+    "Preserve passed-only prior-fact reuse; reused-passed must remain non-reusable.",
+    "Do not add provenance-chain traversal, cache/history lookup, Registry/Planner/Evidence Platform, or new authority.",
+    "Do not activate another Change in the same Archive Action."
+  ],
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

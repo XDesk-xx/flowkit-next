@@ -12,3 +12,5 @@ export * from "./cross-delivery-memo-persistence.js";
 export * from "./managed-tool-resolution.js";
 
 export * from "./openspec-observation.js";
+
+export * from "./applicable-check-execution.js";

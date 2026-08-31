@@ -1,0 +1,87 @@
+{
+  "runNumber": 62,
+  "kind": "external-orchestrator-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+  "changeId": "establish-explicit-applicable-check-execution",
+  "action": "apply",
+  "runId": "20260831-062-apply",
+  "physicalRunPath": ".flowkit/runs/20260829-02-lightweight-incremental-engineering-quality/051-establish-explicit-applicable-check-execution/20260831-062-apply",
+  "inputRunId": "20260831-061-review-propose",
+  "inputReviewArchiveSha256": "23103629ecafbc95faca9b43c2b3439335122792be0e0abc01bd6f4a1c7ca08c",
+  "checkpointClaim": "d9399c7ee23cffe0ee3926236489135f87ffdd95",
+  "skillsUsed": [
+    "openspec-apply-change",
+    "implementation-convergence"
+  ],
+  "toolIdentity": {
+    "node": "22.23.2",
+    "pnpm": "11.22.0",
+    "openspec": "1.10.0",
+    "dependencyCruiser": "18.2.0",
+    "archify": "2.15.0"
+  },
+  "implementationBoundary": {
+    "closedPlan": true,
+    "callerRepositoryRoot": false,
+    "callerCandidateRef": false,
+    "hostDerivedCandidateRef": true,
+    "gitVisibleModes": [
+      "100644",
+      "100755",
+      "120000",
+      "tracked-deletion"
+    ],
+    "runOnlyCandidateExclusion": ".flowkit/runs/**",
+    "environmentRefsInCheckRef": true,
+    "closedExecutionInputRef": true,
+    "exactShellFreeRunner": true,
+    "reservedRunResultFacts": "facts.applicableChecks",
+    "reservedFactValidationWhenPresent": true,
+    "candidateRederivedAtAdmission": true,
+    "explicitExactReuseOnly": true,
+    "automaticRunHistoryScan": false,
+    "registryPlannerEvidenceCache": false,
+    "candidateSnapshotOrTempIndex": false,
+    "newAuthority": false,
+    "newDependency": false,
+    "packageMutation": false,
+    "lockMutation": false,
+    "proposalUnownedArbitraryLimits": false
+  },
+  "verification": {
+    "focusedApplicableChecks": "PASS 16/16",
+    "domain": "PASS 144/144",
+    "typecheck": "PASS",
+    "build": "PASS",
+    "qualityGate": "PASS via exact underlying git diff/prettier/eslint/forbidden-artifact checks",
+    "dependencyHealth": "PASS 0 violations; 55 modules / 188 dependencies",
+    "entropy": "PASS 24/24 reachable",
+    "entropyFocused": "PASS 7/7",
+    "openspecChangeStrict": "PASS",
+    "openspecAllStrict": "PASS 14/14",
+    "detachedAcceptance": "PASS 4/4 with isolated managed FLOWKIT_HOME",
+    "gitDiffCheck": "PASS"
+  },
+  "environmentConstraint": {
+    "initialAcceptanceMissingFlowkitHome": true,
+    "isolatedManagedFlowkitHomeRestored": true,
+    "repositoryTruthMutatedForEnvironment": false
+  },
+  "artifactHashes": {
+    "applicableCheckExecutionSha256": "1ff7ac9859a0371a8ad4855c402994d65da47daf1132581daa37a28b6e740e97",
+    "runResultPersistenceSha256": "f502c6f9a1abcb88992f3ff8720f55fd5a5935b3943f4cc1707389c6cf8b77bb",
+    "domainIndexSha256": "9af907d3c995e7bdc80cd7fc5c13fe659235652536a2bb8d110dfb044614c204",
+    "candidateSha256": "42b622928c95d28381392126cc7e73e81af3fdd3afb0f2036fe56c836d3e3856",
+    "identitySha256": "e5744056b0ef23804d2407ac15a39350b7106c8cc703bad1aafae4828968ed63",
+    "factsSha256": "e8a42bc11aa106b31839b6e7b8830fb60a3250c092bcfe9783b6af7ed7191fb7",
+    "processSha256": "32f02089106c28b5a3a0b461a85e6bcda6b667a18ddad7ceedb75c0fbb0184fc",
+    "focusedTestSha256": "386d68e5f3942fa23fdd5de371e546862a12e994c653b61900a4200a8e65627b",
+    "tasksSha256": "5fec5fb2c5142657c28b36838fe76f46519e2707e3750bf6002cc6f2ba917e2d",
+    "packageJsonSha256": "c79508605c34371eea6903f7dad39d388531f6b84e04c74d10ecd4938b4a9d76",
+    "pnpmLockSha256": "bf5ef071f2b4b8140f05493ebd53098660250f2cd5a834fe321ce8685bdb65e5"
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

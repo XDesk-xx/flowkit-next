@@ -1,0 +1,40 @@
+{
+  "runNumber": 63,
+  "kind": "external-orchestrator-review-apply-result",
+  "role": "reviewer",
+  "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+  "changeId": "establish-explicit-applicable-check-execution",
+  "action": "review-apply",
+  "runId": "20260831-063-review-apply",
+  "executionStatus": "completed",
+  "reviewerVerdict": "changes-requested",
+  "verificationVerdict": null,
+  "nextBoundary": "revise-apply",
+  "blockingFindings": [
+    {
+      "id": "RA-063-001",
+      "title": "Reuse eligibility recursively accepts reused-passed even though the approved Explore froze prior.status=passed",
+      "requiredRevision": "Restrict reuse eligibility to prior.status === 'passed' only, add a focused same-identity reused-passed counterexample proving rerun, and preserve all candidate/check/execution/admission semantics unchanged."
+    }
+  ],
+  "checks": {
+    "fullReviewChainIntegrity": "PASS",
+    "proposalFidelity": "PASS except RA-063-001",
+    "candidateBinding": "PASS",
+    "environmentBinding": "PASS",
+    "executionAdmissionBinding": "PASS",
+    "mechanicalExecution": "PASS",
+    "integrationRegression": "PASS",
+    "reuseSemantics": "BLOCKED",
+    "complexityExpansion": "MINOR UNAPPROVED recursive reuse semantic; remove it",
+    "archiveReadiness": "NOT READY"
+  },
+  "revisionGuidance": [
+    "Do not reopen candidate identity, repositoryRoot ownership, environmentRefs, executionInputRef, or admission.",
+    "Make reused-passed non-reusable; only actual prior passed status may satisfy reuse eligibility.",
+    "Do not add provenance-chain traversal or cache/history machinery.",
+    "Rerun focused applicable-check plus current regression checks."
+  ],
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}
