@@ -1,0 +1,855 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "flowkit-next 当前系统架构 — Delivery 03 Start",
+    "output": "current.html",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/XDesk-xx/flowkit-next",
+      "revision": "4b45552b90ee327488bde3141c51c556e65a2e95"
+    },
+    "views": [
+      {
+        "id": "authority",
+        "label": "Authority 与 Truth 边界",
+        "focus": [
+          "owner",
+          "git",
+          "openspec",
+          "cli",
+          "policy",
+          "governance"
+        ],
+        "note": "Owner、Git、OpenSpec、Flowkit legal boundary 保持分离；D03 只增加 bounded HOW identity，不改变 authority ownership。"
+      },
+      {
+        "id": "continuity",
+        "label": "D02 → D03 Continuity",
+        "focus": [
+          "project-init",
+          "dependency-truth",
+          "toolchain-lock",
+          "lifecycle",
+          "execution",
+          "persistence",
+          "memo",
+          "lightweight-gate",
+          "dependency-health",
+          "entropy-hygiene",
+          "applicable-checks"
+        ],
+        "note": "accepted merged main 的 tree 与 D02 final tree 一致；D01/D02 lifecycle 与 quality capabilities 都继续成立。"
+      },
+      {
+        "id": "d03-gap",
+        "label": "D03 Current Gap",
+        "focus": [
+          "skills",
+          "execution",
+          "persistence",
+          "acceptance"
+        ],
+        "note": "skills/actions canonical root 已存在，但 ActionPackage 当前没有 canonical Guidance identity；Agent HOW 仍主要依赖 bootstrap guidance / prompt / context。"
+      },
+      {
+        "id": "quality",
+        "label": "D02 Quality Baseline",
+        "focus": [
+          "lightweight-gate",
+          "dependency-health",
+          "entropy-hygiene",
+          "applicable-checks"
+        ],
+        "note": "D03 Mechanical Preflight 只能复用这些既有 facts/capabilities，不能重建 quality engines。"
+      },
+      {
+        "id": "integration",
+        "label": "Managed Integrations",
+        "focus": [
+          "toolchain-lock",
+          "openspec",
+          "archify",
+          "toolchain-resolution"
+        ],
+        "note": "OpenSpec / Archify exact managed identity 与 thin/derived 边界保持不变。"
+      }
+    ],
+    "viewBox": [
+      1660,
+      1360
+    ],
+    "subtitle": "accepted main@4b45552b 的 D03 Current；repository tree 与 D02 final tree 一致，D02 verified capabilities 继续作为当前事实。Canonical skills root 已存在，但 exact ActionPackage 尚未正式绑定 canonical Guidance identity。"
+  },
+  "components": [
+    {
+      "id": "owner",
+      "type": "external",
+      "label": "Owner",
+      "sublabel": "显式授权 / scope / checkpoint",
+      "pos": [
+        60,
+        120
+      ],
+      "size": [
+        170,
+        68
+      ],
+      "tag": "现有"
+    },
+    {
+      "id": "git",
+      "type": "database",
+      "label": "Git Repository",
+      "sublabel": "bytes / branch / commit / history",
+      "pos": [
+        320,
+        120
+      ],
+      "size": [
+        190,
+        68
+      ],
+      "tag": "现有"
+    },
+    {
+      "id": "project-init",
+      "type": "backend",
+      "label": "Project Initialization",
+      "sublabel": ".flowkit/project.json / skeleton",
+      "pos": [
+        600,
+        120
+      ],
+      "size": [
+        210,
+        68
+      ],
+      "tag": "已完成",
+      "sources": [
+        {
+          "path": ".flowkit/project.json",
+          "label": "project identity"
+        },
+        {
+          "path": "FOUNDATION-INIT.md",
+          "label": "initialization reference"
+        }
+      ]
+    },
+    {
+      "id": "dependency-truth",
+      "type": "database",
+      "label": "Dependency Truth",
+      "sublabel": "package.json + pnpm-lock.yaml",
+      "pos": [
+        885,
+        120
+      ],
+      "size": [
+        210,
+        68
+      ],
+      "tag": "已完成",
+      "sources": [
+        {
+          "path": "package.json",
+          "label": "package identity"
+        },
+        {
+          "path": "pnpm-lock.yaml",
+          "label": "dependency lock"
+        }
+      ]
+    },
+    {
+      "id": "toolchain-lock",
+      "type": "security",
+      "label": "Managed Tool Identity",
+      "sublabel": "OpenSpec / Archify exact managed identity",
+      "pos": [
+        600,
+        340
+      ],
+      "size": [
+        210,
+        68
+      ],
+      "tag": "已锁定",
+      "sources": [
+        {
+          "path": "config/tools/toolchain.lock.json",
+          "label": "exact managed-tool lock"
+        }
+      ]
+    },
+    {
+      "id": "skills",
+      "type": "backend",
+      "label": "Canonical Skills Root",
+      "sublabel": "canonical HOW root / .agents bootstrap",
+      "pos": [
+        320,
+        340
+      ],
+      "size": [
+        190,
+        68
+      ],
+      "tag": "current HOW root",
+      "sources": [
+        {
+          "path": "skills/README.md",
+          "label": "canonical skill root"
+        },
+        {
+          "path": "skills/actions/README.md",
+          "label": "Action Guidance placeholder"
+        },
+        {
+          "path": "AGENTS.md",
+          "label": "bootstrap / canonical ownership boundary"
+        }
+      ]
+    },
+    {
+      "id": "openspec",
+      "type": "external",
+      "label": "OpenSpec 1.10.0",
+      "sublabel": "formal Change authority / external runtime",
+      "pos": [
+        885,
+        340
+      ],
+      "size": [
+        210,
+        68
+      ],
+      "tag": "formal authority",
+      "sources": [
+        {
+          "path": "openspec/specs/openspec-thin-integration/spec.md",
+          "label": "thin integration contract"
+        },
+        {
+          "path": "src/domain/openspec-observation.ts",
+          "label": "read-only observation"
+        },
+        {
+          "path": "src/internal/openspec-process-outcome.ts",
+          "label": "portable process outcome"
+        }
+      ]
+    },
+    {
+      "id": "archify",
+      "type": "external",
+      "label": "Archify 2.15.0",
+      "sublabel": "derived architecture validation",
+      "pos": [
+        1165,
+        340
+      ],
+      "size": [
+        200,
+        68
+      ],
+      "tag": "derived only"
+    },
+    {
+      "id": "cli",
+      "type": "frontend",
+      "label": "Minimal Flowkit CLI",
+      "sublabel": "trusted ChangeState resolution before pure Policy",
+      "tag": "已验证",
+      "pos": [
+        50,
+        590
+      ],
+      "size": [
+        190,
+        68
+      ],
+      "sources": [
+        {
+          "path": "src/cli/foundation-cli.ts",
+          "label": "thin CLI surface"
+        },
+        {
+          "path": "src/cli/trusted-change-coordination.ts",
+          "label": "trusted coordination binding"
+        },
+        {
+          "path": "openspec/specs/foundation-cli-surface/spec.md",
+          "label": "canonical CLI contract"
+        }
+      ]
+    },
+    {
+      "id": "policy",
+      "type": "security",
+      "label": "Policy / Next Boundary",
+      "sublabel": "one legal Action or blocked",
+      "tag": "已验证",
+      "pos": [
+        320,
+        590
+      ],
+      "size": [
+        210,
+        68
+      ],
+      "sources": [
+        {
+          "path": "src/domain/policy-and-next-boundary.ts",
+          "label": "canonical Policy seam"
+        },
+        {
+          "path": "openspec/specs/policy-and-next-boundary/spec.md",
+          "label": "canonical contract"
+        }
+      ]
+    },
+    {
+      "id": "lifecycle",
+      "type": "backend",
+      "label": "Lifecycle Domain",
+      "sublabel": "authority / identity / Action state",
+      "tag": "已验证",
+      "pos": [
+        600,
+        590
+      ],
+      "size": [
+        210,
+        68
+      ],
+      "sources": [
+        {
+          "path": "src/domain/action-lifecycle.ts",
+          "label": "Action lifecycle"
+        },
+        {
+          "path": "src/domain/authority.ts",
+          "label": "authority contract"
+        },
+        {
+          "path": "src/domain/identity.ts",
+          "label": "semantic identity"
+        }
+      ]
+    },
+    {
+      "id": "execution",
+      "type": "backend",
+      "label": "Single-Action Execution",
+      "sublabel": "prepare / ActionPackage / exact admission / terminal / STOP",
+      "tag": "current; no Guidance identity",
+      "pos": [
+        880,
+        590
+      ],
+      "size": [
+        260,
+        68
+      ],
+      "sources": [
+        {
+          "path": "src/domain/single-action-execution.ts",
+          "label": "single Action invocation"
+        },
+        {
+          "path": "src/domain/action-package-result-admission.ts",
+          "label": "ActionPackage / Result admission"
+        }
+      ]
+    },
+    {
+      "id": "persistence",
+      "type": "database",
+      "label": "Run / Result Persistence",
+      "sublabel": "durable Runs / Results + typed applicable-check facts",
+      "tag": "已验证",
+      "pos": [
+        1175,
+        590
+      ],
+      "size": [
+        210,
+        68
+      ],
+      "sources": [
+        {
+          "path": "src/domain/run-result-persistence.ts",
+          "label": "durable Run / Result"
+        },
+        {
+          "path": "src/internal/applicable-check-facts.ts",
+          "label": "typed check facts"
+        }
+      ]
+    },
+    {
+      "id": "acceptance",
+      "type": "cloud",
+      "label": "Review / Verification",
+      "sublabel": "Reviewer evidence + Delivery Formal Full Test",
+      "tag": "D02 accepted baseline",
+      "pos": [
+        50,
+        800
+      ],
+      "size": [
+        210,
+        68
+      ],
+      "sources": [
+        {
+          "path": "tests/acceptance/foundation-manager.acceptance.test.ts",
+          "label": "whole-manager acceptance"
+        }
+      ]
+    },
+    {
+      "id": "governance",
+      "type": "security",
+      "label": "Checkpoint Authorization Boundary",
+      "sublabel": "eligibility + explicit Owner gate / no Git execution",
+      "tag": "已验证",
+      "pos": [
+        320,
+        800
+      ],
+      "size": [
+        210,
+        68
+      ],
+      "sources": [
+        {
+          "path": "src/cli/checkpoint-authorization.ts",
+          "label": "checkpoint authorization seam"
+        },
+        {
+          "path": "openspec/specs/foundation-cli-surface/spec.md",
+          "label": "canonical CLI contract"
+        }
+      ]
+    },
+    {
+      "id": "toolchain-resolution",
+      "type": "backend",
+      "label": "Managed Toolchain Resolver",
+      "sublabel": "OpenSpec / Archify via FLOWKIT_HOME",
+      "tag": "已验证",
+      "pos": [
+        897.5,
+        800
+      ],
+      "size": [
+        225,
+        68
+      ],
+      "sources": [
+        {
+          "path": "src/domain/managed-tool-resolution.ts",
+          "label": "exact managed-tool resolver"
+        },
+        {
+          "path": "config/tools/toolchain.lock.json",
+          "label": "exact managed-tool identity"
+        }
+      ]
+    },
+    {
+      "id": "memo",
+      "type": "database",
+      "label": "Cross-Delivery Memo",
+      "sublabel": ".flowkit/memos.json / durable non-blocking governance",
+      "pos": [
+        600,
+        800
+      ],
+      "size": [
+        220,
+        68
+      ],
+      "tag": "已验证",
+      "sources": [
+        {
+          "path": "src/domain/cross-delivery-memo.ts",
+          "label": "Memo domain contract"
+        },
+        {
+          "path": "src/domain/cross-delivery-memo-persistence.ts",
+          "label": "durable Memo persistence"
+        },
+        {
+          "path": ".flowkit/memos.json",
+          "label": "project Memo document"
+        }
+      ]
+    },
+    {
+      "id": "lightweight-gate",
+      "type": "security",
+      "label": "Lightweight Engineering Gate",
+      "sublabel": "cheap changed-code mechanical ratchet",
+      "tag": "verified",
+      "pos": [
+        50,
+        1010
+      ],
+      "size": [
+        250,
+        68
+      ],
+      "sources": [
+        {
+          "path": "package.json",
+          "label": "stable quality:gate command"
+        },
+        {
+          "path": "eslint.config.mjs",
+          "label": "selected lint boundary"
+        },
+        {
+          "path": "scripts/check-forbidden-tracked-artifacts.mjs",
+          "label": "forbidden artifact check"
+        }
+      ]
+    },
+    {
+      "id": "dependency-health",
+      "type": "security",
+      "label": "Structural Dependency Health",
+      "sublabel": "5 high-confidence bad-edge rules",
+      "tag": "verified",
+      "pos": [
+        370,
+        1010
+      ],
+      "size": [
+        250,
+        68
+      ],
+      "sources": [
+        {
+          "path": "dependency-cruiser.config.mjs",
+          "label": "dependency rules"
+        },
+        {
+          "path": "package.json",
+          "label": "quality:dependency-health"
+        },
+        {
+          "path": "openspec/specs/structural-dependency-health/spec.md",
+          "label": "canonical contract"
+        }
+      ]
+    },
+    {
+      "id": "entropy-hygiene",
+      "type": "backend",
+      "label": "Repository Entropy Hygiene",
+      "sublabel": "production-root reachability only",
+      "tag": "verified",
+      "pos": [
+        690,
+        1010
+      ],
+      "size": [
+        250,
+        68
+      ],
+      "sources": [
+        {
+          "path": "scripts/check-production-reachability.mjs",
+          "label": "reachability check"
+        },
+        {
+          "path": "tests/unit/quality/production-reachability.test.mjs",
+          "label": "counterexample proof"
+        },
+        {
+          "path": "openspec/specs/repository-entropy-hygiene/spec.md",
+          "label": "canonical contract"
+        }
+      ]
+    },
+    {
+      "id": "applicable-checks",
+      "type": "backend",
+      "label": "Explicit Applicable Checks",
+      "sublabel": "exact declared check → candidate-bound Result fact",
+      "tag": "verified",
+      "pos": [
+        1010,
+        1010
+      ],
+      "size": [
+        250,
+        68
+      ],
+      "sources": [
+        {
+          "path": "src/domain/applicable-check-execution.ts",
+          "label": "closed execution/admission seam"
+        },
+        {
+          "path": "src/internal/applicable-check-candidate.ts",
+          "label": "Git-visible candidate identity"
+        },
+        {
+          "path": "openspec/specs/applicable-check-execution/spec.md",
+          "label": "canonical contract"
+        }
+      ]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "Git-tracked initialization state",
+      "wraps": [
+        "git",
+        "project-init",
+        "dependency-truth",
+        "skills",
+        "toolchain-lock"
+      ]
+    },
+    {
+      "kind": "region",
+      "label": "Verified Foundation Lifecycle Kernel",
+      "wraps": [
+        "cli",
+        "policy",
+        "lifecycle",
+        "execution",
+        "persistence",
+        "governance",
+        "toolchain-resolution",
+        "memo"
+      ]
+    },
+    {
+      "kind": "region",
+      "label": "Verified Delivery 02 — Lightweight Incremental Engineering Quality",
+      "wraps": [
+        "lightweight-gate",
+        "dependency-health",
+        "entropy-hygiene",
+        "applicable-checks"
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "c1",
+      "from": "owner",
+      "to": "git",
+      "label": "authorized Git boundary",
+      "variant": "security",
+      "labelDy": 58
+    },
+    {
+      "id": "c2",
+      "from": "git",
+      "to": "project-init",
+      "label": "repository facts",
+      "labelDy": -28
+    },
+    {
+      "id": "c3",
+      "from": "project-init",
+      "to": "dependency-truth",
+      "label": "dependency baseline",
+      "labelDy": 58
+    },
+    {
+      "id": "c4",
+      "from": "skills",
+      "to": "project-init",
+      "label": "execution guidance",
+      "variant": "dashed",
+      "labelDy": 24
+    },
+    {
+      "id": "c5",
+      "from": "toolchain-lock",
+      "to": "openspec",
+      "label": "exact runtime identity",
+      "labelDy": 64
+    },
+    {
+      "id": "c6",
+      "from": "toolchain-lock",
+      "to": "archify",
+      "label": "exact runtime identity",
+      "fromSide": "bottom",
+      "toSide": "bottom",
+      "via": [
+        [
+          705,
+          480
+        ],
+        [
+          1265,
+          480
+        ]
+      ],
+      "labelAt": [
+        985,
+        495
+      ]
+    },
+    {
+      "id": "p1",
+      "from": "cli",
+      "to": "policy",
+      "label": "trusted canonical facts",
+      "route": "straight",
+      "labelAt": [
+        280,
+        570
+      ]
+    },
+    {
+      "id": "p2",
+      "from": "policy",
+      "to": "lifecycle",
+      "label": "legal boundary",
+      "route": "straight",
+      "variant": "emphasis",
+      "labelAt": [
+        565,
+        570
+      ]
+    },
+    {
+      "id": "p3",
+      "from": "lifecycle",
+      "to": "execution",
+      "label": "exact current Action",
+      "route": "straight",
+      "labelAt": [
+        845,
+        570
+      ]
+    },
+    {
+      "id": "p4",
+      "from": "execution",
+      "to": "persistence",
+      "label": "real Run / Result",
+      "route": "straight",
+      "labelAt": [
+        1138,
+        570
+      ]
+    },
+    {
+      "id": "p5",
+      "from": "acceptance",
+      "to": "policy",
+      "label": "verdict / evidence",
+      "route": "orthogonal-v",
+      "fromSide": "top",
+      "toSide": "left",
+      "via": [
+        [
+          155,
+          700
+        ],
+        [
+          290,
+          700
+        ],
+        [
+          290,
+          624
+        ]
+      ],
+      "labelAt": [
+        225,
+        715
+      ],
+      "variant": "dashed"
+    },
+    {
+      "id": "p6",
+      "from": "policy",
+      "to": "governance",
+      "label": "checkpoint eligibility",
+      "route": "straight",
+      "labelAt": [
+        535,
+        730
+      ]
+    },
+    {
+      "id": "p8",
+      "from": "owner",
+      "to": "cli",
+      "label": "explicit request / authority",
+      "route": "straight",
+      "variant": "security",
+      "labelAt": [
+        145,
+        500
+      ]
+    },
+    {
+      "id": "q5",
+      "from": "applicable-checks",
+      "to": "persistence",
+      "label": "candidate-bound Result facts",
+      "variant": "emphasis",
+      "fromSide": "top",
+      "toSide": "bottom",
+      "labelAt": [
+        1207,
+        925
+      ],
+      "via": [
+        [
+          1135,
+          940
+        ],
+        [
+          1280,
+          940
+        ]
+      ]
+    }
+  ],
+  "cards": [
+    {
+      "dot": "emerald",
+      "title": "Verified Delivery 02 Actual",
+      "items": [
+        "exact candidate d78acb135d5317145f52c7559393a3d1c0ff42eb",
+        "6 required/corrective Changes completed；OpenSpec active Changes = 0",
+        "Formal Full Test 6/6 PASS：typecheck / format / build / domain / OpenSpec strict / acceptance"
+      ]
+    },
+    {
+      "dot": "cyan",
+      "title": "Proof-driven Scope",
+      "items": [
+        "Lightweight Gate remains interactive and separate from Full Test",
+        "Entropy contracted to production-root reachability；Knip / unused export/type scanning rejected",
+        "Applicable Checks executes only already-required checks and reuses only exact candidate+check real PASS facts"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "No New Quality Control Plane",
+      "items": [
+        "no Gate/Check Registry, Verification Planner, Evidence Platform, Quality Dashboard or smart selection",
+        "trusted coordination and OpenSpec process portability are bounded Foundation corrections, not new platforms",
+        "repository engineering tools remain implementation choices；OpenSpec / Git retain truth ownership"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "kind": "architecture-thin-compare",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "pair": "current-to-planned",
+  "left": {
+    "ref": "./current.architecture.json",
+    "sha256": "865d7353e753d4be27ce10893d2e3c0f9aed6e1a4eaa95225fa417bf8d7e7784",
+    "bytes": 19771
+  },
+  "right": {
+    "ref": "./planned.architecture.json",
+    "sha256": "d482808197df77b7bcb7b9b9ea69763e7ac94636e90c11fa69a7e4eaad94a359",
+    "bytes": 20203
+  },
+  "classification": [
+    "semantic",
+    "presentation"
+  ],
+  "summary": {
+    "semantic": "Current re-materializes the 21 accepted D02 component identities at merged main@4b45552. Planned keeps the same component topology and changes only the existing Canonical Skills / Single-Action Execution semantics: Action-aligned canonical Guidance becomes the bounded HOW entry, ActionPackage gains trusted content-bound Guidance identity, Reviewer HOW stays independent, and Mechanical Preflight reuses D02 quality facts as an internal Author phase. No Registry, Router, Runtime, new lifecycle node, or speculative compatibility component is added.",
+    "presentation": "Current and Planned intentionally keep identical component count and geometry. The D03 delta is shown by refined component semantics/views plus one exact Guidance relation rather than new control-plane nodes."
+  },
+  "presentation": {
+    "mode": "side-by-side",
+    "renderer": "flowkit-reference-side-by-side",
+    "leftPosition": "before",
+    "rightPosition": "after",
+    "equalFrame": true,
+    "interactive": true,
+    "overlay": false,
+    "deltaColumn": false,
+    "artifactPolicy": "disposable-html-not-retained-in-git",
+    "resolution": "resolve-left-right-ref-to-architecture-render"
+  }
+}

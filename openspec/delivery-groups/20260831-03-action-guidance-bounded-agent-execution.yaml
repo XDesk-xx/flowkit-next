@@ -1,0 +1,147 @@
+id: "20260831-03-action-guidance-bounded-agent-execution"
+createdAt: "2026-08-31"
+branch: "delivery/20260831-03-action-guidance-bounded-agent-execution"
+base: "main@4b45552b90ee327488bde3141c51c556e65a2e95"
+
+goal: "当 Flowkit 已经确定 exact current Action 后，让长期 Author / Reviewer AI 稳定获得与该 Action 可信绑定的 canonical HOW，完整执行当前 bounded Action，返回真实 Result，并在 terminal 后 STOP；同时保持 Action Guidance 只负责 HOW，不引入 Agent Runtime、Skill Registry、Skill Router 或 automatic workflow。"
+
+delivery:
+  state: active
+  fullTestStatus: pending
+  finalizationStatus: pending
+
+reference:
+  kind: "formal-implementation-reference"
+  artifact: "flowkit-next-d03-action-guidance-bounded-agent-execution-formal-reference(1).md"
+  sha256: "284f0df1006fb8e0d178959d992572e804ceb73a8ed345e321b9a7e096883f24"
+
+scope:
+  included:
+    - "trusted exact StandardActionId → canonical Action Guidance identity binding"
+    - "content-bound Guidance identity frozen into exact ActionPackage"
+    - "reuse existing ActionPackageRef → ApplicableCheckExecutionInput.executionInputRef identity chain"
+    - "canonical Action Guidance truth under skills/actions/** with StandardActionId-aligned top-level identities"
+    - "Author guidance convergence for explore/revise/propose/apply/archive HOW"
+    - "Reviewer guidance convergence for review-explore/review-propose/review-apply HOW"
+    - "Author Mechanical Preflight as an internal apply/revise-apply capability unless independent contract proof later justifies a separate Change"
+    - "Run concision, semantic invariant/literal discipline, bounded handoff/continuation proof and temporary bridge cleanup"
+  excluded:
+    - "Agent Runtime / Agent Registry / Provider Registry"
+    - "Skill Registry / Guidance Registry / Skill Router / Skill Planner"
+    - "automatic Skill discovery / ranking / internal method routing"
+    - "automatic next Action / Role switch / Author-Reviewer loop / Owner decision"
+    - "new Run lifecycle state / new Standard Action for Mechanical Preflight"
+    - "Guidance cache DB / second execution identity subsystem / payload registry / continuation database"
+    - "Full Test correction model, which remains D04 scope"
+    - "automatic Git authority / promotion lifecycle"
+
+architecture:
+  impact: true
+  archifyPlan: "required"
+  startStatus: "materialized"
+  finalStatus: "pending"
+  currentRef: "architecture/20260831-03-action-guidance-bounded-agent-execution/json/current.architecture.json"
+  plannedRef: "architecture/20260831-03-action-guidance-bounded-agent-execution/json/planned.architecture.json"
+  compareRefs:
+    - "architecture/20260831-03-action-guidance-bounded-agent-execution/json/current-to-planned.compare.json"
+  htmlPolicy: "disposable-not-retained-in-git"
+
+changes:
+  - id: "establish-action-guidance-execution-contract"
+    group: "action-guidance"
+    goal: "把 already-decided exact StandardActionId 与 trusted、canonical、content-bound Action Guidance identity 绑定进同一个 exact ActionPackage，并自然复用现有 ActionPackageRef / executionInputRef identity chain。"
+    required: true
+    dependsOn: []
+    state: planned
+    architectureImpact: true
+    outputs:
+      - "trusted Action → canonical Guidance binding contract"
+      - "Guidance identity inside exact ActionPackage"
+      - "existing ActionPackageRef / executionInputRef identity reuse"
+
+  - id: "converge-author-action-guidance"
+    group: "action-guidance"
+    goal: "把现有 bootstrap Author execution knowledge 收敛为 StandardActionId-aligned canonical skills/actions HOW，并吸收 proof/convergence/preflight/handoff/Run/literal/STOP discipline。"
+    required: true
+    dependsOn: []
+    state: planned
+    architectureImpact: true
+    outputs:
+      - "canonical Author Action Guidance entries"
+      - "single canonical HOW truth for Author Actions"
+      - "temporary Run-guidance bridge cleanup after formal takeover"
+
+  - id: "converge-reviewer-action-guidance"
+    group: "action-guidance"
+    goal: "把 Reviewer HOW 收敛为 review-explore/review-propose/review-apply 三个稳定 canonical Action Guidance，保持 independent、fact-based、mutation-free review 与 complexity/minimality explanation。"
+    required: true
+    dependsOn: []
+    state: planned
+    architectureImpact: true
+    outputs:
+      - "canonical Reviewer Action Guidance entries"
+      - "independent mutation-free Reviewer HOW"
+      - "stable review-step and complexity explanation discipline"
+
+proofConcerns:
+  - id: "trusted-action-guidance-identity-binding"
+    status: "proof-first"
+    statement: "Change 1 must prove deterministic exact Action → canonical Guidance binding, exact content identity, wrong-Action fail-closed behavior, and natural inclusion in existing ActionPackageRef / executionInputRef without a second identity subsystem."
+
+  - id: "author-mechanical-preflight-granularity"
+    status: "required-capability-independent-change-proof-gated"
+    statement: "Mechanical Preflight is required inside Author apply/revise-apply HOW; only independent machine-readable/domain/config/acceptance proof may justify adding a separate Change by later explicit Owner composition revision."
+
+  - id: "agent-guidance-compatibility"
+    status: "contingency-not-in-initial-composition"
+    statement: "Direct canonical Guidance consumption is tried first. Only a recorded real failure plus explicit Owner composition revision may add establish-agent-guidance-compatibility."
+
+memoInputs:
+  - memoId: "future-run-history-concision-and-repository-growth"
+    disposition: "absorb-into-d03-author-reviewer-guidance-and-cleanup-temporary-bridge"
+    requiredOutcome: "retain the stable three-file Run surface; reduce durable narrative/evidence duplication; delete temporary bridge only after canonical Guidance takeover"
+
+  - memoId: "future-semantic-invariant-and-literal-discipline"
+    disposition: "absorb-into-d03-author-reviewer-how"
+    requiredOutcome: "prefer semantic invariants over incidental current literals; no magic-number scanner/Gate/platform"
+
+  - memoId: "future-uncommitted-change-continuation-integrity"
+    disposition: "proof-and-record-bounded-guidance-packaging-disposition"
+    requiredOutcome: "resolve in D03 if Guidance/packaging is sufficient; otherwise carry only the bounded Core continuity question to D04"
+
+  - memoId: "future-full-test-correction-model"
+    disposition: "excluded-carry-to-d04"
+    requiredOutcome: "no D03 Verification finding/correction subsystem"
+
+historicalContinuity:
+  - memoId: "structural-dependency-023-historical-continuity-gap"
+    state: "dismissed"
+    rule: "do-not-reconstruct-or-fabricate-missing-023-bytes; preserve existing downstream Reviewer evidence only"
+
+recommendedOrder:
+  - "establish-action-guidance-execution-contract"
+  - "converge-author-action-guidance"
+  - "converge-reviewer-action-guidance"
+
+acceptance:
+  - "exact current Action is supplied by Flowkit and is not guessed from Run history"
+  - "exact canonical Guidance identity is trusted, Action-aligned, content-bound and frozen into ActionPackage"
+  - "wrong-Action Guidance substitution fails closed"
+  - "existing ActionPackageRef and ApplicableCheck executionInputRef naturally include Guidance identity"
+  - "long-running Author and Reviewer can consume exact bounded HOW without requiring a new AI session per Action"
+  - "Action Guidance never decides next Action, Role, Owner authority or Verification truth"
+  - "Author revise remains Author mutation; Reviewer remains independent and mutation-free"
+  - "canonical Action Guidance has one truth location under skills/actions/**"
+  - "method evolution remains internal to stable Action Skill identities and is recorded by OpenSpec/Git history"
+  - "Mechanical Preflight reuses D02 quality facts and does not become a new lifecycle/Verification surface"
+  - "Run concision / literal discipline / continuation proof are absorbed without new Registry/Platform"
+  - "one Action → one real Result → terminal → STOP"
+  - "no Registry / Router / Runtime / automatic loop / second identity subsystem is introduced"
+
+ownerDecisions:
+  - ref: "owner:ce73d6c7e83a0905c2edcf7e41a1150339c61e3ec2efd7a7b1e4e808b3c85d03"
+    decision: "create-delivery"
+    deliveryId: "20260831-03-action-guidance-bounded-agent-execution"
+    sourceRef: "owner-input:2026-08-31:authorize-delivery-start:20260831-03-action-guidance-bounded-agent-execution:base-4b45552b90ee"
+    scope:
+      - "delivery-start"
