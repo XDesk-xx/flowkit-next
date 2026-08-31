@@ -1,0 +1,38 @@
+{
+  "runNumber": 31,
+  "kind": "external-orchestrator-review-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+  "changeId": "establish-high-confidence-repository-entropy-hygiene",
+  "action": "review-explore",
+  "runId": "20260830-031-review-explore",
+  "physicalRunPath": ".flowkit/runs/20260829-02-lightweight-incremental-engineering-quality/030-establish-high-confidence-repository-entropy-hygiene/20260830-031-review-explore",
+  "inputRunId": "20260830-030-explore",
+  "reviewChainStartRunId": "20260830-030-explore",
+  "inputArchiveSha256": "046b5b1c39155f966c4578caef2b55d15cb03fbe53780940cd9f116256da71c8",
+  "inputExploreSha256": "e66b036796a9382f43fe97b245ad5391d77898abbeb272b9c39695da5d923bef",
+  "checkpointClaim": "45bf8355448ef8a279cc68405cf1d9b89ab2c5c7",
+  "independentChecks": {
+    "authorityAndCoordination": "PASS",
+    "inputExploreHash": "PASS",
+    "knipVersion": "6.32.2",
+    "dependencyCruiserVersion": "18.2.0",
+    "knipDependencyOnlyCurrentBaseline": "PASS / 0 issues",
+    "knipUnusedDirectDependencyFixture": "FAIL as required",
+    "broadExportTypeExclusion": "PASS",
+    "ownershipSeparation": "PASS",
+    "orphanBaseline": "PASS / 0 current orphan violations",
+    "isolatedOrphanFixture": "FAIL as required",
+    "deadConnectedSubgraphFixture": "UNDETECTED / BLOCKING",
+    "orphanSemantic": "no incoming AND no outgoing; not equivalent to unreachable-from-roots",
+    "baselineWaiverNeeded": "NO evidence",
+    "changedFilePlannerNeeded": "NO evidence",
+    "qualityPlatformExpansion": "NONE"
+  },
+  "blockingFindingIds": [
+    "RE-031-001"
+  ],
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

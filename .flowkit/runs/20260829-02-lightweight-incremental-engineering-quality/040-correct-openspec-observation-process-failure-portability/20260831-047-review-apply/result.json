@@ -1,0 +1,39 @@
+{
+  "runNumber": 47,
+  "kind": "external-orchestrator-review-apply-result",
+  "role": "reviewer",
+  "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+  "changeId": "correct-openspec-observation-process-failure-portability",
+  "action": "review-apply",
+  "runId": "20260831-047-review-apply",
+  "executionStatus": "completed",
+  "reviewerVerdict": "changes-requested",
+  "verificationVerdict": null,
+  "nextBoundary": "revise-apply",
+  "blockingFindings": [
+    {
+      "id": "RA-047-001",
+      "title": "New internal production module leaves the existing entropy focused baseline test stale",
+      "requiredRevision": "Update only the affected entropy focused repository-baseline assertion so it reflects the canonical zero-unreachable invariant for the now-19-module source graph, preferably reachable.length === total plus unreachable=[], then rerun the affected and declared integration checks. Do not create a new Change or modify entropy production semantics."
+    }
+  ],
+  "checks": {
+    "fullReviewChainIntegrity": "PASS",
+    "proposalFidelity": "PASS",
+    "portabilityImplementation": "PASS",
+    "portableBoundaryCoverage": "PASS",
+    "packageTruth": "PASS",
+    "integrationChecks": "PASS except existing test:entropy regression",
+    "repositoryRegression": "BLOCKED by RA-047-001",
+    "archiveReadiness": "NOT READY"
+  },
+  "revisionGuidance": [
+    "Do not redesign or reopen the portability contract.",
+    "Do not create a separate corrective Change for this test regression.",
+    "Update the existing entropy focused baseline test only enough to express zero unreachable findings without a stale literal source-count dependency.",
+    "Keep production roots and entropy implementation unchanged.",
+    "Rerun test:entropy plus the current Apply verification set."
+  ],
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

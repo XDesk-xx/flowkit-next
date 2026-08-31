@@ -10,14 +10,24 @@
   "scripts": {
     "typecheck": "tsc --noEmit",
     "test:domain": "node --import tsx --test tests/unit/domain/*.test.ts",
-    "format": "prettier --write src/domain src/cli tests/unit/domain tests/acceptance tsconfig.json tsconfig.build.json package.json",
-    "format:check": "prettier --check src/domain src/cli tests/unit/domain tests/acceptance tsconfig.json tsconfig.build.json package.json",
+    "format": "prettier --write src tests tsconfig.json tsconfig.build.json package.json eslint.config.mjs scripts/check-forbidden-tracked-artifacts.mjs",
+    "format:check": "prettier --check src tests tsconfig.json tsconfig.build.json package.json eslint.config.mjs scripts/check-forbidden-tracked-artifacts.mjs",
     "build": "tsc -p tsconfig.build.json",
-    "test:acceptance": "node --import tsx --test tests/acceptance/*.test.ts"
+    "test:acceptance": "node --import tsx --test tests/acceptance/*.test.ts",
+    "lint": "eslint src tests",
+    "check:forbidden-tracked-artifacts": "node scripts/check-forbidden-tracked-artifacts.mjs",
+    "quality:gate": "git diff --check HEAD && pnpm format:check && pnpm lint && pnpm check:forbidden-tracked-artifacts",
+    "quality:dependency-health": "depcruise --config dependency-cruiser.config.mjs --output-type err src tests",
+    "test:entropy": "node --test tests/unit/quality/production-reachability.test.mjs",
+    "quality:entropy": "node scripts/check-production-reachability.mjs"
+  },
+  "dependencies": {
+    "yaml": "^2.9.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.0.0",
     "@types/node": "^22.0.0",
+    "dependency-cruiser": "^18.2.0",
     "eslint": "^9.0.0",
     "prettier": "^3.0.0",
     "tsx": "^4.0.0",

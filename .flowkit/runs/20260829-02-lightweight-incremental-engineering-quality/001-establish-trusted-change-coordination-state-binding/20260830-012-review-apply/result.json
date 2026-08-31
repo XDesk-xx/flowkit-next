@@ -1,0 +1,38 @@
+{
+  "runNumber": 12,
+  "kind": "external-orchestrator-review-apply-result",
+  "role": "reviewer",
+  "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+  "changeId": "establish-trusted-change-coordination-state-binding",
+  "action": "review-apply",
+  "runId": "20260830-012-review-apply",
+  "executionStatus": "completed",
+  "reviewerVerdict": "changes-requested",
+  "verificationVerdict": null,
+  "nextBoundary": "revise-apply",
+  "blockingFindings": [
+    {
+      "id": "RA-012-001",
+      "title": "YAML runtime-resolution evidence is not reproducible from the documented prepared D02 environment",
+      "requiredRevision": "Prepare/use an external execution environment that reflects the exact new package.json + pnpm-lock.yaml direct yaml dependency layout, rerun the declared Apply checks there, and record the exact environment preparation/identity. Do not claim the old prepared D02 archive resolves direct import('yaml') as-is. Keep detached archive regeneration outside the OpenSpec Change lifecycle."
+    }
+  ],
+  "checks": {
+    "proposalFidelity": "PASS",
+    "scopeCompliance": "PASS",
+    "implementationCorrectness": "PASS on Reviewer-reproduced exact candidate after external environment relink",
+    "verificationEvidence": "BLOCKED by RA-012-001",
+    "contractDefect": "NONE",
+    "nonGoalAudit": "PASS",
+    "reviewApplyReadiness": "CHANGES REQUESTED"
+  },
+  "revisionGuidance": [
+    "Do not redesign trusted coordination resolution or reopen approved Proposal semantics.",
+    "Do not add node_modules packaging back to tasks.md or Change acceptance.",
+    "Correct only the execution-environment evidence/handoff unless reproduction uncovers a real implementation defect.",
+    "Use exact Node 22.23.2 and exact package/lock identity when rerunning checks.",
+    "Record enough external environment identity/preparation for Reviewer reproduction."
+  ],
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

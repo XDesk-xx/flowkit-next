@@ -1,0 +1,39 @@
+{
+  "runNumber": 41,
+  "kind": "external-orchestrator-review-explore-result",
+  "role": "reviewer",
+  "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+  "changeId": "correct-openspec-observation-process-failure-portability",
+  "action": "review-explore",
+  "runId": "20260831-041-review-explore",
+  "executionStatus": "completed",
+  "reviewerVerdict": "changes-requested",
+  "verificationVerdict": null,
+  "nextBoundary": "revise-explore",
+  "blockingFindings": [
+    {
+      "id": "RE-041-001",
+      "title": "Windows raw child-process termination outcome is missing, so the correction branch and spec-delta decision are not yet proven",
+      "requiredRevision": "Capture exact Windows {code, signal, stdout} plus minimal event facts for the existing failing fixture, then select fixture-portability correction or invocation/classification correction and explicitly prove whether the existing canonical spec remains sufficient or needs a minimal precedence clarification."
+    }
+  ],
+  "checks": {
+    "realUseCaseAlignment": "PASS",
+    "defectConfirmation": "PASS",
+    "factsAndAssumptions": "BLOCKED only at raw Windows process outcome",
+    "riskCoverage": "PASS except unresolved fix branch",
+    "proofQuality": "CHANGES REQUESTED",
+    "scopeDiscipline": "PASS",
+    "stopDiscipline": "REVISE ONE DECISIVE PROOF BRANCH ONLY",
+    "proposalReadiness": "NOT READY"
+  },
+  "revisionGuidance": [
+    "Do not reopen the already-proven defect existence or D02 scope separation.",
+    "Capture the exact Windows raw close outcome for the current fixture.",
+    "Use that proof to choose Branch A or Branch B rather than guessing from Linux behavior.",
+    "If the raw outcome exposes overlap between abnormal-completion and malformed-output scenarios, explicitly resolve whether the spec needs a minimal clarification.",
+    "Do not skip Windows, collapse all non-zero invalid output to process failure, add a process supervisor, or add dependencies."
+  ],
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

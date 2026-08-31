@@ -1,0 +1,53 @@
+{
+  "runNumber": 36,
+  "kind": "external-orchestrator-review-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+  "changeId": "establish-high-confidence-repository-entropy-hygiene",
+  "action": "review-propose",
+  "runId": "20260830-036-review-propose",
+  "physicalRunPath": ".flowkit/runs/20260829-02-lightweight-incremental-engineering-quality/030-establish-high-confidence-repository-entropy-hygiene/20260830-036-review-propose",
+  "inputRunId": "20260830-035-propose",
+  "reviewChainStartRunId": "20260830-030-explore",
+  "inputArchiveSha256": "ae21dae759f86d7af5015a63788a957f73ff345d74a8e720259a39af2bd4e849",
+  "checkpointClaim": "45bf8355448ef8a279cc68405cf1d9b89ab2c5c7",
+  "reviewChain": {
+    "030ExploreArchiveSha256": "046b5b1c39155f966c4578caef2b55d15cb03fbe53780940cd9f116256da71c8",
+    "031ReviewExploreArchiveSha256": "03254d992c2c607c50d5466b3d7c416bfeeb573b5c08499c0df075622b654f21",
+    "033ReviseExploreArchiveSha256": "56b4707c7c1f4ceb194c4dab512275ab1b2a93f7644cd117c56ce7564793cc25",
+    "034ReviewExploreArchiveSha256": "c5e741fdd6447c6fbcc3632ab94f0c62db1ecfb47ef89758efaba3c322ab1cb1"
+  },
+  "chainChecks": {
+    "030OriginalOrphanCandidate": "REVIEWED",
+    "031Finding_RE_031_001": "CONFIRMED historical blocker",
+    "033ReachabilityCorrection": "PASS",
+    "034Approval": "PASS",
+    "035ApprovedExploreHashMatches033": "PASS",
+    "035InputReviewHashMatches034": "PASS",
+    "rejectedOrphanSemanticsReintroduced": "NO",
+    "rejectedKnipAdoptionReintroduced": "NO"
+  },
+  "independentChecks": {
+    "proposalArtifactHashes": "PASS",
+    "exploreToProposalConvergence": "PASS",
+    "currentChangeOpenSpecStrict": "PASS using managed OpenSpec 1.10.0",
+    "fullRepositoryOpenSpecAllStrict": "Author records 13/13; exact independent replay unavailable from delta-only payload plus stale reconstructed snapshot",
+    "exactProductionRoots": "PASS",
+    "rootReachabilitySemantics": "PASS",
+    "connectedDeadSubgraphContract": "PASS",
+    "testOnlyLivenessContract": "PASS",
+    "orphanSemanticRejected": "PASS",
+    "knipAdoption": "NONE",
+    "homegrownUnusedPackageScanner": "NONE",
+    "packageMutation": "NONE",
+    "productionMutation": "NONE",
+    "qualityGateMutation": "NONE",
+    "dependencyHealthMutation": "NONE",
+    "baselineWaiverCacheChangedFilePlanner": "NONE",
+    "registryPlatformLifecycleExpansion": "NONE"
+  },
+  "blockingFindingIds": [],
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

@@ -1,0 +1,38 @@
+{
+  "runNumber": 31,
+  "kind": "external-orchestrator-review-explore-result",
+  "role": "reviewer",
+  "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+  "changeId": "establish-high-confidence-repository-entropy-hygiene",
+  "action": "review-explore",
+  "runId": "20260830-031-review-explore",
+  "executionStatus": "completed",
+  "reviewerVerdict": "changes-requested",
+  "verificationVerdict": null,
+  "nextBoundary": "revise-explore",
+  "blockingFindings": [
+    {
+      "id": "RE-031-001",
+      "title": "dependency-cruiser orphan semantics do not prove production-root unreachability",
+      "requiredRevision": "Add a decisive internally-connected dead-subgraph fixture and prove a bounded production-root reachability check catches it, or explicitly narrow the contract to isolated orphan modules and justify that narrower capability. Do not reopen the valid Knip dependency-only branch or expand into a graph platform."
+    }
+  ],
+  "checks": {
+    "realUseCaseAlignment": "PASS except dead-node proof mismatch",
+    "factsAndAssumptions": "CHANGES REQUESTED",
+    "riskCoverage": "BLOCKED by connected dead-subgraph case",
+    "proofQuality": "BLOCKED by RE-031-001",
+    "scopeDiscipline": "PASS",
+    "stopDiscipline": "REVISE ONLY ONE PROOF BRANCH",
+    "proposalReadiness": "NOT READY"
+  },
+  "revisionGuidance": [
+    "Keep Knip restricted to unused direct package declarations; that proof is accepted.",
+    "Replace or narrow the orphan-production-source proof so mechanical semantics equal the stated contract.",
+    "Required counterexample: an internally connected production subgraph unreachable from both explicit production roots must fail.",
+    "Prefer a small bounded root-reachability proof rather than a new registry/platform.",
+    "Do not add unused exports/types, baseline/waiver/cache, changed-file planning, or merge entropy into dependency-health."
+  ],
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

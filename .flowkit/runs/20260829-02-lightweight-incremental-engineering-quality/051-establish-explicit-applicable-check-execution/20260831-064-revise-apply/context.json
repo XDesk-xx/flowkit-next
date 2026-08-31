@@ -1,0 +1,58 @@
+{
+  "runNumber": 64,
+  "kind": "external-orchestrator-revise-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+  "changeId": "establish-explicit-applicable-check-execution",
+  "action": "revise-apply",
+  "runId": "20260831-064-revise-apply",
+  "physicalRunPath": ".flowkit/runs/20260829-02-lightweight-incremental-engineering-quality/051-establish-explicit-applicable-check-execution/20260831-064-revise-apply",
+  "inputRunId": "20260831-063-review-apply",
+  "inputReviewArchiveSha256": "20179430156ca1efe6768f7a807c81d1b714aaca229cc1852682f3cdaa212726",
+  "checkpointClaim": "d9399c7ee23cffe0ee3926236489135f87ffdd95",
+  "skillsUsed": [
+    "revise-apply",
+    "implementation-convergence"
+  ],
+  "resolvedFindings": [
+    {
+      "id": "RA-063-001",
+      "resolution": "Reuse eligibility now accepts prior.status=passed only. reused-passed is explicitly non-reusable and forces actual current execution."
+    }
+  ],
+  "scopePreservation": {
+    "candidateIdentityChanged": false,
+    "checkIdentityChanged": false,
+    "executionInputChanged": false,
+    "admissionChanged": false,
+    "runHistoryScanAdded": false,
+    "provenanceTraversalAdded": false,
+    "registryPlannerEvidenceCacheAdded": false,
+    "packageMutation": false,
+    "lockMutation": false,
+    "proposalArtifactsChanged": false
+  },
+  "verification": {
+    "focusedApplicableChecks": "PASS 17/17",
+    "domain": "PASS 145/145",
+    "typecheck": "PASS",
+    "build": "PASS",
+    "qualityGate": "PASS via exact underlying git diff/prettier/eslint/forbidden-artifact checks",
+    "dependencyHealth": "PASS 0 violations; 55 modules / 188 dependencies",
+    "entropy": "PASS 24/24 reachable",
+    "entropyFocused": "PASS 7/7",
+    "openspecChangeStrict": "PASS",
+    "openspecAllStrict": "PASS 14/14",
+    "gitDiffCheck": "PASS"
+  },
+  "artifactHashes": {
+    "applicableCheckExecutionSha256": "659124ed2311dbcdd20c3662f14d9fa03a9969747dea4811877d3a8ca911b9ef",
+    "focusedTestSha256": "2e096cf4d8ab23b85486ef4e2a5bd02d96fa1a9c1d3e3cd93bd04ba11d3bde14",
+    "tasksSha256": "5fec5fb2c5142657c28b36838fe76f46519e2707e3750bf6002cc6f2ba917e2d",
+    "packageJsonSha256": "c79508605c34371eea6903f7dad39d388531f6b84e04c74d10ecd4938b4a9d76",
+    "pnpmLockSha256": "bf5ef071f2b4b8140f05493ebd53098660250f2cd5a834fe321ce8685bdb65e5"
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

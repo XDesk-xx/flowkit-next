@@ -1,0 +1,41 @@
+{
+  "runNumber": 59,
+  "kind": "external-orchestrator-review-propose-result",
+  "role": "reviewer",
+  "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+  "changeId": "establish-explicit-applicable-check-execution",
+  "action": "review-propose",
+  "runId": "20260831-059-review-propose",
+  "executionStatus": "completed",
+  "reviewerVerdict": "changes-requested",
+  "verificationVerdict": null,
+  "nextBoundary": "revise-propose",
+  "resolvedFindings": [
+    "RP-058-001"
+  ],
+  "blockingFindings": [
+    {
+      "id": "RP-059-001",
+      "title": "Author revise-propose severed the actual 058 Reviewer handoff and reused finding/run provenance",
+      "requiredRevision": "Create one clean unique subsequent revise-propose Run that references 20260831-058-review-propose and its Reviewer archive SHA, records actual RP-058-001 as resolved, records repository-root ownership as a separate Author self-audit correction, and preserves the already-correct Proposal bytes."
+    }
+  ],
+  "checks": {
+    "proposalSemanticConvergence": "PASS",
+    "ignoredCandidateBoundary": "PASS",
+    "repositoryRootTrustBoundary": "PASS",
+    "artifactIntegrity": "PASS",
+    "currentChangeStrict": "PASS",
+    "complexityExpansion": "NONE",
+    "durableReviewChain": "BLOCKED by RP-059-001",
+    "applyReadiness": "NOT READY until provenance is corrected"
+  },
+  "revisionGuidance": [
+    "Do not redesign or rewrite the Proposal semantics.",
+    "Do not add a new Change or subsystem.",
+    "Correct only Run/Result handoff provenance and finding identity.",
+    "Preserve host-owned repositoryRoot and non-ignored candidate semantics."
+  ],
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

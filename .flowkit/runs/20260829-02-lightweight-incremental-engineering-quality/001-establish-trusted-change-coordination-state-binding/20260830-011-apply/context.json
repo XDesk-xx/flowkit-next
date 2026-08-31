@@ -1,0 +1,33 @@
+{
+  "runNumber": 11,
+  "kind": "external-orchestrator-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+  "changeId": "establish-trusted-change-coordination-state-binding",
+  "action": "apply",
+  "runId": "20260830-011-apply",
+  "physicalRunPath": ".flowkit/runs/20260829-02-lightweight-incremental-engineering-quality/001-establish-trusted-change-coordination-state-binding/20260830-011-apply",
+  "inputRunId": "20260830-010-review-propose",
+  "reviewChainStartRunId": "20260830-001-explore",
+  "inputReviewArchiveSha256": "ea022e85e4618495a1616bb7b984b3d39f58e1686c807e3e8728c35477b6c39c",
+  "skillsUsed": [
+    ".agents/skills/openspec-apply-change",
+    ".agents/skills/implementation-convergence"
+  ],
+  "checkpointClaim": "0e6f74617300f13fd8676d8bda8c7904909f7dc4",
+  "implementationArtifactsSha256": {
+    "package.json": "ce6a10f122bcb0f592a666ece00acc56a54ae507e7ffdc792b699839964c35fc",
+    "pnpm-lock.yaml": "3b7b74ced93cce9e7b0e14cc51feeb2354e57b74ba1c611c0a4ffc6b6e8ce8d9",
+    "src/cli/request.ts": "fbd9c517aeb0286ea0daebb7c08740b3cab72e06d067d5d0c79c6cb78c42e08b",
+    "src/cli/foundation-cli.ts": "b6a1bbb7850a9df6e3d996bc371f57bbfed0458aa5fb206eb516606ddac70acb",
+    "src/cli/trusted-change-coordination.ts": "6630657526faa90bd5264206fc8fc6fe4297e2769238825548211e4be7452b15",
+    "tests/unit/domain/trusted-change-coordination.test.ts": "9e62608d20848572a9bb867311e61cf65796a51130d7d78688bf23a24688cb8c",
+    "tests/unit/domain/foundation-cli-surface.test.ts": "fb177f7c88634cb939590710c0ded69e3ed8facc28aceb9766b84d4c55d9433c",
+    "tests/unit/domain/foundation-cli-entrypoint.test.ts": "1d103c34ddcbd0f12c9cf0ae914056115c06aceb41c0fbdef57b4f9d4eae1ced",
+    "tests/acceptance/foundation-manager.acceptance.test.ts": "9d63d1d652c618702989529a922917ae7ce0ec06cdb580f53bfc6ad5d54c6a76",
+    "openspec/changes/establish-trusted-change-coordination-state-binding/tasks.md": "eaaeaffab83ebcdbdffadf65bcbe4788b77c1bc3fba8512efff5f71a3016ef70"
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

@@ -1,0 +1,28 @@
+{
+  "runNumber": 42,
+  "kind": "external-orchestrator-revise-explore-result",
+  "role": "author",
+  "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+  "changeId": "correct-openspec-observation-process-failure-portability",
+  "action": "revise-explore",
+  "runId": "20260831-042-revise-explore",
+  "executionStatus": "completed",
+  "verdict": "PASS_FOR_RE_REVIEW",
+  "nextBoundary": "review-explore",
+  "reviewFindingResolved": [
+    "RE-041-001"
+  ],
+  "proposalAllowed": false,
+  "applyAllowed": false,
+  "proposalReadiness": "READY AFTER INDEPENDENT REVIEWER APPROVAL",
+  "selectedCorrectionBranch": "Branch B — observable invocation/classification contract ambiguity",
+  "windowsRawTuple": {
+    "code": 1,
+    "signal": null,
+    "stdout": ""
+  },
+  "specDelta": "MINIMAL CLARIFICATION REQUIRED",
+  "productionMutation": "NONE",
+  "proposalArtifacts": "NONE",
+  "summary": "Exact Node 22.23.2 Windows source semantics resolve the current self-SIGKILL fixture to code=1, signal=null, stdout empty, corroborating the reproduced malformed-machine-output result. The hidden OS cause is not portably recoverable from the current observable tuple, so the revised Explore selects the contract-observability ambiguity branch, rejects heuristic production broadening, and requires a minimal existing openspec-thin-integration precedence clarification plus portable boundary proof."
+}

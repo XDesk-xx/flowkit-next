@@ -1,0 +1,57 @@
+{
+  "runNumber": 42,
+  "kind": "external-orchestrator-revise-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+  "changeId": "correct-openspec-observation-process-failure-portability",
+  "action": "revise-explore",
+  "runId": "20260831-042-revise-explore",
+  "physicalRunPath": ".flowkit/runs/20260829-02-lightweight-incremental-engineering-quality/040-correct-openspec-observation-process-failure-portability/20260831-042-revise-explore",
+  "checkpointClaim": "32345c2ec951baffde7f56ba7519a1c4c1e77566",
+  "inputRunId": "20260831-041-review-explore",
+  "reviewFindingId": "RE-041-001",
+  "revisedExploreSha256": "650958ed268806c2b3b9c3792538adc8512df0dc28742d0061a4108a4cba1cf8",
+  "fixtureSourceSha256": "09c4a8b5326e0792c7fb2f0507ea347eb38b5555a6db05f9114f08b5e56d55b5",
+  "proof": {
+    "windowsPlatform": "win32 x64",
+    "windowsNodeVersion": "22.23.2",
+    "fixtureBody": "process.kill(process.pid, \"SIGKILL\");",
+    "windowsRawTuple": {
+      "code": 1,
+      "signal": null,
+      "stdout": ""
+    },
+    "rawTupleProofBasis": [
+      "actual Windows isolated test reaches malformed-machine-output rather than openspec-process-failed",
+      "Node v22.23.2 deps/uv/src/win/process.c uv_kill -> uv__kill -> TerminateProcess(process_handle, 1)",
+      "Node v22.23.2 parent uv_process_t exit_signal initializes to 0 and only uv_process_kill sets it; child self process.kill uses uv_kill instead",
+      "fixture emits no stdout before termination"
+    ],
+    "windowsErrorEventWon": false,
+    "windowsCloseEvent": "code=1, signal=null",
+    "windowsExitEvent": "not instrumented / not required for branch selection",
+    "linuxNodeVersion": "22.23.2",
+    "linuxFocusedBoundaryTests": "10/10 PASS",
+    "linuxRawTuple": {
+      "code": null,
+      "signal": "SIGKILL",
+      "stdout": ""
+    },
+    "selectedBranch": "Branch B — observable invocation/classification contract ambiguity",
+    "specDelta": "minimal openspec-thin-integration precedence/observability clarification required",
+    "productionBehaviorBroadening": "REJECTED without further proof"
+  },
+  "preservedNonGoals": [
+    "no Windows skip",
+    "no win32 exit-code-1 heuristic",
+    "no collapse of all non-zero invalid/empty stdout into process failure",
+    "no generic process supervisor",
+    "no dependency addition",
+    "no merge into establish-explicit-applicable-check-execution"
+  ],
+  "productionMutationInReviseExplore": false,
+  "proposalArtifactsInReviseExplore": false,
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

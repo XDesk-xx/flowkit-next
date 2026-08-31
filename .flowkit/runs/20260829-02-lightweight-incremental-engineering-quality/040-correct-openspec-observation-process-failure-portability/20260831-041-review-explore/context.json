@@ -1,0 +1,35 @@
+{
+  "runNumber": 41,
+  "kind": "external-orchestrator-review-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+  "changeId": "correct-openspec-observation-process-failure-portability",
+  "action": "review-explore",
+  "runId": "20260831-041-review-explore",
+  "physicalRunPath": ".flowkit/runs/20260829-02-lightweight-incremental-engineering-quality/040-correct-openspec-observation-process-failure-portability/20260831-041-review-explore",
+  "inputRunId": "20260831-040-explore",
+  "reviewChainStartRunId": "20260831-040-explore",
+  "inputArchiveSha256": "fdcb2bc0b9f0365842631e5a19a9cd6b4882879fb05f26eefbdcdb0219d6bb07",
+  "inputExploreSha256": "6021ce6e41dd7220afbd346aa726a44f41333a6874d760c70caeba582cd7bc7c",
+  "checkpointClaim": "32345c2ec951baffde7f56ba7519a1c4c1e77566",
+  "independentChecks": {
+    "deliveryComposition": "PASS: correction active and separated from final D02 Change",
+    "defectExistence": "PASS",
+    "linuxCurrentBehavior": "CONSISTENT with supplied proof",
+    "windowsFailureReproducedByAuthor": "ACCEPTED as supplied proof",
+    "windowsRawCloseTuple": "MISSING / BLOCKING",
+    "currentImplementationClassificationShape": "PASS",
+    "canonicalTaxonomy": "PASS with potential cross-platform precedence ambiguity pending raw tuple",
+    "specDeltaNone": "NOT YET PROVEN",
+    "fixtureVsImplementationBranch": "UNRESOLVED",
+    "productionMutationInExplore": "NONE",
+    "proposalArtifactsInExplore": "NONE",
+    "scopeDiscipline": "PASS"
+  },
+  "blockingFindingIds": [
+    "RE-041-001"
+  ],
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

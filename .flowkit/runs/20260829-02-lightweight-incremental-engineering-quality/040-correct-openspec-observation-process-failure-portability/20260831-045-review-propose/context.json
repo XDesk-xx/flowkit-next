@@ -1,0 +1,63 @@
+{
+  "runNumber": 45,
+  "kind": "external-orchestrator-review-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+  "changeId": "correct-openspec-observation-process-failure-portability",
+  "action": "review-propose",
+  "runId": "20260831-045-review-propose",
+  "physicalRunPath": ".flowkit/runs/20260829-02-lightweight-incremental-engineering-quality/040-correct-openspec-observation-process-failure-portability/20260831-045-review-propose",
+  "inputRunId": "20260831-044-propose",
+  "reviewChainStartRunId": "20260831-040-explore",
+  "checkpointClaim": "32345c2ec951baffde7f56ba7519a1c4c1e77566",
+  "inputArchiveSha256": "5d34a7df5d8fc932c4ffce61e970736736d98f9e2a4493758c84492be72b6210",
+  "reviewChainArchiveSha256": {
+    "d02-040-explore-author.zip": "fdcb2bc0b9f0365842631e5a19a9cd6b4882879fb05f26eefbdcdb0219d6bb07",
+    "d02-041-review-explore-reviewer.zip": "1ea62090212f4dd1a066808e7a1b86cdb4ee2f70e9866ca21cb9ff3acef80235",
+    "d02-042-revise-explore-author.zip": "fd7947620658935f923bf7c7896d90a218324ed1503d948c570f860c927386d1",
+    "d02-043-review-explore-reviewer.zip": "eb3211b0005fe52223634930578a21d7a66a4967aeb32f9d2b4339dfaa4afc99",
+    "d02-044-propose-author.zip": "5d34a7df5d8fc932c4ffce61e970736736d98f9e2a4493758c84492be72b6210"
+  },
+  "chainChecks": {
+    "040DefectProof": "PASS",
+    "041Finding_RE_041_001": "CONFIRMED historical blocker",
+    "042WindowsTupleAndBranchB": "PASS",
+    "043ReviewExploreApproval": "PASS",
+    "044InputReviewHashMatches043": true,
+    "044ApprovedExploreHash": "650958ed268806c2b3b9c3792538adc8512df0dc28742d0061a4108a4cba1cf8",
+    "rejectedWindowsHeuristicsReintroduced": "NO",
+    "rejectedProductionBroadeningReintroduced": "NO"
+  },
+  "artifactHashes": {
+    "openspecMetadataSha256": "9187547d8cc17017ebd44132527d2d5e096d1ef9705de80cc4f1cf34531f6976",
+    "proposalSha256": "2f563ae79f65e423808ac461833a878c8c20b45f5b243cf5056dd5cbfbd944f1",
+    "designSha256": "625e423c936dff943bb63163ee3e37512913adf67513085df5e33d8b8539b27e",
+    "specSha256": "f13c2f5d970ce1ba0bc1ed7aba1f47b8bb8f5c8f13a1f0d751d737deaee474fe",
+    "tasksSha256": "538db71e6f79a02f2ee839d2bf900c17af4f70d35e6391f5eba2019ec250cdbc"
+  },
+  "artifactHashClaimsMatch": true,
+  "independentChecks": {
+    "exploreToProposalConvergence": "PASS",
+    "observablePrecedence": "PASS",
+    "minimalSpecClarification": "PASS",
+    "productionBehaviorDefaultUnchanged": "PASS",
+    "portableDeterministicBoundaryCoverage": "PASS",
+    "windowsPlatformSkipInTests": "NONE",
+    "windowsApplyHostRequirement": "OPTIONAL environment validation; not contract proof dependency",
+    "diagnosticTaxonomyExpansion": "NONE",
+    "windowsSpecialCase": "NONE",
+    "exitCodeHeuristic": "NONE",
+    "stdoutStderrHeuristic": "NONE",
+    "processSupervisor": "NONE",
+    "newDependency": "NONE",
+    "packageMutation": "NONE",
+    "applicableChecksMerge": "NONE",
+    "architectureImpact": "false remains consistent",
+    "openspecCurrentChangeStrict": "PASS using managed OpenSpec 1.10.0",
+    "productionMutationInProposal": "NONE"
+  },
+  "blockingFindingIds": [],
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

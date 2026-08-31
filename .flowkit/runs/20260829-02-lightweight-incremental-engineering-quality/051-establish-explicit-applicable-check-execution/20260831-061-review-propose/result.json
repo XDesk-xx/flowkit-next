@@ -1,0 +1,38 @@
+{
+  "runNumber": 61,
+  "kind": "external-orchestrator-review-propose-result",
+  "role": "reviewer",
+  "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+  "changeId": "establish-explicit-applicable-check-execution",
+  "action": "review-propose",
+  "runId": "20260831-061-review-propose",
+  "executionStatus": "completed",
+  "reviewerVerdict": "approved",
+  "verificationVerdict": null,
+  "nextBoundary": "apply",
+  "resolvedFindings": [
+    "RP-058-001",
+    "RP-059-001"
+  ],
+  "blockingFindings": [],
+  "checks": {
+    "fullReviewChainIntegrity": "PASS",
+    "proposalSemanticConvergence": "PASS",
+    "artifactIntegrity": "PASS",
+    "durableReviewerHandoff": "PASS",
+    "findingIdentity": "PASS",
+    "complexityExpansion": "NONE",
+    "applyReadiness": "READY"
+  },
+  "applyConstraints": [
+    "Implement only the approved Applicable Check execution contract.",
+    "Preserve host-owned repositoryRoot and host-derived candidate identity.",
+    "Keep ignored material out of candidate bytes and .flowkit/runs/** excluded for self-invalidation.",
+    "Preserve exact Git-visible mode/kind candidate identity including 100644/100755/120000/tracked deletion.",
+    "Preserve environmentRefs in checkRef and closed ApplicableCheckExecutionInput/executionInputRef binding.",
+    "Reuse only explicit prior successful facts with exact current candidateRef + checkRef equality.",
+    "Do not add Registry/Planner/Evidence/cache/history/snapshot subsystems or new authority."
+  ],
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

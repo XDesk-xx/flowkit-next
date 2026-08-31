@@ -1,0 +1,36 @@
+{
+  "runNumber": 55,
+  "kind": "external-orchestrator-revise-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+  "changeId": "establish-explicit-applicable-check-execution",
+  "action": "revise-explore",
+  "runId": "20260831-055-revise-explore",
+  "physicalRunPath": ".flowkit/runs/20260829-02-lightweight-incremental-engineering-quality/051-establish-explicit-applicable-check-execution/20260831-055-revise-explore",
+  "inputRunId": "20260831-054-review-explore",
+  "reviewChainStartRunId": "20260831-051-explore",
+  "checkpointClaim": "d9399c7ee23cffe0ee3926236489135f87ffdd95",
+  "inputReviewerArchiveSha256": "5c10ebb6f8a8d18e126d5e31ac97e8acfc1e7bb3f4e5a6c571b1dd5b9b59d83f",
+  "revisedExploreSha256": "ba4631173522bc7f4f67200d84874a52ba2619dda3e8877d4d5ddfcfe34274be",
+  "resolvedFindings": {
+    "RE-054-001": "CLOSED: candidate manifest includes canonical Git-visible file mode/kind; same bytes with 100755\u2192100644 changes candidateRef and makes prior success ineligible for reuse."
+  },
+  "preservedReviewer054Decisions": [
+    "RE-052-001 caller-trust defect remains resolved",
+    "RE-052-002 environmentRefs invalidation remains resolved",
+    "RE-052-003 closed ApplicableCheckExecutionInput remains resolved",
+    "no Registry/Planner/Evidence Platform expansion"
+  ],
+  "proof": {
+    "modeCounterexample": "PASS: same bytes; Git reports mode change 100755 => 100644; candidateRef changes",
+    "priorSuccessReuse": "PASS: changed candidateRef rejects prior same-check PASS",
+    "candidateDigestScope": "one-shot Git-visible worktree manifest; .flowkit/runs/** excluded",
+    "targetedFoundationTests": "28/28 PASS",
+    "canonicalSpecsStrict": "13/13 PASS",
+    "proposalArtifacts": "NONE",
+    "productionMutation": "NONE"
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

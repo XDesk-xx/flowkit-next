@@ -4,6 +4,7 @@ import path from "node:path";
 
 import { asChangeId, type ChangeId } from "./identity.js";
 import { resolveManagedTool } from "./managed-tool-resolution.js";
+import { classifyManagedOpenSpecClose } from "../internal/openspec-process-outcome.js";
 
 export type OpenSpecArtifactStatus = "ready" | "blocked" | "done" | "skipped";
 
@@ -61,10 +62,6 @@ export class OpenSpecObservationError extends Error {
 interface ProcessOutcome {
   readonly exitCode: number;
   readonly stdout: string;
-}
-
-interface OpenSpecRootPayload {
-  readonly path: string;
 }
 
 const ARTIFACT_STATUSES = new Set<OpenSpecArtifactStatus>([
@@ -250,11 +247,12 @@ async function invokeManagedOpenSpec(
       reject(error);
     });
     child.on("close", (code, signal) => {
-      if (code === null || signal !== null) {
+      const close = classifyManagedOpenSpecClose(code, signal);
+      if (close === "openspec-process-failed") {
         reject(new Error("OpenSpec process did not complete normally"));
         return;
       }
-      resolve({ exitCode: code, stdout });
+      resolve({ exitCode: close.exitCode, stdout });
     });
   }).catch((error: unknown) =>
     fail(

@@ -1,0 +1,36 @@
+{
+  "runNumber": 49,
+  "kind": "external-orchestrator-review-apply-result",
+  "role": "reviewer",
+  "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+  "changeId": "correct-openspec-observation-process-failure-portability",
+  "action": "review-apply",
+  "runId": "20260831-049-review-apply",
+  "executionStatus": "completed",
+  "reviewerVerdict": "approved",
+  "verificationVerdict": null,
+  "nextBoundary": "archive",
+  "resolvedFindings": [
+    "RA-047-001"
+  ],
+  "blockingFindings": [],
+  "checks": {
+    "fullReviewChainIntegrity": "PASS",
+    "proposalFidelity": "PASS",
+    "portabilityImplementation": "PASS",
+    "affectedExistingTestRegression": "RESOLVED",
+    "repositoryRegression": "NONE",
+    "packageTruth": "PASS",
+    "scopeCompliance": "PASS",
+    "archiveReadiness": "READY"
+  },
+  "archiveConstraints": [
+    "Archive through the normal Author-owned Archive Action.",
+    "Use canonical nextBoundary=archive; do not introduce owner-authorized-archive.",
+    "Preserve the approved observable process-outcome precedence.",
+    "Do not reopen entropy production semantics or restore a literal source-count baseline.",
+    "Do not activate another D02 Change in the same Archive Action."
+  ],
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

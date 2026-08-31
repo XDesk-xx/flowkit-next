@@ -59,19 +59,19 @@ Exact Change status observation SHALL 投影 OpenSpec 返回的 exact Change ide
 - **THEN** 系统 SHALL fail closed，而 MUST NOT 猜测或修复 readiness
 
 ### Requirement: OpenSpec formal non-zero outcomes remain distinct from integration failures
-系统 SHALL 在 required JSON output 可解析后再区分 process exit status。OpenSpec command 非零退出但返回合法 machine JSON 时，系统 SHALL 将其表示为 machine-distinguishable OpenSpec formal outcome，而 MUST NOT 自动归类为 spawn/process failure；spawn failure、required JSON malformed、successful payload shape invalid 与 root mismatch SHALL 保持独立 integration failure categories。系统 MUST NOT 解析 free-text message 来重新实现 OpenSpec lifecycle semantics。
+系统 SHALL 只依据当前 host 实际暴露的 child-process invocation / close facts 区分 process failure 与已形成的 numeric process outcome。Spawn/error、`code = null` 或 `signal != null` SHALL 视为 host-observable process failure；一旦 host 报告 numeric exit code 且没有 signal，系统 SHALL 先验证 required stdout 是否为合法 machine JSON。Numeric close + malformed required JSON SHALL 保持 `malformed-machine-output`；numeric non-zero + valid OpenSpec formal machine JSON SHALL 保持 machine-distinguishable `openspec-formal-outcome`。系统 MUST NOT 根据 hidden OS termination cause、platform name、特定 numeric exit code、empty stdout 或 stderr text 猜测 process failure，也 MUST NOT 解析 free-text message 来重新实现 OpenSpec lifecycle semantics。
 
 #### Scenario: Missing Change produces valid OpenSpec machine JSON with non-zero exit
-- **WHEN** exact Change status command 非零退出但 stdout 是合法 OpenSpec machine JSON
+- **WHEN** exact Change status command 以 numeric non-zero exit 结束，且 stdout 是合法 OpenSpec machine JSON
 - **THEN** 系统 SHALL 返回/抛出 closed formal-outcome category，并 MUST NOT 将其标记为 process-failed 或通过英文 message 推断新的 Flowkit lifecycle state
 
 #### Scenario: OpenSpec process cannot start or complete
-- **WHEN** managed entrypoint invocation 发生 spawn/process failure 且没有可接受的 formal machine outcome
+- **WHEN** managed entrypoint invocation 发生 spawn/error，或 child close outcome 没有 numeric exit code，或 host 报告 non-null signal
 - **THEN** 系统 SHALL fail closed with a process-failure integration diagnostic
 
 #### Scenario: Required JSON is malformed
-- **WHEN** observation command stdout 不是 required valid JSON
-- **THEN** 系统 SHALL fail closed with a malformed-machine-output integration diagnostic
+- **WHEN** host 报告 numeric exit code 且没有 signal，但 observation command stdout 不是 required valid JSON
+- **THEN** 系统 SHALL fail closed with a malformed-machine-output integration diagnostic，而 MUST NOT 根据 platform、exit code、empty stdout、stderr 或不可观察的 OS termination cause 将其重新分类为 process-failure
 
 ### Requirement: OpenSpec observations are transient and carry no Flowkit authority
 本 capability 的 OpenSpec observations SHALL 是 transient integration facts。系统 MUST NOT 将 OpenSpec artifact state 持久化为 `.flowkit` mirror/cache，也 MUST NOT 因 OpenSpec observation 自动改变 Policy decision、Action lifecycle、Run/Result、Reviewer/Verification verdict、Owner authority、Git checkpoint authority 或 OpenSpec workflow progression。

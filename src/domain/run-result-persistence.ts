@@ -2,6 +2,11 @@ import { mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 
 import {
+  APPLICABLE_CHECK_FACTS_KEY,
+  isApplicableCheckFactSet,
+} from "../internal/applicable-check-facts.js";
+
+import {
   isActionExecutionRole,
   isOwnerAuthorityFact,
   type ActionExecutionRole,
@@ -356,6 +361,12 @@ export function isRunResultRecord(value: unknown): value is RunResultRecord {
     return false;
   }
   if (!isJsonObject(value.facts)) return false;
+  if (
+    Object.hasOwn(value.facts, APPLICABLE_CHECK_FACTS_KEY) &&
+    !isApplicableCheckFactSet(value.facts[APPLICABLE_CHECK_FACTS_KEY])
+  ) {
+    return false;
+  }
 
   return true;
 }

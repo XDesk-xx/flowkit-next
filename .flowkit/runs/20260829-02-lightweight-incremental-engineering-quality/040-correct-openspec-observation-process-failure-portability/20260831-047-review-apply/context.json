@@ -1,0 +1,52 @@
+{
+  "runNumber": 47,
+  "kind": "external-orchestrator-review-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+  "changeId": "correct-openspec-observation-process-failure-portability",
+  "action": "review-apply",
+  "runId": "20260831-047-review-apply",
+  "physicalRunPath": ".flowkit/runs/20260829-02-lightweight-incremental-engineering-quality/040-correct-openspec-observation-process-failure-portability/20260831-047-review-apply",
+  "inputRunId": "20260831-046-apply",
+  "reviewChainStartRunId": "20260831-040-explore",
+  "checkpointClaim": "32345c2ec951baffde7f56ba7519a1c4c1e77566",
+  "inputArchiveSha256": "aa2a354c937f1febc502898730121fc1049681c6fbb20bbd95411c67ddc4719e",
+  "chainChecks": {
+    "046InputReviewHashMatches045": true,
+    "portabilitySemantics": "PASS",
+    "rejectedHeuristicsReintroduced": "NO"
+  },
+  "artifactHashes": {
+    "openspecObservationSha256": "01051280e26656d24740cfdd7a670a9393fb825d7c0ad31ece1ca5ab01c8a785",
+    "internalClassifierSha256": "e0ddead78362a41d3193b7aaa26c56a2d85a101209eb82f01fa2fa5fcd5a01ed",
+    "boundaryTestSha256": "83c4fbc6a5950b3ad1eca55b138147f088696e7af1fe83c97b807959da34b2d0",
+    "tasksSha256": "293053447f4ec9654f4f7d2e1e5ff3cb089587731abe2bddf30d3c8e6480dd48"
+  },
+  "artifactHashClaimsMatch": true,
+  "independentChecks": {
+    "focusedBoundary": "14/14 PASS",
+    "domain": "128/128 PASS",
+    "typecheck": "PASS",
+    "build": "PASS",
+    "prettier": "PASS",
+    "eslint": "PASS",
+    "dependencyHealth": "PASS 0 violations; 47 modules / 162 dependencies",
+    "qualityEntropy": "PASS 19/19 reachable",
+    "entropyFocusedTests": "FAIL 6/7: stale literal 18 baseline",
+    "openspecChangeStrict": "PASS",
+    "productionClassificationChanged": "NO",
+    "publicApiExpanded": "NO",
+    "packageMutation": "NONE",
+    "lockMutation": "NONE",
+    "windowsPlatformBranch": "NONE",
+    "exitCodeHeuristic": "NONE",
+    "stdoutStderrHeuristic": "NONE",
+    "processSupervisor": "NONE"
+  },
+  "blockingFindingIds": [
+    "RA-047-001"
+  ],
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

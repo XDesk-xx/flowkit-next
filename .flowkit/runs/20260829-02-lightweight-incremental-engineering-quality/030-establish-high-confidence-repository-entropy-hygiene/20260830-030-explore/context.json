@@ -1,0 +1,46 @@
+{
+  "runNumber": 30,
+  "kind": "external-orchestrator-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+  "changeId": "establish-high-confidence-repository-entropy-hygiene",
+  "action": "explore",
+  "runId": "20260830-030-explore",
+  "physicalRunPath": ".flowkit/runs/20260829-02-lightweight-incremental-engineering-quality/030-establish-high-confidence-repository-entropy-hygiene/20260830-030-explore",
+  "checkpointClaim": "45bf8355448ef8a279cc68405cf1d9b89ab2c5c7",
+  "ownerActivation": {
+    "ref": "owner:80a65e4f9741fab0908c353d88cc654711a235139af1df303b94ccefff360203",
+    "decision": "activate-change",
+    "sourceRef": "owner-input:2026-08-30:activate-change:establish-high-confidence-repository-entropy-hygiene:explore",
+    "scope": ["explore"]
+  },
+  "coordinationProof": {
+    "dependency": "establish-trusted-change-coordination-state-binding=completed",
+    "currentChangeState": "active",
+    "flowkitNext": "READY_ACTION(explore)"
+  },
+  "proofEnvironment": {
+    "node": "22.23.2",
+    "dependencyCruiser": "18.2.0",
+    "knipPreparedEnvironmentVersion": "6.32.2",
+    "containerMemoryLimitBytes": 4294967296
+  },
+  "proofSummary": {
+    "currentProductionSourceCount": 18,
+    "productionSourceReachableFromExplicitRoots": 18,
+    "selectedOrphanBaseline": 0,
+    "selectedUnusedDependencyBaseline": 0,
+    "knipDefaultRawTransfer": "FAIL-array-buffer-allocation",
+    "knipRawTransferDisabled": "PASS",
+    "knipDefaultUnusedExports": 13,
+    "knipDefaultUnusedTypes": 21,
+    "combinedSelectedRuntimeSeconds": 1.76,
+    "baselineOrWaiverNeeded": false,
+    "changedFilePlannerNeeded": false
+  },
+  "productionMutationInExplore": false,
+  "proposalArtifactsInExplore": false,
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

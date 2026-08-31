@@ -11,6 +11,57 @@
       },
       "createdByOwnerAuthorityRef": "owner:9fbc973a3b75d813c1d9571fb50572ff1461aab7085ae351ebf4a8cc5b73d3b8",
       "resolution": null
+    },
+    {
+      "memoId": "future-run-history-concision-and-repository-growth",
+      "state": "open",
+      "title": "Future Flowkit Run surface concision and repository growth control",
+      "note": "在 D02 的 establish-trusted-change-coordination-state-binding 完成后复核 Git diff 时发现：单个 Change 经历 15 次 durable Run，在 .flowkit/runs 中形成 46 个文件、约 2914 行执行历史。当前 durable Run 的 create-once history 以及 action.md + context.json + result.json 三文件 stable surface 本身属于既有正式 contract，不应删除，也不应把 Git 改造成每个 Action 一个 commit。\n\n真实需要未来收敛的是两类相互关联的问题：\n\n1. Run 内容粒度过重。action.md 与重复 evidence / narrative 容易逐轮膨胀，尤其当完整 proof、Reviewer reasoning、verification matrix 或可由 canonical truth 重建的内容被重复复制进 durable Run 时，会造成 repository execution-history 长期增长。\n\n2. Run stable surface 被 ad-hoc evidence 扩张。D02 013-revise-apply 为解决一次环境可复现性 finding，额外写入 verification-environment.json。这一文件可作为历史性 ad-hoc evidence 保留，但不应被解释为新的第四种标准 Run artifact，也不应成为后续 Run 的默认模板。未来新的 Run 应继续以 action.md + context.json + result.json 为 stable surface；必要的环境 identity、artifact hash、verification conclusion 优先压入 context/result。只有 materially required 且无法合理承载时，才允许引用独立 external evidence artifact，并由 Run 保存 evidenceRef/hash，而不是不断扩展 Run directory 的默认 durable file set。\n\n未来优先在 D03 Action Guidance & Bounded Agent Execution 中 proof 并考虑固定：\n- action.md 仅作为 concise human/AI-readable Action descriptor；\n- context.json / result.json 承担 machine continuation truth；\n- stable Run surface 默认严格保持三文件；\n- execution-local proof / verification 不因一次 review 需求自动升级为 durable Run artifact；\n- 大型 evidence 仅在 materially required 时外置并引用；\n- 避免重复复制 OpenSpec artifacts、Reviewer reasoning 与可由 canonical truth 重建的内容；\n- 保留历史 Run create-once / immutable，不回写已 committed 的 013 anomaly。\n\n目标是在不改变 Run persistence、authority、Policy、lifecycle、Git checkpoint 模型或现有三文件 contract 的前提下，降低长期 repository execution-history growth，并防止 ad-hoc evidence 逐步演化成未经设计的新 Run surface。\n\n该 concern 当前仅作为 future guidance/engineering-health candidate，不阻塞 D02，不自动创建 Change，也不改变当前 Gate activation readiness。\n\n临时桥接状态（D02 后续立即生效）：\n- 仓库根目录增加 `TEMPORARY-RUN-SURFACE-GUIDANCE.md`，在 D03 正式契约落地前临时约束新的 Author / Reviewer Run 继续使用 `action.md + context.json + result.json` 三文件 stable surface，并限制 action.md / durable evidence 膨胀。\n- 根 `AGENTS.md` 增加一条 Temporary D03 bridge 引用，使 Agent 在 D03 正式处理前必须读取该临时 guidance。\n- 这两处都属于 temporary HOW guidance，不是新的 canonical authority/contract，也不能长期与 D03 正式 contract 并存。\n\nD03 正式处理该 Memo 时必须包含 cleanup acceptance：\n1. proof 并建立正式的 Run surface / evidence / concision guidance；\n2. 确认正式 contract 已覆盖临时文档承担的全部约束；\n3. 删除仓库根目录 `TEMPORARY-RUN-SURFACE-GUIDANCE.md`；\n4. 删除 `AGENTS.md` 中对应的 Temporary D03 bridge 引用；\n5. 验证仓库中不存在对该临时文档的残留引用；\n6. 不回写已 committed 的历史 Run（包括 013 的 `verification-environment.json`）；\n7. 不允许临时 guidance 与正式 D03 guidance 形成双重 truth。\n\n因此，该 Memo 的未来完成条件不仅是“正式设计 Run concision”，还包括“正式 contract 接管后清除所有 temporary bridge materialization”。",
+      "source": {
+        "deliveryId": "20260829-02-lightweight-incremental-engineering-quality"
+      },
+      "createdByOwnerAuthorityRef": "owner:a2c375347a37c5a53b62b49a27b3530b4ffd72400d97fbaacea42d86475445f6",
+      "resolution": null
+    },
+    {
+      "memoId": "future-semantic-invariant-and-literal-discipline",
+      "state": "open",
+      "title": "Future semantic invariant and literal discipline for AI implementation/review",
+      "note": "D02 observed a concrete AI implementation/review failure mode during correct-openspec-observation-process-failure-portability. The repository-entropy focused test had encoded the current production-module count as the literal 18. A normal, valid addition of one reachable production module changed the current count to 19 and caused a false failure even though the actual repository-entropy contract remained satisfied. Reviewer 20260831-047-review-apply identified the stale literal, and 20260831-048-revise-apply corrected the assertion to the real invariant: reachable.length === total and unreachable.length === 0.\n\nThe reusable concern is broader than the number 18 or one test. AI implementation/review can accidentally promote an incidental current observation into a durable test, check, script, or contract. Future D03 Author/Reviewer guidance should require an explicit classification before encoding a literal:\n\n1. Incidental current observation -> do not preserve the literal as contract; express the semantic invariant instead. Example: reachable.length === total, not reachable.length === 18. Merely renaming the incidental value (for example const EXPECTED_MODULES = 18) does not make it correct.\n\n2. Stable semantic contract constant -> if the exact value is intentionally owned by an accepted contract, prefer one clearly named semantic constant rather than scattered magic literals, with implementation/tests referring to the same semantic owner where practical.\n\n3. Project/deployment/runtime-variable parameter -> use explicit configuration rather than a compile-time magic literal when the value is intended to vary by repository/environment.\n\nReviewer guidance should explicitly challenge literals by asking whether they are real contract constants, configurable parameters, or merely today's observed repository state. Author guidance should prefer invariants over snapshot-value assertions and avoid duplicating one semantic constant across implementation/tests/scripts.\n\nThis is primarily execution HOW and should be handled in D03 Action Guidance / Author+Reviewer guidance first. Do not create a generic hardcode scanner, magic-number Gate, AST platform, waiver registry, or new Flowkit Core subsystem from this Memo. Mechanical enforcement should be considered only if repeated real proof later identifies a narrow high-confidence pattern. This Memo is non-blocking and does not itself create a Change.",
+      "source": {
+        "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+        "changeId": "correct-openspec-observation-process-failure-portability",
+        "runId": "20260831-047-review-apply"
+      },
+      "createdByOwnerAuthorityRef": "owner:b6700b0f0a9f6d7524602cb7b68abee13b6d39bb96110fa5a5a49085a66949a1",
+      "resolution": null
+    },
+    {
+      "memoId": "future-uncommitted-change-continuation-integrity",
+      "state": "open",
+      "title": "Future uncommitted Change continuation integrity across sessions",
+      "note": "D02 observed a real cross-session continuation gap during\nestablish-structural-dependency-health-fitness.\n\nThe original create-once 20260830-023-explore execution existed and was\nindependently reviewed by 20260830-024-review-explore, but the exact 023\nRun / explore payload bytes were not carried into a later detached Author\ncontinuation and became unavailable. The surviving 024 Reviewer Run preserves\nthe original 023 input identity/hashes and approval evidence. The missing 023\nbytes must never be regenerated, reconstructed, or fabricated.\n\nThe reusable concern is not the specific occurrence number 023. The observed\nproof is that:\n\nexact committed pre-Change Git base\n+\nlatest delta Action payload\n\nis not by itself sufficient to guarantee complete continuation of an\nuncommitted Change across AI sessions / detached environments when that latest\ndelta references earlier create-once Run artifacts whose exact bytes are not\nalso carried or durably retrievable.\n\nFuture proof should start in D03 Action Guidance / handoff discipline rather\nthan immediately expanding Flowkit Core. A continuation should have an exact,\nbounded way to obtain all materially required uncommitted ancestor state,\nfor example by carrying cumulative uncommitted Change state or by preserving\nexact ancestor payloads in a durable retrievable location. The implementation\nshape is intentionally not frozen by this Memo.\n\nIf D03 guidance / packaging discipline proves sufficient in real use, this\nconcern should be resolved without a new Core subsystem. Only if repeated real\nproof shows that guidance and repository-owned handoff discipline cannot\nreliably preserve the required continuation truth should D04 evaluate whether\na bounded lifecycle / continuity contract is missing.\n\nDo not introduce a payload registry, evidence platform, background sync,\nautomatic continuation engine, or second lifecycle merely to close this Memo.\nThis Memo is non-blocking and does not itself create a Change.",
+      "source": {
+        "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+        "changeId": "establish-structural-dependency-health-fitness",
+        "runId": "20260830-024-review-explore"
+      },
+      "createdByOwnerAuthorityRef": "owner:09dfebba36e1ef0184c8ae4de324f07d9a704f3665d5c7f540c06a47eb2f073c",
+      "resolution": null
+    },
+    {
+      "memoId": "structural-dependency-023-historical-continuity-gap",
+      "state": "dismissed",
+      "title": "establish-structural-dependency-health-fitness 023 create-once Explore artifact missing (continuity exception)",
+      "note": "D02 Change establish-structural-dependency-health-fitness 的原始 create-once 023 Explore Run (20260830-023-explore) 字节已确认不可用：原始 payload d02-023-explore-author.zip 在本机及整机范围内均不存在，其 SHA-256 1c177e096e23b21403adae4b5e8cb7b9765d845fb2b6ecad4600edc3f3ae1383 无法从任何源恢复。\n\nOwner 于 2026-08-30 授权一次性历史连续性例外（A 方式）：不重建、不重构、不伪造缺失的 023 Run / explore.md / Owner ref / payload。保留 024 Reviewer 对原始 023 执行的精确引用与哈希证言（original 023 archive SHA-256 = 1c177e09...；Explore content SHA-256 = 3ed5e0dc...；coordination truth at Explore: establish-structural-dependency-health-fitness = active；activation provenance: exact Owner activate-change authority for this Delivery + Change + scope=[explore]）。\n\n因此本 Change 的 durable Run 链自 024-review-explore 起（024-029 完整），023 Explore 作为已知缺失历史 artifact，其 identity/hash 由下游 Reviewer 024 记录佐证，不进入 Git。archived Change history 接受此连续性缺口。\n\n未来 Delivery continuity / D03 工作应将此缺口视为已知历史不连续点，不应尝试回填伪造 023，而应依赖 024 Reviewer 证言与现有 024-029 链维持变更可信性。",
+      "source": {
+        "deliveryId": "20260829-02-lightweight-incremental-engineering-quality"
+      },
+      "createdByOwnerAuthorityRef": "owner:a2c375347a37c5a53b62b49a27b3530b4ffd72400d97fbaacea42d86475445f6",
+      "resolution": {
+        "kind": "dismissed",
+        "ownerAuthorityRef": "owner:6c8896b03096f13d6ccd891c6c36447160d5f4a378b48b60bf540d8913beb3b0"
+      }
     }
   ]
 }

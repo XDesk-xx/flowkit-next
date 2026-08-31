@@ -87,7 +87,7 @@ async function runNode(
   );
 }
 
-async function cli(
+async function rawCli(
   command: "status" | "next" | "doctor",
   request: unknown,
   fixtureRoot: string,
@@ -100,9 +100,43 @@ async function cli(
     requestPath,
     `${JSON.stringify(request, null, 2).replace(/\n/g, "\r\n")}\r\n`,
   );
-  const result = await runNode([CLI, command, "--input", requestPath], { env });
+  return runNode([CLI, command, "--input", requestPath], { env });
+}
+
+async function cli(
+  command: "status" | "next" | "doctor",
+  request: unknown,
+  fixtureRoot: string,
+  env = process.env,
+) {
+  const result = await rawCli(command, request, fixtureRoot, env);
   assert.equal(result.code, 0, result.stderr || result.stdout);
   return JSON.parse(result.stdout) as any;
+}
+
+async function writeCoordinationManifest(
+  repositoryRoot: string,
+  state: "planned" | "active" | "completed" | "cancelled" = "active",
+): Promise<void> {
+  const dir = path.join(repositoryRoot, "openspec", "delivery-groups");
+  await mkdir(dir, { recursive: true });
+  await writeFile(
+    path.join(dir, `${DELIVERY}.yaml`),
+    `id: ${DELIVERY}
+changes:
+  - id: ${CHANGE}
+    state: ${state}
+    dependsOn: []
+ownerDecisions:
+  - ref: owner:${"a".repeat(64)}
+    decision: activate-change
+    deliveryId: ${DELIVERY}
+    changeId: ${CHANGE}
+    sourceRef: acceptance
+    scope:
+      - explore
+`,
+  );
 }
 
 async function makeFixture(flowkitHome: string) {
@@ -130,6 +164,7 @@ async function makeFixture(flowkitHome: string) {
     path.join(repositoryRoot, "openspec", "changes", CHANGE, "proposal.md"),
     "## Why\nacceptance\n\n## What Changes\n- fixture\n\n## Capabilities\n\n### New Capabilities\n- fixture\n\n## Impact\n- disposable\n",
   );
+  await writeCoordinationManifest(repositoryRoot);
   return { root, repositoryRoot, flowkitHome };
 }
 
@@ -207,7 +242,6 @@ function common(fixture: { repositoryRoot: string; flowkitHome: string }) {
     repositoryRoot: fixture.repositoryRoot,
     deliveryId: DELIVERY,
     changeId: CHANGE,
-    changeState: "active",
     changeStartSequence: START,
     flowkitHome: fixture.flowkitHome,
   };
@@ -247,11 +281,44 @@ test("detached whole-manager acceptance uses candidate-generated durable Runs an
       1,
       "apply",
     );
+    await writeCoordinationManifest(fixture.repositoryRoot, "planned");
+    const legacyUpgrade = await rawCli(
+      "status",
+      {
+        ...common(fixture),
+        changeState: "active",
+        currentRunId: applyRun.context.runId,
+      },
+      fixture.root,
+    );
+    assert.equal(legacyUpgrade.code, 2);
+    assert.deepEqual(JSON.parse(legacyUpgrade.stdout), {
+      kind: "error",
+      error: { kind: "invalid-request" },
+    });
+
+    await writeCoordinationManifest(fixture.repositoryRoot, "active");
+    const legacyDowngrade = await rawCli(
+      "status",
+      {
+        ...common(fixture),
+        changeState: "planned",
+        currentRunId: applyRun.context.runId,
+      },
+      fixture.root,
+    );
+    assert.equal(legacyDowngrade.code, 2);
+    assert.deepEqual(JSON.parse(legacyDowngrade.stdout), {
+      kind: "error",
+      error: { kind: "invalid-request" },
+    });
+
     const status = await cli(
       "status",
       { ...common(fixture), currentRunId: applyRun.context.runId },
       fixture.root,
     );
+    assert.equal(status.changeState, "active");
     assert.equal(status.currentRun.runId, applyRun.context.runId);
     assert.deepEqual(status.openSpec.activeChangeIds, [CHANGE]);
     const next = await cli(
@@ -287,11 +354,11 @@ test("detached whole-manager acceptance uses candidate-generated durable Runs an
       sourceRef: "acceptance",
       scope: ["checkpoint"],
     };
+    await writeCoordinationManifest(fixture.repositoryRoot, "completed");
     const checkpoint = await cli(
       "next",
       {
         ...common(fixture),
-        changeState: "completed",
         currentRunId: archiveRun.context.runId,
         checkpointAuthority: owner,
       },

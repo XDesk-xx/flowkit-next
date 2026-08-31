@@ -2,13 +2,8 @@ import {
   isActionExecutionRole,
   type ActionExecutionRole,
 } from "./authority.js";
-import {
-  isActionIdentity,
-  isCurrentAction,
-  type ActionIdentity,
-  type CurrentAction,
-} from "./action-lifecycle.js";
-import { isStandardActionId, type StandardActionId } from "./identity.js";
+import { isCurrentAction, type ActionIdentity } from "./action-lifecycle.js";
+import { isStandardActionId } from "./identity.js";
 import {
   formatRunOccurrenceId,
   isRunContextRecord,

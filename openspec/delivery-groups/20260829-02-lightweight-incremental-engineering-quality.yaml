@@ -1,0 +1,269 @@
+id: "20260829-02-lightweight-incremental-engineering-quality"
+createdAt: "2026-08-29"
+branch: "delivery/20260829-02-lightweight-incremental-engineering-quality"
+base: "main@af67f60c9094333bcb3b575bd351874e77bb518a"
+
+goal: "在已完成的 Foundation Lifecycle Kernel 上建立 small but complete、轻量、增量、高可信度的 repository engineering-quality protection，防止 AI 持续开发引入新的机械质量退化，同时不建设 Quality Platform 或新的控制面。"
+
+delivery:
+  state: completed
+  fullTestStatus: passed
+  finalizationStatus: completed
+  formalVerificationCandidate: "d78acb135d5317145f52c7559393a3d1c0ff42eb"
+  finalizedAt: "2026-08-31"
+
+scope:
+  included:
+    - "Incremental Quality Ratchet：无关历史债务不自动阻塞 bounded Change，新增/修改代码不得引入选定的新机械退化"
+    - "cheap / high-signal / interactive Lightweight Engineering Gate"
+    - "generic Structural Dependency Health for bad dependency edges"
+    - "high-confidence Repository Entropy Hygiene for dead/stale material"
+    - "exact execution of already-required applicable correctness checks with real Result facts"
+    - "simple same-candidate fact reuse when exact candidate/check/config/tool identity remains valid"
+    - "repository-local ownership for engineering quality tooling"
+    - "bounded Foundation contract-completion correction for trusted Delivery-Change coordination-state authority binding before normal D02 Change activation"
+  excluded:
+    - "Quality Dashboard / quality score platform"
+    - "Gate Registry / Check Registry / Verification Planner / Evidence Platform"
+    - "smart test selection or automatic test recommendation authority"
+    - "project-specific architecture layer law / path-level mutation policy"
+    - "coverage KPI / mutation testing / complexity KPI / duplicate-code hard threshold"
+    - "automatic refactor / dependency upgrade / network-dependent security platform"
+    - "Agent Runtime / Skill Router / automatic Author-Reviewer loop"
+    - "automatic Git authority / promotion lifecycle"
+
+architecture:
+  impact: true
+  archifyPlan: "required"
+  startStatus: "materialized"
+  finalStatus: "materialized"
+  currentRef: "architecture/20260829-02-lightweight-incremental-engineering-quality/json/current.architecture.json"
+  plannedRef: "architecture/20260829-02-lightweight-incremental-engineering-quality/json/planned.architecture.json"
+  actualRef: "architecture/20260829-02-lightweight-incremental-engineering-quality/json/actual.architecture.json"
+  compareRefs:
+    - "architecture/20260829-02-lightweight-incremental-engineering-quality/json/current-to-planned.compare.json"
+    - "architecture/20260829-02-lightweight-incremental-engineering-quality/json/current-to-actual.compare.json"
+    - "architecture/20260829-02-lightweight-incremental-engineering-quality/json/planned-to-actual.compare.json"
+  htmlPolicy: "disposable-not-retained-in-git"
+
+changes:
+  - id: "establish-trusted-change-coordination-state-binding"
+    group: "foundation-correction"
+    goal: "补齐 bootstrap-era caller structural input 与 Stable Core Owner-authorized durable coordination semantics 之间的 contract-completion gap，在 pure Policy 之前解析 exact Delivery+Change 的 trusted canonical ChangeState。"
+    required: true
+    dependsOn: []
+    state: completed
+    architectureImpact: true
+    outputs:
+      - "trusted Delivery-Change coordination-state binding contract"
+      - "shared trusted coordination resolution for status / next before pure Policy"
+
+  - id: "establish-lightweight-incremental-engineering-gate"
+    group: "engineering-quality"
+    goal: "建立 cheap / high-signal / low-friction / interactive 的日常 mechanical engineering boundary，防止 changed-code obvious mechanical regression。"
+    required: true
+    dependsOn:
+      - "establish-trusted-change-coordination-state-binding"
+    state: completed
+    architectureImpact: true
+    outputs:
+      - "Lightweight Engineering Gate contract"
+      - "incremental mechanical regression boundary"
+
+  - id: "establish-structural-dependency-health-fitness"
+    group: "engineering-quality"
+    goal: "建立 generic structural dependency health，检测 unresolved imports、new runtime cycles、prod→test/spec、runtime→dev-only 等高价值 bad edges。"
+    required: true
+    dependsOn:
+      - "establish-trusted-change-coordination-state-binding"
+    state: completed
+    architectureImpact: true
+    outputs:
+      - "Structural Dependency Health contract"
+      - "incremental bad-edge detection"
+
+  - id: "establish-high-confidence-repository-entropy-hygiene"
+    group: "engineering-quality"
+    goal: "建立 conservative high-confidence repository entropy hygiene，减少 dead nodes、stale declarations 与 AI context noise。"
+    required: true
+    dependsOn:
+      - "establish-trusted-change-coordination-state-binding"
+    state: completed
+    architectureImpact: true
+    outputs:
+      - "Repository Entropy Hygiene contract"
+      - "high-confidence dead/stale material detection"
+
+  - id: "correct-openspec-observation-process-failure-portability"
+    group: "foundation-correction"
+    goal: "纠正既有 OpenSpec thin observation 在 Windows 上对 managed child abnormal termination 的分类/证明缺口，使 process cannot start/complete 的既有 process-failure contract 在支持平台上可被真实验证。"
+    required: true
+    dependsOn: []
+    state: completed
+    architectureImpact: false
+    outputs:
+      - "cross-platform OpenSpec abnormal-process classification correction"
+      - "Windows/Linux proof for existing process-failure semantics"
+
+  - id: "establish-explicit-applicable-check-execution"
+    group: "engineering-quality"
+    goal: "确保 formal input 已明确要求的 correctness checks 被 exact execution，并形成绑定 exact candidate/check identity 的真实 Result fact。"
+    required: true
+    dependsOn:
+      - "establish-trusted-change-coordination-state-binding"
+    state: completed
+    architectureImpact: true
+    outputs:
+      - "Explicit Applicable Check Execution contract"
+      - "same-candidate fact consumption boundary"
+
+proofConcerns:
+  - id: "openspec-observation-process-failure-portability"
+    status: "finding-confirmed-correction-completed"
+    statement: "Windows Node 22.23.2 exact runtime semantics plus local execution proved the self-SIGKILL fixture reaches the parent as code=1, signal=null, stdout empty, while Linux exposes code=null, signal=SIGKILL. The bounded correction is completed: canonical OpenSpec thin observation now clarifies host-observable process-outcome precedence and portable deterministic boundary proof replaces the non-portable universal self-SIGKILL assertion without platform/exit-code heuristics."
+    correctionChange: "correct-openspec-observation-process-failure-portability"
+
+  - id: "coordination-state-authority-source-binding"
+    status: "finding-confirmed-correction-completed"
+    statement: "earliest applicable proof confirmed a bootstrap-to-Stable-Core authority-binding gap; the bounded corrective Change completed and normal D02 activation may now rely on the corrected trusted coordination-state binding."
+    correctionChange: "establish-trusted-change-coordination-state-binding"
+
+recommendedOrder:
+  - "establish-trusted-change-coordination-state-binding"
+  - "establish-lightweight-incremental-engineering-gate"
+  - "establish-structural-dependency-health-fitness"
+  - "establish-high-confidence-repository-entropy-hygiene"
+  - "correct-openspec-observation-process-failure-portability"
+  - "establish-explicit-applicable-check-execution"
+
+acceptance:
+  - "Lightweight Gate catches representative selected regressions and remains interactive rather than becoming a mini Full Test"
+  - "selected generic dependency-graph corruption is detected"
+  - "high-confidence repository entropy is detected with acceptable false-positive behavior"
+  - "explicit required checks execute exactly and produce real candidate-bound Result facts"
+  - "unrelated historical debt does not automatically block bounded Changes"
+  - "no Gate Registry, Verification Planner, Evidence Platform, Quality Dashboard, smart test planner, architecture-rule platform or new lifecycle state machine is introduced"
+  - "all four normal D02 quality Changes remain non-activatable until establish-trusted-change-coordination-state-binding coordination state is completed"
+
+ownerDecisions:
+  - ref: "owner:4428d7623a379f3392b3a49983e34f18e12d92c2ec52dd7f9ba2b38ad92ea0c3"
+    decision: "create-delivery"
+    deliveryId: "20260829-02-lightweight-incremental-engineering-quality"
+  - ref: "owner:3a07ac55214b53fb966a75a342e84ebcd2a65f3e561786030f7974e1490f83b2"
+    decision: "refine-delivery-plan"
+    deliveryId: "20260829-02-lightweight-incremental-engineering-quality"
+    sourceRef: "owner-input:2026-08-30:authorize-d02-composition-revision-and-activate-corrective-change:establish-trusted-change-coordination-state-binding:explore-proof-based:composition"
+    scope:
+      - "add-corrective-change"
+      - "add-dependencies"
+
+  - ref: "owner:99278633f9fdd98d434cf7072e516eda70cda792ea36ad3979d34a30e8024e53"
+    decision: "activate-change"
+    deliveryId: "20260829-02-lightweight-incremental-engineering-quality"
+    changeId: "establish-trusted-change-coordination-state-binding"
+    sourceRef: "owner-input:2026-08-30:authorize-d02-composition-revision-and-activate-corrective-change:establish-trusted-change-coordination-state-binding:explore-proof-based:activation"
+    scope:
+      - "explore"
+
+  - ref: "owner:c777b1cd7340eb87cc6b5b4c29b00cb5583528dab9901e36bd9e80feed49ed3e"
+    decision: "archive-change"
+    deliveryId: "20260829-02-lightweight-incremental-engineering-quality"
+    changeId: "establish-trusted-change-coordination-state-binding"
+    sourceRef: "owner-input:2026-08-30:authorize-archive:establish-trusted-change-coordination-state-binding"
+    scope:
+      - "archive"
+
+  - ref: "owner:0880bb56c1407e2a5a4a5814106a1349a316b553af51ce00294e666e499da646"
+    decision: "activate-change"
+    deliveryId: "20260829-02-lightweight-incremental-engineering-quality"
+    changeId: "establish-lightweight-incremental-engineering-gate"
+    sourceRef: "owner-input:2026-08-30:activate-change:establish-lightweight-incremental-engineering-gate:explore"
+    scope:
+      - "explore"
+
+  - ref: "owner:80a65e4f9741fab0908c353d88cc654711a235139af1df303b94ccefff360203"
+    decision: "activate-change"
+    deliveryId: "20260829-02-lightweight-incremental-engineering-quality"
+    changeId: "establish-high-confidence-repository-entropy-hygiene"
+    sourceRef: "owner-input:2026-08-30:activate-change:establish-high-confidence-repository-entropy-hygiene:explore"
+    scope:
+      - "explore"
+  - ref: "owner:b8123faf1f69c1203535459c4ba14ed90ab152e8d493ec05e1b3f0c9f29a58e7"
+    decision: "refine-delivery-plan"
+    deliveryId: "20260829-02-lightweight-incremental-engineering-quality"
+    sourceRef: "owner-input:2026-08-31:proof-confirmed-openspec-observation-process-failure-portability:add-corrective-change"
+    scope:
+      - "add-corrective-change"
+
+  - ref: "owner:1d0628a69ec731b9e6cf927577eedc2471364d69d4cc69c1b18dbd85c7259e64"
+    decision: "activate-change"
+    deliveryId: "20260829-02-lightweight-incremental-engineering-quality"
+    changeId: "correct-openspec-observation-process-failure-portability"
+    sourceRef: "owner-input:2026-08-31:proof-confirmed-openspec-observation-process-failure-portability:activate-explore"
+    scope:
+      - "explore"
+  - ref: "owner:653cf92c01403ebd2f74bb67f15a59124018c70ff367b0a0d01dbe86352741c0"
+    decision: "activate-change"
+    deliveryId: "20260829-02-lightweight-incremental-engineering-quality"
+    changeId: "establish-explicit-applicable-check-execution"
+    sourceRef: "owner-input:2026-08-31:activate-change:establish-explicit-applicable-check-execution:explore-proof-based"
+    scope:
+      - "explore"
+
+
+verification:
+  change:
+    requireApplicableChecks: true
+  fullTest:
+    requiresOwnerAuthorization: true
+    execution:
+      state: passed
+      verifiedCandidate: "d78acb135d5317145f52c7559393a3d1c0ff42eb"
+      verificationEvidenceSha256: "5b5dfc60bf9a59214a1b701c2e87d4543f17bd7e83c0ef1ff7cddbfb2160a7fc"
+      verifiedAt: "2026-08-31"
+      resultAuthority: "verification"
+      reason: "Owner 明确授权 exact d78acb1 candidate 进入 Formal Full Test；冻结的 6 个 gates 在同一 candidate 上全部 PASS。第一次 Gate 1 失败被证明为 detached dependency fixture 缺失 yaml 顶层 link 的 verification-environment defect，没有 tracked repository mutation；修复 ignored execution environment 后从 Gate 1 全量重启并 6/6 PASS。随后最终 dependency archive 已重新 materialize 并通过 fresh-extract 零 repair 验证，不改变 Formal Full Test verdict 或 verified candidate。"
+      environment:
+        nodeCompatibility: ">=22.20.0"
+        deterministicNodeFixture: "22.23.2"
+        packageManagerFixture: "pnpm@11.22.0"
+        dependencies: "repository dependencies are restored before execution"
+        pnpmScriptDependencyCheck: "pnpm_config_verify_deps_before_run=false so gate execution cannot trigger pnpm install"
+        flowkitHome: "FLOWKIT_HOME must be explicit"
+        managedTools:
+          - "OpenSpec 1.10.0 exact managed runtime"
+          - "Archify 2.15.0 exact managed runtime"
+        fallback: "no install/update/download/network/PATH/global managed-tool fallback"
+        finalDependencyArchive: "flowkit-next-dependency-environment-linux-x64-node22.23.2-pnpm11.22.0-runtime-v1.tar.gz"
+        finalDependencyArchiveSha256: "d92a903673a6eb5017212d5dc8c563cd0de7cc5147c7ae3496456ce856932321"
+        finalDependencyArchiveValidation: "fresh extract preserves yaml@2.9.0 direct link, contains no Knip, and passes typecheck/build/domain/acceptance under exact detached runtime without node_modules repair"
+      gates:
+        - "pnpm typecheck"
+        - "pnpm format:check"
+        - "pnpm build"
+        - "pnpm test:domain"
+        - "exact managed OpenSpec 1.10.0: validate --all --strict"
+        - "pnpm test:acceptance"
+    plan:
+      - "Formal Full Test remains the frozen Delivery-level 6-gate contract inherited from Delivery 01; D02 quality capabilities do not silently expand it into a mini quality platform."
+      - "verification-environment defects may be repaired and rerun on the same exact candidate when repository/canonical contract truth is unchanged."
+      - "repository/canonical contract defects require a normal corrective OpenSpec Change and a new exact candidate before Formal Full Test restarts."
+
+finalization:
+  state: completed
+  formalFullTest: "PASS"
+  verifiedCandidate: "d78acb135d5317145f52c7559393a3d1c0ff42eb"
+  actualArchitecture: "completed"
+  actualArchitectureSha256: "bd4a0a2381c8d99970ef3d462546442ca158069a2fb0227a09e07b9af84c0853"
+  currentToActualCompareSha256: "fcffb81407960d52c5261b7a18aee77e79ed817943f98c6f201f1d0bac04eff9"
+  plannedToActualCompareSha256: "347a9e083a6e86a97bab09023cb6eee9049a2000253fe2348fc42dddcf02c08f"
+  ownerActualConfirmation: "confirmed"
+  repositoryGuidanceConvergence: "completed"
+  productMutationAfterFormalVerification: false
+  canonicalOpenSpecMutationAfterFormalVerification: false
+  packageLockMutationAfterFormalVerification: false
+  historicalRunRewrite: false
+  generatedHtmlRetainedInGit: false
+  openMemoPolicy: "preserved-non-blocking"
+  gitCheckpoint: "pending-owner-authorized-local-delivery-commit"
+  deterministicCommitMessage: "delivery(20260829-02-lightweight-incremental-engineering-quality): finalize lightweight incremental engineering quality"

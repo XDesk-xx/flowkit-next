@@ -1,0 +1,46 @@
+{
+  "runNumber": 49,
+  "kind": "external-orchestrator-review-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+  "changeId": "correct-openspec-observation-process-failure-portability",
+  "action": "review-apply",
+  "runId": "20260831-049-review-apply",
+  "physicalRunPath": ".flowkit/runs/20260829-02-lightweight-incremental-engineering-quality/040-correct-openspec-observation-process-failure-portability/20260831-049-review-apply",
+  "inputRunId": "20260831-048-revise-apply",
+  "reviewChainStartRunId": "20260831-040-explore",
+  "checkpointClaim": "32345c2ec951baffde7f56ba7519a1c4c1e77566",
+  "inputArchiveSha256": "6cf61bd56ea4a0b572a012083cb34d448a873f3f2bcdcd27226aa08e17e13dc5",
+  "chainChecks": {
+    "048InputReviewArchiveHashMatches047": true,
+    "048FindingTarget": true,
+    "entropyFocusedTestHashMatches": true,
+    "RA_047_001": "RESOLVED"
+  },
+  "independentChecks": {
+    "modifiedArtifacts": [
+      "tests/unit/quality/production-reachability.test.mjs"
+    ],
+    "entropyFocusedTests": "7/7 PASS",
+    "focusedPortabilityBoundary": "14/14 PASS",
+    "domain": "128/128 PASS",
+    "typecheck": "PASS",
+    "build": "PASS",
+    "dependencyHealth": "PASS 0 violations; 47 modules / 162 dependencies",
+    "entropy": "PASS 19/19 reachable",
+    "prettier": "PASS",
+    "eslint": "PASS",
+    "openspecCurrentChangeStrict": "PASS",
+    "openspecAllStrict": "Author records 14/14; exact independent replay unavailable from stale reconstructed review base",
+    "productionClassifierMutationIn048": "NONE",
+    "entropyImplementationMutationIn048": "NONE",
+    "productionRootsMutationIn048": "NONE",
+    "packageMutationIn048": "NONE",
+    "lockMutationIn048": "NONE",
+    "baselineWaiverAdded": "NONE"
+  },
+  "blockingFindingIds": [],
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

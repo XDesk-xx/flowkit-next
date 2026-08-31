@@ -1,0 +1,44 @@
+{
+  "runNumber": 59,
+  "kind": "external-orchestrator-review-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+  "changeId": "establish-explicit-applicable-check-execution",
+  "action": "review-propose",
+  "runId": "20260831-059-review-propose",
+  "physicalRunPath": ".flowkit/runs/20260829-02-lightweight-incremental-engineering-quality/051-establish-explicit-applicable-check-execution/20260831-059-review-propose",
+  "inputArtifactSha256": "9d1af3b23828d9b7cc16468eb1163c654a399af41034230d8c919d42ac804ad7",
+  "actualPriorReviewerRunId": "20260831-058-review-propose",
+  "actualPriorReviewerArchiveSha256": "e98c928d237d6c65c1d2e2d1879c5a2ef00074a5eeee7795ef1d3215c0744760",
+  "authorRecordedInputRunId": "20260831-057-propose",
+  "authorRecordedInputArchiveSha256": "eb319bfdc2308749b9907dec83598c8c412165633cb227c3b1ab2a13e2d5b833",
+  "artifactHashes": {
+    "proposalSha256": "2827edbcd4f80180a5bea35a281e7ba42d7bec7844c685862410b961b5093f5a",
+    "designSha256": "09bec4535b20b7aa1a2bc7ad23db31cb5037e005715c54f163f520d540d05ece",
+    "specSha256": "f46cff5eb1f26ab591f441c496beaf4ad98fdd0425be610820676dabc814df18",
+    "tasksSha256": "ceae2f3b1aabf26067dd392d6b211eb7b69a4c42418271b88c0ddd97656bd8d5"
+  },
+  "artifactHashClaimsMatch": true,
+  "semanticChecks": {
+    "RP_058_001_ignoredPathContradiction": "RESOLVED",
+    "hostOwnedRepositoryRootCorrection": "ACCEPTED",
+    "approvedIdentityReuseModel": "PRESERVED",
+    "newSubsystem": "NONE",
+    "productionMutation": "NONE",
+    "packageLockMutation": "NONE",
+    "openspecCurrentChangeStrict": "PASS"
+  },
+  "workflowChecks": {
+    "authorConsumedActual058ReviewerRun": false,
+    "authorConsumedActual058ReviewerArchive": false,
+    "authorActionClaimsReviewerPackageMissing": true,
+    "findingIdProvenance": "AMBIGUOUS",
+    "runNumberUniqueness": "VIOLATED: 58 reused after 058 review-propose"
+  },
+  "blockingFindingIds": [
+    "RP-059-001"
+  ],
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

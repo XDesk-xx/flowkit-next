@@ -1,0 +1,46 @@
+{
+  "runNumber": 48,
+  "kind": "external-orchestrator-revise-apply-result",
+  "role": "author",
+  "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+  "changeId": "correct-openspec-observation-process-failure-portability",
+  "action": "revise-apply",
+  "runId": "20260831-048-revise-apply",
+  "executionStatus": "completed",
+  "authorConclusion": "PASS",
+  "reviewFinding": {
+    "id": "RA-047-001",
+    "status": "corrected",
+    "correction": "The existing entropy focused repository-baseline test now asserts the canonical zero-unreachable invariant using reachable.length === total and unreachable=[], rather than a stale literal source-module count."
+  },
+  "implementation": {
+    "modified": [
+      "tests/unit/quality/production-reachability.test.mjs"
+    ],
+    "productionMutation": false,
+    "proposalArtifactsModified": false,
+    "productionRootsChanged": false,
+    "entropySemanticsChanged": false,
+    "portabilityClassifierChanged": false,
+    "dependencyMutation": false
+  },
+  "verification": {
+    "focusedBoundary": "14/14 PASS",
+    "entropyFocused": "7/7 PASS",
+    "domain": "128/128 PASS",
+    "typecheck": "PASS",
+    "qualityGate": "PASS",
+    "dependencyHealth": "PASS 0 violations; 47 modules / 162 dependencies",
+    "entropy": "PASS 19/19 reachable",
+    "build": "PASS",
+    "openspecChangeStrict": "PASS",
+    "openspecAllStrict": "14/14 PASS",
+    "gitDiffCheck": "PASS"
+  },
+  "reviewApplyPerformed": false,
+  "archivePerformed": false,
+  "nextBoundary": "review-apply",
+  "nextBoundaryAuthority": "handoff-advisory-only",
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

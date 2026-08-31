@@ -25,6 +25,10 @@ import {
   evaluateCheckpointAuthorization,
   type CheckpointAuthorization,
 } from "./checkpoint-authorization.js";
+import {
+  resolveTrustedChangeCoordination,
+  TrustedChangeCoordinationError,
+} from "./trusted-change-coordination.js";
 import type {
   DoctorRequest,
   FoundationCliRequest,
@@ -38,6 +42,7 @@ export type FoundationCliFailureKind =
   | "run-identity-mismatch"
   | "managed-tool-integration-failed"
   | "openspec-integration-failed"
+  | "coordination-resolution-failed"
   | "invalid-checkpoint-authority";
 
 export class FoundationCliCommandError extends Error {
@@ -126,7 +131,29 @@ function exactRunProjection(selected: SelectedRun) {
   });
 }
 
+async function resolveCanonicalChangeState(
+  request: StatusRequest | NextRequest,
+) {
+  try {
+    return await resolveTrustedChangeCoordination({
+      repositoryRoot: request.repositoryRoot,
+      deliveryId: request.deliveryId,
+      changeId: request.changeId,
+    });
+  } catch (error) {
+    if (error instanceof TrustedChangeCoordinationError) {
+      fail(
+        "coordination-resolution-failed",
+        "trusted Delivery-Change coordination resolution failed",
+        error,
+      );
+    }
+    throw error;
+  }
+}
+
 async function statusCommand(request: StatusRequest) {
+  const changeState = await resolveCanonicalChangeState(request);
   const selected = await readSelectedRun(request, request.currentRunId);
   let activeChanges;
   try {
@@ -172,7 +199,7 @@ async function statusCommand(request: StatusRequest) {
     kind: "status" as const,
     deliveryId: request.deliveryId,
     changeId: request.changeId,
-    changeState: request.changeState,
+    changeState,
     currentRun: exactRunProjection(selected),
     openSpec: Object.freeze({
       activeChangeIds: activeChanges.changeIds,
@@ -182,6 +209,7 @@ async function statusCommand(request: StatusRequest) {
 }
 
 async function nextCommand(request: NextRequest) {
+  const changeState = await resolveCanonicalChangeState(request);
   let currentAction: CurrentAction | null = null;
   let terminalRunContext = null;
   let terminalResult = null;
@@ -198,7 +226,7 @@ async function nextCommand(request: NextRequest) {
   const policyDecision = evaluatePolicyAndNextBoundary({
     deliveryId: request.deliveryId,
     changeId: request.changeId,
-    changeState: request.changeState,
+    changeState,
     currentAction,
     terminalRunContext,
     terminalResult,
