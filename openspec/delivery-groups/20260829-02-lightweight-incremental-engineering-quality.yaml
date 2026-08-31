@@ -89,6 +89,17 @@ changes:
       - "Repository Entropy Hygiene contract"
       - "high-confidence dead/stale material detection"
 
+  - id: "correct-openspec-observation-process-failure-portability"
+    group: "foundation-correction"
+    goal: "纠正既有 OpenSpec thin observation 在 Windows 上对 managed child abnormal termination 的分类/证明缺口，使 process cannot start/complete 的既有 process-failure contract 在支持平台上可被真实验证。"
+    required: true
+    dependsOn: []
+    state: completed
+    architectureImpact: false
+    outputs:
+      - "cross-platform OpenSpec abnormal-process classification correction"
+      - "Windows/Linux proof for existing process-failure semantics"
+
   - id: "establish-explicit-applicable-check-execution"
     group: "engineering-quality"
     goal: "确保 formal input 已明确要求的 correctness checks 被 exact execution，并形成绑定 exact candidate/check identity 的真实 Result fact。"
@@ -102,6 +113,11 @@ changes:
       - "same-candidate fact consumption boundary"
 
 proofConcerns:
+  - id: "openspec-observation-process-failure-portability"
+    status: "finding-confirmed-correction-completed"
+    statement: "Windows Node 22.23.2 exact runtime semantics plus local execution proved the self-SIGKILL fixture reaches the parent as code=1, signal=null, stdout empty, while Linux exposes code=null, signal=SIGKILL. The bounded correction is completed: canonical OpenSpec thin observation now clarifies host-observable process-outcome precedence and portable deterministic boundary proof replaces the non-portable universal self-SIGKILL assertion without platform/exit-code heuristics."
+    correctionChange: "correct-openspec-observation-process-failure-portability"
+
   - id: "coordination-state-authority-source-binding"
     status: "finding-confirmed-correction-completed"
     statement: "earliest applicable proof confirmed a bootstrap-to-Stable-Core authority-binding gap; the bounded corrective Change completed and normal D02 activation may now rely on the corrected trusted coordination-state binding."
@@ -112,6 +128,7 @@ recommendedOrder:
   - "establish-lightweight-incremental-engineering-gate"
   - "establish-structural-dependency-health-fitness"
   - "establish-high-confidence-repository-entropy-hygiene"
+  - "correct-openspec-observation-process-failure-portability"
   - "establish-explicit-applicable-check-execution"
 
 acceptance:
@@ -164,5 +181,19 @@ ownerDecisions:
     deliveryId: "20260829-02-lightweight-incremental-engineering-quality"
     changeId: "establish-high-confidence-repository-entropy-hygiene"
     sourceRef: "owner-input:2026-08-30:activate-change:establish-high-confidence-repository-entropy-hygiene:explore"
+    scope:
+      - "explore"
+  - ref: "owner:b8123faf1f69c1203535459c4ba14ed90ab152e8d493ec05e1b3f0c9f29a58e7"
+    decision: "refine-delivery-plan"
+    deliveryId: "20260829-02-lightweight-incremental-engineering-quality"
+    sourceRef: "owner-input:2026-08-31:proof-confirmed-openspec-observation-process-failure-portability:add-corrective-change"
+    scope:
+      - "add-corrective-change"
+
+  - ref: "owner:1d0628a69ec731b9e6cf927577eedc2471364d69d4cc69c1b18dbd85c7259e64"
+    decision: "activate-change"
+    deliveryId: "20260829-02-lightweight-incremental-engineering-quality"
+    changeId: "correct-openspec-observation-process-failure-portability"
+    sourceRef: "owner-input:2026-08-31:proof-confirmed-openspec-observation-process-failure-portability:activate-explore"
     scope:
       - "explore"

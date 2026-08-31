@@ -16,6 +16,8 @@ import {
   observeOpenSpecActiveChanges,
   observeOpenSpecChangeStatus,
 } from "../../../src/domain/index.js";
+import { classifyManagedOpenSpecClose } from "../../../src/internal/openspec-process-outcome.js";
+import * as publicDomain from "../../../src/domain/index.js";
 
 interface Fixture {
   readonly root: string;
@@ -144,20 +146,40 @@ test("malformed machine output remains distinct", async () => {
   }
 });
 
-test("abnormal child termination is a process failure", async () => {
-  const fixture = await fixtureWithScript(
-    `process.kill(process.pid, "SIGKILL");`,
-  );
+test("numeric close with empty required output is malformed machine output", async () => {
+  const fixture = await fixtureWithScript(`process.exit(1);`);
   try {
     await assert.rejects(
       observeOpenSpecActiveChanges(fixture),
       (error: unknown) =>
         error instanceof OpenSpecObservationError &&
-        error.kind === "openspec-process-failed",
+        error.kind === "malformed-machine-output",
     );
   } finally {
     await cleanup(fixture);
   }
+});
+
+test("host-observable missing numeric exit is a process failure", () => {
+  assert.equal(
+    classifyManagedOpenSpecClose(null, null),
+    "openspec-process-failed",
+  );
+});
+
+test("host-observable signal is a process failure", () => {
+  assert.equal(
+    classifyManagedOpenSpecClose(0, "SIGTERM"),
+    "openspec-process-failed",
+  );
+});
+
+test("numeric close remains a numeric outcome", () => {
+  assert.deepEqual(classifyManagedOpenSpecClose(1, null), { exitCode: 1 });
+});
+
+test("close classifier is not part of the public domain surface", () => {
+  assert.equal("classifyManagedOpenSpecClose" in publicDomain, false);
 });
 
 test("successful nearest-root drift is rejected", async () => {

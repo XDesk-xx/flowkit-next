@@ -1,0 +1,70 @@
+{
+  "runNumber": 46,
+  "kind": "external-orchestrator-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+  "changeId": "correct-openspec-observation-process-failure-portability",
+  "action": "apply",
+  "runId": "20260831-046-apply",
+  "physicalRunPath": ".flowkit/runs/20260829-02-lightweight-incremental-engineering-quality/040-correct-openspec-observation-process-failure-portability/20260831-046-apply",
+  "inputRunId": "20260831-045-review-propose",
+  "inputReviewArchiveSha256": "0248350e91d7b1a3f268e659fc87edd05d6f7b3fe3951045a862c65f50fa4d9d",
+  "checkpointClaim": "32345c2ec951baffde7f56ba7519a1c4c1e77566",
+  "skillsUsed": [
+    "openspec-apply-change",
+    "implementation-convergence"
+  ],
+  "toolIdentity": {
+    "node": "22.23.2",
+    "pnpm": "11.22.0",
+    "openspec": "1.10.0",
+    "dependencyCruiser": "18.2.0"
+  },
+  "implementationBoundary": {
+    "internalCloseClassifier": "src/internal/openspec-process-outcome.ts",
+    "publicDomainIndexMutation": false,
+    "externallyObservableClassificationChanged": false,
+    "diagnosticTaxonomyChanged": false,
+    "selfSigkillUniversalAssertionRemoved": true,
+    "deterministicTupleCoverage": true,
+    "platformBranch": false,
+    "exitCodeHeuristic": false,
+    "stdoutStderrHeuristic": false,
+    "hiddenCauseInference": false,
+    "processSupervisorOrRuntimeAbstraction": false,
+    "applicableChecksMerge": false,
+    "newDependency": false,
+    "packageMutation": false,
+    "lockMutation": false
+  },
+  "verification": {
+    "focusedBoundary": "PASS 14/14",
+    "domain": "PASS 128/128",
+    "typecheck": "PASS",
+    "qualityGate": "PASS via exact underlying git diff/prettier/eslint/forbidden-artifact checks",
+    "dependencyHealth": "PASS 0 violations; 47 modules / 162 dependencies",
+    "entropy": "PASS 19/19 reachable",
+    "build": "PASS",
+    "openspecChangeStrict": "PASS",
+    "openspecAllStrict": "PASS 14/14",
+    "gitDiffCheck": "PASS",
+    "windowsFocusedReplay": "NOT AVAILABLE in current Apply environment; optional per Reviewer 045"
+  },
+  "environmentConstraint": {
+    "pnpmSelfHealAttemptedNetwork": true,
+    "repositoryPackageTruthMutated": false,
+    "detachedExecutionSnapshotRestored": true,
+    "checksRunDirectlyAfterRestore": true
+  },
+  "artifactHashes": {
+    "openspecObservationSha256": "01051280e26656d24740cfdd7a670a9393fb825d7c0ad31ece1ca5ab01c8a785",
+    "internalClassifierSha256": "e0ddead78362a41d3193b7aaa26c56a2d85a101209eb82f01fa2fa5fcd5a01ed",
+    "boundaryTestSha256": "83c4fbc6a5950b3ad1eca55b138147f088696e7af1fe83c97b807959da34b2d0",
+    "tasksSha256": "293053447f4ec9654f4f7d2e1e5ff3cb089587731abe2bddf30d3c8e6480dd48",
+    "packageJsonSha256": "c79508605c34371eea6903f7dad39d388531f6b84e04c74d10ecd4938b4a9d76",
+    "pnpmLockSha256": "bf5ef071f2b4b8140f05493ebd53098660250f2cd5a834fe321ce8685bdb65e5"
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

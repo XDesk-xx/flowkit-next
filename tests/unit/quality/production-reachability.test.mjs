@@ -32,8 +32,7 @@ function graph(extraModules = []) {
 test("accepted repository baseline has every production source reachable", () => {
   const result = runEntropyCheck();
 
-  assert.equal(result.total, 18);
-  assert.equal(result.reachable.length, 18);
+  assert.equal(result.reachable.length, result.total);
   assert.deepEqual(result.unreachable, []);
 });
 

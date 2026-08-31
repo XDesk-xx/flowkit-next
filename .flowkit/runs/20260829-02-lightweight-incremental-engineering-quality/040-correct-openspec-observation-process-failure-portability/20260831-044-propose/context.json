@@ -1,0 +1,62 @@
+{
+  "runNumber": 44,
+  "kind": "external-orchestrator-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+  "changeId": "correct-openspec-observation-process-failure-portability",
+  "action": "propose",
+  "runId": "20260831-044-propose",
+  "physicalRunPath": ".flowkit/runs/20260829-02-lightweight-incremental-engineering-quality/040-correct-openspec-observation-process-failure-portability/20260831-044-propose",
+  "inputRunId": "20260831-043-review-explore",
+  "inputReviewArchiveSha256": "eb3211b0005fe52223634930578a21d7a66a4967aeb32f9d2b4339dfaa4afc99",
+  "approvedExploreSha256": "650958ed268806c2b3b9c3792538adc8512df0dc28742d0061a4108a4cba1cf8",
+  "checkpointClaim": "32345c2ec951baffde7f56ba7519a1c4c1e77566",
+  "changeStartSequence": 40,
+  "reviewerVerdict": "approved",
+  "resolvedFindingIds": [
+    "RE-041-001"
+  ],
+  "skillsUsed": [
+    "openspec-propose",
+    "proposal-convergence"
+  ],
+  "proposalConstraintsPreserved": {
+    "observableProcessFailurePrecedence": true,
+    "hostObservableAbnormalCloseOnly": true,
+    "numericCloseMalformedJsonRemainsMalformedMachineOutput": true,
+    "validJsonNonZeroRemainsFormalOutcome": true,
+    "diagnosticTaxonomyMutation": false,
+    "productionClassificationBroadening": false,
+    "windowsSpecialCase": false,
+    "exitCodeOneHeuristic": false,
+    "nonZeroEmptyStdoutHeuristic": false,
+    "stderrInference": false,
+    "portableBoundaryCoverageRequired": true,
+    "internalTestabilitySeamOnlyIfNeeded": true,
+    "publicApiExpansion": false,
+    "newDependency": false,
+    "packageLockMutation": false,
+    "genericProcessSupervisor": false,
+    "applicableChecksMerge": false,
+    "architectureImpact": false
+  },
+  "validation": {
+    "planningArtifacts": "4/4 DONE",
+    "openspecChangeStrict": "PASS",
+    "openspecAllStrict": "PASS 14/14",
+    "gitDiffCheck": "PASS",
+    "productionMutation": "NONE",
+    "packageMutation": "NONE"
+  },
+  "artifacts": {
+    "openspecMetadataSha256": "9187547d8cc17017ebd44132527d2d5e096d1ef9705de80cc4f1cf34531f6976",
+    "proposalSha256": "2f563ae79f65e423808ac461833a878c8c20b45f5b243cf5056dd5cbfbd944f1",
+    "designSha256": "625e423c936dff943bb63163ee3e37512913adf67513085df5e33d8b8539b27e",
+    "specSha256": "f13c2f5d970ce1ba0bc1ed7aba1f47b8bb8f5c8f13a1f0d751d737deaee474fe",
+    "tasksSha256": "538db71e6f79a02f2ee839d2bf900c17af4f70d35e6391f5eba2019ec250cdbc"
+  },
+  "blockingFindingIds": [],
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

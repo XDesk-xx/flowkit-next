@@ -1,0 +1,16 @@
+{
+  "runId": "20260831-040-explore",
+  "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+  "changeId": "correct-openspec-observation-process-failure-portability",
+  "action": "explore",
+  "role": "author",
+  "status": "terminal",
+  "verdict": "PASS_WITH_PROPOSAL_BLOCKER",
+  "summary": "A real Windows-vs-Linux process-failure classification mismatch is confirmed against the existing canonical openspec-thin-integration contract. The corrective Change is bounded, but Proposal must wait for one raw Windows child close tuple to select test-fixture correction versus invocation/classification correction without guessing.",
+  "nextBoundary": "review-explore",
+  "proposalAllowed": false,
+  "applyAllowed": false,
+  "blockingUnknown": "Capture exact Windows {code, signal, stdout} for the existing abnormal-child fixture before Proposal.",
+  "productionMutation": "NONE",
+  "specDelta": "NONE at Explore; existing canonical contract already expresses desired semantics"
+}

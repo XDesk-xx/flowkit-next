@@ -1,0 +1,40 @@
+{
+  "runNumber": 40,
+  "kind": "external-orchestrator-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+  "changeId": "correct-openspec-observation-process-failure-portability",
+  "action": "explore",
+  "runId": "20260831-040-explore",
+  "physicalRunPath": ".flowkit/runs/20260829-02-lightweight-incremental-engineering-quality/040-correct-openspec-observation-process-failure-portability/20260831-040-explore",
+  "checkpointClaim": "32345c2ec951baffde7f56ba7519a1c4c1e77566",
+  "ownerPlanRef": "owner:b8123faf1f69c1203535459c4ba14ed90ab152e8d493ec05e1b3f0c9f29a58e7",
+  "ownerActivation": {
+    "ref": "owner:1d0628a69ec731b9e6cf927577eedc2471364d69d4cc69c1b18dbd85c7259e64",
+    "decision": "activate-change",
+    "sourceRef": "owner-input:2026-08-31:proof-confirmed-openspec-observation-process-failure-portability:activate-explore",
+    "scope": ["explore"]
+  },
+  "proofSummary": {
+    "canonicalContractAlreadyRequiresProcessFailureForCannotComplete": true,
+    "failingTestIntroducedBy": "698538c0588dab9737e91bff77595d591258880d",
+    "currentEntropyCheckpointIntroducedRegression": false,
+    "linuxNodeVersion": "22.23.2",
+    "linuxFocusedBoundaryTests": "10/10 PASS",
+    "linuxSigkillRawCode": null,
+    "linuxSigkillRawSignal": "SIGKILL",
+    "windowsNodeVersion": "22.23.2",
+    "windowsDomainTests": "123/124",
+    "windowsIsolatedBoundaryFailure": "reproduced",
+    "windowsExpectedDiagnostic": "openspec-process-failed",
+    "windowsActualDiagnostic": "malformed-machine-output",
+    "windowsRawCloseTuplePersisted": false,
+    "proposalFixBranch": "UNKNOWN until Windows raw close tuple is captured",
+    "defaultSpecDelta": "none"
+  },
+  "productionMutationInExplore": false,
+  "proposalArtifactsInExplore": false,
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

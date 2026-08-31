@@ -1,0 +1,57 @@
+{
+  "runNumber": 48,
+  "kind": "external-orchestrator-revise-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+  "changeId": "correct-openspec-observation-process-failure-portability",
+  "action": "revise-apply",
+  "runId": "20260831-048-revise-apply",
+  "physicalRunPath": ".flowkit/runs/20260829-02-lightweight-incremental-engineering-quality/040-correct-openspec-observation-process-failure-portability/20260831-048-revise-apply",
+  "inputRunId": "20260831-047-review-apply",
+  "inputReviewArchiveSha256": "96ea1fc871c6bdfc2b045cba0dd5f0b424e8f46b53400409166a3d9142cfe980",
+  "checkpointClaim": "32345c2ec951baffde7f56ba7519a1c4c1e77566",
+  "reviewFinding": {
+    "id": "RA-047-001",
+    "class": "affected-existing-test-regression",
+    "proposalChangeRequired": false
+  },
+  "skillsUsed": [
+    "revise-apply",
+    "implementation-convergence"
+  ],
+  "skillHashes": {
+    "reviseApplySha256": "69fb9ee64e76b140d31e6073bbf9266ea236fbc40be539b5b7dffa2bfc6321cf",
+    "implementationConvergenceSha256": "88b8252dd146a71ea3d189f4c2f651bc8e96db6dbb64e454769eb22ace18a68d"
+  },
+  "revisionBoundary": {
+    "modifiedArtifact": "tests/unit/quality/production-reachability.test.mjs",
+    "oldLiteralBaseline": "total=18; reachable=18",
+    "newInvariant": "reachable.length === total and unreachable=[]",
+    "productionReachabilitySemanticsChanged": false,
+    "productionRootsChanged": false,
+    "portabilityClassifierChanged": false,
+    "proposalArtifactsChanged": false,
+    "packageMutation": false,
+    "lockMutation": false,
+    "baselineOrWaiverAdded": false
+  },
+  "verification": {
+    "focusedBoundary": "PASS 14/14",
+    "entropyFocused": "PASS 7/7",
+    "domain": "PASS 128/128",
+    "typecheck": "PASS",
+    "qualityGate": "PASS via exact underlying git diff/prettier/eslint/forbidden-artifact checks",
+    "dependencyHealth": "PASS 0 violations; 47 modules / 162 dependencies",
+    "entropy": "PASS 19/19 reachable",
+    "build": "PASS",
+    "openspecChangeStrict": "PASS",
+    "openspecAllStrict": "PASS 14/14",
+    "gitDiffCheck": "PASS"
+  },
+  "artifactHashes": {
+    "entropyFocusedTestSha256": "ea9e4f9436fceb2ca285c72e2ecba2ac843e7f929218f49fbda7b84091ecd78b"
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}
