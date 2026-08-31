@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "kind": "architecture-thin-compare",
+  "deliveryId": "20260829-02-lightweight-incremental-engineering-quality",
+  "classification": [
+    "semantic",
+    "presentation"
+  ],
+  "presentation": {
+    "mode": "side-by-side",
+    "renderer": "flowkit-reference-side-by-side",
+    "leftPosition": "before",
+    "rightPosition": "after",
+    "equalFrame": true,
+    "interactive": true,
+    "overlay": false,
+    "deltaColumn": false,
+    "artifactPolicy": "disposable-html-not-retained-in-git",
+    "resolution": "resolve-left-right-ref-to-architecture-render"
+  },
+  "pair": "current-to-actual",
+  "left": {
+    "ref": "./current.architecture.json",
+    "sha256": "229e251cf8f480c772b837818ef85f49eece327375aea70df78760514fcbeef9",
+    "bytes": 14879
+  },
+  "right": {
+    "ref": "./actual.architecture.json",
+    "sha256": "bd4a0a2381c8d99970ef3d462546442ca158069a2fb0227a09e07b9af84c0853",
+    "bytes": 19342
+  },
+  "summary": {
+    "semantic": "Delivery 02 Start Current → verified Actual: the D01 Foundation remains intact, trusted Delivery+Change coordination binding is completed before pure Policy, and the four D02 engineering-quality capabilities are now implemented and verified. A bounded OpenSpec process-portability correction also completed without becoming a new architecture component.",
+    "presentation": "Shared D01 component IDs retain their established positions. Actual adds the verified D02 quality region using the same planned stable IDs, so additions and the CLI trust-boundary correction remain directly comparable without changing Current semantics."
+  }
+}

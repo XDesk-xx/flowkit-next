@@ -6,9 +6,11 @@ base: "main@af67f60c9094333bcb3b575bd351874e77bb518a"
 goal: "在已完成的 Foundation Lifecycle Kernel 上建立 small but complete、轻量、增量、高可信度的 repository engineering-quality protection，防止 AI 持续开发引入新的机械质量退化，同时不建设 Quality Platform 或新的控制面。"
 
 delivery:
-  state: active
-  fullTestStatus: pending
-  finalizationStatus: pending
+  state: completed
+  fullTestStatus: passed
+  finalizationStatus: completed
+  formalVerificationCandidate: "d78acb135d5317145f52c7559393a3d1c0ff42eb"
+  finalizedAt: "2026-08-31"
 
 scope:
   included:
@@ -34,11 +36,14 @@ architecture:
   impact: true
   archifyPlan: "required"
   startStatus: "materialized"
-  finalStatus: "pending"
+  finalStatus: "materialized"
   currentRef: "architecture/20260829-02-lightweight-incremental-engineering-quality/json/current.architecture.json"
   plannedRef: "architecture/20260829-02-lightweight-incremental-engineering-quality/json/planned.architecture.json"
+  actualRef: "architecture/20260829-02-lightweight-incremental-engineering-quality/json/actual.architecture.json"
   compareRefs:
     - "architecture/20260829-02-lightweight-incremental-engineering-quality/json/current-to-planned.compare.json"
+    - "architecture/20260829-02-lightweight-incremental-engineering-quality/json/current-to-actual.compare.json"
+    - "architecture/20260829-02-lightweight-incremental-engineering-quality/json/planned-to-actual.compare.json"
   htmlPolicy: "disposable-not-retained-in-git"
 
 changes:
@@ -204,3 +209,61 @@ ownerDecisions:
     sourceRef: "owner-input:2026-08-31:activate-change:establish-explicit-applicable-check-execution:explore-proof-based"
     scope:
       - "explore"
+
+
+verification:
+  change:
+    requireApplicableChecks: true
+  fullTest:
+    requiresOwnerAuthorization: true
+    execution:
+      state: passed
+      verifiedCandidate: "d78acb135d5317145f52c7559393a3d1c0ff42eb"
+      verificationEvidenceSha256: "5b5dfc60bf9a59214a1b701c2e87d4543f17bd7e83c0ef1ff7cddbfb2160a7fc"
+      verifiedAt: "2026-08-31"
+      resultAuthority: "verification"
+      reason: "Owner 明确授权 exact d78acb1 candidate 进入 Formal Full Test；冻结的 6 个 gates 在同一 candidate 上全部 PASS。第一次 Gate 1 失败被证明为 detached dependency fixture 缺失 yaml 顶层 link 的 verification-environment defect，没有 tracked repository mutation；修复 ignored execution environment 后从 Gate 1 全量重启并 6/6 PASS。随后最终 dependency archive 已重新 materialize 并通过 fresh-extract 零 repair 验证，不改变 Formal Full Test verdict 或 verified candidate。"
+      environment:
+        nodeCompatibility: ">=22.20.0"
+        deterministicNodeFixture: "22.23.2"
+        packageManagerFixture: "pnpm@11.22.0"
+        dependencies: "repository dependencies are restored before execution"
+        pnpmScriptDependencyCheck: "pnpm_config_verify_deps_before_run=false so gate execution cannot trigger pnpm install"
+        flowkitHome: "FLOWKIT_HOME must be explicit"
+        managedTools:
+          - "OpenSpec 1.10.0 exact managed runtime"
+          - "Archify 2.15.0 exact managed runtime"
+        fallback: "no install/update/download/network/PATH/global managed-tool fallback"
+        finalDependencyArchive: "flowkit-next-dependency-environment-linux-x64-node22.23.2-pnpm11.22.0-runtime-v1.tar.gz"
+        finalDependencyArchiveSha256: "d92a903673a6eb5017212d5dc8c563cd0de7cc5147c7ae3496456ce856932321"
+        finalDependencyArchiveValidation: "fresh extract preserves yaml@2.9.0 direct link, contains no Knip, and passes typecheck/build/domain/acceptance under exact detached runtime without node_modules repair"
+      gates:
+        - "pnpm typecheck"
+        - "pnpm format:check"
+        - "pnpm build"
+        - "pnpm test:domain"
+        - "exact managed OpenSpec 1.10.0: validate --all --strict"
+        - "pnpm test:acceptance"
+    plan:
+      - "Formal Full Test remains the frozen Delivery-level 6-gate contract inherited from Delivery 01; D02 quality capabilities do not silently expand it into a mini quality platform."
+      - "verification-environment defects may be repaired and rerun on the same exact candidate when repository/canonical contract truth is unchanged."
+      - "repository/canonical contract defects require a normal corrective OpenSpec Change and a new exact candidate before Formal Full Test restarts."
+
+finalization:
+  state: completed
+  formalFullTest: "PASS"
+  verifiedCandidate: "d78acb135d5317145f52c7559393a3d1c0ff42eb"
+  actualArchitecture: "completed"
+  actualArchitectureSha256: "bd4a0a2381c8d99970ef3d462546442ca158069a2fb0227a09e07b9af84c0853"
+  currentToActualCompareSha256: "fcffb81407960d52c5261b7a18aee77e79ed817943f98c6f201f1d0bac04eff9"
+  plannedToActualCompareSha256: "347a9e083a6e86a97bab09023cb6eee9049a2000253fe2348fc42dddcf02c08f"
+  ownerActualConfirmation: "confirmed"
+  repositoryGuidanceConvergence: "completed"
+  productMutationAfterFormalVerification: false
+  canonicalOpenSpecMutationAfterFormalVerification: false
+  packageLockMutationAfterFormalVerification: false
+  historicalRunRewrite: false
+  generatedHtmlRetainedInGit: false
+  openMemoPolicy: "preserved-non-blocking"
+  gitCheckpoint: "pending-owner-authorized-local-delivery-commit"
+  deterministicCommitMessage: "delivery(20260829-02-lightweight-incremental-engineering-quality): finalize lightweight incremental engineering quality"

@@ -1,10 +1,10 @@
 # AGENTS.md
 
 > 仓库级 Agent 长期操作约束。
-> Foundation Lifecycle Kernel 已完成 Delivery Final；正式使用仍遵守 **external stable manager manages candidate** 的 authority boundary。
+> Foundation Lifecycle Kernel 与 Delivery 02 Lightweight Incremental Engineering Quality 已完成 Delivery Final materialization；正式使用仍遵守 **external stable manager manages candidate** 的 authority boundary。
 > 本文件是长期 repository guidance，不替代 OpenSpec、Git、Runtime、Reviewer、Verification 或 Owner authority。
 
-## 1. 当前 Foundation 状态
+## 1. 当前 Stable Core 状态
 
 仓库已经具备并验证：
 
@@ -21,11 +21,21 @@ toolchain exact managed-runtime resolution
 thin OpenSpec observation
 minimal flowkit CLI: status / next / doctor
 checkpoint authorization evaluation only
+trusted Delivery-Change coordination-state binding
+lightweight incremental engineering gate
+structural dependency health
+production-root reachability entropy hygiene
+explicit applicable-check execution + exact real-PASS reuse boundary
+portable OpenSpec abnormal-process classification
 Linux x64 detached whole-manager acceptance
 Windows compatibility simulation
 ```
 
 Delivery `20260824-01-foundation-lifecycle-kernel` 已完成 Formal Full Test 与 Delivery Final materialization。
+
+Delivery `20260829-02-lightweight-incremental-engineering-quality` 也已完成 Formal Full Test 与 Delivery Final materialization；D02 增加 lightweight gate、structural dependency health、production-root reachability entropy hygiene、explicit applicable-check execution，以及两项 bounded Foundation correction。D02 没有引入 Gate/Check Registry、Verification Planner、Evidence Platform、Quality Dashboard、candidate snapshot DB 或 automatic workflow。
+
+Delivery Final 仍不自动创建 Git checkpoint authority。Detached closure 只准备 commit-ready repository snapshot；exact Delivery checkpoint 必须在本地仓库由 Owner 明确授权后形成。
 
 历史 Delivery 01 **不得被 candidate 自己重演为 self-managed lifecycle**。后续 Delivery 的正式生命周期操作必须由上一 Delivery 的 Owner-authorized exact Delivery Final Git checkpoint 对应 Stable Flowkit manager 执行；target repository 内正在开发的 candidate CLI 不能因为“已经 build 出来”就自动取得当前 Delivery authority。
 
