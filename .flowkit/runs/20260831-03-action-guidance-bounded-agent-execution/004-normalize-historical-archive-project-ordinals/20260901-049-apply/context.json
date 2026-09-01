@@ -1,0 +1,57 @@
+{
+  "runNumber": 49,
+  "kind": "external-orchestrator-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "normalize-historical-archive-project-ordinals",
+  "action": "apply",
+  "runId": "20260901-049-apply",
+  "inputRunId": "20260901-048-review-propose",
+  "physicalRunPath": ".flowkit/runs/20260831-03-action-guidance-bounded-agent-execution/004-normalize-historical-archive-project-ordinals/20260901-049-apply",
+  "physicalRunGroupPrefix": "004",
+  "projectOrdinal": 23,
+  "changeStartSequence": 45,
+  "checkpointClaim": "cb53d07b18da4382d83291627843507fc4acaf70",
+  "inputReviewerPackageSha256": "53575d62f538dc6b498af8ae432825b2c90db9a92a87b3886ea7fdabc75fdb86",
+  "approvedProposalRunId": "20260901-047-propose",
+  "implementationArtifacts": {
+    "proposalSha256": "f5bc2216b8f493082de3067721f7d159b3e34a1b6e90ab7e81ebbc2f6bb3cac6",
+    "designSha256": "3da98d52c23a5dd195b01a66361cbc174d8608f1b3eb2ac3c893247ecc66d547",
+    "tasksSha256": "b6951c8bc7c00bc549b413a61188f218f993a907558df2b207c2ef3f834acf64",
+    "focusedTestSha256": "cb9a75e53a064d92e7f94c8184de2e0ecd8d0bd2164016317e61c91dc9cba213"
+  },
+  "historicalNormalization": {
+    "archiveCount": 7,
+    "durableRunReferenceCount": 21,
+    "oldTrackedPathReferenceCountAfterApply": 0,
+    "normalizedOrdinals": [14, 15, 16, 17, 18, 19, 20]
+  },
+  "verification": {
+    "node": "22.23.2",
+    "openspec": "1.10.0",
+    "detachedDependencySnapshotReused": true,
+    "pnpmInstallOrRepairRun": false,
+    "focusedAuthorGuidance": "13/13 PASS",
+    "domain": "168/168 PASS",
+    "typecheck": "PASS",
+    "eslintFocused": "PASS",
+    "formatFocused": "PASS",
+    "changeStrict": "1/1 PASS",
+    "canonicalSpecsStrict": "16/16 PASS",
+    "archivedStrict": "21/21 PASS",
+    "openSpecAllStrict": "17/17 PASS",
+    "gitDiffCheck": "PASS"
+  },
+  "scopeGuards": {
+    "srcMutation": false,
+    "packageOrLockMutation": false,
+    "productActionGuidanceMutation": false,
+    "reviewerGuidanceMutation": false,
+    "architectureMutation": false,
+    "newOrdinalSubsystem": false,
+    "gitHistoryRewrite": false
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff-with-explicit-removals"
+}

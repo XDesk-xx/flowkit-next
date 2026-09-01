@@ -1,0 +1,61 @@
+{
+  "runNumber": 45,
+  "kind": "external-orchestrator-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "normalize-historical-archive-project-ordinals",
+  "action": "explore",
+  "runId": "20260901-045-explore",
+  "physicalRunPath": ".flowkit/runs/20260831-03-action-guidance-bounded-agent-execution/004-normalize-historical-archive-project-ordinals/20260901-045-explore",
+  "physicalRunGroupPrefix": "004",
+  "projectOrdinal": 23,
+  "changeStartSequence": 45,
+  "checkpointClaim": "cb53d07b18da4382d83291627843507fc4acaf70",
+  "ownerCompositionRevision": {
+    "ref": "owner:e885547ba578eb187e176cf50e50473a08fc6b83f15fe06643ec75585534280b",
+    "decision": "revise-delivery-composition",
+    "sourceRef": "owner-input:2026-09-01:revise-d03-composition:normalize-historical-archive-project-ordinals-before-reviewer-guidance"
+  },
+  "ownerActivation": {
+    "ref": "owner:afbc633622eb88b63f4c2763079ce4b7195d42e82da9950b17159ffa5ac05fd8",
+    "decision": "activate-change",
+    "sourceRef": "owner-input:2026-09-01:activate-change:normalize-historical-archive-project-ordinals:proof-explore",
+    "scope": [
+      "explore"
+    ]
+  },
+  "skillsUsed": [
+    ".agents/skills/openspec-explore",
+    ".agents/skills/explore-proof-based",
+    "detached-repository-execution"
+  ],
+  "stableManagerProof": {
+    "managerRevision": "4b45552b90ee327488bde3141c51c556e65a2e95",
+    "decision": "ready-action",
+    "actionId": "explore"
+  },
+  "detachedEnvironment": {
+    "node": "22.23.2",
+    "dependencyInputsUnchanged": true,
+    "packageManagerInstallInvoked": false,
+    "restoredDependencySnapshotReused": true
+  },
+  "proofSummary": {
+    "dateOnlyArchiveCount": 7,
+    "historicalMappedOrdinals": "014..020",
+    "durableOldPathReferenceCount": 21,
+    "currentProjectOrdinal": 23,
+    "reviewerGuidanceProjectOrdinalAssigned": false,
+    "baselineFocusedTest": "12/13 PASS; 1 lifecycle-transient state assertion FAIL",
+    "newCoreCapabilityRequired": false,
+    "productSpecDeltaRequired": false,
+    "expectedOpenSpecSkipSpecs": true
+  },
+  "productionMutationInExplore": false,
+  "proposalArtifactsInExplore": false,
+  "exploreArtifactSha256": "f2a3f1aa0721a3f3c99babac5abfae7bab50ba05371de9845ec67527846f17bf",
+  "deliveryManifestSha256": "964182b1817ddadd46cfcb7fb199a819bbe6d1b5c297c7504d3f9149ceb179dc",
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

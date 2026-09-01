@@ -26,7 +26,7 @@ The Archive Action invoked the OpenSpec archive-change workflow.
 3. Synced all three delta specs into canonical OpenSpec specs.
 4. Verified each ADDED/MODIFIED requirement is fully synchronized.
 5. Validated canonical specs and the completed Change before move.
-6. Archived the Change to `openspec/changes/archive/2026-08-30-establish-trusted-change-coordination-state-binding`.
+6. Archived the Change to `openspec/changes/archive/2026-08-30-014-establish-trusted-change-coordination-state-binding`.
 7. Validated all archived Changes.
 8. Materialized Delivery coordination state `active → completed`.
 

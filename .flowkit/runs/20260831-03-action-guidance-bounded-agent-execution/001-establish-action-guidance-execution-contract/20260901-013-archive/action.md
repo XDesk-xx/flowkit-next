@@ -19,7 +19,7 @@
 
 ## Archive execution
 
-1. Moved the Change to `openspec/changes/archive/2026-09-01-establish-action-guidance-execution-contract`.
+1. Moved the Change to `openspec/changes/archive/2026-09-01-020-establish-action-guidance-execution-contract`.
 2. Materialized Delivery coordination state for this Change as `completed`.
 3. Left `converge-author-action-guidance` and `converge-reviewer-action-guidance` as `planned`; no next Change was activated.
 4. Preserved the Stable Core self-development boundary: `.agents/skills/**` remains the independent bootstrap execution plane during D03/D04; this archive does not perform self-hosting convergence.

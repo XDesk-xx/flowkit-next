@@ -87,12 +87,26 @@ changes:
       - "Run chronology / Git history separation discipline"
       - "minimum independent bootstrap parity for D03/D04 without product self-hosting"
 
+  - id: "normalize-historical-archive-project-ordinals"
+    projectOrdinal: 23
+    group: "action-guidance"
+    goal: "把已有 durable project-wide ordinal lineage 但仍保留 date-only archive path 的历史 Change 收敛为 projectOrdinal-bearing archive naming，并修正把 live Delivery execution state 错写成 durable ordinal unit invariant 的测试耦合；不改变 Core ordinal semantics。"
+    required: true
+    dependsOn:
+      - "correct-artifact-convergence-and-chronology-discipline"
+    state: completed
+    architectureImpact: false
+    outputs:
+      - "historical archive paths normalized to proven persisted projectOrdinal lineage"
+      - "durable archive/Run references converged where path identity changed"
+      - "ordinal tests prove stable semantics instead of transient Delivery state"
+
   - id: "converge-reviewer-action-guidance"
     group: "action-guidance"
     goal: "把 Reviewer HOW 收敛为 review-explore/review-propose/review-apply 三个稳定 canonical Action Guidance，保持 independent、fact-based、mutation-free review 与 complexity/minimality explanation。"
     required: true
     dependsOn:
-      - "correct-artifact-convergence-and-chronology-discipline"
+      - "normalize-historical-archive-project-ordinals"
     state: planned
     architectureImpact: true
     outputs:
@@ -116,6 +130,10 @@ proofConcerns:
   - id: "artifact-convergence-and-chronology"
     status: "proof-first-corrective"
     statement: "Prove whether canonical Explore/Design artifacts are retaining superseded reasoning or review chronology beyond current truth, then correct only Action Guidance/bootstrap HOW needed for convergence-in-place; file size remains diagnostic rather than a hard correctness Gate."
+
+  - id: "historical-archive-project-ordinal-normalization"
+    status: "proof-first-corrective"
+    statement: "Prove the exact historical projectOrdinal mapping for remaining date-only archives from existing durable history, normalize only paths/references supported by that proof, and replace lifecycle-transient ordinal test literals with stable semantic fixtures without changing Core ordinal semantics."
 
 memoInputs:
   - memoId: "future-run-history-concision-and-repository-growth"
@@ -143,6 +161,7 @@ recommendedOrder:
   - "establish-action-guidance-execution-contract"
   - "converge-author-action-guidance"
   - "correct-artifact-convergence-and-chronology-discipline"
+  - "normalize-historical-archive-project-ordinals"
   - "converge-reviewer-action-guidance"
 
 acceptance:
@@ -203,5 +222,21 @@ ownerDecisions:
     deliveryId: "20260831-03-action-guidance-bounded-agent-execution"
     changeId: "correct-artifact-convergence-and-chronology-discipline"
     sourceRef: "owner-input:2026-09-01:activate-change:correct-artifact-convergence-and-chronology-discipline:proof-explore"
+    scope:
+      - "explore"
+  - ref: "owner:e885547ba578eb187e176cf50e50473a08fc6b83f15fe06643ec75585534280b"
+    decision: "revise-delivery-composition"
+    deliveryId: "20260831-03-action-guidance-bounded-agent-execution"
+    changeId: "normalize-historical-archive-project-ordinals"
+    sourceRef: "owner-input:2026-09-01:revise-d03-composition:normalize-historical-archive-project-ordinals-before-reviewer-guidance"
+    scope:
+      - "insert-normalization-before-reviewer-guidance"
+      - "preserve-reviewer-guidance-as-planned"
+
+  - ref: "owner:afbc633622eb88b63f4c2763079ce4b7195d42e82da9950b17159ffa5ac05fd8"
+    decision: "activate-change"
+    deliveryId: "20260831-03-action-guidance-bounded-agent-execution"
+    changeId: "normalize-historical-archive-project-ordinals"
+    sourceRef: "owner-input:2026-09-01:activate-change:normalize-historical-archive-project-ordinals:proof-explore"
     scope:
       - "explore"

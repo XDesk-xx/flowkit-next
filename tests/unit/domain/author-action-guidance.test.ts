@@ -265,41 +265,31 @@ test("project ordinal allocation uses durable assigned facts only and fails clos
     deriveNextProjectOrdinal([{ id: "bad", projectOrdinal: "21" }]),
     null,
   );
+  assert.equal(
+    deriveNextProjectOrdinal([{ id: "zero", projectOrdinal: 0 }]),
+    null,
+  );
 });
 
-test("current corrective persists 022 while planned Reviewer Change reserves no ordinal", async () => {
-  const currentManifestPath = path.join(
-    REPOSITORY_ROOT,
-    "openspec",
-    "delivery-groups",
-    "20260831-03-action-guidance-bounded-agent-execution.yaml",
-  );
-  const currentManifest = parse(
-    await readFile(currentManifestPath, "utf8"),
-  ) as {
-    changes: DeliveryChangeEntry[];
-  };
+test("project ordinal invariants survive legal lifecycle transitions", () => {
+  const assigned = [
+    { id: "completed-author", state: "completed", projectOrdinal: 21 },
+    { id: "completed-corrective", state: "completed", projectOrdinal: 22 },
+    { id: "current", state: "active", projectOrdinal: 23 },
+    { id: "future", state: "planned" },
+  ];
 
-  const author = currentManifest.changes.find(
-    (change) => change.id === "converge-author-action-guidance",
-  );
-  const corrective = currentManifest.changes.find(
-    (change) =>
-      change.id === "correct-artifact-convergence-and-chronology-discipline",
-  );
-  const reviewer = currentManifest.changes.find(
-    (change) => change.id === "converge-reviewer-action-guidance",
-  );
+  assert.deepEqual(validateAssignedProjectOrdinals(assigned), [21, 22, 23]);
+  assert.equal(deriveNextProjectOrdinal(assigned), 24);
 
-  assert.equal(author?.projectOrdinal, 21);
-  assert.equal(corrective?.state, "active");
-  assert.equal(corrective?.projectOrdinal, 22);
-  assert.equal(reviewer?.state, "planned");
-  assert.equal(reviewer?.projectOrdinal, undefined);
-
-  const allChanges = await readAllDeliveryChangeEntries();
-  assert.deepEqual(validateAssignedProjectOrdinals(allChanges), [21, 22]);
-  assert.equal(deriveNextProjectOrdinal(allChanges), 23);
+  const afterCurrentCompletes = assigned.map((change) =>
+    change.id === "current" ? { ...change, state: "completed" } : change,
+  );
+  assert.deepEqual(
+    validateAssignedProjectOrdinals(afterCurrentCompletes),
+    [21, 22, 23],
+  );
+  assert.equal(deriveNextProjectOrdinal(afterCurrentCompletes), 24);
 });
 
 test("projectOrdinal remains Guidance coordination data rather than a production Core identity", async () => {
@@ -427,18 +417,19 @@ test("bootstrap Explore/archive ordinal parity stays independent from product ca
   const archiveEntries = await readdir(
     path.join(REPOSITORY_ROOT, "openspec", "changes", "archive"),
   );
-  assert.equal(
-    archiveEntries.includes(
-      "2026-08-30-establish-lightweight-incremental-engineering-gate",
-    ),
-    true,
-  );
-  assert.equal(
-    archiveEntries.includes(
-      "2026-09-01-establish-action-guidance-execution-contract",
-    ),
-    true,
-  );
+  const normalizedHistoricalArchives = [
+    "2026-08-30-014-establish-trusted-change-coordination-state-binding",
+    "2026-08-30-015-establish-lightweight-incremental-engineering-gate",
+    "2026-08-30-016-establish-structural-dependency-health-fitness",
+    "2026-08-30-017-establish-high-confidence-repository-entropy-hygiene",
+    "2026-08-31-018-correct-openspec-observation-process-failure-portability",
+    "2026-08-31-019-establish-explicit-applicable-check-execution",
+    "2026-09-01-020-establish-action-guidance-execution-contract",
+  ];
+
+  for (const archiveName of normalizedHistoricalArchives) {
+    assert.equal(archiveEntries.includes(archiveName), true);
+  }
 });
 
 test("Author Guidance converges canonical artifacts to current truth instead of revision chronology", async () => {

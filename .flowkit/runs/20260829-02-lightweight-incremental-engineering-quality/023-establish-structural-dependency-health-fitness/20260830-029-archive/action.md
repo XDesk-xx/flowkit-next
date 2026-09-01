@@ -14,7 +14,7 @@
 1. Confirmed Reviewer verdict `approved`, zero blocking findings, and archive readiness.
 2. Confirmed OpenSpec planning artifacts complete and tasks `12/12` complete.
 3. Synced the new `structural-dependency-health` delta capability into canonical OpenSpec specs.
-4. Archived the Change to `openspec/changes/archive/2026-08-30-establish-structural-dependency-health-fitness`.
+4. Archived the Change to `openspec/changes/archive/2026-08-30-016-establish-structural-dependency-health-fitness`.
 5. Materialized Delivery coordination state as `completed` without activating any later D02 Change.
 6. Revalidated canonical specs, archived Changes, all OpenSpec truth, Git diff whitespace, and the stable dependency-health graph.
 
