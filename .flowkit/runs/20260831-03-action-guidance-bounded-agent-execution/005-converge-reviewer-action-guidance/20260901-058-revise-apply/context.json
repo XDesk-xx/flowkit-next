@@ -1,0 +1,65 @@
+{
+  "runNumber": 58,
+  "runId": "20260901-058-revise-apply",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "converge-reviewer-action-guidance",
+  "projectOrdinal": 24,
+  "action": "revise-apply",
+  "role": "author",
+  "inputRunId": "20260901-057-review-apply",
+  "checkpointClaim": "10ae02c75ef72c7f410f0933ce952351b0486ea6",
+  "ownerAuthority": {
+    "sourceRef": "owner-input:2026-09-01:authorize-revise-apply:converge-reviewer-action-guidance:post-057-prearchive-semantic-parity",
+    "scope": "revise-apply-only"
+  },
+  "corrections": [
+    {
+      "id": "PREARCHIVE-057-001",
+      "surface": ".agents/skills/review-explore/SKILL.md",
+      "resolution": "Restore actors alongside Owner goal, input domain and non-goals so bootstrap review-explore preserves the approved actor/role boundary check."
+    },
+    {
+      "id": "PREARCHIVE-057-002",
+      "surfaces": [
+        "skills/actions/review-propose/SKILL.md",
+        ".agents/skills/review-propose/SKILL.md"
+      ],
+      "resolution": "Restore explicit persistence / migration impact review when materially relevant without expanding review-propose into a new subsystem or mandatory migration process."
+    }
+  ],
+  "focusedRegression": "tests/unit/domain/reviewer-action-guidance.test.ts",
+  "verification": {
+    "node": "22.23.2",
+    "reviewerGuidanceFocused": "5/5 PASS",
+    "domain": "173/173 PASS",
+    "typecheck": "PASS",
+    "build": "PASS",
+    "eslint": "PASS",
+    "prettier": "PASS",
+    "forbiddenTrackedArtifacts": "PASS",
+    "dependencyHealth": "59 modules / 219 dependencies / 0 violations",
+    "repositoryEntropy": "25/25 production modules reachable",
+    "openSpecChangeStrict": "PASS",
+    "openSpecAllStrict": "17/17 PASS",
+    "gitDiffCheck": "PASS",
+    "tasks": "8/8 complete"
+  },
+  "mutationGuards": {
+    "proposalSpecDesignTasksChangedByRevision": false,
+    "srcChanged": false,
+    "dependencyInputsChanged": false,
+    "memoStateChanged": false,
+    "architectureChanged": false,
+    "temporaryBridgeRestored": false,
+    "selfHostingIntroduced": false
+  },
+  "reviewerInputPackageSha256": "6f51a199c4e24b10055a22f6d98b6171bcbd7e9e2cc0fd89f878f5f16bd2b554",
+  "artifactHashes": {
+    "bootstrapReviewExplore": "850b4a59581897eebee3a56b875ec000d24ce2e6ad51c96c42c68a96360269bb",
+    "bootstrapReviewPropose": "7c3485a985638a8c92b41cc565d4e1aa0db49ac9f0cf80187cbfe675e4325328",
+    "productReviewPropose": "8cd363ab8d7fd1ccae3a43d9de94f5addc6e12e5fbf814317b8f03bc5e590a24",
+    "focusedTest": "0d9c850d67d850ba6066740f32af6a07dd8e81440baba333bf102591b4c44277"
+  },
+  "complexityAssessment": "MINIMAL_SEMANTIC_PARITY_CORRECTION_ONLY",
+  "scopeDriftAssessment": "NONE"
+}

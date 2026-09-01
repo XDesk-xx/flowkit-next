@@ -102,12 +102,13 @@ changes:
       - "ordinal tests prove stable semantics instead of transient Delivery state"
 
   - id: "converge-reviewer-action-guidance"
+    projectOrdinal: 24
     group: "action-guidance"
     goal: "把 Reviewer HOW 收敛为 review-explore/review-propose/review-apply 三个稳定 canonical Action Guidance，保持 independent、fact-based、mutation-free review 与 complexity/minimality explanation。"
     required: true
     dependsOn:
       - "normalize-historical-archive-project-ordinals"
-    state: planned
+    state: completed
     architectureImpact: true
     outputs:
       - "canonical Reviewer Action Guidance entries"
@@ -238,5 +239,13 @@ ownerDecisions:
     deliveryId: "20260831-03-action-guidance-bounded-agent-execution"
     changeId: "normalize-historical-archive-project-ordinals"
     sourceRef: "owner-input:2026-09-01:activate-change:normalize-historical-archive-project-ordinals:proof-explore"
+    scope:
+      - "explore"
+
+  - ref: "owner:2bb5c27accaad8fd2f85f2bae2bebd0a75f4b5c1e7f43c95d034e3af9c28b916"
+    decision: "activate-change"
+    deliveryId: "20260831-03-action-guidance-bounded-agent-execution"
+    changeId: "converge-reviewer-action-guidance"
+    sourceRef: "owner-input:2026-09-01:activate-change:converge-reviewer-action-guidance:proof-explore"
     scope:
       - "explore"

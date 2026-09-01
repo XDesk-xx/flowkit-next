@@ -1,0 +1,70 @@
+{
+  "runNumber": 56,
+  "kind": "external-orchestrator-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "converge-reviewer-action-guidance",
+  "action": "apply",
+  "runId": "20260901-056-apply",
+  "inputRunId": "20260901-055-review-propose",
+  "physicalRunPath": ".flowkit/runs/20260831-03-action-guidance-bounded-agent-execution/005-converge-reviewer-action-guidance/20260901-056-apply",
+  "physicalRunGroupPrefix": "005",
+  "projectOrdinal": 24,
+  "changeStartSequence": 52,
+  "checkpointClaim": "10ae02c75ef72c7f410f0933ce952351b0486ea6",
+  "inputReviewerPackageSha256": "0c056c5205597136d1fa46f983da90a0d3762861a2c38cd73354aea78d611ca6",
+  "approvedProposalRunId": "20260901-054-propose",
+  "implementationArtifacts": {
+    "proposalSha256": "0280eb18c81fb6178f4b3aaef58064f5affbcea6fa3a76fd42e3d14ba2209ae4",
+    "designSha256": "18586015e05c44d31f8861299738973a9e1642195453ffd302b2ca6341e87837",
+    "tasksSha256": "08fbd556eb8f4f5893db1a1598bb8f2d047e6352c5375f3609041a7409643d3d",
+    "reviewerSpecSha256": "93aa053d621f0a42ba488d8d8542be81f6555bd263252e787ffba1b270e498e6",
+    "reviewerGuidanceFocusedTestSha256": "01b8e37ddc404a86bd419ba58f32210402d1a7888fc29808ceee3d866d8489c3",
+    "reviewExploreGuidanceSha256": "a6adde580b6df412e46f05c5f02d3051bfa01700790faaf5356157bdac24ee9e",
+    "reviewProposeGuidanceSha256": "33b2ee71a6555f5d7106fa04a103fac3842eef055b4e76b2384a9de691174692",
+    "reviewApplyGuidanceSha256": "f40a55c62249d327d8fd0ca4d619770a0f0e574fe4cf9414256b7f62062f3b7c"
+  },
+  "detachedExecution": {
+    "node": "22.23.2",
+    "openspec": "1.10.0",
+    "dependencyResolutionInputsChanged": false,
+    "detachedDependencySnapshotReused": true,
+    "pnpmInstallOrRepairRun": false,
+    "pnpmExecSelfCheckAttempted": true,
+    "directExactBinariesUsedAfterPnpmRefusedExternalModulesTarget": true
+  },
+  "verification": {
+    "reviewerGuidanceFocused": "5/5 PASS",
+    "authorGuidanceFocused": "13/13 PASS",
+    "guidanceResolverFocused": "7/7 PASS",
+    "domain": "173/173 PASS",
+    "typecheck": "PASS",
+    "build": "PASS",
+    "eslint": "PASS",
+    "format": "PASS",
+    "forbiddenTrackedArtifacts": "PASS",
+    "dependencyHealth": "59 modules / 219 dependencies / 0 violations",
+    "repositoryEntropy": "25/25 production modules reachable",
+    "changeStrict": "1/1 PASS",
+    "canonicalSpecsStrict": "16/16 PASS",
+    "archivedStrict": "22/22 PASS",
+    "openSpecAllStrict": "17/17 PASS",
+    "gitDiffCheck": "PASS"
+  },
+  "scopeGuards": {
+    "srcMutation": false,
+    "packageOrLockMutation": false,
+    "memoStateMutation": false,
+    "architectureMutation": false,
+    "coreLifecycleMutation": false,
+    "selfHostingMigration": false,
+    "newControlPlane": false,
+    "transitiveGuidanceIdentitySubsystem": false
+  },
+  "removedLivePaths": [
+    "TEMPORARY-RUN-SURFACE-GUIDANCE.md"
+  ],
+  "stableTransfer": true,
+  "packageClass": "cumulative-action-handoff-with-explicit-removals"
+}

@@ -409,11 +409,6 @@ test("bootstrap Explore/archive ordinal parity stays independent from product ca
     /MUST NOT allocate, increment, compact, repair or recompute/,
   );
 
-  await readFile(
-    path.join(REPOSITORY_ROOT, "TEMPORARY-RUN-SURFACE-GUIDANCE.md"),
-    "utf8",
-  );
-
   const archiveEntries = await readdir(
     path.join(REPOSITORY_ROOT, "openspec", "changes", "archive"),
   );
@@ -560,17 +555,7 @@ test("independent bootstrap Author and Reviewer HOW preserve bounded provenance 
   );
 });
 
-test("artifact-convergence correction adds no product Reviewer Guidance, hard size Gate, Run schema, or Core dependency", async () => {
-  for (const actionId of REVIEWER_ACTIONS) {
-    await assert.rejects(
-      readFile(
-        path.join(REPOSITORY_ROOT, "skills", "actions", actionId, "SKILL.md"),
-        "utf8",
-      ),
-      (error: NodeJS.ErrnoException) => error.code === "ENOENT",
-    );
-  }
-
+test("artifact-convergence discipline remains free of hard size Gate, Run schema, or Core dependency", async () => {
   const changedAuthorHow = await Promise.all([
     readProductGuidance("explore"),
     readProductGuidance("revise-explore"),
@@ -594,12 +579,4 @@ test("artifact-convergence correction adds no product Reviewer Guidance, hard si
       /artifact-convergence|revision chronology|convergence-in-place/i,
     );
   }
-
-  const temporaryRunGuidance = await readFile(
-    path.join(REPOSITORY_ROOT, "TEMPORARY-RUN-SURFACE-GUIDANCE.md"),
-    "utf8",
-  );
-  assert.match(temporaryRunGuidance, /action\.md/);
-  assert.match(temporaryRunGuidance, /context\.json/);
-  assert.match(temporaryRunGuidance, /result\.json/);
 });

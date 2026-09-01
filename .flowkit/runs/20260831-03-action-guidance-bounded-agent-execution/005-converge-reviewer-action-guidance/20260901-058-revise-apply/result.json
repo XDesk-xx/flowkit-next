@@ -1,0 +1,24 @@
+{
+  "runNumber": 58,
+  "runId": "20260901-058-revise-apply",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "converge-reviewer-action-guidance",
+  "projectOrdinal": 24,
+  "action": "revise-apply",
+  "role": "author",
+  "status": "terminal",
+  "verdict": "PASS",
+  "summary": "Owner-authorized post-057 revise-apply restores two semantic-parity details lost during Reviewer Guidance compression: actor-boundary review in bootstrap review-explore and materially relevant persistence/migration impact review in product/bootstrap review-propose. Focused regression assertions preserve both semantics; 5/5 focused and 173/173 domain tests pass with all mechanical/OpenSpec checks green and no Proposal/Core/dependency/Memo/architecture/self-hosting expansion.",
+  "resolvedCorrectionIds": [
+    "PREARCHIVE-057-001",
+    "PREARCHIVE-057-002"
+  ],
+  "nextBoundary": "review-apply",
+  "reviewApplyRequired": true,
+  "archiveAllowed": false,
+  "archivePerformed": false,
+  "complexityAssessment": "MINIMAL_SEMANTIC_PARITY_CORRECTION_ONLY",
+  "scopeDriftAssessment": "NONE",
+  "stableTransfer": true,
+  "packageClass": "cumulative-revise-apply-handoff-with-explicit-removals"
+}

@@ -1,0 +1,70 @@
+{
+  "runNumber": 57,
+  "kind": "external-orchestrator-review-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "converge-reviewer-action-guidance",
+  "action": "review-apply",
+  "runId": "20260901-057-review-apply",
+  "inputRunId": "20260901-056-apply",
+  "physicalRunPath": ".flowkit/runs/20260831-03-action-guidance-bounded-agent-execution/005-converge-reviewer-action-guidance/20260901-057-review-apply",
+  "physicalRunGroupPrefix": "005",
+  "projectOrdinal": 24,
+  "changeStartSequence": 52,
+  "checkpointClaim": "10ae02c75ef72c7f410f0933ce952351b0486ea6",
+  "inputAuthorPackageSha256": "700212883ffad9302eefd4d1b30d4fd7371171f130a849ba2ece579ac8c5c154",
+  "reviewChain": [
+    "20260901-052-explore",
+    "20260901-053-review-explore",
+    "20260901-054-propose",
+    "20260901-055-review-propose",
+    "20260901-056-apply"
+  ],
+  "candidateReconstruction": {
+    "removedLivePaths": [
+      "TEMPORARY-RUN-SURFACE-GUIDANCE.md"
+    ],
+    "canonicalProductReviewerEntries": 3,
+    "bootstrapReviewerEntriesUpdatedInPlace": 3,
+    "bootstrapIndependentAndNonDelegating": true,
+    "activeAgentsBridgeRemoved": true,
+    "historicalRunAndOpenSpecProvenancePreserved": true,
+    "implementationArtifactHashesMatchAuthorContext": true
+  },
+  "verification": {
+    "node": "22.23.2",
+    "detachedDependencySnapshotReused": true,
+    "packageManagerLauncherUsedByReviewer": false,
+    "reviewerGuidanceFocused": "5/5 PASS",
+    "authorGuidanceFocused": "13/13 PASS",
+    "guidanceResolverFocused": "7/7 PASS",
+    "domain": "173/173 PASS",
+    "typecheck": "PASS",
+    "build": "PASS",
+    "eslint": "PASS",
+    "format": "PASS",
+    "forbiddenTrackedArtifacts": "PASS",
+    "dependencyHealth": "59 modules / 219 dependencies / 0 violations",
+    "repositoryEntropy": "25/25 production modules reachable",
+    "changeStrict": "PASS",
+    "canonicalSpecsStrict": "16/16 PASS",
+    "archivedStrict": "22/22 PASS",
+    "openSpecAllStrict": "17/17 PASS",
+    "gitDiffCheck": "PASS"
+  },
+  "scopeAssessment": {
+    "srcMutation": false,
+    "packageOrLockMutation": false,
+    "coreLifecycleMutation": false,
+    "memoStateMutation": false,
+    "architectureMutation": false,
+    "selfHostingMigration": false,
+    "transitiveGuidanceIdentitySubsystem": false,
+    "newControlPlane": false,
+    "scopeDrift": "NONE",
+    "complexityGrowth": "MINIMAL_REVIEWER_GUIDANCE_CONVERGENCE_ONLY"
+  },
+  "stableTransfer": true,
+  "packageClass": "cumulative-review-handoff-with-explicit-removals"
+}

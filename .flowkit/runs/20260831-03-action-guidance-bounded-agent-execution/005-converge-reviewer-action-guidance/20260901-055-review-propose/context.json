@@ -1,0 +1,48 @@
+{
+  "runNumber": 55,
+  "kind": "external-orchestrator-review-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "converge-reviewer-action-guidance",
+  "action": "review-propose",
+  "runId": "20260901-055-review-propose",
+  "inputRunId": "20260901-054-propose",
+  "physicalRunPath": ".flowkit/runs/20260831-03-action-guidance-bounded-agent-execution/005-converge-reviewer-action-guidance/20260901-055-review-propose",
+  "physicalRunGroupPrefix": "005",
+  "projectOrdinal": 24,
+  "changeStartSequence": 52,
+  "checkpointClaim": "10ae02c75ef72c7f410f0933ce952351b0486ea6",
+  "inputAuthorPackageSha256": "1cfc8b739361b9845e5b46ca7d4a4e4e1106f4f5b06838a7ec13e8e79a3d3601",
+  "reviewChain": [
+    "20260901-052-explore",
+    "20260901-053-review-explore",
+    "20260901-054-propose"
+  ],
+  "planningProof": {
+    "openSpecStatus": "4/4 complete",
+    "changeStrict": "PASS",
+    "openSpecAllStrict": "17/17 PASS",
+    "planningArtifactHashesMatchContext": true,
+    "gitDiffCheck": "PASS"
+  },
+  "boundaryAssessment": {
+    "canonicalProductReviewerEntries": 3,
+    "canonicalEntriesSelfContained": true,
+    "bootstrapReviewerEntriesConvergedInPlace": 3,
+    "bootstrapIndependentAndNonDelegating": true,
+    "temporaryBridgeRetirementAfterCoverage": true,
+    "historicalProvenanceRewrite": false,
+    "memoStateMutation": false,
+    "coreMutation": false,
+    "dependencyMutation": false,
+    "perChangeArchitectureMutation": false,
+    "newControlPlane": false,
+    "transitiveGuidanceIdentity": false,
+    "selfHostingMigration": false
+  },
+  "scopeDrift": "NONE",
+  "complexityGrowth": "MINIMAL_REVIEWER_GUIDANCE_CONVERGENCE_ONLY",
+  "stableTransfer": true,
+  "packageClass": "cumulative-review-handoff"
+}
