@@ -1,0 +1,45 @@
+{
+  "runNumber": 38,
+  "kind": "external-orchestrator-revise-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "correct-artifact-convergence-and-chronology-discipline",
+  "action": "revise-propose",
+  "runId": "20260901-038-revise-propose",
+  "inputRunId": "20260901-037-review-propose",
+  "physicalRunPath": ".flowkit/runs/20260831-03-action-guidance-bounded-agent-execution/003-correct-artifact-convergence-and-chronology-discipline/20260901-038-revise-propose",
+  "physicalRunGroupPrefix": "003",
+  "projectOrdinal": 22,
+  "changeStartSequence": 34,
+  "checkpointClaim": "9e551bbc50e47d063fdc8185b2f488bb76f0cfbd",
+  "inputReviewerPackageSha256": "7ae907845fe35814fc25ad915f9515bb2835ee8f77c3cd685c54ce0b9f8b3c3f",
+  "blockingFindingConverged": [
+    "D03-RP-003"
+  ],
+  "manifestSha256": "0b1dd2ea6d6ee90d412d3eaed6a8f21e285687ac64064109edbf10a378256f77",
+  "planningArtifacts": {
+    "proposalSha256": "5a0125f3f06e0bc8f5cfa034e03a72aa6b324bc2e688d09500ba1e4737a74ee6",
+    "designSha256": "767cb6cc4162220a48925fb3034f4f41a02ac904383444e9ac09956b95d59623",
+    "authorActionGuidanceDeltaSpecSha256": "f53ce74e8a675c5df1da7ae58dd196e0c2685b0a401abebf9e2e7660b0db3bee",
+    "tasksSha256": "01a885c9a1d3225211c7c5fe4eb1f5555a1730398e4ad7115fccb43702705870"
+  },
+  "acceptedBoundaries": {
+    "canonicalArtifactOwnsCurrentMaterialTruth": true,
+    "runOwnsBoundedChronology": true,
+    "runMustRemainConcise": true,
+    "runDetailedDiscussionObligation": false,
+    "gitOwnsExactHistory": true,
+    "currentRationaleRetained": true,
+    "conciseRunFindingProvenanceAllowed": true,
+    "reviseConvergesInPlaceByDefault": true,
+    "hardSizeGate": false,
+    "productReviewerGuidanceInScope": false,
+    "newCoreCapability": false,
+    "newPersistenceSystem": false,
+    "temporaryRunBridgeRetained": true
+  },
+  "productionMutationInRevisePropose": false,
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

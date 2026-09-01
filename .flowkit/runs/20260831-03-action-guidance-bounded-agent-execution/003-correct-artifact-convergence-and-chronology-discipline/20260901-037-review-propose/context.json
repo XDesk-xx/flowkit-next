@@ -1,0 +1,65 @@
+{
+  "runNumber": 37,
+  "kind": "external-orchestrator-review-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "correct-artifact-convergence-and-chronology-discipline",
+  "action": "review-propose",
+  "runId": "20260901-037-review-propose",
+  "inputRunId": "20260901-036-propose",
+  "approvedExploreReviewRunId": "20260901-035-review-explore",
+  "physicalRunGroupPrefix": "003",
+  "projectOrdinal": 22,
+  "changeStartSequence": 34,
+  "checkpointClaim": "9e551bbc50e47d063fdc8185b2f488bb76f0cfbd",
+  "inputPackageSha256": "421282d4926cb153690b97848a1da4450fc9bef061c88eab5895a9e9a5419c82",
+  "inputReviewerPackageSha256": "73752958ed41c699b7fe98f55df368013b55c55a64eb96e2f4b88c063ffd3059",
+  "independentValidation": {
+    "reviewerInputPackageSha256": "MATCH",
+    "planningArtifactHashes": "ALL MATCH",
+    "node": "22.23.2",
+    "openspec": "1.10.0",
+    "gitDiffCheck": "PASS",
+    "changeStrict": "PASS",
+    "allStrict": "17/17 PASS",
+    "productionMutationPresent": false
+  },
+  "findings": [
+    {
+      "id": "D03-RP-003",
+      "severity": "blocking",
+      "kind": "semantic-contract-precision",
+      "summary": "036 strengthens Run chronology ownership into a detailed chronology/discussion persistence obligation. Runs must own bounded current-Action chronology while remaining concise; the corrective must not move revision-diary verbosity from canonical artifacts into Run prose."
+    }
+  ],
+  "acceptedBoundaries": {
+    "canonicalArtifactCurrentTruth": true,
+    "reviseConvergesInPlace": true,
+    "stillMaterialRationaleRetained": true,
+    "runOwnsBoundedChronology": true,
+    "runMustRemainConcise": true,
+    "hardSizeGateRejected": true,
+    "productReviewerGuidanceDeferred": true,
+    "bootstrapReviewerParityAllowed": true,
+    "temporaryRunBridgeRetained": true,
+    "newCoreCapability": false,
+    "newRunSchema": false,
+    "newPersistenceSystem": false,
+    "selfHostingTakeover": false
+  },
+  "complexityAssessment": {
+    "classification": "MINIMAL_GUIDANCE_ONLY",
+    "newComplexityRequiredByFinding": false
+  },
+  "scopeDriftAssessment": {
+    "newOutOfScopeCapability": false,
+    "newAuthority": false,
+    "newLifecycle": false,
+    "scopeExpansion": false,
+    "formalSemanticDrift": true,
+    "driftArea": "Run prose/detail obligation only"
+  },
+  "productionMutationByReviewer": false,
+  "authorArtifactMutationByReviewer": false
+}

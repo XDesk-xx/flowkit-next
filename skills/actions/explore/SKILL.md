@@ -48,6 +48,16 @@ Proof before platform: prove only what can materially change the bounded contrac
 6. End with durable facts, required invariants, resolved contract-changing unknowns, explicit non-goals, limitations, smallest Proposal-ready direction, and `PASS / FAIL / UNKNOWN`.
 7. Never convert UNKNOWN into PASS.
 
+## Canonical artifact convergence
+
+Treat canonical Explore as the current bounded proof/rationale for the Change, not as an append-only revision chronology.
+
+Keep facts, counterexamples, failed proof, or prior observations only when they still materially explain the current invariant or limitation. Express such material as current rationale rather than as `Reviewer correction`, `Owner correction`, or revision-diary sections.
+
+Execution/review chronology needed for durable continuation belongs on the existing Run surface only at the bounded level required by the existing concise Run contract. Prefer concise exact Run/finding references when deeper provenance is useful. Git preserves exact repository history.
+
+File size and line count are diagnostic signals only. They may trigger a semantic duplication/convergence check but are not correctness Gates.
+
 ## Complexity / scope-drift check
 
 Explicitly check for unjustified new capability, authority, lifecycle semantics, acceptance requirement, compatibility surface, later-Change content, or control plane.

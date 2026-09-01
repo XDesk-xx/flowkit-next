@@ -144,6 +144,16 @@ For every proof, record:
 
 A proof with no decision impact should not become a Proposal requirement by default.
 
+### 5A. Converge canonical Explore to current truth
+
+The canonical Explore should preserve current bounded proof, conclusions, limitations, and rationale still needed to understand the current contract. It is not an append-only diary of Reviewer/Owner corrections.
+
+When prior proof or a counterexample remains material, rewrite it as current rationale. When it is only execution chronology, keep the concise continuation-relevant fact/reference in the existing Run surface and rely on Git for exact repository history rather than copying the chronology into Explore.
+
+File size/line count may reveal duplication but are diagnostic only; do not turn them into hard correctness thresholds.
+
+This bootstrap rule is independent HOW. It MUST NOT read or execute candidate `skills/actions/explore/SKILL.md`.
+
 ### 6. Produce Proposal-ready boundary
 
 Explore should end with:

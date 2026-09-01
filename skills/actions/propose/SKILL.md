@@ -26,6 +26,20 @@ Use `skills/tools/openspec/SKILL.md` for subordinate OpenSpec mechanics. Do not 
 4. Formalize intentionally deferred detail without silently adding capability, authority, lifecycle state, compatibility surface, control plane, or later-Change scope.
 5. Keep implementation out of Propose.
 
+## Planning artifact convergence
+
+Keep each canonical planning artifact limited to its current responsibility:
+
+```text
+proposal.md → current scope / capability delta
+design.md   → current implementation-relevant decisions / trade-offs / rationale
+tasks.md    → current implementation checklist
+```
+
+Do not copy the approved Explore proof transcript or review/revision chronology into Proposal/Design merely for auditability. Preserve rationale still needed to understand the current design and prefer concise exact cross-artifact or Run/finding references when deeper provenance is material.
+
+File size and line count are diagnostic signals only, not correctness Gates.
+
 ## Complexity / scope-drift check
 
 Explicitly report complexity growth, new content beyond approved Explore, and scope drift. If a genuinely new independently specifiable capability appears, surface it rather than hiding it inside tasks.

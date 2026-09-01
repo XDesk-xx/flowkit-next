@@ -1,0 +1,19 @@
+{
+  "runId": "20260901-041-review-apply",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "correct-artifact-convergence-and-chronology-discipline",
+  "action": "review-apply",
+  "role": "reviewer",
+  "status": "terminal",
+  "verdict": "CHANGES_REQUESTED",
+  "summary": "040 implements nearly all approved artifact-convergence behavior and all independent mechanical checks pass, but canonical product Explore Guidance reintroduces the rejected 'Detailed execution/review chronology belongs to Run/Git' wording. Because product SKILL.md is exact content-bound normative HOW, revise it to bounded/concise continuation-relevant Run facts/references with Git owning exact history, and add a focused regression assertion. No re-Explore/re-Propose or new subsystem is required.",
+  "nextBoundary": "revise-apply",
+  "blockingFindings": [
+    "D03-RA-001"
+  ],
+  "archiveAllowed": false,
+  "productionMutation": "NONE",
+  "reviewerMutation": "NONE",
+  "complexityAssessment": "MINIMAL_GUIDANCE_ONLY",
+  "scopeDriftAssessment": "NONE; one bounded implementation semantic drift."
+}

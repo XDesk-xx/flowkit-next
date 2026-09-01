@@ -140,3 +140,5 @@ tasks.md
 ```
 
 The Proposal remains owned by the normal Change specification authority.
+
+Keep canonical planning artifacts converged to current implementation-relevant content. Do not duplicate the approved Explore proof transcript or review/revision chronology into Proposal/Design. Preserve current rationale and use concise exact cross-artifact or Run/finding references when deeper provenance is material. File size/line count remain diagnostic only, not correctness Gates.

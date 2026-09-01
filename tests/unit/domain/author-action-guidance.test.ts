@@ -267,7 +267,7 @@ test("project ordinal allocation uses durable assigned facts only and fails clos
   );
 });
 
-test("current Change persists 021 while planned Reviewer Change reserves no ordinal", async () => {
+test("current corrective persists 022 while planned Reviewer Change reserves no ordinal", async () => {
   const currentManifestPath = path.join(
     REPOSITORY_ROOT,
     "openspec",
@@ -283,17 +283,23 @@ test("current Change persists 021 while planned Reviewer Change reserves no ordi
   const author = currentManifest.changes.find(
     (change) => change.id === "converge-author-action-guidance",
   );
+  const corrective = currentManifest.changes.find(
+    (change) =>
+      change.id === "correct-artifact-convergence-and-chronology-discipline",
+  );
   const reviewer = currentManifest.changes.find(
     (change) => change.id === "converge-reviewer-action-guidance",
   );
 
   assert.equal(author?.projectOrdinal, 21);
+  assert.equal(corrective?.state, "active");
+  assert.equal(corrective?.projectOrdinal, 22);
   assert.equal(reviewer?.state, "planned");
   assert.equal(reviewer?.projectOrdinal, undefined);
 
   const allChanges = await readAllDeliveryChangeEntries();
-  assert.deepEqual(validateAssignedProjectOrdinals(allChanges), [21]);
-  assert.equal(deriveNextProjectOrdinal(allChanges), 22);
+  assert.deepEqual(validateAssignedProjectOrdinals(allChanges), [21, 22]);
+  assert.equal(deriveNextProjectOrdinal(allChanges), 23);
 });
 
 test("projectOrdinal remains Guidance coordination data rather than a production Core identity", async () => {
@@ -433,4 +439,176 @@ test("bootstrap Explore/archive ordinal parity stays independent from product ca
     ),
     true,
   );
+});
+
+test("Author Guidance converges canonical artifacts to current truth instead of revision chronology", async () => {
+  const explore = await readProductGuidance("explore");
+  assert.match(explore, /current bounded proof\/rationale/);
+  assert.match(explore, /not as an append-only revision chronology/);
+  assert.match(
+    explore,
+    /current rationale rather than as `Reviewer correction`/,
+  );
+  assert.match(
+    explore,
+    /Run surface only at the bounded level required by the existing concise Run contract/,
+  );
+  assert.match(explore, /Prefer concise exact Run\/finding references/);
+  assert.match(explore, /Git preserves exact repository history/);
+  assert.doesNotMatch(
+    explore,
+    /Detailed execution\/review chronology belongs to the existing Run\/Git history surfaces/,
+  );
+  assert.match(explore, /diagnostic signals only/);
+  assert.match(explore, /not correctness Gates/);
+
+  const reviseExplore = await readProductGuidance("revise-explore");
+  assert.match(reviseExplore, /replace\/remove superseded text/);
+  assert.match(reviseExplore, /current rationale, not a revision diary/);
+  assert.match(reviseExplore, /Do not append `Reviewer correction`/);
+  assert.match(reviseExplore, /Do not copy the full Explore\/proof transcript/);
+
+  const propose = await readProductGuidance("propose");
+  assert.match(propose, /current implementation-relevant decisions/);
+  assert.match(propose, /Do not copy the approved Explore proof transcript/);
+  assert.match(propose, /cross-artifact or Run\/finding references/);
+  assert.match(propose, /not correctness Gates/);
+
+  const revisePropose = await readProductGuidance("revise-propose");
+  assert.match(
+    revisePropose,
+    /Converge affected Proposal\/Design\/spec\/task claims in place/,
+  );
+  assert.match(
+    revisePropose,
+    /instead of appending review\/revision chronology/,
+  );
+  assert.match(
+    revisePropose,
+    /Do not restate the full Proposal\/Design or proof transcript/,
+  );
+});
+
+test("independent bootstrap Author and Reviewer HOW preserve bounded provenance without product self-hosting", async () => {
+  const bootstrapExplore = await readFile(
+    path.join(
+      REPOSITORY_ROOT,
+      ".agents",
+      "skills",
+      "explore-proof-based",
+      "SKILL.md",
+    ),
+    "utf8",
+  );
+  assert.match(bootstrapExplore, /current bounded proof, conclusions/);
+  assert.match(bootstrapExplore, /not an append-only diary/);
+  assert.match(
+    bootstrapExplore,
+    /MUST NOT read or execute candidate `skills\/actions\/explore\/SKILL\.md`/,
+  );
+
+  const bootstrapReviseExplore = await readFile(
+    path.join(
+      REPOSITORY_ROOT,
+      ".agents",
+      "skills",
+      "revise-explore",
+      "SKILL.md",
+    ),
+    "utf8",
+  );
+  assert.match(
+    bootstrapReviseExplore,
+    /Converge the canonical Explore in place/,
+  );
+  assert.match(
+    bootstrapReviseExplore,
+    /current rationale rather than as a revision diary/,
+  );
+
+  const reviewerSkillIds = [
+    "review-explore",
+    "review-propose",
+    "review-apply",
+  ] as const;
+  for (const actionId of reviewerSkillIds) {
+    const body = await readFile(
+      path.join(REPOSITORY_ROOT, ".agents", "skills", actionId, "SKILL.md"),
+      "utf8",
+    );
+    assert.match(body, /exact affected/);
+    assert.match(body, /Do not restate the whole|Do not restate the full/);
+    assert.match(body, /mutation-free/);
+  }
+
+  const reviewExplore = await readFile(
+    path.join(
+      REPOSITORY_ROOT,
+      ".agents",
+      "skills",
+      "review-explore",
+      "SKILL.md",
+    ),
+    "utf8",
+  );
+  assert.match(reviewExplore, /chronology that leaked into canonical Explore/);
+
+  const reviewPropose = await readFile(
+    path.join(
+      REPOSITORY_ROOT,
+      ".agents",
+      "skills",
+      "review-propose",
+      "SKILL.md",
+    ),
+    "utf8",
+  );
+  assert.match(
+    reviewPropose,
+    /revision chronology or superseded planning text/,
+  );
+});
+
+test("artifact-convergence correction adds no product Reviewer Guidance, hard size Gate, Run schema, or Core dependency", async () => {
+  for (const actionId of REVIEWER_ACTIONS) {
+    await assert.rejects(
+      readFile(
+        path.join(REPOSITORY_ROOT, "skills", "actions", actionId, "SKILL.md"),
+        "utf8",
+      ),
+      (error: NodeJS.ErrnoException) => error.code === "ENOENT",
+    );
+  }
+
+  const changedAuthorHow = await Promise.all([
+    readProductGuidance("explore"),
+    readProductGuidance("revise-explore"),
+    readProductGuidance("propose"),
+    readProductGuidance("revise-propose"),
+  ]);
+  for (const body of changedAuthorHow) {
+    assert.doesNotMatch(
+      body,
+      /(?:>|>=)\s*\d+\s*(?:KB|KiB|lines?)\s*(?:→|=>|=)?\s*(?:FAIL|fail)/,
+    );
+  }
+
+  const sourceRoot = path.join(REPOSITORY_ROOT, "src");
+  const sourceEntries = await readdir(sourceRoot, { recursive: true });
+  for (const relative of sourceEntries) {
+    if (!relative.endsWith(".ts")) continue;
+    const body = await readFile(path.join(sourceRoot, relative), "utf8");
+    assert.doesNotMatch(
+      body,
+      /artifact-convergence|revision chronology|convergence-in-place/i,
+    );
+  }
+
+  const temporaryRunGuidance = await readFile(
+    path.join(REPOSITORY_ROOT, "TEMPORARY-RUN-SURFACE-GUIDANCE.md"),
+    "utf8",
+  );
+  assert.match(temporaryRunGuidance, /action\.md/);
+  assert.match(temporaryRunGuidance, /context\.json/);
+  assert.match(temporaryRunGuidance, /result\.json/);
 });

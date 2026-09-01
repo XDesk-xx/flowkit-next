@@ -102,3 +102,9 @@ rejected
 ```
 
 A `changes-requested` finding should identify the smallest missing fact/proof/boundary needed for Proposal readiness.
+
+## Finding / artifact-convergence discipline
+
+For each material finding, identify the exact affected artifact/claim, bounded observed fact, why it matters, and the minimum required correction. Use exact references when material.
+
+Do not restate the whole Author Explore or reproduce the full proof transcript in Reviewer Run prose. Flag material superseded conclusions or review/Owner chronology that leaked into canonical Explore when that chronology is not needed to understand current truth. Reviewer remains mutation-free: request in-place Author convergence; never edit the Author artifact.

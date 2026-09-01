@@ -96,6 +96,12 @@ locking + WAL + database + distributed coordination
 
 unless the approved input model requires them.
 
+## Finding / artifact-convergence discipline
+
+Keep each material finding bounded to the exact affected planning artifact/claim, observed contract defect, why it matters, and the minimum required correction; cite exact references when material.
+
+Do not restate the full Proposal/Design/Explore or copy proof transcripts into Reviewer Run prose. Flag material revision chronology or superseded planning text that leaked into canonical artifacts, but remain mutation-free and require the Author to converge the affected text in place.
+
 ## Verdict
 
 ```text

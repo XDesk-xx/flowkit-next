@@ -1,0 +1,72 @@
+{
+  "runNumber": 41,
+  "kind": "external-orchestrator-review-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "correct-artifact-convergence-and-chronology-discipline",
+  "action": "review-apply",
+  "runId": "20260901-041-review-apply",
+  "inputRunId": "20260901-040-apply",
+  "approvedExploreReviewRunId": "20260901-035-review-explore",
+  "approvedProposalReviewRunId": "20260901-039-review-propose",
+  "physicalRunGroupPrefix": "003",
+  "projectOrdinal": 22,
+  "changeStartSequence": 34,
+  "checkpointClaim": "9e551bbc50e47d063fdc8185b2f488bb76f0cfbd",
+  "inputPackageSha256": "9c8cd7c22521641007b45938f123243ef843dc8aa7a95501558de37df0bbc2ee",
+  "reviewerInputPackageSha256": "c17d5d8356438fb98391b8da4f0211c5b80a0c8b7e5e8de012ce843043c074bb",
+  "artifactIdentityVerification": "ALL DECLARED IMPLEMENTATION HASHES MATCH",
+  "independentVerification": {
+    "node": "22.23.2",
+    "openspec": "1.10.0",
+    "archify": "2.15.0",
+    "focused": "13/13 PASS; 0 FAIL; 0 SKIP",
+    "domain": "168/168 PASS; 0 FAIL; 0 SKIP",
+    "acceptance": "4/4 PASS; 0 FAIL; 0 SKIP",
+    "build": "PASS",
+    "prettier": "PASS",
+    "eslint": "PASS",
+    "forbiddenTrackedArtifacts": "PASS",
+    "dependencyHealth": "58 modules / 213 dependencies / 0 violations",
+    "repositoryEntropy": "25/25 production modules reachable",
+    "gitDiffCheck": "PASS",
+    "openspecChangeStrict": "PASS",
+    "openspecAllStrict": "17/17 PASS"
+  },
+  "findings": [
+    {
+      "id": "D03-RA-001",
+      "severity": "blocking",
+      "kind": "canonical-guidance-semantic-mismatch",
+      "summary": "Canonical product Explore Guidance says 'Detailed execution/review chronology belongs to the existing Run/Git history surfaces', reintroducing the Run-detail ambiguity removed by approved Proposal/spec. Revise the sentence to bounded/concise continuation-relevant Run facts/references with Git owning exact history, and add a focused regression assertion."
+    }
+  ],
+  "acceptedBoundaries": {
+    "canonicalArtifactCurrentTruth": true,
+    "reviseConvergesInPlace": true,
+    "stillMaterialRationaleRetained": true,
+    "bootstrapAuthorParity": true,
+    "bootstrapReviewerBoundedFindings": true,
+    "productReviewerGuidanceCreated": false,
+    "temporaryRunBridgeChanged": false,
+    "hardSizeGateIntroduced": false,
+    "newRunSchema": false,
+    "newCoreCapability": false,
+    "selfHostingTakeover": false
+  },
+  "complexityAssessment": {
+    "classification": "MINIMAL_GUIDANCE_ONLY",
+    "additionalComplexityRequiredByFinding": false
+  },
+  "scopeDriftAssessment": {
+    "newOutOfScopeCapability": false,
+    "newAuthority": false,
+    "newLifecycle": false,
+    "scopeExpansion": false,
+    "implementationSemanticDrift": true,
+    "driftArea": "canonical product Explore Run-detail sentence / missing focused negative guard"
+  },
+  "productionMutationByReviewer": false,
+  "authorArtifactMutationByReviewer": false
+}

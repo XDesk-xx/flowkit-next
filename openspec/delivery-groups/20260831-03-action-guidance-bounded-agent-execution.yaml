@@ -25,6 +25,7 @@ scope:
     - "Reviewer guidance convergence for review-explore/review-propose/review-apply HOW"
     - "Author Mechanical Preflight as an internal apply/revise-apply capability unless independent contract proof later justifies a separate Change"
     - "Run concision, semantic invariant/literal discipline, bounded handoff/continuation proof and temporary bridge cleanup"
+    - "canonical OpenSpec artifact convergence to current truth while Run/Git retain execution and repository chronology"
   excluded:
     - "Agent Runtime / Agent Registry / Provider Registry"
     - "Skill Registry / Guidance Registry / Skill Router / Skill Planner"
@@ -72,11 +73,26 @@ changes:
       - "single canonical HOW truth for Author Actions"
       - "temporary Run-guidance bridge cleanup after formal takeover"
 
+  - id: "correct-artifact-convergence-and-chronology-discipline"
+    projectOrdinal: 22
+    group: "action-guidance"
+    goal: "纠正多轮 review/revise 中 canonical OpenSpec artifact 累积执行 chronology 与 superseded reasoning 的问题，冻结 current converged truth / Run chronology / Git history 的最小 ownership 与 convergence-in-place HOW，为 Reviewer Guidance convergence 提供稳定输入边界。"
+    required: true
+    dependsOn:
+      - "converge-author-action-guidance"
+    state: completed
+    architectureImpact: false
+    outputs:
+      - "canonical artifact current-truth convergence discipline"
+      - "Run chronology / Git history separation discipline"
+      - "minimum independent bootstrap parity for D03/D04 without product self-hosting"
+
   - id: "converge-reviewer-action-guidance"
     group: "action-guidance"
     goal: "把 Reviewer HOW 收敛为 review-explore/review-propose/review-apply 三个稳定 canonical Action Guidance，保持 independent、fact-based、mutation-free review 与 complexity/minimality explanation。"
     required: true
-    dependsOn: []
+    dependsOn:
+      - "correct-artifact-convergence-and-chronology-discipline"
     state: planned
     architectureImpact: true
     outputs:
@@ -96,6 +112,10 @@ proofConcerns:
   - id: "agent-guidance-compatibility"
     status: "contingency-not-in-initial-composition"
     statement: "Direct canonical Guidance consumption is tried first. Only a recorded real failure plus explicit Owner composition revision may add establish-agent-guidance-compatibility."
+
+  - id: "artifact-convergence-and-chronology"
+    status: "proof-first-corrective"
+    statement: "Prove whether canonical Explore/Design artifacts are retaining superseded reasoning or review chronology beyond current truth, then correct only Action Guidance/bootstrap HOW needed for convergence-in-place; file size remains diagnostic rather than a hard correctness Gate."
 
 memoInputs:
   - memoId: "future-run-history-concision-and-repository-growth"
@@ -122,6 +142,7 @@ historicalContinuity:
 recommendedOrder:
   - "establish-action-guidance-execution-contract"
   - "converge-author-action-guidance"
+  - "correct-artifact-convergence-and-chronology-discipline"
   - "converge-reviewer-action-guidance"
 
 acceptance:
@@ -169,3 +190,18 @@ ownerDecisions:
       - "invalidate-022-archive-materialization"
       - "restore-active-change"
       - "revise-explore"
+  - ref: "owner:9857874a5e7f8f0afb941a58c85e36c002c6e82ea7d72d0d4b89965ad1e64e3e"
+    decision: "revise-delivery-composition"
+    deliveryId: "20260831-03-action-guidance-bounded-agent-execution"
+    changeId: "correct-artifact-convergence-and-chronology-discipline"
+    sourceRef: "owner-input:2026-09-01:revise-d03-composition:correct-artifact-convergence-before-reviewer-guidance"
+    scope:
+      - "insert-corrective-before-reviewer-guidance"
+      - "preserve-reviewer-guidance-as-planned"
+  - ref: "owner:76d84aae74cad0d1a33d2d82bdc4a9afa94196495ef91c84a4e0667fdec6546e"
+    decision: "activate-change"
+    deliveryId: "20260831-03-action-guidance-bounded-agent-execution"
+    changeId: "correct-artifact-convergence-and-chronology-discipline"
+    sourceRef: "owner-input:2026-09-01:activate-change:correct-artifact-convergence-and-chronology-discipline:proof-explore"
+    scope:
+      - "explore"

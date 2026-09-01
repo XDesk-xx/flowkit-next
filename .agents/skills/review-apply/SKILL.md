@@ -102,3 +102,9 @@ Apply the `implementation-convergence` discipline during review:
 - prefer the smallest implementation that faithfully satisfies the approved contract.
 
 Do not reject a simple implementation merely because a more generalized architecture is imaginable.
+
+## Finding / handoff concision discipline
+
+For each material Apply finding, identify the exact affected implementation/artifact/claim, observed fact, contract impact, and minimum required correction; use exact references when material.
+
+Do not restate the whole Author Apply handoff, Proposal, or test transcript in Reviewer Run prose. If accepted-artifact chronology/superseded text materially leaks into the Apply handoff, flag the issue without mutating Author artifacts. Reviewer remains independently mutation-free.
