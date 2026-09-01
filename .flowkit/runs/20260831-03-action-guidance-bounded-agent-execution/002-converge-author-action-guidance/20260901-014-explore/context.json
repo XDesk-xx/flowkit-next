@@ -1,0 +1,58 @@
+{
+  "runNumber": 14,
+  "kind": "external-orchestrator-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "converge-author-action-guidance",
+  "action": "explore",
+  "runId": "20260901-014-explore",
+  "physicalRunPath": ".flowkit/runs/20260831-03-action-guidance-bounded-agent-execution/002-converge-author-action-guidance/20260901-014-explore",
+  "checkpointClaim": "3af174bdfa2e8ebcf280e87a13565d03dec0b647",
+  "ownerActivation": {
+    "ref": "owner:f9f76a4180b5a1392c2b9601ec0ecc9fd7f122487aa40001f91e3e9d3fb6c1a8",
+    "decision": "activate-change",
+    "sourceRef": "owner-input:2026-09-01:activate-change:converge-author-action-guidance:proof-explore",
+    "scope": ["explore"]
+  },
+  "skillsUsed": [
+    ".agents/skills/openspec-explore",
+    ".agents/skills/explore-proof-based"
+  ],
+  "sourceInputs": {
+    "referenceSetIndexSha256": "8c28753b500f06b4dd68ebf5700364230c6ee2b7a70c87fe9e690a8d136b8636",
+    "preActivationProofSha256": "a1b94c51766974f4bab34c6a2b760d53be7b08cb1f9f52f0380abe0a397b195c"
+  },
+  "skillBoundary": {
+    "currentFlowkitNextSelfDevelopmentExecution": ".agents/skills/** independent bootstrap/development plane through Stable Core closure",
+    "targetProductGuidance": "skills/actions/<StandardActionId>/SKILL.md",
+    "productGuidanceDrivesCurrentD03D04SelfDevelopment": false,
+    "productionAgentsFallbackAllowed": false
+  },
+  "proofSummary": {
+    "trustedCoordination": "active",
+    "authorStandardActionCount": 7,
+    "currentCanonicalAuthorBodies": 0,
+    "canonicalAuthorTargetBodies": 7,
+    "focusedRegression": "22/22 PASS; 0 FAIL; 0 SKIP",
+    "currentGuidanceIdentityClosure": "canonical SKILL.md exact bytes only",
+    "sharedNormativeProductGuidanceGraphRequired": false,
+    "archiveOrdinalDefect": true,
+    "archiveOrdinalSource": "1-based Delivery manifest changes[] position, zero-padded to 3 digits",
+    "currentD03Ordinals": {
+      "establish-action-guidance-execution-contract": "001",
+      "converge-author-action-guidance": "002",
+      "converge-reviewer-action-guidance": "003"
+    },
+    "newArchiveCounterOrRegistryRequired": false,
+    "bootstrapArchiveParityRequired": true,
+    "historicalMassRenameRequired": false,
+    "temporaryRunBridgeDeletionSafeInChange2Alone": false,
+    "productionCoreMutationRequired": false
+  },
+  "exploreArtifactSha256": "2f4eb5d7b8a19e601f0c8fbf82fb1d2fafa1a7cc8073d73299df5553c54bc02e",
+  "productionMutationInExplore": false,
+  "proposalArtifactsInExplore": false,
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

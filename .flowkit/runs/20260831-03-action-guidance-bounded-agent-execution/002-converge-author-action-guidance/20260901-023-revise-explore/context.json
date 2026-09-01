@@ -1,0 +1,63 @@
+{
+  "runNumber": 23,
+  "kind": "external-orchestrator-revise-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "converge-author-action-guidance",
+  "action": "revise-explore",
+  "runId": "20260901-023-revise-explore",
+  "physicalRunPath": ".flowkit/runs/20260831-03-action-guidance-bounded-agent-execution/002-converge-author-action-guidance/20260901-023-revise-explore",
+  "checkpointClaim": "3af174bdfa2e8ebcf280e87a13565d03dec0b647",
+  "ownerCorrection": {
+    "ref": "owner:6289d2fc116a89a67cfcdbdcea91185b33429bb7f0068312dcc045f4c073cc90",
+    "decision": "refine-change-scope",
+    "sourceRef": "owner-input:2026-09-01:invalidate-022-archive:return-change2-to-revise-explore:project-wide-monotonic-change-ordinal",
+    "scope": [
+      "invalidate-022-archive-materialization",
+      "restore-active-change",
+      "revise-explore"
+    ]
+  },
+  "invalidatedPriorRunId": "20260901-022-archive",
+  "priorArchiveMaterializationAccepted": false,
+  "gitCheckpointAfterPriorArchive": false,
+  "deliveryFinalAfterPriorArchive": false,
+  "acceptedMainIntegrationAfterPriorArchive": false,
+  "skillsUsed": [
+    ".agents/skills/revise-explore",
+    ".agents/skills/explore-proof-based"
+  ],
+  "proofSummary": {
+    "d01AssignedSlots": "001..013 including cancelled 008",
+    "d02AssignedSlots": "014..019",
+    "d03AssignedSlots": {
+      "establish-action-guidance-execution-contract": "020",
+      "converge-author-action-guidance": "021",
+      "converge-reviewer-action-guidance": "022"
+    },
+    "currentProjectOrdinal": "021",
+    "cancelledSlotReuseAllowed": false,
+    "existingSlotRenumberAllowed": false,
+    "newCorrectiveChangeRule": "append-new-stable-slot",
+    "globalCounterServiceRequired": false,
+    "registryRequired": false,
+    "coreMutationRequired": false
+  },
+  "exploreArtifactSha256": "0d7d6efd84765ffa036b361cd29b109ddbdfc100fbaf73fbb99a5d5bd53b4f1f",
+  "deliveryManifestSha256": "5dd073887bfc441e561060823b331d601053e594f722e3dfad0898b075caa789",
+  "proposalMutationInReviseExplore": false,
+  "productionMutationInReviseExplore": false,
+  "nextBoundary": "review-explore",
+  "packageClass": "delta-action-handoff",
+  "downstreamCandidateDisposition": {
+    "status": "retained-but-stale-pending-revised-explore-approval",
+    "mutatedByThisRun": false,
+    "artifactSha256": {
+      "openspec/changes/converge-author-action-guidance/proposal.md": "3c81767da1be71301587335f2eb3c2d4aa87f8845375ae7282fcee5cc1e69897",
+      "openspec/changes/converge-author-action-guidance/design.md": "8953c4e44636a525e8f3d16666955c00363976dd5746d3b1ee04387800358ff2",
+      "openspec/changes/converge-author-action-guidance/specs/author-action-guidance/spec.md": "aeb33983019810d47d80b9de337d87a0ed1193fba0b0d6c98fd34823e552ee0c",
+      "openspec/changes/converge-author-action-guidance/tasks.md": "ed636f9c941da47fbd8028cc8a55fcf3452f74fe0c1af728d12f2832569b5cfc"
+    }
+  }
+}

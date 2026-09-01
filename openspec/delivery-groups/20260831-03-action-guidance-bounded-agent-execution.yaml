@@ -60,11 +60,12 @@ changes:
       - "existing ActionPackageRef / executionInputRef identity reuse"
 
   - id: "converge-author-action-guidance"
+    projectOrdinal: 21
     group: "action-guidance"
     goal: "把现有 bootstrap Author execution knowledge 收敛为 StandardActionId-aligned canonical skills/actions HOW，并吸收 proof/convergence/preflight/handoff/Run/literal/STOP discipline。"
     required: true
     dependsOn: []
-    state: planned
+    state: completed
     architectureImpact: true
     outputs:
       - "canonical Author Action Guidance entries"
@@ -152,3 +153,19 @@ ownerDecisions:
     sourceRef: "owner-input:2026-08-31:activate-change:establish-action-guidance-execution-contract:proof-explore:agents-bootstrap-boundary-confirmed"
     scope:
       - "explore"
+  - ref: "owner:f9f76a4180b5a1392c2b9601ec0ecc9fd7f122487aa40001f91e3e9d3fb6c1a8"
+    decision: "activate-change"
+    deliveryId: "20260831-03-action-guidance-bounded-agent-execution"
+    changeId: "converge-author-action-guidance"
+    sourceRef: "owner-input:2026-09-01:activate-change:converge-author-action-guidance:proof-explore"
+    scope:
+      - "explore"
+  - ref: "owner:6289d2fc116a89a67cfcdbdcea91185b33429bb7f0068312dcc045f4c073cc90"
+    decision: "refine-change-scope"
+    deliveryId: "20260831-03-action-guidance-bounded-agent-execution"
+    changeId: "converge-author-action-guidance"
+    sourceRef: "owner-input:2026-09-01:invalidate-022-archive:return-change2-to-revise-explore:project-wide-monotonic-change-ordinal"
+    scope:
+      - "invalidate-022-archive-materialization"
+      - "restore-active-change"
+      - "revise-explore"

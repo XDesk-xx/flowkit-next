@@ -1,0 +1,40 @@
+{
+  "runNumber": 16,
+  "kind": "external-orchestrator-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "converge-author-action-guidance",
+  "action": "propose",
+  "runId": "20260901-016-propose",
+  "inputRunId": "20260901-015-review-explore",
+  "reviewChainStartRunId": "20260901-014-explore",
+  "checkpointClaim": "3af174bdfa2e8ebcf280e87a13565d03dec0b647",
+  "skillsUsed": [
+    ".agents/skills/openspec-propose",
+    ".agents/skills/proposal-convergence"
+  ],
+  "reviewerInputPackageSha256": "58691d33b115a22403f78749574c8f75d0707843200bbc96ee06f3246ec8b7aa",
+  "reviewedExploreArtifactSha256": "2f4eb5d7b8a19e601f0c8fbf82fb1d2fafa1a7cc8073d73299df5553c54bc02e",
+  "planningArtifactsSha256": {
+    "explore": "2f4eb5d7b8a19e601f0c8fbf82fb1d2fafa1a7cc8073d73299df5553c54bc02e",
+    "proposal": "3c81767da1be71301587335f2eb3c2d4aa87f8845375ae7282fcee5cc1e69897",
+    "design": "d884d9e5fa52fe12e2336615b231bdce1c4b57488f376be773c6d5b5ea69f9f0",
+    "spec_author_action_guidance": "68f7e9d17efcba9ea3e6fad7ecf83aa0d5de1e9920c84cfe2520297bf2fad4a3",
+    "tasks": "29206269a6b1549ce3033cd58fa909a9a3ca38b6bf88c92eb0ca51239bc5b87f"
+  },
+  "proposalScope": {
+    "newCapabilities": [
+      "author-action-guidance"
+    ],
+    "modifiedCapabilities": [],
+    "authorCanonicalProductEntries": 7,
+    "bootstrapArchiveWrappers": 1,
+    "productionCoreMutationPlanned": false,
+    "temporaryRunBridgeDeletionPlanned": false,
+    "historicalArchiveMassRenamePlanned": false,
+    "selfHostingConvergencePlanned": false
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

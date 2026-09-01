@@ -1,0 +1,24 @@
+{
+  "runId": "20260901-031-revise-apply",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "converge-author-action-guidance",
+  "action": "revise-apply",
+  "role": "author",
+  "status": "terminal",
+  "verdict": "PASS",
+  "summary": "The prior Apply candidate is revised to implement the approved projectOrdinal contract: first actual Explore persists the ordinal exactly once using only durable assigned projectOrdinal facts and fails closed on ambiguous/inconsistent/no-baseline facts; product/bootstrap Archive consume the persisted value only. Current Change remains projectOrdinal 21, planned Reviewer Change remains unassigned, numbering namespaces stay distinct, all final mechanical proof passes (17/17 focused, 165/165 domain, 4/4 acceptance), and no Core/dependency/vendor/lifecycle expansion is introduced.",
+  "nextBoundary": "review-apply",
+  "reviewApplyRequired": true,
+  "blockingFindings": [],
+  "tasks": {
+    "completed": 17,
+    "total": 17
+  },
+  "complexityAssessment": "MINIMAL_GUIDANCE_ONLY",
+  "scopeDriftAssessment": "NONE",
+  "productionCoreMutation": "NONE",
+  "archivePerformed": false,
+  "nextChangeActivated": false,
+  "deliveryFinalizationPerformed": false,
+  "gitAuthorityExercised": false
+}

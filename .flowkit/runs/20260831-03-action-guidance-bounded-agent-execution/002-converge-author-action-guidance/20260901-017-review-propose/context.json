@@ -1,0 +1,45 @@
+{
+  "runNumber": 17,
+  "kind": "external-orchestrator-review-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "converge-author-action-guidance",
+  "action": "review-propose",
+  "runId": "20260901-017-review-propose",
+  "inputRunId": "20260901-016-propose",
+  "approvedExploreReviewRunId": "20260901-015-review-explore",
+  "checkpointClaim": "3af174bdfa2e8ebcf280e87a13565d03dec0b647",
+  "inputPackageSha256": "dc331c0171a92dee773d3696733d788ce8412a62f18c35df16dff2c039915705",
+  "independentValidation": {
+    "reviewerInputPackageSha256": "MATCH",
+    "planningArtifactHashes": "ALL MATCH",
+    "gitDiffCheck": "PASS",
+    "openspecChangeStrict": "PASS",
+    "openspecAllStrict": "16/16 PASS",
+    "productionApplyMutationPresent": false
+  },
+  "findings": [
+    {
+      "id": "D03-RP-001",
+      "severity": "blocking",
+      "kind": "semantic-contract-precision",
+      "summary": "Archive Guidance must not require a pre-existing completed Change; current Policy reaches archive while Change is active after review-apply approved, then archive completion materializes completed."
+    }
+  ],
+  "complexityAssessment": {
+    "classification": "MINIMAL_GUIDANCE_ONLY",
+    "additionalComplexityRequiredByFinding": false
+  },
+  "scopeDriftAssessment": {
+    "scopeExpansion": false,
+    "formalWordingDrift": true,
+    "driftArea": "archive lifecycle precondition wording only",
+    "newCapability": false,
+    "newAuthority": false,
+    "newLifecycleMechanism": false,
+    "selfHostingTakeover": false
+  },
+  "productionMutationByReviewer": false,
+  "authorArtifactMutationByReviewer": false
+}

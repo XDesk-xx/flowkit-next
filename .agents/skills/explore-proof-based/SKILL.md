@@ -1,6 +1,6 @@
 ---
 name: explore-proof-based
-description: Proof-based Explore for Flowkit changes. Use to investigate contract-changing unknowns, bound real scope, and stop exploration before it drifts into non-goal subsystems.
+description: Proof-based Explore for Flowkit changes. Use to investigate contract-changing unknowns, persist first-Explore project ordinal facts in the independent bootstrap plane, bound real scope, and stop exploration before it drifts into non-goal subsystems.
 metadata:
   author: flowkit
 ---
@@ -21,11 +21,32 @@ Explore may broaden the question space temporarily, but it MUST NOT silently bro
 
 Policy / Owner authority decides whether an Action is legal.
 
-This skill defines HOW Explore is performed.
+This skill defines HOW Explore is performed after the exact Explore Action is already current/legal.
 
 Explore evidence is not approval. Reviewer approval is still required before Proposal.
 
 Owner scope correction overrides prior exploratory direction. When Owner narrows the real use case, obsolete proof branches become historical risk evidence, not mandatory Proposal blockers.
+
+This independent D03/D04 bootstrap skill MUST NOT read or execute candidate `skills/actions/explore/SKILL.md`.
+
+## First-Explore project ordinal bootstrap parity
+
+`semantic ChangeId` remains canonical identity. `projectOrdinal` is only a durable project-wide monotonic sequence/archive-naming fact.
+
+After the exact Explore Action is already legal/current:
+
+1. Read the exact Delivery Change coordination entry.
+2. If it already has a valid positive-integer `projectOrdinal`, reuse it unchanged.
+3. If absent, inspect durable already-assigned `projectOrdinal` facts from repository Delivery Change coordination entries.
+4. Require the durable assigned facts to be valid, unique and internally consistent. On malformed, duplicate, contradictory or insufficient facts, STOP fail-closed.
+5. Derive the next value only as `max(existing assigned projectOrdinal) + 1` and persist it exactly once on the exact current Change entry.
+6. Planned-only Changes reserve nothing. An explored-then-cancelled Change keeps its assigned ordinal consumed.
+
+Never use Delivery array position, Run number, `changeStartSequence`, completed/archive counts, physical Run-group prefix, or archive-directory counting as fallback sequencing input.
+
+If there is no durable assigned ordinal baseline, STOP for an explicit bounded bootstrap/Owner decision rather than inventing an initial value.
+
+This is bootstrap HOW maintenance only. It does not decide activation/legality and does not create a Registry, counter service, allocator subsystem, new lifecycle state or self-hosting convergence.
 
 ## Core Principle
 
@@ -150,6 +171,7 @@ Stop Explore as blocked when:
 - required authority is missing;
 - a key claim cannot be supported;
 - the real scope cannot be bounded;
+- ordinal persistence facts are ambiguous/inconsistent;
 - a newly discovered issue requires Owner scope/priority decision.
 
 Never convert UNKNOWN into PASS.

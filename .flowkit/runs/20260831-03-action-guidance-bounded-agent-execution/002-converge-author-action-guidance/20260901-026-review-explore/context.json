@@ -1,0 +1,60 @@
+{
+  "runNumber": 26,
+  "kind": "external-orchestrator-review-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "converge-author-action-guidance",
+  "action": "review-explore",
+  "runId": "20260901-026-review-explore",
+  "inputRunId": "20260901-025-revise-explore",
+  "priorReviewRunId": "20260901-024-review-explore",
+  "priorInvalidatedRunId": "20260901-022-archive",
+  "checkpointClaim": "3af174bdfa2e8ebcf280e87a13565d03dec0b647",
+  "inputPackageSha256": "142c81360036b2fb7c61b97bf89808bcef801ceb214e113b0d14a2f1cacd999a",
+  "reviewedExploreArtifactSha256": "9c40a8e7fa560cf5adbd5da2bef8997229f3af4d3d9bc9a6a75f7193c7bd90f6",
+  "deliveryManifestSha256": "6a66b1588ef103d77babe6491bc650e06192606df359b516dd64622f0d6dd906",
+  "resolvedFindings": [
+    "D03-RE-004"
+  ],
+  "independentProof": {
+    "node": "22.23.2",
+    "trustedCoordinationOnExactOverlay": "active",
+    "gitDiffCheck": "PASS",
+    "currentChangeProjectOrdinal": 21,
+    "currentChangeFirstExploreRun": "20260901-014-explore",
+    "plannedReviewerGuidanceProjectOrdinal": null,
+    "nextCandidateOrdinal": 22
+  },
+  "acceptedOrdinalSemantics": {
+    "plannedOnlyConsumesOrdinal": false,
+    "assignAtFirstActualExplore": true,
+    "persistOnce": true,
+    "laterActionsReusePersistedValue": true,
+    "exploredThenCancelledConsumesOrdinal": true,
+    "archiveAllocatesOrdinal": false,
+    "archiveRecomputesOrdinal": false,
+    "semanticChangeIdRemainsCanonicalIdentity": true,
+    "projectOrdinalIsSequenceFactOnly": true
+  },
+  "complexityAssessment": {
+    "classification": "MINIMAL_REQUIRED",
+    "newDurableField": "changes[].projectOrdinal",
+    "newLifecycleState": false,
+    "newRegistryCounterAllocator": false,
+    "newIdentitySubsystem": false
+  },
+  "scopeDriftAssessment": {
+    "newDurableContent": true,
+    "newDurableContentDescription": "projectOrdinal: 21 on the already-explored current Change",
+    "newProductCapability": false,
+    "newAuthority": false,
+    "newLifecycle": false,
+    "newControlPlane": false,
+    "summary": "NONE"
+  },
+  "findings": [],
+  "nonBlockingProposalGuard": "Keep semantic ChangeId as canonical identity; projectOrdinal is a durable sequence/archive-naming fact only.",
+  "productionMutationByReviewer": false,
+  "authorArtifactMutationByReviewer": false
+}
