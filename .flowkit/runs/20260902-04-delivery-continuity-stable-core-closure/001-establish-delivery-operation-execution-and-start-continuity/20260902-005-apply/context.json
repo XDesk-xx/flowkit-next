@@ -1,0 +1,80 @@
+{
+  "runNumber": 5,
+  "kind": "external-orchestrator-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "establish-delivery-operation-execution-and-start-continuity",
+  "action": "apply",
+  "runId": "20260902-005-apply",
+  "physicalRunPath": ".flowkit/runs/20260902-04-delivery-continuity-stable-core-closure/001-establish-delivery-operation-execution-and-start-continuity/20260902-005-apply",
+  "physicalRunGroupPrefix": "001",
+  "projectOrdinal": 26,
+  "changeStartSequence": 1,
+  "baseCommit": "eaa1c8f1cf9a52e05b75c3d1133f7aff8449c215",
+  "inputRunId": "20260902-004-review-propose",
+  "inputAuthorPackageSha256": "767eba502efbbefb6e501fd1a914b36ad645196e3b9da56de0653414a93ee74d",
+  "inputReviewerPackageSha256": "d0abd16502e9c71375ffa30bda2bc97ea4df3043cc3702f412a2993673b9910c",
+  "skillsUsed": [
+    "openspec-apply-change",
+    "implementation-convergence"
+  ],
+  "toolIdentity": {
+    "node": "22.23.2",
+    "openspec": "1.10.0",
+    "dependencyCruiser": "18.2.0",
+    "archify": "2.15.0"
+  },
+  "implementationBoundary": {
+    "closedDeliveryOperationCount": 5,
+    "concreteOperationImplemented": "delivery-start",
+    "deterministicGuidanceMapping": true,
+    "contentBoundGuidanceRef": true,
+    "closedOperationFacts": true,
+    "minimalPackageEnvelope": true,
+    "deliveryStartHostCallbackSeam": true,
+    "commitAuthorityIndependentFromValidation": true,
+    "actionLifecycleMutation": false,
+    "policyMutation": false,
+    "cliDeliveryRunner": false,
+    "registryRouterPlanner": false,
+    "changes2To5ConcreteHow": false,
+    "agentsProductProjection": false,
+    "selfHostingTakeover": false,
+    "automaticGitAuthority": false
+  },
+  "verification": {
+    "deliveryFocused": "PASS 18/18",
+    "domain": "PASS 196/196",
+    "detachedAcceptance": "PASS 4/4",
+    "typecheck": "PASS",
+    "build": "PASS",
+    "formatCheck": "PASS",
+    "lint": "PASS",
+    "forbiddenTrackedArtifacts": "PASS",
+    "dependencyHealth": "PASS 0 violations; 63 modules / 242 dependencies",
+    "entropy": "PASS 27/27 production modules reachable",
+    "entropyFocused": "PASS 7/7",
+    "openSpecChangeStrict": "PASS",
+    "openSpecAllStrict": "PASS 18/18",
+    "gitDiffCheck": "PASS"
+  },
+  "environmentCorrection": {
+    "initialAcceptanceMissingFlowkitHome": true,
+    "secondAcceptanceSystemNodeTooOld": "22.16.0",
+    "exactNodeRestored": "22.23.2",
+    "managedFlowkitHomeRestored": true,
+    "trackedRepositoryBytesChangedForEnvironment": false
+  },
+  "artifactHashes": {
+    "deliveryOperationExecutionSha256": "ad93669e9745d21691501416479d2dcf03465148223c8e260425b07f3bc8aabf",
+    "deliveryStartExecutionSha256": "1db690998a9f3eee02debe55dd0d11bad20cfeab3d5f6a1c863fb6550a319bb4",
+    "domainIndexSha256": "d07f2d4156fddb6a1cfc6908499f1f85a5008f4aa02cba88efe756816d65ae42",
+    "deliveryStartGuidanceSha256": "313d3b1018b6c50f48fa3bd15b8510272c6a57666baff7cd86f38a7b586e3887",
+    "deliveryOperationTestSha256": "4950a902da99f7c77c5293612ed1fcd6396d987a87a6175ac2606b92fcf71432",
+    "deliveryStartTestSha256": "b33eb6ac7b8102ce9b957c7e2db933c84f78f616296bfc544e2cd2d1755f5ccc",
+    "tasksSha256": "ef8897771c654a838f39a898c9d7db8fd35c8fc7921cfba3a478f62a64000160"
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

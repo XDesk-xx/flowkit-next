@@ -1,0 +1,75 @@
+{
+  "runNumber": 1,
+  "kind": "external-orchestrator-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "establish-delivery-operation-execution-and-start-continuity",
+  "action": "explore",
+  "runId": "20260902-001-explore",
+  "physicalRunPath": ".flowkit/runs/20260902-04-delivery-continuity-stable-core-closure/001-establish-delivery-operation-execution-and-start-continuity/20260902-001-explore",
+  "physicalRunGroupPrefix": "001",
+  "projectOrdinal": 26,
+  "changeStartSequence": 1,
+  "checkpointClaim": "eaa1c8f1cf9a52e05b75c3d1133f7aff8449c215",
+  "acceptedBase": "6bda1e87a0c12929c3567de17ede75ecd0cf0bed",
+  "ownerActivation": {
+    "ref": "owner:9f671287d87d024dd617cfb6ef0c1de8c3e0bfe6c5f2ddcb64543dd975e4eb1f",
+    "decision": "activate-change",
+    "sourceRef": "owner-input:2026-09-02:activate-change:establish-delivery-operation-execution-and-start-continuity:proof-explore:preflight-pass",
+    "scope": ["explore"]
+  },
+  "ownerMemoAuthorization": {
+    "ref": "owner:e9ffa57d52423f31360aa489187ea23beb2d8540cfaad3d787ed05ec94e3b18c",
+    "decision": "create-memo",
+    "memoId": "pre-explore-repository-fixed-point-continuity-check"
+  },
+  "preExploreContinuity": {
+    "status": "PASS",
+    "nearestRepositoryFixedPoint": "eaa1c8f1cf9a52e05b75c3d1133f7aff8449c215",
+    "fixedPointParent": "6bda1e87a0c12929c3567de17ede75ecd0cf0bed",
+    "deliveryStartFileCount": 4,
+    "referenceSha256Matched": true,
+    "architectureTopology": "21 components / 3 boundaries / 15 connections; unchanged",
+    "unexpectedDrift": false
+  },
+  "skillsUsed": [
+    ".agents/skills/openspec-explore",
+    ".agents/skills/explore-proof-based",
+    "detached-repository-execution"
+  ],
+  "stableManagerProof": {
+    "trustedCoordinationState": "active",
+    "decision": "ready-action",
+    "actionId": "explore"
+  },
+  "detachedEnvironment": {
+    "node": "22.23.2",
+    "openspec": "1.10.0",
+    "dependencyInputsUnchanged": true,
+    "packageManagerInstallInvoked": false,
+    "restoredDependencySnapshotReused": true
+  },
+  "proofSummary": {
+    "focusedExistingContractTests": "68/68 PASS",
+    "canonicalOpenSpecSpecs": "17/17 PASS",
+    "activeChangeStrictValidation": "expected pre-Proposal failure: no spec delta yet",
+    "deliveryOperationMappings": "5/5 deterministic in non-production prototype",
+    "unknownOperationFailsClosed": true,
+    "guidanceContentDriftChangesIdentity": true,
+    "wrongGuidanceFailsPackageFormation": true,
+    "wrongAuthorityFailsPackageFormation": true,
+    "symlinkGuidanceFailsClosed": true,
+    "newControlPlaneRequired": false,
+    "deliveryLifecycleStateMachineRequired": false,
+    "agentSkillDiscoveryRequired": false,
+    "productDeliveryImplementationExistsBeforeChange": false
+  },
+  "memoSha256": "26030a38f0e66cd6f660581666d745c2a95e359895be9a06abf2bd17dfb59128",
+  "exploreArtifactSha256": "4a87c4812dd4f895c7aeb0f8423043627b747dbb7399de8441f315f04d7a8130",
+  "deliveryManifestSha256": "b3755fceb29202f33332ef75ed990c3ff09f47db737b55497835e0256d18d628",
+  "productionMutationInExplore": false,
+  "proposalArtifactsInExplore": false,
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

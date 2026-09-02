@@ -84,6 +84,17 @@
       }
     },
     {
+      "memoId": "pre-explore-repository-fixed-point-continuity-check",
+      "state": "open",
+      "title": "Pre-Explore repository fixed-point continuity check",
+      "note": "Repeated Flowkit-next execution has exposed a practical repository-drift risk at the start of a new Change: after a prior Delivery/checkpoint commit has been returned to the local repository and later used as the basis for the next Change, the repository may no longer exactly match the expected fixed point even when lifecycle facts appear valid. A previous D04 attempt detected this class of file drift during pre-Change analysis.\n\nFuture bootstrap HOW should require a bounded Pre-Explore continuity check for every Change before its first proof Explore. The check should resolve the nearest valid repository fixed-point/checkpoint commit, verify exact SHA/ancestry and current repository/canonical bytes against that anchor, and STOP before new Change mutation on unexplained drift. Normal execution should verify only the nearest valid anchor; full historical reconstruction is required only when that anchor cannot be verified.\n\nExpected ownership is the repository-local .agents Action/Explore bootstrap plane, most likely a thin first-entry rule in or adjacent to .agents/skills/explore-proof-based. This Memo does not authorize immediate .agents mutation, does not require every Change to have its own Git commit, does not create a Registry/continuation database, and is not part of D04 product skills/delivery/** scope.",
+      "source": {
+        "deliveryId": "20260902-04-delivery-continuity-stable-core-closure"
+      },
+      "createdByOwnerAuthorityRef": "owner:e9ffa57d52423f31360aa489187ea23beb2d8540cfaad3d787ed05ec94e3b18c",
+      "resolution": null
+    },
+    {
       "memoId": "structural-dependency-023-historical-continuity-gap",
       "state": "dismissed",
       "title": "establish-structural-dependency-health-fitness 023 create-once Explore artifact missing (continuity exception)",
