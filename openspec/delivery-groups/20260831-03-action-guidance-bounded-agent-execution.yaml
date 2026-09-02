@@ -6,9 +6,11 @@ base: "main@4b45552b90ee327488bde3141c51c556e65a2e95"
 goal: "当 Flowkit 已经确定 exact current Action 后，让长期 Author / Reviewer AI 稳定获得与该 Action 可信绑定的 canonical HOW，完整执行当前 bounded Action，返回真实 Result，并在 terminal 后 STOP；同时保持 Action Guidance 只负责 HOW，不引入 Agent Runtime、Skill Registry、Skill Router 或 automatic workflow。"
 
 delivery:
-  state: active
-  fullTestStatus: pending
-  finalizationStatus: pending
+  state: completed
+  fullTestStatus: passed
+  finalizationStatus: completed
+  formalVerificationCandidate: "working-tree-sha256:15835349415b5332dbebfb1c43f56aa3a3c2185f18abf242e29ec1a22a59ea6c"
+  finalizedAt: "2026-09-02"
 
 reference:
   kind: "formal-implementation-reference"
@@ -40,11 +42,14 @@ architecture:
   impact: true
   archifyPlan: "required"
   startStatus: "materialized"
-  finalStatus: "pending"
+  finalStatus: "materialized"
   currentRef: "architecture/20260831-03-action-guidance-bounded-agent-execution/json/current.architecture.json"
   plannedRef: "architecture/20260831-03-action-guidance-bounded-agent-execution/json/planned.architecture.json"
+  actualRef: "architecture/20260831-03-action-guidance-bounded-agent-execution/json/actual.architecture.json"
   compareRefs:
     - "architecture/20260831-03-action-guidance-bounded-agent-execution/json/current-to-planned.compare.json"
+    - "architecture/20260831-03-action-guidance-bounded-agent-execution/json/current-to-actual.compare.json"
+    - "architecture/20260831-03-action-guidance-bounded-agent-execution/json/planned-to-actual.compare.json"
   htmlPolicy: "disposable-not-retained-in-git"
 
 changes:
@@ -182,6 +187,47 @@ recommendedOrder:
   - "converge-reviewer-action-guidance"
   - "correct-archive-handoff-and-cross-platform-verification-discipline"
 
+verification:
+  change:
+    requireApplicableChecks: true
+  fullTest:
+    requiresOwnerAuthorization: true
+    execution:
+      state: passed
+      verifiedCandidate: "working-tree-sha256:15835349415b5332dbebfb1c43f56aa3a3c2185f18abf242e29ec1a22a59ea6c"
+      verifiedBaseHead: "97966e0fd8845e5e2420c248cd926c6b545b5f0e"
+      verifiedCandidateArchiveSha256: "5fe2b19b8f589a97554b193b4e7a8bc94bbff20ed5852d6e27760328afb82f6c"
+      verificationEvidenceSha256: "9c5c7ced6f53724f7a920d55bddf75628a099c3651f88c03cce1288c461b09b1"
+      verifiedAt: "2026-09-02"
+      resultAuthority: "verification"
+      reason: "Owner explicitly authorized Formal Full Test after D03 Change 025 archive and Owner-controlled Memo convergence. The frozen six-gate Delivery-level contract passed on one exact tracked working-tree candidate with identical pre/post tracked fingerprint. The supplementary native-Windows chmod fixture observation is recorded as a non-blocking future Memo and is not part of the frozen D03 Linux-x64 Formal Full Test acceptance contract."
+      environment:
+        platform: "linux-x64"
+        nodeCompatibility: ">=22.20.0"
+        deterministicNodeFixture: "22.23.2"
+        nodeRuntimeArtifactSha256: "29331fa22523b7fce59965e46627ecbc87019ac74e0e6abf9f61284e0760f755"
+        packageManagerFixture: "pnpm@11.22.0"
+        dependencies: "restored from the accepted detached dependency archive; no install/update/download performed"
+        pnpmScriptDependencyCheck: "pnpm_config_verify_deps_before_run=false"
+        dependencyArchiveSha256: "d92a903673a6eb5017212d5dc8c563cd0de7cc5147c7ae3496456ce856932321"
+        flowkitHome: "explicit"
+        openspecRuntime: "1.10.0"
+        openspecRuntimeArtifactSha256: "4fb0b870d9523daebda8becaf4202397da342bc39dde3961d8dd4392c72e2b68"
+        archifyRuntime: "2.15.0"
+        archifyRuntimeArtifactSha256: "156f0d3cd6ba11706344683e3d94e6b6b44b5732bd3c8c81b75c267c3f5d04c4"
+        fallback: "no install/update/download/network/PATH/global managed-tool fallback"
+      gates:
+        - "pnpm typecheck"
+        - "pnpm format:check"
+        - "pnpm build"
+        - "pnpm test:domain — 178/178 PASS, 0 skipped"
+        - "exact managed OpenSpec 1.10.0: validate --all --strict — 17/17 PASS"
+        - "pnpm test:acceptance — 4/4 PASS, 0 skipped"
+    plan:
+      - "Formal Full Test remains the frozen six-gate Delivery-level contract inherited from D01/D02."
+      - "The verified candidate is the exact tracked working-tree snapshot after Owner-authorized Memo convergence and before verification-result metadata is recorded."
+      - "Verification-result metadata does not authorize product/canonical correction, Actual Architecture, Delivery Final, Git checkpoint, commit, push, or merge."
+
 acceptance:
   - "exact current Action is supplied by Flowkit and is not guessed from Run history"
   - "exact canonical Guidance identity is trusted, Action-aligned, content-bound and frozen into ActionPackage"
@@ -315,3 +361,48 @@ ownerDecisions:
       - "revise-apply"
       - "stale-reviewer-action-guidance-test"
       - "archive-post-convergence-verification"
+  - ref: "owner:c9b5438a353f1811ddb908b19a00e539e65b49e12712470cc2b5875c4e5cd063"
+    decision: "finalize-delivery"
+    deliveryId: "20260831-03-action-guidance-bounded-agent-execution"
+    sourceRef: "owner-input:2026-09-02:authorize-delivery-finalize:complete-source-zip-and-ai-handoff"
+    scope:
+      - "delivery-final"
+      - "full-source-handoff"
+      - "ai-handoff"
+
+finalization:
+  state: completed
+  formalFullTest: "PASS"
+  verifiedCandidate: "working-tree-sha256:15835349415b5332dbebfb1c43f56aa3a3c2185f18abf242e29ec1a22a59ea6c"
+  verifiedBaseHead: "97966e0fd8845e5e2420c248cd926c6b545b5f0e"
+  actualArchitecture: "completed"
+  actualArchitectureSha256: "d539f764bd195eb05a5a220b050b35fe64138a8bb3827b29f91b6b5a2cc7f193"
+  currentToActualCompareSha256: "3e9f5613b86d5a0fa934af82d32c53e579bdc02b8e815e6f361d49b765ba3d3f"
+  plannedToActualCompareSha256: "8e436679a5993d732b349d7be8734f882d8a2d785c4fbce436d1840b5b10ccde"
+  canonicalSystemDiagramConvergence:
+    dataFlow:
+      state: "materialized"
+      ref: "architecture/system/data-flow.json"
+      sha256: "2da0b569d536c36d658bea3132b297c73b489121715484870e7a21b12c23dbbf"
+    workflow:
+      state: "not-materialized"
+      reason: "No repository-scoped canonical workflow.json existed at the D03 boundary, and D03 introduced no accepted operating-workflow semantic requiring first materialization during this Delivery."
+    lifecycle:
+      state: "not-materialized"
+      reason: "No repository-scoped canonical lifecycle.json existed at the D03 boundary, and D03 introduced no Action/state/transition semantic requiring first materialization during this Delivery."
+    sequence: "supporting-only-not-retained"
+  ownerActualConfirmation: "confirmed-by-owner-before-delivery-final"
+  repositoryGuidanceConvergence: "completed"
+  productMutationAfterFormalVerification: false
+  canonicalOpenSpecMutationAfterFormalVerification: false
+  packageLockMutationAfterFormalVerification: false
+  historicalRunRewrite: false
+  finalizationDerivedArchitectureMutationAfterFormalVerification: true
+  ownerAuthorizedMemoMutationAfterFormalVerification: true
+  ownerAuthorizedMemoMutationScope:
+    - "future-delivery-final-full-source-repository-integration-handoff"
+  openMemoPolicy: "preserved-non-blocking-for-d04"
+  generatedHtmlRetainedInGit: false
+  gitCheckpoint: "pending-owner-authorized-local-delivery-commit"
+  fullSourceHandoff: "required-for-local-ai-repository-integration; payload-remains-audit-provenance-only"
+  deterministicCommitMessage: "delivery(20260831-03-action-guidance-bounded-agent-execution): finalize action guidance bounded agent execution"

@@ -1,0 +1,260 @@
+{
+  "schema_version": 1,
+  "diagram_type": "dataflow",
+  "meta": {
+    "title": "flowkit-next 当前执行数据流 — Action Guidance 与 Bounded Action Execution",
+    "output": "data-flow.html",
+    "quality_profile": "showcase",
+    "viewBox": [
+      1320,
+      860
+    ],
+    "views": [
+      {
+        "id": "identity",
+        "label": "Exact Action → Guidance identity",
+        "focus": [
+          "policy-action",
+          "canonical-guidance",
+          "action-package"
+        ],
+        "note": "Policy 已决定 exact StandardActionId；resolver 只解析对应 canonical product Guidance，并把 path + content SHA-256 冻结进 ActionPackage。"
+      },
+      {
+        "id": "prepare",
+        "label": "Package-bound preparation",
+        "focus": [
+          "action-package",
+          "preparation",
+          "agent-execution"
+        ],
+        "note": "read-only preparation 与 execution 使用同一 exact ActionPackage；BLOCKED 时不提交 staged prepared state，也不调用 execution。"
+      },
+      {
+        "id": "result",
+        "label": "Result / check identity",
+        "focus": [
+          "action-package",
+          "agent-execution",
+          "result-facts",
+          "review-verification"
+        ],
+        "note": "ActionPackageRef 继续作为 Result admission 与 ApplicableCheck executionInputRef 的 identity 链；真实 facts 持久化后供 review/verification 消费。"
+      },
+      {
+        "id": "self-development",
+        "label": "Stable Core self-development boundary",
+        "focus": [
+          "bootstrap-guidance",
+          "review-verification"
+        ],
+        "note": ".agents/skills/** 继续驱动 flowkit-next 自身 D03/D04 Author/Reviewer development；candidate skills/actions/** 不自证。"
+      }
+    ]
+  },
+  "stages": [
+    {
+      "label": "Legal boundary"
+    },
+    {
+      "label": "Guidance identity"
+    },
+    {
+      "label": "Bounded package"
+    },
+    {
+      "label": "Execution + checks"
+    },
+    {
+      "label": "Durable facts + review"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "policy-action",
+      "type": "security",
+      "label": "Exact Action",
+      "sublabel": "StandardActionId decided",
+      "stage": 0,
+      "row": 0,
+      "width": 150,
+      "tag": "legal boundary"
+    },
+    {
+      "id": "bootstrap-guidance",
+      "type": "external",
+      "label": ".agents Bootstrap",
+      "sublabel": "self-development HOW",
+      "stage": 0,
+      "row": 3,
+      "width": 150,
+      "tag": "independent plane"
+    },
+    {
+      "id": "canonical-guidance",
+      "type": "backend",
+      "label": "Canonical Guidance",
+      "sublabel": "path + content SHA-256",
+      "stage": 1,
+      "row": 0,
+      "width": 155,
+      "tag": "HOW only"
+    },
+    {
+      "id": "action-package",
+      "type": "backend",
+      "label": "ActionPackage",
+      "sublabel": "Action + Guidance identity",
+      "stage": 2,
+      "row": 0,
+      "width": 155,
+      "tag": "frozen input"
+    },
+    {
+      "id": "preparation",
+      "type": "security",
+      "label": "Preparation",
+      "sublabel": "read-only READY / BLOCKED",
+      "stage": 3,
+      "row": 0,
+      "width": 155,
+      "tag": "atomic boundary"
+    },
+    {
+      "id": "agent-execution",
+      "type": "backend",
+      "label": "Bounded Execution",
+      "sublabel": "same package → one Action",
+      "stage": 3,
+      "row": 2,
+      "width": 155,
+      "tag": "READY only"
+    },
+    {
+      "id": "result-facts",
+      "type": "database",
+      "label": "Run / Result + Check Facts",
+      "sublabel": "ActionPackageRef → executionInputRef",
+      "stage": 4,
+      "row": 0,
+      "width": 170,
+      "tag": "durable identity"
+    },
+    {
+      "id": "review-verification",
+      "type": "external",
+      "label": "Review / Verification",
+      "sublabel": "independent evidence consumer",
+      "stage": 4,
+      "row": 3,
+      "width": 165,
+      "tag": "no mutation"
+    }
+  ],
+  "flows": [
+    {
+      "from": "policy-action",
+      "to": "canonical-guidance",
+      "label": "StandardActionId",
+      "classification": "trusted selection",
+      "variant": "emphasis",
+      "route": "straight",
+      "labelAt": [
+        207,
+        205
+      ]
+    },
+    {
+      "from": "canonical-guidance",
+      "to": "action-package",
+      "label": "Action + Guidance identity",
+      "classification": "exact frozen input",
+      "variant": "emphasis",
+      "route": "straight",
+      "labelAt": [
+        421,
+        205
+      ]
+    },
+    {
+      "from": "action-package",
+      "to": "preparation",
+      "label": "same package",
+      "classification": "read-only readiness",
+      "variant": "security",
+      "route": "straight",
+      "labelAt": [
+        636,
+        205
+      ]
+    },
+    {
+      "from": "preparation",
+      "to": "agent-execution",
+      "label": "READY",
+      "classification": "BLOCKED keeps prior boundary",
+      "variant": "security",
+      "route": "vertical-channel",
+      "labelDx": 60
+    },
+    {
+      "from": "agent-execution",
+      "to": "result-facts",
+      "label": "Result facts",
+      "classification": "exact package binding",
+      "variant": "emphasis",
+      "route": "vertical-channel",
+      "labelAt": [
+        800,
+        330
+      ]
+    },
+    {
+      "from": "result-facts",
+      "to": "review-verification",
+      "label": "durable evidence",
+      "classification": "read-only consumption",
+      "variant": "dashed",
+      "route": "vertical-channel",
+      "labelDx": 55
+    },
+    {
+      "from": "bootstrap-guidance",
+      "to": "review-verification",
+      "label": "independent HOW",
+      "classification": "not product Guidance identity",
+      "variant": "dashed",
+      "route": "bottom-channel",
+      "labelDy": 24
+    }
+  ],
+  "cards": [
+    {
+      "dot": "emerald",
+      "title": "Identity Chain",
+      "items": [
+        "StandardActionId is decided before Guidance resolution",
+        "ActionGuidanceRef is canonical-path + exact-content identity",
+        "ActionPackageRef naturally carries Guidance identity into Result/check facts"
+      ]
+    },
+    {
+      "dot": "cyan",
+      "title": "Atomic Preparation",
+      "items": [
+        "Preparation and execution use one exact ActionPackage",
+        "BLOCKED preparation does not expose newly staged prepared state",
+        "No new Action, lifecycle state, PreparationPackage, or rollback subsystem"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Truth / Self-hosting Boundary",
+      "items": [
+        "Action Guidance = HOW only；Policy/Owner retain legality and authority",
+        "Run/Result facts are evidence, not OpenSpec/Git truth replacement",
+        ".agents bootstrap remains independent through D04；candidate product HOW does not prove itself"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "kind": "architecture-thin-compare",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "classification": [
+    "semantic",
+    "presentation"
+  ],
+  "presentation": {
+    "mode": "side-by-side",
+    "renderer": "flowkit-reference-side-by-side",
+    "leftPosition": "before",
+    "rightPosition": "after",
+    "equalFrame": true,
+    "interactive": true,
+    "overlay": false,
+    "deltaColumn": false,
+    "artifactPolicy": "disposable-html-not-retained-in-git",
+    "resolution": "resolve-left-right-ref-to-architecture-render"
+  },
+  "pair": "current-to-actual",
+  "left": {
+    "ref": "./current.architecture.json",
+    "sha256": "865d7353e753d4be27ce10893d2e3c0f9aed6e1a4eaa95225fa417bf8d7e7784",
+    "bytes": 19771
+  },
+  "right": {
+    "ref": "./actual.architecture.json",
+    "sha256": "d539f764bd195eb05a5a220b050b35fe64138a8bb3827b29f91b6b5a2cc7f193",
+    "bytes": 20446
+  },
+  "summary": {
+    "semantic": "Delivery 03 Start Current → verified Actual: existing Foundation/D02 components remain; canonical product Action Guidance is now Action-aligned and content-bound, exact Guidance identity is frozen into ActionPackage, package-bound atomic preparation preserves correction legality, and independent Author/Reviewer HOW has converged without adding a new lifecycle or control plane.",
+    "presentation": "Actual preserves the established 21-component topology and positions. The semantic delta is concentrated in the existing skills/execution/acceptance components plus the planned skills→execution Guidance-identity edge; no new architecture component is introduced."
+  }
+}
