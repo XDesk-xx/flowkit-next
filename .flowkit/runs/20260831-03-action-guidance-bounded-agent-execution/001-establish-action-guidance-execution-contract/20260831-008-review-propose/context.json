@@ -1,0 +1,54 @@
+{
+  "runNumber": 8,
+  "kind": "external-orchestrator-review-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "establish-action-guidance-execution-contract",
+  "action": "review-propose",
+  "runId": "20260831-008-review-propose",
+  "inputRunId": "20260831-007-propose",
+  "reviewChainStartRunId": "20260831-001-explore",
+  "approvedExploreReviewRunId": "20260831-006-review-explore",
+  "checkpointClaim": "9b32b98db8c989f85ac0e1e5894a91b7e04f05df",
+  "stableManagerBase": "4b45552b90ee327488bde3141c51c556e65a2e95",
+  "inputPackageSha256": "2ce8736525e59a7264ba956f48a52bfa9e114d74848588b342783cbd25e37a8a",
+  "approvedExploreArtifactSha256": "a32909fdcb0c395511f1f0b255f3fb2a25c1bedcaad0a6b8cc0f6335c63a4672",
+  "independentValidation": {
+    "proposalArtifactHashes": "PASS",
+    "node": "22.23.2",
+    "openspec": "1.10.0",
+    "changeStrict": "PASS",
+    "allStrict": "15/15 PASS",
+    "productionApplyMutationPresent": false
+  },
+  "formalCapabilityAssessment": {
+    "new": [
+      "action-guidance-execution"
+    ],
+    "modified": [
+      "action-package-and-result-admission"
+    ],
+    "additionalSingleActionDeltaRequired": false,
+    "applicableCheckDeltaRequired": false
+  },
+  "complexityAssessment": {
+    "increased": true,
+    "classification": "MINIMAL_REQUIRED",
+    "newSubsystem": false,
+    "summary": "Only the proven Guidance binding seam and required ActionPackage extension are added; existing identity chain is reused."
+  },
+  "scopeDriftAssessment": {
+    "newOutOfScopeCapability": false,
+    "newAuthority": false,
+    "newLifecycle": false,
+    "selfHostingTakeover": false,
+    "compatibilitySurface": false,
+    "laterChangeContentPulledForward": false,
+    "summary": "No semantic drift; Proposal only freezes details explicitly deferred by approved Explore."
+  },
+  "nonBlockingApplyGuard": "Do not expand canonical SKILL.md entry identity into a transitive Guidance dependency graph or Registry without fresh proof.",
+  "findings": [],
+  "productionMutationByReviewer": false,
+  "authorArtifactMutationByReviewer": false
+}

@@ -180,3 +180,7 @@ broad test infrastructure unrelated to the Change
 > Apply should make the approved contract real with the least new machinery possible.
 
 Reuse existing seams. Keep mutations local. Stop when the contract itself must change.
+
+## Handoff continuity
+
+When Apply hands off uncommitted work, preserve the latest delta plus all materially required uncommitted ancestor state using cumulative payload or exact retrievable ancestor references. Carry exact removals for deleted/renamed paths. Do not introduce a payload registry/database.

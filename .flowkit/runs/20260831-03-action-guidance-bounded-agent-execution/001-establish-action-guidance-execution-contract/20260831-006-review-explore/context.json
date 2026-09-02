@@ -1,0 +1,40 @@
+{
+  "runNumber": 6,
+  "kind": "external-orchestrator-review-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "establish-action-guidance-execution-contract",
+  "action": "review-explore",
+  "runId": "20260831-006-review-explore",
+  "inputRunId": "20260831-005-revise-explore",
+  "reviewChainStartRunId": "20260831-001-explore",
+  "checkpointClaim": "9b32b98db8c989f85ac0e1e5894a91b7e04f05df",
+  "stableManagerBase": "4b45552b90ee327488bde3141c51c556e65a2e95",
+  "inputPackageSha256": "95d5ec6b834009e49187bce5ec779b57a9695349e5ec6b6e63943dfd039293da",
+  "reviewedFinalExploreArtifactSha256": "a32909fdcb0c395511f1f0b255f3fb2a25c1bedcaad0a6b8cc0f6335c63a4672",
+  "historical001ExploreArtifactSha256": "a258689c02a653474a3166b7cf6ceae50117e085450fd1b91d2388e2ff555afa",
+  "findings": [],
+  "closure": {
+    "D03-RE-003": "RESOLVED",
+    "ownerSelfHostingBoundary": "PASS",
+    "substantiveExplore": "APPROVED",
+    "proposalAllowed": true
+  },
+  "complexityAssessment": {
+    "increased": false,
+    "newSubsystem": false,
+    "summary": "No complexity growth; metadata correction only."
+  },
+  "scopeDriftAssessment": {
+    "newTechnicalContent": false,
+    "newCapability": false,
+    "newAcceptanceRequirement": false,
+    "newOwnerBoundaryInterpretation": false,
+    "change1ScopeDrift": false,
+    "exploreArtifactChangedBy005": false,
+    "summary": "No semantic drift; 005 only repairs handoff provenance metadata."
+  },
+  "productionMutationByReviewer": false,
+  "authorArtifactMutationByReviewer": false
+}

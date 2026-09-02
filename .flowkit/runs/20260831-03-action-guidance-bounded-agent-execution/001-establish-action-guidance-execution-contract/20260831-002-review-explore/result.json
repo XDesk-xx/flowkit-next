@@ -1,0 +1,19 @@
+{
+  "runId": "20260831-002-review-explore",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "establish-action-guidance-execution-contract",
+  "action": "review-explore",
+  "role": "reviewer",
+  "status": "terminal",
+  "verdict": "CHANGES_REQUESTED",
+  "summary": "The Change 1 Explore direction and Owner anti-self-hosting boundary are substantively correct and independently reproduced. Revision is required only to repair a stale exploreArtifactSha256 in context.json and remove the superseded '.agents absent/thin' laterAgentsSurface wording. No technical redesign or new subsystem is required.",
+  "nextBoundary": "revise-explore",
+  "blockingFindings": [
+    "D03-RE-001",
+    "D03-RE-002"
+  ],
+  "proposalAllowed": false,
+  "productionMutation": "NONE",
+  "reviewerMutation": "NONE",
+  "complexityAssessment": "MINIMAL; no new Registry/Router/Runtime/identity system justified."
+}

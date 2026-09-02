@@ -1,0 +1,55 @@
+{
+  "runNumber": 19,
+  "kind": "external-orchestrator-review-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "converge-author-action-guidance",
+  "action": "review-propose",
+  "runId": "20260901-019-review-propose",
+  "inputRunId": "20260901-018-revise-propose",
+  "reviewChainStartRunId": "20260901-014-explore",
+  "approvedExploreReviewRunId": "20260901-015-review-explore",
+  "priorReviewProposeRunId": "20260901-017-review-propose",
+  "checkpointClaim": "3af174bdfa2e8ebcf280e87a13565d03dec0b647",
+  "inputPackageSha256": "ea67a305ae10ca8d81822e4911fa161ba47697961b2b6927d47a35566f61bd8d",
+  "resolvedFindings": [
+    "D03-RP-001"
+  ],
+  "independentValidation": {
+    "reviewerInputPackageSha256": "MATCH",
+    "planningArtifactHashes": "ALL MATCH",
+    "node": "22.23.2",
+    "openspec": "1.10.0",
+    "changeStrict": "PASS",
+    "allStrict": "16/16 PASS",
+    "gitDiffCheck": "PASS",
+    "productionApplyMutationPresent": false
+  },
+  "revisionDiff": {
+    "exploreChanged": false,
+    "proposalChanged": false,
+    "designChanged": true,
+    "specChanged": true,
+    "tasksChanged": true,
+    "changesLimitedToReviewerFinding": true
+  },
+  "complexityAssessment": {
+    "increasedBy018": false,
+    "classification": "MINIMAL_GUIDANCE_ONLY",
+    "newSubsystem": false
+  },
+  "scopeDriftAssessment": {
+    "newCapability": false,
+    "newAuthority": false,
+    "newLifecycle": false,
+    "newStandardAction": false,
+    "newAcceptanceRequirement": false,
+    "selfHostingTakeover": false,
+    "historicalArchiveMigration": false,
+    "summary": "NONE"
+  },
+  "findings": [],
+  "productionMutationByReviewer": false,
+  "authorArtifactMutationByReviewer": false
+}

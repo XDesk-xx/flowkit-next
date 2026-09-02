@@ -14,7 +14,7 @@
 1. Confirmed Reviewer verdict `approved`, zero blocking findings, and `archiveReadiness=READY`.
 2. Confirmed OpenSpec planning artifacts complete and tasks `7/7` complete.
 3. Synced the bounded `openspec-thin-integration` clarification into the existing canonical spec.
-4. Archived the Change to `openspec/changes/archive/2026-08-31-correct-openspec-observation-process-failure-portability`.
+4. Archived the Change to `openspec/changes/archive/2026-08-31-018-correct-openspec-observation-process-failure-portability`.
 5. Materialized Delivery coordination state as `completed` and marked the portability proof concern completed without activating the remaining D02 Change.
 6. Revalidated portable OpenSpec observation boundaries, the complete domain suite, repository entropy, dependency health, formatting/lint/forbidden-artifact checks, typecheck/build, canonical specs, archived Changes, all OpenSpec truth, and Git diff whitespace.
 

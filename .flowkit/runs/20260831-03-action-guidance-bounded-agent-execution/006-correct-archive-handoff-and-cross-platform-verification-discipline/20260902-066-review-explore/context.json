@@ -1,0 +1,79 @@
+{
+  "runNumber": 66,
+  "kind": "external-orchestrator-review-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "correct-archive-handoff-and-cross-platform-verification-discipline",
+  "action": "review-explore",
+  "runId": "20260902-066-review-explore",
+  "inputRunId": "20260902-065-revise-explore",
+  "physicalRunPath": ".flowkit/runs/20260831-03-action-guidance-bounded-agent-execution/006-correct-archive-handoff-and-cross-platform-verification-discipline/20260902-066-review-explore",
+  "physicalRunGroupPrefix": "006",
+  "projectOrdinal": 25,
+  "changeStartSequence": 61,
+  "checkpointClaim": "39ef634bc7680af0494d4d918adf58e338601a83",
+  "inputAuthorPackageSha256": "db82ba1faaeb07bcb5f0ce466258d7708b26f458563d22b5786e4552543bdfa7",
+  "reviewedArtifact": {
+    "path": "openspec/changes/correct-archive-handoff-and-cross-platform-verification-discipline/explore.md",
+    "sha256": "4156d95d9a58c947acc3bca3b41e83c6ea4ab38d6f99e9d9e5d7330748e401fd"
+  },
+  "deliveryManifestSha256": "a21f931fe2e2fdad5c26c629e3bb7ef979e28ec73de65f5f7625efb967f95c10",
+  "findingConvergence": {
+    "R063-002": {
+      "status": "RESOLVED",
+      "fact": "Canonical Explore no longer narrates Reviewer/Owner revision chronology."
+    },
+    "R063-001": {
+      "status": "PARTIALLY_RESOLVED_STILL_BLOCKING",
+      "fact": "Pre-structural-prepare ordering feasibility is proven, but proposed pre-invocation execution of product archive Guidance HOW occurs before ActionPackage formation and is not owned by the accepted Flowkit-managed execution contract."
+    }
+  },
+  "independentProof": {
+    "exactBaseReconstructed": true,
+    "node": "22.23.2",
+    "detachedDependencySnapshotReused": true,
+    "packageManagerLauncherUsedByReviewer": false,
+    "priorReviewerRunExactBytesPreserved": true,
+    "focusedLifecycleGuidanceTests": "62/62 PASS",
+    "fullDomainTests": "173/173 PASS",
+    "canonicalOpenSpecSpecsStrict": "17/17 PASS",
+    "archivedOpenSpecStrict": "23/23 PASS",
+    "gitDiffCheck": "PASS",
+    "productionImplementationMutation": false,
+    "proposalArtifactsPresent": false
+  },
+  "contractConflict": {
+    "acceptedActionGuidanceExecution": "Guidance identity is frozen into exact ActionPackage before Agent execution callback.",
+    "currentSingleActionOrder": [
+      "structural prepare",
+      "Run-context validation",
+      "GuidanceRef resolution",
+      "ActionPackage formation",
+      "Agent callback"
+    ],
+    "proposed065Order": [
+      "Policy ready-action archive",
+      "host resolves GuidanceRef",
+      "host executes archive readiness HOW",
+      "invokeSingleAction",
+      "structural prepare / package / callback"
+    ],
+    "problem": "The proposed readiness HOW executes before the accepted ActionPackage execution identity exists."
+  },
+  "requiredConvergence": [
+    "Prove a real mechanical pre-invocation host readiness owner that does not execute product Guidance HOW outside ActionPackage identity; or",
+    "Surface the smallest bounded host/Core execution-order seam required if the readiness is genuinely product Guidance HOW."
+  ],
+  "scopeAssessment": {
+    "abcdEScopeCoherent": true,
+    "unauthorizedScopeDrift": false,
+    "newStandardActionRequired": false,
+    "newLifecycleStateRequired": false,
+    "newControlPlaneRequired": false,
+    "guidanceOnlyNoHostMutationConclusionProven": false,
+    "complexityAssessment": "MINIMAL_BUT_EXECUTION_IDENTITY_OWNERSHIP_REMAINS_UNRESOLVED"
+  },
+  "stableTransfer": true,
+  "packageClass": "cumulative-review-handoff"
+}

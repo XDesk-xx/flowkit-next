@@ -1,0 +1,45 @@
+{
+  "runNumber": 62,
+  "kind": "external-orchestrator-revise-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "correct-archive-handoff-and-cross-platform-verification-discipline",
+  "action": "revise-explore",
+  "runId": "20260901-062-revise-explore",
+  "physicalRunPath": ".flowkit/runs/20260831-03-action-guidance-bounded-agent-execution/006-correct-archive-handoff-and-cross-platform-verification-discipline/20260901-062-revise-explore",
+  "physicalRunGroupPrefix": "006",
+  "projectOrdinal": 25,
+  "changeStartSequence": 61,
+  "checkpointClaim": "39ef634bc7680af0494d4d918adf58e338601a83",
+  "ownerCorrection": {
+    "ref": "owner:dbac2d88345ff0202da9611ab1ef18b0a012d4e3b3ff40419176ff30fd3cb7b5",
+    "decision": "revise-action",
+    "sourceRef": "owner-input:2026-09-01:revise-action:correct-archive-handoff-and-cross-platform-verification-discipline:revise-explore:prepare-is-operation-not-action-and-must-self-check",
+    "scope": [
+      "revise-explore"
+    ]
+  },
+  "trigger": "061 concept correction: prepare is not a Standard Action; Action preparation must provide real readiness/self-check before low-level prepared-state materialization",
+  "skillsUsed": [
+    ".agents/skills/revise-explore",
+    "detached-repository-execution"
+  ],
+  "proofSummary": {
+    "focusedLifecycleExecutionCorrectionTests": "37/37 PASS",
+    "fullDomainTests": "173/173 PASS",
+    "canonicalOpenSpecSpecs": "17/17 PASS",
+    "archivedOpenSpecTaskValidation": "23/23 PASS",
+    "prepareIsStandardAction": false,
+    "archiveIsStandardAction": true,
+    "lowLevelPrepareEventIsStructural": true,
+    "actionPreparationSelfCheckMustPrecedeStructuralPrepareWhenCorrectionMustRemainLegal": true,
+    "newLifecycleStateRequired": false,
+    "policyMutationRequired": false,
+    "productionMutationInReviseExplore": false
+  },
+  "exploreArtifactSha256": "498b5bcce8acb52367904f88f6908c13a2802965ed2873df1c1daa150dd26bd3",
+  "deliveryManifestSha256": "cbf3b74a1636ee3f64dd2fad519f6b3ba63b13f7ee615ca6f70de0213816c2af",
+  "stableTransfer": true,
+  "packageClass": "cumulative-action-handoff"
+}

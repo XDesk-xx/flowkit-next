@@ -57,7 +57,7 @@ Update as needed:
 - limitations/non-goals
 - Proposal direction
 
-Preserve useful historical proof as rationale when appropriate, but downgrade it from blocker if the corrected scope makes it non-target.
+Converge the canonical Explore in place. Replace/remove superseded claims instead of appending correction-history sections. Preserve prior proof/counterexamples only when they still materially explain the current invariant; rewrite that material as current rationale rather than as a revision diary. Use concise exact Run/finding references for deeper provenance when useful.
 
 ### 4. Re-run focused proof
 
@@ -79,7 +79,8 @@ The revised Explore should clearly state:
 
 Do not:
 
-- erase failed historical evidence;
+- erase failed evidence that still materially supports/explains the current invariant;
+- retain superseded conclusions merely to narrate revision chronology;
 - rewrite facts merely to obtain PASS;
 - expand scope to satisfy a finding;
 - turn every edge case into a new protocol;

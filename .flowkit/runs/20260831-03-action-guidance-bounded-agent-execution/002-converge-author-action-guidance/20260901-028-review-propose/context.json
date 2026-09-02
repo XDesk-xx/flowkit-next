@@ -1,0 +1,57 @@
+{
+  "runNumber": 28,
+  "kind": "external-orchestrator-review-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "converge-author-action-guidance",
+  "action": "review-propose",
+  "runId": "20260901-028-review-propose",
+  "inputRunId": "20260901-027-revise-propose",
+  "approvedExploreReviewRunId": "20260901-026-review-explore",
+  "checkpointClaim": "3af174bdfa2e8ebcf280e87a13565d03dec0b647",
+  "inputPackageSha256": "6a04acad3033e06a956f1a53ee38d0d23da53a0f972df92c0db980ddec9e1d08",
+  "reviewerInputPackageSha256": "8394cb9de79485c12c07978ce6b9f85f53d3d1e84063ead7c36b28b2b0f15759",
+  "independentValidation": {
+    "artifactHashes": "ALL MATCH",
+    "node": "22.23.2",
+    "openspec": "1.10.0",
+    "gitDiffCheck": "PASS",
+    "changeStrict": "PASS",
+    "allStrict": "16/16 PASS"
+  },
+  "findings": [
+    {
+      "id": "D03-RP-002",
+      "severity": "blocking",
+      "kind": "implementation-coverage-gap",
+      "summary": "Spec/design require projectOrdinal assignment/persistence at first actual Explore, but revised tasks do not reopen product Explore Guidance or independent bootstrap Explore HOW to perform that assignment."
+    }
+  ],
+  "acceptedBoundaries": {
+    "semanticChangeIdCanonicalIdentity": true,
+    "projectOrdinalSequenceFactOnly": true,
+    "plannedOnlyDoesNotReserve": true,
+    "currentChangeOrdinal": 21,
+    "plannedReviewerGuidanceOrdinal": null,
+    "nextCandidateOrdinal": 22,
+    "archiveConsumesOnly": true,
+    "archiveAllocatesOrRecomputes": false,
+    "newAllocationSubsystemAllowed": false
+  },
+  "complexityAssessment": {
+    "classification": "MINIMAL_REQUIRED",
+    "newCoreSubsystemRequired": false,
+    "requiredCorrection": "Guidance-only first-Explore assignment ownership + focused tests"
+  },
+  "scopeDriftAssessment": {
+    "newOutOfScopeCapability": false,
+    "newAuthority": false,
+    "newLifecycle": false,
+    "newControlPlane": false,
+    "scopeExpansion": false,
+    "implementationCoverageGap": true
+  },
+  "productionMutationByReviewer": false,
+  "authorArtifactMutationByReviewer": false
+}

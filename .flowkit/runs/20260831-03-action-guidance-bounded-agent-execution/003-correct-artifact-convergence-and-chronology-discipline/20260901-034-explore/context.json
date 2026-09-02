@@ -1,0 +1,65 @@
+{
+  "runNumber": 34,
+  "kind": "external-orchestrator-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "correct-artifact-convergence-and-chronology-discipline",
+  "action": "explore",
+  "runId": "20260901-034-explore",
+  "physicalRunPath": ".flowkit/runs/20260831-03-action-guidance-bounded-agent-execution/003-correct-artifact-convergence-and-chronology-discipline/20260901-034-explore",
+  "physicalRunGroupPrefix": "003",
+  "projectOrdinal": 22,
+  "changeStartSequence": 34,
+  "checkpointClaim": "9e551bbc50e47d063fdc8185b2f488bb76f0cfbd",
+  "ownerCompositionRevision": {
+    "ref": "owner:9857874a5e7f8f0afb941a58c85e36c002c6e82ea7d72d0d4b89965ad1e64e3e",
+    "decision": "revise-delivery-composition",
+    "sourceRef": "owner-input:2026-09-01:revise-d03-composition:correct-artifact-convergence-before-reviewer-guidance"
+  },
+  "ownerActivation": {
+    "ref": "owner:76d84aae74cad0d1a33d2d82bdc4a9afa94196495ef91c84a4e0667fdec6546e",
+    "decision": "activate-change",
+    "sourceRef": "owner-input:2026-09-01:activate-change:correct-artifact-convergence-and-chronology-discipline:proof-explore",
+    "scope": [
+      "explore"
+    ]
+  },
+  "skillsUsed": [
+    ".agents/skills/openspec-explore",
+    ".agents/skills/explore-proof-based"
+  ],
+  "sourceInputs": {
+    "orderingReviewerHandoffSha256": "0f92d9a16f11e8b965a2d7288a3ca75095a4471a31495fa730443c6f64f3f3b4"
+  },
+  "proofSummary": {
+    "archivedExploreOver20KB": 8,
+    "change2ExploreBytes": 23982,
+    "change2ExploreLines": 995,
+    "change2DesignBytes": 12001,
+    "change2ReviewerActionRuns": 9,
+    "change2ReviewerActionLines": 4191,
+    "change2AuthorActionRuns": 11,
+    "change2AuthorActionLines": 744,
+    "chronologyLeakageExamples": [
+      "Owner correction after invalid 022 archive candidate",
+      "15A Owner rollback / prior-candidate disposition",
+      "15B Reviewer 024 finding convergence"
+    ],
+    "chronologyAlreadyDurableInRuns": [
+      "20260901-022-archive",
+      "20260901-023-revise-explore",
+      "20260901-024-review-explore",
+      "20260901-025-revise-explore"
+    ],
+    "hardSizeGateRequired": false,
+    "newCoreCapabilityRequired": false,
+    "productReviewerGuidanceInScope": false,
+    "change3LiveValidation": true
+  },
+  "productionMutationInExplore": false,
+  "proposalArtifactsInExplore": false,
+  "exploreArtifactSha256": "32b694f1672b95cae59f7c6f580770d9126d9cfd46f161bac9db5e08cb082797",
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

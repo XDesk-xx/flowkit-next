@@ -1,0 +1,60 @@
+{
+  "runNumber": 11,
+  "kind": "external-orchestrator-revise-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "establish-action-guidance-execution-contract",
+  "action": "revise-apply",
+  "runId": "20260901-011-revise-apply",
+  "physicalRunPath": ".flowkit/runs/20260831-03-action-guidance-bounded-agent-execution/001-establish-action-guidance-execution-contract/20260901-011-revise-apply",
+  "inputRunId": "20260901-010-review-apply",
+  "approvedProposalReviewRunId": "20260831-008-review-propose",
+  "checkpointClaim": "9b32b98db8c989f85ac0e1e5894a91b7e04f05df",
+  "stableManagerBase": "4b45552b90ee327488bde3141c51c556e65a2e95",
+  "skillUsed": ".agents/skills/revise-apply",
+  "reviewerInputPackageSha256": "d90730feb99eab362cd04ff0877358a9056ee94c0fce47a914204aaae730ce68",
+  "resolvedFindings": [
+    "D03-RA-001"
+  ],
+  "mutationScope": {
+    "production": "NONE",
+    "tests": [
+      "tests/unit/domain/action-guidance-execution.test.ts"
+    ],
+    "proposal": "NONE",
+    "openspec": "NONE",
+    "deliveryManifest": "NONE"
+  },
+  "testArtifactSha256": "7eb47f6b2a2ca8f7e5553dd4ac13dee2c960e0fc8e1d0b2685608fdbeb1a2e6e",
+  "verification": {
+    "node": "22.23.2",
+    "targetedActionGuidanceTests": {
+      "pass": 7,
+      "fail": 0,
+      "skip": 0
+    },
+    "domain": {
+      "total": 155,
+      "pass": 155,
+      "fail": 0,
+      "skip": 0
+    },
+    "typecheck": "PASS",
+    "prettierRepository": "PASS",
+    "eslintRepository": "PASS",
+    "forbiddenTrackedArtifacts": "PASS",
+    "gitDiffCheck": "PASS",
+    "reviewer010ProductionFactsReused": true,
+    "unrelatedProductionChecksRerun": false
+  },
+  "permissionProof": {
+    "primaryDetachedHostWasRoot": true,
+    "linuxRootStrategy": "spawn exact Node child with uid/gid 65534 against root-owned 0600 canonical SKILL.md",
+    "realResolverUsed": true,
+    "resolverReturnedNull": true,
+    "productionChangesRequired": false
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

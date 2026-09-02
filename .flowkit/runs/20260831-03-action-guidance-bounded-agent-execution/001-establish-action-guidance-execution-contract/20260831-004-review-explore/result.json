@@ -1,0 +1,18 @@
+{
+  "runId": "20260831-004-review-explore",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "establish-action-guidance-execution-contract",
+  "action": "review-explore",
+  "role": "reviewer",
+  "status": "terminal",
+  "verdict": "CHANGES_REQUESTED",
+  "summary": "Owner self-hosting boundary is now correct and the technical Explore remains accepted. One handoff-integrity blocker remains: the 003 package mixes the current final explore.md hash with the prior 001 hash and falsely claims the bytes did not change.",
+  "nextBoundary": "revise-explore",
+  "blockingFindings": [
+    "D03-RE-003"
+  ],
+  "proposalAllowed": false,
+  "productionMutation": "NONE",
+  "reviewerMutation": "NONE",
+  "complexityAssessment": "MINIMAL; one metadata consistency fix only."
+}

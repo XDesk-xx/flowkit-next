@@ -1,0 +1,408 @@
+id: "20260831-03-action-guidance-bounded-agent-execution"
+createdAt: "2026-08-31"
+branch: "delivery/20260831-03-action-guidance-bounded-agent-execution"
+base: "main@4b45552b90ee327488bde3141c51c556e65a2e95"
+
+goal: "当 Flowkit 已经确定 exact current Action 后，让长期 Author / Reviewer AI 稳定获得与该 Action 可信绑定的 canonical HOW，完整执行当前 bounded Action，返回真实 Result，并在 terminal 后 STOP；同时保持 Action Guidance 只负责 HOW，不引入 Agent Runtime、Skill Registry、Skill Router 或 automatic workflow。"
+
+delivery:
+  state: completed
+  fullTestStatus: passed
+  finalizationStatus: completed
+  formalVerificationCandidate: "working-tree-sha256:15835349415b5332dbebfb1c43f56aa3a3c2185f18abf242e29ec1a22a59ea6c"
+  finalizedAt: "2026-09-02"
+
+reference:
+  kind: "formal-implementation-reference"
+  artifact: "flowkit-next-d03-action-guidance-bounded-agent-execution-formal-reference(1).md"
+  sha256: "284f0df1006fb8e0d178959d992572e804ceb73a8ed345e321b9a7e096883f24"
+
+scope:
+  included:
+    - "trusted exact StandardActionId → canonical Action Guidance identity binding"
+    - "content-bound Guidance identity frozen into exact ActionPackage"
+    - "reuse existing ActionPackageRef → ApplicableCheckExecutionInput.executionInputRef identity chain"
+    - "canonical Action Guidance truth under skills/actions/** with StandardActionId-aligned top-level identities"
+    - "Author guidance convergence for explore/revise/propose/apply/archive HOW"
+    - "Reviewer guidance convergence for review-explore/review-propose/review-apply HOW"
+    - "Author Mechanical Preflight as an internal apply/revise-apply capability unless independent contract proof later justifies a separate Change"
+    - "Run concision, semantic invariant/literal discipline, bounded handoff/continuation proof and temporary bridge cleanup"
+    - "canonical OpenSpec artifact convergence to current truth while Run/Git retain execution and repository chronology"
+  excluded:
+    - "Agent Runtime / Agent Registry / Provider Registry"
+    - "Skill Registry / Guidance Registry / Skill Router / Skill Planner"
+    - "automatic Skill discovery / ranking / internal method routing"
+    - "automatic next Action / Role switch / Author-Reviewer loop / Owner decision"
+    - "new Run lifecycle state / new Standard Action for Mechanical Preflight"
+    - "Guidance cache DB / second execution identity subsystem / payload registry / continuation database"
+    - "Full Test correction model, which remains D04 scope"
+    - "automatic Git authority / promotion lifecycle"
+
+architecture:
+  impact: true
+  archifyPlan: "required"
+  startStatus: "materialized"
+  finalStatus: "materialized"
+  currentRef: "architecture/20260831-03-action-guidance-bounded-agent-execution/json/current.architecture.json"
+  plannedRef: "architecture/20260831-03-action-guidance-bounded-agent-execution/json/planned.architecture.json"
+  actualRef: "architecture/20260831-03-action-guidance-bounded-agent-execution/json/actual.architecture.json"
+  compareRefs:
+    - "architecture/20260831-03-action-guidance-bounded-agent-execution/json/current-to-planned.compare.json"
+    - "architecture/20260831-03-action-guidance-bounded-agent-execution/json/current-to-actual.compare.json"
+    - "architecture/20260831-03-action-guidance-bounded-agent-execution/json/planned-to-actual.compare.json"
+  htmlPolicy: "disposable-not-retained-in-git"
+
+changes:
+  - id: "establish-action-guidance-execution-contract"
+    group: "action-guidance"
+    goal: "把 already-decided exact StandardActionId 与 trusted、canonical、content-bound Action Guidance identity 绑定进同一个 exact ActionPackage，并自然复用现有 ActionPackageRef / executionInputRef identity chain。"
+    required: true
+    dependsOn: []
+    state: completed
+    architectureImpact: true
+    outputs:
+      - "trusted Action → canonical Guidance binding contract"
+      - "Guidance identity inside exact ActionPackage"
+      - "existing ActionPackageRef / executionInputRef identity reuse"
+
+  - id: "converge-author-action-guidance"
+    projectOrdinal: 21
+    group: "action-guidance"
+    goal: "把现有 bootstrap Author execution knowledge 收敛为 StandardActionId-aligned canonical skills/actions HOW，并吸收 proof/convergence/preflight/handoff/Run/literal/STOP discipline。"
+    required: true
+    dependsOn: []
+    state: completed
+    architectureImpact: true
+    outputs:
+      - "canonical Author Action Guidance entries"
+      - "single canonical HOW truth for Author Actions"
+      - "temporary Run-guidance bridge cleanup after formal takeover"
+
+  - id: "correct-artifact-convergence-and-chronology-discipline"
+    projectOrdinal: 22
+    group: "action-guidance"
+    goal: "纠正多轮 review/revise 中 canonical OpenSpec artifact 累积执行 chronology 与 superseded reasoning 的问题，冻结 current converged truth / Run chronology / Git history 的最小 ownership 与 convergence-in-place HOW，为 Reviewer Guidance convergence 提供稳定输入边界。"
+    required: true
+    dependsOn:
+      - "converge-author-action-guidance"
+    state: completed
+    architectureImpact: false
+    outputs:
+      - "canonical artifact current-truth convergence discipline"
+      - "Run chronology / Git history separation discipline"
+      - "minimum independent bootstrap parity for D03/D04 without product self-hosting"
+
+  - id: "normalize-historical-archive-project-ordinals"
+    projectOrdinal: 23
+    group: "action-guidance"
+    goal: "把已有 durable project-wide ordinal lineage 但仍保留 date-only archive path 的历史 Change 收敛为 projectOrdinal-bearing archive naming，并修正把 live Delivery execution state 错写成 durable ordinal unit invariant 的测试耦合；不改变 Core ordinal semantics。"
+    required: true
+    dependsOn:
+      - "correct-artifact-convergence-and-chronology-discipline"
+    state: completed
+    architectureImpact: false
+    outputs:
+      - "historical archive paths normalized to proven persisted projectOrdinal lineage"
+      - "durable archive/Run references converged where path identity changed"
+      - "ordinal tests prove stable semantics instead of transient Delivery state"
+
+  - id: "converge-reviewer-action-guidance"
+    projectOrdinal: 24
+    group: "action-guidance"
+    goal: "把 Reviewer HOW 收敛为 review-explore/review-propose/review-apply 三个稳定 canonical Action Guidance，保持 independent、fact-based、mutation-free review 与 complexity/minimality explanation。"
+    required: true
+    dependsOn:
+      - "normalize-historical-archive-project-ordinals"
+    state: completed
+    architectureImpact: true
+    outputs:
+      - "canonical Reviewer Action Guidance entries"
+      - "independent mutation-free Reviewer HOW"
+      - "stable review-step and complexity explanation discipline"
+
+  - id: "correct-archive-handoff-and-cross-platform-verification-discipline"
+    projectOrdinal: 25
+    group: "action-guidance"
+    goal: "收敛 D03 finalization 前已 proof 的 archive Action-preparation readiness/self-check 与 correction boundary、cross-platform verification mechanics、uncommitted continuation completeness、canonical Author spec current-truth cleanup，并吸收真实执行暴露的通用 proof-Explore concept ownership / mutation-failure ordering HOW；prepare 不是 Standard Action，不新增 lifecycle/authority/product capability。"
+    required: true
+    dependsOn:
+      - "converge-reviewer-action-guidance"
+    state: completed
+    architectureImpact: false
+    outputs:
+      - "package-bound atomic archive Action preparation/readiness: exact Guidance is frozen into ActionPackage before read-only self-check; isolated canonical-convergence dry-run plus post-convergence verification must pass before real archive mutation; blocked preparation does not expose staged prepared state and preserves correction-capable prior boundary"
+      - "Windows-capable proof mechanics for the two existing platform-skipped semantic contracts"
+      - "bounded continuation completeness for materially required uncommitted ancestor state"
+      - "canonical Author spec converged away from superseded D03 phase literals"
+      - "generic proof-Explore concept-ownership and mutation/failure-ordering discipline converged in bootstrap/product Author HOW"
+
+proofConcerns:
+  - id: "trusted-action-guidance-identity-binding"
+    status: "proof-first"
+    statement: "Change 1 must prove deterministic exact Action → canonical Guidance binding, exact content identity, wrong-Action fail-closed behavior, and natural inclusion in existing ActionPackageRef / executionInputRef without a second identity subsystem."
+
+  - id: "author-mechanical-preflight-granularity"
+    status: "required-capability-independent-change-proof-gated"
+    statement: "Mechanical Preflight is required inside Author apply/revise-apply HOW; only independent machine-readable/domain/config/acceptance proof may justify adding a separate Change by later explicit Owner composition revision."
+
+  - id: "agent-guidance-compatibility"
+    status: "contingency-not-in-initial-composition"
+    statement: "Direct canonical Guidance consumption is tried first. Only a recorded real failure plus explicit Owner composition revision may add establish-agent-guidance-compatibility."
+
+  - id: "artifact-convergence-and-chronology"
+    status: "proof-first-corrective"
+    statement: "Prove whether canonical Explore/Design artifacts are retaining superseded reasoning or review chronology beyond current truth, then correct only Action Guidance/bootstrap HOW needed for convergence-in-place; file size remains diagnostic rather than a hard correctness Gate."
+
+  - id: "historical-archive-project-ordinal-normalization"
+    status: "proof-first-corrective"
+    statement: "Prove the exact historical projectOrdinal mapping for remaining date-only archives from existing durable history, normalize only paths/references supported by that proof, and replace lifecycle-transient ordinal test literals with stable semantic fixtures without changing Core ordinal semantics."
+
+memoInputs:
+  - memoId: "future-run-history-concision-and-repository-growth"
+    disposition: "absorb-into-d03-author-reviewer-guidance-and-cleanup-temporary-bridge"
+    requiredOutcome: "retain the stable three-file Run surface; reduce durable narrative/evidence duplication; delete temporary bridge only after canonical Guidance takeover"
+
+  - memoId: "future-semantic-invariant-and-literal-discipline"
+    disposition: "absorb-into-d03-author-reviewer-how"
+    requiredOutcome: "prefer semantic invariants over incidental current literals; no magic-number scanner/Gate/platform"
+
+  - memoId: "future-uncommitted-change-continuation-integrity"
+    disposition: "proof-and-record-bounded-guidance-packaging-disposition"
+    requiredOutcome: "resolve in D03 if Guidance/packaging is sufficient; otherwise carry only the bounded Core continuity question to D04"
+
+  - memoId: "future-full-test-correction-model"
+    disposition: "excluded-carry-to-d04"
+    requiredOutcome: "no D03 Verification finding/correction subsystem"
+
+historicalContinuity:
+  - memoId: "structural-dependency-023-historical-continuity-gap"
+    state: "dismissed"
+    rule: "do-not-reconstruct-or-fabricate-missing-023-bytes; preserve existing downstream Reviewer evidence only"
+
+recommendedOrder:
+  - "establish-action-guidance-execution-contract"
+  - "converge-author-action-guidance"
+  - "correct-artifact-convergence-and-chronology-discipline"
+  - "normalize-historical-archive-project-ordinals"
+  - "converge-reviewer-action-guidance"
+  - "correct-archive-handoff-and-cross-platform-verification-discipline"
+
+verification:
+  change:
+    requireApplicableChecks: true
+  fullTest:
+    requiresOwnerAuthorization: true
+    execution:
+      state: passed
+      verifiedCandidate: "working-tree-sha256:15835349415b5332dbebfb1c43f56aa3a3c2185f18abf242e29ec1a22a59ea6c"
+      verifiedBaseHead: "97966e0fd8845e5e2420c248cd926c6b545b5f0e"
+      verifiedCandidateArchiveSha256: "5fe2b19b8f589a97554b193b4e7a8bc94bbff20ed5852d6e27760328afb82f6c"
+      verificationEvidenceSha256: "9c5c7ced6f53724f7a920d55bddf75628a099c3651f88c03cce1288c461b09b1"
+      verifiedAt: "2026-09-02"
+      resultAuthority: "verification"
+      reason: "Owner explicitly authorized Formal Full Test after D03 Change 025 archive and Owner-controlled Memo convergence. The frozen six-gate Delivery-level contract passed on one exact tracked working-tree candidate with identical pre/post tracked fingerprint. The supplementary native-Windows chmod fixture observation is recorded as a non-blocking future Memo and is not part of the frozen D03 Linux-x64 Formal Full Test acceptance contract."
+      environment:
+        platform: "linux-x64"
+        nodeCompatibility: ">=22.20.0"
+        deterministicNodeFixture: "22.23.2"
+        nodeRuntimeArtifactSha256: "29331fa22523b7fce59965e46627ecbc87019ac74e0e6abf9f61284e0760f755"
+        packageManagerFixture: "pnpm@11.22.0"
+        dependencies: "restored from the accepted detached dependency archive; no install/update/download performed"
+        pnpmScriptDependencyCheck: "pnpm_config_verify_deps_before_run=false"
+        dependencyArchiveSha256: "d92a903673a6eb5017212d5dc8c563cd0de7cc5147c7ae3496456ce856932321"
+        flowkitHome: "explicit"
+        openspecRuntime: "1.10.0"
+        openspecRuntimeArtifactSha256: "4fb0b870d9523daebda8becaf4202397da342bc39dde3961d8dd4392c72e2b68"
+        archifyRuntime: "2.15.0"
+        archifyRuntimeArtifactSha256: "156f0d3cd6ba11706344683e3d94e6b6b44b5732bd3c8c81b75c267c3f5d04c4"
+        fallback: "no install/update/download/network/PATH/global managed-tool fallback"
+      gates:
+        - "pnpm typecheck"
+        - "pnpm format:check"
+        - "pnpm build"
+        - "pnpm test:domain — 178/178 PASS, 0 skipped"
+        - "exact managed OpenSpec 1.10.0: validate --all --strict — 17/17 PASS"
+        - "pnpm test:acceptance — 4/4 PASS, 0 skipped"
+    plan:
+      - "Formal Full Test remains the frozen six-gate Delivery-level contract inherited from D01/D02."
+      - "The verified candidate is the exact tracked working-tree snapshot after Owner-authorized Memo convergence and before verification-result metadata is recorded."
+      - "Verification-result metadata does not authorize product/canonical correction, Actual Architecture, Delivery Final, Git checkpoint, commit, push, or merge."
+
+acceptance:
+  - "exact current Action is supplied by Flowkit and is not guessed from Run history"
+  - "exact canonical Guidance identity is trusted, Action-aligned, content-bound and frozen into ActionPackage"
+  - "wrong-Action Guidance substitution fails closed"
+  - "existing ActionPackageRef and ApplicableCheck executionInputRef naturally include Guidance identity"
+  - "long-running Author and Reviewer can consume exact bounded HOW without requiring a new AI session per Action"
+  - "Action Guidance never decides next Action, Role, Owner authority or Verification truth"
+  - "Author revise remains Author mutation; Reviewer remains independent and mutation-free"
+  - "canonical Action Guidance has one truth location under skills/actions/**"
+  - "method evolution remains internal to stable Action Skill identities and is recorded by OpenSpec/Git history"
+  - "Mechanical Preflight reuses D02 quality facts and does not become a new lifecycle/Verification surface"
+  - "Run concision / literal discipline / continuation proof are absorbed without new Registry/Platform"
+  - "one Action → one real Result → terminal → STOP"
+  - "no Registry / Router / Runtime / automatic loop / second identity subsystem is introduced"
+
+ownerDecisions:
+  - ref: "owner:ce73d6c7e83a0905c2edcf7e41a1150339c61e3ec2efd7a7b1e4e808b3c85d03"
+    decision: "create-delivery"
+    deliveryId: "20260831-03-action-guidance-bounded-agent-execution"
+    sourceRef: "owner-input:2026-08-31:authorize-delivery-start:20260831-03-action-guidance-bounded-agent-execution:base-4b45552b90ee"
+    scope:
+      - "delivery-start"
+  - ref: "owner:d3156f52525224087fefb4d50fb0177eb11a55a4bde06476f1d9d189415266c4"
+    decision: "activate-change"
+    deliveryId: "20260831-03-action-guidance-bounded-agent-execution"
+    changeId: "establish-action-guidance-execution-contract"
+    sourceRef: "owner-input:2026-08-31:activate-change:establish-action-guidance-execution-contract:proof-explore:agents-bootstrap-boundary-confirmed"
+    scope:
+      - "explore"
+  - ref: "owner:f9f76a4180b5a1392c2b9601ec0ecc9fd7f122487aa40001f91e3e9d3fb6c1a8"
+    decision: "activate-change"
+    deliveryId: "20260831-03-action-guidance-bounded-agent-execution"
+    changeId: "converge-author-action-guidance"
+    sourceRef: "owner-input:2026-09-01:activate-change:converge-author-action-guidance:proof-explore"
+    scope:
+      - "explore"
+  - ref: "owner:6289d2fc116a89a67cfcdbdcea91185b33429bb7f0068312dcc045f4c073cc90"
+    decision: "refine-change-scope"
+    deliveryId: "20260831-03-action-guidance-bounded-agent-execution"
+    changeId: "converge-author-action-guidance"
+    sourceRef: "owner-input:2026-09-01:invalidate-022-archive:return-change2-to-revise-explore:project-wide-monotonic-change-ordinal"
+    scope:
+      - "invalidate-022-archive-materialization"
+      - "restore-active-change"
+      - "revise-explore"
+  - ref: "owner:9857874a5e7f8f0afb941a58c85e36c002c6e82ea7d72d0d4b89965ad1e64e3e"
+    decision: "revise-delivery-composition"
+    deliveryId: "20260831-03-action-guidance-bounded-agent-execution"
+    changeId: "correct-artifact-convergence-and-chronology-discipline"
+    sourceRef: "owner-input:2026-09-01:revise-d03-composition:correct-artifact-convergence-before-reviewer-guidance"
+    scope:
+      - "insert-corrective-before-reviewer-guidance"
+      - "preserve-reviewer-guidance-as-planned"
+  - ref: "owner:76d84aae74cad0d1a33d2d82bdc4a9afa94196495ef91c84a4e0667fdec6546e"
+    decision: "activate-change"
+    deliveryId: "20260831-03-action-guidance-bounded-agent-execution"
+    changeId: "correct-artifact-convergence-and-chronology-discipline"
+    sourceRef: "owner-input:2026-09-01:activate-change:correct-artifact-convergence-and-chronology-discipline:proof-explore"
+    scope:
+      - "explore"
+  - ref: "owner:e885547ba578eb187e176cf50e50473a08fc6b83f15fe06643ec75585534280b"
+    decision: "revise-delivery-composition"
+    deliveryId: "20260831-03-action-guidance-bounded-agent-execution"
+    changeId: "normalize-historical-archive-project-ordinals"
+    sourceRef: "owner-input:2026-09-01:revise-d03-composition:normalize-historical-archive-project-ordinals-before-reviewer-guidance"
+    scope:
+      - "insert-normalization-before-reviewer-guidance"
+      - "preserve-reviewer-guidance-as-planned"
+
+  - ref: "owner:afbc633622eb88b63f4c2763079ce4b7195d42e82da9950b17159ffa5ac05fd8"
+    decision: "activate-change"
+    deliveryId: "20260831-03-action-guidance-bounded-agent-execution"
+    changeId: "normalize-historical-archive-project-ordinals"
+    sourceRef: "owner-input:2026-09-01:activate-change:normalize-historical-archive-project-ordinals:proof-explore"
+    scope:
+      - "explore"
+
+  - ref: "owner:2bb5c27accaad8fd2f85f2bae2bebd0a75f4b5c1e7f43c95d034e3af9c28b916"
+    decision: "activate-change"
+    deliveryId: "20260831-03-action-guidance-bounded-agent-execution"
+    changeId: "converge-reviewer-action-guidance"
+    sourceRef: "owner-input:2026-09-01:activate-change:converge-reviewer-action-guidance:proof-explore"
+    scope:
+      - "explore"
+  - ref: "owner:08801e4472a68a3ba751541728e35101b8145ed91345e5794f7e599ab26ae5a9"
+    decision: "activate-change"
+    deliveryId: "20260831-03-action-guidance-bounded-agent-execution"
+    changeId: "correct-archive-handoff-and-cross-platform-verification-discipline"
+    sourceRef: "owner-input:2026-09-01:activate-change:correct-archive-handoff-and-cross-platform-verification-discipline:proof-explore:reviewer-revise-minor-absorbed"
+    scope:
+      - "explore"
+  - ref: "owner:dbac2d88345ff0202da9611ab1ef18b0a012d4e3b3ff40419176ff30fd3cb7b5"
+    decision: "revise-action"
+    deliveryId: "20260831-03-action-guidance-bounded-agent-execution"
+    changeId: "correct-archive-handoff-and-cross-platform-verification-discipline"
+    sourceRef: "owner-input:2026-09-01:revise-action:correct-archive-handoff-and-cross-platform-verification-discipline:revise-explore:prepare-is-operation-not-action-and-must-self-check"
+    scope:
+      - "revise-explore"
+  - ref: "owner:9958a09d1ab28482b94ada3641af795901bee75d94d0a492e9ae004725bede04"
+    decision: "revise-action"
+    deliveryId: "20260831-03-action-guidance-bounded-agent-execution"
+    changeId: "correct-archive-handoff-and-cross-platform-verification-discipline"
+    sourceRef: "owner-input:2026-09-01:revise-action:correct-archive-handoff-and-cross-platform-verification-discipline:revise-explore:proof-explore-method-concept-ownership-and-mutation-ordering"
+    scope:
+      - "revise-explore"
+      - "author-guidance-how-scope-expansion"
+  - ref: "owner:2c416598907010a080c81e3dfd80855a26b9a938fba0b75dd24f58ba26e8eb6c"
+    decision: "revise-action"
+    deliveryId: "20260831-03-action-guidance-bounded-agent-execution"
+    changeId: "correct-archive-handoff-and-cross-platform-verification-discipline"
+    sourceRef: "owner-input:2026-09-02:revise-action:correct-archive-handoff-and-cross-platform-verification-discipline:revise-explore:reviewer-findings-R063-001-R063-002"
+    scope:
+      - "revise-explore"
+      - "R063-001"
+      - "R063-002"
+  - ref: "owner:6b627c73bd06f8378333fe5a24f1eac16266d0692cb745996c653b3c5d94573f"
+    decision: "revise-action"
+    deliveryId: "20260831-03-action-guidance-bounded-agent-execution"
+    changeId: "correct-archive-handoff-and-cross-platform-verification-discipline"
+    sourceRef: "owner-input:2026-09-02:revise-action:correct-archive-handoff-and-cross-platform-verification-discipline:revise-explore:windows-proof-must-use-linux-semantic-simulation"
+    scope:
+      - "revise-explore"
+      - "cross-platform-proof-mechanics"
+      - "linux-semantic-simulation"
+  - ref: "owner:555918ecfbf96e9e259d162bcc237f1f6fe4c877e1a43c897e20d15dab33fa39"
+    decision: "revise-action"
+    deliveryId: "20260831-03-action-guidance-bounded-agent-execution"
+    changeId: "correct-archive-handoff-and-cross-platform-verification-discipline"
+    sourceRef: "owner-input:2026-09-02:revise-action:correct-archive-handoff-and-cross-platform-verification-discipline:revise-apply:stale-reviewer-test-and-post-convergence-archive-verification"
+    scope:
+      - "revise-apply"
+      - "stale-reviewer-action-guidance-test"
+      - "archive-post-convergence-verification"
+  - ref: "owner:c9b5438a353f1811ddb908b19a00e539e65b49e12712470cc2b5875c4e5cd063"
+    decision: "finalize-delivery"
+    deliveryId: "20260831-03-action-guidance-bounded-agent-execution"
+    sourceRef: "owner-input:2026-09-02:authorize-delivery-finalize:complete-source-zip-and-ai-handoff"
+    scope:
+      - "delivery-final"
+      - "full-source-handoff"
+      - "ai-handoff"
+
+finalization:
+  state: completed
+  formalFullTest: "PASS"
+  verifiedCandidate: "working-tree-sha256:15835349415b5332dbebfb1c43f56aa3a3c2185f18abf242e29ec1a22a59ea6c"
+  verifiedBaseHead: "97966e0fd8845e5e2420c248cd926c6b545b5f0e"
+  actualArchitecture: "completed"
+  actualArchitectureSha256: "d539f764bd195eb05a5a220b050b35fe64138a8bb3827b29f91b6b5a2cc7f193"
+  currentToActualCompareSha256: "3e9f5613b86d5a0fa934af82d32c53e579bdc02b8e815e6f361d49b765ba3d3f"
+  plannedToActualCompareSha256: "8e436679a5993d732b349d7be8734f882d8a2d785c4fbce436d1840b5b10ccde"
+  canonicalSystemDiagramConvergence:
+    dataFlow:
+      state: "materialized"
+      ref: "architecture/system/data-flow.json"
+      sha256: "2da0b569d536c36d658bea3132b297c73b489121715484870e7a21b12c23dbbf"
+    workflow:
+      state: "not-materialized"
+      reason: "No repository-scoped canonical workflow.json existed at the D03 boundary, and D03 introduced no accepted operating-workflow semantic requiring first materialization during this Delivery."
+    lifecycle:
+      state: "not-materialized"
+      reason: "No repository-scoped canonical lifecycle.json existed at the D03 boundary, and D03 introduced no Action/state/transition semantic requiring first materialization during this Delivery."
+    sequence: "supporting-only-not-retained"
+  ownerActualConfirmation: "confirmed-by-owner-before-delivery-final"
+  repositoryGuidanceConvergence: "completed"
+  productMutationAfterFormalVerification: false
+  canonicalOpenSpecMutationAfterFormalVerification: false
+  packageLockMutationAfterFormalVerification: false
+  historicalRunRewrite: false
+  finalizationDerivedArchitectureMutationAfterFormalVerification: true
+  ownerAuthorizedMemoMutationAfterFormalVerification: true
+  ownerAuthorizedMemoMutationScope:
+    - "future-delivery-final-full-source-repository-integration-handoff"
+  openMemoPolicy: "preserved-non-blocking-for-d04"
+  generatedHtmlRetainedInGit: false
+  gitCheckpoint: "pending-owner-authorized-local-delivery-commit"
+  fullSourceHandoff: "required-for-local-ai-repository-integration; payload-remains-audit-provenance-only"
+  deterministicCommitMessage: "delivery(20260831-03-action-guidance-bounded-agent-execution): finalize action guidance bounded agent execution"

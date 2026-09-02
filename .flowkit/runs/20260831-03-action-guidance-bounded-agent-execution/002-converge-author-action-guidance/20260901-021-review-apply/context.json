@@ -1,0 +1,71 @@
+{
+  "runNumber": 21,
+  "kind": "external-orchestrator-review-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "converge-author-action-guidance",
+  "action": "review-apply",
+  "runId": "20260901-021-review-apply",
+  "inputRunId": "20260901-020-apply",
+  "reviewChainStartRunId": "20260901-014-explore",
+  "approvedExploreReviewRunId": "20260901-015-review-explore",
+  "approvedProposalReviewRunId": "20260901-019-review-propose",
+  "checkpointClaim": "3af174bdfa2e8ebcf280e87a13565d03dec0b647",
+  "inputPackageSha256": "75d867fab5996728433e81cfd7cc984cb4b1a599a207d81dbf851e148685ba1a",
+  "reviewerInputPackageSha256": "5dccc2252a1f54d639e678c7340c60fb4356d1f6f992382fa3ab952950b83451",
+  "artifactIdentityVerification": {
+    "planningArtifacts": "ALL MATCH",
+    "implementationArtifacts": "ALL MATCH"
+  },
+  "independentVerification": {
+    "node": "22.23.2",
+    "guidanceFocused": "13/13 PASS; 0 FAIL; 0 SKIP",
+    "domain": "161/161 PASS; 0 FAIL; 0 SKIP",
+    "acceptance": "4/4 PASS; 0 FAIL; 0 SKIP",
+    "build": "PASS",
+    "typecheck": "PASS",
+    "prettier": "PASS",
+    "eslint": "PASS",
+    "forbiddenTrackedArtifacts": "PASS",
+    "dependencyHealth": "PASS; 58 modules; 213 dependencies; 0 violations",
+    "repositoryEntropy": "PASS; 25/25 production modules reachable",
+    "gitDiffCheck": "PASS",
+    "openspecChangeStrict": "PASS",
+    "openspecAllStrict": "16/16 PASS",
+    "detachedDependencyExecution": "direct supplied node_modules binaries; no dependency re-resolution"
+  },
+  "acceptedBoundaries": {
+    "sevenAuthorGuidanceEntries": true,
+    "singleFileIdentityPreserved": true,
+    "mechanicalPreflightInternalOnly": true,
+    "archiveLifecycleCorrect": true,
+    "manifestOrdinalHowOnly": true,
+    "bootstrapArchiveWrapperIndependent": true,
+    "temporaryRunBridgePreserved": true,
+    "historicalArchivesPreserved": true,
+    "reviewerGuidanceNotPulledForward": true,
+    "selfHostingTakeover": false
+  },
+  "complexityAssessment": {
+    "classification": "MINIMAL_GUIDANCE_ONLY",
+    "newCoreSubsystem": false,
+    "newLifecycle": false,
+    "newStandardAction": false,
+    "newRegistryRouterRuntime": false
+  },
+  "scopeDriftAssessment": {
+    "newOutOfScopeCapability": false,
+    "newAuthority": false,
+    "newLifecycleSemantics": false,
+    "newCoreContract": false,
+    "reviewerGuidancePulledForward": false,
+    "selfHostingTakeover": false,
+    "historicalMigration": false,
+    "dependencyExpansion": false,
+    "summary": "NONE"
+  },
+  "findings": [],
+  "productionMutationByReviewer": false,
+  "authorArtifactMutationByReviewer": false
+}

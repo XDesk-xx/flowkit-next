@@ -1,0 +1,83 @@
+{
+  "runNumber": 59,
+  "kind": "external-orchestrator-review-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "converge-reviewer-action-guidance",
+  "action": "review-apply",
+  "runId": "20260901-059-review-apply",
+  "inputRunId": "20260901-058-revise-apply",
+  "physicalRunPath": ".flowkit/runs/20260831-03-action-guidance-bounded-agent-execution/005-converge-reviewer-action-guidance/20260901-059-review-apply",
+  "physicalRunGroupPrefix": "005",
+  "projectOrdinal": 24,
+  "changeStartSequence": 52,
+  "checkpointClaim": "10ae02c75ef72c7f410f0933ce952351b0486ea6",
+  "inputAuthorPackageSha256": "f18028d7fa527eb2c14cdf45fde970110166c5e7cac5b3e22425820fcb13e260",
+  "reviewChain": [
+    "20260901-052-explore",
+    "20260901-053-review-explore",
+    "20260901-054-propose",
+    "20260901-055-review-propose",
+    "20260901-056-apply",
+    "20260901-057-review-apply",
+    "20260901-058-revise-apply"
+  ],
+  "findingConvergence": {
+    "PREARCHIVE-057-001": {
+      "status": "RESOLVED",
+      "surface": ".agents/skills/review-explore/SKILL.md",
+      "fact": "actors restored in the bootstrap Owner/input-boundary check"
+    },
+    "PREARCHIVE-057-002": {
+      "status": "RESOLVED",
+      "surfaces": [
+        "skills/actions/review-propose/SKILL.md",
+        ".agents/skills/review-propose/SKILL.md"
+      ],
+      "fact": "materially relevant persistence/migration impact review restored"
+    }
+  },
+  "revisionMinimality": {
+    "guidanceSentenceChangesRelativeTo056": 3,
+    "focusedRegressionFileChanged": "tests/unit/domain/reviewer-action-guidance.test.ts",
+    "other056ImplementationSemanticsChanged": false,
+    "proposalSpecDesignTasksChanged": false,
+    "prior057RunExactBytesPreserved": true,
+    "semanticCompressionStrategyRetained": true
+  },
+  "verification": {
+    "node": "22.23.2",
+    "detachedDependencySnapshotReused": true,
+    "packageManagerLauncherUsedByReviewer": false,
+    "reviewerGuidanceFocused": "5/5 PASS",
+    "authorGuidanceFocused": "13/13 PASS",
+    "guidanceResolverFocused": "7/7 PASS",
+    "domain": "173/173 PASS",
+    "typecheck": "PASS",
+    "build": "PASS",
+    "eslint": "PASS",
+    "prettier": "PASS",
+    "forbiddenTrackedArtifacts": "PASS",
+    "dependencyHealth": "59 modules / 219 dependencies / 0 violations",
+    "repositoryEntropy": "25/25 production modules reachable",
+    "openSpecChangeStrict": "PASS",
+    "openSpecAllStrict": "17/17 PASS",
+    "gitDiffCheck": "PASS"
+  },
+  "scopeAssessment": {
+    "coreMutation": false,
+    "dependencyMutation": false,
+    "memoStateMutation": false,
+    "architectureMutation": false,
+    "temporaryBridgeRestored": false,
+    "lifecycleMutation": false,
+    "selfHostingMigration": false,
+    "transitiveGuidanceIdentity": false,
+    "newControlPlane": false,
+    "scopeDrift": "NONE",
+    "complexityGrowth": "NONE_BEYOND_RESTORING_TWO_EXISTING_REVIEW_OBLIGATIONS"
+  },
+  "stableTransfer": true,
+  "packageClass": "cumulative-review-handoff-with-explicit-removals"
+}

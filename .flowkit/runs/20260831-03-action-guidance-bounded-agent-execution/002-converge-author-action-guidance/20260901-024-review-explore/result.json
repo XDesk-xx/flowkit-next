@@ -1,0 +1,19 @@
+{
+  "runId": "20260901-024-review-explore",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "converge-author-action-guidance",
+  "action": "review-explore",
+  "role": "reviewer",
+  "status": "terminal",
+  "verdict": "CHANGES_REQUESTED",
+  "summary": "023 correctly moves archive numbering to a project-wide monotonic sequence and keeps Change 2 at 021, but it assigns identity too early by treating Delivery planning slots as a permanent ordinal ledger. A Change should receive/freeze its project ordinal only when it actually enters Explore; explored-then-cancelled retains the number, planned-only consumes none, and Archive later reuses the already-assigned number. D03 Change 3 is still planned with no Explore and therefore does not yet own 022.",
+  "nextBoundary": "revise-explore",
+  "blockingFindings": [
+    "D03-RE-004"
+  ],
+  "proposalAllowed": false,
+  "productionMutation": "NONE",
+  "reviewerMutation": "NONE",
+  "complexityAssessment": "REDUCE planning-slot identity semantics; no new control plane.",
+  "scopeDriftAssessment": "BOUNDED ordinal semantic drift only."
+}

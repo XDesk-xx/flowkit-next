@@ -1,0 +1,40 @@
+{
+  "runNumber": 71,
+  "kind": "external-orchestrator-revise-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "correct-archive-handoff-and-cross-platform-verification-discipline",
+  "action": "revise-explore",
+  "runId": "20260902-071-revise-explore",
+  "physicalRunPath": ".flowkit/runs/20260831-03-action-guidance-bounded-agent-execution/006-correct-archive-handoff-and-cross-platform-verification-discipline/20260902-071-revise-explore",
+  "physicalRunGroupPrefix": "006",
+  "projectOrdinal": 25,
+  "changeStartSequence": 61,
+  "checkpointClaim": "39ef634bc7680af0494d4d918adf58e338601a83",
+  "trigger": "Owner correction: Windows proof mechanics must be simulated in the detached Linux environment rather than requiring native Windows execution",
+  "skillsUsed": [
+    ".agents/skills/revise-explore",
+    ".agents/skills/explore-proof-based",
+    "detached-repository-execution"
+  ],
+  "proofSummary": {
+    "nativeWindowsRuntimeRequired": false,
+    "resolverHasPlatformSpecificProductionBranch": false,
+    "windowsUnreadableGuidanceSimulation": "real Linux low-privilege EACCES against real resolveActionGuidanceRef",
+    "windowsUnreadableGuidanceSimulationResult": "PASS_NO_SKIP",
+    "windowsGitModeSimulation": "Linux core.filemode=false + git update-index --chmod=-x/+x against real candidate derivation",
+    "windowsGitModeSimulationResult": "100644_to_100755_same_bytes_candidateRef_changed",
+    "thirdSymlinkHostCapabilitySkipScope": "UNCHANGED_OUT_OF_SCOPE",
+    "fullDomainTests": "173/173 PASS",
+    "openSpecChangeStrict": "PASS",
+    "openSpecAllStrict": "18/18 PASS",
+    "gitDiffCheck": "PASS",
+    "productionMutationInReviseExplore": false
+  },
+  "reviewProposeInputResultSha256": "caa39af8b51d54a91f396f0d9825f96ec9840a2efdb32a00031e1a22dc6f9e97",
+  "exploreArtifactSha256": "417aa772a356005869339b3327820a1e738ff5be980f4cc3be2696d3d34e6a81",
+  "deliveryManifestSha256": "f959325ec76a185e0a483aee67e14dc665befe313295f877eae3d48dcb046d97",
+  "stableTransfer": true,
+  "packageClass": "cumulative-action-handoff"
+}

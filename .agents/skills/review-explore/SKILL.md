@@ -1,104 +1,60 @@
 ---
 name: review-explore
-description: Review Flowkit Explore evidence for truth, scope discipline, decisive proof, and Proposal readiness without demanding proof for explicit non-goals.
+description: Independently review Flowkit Explore evidence for truth, bounded proof, scope discipline, Proposal readiness, minimality, and scope drift during Stable Core development.
 metadata:
   author: flowkit
 ---
 
-# Review Explore Skill
+# Review Explore Bootstrap Skill
 
-## Purpose
+## Stable Core bootstrap independence
 
-Independently determine whether Explore is sufficiently truthful, bounded, and proven to enter Proposal.
+This `.agents` Skill is the independent flowkit-next self-development Reviewer HOW through D04 closure.
+It MUST NOT read, execute, invoke, delegate to, or become a thin pointer to candidate `skills/actions/review-explore/SKILL.md`.
+Equivalent discipline must live in this file's own bytes so the candidate product Guidance never proves itself.
 
-Reviewer checks evidence quality AND scope discipline, not writing style.
+## Authority boundary
 
-## Authority Boundary
+Reviewer may inspect facts, challenge assumptions, reproduce decisive proof, issue bounded findings, and return a verdict.
+Reviewer is mutation-free: it MUST NOT modify Author artifacts/production bytes, perform revise/apply/archive work, create Owner authority, claim Verification PASS, decide the next legal Action, or auto-continue after its Result.
 
-Reviewer can:
+## Exact input / chain
 
-- challenge facts and assumptions
-- identify missing decisive proof
-- identify scope drift
-- request a narrower or better-bounded model
-- reject unsupported Proposal readiness
+Review the exact supplied Explore artifact and materially relevant approved Owner/review/canonical chain. Do not guess current truth from Run history or inspect only the latest payload when prior accepted boundaries materially determine the verdict.
 
-Reviewer cannot:
+## Review model
 
-- modify Author artifacts
-- create Owner authority
-- invent a larger product requirement
-- require proof for explicit non-goals merely because they are theoretically possible
-- start implementation
+1. Confirm real Owner goal / actors / input domain / non-goals and explicit scope corrections.
+2. Separate fact / assumption / unknown / historical evidence / future possibility.
+3. Require only decisive proof that can change the bounded contract; do not block on exhaustive proof for explicit non-goals.
+4. Reject claims broader than evidence or happy-path-only proof for a material invariant.
+5. Confirm remaining uncertainty cannot change Proposal, otherwise request the smallest missing proof.
+6. Prefer reuse/minimal boundary over Registry/Router/Planner/Runtime/control-plane growth.
 
-## Review Model
+## Semantic invariant / literal challenge
 
-### 1. Real-use-case alignment
+Classify material literals as stable contract constant, configuration/environment value, or incidental current-state observation. Lifecycle-transient states, current ordinals/counts/paths/orderings are not durable invariants merely because they match today. Require the stable semantic invariant or synthetic fixture instead.
 
-Confirm:
+## Finding / artifact convergence discipline
 
-- Owner goal is represented accurately;
-- actors and input domains are real, not silently generalized;
-- explicit Owner scope corrections are honored;
-- non-goals remain non-goals.
+For each material finding identify the exact affected artifact/claim, observed fact, contract impact, and minimum correction. Do not restate the whole Author Explore or proof transcript. Flag chronology that leaked into canonical Explore when superseded or no longer material when it no longer explains current truth. Reviewer remains independently mutation-free.
 
-Flag scope drift when Explore turns a bounded use case into a generic platform/subsystem without authority.
+## Required Reviewer report
 
-### 2. Facts and assumptions
+Briefly report:
 
-Check:
+- current-step explanation;
+- complexity / minimality assessment;
+- new-content / scope-drift assessment.
 
-- facts are observable/traceable;
-- assumptions are labeled;
-- unknowns are honest;
-- historical evidence is not mistaken for a current requirement.
+Necessary detail inside the already-approved boundary is not scope drift.
 
-### 3. Risk coverage
+## Run / handoff concision
 
-Ask whether Explore covered the material risks that can affect the current contract.
+Use only `action.md + context.json + result.json`. Keep exact reviewed identities, decisive facts, bounded findings, verdict, assessments, and continuation refs; reference large canonical artifacts/evidence rather than duplicating them.
 
-Do NOT demand exhaustive treatment of risks outside the authorized input domain.
+## Verdict / STOP
 
-### 4. Proof quality
-
-For each important proof:
-
-```text
-Question → Evidence → Decision impact → Boundary
-```
-
-Reject:
-
-- happy-path-only proof for a material invariant;
-- claims broader than evidence;
-- proof branches with no relationship to the real use case being promoted into blockers.
-
-### 5. Stop-discipline review
-
-Ask:
-
-- Has the Author resolved the uncertainties that can change the Proposal?
-- Are remaining concerns explicitly deferred/non-goal?
-- Is further exploration likely to change the current contract?
-
-If not, do not keep Explore open merely to enumerate more theoretical edge cases.
-
-### 6. Proposal readiness
-
-Approve when the approved Explore can answer:
-
-- what the Change is solving;
-- the minimum required invariants;
-- what evidence supports them;
-- what is explicitly not being solved;
-- what Proposal must formalize.
-
-## Verdict
-
-```text
-approved
-changes-requested
-rejected
-```
-
-A `changes-requested` finding should identify the smallest missing fact/proof/boundary needed for Proposal readiness.
+Use `approved`, `changes-requested`, or `rejected`.
+Reviewer approval is not Verification PASS or Owner/Git authority.
+After the real Result is materialized, STOP and do not execute the next boundary.

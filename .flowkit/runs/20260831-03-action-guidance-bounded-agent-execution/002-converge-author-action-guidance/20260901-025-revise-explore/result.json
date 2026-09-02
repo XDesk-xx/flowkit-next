@@ -1,0 +1,42 @@
+{
+  "runId": "20260901-025-revise-explore",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "converge-author-action-guidance",
+  "action": "revise-explore",
+  "role": "author",
+  "status": "terminal",
+  "verdict": "PASS",
+  "summary": "D03-RE-004 is addressed by removing Delivery-planning-slot ordinal reservation. A project Change ordinal is assigned/frozen only when the Change first actually enters Explore; current Change 2 remains 021 and persists that already-assigned fact as projectOrdinal: 21 on its existing Delivery Change coordination entry. Planned Reviewer Guidance has no assigned ordinal; 022 is only the next candidate. Archive consumes the persisted ordinal and never allocates or recomputes it. Project Change ordinal 021, canonical changeStartSequence 014, and Run sequence 025 are explicitly separate numbering namespaces.",
+  "nextBoundary": "review-explore",
+  "proposalAllowed": false,
+  "applyAllowed": false,
+  "blockingUnknown": null,
+  "reviewFindingConvergence": {
+    "D03-RE-004": "ADDRESSED"
+  },
+  "durableFacts": [
+    "Current Change 2 first entered Explore at Run 014 and retains project Change ordinal 021.",
+    "The exact current Change coordination entry now durably records projectOrdinal: 21.",
+    "Planned-only converge-reviewer-action-guidance has no projectOrdinal; 022 is only the next candidate at this boundary.",
+    "Explored-then-cancelled Change ordinals remain consumed; planned-but-never-explored Changes consume none.",
+    "Archive requires an already-assigned projectOrdinal and does not allocate, recompute, compact, or reuse ordinals.",
+    "Run occurrence sequence, changeStartSequence, and project Change ordinal are distinct numbering namespaces.",
+    "Current focused domain verification passes 20/20 with the extra coordination metadata field present.",
+    "No production source, Proposal, Apply implementation, vendor OpenSpec skill, or self-hosting boundary was changed by this revise-explore."
+  ],
+  "explicitNonGoals": [
+    "global Change counter service",
+    "ordinal Registry",
+    "allocator service",
+    "new lifecycle state",
+    "new identity subsystem",
+    "planning-slot identity reservation",
+    "archive-time ordinal computation",
+    "Run-number-as-Change-number",
+    "changeStartSequence-as-project-ordinal",
+    "self-hosting takeover",
+    "historical mass archive rename"
+  ],
+  "productionMutation": "NONE",
+  "scopeDrift": "NONE beyond Reviewer-required ordinal lifecycle correction"
+}

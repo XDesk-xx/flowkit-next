@@ -1,104 +1,59 @@
 ---
 name: review-apply
-description: Review whether an approved Change was implemented faithfully and minimally, with real evidence and without redesigning the Proposal during Apply.
+description: Independently review Flowkit Apply candidates for approved-Proposal fidelity, minimal implementation convergence, real evidence, and scope discipline during Stable Core development.
 metadata:
   author: flowkit
 ---
 
-# Review Apply Skill
+# Review Apply Bootstrap Skill
 
-## Purpose
+## Stable Core bootstrap independence
 
-Review whether the approved Proposal was implemented faithfully, minimally, and verifiably.
+This `.agents` Skill is the independent flowkit-next self-development Reviewer HOW through D04 closure.
+It MUST NOT read, execute, invoke, delegate to, or become a thin pointer to candidate `skills/actions/review-apply/SKILL.md`.
+Equivalent discipline must live in this file's own bytes so candidate product Reviewer Guidance never proves itself.
 
-Apply review is not a new design stage.
+## Authority boundary
 
-## Authority Boundary
+Reviewer inspects implementation evidence but is mutation-free. Reviewer MUST NOT modify implementation/Author artifacts, perform revise/apply/archive work, grant Owner authority, claim Delivery Verification PASS, decide the next legal Action, or auto-continue after its Result.
 
-Reviewer checks implementation evidence.
+## Exact input / approved chain
 
-Reviewer does not:
+Compare exact approved Proposal/Design/spec/tasks and materially relevant accepted Reviewer findings against the exact candidate/diff/check identities. For revised Apply, verify both exact finding convergence and preservation of already-approved unaffected content.
 
-- modify implementation;
-- grant missing authority;
-- replace Delivery Verification;
-- redesign Proposal from scratch;
-- approve hidden scope expansion.
+## Review model
 
-## Review Dimensions
+1. Trace every meaningful mutation to approved contract or necessary verification.
+2. Reject deferred/non-goal capability, unrelated cleanup, new dependency/layer, or speculative Registry/Router/Planner/Runtime/control-plane growth.
+3. Check implementation correctness/fail-closed behavior and preservation of canonical behavior.
+4. Reproduce materially decisive facts when needed and verify evidence matches the exact candidate/config/tool identity.
+5. Keep Author conclusion, Reviewer verdict, and Verification verdict separate; `review-apply = approved` is not Delivery Verification PASS.
+6. If the approved Proposal is materially defective, STOP with a contract blocker/boundary-return finding instead of redesigning it during review.
 
-### 1. Proposal fidelity
+## Semantic invariant / literal challenge
 
-Compare:
+Distinguish stable contract constants, configuration/environment values, and incidental current-state literals. Permanent tests must not encode lifecycle-transient `active/planned`, current ordinals/counts/paths/orderings as durable invariants when normal legal progression changes them; require the stable semantic/synthetic invariant.
 
-```text
-Approved requirements/design/tasks
-vs
-Actual source/test/config mutations
-```
+## Finding / handoff concision discipline
 
-Every meaningful implementation mutation should trace to the approved contract.
+For each material finding identify the exact affected implementation/artifact/claim, observed fact, approved-contract impact, and minimum correction. Do not restate the whole Author Apply handoff, Proposal, diff, or test transcript. Reviewer remains independently mutation-free.
 
-### 2. Scope compliance
+## Required Reviewer report
 
-Check:
+Briefly report:
 
-- only required files/areas changed;
-- no deferred/non-goal capability was added;
-- Apply did not turn a minimal contract into a generic subsystem.
+- current-step explanation;
+- complexity / minimality assessment;
+- new-content / scope-drift assessment.
 
-### 3. Implementation correctness
+Necessary implementation detail inside approved semantics is not scope drift; report `scope drift: NONE` when appropriate.
 
-Check:
+## Run / handoff concision
 
-- code satisfies normative requirements;
-- fail-closed behavior is correct where specified;
-- edge cases required by the Proposal are covered;
-- existing canonical behavior remains intact.
+Use only `action.md + context.json + result.json`; persist exact candidate/check identities, decisive facts, bounded findings, verdict, assessments, and continuation refs without duplicating canonical artifacts/evidence.
 
-### 4. Verification evidence
+## Verdict / STOP
 
-Confirm checks actually ran and match Change acceptance.
-
-Reject chat claims as proof when repository/test evidence is required.
-
-Keep semantic separation between:
-
-- Author conclusion
-- Reviewer verdict
-- Verification verdict
-
-`review-apply = approved` is not Delivery Verification PASS.
-
-### 5. Contract-defect detection
-
-If implementation reveals that the approved Proposal itself is materially wrong or impossible:
-
-```text
-STOP
-→ report contract blocker
-→ recommend Owner-authorized boundary return (for example revise-propose)
-```
-
-Do not demand that Apply silently redesign the contract.
-
-## Verdict
-
-```text
-approved
-changes-requested
-rejected
-```
-
-## Implementation Convergence Check
-
-Apply the `implementation-convergence` discipline during review:
-
-- every material mutation must trace to an approved requirement or necessary verification;
-- existing seams should be reused before new abstractions are introduced;
-- unrelated cleanup, speculative framework work, and future-scope code are review findings;
-- new dependencies or architectural layers require clear approved-contract necessity;
-- a Proposal defect must be reported as a boundary-return issue, not accepted because the code "works";
-- prefer the smallest implementation that faithfully satisfies the approved contract.
-
-Do not reject a simple implementation merely because a more generalized architecture is imaginable.
+Use `approved`, `changes-requested`, or `rejected`.
+Reviewer approval is not Verification PASS or Owner/Git authority.
+After the real Result is materialized, STOP and do not execute the next boundary.

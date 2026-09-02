@@ -2,30 +2,58 @@
   "formatVersion": 1,
   "memos": [
     {
-      "memoId": "future-full-test-correction-model",
+      "memoId": "future-delivery-final-full-source-repository-integration-handoff",
       "state": "open",
+      "title": "Future Delivery Final full-source handoff for local repository integration",
+      "note": "D03 finalization exposed a repository-integration continuity rule that should be formally converged in D04 rather than left as an ad-hoc packaging convention.\n\nWhen a Delivery has reached Delivery Final and the next receiving local AI / operator is expected to perform an Owner-authorized Git checkpoint, commit, PR preparation, or other repository integration step, the primary handoff artifact should be a complete current working-tree source snapshot for the finalized Delivery candidate. A Run-level or cumulative payload remains useful for lifecycle audit, provenance, and historical continuation, but it should not be the required mechanism for reconstructing the finalized code state before local Git integration.\n\nThe complete source handoff should contain the repository-owned source/config/tests/OpenSpec/Flowkit/Architecture bytes that constitute the finalized working tree, while excluding Git object storage and reusable dependency/runtime archives. Git history/base identity remains separately owned by Git/bundle/exact accepted revision; dependency/runtime artifacts remain environment inputs rather than source handoff contents.\n\nD04 repository-integration-and-next-base continuity should proof and freeze the minimal reusable rule: Delivery Final -> complete source handoff when repository integration is delegated to a local AI/operator -> Owner explicit exact Git checkpoint authorization -> commit/PR/main -> read exact accepted main HEAD. This Memo does not authorize Git mutation, does not require a new payload registry or artifact lifecycle, and does not make ZIP files a new truth source. Git remains repository/history truth; the full-source package is only the bounded transport/recovery artifact for the finalized working-tree bytes.",
+      "source": {
+        "deliveryId": "20260831-03-action-guidance-bounded-agent-execution"
+      },
+      "createdByOwnerAuthorityRef": "owner:2d06fb5cd462e98b18a00963d83502a97cee2042f193386131df62c9c0386bf3",
+      "resolution": null
+    },
+    {
+      "memoId": "future-full-test-correction-and-platform-fixture-discipline",
+      "state": "open",
+      "title": "Future Full Test correction and cross-platform fixture discipline",
+      "note": "D04 should converge the repeatable Formal Full Test correction/finalization boundary without adding a finding database, correction registry, evidence platform, or automatic corrective-Change creation.\n\nCurrent rule to preserve: Formal Full Test owns verification only. If a failure is solely an execution-environment, fixture, or command-setup defect and accepted repository bytes do not need to change, repair the verification environment and rerun the same exact candidate. If the finding requires changing repository/canonical truth, STOP verification/finalization, enter the normal Owner-controlled corrective Change/revise flow, form a new exact candidate, invalidate the prior verification evidence for acceptance purposes, and restart Formal Full Test on the new candidate.\n\nD03 post-archive supplementary native-Windows verification added a concrete cross-platform fixture observation. The accepted product contract remains proven by the Linux real-EACCES unreadable-Guidance proof, and native Windows was not a required D03 acceptance platform for that proof. On native Windows, POSIX chmod(000) did not make the Guidance file unreadable to Node, so the domain fixture expected resolver fail-closed while the host still allowed the read. This is a test-fixture portability / host-capability-detection concern, not evidence that resolveActionGuidanceRef violates its accepted fail-closed contract. Future hardening should prefer host-capability detection or platform-appropriate mechanics and must not assume identical filesystem permission mechanics across operating systems. The observation is deferred; it does not reopen archived Change 025 and does not automatically create a corrective Change.\n\nD04 proof should use this example when freezing the distinction between same-candidate verification-environment/fixture correction and repository/canonical correction that requires a new candidate. The Memo remains non-blocking until formally promoted or dismissed by Owner authority.",
+      "source": {
+        "deliveryId": "20260831-03-action-guidance-bounded-agent-execution"
+      },
+      "createdByOwnerAuthorityRef": "owner:6d49698256a6015b7b10aeeacee84d3fded1ff4cfd48357861231887dfbed3ca",
+      "resolution": null
+    },
+    {
+      "memoId": "future-full-test-correction-model",
+      "state": "dismissed",
       "title": "Future Full Test correction and finalization model",
       "note": "当前 Foundation 不实现额外的 Full Test correction/finalization 机器机制。\n现阶段处理原则：Formal Full Test 只负责 Verification；若失败仅来自 verification environment、fixture 或 command setup，则修复验证环境并对同一 exact candidate 重跑，不创建 Change；若发现必须改变 promoted repository truth 的真实产品、canonical contract 或 repository truth 缺陷，则创建普通 corrective OpenSpec Change，走正常 Change lifecycle，archive 后形成新的 exact checkpoint candidate，并对新 candidate 从头重新执行 Formal Full Test。\n未来只有在实际自动化需求出现时，才评估更完整的机器化模型，例如 Verification finding persistence、finding 与 corrective Change 的关联、candidate 改变后旧 Verification evidence 的失效、Delivery verification/correction/finalization 机器语义，以及 planned/corrective 来源表达。\n这些都是 future candidate ideas，不属于当前 Foundation contract，不阻塞当前 Delivery finalization，也不会自动转换成 Change。",
       "source": {
         "deliveryId": "20260824-01-foundation-lifecycle-kernel"
       },
       "createdByOwnerAuthorityRef": "owner:9fbc973a3b75d813c1d9571fb50572ff1461aab7085ae351ebf4a8cc5b73d3b8",
-      "resolution": null
+      "resolution": {
+        "kind": "dismissed",
+        "ownerAuthorityRef": "owner:dd39404db8c3c3aa864fb8f20a3a463ac2fb024e937af867e4c8d08eb12cd251"
+      }
     },
     {
       "memoId": "future-run-history-concision-and-repository-growth",
-      "state": "open",
+      "state": "dismissed",
       "title": "Future Flowkit Run surface concision and repository growth control",
       "note": "在 D02 的 establish-trusted-change-coordination-state-binding 完成后复核 Git diff 时发现：单个 Change 经历 15 次 durable Run，在 .flowkit/runs 中形成 46 个文件、约 2914 行执行历史。当前 durable Run 的 create-once history 以及 action.md + context.json + result.json 三文件 stable surface 本身属于既有正式 contract，不应删除，也不应把 Git 改造成每个 Action 一个 commit。\n\n真实需要未来收敛的是两类相互关联的问题：\n\n1. Run 内容粒度过重。action.md 与重复 evidence / narrative 容易逐轮膨胀，尤其当完整 proof、Reviewer reasoning、verification matrix 或可由 canonical truth 重建的内容被重复复制进 durable Run 时，会造成 repository execution-history 长期增长。\n\n2. Run stable surface 被 ad-hoc evidence 扩张。D02 013-revise-apply 为解决一次环境可复现性 finding，额外写入 verification-environment.json。这一文件可作为历史性 ad-hoc evidence 保留，但不应被解释为新的第四种标准 Run artifact，也不应成为后续 Run 的默认模板。未来新的 Run 应继续以 action.md + context.json + result.json 为 stable surface；必要的环境 identity、artifact hash、verification conclusion 优先压入 context/result。只有 materially required 且无法合理承载时，才允许引用独立 external evidence artifact，并由 Run 保存 evidenceRef/hash，而不是不断扩展 Run directory 的默认 durable file set。\n\n未来优先在 D03 Action Guidance & Bounded Agent Execution 中 proof 并考虑固定：\n- action.md 仅作为 concise human/AI-readable Action descriptor；\n- context.json / result.json 承担 machine continuation truth；\n- stable Run surface 默认严格保持三文件；\n- execution-local proof / verification 不因一次 review 需求自动升级为 durable Run artifact；\n- 大型 evidence 仅在 materially required 时外置并引用；\n- 避免重复复制 OpenSpec artifacts、Reviewer reasoning 与可由 canonical truth 重建的内容；\n- 保留历史 Run create-once / immutable，不回写已 committed 的 013 anomaly。\n\n目标是在不改变 Run persistence、authority、Policy、lifecycle、Git checkpoint 模型或现有三文件 contract 的前提下，降低长期 repository execution-history growth，并防止 ad-hoc evidence 逐步演化成未经设计的新 Run surface。\n\n该 concern 当前仅作为 future guidance/engineering-health candidate，不阻塞 D02，不自动创建 Change，也不改变当前 Gate activation readiness。\n\n临时桥接状态（D02 后续立即生效）：\n- 仓库根目录增加 `TEMPORARY-RUN-SURFACE-GUIDANCE.md`，在 D03 正式契约落地前临时约束新的 Author / Reviewer Run 继续使用 `action.md + context.json + result.json` 三文件 stable surface，并限制 action.md / durable evidence 膨胀。\n- 根 `AGENTS.md` 增加一条 Temporary D03 bridge 引用，使 Agent 在 D03 正式处理前必须读取该临时 guidance。\n- 这两处都属于 temporary HOW guidance，不是新的 canonical authority/contract，也不能长期与 D03 正式 contract 并存。\n\nD03 正式处理该 Memo 时必须包含 cleanup acceptance：\n1. proof 并建立正式的 Run surface / evidence / concision guidance；\n2. 确认正式 contract 已覆盖临时文档承担的全部约束；\n3. 删除仓库根目录 `TEMPORARY-RUN-SURFACE-GUIDANCE.md`；\n4. 删除 `AGENTS.md` 中对应的 Temporary D03 bridge 引用；\n5. 验证仓库中不存在对该临时文档的残留引用；\n6. 不回写已 committed 的历史 Run（包括 013 的 `verification-environment.json`）；\n7. 不允许临时 guidance 与正式 D03 guidance 形成双重 truth。\n\n因此，该 Memo 的未来完成条件不仅是“正式设计 Run concision”，还包括“正式 contract 接管后清除所有 temporary bridge materialization”。",
       "source": {
         "deliveryId": "20260829-02-lightweight-incremental-engineering-quality"
       },
       "createdByOwnerAuthorityRef": "owner:a2c375347a37c5a53b62b49a27b3530b4ffd72400d97fbaacea42d86475445f6",
-      "resolution": null
+      "resolution": {
+        "kind": "dismissed",
+        "ownerAuthorityRef": "owner:3411fc8b1d75a7e13cc993671f8176dbd444afccdab1d35ccd9d6fbb57394d7f"
+      }
     },
     {
       "memoId": "future-semantic-invariant-and-literal-discipline",
-      "state": "open",
+      "state": "dismissed",
       "title": "Future semantic invariant and literal discipline for AI implementation/review",
       "note": "D02 observed a concrete AI implementation/review failure mode during correct-openspec-observation-process-failure-portability. The repository-entropy focused test had encoded the current production-module count as the literal 18. A normal, valid addition of one reachable production module changed the current count to 19 and caused a false failure even though the actual repository-entropy contract remained satisfied. Reviewer 20260831-047-review-apply identified the stale literal, and 20260831-048-revise-apply corrected the assertion to the real invariant: reachable.length === total and unreachable.length === 0.\n\nThe reusable concern is broader than the number 18 or one test. AI implementation/review can accidentally promote an incidental current observation into a durable test, check, script, or contract. Future D03 Author/Reviewer guidance should require an explicit classification before encoding a literal:\n\n1. Incidental current observation -> do not preserve the literal as contract; express the semantic invariant instead. Example: reachable.length === total, not reachable.length === 18. Merely renaming the incidental value (for example const EXPECTED_MODULES = 18) does not make it correct.\n\n2. Stable semantic contract constant -> if the exact value is intentionally owned by an accepted contract, prefer one clearly named semantic constant rather than scattered magic literals, with implementation/tests referring to the same semantic owner where practical.\n\n3. Project/deployment/runtime-variable parameter -> use explicit configuration rather than a compile-time magic literal when the value is intended to vary by repository/environment.\n\nReviewer guidance should explicitly challenge literals by asking whether they are real contract constants, configurable parameters, or merely today's observed repository state. Author guidance should prefer invariants over snapshot-value assertions and avoid duplicating one semantic constant across implementation/tests/scripts.\n\nThis is primarily execution HOW and should be handled in D03 Action Guidance / Author+Reviewer guidance first. Do not create a generic hardcode scanner, magic-number Gate, AST platform, waiver registry, or new Flowkit Core subsystem from this Memo. Mechanical enforcement should be considered only if repeated real proof later identifies a narrow high-confidence pattern. This Memo is non-blocking and does not itself create a Change.",
       "source": {
@@ -34,11 +62,14 @@
         "runId": "20260831-047-review-apply"
       },
       "createdByOwnerAuthorityRef": "owner:b6700b0f0a9f6d7524602cb7b68abee13b6d39bb96110fa5a5a49085a66949a1",
-      "resolution": null
+      "resolution": {
+        "kind": "dismissed",
+        "ownerAuthorityRef": "owner:9ce096ccf9e557ff626a72288eed23336ae1056769481931002659895377767c"
+      }
     },
     {
       "memoId": "future-uncommitted-change-continuation-integrity",
-      "state": "open",
+      "state": "dismissed",
       "title": "Future uncommitted Change continuation integrity across sessions",
       "note": "D02 observed a real cross-session continuation gap during\nestablish-structural-dependency-health-fitness.\n\nThe original create-once 20260830-023-explore execution existed and was\nindependently reviewed by 20260830-024-review-explore, but the exact 023\nRun / explore payload bytes were not carried into a later detached Author\ncontinuation and became unavailable. The surviving 024 Reviewer Run preserves\nthe original 023 input identity/hashes and approval evidence. The missing 023\nbytes must never be regenerated, reconstructed, or fabricated.\n\nThe reusable concern is not the specific occurrence number 023. The observed\nproof is that:\n\nexact committed pre-Change Git base\n+\nlatest delta Action payload\n\nis not by itself sufficient to guarantee complete continuation of an\nuncommitted Change across AI sessions / detached environments when that latest\ndelta references earlier create-once Run artifacts whose exact bytes are not\nalso carried or durably retrievable.\n\nFuture proof should start in D03 Action Guidance / handoff discipline rather\nthan immediately expanding Flowkit Core. A continuation should have an exact,\nbounded way to obtain all materially required uncommitted ancestor state,\nfor example by carrying cumulative uncommitted Change state or by preserving\nexact ancestor payloads in a durable retrievable location. The implementation\nshape is intentionally not frozen by this Memo.\n\nIf D03 guidance / packaging discipline proves sufficient in real use, this\nconcern should be resolved without a new Core subsystem. Only if repeated real\nproof shows that guidance and repository-owned handoff discipline cannot\nreliably preserve the required continuation truth should D04 evaluate whether\na bounded lifecycle / continuity contract is missing.\n\nDo not introduce a payload registry, evidence platform, background sync,\nautomatic continuation engine, or second lifecycle merely to close this Memo.\nThis Memo is non-blocking and does not itself create a Change.",
       "source": {
@@ -47,7 +78,10 @@
         "runId": "20260830-024-review-explore"
       },
       "createdByOwnerAuthorityRef": "owner:09dfebba36e1ef0184c8ae4de324f07d9a704f3665d5c7f540c06a47eb2f073c",
-      "resolution": null
+      "resolution": {
+        "kind": "dismissed",
+        "ownerAuthorityRef": "owner:630ea9551574afaea04dc288b06ce819d62dbb9ccc25a3316c6823e97adfb9dc"
+      }
     },
     {
       "memoId": "structural-dependency-023-historical-continuity-gap",

@@ -1,0 +1,43 @@
+{
+  "runNumber": 5,
+  "kind": "external-orchestrator-revise-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "establish-action-guidance-execution-contract",
+  "action": "revise-explore",
+  "runId": "20260831-005-revise-explore",
+  "physicalRunPath": ".flowkit/runs/20260831-03-action-guidance-bounded-agent-execution/001-establish-action-guidance-execution-contract/20260831-005-revise-explore",
+  "inputRunId": "20260831-004-review-explore",
+  "reviewChainStartRunId": "20260831-001-explore",
+  "checkpointClaim": "9b32b98db8c989f85ac0e1e5894a91b7e04f05df",
+  "stableManagerBase": "4b45552b90ee327488bde3141c51c556e65a2e95",
+  "skillUsed": ".agents/skills/revise-explore",
+  "reviewerInputPackageSha256": "7166ce4635ac12ba4664a2fe420d8f1b8cf23da81fc8bf5136973f7d952d323e",
+  "resolvedFindings": [
+    "D03-RE-003"
+  ],
+  "exploreArtifactSha256": "a32909fdcb0c395511f1f0b255f3fb2a25c1bedcaad0a6b8cc0f6335c63a4672",
+  "revisionProof": {
+    "currentFinalExploreArtifactSha256": "a32909fdcb0c395511f1f0b255f3fb2a25c1bedcaad0a6b8cc0f6335c63a4672",
+    "previous001ExploreArtifactSha256": "a258689c02a653474a3166b7cf6ceae50117e085450fd1b91d2388e2ff555afa",
+    "exploreBytesChangedFrom001To003": true,
+    "exploreBytesChangedByThis005Revise": false,
+    "changeFrom001To003": "Owner self-hosting boundary wording only",
+    "technicalExploreDesignChanged": false,
+    "ownerSelfHostingBoundaryChanged": true,
+    "unrelatedTestsRerun": false,
+    "checksumRegistryIntroduced": false,
+    "productionMutation": "NONE",
+    "proposalArtifactsCreated": "NONE"
+  },
+  "skillBoundary": {
+    "currentFlowkitNextSelfDevelopmentExecution": ".agents/skills/** independent bootstrap/development plane through Stable Core closure",
+    "targetProductFlowkitManagedGuidance": "skills/actions/<StandardActionId>/SKILL.md",
+    "productionAgentsFallbackAllowed": false,
+    "selfHostingConvergenceBeforeStableCoreClosureAllowed": false,
+    "convergenceAfterStableCoreClosureRequirement": "fresh proof + explicit Owner authorization"
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

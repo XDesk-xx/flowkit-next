@@ -1,0 +1,68 @@
+{
+  "runNumber": 20,
+  "kind": "external-orchestrator-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "converge-author-action-guidance",
+  "action": "apply",
+  "runId": "20260901-020-apply",
+  "inputRunId": "20260901-019-review-propose",
+  "approvedProposalRunId": "20260901-018-revise-propose",
+  "reviewChainStartRunId": "20260901-014-explore",
+  "checkpointClaim": "3af174bdfa2e8ebcf280e87a13565d03dec0b647",
+  "skillsUsed": [
+    ".agents/skills/openspec-apply-change",
+    ".agents/skills/implementation-convergence"
+  ],
+  "reviewerInputPackageSha256": "5dccc2252a1f54d639e678c7340c60fb4356d1f6f992382fa3ab952950b83451",
+  "planningArtifactsSha256": {
+    "explore": "2f4eb5d7b8a19e601f0c8fbf82fb1d2fafa1a7cc8073d73299df5553c54bc02e",
+    "proposal": "3c81767da1be71301587335f2eb3c2d4aa87f8845375ae7282fcee5cc1e69897",
+    "design": "8953c4e44636a525e8f3d16666955c00363976dd5746d3b1ee04387800358ff2",
+    "spec_author_action_guidance": "aeb33983019810d47d80b9de337d87a0ed1193fba0b0d6c98fd34823e552ee0c",
+    "tasks": "ed636f9c941da47fbd8028cc8a55fcf3452f74fe0c1af728d12f2832569b5cfc"
+  },
+  "implementationArtifactsSha256": {
+    "skills/actions/explore/SKILL.md": "89677b4fab2037b9ddc8135641b43ecabadd7a6ea0d6259eae336758e3bb1516",
+    "skills/actions/revise-explore/SKILL.md": "5563077f41b045a1f7148f9dba642901bb134a0e48661642cd05144373df16c0",
+    "skills/actions/propose/SKILL.md": "9f6a9f16874cc4bf67e61a22925513b99bb9ffdedbdbd0f8696dd6e3fd5843f0",
+    "skills/actions/revise-propose/SKILL.md": "37c57070411fcd531f01d5f7cd009bbba8a1e07e20e9d7d93ac5ae88f2e64d6a",
+    "skills/actions/apply/SKILL.md": "58c0b1a549f28ae8bcf3f4bca059ecdb442dc71350dff349b1e288313f62eaf2",
+    "skills/actions/revise-apply/SKILL.md": "48b4cf27bae4d018e15b3ee104c85efc6ccb8f5ddac243ca90d80ca23a934892",
+    "skills/actions/archive/SKILL.md": "583dfce533ad0874b3112e0adc7facfca8e1e1a78cb9b408f965fbd056e42bdf",
+    ".agents/skills/archive/SKILL.md": "31a081f15ae7383811283cc01a786fd72263d921e327be55d3501f4884765489",
+    "tests/unit/domain/author-action-guidance.test.ts": "896c14fe46cd7e3a1e3023aa4b48ffd62456e57c751e025a55ae82e62f53c08e"
+  },
+  "taskProgress": {
+    "complete": 15,
+    "total": 15
+  },
+  "verification": {
+    "node": "22.23.2",
+    "guidanceFocused": "13/13 PASS; 0 FAIL; 0 SKIP",
+    "domain": "161/161 PASS; 0 FAIL; 0 SKIP",
+    "acceptance": "4/4 PASS",
+    "gitDiffCheck": "PASS",
+    "prettier": "PASS",
+    "eslint": "PASS",
+    "forbiddenTrackedArtifacts": "PASS",
+    "typecheck": "PASS",
+    "dependencyHealth": "PASS; 58 modules; 213 dependencies; 0 violations",
+    "repositoryEntropy": "PASS; 25/25 production modules reachable",
+    "build": "PASS",
+    "changeStrict": "PASS",
+    "allOpenSpecStrict": "16/16 PASS"
+  },
+  "preservation": {
+    "productionCoreSourceChanged": false,
+    "dependencyGraphChanged": false,
+    "vendorOpenSpecArchiveMechanicsChanged": false,
+    "temporaryRunBridgePreserved": true,
+    "historicalArchivePathsRenamed": false,
+    "reviewerGuidancePulledForward": false,
+    "selfHostingTakeover": false
+  },
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

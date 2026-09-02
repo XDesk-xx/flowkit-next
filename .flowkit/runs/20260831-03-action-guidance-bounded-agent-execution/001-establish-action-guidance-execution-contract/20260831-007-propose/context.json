@@ -1,0 +1,43 @@
+{
+  "runNumber": 7,
+  "kind": "external-orchestrator-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "establish-action-guidance-execution-contract",
+  "action": "propose",
+  "runId": "20260831-007-propose",
+  "physicalRunPath": ".flowkit/runs/20260831-03-action-guidance-bounded-agent-execution/001-establish-action-guidance-execution-contract/20260831-007-propose",
+  "inputRunId": "20260831-006-review-explore",
+  "reviewChainStartRunId": "20260831-001-explore",
+  "checkpointClaim": "9b32b98db8c989f85ac0e1e5894a91b7e04f05df",
+  "stableManagerBase": "4b45552b90ee327488bde3141c51c556e65a2e95",
+  "skillsUsed": [
+    ".agents/skills/openspec-propose",
+    ".agents/skills/proposal-convergence"
+  ],
+  "reviewerInputPackageSha256": "7e52c98e36e6b1a4f814047f0ef22b6c6ba7d432d9d8300f9b2e159d30e64590",
+  "approvedExploreArtifactSha256": "a32909fdcb0c395511f1f0b255f3fb2a25c1bedcaad0a6b8cc0f6335c63a4672",
+  "proposalArtifacts": {
+    "proposal.md": "dacdeb5be3af1cf00b01faaa04c457fb4b5427c1e706714aafdea64163982ec8",
+    "design.md": "b59b55f916cf73ce05951fa23c74547ade76144a59d0cfb1e6de7bdc3f55507b",
+    "tasks.md": "c489ad894a637a2e160cfd615ace5f48dd791b6695984833da8f39d937d7ace9",
+    "specs/action-guidance-execution/spec.md": "5e978df241ad1769db508525ccad26d9bf1103c7a3ef20e30138d445c679fea7",
+    "specs/action-package-and-result-admission/spec.md": "1556c4d904334c31f8ce34c6049c2b428e55ff85f5c06d961d429f4f6a5e7736"
+  },
+  "capabilityPlan": {
+    "new": ["action-guidance-execution"],
+    "modified": ["action-package-and-result-admission"],
+    "unchangedByContract": ["applicable-check-execution", "run-result-persistence", "single-action-execution-terminal-boundary"]
+  },
+  "ownerBoundary": {
+    "flowkitNextSelfDevelopmentExecution": ".agents/skills/** remains the independent bootstrap plane through Stable Core closure",
+    "productCanonicalGuidance": "skills/actions/<StandardActionId>/SKILL.md",
+    "productionAgentsFallbackAllowed": false,
+    "selfHostingTakeoverBeforeStableCoreClosureAllowed": false
+  },
+  "planningOnly": true,
+  "productionMutation": "NONE",
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

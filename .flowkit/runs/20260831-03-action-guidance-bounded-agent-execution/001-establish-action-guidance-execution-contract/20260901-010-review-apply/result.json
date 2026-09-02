@@ -1,0 +1,19 @@
+{
+  "runId": "20260901-010-review-apply",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "establish-action-guidance-execution-contract",
+  "action": "review-apply",
+  "role": "reviewer",
+  "status": "terminal",
+  "verdict": "CHANGES_REQUESTED",
+  "summary": "009 production implementation is minimal, in-scope, and independently passes all reproduced checks except one host-permission SKIP. The approved unreadable-Guidance fail-closed scenario should be exercised with a test-only low-privilege child-process simulation; no production redesign is required.",
+  "nextBoundary": "revise-apply",
+  "blockingFindings": [
+    "D03-RA-001"
+  ],
+  "archiveAllowed": false,
+  "productionMutation": "NONE",
+  "reviewerMutation": "NONE",
+  "complexityAssessment": "MINIMAL_REQUIRED; requested revision is test-only.",
+  "scopeDriftAssessment": "NONE."
+}

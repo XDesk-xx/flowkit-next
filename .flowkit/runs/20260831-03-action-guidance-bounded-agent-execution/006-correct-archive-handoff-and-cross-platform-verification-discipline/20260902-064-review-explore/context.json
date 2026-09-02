@@ -1,0 +1,70 @@
+{
+  "runNumber": 64,
+  "kind": "external-orchestrator-review-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "correct-archive-handoff-and-cross-platform-verification-discipline",
+  "action": "review-explore",
+  "runId": "20260902-064-review-explore",
+  "inputRunId": "20260901-063-revise-explore",
+  "physicalRunPath": ".flowkit/runs/20260831-03-action-guidance-bounded-agent-execution/006-correct-archive-handoff-and-cross-platform-verification-discipline/20260902-064-review-explore",
+  "physicalRunGroupPrefix": "006",
+  "projectOrdinal": 25,
+  "changeStartSequence": 61,
+  "checkpointClaim": "39ef634bc7680af0494d4d918adf58e338601a83",
+  "inputAuthorPackageSha256": "3acb6acbe3477a91134b2e0b04884c5bf55f4575f196c9880d20cff6b78df3dc",
+  "reviewedArtifact": {
+    "path": "openspec/changes/correct-archive-handoff-and-cross-platform-verification-discipline/explore.md",
+    "sha256": "1c9fdbde7f69363765d9c2e93082b5257b5e699359dba920ff80fad8b0ebdc22"
+  },
+  "deliveryManifestSha256": "6facabaf417b08cf198a54467c61e0189cb6014d237f622d6681b5524326048c",
+  "independentProof": {
+    "exactBaseReconstructed": true,
+    "node": "22.23.2",
+    "detachedDependencySnapshotReused": true,
+    "packageManagerLauncherUsedByReviewer": false,
+    "focusedLifecycleGuidanceTests": "62/62 PASS",
+    "fullDomainTests": "173/173 PASS",
+    "canonicalOpenSpecSpecsStrict": "17/17 PASS",
+    "windowsOnlySemanticProofSkipsFound": 2,
+    "gitIndexExecutableModeSameBytesProof": "PASS",
+    "gitDiffCheck": "PASS",
+    "productionImplementationMutation": false,
+    "proposalArtifactsPresent": false
+  },
+  "findings": [
+    {
+      "id": "R063-001",
+      "severity": "BLOCKING",
+      "title": "Archive readiness pre-prepare execution ownership is unproven",
+      "facts": [
+        "063 correctly requires correction-capable archive readiness to finish before structural prepared materialization.",
+        "Current invokeSingleAction(...) establishes prepared before Run-context validation, canonical Guidance resolution, ActionPackage formation, and host callback execution.",
+        "The expected implementation surface is primarily archive/bootstrap Guidance and tests, while Explore claims Core/Policy mutation is unnecessary."
+      ],
+      "requiredConvergence": "Prove an existing owned pre-invocation mechanism that can execute the exact readiness/self-check before structural prepare and explain how trusted check/HOW identity is obtained, or explicitly surface the smallest real host/Core seam or separate semantic boundary required by proof. Do not claim Guidance-only sufficiency until this is closed."
+    },
+    {
+      "id": "R063-002",
+      "severity": "BLOCKING",
+      "title": "Canonical Explore retains revision chronology",
+      "facts": [
+        "explore.md narrates Reviewer pre-scope verdict/corrections, Owner correction, and execution-trigger chronology.",
+        "Current bootstrap/product Explore convergence discipline requires canonical Explore to express current rationale rather than revision diary sections."
+      ],
+      "requiredConvergence": "Rewrite chronology-bearing passages into present-tense facts/current rationale; preserve exact authority and revision chronology only in the Run chain."
+    }
+  ],
+  "scopeAssessment": {
+    "abcdScopeCoherent": true,
+    "ownerAuthorizedGenericExploreHowExpansion": true,
+    "unauthorizedScopeDrift": false,
+    "newProductCapabilityProvenNecessary": false,
+    "newLifecycleProvenNecessary": false,
+    "archiveReadinessGuidanceOnlySufficiencyProven": false,
+    "complexityAssessment": "MINIMAL_IF_EXECUTION_OWNERSHIP_IS_CLOSED_WITHOUT_SPECULATIVE_SUBSYSTEM"
+  },
+  "stableTransfer": true,
+  "packageClass": "cumulative-review-handoff"
+}

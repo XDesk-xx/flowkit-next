@@ -11,6 +11,7 @@ import {
   formActionPackage,
   type ActionPackage,
 } from "./action-package-result-admission.js";
+import { resolveActionGuidanceRef } from "./action-guidance-execution.js";
 import {
   isRunContextRecord,
   type RunResultRecord,
@@ -20,9 +21,16 @@ export type ActionExecutionCallback = (
   actionPackage: ActionPackage,
 ) => unknown | Promise<unknown>;
 
+export type ActionPreparationOutcome = "ready" | "blocked";
+
+export type ActionPreparationCallback = (
+  actionPackage: ActionPackage,
+) => ActionPreparationOutcome | Promise<ActionPreparationOutcome>;
+
 export type SingleActionInvocationFailureReason =
   | "entry-rejected"
   | "package-formation-rejected"
+  | "preparation-blocked"
   | "execution-failed"
   | "result-admission-rejected"
   | "terminal-transition-rejected";
@@ -52,17 +60,18 @@ function sameActionIdentity(a: ActionIdentity, b: ActionIdentity): boolean {
   );
 }
 
-function establishPreparedCurrentAction(
+function stagePreparedCurrentAction(
   currentAction: unknown,
   target: unknown,
-): CurrentAction | null {
+): { readonly prepared: CurrentAction; readonly staged: boolean } | null {
   if (!isActionIdentity(target)) return null;
 
   if (currentAction === null) {
-    return transitionCurrentAction(currentAction, {
+    const prepared = transitionCurrentAction(currentAction, {
       type: "prepare",
       identity: target,
     });
+    return prepared === null ? null : { prepared, staged: true };
   }
 
   if (!isCurrentAction(currentAction)) return null;
@@ -71,14 +80,15 @@ function establishPreparedCurrentAction(
     currentAction.state === "prepared" &&
     sameActionIdentity(currentAction.identity, target)
   ) {
-    return currentAction;
+    return { prepared: currentAction, staged: false };
   }
 
   if (currentAction.state === "terminal") {
-    return transitionCurrentAction(currentAction, {
+    const prepared = transitionCurrentAction(currentAction, {
       type: "prepare",
       identity: target,
     });
+    return prepared === null ? null : { prepared, staged: true };
   }
 
   return null;
@@ -92,26 +102,58 @@ function failure(
 }
 
 export async function invokeSingleAction(
+  repositoryRoot: unknown,
   currentAction: unknown,
   target: unknown,
   currentContext: unknown,
   execute: ActionExecutionCallback,
+  prepare: ActionPreparationCallback = () => "ready",
 ): Promise<SingleActionInvocationOutcome> {
-  const prepared = establishPreparedCurrentAction(currentAction, target);
-  if (prepared === null) {
+  const staged = stagePreparedCurrentAction(currentAction, target);
+  if (staged === null) {
     return failure(
       isCurrentAction(currentAction) ? currentAction : null,
       "entry-rejected",
     );
   }
 
+  const { prepared } = staged;
+  const preInvocationCurrentAction = isCurrentAction(currentAction)
+    ? currentAction
+    : null;
+  const preparationFailureAction = staged.staged
+    ? preInvocationCurrentAction
+    : prepared;
+
   if (!isRunContextRecord(currentContext)) {
-    return failure(prepared, "package-formation-rejected");
+    return failure(preparationFailureAction, "package-formation-rejected");
   }
 
-  const actionPackage = formActionPackage(prepared, currentContext);
+  const guidanceRef = await resolveActionGuidanceRef(
+    repositoryRoot,
+    prepared.identity.actionId,
+  );
+  if (guidanceRef === null) {
+    return failure(preparationFailureAction, "package-formation-rejected");
+  }
+
+  const actionPackage = formActionPackage(
+    prepared,
+    currentContext,
+    guidanceRef,
+  );
   if (actionPackage === null) {
-    return failure(prepared, "package-formation-rejected");
+    return failure(preparationFailureAction, "package-formation-rejected");
+  }
+
+  let preparationOutcome: ActionPreparationOutcome;
+  try {
+    preparationOutcome = await prepare(actionPackage);
+  } catch {
+    return failure(preparationFailureAction, "preparation-blocked");
+  }
+  if (preparationOutcome !== "ready") {
+    return failure(preparationFailureAction, "preparation-blocked");
   }
 
   let candidateResult: unknown;

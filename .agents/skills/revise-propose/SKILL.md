@@ -63,6 +63,8 @@ tasks.md
 
 Ensure requirements, design, tasks, and acceptance remain consistent.
 
+Converge affected planning text in place: replace/remove superseded claims and keep only rationale still needed to understand the current design. Do not append Reviewer/Owner correction chronology or copy the full prior Proposal/Explore into the revised artifacts. Use concise exact Run/finding references for deeper provenance when material.
+
 ### 5. Re-run Proposal checks
 
 Confirm:

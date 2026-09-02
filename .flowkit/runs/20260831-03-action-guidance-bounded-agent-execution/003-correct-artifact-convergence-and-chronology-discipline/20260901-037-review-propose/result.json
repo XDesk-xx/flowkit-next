@@ -1,0 +1,19 @@
+{
+  "runId": "20260901-037-review-propose",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "correct-artifact-convergence-and-chronology-discipline",
+  "action": "review-propose",
+  "role": "reviewer",
+  "status": "terminal",
+  "verdict": "CHANGES_REQUESTED",
+  "summary": "036 correctly preserves the approved Guidance-only artifact-convergence design, but its Proposal/Design/formal spec over-strengthen Run ownership into 'detailed' execution/reviewer chronology persistence. 035 explicitly proved Reviewer Run verbosity is part of the defect and approved concise bounded Run chronology. Revise wording so canonical artifacts do not duplicate chronology while Runs retain only the bounded facts/reasoning required by the existing concise Run contract. No redesign or new subsystem is required.",
+  "nextBoundary": "revise-propose",
+  "blockingFindings": [
+    "D03-RP-003"
+  ],
+  "applyAllowed": false,
+  "productionMutation": "NONE",
+  "reviewerMutation": "NONE",
+  "complexityAssessment": "MINIMAL_GUIDANCE_ONLY",
+  "scopeDriftAssessment": "NO SCOPE EXPANSION; one bounded formal semantic drift."
+}

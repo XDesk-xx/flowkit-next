@@ -1,0 +1,49 @@
+{
+  "runNumber": 24,
+  "kind": "external-orchestrator-review-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "converge-author-action-guidance",
+  "action": "review-explore",
+  "runId": "20260901-024-review-explore",
+  "inputRunId": "20260901-023-revise-explore",
+  "priorInvalidatedRunId": "20260901-022-archive",
+  "checkpointClaim": "3af174bdfa2e8ebcf280e87a13565d03dec0b647",
+  "inputPackageSha256": "54393149025dda3aa34ed753a79906a6bd141dfc75542eeba3a052884db8d28c",
+  "reviewedExploreArtifactSha256": "0d7d6efd84765ffa036b361cd29b109ddbdfc100fbaf73fbb99a5d5bd53b4f1f",
+  "deliveryManifestSha256": "5dd073887bfc441e561060823b331d601053e594f722e3dfad0898b075caa789",
+  "ownerClarification": {
+    "semanticBoundary": "A project-wide Change ordinal exists only after the Change actually enters Explore; planned-only Changes do not own/reserve ordinals.",
+    "archiveRule": "Archive consumes the already-assigned current Change ordinal rather than allocating/recomputing it."
+  },
+  "independentProof": {
+    "d01Cancelled008HadExploreBeforeCancellation": true,
+    "d03ReviewerGuidanceState": "planned",
+    "d03ReviewerGuidanceHasExploreRun": false,
+    "currentChange2HasExplore": true,
+    "currentChange2OrdinalValue": "021"
+  },
+  "findings": [
+    {
+      "id": "D03-RE-004",
+      "severity": "blocking",
+      "kind": "lifecycle-identity-semantics",
+      "summary": "023 incorrectly reserves project-wide Change ordinals from Delivery manifest planning slots. Ordinal must be assigned/frozen when a Change actually enters Explore; planned-only Changes consume no ordinal, and archive reuses the existing assigned number."
+    }
+  ],
+  "complexityAssessment": {
+    "currentModel": "UNNECESSARILY_STRONG",
+    "problem": "Delivery planning slots are upgraded into global identity reservations.",
+    "target": "MINIMAL: assign once at Explore, freeze, reuse through later Actions.",
+    "newControlPlaneRequired": false
+  },
+  "scopeDriftAssessment": {
+    "newProductCapability": false,
+    "newControlPlane": false,
+    "planningToIdentityAuthorityDrift": true,
+    "area": "project-wide Change ordinal semantics only"
+  },
+  "productionMutationByReviewer": false,
+  "authorArtifactMutationByReviewer": false
+}

@@ -59,6 +59,10 @@ Do not:
 - repair a Proposal defect by silently changing implementation semantics;
 - continue to another lifecycle Action automatically.
 
+## Handoff continuity
+
+Preserve the latest revision delta plus all materially required uncommitted ancestor state by cumulative payload or exact retrievable ancestor references. Carry exact removal information when paths are deleted/renamed; do not create a payload registry/database.
+
 ## Output
 
 Corrected implementation + evidence ready for independent review-apply.

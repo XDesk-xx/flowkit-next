@@ -1,0 +1,80 @@
+{
+  "runNumber": 10,
+  "kind": "external-orchestrator-review-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "establish-action-guidance-execution-contract",
+  "action": "review-apply",
+  "runId": "20260901-010-review-apply",
+  "inputRunId": "20260831-009-apply",
+  "approvedProposalReviewRunId": "20260831-008-review-propose",
+  "checkpointClaim": "9b32b98db8c989f85ac0e1e5894a91b7e04f05df",
+  "stableManagerBase": "4b45552b90ee327488bde3141c51c556e65a2e95",
+  "inputPackageSha256": "b0684993b89d0612c977cffa77e8662eb41becb4dd4a624acbdbffcfc75e462f",
+  "independentVerification": {
+    "node": "22.23.2",
+    "domain": {
+      "total": 155,
+      "pass": 154,
+      "fail": 0,
+      "skip": 1
+    },
+    "acceptance": {
+      "total": 4,
+      "pass": 4,
+      "fail": 0,
+      "skip": 0
+    },
+    "typecheck": "PASS",
+    "build": "PASS",
+    "prettier": "PASS",
+    "eslint": "PASS",
+    "forbiddenTrackedArtifacts": "PASS",
+    "dependencyHealth": {
+      "status": "PASS",
+      "modules": 57,
+      "dependencies": 204,
+      "violations": 0
+    },
+    "repositoryEntropy": {
+      "status": "PASS",
+      "reachable": 25,
+      "total": 25
+    },
+    "gitDiffCheck": "PASS",
+    "openspecChangeStrict": "PASS",
+    "openspecAllStrict": "15/15 PASS"
+  },
+  "unreadableSimulationPrototype": {
+    "strategy": "spawn exact Node child with uid/gid 65534 against root-owned 0600 canonical SKILL.md",
+    "resolverReturnedNull": true,
+    "childExitCode": 0,
+    "productionChangesRequired": false
+  },
+  "findings": [
+    {
+      "id": "D03-RA-001",
+      "severity": "blocking",
+      "kind": "verification-evidence-gap",
+      "scope": "test-only",
+      "summary": "Required unreadable canonical Guidance scenario is skipped under root detached host even though a minimal real-EACCES child-process simulation is available."
+    }
+  ],
+  "complexityAssessment": {
+    "production": "MINIMAL_REQUIRED",
+    "requestedRevisionAddsProductionComplexity": false,
+    "newSubsystem": false
+  },
+  "scopeDriftAssessment": {
+    "newCapability": false,
+    "newAuthority": false,
+    "newLifecycle": false,
+    "newGuidanceGraph": false,
+    "selfHostingTakeover": false,
+    "laterChangeContentPulledForward": false,
+    "summary": "NONE"
+  },
+  "productionMutationByReviewer": false,
+  "authorArtifactMutationByReviewer": false
+}

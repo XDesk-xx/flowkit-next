@@ -1,6 +1,6 @@
 ---
 name: explore-proof-based
-description: Proof-based Explore for Flowkit changes. Use to investigate contract-changing unknowns, bound real scope, and stop exploration before it drifts into non-goal subsystems.
+description: Proof-based Explore for Flowkit changes. Use to investigate contract-changing unknowns, persist first-Explore project ordinal facts in the independent bootstrap plane, bound real scope, and stop exploration before it drifts into non-goal subsystems.
 metadata:
   author: flowkit
 ---
@@ -21,11 +21,32 @@ Explore may broaden the question space temporarily, but it MUST NOT silently bro
 
 Policy / Owner authority decides whether an Action is legal.
 
-This skill defines HOW Explore is performed.
+This skill defines HOW Explore is performed after the exact Explore Action is already current/legal.
 
 Explore evidence is not approval. Reviewer approval is still required before Proposal.
 
 Owner scope correction overrides prior exploratory direction. When Owner narrows the real use case, obsolete proof branches become historical risk evidence, not mandatory Proposal blockers.
+
+This independent D03/D04 bootstrap skill MUST NOT read or execute candidate `skills/actions/explore/SKILL.md`.
+
+## First-Explore project ordinal bootstrap parity
+
+`semantic ChangeId` remains canonical identity. `projectOrdinal` is only a durable project-wide monotonic sequence/archive-naming fact.
+
+After the exact Explore Action is already legal/current:
+
+1. Read the exact Delivery Change coordination entry.
+2. If it already has a valid positive-integer `projectOrdinal`, reuse it unchanged.
+3. If absent, inspect durable already-assigned `projectOrdinal` facts from repository Delivery Change coordination entries.
+4. Require the durable assigned facts to be valid, unique and internally consistent. On malformed, duplicate, contradictory or insufficient facts, STOP fail-closed.
+5. Derive the next value only as `max(existing assigned projectOrdinal) + 1` and persist it exactly once on the exact current Change entry.
+6. Planned-only Changes reserve nothing. An explored-then-cancelled Change keeps its assigned ordinal consumed.
+
+Never use Delivery array position, Run number, `changeStartSequence`, completed/archive counts, physical Run-group prefix, or archive-directory counting as fallback sequencing input.
+
+If there is no durable assigned ordinal baseline, STOP for an explicit bounded bootstrap/Owner decision rather than inventing an initial value.
+
+This is bootstrap HOW maintenance only. It does not decide activation/legality and does not create a Registry, counter service, allocator subsystem, new lifecycle state or self-hosting convergence.
 
 ## Core Principle
 
@@ -113,6 +134,12 @@ Forbidden:
 - generic subsystem design not required by the real use case
 - exhaustive proof of explicitly deferred input domains
 
+### 4A. Check concept ownership and mutation/failure ordering when relevant
+
+When Explore is about to introduce a new mechanism, first ask whether the need already belongs to an existing capability/entity, operation, state, configuration, validation/proof mechanic, or Guidance/HOW. Prefer the existing owner unless proof shows a real new capability boundary.
+
+When the design is stateful or side-effecting, identify validation, the mutation/commit point, failure behavior before and after commit, and whether retry/rollback/correction remains legal. Apply this proportionally; simple non-mutating work does not need artificial lifecycle analysis.
+
 ### 5. Reduce proof into decisions
 
 For every proof, record:
@@ -122,6 +149,16 @@ For every proof, record:
 - what it does NOT establish
 
 A proof with no decision impact should not become a Proposal requirement by default.
+
+### 5A. Converge canonical Explore to current truth
+
+The canonical Explore should preserve current bounded proof, conclusions, limitations, and rationale still needed to understand the current contract. It is not an append-only diary of Reviewer/Owner corrections.
+
+When prior proof or a counterexample remains material, rewrite it as current rationale. When it is only execution chronology, keep the concise continuation-relevant fact/reference in the existing Run surface and rely on Git for exact repository history rather than copying the chronology into Explore.
+
+File size/line count may reveal duplication but are diagnostic only; do not turn them into hard correctness thresholds.
+
+This bootstrap rule is independent HOW. It MUST NOT read or execute candidate `skills/actions/explore/SKILL.md`.
 
 ### 6. Produce Proposal-ready boundary
 
@@ -150,6 +187,7 @@ Stop Explore as blocked when:
 - required authority is missing;
 - a key claim cannot be supported;
 - the real scope cannot be bounded;
+- ordinal persistence facts are ambiguous/inconsistent;
 - a newly discovered issue requires Owner scope/priority decision.
 
 Never convert UNKNOWN into PASS.

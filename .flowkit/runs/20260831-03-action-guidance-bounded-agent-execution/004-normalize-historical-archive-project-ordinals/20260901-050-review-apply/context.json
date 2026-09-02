@@ -1,0 +1,62 @@
+{
+  "runNumber": 50,
+  "kind": "external-orchestrator-review-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "normalize-historical-archive-project-ordinals",
+  "action": "review-apply",
+  "runId": "20260901-050-review-apply",
+  "inputRunId": "20260901-049-apply",
+  "physicalRunPath": ".flowkit/runs/20260831-03-action-guidance-bounded-agent-execution/004-normalize-historical-archive-project-ordinals/20260901-050-review-apply",
+  "physicalRunGroupPrefix": "004",
+  "projectOrdinal": 23,
+  "changeStartSequence": 45,
+  "checkpointClaim": "cb53d07b18da4382d83291627843507fc4acaf70",
+  "inputAuthorPackageSha256": "87c03e559057a253303c381e6ee6ad67c55c532fa37bed2ac605d3568f01b431",
+  "reviewChain": [
+    "20260901-045-explore",
+    "20260901-046-review-explore",
+    "20260901-047-propose",
+    "20260901-048-review-propose",
+    "20260901-049-apply"
+  ],
+  "independentReconstruction": {
+    "explicitRemovedPathCount": 7,
+    "normalizedArchiveCount": 7,
+    "renamedArchiveTreesByteIdentical": true,
+    "durableRunFilesChanged": 21,
+    "durableRunChangesExactPathSubstitutionOnly": true,
+    "oldFullArchivePathReferenceCountAfterApply": 0,
+    "historicalBareNamesOnlyInPriorEvidenceProse": true
+  },
+  "verification": {
+    "node": "22.23.2",
+    "openspec": "1.10.0",
+    "detachedDependencySnapshotReused": true,
+    "packageManagerInstallRelinkRepairRun": false,
+    "focusedAuthorGuidance": "13/13 PASS",
+    "domain": "168/168 PASS",
+    "typecheck": "PASS",
+    "eslintFocused": "PASS",
+    "formatFocused": "PASS",
+    "changeStrict": "PASS",
+    "canonicalSpecsStrict": "16/16 PASS",
+    "archivedStrict": "21/21 PASS",
+    "openSpecAllStrict": "17/17 PASS",
+    "gitDiffCheck": "PASS"
+  },
+  "scopeAssessment": {
+    "srcMutation": false,
+    "packageOrLockMutation": false,
+    "productActionGuidanceMutation": false,
+    "reviewerGuidanceMutation": false,
+    "architectureMutation": false,
+    "newOrdinalSubsystem": false,
+    "gitHistoryRewrite": false,
+    "scopeDrift": "NONE",
+    "complexityGrowth": "NONE"
+  },
+  "stableTransfer": true,
+  "packageClass": "cumulative-review-handoff-with-explicit-removals"
+}

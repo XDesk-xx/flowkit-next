@@ -3,6 +3,10 @@ import {
   type ActionExecutionRole,
 } from "./authority.js";
 import { isCurrentAction, type ActionIdentity } from "./action-lifecycle.js";
+import {
+  isActionGuidanceRefForAction,
+  type ActionGuidanceRef,
+} from "./action-guidance-execution.js";
 import { isStandardActionId } from "./identity.js";
 import {
   formatRunOccurrenceId,
@@ -16,8 +20,45 @@ import {
 
 export type ExecutableActionLifecycleState = "prepared";
 
-export interface ActionPackage extends RunContextRecord {
+export interface ActionPackage {
+  readonly runId: RunContextRecord["runId"];
+  readonly occurrence: RunContextRecord["occurrence"];
+  readonly actionIdentity: RunContextRecord["actionIdentity"];
+  readonly role: RunContextRecord["role"];
   readonly lifecycleState: ExecutableActionLifecycleState;
+  readonly ownerAuthority: RunContextRecord["ownerAuthority"];
+  readonly previousRunId: RunContextRecord["previousRunId"];
+  readonly guidanceRef: ActionGuidanceRef;
+}
+
+const ACTION_PACKAGE_FIELDS = [
+  "runId",
+  "occurrence",
+  "actionIdentity",
+  "role",
+  "lifecycleState",
+  "ownerAuthority",
+  "previousRunId",
+  "guidanceRef",
+] as const;
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  if (typeof value !== "object" || value === null || Array.isArray(value)) {
+    return false;
+  }
+  const proto = Object.getPrototypeOf(value);
+  return proto === Object.prototype || proto === null;
+}
+
+function hasExactlyFields(
+  value: Record<string, unknown>,
+  fields: readonly string[],
+): boolean {
+  const keys = Object.keys(value);
+  return (
+    keys.length === fields.length &&
+    fields.every((field) => Object.prototype.hasOwnProperty.call(value, field))
+  );
 }
 
 function sameActionIdentity(a: ActionIdentity, b: ActionIdentity): boolean {
@@ -55,14 +96,38 @@ export function expectedExecutionRoleForAction(
   }
 }
 
+function projectRunContext(value: ActionPackage): RunContextRecord {
+  return {
+    runId: value.runId,
+    occurrence: value.occurrence,
+    actionIdentity: value.actionIdentity,
+    role: value.role,
+    lifecycleState: value.lifecycleState,
+    ownerAuthority: value.ownerAuthority,
+    previousRunId: value.previousRunId,
+  };
+}
+
 export function isActionPackage(value: unknown): value is ActionPackage {
-  if (!isRunContextRecord(value)) return false;
-  if (!isExecutableState(value.lifecycleState)) return false;
+  if (!isRecord(value) || !hasExactlyFields(value, ACTION_PACKAGE_FIELDS)) {
+    return false;
+  }
+
+  const candidate = value as unknown as ActionPackage;
+  if (!isRunContextRecord(projectRunContext(candidate))) return false;
+  if (!isExecutableState(candidate.lifecycleState)) return false;
 
   const expectedRole = expectedExecutionRoleForAction(
-    value.actionIdentity.actionId,
+    candidate.actionIdentity.actionId,
   );
-  return expectedRole !== null && value.role === expectedRole;
+  return (
+    expectedRole !== null &&
+    candidate.role === expectedRole &&
+    isActionGuidanceRefForAction(
+      candidate.guidanceRef,
+      candidate.actionIdentity.actionId,
+    )
+  );
 }
 
 function cloneActionIdentity(identity: ActionIdentity): ActionIdentity {
@@ -97,9 +162,17 @@ function cloneOwnerAuthority(
   };
 }
 
+function cloneGuidanceRef(guidanceRef: ActionGuidanceRef): ActionGuidanceRef {
+  return {
+    path: guidanceRef.path,
+    contentSha256: guidanceRef.contentSha256,
+  };
+}
+
 export function formActionPackage(
   currentAction: unknown,
   currentContext: unknown,
+  guidanceRef: unknown,
 ): ActionPackage | null {
   if (!isCurrentAction(currentAction)) return null;
   if (!isRunContextRecord(currentContext)) return null;
@@ -116,8 +189,13 @@ export function formActionPackage(
   );
   if (expectedRole === null || currentContext.role !== expectedRole)
     return null;
+  if (
+    !isActionGuidanceRefForAction(guidanceRef, currentAction.identity.actionId)
+  ) {
+    return null;
+  }
 
-  return {
+  const formed: ActionPackage = {
     runId: currentContext.runId,
     occurrence: cloneOccurrence(currentContext.occurrence),
     actionIdentity: cloneActionIdentity(currentContext.actionIdentity),
@@ -125,7 +203,10 @@ export function formActionPackage(
     lifecycleState: currentAction.state,
     ownerAuthority: cloneOwnerAuthority(currentContext.ownerAuthority),
     previousRunId: currentContext.previousRunId,
+    guidanceRef: cloneGuidanceRef(guidanceRef),
   };
+
+  return isActionPackage(formed) ? formed : null;
 }
 
 function outcomeSlotsMatchExecutionRole(

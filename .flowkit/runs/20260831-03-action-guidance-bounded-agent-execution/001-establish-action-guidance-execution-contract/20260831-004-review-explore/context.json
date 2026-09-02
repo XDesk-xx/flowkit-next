@@ -1,0 +1,34 @@
+{
+  "runNumber": 4,
+  "kind": "external-orchestrator-review-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "establish-action-guidance-execution-contract",
+  "action": "review-explore",
+  "runId": "20260831-004-review-explore",
+  "inputRunId": "20260831-003-revise-explore",
+  "reviewChainStartRunId": "20260831-001-explore",
+  "checkpointClaim": "9b32b98db8c989f85ac0e1e5894a91b7e04f05df",
+  "stableManagerBase": "4b45552b90ee327488bde3141c51c556e65a2e95",
+  "inputPackageSha256": "3b52ce6f9140aa0f5cdfbeb8b4627a837ca6fba6703a14b95972e06e8a96f94f",
+  "independentProof": {
+    "currentExploreArtifactSha256": "a32909fdcb0c395511f1f0b255f3fb2a25c1bedcaad0a6b8cc0f6335c63a4672",
+    "previous001ExploreArtifactSha256": "a258689c02a653474a3166b7cf6ceae50117e085450fd1b91d2388e2ff555afa",
+    "technicalDesignDiff": "NONE; only Owner self-hosting wording changed",
+    "ownerSelfHostingBoundary": "PASS",
+    "staleAbsentThinWordingPresent": false
+  },
+  "findings": [
+    {
+      "id": "D03-RE-003",
+      "severity": "blocking",
+      "kind": "handoff-integrity",
+      "currentExploreArtifactSha256": "a32909fdcb0c395511f1f0b255f3fb2a25c1bedcaad0a6b8cc0f6335c63a4672",
+      "stalePriorHash": "a258689c02a653474a3166b7cf6ceae50117e085450fd1b91d2388e2ff555afa",
+      "requiredCorrection": "Use current final hash consistently and remove false bytes-unchanged claims."
+    }
+  ],
+  "productionMutationByReviewer": false,
+  "authorArtifactMutationByReviewer": false
+}

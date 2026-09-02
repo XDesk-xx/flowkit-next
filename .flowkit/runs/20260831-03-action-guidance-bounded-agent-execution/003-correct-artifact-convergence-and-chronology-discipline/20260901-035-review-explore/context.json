@@ -1,0 +1,71 @@
+{
+  "runNumber": 35,
+  "kind": "external-orchestrator-review-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "correct-artifact-convergence-and-chronology-discipline",
+  "action": "review-explore",
+  "runId": "20260901-035-review-explore",
+  "inputRunId": "20260901-034-explore",
+  "physicalRunPath": ".flowkit/runs/20260831-03-action-guidance-bounded-agent-execution/003-correct-artifact-convergence-and-chronology-discipline/20260901-035-review-explore",
+  "physicalRunGroupPrefix": "003",
+  "projectOrdinal": 22,
+  "changeStartSequence": 34,
+  "checkpointClaim": "9e551bbc50e47d063fdc8185b2f488bb76f0cfbd",
+  "inputPackageSha256": "96f4418a1c055cc2487769a2cd808c00aa2bd181695ad826ad6757aed1aff547",
+  "inputExploreSha256": "32b694f1672b95cae59f7c6f580770d9126d9cfd46f161bac9db5e08cb082797",
+  "inputManifestSha256": "0b1dd2ea6d6ee90d412d3eaed6a8f21e285687ac64064109edbf10a378256f77",
+  "sourceOrderingHandoffSha256": "0f92d9a16f11e8b965a2d7288a3ca75095a4471a31495fa730443c6f64f3f3b4",
+  "independentProof": {
+    "exactBaseRestored": true,
+    "archivedExploreOver20KiB": 8,
+    "change2ExploreBytes": 23982,
+    "change2ExploreLines": 995,
+    "change2ExploreWords": 3015,
+    "change2DesignBytes": 12001,
+    "chronologyLeakageSectionsFound": [
+      "Owner correction after the invalid 022 archive candidate",
+      "15A. Owner rollback / prior-candidate disposition",
+      "15B. Reviewer 024 finding convergence"
+    ],
+    "reviewerRunCount": 9,
+    "reviewerActionLines": 4191,
+    "authorRunCount": 11,
+    "authorActionLines": 744,
+    "productReviewerGuidanceEntriesPresent": false,
+    "gitDiffCheck": "PASS"
+  },
+  "acceptedBoundaries": {
+    "canonicalArtifactCurrentTruth": true,
+    "runOwnsActionChronology": true,
+    "gitOwnsExactHistory": true,
+    "reviseConvergesInPlaceByDefault": true,
+    "retainMaterialHistoricalFactsAsCurrentRationale": true,
+    "hardSizeGateRejected": true,
+    "productReviewerGuidanceDeferredToChange3": true,
+    "bootstrapReviewerParityAllowed": true,
+    "temporaryRunBridgeRetained": true,
+    "newCoreCapabilityRequired": false,
+    "newPersistenceSystemRequired": false,
+    "selfHostingTakeover": false
+  },
+  "complexityAssessment": {
+    "classification": "MINIMAL_GUIDANCE_ONLY",
+    "newCoreSubsystem": false,
+    "newRegistryRouterPlannerRuntime": false,
+    "newRunSchema": false
+  },
+  "scopeDriftAssessment": {
+    "newAuthorizedCorrectiveContent": true,
+    "newOutOfScopeCapability": false,
+    "productReviewerGuidancePulledForward": false,
+    "windowsCorrectionPulledIn": false,
+    "historicalNormalizationPulledIn": false,
+    "selfHostingTakeover": false,
+    "summary": "NONE"
+  },
+  "findings": [],
+  "productionMutationByReviewer": false,
+  "authorArtifactMutationByReviewer": false
+}

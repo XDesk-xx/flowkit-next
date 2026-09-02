@@ -1,0 +1,63 @@
+{
+  "runNumber": 46,
+  "kind": "external-orchestrator-review-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "normalize-historical-archive-project-ordinals",
+  "action": "review-explore",
+  "runId": "20260901-046-review-explore",
+  "inputRunId": "20260901-045-explore",
+  "physicalRunPath": ".flowkit/runs/20260831-03-action-guidance-bounded-agent-execution/004-normalize-historical-archive-project-ordinals/20260901-046-review-explore",
+  "physicalRunGroupPrefix": "004",
+  "projectOrdinal": 23,
+  "changeStartSequence": 45,
+  "checkpointClaim": "cb53d07b18da4382d83291627843507fc4acaf70",
+  "inputPackageSha256": "4be0ab4aa7462aecebff2af994c7a0df82a5af899fa5b74dce254a42dcaa62c5",
+  "inputExploreSha256": "f2a3f1aa0721a3f3c99babac5abfae7bab50ba05371de9845ec67527846f17bf",
+  "inputManifestSha256": "964182b1817ddadd46cfcb7fb199a819bbe6d1b5c297c7504d3f9149ceb179dc",
+  "independentProof": {
+    "exactBaseRestored": true,
+    "dateOnlyArchiveCount": 7,
+    "historicalMappedOrdinals": "014..020",
+    "durableArchiveRunReferenceCount": 21,
+    "additionalTestOldPathAssertions": 2,
+    "precedentCommit": "985e9725bdd4656ce064083387b1817a5723a251",
+    "focusedBaseline": "12/13 PASS; exact transient-state assertion FAIL reproduced",
+    "openspecStrictValidation": "PASS",
+    "dependencyInputsGitObjectIdenticalToD02Final": true,
+    "packageManagerInstallInvoked": false,
+    "nodeVersion": "22.23.2",
+    "gitDiffCheck": "PASS"
+  },
+  "acceptedBoundaries": {
+    "historicalRenameOnly": true,
+    "stableFixtureBasedOrdinalTest": true,
+    "skipSpecs": true,
+    "newCoreCapabilityRequired": false,
+    "productSpecDeltaRequired": false,
+    "productGuidanceMutationRequired": false,
+    "architectureMutationRequired": false,
+    "dependencyMutationRequired": false,
+    "reviewerGuidanceDeferred": true
+  },
+  "precisionNotes": [
+    "21 is the exact durable archive-Run reference count; two additional old-path assertions exist in the focused test file, already included in the expected mutation surface."
+  ],
+  "complexityAssessment": {
+    "classification": "MINIMAL_REPOSITORY_HISTORY_NORMALIZATION",
+    "newCoreSubsystem": false,
+    "newRegistryAllocatorMigrationSubsystem": false,
+    "newLifecycle": false
+  },
+  "scopeDriftAssessment": {
+    "newAuthorizedCorrectiveContent": true,
+    "newOutOfScopeCapability": false,
+    "reviewerGuidancePulledForward": false,
+    "selfHostingTakeover": false,
+    "summary": "NONE"
+  },
+  "findings": [],
+  "productionMutationByReviewer": false,
+  "authorArtifactMutationByReviewer": false
+}

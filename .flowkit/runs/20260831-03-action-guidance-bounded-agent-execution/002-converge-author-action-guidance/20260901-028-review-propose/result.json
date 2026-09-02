@@ -1,0 +1,19 @@
+{
+  "runId": "20260901-028-review-propose",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "converge-author-action-guidance",
+  "action": "review-propose",
+  "role": "reviewer",
+  "status": "terminal",
+  "verdict": "CHANGES_REQUESTED",
+  "summary": "027 correctly translates the approved projectOrdinal semantics into Proposal/spec/design, preserves semantic ChangeId as canonical identity, removes planned-slot reservation, and makes Archive consumer-only. One blocker remains: first-actual-Explore assignment/persistence is formalized but not owned by any implementation task. Revise Proposal to update product Explore Guidance and the existing independent .agents Explore HOW, with focused tests; no Core allocator/Registry/lifecycle subsystem is required.",
+  "nextBoundary": "revise-propose",
+  "blockingFindings": [
+    "D03-RP-002"
+  ],
+  "applyAllowed": false,
+  "productionMutation": "NONE",
+  "reviewerMutation": "NONE",
+  "complexityAssessment": "MINIMAL_REQUIRED",
+  "scopeDriftAssessment": "NONE; implementation coverage gap only."
+}

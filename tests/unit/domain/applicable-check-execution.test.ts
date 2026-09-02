@@ -4,6 +4,7 @@ import {
   chmod,
   mkdir,
   mkdtemp,
+  readFile,
   rm,
   symlink,
   unlink,
@@ -77,6 +78,10 @@ function actionPackage(sequence = 62): ActionPackage {
     lifecycleState: "prepared",
     ownerAuthority: null,
     previousRunId: null,
+    guidanceRef: {
+      path: "skills/actions/apply/SKILL.md",
+      contentSha256: "a".repeat(64),
+    },
   };
   assert.equal(isActionPackage(value), true);
   return value;
@@ -228,6 +233,38 @@ test("execution input is deterministic for a check set and changes with set/pack
   }
 });
 
+test("Guidance identity naturally changes ActionPackageRef and executionInputRef", async () => {
+  const root = await createGitFixture();
+  try {
+    const firstPackage = actionPackage();
+    const secondPackage: ActionPackage = {
+      ...firstPackage,
+      guidanceRef: {
+        ...firstPackage.guidanceRef,
+        contentSha256: "b".repeat(64),
+      },
+    };
+
+    const first = await resolve(
+      root,
+      plan(declaration("typecheck")),
+      firstPackage,
+    );
+    const second = await resolve(
+      root,
+      plan(declaration("typecheck")),
+      secondPackage,
+    );
+
+    assert.notEqual(first.actionPackageRef, second.actionPackageRef);
+    assert.notEqual(first.executionInputRef, second.executionInputRef);
+    assert.equal(first.candidateRef, second.candidateRef);
+    assert.deepEqual(first.checks, second.checks);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
 test("candidate ignores ignored untracked and Run-only material but changes on source bytes", async () => {
   const root = await createGitFixture();
   try {
@@ -249,17 +286,18 @@ test("candidate ignores ignored untracked and Run-only material but changes on s
   }
 });
 
-test("same bytes with Git-visible executable mode change changes candidateRef", async (t) => {
-  if (process.platform === "win32") {
-    t.skip(
-      "Windows Git worktrees do not expose chmod mode changes consistently",
-    );
-    return;
-  }
+test("same bytes with Git-visible executable mode change changes candidateRef", async () => {
   const root = await createGitFixture();
   try {
     const script = path.join(root, "check.sh");
-    await chmod(script, 0o755);
+    const bytes = await readFile(script);
+    await git(root, "config", "core.filemode", "false");
+
+    await git(root, "update-index", "--chmod=+x", "check.sh");
+    assert.match(
+      await git(root, "ls-files", "--stage", "check.sh"),
+      /^100755 /,
+    );
     const executable = await deriveApplicableCheckCandidateRef(root);
     const before = await resolve(root, plan(declaration("mode-proof")));
     const prior: ApplicableCheckPriorFact = {
@@ -268,7 +306,13 @@ test("same bytes with Git-visible executable mode change changes candidateRef", 
       checkRef: before.checks[0].checkRef,
       status: "passed",
     };
-    await chmod(script, 0o644);
+
+    await git(root, "update-index", "--chmod=-x", "check.sh");
+    assert.match(
+      await git(root, "ls-files", "--stage", "check.sh"),
+      /^100644 /,
+    );
+    assert.deepEqual(await readFile(script), bytes);
     const regular = await deriveApplicableCheckCandidateRef(root);
     const after = await resolve(root, plan(declaration("mode-proof")));
     assert.notEqual(executable, regular);

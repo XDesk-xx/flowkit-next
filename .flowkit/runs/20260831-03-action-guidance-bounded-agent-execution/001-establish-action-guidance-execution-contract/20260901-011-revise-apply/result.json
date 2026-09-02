@@ -1,0 +1,36 @@
+{
+  "runNumber": 11,
+  "kind": "external-orchestrator-revise-apply-result",
+  "role": "author",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "establish-action-guidance-execution-contract",
+  "action": "revise-apply",
+  "runId": "20260901-011-revise-apply",
+  "executionStatus": "completed",
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-apply",
+  "resolvedFindings": [
+    {
+      "id": "D03-RA-001",
+      "resolution": "Replaced the root-host unreadable-file SKIP with a real low-privilege child-process permission proof using the real resolver; full domain suite is now 155 PASS / 0 FAIL / 0 SKIP."
+    }
+  ],
+  "checks": {
+    "targetedActionGuidanceTests": "7/7 PASS, 0 SKIP",
+    "domain": "155/155 PASS, 0 SKIP",
+    "typecheck": "PASS",
+    "prettierRepository": "PASS",
+    "eslintRepository": "PASS",
+    "forbiddenTrackedArtifacts": "PASS",
+    "gitDiffCheck": "PASS",
+    "productionMutation": "NONE",
+    "onlyFileChangedFrom009Apply": "tests/unit/domain/action-guidance-execution.test.ts"
+  },
+  "complexityAssessment": "MINIMAL; test-only permission simulation, zero production complexity.",
+  "scopeDriftAssessment": "NONE",
+  "archiveAllowed": false,
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

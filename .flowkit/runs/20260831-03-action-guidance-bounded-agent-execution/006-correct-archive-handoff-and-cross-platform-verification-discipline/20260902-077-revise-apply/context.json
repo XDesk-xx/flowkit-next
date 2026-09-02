@@ -1,0 +1,93 @@
+{
+  "runNumber": 77,
+  "runId": "20260902-077-revise-apply",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "correct-archive-handoff-and-cross-platform-verification-discipline",
+  "projectOrdinal": 25,
+  "changeStartSequence": 61,
+  "physicalRunGroupPrefix": "006",
+  "action": "revise-apply",
+  "role": "author",
+  "inputRunId": "20260902-076-review-apply",
+  "checkpointClaim": "39ef634bc7680af0494d4d918adf58e338601a83",
+  "inputReviewerPackageSha256": "454697287c81d53eb0f46f318cbf32b5b28ef6834ab33a0bfe8f514189574406",
+  "ownerAuthority": {
+    "ref": "owner:555918ecfbf96e9e259d162bcc237f1f6fe4c877e1a43c897e20d15dab33fa39",
+    "sourceRef": "owner-input:2026-09-02:revise-action:correct-archive-handoff-and-cross-platform-verification-discipline:revise-apply:stale-reviewer-test-and-post-convergence-archive-verification",
+    "scope": [
+      "revise-apply",
+      "stale-reviewer-action-guidance-test",
+      "archive-post-convergence-verification"
+    ]
+  },
+  "corrections": [
+    {
+      "id": "PREARCHIVE-076-001",
+      "surface": "tests/unit/domain/reviewer-action-guidance.test.ts",
+      "resolution": "Preserve temporary-bridge chronology in the actual archived 021 Author Guidance spec instead of pinning the retired phase literal into the current canonical Author spec."
+    },
+    {
+      "id": "PREARCHIVE-076-002",
+      "surfaces": [
+        "skills/actions/archive/SKILL.md",
+        ".agents/skills/archive/SKILL.md",
+        "tests/unit/domain/author-action-guidance.test.ts"
+      ],
+      "resolution": "Require isolated canonical convergence followed by affected domain verification and materially applicable engineering gates against converged bytes before real archive mutation; post-convergence correction failures STOP before mutation and require fresh review-apply after byte correction."
+    }
+  ],
+  "archivePreparationEvidence": {
+    "previousObservedDefect": "OpenSpec convergence succeeded but post-convergence domain was 177/178 because a stale Reviewer Guidance test required retired current-canonical phase text.",
+    "strengthenedDryRun": {
+      "openSpecConvergence": "4 added / 4 modified / 1 removed",
+      "domain": "178/178 PASS, 0 skipped",
+      "typecheck": "PASS",
+      "build": "PASS",
+      "prettier": "PASS",
+      "eslint": "PASS",
+      "forbiddenTrackedArtifacts": "PASS",
+      "dependencyHealth": "59 modules / 219 dependencies / 0 violations",
+      "repositoryEntropy": "25/25 production modules reachable",
+      "openSpecAllStrict": "17/17 PASS",
+      "gitDiffCheck": "PASS"
+    }
+  },
+  "unarchivedCandidateVerification": {
+    "focusedAuthorReviewerGuidance": "19/19 PASS",
+    "domain": "178/178 PASS, 0 skipped",
+    "typecheck": "PASS",
+    "build": "PASS",
+    "prettier": "PASS",
+    "eslint": "PASS",
+    "forbiddenTrackedArtifacts": "PASS",
+    "dependencyHealth": "59 modules / 219 dependencies / 0 violations",
+    "repositoryEntropy": "25/25 production modules reachable",
+    "openSpecAllStrict": "18/18 PASS",
+    "gitDiffCheck": "PASS"
+  },
+  "artifactHashes": {
+    "productArchiveGuidance": "5247ba3dc9969f546d24e5402df3b53bf0b82dd95016245e2348e6f883452970",
+    "bootstrapArchiveGuidance": "78e925036727ab5102933e0f91886306ff60c6a16632582fe94c522cc7cbe4a0",
+    "authorActionGuidanceTest": "ac341dcdcd15ae56ba480d8b12cf28fc7f69da8a8dbcfe5437ebdc1c31d07f56",
+    "reviewerActionGuidanceTest": "2dc52cd193de35cf382bd03bfb25cbb6ce7d3519edc32d92bff404506a755a18",
+    "proposal": "b27471ea061bf129fe5804d43fb673023267af3cec097259dd10022726a92291",
+    "design": "6a5c142c9eea4fd26b010b3dfd1ae35346a02c945526dd060fed60fd108bbe6e",
+    "tasks": "d6b86135f5bcbbaed015551f3574ed17656492a0030760cc4f1e2a8d54434044"
+  },
+  "mutationGuards": {
+    "proposalSpecDesignTasksChangedByRevision": false,
+    "srcChangedByRevision": false,
+    "dependencyInputsChanged": false,
+    "policyChanged": false,
+    "lifecycleChanged": false,
+    "memoStateChanged": false,
+    "architectureChanged": false,
+    "newActionOrPreparationIdentity": false,
+    "newControlPlane": false
+  },
+  "tasksComplete": "11/11",
+  "complexityAssessment": "MINIMAL_PREARCHIVE_CORRECTION_AND_PREPARATION_VERIFICATION_STRENGTHENING",
+  "scopeDriftAssessment": "NONE",
+  "stableTransfer": true,
+  "packageClass": "cumulative-revise-apply-handoff"
+}

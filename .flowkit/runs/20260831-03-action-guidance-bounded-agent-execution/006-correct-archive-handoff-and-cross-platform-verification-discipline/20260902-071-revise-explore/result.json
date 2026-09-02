@@ -1,0 +1,40 @@
+{
+  "runId": "20260902-071-revise-explore",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "correct-archive-handoff-and-cross-platform-verification-discipline",
+  "action": "revise-explore",
+  "role": "author",
+  "status": "terminal",
+  "verdict": "PASS",
+  "summary": "Owner correction converged the two former Windows-only proof gaps to Linux-hosted semantic simulation. Real Linux EACCES proves the platform-agnostic Guidance resolver fails closed under host read denial; core.filemode=false plus Git-index chmod proves the executable-mode candidate identity contract under Windows-relevant worktree semantics. Native Windows execution is no longer an acceptance requirement.",
+  "nextBoundary": "review-explore",
+  "proposalAllowed": true,
+  "applyAllowed": false,
+  "blockingUnknown": null,
+  "projectOrdinal": 25,
+  "changeStartSequence": 61,
+  "currentRunSequence": 71,
+  "physicalRunGroupPrefix": "006",
+  "specDelta": "UNCHANGED from 069; this revision changes proof mechanics/acceptance execution only, not product capability semantics",
+  "durableFacts": [
+    "resolveActionGuidanceRef contains no platform-specific production branch; its contract-relevant condition is readable versus unreadable canonical Guidance.",
+    "A real Linux low-privilege EACCES against the exact resolver is sufficient to simulate the Windows ACL-denial semantic at the product boundary.",
+    "Git-index mode mutation with core.filemode=false on Linux reproduces the Windows-relevant worktree limitation while exercising the real 100644/100755 candidate identity contract.",
+    "Native Windows/icacls execution is not required for this corrective Change acceptance.",
+    "The separate symlink host-capability guard remains outside scope.",
+    "A/B/C/D/E corrective scope and the bounded package-bound preparation seam remain unchanged."
+  ],
+  "explicitNonGoals": [
+    "native Windows runner requirement",
+    "icacls fixture or Windows ACL command validation",
+    "Windows/filesystem abstraction or production mock seam",
+    "third symlink host-capability skip cleanup",
+    "new Action/state/Policy transition/verification platform",
+    "production implementation during revise-explore"
+  ],
+  "productionMutation": "NONE",
+  "scopeChange": "OWNER_CORRECTED_PROOF_MECHANICS_ONLY",
+  "scopeDrift": "NONE_AFTER_OWNER_CORRECTION",
+  "stableTransfer": true,
+  "packageClass": "cumulative-action-handoff"
+}

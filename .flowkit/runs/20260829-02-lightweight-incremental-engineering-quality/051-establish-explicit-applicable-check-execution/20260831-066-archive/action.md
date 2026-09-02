@@ -21,7 +21,7 @@
 
 1. Synced the approved delta spec into the new canonical `openspec/specs/applicable-check-execution/spec.md`.
 2. Verified the canonical merge exactly preserved the approved Purpose and ADDED Requirements without delta-operation headers.
-3. Archived the Change to `openspec/changes/archive/2026-08-31-establish-explicit-applicable-check-execution`.
+3. Archived the Change to `openspec/changes/archive/2026-08-31-019-establish-explicit-applicable-check-execution`.
 4. Materialized Delivery coordination state for this Change as `completed` without changing Delivery-level full-test/finalization state.
 5. Revalidated domain behavior and OpenSpec truth after archive.
 

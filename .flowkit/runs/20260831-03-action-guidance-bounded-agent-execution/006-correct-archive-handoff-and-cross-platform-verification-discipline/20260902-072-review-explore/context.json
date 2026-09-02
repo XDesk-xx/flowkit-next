@@ -1,0 +1,90 @@
+{
+  "runNumber": 72,
+  "kind": "external-orchestrator-review-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "correct-archive-handoff-and-cross-platform-verification-discipline",
+  "action": "review-explore",
+  "runId": "20260902-072-review-explore",
+  "inputRunId": "20260902-071-revise-explore",
+  "physicalRunPath": ".flowkit/runs/20260831-03-action-guidance-bounded-agent-execution/006-correct-archive-handoff-and-cross-platform-verification-discipline/20260902-072-review-explore",
+  "physicalRunGroupPrefix": "006",
+  "projectOrdinal": 25,
+  "changeStartSequence": 61,
+  "checkpointClaim": "39ef634bc7680af0494d4d918adf58e338601a83",
+  "inputAuthorPackageSha256": "c568757e654197b260caf25d9cef1ac157ddc857ace518b85f900333ae3aa18c",
+  "reviewedArtifact": {
+    "path": "openspec/changes/correct-archive-handoff-and-cross-platform-verification-discipline/explore.md",
+    "sha256": "417aa772a356005869339b3327820a1e738ff5be980f4cc3be2696d3d34e6a81"
+  },
+  "deliveryManifestSha256": "f959325ec76a185e0a483aee67e14dc665befe313295f877eae3d48dcb046d97",
+  "ownerCorrection": {
+    "ref": "owner:6b627c73bd06f8378333fe5a24f1eac16266d0692cb745996c653b3c5d94573f",
+    "decision": "revise-action",
+    "scope": [
+      "revise-explore",
+      "cross-platform-proof-mechanics",
+      "linux-semantic-simulation"
+    ],
+    "validForCurrentCorrection": true
+  },
+  "priorProposalChain": {
+    "review070ResultSha256": "caa39af8b51d54a91f396f0d9825f96ec9840a2efdb32a00031e1a22dc6f9e97",
+    "proposalSha256": "4ab2cfaab7ffd3d12d7a70a5e7c2ab5cd114a5baebc722113bf553530a6b165a",
+    "designSha256": "ff18695c94019086c589c1c4850c490613f459fcff5ea60b830f1485bd2fdf0f",
+    "tasksSha256": "7cc1b6ed3e88e5cc43537ef1cdcb30c101da469b87e44e81c7bcdc008302a833",
+    "planningArtifactsStillEqual069": true,
+    "statusAfter071": "STALE_RELATIVE_TO_REVISED_EXPLORE",
+    "priorApplyAllowedMayBeUsed": false
+  },
+  "windowsProofAssessment": {
+    "unreadableGuidance": {
+      "productHasPlatformSpecificBranch": false,
+      "contractCondition": "real host filesystem/read denial -> resolver fails closed",
+      "linuxHostedSemanticSimulation": "real low-privilege EACCES against exact resolver",
+      "simulationProof": "PASS",
+      "nativeWindowsRuntimeRequired": false,
+      "windowsAclCommandMechanicsClaimed": false,
+      "proposalReady": true
+    },
+    "gitExecutableMode": {
+      "mechanism": "core.filemode=false + git update-index --chmod=+x",
+      "indexModeBefore": "100644",
+      "indexModeAfter": "100755",
+      "sameBytes": true,
+      "candidateRefChanged": true,
+      "nativeWindowsRuntimeRequired": false,
+      "proposalReady": true
+    },
+    "symlinkCapabilitySkipInScope": false
+  },
+  "independentProof": {
+    "node": "22.23.2",
+    "detachedDependencySnapshotReused": true,
+    "packageManagerLauncherUsedByReviewer": false,
+    "targetProofTests": "25/25 PASS / 0 skipped",
+    "policyCorrectionTests": "12/12 PASS",
+    "fullDomainTests": "173/173 PASS / 0 skipped",
+    "typecheck": "PASS",
+    "eslint": "PASS",
+    "prettier": "PASS",
+    "openSpecChangeStrict": "PASS",
+    "openSpecAllStrict": "18/18 PASS",
+    "gitDiffCheck": "PASS",
+    "productionImplementationMutation": false
+  },
+  "scopeAssessment": {
+    "archivePreparationBoundaryChanged": false,
+    "continuationBoundaryChanged": false,
+    "canonicalSpecCleanupBoundaryChanged": false,
+    "proofExploreHowBoundaryChanged": false,
+    "productCapabilityChanged": false,
+    "proofMechanicsChanged": true,
+    "scopeDrift": "NONE_AFTER_EXPLICIT_OWNER_CORRECTION",
+    "complexityAssessment": "REDUCED_BY_REMOVING_UNNECESSARY_NATIVE_WINDOWS_ACCEPTANCE"
+  },
+  "nextBoundary": "propose",
+  "stableTransfer": true,
+  "packageClass": "cumulative-review-handoff"
+}

@@ -1,0 +1,63 @@
+{
+  "runNumber": 25,
+  "kind": "external-orchestrator-revise-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "converge-author-action-guidance",
+  "action": "revise-explore",
+  "runId": "20260901-025-revise-explore",
+  "inputRunId": "20260901-024-review-explore",
+  "priorInvalidatedRunId": "20260901-022-archive",
+  "checkpointClaim": "3af174bdfa2e8ebcf280e87a13565d03dec0b647",
+  "inputReviewerPackageSha256": "f3d3ce30f554c090c70d06ec66eb7961ba3b30e489c50dbdeaaab3fd3d26ee31",
+  "reviewerFinding": "D03-RE-004",
+  "numberingNamespaces": {
+    "projectChangeOrdinal": 21,
+    "projectChangeOrdinalMeaning": "project-wide Change sequence assigned/frozen when the Change first actually enters Explore",
+    "changeStartSequence": 14,
+    "changeStartSequenceMeaning": "canonical Run-address Change-root start sequence; first Run sequence for this Change",
+    "currentRunSequence": 25,
+    "currentRunSequenceMeaning": "this Delivery Run occurrence sequence",
+    "externalPhysicalGroupPrefix": "002",
+    "externalPhysicalGroupPrefixMeaning": "historical external-orchestrator handoff grouping only; not project Change ordinal, changeStartSequence, or current Run sequence"
+  },
+  "ordinalAssignment": {
+    "currentChangeAssignedProjectOrdinal": 21,
+    "currentChangeFirstExploreRun": "20260901-014-explore",
+    "plannedReviewerGuidanceAssignedOrdinal": null,
+    "nextCandidateProjectOrdinal": 22,
+    "plannedOnlyConsumesOrdinal": false,
+    "exploredThenCancelledConsumesOrdinal": true,
+    "archiveAllocatesOrdinal": false,
+    "archiveRecomputesOrdinal": false
+  },
+  "durablePersistence": {
+    "surface": "openspec/delivery-groups/20260831-03-action-guidance-bounded-agent-execution.yaml",
+    "field": "changes[].projectOrdinal",
+    "currentValue": 21,
+    "fieldPresentForCurrentChange": true,
+    "fieldPresentForPlannedReviewerGuidance": false,
+    "newCoreStateRequired": false,
+    "newRegistryOrCounterRequired": false
+  },
+  "preservedBoundaries": {
+    "authorCanonicalActionCount": 7,
+    "singleFileGuidanceIdentity": true,
+    "mechanicalPreflightInternal": true,
+    "agentsBootstrapIndependent": true,
+    "temporaryRunBridgeRetained": true,
+    "historicalMassRename": false,
+    "productionCoreMutation": false
+  },
+  "verification": {
+    "focusedDomain": "20/20 PASS; 0 FAIL; 0 SKIP",
+    "gitDiffCheck": "PASS"
+  },
+  "exploreArtifactSha256": "9c40a8e7fa560cf5adbd5da2bef8997229f3af4d3d9bc9a6a75f7193c7bd90f6",
+  "deliveryManifestSha256": "6a66b1588ef103d77babe6491bc650e06192606df359b516dd64622f0d6dd906",
+  "productionMutationInReviseExplore": false,
+  "proposalArtifactsMutatedInReviseExplore": false,
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

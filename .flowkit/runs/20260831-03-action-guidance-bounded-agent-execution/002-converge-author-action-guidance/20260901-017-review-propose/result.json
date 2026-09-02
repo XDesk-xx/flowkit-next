@@ -1,0 +1,19 @@
+{
+  "runId": "20260901-017-review-propose",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "converge-author-action-guidance",
+  "action": "review-propose",
+  "role": "reviewer",
+  "status": "terminal",
+  "verdict": "CHANGES_REQUESTED",
+  "summary": "016 preserves the approved Change 2 scope and validates structurally, but its formal archive Guidance wording can require a completed Change before archive, contradicting existing Policy where active + review-apply approved leads to archive and completed is materialized afterward. One wording/spec correction is required; no redesign or new subsystem.",
+  "nextBoundary": "revise-propose",
+  "blockingFindings": [
+    "D03-RP-001"
+  ],
+  "applyAllowed": false,
+  "productionMutation": "NONE",
+  "reviewerMutation": "NONE",
+  "complexityAssessment": "MINIMAL_GUIDANCE_ONLY",
+  "scopeDriftAssessment": "NO SCOPE EXPANSION; one bounded semantic wording drift."
+}

@@ -1,0 +1,71 @@
+{
+  "runNumber": 61,
+  "kind": "external-orchestrator-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "correct-archive-handoff-and-cross-platform-verification-discipline",
+  "action": "explore",
+  "runId": "20260901-061-explore",
+  "physicalRunPath": ".flowkit/runs/20260831-03-action-guidance-bounded-agent-execution/006-correct-archive-handoff-and-cross-platform-verification-discipline/20260901-061-explore",
+  "physicalRunGroupPrefix": "006",
+  "projectOrdinal": 25,
+  "changeStartSequence": 61,
+  "checkpointClaim": "39ef634bc7680af0494d4d918adf58e338601a83",
+  "ownerActivation": {
+    "ref": "owner:08801e4472a68a3ba751541728e35101b8145ed91345e5794f7e599ab26ae5a9",
+    "decision": "activate-change",
+    "sourceRef": "owner-input:2026-09-01:activate-change:correct-archive-handoff-and-cross-platform-verification-discipline:proof-explore:reviewer-revise-minor-absorbed",
+    "scope": [
+      "explore"
+    ]
+  },
+  "reviewerPreScope": {
+    "verdict": "REVISE — MINOR",
+    "scopeCoherence": "COHERENT",
+    "blockingFindingsResolvedInExploreBoundary": [
+      "use review-apply after apply/revise-apply; no review-revise-apply",
+      "use completion-transition readiness; completed is not pre-archive"
+    ]
+  },
+  "ownerExploreClarification": "archive prepare must be a real non-mutating self-check capable of detecting problems before structural prepared materialization",
+  "skillsUsed": [
+    ".agents/skills/openspec-explore",
+    ".agents/skills/explore-proof-based",
+    "detached-repository-execution"
+  ],
+  "stableManagerProof": {
+    "managerRevision": "4b45552b90ee327488bde3141c51c556e65a2e95",
+    "decision": "ready-action",
+    "actionId": "explore"
+  },
+  "detachedEnvironment": {
+    "node": "22.23.2",
+    "dependencyInputsUnchanged": true,
+    "packageManagerInstallInvoked": false,
+    "restoredDependencySnapshotReused": true
+  },
+  "proofSummary": {
+    "focusedFoundationGuidanceTests": "62/62 PASS",
+    "fullDomainTests": "173/173 PASS",
+    "canonicalOpenSpecSpecs": "17/17 PASS",
+    "archivedOpenSpecTaskValidation": "23/23 PASS",
+    "windowsOnlyConditionalSkipsFound": 2,
+    "thirdSymlinkHostCapabilitySkipInScope": false,
+    "archivePrepareRealSelfCheckRequired": true,
+    "structuralPreparedMaterializationMustFollowPrepareReadinessPass": true,
+    "coreLifecycleMutationRequired": false,
+    "policyMutationRequired": false,
+    "productSpecDeltaRequired": "MODIFY author-action-guidance",
+    "nativeWindowsRuntimeStillRequiredAtApplyReview": true,
+    "continuationCompletenessGuidanceRequired": true,
+    "staleCanonicalAuthorSpecCleanupRequired": true,
+    "memoMutationAuthorized": false
+  },
+  "productionMutationInExplore": false,
+  "proposalArtifactsInExplore": false,
+  "exploreArtifactSha256": "068aecd56fe6c2d32577dec42349b3698fe5e575ddd40ae9d7cd2a4a8ae288b3",
+  "deliveryManifestSha256": "111b937e49070c4178cf5e952fb5ce0b95c52252a763d83c7dabb4d7884cc847",
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

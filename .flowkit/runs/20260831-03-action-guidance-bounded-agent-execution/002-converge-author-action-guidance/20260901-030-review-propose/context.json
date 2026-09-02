@@ -1,0 +1,71 @@
+{
+  "runNumber": 30,
+  "kind": "external-orchestrator-review-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "converge-author-action-guidance",
+  "action": "review-propose",
+  "runId": "20260901-030-review-propose",
+  "inputRunId": "20260901-029-revise-propose",
+  "approvedExploreReviewRunId": "20260901-026-review-explore",
+  "priorReviewProposeRunId": "20260901-028-review-propose",
+  "checkpointClaim": "3af174bdfa2e8ebcf280e87a13565d03dec0b647",
+  "inputPackageSha256": "951a1dc6525a7b1ccfc695d8ed5c59066bf65b52f1a6eb63fd5060d72e378e9a",
+  "reviewerInputPackageSha256": "5a981fc7e206239567d3b1775590bd3261785123274021c156e810a5ffb5edc1",
+  "resolvedFindings": [
+    "D03-RP-002"
+  ],
+  "independentValidation": {
+    "node": "22.23.2",
+    "openspec": "1.10.0",
+    "gitDiffCheck": "PASS",
+    "changeStrict": "PASS",
+    "allStrict": "16/16 PASS",
+    "artifactHashes": "ALL MATCH",
+    "applyMutationPresent": false
+  },
+  "artifactHashes": {
+    "explore": "9c40a8e7fa560cf5adbd5da2bef8997229f3af4d3d9bc9a6a75f7193c7bd90f6",
+    "proposal": "ac0d622f99282927bc0799abcb91a3565846c79d114b7db27fd6324137f6742e",
+    "design": "ed9d760fc8c37380a82367c02d1596e399fa1c557586d12b8d75c31ef0e6fad2",
+    "spec": "6662674b5632841021dc332a2eb0f2d937590df43bbbd4fab7fa9588b9e35ba9",
+    "tasks": "26650323ee72026927657591d5cabd9686a7003042bf0ecc774b3f06911fe610",
+    "manifest": "6a66b1588ef103d77babe6491bc650e06192606df359b516dd64622f0d6dd906"
+  },
+  "executionOwnership": {
+    "productExploreGuidance": "skills/actions/explore/SKILL.md",
+    "bootstrapExploreGuidance": ".agents/skills/explore-proof-based/SKILL.md",
+    "bootstrapConsumesProductCandidate": false,
+    "archiveConsumerOnly": true
+  },
+  "ordinalSemantics": {
+    "semanticChangeIdCanonicalIdentity": true,
+    "projectOrdinalSequenceFactOnly": true,
+    "currentChangeOrdinal": 21,
+    "plannedReviewerChangeOrdinal": null,
+    "nextCandidateOrdinal": 22,
+    "plannedOnlyReservesOrdinal": false,
+    "firstExploreAssignsOnce": true,
+    "laterActionsReuse": true,
+    "archiveAllocatesOrRecomputes": false
+  },
+  "complexityAssessment": {
+    "classification": "MINIMAL_REQUIRED",
+    "newCoreSubsystem": false,
+    "newAllocatorRegistryCounter": false,
+    "newLifecycle": false
+  },
+  "scopeDriftAssessment": {
+    "newOutOfScopeCapability": false,
+    "newAuthority": false,
+    "newLifecycle": false,
+    "newControlPlane": false,
+    "selfHostingTakeover": false,
+    "summary": "NONE"
+  },
+  "findings": [],
+  "nonBlockingApplyGuard": "Derive the next ordinal only from durable already-assigned projectOrdinal facts and fail closed on ambiguity; never fall back to planning position or Run/archive-time counts.",
+  "productionMutationByReviewer": false,
+  "authorArtifactMutationByReviewer": false
+}
