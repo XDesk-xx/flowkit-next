@@ -1,0 +1,174 @@
+id: "20260902-04-delivery-continuity-stable-core-closure"
+createdAt: "2026-09-02"
+branch: "delivery/20260902-04-delivery-continuity-stable-core-closure"
+base: "main@6bda1e87a0c12929c3567de17ede75ecd0cf0bed"
+
+goal: "关闭 Delivery-level execution loop：让 already-decided exact Delivery operation 通过 content-bound canonical Delivery Guidance 与 exact DeliveryOperationPackage 交给 Agent 执行，同时冻结 exact-state continuity、Formal Full Test correction、Architecture/canonical diagram continuity、Delivery Final 与 repository/next-base continuity；不新增 Skill Router、第二 Delivery lifecycle 或自动 Git authority。"
+
+delivery:
+  state: active
+  fullTestStatus: pending
+  finalizationStatus: pending
+
+reference:
+  kind: "final-stable-planning-reference"
+  artifact: "flowkit-next-d04-stable-core-closure-final-reference(1).md"
+  sha256: "b26217a2ae397772aea7fd96140855b0099a1089e2c2f8c9b2614e50809320a9"
+
+scope:
+  included:
+    - "closed exact DeliveryOperationId set for delivery-start / delivery-full-test / delivery-architecture-finalization / delivery-final / delivery-repository-integration"
+    - "deterministic DeliveryOperationId → canonical skills/delivery/<operation>/SKILL.md mapping"
+    - "content-bound DeliveryGuidanceRef and minimal exact DeliveryOperationPackage execution envelope"
+    - "Delivery Start exact accepted-main continuity and clean fixed-point commit/base"
+    - "state continuity first; transport only when exact required state is absent"
+    - "Formal Full Test same-candidate environment/fixture correction versus new-candidate repository/canonical correction"
+    - "Actual Architecture plus repository-scoped canonical Workflow/Lifecycle/Data Flow continuity"
+    - "Delivery Final closure from already-accepted implementation/verification facts"
+    - "Owner-controlled repository integration and exact next-main-base continuity"
+    - "independent .agents/skills bootstrap/fallback boundary during D04"
+  excluded:
+    - "Delivery operations as Standard Actions or Action Policy-owned Delivery lifecycle"
+    - "Skill Registry / Guidance Registry / Skill Router / Skill Planner / dynamic Skill discovery or ranking"
+    - "Agent-facing .agents/skills/flowkit-delivery-* product projection requirement"
+    - "second Delivery lifecycle / local-detached executionMode / transport subsystem"
+    - "mandatory ZIP / Git bundle / dependency archive handoff"
+    - "payload registry / continuation database / new candidate identity subsystem"
+    - "automatic commit / push / merge / Flowkit-owned Git authority / promotion lifecycle"
+    - "Reference Architecture / Diagram Registry / Diagram Planner / Diagram Runtime"
+    - "self-hosting takeover / mandatory .agents deletion or convergence / D05 pre-creation"
+
+architecture:
+  impact: true
+  archifyPlan: "required"
+  startStatus: "materialized"
+  finalStatus: "pending"
+  currentRef: "architecture/20260902-04-delivery-continuity-stable-core-closure/json/current.architecture.json"
+  plannedRef: "architecture/20260902-04-delivery-continuity-stable-core-closure/json/planned.architecture.json"
+  compareRefs:
+    - "architecture/20260902-04-delivery-continuity-stable-core-closure/json/current-to-planned.compare.json"
+  htmlPolicy: "disposable-not-retained-in-git"
+
+changes:
+  - id: "establish-delivery-operation-execution-and-start-continuity"
+    group: "delivery-continuity"
+    goal: "建立 reusable exact Delivery-operation execution envelope，并以 Delivery Start 首次证明：exact DeliveryOperationId、content-bound DeliveryGuidanceRef、minimal DeliveryOperationPackage 与 accepted-main → clean Delivery Start fixed point continuity。"
+    required: true
+    dependsOn: []
+    state: planned
+    architectureImpact: true
+    outputs:
+      - "closed DeliveryOperationId + deterministic canonical Guidance mapping contract"
+      - "content-bound DeliveryGuidanceRef + minimal DeliveryOperationPackage contract"
+      - "canonical skills/delivery/start/SKILL.md"
+      - "repeatable exact Delivery Start continuity contract"
+
+  - id: "complete-formal-full-test-correction-and-platform-fixture-discipline"
+    group: "delivery-verification"
+    goal: "冻结 Formal Full Test correction/platform-fixture semantics，并通过既有 Delivery-operation package model 提供 canonical delivery-full-test HOW。"
+    required: true
+    dependsOn:
+      - "establish-delivery-operation-execution-and-start-continuity"
+    state: planned
+    architectureImpact: true
+    outputs:
+      - "same-candidate environment/fixture correction rule"
+      - "new-candidate repository/canonical correction restart rule"
+      - "canonical skills/delivery/full-test/SKILL.md"
+
+  - id: "establish-architecture-and-canonical-diagram-continuity"
+    group: "delivery-architecture"
+    goal: "冻结 Previous Actual → Current continuity、Current/Planned → accepted exact candidate → Actual，以及 repository-scoped Workflow/Lifecycle/Data Flow canonical current-view ownership。"
+    required: true
+    dependsOn:
+      - "complete-formal-full-test-correction-and-platform-fixture-discipline"
+    state: planned
+    architectureImpact: true
+    outputs:
+      - "Actual Architecture continuity contract"
+      - "Current → Actual and Planned → Actual thin compares"
+      - "canonical Workflow/Lifecycle/Data Flow current-view continuity"
+      - "canonical skills/delivery/architecture-finalization/SKILL.md"
+
+  - id: "establish-delivery-finalization-contract"
+    group: "delivery-finalization"
+    goal: "只从 completed required Changes、valid Formal Full Test PASS、Actual 与 canonical diagram convergence 的 accepted facts 关闭 Delivery，并提供 canonical Delivery Final HOW。"
+    required: true
+    dependsOn:
+      - "establish-architecture-and-canonical-diagram-continuity"
+    state: planned
+    architectureImpact: true
+    outputs:
+      - "Delivery Final prerequisite/closure contract"
+      - "exact closure/continuity facts"
+      - "canonical skills/delivery/final/SKILL.md"
+
+  - id: "establish-repository-integration-and-next-base-continuity"
+    group: "delivery-integration"
+    goal: "把 exact Delivery Final candidate 在 explicit Owner Git authority 下连接到 ordinary final commit / PR / merge / accepted main，并读取 exact next Delivery base；共享/非共享环境使用同一 reuse-or-restore continuity contract。"
+    required: true
+    dependsOn:
+      - "establish-delivery-finalization-contract"
+    state: planned
+    architectureImpact: true
+    outputs:
+      - "exact finalized-state availability/reuse-or-restore contract"
+      - "Owner-controlled repository integration contract"
+      - "exact accepted-main → next-base continuity"
+      - "canonical skills/delivery/repository-integration/SKILL.md"
+
+proofConcerns:
+  - id: "delivery-operation-package-minimality"
+    status: "proof-first"
+    statement: "Change 1 must prove the smallest exact DeliveryOperationId / DeliveryGuidanceRef / DeliveryOperationPackage shape that deterministically binds already-decided WHAT + exact context + exact HOW without Registry, Router, Planner, second candidate identity, or lifecycle authority."
+
+  - id: "delivery-start-evidence-revision-discipline"
+    status: "required-at-start"
+    statement: "Current and Planned repository evidence must resolve at declared main@6bda1e87...; newly materialized D04 manifest or future skills/delivery files must not be cited as repository evidence at the accepted-main revision."
+
+  - id: "environment-independent-continuity"
+    status: "proof-first"
+    statement: "One continuity contract must prove direct reuse when exact state exists and bounded restore/transfer only when exact state is absent; no local/detached lifecycle mode is introduced."
+
+  - id: "bootstrap-independence"
+    status: "required"
+    statement: "D04 must continue through independent .agents/skills bootstrap/fallback HOW and must not use under-development skills/delivery/** or candidate DeliveryOperationPackage as acceptance authority for the same D04 Delivery."
+
+memoInputs:
+  - memoId: "future-full-test-correction-and-platform-fixture-discipline"
+    disposition: "absorb-into-change-2"
+    requiredOutcome: "freeze same-candidate pure environment/fixture correction versus new-candidate repository/canonical correction without a finding database, Evidence Platform, or automatic corrective Change"
+
+  - memoId: "future-delivery-final-full-source-repository-integration-handoff"
+    disposition: "absorb-with-state-first-correction-into-change-5"
+    requiredOutcome: "preserve the observed repository-integration continuity concern while replacing mandatory full-source handoff with state-first conditional reuse-or-restore; Git remains repository/history truth"
+
+recommendedOrder:
+  - "establish-delivery-operation-execution-and-start-continuity"
+  - "complete-formal-full-test-correction-and-platform-fixture-discipline"
+  - "establish-architecture-and-canonical-diagram-continuity"
+  - "establish-delivery-finalization-contract"
+  - "establish-repository-integration-and-next-base-continuity"
+
+acceptance:
+  - "Action and Delivery share exact-operation → content-bound Guidance → exact package → Agent execution pattern without sharing one lifecycle identity"
+  - "Delivery operation WHAT is always decided before HOW; Agent does not discover, rank, route, or choose the operation"
+  - "all five Delivery operations resolve deterministic canonical skills/delivery/** HOW and bind exact Guidance content identity"
+  - "wrong operation, wrong Guidance path/hash, wrong Delivery identity, stale exact-state facts, or missing required authority facts fail closed"
+  - "Delivery Start begins from exact accepted main and produces one clean fixed-point start commit before Change execution"
+  - "Current/Planned Architecture evidence resolves at its declared revision and does not self-reference newly materialized D04 files"
+  - "shared and non-shared execution contexts use one state-first continuity contract"
+  - "Formal Full Test distinguishes pure environment/fixture correction from repository/canonical candidate mutation"
+  - "Actual and canonical Workflow/Lifecycle/Data Flow convergence remain derived descriptions, not second truth"
+  - "Delivery Final does not imply Git mutation; repository integration remains explicit Owner Git authority"
+  - ".agents/skills remains independent bootstrap/fallback during D04; no self-hosting takeover is required"
+  - "no D05 / Registry / Router / Planner / second Delivery lifecycle / automatic Git authority is introduced"
+
+ownerDecisions:
+  - ref: "owner:e798ce3d32e90a8fd367c02e5c641ce761cabd722c32bb0c0d19afdd30be4a19"
+    decision: "create-delivery"
+    deliveryId: "20260902-04-delivery-continuity-stable-core-closure"
+    sourceRef: "owner-input:2026-09-02:authorize-delivery-start:20260902-04-delivery-continuity-stable-core-closure:base-6bda1e87a0c1"
+    scope:
+      - "delivery-start"
+      - "single-delivery-start-fixed-point-commit"
