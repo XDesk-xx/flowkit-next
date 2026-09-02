@@ -134,6 +134,12 @@ Forbidden:
 - generic subsystem design not required by the real use case
 - exhaustive proof of explicitly deferred input domains
 
+### 4A. Check concept ownership and mutation/failure ordering when relevant
+
+When Explore is about to introduce a new mechanism, first ask whether the need already belongs to an existing capability/entity, operation, state, configuration, validation/proof mechanic, or Guidance/HOW. Prefer the existing owner unless proof shows a real new capability boundary.
+
+When the design is stateful or side-effecting, identify validation, the mutation/commit point, failure behavior before and after commit, and whether retry/rollback/correction remains legal. Apply this proportionally; simple non-mutating work does not need artificial lifecycle analysis.
+
 ### 5. Reduce proof into decisions
 
 For every proof, record:

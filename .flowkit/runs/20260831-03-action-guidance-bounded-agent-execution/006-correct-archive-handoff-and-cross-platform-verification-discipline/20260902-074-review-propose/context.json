@@ -1,0 +1,68 @@
+{
+  "runNumber": 74,
+  "kind": "external-orchestrator-review-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "correct-archive-handoff-and-cross-platform-verification-discipline",
+  "action": "review-propose",
+  "runId": "20260902-074-review-propose",
+  "inputRunId": "20260902-073-propose",
+  "physicalRunPath": ".flowkit/runs/20260831-03-action-guidance-bounded-agent-execution/006-correct-archive-handoff-and-cross-platform-verification-discipline/20260902-074-review-propose",
+  "physicalRunGroupPrefix": "006",
+  "projectOrdinal": 25,
+  "changeStartSequence": 61,
+  "checkpointClaim": "39ef634bc7680af0494d4d918adf58e338601a83",
+  "inputAuthorPackageSha256": "ec3a30a43909fe03bb22c638210e899d332327380330c0dfe956693f6176478e",
+  "approvedExploreRunId": "20260902-071-revise-explore",
+  "inputReviewerRunId": "20260902-072-review-explore",
+  "inputReviewerPackageSha256": "ca4a3f630f664373b70b9382c738b6b2520ead69686bafd7bb7f9fec2881ea98",
+  "inputExploreSha256": "417aa772a356005869339b3327820a1e738ff5be980f4cc3be2696d3d34e6a81",
+  "planningArtifacts": {
+    "proposalSha256": "b27471ea061bf129fe5804d43fb673023267af3cec097259dd10022726a92291",
+    "designSha256": "6a5c142c9eea4fd26b010b3dfd1ae35346a02c945526dd060fed60fd108bbe6e",
+    "tasksSha256": "48531ec8a8da96911c931c73a1964c899ac239f13e9f409917bc1c4f8787c91f",
+    "singleActionSpecSha256": "1516f99a995e6ce7f31cffa93f8b7f5488ebb04e42bee204fed9fc7a52553715",
+    "actionGuidanceSpecSha256": "7757e0c7fcafb08167109f3c18d32f1732598fca96169a6899d8c5bd919c93d8",
+    "authorGuidanceSpecSha256": "b0e25f3cbe808031dd3005c5f453b11841dd54e1c4c07fbe0ae333549a31b60f"
+  },
+  "planningConvergence": {
+    "supersededPlanningRunId": "20260902-069-propose",
+    "supersededReviewProposeRunId": "20260902-070-review-propose",
+    "productCapabilitySpecsByteIdenticalTo069": true,
+    "changedPlanningArtifactsRelativeTo069": [
+      "proposal.md",
+      "design.md",
+      "tasks.md"
+    ],
+    "nativeWindowsAcceptanceRemoved": true,
+    "linuxHostedSemanticSimulationRequired": true,
+    "prior070ApplyAllowedReusable": false
+  },
+  "windowsProofAssessment": {
+    "unreadableGuidance": "APPLY_READY_REAL_LINUX_EACCES_AGAINST_EXACT_RESOLVER",
+    "gitExecutableMode": "APPLY_READY_CORE_FILEMODE_FALSE_PLUS_GIT_INDEX_CHMOD",
+    "nativeWindowsRuntimeRequired": false,
+    "windowsAclMechanicsClaimed": false,
+    "symlinkCapabilitySkipInScope": false
+  },
+  "verification": {
+    "node": "22.23.2",
+    "openSpecPlanning": "4/4 COMPLETE",
+    "openSpecChangeStrict": "PASS",
+    "openSpecAllStrict": "18/18 PASS",
+    "gitDiffCheck": "PASS",
+    "productionImplementationMutation": false
+  },
+  "applyAttention": {
+    "blocking": false,
+    "requirement": "All failures before package-bound preparation succeeds must preserve the pre-invocation externally current Action and must not leak a newly staged prepared candidate."
+  },
+  "scopeAssessment": {
+    "productSemanticsChangedAfter072": false,
+    "scopeDrift": "NONE",
+    "complexityAssessment": "MINIMAL_PLANNING_RECONVERGENCE_WITH_REDUCED_CROSS_PLATFORM_PROOF_BURDEN"
+  },
+  "stableTransfer": true,
+  "packageClass": "cumulative-review-handoff"
+}

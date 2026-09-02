@@ -58,6 +58,14 @@ Execution/review chronology needed for durable continuation belongs on the exist
 
 File size and line count are diagnostic signals only. They may trigger a semantic duplication/convergence check but are not correctness Gates.
 
+## Concept ownership / mutation-order checks
+
+Use these checks proportionally, only when the Explore is introducing a new concept/mechanism or involves stateful mutation.
+
+Before naming a new mechanism, ask whether the need already belongs to an existing capability/entity, operation, state, configuration, validation/proof mechanic, or Guidance/HOW. Introduce a new capability only when the existing ownership model cannot express the proven need.
+
+For stateful or side-effecting designs, identify validation, the mutation/commit point, what happens on failure before and after commit, and whether retry/rollback/correction remains legal. Simple non-mutating work does not require artificial state-machine analysis.
+
 ## Complexity / scope-drift check
 
 Explicitly check for unjustified new capability, authority, lifecycle semantics, acceptance requirement, compatibility surface, later-Change content, or control plane.

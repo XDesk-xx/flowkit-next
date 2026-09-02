@@ -1,0 +1,27 @@
+{
+  "runId": "20260902-064-review-explore",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "correct-archive-handoff-and-cross-platform-verification-discipline",
+  "action": "review-explore",
+  "role": "reviewer",
+  "status": "terminal",
+  "verdict": "REVISE",
+  "summary": "063 keeps the final corrective scope coherent and proves most decisive facts, but it is not yet Proposal-ready. The required archive readiness ordering is correct, while the existing execution owner capable of running that self-check before structural prepare is not proven: current invokeSingleAction prepares before Guidance resolution and callback execution. The canonical Explore also still narrates Reviewer/Owner revision chronology instead of converging fully to current rationale.",
+  "blockingFindings": [
+    "R063-001",
+    "R063-002"
+  ],
+  "nextBoundary": "revise-explore",
+  "proposalAllowed": false,
+  "applyAllowed": false,
+  "reviewerMutation": "NONE",
+  "productionMutation": "NONE",
+  "scopeDriftAssessment": "NONE_AFTER_OWNER_AUTHORIZED_HOW_EXPANSION",
+  "complexityAssessment": "BOUNDED_CORRECTIVE_SCOPE_BUT_EXECUTION_OWNERSHIP_MUST_BE_PROVEN",
+  "focusedProof": "62/62 PASS",
+  "domain": "173/173 PASS",
+  "canonicalOpenSpecSpecsStrict": "17/17 PASS",
+  "gitDiffCheck": "PASS",
+  "stableTransfer": true,
+  "packageClass": "cumulative-review-handoff"
+}

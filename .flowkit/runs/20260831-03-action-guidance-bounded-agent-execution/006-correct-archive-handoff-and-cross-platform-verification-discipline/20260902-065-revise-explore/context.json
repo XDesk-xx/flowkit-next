@@ -1,0 +1,51 @@
+{
+  "runNumber": 65,
+  "kind": "external-orchestrator-revise-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "correct-archive-handoff-and-cross-platform-verification-discipline",
+  "action": "revise-explore",
+  "runId": "20260902-065-revise-explore",
+  "physicalRunPath": ".flowkit/runs/20260831-03-action-guidance-bounded-agent-execution/006-correct-archive-handoff-and-cross-platform-verification-discipline/20260902-065-revise-explore",
+  "physicalRunGroupPrefix": "006",
+  "projectOrdinal": 25,
+  "changeStartSequence": 61,
+  "checkpointClaim": "39ef634bc7680af0494d4d918adf58e338601a83",
+  "ownerCorrection": {
+    "ref": "owner:2c416598907010a080c81e3dfd80855a26b9a938fba0b75dd24f58ba26e8eb6c",
+    "decision": "revise-action",
+    "sourceRef": "owner-input:2026-09-02:revise-action:correct-archive-handoff-and-cross-platform-verification-discipline:revise-explore:reviewer-findings-R063-001-R063-002",
+    "scope": [
+      "revise-explore",
+      "R063-001",
+      "R063-002"
+    ]
+  },
+  "trigger": "064 Reviewer findings require proof of pre-structural-prepare readiness execution ownership and removal of revision chronology from canonical Explore",
+  "skillsUsed": [
+    ".agents/skills/revise-explore",
+    ".agents/skills/explore-proof-based",
+    "detached-repository-execution"
+  ],
+  "proofSummary": {
+    "reviewerFindingR063001": "RESOLVED",
+    "reviewerFindingR063002": "RESOLVED",
+    "trustedPreInvocationOwner": "existing trusted Flowkit Action host",
+    "trustedHowIdentity": "resolveActionGuidanceRef(repositoryRoot, archive) before invokeSingleAction",
+    "controlledHostCompositionProof": "PASS",
+    "failedReadinessLeavesReviewApplyTerminal": true,
+    "ownerReviseApplyRemainsLegalAfterFailedReadiness": true,
+    "newCoreSeamRequired": false,
+    "newLifecycleOrActionRequired": false,
+    "focusedTests": "62/62 PASS",
+    "fullDomainTests": "173/173 PASS",
+    "canonicalOpenSpecSpecs": "17/17 PASS",
+    "archivedOpenSpecTaskValidation": "23/23 PASS",
+    "productionMutationInReviseExplore": false
+  },
+  "exploreArtifactSha256": "4156d95d9a58c947acc3bca3b41e83c6ea4ab38d6f99e9d9e5d7330748e401fd",
+  "deliveryManifestSha256": "a21f931fe2e2fdad5c26c629e3bb7ef979e28ec73de65f5f7625efb967f95c10",
+  "stableTransfer": true,
+  "packageClass": "cumulative-action-handoff"
+}

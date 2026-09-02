@@ -4,6 +4,7 @@
 为 Flowkit-managed Standard Action execution 建立可信、确定且内容绑定的 canonical Action Guidance identity，使 already-decided Action 获得 exact HOW 引用，同时保持 Guidance 只负责 HOW、不得成为 lifecycle 或 authority source。
 
 ## Requirements
+
 ### Requirement: Canonical Action Guidance is deterministically bound from the already-decided Standard Action
 系统 SHALL 只从 trusted Flowkit Action host 拥有的 canonical repository root 与已经确定的 exact `StandardActionId` 解析 product-side Action Guidance。每个 Standard Action 的 canonical entry SHALL 唯一对应 repository-relative `skills/actions/<actionId>/SKILL.md`；resolver SHALL NOT 接受 caller / Agent 任意指定的 Guidance path、Skill name、method name 或 content identity 作为选择 authority。
 
@@ -38,16 +39,20 @@
 - **THEN** Flowkit-managed `apply` execution SHALL fail closed，而不得用 bootstrap Skill 替代 canonical product Guidance
 
 ### Requirement: Trusted Guidance is frozen only after Action selection and before Agent execution
-系统 SHALL 在 exact current Standard Action 已由既有 lifecycle / authority boundary 决定之后，且在 Agent execution callback 被调用之前，解析并冻结该 Action 的 exact Guidance identity。Guidance resolution SHALL NOT 选择或改变 Standard Action、execution role、Owner authority、Policy legality、Reviewer verdict、Verification truth 或 next Action；Guidance resolution failure SHALL 在 Agent callback 之前结束当前 invocation 的 execution attempt。
+系统 SHALL 在 exact current Standard Action 已由既有 lifecycle / authority boundary 决定之后，且在任何 product Action Guidance preparation/execution HOW 被执行之前，解析并冻结该 Action 的 exact Guidance identity进同一个 ActionPackage。若 invocation 正在从空/terminal slot 暂存新的 prepared candidate，系统 MAY 使用该 staged exact Action identity形成 ActionPackage，但 SHALL NOT 在 package-bound preparation成功前把 staged candidate提交为新的 externally current Action。Guidance resolution SHALL NOT 选择或改变 Standard Action、execution role、Owner authority、Policy legality、Reviewer verdict、Verification truth 或 next Action；Guidance resolution failure SHALL 在任何 product Guidance HOW callback 之前结束当前 invocation attempt。
 
 #### Scenario: Valid Guidance reaches the bounded execution package
-- **WHEN** invocation 已拥有 exact prepared current Action，且其 canonical Guidance entry 成功解析
-- **THEN** 系统 SHALL 在调用 Agent execution callback 前把 exact Guidance identity 冻结进该 Action 的 executable package
+- **WHEN** invocation 已拥有 exact prepared或staged-prepared Action identity，且其 canonical Guidance entry 成功解析
+- **THEN** 系统 SHALL 在任何 product Guidance HOW执行前把 exact Guidance identity冻结进 ActionPackage，并 SHALL 让 preparation与后续 execution消费同一个 exact package Guidance identity
 
 #### Scenario: Guidance resolution failure prevents Agent execution
-- **WHEN** invocation 已拥有 exact prepared current Action，但其 canonical Guidance entry 解析失败
-- **THEN** 系统 SHALL fail closed 并 SHALL NOT 调用 Agent execution callback
+- **WHEN** exact invocation target 的 canonical Guidance entry解析失败
+- **THEN** 系统 SHALL fail closed，且 SHALL NOT 调用 package-bound preparation或Action execution callback
 
 #### Scenario: Guidance cannot change the already-decided Action
-- **WHEN** exact current Action 已确定为 `review-propose`
-- **THEN** Guidance resolution SHALL 只解析 `review-propose` 对应 canonical HOW，且 SHALL NOT 将当前 Action、Role 或 next boundary 改写为其他值
+- **WHEN** exact current invocation target 已确定为 `review-propose`
+- **THEN** Guidance resolution或package-bound preparation SHALL NOT 将其改为其他 Standard Action、Role或 next Action
+
+#### Scenario: Package identity changes when canonical Guidance bytes change
+- **WHEN** exact Action、Run context和其他 package facts不变，但 canonical Guidance file bytes改变
+- **THEN**后续 invocation形成的 ActionPackageRef SHALL 改变，且 preparation与execution SHALL 都受该新 exact package identity约束

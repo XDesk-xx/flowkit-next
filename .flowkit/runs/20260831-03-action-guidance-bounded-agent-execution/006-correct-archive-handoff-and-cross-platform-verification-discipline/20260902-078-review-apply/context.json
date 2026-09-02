@@ -1,0 +1,76 @@
+{
+  "runNumber": 78,
+  "kind": "external-orchestrator-review-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "correct-archive-handoff-and-cross-platform-verification-discipline",
+  "action": "review-apply",
+  "runId": "20260902-078-review-apply",
+  "inputRunId": "20260902-077-revise-apply",
+  "physicalRunPath": ".flowkit/runs/20260831-03-action-guidance-bounded-agent-execution/006-correct-archive-handoff-and-cross-platform-verification-discipline/20260902-078-review-apply",
+  "physicalRunGroupPrefix": "006",
+  "projectOrdinal": 25,
+  "changeStartSequence": 61,
+  "checkpointClaim": "39ef634bc7680af0494d4d918adf58e338601a83",
+  "inputAuthorPackageSha256": "011115d16297b43e09dc9ab196f05efa7a52a6edba595a8977943e1226f46646",
+  "priorReviewerPackageSha256": "454697287c81d53eb0f46f318cbf32b5b28ef6834ab33a0bfe8f514189574406",
+  "findingConvergence": {
+    "PREARCHIVE-076-001": {
+      "status": "RESOLVED",
+      "fact": "Temporary-bridge provenance assertion now targets the actual archived 021 Author Guidance spec rather than stale current-canonical phase text."
+    },
+    "PREARCHIVE-076-002": {
+      "status": "RESOLVED",
+      "fact": "Archive preparation now requires isolated canonical convergence followed by affected domain/material engineering verification against converged bytes before real archive mutation."
+    }
+  },
+  "revisionMinimality": {
+    "srcChangedRelativeTo075": false,
+    "proposalSpecDesignTasksChangedRelativeTo075": false,
+    "dependencyInputsChanged": false,
+    "policyChanged": false,
+    "lifecycleChanged": false,
+    "memoChanged": false,
+    "architectureChanged": false,
+    "newActionOrIdentityFamily": false,
+    "newControlPlane": false,
+    "prior076RunExactBytesPreserved": true
+  },
+  "independentUnarchivedProof": {
+    "node": "22.23.2",
+    "detachedDependencySnapshotReused": true,
+    "packageManagerLauncherUsedByReviewer": false,
+    "authorReviewerGuidanceFocused": "19/19 PASS",
+    "fullDomain": "178/178 PASS, 0 skipped",
+    "typecheck": "PASS",
+    "build": "PASS",
+    "eslint": "PASS",
+    "prettier": "PASS",
+    "forbiddenTrackedArtifacts": "PASS",
+    "dependencyHealth": "59 modules / 219 dependencies / 0 violations",
+    "repositoryEntropy": "25/25 production modules reachable",
+    "openSpecChangeStrict": "PASS",
+    "openSpecAllStrict": "18/18 PASS",
+    "gitDiffCheck": "PASS"
+  },
+  "independentPostConvergenceSimulation": {
+    "openSpecConvergence": "+4 / ~4 / -1",
+    "domain": "178/178 PASS, 0 skipped",
+    "typecheck": "PASS",
+    "build": "PASS",
+    "eslint": "PASS",
+    "prettier": "PASS",
+    "forbiddenTrackedArtifacts": "PASS",
+    "dependencyHealth": "59 modules / 219 dependencies / 0 violations",
+    "repositoryEntropy": "25/25 production modules reachable",
+    "openSpecAllStrict": "17/17 PASS",
+    "gitDiffCheck": "PASS"
+  },
+  "scopeAssessment": {
+    "scopeDrift": "NONE",
+    "complexityAssessment": "MINIMAL_PREARCHIVE_FINDING_CONVERGENCE_ONLY"
+  },
+  "stableTransfer": true,
+  "packageClass": "cumulative-review-handoff"
+}

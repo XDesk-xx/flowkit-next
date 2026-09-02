@@ -580,3 +580,93 @@ test("artifact-convergence discipline remains free of hard size Gate, Run schema
     );
   }
 });
+
+test("archive preparation, continuation, and Explore HOW converge without new lifecycle concepts", async () => {
+  const archive = await readProductGuidance("archive");
+  assert.match(archive, /Package-bound archive preparation/);
+  assert.match(archive, /exact ActionPackage/);
+  assert.match(archive, /completion-transition readiness/);
+  assert.match(
+    archive,
+    /Do not require a second Owner archive execution authorization/,
+  );
+  assert.match(archive, /STOP before archive mutation/);
+  assert.match(archive, /isolated canonical-convergence dry-run/);
+  assert.match(archive, /post-convergence verification/);
+  assert.match(archive, /affected domain verification/);
+  assert.match(archive, /fresh `review-apply`/);
+  assert.doesNotMatch(archive, /pre-archive Standard Action/i);
+
+  for (const actionId of ["apply", "revise-apply", "archive"] as const) {
+    const guidance = await readProductGuidance(actionId);
+    assert.match(
+      guidance,
+      /all materially required uncommitted ancestor state/,
+    );
+    assert.match(guidance, /cumulative payload|cumulative payloads/);
+    assert.match(guidance, /exact retrievable ancestor references/);
+    assert.match(guidance, /removal information/);
+    assert.match(guidance, /payload registry|payload registry\/database/);
+  }
+
+  const explore = await readProductGuidance("explore");
+  assert.match(explore, /Concept ownership \/ mutation-order checks/);
+  assert.match(
+    explore,
+    /existing capability\/entity, operation, state, configuration/,
+  );
+  assert.match(explore, /mutation\/commit point/);
+  assert.match(
+    explore,
+    /Simple non-mutating work does not require artificial state-machine analysis/,
+  );
+
+  const bootstrapArchive = await readFile(
+    path.join(REPOSITORY_ROOT, ".agents", "skills", "archive", "SKILL.md"),
+    "utf8",
+  );
+  assert.match(bootstrapArchive, /Package-bound archive preparation/);
+  assert.match(bootstrapArchive, /completion-transition readiness/);
+  assert.match(
+    bootstrapArchive,
+    /canonical convergence in an isolated dry-run/,
+  );
+  assert.match(bootstrapArchive, /post-convergence verification failure/);
+  assert.match(bootstrapArchive, /affected domain verification/);
+  assert.match(
+    bootstrapArchive,
+    /does not require a second Owner archive execution authorization/,
+  );
+  assert.match(
+    bootstrapArchive,
+    /all materially required uncommitted ancestor state/,
+  );
+  assert.match(
+    bootstrapArchive,
+    /MUST NOT consume candidate product archive Guidance/,
+  );
+
+  const bootstrapExplore = await readFile(
+    path.join(
+      REPOSITORY_ROOT,
+      ".agents",
+      "skills",
+      "explore-proof-based",
+      "SKILL.md",
+    ),
+    "utf8",
+  );
+  assert.match(
+    bootstrapExplore,
+    /Check concept ownership and mutation\/failure ordering when relevant/,
+  );
+  assert.match(
+    bootstrapExplore,
+    /existing capability\/entity, operation, state, configuration/,
+  );
+  assert.match(bootstrapExplore, /mutation\/commit point/);
+  assert.match(
+    bootstrapExplore,
+    /simple non-mutating work does not need artificial lifecycle analysis/,
+  );
+});

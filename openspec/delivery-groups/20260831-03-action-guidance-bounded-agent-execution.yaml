@@ -115,6 +115,22 @@ changes:
       - "independent mutation-free Reviewer HOW"
       - "stable review-step and complexity explanation discipline"
 
+  - id: "correct-archive-handoff-and-cross-platform-verification-discipline"
+    projectOrdinal: 25
+    group: "action-guidance"
+    goal: "收敛 D03 finalization 前已 proof 的 archive Action-preparation readiness/self-check 与 correction boundary、cross-platform verification mechanics、uncommitted continuation completeness、canonical Author spec current-truth cleanup，并吸收真实执行暴露的通用 proof-Explore concept ownership / mutation-failure ordering HOW；prepare 不是 Standard Action，不新增 lifecycle/authority/product capability。"
+    required: true
+    dependsOn:
+      - "converge-reviewer-action-guidance"
+    state: completed
+    architectureImpact: false
+    outputs:
+      - "package-bound atomic archive Action preparation/readiness: exact Guidance is frozen into ActionPackage before read-only self-check; isolated canonical-convergence dry-run plus post-convergence verification must pass before real archive mutation; blocked preparation does not expose staged prepared state and preserves correction-capable prior boundary"
+      - "Windows-capable proof mechanics for the two existing platform-skipped semantic contracts"
+      - "bounded continuation completeness for materially required uncommitted ancestor state"
+      - "canonical Author spec converged away from superseded D03 phase literals"
+      - "generic proof-Explore concept-ownership and mutation/failure-ordering discipline converged in bootstrap/product Author HOW"
+
 proofConcerns:
   - id: "trusted-action-guidance-identity-binding"
     status: "proof-first"
@@ -164,6 +180,7 @@ recommendedOrder:
   - "correct-artifact-convergence-and-chronology-discipline"
   - "normalize-historical-archive-project-ordinals"
   - "converge-reviewer-action-guidance"
+  - "correct-archive-handoff-and-cross-platform-verification-discipline"
 
 acceptance:
   - "exact current Action is supplied by Flowkit and is not guessed from Run history"
@@ -249,3 +266,52 @@ ownerDecisions:
     sourceRef: "owner-input:2026-09-01:activate-change:converge-reviewer-action-guidance:proof-explore"
     scope:
       - "explore"
+  - ref: "owner:08801e4472a68a3ba751541728e35101b8145ed91345e5794f7e599ab26ae5a9"
+    decision: "activate-change"
+    deliveryId: "20260831-03-action-guidance-bounded-agent-execution"
+    changeId: "correct-archive-handoff-and-cross-platform-verification-discipline"
+    sourceRef: "owner-input:2026-09-01:activate-change:correct-archive-handoff-and-cross-platform-verification-discipline:proof-explore:reviewer-revise-minor-absorbed"
+    scope:
+      - "explore"
+  - ref: "owner:dbac2d88345ff0202da9611ab1ef18b0a012d4e3b3ff40419176ff30fd3cb7b5"
+    decision: "revise-action"
+    deliveryId: "20260831-03-action-guidance-bounded-agent-execution"
+    changeId: "correct-archive-handoff-and-cross-platform-verification-discipline"
+    sourceRef: "owner-input:2026-09-01:revise-action:correct-archive-handoff-and-cross-platform-verification-discipline:revise-explore:prepare-is-operation-not-action-and-must-self-check"
+    scope:
+      - "revise-explore"
+  - ref: "owner:9958a09d1ab28482b94ada3641af795901bee75d94d0a492e9ae004725bede04"
+    decision: "revise-action"
+    deliveryId: "20260831-03-action-guidance-bounded-agent-execution"
+    changeId: "correct-archive-handoff-and-cross-platform-verification-discipline"
+    sourceRef: "owner-input:2026-09-01:revise-action:correct-archive-handoff-and-cross-platform-verification-discipline:revise-explore:proof-explore-method-concept-ownership-and-mutation-ordering"
+    scope:
+      - "revise-explore"
+      - "author-guidance-how-scope-expansion"
+  - ref: "owner:2c416598907010a080c81e3dfd80855a26b9a938fba0b75dd24f58ba26e8eb6c"
+    decision: "revise-action"
+    deliveryId: "20260831-03-action-guidance-bounded-agent-execution"
+    changeId: "correct-archive-handoff-and-cross-platform-verification-discipline"
+    sourceRef: "owner-input:2026-09-02:revise-action:correct-archive-handoff-and-cross-platform-verification-discipline:revise-explore:reviewer-findings-R063-001-R063-002"
+    scope:
+      - "revise-explore"
+      - "R063-001"
+      - "R063-002"
+  - ref: "owner:6b627c73bd06f8378333fe5a24f1eac16266d0692cb745996c653b3c5d94573f"
+    decision: "revise-action"
+    deliveryId: "20260831-03-action-guidance-bounded-agent-execution"
+    changeId: "correct-archive-handoff-and-cross-platform-verification-discipline"
+    sourceRef: "owner-input:2026-09-02:revise-action:correct-archive-handoff-and-cross-platform-verification-discipline:revise-explore:windows-proof-must-use-linux-semantic-simulation"
+    scope:
+      - "revise-explore"
+      - "cross-platform-proof-mechanics"
+      - "linux-semantic-simulation"
+  - ref: "owner:555918ecfbf96e9e259d162bcc237f1f6fe4c877e1a43c897e20d15dab33fa39"
+    decision: "revise-action"
+    deliveryId: "20260831-03-action-guidance-bounded-agent-execution"
+    changeId: "correct-archive-handoff-and-cross-platform-verification-discipline"
+    sourceRef: "owner-input:2026-09-02:revise-action:correct-archive-handoff-and-cross-platform-verification-discipline:revise-apply:stale-reviewer-test-and-post-convergence-archive-verification"
+    scope:
+      - "revise-apply"
+      - "stale-reviewer-action-guidance-test"
+      - "archive-post-convergence-verification"

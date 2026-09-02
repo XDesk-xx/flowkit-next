@@ -50,6 +50,27 @@ For current Change `converge-author-action-guidance` with persisted `projectOrdi
 
 Do not stack another date prefix.
 
+## Package-bound archive preparation
+
+Archive readiness is real self-check HOW, not a new Action or lifecycle state. It runs inside the already-decided `archive` invocation only after the exact canonical Guidance identity is frozen into the exact ActionPackage and before archive mutation begins.
+
+Check at minimum, when materially applicable:
+
+- the accepted `review-apply` after `apply` / `revise-apply` still corresponds to the exact candidate bytes;
+- no post-review repository/canonical byte drift invalidated that acceptance;
+- the exact Change is still the active archive target and its persisted projectOrdinal remains valid;
+- OpenSpec planning/tasks/delta-sync and archive-target collision/identity facts are ready;
+- an isolated canonical-convergence dry-run succeeds and the resulting converged candidate passes affected domain verification plus any materially applicable engineering gates before real archive mutation;
+- completion-transition readiness is satisfied without requiring a pre-existing `completed` state;
+- handoff/removal facts needed for continuation are complete;
+- no known correction blocker remains.
+
+Treat post-convergence verification as part of preparation, not as a post-mutation cleanup check. The dry-run MUST exercise the canonical bytes that archive would actually materialize. A verification failure that proves repository/canonical bytes must change is a correction blocker even when OpenSpec structural validation itself passes.
+
+If readiness is blocked by an environment-only condition and candidate bytes remain unchanged, STOP without archive mutation and allow same-candidate retry. If readiness finds a correction requiring repository/canonical byte mutation, including a post-convergence verification failure, STOP before archive mutation and return to the existing Owner-controlled correction path; changed bytes require a fresh `review-apply` before archive can be attempted again.
+
+A valid `review-apply` acceptance makes normal archive execution ready through existing Policy. Do not require a second Owner archive execution authorization.
+
 ## Canonical convergence
 
 Use the applicable OpenSpec archive/sync mechanics to assess delta sync, converge approved requirements into canonical specs, verify convergence, and move the exact Change to the derived target.
@@ -69,6 +90,8 @@ No hidden next-Change activation is allowed.
 Do not introduce production redesign, new lifecycle state, ordinal allocator/counter service, Registry/Router/Planner/Runtime, historical mass rename, automatic next Change, or automatic Git action.
 
 ## Run / handoff
+
+Continuation must preserve the latest delta plus all materially required uncommitted ancestor state. Use cumulative payloads or exact retrievable ancestor references and carry exact removal information when needed; do not introduce a payload registry/database.
 
 Keep the three-file Run concise and record exact archive path, persisted projectOrdinal, spec-sync result, completion/continuity facts, and material artifact/hash identities.
 

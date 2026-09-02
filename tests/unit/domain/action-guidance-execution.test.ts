@@ -167,14 +167,7 @@ test("parent-path redirection through symlink fails closed", async (t) => {
   }
 });
 
-test("unreadable canonical Guidance fails closed when host permissions are enforceable", async (t) => {
-  if (process.platform === "win32") {
-    t.skip(
-      "Windows ACL behavior is outside this bounded Linux permission proof",
-    );
-    return;
-  }
-
+test("unreadable canonical Guidance fails closed when host permissions are enforceable", async () => {
   const root = await makeRoot();
   try {
     const entry = await writeGuidance(root, "apply", "# apply\n");

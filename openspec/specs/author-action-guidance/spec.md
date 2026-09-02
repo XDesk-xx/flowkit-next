@@ -66,12 +66,12 @@ Canonical `apply` and `revise-apply` SHALL include Mechanical Preflight as an in
 - **THEN** `.agents/skills/explore-proof-based/SKILL.md` SHALL perform the same projectOrdinal assignment/persistence discipline without reading or executing `skills/actions/explore/SKILL.md`
 
 #### Scenario: Planned-only Change does not reserve a number
-- **WHEN** `converge-reviewer-action-guidance` remains planned and has never entered Explore
-- **THEN** its coordination entry SHALL have no `projectOrdinal`, and a next numeric value such as `022` SHALL remain only an unassigned candidate
+- **WHEN** an exact Delivery Change remains `planned` and has never actually entered Explore
+- **THEN** its coordination entry SHALL have no `projectOrdinal`, and the next numeric value SHALL remain unassigned until an actual Explore materializes it
 
 #### Scenario: Current explored Change preserves its assigned number
-- **WHEN** `converge-author-action-guidance` has already entered Explore and its exact coordination entry records `projectOrdinal: 21`
-- **THEN** every later Action for that exact Change SHALL treat `021` as the same persisted sequence/archive-naming fact without substituting Run sequence, `changeStartSequence` or physical group prefix
+- **WHEN** an exact Change has already entered Explore and its coordination entry records a valid assigned `projectOrdinal`
+- **THEN** every later Action for that exact Change SHALL preserve that ordinal unchanged without substituting Run sequence, `changeStartSequence` or physical group prefix
 
 #### Scenario: Explored then cancelled Change keeps the gap
 - **WHEN** a Change was assigned `projectOrdinal: 8` after actually entering Explore and is later cancelled
@@ -103,17 +103,6 @@ During D03/D04 Stable Core development, flowkit-next self-development SHALL cont
 - **WHEN** first-Explore projectOrdinal assignment requires D03/D04 bootstrap parity
 - **THEN** Change 2 SHALL update existing `.agents/skills/explore-proof-based/SKILL.md` in place and SHALL NOT create another top-level Explore wrapper merely to mirror product Guidance
 
-### Requirement: Change 2 preserves temporary shared Run guidance and historical archive paths
-Change 2 SHALL retain `TEMPORARY-RUN-SURFACE-GUIDANCE.md` while Reviewer product/bootstrap convergence remains incomplete and SHALL NOT mass-rename already archived D02/D03 Change directories merely to normalize historical appearance. Cleanup of the temporary bridge requires later proof that both relevant Author and Reviewer formal/bootstrap coverage has absorbed its semantics and no current self-development consumer depends on it.
-
-#### Scenario: Author convergence alone does not delete the temporary bridge
-- **WHEN** all seven Author product Guidance entries exist but Reviewer Guidance convergence is still pending
-- **THEN** `TEMPORARY-RUN-SURFACE-GUIDANCE.md` SHALL remain available to the independent self-development plane
-
-#### Scenario: Historical unnumbered archives remain historical facts
-- **WHEN** Change 2 fixes persisted projectOrdinal archive HOW going forward
-- **THEN** existing unnumbered D02/D03 archive directories SHALL NOT be mass-renamed by this Change
-
 ### Requirement: Author canonical artifacts converge to current material truth while Run provenance remains bounded and concise
 Canonical Author Guidance SHALL treat OpenSpec Change artifacts as the current converged representation of material proof, decisions, trade-offs and rationale. During `revise-explore` and `revise-propose`, superseded claims SHALL be replaced or removed in place rather than retained merely to narrate prior Reviewer/Owner correction chronology. Evidence, failed proof or counterexamples that still materially explain the current invariant MAY remain, but SHALL be expressed as current rationale rather than as a revision diary. Execution/review chronology needed for durable Action continuation SHALL remain on the existing `.flowkit/runs` surface only at the bounded level required by the existing Run contract and Guidance: concise Action/finding/revision facts, bounded reasoning, and exact references when material. Canonical artifacts SHALL NOT duplicate that chronology. This requirement SHALL NOT require exhaustive Reviewer discussion, full proof transcripts, or revision diaries to be copied into Run prose. Git SHALL retain exact repository evolution. Canonical artifacts MAY use concise exact Run/finding references when deeper provenance is useful.
 
@@ -136,3 +125,44 @@ Canonical Author Guidance SHALL treat OpenSpec Change artifacts as the current c
 #### Scenario: Artifact size is diagnostic rather than correctness authority
 - **WHEN** an Explore, Proposal or Design artifact is unusually large
 - **THEN** Author/Reviewer Guidance MAY use size or line count as a signal to inspect duplication or superseded chronology, but SHALL NOT treat a fixed byte/line threshold as a correctness Gate
+
+### Requirement: Archive preparation performs real package-bound readiness before archive mutation
+Canonical product/bootstrap archive HOW SHALL treat preparation as a real non-mutating readiness/self-check bound to the exact ActionPackage/Guidance identity before archive execution mutates repository/canonical state. Existing lifecycle/Policy legality that makes `archive` ready SHALL be sufficient to enter this preparation; archive SHALL NOT require a second Owner execution authorization. The readiness SHALL use `completion-transition readiness` rather than requiring a pre-existing `completed` Change. A blocker that requires accepted repository/canonical bytes to change SHALL STOP before archive mutation; after such correction, a fresh `review-apply` after `apply`/`revise-apply` acceptance SHALL be required before archive preparation is attempted again.
+
+#### Scenario: Archive readiness passes without a second Owner archive authorization
+- **WHEN** exact `review-apply` after `apply`/`revise-apply` has accepted the exact candidate and existing Policy/lifecycle makes `archive` the ready Action
+- **THEN** archive preparation MAY execute its package-bound readiness without requiring a separate Owner archive execution authorization
+
+#### Scenario: Correction-requiring blocker stops before archive mutation
+- **WHEN** archive preparation discovers a blocker whose resolution requires modifying accepted repository or canonical bytes
+- **THEN** archive execution SHALL NOT begin, the prior review boundary SHALL remain correction-capable, and corrected bytes SHALL require a fresh `review-apply` acceptance before archive is retried
+
+#### Scenario: Environment-only blocker can retry the same candidate
+- **WHEN** archive preparation fails only because of an execution/environment condition and accepted candidate bytes remain unchanged
+- **THEN** the same exact candidate MAY retry archive preparation after the environment condition is corrected without inventing a repository correction
+
+### Requirement: Continuation handoff preserves all materially required uncommitted state
+Author product/bootstrap handoff HOW SHALL ensure that continuation can reconstruct the exact materially required uncommitted candidate state, not merely the latest delta. The handoff MAY use one cumulative package or exact retrievable ancestor payload references; when deletions are material, it SHALL carry exact removal information. It SHALL NOT require copying every historical Run/proof transcript or introduce a payload registry, continuation database, background sync or second lifecycle.
+
+#### Scenario: Latest delta depends on an uncommitted ancestor
+- **WHEN** the next session needs bytes introduced by an earlier uncommitted Action in addition to the latest delta
+- **THEN** handoff SHALL carry those materially required bytes cumulatively or provide exact retrievable ancestor references sufficient to reconstruct the exact candidate
+
+#### Scenario: Deletion survives continuation reconstruction
+- **WHEN** a materially required handoff includes deletion of a previously present tracked path
+- **THEN** the handoff SHALL carry exact removal information sufficient to prevent the deleted path from reappearing during reconstruction
+
+### Requirement: Proof-based Explore classifies concept ownership and mutation ordering proportionally
+Canonical product Explore HOW and the independent D03/D04 proof-based Explore bootstrap HOW SHALL, when a proposed new concept/mechanism is material, first classify whether the need is already owned by an existing capability/entity, operation, state, configuration, validation/proof mechanic or Guidance/HOW before proposing a new capability. When state or mutation ordering is material, Explore SHALL identify validation and commit points and SHALL prove failure-before-commit versus failure-after-commit consequences, including retry/rollback/correction legality. These checks SHALL remain proportional and SHALL NOT be performed as ceremony when neither concept ownership nor mutation ordering can affect the contract.
+
+#### Scenario: Existing mechanism prevents a redundant new concept
+- **WHEN** Explore proposes a new named mechanism but proof shows the required behavior is already owned by an existing operation/state/HOW boundary
+- **THEN** Explore SHALL prefer the existing mechanism and SHALL NOT promote the new name into a product capability without independent proof
+
+#### Scenario: Mutation ordering determines correction legality
+- **WHEN** a design can fail either before or after committing a material state mutation and that ordering changes recovery/correction legality
+- **THEN** Explore SHALL identify the commit point and prove both failure consequences before converging Proposal direction
+
+#### Scenario: Simple non-mutating work remains simple
+- **WHEN** a Change introduces no material new mechanism and no state/mutation ordering risk
+- **THEN** Explore SHALL NOT invent concept-ownership or transaction analysis merely to satisfy a checklist

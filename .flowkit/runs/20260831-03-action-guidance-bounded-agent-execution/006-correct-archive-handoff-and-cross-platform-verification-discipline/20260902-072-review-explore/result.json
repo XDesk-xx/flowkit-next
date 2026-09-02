@@ -1,0 +1,29 @@
+{
+  "runId": "20260902-072-review-explore",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "correct-archive-handoff-and-cross-platform-verification-discipline",
+  "action": "review-explore",
+  "role": "reviewer",
+  "status": "terminal",
+  "verdict": "APPROVED",
+  "summary": "071 validly converges the two former Windows-only proof gaps to Linux-hosted semantic simulations. The unreadable-Guidance contract is platform-agnostic at the resolver boundary and is proven by real low-privilege EACCES; the Git-mode contract is independently reproduced with core.filemode=false plus index chmod while bytes remain identical and candidateRef changes. Native Windows execution is no longer required by the Owner-corrected scope. Because this upstream Explore changed after 070, the existing 069 planning artifacts are now stale and 070 applyAllowed cannot be reused; planning must be regenerated through Propose.",
+  "blockingFindings": [],
+  "nextBoundary": "propose",
+  "proposalAllowed": true,
+  "applyAllowed": false,
+  "priorReviewProposeApplyAllowedSuperseded": true,
+  "reviewerMutation": "NONE",
+  "productionMutation": "NONE",
+  "scopeDriftAssessment": "NONE_AFTER_EXPLICIT_OWNER_CORRECTION",
+  "complexityAssessment": "MINIMAL_AND_REDUCED_CROSS_PLATFORM_PROOF_BURDEN",
+  "windowsProofVerdict": {
+    "unreadableGuidance": "PROPOSAL_READY_LINUX_SEMANTIC_SIMULATION_SUFFICIENT",
+    "gitExecutableMode": "PROPOSAL_READY_LINUX_GIT_INDEX_SIMULATION_REPRODUCED"
+  },
+  "domain": "173/173 PASS / 0 skipped",
+  "openSpecChangeStrict": "PASS",
+  "openSpecAllStrict": "18/18 PASS",
+  "gitDiffCheck": "PASS",
+  "stableTransfer": true,
+  "packageClass": "cumulative-review-handoff"
+}

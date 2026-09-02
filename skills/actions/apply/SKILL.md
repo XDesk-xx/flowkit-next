@@ -50,6 +50,8 @@ Explicitly assess new capability, authority, lifecycle semantics, Standard Actio
 
 ## Run / handoff
 
+Continuation must preserve the latest delta plus all materially required uncommitted ancestor state. Use a cumulative payload or exact retrievable ancestor references; when files are deleted/renamed, carry exact removal information so reconstruction cannot retain stale bytes. Do not introduce a payload registry or continuation database.
+
 Keep the three-file Run concise. Handoff exact changed artifact/diff identities and real check outcomes needed for independent `review-apply`.
 
 ## Terminal boundary

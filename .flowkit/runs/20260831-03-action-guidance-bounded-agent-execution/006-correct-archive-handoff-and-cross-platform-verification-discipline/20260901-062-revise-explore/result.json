@@ -1,0 +1,40 @@
+{
+  "runId": "20260901-062-revise-explore",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "correct-archive-handoff-and-cross-platform-verification-discipline",
+  "action": "revise-explore",
+  "role": "author",
+  "status": "terminal",
+  "verdict": "PASS",
+  "summary": "Owner correction converges 061 without changing the bounded A/B/C/D scope: `prepare` is not a Standard Action. `archive` remains the Standard Action; Action preparation is the real non-mutating readiness/self-check operation, while the existing low-level `prepare` lifecycle event is only the structural commit to exact `prepared` state after readiness passes. Because prepared Action switching is intentionally blocked, correction-capable archive readiness must complete before that structural event. No new phase/state/Policy transition is introduced.",
+  "nextBoundary": "review-explore",
+  "proposalAllowed": true,
+  "applyAllowed": false,
+  "blockingUnknown": "Native Windows execution is still required later to prove the selected Windows ACL fixture and eliminate the two Windows-only semantic-proof skips; this remains an implementation/review acceptance fact rather than a contract unknown.",
+  "projectOrdinal": 25,
+  "changeStartSequence": 61,
+  "currentRunSequence": 62,
+  "physicalRunGroupPrefix": "006",
+  "specDelta": "MODIFY author-action-guidance only for archive preparation/HOW, continuation and stale-current-truth convergence; Windows changes remain test mechanics for existing contracts",
+  "durableFacts": [
+    "StandardActionId does not contain prepare; archive is the Standard Action and prepare is a lifecycle operation/event.",
+    "The existing low-level prepare lifecycle event is structural and materializes the exact selected Action as prepared.",
+    "Current invocation failure can preserve prepared and Policy rejects switching a prepared Action, so readiness that may require correction must finish before structural prepared materialization.",
+    "Action preparation for archive must be a real read-only readiness/self-check; PASS permits structural prepare/invocation, while FAIL requiring accepted-byte correction STOPs at terminal review-apply and uses existing Owner-controlled revise-apply followed by fresh review-apply.",
+    "The other approved corrective concerns remain unchanged: exactly two Windows-only proof-mechanics gaps, materially sufficient uncommitted continuation, and canonical Author spec convergence away from stale D03 phase literals."
+  ],
+  "explicitNonGoals": [
+    "prepare as a StandardActionId",
+    "Archive Preflight as a separate Action/phase/state",
+    "new lifecycle state or Policy transition",
+    "new Owner archive authorization",
+    "third symlink host-capability skip cleanup",
+    "payload registry/continuation DB",
+    "D03 finalization or Git authority",
+    "proof-Explore Guidance implementation change inside this corrective scope"
+  ],
+  "productionMutation": "NONE",
+  "scopeDrift": "NONE",
+  "stableTransfer": true,
+  "packageClass": "cumulative-action-handoff"
+}

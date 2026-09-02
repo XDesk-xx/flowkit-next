@@ -156,10 +156,13 @@ test("live temporary Run bridge is retired without erasing historical provenance
   const deliveries = await readdir(runRoot);
   assert.ok(deliveries.length > 0, "historical Run provenance remains present");
 
-  const archivedAuthorSpec = await readFile(
+  const historicalAuthorSpec = await readFile(
     path.join(
       REPOSITORY_ROOT,
       "openspec",
+      "changes",
+      "archive",
+      "2026-09-01-021-converge-author-action-guidance",
       "specs",
       "author-action-guidance",
       "spec.md",
@@ -167,8 +170,8 @@ test("live temporary Run bridge is retired without erasing historical provenance
     "utf8",
   );
   assert.match(
-    archivedAuthorSpec,
+    historicalAuthorSpec,
     /TEMPORARY-RUN-SURFACE-GUIDANCE\.md/,
-    "conditional historical contract text is preserved rather than rewritten for string cleanup",
+    "historical archive provenance is preserved without pinning stale phase text into the current canonical spec",
   );
 });

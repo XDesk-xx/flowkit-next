@@ -4,6 +4,7 @@ import {
   chmod,
   mkdir,
   mkdtemp,
+  readFile,
   rm,
   symlink,
   unlink,
@@ -285,17 +286,18 @@ test("candidate ignores ignored untracked and Run-only material but changes on s
   }
 });
 
-test("same bytes with Git-visible executable mode change changes candidateRef", async (t) => {
-  if (process.platform === "win32") {
-    t.skip(
-      "Windows Git worktrees do not expose chmod mode changes consistently",
-    );
-    return;
-  }
+test("same bytes with Git-visible executable mode change changes candidateRef", async () => {
   const root = await createGitFixture();
   try {
     const script = path.join(root, "check.sh");
-    await chmod(script, 0o755);
+    const bytes = await readFile(script);
+    await git(root, "config", "core.filemode", "false");
+
+    await git(root, "update-index", "--chmod=+x", "check.sh");
+    assert.match(
+      await git(root, "ls-files", "--stage", "check.sh"),
+      /^100755 /,
+    );
     const executable = await deriveApplicableCheckCandidateRef(root);
     const before = await resolve(root, plan(declaration("mode-proof")));
     const prior: ApplicableCheckPriorFact = {
@@ -304,7 +306,13 @@ test("same bytes with Git-visible executable mode change changes candidateRef", 
       checkRef: before.checks[0].checkRef,
       status: "passed",
     };
-    await chmod(script, 0o644);
+
+    await git(root, "update-index", "--chmod=-x", "check.sh");
+    assert.match(
+      await git(root, "ls-files", "--stage", "check.sh"),
+      /^100644 /,
+    );
+    assert.deepEqual(await readFile(script), bytes);
     const regular = await deriveApplicableCheckCandidateRef(root);
     const after = await resolve(root, plan(declaration("mode-proof")));
     assert.notEqual(executable, regular);

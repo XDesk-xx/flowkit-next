@@ -1,0 +1,91 @@
+{
+  "runNumber": 68,
+  "kind": "external-orchestrator-review-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260831-03-action-guidance-bounded-agent-execution",
+  "changeId": "correct-archive-handoff-and-cross-platform-verification-discipline",
+  "action": "review-explore",
+  "runId": "20260902-068-review-explore",
+  "inputRunId": "20260902-067-revise-explore",
+  "physicalRunPath": ".flowkit/runs/20260831-03-action-guidance-bounded-agent-execution/006-correct-archive-handoff-and-cross-platform-verification-discipline/20260902-068-review-explore",
+  "physicalRunGroupPrefix": "006",
+  "projectOrdinal": 25,
+  "changeStartSequence": 61,
+  "checkpointClaim": "39ef634bc7680af0494d4d918adf58e338601a83",
+  "inputAuthorPackageSha256": "7469bd2b3673da6374c2979a268dfdc995722c8fa91849f702ef99853c1e009c",
+  "reviewedArtifact": {
+    "path": "openspec/changes/correct-archive-handoff-and-cross-platform-verification-discipline/explore.md",
+    "sha256": "207cf3ed6c42f0d9c8ba4a5816c7e4022cd65c381e311aab14361573f8df5fe4"
+  },
+  "deliveryManifestSha256": "4b119cb6d66ba316a016c5c6e898a9f455b22e20982b674c238c22d3690cd06e",
+  "priorReviewerResultSha256": "9a24e83a354be308ce60e5b88f7046b496d6e13c4ce5e81af2ce2ffd17ec61ab",
+  "findingConvergence": {
+    "R065-001": {
+      "status": "RESOLVED",
+      "fact": "067 rejects pre-ActionPackage Guidance execution and proves a bounded package-bound preparation outcome seam as the minimum contract-consistent correction."
+    },
+    "R063-002": {
+      "status": "RESOLVED_PREVIOUSLY",
+      "fact": "Canonical Explore remains converged to current rationale rather than revision chronology."
+    }
+  },
+  "windowsProofAssessment": {
+    "exactWindowsOnlyTargetSkips": 2,
+    "unreadableGuidance": {
+      "exploreContractProof": "SUFFICIENT_FOR_PROPOSAL",
+      "mechanism": "native Windows ACL deny/remove using icacls",
+      "productionContractChangeRequired": false,
+      "nativeWindowsRuntimeStillRequired": true,
+      "finalCrossPlatformClosureClaimedNow": false
+    },
+    "gitExecutableMode": {
+      "exploreContractProof": "SUFFICIENT_AND_INDEPENDENTLY_REPRODUCED",
+      "mechanism": "git update-index --chmod=+x with core.filemode=false",
+      "sameBytes": true,
+      "indexModeBefore": "100644",
+      "indexModeAfter": "100755",
+      "candidateRefChanged": true,
+      "productionContractChangeRequired": false
+    },
+    "symlinkCapabilitySkipsInScope": false
+  },
+  "archivePreparationAssessment": {
+    "preActionPackageGuidanceExecutionRejected": true,
+    "sameExactActionPackageBindsPreparationAndExecution": true,
+    "stagedPreparedExternallyCommittedOnBlockedPreparation": false,
+    "priorTerminalReviewApplyPreservedOnBlockedPreparation": true,
+    "newActionRequired": false,
+    "newLifecycleStateRequired": false,
+    "newPreparationPackageIdentityRequired": false,
+    "boundedExistingCapabilityModificationRequired": [
+      "single-action-execution-terminal-boundary",
+      "action-guidance-execution"
+    ],
+    "proposalReady": true
+  },
+  "independentProof": {
+    "exactBaseReconstructed": true,
+    "node": "22.23.2",
+    "detachedDependencySnapshotReused": true,
+    "packageManagerLauncherUsedByReviewer": false,
+    "priorReviewerRunPreserved": true,
+    "fullDomainTests": "173/173 PASS",
+    "canonicalOpenSpecSpecsStrict": "17/17 PASS",
+    "archivedOpenSpecStrict": "23/23 PASS",
+    "gitIndexModeProof": "PASS",
+    "gitDiffCheck": "PASS",
+    "productionImplementationMutation": false,
+    "proposalArtifactsPresent": false
+  },
+  "scopeAssessment": {
+    "abcdEScopeCoherent": true,
+    "splitRequired": false,
+    "newProductCapability": false,
+    "unauthorizedScopeDrift": false,
+    "newControlPlane": false,
+    "complexityAssessment": "MINIMAL_PROOF_REQUIRED_EXECUTION_ORDER_CORRECTION_PLUS_EXISTING_PROOF_GUIDANCE_CLEANUP"
+  },
+  "stableTransfer": true,
+  "packageClass": "cumulative-review-handoff"
+}

@@ -57,6 +57,16 @@ YYYY-MM-DD-<projectOrdinal:03d>-<semantic ChangeId>
 
 Use the persisted value unchanged and zero-pad to at least three digits.
 
+## Package-bound archive preparation
+
+Real archive readiness/self-check executes only under the exact ActionPackage / canonical Guidance identity supplied by the existing single-Action invocation. It is not a new Standard Action or state. Before archive mutation, check exact accepted `review-apply` continuity, no post-review byte drift, exact active Change/ordinal identity, OpenSpec/task/delta-sync readiness, archive-target collision/identity, completion-transition readiness, handoff/removal completeness and known correction blockers.
+
+Preparation MUST also perform canonical convergence in an isolated dry-run and run affected domain verification plus any materially applicable engineering gates against the converged candidate bytes. OpenSpec structural success alone is insufficient. A post-convergence verification failure that requires repository/canonical byte correction is a real archive blocker and MUST be discovered before the actual canonical sync/move mutation.
+
+Environment-only failure with unchanged bytes stops without archive mutation and may retry the same candidate. A blocker requiring repository/canonical byte mutation, including a post-convergence verification failure, stops before archive mutation and returns to the existing Owner-controlled `revise-apply` correction path; changed bytes require fresh `review-apply`. Normal archive readiness does not require a second Owner archive execution authorization.
+
+This bootstrap HOW remains independent and MUST NOT consume candidate product archive Guidance.
+
 ## OpenSpec mechanics
 
 Reuse:
@@ -84,6 +94,8 @@ Do not create mirror wrappers for the other six Author Actions merely for symmet
 Do not introduce a Registry/Router/Planner/Runtime/counter service/allocator subsystem/new lifecycle state.
 
 ## Run / handoff / STOP
+
+Preserve the latest delta plus all materially required uncommitted ancestor state by cumulative payload or exact retrievable ancestor references. Carry exact removal information for deleted/renamed paths; do not create a payload registry/database.
 
 Keep the standard three-file Run concise and record the exact archive path, persisted projectOrdinal, spec-sync/completion facts and identities needed for continuation.
 
