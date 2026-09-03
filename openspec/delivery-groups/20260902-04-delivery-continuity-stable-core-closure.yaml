@@ -70,7 +70,8 @@ changes:
     required: true
     dependsOn:
       - "establish-delivery-operation-execution-and-start-continuity"
-    state: planned
+    state: completed
+    projectOrdinal: 27
     architectureImpact: true
     outputs:
       - "same-candidate environment/fixture correction rule"
@@ -178,5 +179,12 @@ ownerDecisions:
     deliveryId: "20260902-04-delivery-continuity-stable-core-closure"
     changeId: "establish-delivery-operation-execution-and-start-continuity"
     sourceRef: "owner-input:2026-09-02:activate-change:establish-delivery-operation-execution-and-start-continuity:proof-explore:preflight-pass"
+    scope:
+      - "explore"
+  - ref: "owner:e911672bdc52cde236a715f50ab79c572b48b054d0daeeb07d1ea5eeddbee4f3"
+    decision: "activate-change"
+    deliveryId: "20260902-04-delivery-continuity-stable-core-closure"
+    changeId: "complete-formal-full-test-correction-and-platform-fixture-discipline"
+    sourceRef: "owner-input:2026-09-02:activate-change:complete-formal-full-test-correction-and-platform-fixture-discipline:proof-explore:preflight-d4858d46-pass"
     scope:
       - "explore"

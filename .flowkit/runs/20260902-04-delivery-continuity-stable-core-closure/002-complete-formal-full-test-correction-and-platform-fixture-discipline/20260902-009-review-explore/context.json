@@ -1,0 +1,66 @@
+{
+  "runNumber": 9,
+  "kind": "external-orchestrator-review-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "complete-formal-full-test-correction-and-platform-fixture-discipline",
+  "action": "review-explore",
+  "runId": "20260902-009-review-explore",
+  "inputRunId": "20260902-008-explore",
+  "physicalRunPath": ".flowkit/runs/20260902-04-delivery-continuity-stable-core-closure/002-complete-formal-full-test-correction-and-platform-fixture-discipline/20260902-009-review-explore",
+  "physicalRunGroupPrefix": "002",
+  "projectOrdinal": 27,
+  "changeStartSequence": 2,
+  "baseCommit": "d4858d461bd5a08413b8581490e75497f4027efe",
+  "deliveryStartCommit": "eaa1c8f1cf9a52e05b75c3d1133f7aff8449c215",
+  "inputAuthorPackageSha256": "44e1d8edf1ca118b4a6ce42c5688ed4988b02e3bdbd35ed50ebb6378a6f573b6",
+  "reviewedExploreSha256": "47f81be2b9bde17f1b78423d560fafa8f90c9800fb0dfe1a00fa22e98f2dd26e",
+  "deliveryManifestSha256": "51377258dd0ae8ddcf53b280d6ca6cacdf1e507c5b423b9c843789fca9b32150",
+  "finalReferenceSha256": "b26217a2ae397772aea7fd96140855b0099a1089e2c2f8c9b2614e50809320a9",
+  "embeddedBaseBundleSha256": "3f6ec54c7b0fc32fca26a1f5fb12a346f2a149dd86f62e0dfb25b13128197e54",
+  "independentProof": {
+    "payloadInternalHashes": "MATCH",
+    "bundleHistory": "COMPLETE",
+    "exactCheckpoint": "d4858d461bd5a08413b8581490e75497f4027efe",
+    "checkpointParent": "eaa1c8f1cf9a52e05b75c3d1133f7aff8449c215",
+    "checkpointWorkingTree": "CLEAN",
+    "change1ArchivePresent": true,
+    "focusedExistingContracts": "69/69 PASS, 0 skipped",
+    "canonicalOpenSpecSpecs": "18/18 strict PASS",
+    "activeChangeStrict": "EXPECTED Explore-stage no-delta failure only",
+    "gitDiffCheck": "PASS"
+  },
+  "acceptedExploreFacts": {
+    "reuseExistingCandidateIdentity": true,
+    "environmentCheckIdentityForcesAffectedRerun": true,
+    "repositoryMutationChangesCandidate": true,
+    "admissionRechecksCurrentCandidate": true,
+    "platformFixtureMechanicsMayDiffer": true,
+    "findingDatabaseRequired": false,
+    "candidateInvalidationSubsystemRequired": false,
+    "evidencePlatformRequired": false,
+    "platformLifecycleBranchRequired": false
+  },
+  "blockingFindings": [
+    {
+      "id": "D04-R002-001",
+      "title": "flowkit-next self-test commands are being promoted into generic product Delivery Guidance",
+      "requiredCorrection": "Separate generic delivery-full-test operation/correction HOW from flowkit-next's project-local literal six-gate Full Test plan; proof the smallest existing project-local plan binding without a Registry/Planner."
+    },
+    {
+      "id": "D04-R002-002",
+      "title": "the already-decided delivery-full-test authority source is unresolved",
+      "requiredCorrection": "Explicitly preserve the accepted exact scope-bound Owner Full Test authorization boundary, or provide fresh proof for an intentional authority-contract change; arbitrary caller selection is insufficient."
+    }
+  ],
+  "scopeAssessment": {
+    "changes3To5PulledForward": false,
+    "productionMutation": false,
+    "d05Introduced": false,
+    "selfHostingTakeover": false,
+    "scopeDrift": "NONE_OUTSIDE_CHANGE2"
+  },
+  "stableTransfer": true,
+  "packageClass": "reviewer-delta"
+}

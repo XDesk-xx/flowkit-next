@@ -233,9 +233,11 @@ export function deriveActionPackageRef(actionPackage: unknown): string | null {
   );
 }
 
-function resolveChecks(
-  plan: ApplicableCheckPlanInput,
+export function resolveApplicableChecksInDeclaredOrder(
+  plan: unknown,
 ): readonly ResolvedApplicableCheck[] | null {
+  if (!isApplicableCheckPlanInput(plan)) return null;
+
   const resolved: ResolvedApplicableCheck[] = [];
   const checkRefs = new Set<string>();
 
@@ -247,6 +249,15 @@ function resolveChecks(
     resolved.push({ ...canonical, checkRef });
   }
 
+  return resolved;
+}
+
+function resolveChecks(
+  plan: ApplicableCheckPlanInput,
+): readonly ResolvedApplicableCheck[] | null {
+  const declared = resolveApplicableChecksInDeclaredOrder(plan);
+  if (declared === null) return null;
+  const resolved = [...declared];
   resolved.sort((left, right) => {
     const byId = left.checkId.localeCompare(right.checkId);
     return byId !== 0 ? byId : left.checkRef.localeCompare(right.checkRef);

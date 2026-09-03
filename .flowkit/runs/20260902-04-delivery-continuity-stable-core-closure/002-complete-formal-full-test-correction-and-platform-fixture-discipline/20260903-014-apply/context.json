@@ -1,0 +1,85 @@
+{
+  "runNumber": 14,
+  "kind": "external-orchestrator-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "complete-formal-full-test-correction-and-platform-fixture-discipline",
+  "action": "apply",
+  "runId": "20260903-014-apply",
+  "inputRunId": "20260903-013-review-propose",
+  "physicalRunPath": ".flowkit/runs/20260902-04-delivery-continuity-stable-core-closure/002-complete-formal-full-test-correction-and-platform-fixture-discipline/20260903-014-apply",
+  "physicalRunGroupPrefix": "002",
+  "projectOrdinal": 27,
+  "changeStartSequence": 2,
+  "baseCommit": "d4858d461bd5a08413b8581490e75497f4027efe",
+  "inputReviewerPackageSha256": "574803a810ccdaaa9e44f1d3beeb565d32a9dbc558dc4204365ddd6889e20e96",
+  "inputReviewVerdict": "APPROVED",
+  "inputReviewNextBoundary": "apply",
+  "implementationArtifacts": {
+    "src/domain/delivery-operation-execution.ts": {
+      "sha256": "7a5a8d0266dcd022d7ea4a21a2346efb3cce6e607967e56fa0c670d2478d87bf",
+      "bytes": 13392
+    },
+    "src/domain/delivery-full-test-execution.ts": {
+      "sha256": "7b62df14d530c9a3fd1009db0718349762f9a50b45b1d750ea2505ca97e3186c",
+      "bytes": 10454
+    },
+    "src/domain/applicable-check-execution.ts": {
+      "sha256": "2dadb38c9ad85f5dd511c12f0e1d9e2505983f720ab056675fd7557ae3057119",
+      "bytes": 16481
+    },
+    "src/domain/delivery-start-execution.ts": {
+      "sha256": "3dfcec2881a3c1735edc5c604c6eca289edba273809841b571b4a020f15de6a1",
+      "bytes": 7125
+    },
+    "src/domain/index.ts": {
+      "sha256": "7be0619968519c648919c52132dca202d1caddd539ad97ecf321dc36cd44da4f",
+      "bytes": 756
+    },
+    "tests/unit/domain/delivery-full-test-execution.test.ts": {
+      "sha256": "a2a72f9a921fe2ec53b3333ca81a9123530d51e5f9b353f8da26704c86d3c50e",
+      "bytes": 12046
+    },
+    "skills/delivery/full-test/SKILL.md": {
+      "sha256": "984e31c772e0af9e9a9157377ee077a86a6455800fffb235289f66f47df2c32b",
+      "bytes": 1623
+    },
+    "openspec/changes/complete-formal-full-test-correction-and-platform-fixture-discipline/tasks.md": {
+      "sha256": "e7d739df870d29a821b14a7d46bcccf5feeec2daba03ed84e2f9367b1bc7b005",
+      "bytes": 2886
+    }
+  },
+  "scope": {
+    "productionMutation": true,
+    "newProductGuidance": [
+      "skills/delivery/full-test/SKILL.md"
+    ],
+    "newDomainSeam": [
+      "src/domain/delivery-full-test-execution.ts"
+    ],
+    "modifiedDomainSeams": [
+      "src/domain/delivery-operation-execution.ts",
+      "src/domain/applicable-check-execution.ts"
+    ],
+    "scopeDrift": "NONE"
+  },
+  "verification": {
+    "domain": "205/205 PASS, 0 skipped",
+    "acceptance": "4/4 PASS, 0 skipped",
+    "openSpec": "19/19 strict PASS",
+    "typecheck": "PASS",
+    "build": "PASS",
+    "format": "PASS",
+    "lint": "PASS",
+    "dependencyHealth": "65 modules / 259 dependencies / 0 violations",
+    "entropy": "28/28 production modules reachable",
+    "gitDiffCheck": "PASS"
+  },
+  "environmentNotes": [
+    "pnpm dependency-status attempted network; ignored because package/lockfile unchanged and exact dependency snapshot was restored",
+    "acceptance initially lacked managed Archify 2.15.0; restored provided managed runtime and reran the same candidate without repository-byte changes"
+  ],
+  "stableTransfer": true,
+  "packageClass": "author-apply-payload"
+}

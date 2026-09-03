@@ -1,0 +1,27 @@
+{
+  "runId": "20260903-017-review-apply",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "complete-formal-full-test-correction-and-platform-fixture-discipline",
+  "action": "review-apply",
+  "role": "reviewer",
+  "status": "terminal",
+  "verdict": "APPROVED",
+  "summary": "016 resolves D04-R002-003 exactly: after every actually executed Full Test check, the host re-derives the trusted candidate and stops immediately before any later check when candidate identity drifts. The new two-check counterexample proves the later side-effecting check never runs. The correction is limited to one local execution boundary and one test; all other accepted Full Test semantics remain unchanged. Independent proof reproduces 11/11 focused, 207/207 domain, 4/4 acceptance, 19/19 strict OpenSpec, and all engineering/dependency/entropy gates. archiveAllowed=true.",
+  "blockingFindings": [],
+  "resolvedFindingIds": [
+    "D04-R002-003"
+  ],
+  "archiveAllowed": true,
+  "nextBoundary": "archive",
+  "reviewerMutation": "NONE",
+  "scopeDriftAssessment": "NONE",
+  "complexityAssessment": "MINIMAL_LOCAL_FAIL_CLOSED_TIMING_CORRECTION",
+  "focusedProof": "11/11 PASS, 0 skipped",
+  "domainProof": "207/207 PASS, 0 skipped",
+  "acceptanceProof": "4/4 PASS, 0 skipped",
+  "openSpecProof": "19/19 strict PASS",
+  "engineeringProof": "PASS",
+  "gitDiffCheck": "PASS",
+  "stableTransfer": true,
+  "packageClass": "reviewer-delta"
+}

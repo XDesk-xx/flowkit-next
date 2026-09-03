@@ -1,0 +1,69 @@
+{
+  "runNumber": 15,
+  "kind": "external-orchestrator-review-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "complete-formal-full-test-correction-and-platform-fixture-discipline",
+  "action": "review-apply",
+  "runId": "20260903-015-review-apply",
+  "inputRunId": "20260903-014-apply",
+  "physicalRunPath": ".flowkit/runs/20260902-04-delivery-continuity-stable-core-closure/002-complete-formal-full-test-correction-and-platform-fixture-discipline/20260903-015-review-apply",
+  "physicalRunGroupPrefix": "002",
+  "projectOrdinal": 27,
+  "changeStartSequence": 2,
+  "baseCommit": "d4858d461bd5a08413b8581490e75497f4027efe",
+  "inputAuthorPackageSha256": "8aa6703b9efdc4c3083a299dde20c0c01a36a4d96219cd735c0dca5710a760e1",
+  "inputReviewerPackageSha256": "574803a810ccdaaa9e44f1d3beeb565d32a9dbc558dc4204365ddd6889e20e96",
+  "payloadInternalHashes": "38/38 MATCH",
+  "reviewedArtifacts": {
+    "deliveryFullTestExecutionSha256": "7b62df14d530c9a3fd1009db0718349762f9a50b45b1d750ea2505ca97e3186c",
+    "deliveryOperationPackageSha256": "7a5a8d0266dcd022d7ea4a21a2346efb3cce6e607967e56fa0c670d2478d87bf",
+    "deliveryFullTestGuidanceSha256": "984e31c772e0af9e9a9157377ee077a86a6455800fffb235289f66f47df2c32b",
+    "deliveryFullTestTestsSha256": "a2a72f9a921fe2ec53b3333ca81a9123530d51e5f9b353f8da26704c86d3c50e",
+    "tasksSha256": "e7d739df870d29a821b14a7d46bcccf5feeec2daba03ed84e2f9367b1bc7b005"
+  },
+  "blockingFindings": [
+    {
+      "id": "D04-R002-003",
+      "title": "candidate drift is detected only after all remaining checks execute",
+      "requiredCorrection": "Re-derive candidate after each actually executed check and STOP before any later check when candidate identity drifts; add a two-check counterexample proving later check non-execution."
+    }
+  ],
+  "independentProof": {
+    "node": "22.23.2",
+    "dependencySnapshotReused": true,
+    "packageManagerInstallInvoked": false,
+    "domain": "206/206 PASS, 0 skipped",
+    "acceptance": "4/4 PASS",
+    "typecheck": "PASS",
+    "build": "PASS",
+    "format": "PASS",
+    "lint": "PASS",
+    "forbiddenTrackedArtifacts": "PASS",
+    "dependencyHealth": "65 modules / 259 dependencies / 0 violations",
+    "entropy": "28/28 production modules reachable",
+    "entropyFocused": "7/7 PASS",
+    "openSpecAllStrict": "19/19 PASS",
+    "gitDiffCheck": "PASS",
+    "counterexampleProbe": "FAILS contract: second check executes after first check mutates candidate"
+  },
+  "verificationProvenance": {
+    "authorClaim": "205/205 PASS, 0 skipped",
+    "reviewerExactReproduction": "206/206 PASS, 0 skipped",
+    "assessment": "AUTHOR COUNT INEXACT; fresh revise-apply verification required"
+  },
+  "scopeAssessment": {
+    "genericGuidanceHardcodesFlowkitNextCommands": false,
+    "ownerAuthorityBoundary": "CORRECT",
+    "registryRouterPlanner": false,
+    "candidateSubsystem": false,
+    "changes3To5PulledForward": false,
+    "d05Introduced": false,
+    "selfHostingTakeover": false,
+    "scopeDrift": "NONE_OUTSIDE_LOCAL_IMPLEMENTATION_DEFECT"
+  },
+  "archiveAllowed": false,
+  "stableTransfer": true,
+  "packageClass": "reviewer-delta"
+}

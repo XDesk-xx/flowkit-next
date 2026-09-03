@@ -3,7 +3,15 @@ import { lstat, readFile, realpath } from "node:fs/promises";
 import path from "node:path";
 
 import { isOwnerAuthorityFact, type OwnerAuthorityFact } from "./authority.js";
+import {
+  isResolvedApplicableCheck,
+  type ResolvedApplicableCheck,
+} from "./applicable-check-execution.js";
 import { isSemanticId, type DeliveryId } from "./identity.js";
+import {
+  hasNoDuplicates,
+  isHashRef,
+} from "../internal/applicable-check-identity.js";
 
 export const DELIVERY_OPERATIONS = [
   "delivery-start",
@@ -233,13 +241,71 @@ export function hasDeliveryStartCommitAuthority(
   );
 }
 
-export interface DeliveryOperationPackage {
+export interface DeliveryFullTestOperationFacts {
+  readonly candidateRef: string;
+  readonly orderedChecks: readonly ResolvedApplicableCheck[];
+}
+
+const DELIVERY_FULL_TEST_FACT_FIELDS = [
+  "candidateRef",
+  "orderedChecks",
+] as const;
+
+export function isDeliveryFullTestOperationFacts(
+  value: unknown,
+): value is DeliveryFullTestOperationFacts {
+  if (
+    !isRecord(value) ||
+    !hasExactlyFields(value, DELIVERY_FULL_TEST_FACT_FIELDS) ||
+    !isHashRef(value.candidateRef, "candidate") ||
+    !Array.isArray(value.orderedChecks) ||
+    value.orderedChecks.length < 1 ||
+    !value.orderedChecks.every(isResolvedApplicableCheck)
+  ) {
+    return false;
+  }
+  return (
+    hasNoDuplicates(value.orderedChecks.map((check) => check.checkId)) &&
+    hasNoDuplicates(value.orderedChecks.map((check) => check.checkRef))
+  );
+}
+
+export function isFormalFullTestAuthorityForDelivery(
+  value: unknown,
+  deliveryId: unknown,
+): value is OwnerAuthorityFact {
+  return (
+    isSemanticId(deliveryId) &&
+    isOwnerAuthorityFact(value) &&
+    value.deliveryId === deliveryId &&
+    value.changeId === undefined &&
+    value.decision === "authorize-formal-full-test" &&
+    value.scope.length === 1 &&
+    value.scope[0] === "delivery-full-test"
+  );
+}
+
+export type DeliveryOperationFacts =
+  DeliveryStartOperationFacts | DeliveryFullTestOperationFacts;
+
+interface DeliveryOperationPackageBase {
   readonly deliveryId: DeliveryId;
-  readonly operationId: DeliveryOperationId;
   readonly ownerAuthority: OwnerAuthorityFact | null;
-  readonly operationFacts: DeliveryStartOperationFacts;
   readonly guidanceRef: DeliveryGuidanceRef;
 }
+
+export interface DeliveryStartOperationPackage extends DeliveryOperationPackageBase {
+  readonly operationId: "delivery-start";
+  readonly operationFacts: DeliveryStartOperationFacts;
+}
+
+export interface DeliveryFullTestOperationPackage extends DeliveryOperationPackageBase {
+  readonly operationId: "delivery-full-test";
+  readonly operationFacts: DeliveryFullTestOperationFacts;
+}
+
+export type DeliveryOperationPackage =
+  DeliveryStartOperationPackage | DeliveryFullTestOperationPackage;
 
 const DELIVERY_OPERATION_PACKAGE_FIELDS = [
   "deliveryId",
@@ -277,6 +343,13 @@ export function isDeliveryOperationPackage(
         )
       );
     case "delivery-full-test":
+      return (
+        isDeliveryFullTestOperationFacts(value.operationFacts) &&
+        isFormalFullTestAuthorityForDelivery(
+          value.ownerAuthority,
+          value.deliveryId,
+        )
+      );
     case "delivery-architecture-finalization":
     case "delivery-final":
     case "delivery-repository-integration":
@@ -299,6 +372,29 @@ function cloneStartFacts(
   return {
     acceptedBaseCommit: facts.acceptedBaseCommit,
     planningReference: clonePlanningReference(facts.planningReference),
+  };
+}
+
+function cloneResolvedCheck(
+  check: ResolvedApplicableCheck,
+): ResolvedApplicableCheck {
+  return {
+    checkId: check.checkId,
+    program: check.program,
+    args: [...check.args],
+    configRefs: [...check.configRefs],
+    toolRefs: [...check.toolRefs],
+    environmentRefs: [...check.environmentRefs],
+    checkRef: check.checkRef,
+  };
+}
+
+function cloneFullTestFacts(
+  facts: DeliveryFullTestOperationFacts,
+): DeliveryFullTestOperationFacts {
+  return {
+    candidateRef: facts.candidateRef,
+    orderedChecks: facts.orderedChecks.map(cloneResolvedCheck),
   };
 }
 
@@ -326,23 +422,42 @@ export function formDeliveryOperationPackage(
   operationFacts: unknown,
   guidanceRef: unknown,
 ): DeliveryOperationPackage | null {
-  if (!isSemanticId(deliveryId) || operationId !== "delivery-start") {
-    return null;
-  }
-  if (!isDeliveryStartOperationFacts(operationFacts)) return null;
-  if (!isDeliveryStartAuthorityForDelivery(ownerAuthority, deliveryId)) {
+  if (!isSemanticId(deliveryId) || !isDeliveryOperationId(operationId)) {
     return null;
   }
   if (!isDeliveryGuidanceRefForOperation(guidanceRef, operationId)) {
     return null;
   }
 
-  const candidate: DeliveryOperationPackage = {
-    deliveryId,
-    operationId,
-    ownerAuthority: cloneAuthority(ownerAuthority),
-    operationFacts: cloneStartFacts(operationFacts),
-    guidanceRef: cloneGuidanceRef(guidanceRef),
-  };
-  return isDeliveryOperationPackage(candidate) ? candidate : null;
+  if (operationId === "delivery-start") {
+    if (!isDeliveryStartOperationFacts(operationFacts)) return null;
+    if (!isDeliveryStartAuthorityForDelivery(ownerAuthority, deliveryId)) {
+      return null;
+    }
+    const candidate: DeliveryStartOperationPackage = {
+      deliveryId,
+      operationId,
+      ownerAuthority: cloneAuthority(ownerAuthority),
+      operationFacts: cloneStartFacts(operationFacts),
+      guidanceRef: cloneGuidanceRef(guidanceRef),
+    };
+    return isDeliveryOperationPackage(candidate) ? candidate : null;
+  }
+
+  if (operationId === "delivery-full-test") {
+    if (!isDeliveryFullTestOperationFacts(operationFacts)) return null;
+    if (!isFormalFullTestAuthorityForDelivery(ownerAuthority, deliveryId)) {
+      return null;
+    }
+    const candidate: DeliveryFullTestOperationPackage = {
+      deliveryId,
+      operationId,
+      ownerAuthority: cloneAuthority(ownerAuthority),
+      operationFacts: cloneFullTestFacts(operationFacts),
+      guidanceRef: cloneGuidanceRef(guidanceRef),
+    };
+    return isDeliveryOperationPackage(candidate) ? candidate : null;
+  }
+
+  return null;
 }

@@ -6,7 +6,7 @@ import {
   isDeliveryStartOperationFacts,
   readExactDeliveryGuidance,
   resolveDeliveryGuidanceRef,
-  type DeliveryOperationPackage,
+  type DeliveryStartOperationPackage,
   type DeliveryPlanningReference,
   type DeliveryStartOperationFacts,
 } from "./delivery-operation-execution.js";
@@ -95,7 +95,7 @@ export async function prepareDeliveryStartOperationPackage(
   repositoryRoot: unknown,
   input: unknown,
   observe: DeliveryStartObservationCallback,
-): Promise<DeliveryOperationPackage | null> {
+): Promise<DeliveryStartOperationPackage | null> {
   if (!isPreparationInput(input)) return null;
 
   let observed: unknown;
@@ -124,13 +124,14 @@ export async function prepareDeliveryStartOperationPackage(
   );
   if (guidanceRef === null) return null;
 
-  return formDeliveryOperationPackage(
+  const formed = formDeliveryOperationPackage(
     input.deliveryId,
     "delivery-start",
     input.ownerAuthority,
     input.operationFacts,
     guidanceRef,
   );
+  return formed?.operationId === "delivery-start" ? formed : null;
 }
 
 export interface DeliveryStartSurfaceValidation {
@@ -138,12 +139,12 @@ export interface DeliveryStartSurfaceValidation {
 }
 
 export type DeliveryStartExecutionCallback = (
-  operationPackage: DeliveryOperationPackage,
+  operationPackage: DeliveryStartOperationPackage,
   guidanceBytes: Buffer,
 ) => unknown | Promise<unknown>;
 
 export type DeliveryStartCommitCallback = (
-  operationPackage: DeliveryOperationPackage,
+  operationPackage: DeliveryStartOperationPackage,
 ) => unknown | Promise<unknown>;
 
 export type DeliveryStartInvocationFailureReason =
@@ -161,13 +162,13 @@ export interface DeliveryStartInvocationFailure {
 
 export interface DeliveryStartInvocationStopped {
   readonly status: "stopped-before-commit";
-  readonly operationPackage: DeliveryOperationPackage;
+  readonly operationPackage: DeliveryStartOperationPackage;
   readonly fixedPointCommit: null;
 }
 
 export interface DeliveryStartInvocationTerminal {
   readonly status: "terminal";
-  readonly operationPackage: DeliveryOperationPackage;
+  readonly operationPackage: DeliveryStartOperationPackage;
   readonly fixedPointCommit: string;
 }
 
