@@ -1,0 +1,46 @@
+{
+  "runNumber": 27,
+  "kind": "external-orchestrator-archive-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "establish-architecture-and-canonical-diagram-continuity",
+  "action": "archive",
+  "runId": "20260905-027-archive",
+  "inputRunId": "20260905-026-review-apply",
+  "inputReviewApplyPackageSha256": "6054037cf81d4825c79f77d97aa43a6417e74c53c59ef5e48487c87e3e310007",
+  "baseCommit": "0a8a98817b8a5b244bbc841e1101b9f8af73080c",
+  "baseParentCommit": "19c1eab71d26c24534565e1e03ac8f5d3115ad9c",
+  "projectOrdinal": 28,
+  "changeStartSequence": 3,
+  "openspecArchivePath": "openspec/changes/archive/2026-09-05-028-establish-architecture-and-canonical-diagram-continuity",
+  "syncedCanonicalSpecs": [
+    "openspec/specs/architecture-and-canonical-diagram-continuity/spec.md",
+    "openspec/specs/delivery-operation-execution-and-start-continuity/spec.md"
+  ],
+  "canonicalSpecSha256": {
+    "openspec/specs/architecture-and-canonical-diagram-continuity/spec.md": "dc38daccda56ae05b85cbc72ce789e5559e66c3b6b999503156812763f976565",
+    "openspec/specs/delivery-operation-execution-and-start-continuity/spec.md": "b5343e87d3b5bc8f5dd3d9c219e8cddd64a5b40902dab28a6ceee817d484c841"
+  },
+  "toolIdentity": {
+    "node": "22.23.2",
+    "openspec": "1.10.0",
+    "archify": "2.15.0"
+  },
+  "architectureSelfApplication": {
+    "realD04ActualMaterialized": false,
+    "realD04CurrentToActualMaterialized": false,
+    "realD04PlannedToActualMaterialized": false,
+    "canonicalWorkflowMaterialized": false,
+    "canonicalLifecycleMaterialized": false,
+    "existingDataFlowPreservedSha256": "2da0b569d536c36d658bea3132b297c73b489121715484870e7a21b12c23dbbf"
+  },
+  "continuation": {
+    "currentChangeState": "completed",
+    "nextRecommendedChange": "establish-delivery-finalization-contract",
+    "nextRecommendedChangeState": "planned",
+    "nextChangeActivated": false,
+    "checkpointCommitCreated": false
+  },
+  "packageClass": "full-archive-handoff"
+}

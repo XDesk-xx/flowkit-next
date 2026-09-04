@@ -285,8 +285,133 @@ export function isFormalFullTestAuthorityForDelivery(
   );
 }
 
+export interface DeliveryArchitectureArtifactRef {
+  readonly artifact: string;
+  readonly contentSha256: string;
+}
+
+const DELIVERY_ARCHITECTURE_ARTIFACT_REF_FIELDS = [
+  "artifact",
+  "contentSha256",
+] as const;
+
+export function isDeliveryArchitectureArtifactRef(
+  value: unknown,
+): value is DeliveryArchitectureArtifactRef {
+  if (
+    !isRecord(value) ||
+    !hasExactlyFields(value, DELIVERY_ARCHITECTURE_ARTIFACT_REF_FIELDS)
+  ) {
+    return false;
+  }
+  return (
+    typeof value.artifact === "string" &&
+    ARTIFACT_PATTERN.test(value.artifact) &&
+    !value.artifact.includes("..") &&
+    typeof value.contentSha256 === "string" &&
+    SHA256_HEX_PATTERN.test(value.contentSha256)
+  );
+}
+
+export interface DeliveryArchitectureSystemViewPrestate {
+  readonly workflowSha256: string | null;
+  readonly lifecycleSha256: string | null;
+  readonly dataFlowSha256: string | null;
+}
+
+const DELIVERY_ARCHITECTURE_SYSTEM_VIEW_PRESTATE_FIELDS = [
+  "workflowSha256",
+  "lifecycleSha256",
+  "dataFlowSha256",
+] as const;
+
+export function isDeliveryArchitectureSystemViewPrestate(
+  value: unknown,
+): value is DeliveryArchitectureSystemViewPrestate {
+  if (
+    !isRecord(value) ||
+    !hasExactlyFields(value, DELIVERY_ARCHITECTURE_SYSTEM_VIEW_PRESTATE_FIELDS)
+  ) {
+    return false;
+  }
+  return [
+    value.workflowSha256,
+    value.lifecycleSha256,
+    value.dataFlowSha256,
+  ].every(
+    (entry) =>
+      entry === null ||
+      (typeof entry === "string" && SHA256_HEX_PATTERN.test(entry)),
+  );
+}
+
+export interface DeliveryArchitectureFinalizationOperationFacts {
+  readonly verifiedCandidateRef: string;
+  readonly fullTestExecutionRef: string;
+  readonly currentArchitectureRef: DeliveryArchitectureArtifactRef;
+  readonly plannedArchitectureRef: DeliveryArchitectureArtifactRef;
+  readonly systemViewPrestate: DeliveryArchitectureSystemViewPrestate;
+}
+
+const DELIVERY_ARCHITECTURE_FINALIZATION_FACT_FIELDS = [
+  "verifiedCandidateRef",
+  "fullTestExecutionRef",
+  "currentArchitectureRef",
+  "plannedArchitectureRef",
+  "systemViewPrestate",
+] as const;
+const FULL_TEST_EXECUTION_REF_PATTERN =
+  /^full-test-execution:sha256:[0-9a-f]{64}$/;
+
+export function isDeliveryArchitectureFinalizationOperationFacts(
+  value: unknown,
+): value is DeliveryArchitectureFinalizationOperationFacts {
+  if (
+    !isRecord(value) ||
+    !hasExactlyFields(value, DELIVERY_ARCHITECTURE_FINALIZATION_FACT_FIELDS)
+  ) {
+    return false;
+  }
+  return (
+    isHashRef(value.verifiedCandidateRef, "candidate") &&
+    typeof value.fullTestExecutionRef === "string" &&
+    FULL_TEST_EXECUTION_REF_PATTERN.test(value.fullTestExecutionRef) &&
+    isDeliveryArchitectureArtifactRef(value.currentArchitectureRef) &&
+    isDeliveryArchitectureArtifactRef(value.plannedArchitectureRef) &&
+    isDeliveryArchitectureSystemViewPrestate(value.systemViewPrestate)
+  );
+}
+
+function expectedDeliveryArchitectureArtifactPath(
+  deliveryId: DeliveryId,
+  name: "current.architecture.json" | "planned.architecture.json",
+): string {
+  return `architecture/${deliveryId}/json/${name}`;
+}
+
+function isArchitectureFinalizationFactsForDelivery(
+  value: unknown,
+  deliveryId: DeliveryId,
+): value is DeliveryArchitectureFinalizationOperationFacts {
+  return (
+    isDeliveryArchitectureFinalizationOperationFacts(value) &&
+    value.currentArchitectureRef.artifact ===
+      expectedDeliveryArchitectureArtifactPath(
+        deliveryId,
+        "current.architecture.json",
+      ) &&
+    value.plannedArchitectureRef.artifact ===
+      expectedDeliveryArchitectureArtifactPath(
+        deliveryId,
+        "planned.architecture.json",
+      )
+  );
+}
+
 export type DeliveryOperationFacts =
-  DeliveryStartOperationFacts | DeliveryFullTestOperationFacts;
+  | DeliveryStartOperationFacts
+  | DeliveryFullTestOperationFacts
+  | DeliveryArchitectureFinalizationOperationFacts;
 
 interface DeliveryOperationPackageBase {
   readonly deliveryId: DeliveryId;
@@ -304,8 +429,16 @@ export interface DeliveryFullTestOperationPackage extends DeliveryOperationPacka
   readonly operationFacts: DeliveryFullTestOperationFacts;
 }
 
+export interface DeliveryArchitectureFinalizationOperationPackage extends DeliveryOperationPackageBase {
+  readonly operationId: "delivery-architecture-finalization";
+  readonly ownerAuthority: null;
+  readonly operationFacts: DeliveryArchitectureFinalizationOperationFacts;
+}
+
 export type DeliveryOperationPackage =
-  DeliveryStartOperationPackage | DeliveryFullTestOperationPackage;
+  | DeliveryStartOperationPackage
+  | DeliveryFullTestOperationPackage
+  | DeliveryArchitectureFinalizationOperationPackage;
 
 const DELIVERY_OPERATION_PACKAGE_FIELDS = [
   "deliveryId",
@@ -351,6 +484,13 @@ export function isDeliveryOperationPackage(
         )
       );
     case "delivery-architecture-finalization":
+      return (
+        value.ownerAuthority === null &&
+        isArchitectureFinalizationFactsForDelivery(
+          value.operationFacts,
+          value.deliveryId,
+        )
+      );
     case "delivery-final":
     case "delivery-repository-integration":
       return false;
@@ -395,6 +535,32 @@ function cloneFullTestFacts(
   return {
     candidateRef: facts.candidateRef,
     orderedChecks: facts.orderedChecks.map(cloneResolvedCheck),
+  };
+}
+
+function cloneArchitectureArtifactRef(
+  ref: DeliveryArchitectureArtifactRef,
+): DeliveryArchitectureArtifactRef {
+  return { artifact: ref.artifact, contentSha256: ref.contentSha256 };
+}
+
+function cloneArchitectureFinalizationFacts(
+  facts: DeliveryArchitectureFinalizationOperationFacts,
+): DeliveryArchitectureFinalizationOperationFacts {
+  return {
+    verifiedCandidateRef: facts.verifiedCandidateRef,
+    fullTestExecutionRef: facts.fullTestExecutionRef,
+    currentArchitectureRef: cloneArchitectureArtifactRef(
+      facts.currentArchitectureRef,
+    ),
+    plannedArchitectureRef: cloneArchitectureArtifactRef(
+      facts.plannedArchitectureRef,
+    ),
+    systemViewPrestate: {
+      workflowSha256: facts.systemViewPrestate.workflowSha256,
+      lifecycleSha256: facts.systemViewPrestate.lifecycleSha256,
+      dataFlowSha256: facts.systemViewPrestate.dataFlowSha256,
+    },
   };
 }
 
@@ -454,6 +620,23 @@ export function formDeliveryOperationPackage(
       operationId,
       ownerAuthority: cloneAuthority(ownerAuthority),
       operationFacts: cloneFullTestFacts(operationFacts),
+      guidanceRef: cloneGuidanceRef(guidanceRef),
+    };
+    return isDeliveryOperationPackage(candidate) ? candidate : null;
+  }
+
+  if (operationId === "delivery-architecture-finalization") {
+    if (ownerAuthority !== null) return null;
+    if (
+      !isArchitectureFinalizationFactsForDelivery(operationFacts, deliveryId)
+    ) {
+      return null;
+    }
+    const candidate: DeliveryArchitectureFinalizationOperationPackage = {
+      deliveryId,
+      operationId,
+      ownerAuthority: null,
+      operationFacts: cloneArchitectureFinalizationFacts(operationFacts),
       guidanceRef: cloneGuidanceRef(guidanceRef),
     };
     return isDeliveryOperationPackage(candidate) ? candidate : null;

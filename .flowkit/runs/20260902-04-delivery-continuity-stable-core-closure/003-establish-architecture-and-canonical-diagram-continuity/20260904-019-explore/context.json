@@ -1,0 +1,69 @@
+{
+  "runNumber": 19,
+  "kind": "external-orchestrator-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "establish-architecture-and-canonical-diagram-continuity",
+  "action": "explore",
+  "runId": "20260904-019-explore",
+  "physicalRunPath": ".flowkit/runs/20260902-04-delivery-continuity-stable-core-closure/003-establish-architecture-and-canonical-diagram-continuity/20260904-019-explore",
+  "physicalRunGroupPrefix": "003",
+  "projectOrdinal": 28,
+  "changeStartSequence": 3,
+  "checkpointClaim": "0a8a98817b8a5b244bbc841e1101b9f8af73080c",
+  "checkpointParent": "19c1eab71d26c24534565e1e03ac8f5d3115ad9c",
+  "deliveryStartBase": "eaa1c8f1cf9a52e05b75c3d1133f7aff8449c215",
+  "acceptedBase": "6bda1e87a0c12929c3567de17ede75ecd0cf0bed",
+  "ownerActivation": {
+    "ref": "owner:9cbdd9b7aacb690d9fdab4e39e5bbd891824dc5d4a009587035ef891a51456ca",
+    "decision": "activate-change",
+    "sourceRef": "owner-input:2026-09-04:activate-change:establish-architecture-and-canonical-diagram-continuity:proof-explore:preflight-0a8a988-pass",
+    "scope": ["explore"]
+  },
+  "preExploreContinuity": {
+    "status": "PASS",
+    "nearestRepositoryFixedPoint": "0a8a98817b8a5b244bbc841e1101b9f8af73080c",
+    "workingTreeCleanBeforeMutation": true,
+    "change1State": "completed",
+    "change2State": "completed",
+    "activeChangesBeforeActivation": 0,
+    "referenceArtifactRestored": true,
+    "referenceArtifactSha256": "b26217a2ae397772aea7fd96140855b0099a1089e2c2f8c9b2614e50809320a9",
+    "unexpectedDrift": false
+  },
+  "stableManagerProof": {
+    "trustedCoordinationState": "active",
+    "decision": "ready-action",
+    "actionId": "explore"
+  },
+  "toolIdentity": {
+    "node": "22.23.2",
+    "openspec": "1.10.0",
+    "archify": "2.15.0"
+  },
+  "proofSummary": {
+    "focusedExistingContracts": "64/64 PASS",
+    "canonicalOpenSpecSpecs": "19/19 PASS",
+    "activeChangeStrictValidation": "expected pre-Proposal failure: no spec delta yet",
+    "archifyCurrent": "PASS / 0 errors / 0 warnings",
+    "archifyPlanned": "PASS / 0 errors / 0 warnings",
+    "archifyExistingDataFlow": "PASS / 0 errors / 0 warnings",
+    "componentIdentityContinuity": "21/21",
+    "boundaryTopologyContinuity": "3/3 Current↔Planned",
+    "connectionIdentityContinuity": "15/15",
+    "compareReceipt": "PASS",
+    "architectureFinalizationGuidanceExistsBeforeChange": false,
+    "architectureFinalizationPackageFormsBeforeChange": false,
+    "workflowBaseline": "missing",
+    "lifecycleBaseline": "missing",
+    "dataFlowBaselineSha256": "2da0b569d536c36d658bea3132b297c73b489121715484870e7a21b12c23dbbf",
+    "newControlPlaneRequired": false
+  },
+  "exploreArtifactSha256": "f11538791ce087400b879805413725afe394effe9d0f2dd5c094a38d18b6f89f",
+  "deliveryManifestSha256": "5123b910a0067d2c304f8d8e841754a5c887c5619cc7dcf821a63acc61162a43",
+  "productionMutationInExplore": false,
+  "proposalArtifactsInExplore": false,
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

@@ -18,3 +18,5 @@ export * from "./applicable-check-execution.js";
 export * from "./delivery-operation-execution.js";
 export * from "./delivery-start-execution.js";
 export * from "./delivery-full-test-execution.js";
+
+export * from "./delivery-architecture-finalization-execution.js";
