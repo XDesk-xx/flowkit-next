@@ -113,7 +113,8 @@ changes:
     required: true
     dependsOn:
       - "establish-delivery-finalization-contract"
-    state: planned
+    state: completed
+    projectOrdinal: 30
     architectureImpact: true
     outputs:
       - "exact finalized-state availability/reuse-or-restore contract"
@@ -202,5 +203,12 @@ ownerDecisions:
     deliveryId: "20260902-04-delivery-continuity-stable-core-closure"
     changeId: "establish-delivery-finalization-contract"
     sourceRef: "owner-input:2026-09-05:activate-change:establish-delivery-finalization-contract:proof-explore:preflight-a170da0-pass"
+    scope:
+      - "explore"
+  - ref: "owner:e9d6fa56f0660588a1249fdb2b537fcd4ea5ddbfae5345eb80fd2056c554dd2d"
+    decision: "activate-change"
+    deliveryId: "20260902-04-delivery-continuity-stable-core-closure"
+    changeId: "establish-repository-integration-and-next-base-continuity"
+    sourceRef: "owner-input:2026-09-05:activate-change:establish-repository-integration-and-next-base-continuity:proof-explore:preflight-88e376d-pass"
     scope:
       - "explore"

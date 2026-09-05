@@ -565,3 +565,44 @@ test("canonical Delivery Final Guidance is generic, content-bound, and operation
     null,
   );
 });
+
+test("repository integration package is the fifth exact variant and requires singleton Owner authority", () => {
+  const repoAuthority: OwnerAuthorityFact = {
+    ref: `owner:${"9".repeat(64)}`,
+    decision: "authorize-repository-integration",
+    deliveryId,
+    sourceRef: "test:repo-integration",
+    scope: ["delivery-repository-integration"],
+  };
+  const facts = {
+    deliveryFinalizationRef: `delivery-finalization:sha256:${"1".repeat(64)}`,
+    finalizedCandidateRef: `candidate:sha256:${"2".repeat(64)}`,
+    preIntegrationHead: "3".repeat(40),
+    deliveryBranch: "delivery/d04",
+    targetMainRef: "refs/heads/main",
+    targetMainPreIntegrationCommit: "4".repeat(40),
+    acceptedBaseCommit: "5".repeat(40),
+  };
+  const formed = formDeliveryOperationPackage(
+    deliveryId,
+    "delivery-repository-integration",
+    repoAuthority,
+    facts,
+    guidanceRef("delivery-repository-integration"),
+  );
+  assert.equal(formed?.operationId, "delivery-repository-integration");
+  assert.equal(isDeliveryOperationPackage(formed), true);
+  assert.equal(
+    formDeliveryOperationPackage(
+      deliveryId,
+      "delivery-repository-integration",
+      {
+        ...repoAuthority,
+        scope: ["delivery-repository-integration", "git-write"].sort(),
+      },
+      facts,
+      guidanceRef("delivery-repository-integration"),
+    ),
+    null,
+  );
+});

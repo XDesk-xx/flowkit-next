@@ -1,0 +1,52 @@
+{
+  "runNumber": 45,
+  "kind": "external-orchestrator-revise-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "establish-repository-integration-and-next-base-continuity",
+  "action": "revise-propose",
+  "runId": "20260905-045-revise-propose",
+  "inputRunId": "20260905-044-review-propose",
+  "physicalRunPath": ".flowkit/runs/20260902-04-delivery-continuity-stable-core-closure/005-establish-repository-integration-and-next-base-continuity/20260905-045-revise-propose",
+  "physicalRunGroupPrefix": "005",
+  "projectOrdinal": 30,
+  "changeStartSequence": 5,
+  "baseCommit": "88e376d2ca870b248952477f90adf38409fa679e",
+  "inputReviewerPackageSha256": "edb98f55e425b5f41809e0bb2c13ae03e71c0e6d531f8fe6aad808cb123f041f",
+  "inputReviewVerdict": "REVISE",
+  "inputReviewNextBoundary": "revise-propose",
+  "blockingFindingsResolved": [
+    "D04-R005-001"
+  ],
+  "planningArtifacts": {
+    "proposalSha256": "5c72453f6f25c4f8334762ecf7f22f603ee1ca4a73e8c9a979510e17a54d7de3",
+    "repositoryIntegrationSpecSha256": "bc8588f9012172f4e97b7f1cd0d798347afd1fbaab12f622953180c228e7d542",
+    "deliveryOperationDeltaSpecSha256": "d39b380d9528000d0f0928f22b93682102bbb5dcd70978b68a5f509e4bd423bb",
+    "designSha256": "ac269cbbb631971a87b151493a450e75b64ea9278ac88fd6ad0211838670ff47",
+    "tasksSha256": "8e81325d583f7515ae46d15208ea9fbf93972466c1833161ca8236d693b97f86"
+  },
+  "openSpec": {
+    "planningComplete": true,
+    "currentChangeStrict": "PASS",
+    "allStrict": "22/22 PASS"
+  },
+  "terminalContentInvariant": {
+    "acceptedMainObservedFromGit": true,
+    "finalCommitAncestorRequired": true,
+    "acceptedMainTreeEqualsFinalCommitTree": true,
+    "equivalentToFinalizedCandidateContinuity": true,
+    "treeMismatchStops": true
+  },
+  "scope": {
+    "providerSubsystemProposed": false,
+    "promotionLifecycleProposed": false,
+    "newCandidateIdentityProposed": false,
+    "automaticRebaseOrCorrectionProposed": false,
+    "releaseOrNextDeliveryAutomationProposed": false,
+    "productionMutation": false,
+    "scopeDrift": "NONE"
+  },
+  "stableTransfer": true,
+  "packageClass": "author-revise-propose-payload"
+}

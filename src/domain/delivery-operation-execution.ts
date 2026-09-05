@@ -23,6 +23,12 @@ import {
   isDeliveryFinalOperationFactsForDelivery,
   type DeliveryFinalOperationFacts,
 } from "./delivery-final-operation.js";
+import {
+  cloneDeliveryRepositoryIntegrationOperationFacts,
+  isRepositoryIntegrationAuthorityForDelivery,
+  repositoryIntegrationFactsBelongToDelivery,
+  type DeliveryRepositoryIntegrationOperationFacts,
+} from "./delivery-repository-integration-operation.js";
 
 export const DELIVERY_OPERATIONS = [
   "delivery-start",
@@ -300,7 +306,8 @@ export type DeliveryOperationFacts =
   | DeliveryStartOperationFacts
   | DeliveryFullTestOperationFacts
   | DeliveryArchitectureFinalizationOperationFacts
-  | DeliveryFinalOperationFacts;
+  | DeliveryFinalOperationFacts
+  | DeliveryRepositoryIntegrationOperationFacts;
 
 interface DeliveryOperationPackageBase {
   readonly deliveryId: DeliveryId;
@@ -330,11 +337,18 @@ export interface DeliveryFinalOperationPackage extends DeliveryOperationPackageB
   readonly operationFacts: DeliveryFinalOperationFacts;
 }
 
+export interface DeliveryRepositoryIntegrationOperationPackage extends DeliveryOperationPackageBase {
+  readonly operationId: "delivery-repository-integration";
+  readonly ownerAuthority: OwnerAuthorityFact;
+  readonly operationFacts: DeliveryRepositoryIntegrationOperationFacts;
+}
+
 export type DeliveryOperationPackage =
   | DeliveryStartOperationPackage
   | DeliveryFullTestOperationPackage
   | DeliveryArchitectureFinalizationOperationPackage
-  | DeliveryFinalOperationPackage;
+  | DeliveryFinalOperationPackage
+  | DeliveryRepositoryIntegrationOperationPackage;
 
 const DELIVERY_OPERATION_PACKAGE_FIELDS = [
   "deliveryId",
@@ -399,7 +413,16 @@ export function isDeliveryOperationPackage(
         )
       );
     case "delivery-repository-integration":
-      return false;
+      return (
+        repositoryIntegrationFactsBelongToDelivery(
+          value.operationFacts,
+          value.deliveryId,
+        ) &&
+        isRepositoryIntegrationAuthorityForDelivery(
+          value.ownerAuthority,
+          value.deliveryId,
+        )
+      );
   }
 }
 
@@ -534,6 +557,24 @@ export function formDeliveryOperationPackage(
       operationId,
       ownerAuthority: cloneAuthority(ownerAuthority),
       operationFacts: cloneDeliveryFinalOperationFacts(operationFacts),
+      guidanceRef: cloneGuidanceRef(guidanceRef),
+    };
+    return isDeliveryOperationPackage(candidate) ? candidate : null;
+  }
+
+  if (operationId === "delivery-repository-integration") {
+    if (
+      !repositoryIntegrationFactsBelongToDelivery(operationFacts, deliveryId) ||
+      !isRepositoryIntegrationAuthorityForDelivery(ownerAuthority, deliveryId)
+    ) {
+      return null;
+    }
+    const candidate: DeliveryRepositoryIntegrationOperationPackage = {
+      deliveryId,
+      operationId,
+      ownerAuthority: cloneAuthority(ownerAuthority),
+      operationFacts:
+        cloneDeliveryRepositoryIntegrationOperationFacts(operationFacts),
       guidanceRef: cloneGuidanceRef(guidanceRef),
     };
     return isDeliveryOperationPackage(candidate) ? candidate : null;

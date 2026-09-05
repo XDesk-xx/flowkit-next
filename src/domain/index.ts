@@ -24,3 +24,6 @@ export * from "./delivery-architecture-finalization-operation.js";
 export * from "./delivery-architecture-finalization-identity.js";
 export * from "./delivery-architecture-finalization-execution.js";
 export * from "./delivery-final-execution.js";
+
+export * from "./delivery-repository-integration-operation.js";
+export * from "./delivery-repository-integration-execution.js";

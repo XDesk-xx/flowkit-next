@@ -1,0 +1,26 @@
+{
+  "runId": "20260905-045-revise-propose",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "establish-repository-integration-and-next-base-continuity",
+  "action": "revise-propose",
+  "role": "author",
+  "status": "terminal",
+  "verdict": "PASS",
+  "summary": "Resolved D04-R005-001 by freezing exact terminal Git tree equality: acceptedMainCommit is independently resolved from targetMainRef, finalCommit must be its ancestor, and tree(acceptedMainCommit) must equal tree(finalCommit). Because finalCommit is already proven candidate-equivalent to finalizedCandidateRef, accepted main cannot silently contain additional or different product/canonical bytes. All prior Change 5 boundaries remain unchanged and no new candidate/provider/promotion subsystem is introduced.",
+  "blockingFindingsResolved": [
+    "D04-R005-001"
+  ],
+  "proposalAllowed": true,
+  "applyAllowed": false,
+  "nextBoundary": "review-propose",
+  "projectOrdinal": 30,
+  "changeStartSequence": 5,
+  "currentRunSequence": 45,
+  "openSpecPlanningComplete": true,
+  "currentChangeStrict": "PASS",
+  "allOpenSpecStrict": "22/22 PASS",
+  "productionMutation": "NONE",
+  "scopeDrift": "NONE",
+  "stableTransfer": true,
+  "packageClass": "author-revise-propose-payload"
+}

@@ -1,0 +1,60 @@
+{
+  "runNumber": 41,
+  "kind": "external-orchestrator-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "establish-repository-integration-and-next-base-continuity",
+  "action": "explore",
+  "runId": "20260905-041-explore",
+  "physicalRunPath": ".flowkit/runs/20260902-04-delivery-continuity-stable-core-closure/005-establish-repository-integration-and-next-base-continuity/20260905-041-explore",
+  "physicalRunGroupPrefix": "005",
+  "projectOrdinal": 30,
+  "changeStartSequence": 5,
+  "checkpointClaim": "88e376d2ca870b248952477f90adf38409fa679e",
+  "checkpointParent": "a170da0373867296813a888c57db8325025a8f5d",
+  "deliveryStartBase": "eaa1c8f1cf9a52e05b75c3d1133f7aff8449c215",
+  "acceptedBase": "6bda1e87a0c12929c3567de17ede75ecd0cf0bed",
+  "ownerActivation": {
+    "ref": "owner:e9d6fa56f0660588a1249fdb2b537fcd4ea5ddbfae5345eb80fd2056c554dd2d",
+    "decision": "activate-change",
+    "sourceRef": "owner-input:2026-09-05:activate-change:establish-repository-integration-and-next-base-continuity:proof-explore:preflight-88e376d-pass",
+    "scope": ["explore"]
+  },
+  "preExploreContinuity": {
+    "status": "PASS",
+    "nearestRepositoryFixedPoint": "88e376d2ca870b248952477f90adf38409fa679e",
+    "checkpointBundle": "flowkit-next-d04-88e376d2ca870b248952477f90adf38409fa679e(1).bundle",
+    "checkpointBundleSha256": "43d8ee8639b151cfc7d73f1ae1b73dc2e5bb4b3ce2d73a453cdccbf5832c31e4",
+    "trackedWorktreeCleanBeforeMutation": true,
+    "indexCleanBeforeMutation": true,
+    "change4State": "completed",
+    "change4FinalReview": "approved / scopeDrift NONE",
+    "activeDeliveryChangesBeforeActivation": 0,
+    "activeOpenSpecChangesBeforeActivation": 0,
+    "unexpectedDrift": false
+  },
+  "toolIdentity": {
+    "node": "22.23.2",
+    "openspec": "1.10.0"
+  },
+  "proofSummary": {
+    "trustedCoordination": "active",
+    "policy": "ready-action: explore",
+    "canonicalOpenSpecSpecs": "21/21 PASS",
+    "focusedExistingContracts": "33/33 PASS",
+    "repositoryIntegrationPackageBeforeChange": "REJECTED as expected",
+    "repositoryIntegrationGuidanceBeforeChange": "MISSING as expected",
+    "existingOwnerAuthorityTypeReusable": true,
+    "existingFinalizedCandidateIdentityReusable": true,
+    "ordinaryGitTopologyProof": "PASS",
+    "newControlPlaneRequired": false
+  },
+  "exploreArtifactSha256": "aa0aff2fa8df8ff039c6f07f801d3a07ec30f31a1249d6c31b9a7494bcb963f6",
+  "deliveryManifestSha256": "e9ad4ed90b9a73f8cb520cbfb6d815b78772b4ae9c7056d0414572c506abbe85",
+  "productionMutationInExplore": false,
+  "proposalArtifactsInExplore": false,
+  "realRepositoryIntegrationInExplore": false,
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

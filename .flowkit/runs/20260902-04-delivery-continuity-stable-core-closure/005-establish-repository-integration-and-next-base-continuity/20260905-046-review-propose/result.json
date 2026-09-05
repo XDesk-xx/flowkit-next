@@ -1,0 +1,26 @@
+{
+  "runId": "20260905-046-review-propose",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "establish-repository-integration-and-next-base-continuity",
+  "action": "review-propose",
+  "role": "reviewer",
+  "status": "terminal",
+  "verdict": "APPROVED",
+  "summary": "045 resolves D04-R005-001 exactly: acceptedMainCommit is re-read from canonical Git targetMainRef, finalCommit must be its ancestor, and tree(acceptedMainCommit) must equal tree(finalCommit). Because finalCommit is already proven candidate-equivalent to finalizedCandidateRef, accepted main cannot silently contain additional or different product/canonical bytes. The revision changes only Proposal/Design/repository-integration spec/tasks plus expected Run history, introduces no production mutation or provider/promotion/candidate subsystem, and independently passes 229/229 domain tests and 22/22 strict OpenSpec validation. applyAllowed=true.",
+  "blockingFindings": [],
+  "resolvedFindingIds": [
+    "D04-R005-001"
+  ],
+  "applyAllowed": true,
+  "archiveAllowed": false,
+  "nextBoundary": "apply",
+  "reviewerMutation": "NONE",
+  "productionMutation": "NONE",
+  "scopeDriftAssessment": "NONE",
+  "complexityAssessment": "MINIMAL_ONE_EXACT_TERMINAL_TREE_EQUIVALENCE_INVARIANT_NO_NEW_CONTROL_PLANE",
+  "domainProof": "229/229 PASS, 0 skipped",
+  "openSpecProof": "22/22 strict PASS",
+  "gitDiffCheck": "PASS",
+  "stableTransfer": true,
+  "packageClass": "reviewer-delta"
+}
