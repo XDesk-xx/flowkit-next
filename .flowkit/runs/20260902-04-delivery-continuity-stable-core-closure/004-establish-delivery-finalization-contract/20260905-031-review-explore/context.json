@@ -1,0 +1,60 @@
+{
+  "runNumber": 31,
+  "kind": "external-orchestrator-review-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "establish-delivery-finalization-contract",
+  "action": "review-explore",
+  "runId": "20260905-031-review-explore",
+  "inputRunId": "20260905-030-revise-explore",
+  "physicalRunPath": ".flowkit/runs/20260902-04-delivery-continuity-stable-core-closure/004-establish-delivery-finalization-contract/20260905-031-review-explore",
+  "physicalRunGroupPrefix": "004",
+  "projectOrdinal": 29,
+  "changeStartSequence": 4,
+  "baseCommit": "a170da0373867296813a888c57db8325025a8f5d",
+  "ownerReviewDirection": "review explore",
+  "reviewedExploreSha256": "6189cf98a187f9e82883fe837355452b90de5b7b31d78bba9753cbf8ce910f2e",
+  "inputRunHashes": {
+    "actionSha256": "7d76c97bbcc0984dcc57819965a95907a1d37b4143d8c4bbc03db0bce78c56c4",
+    "contextSha256": "1e24ec686095d0eee9c299142edb24c83761a8879223768a21b5327fec29e6b1",
+    "resultSha256": "e40a4ed441b0a783e7eb84fdd962c9f080a302200b02cd9d2e1fbc0780a68f14"
+  },
+  "deliveryManifestSha256": "62a787cbc8a541a785bdd11293dc9052091955f5f2401f51e35dcbd352419e0b",
+  "findingDisposition": {
+    "D04-R004-001": {
+      "status": "RESOLVED",
+      "basis": "Canonical Explore retains the validated pre-callback package and Full Test lineage as the exclusive outcome source, isolates callback input, and requires mutation counterexamples."
+    },
+    "D04-R004-002": {
+      "status": "RESOLVED",
+      "basis": "Canonical Explore requires exact bounded nine-field thin-compare admission and focused plus acceptance rejection cases."
+    }
+  },
+  "independentProof": {
+    "architectureFocused": "9/9 PASS, 0 skipped",
+    "canonicalOpenSpec": "20/20 strict PASS",
+    "gitDiffCheck": "PASS",
+    "proposalArtifactsPresent": false,
+    "reviewFindingsResolvedInCanonicalExplore": true
+  },
+  "semanticAssessment": {
+    "webContentOnlyDerivationRetained": true,
+    "webCandidateAndPrestateRevalidationRetained": true,
+    "webTrustedHostFixedSlotsRetained": true,
+    "webStagedManagedArchifyRetained": true,
+    "trustedLineageIsolationBounded": true,
+    "thinCompareAdmissionBounded": true,
+    "postMaterializationCandidateUsesExistingAlgorithm": true,
+    "genericControlPlaneRequired": false,
+    "scopeDrift": "NONE"
+  },
+  "proposalAllowed": true,
+  "applyAllowed": false,
+  "stableManagerUsed": false,
+  "doctorInvoked": false,
+  "candidateCliInvoked": false,
+  "continuationExecuted": false,
+  "stableTransfer": true,
+  "packageClass": "reviewer-delta"
+}

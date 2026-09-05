@@ -16,6 +16,8 @@ import { promisify } from "node:util";
 import test from "node:test";
 
 import {
+  deriveApplicableCheckCandidateRef,
+  deriveDeliveryArchitectureFinalizationRef,
   formDeliveryOperationPackage,
   invokeDeliveryArchitectureFinalizationOperation,
   invokeDeliveryFullTestOperation,
@@ -245,8 +247,23 @@ function compareJson(
         sha256: sha256(actualContent),
         bytes: Buffer.byteLength(actualContent),
       },
-      classification: ["semantic"],
-      summary: { semantic: "fixture convergence" },
+      classification: ["semantic", "presentation"],
+      summary: {
+        semantic: "fixture convergence",
+        presentation: "fixture side-by-side view",
+      },
+      presentation: {
+        mode: "side-by-side",
+        renderer: "flowkit-reference-side-by-side",
+        leftPosition: "before",
+        rightPosition: "after",
+        equalFrame: true,
+        interactive: true,
+        overlay: false,
+        deltaColumn: false,
+        artifactPolicy: "disposable-html-not-retained-in-git",
+        resolution: "resolve-left-right-ref-to-architecture-render",
+      },
     },
     null,
     2,
@@ -367,6 +384,74 @@ test("Architecture Finalization package is a third closed variant with null Owne
   }
 });
 
+test("Architecture Finalization closure serialization matches its golden vector", () => {
+  const operationPackage = formDeliveryOperationPackage(
+    deliveryId,
+    "delivery-architecture-finalization",
+    null,
+    {
+      verifiedCandidateRef: "candidate:sha256:" + "a".repeat(64),
+      fullTestExecutionRef: "full-test-execution:sha256:" + "b".repeat(64),
+      currentArchitectureRef: {
+        artifact:
+          "architecture/" + deliveryId + "/json/current.architecture.json",
+        contentSha256: "c".repeat(64),
+      },
+      plannedArchitectureRef: {
+        artifact:
+          "architecture/" + deliveryId + "/json/planned.architecture.json",
+        contentSha256: "d".repeat(64),
+      },
+      systemViewPrestate: {
+        workflowSha256: null,
+        lifecycleSha256: "e".repeat(64),
+        dataFlowSha256: "f".repeat(64),
+      },
+    },
+    {
+      path: "skills/delivery/architecture-finalization/SKILL.md",
+      contentSha256: "1".repeat(64),
+    },
+  );
+  assert.notEqual(operationPackage, null);
+  const output = (artifact: string, digit: string, bytes: number) => ({
+    artifact,
+    contentSha256: digit.repeat(64),
+    bytes,
+  });
+  const record = {
+    architectureFinalizationRef:
+      "architecture-finalization:sha256:" + "0".repeat(64),
+    verifiedCandidateRef: "candidate:sha256:" + "a".repeat(64),
+    fullTestExecutionRef: "full-test-execution:sha256:" + "b".repeat(64),
+    outputs: {
+      actualArchitectureRef: output(
+        `architecture/${deliveryId}/json/actual.architecture.json`,
+        "2",
+        2,
+      ),
+      currentToActualCompareRef: output(
+        `architecture/${deliveryId}/json/current-to-actual.compare.json`,
+        "3",
+        3,
+      ),
+      plannedToActualCompareRef: output(
+        `architecture/${deliveryId}/json/planned-to-actual.compare.json`,
+        "4",
+        4,
+      ),
+      workflowRef: output("architecture/system/workflow.json", "5", 5),
+      lifecycleRef: output("architecture/system/lifecycle.json", "6", 6),
+      dataFlowRef: output("architecture/system/data-flow.json", "7", 7),
+    },
+    architectureMaterializedCandidateRef: "candidate:sha256:" + "8".repeat(64),
+  };
+  assert.equal(
+    deriveDeliveryArchitectureFinalizationRef(operationPackage, record),
+    "architecture-finalization:sha256:aede656095acba662dbfeec440cee13bbdda0a6385da45819f35a6672de3d3bc",
+  );
+});
+
 test("preparation derives trusted candidate and architecture prestate and rejects stale or failed Full Test", async () => {
   const fixture = await createFixture();
   try {
@@ -472,6 +557,21 @@ test("trusted host materializes only six fixed slots and preserves unchanged Dat
       outcome.record.outputs.dataFlowRef.contentSha256,
       sha256(beforeDataFlow),
     );
+    assert.match(
+      outcome.record.architectureMaterializedCandidateRef,
+      /^candidate:sha256:[0-9a-f]{64}$/,
+    );
+    assert.notEqual(
+      outcome.record.architectureMaterializedCandidateRef,
+      passed.record.candidateRef,
+    );
+    assert.equal(
+      deriveDeliveryArchitectureFinalizationRef(
+        outcome.operationPackage,
+        outcome.record,
+      ),
+      outcome.record.architectureFinalizationRef,
+    );
 
     const invocations = (await readFile(fixture.archifyLog, "utf8"))
       .trim()
@@ -482,6 +582,231 @@ test("trusted host materializes only six fixed slots and preserves unchanged Dat
       4,
     );
     assert.equal(invocations.filter((args) => args[0] === "compare").length, 2);
+  } finally {
+    await cleanup(fixture);
+  }
+});
+
+test("derived callback cannot rewrite retained correction or terminal lineage", async () => {
+  const correctionFixture = await createFixture();
+  try {
+    const passed = await passedFullTest(correctionFixture.root);
+    const outcome = await invokeDeliveryArchitectureFinalizationOperation(
+      correctionFixture.root,
+      {
+        deliveryId,
+        fullTestOutcome: passed,
+        flowkitHome: correctionFixture.flowkitHome,
+      },
+      (input) => {
+        const visible = input.operationPackage as any;
+        visible.deliveryId = "forged-delivery";
+        visible.operationFacts.verifiedCandidateRef =
+          "candidate:sha256:" + "f".repeat(64);
+        visible.operationFacts.fullTestExecutionRef =
+          "full-test-execution:sha256:" + "e".repeat(64);
+        visible.operationFacts.systemViewPrestate.dataFlowSha256 = null;
+        return { status: "correction-required", reason: "fixture correction" };
+      },
+    );
+    assert.equal(outcome.status, "correction-required");
+    if (outcome.status !== "correction-required") return;
+    assert.equal(outcome.operationPackage.deliveryId, deliveryId);
+    assert.equal(
+      outcome.operationPackage.operationFacts.verifiedCandidateRef,
+      passed.record.candidateRef,
+    );
+    assert.equal(
+      outcome.operationPackage.operationFacts.fullTestExecutionRef,
+      passed.record.executionRef,
+    );
+    assert.equal(
+      outcome.operationPackage.operationFacts.systemViewPrestate.dataFlowSha256,
+      sha256(correctionFixture.dataFlow),
+    );
+  } finally {
+    await cleanup(correctionFixture);
+  }
+
+  const terminalFixture = await createFixture();
+  try {
+    const passed = await passedFullTest(terminalFixture.root);
+    const outcome = await invokeDeliveryArchitectureFinalizationOperation(
+      terminalFixture.root,
+      {
+        deliveryId,
+        fullTestOutcome: passed,
+        flowkitHome: terminalFixture.flowkitHome,
+      },
+      (input) => {
+        const visible = input.operationPackage as any;
+        visible.deliveryId = "forged-delivery";
+        visible.operationFacts.verifiedCandidateRef =
+          "candidate:sha256:" + "f".repeat(64);
+        visible.guidanceRef.contentSha256 = "e".repeat(64);
+        return { status: "ready", outputs: validOutputs(terminalFixture) };
+      },
+    );
+    assert.equal(outcome.status, "terminal");
+    if (outcome.status !== "terminal") return;
+    assert.equal(outcome.operationPackage.deliveryId, deliveryId);
+    assert.equal(
+      outcome.record.verifiedCandidateRef,
+      passed.record.candidateRef,
+    );
+    assert.equal(
+      outcome.record.fullTestExecutionRef,
+      passed.record.executionRef,
+    );
+  } finally {
+    await cleanup(terminalFixture);
+  }
+});
+
+test("thin compare admission rejects every non-canonical field set or value", async () => {
+  const fixture = await createFixture();
+  try {
+    const passed = await passedFullTest(fixture.root);
+    const cases: readonly [string, (compare: Record<string, any>) => void][] = [
+      ["extra top-level payload", (value) => (value.actual = { nodes: [] })],
+      ["wrong left ref", (value) => (value.left.ref = "./wrong.json")],
+      ["wrong left hash", (value) => (value.left.sha256 = "a".repeat(64))],
+      ["wrong left bytes", (value) => (value.left.bytes += 1)],
+      ["unknown classification", (value) => (value.classification[1] = "x")],
+      [
+        "duplicate classification",
+        (value) => (value.classification = ["semantic", "semantic"]),
+      ],
+      [
+        "reordered classification",
+        (value) => (value.classification = ["presentation", "semantic"]),
+      ],
+      ["nested summary", (value) => (value.summary.semantic = { text: "x" })],
+      ["missing presentation", (value) => delete value.presentation.overlay],
+      ["extra presentation", (value) => (value.presentation.theme = "dark")],
+      ["changed presentation", (value) => (value.presentation.overlay = true)],
+    ];
+    for (const [name, mutate] of cases) {
+      const outputs = validOutputs(fixture);
+      const compare = JSON.parse(
+        outputs.currentToActualCompare.content,
+      ) as Record<string, any>;
+      mutate(compare);
+      const outcome = await invokeDeliveryArchitectureFinalizationOperation(
+        fixture.root,
+        {
+          deliveryId,
+          fullTestOutcome: passed,
+          flowkitHome: fixture.flowkitHome,
+        },
+        () => ({
+          status: "ready",
+          outputs: {
+            ...outputs,
+            currentToActualCompare: {
+              intent: "materialize",
+              content: JSON.stringify(compare) + "\n",
+            },
+          },
+        }),
+      );
+      assert.deepEqual(
+        outcome,
+        {
+          status: "failed",
+          reason: "derived-validation-rejected",
+          record: null,
+        },
+        name,
+      );
+    }
+  } finally {
+    await cleanup(fixture);
+  }
+});
+
+test("Architecture closure ref is stable under property reordering and binds every trusted value", async () => {
+  const fixture = await createFixture();
+  try {
+    const passed = await passedFullTest(fixture.root);
+    const outcome = await invokeDeliveryArchitectureFinalizationOperation(
+      fixture.root,
+      { deliveryId, fullTestOutcome: passed, flowkitHome: fixture.flowkitHome },
+      () => ({ status: "ready", outputs: validOutputs(fixture) }),
+    );
+    assert.equal(outcome.status, "terminal");
+    if (outcome.status !== "terminal") return;
+
+    const reorderedRecord = {
+      architectureMaterializedCandidateRef:
+        outcome.record.architectureMaterializedCandidateRef,
+      outputs: { ...outcome.record.outputs },
+      fullTestExecutionRef: outcome.record.fullTestExecutionRef,
+      verifiedCandidateRef: outcome.record.verifiedCandidateRef,
+      architectureFinalizationRef: outcome.record.architectureFinalizationRef,
+    };
+    assert.equal(
+      deriveDeliveryArchitectureFinalizationRef(
+        outcome.operationPackage,
+        reorderedRecord,
+      ),
+      outcome.record.architectureFinalizationRef,
+    );
+
+    const changedRecord = structuredClone(outcome.record);
+    (changedRecord.outputs.actualArchitectureRef as any).bytes += 1;
+    assert.notEqual(
+      deriveDeliveryArchitectureFinalizationRef(
+        outcome.operationPackage,
+        changedRecord,
+      ),
+      outcome.record.architectureFinalizationRef,
+    );
+
+    const wrongOutputPath = structuredClone(outcome.record);
+    (wrongOutputPath.outputs.actualArchitectureRef as any).artifact =
+      "architecture/other/json/actual.architecture.json";
+    assert.equal(
+      deriveDeliveryArchitectureFinalizationRef(
+        outcome.operationPackage,
+        wrongOutputPath,
+      ),
+      null,
+    );
+
+    const emptyOutput = structuredClone(outcome.record);
+    (emptyOutput.outputs.workflowRef as any).bytes = 0;
+    assert.equal(
+      deriveDeliveryArchitectureFinalizationRef(
+        outcome.operationPackage,
+        emptyOutput,
+      ),
+      null,
+    );
+
+    const changedPackage = structuredClone(outcome.operationPackage);
+    (changedPackage.guidanceRef as any).contentSha256 = "f".repeat(64);
+    assert.notEqual(
+      deriveDeliveryArchitectureFinalizationRef(changedPackage, outcome.record),
+      outcome.record.architectureFinalizationRef,
+    );
+
+    const runCandidate = await deriveApplicableCheckCandidateRef(fixture.root);
+    assert.equal(
+      runCandidate,
+      outcome.record.architectureMaterializedCandidateRef,
+    );
+    await mkdir(path.join(fixture.root, ".flowkit", "runs", "fixture"), {
+      recursive: true,
+    });
+    await writeFile(
+      path.join(fixture.root, ".flowkit", "runs", "fixture", "result.json"),
+      "{}\n",
+    );
+    assert.equal(
+      await deriveApplicableCheckCandidateRef(fixture.root),
+      outcome.record.architectureMaterializedCandidateRef,
+    );
   } finally {
     await cleanup(fixture);
   }

@@ -99,7 +99,8 @@ changes:
     required: true
     dependsOn:
       - "establish-architecture-and-canonical-diagram-continuity"
-    state: planned
+    state: completed
+    projectOrdinal: 29
     architectureImpact: true
     outputs:
       - "Delivery Final prerequisite/closure contract"
@@ -194,5 +195,12 @@ ownerDecisions:
     deliveryId: "20260902-04-delivery-continuity-stable-core-closure"
     changeId: "establish-architecture-and-canonical-diagram-continuity"
     sourceRef: "owner-input:2026-09-04:activate-change:establish-architecture-and-canonical-diagram-continuity:proof-explore:preflight-0a8a988-pass"
+    scope:
+      - "explore"
+  - ref: "owner:2219b5cebf6d83a3289298cbd1c5a12da5fc8445a501c9916d11640000b73309"
+    decision: "activate-change"
+    deliveryId: "20260902-04-delivery-continuity-stable-core-closure"
+    changeId: "establish-delivery-finalization-contract"
+    sourceRef: "owner-input:2026-09-05:activate-change:establish-delivery-finalization-contract:proof-explore:preflight-a170da0-pass"
     scope:
       - "explore"

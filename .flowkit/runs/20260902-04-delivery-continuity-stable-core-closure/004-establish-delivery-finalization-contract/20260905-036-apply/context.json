@@ -1,0 +1,70 @@
+{
+  "runNumber": 36,
+  "kind": "external-orchestrator-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "establish-delivery-finalization-contract",
+  "action": "apply",
+  "runId": "20260905-036-apply",
+  "inputRunId": "20260905-035-review-propose",
+  "physicalRunPath": ".flowkit/runs/20260902-04-delivery-continuity-stable-core-closure/004-establish-delivery-finalization-contract/20260905-036-apply",
+  "physicalRunGroupPrefix": "004",
+  "projectOrdinal": 29,
+  "changeStartSequence": 4,
+  "baseCommit": "a170da0373867296813a888c57db8325025a8f5d",
+  "inputReviewerVerdict": "approved",
+  "inputReviewerApplyAllowed": true,
+  "inputReviewerNextBoundary": "apply",
+  "inputRunHashes": {
+    "actionSha256": "6fa0c0ab051ad9620ffabbb6f83ddf509f56dcb93c8bf90efb4cd1b9388ee341",
+    "contextSha256": "46eb6293472484976086275981d3c59043d8ed7577e1ccc3ec47a6c4d845636f",
+    "resultSha256": "bc0f17ac661aa3cd213de45cb24a1ee7bde63547671d7703c305515c26393b7c"
+  },
+  "planningArtifactHashes": {
+    "proposalSha256": "8e0f3cdecb3211ed24f3436eb8aaaa15deabc8e9d9327d3446a666d723d5ccc6",
+    "designSha256": "62d503e86a6a8483e4dd86918bc7b04a51220dfcab7977823334fee6208f883c",
+    "completedTasksSha256": "f762e28bdebd3863e8ec4aef819de3943baf384bc4bce496e0a00856547e1c85"
+  },
+  "deliveryManifestSha256": "62a787cbc8a541a785bdd11293dc9052091955f5f2401f51e35dcbd352419e0b",
+  "deliveryFinalGuidanceSha256": "ffd71f263a52303962e16714b633ac7a7d5b9725f51188d19fd3220bde3571a5",
+  "runtime": {
+    "node": "22.23.2",
+    "openSpec": "1.10.0",
+    "archify": "2.15.0",
+    "dependencySnapshotReused": true,
+    "packageManagerInstallInvoked": false
+  },
+  "implementation": {
+    "architectureCallbackRetainedLineage": true,
+    "exactThinCompareFields": 9,
+    "exactPresentationFields": 10,
+    "architectureMaterializedCandidate": true,
+    "architectureFinalizationExactRef": true,
+    "deliveryFinalPackageVariant": true,
+    "exactFinalizeDeliveryAuthority": true,
+    "completePrerequisiteValidation": true,
+    "managedOpenSpecEmptyActiveSet": true,
+    "fixedCoordinationTargets": 1,
+    "defensiveFinalCallback": true,
+    "deliveryFinalizationExactRef": true,
+    "finalizedCandidateWrittenToManifest": false,
+    "repositoryIntegrationCapability": false,
+    "gitCapability": false,
+    "realD04DeliveryOperationExecuted": false,
+    "change5PulledForward": false
+  },
+  "verificationBoundary": {
+    "windowsCompatibility": "226/228 PASS; two known chmod(0o000) fixture limitations",
+    "linuxPrimaryDomain": "228/228 PASS",
+    "windowsAcceptance": "5/5 PASS",
+    "linuxAcceptance": "5/5 PASS"
+  },
+  "stableManagerUsed": false,
+  "doctorInvoked": false,
+  "candidateCliInvoked": false,
+  "gitMutationExecuted": false,
+  "continuationExecuted": false,
+  "stableTransfer": true,
+  "packageClass": "author-apply-payload"
+}

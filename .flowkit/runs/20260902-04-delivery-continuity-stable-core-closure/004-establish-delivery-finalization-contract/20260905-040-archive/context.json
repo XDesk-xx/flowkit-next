@@ -1,0 +1,88 @@
+{
+  "runNumber": 40,
+  "kind": "external-orchestrator-archive-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "establish-delivery-finalization-contract",
+  "action": "archive",
+  "runId": "20260905-040-archive",
+  "inputRunId": "20260905-039-review-apply",
+  "inputRunHashes": {
+    "actionSha256": "f50a01e7855b13afe32de4666fc2588fb22031e427deed287abe7a8e457c118d",
+    "contextSha256": "6b592b66e097d6d47e042c116d91f165465c43d0aa341ef65d9a6a3e19473ce8",
+    "resultSha256": "461740b506970697d953758fee77c89a40e595fa7da2d3f348f690a263543911"
+  },
+  "baseCommit": "a170da0373867296813a888c57db8325025a8f5d",
+  "projectOrdinal": 29,
+  "changeStartSequence": 4,
+  "openspecArchivePath": "openspec/changes/archive/2026-09-05-029-establish-delivery-finalization-contract",
+  "archiveMovement": {
+    "removedPath": "openspec/changes/establish-delivery-finalization-contract",
+    "addedPath": "openspec/changes/archive/2026-09-05-029-establish-delivery-finalization-contract",
+    "targetCollision": false,
+    "archiveBytesPreserved": true
+  },
+  "syncedCanonicalSpecs": [
+    "openspec/specs/architecture-and-canonical-diagram-continuity/spec.md",
+    "openspec/specs/delivery-finalization/spec.md",
+    "openspec/specs/delivery-operation-execution-and-start-continuity/spec.md"
+  ],
+  "canonicalSpecSha256": {
+    "openspec/specs/architecture-and-canonical-diagram-continuity/spec.md": "efa57a962441e242c2e2723d025983e3778c2be5a59cd578f07b254b813c52dd",
+    "openspec/specs/delivery-finalization/spec.md": "eea71319d7312b4aaf891e3b18738e18550bdc0ac1838567a7e89fe234a268f4",
+    "openspec/specs/delivery-operation-execution-and-start-continuity/spec.md": "6d5f171f3fd2c0cd9540455d49c0513ff9825bab1752fdbf1720def35b6a4e5f"
+  },
+  "archivedPlanningArtifactSha256": {
+    "proposal.md": "8e0f3cdecb3211ed24f3436eb8aaaa15deabc8e9d9327d3446a666d723d5ccc6",
+    "design.md": "62d503e86a6a8483e4dd86918bc7b04a51220dfcab7977823334fee6208f883c",
+    "tasks.md": "f762e28bdebd3863e8ec4aef819de3943baf384bc4bce496e0a00856547e1c85"
+  },
+  "deliveryManifestSha256": "0d578972ec8abd5c2b30451a20e8ae4347386a797a8af88fcee5ae5e425b5f20",
+  "toolIdentity": {
+    "node": "22.23.2",
+    "openspec": "1.10.0",
+    "archify": "2.15.0",
+    "linuxImageId": "127ee201acf8"
+  },
+  "preArchiveVerification": {
+    "deltaRequirementConvergence": "9/9 PASS",
+    "openSpecSpecsStrict": "21/21 PASS",
+    "openSpecAllStrictIncludingActiveChange": "22/22 PASS",
+    "windowsDomain": "227/229 PASS; two known chmod(0o000) NTFS fixture differences and zero product defects",
+    "linuxDomain": "229/229 PASS",
+    "windowsAcceptance": "5/5 PASS",
+    "linuxAcceptance": "5/5 PASS",
+    "qualityGate": "PASS",
+    "typecheck": "PASS",
+    "build": "PASS",
+    "dependencyHealth": "76 modules / 333 dependencies / 0 violations",
+    "repositoryEntropy": "37/37 production modules reachable",
+    "entropyTests": "7/7 PASS"
+  },
+  "postArchiveVerification": {
+    "deltaRequirementConvergence": "9/9 PASS",
+    "openSpecCanonicalStrict": "21/21 PASS",
+    "activeOpenSpecChanges": 0,
+    "linuxDomain": "229/229 PASS",
+    "linuxAcceptance": "5/5 PASS",
+    "qualityGate": "PASS",
+    "gitDiffCheck": "PASS"
+  },
+  "continuation": {
+    "currentChangeState": "completed",
+    "nextRecommendedChange": "establish-repository-integration-and-next-base-continuity",
+    "nextRecommendedChangeState": "planned",
+    "nextChangeActivated": false,
+    "checkpointCommitCreated": false
+  },
+  "realD04FullTestExecuted": false,
+  "realD04ArchitectureFinalizationExecuted": false,
+  "realD04DeliveryFinalExecuted": false,
+  "stableManagerUsed": false,
+  "doctorInvoked": false,
+  "candidateCliInvoked": false,
+  "gitMutationExecuted": false,
+  "stableTransfer": true,
+  "packageClass": "full-archive-handoff"
+}

@@ -1,0 +1,68 @@
+{
+  "runNumber": 35,
+  "kind": "external-orchestrator-review-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "establish-delivery-finalization-contract",
+  "action": "review-propose",
+  "runId": "20260905-035-review-propose",
+  "inputRunId": "20260905-034-revise-propose",
+  "physicalRunPath": ".flowkit/runs/20260902-04-delivery-continuity-stable-core-closure/004-establish-delivery-finalization-contract/20260905-035-review-propose",
+  "physicalRunGroupPrefix": "004",
+  "projectOrdinal": 29,
+  "changeStartSequence": 4,
+  "baseCommit": "a170da0373867296813a888c57db8325025a8f5d",
+  "ownerReviewDirection": "review propose",
+  "approvedExploreSha256": "6189cf98a187f9e82883fe837355452b90de5b7b31d78bba9753cbf8ce910f2e",
+  "inputRunHashes": {
+    "actionSha256": "52cea3a80a35752d3ab9aa218d4b97e908959216e15a1a615cca4076b55a6d43",
+    "contextSha256": "0949fffca4a2012eeaa457823c1fc85af573bf561baf2d54dc14e0bdfc77f7a2",
+    "resultSha256": "90518fa9246457bd3dbca057966dc797afe83ff4b9032c296745e18ce4f3b62c"
+  },
+  "planningArtifactHashes": {
+    "proposalSha256": "8e0f3cdecb3211ed24f3436eb8aaaa15deabc8e9d9327d3446a666d723d5ccc6",
+    "designSha256": "62d503e86a6a8483e4dd86918bc7b04a51220dfcab7977823334fee6208f883c",
+    "tasksSha256": "ca5507d7dce168a1e16c0afde13b371b2cc01339fe2837aa04e279eff20cbf05",
+    "deliveryFinalizationSpecSha256": "dbb2faae790dddecde994ad9055ead5a600c1ac7bfc8f6b978eca91ee54305c3",
+    "deliveryOperationDeltaSpecSha256": "e6e4d9471460245113b0875cbcffa10bc7040e732f75f077dbe7242494c52ac0",
+    "architectureContinuityDeltaSpecSha256": "65de0027c0e175744b6fb7183bf8c763946e1248891f5159373f5a81b7523571"
+  },
+  "deliveryManifestSha256": "62a787cbc8a541a785bdd11293dc9052091955f5f2401f51e35dcbd352419e0b",
+  "findingDisposition": {
+    "D04-RP004-001": {
+      "status": "RESOLVED",
+      "basis": "Both closure refs now have exact prefixes, domain bytes, ordered trusted projections, shared re-derivation, and stability/mutation test contracts."
+    },
+    "D04-RP004-002": {
+      "status": "RESOLVED",
+      "basis": "The normative Architecture delta now enumerates the exact ten-field presentation object and rejects missing, extra, or changed values."
+    }
+  },
+  "independentProof": {
+    "currentChangeStrict": "PASS",
+    "allOpenSpecStrict": "21/21 PASS",
+    "architectureFocusedBaseline": "9/9 PASS, 0 skipped",
+    "gitDiffCheck": "PASS",
+    "productionAndTestMutationInProposal": false
+  },
+  "semanticAssessment": {
+    "approvedExploreTraceability": true,
+    "completePrerequisiteModelRetained": true,
+    "webHostModelRetained": true,
+    "closureSerializationExact": true,
+    "presentationContractExact": true,
+    "authorityAndNoGitBoundaryRetained": true,
+    "verificationPathPlausible": true,
+    "genericControlPlaneRequired": false,
+    "scopeDrift": "NONE"
+  },
+  "proposalApproved": true,
+  "applyAllowed": true,
+  "stableManagerUsed": false,
+  "doctorInvoked": false,
+  "candidateCliInvoked": false,
+  "continuationExecuted": false,
+  "stableTransfer": true,
+  "packageClass": "reviewer-delta"
+}

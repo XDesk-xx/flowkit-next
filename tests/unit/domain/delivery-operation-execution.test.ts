@@ -4,6 +4,7 @@ import {
   chmod,
   mkdir,
   mkdtemp,
+  readFile,
   rm,
   symlink,
   writeFile,
@@ -19,6 +20,8 @@ import {
   hasDeliveryStartCommitAuthority,
   isDeliveryGuidanceRef,
   isDeliveryGuidanceRefForOperation,
+  isDeliveryFinalAuthorityForDelivery,
+  isDeliveryFinalOperationFacts,
   isDeliveryOperationId,
   isDeliveryOperationPackage,
   isDeliveryPlanningReference,
@@ -27,6 +30,7 @@ import {
   readExactDeliveryGuidance,
   resolveDeliveryGuidanceRef,
   type DeliveryGuidanceRef,
+  type DeliveryFinalOperationFacts,
   type DeliveryStartOperationFacts,
   type OwnerAuthorityFact,
 } from "../../../src/domain/index.js";
@@ -52,6 +56,33 @@ function authority(
 
 function startFacts(): DeliveryStartOperationFacts {
   return { acceptedBaseCommit, planningReference };
+}
+
+function finalAuthority(
+  scope: readonly string[] = ["delivery-final"],
+): OwnerAuthorityFact {
+  return {
+    ref: `owner:${"e".repeat(64)}`,
+    decision: "finalize-delivery",
+    deliveryId,
+    sourceRef: "conversation:owner-delivery-final",
+    scope,
+  };
+}
+
+function finalFacts(): DeliveryFinalOperationFacts {
+  return {
+    verifiedCandidateRef: `candidate:sha256:${"1".repeat(64)}`,
+    fullTestExecutionRef: `full-test-execution:sha256:${"2".repeat(64)}`,
+    architectureFinalizationRef: `architecture-finalization:sha256:${"3".repeat(64)}`,
+    architectureMaterializedCandidateRef: `candidate:sha256:${"4".repeat(64)}`,
+    coordinationPrestateRef: {
+      artifact: `openspec/delivery-groups/${deliveryId}.yaml`,
+      contentSha256: "5".repeat(64),
+      bytes: 123,
+    },
+    completedRequiredChangeIds: ["change-one", "change-two"],
+  };
 }
 
 function guidanceRef(
@@ -404,5 +435,133 @@ test("DeliveryOperationPackage forms only the concrete Start variant and rejects
       operationFacts: { ...startFacts(), extra: true },
     }),
     false,
+  );
+});
+
+test("Delivery Final package is closed to exact facts, Guidance, and singleton authority", () => {
+  const valid = formDeliveryOperationPackage(
+    deliveryId,
+    "delivery-final",
+    finalAuthority(),
+    finalFacts(),
+    guidanceRef("delivery-final"),
+  );
+  assert.notEqual(valid, null);
+  assert.equal(valid?.operationId, "delivery-final");
+  assert.equal(isDeliveryOperationPackage(valid), true);
+  assert.equal(isDeliveryFinalOperationFacts(valid?.operationFacts), true);
+  assert.equal(
+    isDeliveryFinalAuthorityForDelivery(valid?.ownerAuthority, deliveryId),
+    true,
+  );
+  assert.notEqual(valid?.operationFacts, finalFacts());
+
+  const invalidFacts = [
+    { ...finalFacts(), extra: true },
+    {
+      ...finalFacts(),
+      coordinationPrestateRef: {
+        ...finalFacts().coordinationPrestateRef,
+        artifact: "openspec/delivery-groups/other.yaml",
+      },
+    },
+    {
+      ...finalFacts(),
+      completedRequiredChangeIds: ["change-one", "change-one"],
+    },
+    {
+      ...finalFacts(),
+      architectureFinalizationRef: "architecture-finalization:sha256:BAD",
+    },
+  ];
+  for (const facts of invalidFacts) {
+    assert.equal(
+      formDeliveryOperationPackage(
+        deliveryId,
+        "delivery-final",
+        finalAuthority(),
+        facts,
+        guidanceRef("delivery-final"),
+      ),
+      null,
+    );
+  }
+
+  const invalidAuthorities = [
+    { ...finalAuthority(), decision: "authorize-formal-full-test" },
+    { ...finalAuthority(), deliveryId: "other-delivery" },
+    { ...finalAuthority(), changeId: "change-one" },
+    {
+      ...finalAuthority(),
+      scope: ["delivery-final", "repository-integration"],
+    },
+  ];
+  for (const ownerAuthority of invalidAuthorities) {
+    assert.equal(
+      formDeliveryOperationPackage(
+        deliveryId,
+        "delivery-final",
+        ownerAuthority,
+        finalFacts(),
+        guidanceRef("delivery-final"),
+      ),
+      null,
+    );
+  }
+
+  assert.equal(
+    formDeliveryOperationPackage(
+      deliveryId,
+      "delivery-final",
+      finalAuthority(),
+      finalFacts(),
+      guidanceRef("delivery-full-test"),
+    ),
+    null,
+  );
+  assert.equal(
+    formDeliveryOperationPackage(
+      deliveryId,
+      "delivery-repository-integration",
+      finalAuthority(),
+      finalFacts(),
+      guidanceRef("delivery-repository-integration"),
+    ),
+    null,
+  );
+
+  const input = finalFacts();
+  const cloned = formDeliveryOperationPackage(
+    deliveryId,
+    "delivery-final",
+    finalAuthority(),
+    input,
+    guidanceRef("delivery-final"),
+  );
+  assert.notEqual(cloned, null);
+  (input.completedRequiredChangeIds as string[])[0] = "mutated";
+  assert.equal(cloned?.operationId, "delivery-final");
+  if (cloned?.operationId !== "delivery-final") return;
+  assert.equal(
+    cloned.operationFacts.completedRequiredChangeIds[0],
+    "change-one",
+  );
+});
+
+test("canonical Delivery Final Guidance is generic, content-bound, and operation-bounded", async () => {
+  const body = await readFile("skills/delivery/final/SKILL.md", "utf8");
+  assert.equal(body.includes(deliveryId), false);
+  assert.equal(body.includes("complete trusted Full Test"), true);
+  assert.equal(body.includes("all six fixed Architecture output bytes"), true);
+  assert.equal(
+    body.includes("only the fixed canonical Delivery coordination"),
+    true,
+  );
+  assert.equal(body.includes("STOP"), true);
+  assert.equal(body.includes("Git authority"), true);
+  assert.equal(body.includes("discover, rank, route, or choose"), true);
+  assert.notEqual(
+    await resolveDeliveryGuidanceRef(process.cwd(), "delivery-final"),
+    null,
   );
 });

@@ -1,0 +1,88 @@
+{
+  "runNumber": 28,
+  "kind": "external-orchestrator-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "establish-delivery-finalization-contract",
+  "action": "explore",
+  "runId": "20260905-028-explore",
+  "physicalRunPath": ".flowkit/runs/20260902-04-delivery-continuity-stable-core-closure/004-establish-delivery-finalization-contract/20260905-028-explore",
+  "physicalRunGroupPrefix": "004",
+  "projectOrdinal": 29,
+  "changeStartSequence": 4,
+  "checkpointClaim": "a170da0373867296813a888c57db8325025a8f5d",
+  "checkpointParent": "0a8a98817b8a5b244bbc841e1101b9f8af73080c",
+  "deliveryStartBase": "eaa1c8f1cf9a52e05b75c3d1133f7aff8449c215",
+  "acceptedBase": "6bda1e87a0c12929c3567de17ede75ecd0cf0bed",
+  "ownerActivation": {
+    "ref": "owner:2219b5cebf6d83a3289298cbd1c5a12da5fc8445a501c9916d11640000b73309",
+    "decision": "activate-change",
+    "sourceRef": "owner-input:2026-09-05:activate-change:establish-delivery-finalization-contract:proof-explore:preflight-a170da0-pass",
+    "scope": [
+      "explore"
+    ]
+  },
+  "preExploreContinuity": {
+    "status": "PASS",
+    "nearestRepositoryFixedPoint": "a170da0373867296813a888c57db8325025a8f5d",
+    "originDeliveryBranchHead": "a170da0373867296813a888c57db8325025a8f5d",
+    "trackedWorktreeCleanBeforeMutation": true,
+    "indexCleanBeforeMutation": true,
+    "expectedCheckpointBundleOnly": true,
+    "checkpointBundle": "flowkit-next-d04-a170da0373867296813a888c57db8325025a8f5d.bundle",
+    "checkpointBundleSha256": "9ca8296b5242ca9549ac06cff005381d07948b95bd13729a87c6e948f762c593",
+    "change3State": "completed",
+    "change3ArchiveResult": "completed/PASS",
+    "change3ArchivePath": "openspec/changes/archive/2026-09-05-028-establish-architecture-and-canonical-diagram-continuity",
+    "activeDeliveryChangesBeforeActivation": 0,
+    "activeOpenSpecChangesBeforeActivation": 0,
+    "unexpectedDrift": false
+  },
+  "bootstrapBoundary": {
+    "mode": "independent-d04-bootstrap",
+    "stableManagerUsed": false,
+    "doctorInvoked": false,
+    "candidateCliInvoked": false
+  },
+  "toolIdentity": {
+    "node": "22.23.2",
+    "openspec": "1.10.0",
+    "archify": "2.15.0"
+  },
+  "proofInputs": {
+    "changeMetadataSha256": "7555aa06e53ea191a4fd7854f1fcf46ceb785a0f87b18154b84981bfe40bce5e",
+    "deliveryOperationSpecSha256": "b5343e87d3b5bc8f5dd3d9c219e8cddd64a5b40902dab28a6ceee817d484c841",
+    "architectureContinuitySpecSha256": "dc38daccda56ae05b85cbc72ce789e5559e66c3b6b999503156812763f976565",
+    "formalFullTestSpecSha256": "6aedfa74a25ab88d3f1f01bbaefed02fe917a1100875cfb6ad6f85af3c57fabb"
+  },
+  "proofSummary": {
+    "canonicalOpenSpecSpecs": "20/20 PASS",
+    "focusedExistingContractsWindows": "37/38; 37 PASS and one known pre-existing chmod(0o000) NTFS fixture limitation",
+    "change3CheckpointPrimaryLinuxDomain": "216/216 PASS, 0 skipped",
+    "deliveryFinalGuidanceExistsBeforeChange": false,
+    "deliveryFinalPackageFormsBeforeChange": false,
+    "deliveryFinalExecutionModuleExistsBeforeChange": false,
+    "singletonFinalizeAuthorityStructuralProof": "PASS",
+    "historicalD03BroaderAuthorityCurrentStructuralProof": "REJECTED",
+    "d04ActualArchitectureExists": false,
+    "d04CurrentToActualExists": false,
+    "d04PlannedToActualExists": false,
+    "architectureClosureHasPostMaterializationCandidateBeforeChange": false,
+    "candidateLineageProof": {
+      "verifiedCandidateRef": "candidate:sha256:f9a57df0ddd40360e5e246e3f95dba4a076dbaf9162924bd3a4d4a654a7cbd14",
+      "architectureMaterializedCandidateRef": "candidate:sha256:f5ec6787ceccf94c26d1be8b56e89c989ca41878c0f2fbe98101e8b1cc2518d9",
+      "deliveryFinalCandidateRef": "candidate:sha256:28cb504e75a829600547d6130abadc89279796e9d768f25493c0cf3b6b1599d2",
+      "durableRunChangesCandidate": false,
+      "existingCandidateAlgorithmReused": true
+    },
+    "newControlPlaneRequired": false
+  },
+  "exploreArtifactSha256": "fbf3daab550119a1a813fb1882d638e3b8045e3636cd24853c971262a03202e0",
+  "deliveryManifestSha256": "62a787cbc8a541a785bdd11293dc9052091955f5f2401f51e35dcbd352419e0b",
+  "productionMutationInExplore": false,
+  "proposalArtifactsInExplore": false,
+  "realDeliveryFinalizationInExplore": false,
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

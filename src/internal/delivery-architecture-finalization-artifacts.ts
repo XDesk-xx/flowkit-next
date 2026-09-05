@@ -10,16 +10,13 @@ import {
 } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
-
 import { deriveApplicableCheckCandidateRef } from "../domain/applicable-check-execution.js";
+import type { DeliveryArchitectureClosureOutputRef } from "../domain/delivery-architecture-finalization-identity.js";
+import type { DeliveryArchitectureSystemViewPrestate } from "../domain/delivery-architecture-finalization-operation.js";
 import type { DeliveryArchitectureFinalizationDerivedOutputs } from "../domain/delivery-architecture-finalization-execution.js";
-import type {
-  DeliveryArchitectureFinalizationOperationPackage,
-  DeliveryArchitectureSystemViewPrestate,
-} from "../domain/delivery-operation-execution.js";
+import type { DeliveryArchitectureFinalizationOperationPackage } from "../domain/delivery-operation-execution.js";
 import type { DeliveryId } from "../domain/identity.js";
 import { validateArchitectureFinalizationWithManagedArchify } from "./delivery-architecture-finalization-archify.js";
-
 export const ARCHITECTURE_FINALIZATION_SYSTEM_VIEW_PATHS = {
   workflow: "architecture/system/workflow.json",
   lifecycle: "architecture/system/lifecycle.json",
@@ -54,7 +51,6 @@ function isRecord(value: unknown): value is Record<string, unknown> {
   const proto = Object.getPrototypeOf(value);
   return proto === Object.prototype || proto === null;
 }
-
 function hasExactlyFields(
   value: Record<string, unknown>,
   fields: readonly string[],
@@ -70,7 +66,7 @@ export function architectureContentSha256(bytes: Buffer | string): string {
   return createHash("sha256").update(bytes).digest("hex");
 }
 
-async function canonicalRepositoryRoot(
+export async function canonicalRepositoryRoot(
   repositoryRoot: string,
 ): Promise<string | null> {
   try {
@@ -94,7 +90,7 @@ function absoluteFixedPath(root: string, relativePath: string): string | null {
   return candidate;
 }
 
-async function readFixedRegularFile(
+export async function readFixedRegularFile(
   root: string,
   relativePath: string,
 ): Promise<Buffer | null> {
@@ -252,7 +248,9 @@ export async function revalidateArchitectureFinalizationPrestate(
   return context;
 }
 
-function parseJsonObject(content: string): Record<string, unknown> | null {
+export function parseJsonObject(
+  content: string,
+): Record<string, unknown> | null {
   try {
     const parsed = JSON.parse(content) as unknown;
     return isRecord(parsed) ? parsed : null;
@@ -280,7 +278,58 @@ function isCompareSide(
   );
 }
 
-function validateThinArchitectureCompare(
+const THIN_COMPARE_FIELDS = [
+  "schemaVersion",
+  "kind",
+  "deliveryId",
+  "pair",
+  "left",
+  "right",
+  "classification",
+  "summary",
+  "presentation",
+] as const;
+
+function isCompareSummary(value: unknown): boolean {
+  return (
+    isRecord(value) &&
+    hasExactlyFields(value, ["semantic", "presentation"]) &&
+    typeof value.semantic === "string" &&
+    value.semantic.length > 0 &&
+    typeof value.presentation === "string" &&
+    value.presentation.length > 0
+  );
+}
+
+function isComparePresentation(value: unknown): boolean {
+  return (
+    isRecord(value) &&
+    hasExactlyFields(value, [
+      "mode",
+      "renderer",
+      "leftPosition",
+      "rightPosition",
+      "equalFrame",
+      "interactive",
+      "overlay",
+      "deltaColumn",
+      "artifactPolicy",
+      "resolution",
+    ]) &&
+    value.mode === "side-by-side" &&
+    value.renderer === "flowkit-reference-side-by-side" &&
+    value.leftPosition === "before" &&
+    value.rightPosition === "after" &&
+    value.equalFrame === true &&
+    value.interactive === true &&
+    value.overlay === false &&
+    value.deltaColumn === false &&
+    value.artifactPolicy === "disposable-html-not-retained-in-git" &&
+    value.resolution === "resolve-left-right-ref-to-architecture-render"
+  );
+}
+
+export function validateThinArchitectureCompare(
   content: string,
   deliveryId: DeliveryId,
   pair: "current-to-actual" | "planned-to-actual",
@@ -290,6 +339,7 @@ function validateThinArchitectureCompare(
   const parsed = parseJsonObject(content);
   if (parsed === null) return false;
   return (
+    hasExactlyFields(parsed, THIN_COMPARE_FIELDS) &&
     parsed.schemaVersion === 1 &&
     parsed.kind === "architecture-thin-compare" &&
     parsed.deliveryId === deliveryId &&
@@ -297,11 +347,11 @@ function validateThinArchitectureCompare(
     isCompareSide(parsed.left, left) &&
     isCompareSide(parsed.right, right) &&
     Array.isArray(parsed.classification) &&
-    parsed.classification.length > 0 &&
-    parsed.classification.every(
-      (entry) => typeof entry === "string" && entry.length > 0,
-    ) &&
-    isRecord(parsed.summary)
+    parsed.classification.length === 2 &&
+    parsed.classification[0] === "semantic" &&
+    parsed.classification[1] === "presentation" &&
+    isCompareSummary(parsed.summary) &&
+    isComparePresentation(parsed.presentation)
   );
 }
 
@@ -358,16 +408,10 @@ function effectiveOutputBytes(
   };
 }
 
-export interface ArchitectureFinalizationArtifactRef {
-  readonly artifact: string;
-  readonly contentSha256: string;
-  readonly bytes: number;
-}
-
-function closureRef(
+export function architectureClosureRef(
   artifact: string,
   bytes: Buffer,
-): ArchitectureFinalizationArtifactRef {
+): DeliveryArchitectureClosureOutputRef {
   return {
     artifact,
     contentSha256: architectureContentSha256(bytes),
@@ -402,12 +446,12 @@ async function writeFixedOutput(
 }
 
 export interface ArchitectureFinalizationMaterializedOutputs {
-  readonly actualArchitectureRef: ArchitectureFinalizationArtifactRef;
-  readonly currentToActualCompareRef: ArchitectureFinalizationArtifactRef;
-  readonly plannedToActualCompareRef: ArchitectureFinalizationArtifactRef;
-  readonly workflowRef: ArchitectureFinalizationArtifactRef;
-  readonly lifecycleRef: ArchitectureFinalizationArtifactRef;
-  readonly dataFlowRef: ArchitectureFinalizationArtifactRef;
+  readonly actualArchitectureRef: DeliveryArchitectureClosureOutputRef;
+  readonly currentToActualCompareRef: DeliveryArchitectureClosureOutputRef;
+  readonly plannedToActualCompareRef: DeliveryArchitectureClosureOutputRef;
+  readonly workflowRef: DeliveryArchitectureClosureOutputRef;
+  readonly lifecycleRef: DeliveryArchitectureClosureOutputRef;
+  readonly dataFlowRef: DeliveryArchitectureClosureOutputRef;
 }
 
 export type ArchitectureFinalizationMaterializationResult =
@@ -434,7 +478,10 @@ export async function validateAndMaterializeArchitectureFinalizationOutputs(
   if (effective === null) return { status: "derived-result-rejected" };
 
   const paths = fixedDeliveryArchitecturePaths(operationPackage.deliveryId);
-  const actualRef = closureRef(paths.actual, effective.actualArchitecture);
+  const actualRef = architectureClosureRef(
+    paths.actual,
+    effective.actualArchitecture,
+  );
   const currentLeft = {
     ref: "./current.architecture.json",
     sha256: architectureContentSha256(context.currentArchitecture),
@@ -547,32 +594,53 @@ export async function validateAndMaterializeArchitectureFinalizationOutputs(
       }
     }
 
+    const reread = await Promise.all(
+      writes.map(([artifact]) =>
+        readFixedRegularFile(repositoryRoot, artifact),
+      ),
+    );
+    if (
+      reread.some(
+        (bytes, index) => bytes === null || !bytes.equals(writes[index][1]),
+      )
+    ) {
+      return { status: "derived-validation-rejected" };
+    }
+    const [
+      actualArchitecture,
+      currentToActualCompare,
+      plannedToActualCompare,
+      workflow,
+      lifecycle,
+      dataFlow,
+    ] = reread as readonly Buffer[];
+
     return {
       status: "ok",
       outputs: {
-        actualArchitectureRef: closureRef(
+        actualArchitectureRef: architectureClosureRef(
           paths.actual,
-          effective.actualArchitecture,
+          actualArchitecture,
         ),
-        currentToActualCompareRef: closureRef(
+        currentToActualCompareRef: architectureClosureRef(
           paths.currentToActual,
-          effective.currentToActualCompare,
+          currentToActualCompare,
         ),
-        plannedToActualCompareRef: closureRef(
+        plannedToActualCompareRef: architectureClosureRef(
           paths.plannedToActual,
-          effective.plannedToActualCompare,
+          plannedToActualCompare,
         ),
-        workflowRef: closureRef(
+        workflowRef: architectureClosureRef(
           ARCHITECTURE_FINALIZATION_SYSTEM_VIEW_PATHS.workflow,
-          effective.workflow,
+          workflow,
         ),
-        lifecycleRef: closureRef(
+        lifecycleRef: architectureClosureRef(
           ARCHITECTURE_FINALIZATION_SYSTEM_VIEW_PATHS.lifecycle,
-          effective.lifecycle,
+          lifecycle,
         ),
-        dataFlowRef: closureRef(
+        dataFlowRef: architectureClosureRef(
           ARCHITECTURE_FINALIZATION_SYSTEM_VIEW_PATHS.dataFlow,
-          effective.dataFlow,
+          dataFlow,
         ),
       },
     };

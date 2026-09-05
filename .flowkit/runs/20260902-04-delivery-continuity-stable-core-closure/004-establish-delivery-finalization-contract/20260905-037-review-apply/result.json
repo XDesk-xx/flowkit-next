@@ -1,0 +1,32 @@
+{
+  "runId": "20260905-037-review-apply",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "establish-delivery-finalization-contract",
+  "action": "review-apply",
+  "role": "reviewer",
+  "status": "terminal",
+  "verdict": "CHANGES_REQUESTED",
+  "summary": "Apply is directionally correct, bounded, and free of scope drift, but the fixed Delivery Final coordination writer violates the approved mutation contract: whole-document YAML parse/stringify rewrites unrelated manifest representation instead of preserving other accepted content/ordering and changing only approved Delivery/finalization fields. A local writer and focused-test correction is required; no redesign or new framework is authorized.",
+  "blockingFindings": [
+    "D04-RA004-001"
+  ],
+  "archiveAllowed": false,
+  "nextBoundary": "revise-apply",
+  "reviewerMutation": "RUN_037_ONLY",
+  "productionMutation": "NONE",
+  "authorArtifactMutation": "NONE",
+  "scopeDriftAssessment": "NONE",
+  "newContentAssessment": "NONE",
+  "complexityAssessment": "PROPORTIONAL_AND_BOUNDED; requested correction is local to the writer and focused proof.",
+  "openSpecProof": "current strict PASS; 21/21 --all --strict PASS",
+  "focusedProof": "Windows 29/30 PASS; sole failure is a known chmod(0o000) fixture limitation and not a product defect",
+  "acceptanceProof": "5/5 PASS",
+  "gitDiffCheck": "PASS",
+  "ownerOrGitAuthorityCreated": false,
+  "stableManagerUsed": false,
+  "doctorInvoked": false,
+  "candidateCliInvoked": false,
+  "continuationExecuted": false,
+  "stableTransfer": true,
+  "packageClass": "reviewer-delta"
+}

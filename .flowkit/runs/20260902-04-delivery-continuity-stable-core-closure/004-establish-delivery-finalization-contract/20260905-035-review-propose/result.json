@@ -1,0 +1,33 @@
+{
+  "runId": "20260905-035-review-propose",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "establish-delivery-finalization-contract",
+  "action": "review-propose",
+  "role": "reviewer",
+  "status": "terminal",
+  "verdict": "approved",
+  "summary": "Revise Propose 034 resolves both blocking findings. Architecture and Delivery Final closure refs now use exact prefixes, NUL-separated domains, explicit ordered trusted projections, shared re-derivation, and golden/invariance/mutation tests. The Architecture delta also freezes the exact ten-field presentation object and rejection boundary. The Proposal remains fully traceable to the approved Explore, minimal, testable, and free of scope drift or a new control plane.",
+  "resolvedFindings": [
+    "D04-RP004-001",
+    "D04-RP004-002"
+  ],
+  "blockingFindings": [],
+  "applyAllowed": true,
+  "nextBoundary": "apply",
+  "reviewerMutation": "RUN_035_ONLY",
+  "productionMutation": "NONE",
+  "authorArtifactMutation": "NONE",
+  "scopeDriftAssessment": "NONE",
+  "newContentAssessment": "ONLY_REVIEWER_REQUIRED_EXACT_SERIALIZATION_AND_PRESENTATION_CONTRACT_DETAIL",
+  "complexityAssessment": "PROPORTIONAL_BOUNDED_AND_APPLY_READY",
+  "openSpecProof": "current strict PASS; 21/21 --all --strict PASS",
+  "focusedProof": "Architecture Finalization baseline 9/9 PASS, 0 skipped",
+  "gitDiffCheck": "PASS",
+  "ownerOrGitAuthorityCreated": false,
+  "stableManagerUsed": false,
+  "doctorInvoked": false,
+  "candidateCliInvoked": false,
+  "continuationExecuted": false,
+  "stableTransfer": true,
+  "packageClass": "reviewer-delta"
+}

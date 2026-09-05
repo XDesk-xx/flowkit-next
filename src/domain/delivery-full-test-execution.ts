@@ -166,6 +166,45 @@ export function deriveDeliveryFullTestExecutionRef(
   return `full-test-execution:sha256:${digest}`;
 }
 
+export function isTrustedPassedFullTestOutcome(
+  value: unknown,
+  deliveryId: DeliveryId,
+): value is DeliveryFullTestInvocationTerminal {
+  if (
+    !isRecord(value) ||
+    value.status !== "terminal" ||
+    value.verdict !== "passed"
+  ) {
+    return false;
+  }
+  const operationPackage = value.operationPackage;
+  const record = value.record;
+  if (
+    !isDeliveryOperationPackage(operationPackage) ||
+    operationPackage.operationId !== "delivery-full-test" ||
+    operationPackage.deliveryId !== deliveryId ||
+    !isRecord(record) ||
+    !hasExactlyFields(record, ["executionRef", "candidateRef", "checks"]) ||
+    record.executionRef !==
+      deriveDeliveryFullTestExecutionRef(operationPackage) ||
+    record.candidateRef !== operationPackage.operationFacts.candidateRef ||
+    !Array.isArray(record.checks) ||
+    record.checks.length !==
+      operationPackage.operationFacts.orderedChecks.length
+  ) {
+    return false;
+  }
+  return record.checks.every((fact, index) => {
+    if (!isApplicableCheckFact(fact)) return false;
+    const expected = operationPackage.operationFacts.orderedChecks[index];
+    return (
+      fact.checkId === expected.checkId &&
+      fact.checkRef === expected.checkRef &&
+      (fact.status === "passed" || fact.status === "reused-passed")
+    );
+  });
+}
+
 export async function prepareDeliveryFullTestOperationPackage(
   repositoryRoot: unknown,
   input: unknown,

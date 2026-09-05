@@ -1,0 +1,100 @@
+{
+  "runNumber": 37,
+  "kind": "external-orchestrator-review-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "establish-delivery-finalization-contract",
+  "action": "review-apply",
+  "runId": "20260905-037-review-apply",
+  "inputRunId": "20260905-036-apply",
+  "approvedProposalReviewRunId": "20260905-035-review-propose",
+  "baseCommit": "a170da0373867296813a888c57db8325025a8f5d",
+  "branch": "delivery/20260902-04-delivery-continuity-stable-core-closure",
+  "inputRunHashes": {
+    "actionSha256": "800b58908e7307d510e2c28122f69c484582539b1ac146a84c4b910a4dede5c8",
+    "contextSha256": "08d4a70771f150277e04ba53632fda661d18474dabcf67aca0ebd3099d61649a",
+    "resultSha256": "a4ef30cb98c7de30258450d1b0089e1b573e17b66d25aab26deee6fc69d749af"
+  },
+  "approvedPlanningArtifactHashes": {
+    "proposalSha256": "8e0f3cdecb3211ed24f3436eb8aaaa15deabc8e9d9327d3446a666d723d5ccc6",
+    "designSha256": "62d503e86a6a8483e4dd86918bc7b04a51220dfcab7977823334fee6208f883c",
+    "completedTasksSha256": "f762e28bdebd3863e8ec4aef819de3943baf384bc4bce496e0a00856547e1c85"
+  },
+  "reviewedArtifactHashes": {
+    "deliveryManifestSha256": "62a787cbc8a541a785bdd11293dc9052091955f5f2401f51e35dcbd352419e0b",
+    "deliveryFinalCoordinationWriterSha256": "38b04dc60c7a4a7ec06f56a31b335d47c315d98d86924fd189711d613405558c",
+    "deliveryFinalFocusedTestSha256": "4ac640e256c66a5c79cd3ecb6413383d4fa2966dba9450b1099fb92e00760822"
+  },
+  "independentVerification": {
+    "managedOpenSpecVersion": "1.10.0",
+    "openSpecChangeStrict": "PASS",
+    "openSpecAllStrict": "21/21 PASS",
+    "acceptance": {
+      "total": 5,
+      "pass": 5,
+      "fail": 0,
+      "skip": 0
+    },
+    "focusedWindows": {
+      "total": 30,
+      "pass": 29,
+      "fail": 1,
+      "skip": 0,
+      "failure": "tests/unit/domain/delivery-operation-execution.test.ts:306 unreadable chmod(0o000) fixture remained readable on Windows/NTFS",
+      "productDefect": false
+    },
+    "gitDiffCheck": "PASS"
+  },
+  "manifestRoundTripProof": {
+    "method": "read-only yaml parse then stringify using the writer library and current canonical manifest",
+    "byteEqual": false,
+    "originalBytes": 12839,
+    "reserializedBytes": 12868,
+    "originalLines": 207,
+    "reserializedLines": 248,
+    "positionallyDifferentLines": 248,
+    "originalQuotedDeliveryId": true,
+    "reserializedQuotedDeliveryId": false
+  },
+  "findings": [
+    {
+      "id": "D04-RA004-001",
+      "severity": "blocking",
+      "kind": "approved-contract-fidelity",
+      "scope": "operation-local writer and focused test",
+      "artifact": "src/internal/delivery-final-coordination.ts",
+      "line": 304,
+      "summary": "Whole-document YAML parse/stringify rewrites unrelated manifest representation instead of preserving other accepted content/ordering and updating only approved Delivery/finalization fields."
+    }
+  ],
+  "positiveAssessment": {
+    "architectureLineageIsolation": true,
+    "exactThinCompareContract": true,
+    "exactPresentationContract": true,
+    "architectureAndFinalClosureRefs": true,
+    "closedDeliveryFinalPackage": true,
+    "completePrerequisiteRevalidation": true,
+    "singleCanonicalTarget": true,
+    "gitOrNextCapability": false,
+    "actualD04FinalExecution": false,
+    "change5PulledForward": false
+  },
+  "complexityAssessment": {
+    "implementation": "PROPORTIONAL_AND_BOUNDED",
+    "newControlPlane": false,
+    "requestedRevision": "LOCAL_WRITER_AND_FOCUSED_TEST_ONLY"
+  },
+  "scopeDriftAssessment": "NONE",
+  "authorWorktreeChangedEntriesBeforeReview": 20,
+  "reviewerMutation": "RUN_037_ONLY",
+  "productionMutationByReviewer": false,
+  "authorArtifactMutationByReviewer": false,
+  "stableManagerUsed": false,
+  "doctorInvoked": false,
+  "candidateCliInvoked": false,
+  "gitMutationExecuted": false,
+  "continuationExecuted": false,
+  "stableTransfer": true,
+  "packageClass": "reviewer-delta"
+}

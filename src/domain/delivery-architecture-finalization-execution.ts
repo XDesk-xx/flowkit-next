@@ -1,21 +1,24 @@
+import { createHash } from "node:crypto";
+
+import { deriveApplicableCheckCandidateRef } from "./applicable-check-execution.js";
 import {
-  deriveApplicableCheckCandidateRef,
-  isApplicableCheckFact,
-} from "./applicable-check-execution.js";
-import {
-  deriveDeliveryFullTestExecutionRef,
+  isTrustedPassedFullTestOutcome,
   type DeliveryFullTestInvocationTerminal,
 } from "./delivery-full-test-execution.js";
 import {
   formDeliveryOperationPackage,
-  isDeliveryFullTestOperationFacts,
   isDeliveryOperationPackage,
   readExactDeliveryGuidance,
   resolveDeliveryGuidanceRef,
   type DeliveryArchitectureFinalizationOperationPackage,
 } from "./delivery-operation-execution.js";
+import type {
+  DeliveryArchitectureClosureOutputRef,
+  DeliveryArchitectureFinalizationClosureRecord,
+} from "./delivery-architecture-finalization-identity.js";
 import { isSemanticId, type DeliveryId } from "./identity.js";
 import {
+  ARCHITECTURE_FINALIZATION_SYSTEM_VIEW_PATHS,
   architectureContentSha256,
   architectureSystemViewPrestate,
   fixedDeliveryArchitecturePaths,
@@ -23,9 +26,6 @@ import {
   revalidateArchitectureFinalizationPrestate,
   validateAndMaterializeArchitectureFinalizationOutputs,
 } from "../internal/delivery-architecture-finalization-artifacts.js";
-
-const FULL_TEST_EXECUTION_REF_PATTERN =
-  /^full-test-execution:sha256:[0-9a-f]{64}$/;
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   if (typeof value !== "object" || value === null || Array.isArray(value)) {
@@ -44,49 +44,6 @@ function hasExactlyFields(
     keys.length === fields.length &&
     fields.every((field) => Object.prototype.hasOwnProperty.call(value, field))
   );
-}
-
-function isTrustedPassedFullTestOutcome(
-  value: unknown,
-  deliveryId: DeliveryId,
-): value is DeliveryFullTestInvocationTerminal {
-  if (
-    !isRecord(value) ||
-    value.status !== "terminal" ||
-    value.verdict !== "passed"
-  ) {
-    return false;
-  }
-  const operationPackage = value.operationPackage;
-  const record = value.record;
-  if (
-    !isDeliveryOperationPackage(operationPackage) ||
-    operationPackage.operationId !== "delivery-full-test" ||
-    operationPackage.deliveryId !== deliveryId ||
-    !isDeliveryFullTestOperationFacts(operationPackage.operationFacts) ||
-    !isRecord(record) ||
-    !hasExactlyFields(record, ["executionRef", "candidateRef", "checks"]) ||
-    typeof record.executionRef !== "string" ||
-    !FULL_TEST_EXECUTION_REF_PATTERN.test(record.executionRef) ||
-    record.executionRef !==
-      deriveDeliveryFullTestExecutionRef(operationPackage) ||
-    record.candidateRef !== operationPackage.operationFacts.candidateRef ||
-    !Array.isArray(record.checks) ||
-    record.checks.length !==
-      operationPackage.operationFacts.orderedChecks.length
-  ) {
-    return false;
-  }
-
-  return record.checks.every((fact, index) => {
-    if (!isApplicableCheckFact(fact)) return false;
-    const expected = operationPackage.operationFacts.orderedChecks[index];
-    return (
-      fact.checkId === expected.checkId &&
-      fact.checkRef === expected.checkRef &&
-      (fact.status === "passed" || fact.status === "reused-passed")
-    );
-  });
 }
 
 export interface DeliveryArchitectureFinalizationPreparationInput {
@@ -269,23 +226,198 @@ function isDerivationResult(
   );
 }
 
-export interface DeliveryArchitectureClosureOutputRef {
-  readonly artifact: string;
-  readonly contentSha256: string;
-  readonly bytes: number;
+type DeliveryArchitectureFinalizationClosureMaterial = Omit<
+  DeliveryArchitectureFinalizationClosureRecord,
+  "architectureFinalizationRef"
+>;
+
+const ARCHITECTURE_FINALIZATION_REF_PATTERN =
+  /^architecture-finalization:sha256:[0-9a-f]{64}$/;
+const CANDIDATE_REF_PATTERN = /^candidate:sha256:[0-9a-f]{64}$/;
+const SHA256_HEX_PATTERN = /^[0-9a-f]{64}$/;
+const CLOSURE_OUTPUT_FIELDS = ["artifact", "contentSha256", "bytes"] as const;
+const CLOSURE_OUTPUT_NAMES = [
+  "actualArchitectureRef",
+  "currentToActualCompareRef",
+  "plannedToActualCompareRef",
+  "workflowRef",
+  "lifecycleRef",
+  "dataFlowRef",
+] as const;
+
+function isClosureOutputRef(
+  value: unknown,
+): value is DeliveryArchitectureClosureOutputRef {
+  return (
+    isRecord(value) &&
+    hasExactlyFields(value, CLOSURE_OUTPUT_FIELDS) &&
+    typeof value.artifact === "string" &&
+    value.artifact.length > 0 &&
+    typeof value.contentSha256 === "string" &&
+    SHA256_HEX_PATTERN.test(value.contentSha256) &&
+    typeof value.bytes === "number" &&
+    Number.isSafeInteger(value.bytes) &&
+    value.bytes > 0
+  );
 }
 
-export interface DeliveryArchitectureFinalizationClosureRecord {
-  readonly verifiedCandidateRef: string;
-  readonly fullTestExecutionRef: string;
-  readonly outputs: {
-    readonly actualArchitectureRef: DeliveryArchitectureClosureOutputRef;
-    readonly currentToActualCompareRef: DeliveryArchitectureClosureOutputRef;
-    readonly plannedToActualCompareRef: DeliveryArchitectureClosureOutputRef;
-    readonly workflowRef: DeliveryArchitectureClosureOutputRef;
-    readonly lifecycleRef: DeliveryArchitectureClosureOutputRef;
-    readonly dataFlowRef: DeliveryArchitectureClosureOutputRef;
+function isClosureMaterial(
+  value: unknown,
+  operationPackage: DeliveryArchitectureFinalizationOperationPackage,
+): value is DeliveryArchitectureFinalizationClosureMaterial {
+  if (
+    !isRecord(value) ||
+    !hasExactlyFields(value, [
+      "verifiedCandidateRef",
+      "fullTestExecutionRef",
+      "outputs",
+      "architectureMaterializedCandidateRef",
+    ]) ||
+    value.verifiedCandidateRef !==
+      operationPackage.operationFacts.verifiedCandidateRef ||
+    value.fullTestExecutionRef !==
+      operationPackage.operationFacts.fullTestExecutionRef ||
+    typeof value.architectureMaterializedCandidateRef !== "string" ||
+    !CANDIDATE_REF_PATTERN.test(value.architectureMaterializedCandidateRef) ||
+    !isRecord(value.outputs) ||
+    !hasExactlyFields(value.outputs, CLOSURE_OUTPUT_NAMES)
+  ) {
+    return false;
+  }
+  const outputs = value.outputs;
+  const paths = fixedDeliveryArchitecturePaths(operationPackage.deliveryId);
+  const expectedArtifacts = [
+    paths.actual,
+    paths.currentToActual,
+    paths.plannedToActual,
+    ARCHITECTURE_FINALIZATION_SYSTEM_VIEW_PATHS.workflow,
+    ARCHITECTURE_FINALIZATION_SYSTEM_VIEW_PATHS.lifecycle,
+    ARCHITECTURE_FINALIZATION_SYSTEM_VIEW_PATHS.dataFlow,
+  ];
+  return CLOSURE_OUTPUT_NAMES.every((name, index) => {
+    const ref = outputs[name];
+    return isClosureOutputRef(ref) && ref.artifact === expectedArtifacts[index];
+  });
+}
+
+function cloneClosureOutputRef(
+  ref: DeliveryArchitectureClosureOutputRef,
+): DeliveryArchitectureClosureOutputRef {
+  return {
+    artifact: ref.artifact,
+    contentSha256: ref.contentSha256,
+    bytes: ref.bytes,
   };
+}
+
+function architectureFinalizationHashMaterial(
+  operationPackage: DeliveryArchitectureFinalizationOperationPackage,
+  record: DeliveryArchitectureFinalizationClosureMaterial,
+): unknown {
+  return {
+    deliveryId: operationPackage.deliveryId,
+    operationId: operationPackage.operationId,
+    ownerAuthority: null,
+    operationFacts: {
+      verifiedCandidateRef:
+        operationPackage.operationFacts.verifiedCandidateRef,
+      fullTestExecutionRef:
+        operationPackage.operationFacts.fullTestExecutionRef,
+      currentArchitectureRef: {
+        artifact:
+          operationPackage.operationFacts.currentArchitectureRef.artifact,
+        contentSha256:
+          operationPackage.operationFacts.currentArchitectureRef.contentSha256,
+      },
+      plannedArchitectureRef: {
+        artifact:
+          operationPackage.operationFacts.plannedArchitectureRef.artifact,
+        contentSha256:
+          operationPackage.operationFacts.plannedArchitectureRef.contentSha256,
+      },
+      systemViewPrestate: {
+        workflowSha256:
+          operationPackage.operationFacts.systemViewPrestate.workflowSha256,
+        lifecycleSha256:
+          operationPackage.operationFacts.systemViewPrestate.lifecycleSha256,
+        dataFlowSha256:
+          operationPackage.operationFacts.systemViewPrestate.dataFlowSha256,
+      },
+    },
+    guidanceRef: {
+      path: operationPackage.guidanceRef.path,
+      contentSha256: operationPackage.guidanceRef.contentSha256,
+    },
+    record: {
+      verifiedCandidateRef: record.verifiedCandidateRef,
+      fullTestExecutionRef: record.fullTestExecutionRef,
+      outputs: {
+        actualArchitectureRef: cloneClosureOutputRef(
+          record.outputs.actualArchitectureRef,
+        ),
+        currentToActualCompareRef: cloneClosureOutputRef(
+          record.outputs.currentToActualCompareRef,
+        ),
+        plannedToActualCompareRef: cloneClosureOutputRef(
+          record.outputs.plannedToActualCompareRef,
+        ),
+        workflowRef: cloneClosureOutputRef(record.outputs.workflowRef),
+        lifecycleRef: cloneClosureOutputRef(record.outputs.lifecycleRef),
+        dataFlowRef: cloneClosureOutputRef(record.outputs.dataFlowRef),
+      },
+      architectureMaterializedCandidateRef:
+        record.architectureMaterializedCandidateRef,
+    },
+  };
+}
+
+function hashArchitectureFinalizationMaterial(
+  operationPackage: DeliveryArchitectureFinalizationOperationPackage,
+  record: DeliveryArchitectureFinalizationClosureMaterial,
+): string {
+  const digest = createHash("sha256")
+    .update("flowkit-delivery-architecture-finalization\0")
+    .update(
+      JSON.stringify(
+        architectureFinalizationHashMaterial(operationPackage, record),
+      ),
+    )
+    .digest("hex");
+  return `architecture-finalization:sha256:${digest}`;
+}
+
+export function deriveDeliveryArchitectureFinalizationRef(
+  operationPackage: unknown,
+  record: unknown,
+): string | null {
+  if (
+    !isDeliveryOperationPackage(operationPackage) ||
+    operationPackage.operationId !== "delivery-architecture-finalization" ||
+    !isRecord(record) ||
+    !hasExactlyFields(record, [
+      "architectureFinalizationRef",
+      "verifiedCandidateRef",
+      "fullTestExecutionRef",
+      "outputs",
+      "architectureMaterializedCandidateRef",
+    ]) ||
+    typeof record.architectureFinalizationRef !== "string" ||
+    !ARCHITECTURE_FINALIZATION_REF_PATTERN.test(
+      record.architectureFinalizationRef,
+    )
+  ) {
+    return null;
+  }
+  const material = {
+    verifiedCandidateRef: record.verifiedCandidateRef,
+    fullTestExecutionRef: record.fullTestExecutionRef,
+    outputs: record.outputs,
+    architectureMaterializedCandidateRef:
+      record.architectureMaterializedCandidateRef,
+  };
+  return isClosureMaterial(material, operationPackage)
+    ? hashArchitectureFinalizationMaterial(operationPackage, material)
+    : null;
 }
 
 export interface DeliveryArchitectureFinalizationInvocationInput extends DeliveryArchitectureFinalizationPreparationInput {
@@ -386,10 +518,24 @@ export async function invokeDeliveryArchitectureFinalizationOperation(
     return correction(operationPackage, "stale-or-mismatched-prestate");
   }
 
+  const callbackPackage = formDeliveryOperationPackage(
+    operationPackage.deliveryId,
+    operationPackage.operationId,
+    null,
+    operationPackage.operationFacts,
+    operationPackage.guidanceRef,
+  );
+  if (
+    callbackPackage === null ||
+    callbackPackage.operationId !== "delivery-architecture-finalization"
+  ) {
+    return failure("package-formation-rejected");
+  }
+
   let derived: unknown;
   try {
     derived = await deriveOutputs({
-      operationPackage,
+      operationPackage: callbackPackage,
       currentArchitecture: context.currentArchitecture.toString("utf8"),
       plannedArchitecture: context.plannedArchitecture.toString("utf8"),
       workflow: context.workflow?.toString("utf8") ?? null,
@@ -431,15 +577,28 @@ export async function invokeDeliveryArchitectureFinalizationOperation(
     return failure(materialized.status);
   }
 
+  const architectureMaterializedCandidateRef =
+    await deriveApplicableCheckCandidateRef(repositoryRoot);
+  if (architectureMaterializedCandidateRef === null) {
+    return failure("derived-validation-rejected");
+  }
+  const recordMaterial: DeliveryArchitectureFinalizationClosureMaterial = {
+    verifiedCandidateRef: operationPackage.operationFacts.verifiedCandidateRef,
+    fullTestExecutionRef: operationPackage.operationFacts.fullTestExecutionRef,
+    outputs: materialized.outputs,
+    architectureMaterializedCandidateRef,
+  };
+  const architectureFinalizationRef = hashArchitectureFinalizationMaterial(
+    operationPackage,
+    recordMaterial,
+  );
+
   return {
     status: "terminal",
     operationPackage,
     record: {
-      verifiedCandidateRef:
-        operationPackage.operationFacts.verifiedCandidateRef,
-      fullTestExecutionRef:
-        operationPackage.operationFacts.fullTestExecutionRef,
-      outputs: materialized.outputs,
+      architectureFinalizationRef,
+      ...recordMaterial,
     },
   };
 }

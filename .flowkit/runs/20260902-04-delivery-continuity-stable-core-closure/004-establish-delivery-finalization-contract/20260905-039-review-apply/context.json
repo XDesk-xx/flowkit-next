@@ -1,0 +1,87 @@
+{
+  "runNumber": 39,
+  "kind": "external-orchestrator-review-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "establish-delivery-finalization-contract",
+  "action": "review-apply",
+  "runId": "20260905-039-review-apply",
+  "inputRunId": "20260905-038-revise-apply",
+  "approvedProposalReviewRunId": "20260905-035-review-propose",
+  "priorReviewApplyRunId": "20260905-037-review-apply",
+  "baseCommit": "a170da0373867296813a888c57db8325025a8f5d",
+  "branch": "delivery/20260902-04-delivery-continuity-stable-core-closure",
+  "inputRunHashes": {
+    "actionSha256": "50ba7f87f69fdbc7cf30c18fb33285bfe4042c6b3e4557c654ff1a03003ef7d9",
+    "contextSha256": "f80e9b497e49b73bc0f81466bcac8a09cdca480e2b8cb38bae2065af6f00c69a",
+    "resultSha256": "610190da4b048370839710fb985fd79332fdcb0395bd82daa26f402a2ac39810"
+  },
+  "approvedPlanningArtifactHashes": {
+    "proposalSha256": "8e0f3cdecb3211ed24f3436eb8aaaa15deabc8e9d9327d3446a666d723d5ccc6",
+    "designSha256": "62d503e86a6a8483e4dd86918bc7b04a51220dfcab7977823334fee6208f883c",
+    "completedTasksSha256": "f762e28bdebd3863e8ec4aef819de3943baf384bc4bce496e0a00856547e1c85"
+  },
+  "reviewedRevisionHashes": {
+    "deliveryFinalCoordinationWriterSha256": "f6f45dcfcc5c0a4b23519ece82541ce19c0dc3152932e77fc23040a7c535112d",
+    "deliveryFinalFocusedTestSha256": "4122a74b57dc2f23b9efcd3f6a4f03aab6df3aa8455e256896887072fb2c7529"
+  },
+  "findingConvergence": [
+    {
+      "id": "D04-RA004-001",
+      "status": "resolved",
+      "proof": "whole-document serialization removed; source-range-bounded edits plus presentation-sensitive whole-file equality preserve all non-target bytes and ordering"
+    }
+  ],
+  "independentVerification": {
+    "node": "22.23.2",
+    "managedOpenSpec": "1.10.0",
+    "deliveryFinalFocused": "7/7 PASS",
+    "threeFileFocusedWindows": "30/31 PASS; one known chmod(0o000) NTFS fixture difference",
+    "fullDomainWindows": "227/229 PASS; two known chmod(0o000) NTFS fixture differences",
+    "fullDomainProductDefects": 0,
+    "acceptance": "5/5 PASS",
+    "typecheck": "PASS",
+    "formatCheck": "PASS",
+    "lint": "PASS",
+    "dependencyHealth": "76 modules / 333 dependencies / 0 violations",
+    "repositoryEntropy": "37/37 production modules reachable",
+    "entropyTests": "7/7 PASS",
+    "forbiddenTrackedArtifacts": "PASS",
+    "openSpecChangeStrict": "PASS",
+    "openSpecAllStrict": "21/21 PASS",
+    "gitDiffCheck": "PASS"
+  },
+  "environmentClassification": {
+    "restrictedSandboxFullDomainAttempt": "26/26 test files failed before assertion execution with spawn EPERM",
+    "unchangedCommandOutsideSandbox": "entered assertions and produced 227/229 with only the two known NTFS permission-fixture differences",
+    "sandboxFailureIsProductEvidence": false
+  },
+  "preservedApprovedContent": {
+    "architectureLineageIsolation": true,
+    "exactThinCompareAndPresentation": true,
+    "architectureAndFinalClosureRefs": true,
+    "completePrerequisiteRevalidation": true,
+    "closedDeliveryFinalPackageAndAuthority": true,
+    "singleCanonicalCoordinationTarget": true,
+    "finalizedCandidateSelfReference": false,
+    "gitOrNextCapability": false,
+    "actualD04FinalExecution": false,
+    "change5PulledForward": false
+  },
+  "complexityAssessment": "LOCAL_PROPORTIONAL_SOURCE_RANGE_CORRECTION",
+  "scopeDriftAssessment": "NONE",
+  "newContentAssessment": "ONLY_REQUIRED_WRITER_CORRECTION_AND_FOCUSED_PROOF",
+  "reviewerMutation": "RUN_039_ONLY",
+  "productionMutationByReviewer": false,
+  "authorArtifactMutationByReviewer": false,
+  "verificationVerdictCreated": false,
+  "ownerOrGitAuthorityCreated": false,
+  "stableManagerUsed": false,
+  "doctorInvoked": false,
+  "candidateCliInvoked": false,
+  "gitMutationExecuted": false,
+  "continuationExecuted": false,
+  "stableTransfer": true,
+  "packageClass": "reviewer-delta"
+}
