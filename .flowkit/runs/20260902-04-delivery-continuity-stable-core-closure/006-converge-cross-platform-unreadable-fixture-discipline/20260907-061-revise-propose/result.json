@@ -1,0 +1,32 @@
+{
+  "runId": "20260907-061-revise-propose",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "converge-cross-platform-unreadable-fixture-discipline",
+  "action": "revise-propose",
+  "role": "author",
+  "status": "terminal",
+  "verdict": "PASS",
+  "summary": "Resolved D04-RP006-001 by removing current suite cardinalities and whole-suite zero-SKIP accounting from normative Design/Tasks. Acceptance now requires successful execution of the named suites with no unexplained failures, explicit execution of both unreadable resolver assertions with zero unreadable-fixture SKIP, Windows ACL restoration/read recovery, retained POSIX/root proof, and actual totals recorded as Apply evidence.",
+  "resolvedFindings": [
+    "D04-RP006-001"
+  ],
+  "nextBoundary": "review-propose",
+  "reviewProposeRequired": true,
+  "applyAllowed": false,
+  "blockingUnknown": null,
+  "durableFacts": [
+    "Design and Tasks do not freeze current focused, Domain, or Acceptance suite cardinalities as contract constants.",
+    "The Change does not impose whole-suite zero-SKIP accounting.",
+    "Both target unreadable-Guidance resolver assertions must execute with zero unreadable-fixture SKIP.",
+    "Named Domain and Acceptance suites must succeed with no unexplained failure, and actual totals are Apply evidence.",
+    "The ACL helper design and all other 059 Proposal boundaries remain unchanged.",
+    "Exact managed OpenSpec 1.10.0 strict validation passed for the Change and all 23 items."
+  ],
+  "productionMutation": "NONE",
+  "testMutationInAction": false,
+  "canonicalSpecMutationInAction": false,
+  "scopeDrift": "NONE",
+  "flowkitManagerUsed": false,
+  "candidateCliInvoked": false,
+  "continuationExecuted": false
+}

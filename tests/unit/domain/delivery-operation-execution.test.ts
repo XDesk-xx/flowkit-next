@@ -34,6 +34,7 @@ import {
   type DeliveryStartOperationFacts,
   type OwnerAuthorityFact,
 } from "../../../src/domain/index.js";
+import { withUnreadableGuidanceFixture } from "./unreadable-guidance-fixture.js";
 
 const deliveryId = "20260902-04-delivery-continuity-stable-core-closure";
 const acceptedBaseCommit = "a".repeat(40);
@@ -274,6 +275,7 @@ test("non-regular, symlink, and parent-path redirected Guidance fail closed", as
 
 test("unreadable canonical Delivery Guidance fails closed when permissions are enforceable", async () => {
   const root = await makeRoot();
+  let fixtureOwnsCleanup = false;
   try {
     const entry = await writeGuidance(root, "delivery-start", "# start\n");
     if (process.getuid?.() === 0) {
@@ -302,13 +304,23 @@ test("unreadable canonical Delivery Guidance fails closed when permissions are e
       return;
     }
 
-    await chmod(entry, 0o000);
-    assert.equal(
-      await resolveDeliveryGuidanceRef(root, "delivery-start"),
-      null,
-    );
+    await withUnreadableGuidanceFixture({
+      root,
+      entry,
+      onCleanupOwnershipTaken: () => {
+        fixtureOwnsCleanup = true;
+      },
+      assertUnreadable: async () => {
+        assert.equal(
+          await resolveDeliveryGuidanceRef(root, "delivery-start"),
+          null,
+        );
+      },
+    });
   } finally {
-    await rm(root, { recursive: true, force: true });
+    if (!fixtureOwnsCleanup) {
+      await rm(root, { recursive: true, force: true });
+    }
   }
 });
 

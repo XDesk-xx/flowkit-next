@@ -1,0 +1,95 @@
+{
+  "runNumber": 55,
+  "kind": "openspec-revise-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "workflowAuthority": "OpenSpec",
+  "flowkitManagerUsed": false,
+  "runsPurpose": "durable real-execution process and result record",
+  "role": "author",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "converge-cross-platform-unreadable-fixture-discipline",
+  "action": "revise-explore",
+  "runId": "20260907-055-revise-explore",
+  "inputRunId": "20260906-054-apply",
+  "projectOrdinal": 31,
+  "changeStartSequence": 6,
+  "baseCommit": "875b7827867fd8489f9c3d05837fa3879ec15e2b",
+  "ownerAuthority": {
+    "source": "owner conversation input on 2026-09-07",
+    "decision": "revise-explore",
+    "externalManagerRequired": false,
+    "runsRemainExecutionRecords": true,
+    "scope": [
+      "native Windows real read-failure proof",
+      "zero unreadable-fixture SKIP",
+      "correct active-Change pre-archive task boundary",
+      "no production resolver mutation without new proof"
+    ]
+  },
+  "priorRunHashes": {
+    "actionSha256": "19a5aeda83002bcdd29d082191f9b2c8e2170e5d8b283cd78e55c9b4013ca01c",
+    "contextSha256": "2748649ae37e73b1a5b7881e3ec2341c74a8a180d6b84720b6dba1288c5d4cb2",
+    "resultSha256": "73d98af9b66d580a0f1d4e800e87294a98409fe1bb0adc55708e0c4c8e9d75ec"
+  },
+  "trigger": {
+    "kind": "owner-scope-correction",
+    "incorrectConclusion": "capability-bound SKIP is an acceptable native-Windows outcome",
+    "taskSpecMismatch": "tasks.md requires a post-archive checkpoint before the active Change can complete"
+  },
+  "focusedProof": {
+    "host": "native Windows",
+    "node": "22.23.2",
+    "chmodCounterexample": "current candidate Domain 241 tests, 239 pass, 2 capability-bound skip, 0 fail",
+    "acceptance": "5/5 PASS",
+    "exclusiveLock": {
+      "lstat": "success",
+      "realpath": "success",
+      "readFile": "EBUSY",
+      "actionResolver": "null",
+      "deliveryResolver": "null",
+      "assessment": "rejected because combined proof blocked beyond 30 seconds"
+    },
+    "windowsAcl": {
+      "identity": "current user SID",
+      "deniedRight": "RD",
+      "lstat": "success",
+      "realpath": "success",
+      "readFile": "EPERM in 0 ms",
+      "actionResolver": "null in 1 ms",
+      "deliveryResolver": "null in 1 ms",
+      "repeatability": "5/5 apply-assert-restore-read-cleanup cycles PASS",
+      "restrictedSandbox": "icacls exit 5 Access is denied",
+      "unrestrictedNativeWindows": "PASS"
+    }
+  },
+  "correctedBoundary": {
+    "posix": "retain real low-privilege permission-denial proof",
+    "windows": "test-only temporary-file ACL denies current-SID read-data and executes both real resolvers",
+    "skipAllowed": false,
+    "canonicalSpecChangeRequired": false,
+    "supersededSkipDeltaMustBeRemoved": true,
+    "productionResolverMutationRequired": false,
+    "postArchiveWorkAllowedInTasks": false
+  },
+  "evidenceHashes": {
+    "exploreSha256": "23dc9aa583aac0d6cc3757c796d328c039cb396314b3d29f5f2c17850ebb7c9a",
+    "canonicalFormalFullTestSpecSha256": "6aedfa74a25ab88d3f1f01bbaefed02fe917a1100875cfb6ad6f85af3c57fabb",
+    "currentActionGuidanceTestSha256": "ab074d9d0499a72b40f6fb3878f36e46815df4574c7e8be9312f8399e0554ba4",
+    "currentDeliveryGuidanceTestSha256": "d73284c243ab8e5686c8ae69cd0cdfd4bce3168a5c62b81574bcc5f8d4b0c78e"
+  },
+  "validation": {
+    "currentChangeStrict": "PASS",
+    "openSpecAllStrict": "23/23 PASS",
+    "gitDiffCheck": "PASS"
+  },
+  "artifactMutation": {
+    "explore": true,
+    "proposal": false,
+    "design": false,
+    "specDelta": false,
+    "tasks": false,
+    "production": false,
+    "tests": false
+  },
+  "continuationExecuted": false
+}

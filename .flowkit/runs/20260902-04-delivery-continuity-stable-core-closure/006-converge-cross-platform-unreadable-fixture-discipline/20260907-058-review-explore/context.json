@@ -1,0 +1,72 @@
+{
+  "runNumber": 58,
+  "kind": "external-orchestrator-review-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "converge-cross-platform-unreadable-fixture-discipline",
+  "action": "review-explore",
+  "runId": "20260907-058-review-explore",
+  "inputRunId": "20260907-057-revise-explore",
+  "priorReviewRunId": "20260907-056-review-explore",
+  "physicalRunPath": ".flowkit/runs/20260902-04-delivery-continuity-stable-core-closure/006-converge-cross-platform-unreadable-fixture-discipline/20260907-058-review-explore",
+  "physicalRunGroupPrefix": "006",
+  "projectOrdinal": 31,
+  "changeStartSequence": 6,
+  "baseCommit": "875b7827867fd8489f9c3d05837fa3879ec15e2b",
+  "inputRunHashes": {
+    "actionSha256": "5ff6374a5a64655669a141ad9bba1c81104ff069577060b2f5ee3c1a70accdea",
+    "contextSha256": "9a07acae1a6559a848d5ac4af6766719c9f1de6916788985f54ce5b5cfbca8c2",
+    "resultSha256": "8897c0cf943d47935eeff315f3f2f07faa34915227a8a90c5657234dc2c37f30"
+  },
+  "reviewedArtifacts": {
+    "deliveryManifestSha256": "8a463b0e42eff0c3c028211e11d5ddf1f1fcd0cc54a8601ae9c8ecb3c8eb218f",
+    "exploreSha256": "23dc9aa583aac0d6cc3757c796d328c039cb396314b3d29f5f2c17850ebb7c9a",
+    "canonicalFormalFullTestSpecSha256": "6aedfa74a25ab88d3f1f01bbaefed02fe917a1100875cfb6ad6f85af3c57fabb",
+    "currentActionGuidanceTestSha256": "ab074d9d0499a72b40f6fb3878f36e46815df4574c7e8be9312f8399e0554ba4",
+    "currentDeliveryGuidanceTestSha256": "d73284c243ab8e5686c8ae69cd0cdfd4bce3168a5c62b81574bcc5f8d4b0c78e"
+  },
+  "resolvedFindings": [
+    "D04-R006-001"
+  ],
+  "independentProof": {
+    "manifestGoal": "real cross-platform read-denial proof with zero unreadable-fixture SKIP",
+    "ownerDecision": "refine-change-scope",
+    "ownerSourceRef": "owner-input:2026-09-07:revise-explore:windows-real-read-proof-and-task-boundary",
+    "ownerSourceRefSha256": "03fbb9e4401c3840c90c7a014d868da21572264e067fbdf414e34d332bf71f50",
+    "ownerRefMatchesSourceRef": true,
+    "exploreUnchangedFromPriorReview": true,
+    "priorReviewerWindowsAclProofStillExact": true,
+    "managedOpenSpecVersion": "1.10.0",
+    "currentChangeStrict": "PASS",
+    "openSpecAllStrict": "23/23 PASS",
+    "gitDiffCheck": "PASS"
+  },
+  "proposalReadiness": {
+    "ready": true,
+    "existingProposalRequiresRevision": true,
+    "requiredNextArtifactAction": "revise-propose",
+    "staleSkipProposalContentAccepted": false
+  },
+  "semanticAssessment": {
+    "windowsAclDirectionProven": true,
+    "canonicalSpecAlreadySufficient": true,
+    "productionMutationRequired": false,
+    "genericAclAbstractionRequired": false,
+    "newCoreSkipModelRequired": false,
+    "postArchiveTaskAllowed": false,
+    "scopeDrift": "NONE",
+    "complexity": "MINIMAL_REQUIRED"
+  },
+  "findings": [],
+  "proposalAllowed": true,
+  "nextBoundary": "revise-propose",
+  "stableManagerUsed": false,
+  "stableManagerAvailability": "external flowkit command unavailable",
+  "candidateCliInvoked": false,
+  "reviewerArtifactMutation": "RUN_058_ONLY",
+  "authorArtifactMutation": "NONE",
+  "continuationExecuted": false,
+  "stableTransfer": true,
+  "packageClass": "reviewer-delta"
+}

@@ -122,6 +122,19 @@ changes:
       - "exact accepted-main → next-base continuity"
       - "canonical skills/delivery/repository-integration/SKILL.md"
 
+  - id: "converge-cross-platform-unreadable-fixture-discipline"
+    group: "closure-hardening"
+    goal: "在不改变产品行为的前提下，将 unreadable Guidance proof 的跨平台 fixture 表达收敛为同一真实语义：Linux 保持真实低权限 read-denial proof，native Windows 使用真实 read-denial fixture 执行两个 resolver null assertions，相关 fixture 保持 zero SKIP。"
+    required: true
+    dependsOn:
+      - "establish-repository-integration-and-next-base-continuity"
+    state: completed
+    projectOrdinal: 31
+    architectureImpact: false
+    outputs:
+      - "cross-platform real unreadable Guidance fixture discipline"
+      - "native-Windows real read-denial proof with zero unreadable-fixture SKIP"
+
 proofConcerns:
   - id: "delivery-operation-package-minimality"
     status: "proof-first"
@@ -212,3 +225,21 @@ ownerDecisions:
     sourceRef: "owner-input:2026-09-05:activate-change:establish-repository-integration-and-next-base-continuity:proof-explore:preflight-88e376d-pass"
     scope:
       - "explore"
+  - ref: "owner:ab1af65169cb7ba7d330443e27156559e16b98486128eb4d17c130a672286bbd"
+    decision: "activate-change"
+    deliveryId: "20260902-04-delivery-continuity-stable-core-closure"
+    changeId: "converge-cross-platform-unreadable-fixture-discipline"
+    sourceRef: "owner-input:2026-09-05:activate-change:converge-cross-platform-unreadable-fixture-discipline:proof-explore:closure-preflight-875b782-pass"
+    scope:
+      - "explore"
+  - ref: "owner:03fbb9e4401c3840c90c7a014d868da21572264e067fbdf414e34d332bf71f50"
+    decision: "refine-change-scope"
+    deliveryId: "20260902-04-delivery-continuity-stable-core-closure"
+    changeId: "converge-cross-platform-unreadable-fixture-discipline"
+    sourceRef: "owner-input:2026-09-07:revise-explore:windows-real-read-proof-and-task-boundary"
+    scope:
+      - "correct-active-change-pre-archive-task-boundary"
+      - "native-windows-real-read-failure-proof"
+      - "no-production-resolver-mutation-without-new-proof"
+      - "revise-explore"
+      - "zero-unreadable-fixture-skip"

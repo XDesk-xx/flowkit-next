@@ -1,0 +1,120 @@
+{
+  "runNumber": 64,
+  "kind": "external-orchestrator-review-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "converge-cross-platform-unreadable-fixture-discipline",
+  "action": "review-apply",
+  "runId": "20260907-064-review-apply",
+  "inputRunId": "20260907-063-apply",
+  "approvedProposalReviewRunId": "20260907-062-review-propose",
+  "physicalRunPath": ".flowkit/runs/20260902-04-delivery-continuity-stable-core-closure/006-converge-cross-platform-unreadable-fixture-discipline/20260907-064-review-apply",
+  "physicalRunGroupPrefix": "006",
+  "projectOrdinal": 31,
+  "changeStartSequence": 6,
+  "baseCommit": "875b7827867fd8489f9c3d05837fa3879ec15e2b",
+  "branch": "delivery/20260902-04-delivery-continuity-stable-core-closure",
+  "inputRunHashes": {
+    "actionSha256": "047302a2a1e7c776a637309a35f8fff2a7e3523c3cd0cbaad8bbf7677a95ded8",
+    "contextSha256": "68cc9055bb766a197232b0c163bde6ec8a698be5d861adf5ceb38e9e05d23c43",
+    "resultSha256": "1878dd9978b53da5c2bb6f44a214703402e46409fe86a7a4a053d530be393a9a"
+  },
+  "approvedProposalRunHashes": {
+    "actionSha256": "adbcda8e25b603fd95dccdc6e7131cf038de70cea4292ae28309b973c14b2a53",
+    "contextSha256": "2c1b096d81f812187003df568a9ff72b2c2cb260f0a19c6b7a089898791a296c",
+    "resultSha256": "4e7ac9b40b69dee847b71e1731018b0cabc9e9402e51e566138169dc3c7fd195"
+  },
+  "reviewedArtifacts": {
+    "openSpecMetadataSha256": "e6bda6d36b39e20ff5aacc32a46eeca39be2a1b5ac9186d37551b39936b24143",
+    "exploreSha256": "23dc9aa583aac0d6cc3757c796d328c039cb396314b3d29f5f2c17850ebb7c9a",
+    "proposalSha256": "79420fe4508129e34619ed887f1b5f3c8635a14d9dec81406e9e32843c61d4c9",
+    "designSha256": "8ccde26870228ba93aeb3a9db99806b6d8d422c5be8c76675cb496cf111994fd",
+    "completedTasksSha256": "6b4c5346c25015c1663d17c20e1316ad8d4c3f2c9eb3a41dba5a9ac3030da983",
+    "sharedFixtureSha256": "a807b0eecd2465bd439b1542035a9ef68edf704dd05d240faa3b5565f83576a2",
+    "actionGuidanceTestSha256": "3415e20dca13d05760bb14d19a48a6034d2c02731245f50becd8a7c96051a3df",
+    "deliveryGuidanceTestSha256": "05c839a169175ca2425417057ee2bde1b9e3b781aac5e27d5ab2f6962f1fe051",
+    "actionGuidanceResolverSha256": "00e168ae0bdbbce946add6472f2f1e2ff2591aec9b817e2236100b27a7f65824",
+    "deliveryGuidanceResolverSha256": "9a90354f61cccd1b08753ad6149673a5b9fb39fa1044c35dd39ac650d61eaef9"
+  },
+  "independentProof": {
+    "managedOpenSpecVersion": "1.10.0",
+    "currentChangeStrict": "PASS",
+    "openSpecAllStrict": "23/23 PASS",
+    "focusedNativeWindows": {
+      "total": 19,
+      "pass": 19,
+      "fail": 0,
+      "skip": 0,
+      "bothTargetAssertionsExecuted": true
+    },
+    "domainNativeWindowsTapSummary": {
+      "tests": 241,
+      "pass": 241,
+      "fail": 0,
+      "skip": 0
+    },
+    "acceptanceNativeWindows": {
+      "total": 5,
+      "pass": 5,
+      "fail": 0,
+      "skip": 0
+    },
+    "typecheck": "PASS",
+    "formatCheck": "PASS",
+    "lint": "PASS",
+    "gitDiffCheck": "PASS",
+    "protectedPathDiffs": [],
+    "preMutationSetupFailureInjection": {
+      "platform": "native Windows",
+      "fixture": "valid caller-created temporary root with exact internal regular file",
+      "fault": "empty child-command search path forces whoami.exe spawn ENOENT",
+      "helperError": "resolve current Windows user SID failed to start: ENOENT: spawnSync whoami.exe ENOENT",
+      "resolverCallbackExecuted": false,
+      "rootRetainedAfterHelperReturn": true,
+      "retainedPathReported": false,
+      "reviewerProofCleanupCompleted": true,
+      "ephemeralProofScriptRemoved": true
+    }
+  },
+  "findings": {
+    "D04-RA006-001": {
+      "status": "BLOCKING",
+      "kind": "approved-contract-fidelity",
+      "affectedArtifacts": [
+        "tests/unit/domain/unreadable-guidance-fixture.ts:138",
+        "tests/unit/domain/unreadable-guidance-fixture.ts:140",
+        "tests/unit/domain/action-guidance-execution.test.ts:218",
+        "tests/unit/domain/delivery-operation-execution.test.ts:307"
+      ],
+      "impact": "Caller cleanup is disabled before the helper enters its cleanup lifecycle, so safe-path or Windows SID preflight errors can silently retain the temporary root without reporting its exact path.",
+      "minimumCorrection": "Cover accepted-root pre-mutation setup failures with helper-owned cleanup or an explicit ownership handoff, and add focused regression proof without expanding beyond the three test-only files."
+    }
+  },
+  "positiveAssessment": {
+    "happyPathAclDenialAndRestoration": true,
+    "bothResolverAssertionsExecute": true,
+    "zeroUnreadableFixtureSkip": true,
+    "posixRootProofPreservedByCode": true,
+    "productionMutation": false,
+    "canonicalSpecMutation": false,
+    "dependencyOrToolchainMutation": false,
+    "newControlPlane": false,
+    "scopeDrift": "NONE"
+  },
+  "complexityAssessment": {
+    "implementation": "PROPORTIONAL_AND_BOUNDED",
+    "requestedRevision": "LOCAL_FAILURE_OWNERSHIP_AND_FOCUSED_REGRESSION_ONLY"
+  },
+  "archiveAllowed": false,
+  "nextBoundary": "revise-apply",
+  "stableManagerUsed": false,
+  "stableManagerAvailability": "external flowkit command unavailable",
+  "candidateCliLifecycleAuthorityUsed": false,
+  "reviewerArtifactMutation": "RUN_064_ONLY",
+  "authorArtifactMutation": "NONE",
+  "gitMutationExecuted": false,
+  "continuationExecuted": false,
+  "stableTransfer": true,
+  "packageClass": "reviewer-delta"
+}

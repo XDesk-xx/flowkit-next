@@ -3,25 +3,35 @@
   "memos": [
     {
       "memoId": "future-delivery-final-full-source-repository-integration-handoff",
-      "state": "open",
+      "state": "promoted",
       "title": "Future Delivery Final full-source handoff for local repository integration",
       "note": "D03 finalization exposed a repository-integration continuity rule that should be formally converged in D04 rather than left as an ad-hoc packaging convention.\n\nWhen a Delivery has reached Delivery Final and the next receiving local AI / operator is expected to perform an Owner-authorized Git checkpoint, commit, PR preparation, or other repository integration step, the primary handoff artifact should be a complete current working-tree source snapshot for the finalized Delivery candidate. A Run-level or cumulative payload remains useful for lifecycle audit, provenance, and historical continuation, but it should not be the required mechanism for reconstructing the finalized code state before local Git integration.\n\nThe complete source handoff should contain the repository-owned source/config/tests/OpenSpec/Flowkit/Architecture bytes that constitute the finalized working tree, while excluding Git object storage and reusable dependency/runtime archives. Git history/base identity remains separately owned by Git/bundle/exact accepted revision; dependency/runtime artifacts remain environment inputs rather than source handoff contents.\n\nD04 repository-integration-and-next-base continuity should proof and freeze the minimal reusable rule: Delivery Final -> complete source handoff when repository integration is delegated to a local AI/operator -> Owner explicit exact Git checkpoint authorization -> commit/PR/main -> read exact accepted main HEAD. This Memo does not authorize Git mutation, does not require a new payload registry or artifact lifecycle, and does not make ZIP files a new truth source. Git remains repository/history truth; the full-source package is only the bounded transport/recovery artifact for the finalized working-tree bytes.",
       "source": {
         "deliveryId": "20260831-03-action-guidance-bounded-agent-execution"
       },
       "createdByOwnerAuthorityRef": "owner:2d06fb5cd462e98b18a00963d83502a97cee2042f193386131df62c9c0386bf3",
-      "resolution": null
+      "resolution": {
+        "kind": "promoted",
+        "targetDeliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+        "targetChangeId": "establish-repository-integration-and-next-base-continuity",
+        "ownerAuthorityRef": "owner:c983f58e3a2ac808212e765c7a47e5997995ed6ab295e9f09353bea2eea16ce9"
+      }
     },
     {
       "memoId": "future-full-test-correction-and-platform-fixture-discipline",
-      "state": "open",
+      "state": "promoted",
       "title": "Future Full Test correction and cross-platform fixture discipline",
       "note": "D04 should converge the repeatable Formal Full Test correction/finalization boundary without adding a finding database, correction registry, evidence platform, or automatic corrective-Change creation.\n\nCurrent rule to preserve: Formal Full Test owns verification only. If a failure is solely an execution-environment, fixture, or command-setup defect and accepted repository bytes do not need to change, repair the verification environment and rerun the same exact candidate. If the finding requires changing repository/canonical truth, STOP verification/finalization, enter the normal Owner-controlled corrective Change/revise flow, form a new exact candidate, invalidate the prior verification evidence for acceptance purposes, and restart Formal Full Test on the new candidate.\n\nD03 post-archive supplementary native-Windows verification added a concrete cross-platform fixture observation. The accepted product contract remains proven by the Linux real-EACCES unreadable-Guidance proof, and native Windows was not a required D03 acceptance platform for that proof. On native Windows, POSIX chmod(000) did not make the Guidance file unreadable to Node, so the domain fixture expected resolver fail-closed while the host still allowed the read. This is a test-fixture portability / host-capability-detection concern, not evidence that resolveActionGuidanceRef violates its accepted fail-closed contract. Future hardening should prefer host-capability detection or platform-appropriate mechanics and must not assume identical filesystem permission mechanics across operating systems. The observation is deferred; it does not reopen archived Change 025 and does not automatically create a corrective Change.\n\nD04 proof should use this example when freezing the distinction between same-candidate verification-environment/fixture correction and repository/canonical correction that requires a new candidate. The Memo remains non-blocking until formally promoted or dismissed by Owner authority.",
       "source": {
         "deliveryId": "20260831-03-action-guidance-bounded-agent-execution"
       },
       "createdByOwnerAuthorityRef": "owner:6d49698256a6015b7b10aeeacee84d3fded1ff4cfd48357861231887dfbed3ca",
-      "resolution": null
+      "resolution": {
+        "kind": "promoted",
+        "targetDeliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+        "targetChangeId": "complete-formal-full-test-correction-and-platform-fixture-discipline",
+        "ownerAuthorityRef": "owner:d54a19defd93efa5e6a202c647eb42b883d4765b943dc3a87ced250b1927ea87"
+      }
     },
     {
       "memoId": "future-full-test-correction-model",

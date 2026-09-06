@@ -1,0 +1,30 @@
+{
+  "runId": "20260907-065-revise-apply",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "converge-cross-platform-unreadable-fixture-discipline",
+  "action": "revise-apply",
+  "role": "author",
+  "status": "terminal",
+  "verdict": "PASS",
+  "summary": "Resolved D04-RA006-001 within the approved three-file test-only surface. Cleanup ownership now transfers only after bounded safe-path validation and before Windows SID discovery, so accepted-root pre-mutation setup failures are inside helper-owned cleanup. A native-Windows whoami.exe ENOENT regression proves ownership transfer, zero resolver-callback execution, and exact temporary-root removal. Current-SID RD denial, restoration/read recovery, POSIX/root proof, and zero unreadable-fixture SKIP remain intact. Final Windows/Linux focused 20/20, Domain 242/242, Acceptance 5/5, exact OpenSpec 1.10.0 strict validation, and all engineering gates passed without production or contract mutation.",
+  "blockingFindings": [],
+  "resolvedFindings": [
+    "D04-RA006-001"
+  ],
+  "nextBoundary": "review-apply",
+  "archiveAllowed": false,
+  "productionMutation": "NONE",
+  "planningArtifactMutation": "NONE",
+  "scopeDriftAssessment": "NONE",
+  "lineGateAssessment": "PASS_NO_APPLICABLE_THRESHOLD_EXCEEDED",
+  "openSpecRuntime": "1.10.0",
+  "legacyOpenSpec170Used": false,
+  "nativeWindowsProof": "FOCUSED_20_OF_20_DOMAIN_242_OF_242_ACCEPTANCE_5_OF_5_ZERO_SKIPPED",
+  "linuxProof": "FOCUSED_20_OF_20_DOMAIN_242_OF_242_ACCEPTANCE_5_OF_5_ZERO_SKIPPED",
+  "ownerOrGitAuthorityCreated": false,
+  "stableManagerUsed": false,
+  "candidateCliLifecycleAuthorityUsed": false,
+  "continuationExecuted": false,
+  "stableTransfer": true,
+  "packageClass": "author-delta"
+}
