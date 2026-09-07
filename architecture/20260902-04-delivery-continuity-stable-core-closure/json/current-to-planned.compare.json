@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "kind": "architecture-thin-compare",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "pair": "current-to-planned",
+  "left": {
+    "ref": "./current.architecture.json",
+    "sha256": "0f28cea801c1df5541fcd68d83fa61ed05ddd556eeeaea009955a2b5cd766b70",
+    "bytes": 20309
+  },
+  "right": {
+    "ref": "./planned.architecture.json",
+    "sha256": "97a02e3ef0b36915ea1cdebc88c1d1729d825d376f53accf6a24bf02b28eee31",
+    "bytes": 20751
+  },
+  "classification": [
+    "semantic",
+    "presentation"
+  ],
+  "summary": {
+    "semantic": "Current rematerializes the accepted D03 Stable Core baseline at main@6bda1e87 with 21 existing component identities. Planned keeps the same components, boundaries, geometry, and connection topology while broadening the existing Canonical Guidance / Lifecycle / Execution / Git / Verification / Archify responsibilities to close exact DeliveryOperationId → content-bound DeliveryGuidanceRef → minimal DeliveryOperationPackage execution, state-first continuity, Formal Full Test correction, architecture/finalization, and repository/next-base continuity. No Registry, Router, Planner, second Delivery lifecycle, Agent Skill discovery layer, mandatory transport subsystem, or new control-plane component is added.",
+    "presentation": "Current and Planned intentionally retain the same component graph. D04 is shown as responsibility/contract convergence across existing seams rather than artificial component churn."
+  },
+  "presentation": {
+    "mode": "side-by-side",
+    "renderer": "flowkit-reference-side-by-side",
+    "leftPosition": "before",
+    "rightPosition": "after",
+    "equalFrame": true,
+    "interactive": true,
+    "overlay": false,
+    "deltaColumn": false,
+    "artifactPolicy": "disposable-html-not-retained-in-git",
+    "resolution": "resolve-left-right-ref-to-architecture-render"
+  }
+}

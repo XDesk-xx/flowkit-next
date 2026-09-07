@@ -1,0 +1,313 @@
+{
+  "runNumber": 85,
+  "runId": "20260907-085-review-apply",
+  "kind": "external-orchestrator-review-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "action": "review-apply",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "correct-delivery-content-continuity",
+  "projectOrdinal": 32,
+  "physicalRunGroupPrefix": "007",
+  "changeStartSequence": 7,
+  "physicalRunPath": ".flowkit/runs/20260902-04-delivery-continuity-stable-core-closure/007-correct-delivery-content-continuity/20260907-085-review-apply",
+  "baseCommit": "b0b2d918c41212fe80e1ad5e58bc14dcd7217c1d",
+  "branch": "delivery/20260902-04-delivery-continuity-stable-core-closure",
+  "reviewRequest": "根据最新run，review-apply",
+  "inputRunId": "20260907-084-revise-apply",
+  "priorReviewRunId": "20260907-083-review-apply",
+  "preservedReviewRunId": "20260907-080-review-apply",
+  "approvedProposalReviewRunId": "20260907-074-review-propose",
+  "inputSelection": "084 是最新 Author terminal，精确承接 083 的唯一 open finding 010 与 074 批准合同；核验 080–084 历史绑定，不覆盖原 Review。",
+  "runHashes": {
+    "20260907-074-review-propose": {
+      "action.md": "372992254c07cf74b3ec04234e3f4611395892d17d591557e8bff4cc65dd2a04",
+      "context.json": "ba93f3325ec8ff0a40fa45bf17494c13a00def4561926365d4d4425805156414",
+      "result.json": "881732df6611518dffc24f4556ca8e4fdbfc7b77b5410d7f6e8790644f81de42"
+    },
+    "20260907-080-review-apply": {
+      "action.md": "be331f738d6524ec332d2b429b0a3ec1631d51494b6e8aaeab9ff332cca719f2",
+      "context.json": "d2202705ddcbed96da2678e9d2368996deb93ad7e7ce668b1c2a0e63654e3bd1",
+      "result.json": "fe09f22a4612c480efa7c88067f8a69b84dcb8ec5c555109101b2a028c0507e9"
+    },
+    "20260907-081-review-apply": {
+      "action.md": "fc527249537872ffc8bb291bdb06feabdd21062cb7497e8bd08b173f19843f74",
+      "context.json": "a8fab3fc99656eaeee51a8747e149be4174492c38f0f4f49693d290f7f643536",
+      "result.json": "7c31b9d1ee609069cc2818ff89d618a215fd3f54583edc3866371423bff258ee"
+    },
+    "20260907-082-revise-apply": {
+      "action.md": "d31527a6e03cfd8582e0f94fbcfc92a30978fa344aa2bc6757e153560e3ec672",
+      "context.json": "e73ad42d4ac1c78c374b9947c98fae86668cfa80a00aedc93cce62a27ef5e6c3",
+      "result.json": "8dd353fe5452d52254b58a35e50c944c6bbd67f3ad5c1f2dc7d455486f741978"
+    },
+    "20260907-083-review-apply": {
+      "action.md": "a3e42fcfc424696038fb76ebd0836e17eff39f0dd12590b85e5d2fdea063e68b",
+      "context.json": "f7b38b1e14da94ce443547c43f3b5134fbb02205fb2cf2afc17572d2c38e6c6a",
+      "result.json": "c0182accec45bbc9fbebefdcdc52f7a6bd80ab479181c58a895e655cf100b822"
+    },
+    "20260907-084-revise-apply": {
+      "action.md": "c510ba6ccf91b19d92908de7c5965bcbbac16959caa578fbab51bc613847cf1e",
+      "context.json": "5477a27f05a5ed71fcc15f6aad878950360cc3ef001d5f3f05ee270e2872a2f9",
+      "result.json": "13866949c3cdfad17bd506c28f4653ed7b05e32d152bf887f8d0b4cfef5ab8b6"
+    }
+  },
+  "reviewedCandidate": {
+    "candidateRef": "candidate:sha256:a14c634349c083ed0d936dced72f0b54401c457d0ef720eb15e1d300cd1f017d",
+    "protectedFileCount": 1493,
+    "protectedSnapshotSha256": "818cc733d847cce48a646752cbbf9a4e213534e981cbd26e9d68e6d43e2dd505",
+    "scope": "Git tracked + nonignored untracked 的路径/字节；排除本次 085 Run，.tmp ignored；审查检查前后相同。",
+    "revisionArtifactHashes": {
+      "src/internal/delivery-start-content.ts": "2caa455dfcc719705886cfe657151a6658d5737ca17c9536964220f43a9852f9",
+      "tests/unit/domain/delivery-continuity-semantic-boundaries.test.ts": "7f38f32b643a3e1f77a3e975b03a2f80a7cb28c275738b2b40fc8d4fa8f93fb6"
+    },
+    "actualChangedSince083": [
+      "src/internal/delivery-start-content.ts",
+      "tests/unit/domain/delivery-continuity-semantic-boundaries.test.ts"
+    ],
+    "unreportedChanges": [],
+    "priorSnapshotReconstructedMatches": true,
+    "preservationMethod": "合并 076/078/079/082 已审 artifact hashes，确认只发生 084 声明的两个文件修订；剔除新增 083/084 Run、还原两文件旧 hashes 后精确重现 083 受保护快照。历史 Run 与规划 bytes 未改。"
+  },
+  "planningIntegrity": {
+    "proposalSha256": "820fd4b741ced1b3bbdd992c3bea578f5f70a7336f60dcf7556e5ac750dd5a2b",
+    "designSha256": "d5c57f2bc8db1c6003a97364f3caea8fe835cd00d312d217bd7f8ec10dabd5fb",
+    "tasksSha256": "0c5a56f3268336f423a56455c406918add161a31caae39ad84fddecc61a6c7db",
+    "unchangedFromReview083": true,
+    "deltaSpecsModified": false,
+    "tasksCompleted": "35/35",
+    "independentlyMatched": true,
+    "sevenDeltaSpecsUnchanged": true
+  },
+  "reviewHow": {
+    "bootstrapSkill": ".agents/skills/review-apply/SKILL.md",
+    "bootstrapSkillSha256": "57c8202fa2748c499b34e3c6bb6091d62f997809a068f747ab564828beb4e5bc",
+    "candidateReviewApplyGuidanceUsedAsHow": false,
+    "diagnosticSkill": "C:/Users/xuser/.agents/skills/debugging-and-error-recovery/SKILL.md",
+    "diagnosticSkillEffect": "定位 Linux 旧镜像依赖图与当前锁文件不匹配及离线 metadata 缺失；仅在一次性容器按冻结锁文件重建依赖，断网独立复验，不修改 Author artifacts。"
+  },
+  "findingConvergence": [
+    {
+      "id": "D04-RA007-001",
+      "status": "closed-preserved"
+    },
+    {
+      "id": "D04-RA007-002",
+      "status": "closed-preserved"
+    },
+    {
+      "id": "D04-RA007-003",
+      "status": "closed-preserved"
+    },
+    {
+      "id": "D04-RA007-004",
+      "status": "closed-preserved"
+    },
+    {
+      "id": "D04-RA007-005",
+      "status": "closed-preserved"
+    },
+    {
+      "id": "D04-RA007-006",
+      "status": "closed-preserved"
+    },
+    {
+      "id": "D04-RA007-007",
+      "status": "closed-preserved"
+    },
+    {
+      "id": "D04-RA007-008",
+      "status": "closed-preserved"
+    },
+    {
+      "id": "D04-RA007-009",
+      "status": "closed-preserved"
+    },
+    {
+      "id": "D04-RA007-010",
+      "status": "closed",
+      "basis": "sameArtifactRefs 的两侧先验证 Array.isArray、每个 own slot 和 closed ref 元素，再按三个语义字段比较；surface 与 raw source artifact 入口均覆盖完整槽位。公开 Start invocation 的 27 个异常数组案例全部规范 failed，无抛错/误 terminal，checkpoint callback 为 0。"
+    }
+  ],
+  "preservationEvidence": "080 原 hash 的 15 项诊断全部符合预期；独立重跑 008 的 fresh 非祖先 HEAD/target preparation 与 009 的 Start/Integration 字段重排正例；全量 domain 保持值变化、未知字段、数组顺序、完整证据链和具体 Git operation 拒绝边界。",
+  "closedFindingCount": 10,
+  "findings": [],
+  "remainingFindingCount": 0,
+  "decisiveObservations": {
+    "arrayMatrix": {
+      "entryPoints": [
+        "source.outputs",
+        "source.artifacts",
+        "surface.validation.artifacts"
+      ],
+      "forms": [
+        "undefined",
+        "null",
+        "nonarray",
+        "array-like",
+        "empty",
+        "all-holes",
+        "one-hole",
+        "inherited-slot",
+        "dense-invalid"
+      ],
+      "cases": 27,
+      "sourceOutcome": "failed/content-completion-rejected",
+      "surfaceOutcome": "failed/surface-validation-failed",
+      "unclassifiedThrows": 0,
+      "incorrectTerminal": 0,
+      "checkpointCallbackCalls": 0,
+      "explicitCheckpointScopeProvided": true
+    },
+    "validControls": "有效 dense 数组与对象字段重排仍 terminal；没有通过移除合法输入、过滤缺项或泛化 catch 掩盖问题。",
+    "failureDomain": "surface-validation-failed 是 surface 前置校验既有正确分类；不要求把它改成 source 的 content-completion-rejected。084 首次测试预期修正没有改变生产 failure domain。",
+    "preserved008": "exact accepted-base 对象/source 仍核验；fresh unrelated-history HEAD 和 target preparation 成功，各真实读取授权 source 一次。",
+    "preserved009": {
+      "startSourceAndSurfaceRefs": "terminal",
+      "integrationInputSourceRecordAcceptance": "accepted",
+      "canonicalAndReorderedIntegrationRef": "repository-integration:sha256:f3a9c8493a1bc0d637cda98daa59df35e3b1d5cbaad3e4de8f5fd0b557543ed3"
+    }
+  },
+  "independentChecks": [
+    {
+      "command": "node --import tsx .tmp/review-apply-085-proof.mjs",
+      "exitCode": 0,
+      "scriptSha256": "13641028c9aff8ca108fa31de4bd47f619543120c9ffe7ebede8f5d8a998614e",
+      "result": "27/27 classified negative cases；有效 dense/字段重排及 008/009 保留控制组通过"
+    },
+    {
+      "command": "node --import tsx .tmp/review-apply-080-proof.mjs",
+      "exitCode": 0,
+      "scriptSha256": "0eccd6e28b6e176b7e60d07d2556e017e26676417215ba87589e610c54deec10",
+      "result": "15/15 expected observations"
+    },
+    {
+      "command": "node --import tsx --test tests/unit/domain/*.test.ts",
+      "platform": "win32",
+      "exitCode": 0,
+      "result": "269/269 PASS, 0 fail, 0 skip"
+    },
+    {
+      "command": "node --import tsx --test tests/acceptance/*.test.ts",
+      "platform": "win32",
+      "exitCode": 0,
+      "result": "5/5 PASS, 0 fail, 0 skip"
+    },
+    {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "result": "PASS"
+    },
+    {
+      "command": "pnpm build",
+      "exitCode": 0,
+      "result": "PASS"
+    },
+    {
+      "command": "pnpm quality:gate",
+      "exitCode": 0,
+      "result": "PASS; diff HEAD / format / lint / forbidden tracked artifacts"
+    },
+    {
+      "command": "pnpm quality:dependency-health",
+      "exitCode": 0,
+      "result": "PASS; 97 modules / 489 dependencies"
+    },
+    {
+      "command": "pnpm test:entropy",
+      "exitCode": 0,
+      "result": "7/7 PASS"
+    },
+    {
+      "command": "pnpm quality:entropy",
+      "exitCode": 0,
+      "result": "45/45 production modules reachable"
+    },
+    {
+      "command": "node C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js validate correct-delivery-content-continuity --strict",
+      "exitCode": 0,
+      "result": "valid; structural only"
+    },
+    {
+      "command": "docker exec flowkit-next-ra085-verify-20260907 sh /source/.tmp/review-apply-085-linux-verify.sh",
+      "exitCode": 0,
+      "result": "冻结锁文件离线复核、installed lock 完整相等、build PASS；domain 269/269，acceptance 5/5，0 fail / 0 skip"
+    },
+    {
+      "command": "node --import tsx .tmp/review-apply-085-snapshot.mjs",
+      "exitCode": 0,
+      "scriptSha256": "280d9b021c8e09f87dadb692a5c74dab7d4ab34bb8100ce7b3b05a52947068b4",
+      "result": "1493 个受保护文件审查前后相同；输入 Run/批准计划/两项修订 hashes 全部匹配"
+    }
+  ],
+  "linuxEvidence": {
+    "baseImageId": "sha256:127ee201acf84b60dc929a6d5823f24969d96893b0d790fb0ed6dd800ee57c62",
+    "platform": "linux/amd64",
+    "libc": "Debian glibc 2.36",
+    "node": "22.23.2",
+    "pnpm": "11.22.0",
+    "testUser": "uid/gid 1000 (node)",
+    "sourcePackageSha256": "c79508605c34371eea6903f7dad39d388531f6b84e04c74d10ecd4938b4a9d76",
+    "sourceLockSha256": "bf5ef071f2b4b8140f05493ebd53098660250f2cd5a834fe321ce8685bdb65e5",
+    "preparation": "一次性容器复制 readonly 源码到 tmpfs，不复制 .git/.tmp/Windows node_modules。使用镜像内 pnpm 11.22.0，在线 install --frozen-lockfile 补齐 38 个缺少的锁定包及 metadata；未更新任何项目 manifest/lock 或旧镜像。",
+    "acceptanceIsolation": "准备完成后 docker network disconnect bridge；执行前后 inspect 的 NetworkSettings.Networks 均为 {}。断网运行 install --offline --frozen-lockfile 复核，再以 uid/gid 1000 执行 build/domain/acceptance。",
+    "dependencyBinding": "安装后的 node_modules/.pnpm/lock.yaml 与源 pnpm-lock.yaml 解析后完整相等；所有直接依赖实际版本与源 importer 一致，eslint peer context 为 supports-color@7.1.0。package/lock 源副本 bytes 相同，两项 084 revision hashes 精确匹配。",
+    "managedTools": "FLOWKIT_HOME=/flowkit-home；exact OpenSpec 1.10.0 / Archify 2.15.0 readonly mount。",
+    "commandSequence": [
+      "node /root/.cache/node/corepack/v1/pnpm/11.22.0/bin/pnpm.cjs install --offline --frozen-lockfile --store-dir /root/.local/share/pnpm/store/v11",
+      "runuser -u node -- node ./node_modules/typescript/bin/tsc -p tsconfig.build.json",
+      "runuser -u node -- node --import tsx --test tests/unit/domain/*.test.ts",
+      "runuser -u node -- node --import tsx --test tests/acceptance/*.test.ts"
+    ],
+    "scripts": {
+      ".tmp/review-apply-085-linux-prepare.sh": "7d13bc3a662c777475b7ccdd8389ef572e9a9485f38d0210094fab79bd80377e",
+      ".tmp/review-apply-085-linux-installed.cjs": "3a665bc39896cfa64f2914994616f7862080ed243d8ec265e097bbc90637ca41",
+      ".tmp/review-apply-085-linux-verify.sh": "f7de4fce1699228bdfa9be2fc590faa89e90aca9f6ad8dda0e442e442bffe51c"
+    },
+    "environmentObservation": "旧镜像直接 symlink 的依赖图不等于当前锁文件：eslint peer supports-color 为 7.2.0，当前要求 7.1.0。因此未将 084 旧环境的 Linux 报告作为本轮 exact-lock PASS；本轮以重新安装并核验依赖后的独立实测补齐证据，不改写历史。",
+    "cleanup": "唯一自建容器 7914723bc5ce7820780de3bd5608ce112725103465c92a4156993fcf349e5b41 已按 exact id/label/readonly mounts 核验后移除；临时安装缓存和 fixture 可重建，项目与旧镜像未修改。"
+  },
+  "verificationLimits": {
+    "formalDeliveryFullTestRun": false,
+    "formalVerificationVerdictCreated": false,
+    "fixtureScope": "定向诊断使用独立 Git/Node fixture 与 source 接缝；合成 managed-tool/check 材料仅验证 host 拒绝语义，不声称实际 D04 Full Test 或实际 Delivery Start/Final/Integration 已执行。Linux acceptance 的 exact managed runtimes 单独如实实测。",
+    "openSpecAllStrictReexecuted": false,
+    "proofRetention": "原始 .tmp 诊断可丢弃；必要命令、环境/脚本/candidate hashes、实际结果与修正边界记录于三文件 Run，不新增永久 raw proof 保留义务。",
+    "failedSetupAttempts": "最初全文比较旧环境 package.json 失败；进一步比较解析锁图确认真实 peer 差异。首次 offline/frozen 新安装因缺 @isaacs/cliui metadata 而 ERR_PNPM_NO_OFFLINE_META；uid 1000 调用 Corepack shim 曾在断网时尝试解析 pnpm，未下载。它们均发生于测试前，不计为 PASS；最终直接使用镜像缓存的 exact pnpm CLI、冻结安装补齐后断网复验。安装检查输出曾将在线 preparation 误标 freshOfflineFrozenInstall，已在 disposable script 改为 freshFrozenInstall；正式离线结论只来自后续断网命令。",
+    "hostDiagnosticRetry": "一次 snapshot 在受限环境 spawnSync git EPERM；原命令获准在外部重跑后 PASS。一次 rg Windows shell glob 无匹配，改用 rg -g 定向检索。均非产品 finding。",
+    "futureBoundary": "D04 真正 Full Test 前外部证据保存/取回 proof 仍是原计划独立前置；D05 roots/薄层 host/partial-failure recovery 仍不在本次范围。"
+  },
+  "ownerContext": {
+    "rawExploreProof": "保留已接受 Owner 授权：原始 Explore proof 可移至 .tmp 且无需长期保留；不要求恢复，不推断违规删除。"
+  },
+  "environment": {
+    "nativePlatform": "win32",
+    "node": "22.23.2",
+    "pnpm": "11.22.0",
+    "managedOpenSpecVersion": "1.10.0",
+    "managedArchifyVersion": "2.15.0",
+    "toolchainLockSha256": "10320026a769d328bd653e5a092da00200f4c6c7f65f30d3df43a59b3fe01df4"
+  },
+  "assessments": {
+    "currentStep": "独立复审 084 对 010 的修正，并保留已审 001–009；Reviewer 验证环境偏差已在一次性环境内消除。",
+    "complexity": "只修订 1 个既有实现文件（370 行）和 1 个既有定向测试文件（575 行）；累计 Apply 最大 643 行，低于 650。复用窄数组 guard，不新增依赖、层、Registry、generic canonical JSON 或工作流能力。",
+    "scopeDrift": "NONE",
+    "newContent": "完整数组槽位检查是已批 D3/D7/tasks 3.1/7.1 内的 fail-closed 必要实现及验证，不需要 Proposal repair 或新增 Change。",
+    "proposalDefectFound": false
+  },
+  "reviewerVerdict": "approved",
+  "archiveAllowed": true,
+  "nextBoundary": "archive",
+  "continuationBasis": "现行 Policy normal matrix review-apply approved -> archive 的交接事实；未运行 Policy/候选 CLI，不自动执行。",
+  "stableManagerUsed": false,
+  "stableManagerAvailability": "Get-Command flowkit 无结果；当前独立 D04 bootstrap HOW 适用。",
+  "candidateCliInvokedForLifecycle": false,
+  "authorArtifactMutation": "NONE",
+  "historicalRunMutation": "NONE",
+  "reviewerArtifactMutation": "RUN_085_THREE_FILES_ONLY_PLUS_DISPOSABLE_DIAGNOSTICS",
+  "formalVerificationVerdictCreated": false,
+  "ownerOrGitAuthorityCreated": false,
+  "targetRepositoryGitOperation": "NONE",
+  "continuationExecuted": false,
+  "stableTransfer": true,
+  "packageClass": "reviewer-delta"
+}

@@ -1,0 +1,62 @@
+{
+  "runNumber": 16,
+  "kind": "external-orchestrator-revise-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "complete-formal-full-test-correction-and-platform-fixture-discipline",
+  "action": "revise-apply",
+  "runId": "20260903-016-revise-apply",
+  "inputRunId": "20260903-015-review-apply",
+  "physicalRunPath": ".flowkit/runs/20260902-04-delivery-continuity-stable-core-closure/002-complete-formal-full-test-correction-and-platform-fixture-discipline/20260903-016-revise-apply",
+  "physicalRunGroupPrefix": "002",
+  "projectOrdinal": 27,
+  "changeStartSequence": 2,
+  "baseCommit": "d4858d461bd5a08413b8581490e75497f4027efe",
+  "inputReviewerPackageSha256": "035ae22b03275d65520b0599abd7d981159116e4ffb28e20bd3bdbf2555b3987",
+  "inputReviewVerdict": "REVISE",
+  "blockingFindingsResolved": [
+    "D04-R002-003"
+  ],
+  "correctedArtifacts": {
+    "src/domain/delivery-full-test-execution.ts": {
+      "sha256": "e2367cc74918f7da57a0938e61ee55f0be388a46775b7eb48be8d5cfeae1c692",
+      "bytes": 10791
+    },
+    "tests/unit/domain/delivery-full-test-execution.test.ts": {
+      "sha256": "33f8ec8148c0dd8b7570b1a6d08cdc2aec1500b4f711ec6abb7bf62bfe658c4f",
+      "bytes": 13076
+    }
+  },
+  "correction": {
+    "candidateRevalidation": "after each actually executed check and before next check",
+    "driftOutcome": "stopped-candidate-drift",
+    "laterChecksAfterDrift": "NOT_EXECUTED",
+    "resultAdmissionAfterDrift": "NONE",
+    "newSubsystem": "NONE"
+  },
+  "verification": {
+    "focusedDeliveryFullTest": "11/11 PASS, 0 skipped",
+    "domain": "207/207 PASS, 0 skipped",
+    "acceptance": "4/4 PASS, 0 skipped",
+    "openSpec": "19/19 strict PASS",
+    "typecheck": "PASS",
+    "build": "PASS",
+    "format": "PASS",
+    "lint": "PASS",
+    "forbiddenTrackedArtifacts": "PASS",
+    "dependencyHealth": "65 modules / 259 dependencies / 0 violations",
+    "entropy": "28/28 production modules reachable",
+    "entropyFocused": "7/7 PASS",
+    "gitDiffCheck": "PASS"
+  },
+  "verificationProvenance": {
+    "historical014Claim": "205/205 PASS, 0 skipped",
+    "reviewer015Reproduction": "206/206 PASS, 0 skipped",
+    "fresh016Exact": "207/207 PASS, 0 skipped",
+    "historical014Rewritten": false
+  },
+  "scopeDrift": "NONE",
+  "stableTransfer": true,
+  "packageClass": "author-revise-apply-payload"
+}

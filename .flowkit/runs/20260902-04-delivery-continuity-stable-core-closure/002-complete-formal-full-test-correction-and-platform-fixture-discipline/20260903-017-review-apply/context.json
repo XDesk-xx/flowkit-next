@@ -1,0 +1,71 @@
+{
+  "runNumber": 17,
+  "kind": "external-orchestrator-review-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "complete-formal-full-test-correction-and-platform-fixture-discipline",
+  "action": "review-apply",
+  "runId": "20260903-017-review-apply",
+  "inputRunId": "20260903-016-revise-apply",
+  "physicalRunPath": ".flowkit/runs/20260902-04-delivery-continuity-stable-core-closure/002-complete-formal-full-test-correction-and-platform-fixture-discipline/20260903-017-review-apply",
+  "physicalRunGroupPrefix": "002",
+  "projectOrdinal": 27,
+  "changeStartSequence": 2,
+  "baseCommit": "d4858d461bd5a08413b8581490e75497f4027efe",
+  "inputAuthorPackageSha256": "2778954d3e7de774fde1a353e40ecf6aee905e4294eb1b85bf287b1a8bc233b7",
+  "inputReviewerPackageSha256": "035ae22b03275d65520b0599abd7d981159116e4ffb28e20bd3bdbf2555b3987",
+  "reviewedArtifacts": {
+    "deliveryFullTestExecutionSha256": "e2367cc74918f7da57a0938e61ee55f0be388a46775b7eb48be8d5cfeae1c692",
+    "deliveryFullTestTestsSha256": "33f8ec8148c0dd8b7570b1a6d08cdc2aec1500b4f711ec6abb7bf62bfe658c4f",
+    "tasksSha256": "e7d739df870d29a821b14a7d46bcccf5feeec2daba03ed84e2f9367b1bc7b005"
+  },
+  "findingConvergence": {
+    "D04-R002-003": {
+      "status": "RESOLVED",
+      "fact": "Candidate identity is re-derived after every actually executed check; drift returns stopped-candidate-drift before any later check executes. The two-check external-marker counterexample passes."
+    }
+  },
+  "independentProof": {
+    "payloadInternalHashes": "44/44 MATCH",
+    "priorReviewerPackageSha": "MATCH",
+    "priorReviewerRunBytesPreserved": true,
+    "node": "22.23.2",
+    "dependencySnapshotReused": true,
+    "packageManagerInstallInvoked": false,
+    "focusedDeliveryFullTest": "11/11 PASS, 0 skipped",
+    "domain": "207/207 PASS, 0 skipped",
+    "acceptance": "4/4 PASS, 0 skipped",
+    "typecheck": "PASS",
+    "build": "PASS",
+    "format": "PASS",
+    "lint": "PASS",
+    "forbiddenTrackedArtifacts": "PASS",
+    "dependencyHealth": "65 modules / 259 dependencies / 0 violations",
+    "entropy": "28/28 production modules reachable",
+    "entropyFocused": "7/7 PASS",
+    "openSpecAllStrict": "19/19 PASS",
+    "gitDiffCheck": "PASS"
+  },
+  "verificationProvenance": {
+    "historical014Claim": "205/205 PASS, 0 skipped",
+    "reviewer015Reproduction": "206/206 PASS, 0 skipped",
+    "author016Fresh": "207/207 PASS, 0 skipped",
+    "reviewer017Reproduction": "207/207 PASS, 0 skipped",
+    "newTestExplainsCountIncrease": true,
+    "historical014Rewritten": false
+  },
+  "scopeAssessment": {
+    "genericGuidanceHardcodesFlowkitNextCommands": false,
+    "ownerAuthorityBoundary": "CORRECT",
+    "registryRouterPlanner": false,
+    "candidateSubsystem": false,
+    "changes3To5PulledForward": false,
+    "d05Introduced": false,
+    "selfHostingTakeover": false,
+    "scopeDrift": "NONE"
+  },
+  "archiveAllowed": true,
+  "stableTransfer": true,
+  "packageClass": "reviewer-delta"
+}

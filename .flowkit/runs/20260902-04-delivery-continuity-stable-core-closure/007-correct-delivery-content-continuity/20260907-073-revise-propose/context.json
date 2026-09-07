@@ -1,0 +1,97 @@
+{
+  "runNumber": 73,
+  "runId": "20260907-073-revise-propose",
+  "kind": "external-orchestrator-revise-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "correct-delivery-content-continuity",
+  "projectOrdinal": 32,
+  "action": "revise-propose",
+  "physicalRunPath": ".flowkit/runs/20260902-04-delivery-continuity-stable-core-closure/007-correct-delivery-content-continuity/20260907-073-revise-propose",
+  "physicalRunGroupPrefix": "007",
+  "changeStartSequence": 7,
+  "inputRunId": "20260907-072-review-propose",
+  "baseCommit": "b0b2d918c41212fe80e1ad5e58bc14dcd7217c1d",
+  "branch": "delivery/20260902-04-delivery-continuity-stable-core-closure",
+  "ownerInstruction": {
+    "basis": "EXPLICIT_CURRENT_OWNER_AUTHORIZATION_FOR_MINIMAL_REVISE_PROPOSE",
+    "scope": "在当前 Change 内规划阶段 Skill HOW 优化，不另开 Change；只修订受影响 planning artifacts 并记录真实 Run",
+    "materialDecision": "原始 Explore proof 移到 .tmp 且无需长期保留来自 Owner 明确授权，不是 Author 越权",
+    "requiredNextBoundary": "review-propose",
+    "applyAuthority": false,
+    "gitAuthority": false
+  },
+  "priorReview": {
+    "runId": "20260907-072-review-propose",
+    "verdict": "approved",
+    "withdrawnFinding": "D04-RP007-001",
+    "withdrawalDisposition": "withdrawn-as-reviewer-error",
+    "currentRevisionMeaning": "OWNER_SCOPED_HOW_PLAN_REFINEMENT_NOT_AUTHOR_FIX_FOR_WITHDRAWN_FINDING"
+  },
+  "inputRunHashes": {
+    "actionSha256": "d4f73d0b257b44d6c8442873d8cfbf8c6e1f81cba3ae9220adfb05b79abca6f2",
+    "contextSha256": "7df734fc3ae1e1e74ea67d1fb5791a124ccbb570a99fe908d150116c6abbf303",
+    "resultSha256": "27ba94bdc5674890cb980bdfff52054637b137f58c77ac0a081d2e4704eea053"
+  },
+  "planningRevision": {
+    "beforeHashesFromRun": "20260907-070-propose/context.json#outputArtifactHashes",
+    "beforeHashes": {
+      "openspec/changes/correct-delivery-content-continuity/proposal.md": "a4378850e4d64f86c509fd014d975a36adaa21f134885fcc59b7fee2751d7fb2",
+      "openspec/changes/correct-delivery-content-continuity/design.md": "afa79e252cb09c9c15fc96b650063cf7423bcbfa225fc924a358f1d8a883e674",
+      "openspec/changes/correct-delivery-content-continuity/tasks.md": "11474ac2497abf4533f71d517b10dcf726c503a44c3db88887689399ec9d8296"
+    },
+    "afterHashes": {
+      "openspec/changes/correct-delivery-content-continuity/proposal.md": "820fd4b741ced1b3bbdd992c3bea578f5f70a7336f60dcf7556e5ac750dd5a2b",
+      "openspec/changes/correct-delivery-content-continuity/design.md": "d5c57f2bc8db1c6003a97364f3caea8fe835cd00d312d217bd7f8ec10dabd5fb",
+      "openspec/changes/correct-delivery-content-continuity/tasks.md": "895e83df709e1b311693d3bf28caa2f4cf345856849b5583da8970589114fd72"
+    },
+    "deltaSpecsChanged": false,
+    "deltaSpecsHashMatchRun070": "7/7 MATCH",
+    "reasonNoDeltaSpec": "现有 author-action-guidance 与 reviewer-action-guidance 已拥有相关 Action-aligned handoff、proof/Verification 分离、accepted-chain tracing 与 bounded finding 责任；本轮只优化其具体 HOW"
+  },
+  "plannedSkillTargets": {
+    ".agents/skills/explore-proof-based/SKILL.md": "2d66e38eefac99939b8b68b8010fd164229994f50b9e660084a9feddca15caff",
+    ".agents/skills/proposal-convergence/SKILL.md": "b6c541148067ef8d2c97879a0a3814c4bccb9fcc968f9248a7035ef81893d831",
+    ".agents/skills/revise-propose/SKILL.md": "520c6b9414eb45b8b04747dfbc169766a43f60593600d0a5a98dd19da2603ab6",
+    ".agents/skills/review-propose/SKILL.md": "7c3485a985638a8c92b41cc565d4e1aa0db49ac9f0cf80187cbfe675e4325328",
+    "skills/actions/explore/SKILL.md": "cffa4590d73e04c900364eefdd58792a8ebc2ae528687e97980ffda92c4ddb5b",
+    "skills/actions/propose/SKILL.md": "fe5f8a7174a14ee55491239cde36024f81da27783e28d7341d0e2143cc2f87d3",
+    "skills/actions/revise-propose/SKILL.md": "e115159215a935edbc451a79c7bf0a13ebd1aa035281de69605f90b08de64ef8",
+    "skills/actions/review-propose/SKILL.md": "8cd363ab8d7fd1ccae3a43d9de94f5addc6e12e5fbf814317b8f03bc5e590a24"
+  },
+  "scopeAssessment": {
+    "newCapability": false,
+    "exploreReopened": false,
+    "existingApprovedContentPreserved": true,
+    "bootstrapProductIndependencePreserved": true,
+    "registryOrProofStoreAdded": false,
+    "permanentRawProofRetentionAdded": false,
+    "runtimePolicyRunSchemaChanged": false
+  },
+  "validation": {
+    "managedOpenSpecVersion": "1.10.0",
+    "currentChangeStrict": "PASS",
+    "allOpenSpecStrict": "23/23 PASS; structural only",
+    "planningStatus": "4/4 artifact groups complete",
+    "tasks": "0/35 completed",
+    "gitDiffCheck": "PASS",
+    "productTestsRun": false,
+    "formalFullTestRun": false,
+    "skillFilesChanged": false,
+    "productionFilesChanged": false,
+    "historicalRunsChanged": false,
+    "gitMutationExecuted": false
+  },
+  "continuation": {
+    "nextBoundary": "review-propose",
+    "reviewerVerdict": null,
+    "applyExecuted": false,
+    "archiveExecuted": false,
+    "formalFullTestExecuted": false,
+    "gitMutationExecuted": false,
+    "stop": true
+  },
+  "stableTransfer": true,
+  "packageClass": "proposal-revision-delta"
+}

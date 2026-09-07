@@ -16,6 +16,8 @@ This Guidance owns HOW only. It does not decide lifecycle legality, Reviewer ver
 
 Read the exact approved Explore and approving review, current OpenSpec Change status/instructions, and controlling Owner scope.
 
+Include materially relevant Owner decisions that affect current judgment, including authorized material relocation or retention boundaries. Preserve concise decision/scope references, not the whole conversation.
+
 Use `skills/tools/openspec/SKILL.md` for subordinate OpenSpec mechanics. Do not recreate a second OpenSpec manual.
 
 ## Proposal convergence
@@ -37,6 +39,8 @@ tasks.md    → current implementation checklist
 ```
 
 Do not copy the approved Explore proof transcript or review/revision chronology into Proposal/Design merely for auditability. Preserve rationale still needed to understand the current design and prefer concise exact cross-artifact or Run/finding references when deeper provenance is material.
+
+Keep Explore experiments, accepted decision basis, and current implementation acceptance evidence distinct. Proposal does not permanently depend on every raw proof artifact by default; historical proof cannot be presented as current implementation PASS.
 
 File size and line count are diagnostic signals only, not correctness Gates.
 

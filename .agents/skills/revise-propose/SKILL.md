@@ -9,7 +9,7 @@ metadata:
 
 ## Purpose
 
-Repair Proposal after review-propose findings while keeping the approved Explore boundary and Proposal convergence intact.
+Repair Proposal after exact review-propose findings or an explicit Owner-scoped planning correction while keeping the approved Explore boundary and Proposal convergence intact.
 
 ## Process
 
@@ -22,6 +22,8 @@ Repair Proposal after review-propose findings while keeping the approved Explore
 - design ambiguity
 - verification gap
 - task/spec mismatch
+
+For an Owner-scoped correction after an approved review, bind the exact current Owner decision and distinguish it from a withdrawn Reviewer finding. Carry only decision-relevant scope and material handling/retention boundaries, not the full conversation.
 
 ### 2. Trace the finding to the approved model
 
@@ -64,6 +66,8 @@ tasks.md
 Ensure requirements, design, tasks, and acceptance remain consistent.
 
 Converge affected planning text in place: replace/remove superseded claims and keep only rationale still needed to understand the current design. Do not append Reviewer/Owner correction chronology or copy the full prior Proposal/Explore into the revised artifacts. Use concise exact Run/finding references for deeper provenance when material.
+
+Do not turn temporary Explore experiments into permanent Proposal dependencies. Keep accepted decision basis separate from current implementation acceptance evidence; historical proof cannot establish a current implementation PASS.
 
 ### 5. Re-run Proposal checks
 

@@ -150,6 +150,14 @@ For every proof, record:
 
 A proof with no decision impact should not become a Proposal requirement by default.
 
+Keep three meanings distinct in the handoff:
+
+- an Explore experiment is bounded evidence for an uncertainty at that time;
+- an accepted decision basis is the current conclusion/boundary plus the relevant Owner and accepted-review reference;
+- current implementation acceptance evidence must be produced against the current candidate during Apply/Verification.
+
+Historical Explore proof does not become current implementation PASS. Raw experiments may be temporary when the current contract no longer depends on their bytes; carry any materially relevant Owner decision about moving, retaining, or disposing of that material, without copying the whole conversation or creating a proof store.
+
 ### 5A. Converge canonical Explore to current truth
 
 The canonical Explore should preserve current bounded proof, conclusions, limitations, and rationale still needed to understand the current contract. It is not an append-only diary of Reviewer/Owner corrections.

@@ -1,0 +1,31 @@
+{
+  "runId": "20260907-056-review-explore",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "converge-cross-platform-unreadable-fixture-discipline",
+  "action": "review-explore",
+  "role": "reviewer",
+  "status": "terminal",
+  "verdict": "changes-requested",
+  "summary": "The revised Explore correctly proves a minimal test-only native-Windows ACL direction: current-SID RD denial on temporary Guidance files preserves metadata/realpath, makes direct reads fail with EPERM, makes both real resolvers return null, and restores cleanly. It also correctly retains the canonical no-skip semantic obligation and removes post-archive work from the active-Change task boundary. Proposal remains blocked only because the D04 Delivery manifest still authorizes capability-bound SKIP for Change 6 and lacks the later Owner scope-correction provenance, leaving contradictory OpenSpec goal inputs. Converge that manifest boundary during revise-explore; no technical redesign or wider scope is required.",
+  "blockingFindings": [
+    "D04-R006-001"
+  ],
+  "proposalAllowed": false,
+  "applyAllowed": false,
+  "nextBoundary": "revise-explore",
+  "reviewerMutation": "RUN_056_ONLY",
+  "productionMutation": "NONE",
+  "authorArtifactMutation": "NONE",
+  "scopeDriftAssessment": "NONE",
+  "newContentAssessment": "WINDOWS_ACL_AND_PRE_ARCHIVE_TASK_BOUNDARY_ARE_NECESSARY_WITHIN_OWNER_CORRECTION",
+  "complexityAssessment": "MINIMAL_TWO_TEST_FIXTURES_NO_PRODUCTION_OR_CORE_EXPANSION_ONE_CANONICAL_MANIFEST_BLOCKER",
+  "nativeWindowsProof": "INDEPENDENT ACL SEMANTIC REPRODUCTION PASS; CURRENT SUPERSEDED TESTS 17 PASS 2 SKIP",
+  "canonicalOpenSpecProof": "23/23 strict PASS; semantic manifest conflict remains",
+  "gitDiffCheck": "PASS",
+  "ownerOrGitAuthorityCreated": false,
+  "stableManagerUsed": false,
+  "candidateCliInvoked": false,
+  "continuationExecuted": false,
+  "stableTransfer": true,
+  "packageClass": "reviewer-delta"
+}

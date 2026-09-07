@@ -1,0 +1,73 @@
+{
+  "runNumber": 60,
+  "kind": "external-orchestrator-review-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "converge-cross-platform-unreadable-fixture-discipline",
+  "action": "review-propose",
+  "runId": "20260907-060-review-propose",
+  "inputRunId": "20260907-059-revise-propose",
+  "approvedExploreReviewRunId": "20260907-058-review-explore",
+  "physicalRunPath": ".flowkit/runs/20260902-04-delivery-continuity-stable-core-closure/006-converge-cross-platform-unreadable-fixture-discipline/20260907-060-review-propose",
+  "physicalRunGroupPrefix": "006",
+  "projectOrdinal": 31,
+  "changeStartSequence": 6,
+  "baseCommit": "875b7827867fd8489f9c3d05837fa3879ec15e2b",
+  "inputRunHashes": {
+    "actionSha256": "f512c738cf532a85862f7b21cd6d9ca57fb8c566de7e9fd1a66930d15b6b5b9e",
+    "contextSha256": "62f9bc84ef951ba7cebd19acd2578d25339daed5166e661f7afa9a97da2a1793",
+    "resultSha256": "5eeca91db4c45394d93af1758b4990ba43e142cc746b2964f84cfd4cb2dd75ad"
+  },
+  "reviewedArtifacts": {
+    "openSpecMetadataSha256": "e6bda6d36b39e20ff5aacc32a46eeca39be2a1b5ac9186d37551b39936b24143",
+    "exploreSha256": "23dc9aa583aac0d6cc3757c796d328c039cb396314b3d29f5f2c17850ebb7c9a",
+    "proposalSha256": "79420fe4508129e34619ed887f1b5f3c8635a14d9dec81406e9e32843c61d4c9",
+    "designSha256": "5e8b0bfe2958073dec824ec5b12b7709c5f5ac2bd35095291e7fcc74ffafd2a1",
+    "tasksSha256": "75568220df542fd7825425cd9e6b5ded75b7290798597cc80f14cd4c38fff702",
+    "deliveryManifestSha256": "8a463b0e42eff0c3c028211e11d5ddf1f1fcd0cc54a8601ae9c8ecb3c8eb218f",
+    "canonicalFormalFullTestSpecSha256": "6aedfa74a25ab88d3f1f01bbaefed02fe917a1100875cfb6ad6f85af3c57fabb"
+  },
+  "independentProof": {
+    "managedOpenSpecVersion": "1.10.0",
+    "currentChangeStrict": "PASS",
+    "openSpecAllStrict": "23/23 PASS",
+    "deltaSpecAbsent": true,
+    "skipSpecs": true,
+    "allTasksUnchecked": true,
+    "postArchiveTaskAbsent": true,
+    "gitDiffCheck": "PASS"
+  },
+  "findings": {
+    "D04-RP006-001": {
+      "status": "BLOCKING",
+      "affectedArtifacts": [
+        "openspec/changes/converge-cross-platform-unreadable-fixture-discipline/design.md#Validation-Plan",
+        "openspec/changes/converge-cross-platform-unreadable-fixture-discipline/tasks.md#3.1-3.3"
+      ],
+      "impact": "Incidental current suite totals and whole-Domain zero-SKIP accounting replace the stable semantic proof invariant, creating false future failures and broader-than-approved acceptance.",
+      "minimumCorrection": "Use named-suite success plus explicit execution of both target resolver assertions and zero unreadable-fixture SKIP; retain concrete totals only as observed evidence."
+    }
+  },
+  "semanticAssessment": {
+    "approvedExploreTraceable": true,
+    "skipContractRemoved": true,
+    "canonicalSpecMutationRequired": false,
+    "productionMutationAuthorized": false,
+    "windowsAclBoundaryProportional": true,
+    "postArchiveTaskPresent": false,
+    "transientCountsEncodedAsContract": true,
+    "scopeDrift": "BOUNDED_ACCEPTANCE_LITERAL_OVERREACH",
+    "complexity": "MINIMAL_EXCEPT_ACCEPTANCE_LITERAL"
+  },
+  "applyAllowed": false,
+  "nextBoundary": "revise-propose",
+  "stableManagerUsed": false,
+  "stableManagerAvailability": "external flowkit command unavailable",
+  "candidateCliInvoked": false,
+  "reviewerArtifactMutation": "RUN_060_ONLY",
+  "authorArtifactMutation": "NONE",
+  "continuationExecuted": false,
+  "stableTransfer": true,
+  "packageClass": "reviewer-delta"
+}

@@ -1,0 +1,92 @@
+{
+  "runNumber": 78,
+  "runId": "20260907-078-review-apply",
+  "kind": "external-orchestrator-review-apply-result",
+  "canonicalFlowkitRuntimeRun": false,
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "correct-delivery-content-continuity",
+  "projectOrdinal": 32,
+  "action": "review-apply",
+  "role": "reviewer",
+  "status": "terminal",
+  "reviewerVerdict": "changes-requested",
+  "authorConclusion": null,
+  "verificationVerdict": null,
+  "inputRunId": "20260907-077-revise-apply",
+  "priorReviewRunId": "20260907-076-review-apply",
+  "approvedProposalReviewRunId": "20260907-074-review-propose",
+  "summary": "077 的 7 项原 finding 已闭合 4 项（001/004/005/007），仍有 3 项部分修正未闭合（002/003/006）：Start 可接纳真实失败检查材料；Final 缺 canonical admission 合法性核验并误拒跨 Change 必要链；相同 Final ref 的字段重排仍被后续 requiredEvidence 重验拒绝。沿用原 finding ID，在同一 Change 继续 revise-apply，不要求重做 Proposal。",
+  "artifactHashes": {
+    "actionSha256": "59560279450dcbf0ecb6807a154b8ff629eb475e6e4fcc53cfc5aa749375db61",
+    "contextSha256": "529aa293f8307359b29cc4d231fd2a0fb0ba1a6a2d84082aa09ddfa40138522e",
+    "input077ResultSha256": "bb2fbd5acb2d18b14e1be861809e5a780f29110b0c2bae1872b413520945de6a"
+  },
+  "candidateRef": "candidate:sha256:fc6049460a292849dfca18eab9184343bbf07458c3fb9f38d8160ccc6c56be57",
+  "protectedFileCount": 1468,
+  "protectedSnapshotSha256": "afedc3d517da9936c9e26c48bbf4f925c349cb1c6272c253cf8719d302e90683",
+  "protectedCandidateUnchanged": true,
+  "closedFindings": [
+    "D04-RA007-001",
+    "D04-RA007-004",
+    "D04-RA007-005",
+    "D04-RA007-007"
+  ],
+  "closedFindingCount": 4,
+  "blockingFindings": [
+    {
+      "id": "D04-RA007-002",
+      "severity": "P1",
+      "status": "partially-corrected",
+      "title": "Start 仍未验证 validation 的真实成功结论与完整检查输入",
+      "detailRef": "context.json#findings"
+    },
+    {
+      "id": "D04-RA007-003",
+      "severity": "P1",
+      "status": "partially-corrected",
+      "title": "Final Run 证据仍缺 admission 校验，且把必要链限制在同一 Change",
+      "detailRef": "context.json#findings"
+    },
+    {
+      "id": "D04-RA007-006",
+      "severity": "P2",
+      "status": "partially-corrected",
+      "title": "固定投影已修复，但 requiredEvidence 重验仍依赖属性插入顺序",
+      "detailRef": "context.json#findings"
+    }
+  ],
+  "blockingFindingCount": 3,
+  "newFindingCount": 0,
+  "independentVerification": {
+    "focused": "36/36 PASS, 0 fail, 0 skip",
+    "nativeWindowsDomain": "263/263 PASS, 0 fail, 0 skip",
+    "nativeWindowsAcceptance": "5/5 PASS, 0 fail, 0 skip",
+    "typecheck": "PASS",
+    "formatCheck": "PASS",
+    "gitDiffCheck": "PASS",
+    "managedOpenSpecCurrentChangeStrict": "1.10.0 valid; structural only",
+    "revisionBindings": "16/16 MATCH; no unreported change",
+    "planningPreserved": true,
+    "changedFileLineGate": "max 645, none >650",
+    "counterexampleScript": "8 diagnostic/control observations; not product acceptance PASS",
+    "linuxReexecuted": false,
+    "formalDeliveryFullTestRun": false
+  },
+  "scopeDrift": "NONE",
+  "proposalRepairRequired": false,
+  "archiveAllowed": false,
+  "nextBoundary": "revise-apply",
+  "nextBoundaryMeaning": "normal review matrix handoff only; no Policy invocation, automatic execution or new Owner authority",
+  "reviewerArtifactMutation": "RUN_078_THREE_FILES_ONLY_PLUS_DISPOSABLE_DIAGNOSTICS",
+  "authorArtifactMutation": "NONE",
+  "historicalRunMutation": "NONE",
+  "stableManagerUsed": false,
+  "candidateCliInvokedForLifecycle": false,
+  "targetRepositoryGitOperation": "NONE",
+  "formalVerificationVerdictCreated": false,
+  "ownerOrGitAuthorityCreated": false,
+  "continuationExecuted": false,
+  "stableTransfer": true,
+  "packageClass": "reviewer-delta",
+  "stop": true
+}

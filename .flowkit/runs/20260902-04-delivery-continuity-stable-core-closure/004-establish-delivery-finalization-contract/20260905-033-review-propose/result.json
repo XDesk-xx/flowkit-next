@@ -1,0 +1,32 @@
+{
+  "runId": "20260905-033-review-propose",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "establish-delivery-finalization-contract",
+  "action": "review-propose",
+  "role": "reviewer",
+  "status": "terminal",
+  "verdict": "changes-requested",
+  "summary": "Proposal 032 is traceable, minimal, and scope-disciplined, and it preserves the approved ChatGPT web host model. Apply is not yet ready because Design does not freeze deterministic serialization for architectureFinalizationRef and deliveryFinalizationRef, and the Architecture delta calls presentation fixed without enumerating its exact nested keys and values. Revise only those two exact contract surfaces; no generic hash/schema platform or scope expansion is required.",
+  "blockingFindings": [
+    "D04-RP004-001",
+    "D04-RP004-002"
+  ],
+  "applyAllowed": false,
+  "nextBoundary": "revise-propose",
+  "reviewerMutation": "RUN_033_ONLY",
+  "productionMutation": "NONE",
+  "authorArtifactMutation": "NONE",
+  "scopeDriftAssessment": "NONE",
+  "newContentAssessment": "APPROVED_EXPLORE_TRACED; TWO_EXACT_CONTRACT_DETAILS_INCOMPLETE",
+  "complexityAssessment": "PROPORTIONAL_BOUNDED_DESIGN; LOCAL_SERIALIZATION_AND_PRESENTATION_EXACTNESS_REPAIR_ONLY",
+  "openSpecProof": "21/21 --all --strict PASS",
+  "focusedProof": "Architecture Finalization baseline 9/9 PASS, 0 skipped",
+  "gitDiffCheck": "PASS",
+  "ownerOrGitAuthorityCreated": false,
+  "stableManagerUsed": false,
+  "doctorInvoked": false,
+  "candidateCliInvoked": false,
+  "continuationExecuted": false,
+  "stableTransfer": true,
+  "packageClass": "reviewer-delta"
+}

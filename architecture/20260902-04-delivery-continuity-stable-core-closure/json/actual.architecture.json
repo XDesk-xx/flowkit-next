@@ -1,0 +1,247 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "flowkit-next 实际系统架构 — Delivery 04 Stable Core Closure",
+    "subtitle": "当前实现具备 Action 与 Delivery 两级 exact-operation execution；OpenSpec、Git、Owner、Verification 与 Archify 继续拥有各自独立事实边界。",
+    "output": "actual.html",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/XDesk-xx/flowkit-next",
+      "revision": "6ee1a8beedaeb0a847145732c541bbcda32e416d"
+    },
+    "views": [
+      {
+        "id": "authority-view",
+        "label": "Authority 与事实边界",
+        "focus": ["owner", "openspec", "git", "policy"],
+        "note": "Owner 授权、OpenSpec 合同、Git bytes 与 Policy legal boundary 互不替代。"
+      },
+      {
+        "id": "execution-view",
+        "label": "Exact-operation 执行",
+        "focus": ["guidance", "policy", "execution", "runs"],
+        "note": "already-decided operation 绑定 content-bound Guidance 与 exact package 后执行并停止。"
+      },
+      {
+        "id": "delivery-view",
+        "label": "Delivery 闭合能力",
+        "focus": ["verification", "archify", "external-evidence", "git"],
+        "note": "Full Test、Architecture、Final 与 repository integration 通过精确 lineage 衔接。"
+      },
+      {
+        "id": "quality-view",
+        "label": "工程质量能力",
+        "focus": ["quality", "toolchain", "verification"],
+        "note": "轻量 gate、dependency health、entropy hygiene 与 applicable checks 已成为可执行能力。"
+      }
+    ],
+    "viewBox": [1540, 1080]
+  },
+  "components": [
+    {
+      "id": "owner",
+      "type": "external",
+      "label": "Owner",
+      "sublabel": "scope / authorization / Git decision",
+      "tag": "authority",
+      "pos": [70, 130],
+      "size": [180, 70]
+    },
+    {
+      "id": "openspec",
+      "type": "external",
+      "label": "OpenSpec 1.10.0",
+      "sublabel": "Change / spec contract",
+      "tag": "formal truth",
+      "pos": [780, 130],
+      "size": [200, 70],
+      "sources": [
+        { "path": "openspec/specs/lifecycle-authority-and-identity/spec.md", "label": "canonical specification" },
+        { "path": "src/domain/openspec-observation.ts", "label": "thin observation" }
+      ]
+    },
+    {
+      "id": "git",
+      "type": "database",
+      "label": "Git Repository",
+      "sublabel": "bytes / revision / history",
+      "tag": "repository truth",
+      "pos": [1140, 130],
+      "size": [200, 70]
+    },
+    {
+      "id": "toolchain",
+      "type": "security",
+      "label": "Managed Toolchain",
+      "sublabel": "Node / pnpm / OpenSpec / Archify",
+      "tag": "exact identity",
+      "pos": [70, 390],
+      "size": [230, 70],
+      "sources": [
+        { "path": "config/tools/toolchain.lock.json", "label": "managed tool lock" },
+        { "path": "package.json", "label": "host and package manager" }
+      ]
+    },
+    {
+      "id": "guidance",
+      "type": "backend",
+      "label": "Canonical Guidance",
+      "sublabel": "skills/actions + skills/delivery",
+      "tag": "HOW only",
+      "pos": [410, 390],
+      "size": [220, 72],
+      "sources": [
+        { "path": "skills/actions/explore/SKILL.md", "label": "Action HOW" },
+        { "path": "skills/delivery/full-test/SKILL.md", "label": "Delivery HOW" }
+      ]
+    },
+    {
+      "id": "policy",
+      "type": "security",
+      "label": "Authority / Policy",
+      "sublabel": "legal boundary / checkpoint evaluation",
+      "tag": "no auto-next",
+      "pos": [390, 130],
+      "size": [230, 72],
+      "sources": [
+        { "path": "src/domain/authority.ts", "label": "authority facts" },
+        { "path": "src/domain/policy-and-next-boundary.ts", "label": "policy decision" }
+      ]
+    },
+    {
+      "id": "execution",
+      "type": "backend",
+      "label": "Exact Operation Execution",
+      "sublabel": "ActionPackage + DeliveryOperationPackage",
+      "tag": "single operation",
+      "pos": [760, 390],
+      "size": [270, 72],
+      "sources": [
+        { "path": "src/domain/single-action-execution.ts", "label": "Action execution" },
+        { "path": "src/domain/delivery-operation-execution.ts", "label": "Delivery package" },
+        { "path": "src/domain/delivery-full-test-execution.ts", "label": "Full Test execution" }
+      ]
+    },
+    {
+      "id": "runs",
+      "type": "database",
+      "label": "Run / Result Persistence",
+      "sublabel": "durable Standard Action history",
+      "tag": "three-file surface",
+      "pos": [1140, 390],
+      "size": [230, 72],
+      "sources": [
+        { "path": "src/domain/run-result-persistence.ts", "label": "persistence contract" },
+        { "path": ".flowkit/runs/20260902-04-delivery-continuity-stable-core-closure/007-correct-delivery-content-continuity/20260907-086-archive/result.json", "label": "durable execution fact" }
+      ]
+    },
+    {
+      "id": "quality",
+      "type": "security",
+      "label": "Engineering Quality",
+      "sublabel": "gate / dependency / entropy",
+      "tag": "bounded checks",
+      "pos": [70, 670],
+      "size": [220, 72],
+      "sources": [
+        { "path": "package.json", "label": "quality commands" },
+        { "path": "dependency-cruiser.config.mjs", "label": "dependency rules" },
+        { "path": "scripts/check-production-reachability.mjs", "label": "reachability" }
+      ]
+    },
+    {
+      "id": "verification",
+      "type": "cloud",
+      "label": "Verification",
+      "sublabel": "applicable checks + Formal Full Test",
+      "tag": "evidence only",
+      "pos": [410, 670],
+      "size": [240, 72],
+      "sources": [
+        { "path": "src/domain/applicable-check-execution.ts", "label": "check identity" },
+        { "path": "openspec/specs/formal-full-test-execution-and-correction/spec.md", "label": "Full Test contract" }
+      ]
+    },
+    {
+      "id": "archify",
+      "type": "external",
+      "label": "Archify 2.15.0",
+      "sublabel": "Actual / compare / system views",
+      "tag": "derived only",
+      "pos": [760, 670],
+      "size": [230, 72],
+      "sources": [
+        { "path": "src/domain/delivery-architecture-finalization-execution.ts", "label": "finalization" },
+        { "path": "architecture/system/data-flow.json", "label": "persistent system view" }
+      ]
+    },
+    {
+      "id": "external-evidence",
+      "type": "database",
+      "label": "External Evidence Source",
+      "sublabel": "Full Test / Architecture outcome",
+      "tag": "trusted sourceRef",
+      "pos": [1120, 670],
+      "size": [260, 72],
+      "sources": [
+        { "path": "src/internal/delivery-required-evidence-source.ts", "label": "read boundary" },
+        { "path": "src/internal/delivery-required-evidence.ts", "label": "evidence shape" }
+      ]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "Formal authority 与 repository facts",
+      "wraps": ["owner", "openspec", "git", "toolchain"]
+    },
+    {
+      "kind": "region",
+      "label": "Stable Core execution",
+      "wraps": ["guidance", "policy", "execution", "runs"]
+    },
+    {
+      "kind": "region",
+      "label": "Verification 与 derived closure",
+      "wraps": ["quality", "verification", "archify", "external-evidence"]
+    }
+  ],
+  "connections": [
+    { "id": "a1", "from": "owner", "to": "policy", "variant": "security" },
+    { "id": "e1", "from": "guidance", "to": "execution", "variant": "emphasis" },
+    { "id": "e2", "from": "execution", "to": "runs", "variant": "default" },
+    { "id": "v1", "from": "quality", "to": "verification", "variant": "emphasis" },
+    { "id": "v2", "from": "verification", "to": "archify", "variant": "emphasis" },
+    { "id": "v3", "from": "archify", "to": "external-evidence", "variant": "dashed" }
+  ],
+  "cards": [
+    {
+      "dot": "emerald",
+      "title": "已实现的执行能力",
+      "items": [
+        "Standard Action 具有 prepared / terminal、exact package、Run / Result admission 与 STOP",
+        "五个 closed DeliveryOperationId 具有 content-bound Guidance 和 concrete package variants",
+        "CLI 保持 status / next / doctor 的薄表面，不自动执行 Delivery 或 Git 操作"
+      ]
+    },
+    {
+      "dot": "cyan",
+      "title": "Delivery 04 闭合能力",
+      "items": [
+        "Full Test 绑定 exact ordered checks、candidate 与 explicit Owner authority",
+        "Architecture Finalization 形成 Actual、thin compares 与三类持久系统视图",
+        "Delivery Final 与 repository integration 重验完整 lineage 和 external evidence source"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "明确边界",
+      "items": [
+        "OpenSpec、Git、Owner、Reviewer、Verification 与 Archify 不互相替代",
+        "Skills 只提供 HOW，Policy 只计算 legal boundary，candidate CLI 不自我取得 Stable authority",
+        "不存在 Registry、自动 next、自动 Git 或第二套 durable truth"
+      ]
+    }
+  ]
+}

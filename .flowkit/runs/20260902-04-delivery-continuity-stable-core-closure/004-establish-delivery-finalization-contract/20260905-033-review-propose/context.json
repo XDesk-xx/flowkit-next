@@ -1,0 +1,66 @@
+{
+  "runNumber": 33,
+  "kind": "external-orchestrator-review-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "establish-delivery-finalization-contract",
+  "action": "review-propose",
+  "runId": "20260905-033-review-propose",
+  "inputRunId": "20260905-032-propose",
+  "physicalRunPath": ".flowkit/runs/20260902-04-delivery-continuity-stable-core-closure/004-establish-delivery-finalization-contract/20260905-033-review-propose",
+  "physicalRunGroupPrefix": "004",
+  "projectOrdinal": 29,
+  "changeStartSequence": 4,
+  "baseCommit": "a170da0373867296813a888c57db8325025a8f5d",
+  "ownerReviewDirection": "review propose",
+  "approvedExploreSha256": "6189cf98a187f9e82883fe837355452b90de5b7b31d78bba9753cbf8ce910f2e",
+  "inputRunHashes": {
+    "actionSha256": "bf63604ce7616d724aa4f046c001add1c120e618e631bbf8cb06e804793ef44e",
+    "contextSha256": "989483981e0f826f2a529a90d955ab2ff4cc509b2a2dcb7c489777505919350e",
+    "resultSha256": "79de047e407aea2acd208fbc7709d6fc8d983cc1e20e0c3e8d3a6c505836905a"
+  },
+  "planningArtifactHashes": {
+    "proposalSha256": "8e0f3cdecb3211ed24f3436eb8aaaa15deabc8e9d9327d3446a666d723d5ccc6",
+    "designSha256": "b6bd3d0b41443506031cf081b05e2826b6044cb9a09ea2f356967e8130287056",
+    "tasksSha256": "4f35f5a3e28c4b898f50066964b112ac65726afab006a30da0c86634bacdf8be",
+    "deliveryFinalizationSpecSha256": "1cf89b58e20e11155a688913624b95658d68b5a4807f370b46574bc6fc1a2691",
+    "deliveryOperationDeltaSpecSha256": "e6e4d9471460245113b0875cbcffa10bc7040e732f75f077dbe7242494c52ac0",
+    "architectureContinuityDeltaSpecSha256": "27f6f6d7d9c76e616f18144d0d2a1f81cef071cefed913b22a3af7c9751c126d"
+  },
+  "deliveryManifestSha256": "62a787cbc8a541a785bdd11293dc9052091955f5f2401f51e35dcbd352419e0b",
+  "independentProof": {
+    "allOpenSpecStrict": "21/21 PASS",
+    "architectureFocusedBaseline": "9/9 PASS, 0 skipped",
+    "gitDiffCheck": "PASS",
+    "productionMutationInProposal": false
+  },
+  "findings": {
+    "D04-RP004-001": {
+      "status": "BLOCKING",
+      "impact": "Architecture and Delivery Final closure refs lack one deterministic serialization contract, so Apply and later consumers cannot independently derive identical identities."
+    },
+    "D04-RP004-002": {
+      "status": "BLOCKING",
+      "impact": "The presentation object is called fixed but its exact allowed keys and values are not normative, leaving malformed admission undefined."
+    }
+  },
+  "semanticAssessment": {
+    "approvedExploreTraceability": true,
+    "completePrerequisiteModelRetained": true,
+    "webHostModelRetained": true,
+    "authorityAndNoGitBoundaryRetained": true,
+    "verificationPathPlausible": true,
+    "closureSerializationExact": false,
+    "presentationContractExact": false,
+    "genericControlPlaneRequired": false,
+    "scopeDrift": "NONE"
+  },
+  "applyAllowed": false,
+  "stableManagerUsed": false,
+  "doctorInvoked": false,
+  "candidateCliInvoked": false,
+  "continuationExecuted": false,
+  "stableTransfer": true,
+  "packageClass": "reviewer-delta"
+}

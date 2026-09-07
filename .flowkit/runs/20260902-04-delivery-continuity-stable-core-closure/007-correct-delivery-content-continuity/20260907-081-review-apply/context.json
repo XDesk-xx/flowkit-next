@@ -1,0 +1,298 @@
+{
+  "runNumber": 81,
+  "runId": "20260907-081-review-apply",
+  "kind": "external-orchestrator-review-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "action": "review-apply",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "correct-delivery-content-continuity",
+  "projectOrdinal": 32,
+  "physicalRunGroupPrefix": "007",
+  "changeStartSequence": 7,
+  "physicalRunPath": ".flowkit/runs/20260902-04-delivery-continuity-stable-core-closure/007-correct-delivery-content-continuity/20260907-081-review-apply",
+  "baseCommit": "b0b2d918c41212fe80e1ad5e58bc14dcd7217c1d",
+  "branch": "delivery/20260902-04-delivery-continuity-stable-core-closure",
+  "reviewRequest": "那现在就是 owner 授权 在080 基础上 补审，审查 079",
+  "inputRunId": "20260907-079-revise-apply",
+  "priorReviewRunId": "20260907-080-review-apply",
+  "approvedProposalReviewRunId": "20260907-074-review-propose",
+  "supplement": {
+    "basis": "Owner 本轮明确授权，对同一 079 candidate 在 080 基础上补审；不是 Author 新修订，也不重新执行/改写 079 或 080。",
+    "supersedesCurrentVerdictOf": "20260907-080-review-apply",
+    "effect": "081 为该 exact candidate 的补充 Reviewer 结论，修正当前整体 verdict/archive readiness；080 历史 bytes、真实检查事实和 001–007 闭合结论保留。",
+    "authorityLimit": "只授权本次独立 review-apply 及 Reviewer 三文件；不授权 Author 修订执行、下一 Action、archive、Formal Full Test 或项目 Git mutation。"
+  },
+  "runHashes": {
+    "20260907-074-review-propose": {
+      "action.md": "372992254c07cf74b3ec04234e3f4611395892d17d591557e8bff4cc65dd2a04",
+      "context.json": "ba93f3325ec8ff0a40fa45bf17494c13a00def4561926365d4d4425805156414",
+      "result.json": "881732df6611518dffc24f4556ca8e4fdbfc7b77b5410d7f6e8790644f81de42"
+    },
+    "20260907-079-revise-apply": {
+      "action.md": "bf04a680e673d4d1a11ad1225d1ebca64c579a438df688115ebb0ed291caa4f6",
+      "context.json": "5e888b35f8450a60621d34f577dbe00465602c4c449315dbe6ce1762258329a4",
+      "result.json": "16194273f283f8354b6c6b42787258248936f73dad84de2a3709ccc3819d4e8f"
+    },
+    "20260907-080-review-apply": {
+      "action.md": "be331f738d6524ec332d2b429b0a3ec1631d51494b6e8aaeab9ff332cca719f2",
+      "context.json": "d2202705ddcbed96da2678e9d2368996deb93ad7e7ce668b1c2a0e63654e3bd1",
+      "result.json": "fe09f22a4612c480efa7c88067f8a69b84dcb8ec5c555109101b2a028c0507e9"
+    }
+  },
+  "reviewedCandidate": {
+    "candidateRef": "candidate:sha256:29eed67d814da2f3fd2f19185d854e14e9d22fc28c4a646fcc19d844df080b3d",
+    "protectedFileCount": 1480,
+    "protectedSnapshotSha256": "b789389339fb85a61a1a3ebaf4094f1ce5e7bf0af79af43d24697ca94a82ae9c",
+    "scope": "Git tracked + nonignored untracked path/bytes，排除本次 081 三文件；含完整 080；.tmp ignored。检查前后同一快照。",
+    "prior080ProtectedSnapshotMatches": true,
+    "runBindingsMatch": true,
+    "actualChangedSince080": [],
+    "reviewedArtifactHashes": {
+      "src/domain/delivery-repository-integration-execution.ts": "32aebb21e1e56a7da7e01d58a453cf573c3e63f725064ff6571ec5c02b7e09a5",
+      "src/internal/delivery-repository-integration-source.ts": "12ac9f0b2ea418faeb3ade17721f1f962c9268d00795e83850e6edbc18a8e29a",
+      "src/internal/delivery-start-content.ts": "79c64de7741a0f1e900375ed3a7be3da515444d58b266b7202e988deda56ef8f",
+      "src/domain/delivery-repository-integration-operation.ts": "75c13e855970f179fa8a9dd79366aa892a29882c3e84ef5af516501539e5816b"
+    },
+    "unaffectedBaseline": "076/context.json#reviewedArtifactHashes + 078/context.json#reviewedCandidate.revisionArtifactHashes + 079/context.json#revisionArtifactHashes，共 57 项当前绑定无漂移；079/080 三文件 exact hashes 及 074 与 080 保存的 hashes 一致。"
+  },
+  "planning": {
+    "proposalSha256": "820fd4b741ced1b3bbdd992c3bea578f5f70a7336f60dcf7556e5ac750dd5a2b",
+    "designSha256": "d5c57f2bc8db1c6003a97364f3caea8fe835cd00d312d217bd7f8ec10dabd5fb",
+    "tasksSha256": "0c5a56f3268336f423a56455c406918add161a31caae39ad84fddecc61a6c7db",
+    "sevenDeltaSpecsUnchanged": true,
+    "tasksCompleted": "35/35（Author 既有状态，不代表补审通过）",
+    "proposalRepairRequired": false
+  },
+  "reviewHow": {
+    "bootstrapSkill": ".agents/skills/review-apply/SKILL.md",
+    "bootstrapSkillSha256": "57c8202fa2748c499b34e3c6bb6091d62f997809a068f747ab564828beb4e5bc",
+    "candidateReviewApplyGuidanceUsedAsHow": false,
+    "diagnosticSkill": "C:/Users/xuser/.agents/skills/debugging-and-error-recovery/SKILL.md",
+    "diagnosticSkillEffect": "对 Reviewer 临时脚本的结构/导入错误先定位、只修正 .tmp、重跑；未据此修改 Author 实现或制造产品 finding。"
+  },
+  "environment": {
+    "platform": "win32",
+    "node": "22.23.2",
+    "pnpm": "11.22.0",
+    "managedOpenSpecVersion": "1.10.0",
+    "managedArchifyVersion": "2.15.0"
+  },
+  "findings": [
+    {
+      "id": "D04-RA007-008",
+      "severity": "P2",
+      "status": "open",
+      "blocking": true,
+      "title": "Integration preparation 仍把 accepted base ancestry 作为通用准入条件",
+      "locations": [
+        {
+          "path": "src/domain/delivery-repository-integration-execution.ts",
+          "startLine": 226,
+          "endLine": 237
+        }
+      ],
+      "contract": [
+        "openspec/changes/correct-delivery-content-continuity/specs/repository-integration-and-next-base-continuity/spec.md:7",
+        "design D6",
+        "tasks 5.4"
+      ],
+      "observed": "observePreparationFacts 在读取独立授权来源前，无条件要求 acceptedBaseCommit 同时是 HEAD 和 target prestate 的 ancestor。受控真实 Git fixture 中，普通历史 preparation 成功；在全新 preparation 前仅把 target 或 HEAD 改为同 tree 的 orphan commit，v2 candidate 不变、exact base object 存在、独立 Owner source 精确匹配当前 operation/prestate 且单独校验为 true，两种输入仍返回 null，authorization source 调用次数均为 0。",
+      "impact": "批准合同允许由既有 accepted provenance、Git object、内容/必要证据和具体操作来源证明其他明确授权的历史形状；当前代码仍要求共同祖先，跨历史内容接续在 preparation 就被误拒。反例不是已准备 invocation 的 prestate drift。",
+      "minimumCorrection": "以 exact accepted-base Git object 与既有可信接受来源校验其 provenance，移除无条件共同 ancestor 门槛；仅在明确具体操作要求时核验 topology。保留 create-new 唯一普通 parent/count=1、原 package HEAD/target/authority 漂移拒绝，以及内容/证据/source 检查。不引入 provider 策略、自动 rebase 或新 provenance 平台。",
+      "requiredRegression": "分别覆盖 fresh preparation 的非祖先 HEAD/target 正例（exact base/provenance/Owner operation/prestate 有效），及 wrong/missing base object/source、未经授权历史替换、prepared 后同内容 HEAD/target drift 的拒绝；保留两种 checkpoint 分支和原 005 拓扑负例。"
+    },
+    {
+      "id": "D04-RA007-009",
+      "severity": "P2",
+      "status": "open",
+      "blocking": true,
+      "title": "Start/Integration 直接消费者仍把对象插入顺序当成语义身份",
+      "locations": [
+        {
+          "path": "src/internal/delivery-start-content.ts",
+          "startLine": 148,
+          "endLine": 152,
+          "consumers": "323–327"
+        },
+        {
+          "path": "src/internal/delivery-repository-integration-source.ts",
+          "startLine": 67,
+          "endLine": 71,
+          "consumers": "107 / 132"
+        },
+        {
+          "path": "src/domain/delivery-repository-integration-execution.ts",
+          "startLine": 342,
+          "endLine": 365
+        },
+        {
+          "path": "src/domain/delivery-repository-integration-execution.ts",
+          "startLine": 411,
+          "endLine": 412
+        }
+      ],
+      "contract": [
+        "design D3/D6/D7",
+        "tasks 3.1 / 5.1 / 5.3 / 7.1",
+        "openspec/changes/correct-delivery-content-continuity/specs/repository-integration-and-next-base-continuity/spec.md:71"
+      ],
+      "observed": "只重排对象字段而不改变值、bytes/hash 或数组顺序：Start 的 source.outputs 或 surface.validation.artifacts 分别从 terminal 变为 content-completion-rejected（后者仍通过 closed validator）；Integration 的两个 schema-valid reuse-existing operation 指向同一 exact checkpoint，原顺序 prepare 成功，重排后 null。两个结构有效且语义相同的 package 派生出不同 Integration ref；同值 record 与 acceptance source 只改 checkpointOperation 字段顺序也由通过变为拒绝。",
+      "impact": "真实 host/JSON 反序列化可以合法改变对象字段插入顺序，当前 content/authority/record 接缝因此误拒或改变 ref。Final requiredEvidence 的原 006 修正仍正确，但尚未覆盖这些其他直接消费者。",
+      "minimumCorrection": "在已有 closed validators、克隆及有界相等判断上使用固定语义字段投影；checkpointOperation 按 kind、适用时 checkpointCommit 重建，贯通 ref 派生、authorization/acceptance 比较和 record/package 校验；Start artifact refs 按 artifact/contentSha256/bytes 比较。保持未知字段、真实值改变及合同要求有序数组的拒绝，不建立 generic canonical-JSON 框架。",
+      "requiredRegression": "重排 Start 两组 ref 的对象字段仍 terminal；重排 reuse-existing 在来源/输入/package/record 各边界均保持同一 ref 和接受结果；真正 operation/commit/hash/bytes 变化、未知字段、必要数组改序仍拒绝；覆盖 create-new 与 reuse-existing。"
+    }
+  ],
+  "findingConvergence": [
+    {
+      "id": "D04-RA007-001",
+      "status": "closed-preserved"
+    },
+    {
+      "id": "D04-RA007-002",
+      "status": "closed-preserved"
+    },
+    {
+      "id": "D04-RA007-003",
+      "status": "closed-preserved"
+    },
+    {
+      "id": "D04-RA007-004",
+      "status": "closed-preserved"
+    },
+    {
+      "id": "D04-RA007-005",
+      "status": "closed-preserved"
+    },
+    {
+      "id": "D04-RA007-006",
+      "status": "closed-preserved"
+    },
+    {
+      "id": "D04-RA007-007",
+      "status": "closed-preserved"
+    }
+  ],
+  "preservationBasis": {
+    "unchangedBytes": "受保护快照与 080 完全一致，原批准合同与实现无新变化。",
+    "reexecuted": "080 的 15 项诊断原脚本 hash 不变且重跑成功，覆盖 001/002/003/005/006；六文件 39/39 回归继续覆盖独立 source 操作绑定、不同 accepted history 的来源约束、双分支与 reuse 无 callback（004/007）。",
+    "distinction": "008 不撤销 create-new 具体操作的 005 parent 约束；009 不重开 Final requiredEvidence 的 006。"
+  },
+  "closedFindingCount": 7,
+  "remainingFindingCount": 2,
+  "independentChecks": [
+    {
+      "command": "node --import tsx .tmp/review-apply-081-proof.mjs",
+      "exitCode": 0,
+      "scriptSha256": "71acc3f13ab8ea4fe0a502a1221e8e11f9817243cb8a0e086f4a46f577657f51",
+      "result": "诊断断言全部成立：复现 008/009 及对应正例；不是产品合同 PASS。"
+    },
+    {
+      "command": "node --import tsx .tmp/review-apply-080-proof.mjs",
+      "exitCode": 0,
+      "scriptSha256": "0eccd6e28b6e176b7e60d07d2556e017e26676417215ba87589e610c54deec10",
+      "result": "15/15 原闭合项诊断/对照符合预期"
+    },
+    {
+      "command": "node --import tsx --test tests/unit/domain/delivery-start-execution.test.ts tests/unit/domain/delivery-final-projection.test.ts tests/unit/domain/delivery-required-evidence-source.test.ts tests/unit/domain/delivery-final-execution.test.ts tests/unit/domain/delivery-repository-integration-execution.test.ts tests/unit/domain/delivery-repository-integration-accepted-object.test.ts",
+      "exitCode": 0,
+      "result": "6 files; 39 tests / 39 pass / 0 fail / 0 skip"
+    },
+    {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "result": "PASS"
+    },
+    {
+      "command": "node C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js validate correct-delivery-content-continuity --strict",
+      "exitCode": 0,
+      "result": "valid; structural only"
+    },
+    {
+      "command": "git diff --check HEAD",
+      "exitCode": 0,
+      "result": "PASS"
+    },
+    {
+      "command": "node --import tsx .tmp/review-apply-081-snapshot.mjs",
+      "exitCode": 0,
+      "scriptSha256": "d05c96f1b2ceb470c983f82a3d647ab3c3b03a0c6c1d158e1264ac68bc83f3d1",
+      "result": "1480 个受保护文件检查前后相同；079 candidate、080 baseline、074/079/080 exact Run 绑定匹配"
+    }
+  ],
+  "decisiveObservations": {
+    "ancestry": {
+      "fixtureAcceptedBase": "fb59c12ecc6f0fa8bd082173aa1f3b991721ba6c",
+      "sameTreeOrphan": "3ce44315b4ef6a97ca9eb21a7872fc7b60b142a8",
+      "normalPreparation": "package",
+      "freshNonAncestorTargetPreparation": null,
+      "freshNonAncestorHeadPreparation": null,
+      "sourceValidation": true,
+      "sourceReadCountDuringRejectedPreparations": 0,
+      "candidateUnchanged": true
+    },
+    "startOrdering": {
+      "baseline": "terminal",
+      "reorderedSourceOutputs": "failed:content-completion-rejected",
+      "reorderedSurfaceValidationRefs": "failed:content-completion-rejected",
+      "surfaceSchemaValid": true,
+      "fieldValuesAndArrayOrderUnchanged": true
+    },
+    "integrationOrdering": {
+      "bothPackagesSchemaValid": true,
+      "canonicalPreparation": "package",
+      "reorderedOperationPreparation": null,
+      "canonicalRef": "repository-integration:sha256:6606feba17228a7b682db57c909b1b263a421f12e4e7f333511e20397f11bf7d",
+      "reorderedRef": "repository-integration:sha256:506ec75ce6c9cb6cf948759772f304492901a5190f3a2337249b75c91315dbd1",
+      "canonicalRecordAndAcceptanceAccepted": true,
+      "reorderedRecordAndAcceptanceAccepted": false
+    }
+  },
+  "diagnosticCorrections": {
+    "scope": "Reviewer .tmp 脚本/命令接线，不是产品修改或 finding",
+    "initialErrors": [
+      "snapshot 错假设 074/result.json 有 artifactHashes；改为按 080 保存的三文件 exact hashes 核对 074，079/080 保持 Result 自有 hash 校验。",
+      "诊断从 domain/index 导入未导出的内部 Start validator；核对源码后改用 internal/delivery-start-content。"
+    ],
+    "testSelection": "首次命令误列不存在的 delivery-start-content.test.ts，实际只执行五文件 38 tests，不算六文件覆盖；随后使用实际存在的六文件完整重跑，39/39。",
+    "failedAttemptsCountedAsPass": false,
+    "authorArtifactEdited": false
+  },
+  "verificationLimits": {
+    "fullDomainReexecuted": false,
+    "fullAcceptanceReexecuted": false,
+    "buildAndAllGatesReexecuted": false,
+    "linuxReexecuted": false,
+    "formalDeliveryFullTestRun": false,
+    "priorEvidence": "080 的 full domain/acceptance/build/gates 真实结果仍是同候选历史独立检查记录，本次不冒称重跑，也不以其抵销新反例。079 Linux 保留为 Author 报告。",
+    "fixtureScope": "只在新建隔离 fixture 中调用产品 domain、Git 和真实 Node exit 子进程；Full Test/Architecture managed tools 与 Start six-check 汇总使用显式受控 source fixture。不声称当前 D04 managed-tool semantic PASS、正式 Delivery operation 或跨会话 host 完成。",
+    "disposableProof": "临时脚本及 fixture 不新增永久保留义务；durable Run 保存 exact 输入、脚本 hash、决定性观察、缺陷位置及最小复现/修正要求。",
+    "futureBoundary": "D05 roots/跨会话 host/部分失败恢复仍按已批准非目标推迟；D04 真实 Full Test 前的外部证据保存/取回 proof 仍是原计划独立前置，不在本次执行。"
+  },
+  "ownerContext": {
+    "rawExploreProof": "Owner 已授权原始 Explore proof 移到 .tmp 且无需长期保留；072/073/074 已接受结论保持，不重开已撤回问题、不要求恢复、不能推断违规删除。"
+  },
+  "assessments": {
+    "currentStep": "按 Owner 授权对 079 同候选在 080 基础上追加跨直接消费者补审。",
+    "complexity": "2 类既有合同实现遗漏，最小修正限现有 preparation / semantic projection / equality 接缝及针对性测试；无需新层、Registry、provider 策略、证据平台或全域重构。",
+    "scopeDrift": "NONE",
+    "newContent": "008/009 均落在本 Change 已批准 D3/D6/D7 与现有 deltas/tasks；不新增 Change，不推进 D05。",
+    "proposalDefectFound": false
+  },
+  "reviewerVerdict": "changes-requested",
+  "archiveAllowed": false,
+  "nextBoundary": "revise-apply",
+  "continuationBasis": "现行 Policy normal matrix 的 review-apply changes-requested -> revise-apply，仅记录交接事实；未调用 candidate Policy/CLI，未执行下一 Action。",
+  "stableManagerUsed": false,
+  "stableManagerAvailability": "Get-Command flowkit 无结果；当前 D04 使用独立 bootstrap HOW。",
+  "candidateCliInvokedForLifecycle": false,
+  "authorArtifactMutation": "NONE",
+  "historicalRunMutation": "NONE",
+  "reviewerArtifactMutation": "RUN_081_THREE_FILES_ONLY_PLUS_DISPOSABLE_DIAGNOSTICS",
+  "formalVerificationVerdictCreated": false,
+  "ownerOrGitAuthorityCreated": false,
+  "targetRepositoryGitOperation": "NONE",
+  "continuationExecuted": false,
+  "stableTransfer": true,
+  "packageClass": "reviewer-delta"
+}

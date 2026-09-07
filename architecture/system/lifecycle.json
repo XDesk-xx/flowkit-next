@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "diagram_type": "lifecycle",
+  "meta": {
+    "title": "flowkit-next 当前 Action 与 Delivery 闭合生命周期",
+    "subtitle": "Action 只使用 prepared/terminal；Delivery 通过独立 operation outcomes 和 Owner boundaries 收敛。",
+    "output": "lifecycle.html",
+    "quality_profile": "showcase",
+    "viewBox": [1100, 760],
+    "views": [
+      { "id": "delivery-state", "label": "Delivery 闭合", "focus": ["delivery-active", "changes-complete", "full-test-passed", "architecture-closed", "delivery-completed"], "note": "主轨依次展示 required Changes、Full Test、Architecture 与 Final。" },
+      { "id": "action-state", "label": "Action 状态", "focus": ["owner-decision", "action-prepared", "action-terminal", "next-boundary"], "note": "prepare 是内部事件；terminal 后报告下一合法边界并停止。" },
+      { "id": "exception-state", "label": "阻断与修正", "focus": ["action-prepared", "blocked", "correction-required"], "note": "缺失事实或产品修正均不会自动继续。" }
+    ]
+  },
+  "lanes": [
+    { "id": "main", "label": "Delivery closure" },
+    { "id": "action", "label": "Owner + Action" },
+    { "id": "terminal", "label": "STOP outcomes" }
+  ],
+  "states": [
+    { "id": "delivery-active", "type": "start", "label": "Delivery Active", "sublabel": "manifest active", "lane": "main", "col": 0, "step": "01", "tag": "current" },
+    { "id": "changes-complete", "type": "active", "label": "Changes Complete", "sublabel": "archives accepted", "lane": "main", "col": 1, "step": "02", "tag": "OpenSpec" },
+    { "id": "full-test-passed", "type": "decision", "label": "Full Test Passed", "sublabel": "exact evidence", "lane": "main", "col": 2, "step": "03", "tag": "Verification" },
+    { "id": "architecture-closed", "type": "active", "label": "Architecture Closed", "sublabel": "six outputs", "lane": "main", "col": 3, "step": "04", "tag": "Archify" },
+    { "id": "delivery-completed", "type": "success", "label": "Delivery Completed", "sublabel": "Final outcome", "lane": "main", "col": 4, "step": "05", "tag": "no Git authority" },
+    { "id": "owner-decision", "type": "waiting", "label": "Owner Decision", "sublabel": "explicit authority", "lane": "action", "col": 0, "tag": "required" },
+    { "id": "action-prepared", "type": "active", "label": "Action Prepared", "sublabel": "exact package", "lane": "action", "col": 1, "tag": "internal" },
+    { "id": "action-terminal", "type": "success", "label": "Action Terminal", "sublabel": "admitted Result", "lane": "action", "col": 2, "tag": "STOP" },
+    { "id": "blocked", "type": "failure", "label": "Blocked", "sublabel": "missing fact", "lane": "terminal", "col": 0, "tag": "fail closed" },
+    { "id": "correction-required", "type": "failure", "label": "Correction", "sublabel": "normal Change", "lane": "terminal", "col": 1, "tag": "new candidate" },
+    { "id": "next-boundary", "type": "waiting", "label": "Next Boundary", "sublabel": "not auto-run", "lane": "terminal", "col": 2, "tag": "reported" }
+  ],
+  "transitions": [
+    { "from": "owner-decision", "to": "blocked", "variant": "security", "route": "straight", "fromSide": "bottom", "toSide": "top" },
+    { "from": "action-prepared", "to": "correction-required", "variant": "security", "route": "straight", "fromSide": "bottom", "toSide": "top" },
+    { "from": "action-terminal", "to": "next-boundary", "variant": "dashed", "route": "straight", "fromSide": "bottom", "toSide": "top" }
+  ],
+  "cards": [
+    { "dot": "cyan", "title": "Canonical Action State", "items": ["只有 prepared 与 terminal", "resumed 不存在", "prepare 不是 Standard Action 或独立 STOP 点"] },
+    { "dot": "emerald", "title": "Delivery Closure", "items": ["四类闭合事实依次形成", "Delivery Final 不自动创建 Git checkpoint", "repository integration 需要独立 Owner Git authority"] },
+    { "dot": "rose", "title": "Recovery Boundary", "items": ["缺 authority/runtime/source 时 fail closed", "产品修正形成新 candidate 并重新 Verification", "任何 terminal 都不隐式执行下一 operation"] }
+  ]
+}

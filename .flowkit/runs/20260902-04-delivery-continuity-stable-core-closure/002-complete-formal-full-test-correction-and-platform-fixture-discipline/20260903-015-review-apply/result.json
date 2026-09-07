@@ -1,0 +1,25 @@
+{
+  "runId": "20260903-015-review-apply",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "complete-formal-full-test-correction-and-platform-fixture-discipline",
+  "action": "review-apply",
+  "role": "reviewer",
+  "status": "terminal",
+  "verdict": "REVISE",
+  "summary": "014 implements the approved Formal Full Test model almost completely and passes all ordinary regression/engineering/OpenSpec gates, but candidate drift is detected only after the entire remaining check loop. An independent two-check probe proves that after check A mutates tracked repository state, check B still executes before stopped-candidate-drift is returned, violating the approved immediate-STOP rule. Revise locally to re-derive candidate after each executed check and stop before later checks. The Author Run also records 205/205 domain tests while the exact candidate reproducibly runs 206/206; fresh revise-apply verification must record exact evidence.",
+  "blockingFindings": [
+    "D04-R002-003"
+  ],
+  "archiveAllowed": false,
+  "nextBoundary": "revise-apply",
+  "reviewerMutation": "NONE",
+  "scopeDriftAssessment": "NONE_OUTSIDE_LOCAL_IMPLEMENTATION_DEFECT",
+  "complexityAssessment": "MINOR_LOCAL_FAIL_CLOSED_TIMING_DEFECT_NO_REDESIGN_REQUIRED",
+  "domainProof": "206/206 PASS, 0 skipped",
+  "acceptanceProof": "4/4 PASS",
+  "openSpecProof": "19/19 strict PASS",
+  "engineeringProof": "PASS",
+  "gitDiffCheck": "PASS",
+  "stableTransfer": true,
+  "packageClass": "reviewer-delta"
+}

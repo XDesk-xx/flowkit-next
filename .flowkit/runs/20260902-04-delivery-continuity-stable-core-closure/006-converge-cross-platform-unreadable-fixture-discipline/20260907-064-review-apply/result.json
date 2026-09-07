@@ -1,0 +1,32 @@
+{
+  "runId": "20260907-064-review-apply",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "converge-cross-platform-unreadable-fixture-discipline",
+  "action": "review-apply",
+  "role": "reviewer",
+  "status": "terminal",
+  "verdict": "changes-requested",
+  "summary": "063-apply is correctly bounded to one shared test helper and two resolver tests, and its ordinary native-Windows path passes 19/19 focused, 241/241 Domain, and 5/5 Acceptance checks with zero skips. Apply is nevertheless blocked because both callers transfer cleanup ownership before the helper performs safe-path and Windows SID preflight outside its try/finally. A reproduced whoami.exe startup failure retained the valid temporary root and did not report its path. Revise only the local ownership/failure lifecycle and add focused regression proof; no production or subsystem expansion is authorized.",
+  "blockingFindings": [
+    "D04-RA006-001"
+  ],
+  "archiveAllowed": false,
+  "nextBoundary": "revise-apply",
+  "reviewerMutation": "RUN_064_ONLY",
+  "productionMutation": "NONE",
+  "authorArtifactMutation": "NONE",
+  "scopeDriftAssessment": "NONE",
+  "newContentAssessment": "ONE_LOCAL_FAILURE_PATH_REGRESSION_PROOF_REQUIRED",
+  "complexityAssessment": "PROPORTIONAL_AND_BOUNDED; requested correction remains within the existing three test-only files.",
+  "canonicalOpenSpecProof": "current strict PASS; 23/23 all strict PASS",
+  "focusedProof": "native Windows 19/19 PASS, 0 skipped; pre-mutation SID setup failure cleanup proof FAIL",
+  "domainProof": "native Windows TAP summary 241/241 PASS, 0 skipped",
+  "acceptanceProof": "native Windows 5/5 PASS, 0 skipped",
+  "gitDiffCheck": "PASS",
+  "ownerOrGitAuthorityCreated": false,
+  "stableManagerUsed": false,
+  "candidateCliLifecycleAuthorityUsed": false,
+  "continuationExecuted": false,
+  "stableTransfer": true,
+  "packageClass": "reviewer-delta"
+}

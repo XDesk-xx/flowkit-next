@@ -1,0 +1,321 @@
+{
+  "runNumber": 83,
+  "runId": "20260907-083-review-apply",
+  "kind": "external-orchestrator-review-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "action": "review-apply",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "correct-delivery-content-continuity",
+  "projectOrdinal": 32,
+  "physicalRunGroupPrefix": "007",
+  "changeStartSequence": 7,
+  "physicalRunPath": ".flowkit/runs/20260902-04-delivery-continuity-stable-core-closure/007-correct-delivery-content-continuity/20260907-083-review-apply",
+  "baseCommit": "b0b2d918c41212fe80e1ad5e58bc14dcd7217c1d",
+  "branch": "delivery/20260902-04-delivery-continuity-stable-core-closure",
+  "reviewRequest": "根据最新run，review-apply",
+  "inputRunId": "20260907-082-revise-apply",
+  "priorReviewRunId": "20260907-081-review-apply",
+  "preservedReviewRunId": "20260907-080-review-apply",
+  "approvedProposalReviewRunId": "20260907-074-review-propose",
+  "inputSelection": "最新 Author 082 terminal 明确承接 081 两项 findings、保留 080；当前 Owner 请求授权本次 review-apply。没有按目录最大号替代已绑定输入链。",
+  "runHashes": {
+    "20260907-074-review-propose": {
+      "action.md": "372992254c07cf74b3ec04234e3f4611395892d17d591557e8bff4cc65dd2a04",
+      "context.json": "ba93f3325ec8ff0a40fa45bf17494c13a00def4561926365d4d4425805156414",
+      "result.json": "881732df6611518dffc24f4556ca8e4fdbfc7b77b5410d7f6e8790644f81de42"
+    },
+    "20260907-080-review-apply": {
+      "action.md": "be331f738d6524ec332d2b429b0a3ec1631d51494b6e8aaeab9ff332cca719f2",
+      "context.json": "d2202705ddcbed96da2678e9d2368996deb93ad7e7ce668b1c2a0e63654e3bd1",
+      "result.json": "fe09f22a4612c480efa7c88067f8a69b84dcb8ec5c555109101b2a028c0507e9"
+    },
+    "20260907-081-review-apply": {
+      "action.md": "fc527249537872ffc8bb291bdb06feabdd21062cb7497e8bd08b173f19843f74",
+      "context.json": "a8fab3fc99656eaeee51a8747e149be4174492c38f0f4f49693d290f7f643536",
+      "result.json": "7c31b9d1ee609069cc2818ff89d618a215fd3f54583edc3866371423bff258ee"
+    },
+    "20260907-082-revise-apply": {
+      "action.md": "d31527a6e03cfd8582e0f94fbcfc92a30978fa344aa2bc6757e153560e3ec672",
+      "context.json": "e73ad42d4ac1c78c374b9947c98fae86668cfa80a00aedc93cce62a27ef5e6c3",
+      "result.json": "8dd353fe5452d52254b58a35e50c944c6bbd67f3ad5c1f2dc7d455486f741978"
+    }
+  },
+  "reviewedCandidate": {
+    "candidateRef": "candidate:sha256:fe4c26c2ec4ab7b652a16986d6fc9d3faa8a99828ae8682976c41c137c95de91",
+    "protectedFileCount": 1487,
+    "protectedSnapshotSha256": "2969df5a77713f7673ab4d7d0607561378cc79419896eeff2c162691e0bbf90a",
+    "scope": "Git tracked + nonignored untracked path/bytes；排除本次 083 Run，.tmp ignored；检查前后相同。",
+    "revisionArtifactHashes": {
+      "src/domain/delivery-repository-integration-execution.ts": "9cf9d5a6a597a782e5c39ba6278b18c188134a72eef0ac3fb16878492721d615",
+      "src/internal/delivery-repository-integration-source.ts": "b6518d36521e3252c2e0695fe7e0ecb5c1aaaacef8bfe9b149ffff6950a5a331",
+      "src/internal/delivery-start-content.ts": "2a1b4a596c3d6ea5b32a9ae1454edfb8f0ba80e4ef7ad3508f66daeff5d87f26",
+      "tests/unit/domain/delivery-continuity-semantic-boundaries.test.ts": "3995ff47685dc69645735a31ecf67d1d43790b253f4afba301b38ea553e1c48f"
+    },
+    "actualChangedSince081": [
+      "src/domain/delivery-repository-integration-execution.ts",
+      "src/internal/delivery-repository-integration-source.ts",
+      "src/internal/delivery-start-content.ts",
+      "tests/unit/domain/delivery-continuity-semantic-boundaries.test.ts"
+    ],
+    "unreportedChanges": [],
+    "priorSnapshotReconstructedMatches": true,
+    "preservationMethod": "以 076/078/079 已审 artifact hashes 核查非修订内容；只有 082 申报的 3 实现文件和 1 新测试变化。剔除新增 081/082 Runs 与新测试、替换回已审修订前 hashes 后，精确重现 081 的受保护快照。历史三文件 bytes 未改。"
+  },
+  "planningIntegrity": {
+    "proposalSha256": "820fd4b741ced1b3bbdd992c3bea578f5f70a7336f60dcf7556e5ac750dd5a2b",
+    "designSha256": "d5c57f2bc8db1c6003a97364f3caea8fe835cd00d312d217bd7f8ec10dabd5fb",
+    "tasksSha256": "0c5a56f3268336f423a56455c406918add161a31caae39ad84fddecc61a6c7db",
+    "unchangedFromReview081": true,
+    "deltaSpecsModified": false,
+    "tasksCompleted": "35/35",
+    "independentlyMatched": true,
+    "sevenDeltaSpecsUnchanged": true
+  },
+  "reviewHow": {
+    "bootstrapSkill": ".agents/skills/review-apply/SKILL.md",
+    "bootstrapSkillSha256": "57c8202fa2748c499b34e3c6bb6091d62f997809a068f747ab564828beb4e5bc",
+    "candidateReviewApplyGuidanceUsedAsHow": false,
+    "diagnosticSkill": "C:/Users/xuser/.agents/skills/debugging-and-error-recovery/SKILL.md",
+    "diagnosticSkillEffect": "按最小复现、定位、精确旧代码对照核验 Start 数组校验回归；只写 .tmp 诊断，未修正 Author 实现。"
+  },
+  "findingConvergence": [
+    {
+      "id": "D04-RA007-001",
+      "status": "closed-preserved"
+    },
+    {
+      "id": "D04-RA007-002",
+      "status": "closed-preserved"
+    },
+    {
+      "id": "D04-RA007-003",
+      "status": "closed-preserved"
+    },
+    {
+      "id": "D04-RA007-004",
+      "status": "closed-preserved"
+    },
+    {
+      "id": "D04-RA007-005",
+      "status": "closed-preserved"
+    },
+    {
+      "id": "D04-RA007-006",
+      "status": "closed-preserved"
+    },
+    {
+      "id": "D04-RA007-007",
+      "status": "closed-preserved"
+    },
+    {
+      "id": "D04-RA007-008",
+      "status": "closed",
+      "basis": "exact accepted-base commit 对象由 Git resolve 核验，既有独立 source 保持 base/HEAD/target/operation/Owner 精确绑定；独立旧反例的非祖先 HEAD 和 target 在 fresh preparation 均成功且来源实际被读取。定向回归继续拒绝 missing base 和 mismatched source；既有拓扑、漂移、必要证据负例通过。"
+    },
+    {
+      "id": "D04-RA007-009",
+      "status": "closed",
+      "basis": "独立对照确认对象字段重排的 Start 两入口仍 terminal；Integration input/source、ref/record/acceptance 均保持相同语义与 ref。未知字段、真实值及数组改序的既有负例继续拒绝。新数组结构回归单列 010，不把已修好的字段顺序问题重新表述为未修复。"
+    }
+  ],
+  "preservationEvidence": "重跑 080 原 hash 脚本的 15 项诊断，验证原 001/002/003/005/006；7 个测试文件 42/42 继续验证 004/007、两条 Integration 路径和具体操作/source 边界。",
+  "closedFindingCount": 9,
+  "findings": [
+    {
+      "id": "D04-RA007-010",
+      "severity": "P2",
+      "status": "open",
+      "blocking": true,
+      "classification": "regression-in-082",
+      "title": "Start 语义比较未验证数组形状与完整槽位，异常来源会抛错或被错误接受",
+      "locations": [
+        {
+          "path": "src/internal/delivery-start-content.ts",
+          "startLine": 148,
+          "endLine": 163
+        },
+        {
+          "path": "src/internal/delivery-start-content.ts",
+          "startLine": 165,
+          "endLine": 175
+        },
+        {
+          "path": "src/domain/delivery-start-execution.ts",
+          "startLine": 269,
+          "endLine": 277
+        }
+      ],
+      "contract": [
+        "design D3：可信 host 核验 validation 四槽输出，拒绝不完整/不匹配材料",
+        "tasks 3.1 / 7.1",
+        "specs/delivery-operation-execution-and-start-continuity：Delivery Start 在内容完成边界返回可核验记录",
+        "081 finding 009：语义比较保持结构/值/数组约束"
+      ],
+      "observed": "只替换合法 source material 的 outputs：undefined/null 或 {length:4} 使新 sameArtifactRefs 在 length/every 处抛 TypeError，并从公开 invokeDeliveryStartOperation 逸出；new Array(4) 或仅删去一个索引的四槽稀疏数组反而形成 contentCompletion，公开 invocation 返回 terminal。实际仓库四槽输出、source outcome bytes、候选和其他输入均保持不变。dense null-elements 控制组仍正常返回 failed:content-completion-rejected。 另一路 surface.validation.artifacts 使用稀疏数组时，closed surface validator 返回 true，旧模块返回 null，当前公开 invocation 抛出读取 artifact 的 TypeError。",
+      "rootCause": "readTrustedValidation 只检查 material 是 plain record；sameArtifactRefs 随后假定数组存在并直接读取 length/every。Array.every 跳过缺席索引，三个 every 都不能证明每个必需槽位存在。",
+      "baseline": "隔离重建修订前 Start 模块，恢复导入路径后 SHA-256 精确匹配 079/081 绑定的 79c64de7741a0f1e900375ed3a7be3da515444d58b266b7202e988deda56ef8f；同一 fixture 的六个异常输入此前全部返回 null。不是全仓库回滚，也不是只凭理论推断的 pre-existing debt。",
+      "impact": "可信来源仍可能返回不完整或错误结构的数据；host 当前不能按合同确定性拒绝，且稀疏 outputs 绕过 source 四槽逐项绑定。问题不是产品文件被删除，也不声称缺失全部验证证据或发生未授权 Git mutation。",
+      "minimumCorrection": "在现有窄 Start 来源/比较接缝先验证真实数组和每一个必需位置的完整 closed artifact ref，再按 artifact/contentSha256/bytes 比较；非数组、缺字段、空洞应返回 null/规范 failed，不能抛出未分类异常或当作完成。仅加 Array.isArray 不足以处理稀疏数组，不得通过 filter 补齐/丢弃缺项或只用 catch 掩盖误接受。保留字段重排成功、值变化/未知字段/有序数组改序拒绝。",
+      "requiredRegression": "补充 undefined、null、array-like、全空洞、单槽空洞、dense invalid 元素及有效 dense 数组的正负例；通过公开 Start invocation 断言错误输入均解析为 failed/content-completion-rejected，而非 rejected Promise 或 terminal，且不触发 checkpoint callback。覆盖 source.outputs 与该比较器另一入口（validation artifact refs）的适用数组约束。"
+    }
+  ],
+  "remainingFindingCount": 1,
+  "independentChecks": [
+    {
+      "command": "node --import tsx .tmp/review-apply-083-proof.mjs",
+      "exitCode": 0,
+      "scriptSha256": "e01bf824e781774345335eb522aad296fec93adb7862f21e5241fccfac7538b5",
+      "result": "008/009 原反例正向通过；六个 Start 数组结构对照复现新回归。诊断断言成立不是产品验收 PASS。"
+    },
+    {
+      "command": "node --import tsx .tmp/review-apply-080-proof.mjs",
+      "exitCode": 0,
+      "scriptSha256": "0eccd6e28b6e176b7e60d07d2556e017e26676417215ba87589e610c54deec10",
+      "result": "15/15 expected observations"
+    },
+    {
+      "command": "node --import tsx --test tests/unit/domain/delivery-start-execution.test.ts tests/unit/domain/delivery-final-projection.test.ts tests/unit/domain/delivery-required-evidence-source.test.ts tests/unit/domain/delivery-final-execution.test.ts tests/unit/domain/delivery-repository-integration-execution.test.ts tests/unit/domain/delivery-repository-integration-accepted-object.test.ts tests/unit/domain/delivery-continuity-semantic-boundaries.test.ts",
+      "exitCode": 0,
+      "result": "7 files; 42 tests / 42 pass / 0 fail / 0 skip"
+    },
+    {
+      "command": "node --import tsx .tmp/review-apply-083-surface-array-proof.mjs",
+      "exitCode": 0,
+      "scriptSha256": "3fdc38329e183fafb80266033c0048560134f2f899559428829dcff14ca64e75",
+      "result": "同一 010 的另一入口：稀疏 surface.validation.artifacts 通过前置 validator，公开 invocation 抛错；旧模块正常拒绝。"
+    },
+    {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "result": "PASS"
+    },
+    {
+      "command": "node C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js validate correct-delivery-content-continuity --strict",
+      "exitCode": 0,
+      "result": "valid; structural only"
+    },
+    {
+      "command": "git diff --check HEAD",
+      "exitCode": 0,
+      "result": "PASS"
+    },
+    {
+      "command": "node --import tsx .tmp/review-apply-083-snapshot.mjs",
+      "exitCode": 0,
+      "scriptSha256": "f43ee7833c37a9e619fca2a656aaf1127b28ae0a40245b2ab6fe0532963161e8",
+      "result": "1487 个受保护文件前后一致；4/4 revision 与上游 Run/批准计划 hashes 匹配；无未申报差异"
+    }
+  ],
+  "decisiveObservations": {
+    "ancestry": {
+      "acceptedBase": "b59e0168cd3f628882e69e18db807b530fabc794",
+      "sameTreeOrphan": "c164508d2c04a85121d9b9ab0d637f700d1bea96",
+      "freshNonAncestorHeadAndTarget": "package",
+      "matchingSourceReadCountEach": 1
+    },
+    "integrationOrdering": {
+      "canonicalAndReorderedRef": "repository-integration:sha256:1a7610d5dfa291a3801c470b0e2d1748d862fa168f5d364c584d5ce24563ea13",
+      "inputSourceRecordAcceptancePreserved": true
+    },
+    "startOrdering": {
+      "sourceOutputsReorder": "terminal",
+      "surfaceValidationRefsReorder": "terminal"
+    },
+    "surfaceArtifactArray": {
+      "input": "surface.validation.artifacts = new Array(validatedArtifactCount)",
+      "surfaceValidator": true,
+      "priorModule": "null",
+      "currentInvocation": "TypeError: Cannot read properties of undefined (reading 'artifact')"
+    },
+    "startArrayRegression": [
+      {
+        "input": "outputs missing/undefined",
+        "priorModule": "null",
+        "currentModule": "TypeError: Cannot read properties of undefined (reading 'length')",
+        "currentInvocation": "same uncaught TypeError"
+      },
+      {
+        "input": "outputs null",
+        "priorModule": "null",
+        "currentModule": "TypeError: Cannot read properties of null (reading 'length')",
+        "currentInvocation": "same uncaught TypeError"
+      },
+      {
+        "input": "outputs {length:4}",
+        "priorModule": "null",
+        "currentModule": "TypeError: left.every is not a function",
+        "currentInvocation": "same uncaught TypeError"
+      },
+      {
+        "input": "outputs new Array(4)",
+        "priorModule": "null",
+        "currentModule": "contentCompletion",
+        "currentInvocation": "terminal"
+      },
+      {
+        "input": "outputs dense valid array with index 1 deleted",
+        "priorModule": "null",
+        "currentModule": "contentCompletion",
+        "currentInvocation": "terminal"
+      },
+      {
+        "input": "outputs Array(4).fill(null)",
+        "priorModule": "null",
+        "currentModule": "null",
+        "currentInvocation": "failed:content-completion-rejected"
+      }
+    ],
+    "isolatedBaselineFile": {
+      "path": ".tmp/review-apply-083-baseline-start.ts",
+      "artifactSha256": "b02b613605f8e54cd56074c5752b16330a99eb7ca7273b3d6260b302337e9246",
+      "originalModuleSha256": "79c64de7741a0f1e900375ed3a7be3da515444d58b266b7202e988deda56ef8f",
+      "difference": "只将相对 imports 重定位到当前同 hash 依赖；复原 imports 后核验原字节 hash。"
+    }
+  },
+  "verificationLimits": {
+    "fullDomainReexecuted": false,
+    "fullAcceptanceReexecuted": false,
+    "buildAndAllGatesReexecuted": false,
+    "linuxReexecuted": false,
+    "formalDeliveryFullTestRun": false,
+    "authorReports": "082 的完整 Native Windows/Linux/build/gates 为 Author 报告；本轮独立执行项目仅见 independentChecks。未声称独立全量 PASS，也未因未复跑制造阻断。",
+    "fixtureScope": "真实隔离 Git/Node 子进程与 domain/source 接缝；managed tools 与 Start six-check 汇总为显式受控 fixture。不代表当前 D04 Formal Full Test/Delivery operation、外部 durable host 或实际 managed-tool semantic PASS。",
+    "proofRetention": "本轮 .tmp 脚本/旧模块副本/fixture 是可丢弃诊断；必要 exact hashes、观察、复现输入和修正边界保存在三文件 Run，不新增永久原始 proof 保留义务。",
+    "diagnosticSetup": "一次只读 Node 文本提取命令有多余右括号而 SyntaxError；修正命令后读取成功。该次失败未计为 PASS，不是产品 finding。",
+    "futureBoundary": "D04 真实 Full Test 前外部证据保存/取回 proof 仍是原计划独立前置；D05 roots/host/恢复项仍排除。"
+  },
+  "ownerContext": {
+    "rawExploreProof": "保持已接受 Owner 授权：原始 Explore proof 可移至 .tmp 且无需长期保留；不要求恢复，不推断违规删除。"
+  },
+  "environment": {
+    "platform": "win32",
+    "node": "22.23.2",
+    "pnpm": "11.22.0",
+    "managedOpenSpecVersion": "1.10.0",
+    "managedArchifyVersion": "2.15.0"
+  },
+  "assessments": {
+    "currentStep": "独立复审 082 对 081 的 008/009 修正，并核查原闭合内容与本轮新增拒绝边界。",
+    "complexity": "3 个既有实现文件 + 1 个定向测试文件；最大 643 行。复用既有 clone/validator，无依赖、Registry、provider 策略或 generic canonical-JSON 层。010 只需现有 Start 接缝内的数组形状/密集槽位校验和测试。",
+    "scopeDrift": "NONE",
+    "newContent": "008/009 的修正和 010 的回归义务均在现有 D3/D6/D7/tasks 内；无需扩展合同或另建 Change。",
+    "proposalDefectFound": false
+  },
+  "reviewerVerdict": "changes-requested",
+  "archiveAllowed": false,
+  "nextBoundary": "revise-apply",
+  "continuationBasis": "现行 Policy normal matrix 的 review-apply changes-requested -> revise-apply，仅交接事实；未调用 candidate Policy/CLI 或自动执行。",
+  "stableManagerUsed": false,
+  "stableManagerAvailability": "Get-Command flowkit 无结果，当前独立 D04 bootstrap HOW 适用。",
+  "candidateCliInvokedForLifecycle": false,
+  "authorArtifactMutation": "NONE",
+  "historicalRunMutation": "NONE",
+  "reviewerArtifactMutation": "RUN_083_THREE_FILES_ONLY_PLUS_DISPOSABLE_DIAGNOSTICS",
+  "formalVerificationVerdictCreated": false,
+  "ownerOrGitAuthorityCreated": false,
+  "targetRepositoryGitOperation": "NONE",
+  "continuationExecuted": false,
+  "stableTransfer": true,
+  "packageClass": "reviewer-delta"
+}

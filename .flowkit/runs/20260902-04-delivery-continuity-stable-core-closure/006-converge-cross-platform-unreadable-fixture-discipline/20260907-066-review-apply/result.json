@@ -1,0 +1,33 @@
+{
+  "runId": "20260907-066-review-apply",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "converge-cross-platform-unreadable-fixture-discipline",
+  "action": "review-apply",
+  "role": "reviewer",
+  "status": "terminal",
+  "verdict": "approved",
+  "summary": "065-revise-apply resolves D04-RA006-001 within the approved three-file test-only boundary. Safe-path validation now precedes cleanup ownership transfer, while SID/native setup failures occur inside helper-owned cleanup; the native-Windows ENOENT regression proves the accepted root is removed and the resolver callback does not execute. Current-SID RD denial/restoration, both real resolver assertions, POSIX/root proof, and zero unreadable-fixture SKIP remain intact. Independent Windows and detached Linux focused 20/20, Domain 242/242, and Acceptance 5/5 checks passed with no scope drift or remaining blocker.",
+  "blockingFindings": [],
+  "resolvedFindings": [
+    "D04-RA006-001"
+  ],
+  "archiveAllowed": true,
+  "nextBoundary": "archive",
+  "reviewerMutation": "RUN_066_ONLY",
+  "productionMutation": "NONE",
+  "authorArtifactMutation": "NONE",
+  "scopeDriftAssessment": "NONE",
+  "newContentAssessment": "ONE_REQUIRED_FAILURE_REGRESSION_ONLY",
+  "complexityAssessment": "PROPORTIONAL_AND_BOUNDED",
+  "canonicalOpenSpecProof": "current strict PASS; 23/23 all strict PASS",
+  "nativeWindowsProof": "focused 20/20; Domain 242/242; Acceptance 5/5; all 0 skipped",
+  "detachedLinuxProof": "linux/amd64 glibc focused 20/20; Domain 242/242; Acceptance 5/5; all 0 skipped",
+  "engineeringGateProof": "typecheck, build, format, lint, forbidden artifacts, dependency health, entropy, and git diff checks PASS",
+  "reviewApprovalIsFormalVerification": false,
+  "ownerOrGitAuthorityCreated": false,
+  "stableManagerUsed": false,
+  "candidateCliLifecycleAuthorityUsed": false,
+  "continuationExecuted": false,
+  "stableTransfer": true,
+  "packageClass": "reviewer-delta"
+}

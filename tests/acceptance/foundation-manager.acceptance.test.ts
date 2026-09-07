@@ -480,3 +480,35 @@ test("windows-compatibility-simulation covers current path and process portabili
   assert.equal(production.includes("shell: true"), false);
   assert.equal(production.includes("path.posix"), false);
 });
+
+test("Delivery Final public contract is exact and has no Git or next-operation capability", async () => {
+  const domain: any = await import(pathToFileURL(DOMAIN).href);
+  assert.equal(typeof domain.prepareDeliveryFinalOperationPackage, "function");
+  assert.equal(typeof domain.invokeDeliveryFinalOperation, "function");
+  assert.equal(typeof domain.deriveDeliveryFinalizationRef, "function");
+  assert.equal(
+    domain.canonicalDeliveryGuidancePath("delivery-final"),
+    "skills/delivery/final/SKILL.md",
+  );
+
+  const implementation = await Promise.all(
+    [
+      "src/domain/delivery-final-execution.ts",
+      "src/internal/delivery-final-coordination.ts",
+      "skills/delivery/final/SKILL.md",
+    ].map((relative) => readFile(path.join(ROOT, relative), "utf8")),
+  );
+  const boundedSurface = implementation.join("\n");
+  for (const forbidden of [
+    "git add",
+    "git commit",
+    "git push",
+    "git merge",
+    "git tag",
+    "pull request",
+    "auto-run next",
+  ]) {
+    assert.equal(boundedSurface.toLowerCase().includes(forbidden), false);
+  }
+  assert.equal(boundedSurface.includes("child_process"), false);
+});

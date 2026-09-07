@@ -1,0 +1,32 @@
+{
+  "runId": "20260907-057-revise-explore",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "converge-cross-platform-unreadable-fixture-discipline",
+  "action": "revise-explore",
+  "role": "author",
+  "status": "terminal",
+  "verdict": "PASS",
+  "summary": "Corrected the only blocking review finding D04-R006-001. Change 6 manifest goal and outputs now require real native-Windows read-denial execution with zero unreadable-fixture SKIP, and the already-supplied Owner scope correction is durably represented as refine-change-scope. The accepted Explore technical content remains byte-identical.",
+  "resolvedFindings": [
+    "D04-R006-001"
+  ],
+  "nextBoundary": "review-explore",
+  "proposalAllowed": false,
+  "applyAllowed": false,
+  "blockingUnknown": null,
+  "durableFacts": [
+    "The Delivery manifest no longer authorizes capability-bound SKIP for the native-Windows unreadable Guidance fixture.",
+    "The manifest requires real native-Windows read denial, execution of both resolver null assertions, and zero unreadable-fixture SKIP.",
+    "The Owner correction already consumed by Run 055 is represented by owner:03fbb9e4401c3840c90c7a014d868da21572264e067fbdf414e34d332bf71f50.",
+    "The Explore artifact remains byte-identical at sha256 23dc9aa583aac0d6cc3757c796d328c039cb396314b3d29f5f2c17850ebb7c9a.",
+    "Exact managed OpenSpec 1.10.0 strict validation passed for the active Change and all 23 items.",
+    "No external Flowkit manager or candidate CLI was used."
+  ],
+  "productionMutation": "NONE",
+  "testMutationInAction": false,
+  "proposalArtifactsMutatedInAction": false,
+  "scopeDrift": "NONE",
+  "flowkitManagerUsed": false,
+  "candidateCliInvoked": false,
+  "continuationExecuted": false
+}

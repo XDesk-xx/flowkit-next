@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { execFile } from "node:child_process";
+import { createHash } from "node:crypto";
 import {
   chmod,
   mkdir,
@@ -14,27 +15,23 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 import { promisify } from "node:util";
 import test from "node:test";
+import { withUnreadableGuidanceFixture } from "./unreadable-guidance-fixture.js";
 
 import {
-  APPLICABLE_CHECK_FACTS_KEY,
-  admitApplicableCheckActionResult,
-  attachApplicableCheckFacts,
+  deriveApplicableCheckCandidateManifest,
   deriveApplicableCheckCandidateRef,
+  deriveApplicableCheckObjectCandidateRef,
+  deriveApplicableCheckObjectManifest,
   deriveApplicableCheckRef,
-  executeApplicableChecks,
   isActionPackage,
   isApplicableCheckExecutionInput,
   isApplicableCheckPlanInput,
   isApplicableCheckReuseEligible,
-  isRunResultRecord,
-  readApplicableCheckFacts,
   resolveApplicableCheckExecutionInput,
   type ActionPackage,
   type ApplicableCheckDeclaration,
-  type ApplicableCheckFactSet,
   type ApplicableCheckPlanInput,
   type ApplicableCheckPriorFact,
-  type RunResultRecord,
 } from "../../../src/domain/index.js";
 
 const execFileAsync = promisify(execFile);
@@ -54,6 +51,7 @@ async function createGitFixture(): Promise<string> {
   await git(root, "config", "user.email", "flowkit@example.invalid");
   await git(root, "config", "user.name", "Flowkit Test");
   await git(root, "config", "core.filemode", "true");
+  await git(root, "config", "core.autocrlf", "false");
   await writeFile(path.join(root, ".gitignore"), "ignored.txt\n", "utf8");
   await writeFile(path.join(root, "source.txt"), "base\n", "utf8");
   await writeFile(path.join(root, "check.sh"), "echo ok\n", "utf8");
@@ -106,27 +104,6 @@ function plan(
   ...checks: ApplicableCheckDeclaration[]
 ): ApplicableCheckPlanInput {
   return { checks };
-}
-
-function resultFor(
-  pkg: ActionPackage,
-  overrides: Partial<RunResultRecord> = {},
-): RunResultRecord {
-  return {
-    runId: pkg.runId,
-    actionIdentity: { ...pkg.actionIdentity },
-    authorConclusion: "implemented",
-    reviewerVerdict: null,
-    verificationVerdict: null,
-    nextBoundary: "review-apply",
-    facts: { stable: true },
-    ...overrides,
-  };
-}
-
-function changedHashRef(ref: string): string {
-  const last = ref.at(-1) === "0" ? "1" : "0";
-  return `${ref.slice(0, -1)}${last}`;
 }
 
 async function resolve(
@@ -209,6 +186,43 @@ test("checkRef is stable for canonical ref sets and changes for material identit
   );
 });
 
+test("v2 check identity uses UTF-8 byte ordering and preserves ordered argv", () => {
+  const first = declaration("unicode-order", {
+    args: ["second", "first"],
+    configRefs: ["config:😀", "config:\uE000"],
+    toolRefs: [],
+    environmentRefs: [],
+  });
+  const reorderedRefs = {
+    ...first,
+    configRefs: [...first.configRefs].reverse(),
+  };
+  const reorderedArgs = { ...first, args: [...first.args].reverse() };
+  const expected = createHash("sha256")
+    .update("flowkit-applicable-check-v2")
+    .update("\0")
+    .update(
+      JSON.stringify({
+        checkId: "unicode-order",
+        program: process.execPath,
+        args: ["second", "first"],
+        configRefs: ["config:\uE000", "config:😀"],
+        toolRefs: [],
+        environmentRefs: [],
+      }),
+    )
+    .digest("hex");
+  assert.equal(deriveApplicableCheckRef(first), `check:sha256:${expected}`);
+  assert.equal(
+    deriveApplicableCheckRef(reorderedRefs),
+    `check:sha256:${expected}`,
+  );
+  assert.notEqual(
+    deriveApplicableCheckRef(reorderedArgs),
+    `check:sha256:${expected}`,
+  );
+});
+
 test("execution input is deterministic for a check set and changes with set/package identity", async () => {
   const root = await createGitFixture();
   try {
@@ -286,6 +300,41 @@ test("candidate ignores ignored untracked and Run-only material but changes on s
   }
 });
 
+test("exact Memo bytes are isolated while Memo type and other .flowkit material remain visible", async (t) => {
+  const root = await createGitFixture();
+  try {
+    await mkdir(path.join(root, ".flowkit"), { recursive: true });
+    const memo = path.join(root, ".flowkit", "memos.json");
+    await writeFile(memo, '{"memos":[]}\n', "utf8");
+    await git(root, "add", ".flowkit/memos.json");
+    await git(root, "commit", "-qm", "memo");
+    const initial = await deriveApplicableCheckCandidateRef(root);
+    await writeFile(memo, '{"memos":[{"id":"later"}]}\n', "utf8");
+    assert.equal(await deriveApplicableCheckCandidateRef(root), initial);
+    await writeFile(
+      path.join(root, ".flowkit", "project.json"),
+      "{}\n",
+      "utf8",
+    );
+    assert.notEqual(await deriveApplicableCheckCandidateRef(root), initial);
+
+    await unlink(memo);
+    try {
+      await symlink("../source.txt", memo, "file");
+    } catch (error) {
+      const code = (error as NodeJS.ErrnoException).code;
+      if (code === "EPERM" || code === "EACCES" || code === "UNKNOWN") {
+        t.diagnostic("Host does not permit Memo symlink fixture");
+        return;
+      }
+      throw error;
+    }
+    assert.equal(await deriveApplicableCheckCandidateRef(root), null);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
 test("same bytes with Git-visible executable mode change changes candidateRef", async () => {
   const root = await createGitFixture();
   try {
@@ -355,13 +404,94 @@ test("symlink target mutation changes candidateRef when symlinks are supported",
   }
 });
 
-test("tracked deletion is candidate material", async () => {
+test("confirmed deletion emits no record and is stable across unstaged staged and committed states", async () => {
   const root = await createGitFixture();
   try {
     const first = await deriveApplicableCheckCandidateRef(root);
     await unlink(path.join(root, "source.txt"));
-    const deleted = await deriveApplicableCheckCandidateRef(root);
-    assert.notEqual(first, deleted);
+    const unstaged = await deriveApplicableCheckCandidateRef(root);
+    assert.notEqual(first, unstaged);
+    assert.equal(
+      (await deriveApplicableCheckCandidateManifest(root))?.some(
+        (record) => record.path === "source.txt",
+      ),
+      false,
+    );
+    await git(root, "add", "-u");
+    const staged = await deriveApplicableCheckCandidateRef(root);
+    await git(root, "commit", "-qm", "delete source");
+    const committed = await deriveApplicableCheckCandidateRef(root);
+    assert.equal(unstaged, staged);
+    assert.equal(staged, committed);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("worktree and exact object share the v2 binary material projection", async () => {
+  const root = await createGitFixture();
+  try {
+    await writeFile(
+      path.join(root, "binary.dat"),
+      Buffer.from([0, 255, 13, 10, 32]),
+    );
+    await writeFile(path.join(root, "trailing.txt"), "value \r\n\r\n", "utf8");
+    await git(root, "add", "binary.dat", "trailing.txt");
+    await git(root, "commit", "-qm", "binary material");
+    const head = await git(root, "rev-parse", "HEAD");
+    const worktreeManifest = await deriveApplicableCheckCandidateManifest(root);
+    const objectManifest = await deriveApplicableCheckObjectManifest(
+      root,
+      head,
+    );
+    assert.deepEqual(objectManifest, worktreeManifest);
+    const worktree = await deriveApplicableCheckCandidateRef(root);
+    const object = await deriveApplicableCheckObjectCandidateRef(root, head);
+    assert.equal(object, worktree);
+    assert.match(worktree!, /^candidate:sha256:[0-9a-f]{64}$/);
+
+    await writeFile(
+      path.join(root, "binary.dat"),
+      Buffer.from([0, 255, 13, 10, 33]),
+    );
+    assert.notEqual(await deriveApplicableCheckCandidateRef(root), object);
+    assert.equal(
+      await deriveApplicableCheckObjectCandidateRef(root, head),
+      object,
+    );
+    assert.equal(
+      await deriveApplicableCheckObjectCandidateRef(root, head.toUpperCase()),
+      null,
+    );
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("old-domain successful fact cannot satisfy v2 candidate and check", async () => {
+  const root = await createGitFixture();
+  try {
+    const input = await resolve(root, plan(declaration("old-domain")));
+    const oldCheck = `check:sha256:${createHash("sha256")
+      .update("flowkit-applicable-check")
+      .update("\0")
+      .update(JSON.stringify(declaration("old-domain")))
+      .digest("hex")}`;
+    const prior: ApplicableCheckPriorFact = {
+      candidateRef: input.candidateRef,
+      checkId: "old-domain",
+      checkRef: oldCheck,
+      status: "passed",
+    };
+    assert.notEqual(oldCheck, input.checks[0].checkRef);
+    assert.equal(
+      isApplicableCheckReuseEligible(
+        input.candidateRef,
+        input.checks[0],
+        prior,
+      ),
+      false,
+    );
   } finally {
     await rm(root, { recursive: true, force: true });
   }
@@ -384,358 +514,72 @@ test("unsupported Git-visible path kinds fail candidate derivation closed", asyn
   }
 });
 
-test("exact runner records passed, failed, and process-failed facts", async () => {
-  const root = await createGitFixture();
-  try {
-    const input = await resolve(
-      root,
-      plan(
-        declaration("cwd-pass", {
-          args: [
-            "-e",
-            `process.exit(process.cwd() === ${JSON.stringify(root)} ? 0 : 9)`,
-          ],
-        }),
-        declaration("exit-seven", { args: ["-e", "process.exit(7)"] }),
-        declaration("missing-program", {
-          program: path.join(root, "definitely-missing-program"),
-          args: [],
-        }),
-      ),
-    );
-    const facts = await executeApplicableChecks(root, input);
-    assert.notEqual(facts, null);
-    const byId = new Map(facts!.checks.map((fact) => [fact.checkId, fact]));
-    assert.equal(byId.get("cwd-pass")?.status, "passed");
-    assert.equal(byId.get("cwd-pass")?.exitCode, 0);
-    assert.equal(byId.get("exit-seven")?.status, "failed");
-    assert.equal(byId.get("exit-seven")?.exitCode, 7);
-    assert.equal(byId.get("missing-program")?.status, "process-failed");
-  } finally {
-    await rm(root, { recursive: true, force: true });
-  }
-});
-
-test("reserved applicable-check facts remain inside existing RunResult facts", async () => {
-  const root = await createGitFixture();
-  try {
-    const pkg = actionPackage();
-    const input = await resolve(root, plan(declaration("typecheck")), pkg);
-    const facts = await executeApplicableChecks(root, input);
-    assert.notEqual(facts, null);
-    const base = resultFor(pkg);
-    assert.equal(isRunResultRecord(base), true);
-    assert.equal(readApplicableCheckFacts(base), null);
-    const attached = attachApplicableCheckFacts(base, facts);
-    assert.notEqual(attached, null);
-    assert.equal(isRunResultRecord(attached), true);
-    assert.deepEqual(readApplicableCheckFacts(attached), facts);
-    assert.equal(attached!.reviewerVerdict, null);
-    assert.equal(attached!.verificationVerdict, null);
-    assert.equal(Object.hasOwn(attached!, "applicableChecks"), false);
-    assert.equal(
-      Object.hasOwn(attached!.facts, APPLICABLE_CHECK_FACTS_KEY),
-      true,
-    );
-  } finally {
-    await rm(root, { recursive: true, force: true });
-  }
-});
-
-test("explicit exact prior success reuses, while failed or stale prior facts execute", async () => {
-  const root = await createGitFixture();
-  try {
-    const input = await resolve(root, plan(declaration("typecheck")));
-    const check = input.checks[0];
-    const exactPrior: ApplicableCheckPriorFact = {
-      candidateRef: input.candidateRef,
-      checkId: check.checkId,
-      checkRef: check.checkRef,
-      status: "passed",
-    };
-    assert.equal(
-      isApplicableCheckReuseEligible(input.candidateRef, check, exactPrior),
-      true,
-    );
-    const reused = await executeApplicableChecks(root, input, [exactPrior]);
-    assert.equal(reused?.checks[0].status, "reused-passed");
-
-    const reusedPrior = { ...exactPrior, status: "reused-passed" as const };
-    assert.equal(
-      isApplicableCheckReuseEligible(input.candidateRef, check, reusedPrior),
-      false,
-    );
-    const rerunFromReused = await executeApplicableChecks(root, input, [
-      reusedPrior,
-    ]);
-    assert.equal(rerunFromReused?.checks[0].status, "passed");
-
-    const failedPrior = { ...exactPrior, status: "failed" as const };
-    const executed = await executeApplicableChecks(root, input, [failedPrior]);
-    assert.equal(executed?.checks[0].status, "passed");
-
-    const stalePrior = {
-      ...exactPrior,
-      candidateRef: changedHashRef(input.candidateRef),
-    };
-    const staleExecuted = await executeApplicableChecks(root, input, [
-      stalePrior,
-    ]);
-    assert.equal(staleExecuted?.checks[0].status, "passed");
-  } finally {
-    await rm(root, { recursive: true, force: true });
-  }
-});
-
-test("reused-passed prior never recursively reuses and current check really executes", async () => {
-  const root = await createGitFixture();
-  try {
-    const input = await resolve(
-      root,
-      plan(
-        declaration("recursive-reuse-proof", {
-          args: ["-e", "process.exit(7)"],
-        }),
-      ),
-    );
-    const check = input.checks[0];
-    const reusedPrior: ApplicableCheckPriorFact = {
-      candidateRef: input.candidateRef,
-      checkId: check.checkId,
-      checkRef: check.checkRef,
-      status: "reused-passed",
-    };
-
-    assert.equal(
-      isApplicableCheckReuseEligible(input.candidateRef, check, reusedPrior),
-      false,
-    );
-    const facts = await executeApplicableChecks(root, input, [reusedPrior]);
-    assert.equal(facts?.checks[0].status, "failed");
-    assert.equal(facts?.checks[0].exitCode, 7);
-  } finally {
-    await rm(root, { recursive: true, force: true });
-  }
-});
-
-test("config/tool/environment drift makes prior success ineligible", async () => {
-  const root = await createGitFixture();
-  try {
-    const first = await resolve(root, plan(declaration("typecheck")));
-    const prior: ApplicableCheckPriorFact = {
-      candidateRef: first.candidateRef,
-      checkId: first.checks[0].checkId,
-      checkRef: first.checks[0].checkRef,
-      status: "passed",
-    };
-    for (const changed of [
-      declaration("typecheck", { configRefs: ["config:other"] }),
-      declaration("typecheck", { toolRefs: ["tool:other"] }),
-      declaration("typecheck", { environmentRefs: ["environment:windows"] }),
-    ]) {
-      const next = await resolve(root, plan(changed));
-      assert.notEqual(next.checks[0].checkRef, prior.checkRef);
-      assert.equal(
-        isApplicableCheckReuseEligible(
-          next.candidateRef,
-          next.checks[0],
-          prior,
-        ),
-        false,
-      );
-    }
-  } finally {
-    await rm(root, { recursive: true, force: true });
-  }
-});
-
-test("admission accepts exact complete facts and rechecks current candidate", async () => {
-  const root = await createGitFixture();
-  try {
-    const pkg = actionPackage();
-    const input = await resolve(
-      root,
-      plan(
-        declaration("a"),
-        declaration("b", { args: ["-e", "process.exit(0)", "b"] }),
-      ),
-      pkg,
-    );
-    const facts = await executeApplicableChecks(root, input);
-    const candidate = attachApplicableCheckFacts(resultFor(pkg), facts);
-    assert.notEqual(candidate, null);
-    const currentAction = {
-      identity: { ...pkg.actionIdentity },
-      state: "prepared" as const,
-    };
-    const admitted = await admitApplicableCheckActionResult(
-      root,
-      input,
-      pkg,
-      currentAction,
-      pkg.occurrence,
-      candidate,
-    );
-    assert.notEqual(admitted, null);
-
-    await writeFile(path.join(root, "source.txt"), "drift\n", "utf8");
-    assert.equal(
-      await admitApplicableCheckActionResult(
+test("tracked and visible untracked read denial fail closed on the native host", async (t) => {
+  for (const kind of ["tracked", "untracked"] as const) {
+    await t.test(kind, async () => {
+      const root = await createGitFixture();
+      const entry =
+        kind === "tracked"
+          ? path.join(root, "source.txt")
+          : path.join(root, "visible-untracked.txt");
+      if (kind === "untracked") await writeFile(entry, "visible\n");
+      await withUnreadableGuidanceFixture({
         root,
-        input,
-        pkg,
-        currentAction,
-        pkg.occurrence,
-        candidate,
-      ),
-      null,
-    );
-  } finally {
-    await rm(root, { recursive: true, force: true });
+        entry,
+        onCleanupOwnershipTaken: () => {},
+        assertUnreadable: async () => {
+          assert.equal(await deriveApplicableCheckCandidateRef(root), null);
+        },
+      });
+    });
   }
 });
 
-test("admission rejects execution/candidate/fact-set mismatches", async () => {
-  const root = await createGitFixture();
-  try {
-    const pkg = actionPackage();
-    const input = await resolve(
-      root,
-      plan(declaration("a"), declaration("b")),
-      pkg,
-    );
-    const facts = (await executeApplicableChecks(root, input))!;
-    const currentAction = {
-      identity: { ...pkg.actionIdentity },
-      state: "prepared" as const,
-    };
+test("unmerged index and SHA-256 repositories are rejected instead of partially projected", async (t) => {
+  await t.test("unmerged index", async () => {
+    const root = await createGitFixture();
+    try {
+      const initialBranch = await git(root, "branch", "--show-current");
+      await git(root, "checkout", "-qb", "other");
+      await writeFile(path.join(root, "source.txt"), "other\n");
+      await git(root, "commit", "-qam", "other");
+      await git(root, "checkout", initialBranch);
+      await writeFile(path.join(root, "source.txt"), "current\n");
+      await git(root, "commit", "-qam", "current");
+      try {
+        await git(root, "merge", "other");
+      } catch {
+        // The expected conflict leaves stage 1/2/3 entries for the reader.
+      }
+      assert.match(await git(root, "ls-files", "--unmerged"), /source\.txt/);
+      assert.equal(await deriveApplicableCheckCandidateRef(root), null);
+    } finally {
+      await rm(root, { recursive: true, force: true });
+    }
+  });
 
-    async function rejects(mutated: ApplicableCheckFactSet) {
-      const candidate = attachApplicableCheckFacts(resultFor(pkg), mutated);
-      assert.notEqual(candidate, null);
+  await t.test("SHA-256 object format", async () => {
+    const root = await mkdtemp(
+      path.join(tmpdir(), "flowkit-sha256-repository-"),
+    );
+    try {
+      await git(root, "init", "-q", "--object-format=sha256");
+      await git(root, "config", "user.email", "flowkit@example.invalid");
+      await git(root, "config", "user.name", "Flowkit Test");
+      await writeFile(path.join(root, "source.txt"), "sha256\n");
+      await git(root, "add", ".");
+      await git(root, "commit", "-qm", "sha256 fixture");
       assert.equal(
-        await admitApplicableCheckActionResult(
-          root,
-          input,
-          pkg,
-          currentAction,
-          pkg.occurrence,
-          candidate,
-        ),
+        await git(root, "rev-parse", "--show-object-format"),
+        "sha256",
+      );
+      assert.equal(await deriveApplicableCheckCandidateRef(root), null);
+      assert.equal(
+        await deriveApplicableCheckObjectCandidateRef(root, "a".repeat(40)),
         null,
       );
+    } finally {
+      await rm(root, { recursive: true, force: true });
     }
-
-    await rejects({
-      ...facts,
-      executionInputRef: changedHashRef(facts.executionInputRef),
-    });
-    await rejects({
-      ...facts,
-      candidateRef: changedHashRef(facts.candidateRef),
-    });
-    await rejects({ ...facts, checks: facts.checks.slice(0, 1) });
-    await rejects({
-      ...facts,
-      checks: [
-        {
-          ...facts.checks[0],
-          checkRef: changedHashRef(facts.checks[0].checkRef),
-        },
-        facts.checks[1],
-      ],
-    });
-    await rejects({
-      ...facts,
-      checks: [{ ...facts.checks[0], checkId: "unexpected" }, facts.checks[1]],
-    });
-
-    const duplicateRawResult = resultFor(pkg, {
-      facts: JSON.parse(
-        JSON.stringify({
-          [APPLICABLE_CHECK_FACTS_KEY]: {
-            executionInputRef: facts.executionInputRef,
-            candidateRef: facts.candidateRef,
-            checks: [facts.checks[0], facts.checks[0]],
-          },
-        }),
-      ),
-    });
-    assert.equal(isRunResultRecord(duplicateRawResult), false);
-    assert.equal(
-      await admitApplicableCheckActionResult(
-        root,
-        input,
-        pkg,
-        currentAction,
-        pkg.occurrence,
-        duplicateRawResult,
-      ),
-      null,
-    );
-  } finally {
-    await rm(root, { recursive: true, force: true });
-  }
-});
-
-test("reuse never scans Run history and current Result records explicit reused-passed", async () => {
-  const root = await createGitFixture();
-  try {
-    const failingCheck = declaration("history-proof", {
-      args: ["-e", "process.exit(7)"],
-    });
-    const input = await resolve(root, plan(failingCheck));
-    await mkdir(path.join(root, ".flowkit", "runs", "historical"), {
-      recursive: true,
-    });
-    await writeFile(
-      path.join(root, ".flowkit", "runs", "historical", "result.json"),
-      JSON.stringify({
-        candidateRef: input.candidateRef,
-        checkId: input.checks[0].checkId,
-        checkRef: input.checks[0].checkRef,
-        status: "passed",
-      }),
-      "utf8",
-    );
-    const withoutExplicitPrior = await executeApplicableChecks(root, input);
-    assert.equal(withoutExplicitPrior?.checks[0].status, "failed");
-
-    const explicitPrior: ApplicableCheckPriorFact = {
-      candidateRef: input.candidateRef,
-      checkId: input.checks[0].checkId,
-      checkRef: input.checks[0].checkRef,
-      status: "passed",
-    };
-    const withExplicitPrior = await executeApplicableChecks(root, input, [
-      explicitPrior,
-    ]);
-    assert.equal(withExplicitPrior?.checks[0].status, "reused-passed");
-  } finally {
-    await rm(root, { recursive: true, force: true });
-  }
-});
-
-test("mechanical applicable-check success does not create review/verification/owner/policy authority", async () => {
-  const root = await createGitFixture();
-  try {
-    const pkg = actionPackage();
-    const input = await resolve(root, plan(declaration("typecheck")), pkg);
-    const facts = await executeApplicableChecks(root, input);
-    const base = resultFor(pkg, {
-      authorConclusion: null,
-      reviewerVerdict: null,
-      verificationVerdict: null,
-      nextBoundary: null,
-    });
-    const attached = attachApplicableCheckFacts(base, facts);
-    assert.notEqual(attached, null);
-    assert.equal(attached!.authorConclusion, null);
-    assert.equal(attached!.reviewerVerdict, null);
-    assert.equal(attached!.verificationVerdict, null);
-    assert.equal(attached!.nextBoundary, null);
-    assert.equal(pkg.ownerAuthority, null);
-  } finally {
-    await rm(root, { recursive: true, force: true });
-  }
+  });
 });

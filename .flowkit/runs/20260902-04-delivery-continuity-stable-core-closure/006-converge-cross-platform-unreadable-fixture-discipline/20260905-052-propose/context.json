@@ -1,0 +1,63 @@
+{
+  "runNumber": 52,
+  "kind": "external-orchestrator-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "converge-cross-platform-unreadable-fixture-discipline",
+  "action": "propose",
+  "runId": "20260905-052-propose",
+  "physicalRunPath": ".flowkit/runs/20260902-04-delivery-continuity-stable-core-closure/006-converge-cross-platform-unreadable-fixture-discipline/20260905-052-propose",
+  "physicalRunGroupPrefix": "006",
+  "projectOrdinal": 31,
+  "changeStartSequence": 6,
+  "closurePhase": "stable-core-closure-convergence",
+  "checkpointClaim": "875b7827867fd8489f9c3d05837fa3879ec15e2b",
+  "inputReviewRun": "20260905-051-review-explore",
+  "inputReviewerPackageSha256": "fa123315fc7213e643257bab3b7e9ef6568dbd89c0fe15bff46681e37c7d42f5",
+  "reviewVerdict": "APPROVED",
+  "reviewProposalAllowed": true,
+  "proposalSurface": {
+    "newCapabilities": [],
+    "modifiedCapabilities": ["formal-full-test-execution-and-correction"],
+    "knownFixtureTests": [
+      "tests/unit/domain/action-guidance-execution.test.ts",
+      "tests/unit/domain/delivery-operation-execution.test.ts"
+    ],
+    "productionResolverMutationPlanned": false,
+    "coreSkipStatusPlanned": false,
+    "skipRegistryPlanned": false,
+    "evidenceStorePlanned": false
+  },
+  "proposalPrecision": {
+    "actualCapabilityProbeRequired": true,
+    "hardcodedOsNameSkipForbidden": true,
+    "silentSkipForbidden": true,
+    "fabricatedSemanticPassForbidden": true,
+    "capabilityBoundSkipProjectLocalOnly": true,
+    "sameCandidateRealEnforcementProofRequired": true,
+    "fullTestTerminalFactsPersistSubtestSkip": false,
+    "freshNativeWindowsProofRequiredAfterApply": true,
+    "oldWindows227of229IsTriggerEvidenceOnly": true
+  },
+  "artifactSha256": {
+    "proposal": "a6dad291a1de271f5f44e5143ae05d113317cbc9c4c33d44bdf1a093beb3d7de",
+    "design": "4b7aca4a8de9c13c3f554d927c25bcb212b9104e56ddc26834367aac153affd1",
+    "tasks": "b787d3fb491927da926ee91c05cdedf3539e74403e8b02fc667c306f2e9076ad",
+    "specDelta": "bce9705135bbc5f2c78e8e8c06b3973e72857c580df3402b9cbc6ebe1810d29f"
+  },
+  "verification": {
+    "currentChangeStrict": "PASS",
+    "allOpenSpecStrict": "23/23 PASS",
+    "gitDiffCheck": "PASS",
+    "productionMutation": "NONE",
+    "scopeDrift": "NONE"
+  },
+  "realD04FormalFullTestExecuted": false,
+  "realD04ArchitectureFinalizationExecuted": false,
+  "realD04DeliveryFinalExecuted": false,
+  "realD04RepositoryIntegrationExecuted": false,
+  "d05Created": false,
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

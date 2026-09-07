@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
 import {
+  access,
   chmod,
   mkdir,
   mkdtemp,
@@ -18,6 +19,7 @@ import {
   isActionGuidanceRefForAction,
   resolveActionGuidanceRef,
 } from "../../../src/domain/index.js";
+import { withUnreadableGuidanceFixture } from "./unreadable-guidance-fixture.js";
 
 async function makeRoot(): Promise<string> {
   return mkdtemp(path.join(tmpdir(), "flowkit-action-guidance-"));
@@ -169,6 +171,7 @@ test("parent-path redirection through symlink fails closed", async (t) => {
 
 test("unreadable canonical Guidance fails closed when host permissions are enforceable", async () => {
   const root = await makeRoot();
+  let fixtureOwnsCleanup = false;
   try {
     const entry = await writeGuidance(root, "apply", "# apply\n");
 
@@ -213,9 +216,54 @@ if (result !== null) {
       return;
     }
 
-    await chmod(entry, 0o000);
-    assert.equal(await resolveActionGuidanceRef(root, "apply"), null);
+    await withUnreadableGuidanceFixture({
+      root,
+      entry,
+      onCleanupOwnershipTaken: () => {
+        fixtureOwnsCleanup = true;
+      },
+      assertUnreadable: async () => {
+        assert.equal(await resolveActionGuidanceRef(root, "apply"), null);
+      },
+    });
   } finally {
+    if (!fixtureOwnsCleanup) {
+      await rm(root, { recursive: true, force: true });
+    }
+  }
+});
+
+test("accepted fixture root is cleaned when Windows SID setup fails", async () => {
+  if (process.platform !== "win32") return;
+
+  const root = await makeRoot();
+  const originalPath = process.env.PATH;
+  let fixtureOwnsCleanup = false;
+  let resolverAssertionExecuted = false;
+  try {
+    const entry = await writeGuidance(root, "apply", "# apply\n");
+    process.env.PATH = "";
+
+    await assert.rejects(
+      withUnreadableGuidanceFixture({
+        root,
+        entry,
+        onCleanupOwnershipTaken: () => {
+          fixtureOwnsCleanup = true;
+        },
+        assertUnreadable: async () => {
+          resolverAssertionExecuted = true;
+        },
+      }),
+      /resolve current Windows user SID failed to start: ENOENT/,
+    );
+
+    assert.equal(fixtureOwnsCleanup, true);
+    assert.equal(resolverAssertionExecuted, false);
+    await assert.rejects(access(root), { code: "ENOENT" });
+  } finally {
+    if (originalPath === undefined) delete process.env.PATH;
+    else process.env.PATH = originalPath;
     await rm(root, { recursive: true, force: true });
   }
 });

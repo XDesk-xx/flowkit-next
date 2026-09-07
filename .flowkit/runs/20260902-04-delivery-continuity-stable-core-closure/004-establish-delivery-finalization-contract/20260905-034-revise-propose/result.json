@@ -1,0 +1,44 @@
+{
+  "runId": "20260905-034-revise-propose",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "establish-delivery-finalization-contract",
+  "action": "revise-propose",
+  "role": "author",
+  "status": "terminal",
+  "verdict": "PASS",
+  "summary": "Proposal artifacts now freeze both closure-reference serializations through exact prefixes, one-byte NUL domain separation, explicit trusted-field JSON projections, golden-vector stability, input-property-order independence, and value/order mutation negatives. The Architecture delta also enumerates the exact ten-field presentation object and rejects missing, extra, or changed values. The correction remains inside the approved Explore and adds no implementation or generic hash/schema subsystem.",
+  "nextBoundary": "review-propose",
+  "proposalAllowed": false,
+  "applyAllowed": false,
+  "blockingUnknown": null,
+  "reviewFindingConvergence": {
+    "D04-RP004-001": "ADDRESSED_PENDING_REREVIEW",
+    "D04-RP004-002": "ADDRESSED_PENDING_REREVIEW"
+  },
+  "revisedArtifacts": [
+    "openspec/changes/establish-delivery-finalization-contract/design.md",
+    "openspec/changes/establish-delivery-finalization-contract/specs/architecture-and-canonical-diagram-continuity/spec.md",
+    "openspec/changes/establish-delivery-finalization-contract/specs/delivery-finalization/spec.md",
+    "openspec/changes/establish-delivery-finalization-contract/tasks.md"
+  ],
+  "unchangedArtifacts": [
+    "openspec/changes/establish-delivery-finalization-contract/proposal.md",
+    "openspec/changes/establish-delivery-finalization-contract/specs/delivery-operation-execution-and-start-continuity/spec.md"
+  ],
+  "validation": {
+    "changeStrict": "1/1 PASS",
+    "allOpenSpecStrict": "21/21 PASS",
+    "planningArtifacts": "4/4 complete",
+    "implementationTasks": "0/12",
+    "gitDiffCheck": "PASS"
+  },
+  "productionMutation": "NONE",
+  "testMutation": "NONE",
+  "scopeDrift": "NONE",
+  "stableManagerUsed": false,
+  "doctorInvoked": false,
+  "candidateCliInvoked": false,
+  "continuationExecuted": false,
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "kind": "architecture-thin-compare",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "pair": "planned-to-actual",
+  "left": {
+    "ref": "./planned.architecture.json",
+    "sha256": "97a02e3ef0b36915ea1cdebc88c1d1729d825d376f53accf6a24bf02b28eee31",
+    "bytes": 20751
+  },
+  "right": {
+    "ref": "./actual.architecture.json",
+    "sha256": "80a94da0e12bad17e7153795902bf2f9e92ed7956adaf2939d13d832521a9082",
+    "bytes": 9014
+  },
+  "classification": ["semantic", "presentation"],
+  "summary": {
+    "semantic": "D04 Planned 的 Stable Core responsibility convergence 已落实到 Actual。实际实现进一步明确：Delivery Start fixed-point commit 不是默认强制前置，而是受独立 Owner Git authority 控制；Full Test 与 Architecture outcome 可由显式 external evidence source 取回。D04 当前 candidate identity 仍覆盖 repository Git-visible material，这一已知边界没有被派生架构伪装成已完成的解耦。",
+    "presentation": "Planned 以原有 21-component topology 表达责任扩展；Actual 改用 12 个职责节点和三条清晰主链表达已经存在的能力。该独立布局变化不改写 Planned、Current 或 C→P bytes。"
+  },
+  "presentation": {
+    "mode": "side-by-side",
+    "renderer": "flowkit-reference-side-by-side",
+    "leftPosition": "before",
+    "rightPosition": "after",
+    "equalFrame": true,
+    "interactive": true,
+    "overlay": false,
+    "deltaColumn": false,
+    "artifactPolicy": "disposable-html-not-retained-in-git",
+    "resolution": "resolve-left-right-ref-to-architecture-render"
+  }
+}

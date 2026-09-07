@@ -136,6 +136,19 @@ test("Stable Core bootstrap Reviewer HOW remains independent and non-delegating"
   }
 });
 
+test("review-propose checks moved material and authority context before concrete blocking", async () => {
+  for (const body of [
+    await readProduct("review-propose"),
+    await readBootstrap("review-propose"),
+  ]) {
+    assert.match(body, /first (?:inspect|check) (?:the )?current path/i);
+    assert.match(body, /not (?:proof of|establish) `not authorized`/i);
+    assert.match(body, /concrete (?:effect|impact)/i);
+    assert.match(body, /exact planning claim/i);
+    assert.match(body, /permanent retention of raw Explore proof/i);
+  }
+});
+
 test("live temporary Run bridge is retired without erasing historical provenance", async () => {
   await assert.rejects(
     readFile(

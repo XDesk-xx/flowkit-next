@@ -1,0 +1,30 @@
+{
+  "runId": "20260907-060-review-propose",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "converge-cross-platform-unreadable-fixture-discipline",
+  "action": "review-propose",
+  "role": "reviewer",
+  "status": "terminal",
+  "verdict": "changes-requested",
+  "summary": "059 correctly removes the superseded capability-bound-SKIP contract and delta spec, keeps the ACL correction test-only, requires both native-Windows resolver assertions and restoration, preserves POSIX/root proof, and removes post-archive tasks. Apply is blocked only because Design and Tasks encode current suite totals 19/19, 241/241, and 5/5 plus whole-Domain zero-SKIP wording as normative acceptance. Those are incidental observations and broader than the approved two-fixture invariant. Replace them with named-suite success, no unexplained failures, explicit execution of both target assertions, zero unreadable-fixture SKIP, and actual-count evidence recorded at Apply time.",
+  "blockingFindings": [
+    "D04-RP006-001"
+  ],
+  "applyAllowed": false,
+  "archiveAllowed": false,
+  "nextBoundary": "revise-propose",
+  "reviewerMutation": "RUN_060_ONLY",
+  "productionMutation": "NONE",
+  "authorArtifactMutation": "NONE",
+  "scopeDriftAssessment": "BOUNDED_ACCEPTANCE_LITERAL_OVERREACH",
+  "newContentAssessment": "ACL_AND_ZERO_TARGET_SKIP_DETAILS_ARE_REQUIRED; WHOLE_SUITE_COUNTS_AND_SKIP_ACCOUNTING_ARE_NOT",
+  "complexityAssessment": "MINIMAL_TEST_ONLY_SHAPE_ONE_SEMANTIC_ACCEPTANCE_LITERAL_BLOCKER",
+  "canonicalOpenSpecProof": "23/23 strict PASS; semantic literal finding remains",
+  "gitDiffCheck": "PASS",
+  "ownerOrGitAuthorityCreated": false,
+  "stableManagerUsed": false,
+  "candidateCliInvoked": false,
+  "continuationExecuted": false,
+  "stableTransfer": true,
+  "packageClass": "reviewer-delta"
+}

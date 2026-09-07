@@ -1,0 +1,80 @@
+{
+  "runNumber": 8,
+  "kind": "external-orchestrator-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "complete-formal-full-test-correction-and-platform-fixture-discipline",
+  "action": "explore",
+  "runId": "20260902-008-explore",
+  "physicalRunPath": ".flowkit/runs/20260902-04-delivery-continuity-stable-core-closure/002-complete-formal-full-test-correction-and-platform-fixture-discipline/20260902-008-explore",
+  "physicalRunGroupPrefix": "002",
+  "projectOrdinal": 27,
+  "changeStartSequence": 2,
+  "checkpointClaim": "d4858d461bd5a08413b8581490e75497f4027efe",
+  "deliveryStartBase": "eaa1c8f1cf9a52e05b75c3d1133f7aff8449c215",
+  "acceptedBase": "6bda1e87a0c12929c3567de17ede75ecd0cf0bed",
+  "ownerActivation": {
+    "ref": "owner:e911672bdc52cde236a715f50ab79c572b48b054d0daeeb07d1ea5eeddbee4f3",
+    "decision": "activate-change",
+    "sourceRef": "owner-input:2026-09-02:activate-change:complete-formal-full-test-correction-and-platform-fixture-discipline:proof-explore:preflight-d4858d46-pass",
+    "scope": [
+      "explore"
+    ]
+  },
+  "preExploreContinuity": {
+    "status": "PASS",
+    "nearestRepositoryFixedPoint": "d4858d461bd5a08413b8581490e75497f4027efe",
+    "fixedPointParent": "eaa1c8f1cf9a52e05b75c3d1133f7aff8449c215",
+    "workingTreeCleanBeforeMutation": true,
+    "change1State": "completed",
+    "change1ProjectOrdinal": 26,
+    "change1ArchivePresent": true,
+    "activeChangesBeforeActivation": 0,
+    "unexpectedDrift": false
+  },
+  "skillsUsed": [
+    ".agents/skills/openspec-explore",
+    ".agents/skills/explore-proof-based",
+    "detached-repository-execution"
+  ],
+  "stableManagerProof": {
+    "trustedCoordinationState": "active",
+    "decision": "ready-action",
+    "actionId": "explore"
+  },
+  "detachedEnvironment": {
+    "node": "22.23.2",
+    "openspec": "1.10.0",
+    "dependencyInputsUnchanged": true,
+    "packageManagerInstallInvoked": false,
+    "restoredDependencySnapshotReused": true
+  },
+  "proofSummary": {
+    "focusedExistingContractTests": "69/69 PASS",
+    "canonicalOpenSpecSpecs": "18/18 PASS",
+    "activeChangeStrictValidation": "expected pre-Proposal failure: no spec delta yet",
+    "existingFormalFullTestGateCount": 6,
+    "candidateIdentityAlreadyExists": true,
+    "repositoryDriftChangesCandidateIdentity": true,
+    "environmentConfigToolDriftChangesCheckIdentity": true,
+    "stalePriorPassBecomesIneligible": true,
+    "resultAdmissionRechecksCurrentCandidate": true,
+    "deliveryFullTestGuidanceExistsBeforeChange": false,
+    "deliveryFullTestPackageFormsBeforeChange": false,
+    "newCandidateInvalidationSubsystemRequired": false,
+    "findingDatabaseRequired": false,
+    "platformLifecycleBranchRequired": false
+  },
+  "memoInput": {
+    "memoId": "future-full-test-correction-and-platform-fixture-discipline",
+    "state": "open",
+    "sha256": "26030a38f0e66cd6f660581666d745c2a95e359895be9a06abf2bd17dfb59128"
+  },
+  "exploreArtifactSha256": "47f81be2b9bde17f1b78423d560fafa8f90c9800fb0dfe1a00fa22e98f2dd26e",
+  "deliveryManifestSha256": "51377258dd0ae8ddcf53b280d6ca6cacdf1e507c5b423b9c843789fca9b32150",
+  "productionMutationInExplore": false,
+  "proposalArtifactsInExplore": false,
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}

@@ -1,0 +1,71 @@
+{
+  "runNumber": 49,
+  "kind": "external-orchestrator-archive-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "establish-repository-integration-and-next-base-continuity",
+  "action": "archive",
+  "runId": "20260905-049-archive",
+  "inputRunId": "20260905-048-review-apply",
+  "inputReviewerPackageSha256": "b2c12b6435f9ca84f68b75f93be3b033c433f480f4969b2834d2b05aa5940432",
+  "baseCommit": "88e376d2ca870b248952477f90adf38409fa679e",
+  "projectOrdinal": 30,
+  "changeStartSequence": 5,
+  "openspecArchivePath": "openspec/changes/archive/2026-09-05-030-establish-repository-integration-and-next-base-continuity",
+  "archiveMovement": {
+    "removedPath": "openspec/changes/establish-repository-integration-and-next-base-continuity",
+    "addedPath": "openspec/changes/archive/2026-09-05-030-establish-repository-integration-and-next-base-continuity",
+    "targetCollision": false,
+    "archiveBytesPreserved": true
+  },
+  "syncedCanonicalSpecs": [
+    "openspec/specs/delivery-operation-execution-and-start-continuity/spec.md",
+    "openspec/specs/repository-integration-and-next-base-continuity/spec.md"
+  ],
+  "canonicalSpecSha256": {
+    "openspec/specs/delivery-operation-execution-and-start-continuity/spec.md": "c1598b6eeb71c1d0c9d1b288242d0fd38cfa38d3dc75d6ff4ec4b31811e2a18e",
+    "openspec/specs/repository-integration-and-next-base-continuity/spec.md": "27e06c7eae3a2599458ac400a81832516de2d396393d31c5e429608fe964d152"
+  },
+  "archivedPlanningArtifactSha256": {
+    "proposal.md": "5c72453f6f25c4f8334762ecf7f22f603ee1ca4a73e8c9a979510e17a54d7de3",
+    "design.md": "ac269cbbb631971a87b151493a450e75b64ea9278ac88fd6ad0211838670ff47",
+    "tasks.md": "50822bc13728e2c88917e4f4fc72e4ce986bd194a79bb64619993ed2583d7e11"
+  },
+  "toolIdentity": {
+    "node": "22.23.2",
+    "openspec": "1.10.0",
+    "archify": "2.15.0"
+  },
+  "preArchiveVerification": {
+    "reviewApply": "APPROVED / archiveAllowed=true / no blockers",
+    "tasks": "12/12 complete",
+    "openSpecAllStrict": "22/22 PASS",
+    "focusedAndTypecheck": "PASS",
+    "formatLintDependencyEntropy": "PASS"
+  },
+  "postArchiveVerification": {
+    "openSpecCanonicalStrict": "22/22 PASS",
+    "activeOpenSpecChanges": 0,
+    "domain": "241/241 PASS, 0 skipped",
+    "acceptance": "5/5 PASS, 0 skipped with exact FLOWKIT_HOME",
+    "dependencyHealth": "80 modules / 359 dependencies / 0 violations",
+    "repositoryEntropy": "40/40 production modules reachable",
+    "entropyTests": "7/7 PASS",
+    "typecheckFormatLintForbiddenGitDiff": "PASS"
+  },
+  "continuation": {
+    "currentChangeState": "completed",
+    "allPlannedChangesCompleted": true,
+    "nextBoundary": "checkpoint",
+    "checkpointCommitCreated": false,
+    "d05Created": false
+  },
+  "realD04FullTestExecuted": false,
+  "realD04ArchitectureFinalizationExecuted": false,
+  "realD04DeliveryFinalExecuted": false,
+  "realD04RepositoryIntegrationExecuted": false,
+  "gitMutationExecuted": false,
+  "stableTransfer": true,
+  "packageClass": "full-archive-handoff"
+}

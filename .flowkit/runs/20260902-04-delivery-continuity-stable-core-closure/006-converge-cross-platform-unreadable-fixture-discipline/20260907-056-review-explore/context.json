@@ -1,0 +1,74 @@
+{
+  "runNumber": 56,
+  "kind": "external-orchestrator-review-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "converge-cross-platform-unreadable-fixture-discipline",
+  "action": "review-explore",
+  "runId": "20260907-056-review-explore",
+  "inputRunId": "20260907-055-revise-explore",
+  "physicalRunPath": ".flowkit/runs/20260902-04-delivery-continuity-stable-core-closure/006-converge-cross-platform-unreadable-fixture-discipline/20260907-056-review-explore",
+  "physicalRunGroupPrefix": "006",
+  "projectOrdinal": 31,
+  "changeStartSequence": 6,
+  "baseCommit": "875b7827867fd8489f9c3d05837fa3879ec15e2b",
+  "inputRunHashes": {
+    "actionSha256": "651f6df13721f4a8bff03872cbf517a6c7a707dad42cacf2019d0c6475c65ea2",
+    "contextSha256": "367f384b6890ec576191d6552b810f8e0cd9a823a0236a7dd4fae736b54a11df",
+    "resultSha256": "253e9915e232c4ec65115ac3d855688caff1c74038310f4f125b6e86fff20fbe"
+  },
+  "reviewedArtifacts": {
+    "exploreSha256": "23dc9aa583aac0d6cc3757c796d328c039cb396314b3d29f5f2c17850ebb7c9a",
+    "deliveryManifestSha256": "cc45a033502df88b5c98a48f4579b43c9e1df43e8f54ab299cd7d7fdb23d2e8d",
+    "canonicalFormalFullTestSpecSha256": "6aedfa74a25ab88d3f1f01bbaefed02fe917a1100875cfb6ad6f85af3c57fabb",
+    "supersededDeltaSpecSha256": "bce9705135bbc5f2c78e8e8c06b3973e72857c580df3402b9cbc6ebe1810d29f",
+    "currentActionGuidanceTestSha256": "ab074d9d0499a72b40f6fb3878f36e46815df4574c7e8be9312f8399e0554ba4",
+    "currentDeliveryGuidanceTestSha256": "d73284c243ab8e5686c8ae69cd0cdfd4bce3168a5c62b81574bcc5f8d4b0c78e"
+  },
+  "independentProof": {
+    "nativeWindowsCurrentFocused": "19 tests / 17 pass / 2 capability-bound skip / 0 fail",
+    "nativeWindowsAcl": {
+      "target": "two newly-created temporary Guidance files",
+      "deniedIdentity": "current user SID",
+      "deniedRight": "RD",
+      "lstat": "regular files",
+      "realpath": "success",
+      "directRead": "EPERM for both files",
+      "actionResolver": "null",
+      "deliveryResolver": "null",
+      "restore": "deny ACE removed; both reads restored before exact-root cleanup"
+    },
+    "managedOpenSpecVersion": "1.10.0",
+    "currentChangeStrict": "PASS",
+    "openSpecAllStrict": "23/23 PASS",
+    "gitDiffCheck": "PASS"
+  },
+  "findings": {
+    "D04-R006-001": {
+      "status": "BLOCKING",
+      "affectedArtifact": "openspec/delivery-groups/20260902-04-delivery-continuity-stable-core-closure.yaml",
+      "impact": "The active Change goal still authorizes capability-bound SKIP and lacks the later Owner scope-correction provenance, contradicting revised Explore and canonical no-skip proof authority.",
+      "minimumCorrection": "Converge only the Change 6 manifest goal/outputs and established Owner-decision record to real native-Windows read-denial proof with zero unreadable-fixture SKIP."
+    }
+  },
+  "semanticAssessment": {
+    "windowsAclDirectionProven": true,
+    "canonicalSpecAlreadySufficient": true,
+    "productionMutationRequired": false,
+    "genericAclAbstractionRequired": false,
+    "newCoreSkipModelRequired": false,
+    "postArchiveTaskAllowed": false,
+    "scopeDrift": "NONE",
+    "proposalReady": false
+  },
+  "proposalAllowed": false,
+  "stableManagerUsed": false,
+  "stableManagerAvailability": "external flowkit command unavailable",
+  "candidateCliInvoked": false,
+  "reviewerArtifactMutation": "RUN_056_ONLY",
+  "authorArtifactMutation": "NONE",
+  "continuationExecuted": false,
+  "stableTransfer": true,
+  "packageClass": "reviewer-delta"
+}

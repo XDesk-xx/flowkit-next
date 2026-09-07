@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "kind": "architecture-thin-compare",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "pair": "current-to-actual",
+  "left": {
+    "ref": "./current.architecture.json",
+    "sha256": "0f28cea801c1df5541fcd68d83fa61ed05ddd556eeeaea009955a2b5cd766b70",
+    "bytes": 20309
+  },
+  "right": {
+    "ref": "./actual.architecture.json",
+    "sha256": "80a94da0e12bad17e7153795902bf2f9e92ed7956adaf2939d13d832521a9082",
+    "bytes": 9014
+  },
+  "classification": ["semantic", "presentation"],
+  "summary": {
+    "semantic": "相对 D03 accepted Current，D04 Actual 已实现 content-bound Canonical Guidance、closed DeliveryOperationId 与 concrete DeliveryOperationPackage、state-first continuity、Formal Full Test、Architecture Finalization、Delivery Final、repository integration，以及可取回的 external evidence source。OpenSpec、Git、Owner、Verification、Archify 与 Runtime 仍保持独立 authority；未引入 Registry、自动 next、自动 Git 或第二套 durable truth。",
+    "presentation": "Actual 依据 D04 当前职责重新组织为三层独立布局，以较少的主链连接突出 authority、exact execution 与 derived closure；Current bytes 和既有 C→P compare 保持不变。"
+  },
+  "presentation": {
+    "mode": "side-by-side",
+    "renderer": "flowkit-reference-side-by-side",
+    "leftPosition": "before",
+    "rightPosition": "after",
+    "equalFrame": true,
+    "interactive": true,
+    "overlay": false,
+    "deltaColumn": false,
+    "artifactPolicy": "disposable-html-not-retained-in-git",
+    "resolution": "resolve-left-right-ref-to-architecture-render"
+  }
+}

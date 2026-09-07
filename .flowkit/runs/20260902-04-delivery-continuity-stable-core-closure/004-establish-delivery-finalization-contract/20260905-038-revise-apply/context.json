@@ -1,0 +1,75 @@
+{
+  "runNumber": 38,
+  "kind": "external-orchestrator-revise-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "establish-delivery-finalization-contract",
+  "action": "revise-apply",
+  "runId": "20260905-038-revise-apply",
+  "inputRunId": "20260905-037-review-apply",
+  "inputApplyRunId": "20260905-036-apply",
+  "physicalRunPath": ".flowkit/runs/20260902-04-delivery-continuity-stable-core-closure/004-establish-delivery-finalization-contract/20260905-038-revise-apply",
+  "physicalRunGroupPrefix": "004",
+  "projectOrdinal": 29,
+  "changeStartSequence": 4,
+  "baseCommit": "a170da0373867296813a888c57db8325025a8f5d",
+  "inputReviewerVerdict": "CHANGES_REQUESTED",
+  "inputReviewerNextBoundary": "revise-apply",
+  "inputRunHashes": {
+    "actionSha256": "011a4731eff1a54e896dc81ae3af100f7defe6e63090cf238d7c667ff0f53624",
+    "contextSha256": "11f2cdd96b7a853eacbcec0c40cc6c4214e85786e688c9b1530978d19c357002",
+    "resultSha256": "9d16f35e1fa6f10be1eed1609a9766823472e29f057dceae4cec1f16c7b9132a"
+  },
+  "planningArtifactHashes": {
+    "proposalSha256": "8e0f3cdecb3211ed24f3436eb8aaaa15deabc8e9d9327d3446a666d723d5ccc6",
+    "designSha256": "62d503e86a6a8483e4dd86918bc7b04a51220dfcab7977823334fee6208f883c",
+    "completedTasksSha256": "f762e28bdebd3863e8ec4aef819de3943baf384bc4bce496e0a00856547e1c85"
+  },
+  "finding": {
+    "id": "D04-RA004-001",
+    "classification": "implementation-defect",
+    "approvedContractDefect": false,
+    "scope": "operation-local writer and focused test",
+    "disposition": "corrected"
+  },
+  "revisionDelta": {
+    "writerSha256": "f6f45dcfcc5c0a4b23519ece82541ce19c0dc3152932e77fc23040a7c535112d",
+    "focusedTestSha256": "4122a74b57dc2f23b9efcd3f6a4f03aab6df3aa8455e256896887072fb2c7529",
+    "wholeDocumentYamlReserializationRemoved": true,
+    "approvedExistingScalarReplacements": 3,
+    "approvedInsertedBlocks": 2,
+    "nonTargetBytesAndOrderingPreserved": true,
+    "genericPatchFrameworkAdded": false,
+    "deletedPaths": []
+  },
+  "handoffContinuity": {
+    "strategy": "shared-worktree-plus-exact-immutable-ancestor-refs",
+    "uncommittedApplyAncestorStateRetained": true,
+    "inputApplyAndReviewRunsPresent": true
+  },
+  "runtime": {
+    "node": "22.23.2",
+    "openSpec": "1.10.0",
+    "linuxImageId": "127ee201acf8",
+    "networkUsed": false,
+    "packageManagerInstallInvoked": false
+  },
+  "verificationBoundary": {
+    "focusedDeliveryFinal": "7/7 PASS",
+    "focusedWindows": "30/31 PASS; one known chmod(0o000) NTFS fixture limitation",
+    "windowsDomain": "227/229 PASS; two known chmod(0o000) NTFS fixture limitations",
+    "linuxPrimaryDomain": "229/229 PASS",
+    "windowsAcceptance": "5/5 PASS",
+    "linuxAcceptance": "5/5 PASS"
+  },
+  "realD04DeliveryFinalExecuted": false,
+  "change5PulledForward": false,
+  "stableManagerUsed": false,
+  "doctorInvoked": false,
+  "candidateCliInvoked": false,
+  "gitMutationExecuted": false,
+  "continuationExecuted": false,
+  "stableTransfer": true,
+  "packageClass": "author-revision-delta"
+}

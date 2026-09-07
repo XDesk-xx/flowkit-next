@@ -1,0 +1,70 @@
+{
+  "runNumber": 22,
+  "kind": "external-orchestrator-review-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "establish-architecture-and-canonical-diagram-continuity",
+  "action": "review-explore",
+  "runId": "20260904-022-review-explore",
+  "inputRunId": "20260904-021-revise-explore",
+  "physicalRunPath": ".flowkit/runs/20260902-04-delivery-continuity-stable-core-closure/003-establish-architecture-and-canonical-diagram-continuity/20260904-022-review-explore",
+  "physicalRunGroupPrefix": "003",
+  "projectOrdinal": 28,
+  "changeStartSequence": 3,
+  "baseCommit": "0a8a98817b8a5b244bbc841e1101b9f8af73080c",
+  "baseParentCommit": "19c1eab71d26c24534565e1e03ac8f5d3115ad9c",
+  "inputAuthorPackageSha256": "a9d76c119229e910a40e3b7ace6671f48b1829bbec3f9cb4fa4e9ffd16ee1a74",
+  "inputReviewerPackageSha256": "cb08d43c7663cb6ed850ddd6b9dd9a3b09e96e7a4c1bbdb1790500a109585a2f",
+  "reviewedExploreSha256": "821a33a65f7a268f7da6c3fdbae99decdebd639b4ddde18f6fc374744f3e38db",
+  "deliveryManifestSha256": "5123b910a0067d2c304f8d8e841754a5c887c5619cc7dcf821a63acc61162a43",
+  "finalReferenceSha256": "b26217a2ae397772aea7fd96140855b0099a1089e2c2f8c9b2614e50809320a9",
+  "embeddedBaseBundleSha256": "4f8261cfcab88670a7ce963accac0059f96871e1185ca3a9347e208e4d448dcf",
+  "findingConvergence": {
+    "D04-R003-001": {
+      "status": "RESOLVED",
+      "fact": "Derived-finalization logic returns exact output content/result only; trusted host owns exactly six fixed derived-description output slots and admits closure only after validating that fixed surface."
+    }
+  },
+  "independentProof": {
+    "payloadInternalHashes": "14/14 MATCH",
+    "priorReviewerPackageSha": "MATCH",
+    "priorReviewerRunBytesPreserved": true,
+    "exactCheckpoint": "0a8a98817b8a5b244bbc841e1101b9f8af73080c",
+    "checkpointParent": "19c1eab71d26c24534565e1e03ac8f5d3115ad9c",
+    "checkpointWorkingTree": "CLEAN",
+    "gitDiffCheck": "PASS",
+    "node": "22.23.2",
+    "dependencySnapshotReused": true,
+    "packageManagerInstallInvoked": false,
+    "domain": "207/207 PASS, 0 skipped",
+    "canonicalOpenSpecSpecs": "19/19 strict PASS",
+    "activeChangeStrict": "EXPECTED Explore-stage no-delta failure only",
+    "currentArchitectureSha256": "0f28cea801c1df5541fcd68d83fa61ed05ddd556eeeaea009955a2b5cd766b70",
+    "plannedArchitectureSha256": "97a02e3ef0b36915ea1cdebc88c1d1729d825d376f53accf6a24bf02b28eee31",
+    "canonicalDataFlowSha256": "2da0b569d536c36d658bea3132b297c73b489121715484870e7a21b12c23dbbf"
+  },
+  "semanticAssessment": {
+    "trustedHostOwnsFixedDerivedOutputSurface": true,
+    "fixedDerivedOutputSlots": 6,
+    "agentArbitraryRepositoryWriteAuthority": false,
+    "callerSelectedOutputPaths": false,
+    "genericPathAllowlistSubsystem": false,
+    "mutationTaxonomy": false,
+    "newCandidateIdentity": false,
+    "registryPlannerWatcherLifecycle": false,
+    "change4To5PulledForward": false,
+    "d05Introduced": false,
+    "selfHostingTakeover": false,
+    "scopeDrift": "NONE"
+  },
+  "proposalAttention": [
+    "Prefer and freeze trusted-host-owned writes for the six fixed output slots.",
+    "Do not implement the fallback changed-path inspection in parallel unless host-owned writes are proven impossible.",
+    "Keep the six output slots operation-local and static; no generic mutation/path framework.",
+    "Do not materialize real D04 Actual/system-view finalization before final D04 Formal Full Test PASS."
+  ],
+  "proposalAllowed": true,
+  "stableTransfer": true,
+  "packageClass": "reviewer-delta"
+}

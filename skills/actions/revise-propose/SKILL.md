@@ -1,6 +1,6 @@
 ---
 name: revise-propose
-description: Resolve exact review-propose findings while preserving approved Explore and unaffected Proposal content, then STOP at review-propose.
+description: Resolve exact review-propose findings or an explicit Owner-scoped planning correction while preserving approved Explore and unaffected Proposal content, then STOP at review-propose.
 metadata:
   author: flowkit
 ---
@@ -9,11 +9,11 @@ metadata:
 
 ## Authority
 
-Flowkit/Policy has already decided `revise-propose`. This Guidance owns findings-relevant Author planning mutation only.
+Flowkit/Policy has already decided `revise-propose`. This Guidance owns findings-relevant or explicitly Owner-scoped Author planning mutation only.
 
 ## Required inputs
 
-Read exact Reviewer findings, current Proposal/design/spec/tasks, approved Explore/review chain, and unaffected Proposal semantics that must remain stable.
+Read exact Reviewer findings or the exact current Owner-scoped correction, current Proposal/design/spec/tasks, approved Explore/review chain, and unaffected Proposal semantics that must remain stable. Carry materially relevant Owner decisions and material handling/retention boundaries through concise exact references, without copying the full conversation.
 
 ## Revision convergence
 
@@ -22,6 +22,8 @@ Resolve each finding with the smallest formal change that removes the defect.
 Preserve approved Explore boundary, unaffected Proposal semantics, non-goals, and accepted capability count.
 
 Converge affected Proposal/Design/spec/task claims in place. Replace or remove superseded planning text instead of appending review/revision chronology. Keep historical proof only when it still materially explains the current design, expressed as current rationale; otherwise rely on concise exact Run/finding or cross-artifact references for provenance.
+
+Do not make Proposal permanently depend on temporary Explore experiments by default. Keep accepted decision basis distinct from current implementation acceptance evidence; historical proof cannot establish a current implementation PASS.
 
 Do not opportunistically redesign, add unrelated improvements, expand compatibility surfaces, or turn wording corrections into new subsystems.
 

@@ -1,0 +1,29 @@
+{
+  "runId": "20260903-016-revise-apply",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "complete-formal-full-test-correction-and-platform-fixture-discipline",
+  "action": "revise-apply",
+  "role": "author",
+  "status": "terminal",
+  "verdict": "PASS",
+  "summary": "Resolved D04-R002-003 by re-deriving the trusted current candidate immediately after every actually executed Full Test check and stopping before any later check when candidate identity drifts. Added a two-check counterexample proving the later side-effecting check does not execute. No new subsystem or authority was added; all previously accepted Full Test boundaries remain unchanged.",
+  "blockingFindingsResolved": [
+    "D04-R002-003"
+  ],
+  "tasksComplete": 9,
+  "tasksTotal": 9,
+  "reviewApplyAllowed": true,
+  "archiveAllowed": false,
+  "nextBoundary": "review-apply",
+  "projectOrdinal": 27,
+  "changeStartSequence": 2,
+  "currentRunSequence": 16,
+  "domainProof": "207/207 PASS, 0 skipped",
+  "acceptanceProof": "4/4 PASS, 0 skipped",
+  "openSpecProof": "19/19 strict PASS",
+  "engineeringGates": "typecheck/build/format/lint/forbidden/dependency/entropy/git diff PASS",
+  "productionMutation": "BOUNDED_LOCAL_CORRECTION",
+  "scopeDrift": "NONE",
+  "stableTransfer": true,
+  "packageClass": "author-revise-apply-payload"
+}

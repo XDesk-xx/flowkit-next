@@ -1,0 +1,24 @@
+{
+  "runId": "20260905-044-review-propose",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "establish-repository-integration-and-next-base-continuity",
+  "action": "review-propose",
+  "role": "reviewer",
+  "status": "terminal",
+  "verdict": "REVISE",
+  "summary": "043 correctly separates targetMainPreIntegrationCommit from terminal acceptedMainCommit, keeps exact singleton repository-integration Owner authority, one ordinary final commit, provider-external review/merge, state-first continuity and terminal next-base STOP without new Git/provider/promotion infrastructure. One bounded blocker remains: terminal accepted-main content continuity is described but not frozen as an exact mechanical invariant. finalCommit ancestry alone can admit unrelated/unverified bytes into acceptedMainCommit. Revise Proposal to require exact accepted-main content equivalence with the already-proven finalized candidate (prefer tree(acceptedMainCommit) == tree(finalCommit), or equivalent exact candidate derivation).",
+  "blockingFindings": [
+    "D04-R005-001"
+  ],
+  "applyAllowed": false,
+  "nextBoundary": "revise-propose",
+  "reviewerMutation": "NONE",
+  "productionMutation": "NONE",
+  "scopeDriftAssessment": "NONE",
+  "complexityAssessment": "MINIMAL_COHERENT_ONE_LOCAL_TERMINAL_CONTENT_EQUIVALENCE_GAP",
+  "domainProof": "229/229 PASS, 0 skipped",
+  "openSpecProof": "22/22 strict PASS",
+  "gitDiffCheck": "PASS",
+  "stableTransfer": true,
+  "packageClass": "reviewer-delta"
+}

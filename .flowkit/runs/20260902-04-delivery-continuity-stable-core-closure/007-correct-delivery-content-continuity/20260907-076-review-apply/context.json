@@ -1,0 +1,390 @@
+{
+  "runNumber": 76,
+  "runId": "20260907-076-review-apply",
+  "kind": "external-orchestrator-review-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "action": "review-apply",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "correct-delivery-content-continuity",
+  "projectOrdinal": 32,
+  "physicalRunPath": ".flowkit/runs/20260902-04-delivery-continuity-stable-core-closure/007-correct-delivery-content-continuity/20260907-076-review-apply",
+  "physicalRunGroupPrefix": "007",
+  "changeStartSequence": 7,
+  "baseCommit": "b0b2d918c41212fe80e1ad5e58bc14dcd7217c1d",
+  "branch": "delivery/20260902-04-delivery-continuity-stable-core-closure",
+  "reviewRequest": "根据最新 run，review-apply",
+  "inputRunId": "20260907-075-apply",
+  "approvedProposalReviewRunId": "20260907-074-review-propose",
+  "inputRunHashes": {
+    "action.md": "04350ed52d5b3459e6bc804001c6ff7a3bb05371cefd3106fa302cab5b16c0e4",
+    "context.json": "0b6eba886e96b993cbc2d99b2b52461a183d9ac346e4ebe0405706d353b24042",
+    "result.json": "862e29e257d361d8bcdbc5d47288d73b6d97429a58ed27a2512e9f6931d34128"
+  },
+  "approvedReviewRunHashes": {
+    "action.md": "372992254c07cf74b3ec04234e3f4611395892d17d591557e8bff4cc65dd2a04",
+    "context.json": "ba93f3325ec8ff0a40fa45bf17494c13a00def4561926365d4d4425805156414",
+    "result.json": "881732df6611518dffc24f4556ca8e4fdbfc7b77b5410d7f6e8790644f81de42"
+  },
+  "ownerContext": {
+    "materialDecisionSource": "Owner 当前对话明确确认，且 073/074/075 已携带",
+    "materialDecision": "原始 Explore proof 移到 .tmp、不需要长久保留是 Owner 授权。",
+    "withdrawnFindingReopened": false,
+    "rawExploreProofRestorationRequired": false,
+    "currentImplementationEvidenceWaived": false,
+    "ownerAuthorityCreated": false
+  },
+  "candidateIdentity": {
+    "candidateRef": "candidate:sha256:86a1637d6a4a21986bda5956812ed3305ba0dc7d9790d787b92cc8e4588c75b5",
+    "meaning": "当前 candidate reader 的产品投影身份，仅用于本轮审查绑定，不授予 lifecycle authority。",
+    "protectedFileCount": 1459,
+    "protectedSnapshotSha256": "803d5003547a63af042c6c24787e458b09acc3cf70a0e5e58bafc31ec7e3dc47",
+    "protectedScope": "git ls-files -c -o --exclude-standard 的去重路径及实际 bytes；排除本轮 076 三文件，忽略 .tmp；写入前两次快照一致。"
+  },
+  "reviewedArtifactHashes": {
+    ".agents/skills/explore-proof-based/SKILL.md": "15df73a5b6cef4080f414a80e9233a588407f36de7189ae975bd26708c5d58e5",
+    ".agents/skills/proposal-convergence/SKILL.md": "60c7acbee5574f6e5f436734684b75f057ca8d085b3d40d70c2826e2a5a50e80",
+    ".agents/skills/review-propose/SKILL.md": "081def399c8c4f5d556ccd15c60d20ed052b63fb1bf5be5d5eda080d233ee433",
+    ".agents/skills/revise-propose/SKILL.md": "04600545bf48d93087120a6f15f8f40915262041beea0cde17f856198bcfa959",
+    "openspec/changes/correct-delivery-content-continuity/.openspec.yaml": "809ac3c46e63d1b130c6bdbabf9d3028c43db36239b37b690705030f453a9ea6",
+    "openspec/changes/correct-delivery-content-continuity/design.md": "d5c57f2bc8db1c6003a97364f3caea8fe835cd00d312d217bd7f8ec10dabd5fb",
+    "openspec/changes/correct-delivery-content-continuity/explore.md": "15a78ac95b2b4119a4d40ccc2eb7726bc7f57c981b9710b5a0317c79b53ec187",
+    "openspec/changes/correct-delivery-content-continuity/proposal.md": "820fd4b741ced1b3bbdd992c3bea578f5f70a7336f60dcf7556e5ac750dd5a2b",
+    "openspec/changes/correct-delivery-content-continuity/specs/applicable-check-execution/spec.md": "91a8fb7e8777f9b83a57fcb71ce7d17f3006a809b9db16e0e99659e2fbe5d9ae",
+    "openspec/changes/correct-delivery-content-continuity/specs/architecture-and-canonical-diagram-continuity/spec.md": "d672c05db14424dfbb5ddba83bb4600431dc5588bdec4c698f4edd389d3b9a94",
+    "openspec/changes/correct-delivery-content-continuity/specs/cross-delivery-memo/spec.md": "2be0fdbedb11056ad60ef8bd5cc4027e21a3bfdb652666bb56282e5520229367",
+    "openspec/changes/correct-delivery-content-continuity/specs/delivery-finalization/spec.md": "3cb0935bf976d21afed3613f61619616283bcf8406c166ed6bea76d51c9dcb2d",
+    "openspec/changes/correct-delivery-content-continuity/specs/delivery-operation-execution-and-start-continuity/spec.md": "2cadf95b54fea06b489c4967d28f014f4d4ebe8fe3e325c8dc86b1bdfd9c7e0e",
+    "openspec/changes/correct-delivery-content-continuity/specs/formal-full-test-execution-and-correction/spec.md": "412bbaa3299da5f4e00a34079af52ce85196627d1d1f46104f3d7e587dfa37e3",
+    "openspec/changes/correct-delivery-content-continuity/specs/repository-integration-and-next-base-continuity/spec.md": "5784b2c0c6f2041767daca11aee7c6261b168d81dbdcf568e27867641e566081",
+    "openspec/changes/correct-delivery-content-continuity/tasks.md": "0c5a56f3268336f423a56455c406918add161a31caae39ad84fddecc61a6c7db",
+    "openspec/delivery-groups/20260902-04-delivery-continuity-stable-core-closure.yaml": "b1e39bdac7e483abeb48e35e1ef6fecdbb1e985b05e29c6522fa95d97e59e3e1",
+    "skills/actions/explore/SKILL.md": "5f741211c1ab1af0692b8d93970a39c99cac6fd11a91d115fccdcd83019b5943",
+    "skills/actions/propose/SKILL.md": "aabe92231de16891f1617f4bf7a0c1a981924ac4469381e385ac8750a47ad150",
+    "skills/actions/review-propose/SKILL.md": "a1b59e77008ce9554c8a8e0b16b76b85b0ecd642daf40a148b08820743c336ad",
+    "skills/actions/revise-propose/SKILL.md": "62db209ab4b5b2c2dd90366ddbba9d9876560e45d41acb315c027a36bdbbb98b",
+    "skills/delivery/architecture-finalization/SKILL.md": "7a8ea44978feb844a7bd39650a14bca49571de27ebaec3036062d29aad1d16fc",
+    "skills/delivery/final/SKILL.md": "b047bf26c40ddc6fc69428bc640c924381c46dffebccdad843ed67ff10ff417a",
+    "skills/delivery/full-test/SKILL.md": "140a2438a14d0ca460e0fe60673b6a9b76abc33abcc56b9095788e403183fe26",
+    "skills/delivery/repository-integration/SKILL.md": "5087fc285234bc4467845ae916bcc0f259ad341bd7c1d48b5e85f79e25a1131a",
+    "skills/delivery/start/SKILL.md": "c5c0bbd66459bc641e8e603a2a3ad47997c41534960562d78954425dca54f0bf",
+    "src/domain/applicable-check-execution.ts": "f9caa051ccaec0f1fa245167de95c242d571311729b526cf087b63e47e9ffee6",
+    "src/domain/delivery-final-execution.ts": "e270158d243873031508bd7e06a04cac6bba99cfd18d542170d69042d5a70bda",
+    "src/domain/delivery-final-operation.ts": "6732c31928c4931a1b06773bdd1e1f2d3a74d03708eacb3c0576ffbecca3372a",
+    "src/domain/delivery-repository-integration-execution.ts": "86649330661bd07d995500736c9fe990a065f95e2b1e71f21087d3d03854c8ec",
+    "src/domain/delivery-repository-integration-operation.ts": "75c13e855970f179fa8a9dd79366aa892a29882c3e84ef5af516501539e5816b",
+    "src/domain/delivery-start-execution.ts": "b3d6258cbf98b26c7e53c16e1ea75def9e96f03530fe1de3d5626c88bc73ece0",
+    "src/internal/applicable-check-candidate.ts": "dac0cbafeb68dfa687c2775827c386be00012790cd18d974b2f659f921e4dbc6",
+    "src/internal/applicable-check-identity.ts": "f8873e9f5ca32cbea5b099a48c8094c2f4f51cebd84026e6a150619b0d08acf3",
+    "src/internal/applicable-check-material.ts": "0c0042bd0f5b3da36faf7870a1f9662e367b79c2e21a5ef5d53b58544b37ce4e",
+    "src/internal/delivery-required-evidence-source.ts": "764b407106d20beab7bb782ac18f5773b875f8e97988e486810f7828bb8d258c",
+    "src/internal/delivery-required-evidence.ts": "5fe89dc09d9dffc80a973816cb324587f221b37a099519cdc510d225f611c43a",
+    "src/internal/delivery-start-content.ts": "58834e753f6b759cc57a46c61131ddc7691527f2e1de3f2def2fba6a3caf7550",
+    "tests/unit/domain/applicable-check-admission.test.ts": "3e4d4d55256103ce8078805f4a6ccdb61db27a1d776a61e9517331dd5ca8e396",
+    "tests/unit/domain/applicable-check-execution.test.ts": "7a6d953e6d8e9704dc704b7e628d917d4399b561c9a1dba8cb55dae269dcb584",
+    "tests/unit/domain/author-action-guidance.test.ts": "66addf5d571eae38d2d758664612916abbe1bfefdb1c552fec0e504f54047669",
+    "tests/unit/domain/author-stage-guidance.test.ts": "a14034478cf80882d0b5b84748cd5b757862c2f28be97640df2c9df30a55eafc",
+    "tests/unit/domain/delivery-final-execution.test.ts": "a1c42d9deb5fc39836fab4406de29d485199b18718cb13399ac2347787532174",
+    "tests/unit/domain/delivery-final-fixture.ts": "82d744022befa301b6cea67bf1a070801b4f49758eb56cd66a86f4b26d30bbd3",
+    "tests/unit/domain/delivery-operation-execution.test.ts": "871ac3c9cbb5382beaa156b7e1ecd3c65862775e43307ab4be8515b4a7caa04d",
+    "tests/unit/domain/delivery-operation-fixture.ts": "34e096ac5bee38378456a5aeaae0566644c527b30bf05215ce81d59fbdacdf1e",
+    "tests/unit/domain/delivery-repository-integration-accepted-object.test.ts": "6427841a44b461e299e2ecf57cb2e8379dc2707517c11787e2395c3be9450df4",
+    "tests/unit/domain/delivery-repository-integration-execution.test.ts": "5fbef005a04e491b5573f170cee805d15ecb8a5428946c2d61466adedbbef6ac",
+    "tests/unit/domain/delivery-start-execution.test.ts": "ff2c735ae45ff4f3e2fdd41510ef73598dca40fcd3edcd06cfbd5df872e23eda",
+    "tests/unit/domain/reviewer-action-guidance.test.ts": "3a1130c70081f809e814a68037729b910479b6e9467611db4076facc82ebb726"
+  },
+  "inputIntegrity": {
+    "apply075Hashes": {
+      "actionSha256": true,
+      "contextSha256": true,
+      "proposalSha256": true,
+      "designSha256": true,
+      "tasksSha256": true,
+      "applicableCheckExecutionSha256": true,
+      "candidateReaderSha256": true,
+      "requiredEvidenceSourceSha256": true,
+      "startExecutionSha256": true,
+      "finalExecutionSha256": true,
+      "integrationExecutionSha256": true
+    },
+    "unchangedApprovedProposalDesign": true,
+    "tasksOnlyCheckboxChanges": true,
+    "unchangedSevenApprovedSpecs": true
+  },
+  "reviewHow": {
+    "bootstrap": ".agents/skills/review-apply/SKILL.md",
+    "additionalSkills": [
+      "debugging-and-error-recovery",
+      "security-and-hardening"
+    ],
+    "candidateReviewApplyGuidanceUsedAsHow": false,
+    "changedProductReviewProposeGuidanceInspectedAsArtifactOnly": true
+  },
+  "independentChecks": [
+    {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "result": "PASS"
+    },
+    {
+      "command": "node --import tsx --test tests/unit/domain/*.test.ts",
+      "initialAttempt": "sandbox spawn EPERM before test execution; not product failure",
+      "retry": "same command outside sandbox",
+      "exitCode": 0,
+      "result": {
+        "tests": 257,
+        "pass": 257,
+        "fail": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "command": "node --import tsx --test tests/acceptance/*.test.ts",
+      "exitCode": 0,
+      "result": {
+        "tests": 5,
+        "pass": 5,
+        "fail": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "command": "pnpm format:check",
+      "exitCode": 0,
+      "result": "PASS"
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 0,
+      "result": "PASS"
+    },
+    {
+      "command": "node C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js validate correct-delivery-content-continuity --strict",
+      "exitCode": 0,
+      "result": "valid; structural only"
+    },
+    {
+      "command": "node --import tsx .tmp/review-apply-076-proof.mjs",
+      "exitCode": 0,
+      "result": "10 isolated counterexamples reproduced as recorded in findings; assertions confirm observed defects, not product acceptance PASS",
+      "scriptSha256": "cf120ba3299ec8bebaf76a85f18c96860d673e970eafb47ef685d11385a02837"
+    },
+    {
+      "command": "node --import tsx .tmp/review-apply-076-snapshot.mjs",
+      "exitCode": 0,
+      "result": "075 artifact bindings 11/11 match; approved proposal/design and 7 delta specs unchanged; tasks differ only checkbox completion; protected snapshot stable"
+    }
+  ],
+  "environment": {
+    "platform": "win32",
+    "node": "22.23.2",
+    "pnpm": "11.22.0",
+    "managedOpenSpecPackage": "@fission-ai/openspec",
+    "managedOpenSpecVersion": "1.10.0",
+    "gitFixtureScope": "only newly created disposable fixtures under .tmp and existing fixture helper system temporary directories; no target repository Git mutation"
+  },
+  "verificationLimits": {
+    "linuxReexecuted": false,
+    "linux075Claim": "Author-reported; not independently reproduced this review",
+    "buildReexecuted": false,
+    "qualityDependencyEntropyReexecuted": false,
+    "formalDeliveryFullTestRun": false,
+    "controlledFinalFixture": "Domain invocation with existing simulated OpenSpec/Archify executables is a counterexample, not managed-tool correctness or real D04 Full Test PASS.",
+    "historicalExploreProofUsedAsCurrentPass": false,
+    "rawScratchRetention": "temporary diagnostic convenience only; decisive commands/inputs/observed facts are recorded here; no new permanent proof store"
+  },
+  "assessments": {
+    "currentStep": "核对 075 当前 Apply candidate 对 074 批准合同的实现保真与实际验收，记录独立 Review 后 STOP。",
+    "complexity": "窄材料/evidence helper 和既有阶段接入总体与计划一致；无新增平台/Registry。缺口是已批准的身份、来源和 Git 操作边界未落实，不能以 schema/hash 自洽替代。",
+    "scopeDrift": "NONE",
+    "stageHow": "八项既有 Skill 的 Owner 背景交接/三类证据/Reviewer 判断收敛符合授权；不重新打开材料迁移争议。",
+    "proposalDefectFound": false,
+    "taskCompletionClaim": "35/35 completion not substantiated because findings reproduce unmet approved obligations; Reviewer did not edit tasks."
+  },
+  "findings": [
+    {
+      "id": "D04-RA007-001",
+      "severity": "P1",
+      "title": "Start 回调可改写随后使用的 checkpoint authority",
+      "location": {
+        "path": "src/domain/delivery-start-execution.ts",
+        "line": 244
+      },
+      "additionalLocations": [
+        "src/domain/delivery-start-execution.ts:263",
+        "tests/unit/domain/delivery-start-execution.test.ts:229"
+      ],
+      "contract": [
+        "design D3",
+        "tasks 3.3"
+      ],
+      "observed": "executeSurface 收到内部原 package；回调向其 scope 追加 single-delivery-start-fixed-point-commit 后，原始 Owner 输入仍仅 delivery-start，commit callback 却真实被调用 1 次。反例回调未实际提交，随后仅因返回无效 SHA 失败；事后失败不能撤销已经发生的越权调用。",
+      "impact": "Agent 输出能改变 Git mutation permission，违背独立 Owner authority 与 defensive isolation。",
+      "minimumCorrection": "保留独立不可变的授权/package 基准，回调只接收 defensive copy；mutation 前重验原授权和 exact prestate。补零未授权 commit 调用及嵌套 package mutation 负例，移除共享对象身份的错误测试断言。",
+      "proofCases": [
+        "start-callback-escalates-checkpoint-authority"
+      ]
+    },
+    {
+      "id": "D04-RA007-002",
+      "severity": "P1",
+      "title": "Start 的 validation 仍是未经核验的自填引用",
+      "location": {
+        "path": "src/internal/delivery-start-content.ts",
+        "line": 142
+      },
+      "contract": [
+        "Start delta: Delivery Start 在内容完成边界返回可核验记录",
+        "design D3",
+        "tasks 3.1"
+      ],
+      "observed": "仅检查 validation 字段形状并原样复制 sourceRef/artifact hash/bytes。四槽均为 {}、validation/nonexistent.json 不存在且未执行工具校验的隔离 fixture 仍返回 terminal；没有把真实校验源与 project/Delivery/base/planning/四槽输出绑定。",
+      "impact": "contentCompletion 可以把未校验的输出报告为已验证内容完成。",
+      "minimumCorrection": "实现已批准的窄可信 validation 读取/核验接缝，由 host 取回并核对本次完整真实检查与输入输出；拒绝未知/缺失/错绑定来源及自签引用，不新增证据平台。",
+      "proofCases": [
+        "start-unavailable-validation-source"
+      ]
+    },
+    {
+      "id": "D04-RA007-003",
+      "severity": "P1",
+      "title": "Final 必要证据读取未验证 accepted execution 来源与完整 outcome",
+      "location": {
+        "path": "src/internal/delivery-required-evidence-source.ts",
+        "line": 125
+      },
+      "additionalLocations": [
+        "src/internal/delivery-required-evidence-source.ts:236",
+        "src/domain/delivery-final-execution.ts:280"
+      ],
+      "contract": [
+        "Final delta: requiredEvidence 是有限完整性快照",
+        "design D4",
+        "tasks 4.2",
+        "tasks 4.3",
+        "tasks 7.1"
+      ],
+      "observed": "archive 只要求 authorConclusion 非 null；Full Test/Architecture 材料只做非空 bytes 的 hash。隔离反例把 archive 改为 FAIL，并把两份 source bytes 换成与实际 outcome 无关文本，derive 仍成功；进一步使用既有受控 fixture 的执行 outcomes 调用实际 invokeDeliveryFinalOperation，也返回 terminal。Run 材料由 fixture 手工构造且未持久化，没有真实 admission 来源。当前遍历仅依赖 caller 给出的 previousRunId/null，未建立合同要求的可信 anchors/链终点。",
+      "impact": "来源缺失、失败 archive 或无关外部材料可被绑定成完整 Final requiredEvidence；内容 hash 自洽被错误提升为 accepted execution 证明。",
+      "minimumCorrection": "从既有可信 owner 取得并验证 accepted archive/review anchors、实际 admission 和必要完整性链；核对完整 Full Test/Architecture 原 outcome 与实际 source bytes 的绑定。以真实执行并持久化的 canonical Run、完整输出及失败/缩减/错来源反例验收，勿只增强任意字符串/JSON shape。",
+      "proofCases": [
+        "required-evidence-accepts-failed-archive",
+        "required-evidence-accepts-unrelated-source-bytes",
+        "final-terminal-with-failed-archive-and-unrelated-source-bytes"
+      ]
+    },
+    {
+      "id": "D04-RA007-004",
+      "severity": "P1",
+      "title": "Integration 缺少独立 Owner 操作与 repository acceptance 来源绑定",
+      "location": {
+        "path": "src/domain/delivery-repository-integration-execution.ts",
+        "line": 238
+      },
+      "additionalLocations": [
+        "src/domain/delivery-repository-integration-execution.ts:523"
+      ],
+      "contract": [
+        "Integration delta: explicit checkpointOperation and accepted object continuity",
+        "design D6",
+        "tasks 5.1",
+        "tasks 5.3",
+        "tasks 5.4"
+      ],
+      "observed": "preparation 直接采用 caller 的 checkpointOperation，同一 Owner fact 下 create-new 与 caller 改为 reuse-existing 均可形成 package；没有独立读取 Owner 原始操作或 checkpoint 已授权来源。acceptance 后只查 target 产品投影/requiredEvidence，隔离 provider 把 main 指向同 tree 的无 parent 新根 commit，仅返回 repository-acceptance-complete、未提供独立 acceptance 来源，也得到 terminal。",
+      "impact": "内容等价可以掩盖未证明获授权的 checkpoint 选择及 target 历史替换；本 finding 不要求恢复通用 ancestry gate。",
+      "minimumCorrection": "按已批准窄 host 接缝，从独立 Owner 输入绑定操作、target/prestate 及 reuse checkpoint 来源；由可信 acceptance 来源核验本次操作与原 target 的关系，再做内容/必要证据验收。明确授权的不同历史仍可合法通过，不能将 provider success/opaque sourceRef 当授权。",
+      "proofCases": [
+        "integration-owner-operation-substitution",
+        "integration-unproven-history-replacement"
+      ]
+    },
+    {
+      "id": "D04-RA007-005",
+      "severity": "P2",
+      "title": "create-new 未核验唯一普通 parent",
+      "location": {
+        "path": "src/domain/delivery-repository-integration-execution.ts",
+        "line": 480
+      },
+      "additionalLocations": [
+        "src/domain/delivery-start-execution.ts:291"
+      ],
+      "contract": [
+        "Integration delta: Integration 按明确操作创建或复用 checkpoint",
+        "design D3/D6",
+        "tasks 3.3",
+        "tasks 5.2"
+      ],
+      "observed": "只查 first parent 和 rev-list count=1。隔离 fixture 创建 parents=[preIntegrationHead,已在其历史内的 acceptedBase] 的双 parent commit，count 仍为 1，Integration 返回 terminal；Start 使用同样不足的 parent/count 条件。",
+      "impact": "要求一个普通单 parent commit 的操作接受了 merge commit。",
+      "minimumCorrection": "从 Git 读取完整 parent 列表并要求恰好一个且等于 bound prestate；Start/Integration 同步补已可达第二 parent 的真实 Git 反例。",
+      "proofCases": [
+        "integration-ordinary-commit-parent-count"
+      ]
+    },
+    {
+      "id": "D04-RA007-006",
+      "severity": "P2",
+      "title": "Final requiredEvidence 未进入固定字段投影",
+      "location": {
+        "path": "src/domain/delivery-final-execution.ts",
+        "line": 386
+      },
+      "additionalLocations": [
+        "src/internal/delivery-required-evidence.ts:181"
+      ],
+      "contract": [
+        "Final delta: fixed Final projection and requiredEvidence shape/order",
+        "design D4/D5",
+        "tasks 4.4"
+      ],
+      "observed": "hashMaterial 直接嵌入原 requiredEvidence，clone 也是 JSON parse/stringify。只反转 requiredEvidence 对象属性插入顺序、所有值和有序数组不变，两个合法 package 派生出不同非 null Final refs。",
+      "impact": "同一事实经反序列化/重建属性后改变 closure 身份或 admission 结果，违反固定语义投影。",
+      "minimumCorrection": "逐层按合同明确构造 requiredEvidence/closure/run/artifact 的固定投影，clone、derive、revalidation/admission 一致；补完整嵌套 property reorder golden test，不改 ordered arrays。",
+      "proofCases": [
+        "final-evidence-property-order"
+      ]
+    },
+    {
+      "id": "D04-RA007-007",
+      "severity": "P2",
+      "title": "reuse-existing 仍要求无用 commit callback，Guidance 保留强制新建指令",
+      "location": {
+        "path": "src/domain/delivery-repository-integration-execution.ts",
+        "line": 418
+      },
+      "additionalLocations": [
+        "skills/delivery/repository-integration/SKILL.md:11"
+      ],
+      "contract": [
+        "design D6: 复用分支不要求新建 callback",
+        "tasks 5.3",
+        "tasks 6.2",
+        "tasks 6.4"
+      ],
+      "observed": "顶层无条件要求 typeof commitFinal===function。相同 clean/exact reuse fixture 不传 callback 即 package-formation-rejected，只补一个永不执行的 callback 即 terminal。Guidance 新段允许 reuse，但原第 11 行仍无条件要求 Create exactly one ordinary Delivery Final commit。",
+      "impact": "合法复用路径被迫提供不需要的 Git 能力，且执行 HOW 与已移除的 mandatory-new-commit 语义未收敛。",
+      "minimumCorrection": "只在 create-new 分支要求 commit callback，reuse 可不提供且保证零调用；将无条件新建 Guidance 改为与两个 variants 一致的当前说明，并补对应负例/一致性测试。",
+      "proofCases": [
+        "reuse-requires-unneeded-commit-callback"
+      ]
+    }
+  ],
+  "reviewerVerdict": "changes-requested",
+  "archiveAllowed": false,
+  "nextBoundary": "revise-apply",
+  "continuationBasis": "canonical normal matrix reference: review-apply changes-requested -> revise-apply; recorded handoff only, no Policy invocation or automatic execution",
+  "stableManagerUsed": false,
+  "stableManagerAvailability": "external flowkit command unavailable; independent D04 bootstrap applies",
+  "candidateCliInvoked": false,
+  "authorArtifactMutation": "NONE",
+  "historicalRunMutation": "NONE",
+  "reviewerArtifactMutation": "RUN_076_THREE_FILES_ONLY_PLUS_DISPOSABLE_DIAGNOSTICS",
+  "formalVerificationVerdictCreated": false,
+  "ownerOrGitAuthorityCreated": false,
+  "targetRepositoryGitOperation": "NONE",
+  "continuationExecuted": false,
+  "stableTransfer": true,
+  "packageClass": "reviewer-delta"
+}

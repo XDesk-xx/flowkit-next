@@ -35,6 +35,8 @@ Classify material literals and repository observations as stable contract consta
 
 A blocking finding identifies the exact planning artifact/claim, observed contract defect, impact on the approved model, and minimum required correction. Reviewer remains mutation-free: request Author convergence in place; do not edit Proposal artifacts or restart open-ended Explore without a material contract reason.
 
+When material paths changed or authorization background is missing from the immediate handoff, first inspect current paths/bytes, relevant Runs and materially relevant Owner decisions, then determine whether the current contract still depends on the material. `authorization explanation not received` does not establish `not authorized`. Block only for a concrete effect on an exact planning claim, traceability, current acceptance, or a required reproducibility boundary; otherwise record a checked fact or non-blocking observation. Do not demand restoration or permanent retention of raw Explore proof without a current contract dependency.
+
 Verdict is one of:
 
 ```text

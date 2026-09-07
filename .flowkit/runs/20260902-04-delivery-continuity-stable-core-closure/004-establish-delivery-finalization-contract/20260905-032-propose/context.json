@@ -1,0 +1,66 @@
+{
+  "runNumber": 32,
+  "kind": "external-orchestrator-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "establish-delivery-finalization-contract",
+  "action": "propose",
+  "runId": "20260905-032-propose",
+  "inputRunId": "20260905-031-review-explore",
+  "physicalRunPath": ".flowkit/runs/20260902-04-delivery-continuity-stable-core-closure/004-establish-delivery-finalization-contract/20260905-032-propose",
+  "physicalRunGroupPrefix": "004",
+  "projectOrdinal": 29,
+  "changeStartSequence": 4,
+  "baseCommit": "a170da0373867296813a888c57db8325025a8f5d",
+  "inputReviewRunHashes": {
+    "actionSha256": "1e9ec99021b20fe254b9ac93750a2d3f266e650a87bb6f39d4afc408dfa6b6b7",
+    "contextSha256": "c696cfe52fbc6b86a2bb6069c0a1634e95d746baa67dde757ba730119b84722f",
+    "resultSha256": "9832549ea55c81669f953a7de9dc5b0402799196c988ac8e54a2c582cd75549d"
+  },
+  "inputReviewVerdict": "APPROVED",
+  "inputReviewNextBoundary": "propose",
+  "approvedExploreSha256": "6189cf98a187f9e82883fe837355452b90de5b7b31d78bba9753cbf8ce910f2e",
+  "resolvedExploreFindings": [
+    "D04-R004-001",
+    "D04-R004-002"
+  ],
+  "planningArtifacts": {
+    "proposalSha256": "8e0f3cdecb3211ed24f3436eb8aaaa15deabc8e9d9327d3446a666d723d5ccc6",
+    "designSha256": "b6bd3d0b41443506031cf081b05e2826b6044cb9a09ea2f356967e8130287056",
+    "tasksSha256": "4f35f5a3e28c4b898f50066964b112ac65726afab006a30da0c86634bacdf8be",
+    "deliveryFinalizationSpecSha256": "1cf89b58e20e11155a688913624b95658d68b5a4807f370b46574bc6fc1a2691",
+    "deliveryOperationDeltaSpecSha256": "e6e4d9471460245113b0875cbcffa10bc7040e732f75f077dbe7242494c52ac0",
+    "architectureContinuityDeltaSpecSha256": "27f6f6d7d9c76e616f18144d0d2a1f81cef071cefed913b22a3af7c9751c126d"
+  },
+  "openSpec": {
+    "version": "1.10.0",
+    "planningComplete": true,
+    "artifactsComplete": "4/4",
+    "currentChangeStrict": "PASS",
+    "allStrict": "21/21 PASS",
+    "taskCount": 12,
+    "completedTaskCount": 0
+  },
+  "scope": {
+    "newCapabilities": [
+      "delivery-finalization"
+    ],
+    "modifiedCapabilities": [
+      "delivery-operation-execution-and-start-continuity",
+      "architecture-and-canonical-diagram-continuity"
+    ],
+    "architecturePrerequisiteCorrections": 3,
+    "fixedDeliveryCoordinationTargets": 1,
+    "newCandidateAlgorithm": false,
+    "actualD04FinalizationExecuted": false,
+    "productionMutation": false,
+    "scopeDrift": "NONE"
+  },
+  "deliveryManifestSha256": "62a787cbc8a541a785bdd11293dc9052091955f5f2401f51e35dcbd352419e0b",
+  "stableManagerUsed": false,
+  "doctorInvoked": false,
+  "candidateCliInvoked": false,
+  "stableTransfer": true,
+  "packageClass": "author-propose-payload"
+}

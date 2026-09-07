@@ -1,0 +1,103 @@
+{
+  "runNumber": 67,
+  "kind": "external-orchestrator-archive-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "converge-cross-platform-unreadable-fixture-discipline",
+  "action": "archive",
+  "runId": "20260907-067-archive",
+  "inputRunId": "20260907-066-review-apply",
+  "physicalRunPath": ".flowkit/runs/20260902-04-delivery-continuity-stable-core-closure/006-converge-cross-platform-unreadable-fixture-discipline/20260907-067-archive",
+  "physicalRunGroupPrefix": "006",
+  "projectOrdinal": 31,
+  "changeStartSequence": 6,
+  "baseCommit": "875b7827867fd8489f9c3d05837fa3879ec15e2b",
+  "inputRunHashes": {
+    "actionSha256": "8c246e4dcce612489b91cef5201d358498799e501ad9e40b7955a17dc9ada29d",
+    "contextSha256": "24e6a289c88b2e4aef1864e3c9fe77f1e5d3a0d01bf1f78f1945c49df4328c19",
+    "resultSha256": "293f53a42304345819e3b6d59c15a12db88c640f47d40e52bc8c6bfdfe666681"
+  },
+  "openspecArchivePath": "openspec/changes/archive/2026-09-07-031-converge-cross-platform-unreadable-fixture-discipline",
+  "archiveMovement": {
+    "removedPath": "openspec/changes/converge-cross-platform-unreadable-fixture-discipline",
+    "addedPath": "openspec/changes/archive/2026-09-07-031-converge-cross-platform-unreadable-fixture-discipline",
+    "targetCollision": false,
+    "archiveBytesPreserved": true
+  },
+  "specSync": {
+    "deltaSpecsPresent": false,
+    "canonicalSpecsWritten": [],
+    "canonicalSpecFilesCompared": 23,
+    "canonicalSpecFilesUnchanged": 23
+  },
+  "archivedPlanningArtifactSha256": {
+    ".openspec.yaml": "e6bda6d36b39e20ff5aacc32a46eeca39be2a1b5ac9186d37551b39936b24143",
+    "explore.md": "23dc9aa583aac0d6cc3757c796d328c039cb396314b3d29f5f2c17850ebb7c9a",
+    "proposal.md": "79420fe4508129e34619ed887f1b5f3c8635a14d9dec81406e9e32843c61d4c9",
+    "design.md": "8ccde26870228ba93aeb3a9db99806b6d8d422c5be8c76675cb496cf111994fd",
+    "tasks.md": "6b4c5346c25015c1663d17c20e1316ad8d4c3f2c9eb3a41dba5a9ac3030da983"
+  },
+  "implementationArtifactSha256": {
+    "tests/unit/domain/unreadable-guidance-fixture.ts": "4ef47bce81044ec0cc7b06c3c30c9bd648c1ae6e38a923aae5cba6b52d221af0",
+    "tests/unit/domain/action-guidance-execution.test.ts": "d60e7eebb58de95f2842249cfd57d67d849b3352be582f14a59a8d481564b4aa",
+    "tests/unit/domain/delivery-operation-execution.test.ts": "b7ab48782b3674eec0e885df0be7609e82a890e10cf91e673500f8dea7feb54b"
+  },
+  "coordination": {
+    "manifestSha256": "ca5d7804c2061de068341497c6642550ccf33296af21895405f3e1337290d5a5",
+    "changeState": "completed",
+    "projectOrdinalPreserved": true,
+    "allSixD04ChangesCompleted": true
+  },
+  "dryRun": {
+    "isolated": true,
+    "archiveMovement": "PASS",
+    "archiveBytes": "EXACT",
+    "manifestTransition": "ONLY TARGET state active TO completed",
+    "canonicalSpecs": "23/23 unchanged",
+    "openSpecAllStrict": "22/22 PASS",
+    "activeOpenSpecChanges": 0,
+    "focused": "20/20 PASS, 0 skipped",
+    "domain": "242/242 PASS, 0 skipped",
+    "acceptance": "5/5 PASS, 0 skipped",
+    "engineeringGates": "PASS",
+    "initialConcurrentInstallRace": "EBUSY/EPERM before test execution",
+    "retry": "serial offline frozen install PASS; all checks PASS",
+    "temporaryRootRemoved": true
+  },
+  "postArchiveVerification": {
+    "openSpecAllStrict": "22/22 PASS",
+    "activeOpenSpecChanges": 0,
+    "domain": "242/242 PASS, 0 skipped",
+    "acceptance": "5/5 PASS, 0 skipped",
+    "typecheck": "PASS",
+    "build": "PASS",
+    "format": "PASS",
+    "lint": "PASS",
+    "forbiddenTrackedArtifacts": "PASS",
+    "dependencyHealth": "81 modules / 365 dependencies / 0 violations",
+    "entropyTests": "7/7 PASS",
+    "repositoryEntropy": "40/40 production modules reachable",
+    "gitDiffCheck": "PASS"
+  },
+  "toolIdentity": {
+    "openspec": "1.10.0",
+    "archify": "2.15.0",
+    "legacyOpenSpec170Used": false
+  },
+  "continuation": {
+    "nextBoundary": "checkpoint",
+    "checkpointCommitCreated": false,
+    "deliveryFullTestExecuted": false,
+    "architectureFinalizationExecuted": false,
+    "deliveryFinalExecuted": false,
+    "repositoryIntegrationExecuted": false,
+    "nextDeliveryActivated": false,
+    "d05Created": false
+  },
+  "stableManagerUsed": false,
+  "candidateCliLifecycleAuthorityUsed": false,
+  "gitMutationExecuted": false,
+  "stableTransfer": true,
+  "packageClass": "full-archive-handoff"
+}

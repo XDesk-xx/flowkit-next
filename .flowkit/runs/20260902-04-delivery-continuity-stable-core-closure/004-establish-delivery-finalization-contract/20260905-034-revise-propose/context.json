@@ -1,0 +1,56 @@
+{
+  "runNumber": 34,
+  "kind": "external-orchestrator-revise-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "establish-delivery-finalization-contract",
+  "action": "revise-propose",
+  "runId": "20260905-034-revise-propose",
+  "inputRunId": "20260905-033-review-propose",
+  "physicalRunPath": ".flowkit/runs/20260902-04-delivery-continuity-stable-core-closure/004-establish-delivery-finalization-contract/20260905-034-revise-propose",
+  "physicalRunGroupPrefix": "004",
+  "projectOrdinal": 29,
+  "changeStartSequence": 4,
+  "baseCommit": "a170da0373867296813a888c57db8325025a8f5d",
+  "reviewerRunHashes": {
+    "actionSha256": "a770804730ea3ac738d510eba91fb4387e393a21d3c4837eb63f4e17dcc7710d",
+    "contextSha256": "0e4364c60b4cce13650b2880aaeca37875d5dcfe9e94c01e483cf4a63989ccf1",
+    "resultSha256": "4521e56c470a4fcd4be912dd2a66cd86ce01b02a39fce43050cd3b2e03706679"
+  },
+  "triggeringFindings": {
+    "D04-RP004-001": "closure reference serialization is not exact",
+    "D04-RP004-002": "canonical presentation shape remains implicit"
+  },
+  "correctedBoundary": {
+    "architectureFinalizationRef": "architecture-finalization:sha256 over exact NUL-separated trusted package and closure projection",
+    "deliveryFinalizationRef": "delivery-finalization:sha256 over exact NUL-separated Final package, completed coordination, and finalized candidate projection",
+    "serialization": "explicit insertion-ordered JSON.stringify projection with golden vectors; input property order is not authority",
+    "presentation": "exact ten-field side-by-side field set and fixed literal/boolean values",
+    "genericHashOrSchemaPlatformRequired": false,
+    "approvedExploreBoundaryRetained": true
+  },
+  "planningArtifactHashes": {
+    "approvedExploreSha256": "6189cf98a187f9e82883fe837355452b90de5b7b31d78bba9753cbf8ce910f2e",
+    "proposalSha256": "8e0f3cdecb3211ed24f3436eb8aaaa15deabc8e9d9327d3446a666d723d5ccc6",
+    "designSha256": "62d503e86a6a8483e4dd86918bc7b04a51220dfcab7977823334fee6208f883c",
+    "tasksSha256": "ca5507d7dce168a1e16c0afde13b371b2cc01339fe2837aa04e279eff20cbf05",
+    "deliveryFinalizationSpecSha256": "dbb2faae790dddecde994ad9055ead5a600c1ac7bfc8f6b978eca91ee54305c3",
+    "deliveryOperationDeltaSpecSha256": "e6e4d9471460245113b0875cbcffa10bc7040e732f75f077dbe7242494c52ac0",
+    "architectureContinuityDeltaSpecSha256": "65de0027c0e175744b6fb7183bf8c763946e1248891f5159373f5a81b7523571"
+  },
+  "deliveryManifestSha256": "62a787cbc8a541a785bdd11293dc9052091955f5f2401f51e35dcbd352419e0b",
+  "verification": {
+    "changeStrict": "1/1 PASS",
+    "allOpenSpecStrict": "21/21 PASS",
+    "planningArtifacts": "4/4 complete",
+    "implementationTasks": "0/12",
+    "gitDiffCheck": "PASS",
+    "productionAndTestMutation": "NONE"
+  },
+  "stableManagerUsed": false,
+  "doctorInvoked": false,
+  "candidateCliInvoked": false,
+  "stableTransfer": true,
+  "packageClass": "delta-action-handoff"
+}
