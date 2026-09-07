@@ -1,0 +1,154 @@
+{
+  "runNumber": 86,
+  "runId": "20260907-086-archive",
+  "kind": "external-orchestrator-archive-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "action": "archive",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "correct-delivery-content-continuity",
+  "projectOrdinal": 32,
+  "physicalRunGroupPrefix": "007",
+  "changeStartSequence": 7,
+  "physicalRunPath": ".flowkit/runs/20260902-04-delivery-continuity-stable-core-closure/007-correct-delivery-content-continuity/20260907-086-archive",
+  "baseCommit": "b0b2d918c41212fe80e1ad5e58bc14dcd7217c1d",
+  "branch": "delivery/20260902-04-delivery-continuity-stable-core-closure",
+  "archiveRequest": "archive change",
+  "inputRunId": "20260907-085-review-apply",
+  "inputRunHashes": {
+    "actionSha256": "e9bc39d25f423320d42746e8a0b10ef8180de7affb924c6d30ea44bbea7dc267",
+    "contextSha256": "6b926c009cd0b1ec1f107a03e5a84b5ac03408c488089fe1e65d5bbb66c54dc5",
+    "resultSha256": "9ce5b99da1e52e42f62c47f0a34dfc24d85e79512c615ab42dd25344092384bb"
+  },
+  "reviewContinuity": {
+    "reviewerVerdict": "approved",
+    "archiveAllowed": true,
+    "blockingFindingCount": 0,
+    "reviewedCandidateRef": "candidate:sha256:a14c634349c083ed0d936dced72f0b54401c457d0ef720eb15e1d300cd1f017d",
+    "protectedFileCount": 1493,
+    "protectedSnapshotSha256": "818cc733d847cce48a646752cbbf9a4e213534e981cbd26e9d68e6d43e2dd505",
+    "preArchiveSnapshotRecheck": "PASS; no post-review drift before convergence"
+  },
+  "ownerAuthorization": {
+    "source": "Owner 当前对话明确请求 archive change",
+    "scope": "归档 correct-delivery-content-continuity，并同步其全部七份 delta specs",
+    "formalFullTestAuthorized": false,
+    "gitOperationAuthorized": false,
+    "nextActionAutoExecutionAuthorized": false
+  },
+  "openspecArchivePath": "openspec/changes/archive/2026-09-07-032-correct-delivery-content-continuity",
+  "archiveMovement": {
+    "removedPath": "openspec/changes/correct-delivery-content-continuity",
+    "addedPath": "openspec/changes/archive/2026-09-07-032-correct-delivery-content-continuity",
+    "targetCollision": false,
+    "archiveBytesPreserved": true,
+    "isolatedArchiveComparison": "exact directory equality PASS"
+  },
+  "specSync": {
+    "capabilityCount": 7,
+    "addedRequirements": 7,
+    "modifiedRequirements": 14,
+    "removedRequirements": 2,
+    "renamedRequirements": 0,
+    "totalOperations": 23,
+    "convergence": "23/23 PASS",
+    "isolatedDryRun": "PASS before formal mutation",
+    "allCanonicalSpecsEqualDryRun": true
+  },
+  "canonicalSpecSha256": {
+    "openspec/specs/applicable-check-execution/spec.md": "10b6776a08135278630d3154064bb5739670dbab582d0972e5b6f9d0adde6317",
+    "openspec/specs/architecture-and-canonical-diagram-continuity/spec.md": "79eb5b5d95c90a0609714d0fd2b679857e408035b36243ea5233fe670075d868",
+    "openspec/specs/cross-delivery-memo/spec.md": "459243c17ced1aa20ea3823980b53b2b1a4fd046ccc2ae2c160e11fca60967e9",
+    "openspec/specs/delivery-finalization/spec.md": "541c780d81b1e0cf8a796082857f4457723efcf6d4bad98b8b0074f1a5b556c5",
+    "openspec/specs/delivery-operation-execution-and-start-continuity/spec.md": "51d65e73c3ba1791253bfd4835ddd25ce32af766c5dde6dc2ee00ebef332d427",
+    "openspec/specs/formal-full-test-execution-and-correction/spec.md": "bb89125fbd2e6c2bde13e4ed6b53326cf9454dbcc7c13d16a895faddaf568d66",
+    "openspec/specs/repository-integration-and-next-base-continuity/spec.md": "705867e88e05b468e89c416c58abccbf8cd07a06554d9d82ae322e1562f67fd4"
+  },
+  "archivedPlanningArtifactSha256": {
+    "proposal.md": "820fd4b741ced1b3bbdd992c3bea578f5f70a7336f60dcf7556e5ac750dd5a2b",
+    "design.md": "d5c57f2bc8db1c6003a97364f3caea8fe835cd00d312d217bd7f8ec10dabd5fb",
+    "tasks.md": "0c5a56f3268336f423a56455c406918add161a31caae39ad84fddecc61a6c7db"
+  },
+  "deliveryManifestSha256": "55113a5e0ed7362e2ce4e99c411b24c8d0bc801a92a37e9065a52bce1ebd2a3b",
+  "coordination": {
+    "changeState": "completed",
+    "projectOrdinalPreserved": 32,
+    "allRequiredChangesCompleted": true,
+    "deliveryState": "active",
+    "activeOpenSpecChanges": 0,
+    "nextChangeActivated": false
+  },
+  "candidateBinding": {
+    "reviewedCandidateRef": "candidate:sha256:a14c634349c083ed0d936dced72f0b54401c457d0ef720eb15e1d300cd1f017d",
+    "postArchiveCandidateRefBeforeRunWrite": "candidate:sha256:5cf350b3e69ade1125537f616e35a49ce475b94d2f407fdabdf6428df85f4490",
+    "changeReason": "authorized canonical spec sync, archive movement and manifest completion",
+    "historicalPassReusedAcrossCandidate": false
+  },
+  "fileGate": {
+    "maximumAllowedLines": 650,
+    "result": "PASS",
+    "largestSyncedSpec": "openspec/specs/applicable-check-execution/spec.md",
+    "largestSyncedSpecLines": 193,
+    "filesOverLimit": []
+  },
+  "preArchiveVerification": {
+    "planningArtifacts": "4/4 complete",
+    "tasks": "35/35 complete",
+    "targetCollision": "NONE",
+    "reviewContinuity": "PASS (085)",
+    "isolatedCanonicalConvergence": "23/23 operations PASS",
+    "isolatedOpenSpecAllStrict": "23/23 PASS",
+    "isolatedWindowsDomain": "269/269 PASS, 0 fail, 0 skip",
+    "isolatedWindowsAcceptance": "5/5 PASS, 0 fail, 0 skip",
+    "isolatedTypecheckBuildAndEngineeringGates": "PASS",
+    "environmentPreparationFailures": "pnpm external-junction refusal and restricted child-process EPERM were not counted; unchanged isolated candidate passed direct exact commands and external retries"
+  },
+  "postArchiveVerification": {
+    "openSpecCanonicalStrict": "22/22 PASS",
+    "activeOpenSpecChanges": 0,
+    "nativeWindowsDomain": "269/269 PASS, 0 fail, 0 skip",
+    "nativeWindowsAcceptance": "5/5 PASS, 0 fail, 0 skip",
+    "linuxX64GlibcBuild": "PASS; Node 22.23.2; glibc 2.36; uid/gid 1000; network disconnected",
+    "linuxX64GlibcDomain": "269/269 PASS, 0 fail, 0 skip",
+    "linuxX64GlibcAcceptance": "5/5 PASS, 0 fail, 0 skip",
+    "linuxDependencyIdentity": "fresh frozen install; installed lock equals source lock; offline frozen recheck PASS",
+    "typecheck": "PASS",
+    "build": "PASS",
+    "qualityGate": "PASS",
+    "dependencyHealth": "PASS; 97 modules / 489 dependencies",
+    "entropyTests": "7/7 PASS",
+    "productionReachability": "45/45 PASS",
+    "gitDiffCheckHead": "PASS"
+  },
+  "toolIdentity": {
+    "node": "22.23.2",
+    "pnpm": "11.22.0",
+    "openspec": "1.10.0",
+    "archify": "2.15.0",
+    "linuxImageId": "sha256:127ee201acf84b60dc929a6d5823f24969d96893b0d790fb0ed6dd800ee57c62"
+  },
+  "temporaryMaterial": {
+    "dryRunRoot": ".tmp/archive-086-dry-run",
+    "convergedWorktree": ".tmp/archive-086-converged-worktree",
+    "retention": "disposable; not durable truth",
+    "linuxContainerId": "5092dfe980ccc0958f405e8741af0444debccd9227fc4a62fa574252c1e19b84",
+    "linuxContainerRemoved": true
+  },
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "checkpoint",
+  "continuationBasis": "completed Archive handoff only; checkpoint authorization must be evaluated independently",
+  "realD04FullTestExecuted": false,
+  "realD04ArchitectureFinalizationExecuted": false,
+  "realD04DeliveryFinalExecuted": false,
+  "stableManagerUsed": false,
+  "candidateCliInvokedForLifecycle": false,
+  "historicalRunMutation": "NONE",
+  "formalVerificationVerdictCreated": false,
+  "ownerOrGitAuthorityCreated": false,
+  "targetRepositoryGitOperation": "NONE",
+  "continuationExecuted": false,
+  "stableTransfer": true,
+  "packageClass": "full-archive-handoff"
+}

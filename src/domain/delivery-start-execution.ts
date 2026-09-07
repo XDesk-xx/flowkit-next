@@ -12,6 +12,20 @@ import {
 } from "./delivery-operation-execution.js";
 import { isSemanticId, type DeliveryId } from "./identity.js";
 import type { OwnerAuthorityFact } from "./authority.js";
+import {
+  formDeliveryStartContentCompletion,
+  isDeliveryStartValidatedSurface,
+  type ReadDeliveryStartValidation,
+  type DeliveryStartContentCompletion,
+  type DeliveryStartValidatedSurface,
+} from "../internal/delivery-start-content.js";
+import {
+  countGitCommits,
+  isGitIndexAndWorktreeClean,
+  observeGitParents,
+  observeGitHead,
+} from "../internal/delivery-repository-integration-git.js";
+import { deriveApplicableCheckObjectCandidateRef } from "./applicable-check-execution.js";
 
 const GIT_COMMIT_PATTERN = /^[0-9a-f]{40}$/;
 
@@ -134,9 +148,7 @@ export async function prepareDeliveryStartOperationPackage(
   return formed?.operationId === "delivery-start" ? formed : null;
 }
 
-export interface DeliveryStartSurfaceValidation {
-  readonly status: "validated";
-}
+export type DeliveryStartSurfaceValidation = DeliveryStartValidatedSurface;
 
 export type DeliveryStartExecutionCallback = (
   operationPackage: DeliveryStartOperationPackage,
@@ -151,6 +163,7 @@ export type DeliveryStartInvocationFailureReason =
   | "package-formation-rejected"
   | "guidance-drift-rejected"
   | "surface-validation-failed"
+  | "content-completion-rejected"
   | "commit-callback-missing"
   | "fixed-point-commit-rejected";
 
@@ -158,18 +171,21 @@ export interface DeliveryStartInvocationFailure {
   readonly status: "failed";
   readonly reason: DeliveryStartInvocationFailureReason;
   readonly fixedPointCommit: null;
+  readonly contentCompletion: null;
 }
 
 export interface DeliveryStartInvocationStopped {
-  readonly status: "stopped-before-commit";
+  readonly status: "terminal";
   readonly operationPackage: DeliveryStartOperationPackage;
   readonly fixedPointCommit: null;
+  readonly contentCompletion: DeliveryStartContentCompletion;
 }
 
 export interface DeliveryStartInvocationTerminal {
   readonly status: "terminal";
   readonly operationPackage: DeliveryStartOperationPackage;
   readonly fixedPointCommit: string;
+  readonly contentCompletion: DeliveryStartContentCompletion;
 }
 
 export type DeliveryStartInvocationOutcome =
@@ -180,17 +196,12 @@ export type DeliveryStartInvocationOutcome =
 function failure(
   reason: DeliveryStartInvocationFailureReason,
 ): DeliveryStartInvocationFailure {
-  return { status: "failed", reason, fixedPointCommit: null };
-}
-
-function isSurfaceValidation(
-  value: unknown,
-): value is DeliveryStartSurfaceValidation {
-  return (
-    isRecord(value) &&
-    hasExactlyFields(value, ["status"]) &&
-    value.status === "validated"
-  );
+  return {
+    status: "failed",
+    reason,
+    fixedPointCommit: null,
+    contentCompletion: null,
+  };
 }
 
 export async function invokeDeliveryStartOperation(
@@ -198,6 +209,7 @@ export async function invokeDeliveryStartOperation(
   input: unknown,
   observe: DeliveryStartObservationCallback,
   executeSurface: DeliveryStartExecutionCallback,
+  readValidation: ReadDeliveryStartValidation,
   commitFixedPoint?: DeliveryStartCommitCallback,
 ): Promise<DeliveryStartInvocationOutcome> {
   const operationPackage = await prepareDeliveryStartOperationPackage(
@@ -217,15 +229,52 @@ export async function invokeDeliveryStartOperation(
     return failure("guidance-drift-rejected");
   }
 
+  const revalidated = await prepareDeliveryStartOperationPackage(
+    repositoryRoot,
+    input,
+    observe,
+  );
+  if (
+    revalidated === null ||
+    JSON.stringify(revalidated) !== JSON.stringify(operationPackage)
+  ) {
+    return failure("package-formation-rejected");
+  }
+
+  const callbackPackage = formDeliveryOperationPackage(
+    operationPackage.deliveryId,
+    operationPackage.operationId,
+    operationPackage.ownerAuthority,
+    operationPackage.operationFacts,
+    operationPackage.guidanceRef,
+  );
+  if (callbackPackage?.operationId !== "delivery-start") {
+    return failure("package-formation-rejected");
+  }
+
   let surfaceResult: unknown;
   try {
-    surfaceResult = await executeSurface(operationPackage, guidanceBytes);
+    surfaceResult = await executeSurface(
+      callbackPackage,
+      Buffer.from(guidanceBytes),
+    );
   } catch {
     return failure("surface-validation-failed");
   }
-  if (!isSurfaceValidation(surfaceResult)) {
+  if (!isDeliveryStartValidatedSurface(surfaceResult)) {
     return failure("surface-validation-failed");
   }
+  if (typeof repositoryRoot !== "string")
+    return failure("content-completion-rejected");
+  const contentCompletion = await formDeliveryStartContentCompletion(
+    repositoryRoot,
+    operationPackage.deliveryId,
+    operationPackage.operationFacts.acceptedBaseCommit,
+    operationPackage.operationFacts.planningReference,
+    surfaceResult,
+    readValidation,
+  );
+  if (contentCompletion === null) return failure("content-completion-rejected");
 
   if (
     !hasDeliveryStartCommitAuthority(
@@ -234,9 +283,10 @@ export async function invokeDeliveryStartOperation(
     )
   ) {
     return {
-      status: "stopped-before-commit",
+      status: "terminal",
       operationPackage,
       fixedPointCommit: null,
+      contentCompletion,
     };
   }
 
@@ -244,15 +294,71 @@ export async function invokeDeliveryStartOperation(
     return failure("commit-callback-missing");
   }
 
+  let preCommitState: unknown;
+  try {
+    preCommitState = await observe();
+  } catch {
+    return failure("fixed-point-commit-rejected");
+  }
+  if (
+    !isDeliveryStartObservedState(preCommitState) ||
+    preCommitState.headCommit !==
+      operationPackage.operationFacts.acceptedBaseCommit ||
+    !samePlanningReference(
+      preCommitState.planningReference,
+      operationPackage.operationFacts.planningReference,
+    ) ||
+    !hasDeliveryStartCommitAuthority(
+      operationPackage.ownerAuthority,
+      operationPackage.deliveryId,
+    )
+  ) {
+    return failure("fixed-point-commit-rejected");
+  }
+
   let commit: unknown;
   try {
-    commit = await commitFixedPoint(operationPackage);
+    const commitPackage = formDeliveryOperationPackage(
+      operationPackage.deliveryId,
+      operationPackage.operationId,
+      operationPackage.ownerAuthority,
+      operationPackage.operationFacts,
+      operationPackage.guidanceRef,
+    );
+    if (commitPackage?.operationId !== "delivery-start") {
+      return failure("fixed-point-commit-rejected");
+    }
+    commit = await commitFixedPoint(commitPackage);
   } catch {
     return failure("fixed-point-commit-rejected");
   }
   if (typeof commit !== "string" || !GIT_COMMIT_PATTERN.test(commit)) {
     return failure("fixed-point-commit-rejected");
   }
+  if (
+    (await observeGitHead(repositoryRoot)) !== commit ||
+    JSON.stringify(await observeGitParents(repositoryRoot, commit)) !==
+      JSON.stringify([operationPackage.operationFacts.acceptedBaseCommit]) ||
+    (await countGitCommits(
+      repositoryRoot,
+      operationPackage.operationFacts.acceptedBaseCommit,
+      commit,
+    )) !== 1 ||
+    !(await isGitIndexAndWorktreeClean(repositoryRoot)) ||
+    (await deriveApplicableCheckObjectCandidateRef(repositoryRoot, commit)) !==
+      contentCompletion.candidateRef
+  )
+    return failure("fixed-point-commit-rejected");
 
-  return { status: "terminal", operationPackage, fixedPointCommit: commit };
+  return {
+    status: "terminal",
+    operationPackage,
+    fixedPointCommit: commit,
+    contentCompletion,
+  };
 }
+
+export type {
+  DeliveryStartContentCompletion,
+  ReadDeliveryStartValidation,
+} from "../internal/delivery-start-content.js";

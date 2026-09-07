@@ -10,7 +10,10 @@ import {
   type RunResultRecord,
 } from "./run-result-persistence.js";
 import {
+  deriveApplicableCheckCandidateManifest,
   deriveApplicableCheckCandidateRef,
+  deriveApplicableCheckObjectCandidateRef,
+  deriveApplicableCheckObjectManifest,
   type CandidateManifestRecord,
 } from "../internal/applicable-check-candidate.js";
 import {
@@ -45,6 +48,7 @@ export type {
   ApplicableCheckStatus,
 } from "../internal/applicable-check-facts.js";
 import { executeExactApplicableCheckProcess } from "../internal/applicable-check-process.js";
+import { compareUtf8 } from "../internal/applicable-check-material.js";
 
 export interface ApplicableCheckDeclaration {
   readonly checkId: string;
@@ -146,7 +150,7 @@ function canonicalDeclaration(
 export function deriveApplicableCheckRef(declaration: unknown): string | null {
   if (!isApplicableCheckDeclaration(declaration)) return null;
   const canonical = canonicalDeclaration(declaration);
-  return hashReference("check", "flowkit-applicable-check", canonical);
+  return hashReference("check", "flowkit-applicable-check-v2", canonical);
 }
 
 export function isResolvedApplicableCheck(
@@ -259,8 +263,8 @@ function resolveChecks(
   if (declared === null) return null;
   const resolved = [...declared];
   resolved.sort((left, right) => {
-    const byId = left.checkId.localeCompare(right.checkId);
-    return byId !== 0 ? byId : left.checkRef.localeCompare(right.checkRef);
+    const byId = compareUtf8(left.checkId, right.checkId);
+    return byId !== 0 ? byId : compareUtf8(left.checkRef, right.checkRef);
   });
   return resolved;
 }
@@ -314,9 +318,9 @@ export function isApplicableCheckExecutionInput(
     const previous = value.checks[index - 1];
     const current = value.checks[index];
     if (
-      previous.checkId.localeCompare(current.checkId) > 0 ||
+      compareUtf8(previous.checkId, current.checkId) > 0 ||
       (previous.checkId === current.checkId &&
-        previous.checkRef.localeCompare(current.checkRef) >= 0)
+        compareUtf8(previous.checkRef, current.checkRef) >= 0)
     ) {
       return false;
     }
@@ -550,4 +554,9 @@ export async function admitApplicableCheckActionResult(
 }
 
 export type { CandidateManifestRecord };
-export { deriveApplicableCheckCandidateRef };
+export {
+  deriveApplicableCheckCandidateManifest,
+  deriveApplicableCheckCandidateRef,
+  deriveApplicableCheckObjectCandidateRef,
+  deriveApplicableCheckObjectManifest,
+};

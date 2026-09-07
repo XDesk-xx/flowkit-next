@@ -1,4 +1,5 @@
 import { createHash } from "node:crypto";
+import { compareUtf8 } from "./applicable-check-material.js";
 
 const SHA_REF_PATTERN =
   /^(candidate|check|execution|action-package):sha256:[0-9a-f]{64}$/;
@@ -67,13 +68,13 @@ export function isArgumentArray(value: unknown): value is readonly string[] {
 }
 
 export function canonicalRefs(values: readonly string[]): string[] {
-  return [...values].sort((left, right) => left.localeCompare(right));
+  return [...values].sort(compareUtf8);
 }
 
 export function isCanonicalRefSet(values: readonly string[]): boolean {
   if (!hasNoDuplicates(values)) return false;
   return values.every(
-    (value, index) => index === 0 || values[index - 1].localeCompare(value) < 0,
+    (value, index) => index === 0 || compareUtf8(values[index - 1], value) < 0,
   );
 }
 

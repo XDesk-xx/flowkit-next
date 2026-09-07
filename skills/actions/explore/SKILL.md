@@ -84,6 +84,8 @@ result.json
 
 Persist decisions and material identities, not duplicated canonical artifacts or command transcripts.
 
+Carry materially relevant Owner decisions that affect later judgment, including authorized material handling and retention boundaries, using concise exact references rather than the full conversation. Distinguish temporary Explore experiments, accepted decision basis, and current implementation acceptance evidence. Historical proof is not current implementation PASS, and raw experiments need not be retained permanently unless the current contract or explicit Owner boundary requires their bytes.
+
 Keep these namespaces distinct in handoff when relevant:
 
 ```text

@@ -37,6 +37,8 @@ Distinguish stable contract constants, configuration/environment values, and inc
 
 Keep each finding bounded to the exact affected planning artifact/claim, observed defect, contract impact, and minimum correction. Do not restate the full Proposal/Design/Explore or copy proof transcripts. Flag revision chronology or superseded planning text that leaked into canonical artifacts, but remain mutation-free and require Author convergence in place.
 
+If material moved or an authorization background is absent from the immediate payload, first check the current path/bytes, relevant Run and materially relevant Owner decision, and whether the current contract still depends on that material. `authorization explanation not received` is not proof of `not authorized`. Block only when the missing fact has a concrete impact on an exact planning claim, contract traceability, current acceptance, or a required reproducibility boundary; otherwise record the checked fact or a non-blocking observation. Do not require restoration or permanent retention of raw Explore proof that the current contract does not depend on.
+
 ## Required Reviewer report
 
 Briefly report:

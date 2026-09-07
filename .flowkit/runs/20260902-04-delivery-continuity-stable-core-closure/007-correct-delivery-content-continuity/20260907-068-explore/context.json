@@ -1,0 +1,98 @@
+{
+  "runNumber": 68,
+  "role": "author",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "correct-delivery-content-continuity",
+  "projectOrdinal": 32,
+  "action": "explore",
+  "runId": "20260907-068-explore",
+  "kind": "external-orchestrator-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "physicalRunPath": ".flowkit/runs/20260902-04-delivery-continuity-stable-core-closure/007-correct-delivery-content-continuity/20260907-068-explore",
+  "physicalRunGroupPrefix": "007",
+  "changeStartSequence": 7,
+  "baseCommit": "b0b2d918c41212fe80e1ad5e58bc14dcd7217c1d",
+  "branch": "delivery/20260902-04-delivery-continuity-stable-core-closure",
+  "previousRetainedRunId": "20260907-067-archive",
+  "ownerAuthorization": {
+    "ref": "owner:f6ad9567b23edeb8b9e8eace33074ea96d7b730c1c1f549e48d0fbd5a1f61c6b",
+    "sourceRef": "owner-input:2026-09-07:activate-change:correct-delivery-content-continuity:proof-explore:final-plan",
+    "exactInput": "flowkit-architecture-decoupling-final-plan.md  owner 授权 激活 修复 change，并进入 proof explore",
+    "scope": [
+      "activate-change",
+      "explore"
+    ],
+    "gitAuthority": false
+  },
+  "ordinal": {
+    "source": "persisted Delivery Change projectOrdinal facts",
+    "existingMin": 21,
+    "existingMax": 31,
+    "existingCount": 11,
+    "validUnique": true,
+    "derivation": "max(existing assigned projectOrdinal) + 1",
+    "assigned": 32
+  },
+  "inputsAndOutputsSha256": {
+    "flowkit-architecture-decoupling-final-plan.md": "0f84a89c7be69d7d55dd13ec46c1ac5505e4ef25ecf77e2156f452a569274541",
+    "openspec/delivery-groups/20260902-04-delivery-continuity-stable-core-closure.yaml": "c439ab8b7b15ea96b1b6efb24f6ca3ae04c20d2d1e72b5d22174c75cd36b4097",
+    ".flowkit/memos.json": "ecea78153c221f82469431a2de325e486e03a39efcb2715bf40dcc614db20230",
+    "openspec/changes/correct-delivery-content-continuity/.openspec.yaml": "809ac3c46e63d1b130c6bdbabf9d3028c43db36239b37b690705030f453a9ea6",
+    "openspec/changes/correct-delivery-content-continuity/explore.md": "15a78ac95b2b4119a4d40ccc2eb7726bc7f57c981b9710b5a0317c79b53ec187",
+    "openspec/changes/correct-delivery-content-continuity/proof/continuity-proof-model.mjs": "9a82e59551cfee3d3bfed60545351df34a9b9401242f6b690448907be93b66de",
+    "openspec/changes/correct-delivery-content-continuity/proof/continuity-proof.mjs": "70fb53e8203d54a90030134f49def079384e0c6403dad1a5137af0037ad60c79",
+    "openspec/changes/correct-delivery-content-continuity/proof/execution.json": "e24f681af4552feb7ebef64324cb06190426bfa4fa472bb54ad95e677cc7048d",
+    ".flowkit/runs/20260902-04-delivery-continuity-stable-core-closure/006-converge-cross-platform-unreadable-fixture-discipline/20260907-067-archive/action.md": "0a8e6ae79f392a2f4ebdc5e38b0c9b5a79d36d40b2ab597f74160715d9b552ec",
+    ".flowkit/runs/20260902-04-delivery-continuity-stable-core-closure/006-converge-cross-platform-unreadable-fixture-discipline/20260907-067-archive/context.json": "92bd51defb1007b85edfc25da5bfb385ba93d1eb11d6d1cb41be92b2b8dc4f97",
+    ".flowkit/runs/20260902-04-delivery-continuity-stable-core-closure/006-converge-cross-platform-unreadable-fixture-discipline/20260907-067-archive/result.json": "21b32fecfb1bcbd3a0b437d5a4e737a4de03213a0539ba1293b0c98bf1d79d47"
+  },
+  "coordination": {
+    "beforeManifestSha256": "ca5d7804c2061de068341497c6642550ccf33296af21895405f3e1337290d5a5",
+    "changeState": "active",
+    "required": true,
+    "architectureImpact": true,
+    "deliveryState": "active",
+    "fullTestStatus": "pending",
+    "finalizationStatus": "pending",
+    "previousCompletedChangesPreserved": 6
+  },
+  "exploreArtifact": "openspec/changes/correct-delivery-content-continuity/explore.md",
+  "proofTranscript": "openspec/changes/correct-delivery-content-continuity/proof/execution.json",
+  "proofScope": {
+    "nativeWindows": "PASS bounded material prototype; native symlink not exercised",
+    "linux": "PASS bounded material prototype including symlink and two actual default locales",
+    "focusedExistingTests": "6 PASS / 0 FAIL / 0 SKIP",
+    "canonicalSpecs": "22 PASS / 0 FAIL; structure only",
+    "fourFailureWindows": "3 static risk analyses plus existing Final fault-injection test; not complete recovery proof",
+    "requiredEvidenceSelection": "fixed-prerequisite counterexample and direct-consumer gap proven; production trusted coverage/provenance not implemented",
+    "readRaceAndFullReaderMatrix": "NOT IMPLEMENTED / NOT CLAIMED",
+    "formalDeliveryFullTest": "NOT RUN"
+  },
+  "bootstrap": {
+    "skills": [
+      ".agents/skills/explore-proof-based/SKILL.md",
+      ".agents/skills/openspec-explore/SKILL.md"
+    ],
+    "externalStableManagerUsed": false,
+    "candidateCliLifecycleAuthorityUsed": false,
+    "candidateProductExploreSkillRead": false,
+    "openspecVersion": "1.10.0",
+    "managedToolsRoot": "C:\\Users\\xuser\\.flowkit\\tools",
+    "newChangeScaffold": "OpenSpec CLI",
+    "openSpecPlanningComplete": false
+  },
+  "continuation": {
+    "nextBoundary": "review-explore",
+    "reviewerVerdict": null,
+    "proposalCreated": false,
+    "applyExecuted": false,
+    "gitMutationExecuted": false,
+    "deliveryFullTestExecuted": false,
+    "deliveryFinalExecuted": false,
+    "d05Created": false,
+    "externalVerificationHandoff": "UNKNOWN; must establish Owner-recognized durable external evidence location and retrieval/source proof before future Full Test",
+    "stop": true
+  },
+  "stableTransfer": true,
+  "packageClass": "full-explore-handoff"
+}

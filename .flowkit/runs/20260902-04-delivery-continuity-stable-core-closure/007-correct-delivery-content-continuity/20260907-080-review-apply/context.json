@@ -1,0 +1,238 @@
+{
+  "runNumber": 80,
+  "runId": "20260907-080-review-apply",
+  "kind": "external-orchestrator-review-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "action": "review-apply",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "correct-delivery-content-continuity",
+  "projectOrdinal": 32,
+  "physicalRunGroupPrefix": "007",
+  "changeStartSequence": 7,
+  "physicalRunPath": ".flowkit/runs/20260902-04-delivery-continuity-stable-core-closure/007-correct-delivery-content-continuity/20260907-080-review-apply",
+  "baseCommit": "b0b2d918c41212fe80e1ad5e58bc14dcd7217c1d",
+  "branch": "delivery/20260902-04-delivery-continuity-stable-core-closure",
+  "reviewRequest": "根据最新run，review-apply",
+  "inputRunId": "20260907-079-revise-apply",
+  "priorReviewRunId": "20260907-078-review-apply",
+  "approvedProposalReviewRunId": "20260907-074-review-propose",
+  "runHashes": {
+    "20260907-079-revise-apply": {
+      "action.md": "bf04a680e673d4d1a11ad1225d1ebca64c579a438df688115ebb0ed291caa4f6",
+      "context.json": "5e888b35f8450a60621d34f577dbe00465602c4c449315dbe6ce1762258329a4",
+      "result.json": "16194273f283f8354b6c6b42787258248936f73dad84de2a3709ccc3819d4e8f"
+    },
+    "20260907-078-review-apply": {
+      "action.md": "59560279450dcbf0ecb6807a154b8ff629eb475e6e4fcc53cfc5aa749375db61",
+      "context.json": "529aa293f8307359b29cc4d231fd2a0fb0ba1a6a2d84082aa09ddfa40138522e",
+      "result.json": "cf6562c2a20fd3ae1ec57cd1f934efae64615d2a23a10ac75fa472a6a4cce98a"
+    },
+    "20260907-074-review-propose": {
+      "action.md": "372992254c07cf74b3ec04234e3f4611395892d17d591557e8bff4cc65dd2a04",
+      "context.json": "ba93f3325ec8ff0a40fa45bf17494c13a00def4561926365d4d4425805156414",
+      "result.json": "881732df6611518dffc24f4556ca8e4fdbfc7b77b5410d7f6e8790644f81de42"
+    }
+  },
+  "reviewedCandidate": {
+    "candidateRef": "candidate:sha256:29eed67d814da2f3fd2f19185d854e14e9d22fc28c4a646fcc19d844df080b3d",
+    "protectedFileCount": 1477,
+    "protectedSnapshotSha256": "ae6eedd9a7c5152999da36974f842f9d1555d20698c3bc34c224d284d38599c1",
+    "scope": "Git tracked + nonignored untracked path/bytes，排除本次 080 Run；.tmp ignored。诊断及测试前后读回一致。",
+    "revisionArtifactHashes": {
+      "src/internal/delivery-start-content.ts": "79c64de7741a0f1e900375ed3a7be3da515444d58b266b7202e988deda56ef8f",
+      "src/internal/delivery-required-evidence-source.ts": "f91de4604e7bb1d4a17b8b02cc5dd924ddc22ddf5664d6e0c32b2c84ae4bc913",
+      "tests/unit/domain/delivery-evidence-outcome-fixture.ts": "5d2f1d81fe687f0d6dcb240107f5b7ed578cc13d05ab193f485c10e1ba5c922f",
+      "tests/unit/domain/delivery-final-fixture.ts": "4adf7951f9ee54c136ccb18c0b0692eb072c69cc525fc5425ce4c3c61374ab32",
+      "tests/unit/domain/delivery-repository-integration-accepted-object.test.ts": "297510278f6b69db5d839b529e9eb803e3b224ddd47d8756176f4c2d59fce60b",
+      "tests/unit/domain/delivery-repository-integration-execution.test.ts": "051db1b4727eeba52bc9045f1cb871427de0d0a31d7cf5c399633ddd9e6d2e65",
+      "tests/unit/domain/delivery-required-evidence-source.test.ts": "eb0e5c29b72b53b47995d896e5792722bdfffbcafee2a53d95ba22f304764937",
+      "tests/unit/domain/delivery-run-evidence-fixture.ts": "a64dea9d20255cac72c31c745c2f86d1ee07b3f4860ec1236ead021ee49fa56a",
+      "tests/unit/domain/delivery-start-execution.test.ts": "1be2a44f809d472ba2cc86f169dd2be573d34100505f9cc14c559faea1949db3",
+      "tests/unit/domain/delivery-start-validation-fixture.ts": "5ee13bedeecb1da21eda26637b9456ec7ce91584c91077baa9bf155ae27d62dd"
+    }
+  },
+  "integrity": {
+    "revisionBindingsMatch": true,
+    "authorRunBindingsMatch": true,
+    "priorReviewBindingsMatch": true,
+    "approvedPlanningPreserved": true,
+    "unreportedChanges": [],
+    "revisionFileCount": 10,
+    "unaffectedArtifactBaseline": "076/context.json#reviewedArtifactHashes 合并 078/context.json#reviewedCandidate.revisionArtifactHashes；只有 079 申报的 10 文件变化。",
+    "planning": {
+      "proposalSha256": "820fd4b741ced1b3bbdd992c3bea578f5f70a7336f60dcf7556e5ac750dd5a2b",
+      "designSha256": "d5c57f2bc8db1c6003a97364f3caea8fe835cd00d312d217bd7f8ec10dabd5fb",
+      "tasksSha256": "0c5a56f3268336f423a56455c406918add161a31caae39ad84fddecc61a6c7db",
+      "unchangedFromReview078": true,
+      "deltaSpecsModified": false,
+      "tasksCompleted": "35/35"
+    }
+  },
+  "reviewHow": {
+    "bootstrapSkill": ".agents/skills/review-apply/SKILL.md",
+    "bootstrapSkillSha256": "57c8202fa2748c499b34e3c6bb6091d62f997809a068f747ab564828beb4e5bc",
+    "candidateReviewApplyGuidanceUsedAsHow": false
+  },
+  "environment": {
+    "platform": "win32",
+    "node": "22.23.2",
+    "pnpm": "11.22.0",
+    "managedOpenSpecVersion": "1.10.0",
+    "managedArchifyVersion": "2.15.0"
+  },
+  "independentChecks": [
+    {
+      "command": "node --import tsx --test tests/unit/domain/*.test.ts",
+      "exitCode": 0,
+      "result": "266/266 PASS, 0 fail, 0 skip; native Windows tracked/untracked read-denial PASS"
+    },
+    {
+      "command": "node --import tsx --test tests/acceptance/*.test.ts",
+      "exitCode": 0,
+      "result": "5/5 PASS, 0 fail, 0 skip"
+    },
+    {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "result": "PASS"
+    },
+    {
+      "command": "pnpm build",
+      "exitCode": 0,
+      "result": "PASS"
+    },
+    {
+      "command": "pnpm quality:gate",
+      "exitCode": 0,
+      "result": "PASS; git diff --check HEAD + format + lint + forbidden tracked artifacts"
+    },
+    {
+      "command": "pnpm quality:dependency-health",
+      "exitCode": 0,
+      "result": "PASS; 96 modules / 477 dependencies; 0 violations"
+    },
+    {
+      "command": "pnpm test:entropy",
+      "exitCode": 0,
+      "result": "7/7 PASS, 0 fail, 0 skip"
+    },
+    {
+      "command": "pnpm quality:entropy",
+      "exitCode": 0,
+      "result": "45/45 production modules reachable"
+    },
+    {
+      "command": "node C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js validate correct-delivery-content-continuity --strict",
+      "exitCode": 0,
+      "result": "valid; structural only"
+    },
+    {
+      "command": "node --import tsx .tmp/review-apply-080-proof.mjs",
+      "exitCode": 0,
+      "result": "15 independent regression/control observations passed",
+      "scriptSha256": "0eccd6e28b6e176b7e60d07d2556e017e26676417215ba87589e610c54deec10"
+    },
+    {
+      "command": "node --import tsx .tmp/review-apply-080-snapshot.mjs",
+      "exitCode": 0,
+      "result": "10/10 bindings match, no unreported delta, protected snapshot unchanged",
+      "environmentNote": "一次沙箱 spawnSync git EPERM，原只读命令沙箱外重跑通过。"
+    },
+    {
+      "check": "affected file line gate",
+      "result": "max 646, none >650"
+    }
+  ],
+  "verificationLimits": {
+    "linuxReexecuted": false,
+    "linuxAuthorEvidence": "079/context.json#verification.linuxX64Glibc 保留为 Author 报告。只读 docker inspect --type container 127ee201acf8 返回 No such container，无法独立读取原容器输出；本轮不声称独立 Linux PASS，也不据此推断未经授权删除。",
+    "allStrictReexecuted": false,
+    "formalDeliveryFullTestRun": false,
+    "fixtureScope": "Start 子进程 exit 结果真实执行，six-check 汇总为显式受控 source fixture；Final 复用实际 Full Test/domain operation 与 admission 调用、持久化/读回，OpenSpec/Archify 为显式模拟。只证明产品接缝与拒绝行为，不代表当前 D04 managed-tool semantic PASS。",
+    "futureBoundary": "真实 D04 Full Test 前仍须完成原计划规定的外部证据保存/取回 proof；本轮未执行该操作，也未增加临时诊断永久保留义务。"
+  },
+  "ownerContext": {
+    "materialDecision": "原始 Explore proof 移至 .tmp 且不长期保留来自 Owner 明确授权。保持 072/073/074 已接受结论，不重开、不要求恢复。",
+    "currentEvidenceMeaning": "历史实验、已接受决定和当前实现验收分离；只核查当前修订与完整合同。"
+  },
+  "findingConvergence": [
+    {
+      "id": "D04-RA007-001",
+      "status": "closed-preserved",
+      "basis": "生产实现与 078 已审 bytes 一致；独立 surface scope 扩权反例保持原授权，terminal 且 commitCalls=0。"
+    },
+    {
+      "id": "D04-RA007-002",
+      "status": "closed",
+      "basis": "既有窄 source 的 outcome bytes 纳入 artifacts，核对 passed、六项完整唯一检查、固定 tool、exitCode=0 和 exact inputs/outputArtifacts。独立验证成功正例及 exit1、伪 passed 标签、缺项、重复、错工具/输入/输出拒绝。",
+      "contract": [
+        "design D3",
+        "tasks 3.1"
+      ],
+      "implementation": "src/internal/delivery-start-content.ts"
+    },
+    {
+      "id": "D04-RA007-003",
+      "status": "closed",
+      "basis": "复用现有地址/ActionPackage/admitActionResult，每个必要 Run 按自身 Change identity 验证，source admission 精确绑定 context/result bytes。独立将 Author archive verificationVerdict 改为 passed 并重新绑定 hash，derive/preparation 均 null，invoke failed；完整 admitted 跨 Change previous 链通过，漏链/错地址拒绝。可信 host 负责已接受 anchors 与来源，不扩为通用认证平台。",
+      "contract": [
+        "design D4",
+        "tasks 4.2"
+      ],
+      "implementation": "src/internal/delivery-required-evidence-source.ts"
+    },
+    {
+      "id": "D04-RA007-004",
+      "status": "closed-preserved",
+      "basis": "独立授权/acceptance source 的生产实现保持 078 已审 bytes；完整 domain 中 Owner operation 替换、无来源历史替换拒绝及有绑定来源的不同历史通过。"
+    },
+    {
+      "id": "D04-RA007-005",
+      "status": "closed-preserved",
+      "basis": "生产 parent 校验保持；独立原反例 rev-list count=1 但两个 parent（第二个已在历史内）仍失败。完整 domain 覆盖 Start/Integration。"
+    },
+    {
+      "id": "D04-RA007-006",
+      "status": "closed",
+      "basis": "来源重验比较两边固定 semantic clones。递归 object property reorder 保持 Final ref，通过 source 及 exact Git object evidence 重验；现有 Integration preparation 贯通测试通过。实际值改变/ordered Run array 逆序仍拒绝。",
+      "contract": [
+        "design D5/D6",
+        "tasks 4.4"
+      ],
+      "implementation": "src/internal/delivery-required-evidence-source.ts"
+    },
+    {
+      "id": "D04-RA007-007",
+      "status": "closed-preserved",
+      "basis": "生产实现及 variants Guidance 保持已审 bytes；完整 domain 中 reuse 无 commit callback 正例通过。"
+    }
+  ],
+  "closedFindingCount": 7,
+  "remainingFindingCount": 0,
+  "findings": [],
+  "assessments": {
+    "currentStep": "独立复审 079 对 078 三项残留 finding 的收敛并确认其余已审内容保持。",
+    "complexity": "2 个现有生产接缝增补校验，5 个既有测试/fixture 更新，3 个窄测试/fixture；最大 646 行。复用既有 admission/clone，未新增依赖或层。",
+    "scopeDrift": "NONE",
+    "newContent": "必要的 outcome 解析、admission/source 绑定及一致投影校验，均对应原批准合同；无 Registry/证据平台、Runtime/Policy/Run schema 变更或无关重构。",
+    "proposalDefectFound": false,
+    "stageHow": "本轮未改阶段 Skill；前轮已授权 HOW 收敛保持。"
+  },
+  "reviewerVerdict": "approved",
+  "archiveAllowed": true,
+  "nextBoundary": "archive",
+  "continuationBasis": "现行 Policy normal matrix 的 review-apply approved -> archive，仅交接事实；未调用 candidate Policy/CLI 管理 D04，未执行下一 Action。",
+  "stableManagerUsed": false,
+  "stableManagerAvailability": "Get-Command flowkit 无结果，独立 D04 bootstrap 继续适用。",
+  "candidateCliInvokedForLifecycle": false,
+  "authorArtifactMutation": "NONE",
+  "historicalRunMutation": "NONE",
+  "reviewerArtifactMutation": "RUN_080_THREE_FILES_ONLY_PLUS_DISPOSABLE_DIAGNOSTICS",
+  "formalVerificationVerdictCreated": false,
+  "ownerOrGitAuthorityCreated": false,
+  "targetRepositoryGitOperation": "NONE",
+  "continuationExecuted": false,
+  "stableTransfer": true,
+  "packageClass": "reviewer-delta"
+}

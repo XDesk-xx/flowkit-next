@@ -1,4 +1,6 @@
 import { createHash } from "node:crypto";
+import { readFile } from "node:fs/promises";
+import path from "node:path";
 
 import { deriveApplicableCheckCandidateRef } from "./applicable-check-execution.js";
 import {
@@ -17,6 +19,15 @@ import {
   isDeliveryCoordinationRef,
   isDeliveryFinalAuthorityForDelivery,
 } from "./delivery-final-operation.js";
+import {
+  cloneDeliveryRequiredEvidence,
+  isDeliveryRequiredEvidence,
+} from "../internal/delivery-required-evidence.js";
+import {
+  deriveDeliveryRequiredEvidenceFromSource,
+  type ReadDeliveryRequiredEvidence,
+} from "../internal/delivery-required-evidence-source.js";
+export type { ReadDeliveryRequiredEvidence } from "../internal/delivery-required-evidence-source.js";
 import {
   isTrustedPassedFullTestOutcome,
   type DeliveryFullTestInvocationTerminal,
@@ -151,6 +162,22 @@ function isPreparationInput(
   );
 }
 
+async function readProjectId(repositoryRoot: string): Promise<string | null> {
+  try {
+    const value = JSON.parse(
+      await readFile(
+        path.join(repositoryRoot, ".flowkit", "project.json"),
+        "utf8",
+      ),
+    ) as unknown;
+    return isRecord(value) && isSemanticId(value.projectId)
+      ? value.projectId
+      : null;
+  } catch {
+    return null;
+  }
+}
+
 function trustedArchitectureRecord(
   value: unknown,
   deliveryId: DeliveryId,
@@ -211,6 +238,7 @@ function trustedArchitectureRecord(
 export async function prepareDeliveryFinalOperationPackage(
   repositoryRoot: unknown,
   input: unknown,
+  readRequiredEvidence: unknown,
 ): Promise<DeliveryFinalOperationPackage | null> {
   if (
     typeof repositoryRoot !== "string" ||
@@ -248,6 +276,26 @@ export async function prepareDeliveryFinalOperationPackage(
     input.deliveryId,
   );
   if (coordination === null) return null;
+  const projectId = await readProjectId(repositoryRoot);
+  if (projectId === null) return null;
+  const requiredEvidence = await deriveDeliveryRequiredEvidenceFromSource(
+    readRequiredEvidence,
+    {
+      projectId,
+      deliveryId: input.deliveryId,
+      changeIds: coordination.completedRequiredChangeIds,
+      fullTestExecutionRef: input.fullTestOutcome.record.executionRef,
+      architectureFinalizationRef:
+        architecture.record.architectureFinalizationRef,
+      fullTestOutcome: input.fullTestOutcome,
+      architectureOutcome: input.architectureOutcome,
+    },
+  );
+  if (
+    requiredEvidence === null ||
+    !isDeliveryRequiredEvidence(requiredEvidence)
+  )
+    return null;
 
   try {
     const activeChanges = await observeOpenSpecActiveChanges({
@@ -277,6 +325,7 @@ export async function prepareDeliveryFinalOperationPackage(
         architecture.record.architectureMaterializedCandidateRef,
       coordinationPrestateRef: coordination.ref,
       completedRequiredChangeIds: coordination.completedRequiredChangeIds,
+      requiredEvidence,
     },
     guidanceRef,
   );
@@ -339,6 +388,9 @@ function finalizationHashMaterial(
       completedRequiredChangeIds: [
         ...operationPackage.operationFacts.completedRequiredChangeIds,
       ],
+      requiredEvidence: cloneDeliveryRequiredEvidence(
+        operationPackage.operationFacts.requiredEvidence,
+      ),
     },
     guidanceRef: {
       path: operationPackage.guidanceRef.path,
@@ -433,13 +485,19 @@ export async function invokeDeliveryFinalOperation(
   repositoryRoot: unknown,
   input: unknown,
   execute: DeliveryFinalExecute,
+  readRequiredEvidence: ReadDeliveryRequiredEvidence,
 ): Promise<DeliveryFinalInvocationOutcome> {
-  if (typeof execute !== "function") {
+  if (
+    typeof execute !== "function" ||
+    typeof readRequiredEvidence !== "object" ||
+    readRequiredEvidence === null
+  ) {
     return failure("package-formation-rejected");
   }
   const operationPackage = await prepareDeliveryFinalOperationPackage(
     repositoryRoot,
     input,
+    readRequiredEvidence,
   );
   if (operationPackage === null || typeof repositoryRoot !== "string") {
     return failure("package-formation-rejected");
@@ -484,6 +542,7 @@ export async function invokeDeliveryFinalOperation(
   const revalidated = await prepareDeliveryFinalOperationPackage(
     repositoryRoot,
     input,
+    readRequiredEvidence,
   );
   if (
     revalidated === null ||

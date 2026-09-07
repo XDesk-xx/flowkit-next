@@ -13,16 +13,22 @@ export interface DeliveryRepositoryIntegrationOperationFacts {
   readonly deliveryFinalizationRef: string;
   readonly finalizedCandidateRef: string;
   readonly preIntegrationHead: string;
+  readonly checkpointOperation: DeliveryCheckpointOperation;
   readonly deliveryBranch: string;
   readonly targetMainRef: string;
   readonly targetMainPreIntegrationCommit: string;
   readonly acceptedBaseCommit: string;
 }
 
+export type DeliveryCheckpointOperation =
+  | { readonly kind: "create-new" }
+  | { readonly kind: "reuse-existing"; readonly checkpointCommit: string };
+
 const FACT_FIELDS = [
   "deliveryFinalizationRef",
   "finalizedCandidateRef",
   "preIntegrationHead",
+  "checkpointOperation",
   "deliveryBranch",
   "targetMainRef",
   "targetMainPreIntegrationCommit",
@@ -48,6 +54,19 @@ function hasExactlyFields(
   );
 }
 
+export function isDeliveryCheckpointOperation(
+  value: unknown,
+): value is DeliveryCheckpointOperation {
+  if (!isRecord(value) || typeof value.kind !== "string") return false;
+  if (value.kind === "create-new") return hasExactlyFields(value, ["kind"]);
+  return (
+    value.kind === "reuse-existing" &&
+    hasExactlyFields(value, ["kind", "checkpointCommit"]) &&
+    typeof value.checkpointCommit === "string" &&
+    GIT_COMMIT_PATTERN.test(value.checkpointCommit)
+  );
+}
+
 export function isDeliveryRepositoryIntegrationOperationFacts(
   value: unknown,
 ): value is DeliveryRepositoryIntegrationOperationFacts {
@@ -59,6 +78,7 @@ export function isDeliveryRepositoryIntegrationOperationFacts(
     isHashRef(value.finalizedCandidateRef, "candidate") &&
     typeof value.preIntegrationHead === "string" &&
     GIT_COMMIT_PATTERN.test(value.preIntegrationHead) &&
+    isDeliveryCheckpointOperation(value.checkpointOperation) &&
     typeof value.deliveryBranch === "string" &&
     BRANCH_PATTERN.test(value.deliveryBranch) &&
     !value.deliveryBranch.endsWith(".") &&
@@ -91,7 +111,16 @@ export function isRepositoryIntegrationAuthorityForDelivery(
 export function cloneDeliveryRepositoryIntegrationOperationFacts(
   facts: DeliveryRepositoryIntegrationOperationFacts,
 ): DeliveryRepositoryIntegrationOperationFacts {
-  return { ...facts };
+  return {
+    ...facts,
+    checkpointOperation:
+      facts.checkpointOperation.kind === "create-new"
+        ? { kind: "create-new" }
+        : {
+            kind: "reuse-existing",
+            checkpointCommit: facts.checkpointOperation.checkpointCommit,
+          },
+  };
 }
 
 export function repositoryIntegrationFactsBelongToDelivery(

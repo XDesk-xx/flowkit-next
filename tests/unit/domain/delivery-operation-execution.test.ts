@@ -30,10 +30,10 @@ import {
   readExactDeliveryGuidance,
   resolveDeliveryGuidanceRef,
   type DeliveryGuidanceRef,
-  type DeliveryFinalOperationFacts,
   type DeliveryStartOperationFacts,
   type OwnerAuthorityFact,
 } from "../../../src/domain/index.js";
+import { finalFacts } from "./delivery-operation-fixture.js";
 import { withUnreadableGuidanceFixture } from "./unreadable-guidance-fixture.js";
 
 const deliveryId = "20260902-04-delivery-continuity-stable-core-closure";
@@ -68,21 +68,6 @@ function finalAuthority(
     deliveryId,
     sourceRef: "conversation:owner-delivery-final",
     scope,
-  };
-}
-
-function finalFacts(): DeliveryFinalOperationFacts {
-  return {
-    verifiedCandidateRef: `candidate:sha256:${"1".repeat(64)}`,
-    fullTestExecutionRef: `full-test-execution:sha256:${"2".repeat(64)}`,
-    architectureFinalizationRef: `architecture-finalization:sha256:${"3".repeat(64)}`,
-    architectureMaterializedCandidateRef: `candidate:sha256:${"4".repeat(64)}`,
-    coordinationPrestateRef: {
-      artifact: `openspec/delivery-groups/${deliveryId}.yaml`,
-      contentSha256: "5".repeat(64),
-      bytes: 123,
-    },
-    completedRequiredChangeIds: ["change-one", "change-two"],
   };
 }
 
@@ -590,6 +575,7 @@ test("repository integration package is the fifth exact variant and requires sin
     deliveryFinalizationRef: `delivery-finalization:sha256:${"1".repeat(64)}`,
     finalizedCandidateRef: `candidate:sha256:${"2".repeat(64)}`,
     preIntegrationHead: "3".repeat(40),
+    checkpointOperation: { kind: "create-new" },
     deliveryBranch: "delivery/d04",
     targetMainRef: "refs/heads/main",
     targetMainPreIntegrationCommit: "4".repeat(40),

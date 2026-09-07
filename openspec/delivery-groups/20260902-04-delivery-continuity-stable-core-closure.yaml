@@ -20,7 +20,7 @@ scope:
     - "closed exact DeliveryOperationId set for delivery-start / delivery-full-test / delivery-architecture-finalization / delivery-final / delivery-repository-integration"
     - "deterministic DeliveryOperationId → canonical skills/delivery/<operation>/SKILL.md mapping"
     - "content-bound DeliveryGuidanceRef and minimal exact DeliveryOperationPackage execution envelope"
-    - "Delivery Start exact accepted-main continuity and clean fixed-point commit/base"
+    - "Delivery Start exact accepted-main continuity and verified content completion; checkpoint remains separately authorized"
     - "state continuity first; transport only when exact required state is absent"
     - "Formal Full Test same-candidate environment/fixture correction versus new-candidate repository/canonical correction"
     - "Actual Architecture plus repository-scoped canonical Workflow/Lifecycle/Data Flow continuity"
@@ -135,6 +135,21 @@ changes:
       - "cross-platform real unreadable Guidance fixture discipline"
       - "native-Windows real read-denial proof with zero unreadable-fixture SKIP"
 
+  - id: "correct-delivery-content-continuity"
+    group: "closure-hardening"
+    goal: "按 Owner 授权的架构解耦最终方案修正有效材料与 Delivery 内容连续性：Memo 隔离、删除缺席归一、UTF-8 byte ordering 与 v2 hash domain、exact Git object projection、Start 内容完成及 Integration 必要证据和 Git 操作边界。"
+    required: true
+    dependsOn:
+      - "converge-cross-platform-unreadable-fixture-discipline"
+    state: completed
+    projectOrdinal: 32
+    architectureImpact: true
+    outputs:
+      - "one effective-material model for worktree and exact Git objects with v2 candidate/check identities"
+      - "verified Start content completion independent of a mandatory new checkpoint"
+      - "Integration content continuity with exact Git prestate and required execution-evidence integrity"
+      - "direct-consumer contract convergence without historical evidence rewrite"
+
 proofConcerns:
   - id: "delivery-operation-package-minimality"
     status: "proof-first"
@@ -173,7 +188,7 @@ acceptance:
   - "Delivery operation WHAT is always decided before HOW; Agent does not discover, rank, route, or choose the operation"
   - "all five Delivery operations resolve deterministic canonical skills/delivery/** HOW and bind exact Guidance content identity"
   - "wrong operation, wrong Guidance path/hash, wrong Delivery identity, stale exact-state facts, or missing required authority facts fail closed"
-  - "Delivery Start begins from exact accepted main and produces one clean fixed-point start commit before Change execution"
+  - "Delivery Start begins from exact accepted main and produces verified content completion before Change execution; a clean fixed-point start commit is optional and separately authorized"
   - "Current/Planned Architecture evidence resolves at its declared revision and does not self-reference newly materialized D04 files"
   - "shared and non-shared execution contexts use one state-first continuity contract"
   - "Formal Full Test distinguishes pure environment/fixture correction from repository/canonical candidate mutation"
@@ -243,3 +258,10 @@ ownerDecisions:
       - "no-production-resolver-mutation-without-new-proof"
       - "revise-explore"
       - "zero-unreadable-fixture-skip"
+  - ref: "owner:f6ad9567b23edeb8b9e8eace33074ea96d7b730c1c1f549e48d0fbd5a1f61c6b"
+    decision: "activate-change"
+    deliveryId: "20260902-04-delivery-continuity-stable-core-closure"
+    changeId: "correct-delivery-content-continuity"
+    sourceRef: "owner-input:2026-09-07:activate-change:correct-delivery-content-continuity:proof-explore:final-plan"
+    scope:
+      - "explore"

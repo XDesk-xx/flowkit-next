@@ -87,6 +87,24 @@ export async function observeFirstParent(
   return value !== null && GIT_COMMIT_PATTERN.test(value) ? value : null;
 }
 
+export async function observeGitParents(
+  repositoryRoot: string,
+  commit: string,
+): Promise<readonly string[] | null> {
+  const value = await git(repositoryRoot, [
+    "show",
+    "-s",
+    "--format=%P",
+    commit,
+  ]);
+  if (value === null) return null;
+  if (value.length === 0) return [];
+  const parents = value.split(" ");
+  return parents.every((parent) => GIT_COMMIT_PATTERN.test(parent))
+    ? parents
+    : null;
+}
+
 export async function countGitCommits(
   repositoryRoot: string,
   fromExclusive: string,

@@ -1,0 +1,79 @@
+{
+  "runNumber": 75,
+  "runId": "20260907-075-apply",
+  "kind": "external-orchestrator-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "action": "apply",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "correct-delivery-content-continuity",
+  "projectOrdinal": 32,
+  "physicalRunPath": ".flowkit/runs/20260902-04-delivery-continuity-stable-core-closure/007-correct-delivery-content-continuity/20260907-075-apply",
+  "physicalRunGroupPrefix": "007",
+  "changeStartSequence": 7,
+  "baseCommit": "b0b2d918c41212fe80e1ad5e58bc14dcd7217c1d",
+  "branch": "delivery/20260902-04-delivery-continuity-stable-core-closure",
+  "ownerInvocation": "根据最新 run，apply change",
+  "inputRunId": "20260907-074-review-propose",
+  "inputRunHashes": {
+    "actionSha256": "372992254c07cf74b3ec04234e3f4611395892d17d591557e8bff4cc65dd2a04",
+    "contextSha256": "ba93f3325ec8ff0a40fa45bf17494c13a00def4561926365d4d4425805156414",
+    "resultSha256": "881732df6611518dffc24f4556ca8e4fdbfc7b77b5410d7f6e8790644f81de42"
+  },
+  "ownerContext": {
+    "materialDecision": "原始 Explore proof 移到 .tmp 且不需要长期保留是 Owner 明确授权",
+    "handoffBoundary": "只携带影响后续判断的 Owner 决定及材料保留边界，不复制全部聊天",
+    "evidenceClasses": [
+      "Explore 实验",
+      "已接受决策依据",
+      "当前实现验收证据"
+    ],
+    "historicalProofIsCurrentPass": false
+  },
+  "implementation": {
+    "candidateDomain": "flowkit-applicable-check-candidate-v2",
+    "checkDomain": "flowkit-applicable-check-v2",
+    "gitObjectFormat": "sha1-only",
+    "startContentCompletion": true,
+    "requiredEvidenceDerivedFromActualBytes": true,
+    "acceptedObjectRequiredRunReadback": true,
+    "checkpointOperations": ["create-new", "reuse-existing"],
+    "tasks": "35/35",
+    "allChangedTypeScriptFilesAtMost650Lines": true
+  },
+  "verification": {
+    "nativeWindowsDomain": "257/257 PASS",
+    "nativeWindowsAcceptance": "5/5 PASS",
+    "nativeWindowsReadDenial": "tracked and untracked PASS via current SID deny ACE; 0 skipped",
+    "linuxPlatform": "linux/amd64 x86_64 glibc 2.36",
+    "linuxRuntime": "Node 22.23.2; pnpm 11.22.0; network none; uid/gid 1000",
+    "linuxDomainAndAcceptance": "PASS; exact commands exit 0",
+    "linuxInitialRootAttempt": "FAILED as expected because root bypassed chmod(000); not admitted as PASS",
+    "typecheck": "PASS",
+    "build": "PASS",
+    "qualityGate": "PASS",
+    "dependencyHealth": "90 modules / 435 dependencies; 0 violations",
+    "entropyTests": "7/7 PASS",
+    "productionReachability": "44/44",
+    "gitDiffCheck": "PASS",
+    "managedOpenSpecVersion": "1.10.0",
+    "currentChangeStrict": "PASS",
+    "allOpenSpecStrict": "23/23 PASS"
+  },
+  "excludedActions": {
+    "formalDeliveryFullTest": false,
+    "archiveOrSpecSync": false,
+    "gitOperation": false,
+    "candidateCliAsStableManager": false
+  },
+  "nextBoundary": "review-apply",
+  "stableManagerUsed": false,
+  "stableManagerAvailability": "external flowkit command unavailable; independent D04 bootstrap applies",
+  "candidateCliInvoked": false,
+  "historicalRunMutation": "NONE",
+  "formalVerificationVerdictCreated": false,
+  "ownerOrGitAuthorityCreated": false,
+  "continuationExecuted": false,
+  "stableTransfer": true,
+  "packageClass": "author-delta"
+}

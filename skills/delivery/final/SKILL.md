@@ -4,6 +4,8 @@ Execute an already-authorized `delivery-final` operation from its exact `Deliver
 
 ## Contract
 
+Derive `requiredEvidence` from canonical required Changes and trusted accepted archive/review anchors, plus the complete Full Test and Architecture sources. Bind the finite snapshot into Final operation facts; callers cannot shrink it, substitute self-signed hashes, or treat excluded Run/Memo bytes as dispensable evidence. This is not an evidence Registry or a new persistence service.
+
 1. Treat the package-bound Delivery identity, verified candidate, Full Test execution, Architecture Finalization closure, Architecture-materialized candidate, completed required Change identities, canonical coordination prestate, content-bound Guidance, and exact `finalize-delivery` Owner authority as fixed input.
 2. Revalidate the complete trusted Full Test and Architecture outcomes, all six fixed Architecture output bytes, current repository candidate, empty managed OpenSpec active Change set, and canonical Delivery coordination before execution. Do not accept booleans, arbitrary paths, standalone digests, or Run prose as substitutes.
 3. Derived execution receives only a defensive package copy and Guidance bytes. It may return bounded `ready` or `correction-required` content; it does not choose a path, patch, Git command, next operation, or authority.

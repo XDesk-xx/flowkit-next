@@ -37,6 +37,8 @@ Read before finalizing Proposal:
 - relevant existing canonical specs
 - relevant historical blocker closures
 
+The handoff must include materially relevant Owner decisions that affect present judgment, including an authorized material relocation or retention boundary. Preserve the decision, scope, and concise exact reference; do not copy the full chat.
+
 ## Convergence Process
 
 ### 1. Build requirement traceability
@@ -142,3 +144,5 @@ tasks.md
 The Proposal remains owned by the normal Change specification authority.
 
 Keep canonical planning artifacts converged to current implementation-relevant content. Do not duplicate the approved Explore proof transcript or review/revision chronology into Proposal/Design. Preserve current rationale and use concise exact cross-artifact or Run/finding references when deeper provenance is material. File size/line count remain diagnostic only, not correctness Gates.
+
+Treat Explore experiments, accepted decision basis, and current implementation acceptance evidence as distinct classes. Proposal does not depend permanently on every raw experiment by default, and historical proof must never be represented as current implementation PASS.

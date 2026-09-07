@@ -4,6 +4,8 @@ Execute an already-decided `delivery-architecture-finalization` operation from i
 
 ## Contract
 
+Consume the complete trusted Full Test outcome under the shared v2 material contract, not a standalone digest or PASS label. Preserve the `verified → architecture-materialized` source lineage: legal six-slot outputs may change the post-materialization candidate, while missing/mismatched source evidence or unrelated product mutation fails closed.
+
 1. Treat the package-bound Delivery identity, verified candidate identity, Full Test execution identity, Current/Planned Architecture content identity, canonical system-view prestate, and content-bound Guidance identity as fixed input.
 2. Require `ownerAuthority = null`. This operation does not reuse Full Test authority and does not create Architecture, Delivery Final, Git, correction, or next-operation authority.
 3. Derived-finalization logic returns content/result only. It does not receive caller-selected output paths or arbitrary repository-write capability.

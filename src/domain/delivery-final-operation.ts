@@ -4,6 +4,11 @@ import {
   hasNoDuplicates,
   isHashRef,
 } from "../internal/applicable-check-identity.js";
+import {
+  cloneDeliveryRequiredEvidence,
+  isDeliveryRequiredEvidence,
+  type DeliveryRequiredEvidence,
+} from "../internal/delivery-required-evidence.js";
 
 export interface DeliveryCoordinationRef {
   readonly artifact: string;
@@ -18,6 +23,7 @@ export interface DeliveryFinalOperationFacts {
   readonly architectureMaterializedCandidateRef: string;
   readonly coordinationPrestateRef: DeliveryCoordinationRef;
   readonly completedRequiredChangeIds: readonly string[];
+  readonly requiredEvidence: DeliveryRequiredEvidence;
 }
 
 const SHA256_HEX_PATTERN = /^[0-9a-f]{64}$/;
@@ -33,6 +39,7 @@ const FINAL_FACT_FIELDS = [
   "architectureMaterializedCandidateRef",
   "coordinationPrestateRef",
   "completedRequiredChangeIds",
+  "requiredEvidence",
 ] as const;
 
 function isRecord(value: unknown): value is Record<string, unknown> {
@@ -74,9 +81,18 @@ export function isDeliveryCoordinationRef(
 export function isDeliveryFinalOperationFacts(
   value: unknown,
 ): value is DeliveryFinalOperationFacts {
+  if (!isRecord(value) || !hasExactlyFields(value, FINAL_FACT_FIELDS))
+    return false;
+  if (
+    !Array.isArray(value.completedRequiredChangeIds) ||
+    !value.completedRequiredChangeIds.every(isSemanticId) ||
+    !hasNoDuplicates(value.completedRequiredChangeIds) ||
+    !isDeliveryRequiredEvidence(value.requiredEvidence)
+  )
+    return false;
+  const changeIds = value.completedRequiredChangeIds as string[];
   return (
-    isRecord(value) &&
-    hasExactlyFields(value, FINAL_FACT_FIELDS) &&
+    changeIds.length > 0 &&
     isHashRef(value.verifiedCandidateRef, "candidate") &&
     typeof value.fullTestExecutionRef === "string" &&
     FULL_TEST_EXECUTION_REF_PATTERN.test(value.fullTestExecutionRef) &&
@@ -86,10 +102,10 @@ export function isDeliveryFinalOperationFacts(
     ) &&
     isHashRef(value.architectureMaterializedCandidateRef, "candidate") &&
     isDeliveryCoordinationRef(value.coordinationPrestateRef) &&
-    Array.isArray(value.completedRequiredChangeIds) &&
-    value.completedRequiredChangeIds.length > 0 &&
-    value.completedRequiredChangeIds.every(isSemanticId) &&
-    hasNoDuplicates(value.completedRequiredChangeIds)
+    value.requiredEvidence.changeClosures.length === changeIds.length &&
+    value.requiredEvidence.changeClosures.every(
+      (entry, index) => entry.changeId === changeIds[index],
+    )
   );
 }
 
@@ -134,5 +150,11 @@ export function cloneDeliveryFinalOperationFacts(
       bytes: facts.coordinationPrestateRef.bytes,
     },
     completedRequiredChangeIds: [...facts.completedRequiredChangeIds],
+    requiredEvidence: cloneDeliveryRequiredEvidence(facts.requiredEvidence),
   };
 }
+
+export type {
+  DeliveryRequiredEvidence,
+  EvidenceArtifactRef,
+} from "../internal/delivery-required-evidence.js";

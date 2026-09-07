@@ -1,0 +1,114 @@
+{
+  "runNumber": 71,
+  "kind": "external-orchestrator-review-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "reviewer",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "correct-delivery-content-continuity",
+  "projectOrdinal": 32,
+  "action": "review-propose",
+  "runId": "20260907-071-review-propose",
+  "inputRunId": "20260907-070-propose",
+  "approvedExploreReviewRunId": "20260907-069-review-explore",
+  "physicalRunPath": ".flowkit/runs/20260902-04-delivery-continuity-stable-core-closure/007-correct-delivery-content-continuity/20260907-071-review-propose",
+  "physicalRunGroupPrefix": "007",
+  "changeStartSequence": 7,
+  "baseCommit": "b0b2d918c41212fe80e1ad5e58bc14dcd7217c1d",
+  "branch": "delivery/20260902-04-delivery-continuity-stable-core-closure",
+  "reviewRequest": "根据最新的 runs，review-propose",
+  "inputRunHashes": {
+    "actionSha256": "9c71489cbbf5bd94b6b66698e7ff3c3c55b665ace69d51442b35f3f5ddffa8fa",
+    "contextSha256": "3278c0306f36167cf32f8f079710604f56e64cc73bb916b7ed0f27bd3c911e76",
+    "resultSha256": "d3fbf938c8acd102cd1bb6f9962241a0642c1d6f50c9d0ba7e0d2e6a52fdb3f3"
+  },
+  "reviewedArtifactHashes": {
+    "openspec/changes/correct-delivery-content-continuity/proposal.md": "a4378850e4d64f86c509fd014d975a36adaa21f134885fcc59b7fee2751d7fb2",
+    "openspec/changes/correct-delivery-content-continuity/design.md": "afa79e252cb09c9c15fc96b650063cf7423bcbfa225fc924a358f1d8a883e674",
+    "openspec/changes/correct-delivery-content-continuity/tasks.md": "11474ac2497abf4533f71d517b10dcf726c503a44c3db88887689399ec9d8296",
+    "openspec/changes/correct-delivery-content-continuity/specs/applicable-check-execution/spec.md": "91a8fb7e8777f9b83a57fcb71ce7d17f3006a809b9db16e0e99659e2fbe5d9ae",
+    "openspec/changes/correct-delivery-content-continuity/specs/architecture-and-canonical-diagram-continuity/spec.md": "d672c05db14424dfbb5ddba83bb4600431dc5588bdec4c698f4edd389d3b9a94",
+    "openspec/changes/correct-delivery-content-continuity/specs/cross-delivery-memo/spec.md": "2be0fdbedb11056ad60ef8bd5cc4027e21a3bfdb652666bb56282e5520229367",
+    "openspec/changes/correct-delivery-content-continuity/specs/delivery-finalization/spec.md": "3cb0935bf976d21afed3613f61619616283bcf8406c166ed6bea76d51c9dcb2d",
+    "openspec/changes/correct-delivery-content-continuity/specs/delivery-operation-execution-and-start-continuity/spec.md": "2cadf95b54fea06b489c4967d28f014f4d4ebe8fe3e325c8dc86b1bdfd9c7e0e",
+    "openspec/changes/correct-delivery-content-continuity/specs/formal-full-test-execution-and-correction/spec.md": "412bbaa3299da5f4e00a34079af52ce85196627d1d1f46104f3d7e587dfa37e3",
+    "openspec/changes/correct-delivery-content-continuity/specs/repository-integration-and-next-base-continuity/spec.md": "5784b2c0c6f2041767daca11aee7c6261b168d81dbdcf568e27867641e566081"
+  },
+  "bootstrapSkill": {
+    "path": ".agents/skills/review-propose/SKILL.md",
+    "sha256": "7c3485a985638a8c92b41cc565d4e1aa0db49ac9f0cf80187cbfe675e4325328"
+  },
+  "independentChecks": {
+    "author070InputHashes": "8/8 MATCH",
+    "author070OutputHashes": "10/10 MATCH",
+    "approved069OriginalPaths": "4 MATCH / 3 MISSING",
+    "missingProofBytesFoundElsewhere": "3/3 exact hashes match existing ignored .tmp copies",
+    "currentChangeOpenSpecStrict": "PASS",
+    "allOpenSpecStrict": "23/23 PASS; structural only",
+    "managedOpenSpecPackage": "@fission-ai/openspec",
+    "managedOpenSpecVersion": "1.10.0",
+    "newPlanningTextFormat": "10/10 PASS",
+    "tasksUnchecked": 32,
+    "tasksChecked": 0,
+    "relativeLinksIncludingExplore": 7,
+    "brokenRelativeLinks": 3,
+    "gitDiffCheck": "PASS",
+    "productionTestsRun": false,
+    "formalFullTestRun": false
+  },
+  "proofRelocationObserved": {
+    "declaredRoot": "openspec/changes/correct-delivery-content-continuity/proof",
+    "existingCopyRoot": ".tmp/correct-delivery-content-continuity-proof",
+    "existingCopyIgnoredBy": ".gitignore:4:.tmp/",
+    "hashes": {
+      "continuity-proof-model.mjs": "9a82e59551cfee3d3bfed60545351df34a9b9401242f6b690448907be93b66de",
+      "continuity-proof.mjs": "70fb53e8203d54a90030134f49def079384e0c6403dad1a5137af0037ad60c79",
+      "execution.json": "e24f681af4552feb7ebef64324cb06190426bfa4fa472bb54ad95e677cc7048d"
+    },
+    "moveActorOrAuthorityEstablished": false,
+    "permanentByteLossClaimed": false,
+    "reviewerRestoredFiles": false
+  },
+  "findings": [
+    {
+      "id": "D04-RP007-001",
+      "priority": "P2",
+      "blocking": true,
+      "category": "input-handoff-integrity",
+      "title": "已批准 Explore proof 的原绑定路径缺失，当前 full-propose-handoff 不完整",
+      "affected": [
+        "openspec/changes/correct-delivery-content-continuity/explore.md:23",
+        "openspec/changes/correct-delivery-content-continuity/explore.md:29",
+        "openspec/changes/correct-delivery-content-continuity/explore.md:106",
+        "openspec/changes/correct-delivery-content-continuity/proposal.md:34",
+        "068/069 exact proof path/hash bindings and current 070 full-propose-handoff"
+      ],
+      "observed": "三份原路径均不存在；真实副本在 ignored .tmp 中且 hash 全匹配，未见耐久替代 locator/transfer 绑定。",
+      "impact": "当前 Explore 链接及既有 Run 引用无法按声明路径解析；正常 Git-visible/Change 交付不携带这些被引用的已批准材料。",
+      "minimumCorrection": "用现存 exact bytes 恢复原绑定路径；若 Owner 明确要求外置，则通过新的真实耐久交接事实和合法引用收敛保留原 hash/取回关系。历史 Runs 不改，不从聊天重建，不要求无意义重写设计。"
+    }
+  ],
+  "semanticAssessment": {
+    "purpose": "approved Explore traceability, bounded testable Proposal and handoff completeness",
+    "scopeDrift": "NONE",
+    "complexity": "ONE_SHARED_MATERIAL_CONTRACT_WITH_NECESSARY_DIRECT_CONSUMERS",
+    "newContent": "START_COMPLETION_REQUIRED_EVIDENCE_AND_CHECKPOINT_VARIANTS_TRACE_TO_APPROVED_EXPLORE",
+    "additionalProductContractFinding": "NONE_IDENTIFIED",
+    "applyReady": false,
+    "blockingReason": "CURRENT_DECLARED_EXPLORE_EVIDENCE_HANDOFF_INCOMPLETE",
+    "externalD04FullTestEvidence": "Still a separately deferred pre-FullTest prerequisite; not this finding and not waived"
+  },
+  "applyAllowed": false,
+  "nextBoundary": "revise-propose",
+  "continuationBasis": "canonical Policy normal matrix: review-propose changes-requested -> revise-propose; reference only, no invocation",
+  "stableManagerUsed": false,
+  "stableManagerAvailability": "external flowkit command unavailable; independent D04 bootstrap applies",
+  "candidateCliInvoked": false,
+  "candidateReviewerSkillRead": false,
+  "reviewerArtifactMutation": "RUN_071_ONLY",
+  "authorArtifactMutation": "NONE",
+  "formalVerificationVerdictCreated": false,
+  "ownerOrGitAuthorityCreated": false,
+  "continuationExecuted": false,
+  "stableTransfer": true,
+  "packageClass": "reviewer-delta"
+}

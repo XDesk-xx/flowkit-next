@@ -6,69 +6,86 @@
 ## Requirements
 
 ### Requirement: Repository Integration consumes exact Delivery Final continuity and exact Git prestate
-`delivery-repository-integration` SHALL 从 trusted terminal `DeliveryFinalizationRecord`、current repository candidate、canonical completed Delivery coordination与 ordinary Git observation准备 exact operation facts。Package facts SHALL 至少绑定matching `deliveryFinalizationRef`、`finalizedCandidateRef`、`preIntegrationHead`、exact Delivery branch、`targetMainRef`、`targetMainPreIntegrationCommit` 与 accepted base/history continuity。Trusted preparation SHALL re-derive Delivery Final closure并要求 current candidate等于`finalizedCandidateRef`；caller-provided boolean、standalone digest、Run prose、transport HEAD或arbitrary Git summary SHALL NOT替代这些owners。
 
-`targetMainPreIntegrationCommit` SHALL 只表示Git mutation/repository review之前读取的exact target-main commit。`acceptedMainCommit` SHALL NOT作为expected/predeclared package input；它只能在repository acceptance之后由trusted Git observation产生。
+Integration SHALL 从可信 Final terminal、当前 v2 candidate、completed coordination、必要证据与普通 Git observation 准备 package，绑定 Final ref、finalizedCandidateRef、preIntegrationHead、Delivery branch、targetMainRef、targetMainPreIntegrationCommit、exact acceptedBaseCommit/provenance 与明确的 checkpointOperation。可信 preparation SHALL 重算 Final closure，验证当前候选、coordination 与证据；caller boolean、独立 digest、Run prose、transport HEAD 或 provider 摘要 SHALL 不能代替这些事实。
+
+exact accepted-base provenance SHALL 由既有接受事实与 Git 对象核验，而非把 ancestor 关系当作所有内容连续性的通用要求。targetMainPreIntegrationCommit SHALL 只表示操作前 target；acceptedMainCommit SHALL 不预声明。所有相关 commit SHALL 属于已支持 SHA-1 格式。
 
 #### Scenario: Prepare from exact finalized and Git prestate
-- **WHEN** exact Delivery Final record、current finalized candidate、completed Delivery coordination、current branch/HEAD、accepted base与target main prestate全部一致
-- **THEN** Repository Integration SHALL 允许形成exact `delivery-repository-integration` package facts，并 SHALL 精确保留`targetMainPreIntegrationCommit`作为prestate
+
+- **WHEN** Final、v2 candidate、completed coordination、必要证据、HEAD/branch、accepted base 来源、target prestate 和具体操作全部匹配
+- **THEN** Integration SHALL 形成精确 package，冻结本次事实，不预言 acceptedMainCommit
 
 #### Scenario: Reject stale finalized or Git prestate
-- **WHEN** Delivery Final ref/candidate/coordination不一致，current HEAD/branch或target main prestate发生drift，或caller用Run/transport/provider summary替代trusted facts
-- **THEN** preparation SHALL fail closed，并 SHALL NOT形成可执行package或自动rebase/correct
+
+- **WHEN** 原 package 的 HEAD/branch/target/base/操作发生变化，或来源与证据不符
+- **THEN** host SHALL 拒绝，不用产品相同来静默重绑定或自动 rebase
 
 #### Scenario: Accepted main is not predeclared
-- **WHEN** package仍处于pre-integration/pre-merge阶段
-- **THEN** package SHALL NOT包含或信任一个expected `acceptedMainCommit`终态SHA，且 SHALL NOT将`targetMainPreIntegrationCommit`解释为terminal accepted main
+
+- **WHEN** 当前仍在 preparation/pre-acceptance 阶段
+- **THEN** package SHALL 不包含或信任 expected acceptedMainCommit，targetMainPreIntegrationCommit SHALL 只表示操作前观察
 
 ### Requirement: Repository Integration requires one exact singleton Owner Git authority
-Repository Integration SHALL 只接受structural-valid `OwnerAuthorityFact`精确满足`decision=authorize-repository-integration`、exact current Delivery、`changeId` absent与scope exactly `["delivery-repository-integration"]`。Reviewer PASS、Verification PASS、Delivery Final authority、checkpoint state、broader Git scope或其他operation authority SHALL NOT被继承、组合或解释为repository-integration authority。Authority admission SHALL 与exact package-bound finalized/pre-integration/target-main facts一起重验；这些facts drift后旧authority SHALL NOT silent rebind。
+
+Integration SHALL 保持 structural-valid authority：decision=authorize-repository-integration、exact Delivery、absent changeId、scope exactly ["delivery-repository-integration"]。该 authority SHALL 与 Owner 本次明确决定的 checkpointOperation、目标及 Git/Final prestate 一起绑定重验；相同 scope 外形 SHALL 不授权任意选择新建、复用、squash、rebase 或 merge。Review/Verification/Final/checkpoint status、较宽 scope SHALL 不能继承或组合成此权限。
 
 #### Scenario: Accept exact repository-integration authority
-- **WHEN** Owner authority decision、Delivery、absent Change、singleton scope与exact package-bound Git/finalized facts全部匹配
-- **THEN** system SHALL 将该authority绑定进`delivery-repository-integration` package
+
+- **WHEN** singleton authority 与独立 Owner 操作、Delivery、target 及 exact prestate 一致
+- **THEN** host SHALL 将权限与该具体操作冻结到 package，不赋予后续自动 Git 权限
 
 #### Scenario: Reject broader inherited or stale authority
-- **WHEN** authority缺失、decision/Delivery不匹配、包含`changeId`、scope包含其他Git/final/release权限，或package-bound prestate在authority admission后发生变化
-- **THEN** execution SHALL fail closed并要求fresh trusted preparation/authority evaluation，而 SHALL NOT继续mutation或自动修正
 
-### Requirement: Repository Integration creates exactly one ordinary Delivery Final commit
-Trusted repository-integration host SHALL 从bound `preIntegrationHead`与exact finalized working-tree state创建exactly one ordinary Delivery Final commit。成功commit后 SHALL 从Git重读`finalCommit`并证明`parent(finalCommit)=preIntegrationHead`、`rev-list(preIntegrationHead..finalCommit)`exactly one commit、post-commit current product candidate仍等于`finalizedCandidateRef`，以及required working tree/index处于accepted clean poststate。Caller/provider supplied commit SHA SHALL NOT被当作Git truth。
-
-#### Scenario: Admit one exact final commit
-- **WHEN** exact package/authority有效且ordinary commit从bound finalized working tree成功形成
-- **THEN** host SHALL 从Git得到`finalCommit`，证明其唯一parent/topology与candidate continuity，并允许进入repository review/acceptance mechanics
-
-#### Scenario: Reject multiple wrong-parent or candidate-changing commits
-- **WHEN** bounded mechanics产生零个或多个commit、final commit parent不等于`preIntegrationHead`、commit后candidate不等于`finalizedCandidateRef`，或poststate不满足clean要求
-- **THEN** Repository Integration SHALL fail closed，且 SHALL NOT继续到terminal accepted-main admission
+- **WHEN** 权限缺失/不符、含 Change/额外 scope、操作未经明确决定或原 prestate 漂移
+- **THEN** execution SHALL 拒绝，要求新的可信 preparation/authority 核对
 
 ### Requirement: Repository review and merge remain provider-external while terminal Git truth is independently observed
-Repository-specific branch publication、PR/review与merge mechanics MAY 由bounded host/provider执行，但provider callback、PR id、review status或returned accepted-main SHA SHALL NOT成为truth authority。Repository Integration terminal admission SHALL 重新从Git解析canonical `targetMainRef`得到`acceptedMainCommit`，并 SHALL 证明`finalCommit`存在且包含于accepted-main history，同时 SHALL 机械验证 `tree(acceptedMainCommit) == tree(finalCommit)`。由于`finalCommit`已在commit阶段证明其product/canonical candidate等于`finalizedCandidateRef`，该tree equality SHALL 作为accepted-main exact content continuity：accepted main不得包含超出已验证finalized candidate的额外或不同product/canonical bytes。若target main发生无法由exact approved integration关系解释的drift，或accepted-main tree与final-commit tree不等，operation SHALL STOP而 SHALL NOT自动rebase、merge conflict、correction或复用旧verification。
+
+Repository-specific publication/review/merge SHALL 仍由已有外部有界 mechanics 承担；callback success、PR id、返回 SHA 或自签摘要 SHALL 不成为 acceptance truth。Terminal SHALL 重新从 canonical targetMainRef 读取 exact acceptedMainCommit，验证其来自 Owner 明确授权的具体 acceptance 关系与原 target prestate，再从该对象派生共享 v2 产品 projection，要求等于 finalizedCandidateRef。
+
+系统 SHALL 同时验证 Final 绑定的必要证据仍可取回、完整且来源正确：仓库内 Run SHALL 从 accepted object 的受控地址读取，不仅检查本地旧 worktree；仓库外 evidence SHALL 从已验证的 owner 来源读取。完整 tree equality 与 finalCommit 必须包含于全部 accepted 历史的通用规则 SHALL 被上述内容/来源验收替代；具体 Git 操作有明确 topology 要求时仍 SHALL 单独核验。不同历史形状只有在 Owner 明确授权且 acceptance 来源可证明时才可接受。
 
 #### Scenario: Accept repository-accepted main from Git observation
-- **WHEN** repository review/merge mechanics完成，trusted Git observation解析`targetMainRef`得到exact commit，`finalCommit`包含于该accepted-main history，且`tree(acceptedMainCommit) == tree(finalCommit)`
-- **THEN** terminal SHALL 记录该Git-observed SHA为`acceptedMainCommit`
+
+- **WHEN** Git 实读 target commit、具体 acceptance 关系、必要证据均有效，且 v2 projection 与 finalizedCandidateRef 相等
+- **THEN** terminal SHALL 使用该真实 SHA，无需完整 tree 相等或额外通用 ancestry 限制
 
 #### Scenario: Ignore callback-reported accepted-main SHA as truth
-- **WHEN** provider callback返回一个accepted-main SHA但canonical `targetMainRef`从Git解析为不同commit，或`finalCommit` containment失败，或`tree(acceptedMainCommit) != tree(finalCommit)`
-- **THEN** Repository Integration SHALL reject terminal admission，而 SHALL NOT信任callback返回值、也 SHALL NOT接受额外/不同accepted-main bytes
+
+- **WHEN** callback 声称成功但 target 实读不符、acceptance 来源未知、操作关系不符或产品 projection 不同
+- **THEN** 系统 SHALL 拒绝，不自动 rebase、冲突修正或复用旧验证
 
 #### Scenario: Stop on target-main drift instead of automatic rebase
-- **WHEN** target main在preparation之后发生非预期变化且exact finalized-state/approved integration relationship无法证明
-- **THEN** operation SHALL STOP并要求Owner-controlled re-preparation/correction，且 SHALL NOT自动rebase、resolve conflict或假设prior verification仍覆盖新bytes
+
+- **WHEN** target 在 preparation 后发生无法由 Owner 明确操作与原 prestate 解释的变化
+- **THEN** 系统 SHALL STOP 并要求 Owner 控制的重新准备，不自动 rebase/冲突修正或假定旧验证仍覆盖
+
+#### Scenario: 产品一致但必要执行证据丢失
+
+- **WHEN** accepted object 的产品 projection 相同，但所需 Run 缺失/损坏、绑定错项目或外部必要来源不可取回
+- **THEN** 整体 acceptance SHALL 拒绝，即使本地旧 worktree 中还有完整 Run
+
+#### Scenario: 无关历史可追加
+
+- **WHEN** accepted object 仅增加无关 Run 历史，必需证据及产品内容仍有效
+- **THEN** 系统 SHALL 不因完整 tree 不同而拒绝
 
 ### Requirement: Accepted main becomes next Delivery base and terminal execution stops
-成功的 Repository Integration terminal SHALL content-bind `deliveryFinalizationRef`、`finalizedCandidateRef`、`preIntegrationHead`、`finalCommit`、`targetMainRef`、`targetMainPreIntegrationCommit`与Git-observed `acceptedMainCommit`，并 SHALL 记录`nextDeliveryBase = acceptedMainCommit`。Terminal MAY记录opaque repository-review metadata作为audit，但该metadata SHALL NOT成为truth/authority。Terminal SHALL 在返回accepted-main/next-base continuity后STOP；它 SHALL NOT tag/release、activate next Delivery、create D05、select next operation或取得新的Owner authority。
+
+成功 terminal SHALL 绑定 Final ref、finalizedCandidateRef、原 preIntegrationHead、checkpointOperation、Git 实读 finalCommit、targetMainRef、target prestate、acceptedMainCommit 与 nextDeliveryBase；requiredEvidence SHALL 通过已重验的 Final ref 精确绑定，不能 caller 替换。nextDeliveryBase SHALL 等于 acceptedMainCommit。Integration ref SHALL 保持 `repository-integration:sha256:<64 lowercase hex>`，摘要输入为 UTF-8 `flowkit-repository-integration`、一个 `0x00`、无 BOM/newline 的 JSON projection，字段顺序精确为 deliveryId、deliveryFinalizationRef、finalizedCandidateRef、preIntegrationHead、checkpointOperation、finalCommit、targetMainRef、targetMainPreIntegrationCommit、acceptedMainCommit。checkpointOperation SHALL 按 kind、适用时 checkpointCommit 的顺序重建；record 的对应操作 SHALL 与 package 相等。derive/admission SHALL 同步更新并以 golden vectors 验证，旧缺字段 record 不升级。
+
+外部 review metadata SHALL 仅作审计，不独立构成权限。目标 next-base locator SHALL 不取代运行 Flowkit 的 Stable manager exact checkpoint 身份。Terminal SHALL STOP，不 tag/release、activate next Delivery、create D05 或自动选择下一操作。
 
 #### Scenario: Return exact accepted-main next-base continuity
-- **WHEN** repository acceptance与terminal Git checks全部通过
-- **THEN** terminal SHALL 记录`acceptedMainCommit`，要求`nextDeliveryBase`与其exact相等，并随后STOP
+
+- **WHEN** 具体 Git 操作、内容与必要证据验收全部通过
+- **THEN** terminal SHALL 记录真实 acceptedMainCommit、相等的 nextDeliveryBase 与绑定操作，然后 STOP
 
 #### Scenario: Terminal success does not activate release or next Delivery
-- **WHEN** Repository Integration返回terminal success
-- **THEN** system SHALL NOT自动创建tag/release、activate下一Delivery、创建D05或选择任何后续operation
+
+- **WHEN** Integration 返回 success
+- **THEN** 系统 SHALL 不产生新 Owner authority、release 或下一 Delivery，不更换当前 Stable manager
 
 ### Requirement: Repository Integration preserves state-first continuity without transport lifecycle modes
 Repository Integration preparation/execution SHALL 只要求exact finalized state、required Git history与required environment可验证。若这些exact state已经可用 SHALL 直接verify/reuse；若缺失 SHALL STOP preparation并允许在lifecycle外恢复最小缺失state，再通过同一operation重新prepare。Core SHALL NOT引入local/detached/shared/bundle/ZIP execution mode，也 SHALL NOT要求mandatory source snapshot、Git bundle或dependency archive。
@@ -80,3 +97,29 @@ Repository Integration preparation/execution SHALL 只要求exact finalized stat
 #### Scenario: Restore missing state without changing lifecycle semantics
 - **WHEN** exact required repository/history/environment state缺失
 - **THEN** preparation SHALL STOP直到最小exact state被外部恢复并重新验证，随后 SHALL 使用同一`delivery-repository-integration` operation，而 SHALL NOT切换到新的transport/execution lifecycle type
+
+### Requirement: Integration 按明确操作创建或复用 checkpoint
+
+checkpointOperation SHALL 仅为 `{kind:"create-new"}` 或 `{kind:"reuse-existing",checkpointCommit:<exact SHA-1>}`，由可信 host 从明确 Owner 输入绑定，而非 caller 自行选择。create-new SHALL 从 bound preIntegrationHead 和 finalized working tree 形成恰好一个普通 commit，并从 Git 重读验证唯一 parent、commit count=1、v2 内容和 clean poststate；零个、多于一个、错误 parent、产品改变 SHALL 拒绝。
+
+reuse-existing SHALL 验证 checkpoint 的已授权来源、exact object、v2 finalized 内容、当前 clean poststate 及 package prestate；SHALL 不调用新建 commit callback、不要求 checkpoint != preIntegrationHead、不强制额外 commit。两种路径 SHALL 在执行 repository acceptance 前再核对 target prestate，保持各自具体操作权限。任何 mutation 后的失败 SHALL 不伪称没有实际效果，也不自动重试或回滚。
+
+#### Scenario: 明确新建一个普通 commit
+
+- **WHEN** create-new 的 package/权限有效且 Git 实际产生唯一正确 parent 的 commit
+- **THEN** host SHALL 核验内容和 clean poststate 后才能进入 acceptance
+
+#### Scenario: 新建路径拒绝错误提交形状
+
+- **WHEN** create-new 产生零个、多个、错误 parent 或产品改变的 commit
+- **THEN** 系统 SHALL 拒绝，不继续 terminal acceptance
+
+#### Scenario: 已授权 checkpoint 直接复用
+
+- **WHEN** reuse-existing 的 exact checkpoint 来源有效且内容/prestate/clean 检查通过
+- **THEN** host SHALL 复用该 SHA，不再制造一个 commit
+
+#### Scenario: commit 成功但 acceptance 失败
+
+- **WHEN** actual commit 已形成，后续 acceptance 失败
+- **THEN** 当前 invocation SHALL 失败并 STOP；新的合法 invocation 只有经重新授权核对及 exact checkpoint/prestate 验证后才可复用，不自动补交第二个 commit

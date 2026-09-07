@@ -4,6 +4,8 @@ Execute an already-authorized `delivery-full-test` operation from its exact `Del
 
 ## Contract
 
+Use the shared v2 candidate/check identities. Preserve explicit check order and argv order; sort only declared unordered material refs by UTF-8 bytes. A PASS from the former identity domain is historical evidence and cannot be converted or reused as a v2 PASS. Checks that consume Memo or Git history bind those actual materials even when they are excluded from the product candidate.
+
 1. Treat the package-bound Delivery identity, candidate identity, ordered project-local checks, canonical Guidance identity, and exact Owner authority as fixed input.
 2. Execute only the checks explicitly bound to the package, in their declared order. Do not discover, infer, add, remove, or reorder project checks.
 3. Admit PASS evidence only when the current repository candidate and the material check identity still exactly match the package/evidence identity.

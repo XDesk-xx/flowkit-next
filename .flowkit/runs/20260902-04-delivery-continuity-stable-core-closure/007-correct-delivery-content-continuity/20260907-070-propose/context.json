@@ -1,0 +1,108 @@
+{
+  "runNumber": 70,
+  "runId": "20260907-070-propose",
+  "role": "author",
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "correct-delivery-content-continuity",
+  "projectOrdinal": 32,
+  "action": "propose",
+  "canonicalFlowkitRuntimeRun": false,
+  "kind": "external-orchestrator-propose-context",
+  "physicalRunPath": ".flowkit/runs/20260902-04-delivery-continuity-stable-core-closure/007-correct-delivery-content-continuity/20260907-070-propose",
+  "physicalRunGroupPrefix": "007",
+  "changeStartSequence": 7,
+  "inputRunId": "20260907-069-review-explore",
+  "baseCommit": "b0b2d918c41212fe80e1ad5e58bc14dcd7217c1d",
+  "branch": "delivery/20260902-04-delivery-continuity-stable-core-closure",
+  "request": "根据最新runs，propose，生成的内容用中文",
+  "invocationBoundary": {
+    "inputVerdict": "approved",
+    "blockingFindings": [],
+    "reportedNextBoundary": "propose",
+    "currentUserRequestAuthorizes": "仅本次 Propose 计划产物及其真实 Run",
+    "gitAuthority": false
+  },
+  "inputHashes": {
+    ".flowkit/runs/20260902-04-delivery-continuity-stable-core-closure/007-correct-delivery-content-continuity/20260907-069-review-explore/action.md": "b7113f8188c7363c66a0bf6fa9093c712e1fbf2b261fc93956f539b7187ed08c",
+    ".flowkit/runs/20260902-04-delivery-continuity-stable-core-closure/007-correct-delivery-content-continuity/20260907-069-review-explore/context.json": "f8c9ef0c0273e209cd7bb2fbcffc3ce91d48a76bf7b2abbda68389e75892a9b7",
+    ".flowkit/runs/20260902-04-delivery-continuity-stable-core-closure/007-correct-delivery-content-continuity/20260907-069-review-explore/result.json": "8792050593b848703855a76dee317f88ffe120ca4544d206b8cf39e1860cdf81",
+    "openspec/changes/correct-delivery-content-continuity/explore.md": "15a78ac95b2b4119a4d40ccc2eb7726bc7f57c981b9710b5a0317c79b53ec187",
+    "flowkit-architecture-decoupling-final-plan.md": "0f84a89c7be69d7d55dd13ec46c1ac5505e4ef25ecf77e2156f452a569274541",
+    "openspec/delivery-groups/20260902-04-delivery-continuity-stable-core-closure.yaml": "c439ab8b7b15ea96b1b6efb24f6ca3ae04c20d2d1e72b5d22174c75cd36b4097",
+    ".flowkit/memos.json": "ecea78153c221f82469431a2de325e486e03a39efcb2715bf40dcc614db20230",
+    "config/tools/toolchain.lock.json": "10320026a769d328bd653e5a092da00200f4c6c7f65f30d3df43a59b3fe01df4"
+  },
+  "outputArtifactHashes": {
+    "openspec/changes/correct-delivery-content-continuity/proposal.md": "a4378850e4d64f86c509fd014d975a36adaa21f134885fcc59b7fee2751d7fb2",
+    "openspec/changes/correct-delivery-content-continuity/design.md": "afa79e252cb09c9c15fc96b650063cf7423bcbfa225fc924a358f1d8a883e674",
+    "openspec/changes/correct-delivery-content-continuity/tasks.md": "11474ac2497abf4533f71d517b10dcf726c503a44c3db88887689399ec9d8296",
+    "openspec/changes/correct-delivery-content-continuity/specs/applicable-check-execution/spec.md": "91a8fb7e8777f9b83a57fcb71ce7d17f3006a809b9db16e0e99659e2fbe5d9ae",
+    "openspec/changes/correct-delivery-content-continuity/specs/architecture-and-canonical-diagram-continuity/spec.md": "d672c05db14424dfbb5ddba83bb4600431dc5588bdec4c698f4edd389d3b9a94",
+    "openspec/changes/correct-delivery-content-continuity/specs/cross-delivery-memo/spec.md": "2be0fdbedb11056ad60ef8bd5cc4027e21a3bfdb652666bb56282e5520229367",
+    "openspec/changes/correct-delivery-content-continuity/specs/delivery-finalization/spec.md": "3cb0935bf976d21afed3613f61619616283bcf8406c166ed6bea76d51c9dcb2d",
+    "openspec/changes/correct-delivery-content-continuity/specs/delivery-operation-execution-and-start-continuity/spec.md": "2cadf95b54fea06b489c4967d28f014f4d4ebe8fe3e325c8dc86b1bdfd9c7e0e",
+    "openspec/changes/correct-delivery-content-continuity/specs/formal-full-test-execution-and-correction/spec.md": "412bbaa3299da5f4e00a34079af52ce85196627d1d1f46104f3d7e587dfa37e3",
+    "openspec/changes/correct-delivery-content-continuity/specs/repository-integration-and-next-base-continuity/spec.md": "5784b2c0c6f2041767daca11aee7c6261b168d81dbdcf568e27867641e566081"
+  },
+  "bootstrap": {
+    "skills": [
+      ".agents/skills/proposal-convergence/SKILL.md",
+      ".agents/skills/openspec-propose/SKILL.md",
+      "C:/Users/xuser/.agents/skills/planning-and-task-breakdown/SKILL.md"
+    ],
+    "stableManagerUsed": false,
+    "candidateCliLifecycleAuthorityUsed": false,
+    "exactManagedOpenSpec": "1.10.0",
+    "flowkitHome": "C:\\Users\\xuser\\.flowkit",
+    "existingChangeContinued": true
+  },
+  "artifacts": {
+    "planningFiles": 10,
+    "deltaCapabilities": 7,
+    "scenarioCount": 74,
+    "taskCount": 32,
+    "completedTaskCount": 0,
+    "language": "中文正文；保留 OpenSpec 模板及现行 Requirement/Scenario 匹配标识和机器 literal",
+    "planningComplete": true,
+    "implementationComplete": false
+  },
+  "validation": {
+    "openSpecAllStrict": {
+      "chunk_id": "bd0959",
+      "wall_time_seconds": 1.7167347,
+      "exit_code": 0,
+      "original_token_count": 242,
+      "output": "- Validating...\n✓ spec/action-guidance-execution\n✓ spec/action-lifecycle\n✓ spec/action-package-and-result-admission\n✓ spec/applicable-check-execution\n✓ spec/architecture-and-canonical-diagram-continuity\n✓ spec/author-action-guidance\n✓ change/correct-delivery-content-continuity\n✓ spec/cross-delivery-memo\n✓ spec/delivery-finalization\n✓ spec/delivery-operation-execution-and-start-continuity\n✓ spec/formal-full-test-execution-and-correction\n✓ spec/foundation-cli-surface\n✓ spec/lifecycle-authority-and-identity\n✓ spec/lightweight-engineering-gate\n✓ spec/managed-toolchain-resolution\n✓ spec/openspec-thin-integration\n✓ spec/policy-and-next-boundary\n✓ spec/repository-entropy-hygiene\n✓ spec/repository-integration-and-next-base-continuity\n✓ spec/reviewer-action-guidance\n✓ spec/run-result-persistence\n✓ spec/single-action-execution-terminal-boundary\n✓ spec/structural-dependency-health\nTotals: 23 passed, 0 failed (23 items)\n"
+    },
+    "openSpecChangeStrict": "PASS",
+    "initialStrictFailure": "MODIFIED 块的既有 Scenario 标识被中文重命名；已恢复 exact 标识并拆回独立场景，正文保持中文，未降低校验",
+    "textAndRelativeLinks": "PASS",
+    "taskCheckboxes": "32 unchecked / 0 checked",
+    "reviewedInputBindings": "7 reviewed artifacts + 3 input Run files MATCH",
+    "gitDiffCheck": "PASS",
+    "sourceTestsCanonicalSpecsAndHistoricalRunsUnchanged": true,
+    "manifestAndMemoUnchangedThisRun": true,
+    "gitHeadAndIndexUnchanged": true
+  },
+  "convergence": {
+    "basis": "approved Explore 4-6、review-explore 069、Owner 最终方案与现行保留合同",
+    "scope": "一个共享材料合同与 Start/FullTest/Architecture/Final/Integration 必要直接消费者",
+    "evidenceShape": "Final operationFacts 中的有限 requiredEvidence 前置快照；无独立 Registry/数据库/新 evidence lifecycle",
+    "failureWindows": "保持实际效果与失败 STOP；不实现通用恢复或跨会话 host",
+    "gate": "src 超过 650 行须按职责拆分；不豁免、不移往免检路径",
+    "historicalEvidence": "保留原 bytes，不将旧 PASS 升级为 v2",
+    "externalFullTestHandoff": "尚未建立；在未来真实 D04 Full Test 前由 Owner/独立 Verification 确认外部位置及来源/取回 proof，不是本轮 PASS"
+  },
+  "continuation": {
+    "nextBoundary": "review-propose",
+    "reviewerVerdict": null,
+    "applyExecuted": false,
+    "archiveExecuted": false,
+    "formalFullTestExecuted": false,
+    "gitMutationExecuted": false,
+    "d05Created": false,
+    "stop": true
+  },
+  "stableTransfer": true,
+  "packageClass": "full-propose-handoff"
+}

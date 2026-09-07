@@ -1,6 +1,6 @@
 ---
 name: flowkit-delivery-start
-summary: Execute an already-decided Flowkit Delivery Start from exact accepted repository truth and stop at the fixed-point boundary.
+summary: Execute an already-decided Flowkit Delivery Start from exact accepted repository truth and return verified content completion.
 ---
 
 # Flowkit Delivery Start
@@ -35,8 +35,9 @@ Fail closed if package identity, Guidance identity, Delivery identity, accepted 
    - Current → Planned compare.
 5. Keep Archify evidence valid at each document's declared repository revision. Do not cite newly-created Start files as evidence for an older accepted-base revision.
 6. Validate the complete Start surface with the applicable OpenSpec, Archify, Git and receipt/hash checks. Do not activate a Change automatically.
-7. If explicit bounded commit authority is absent, STOP before Git mutation.
-8. If that authority is present and validation is PASS, create at most one ordinary Delivery Start fixed-point commit, read its exact SHA, and STOP. That SHA is the next Change-execution base.
+7. Read back the four fixed outputs, bind their artifact/hash/bytes plus project, Delivery, accepted base, planning reference, the post-output v2 candidate, and the complete trusted validation source as `contentCompletion`.
+8. If explicit bounded commit authority is absent, return terminal success with `fixedPointCommit=null`, do not invoke Git mutation, and STOP.
+9. If that authority is present and validation is PASS, create at most one ordinary Delivery Start fixed-point commit; independently read and verify its SHA, parent/count, clean poststate and v2 object content, then STOP. Failure must not claim Git success or auto-retry.
 
 ## Boundaries
 
@@ -51,4 +52,4 @@ MUST NOT:
 - use this candidate Guidance as authority for D04 self-acceptance;
 - enter Change 1 Explore/Proposal/Apply bytes in the Delivery Start fixed-point commit.
 
-At the canonical Delivery Start fixed point: **STOP**.
+At the verified Delivery Start content-completion boundary: **STOP**.

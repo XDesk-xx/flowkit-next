@@ -1,0 +1,100 @@
+{
+  "runNumber": 76,
+  "runId": "20260907-076-review-apply",
+  "kind": "external-orchestrator-review-apply-result",
+  "canonicalFlowkitRuntimeRun": false,
+  "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+  "changeId": "correct-delivery-content-continuity",
+  "projectOrdinal": 32,
+  "action": "review-apply",
+  "role": "reviewer",
+  "status": "terminal",
+  "reviewerVerdict": "changes-requested",
+  "authorConclusion": null,
+  "verificationVerdict": null,
+  "inputRunId": "20260907-075-apply",
+  "approvedProposalReviewRunId": "20260907-074-review-propose",
+  "summary": "独立审查 075 完成，4 项 P1 + 3 项 P2：Start 授权防御隔离和真实 validation 来源、Final accepted execution 来源、Integration 独立操作/acceptance 来源、唯一普通 parent、Final 固定嵌套投影，以及 reuse callback/Guidance 收敛。已在隔离 fixture 复现 10 个反例；现有 domain 257/257 与 acceptance 5/5 通过不能覆盖这些缺口。均为已批准合同内的实现修正，交回 revise-apply。",
+  "artifactHashes": {
+    "actionSha256": "689323b9b313072cb5371e1721ba0633ce656ea14d16c360f72d90971a125840",
+    "contextSha256": "409af05ded3541c7b2f3c0ae3579616f9ceb21f2eeefc2b1a390be92166d1f37",
+    "input075ResultSha256": "862e29e257d361d8bcdbc5d47288d73b6d97429a58ed27a2512e9f6931d34128"
+  },
+  "candidateRef": "candidate:sha256:86a1637d6a4a21986bda5956812ed3305ba0dc7d9790d787b92cc8e4588c75b5",
+  "protectedFilesUnchanged": 1459,
+  "protectedSnapshotSha256": "803d5003547a63af042c6c24787e458b09acc3cf70a0e5e58bafc31ec7e3dc47",
+  "blockingFindings": [
+    {
+      "id": "D04-RA007-001",
+      "severity": "P1",
+      "title": "Start 回调可改写随后使用的 checkpoint authority",
+      "detailRef": "context.json#findings"
+    },
+    {
+      "id": "D04-RA007-002",
+      "severity": "P1",
+      "title": "Start 的 validation 仍是未经核验的自填引用",
+      "detailRef": "context.json#findings"
+    },
+    {
+      "id": "D04-RA007-003",
+      "severity": "P1",
+      "title": "Final 必要证据读取未验证 accepted execution 来源与完整 outcome",
+      "detailRef": "context.json#findings"
+    },
+    {
+      "id": "D04-RA007-004",
+      "severity": "P1",
+      "title": "Integration 缺少独立 Owner 操作与 repository acceptance 来源绑定",
+      "detailRef": "context.json#findings"
+    },
+    {
+      "id": "D04-RA007-005",
+      "severity": "P2",
+      "title": "create-new 未核验唯一普通 parent",
+      "detailRef": "context.json#findings"
+    },
+    {
+      "id": "D04-RA007-006",
+      "severity": "P2",
+      "title": "Final requiredEvidence 未进入固定字段投影",
+      "detailRef": "context.json#findings"
+    },
+    {
+      "id": "D04-RA007-007",
+      "severity": "P2",
+      "title": "reuse-existing 仍要求无用 commit callback，Guidance 保留强制新建指令",
+      "detailRef": "context.json#findings"
+    }
+  ],
+  "blockingFindingCount": 7,
+  "scopeDrift": "NONE",
+  "proposalRepairRequired": false,
+  "stageHowAssessment": "符合 Owner 授权与既有能力边界；不重新打开已授权 .tmp proof 移动争议。",
+  "independentVerification": {
+    "nativeWindowsDomain": "257/257, 0 fail, 0 skip",
+    "nativeWindowsAcceptance": "5/5, 0 fail, 0 skip",
+    "typecheck": "PASS",
+    "formatCheck": "PASS",
+    "gitDiffCheck": "PASS",
+    "managedOpenSpecCurrentChangeStrict": "1.10.0 valid; structural only",
+    "counterexamples": "10 reproduced; diagnostic script exit 0 is not product acceptance PASS",
+    "linuxReexecuted": false,
+    "formalDeliveryFullTestRun": false
+  },
+  "archiveAllowed": false,
+  "nextBoundary": "revise-apply",
+  "nextBoundaryMeaning": "normal review matrix handoff only; not automatic execution, Policy invocation or new Owner authority",
+  "reviewerArtifactMutation": "RUN_076_THREE_FILES_ONLY_PLUS_DISPOSABLE_DIAGNOSTICS",
+  "authorArtifactMutation": "NONE",
+  "historicalRunMutation": "NONE",
+  "stableManagerUsed": false,
+  "candidateCliInvoked": false,
+  "targetRepositoryGitOperation": "NONE",
+  "formalVerificationVerdictCreated": false,
+  "ownerOrGitAuthorityCreated": false,
+  "continuationExecuted": false,
+  "stableTransfer": true,
+  "packageClass": "reviewer-delta",
+  "stop": true
+}
