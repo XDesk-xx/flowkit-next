@@ -2,259 +2,46 @@
   "schema_version": 1,
   "diagram_type": "dataflow",
   "meta": {
-    "title": "flowkit-next 当前执行数据流 — Action Guidance 与 Bounded Action Execution",
+    "title": "flowkit-next 当前事实与执行数据流",
+    "subtitle": "Canonical facts 经 exact package 进入有界执行；Run、Verification、Architecture 与 Git 各自保存不同类型的结果。",
     "output": "data-flow.html",
     "quality_profile": "showcase",
-    "viewBox": [
-      1320,
-      860
-    ],
+    "viewBox": [1440, 860],
     "views": [
-      {
-        "id": "identity",
-        "label": "Exact Action → Guidance identity",
-        "focus": [
-          "policy-action",
-          "canonical-guidance",
-          "action-package"
-        ],
-        "note": "Policy 已决定 exact StandardActionId；resolver 只解析对应 canonical product Guidance，并把 path + content SHA-256 冻结进 ActionPackage。"
-      },
-      {
-        "id": "prepare",
-        "label": "Package-bound preparation",
-        "focus": [
-          "action-package",
-          "preparation",
-          "agent-execution"
-        ],
-        "note": "read-only preparation 与 execution 使用同一 exact ActionPackage；BLOCKED 时不提交 staged prepared state，也不调用 execution。"
-      },
-      {
-        "id": "result",
-        "label": "Result / check identity",
-        "focus": [
-          "action-package",
-          "agent-execution",
-          "result-facts",
-          "review-verification"
-        ],
-        "note": "ActionPackageRef 继续作为 Result admission 与 ApplicableCheck executionInputRef 的 identity 链；真实 facts 持久化后供 review/verification 消费。"
-      },
-      {
-        "id": "self-development",
-        "label": "Stable Core self-development boundary",
-        "focus": [
-          "bootstrap-guidance",
-          "review-verification"
-        ],
-        "note": ".agents/skills/** 继续驱动 flowkit-next 自身 D03/D04 Author/Reviewer development；candidate skills/actions/** 不自证。"
-      }
+      { "id": "fact-inputs", "label": "Canonical facts", "focus": ["owner-fact", "openspec-fact", "git-fact", "policy-boundary"], "note": "Owner、OpenSpec 与 Git facts 保持独立。" },
+      { "id": "package-flow", "label": "Package execution", "focus": ["policy-boundary", "guidance-ref", "operation-package", "bounded-execution"], "note": "WHAT 先于 HOW 决定；Guidance 与 exact facts 形成 closed package。" },
+      { "id": "result-flow", "label": "Durable consumers", "focus": ["bounded-execution", "run-result", "verification-evidence", "architecture-assets"], "note": "Run、external evidence 与 derived architecture 不建立第二 truth。" }
     ]
   },
   "stages": [
-    {
-      "label": "Legal boundary"
-    },
-    {
-      "label": "Guidance identity"
-    },
-    {
-      "label": "Bounded package"
-    },
-    {
-      "label": "Execution + checks"
-    },
-    {
-      "label": "Durable facts + review"
-    }
+    { "label": "Canonical inputs" },
+    { "label": "Decision + HOW" },
+    { "label": "Exact package" },
+    { "label": "Execution" },
+    { "label": "Durable outputs" }
   ],
   "nodes": [
-    {
-      "id": "policy-action",
-      "type": "security",
-      "label": "Exact Action",
-      "sublabel": "StandardActionId decided",
-      "stage": 0,
-      "row": 0,
-      "width": 150,
-      "tag": "legal boundary"
-    },
-    {
-      "id": "bootstrap-guidance",
-      "type": "external",
-      "label": ".agents Bootstrap",
-      "sublabel": "self-development HOW",
-      "stage": 0,
-      "row": 3,
-      "width": 150,
-      "tag": "independent plane"
-    },
-    {
-      "id": "canonical-guidance",
-      "type": "backend",
-      "label": "Canonical Guidance",
-      "sublabel": "path + content SHA-256",
-      "stage": 1,
-      "row": 0,
-      "width": 155,
-      "tag": "HOW only"
-    },
-    {
-      "id": "action-package",
-      "type": "backend",
-      "label": "ActionPackage",
-      "sublabel": "Action + Guidance identity",
-      "stage": 2,
-      "row": 0,
-      "width": 155,
-      "tag": "frozen input"
-    },
-    {
-      "id": "preparation",
-      "type": "security",
-      "label": "Preparation",
-      "sublabel": "read-only READY / BLOCKED",
-      "stage": 3,
-      "row": 0,
-      "width": 155,
-      "tag": "atomic boundary"
-    },
-    {
-      "id": "agent-execution",
-      "type": "backend",
-      "label": "Bounded Execution",
-      "sublabel": "same package → one Action",
-      "stage": 3,
-      "row": 2,
-      "width": 155,
-      "tag": "READY only"
-    },
-    {
-      "id": "result-facts",
-      "type": "database",
-      "label": "Run / Result + Check Facts",
-      "sublabel": "ActionPackageRef → executionInputRef",
-      "stage": 4,
-      "row": 0,
-      "width": 170,
-      "tag": "durable identity"
-    },
-    {
-      "id": "review-verification",
-      "type": "external",
-      "label": "Review / Verification",
-      "sublabel": "independent evidence consumer",
-      "stage": 4,
-      "row": 3,
-      "width": 165,
-      "tag": "no mutation"
-    }
+    { "id": "owner-fact", "type": "external", "label": "Owner", "sublabel": "authority / scope", "stage": 0, "row": 0, "tag": "authority" },
+    { "id": "openspec-fact", "type": "external", "label": "OpenSpec", "sublabel": "Change / specs", "stage": 0, "row": 1, "tag": "contract" },
+    { "id": "git-fact", "type": "database", "label": "Git", "sublabel": "bytes / history", "stage": 0, "row": 2, "tag": "repository" },
+    { "id": "policy-boundary", "type": "security", "label": "Boundary", "sublabel": "WHAT decided", "stage": 1, "row": 0, "tag": "legal" },
+    { "id": "guidance-ref", "type": "backend", "label": "GuidanceRef", "sublabel": "path + SHA-256", "stage": 1, "row": 2, "tag": "HOW" },
+    { "id": "operation-package", "type": "backend", "label": "Package", "sublabel": "exact inputs", "stage": 2, "row": 1, "tag": "closed" },
+    { "id": "bounded-execution", "type": "backend", "label": "Execution", "sublabel": "one operation", "stage": 3, "row": 1, "tag": "STOP" },
+    { "id": "run-result", "type": "database", "label": "Run / Result", "sublabel": "Action facts", "stage": 4, "row": 0, "tag": ".flowkit/runs" },
+    { "id": "verification-evidence", "type": "cloud", "label": "Verification", "sublabel": "external evidence", "stage": 4, "row": 1, "tag": "candidate-bound" },
+    { "id": "architecture-assets", "type": "external", "label": "Architecture", "sublabel": "derived JSON", "stage": 4, "row": 2, "tag": "six slots" }
   ],
   "flows": [
-    {
-      "from": "policy-action",
-      "to": "canonical-guidance",
-      "label": "StandardActionId",
-      "classification": "trusted selection",
-      "variant": "emphasis",
-      "route": "straight",
-      "labelAt": [
-        207,
-        205
-      ]
-    },
-    {
-      "from": "canonical-guidance",
-      "to": "action-package",
-      "label": "Action + Guidance identity",
-      "classification": "exact frozen input",
-      "variant": "emphasis",
-      "route": "straight",
-      "labelAt": [
-        421,
-        205
-      ]
-    },
-    {
-      "from": "action-package",
-      "to": "preparation",
-      "label": "same package",
-      "classification": "read-only readiness",
-      "variant": "security",
-      "route": "straight",
-      "labelAt": [
-        636,
-        205
-      ]
-    },
-    {
-      "from": "preparation",
-      "to": "agent-execution",
-      "label": "READY",
-      "classification": "BLOCKED keeps prior boundary",
-      "variant": "security",
-      "route": "vertical-channel",
-      "labelDx": 60
-    },
-    {
-      "from": "agent-execution",
-      "to": "result-facts",
-      "label": "Result facts",
-      "classification": "exact package binding",
-      "variant": "emphasis",
-      "route": "vertical-channel",
-      "labelAt": [
-        800,
-        330
-      ]
-    },
-    {
-      "from": "result-facts",
-      "to": "review-verification",
-      "label": "durable evidence",
-      "classification": "read-only consumption",
-      "variant": "dashed",
-      "route": "vertical-channel",
-      "labelDx": 55
-    },
-    {
-      "from": "bootstrap-guidance",
-      "to": "review-verification",
-      "label": "independent HOW",
-      "classification": "not product Guidance identity",
-      "variant": "dashed",
-      "route": "bottom-channel",
-      "labelDy": 24
-    }
+    { "from": "owner-fact", "to": "policy-boundary", "label": "scope", "variant": "security" },
+    { "from": "policy-boundary", "to": "operation-package", "label": "boundary", "variant": "security" },
+    { "from": "guidance-ref", "to": "operation-package", "label": "HOW", "variant": "emphasis" },
+    { "from": "operation-package", "to": "bounded-execution", "label": "execute", "variant": "emphasis" },
+    { "from": "bounded-execution", "to": "verification-evidence", "label": "evidence", "variant": "emphasis" }
   ],
   "cards": [
-    {
-      "dot": "emerald",
-      "title": "Identity Chain",
-      "items": [
-        "StandardActionId is decided before Guidance resolution",
-        "ActionGuidanceRef is canonical-path + exact-content identity",
-        "ActionPackageRef naturally carries Guidance identity into Result/check facts"
-      ]
-    },
-    {
-      "dot": "cyan",
-      "title": "Atomic Preparation",
-      "items": [
-        "Preparation and execution use one exact ActionPackage",
-        "BLOCKED preparation does not expose newly staged prepared state",
-        "No new Action, lifecycle state, PreparationPackage, or rollback subsystem"
-      ]
-    },
-    {
-      "dot": "rose",
-      "title": "Truth / Self-hosting Boundary",
-      "items": [
-        "Action Guidance = HOW only；Policy/Owner retain legality and authority",
-        "Run/Result facts are evidence, not OpenSpec/Git truth replacement",
-        ".agents bootstrap remains independent through D04；candidate product HOW does not prove itself"
-      ]
-    }
+    { "dot": "emerald", "title": "Exact Input Chain", "items": ["canonical facts 由 trusted host 读取", "Guidance 以 path + content SHA-256 绑定", "package 不决定下一 operation"] },
+    { "dot": "cyan", "title": "Distinct Durable Owners", "items": ["Run / Result 保存 Standard Action history", "Full Test 与 Architecture outcome 由 external source 取回", "Git 保存最终 repository bytes 与 history"] },
+    { "dot": "rose", "title": "No Second Truth", "items": ["Archify JSON 是 derived description", "Verification evidence 不替代 OpenSpec 或 Git", "Memo、聊天和 Skill prose 不取得 lifecycle authority"] }
   ]
 }

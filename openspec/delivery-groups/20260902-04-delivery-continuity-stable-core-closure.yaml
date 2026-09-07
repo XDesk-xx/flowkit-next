@@ -6,9 +6,9 @@ base: "main@6bda1e87a0c12929c3567de17ede75ecd0cf0bed"
 goal: "关闭 Delivery-level execution loop：让 already-decided exact Delivery operation 通过 content-bound canonical Delivery Guidance 与 exact DeliveryOperationPackage 交给 Agent 执行，同时冻结 exact-state continuity、Formal Full Test correction、Architecture/canonical diagram continuity、Delivery Final 与 repository/next-base continuity；不新增 Skill Router、第二 Delivery lifecycle 或自动 Git authority。"
 
 delivery:
-  state: active
-  fullTestStatus: pending
-  finalizationStatus: pending
+  state: completed
+  fullTestStatus: passed
+  finalizationStatus: completed
 
 reference:
   kind: "final-stable-planning-reference"
@@ -42,11 +42,13 @@ architecture:
   impact: true
   archifyPlan: "required"
   startStatus: "materialized"
-  finalStatus: "pending"
+  finalStatus: "materialized"
   currentRef: "architecture/20260902-04-delivery-continuity-stable-core-closure/json/current.architecture.json"
   plannedRef: "architecture/20260902-04-delivery-continuity-stable-core-closure/json/planned.architecture.json"
   compareRefs:
     - "architecture/20260902-04-delivery-continuity-stable-core-closure/json/current-to-planned.compare.json"
+    - "architecture/20260902-04-delivery-continuity-stable-core-closure/json/current-to-actual.compare.json"
+    - "architecture/20260902-04-delivery-continuity-stable-core-closure/json/planned-to-actual.compare.json"
   htmlPolicy: "disposable-not-retained-in-git"
 
 changes:
@@ -265,3 +267,52 @@ ownerDecisions:
     sourceRef: "owner-input:2026-09-07:activate-change:correct-delivery-content-continuity:proof-explore:final-plan"
     scope:
       - "explore"
+  - ref: "owner:dc959fb2d6e28bc7d1a0363cfdb42c9815eca0ec63b61d31a0e50e8e5c63a133"
+    decision: "finalize-delivery"
+    deliveryId: "20260902-04-delivery-continuity-stable-core-closure"
+    sourceRef: "owner-input:2026-09-07:authorize-delivery-final:d04-bootstrap-architecture-complete"
+    scope:
+      - "delivery-final"
+
+finalization:
+  state: completed
+  mode: "independent-bootstrap"
+  ownerAuthorityRef: "owner:dc959fb2d6e28bc7d1a0363cfdb42c9815eca0ec63b61d31a0e50e8e5c63a133"
+  formalFullTest: "PASS"
+  fullTestExecutionRef: "full-test-execution:sha256:05c8f5b88442a9bbbd31ff85ec1a8f658accc966bcec5b11ecda96114698a50a"
+  fullTestEvidenceCandidateRef: "candidate:sha256:7c1ad7228da2a7888908f8ea30478f4b30ad2d669a90fc1581d6aae07888b71d"
+  fullTestEvidenceSourceRef: "owner-evidence:20260902-04-delivery-continuity-stable-core-closure:full-test:05c8f5b88442a9bbbd31ff85ec1a8f658accc966bcec5b11ecda96114698a50a"
+  fullTestOutcomeSha256: "517eb6e6c6ac2546304987722ab69e2803458b475125bd82933e286a5d094604"
+  fullTestCheckCount: 6
+  actualArchitecture: "completed"
+  actualArchitectureSha256: "80a94da0e12bad17e7153795902bf2f9e92ed7956adaf2939d13d832521a9082"
+  currentToActualCompareSha256: "4e924d139a59c4ba6d384b25f086fd3d1e53801e3468c68c0cab579f191f8a2f"
+  plannedToActualCompareSha256: "5aacba95db55b5162c9b8e5922c25b0d29faa103b09c0dbff5efeb2b60bfa52b"
+  canonicalSystemDiagramConvergence:
+    workflow:
+      state: "materialized"
+      ref: "architecture/system/workflow.json"
+      sha256: "b83476107791e68955d2d4f0a67845b531a13beccac678597e573942ab6d0f44"
+    lifecycle:
+      state: "materialized"
+      ref: "architecture/system/lifecycle.json"
+      sha256: "cc97c663a841f9b819dacc231fa9bba19b7e7350a4d38d1be72df1ac3b331f2d"
+    dataFlow:
+      state: "updated-for-accepted-d04-semantics"
+      ref: "architecture/system/data-flow.json"
+      sha256: "787232155d940ec1e1b560a4696808dc05f487fda6fc647ce51cd06561980c99"
+  architectureEvidenceSourceRef: "owner-evidence:20260902-04-delivery-continuity-stable-core-closure:derived-architecture:80a94da0e12bad17"
+  architectureOutcomeSha256: "79a564b9ed9f8c55c084b388e2c9687d4d07676a4424c1ed19452d501ce01c1c"
+  architectureAuthorityBoundary: "derived-description-only"
+  ownerActualConfirmation: "confirmed-by-owner-before-delivery-final"
+  requiredChangesCompleted: 7
+  productMutationAfterFormalVerification: false
+  canonicalOpenSpecMutationAfterFormalVerification: false
+  packageLockMutationAfterFormalVerification: false
+  historicalRunRewrite: false
+  finalizationDerivedArchitectureMutationAfterFormalVerification: true
+  fullTestRerunAfterDerivedArchitecture: false
+  fullTestCandidateRecomputedAfterDerivedArchitecture: false
+  generatedHtmlRetainedInGit: false
+  gitCheckpoint: "pending-owner-authorized-local-delivery-commit"
+  deterministicCommitMessage: "delivery(20260902-04-delivery-continuity-stable-core-closure): finalize delivery continuity stable core closure"

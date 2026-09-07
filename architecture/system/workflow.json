@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "flowkit-next 当前受控交付工作流",
+    "subtitle": "每次只执行一个 already-decided Action 或 Delivery operation，并在 terminal boundary 停止。",
+    "output": "workflow.html",
+    "quality_profile": "showcase",
+    "viewBox": [1680, 900],
+    "views": [
+      { "id": "change-loop", "label": "Change 执行闭环", "focus": ["owner-scope", "action-package", "author-action", "review-action", "archive"], "note": "Author 与 Reviewer 独立；terminal Result 只报告下一边界并 STOP。" },
+      { "id": "delivery-close", "label": "Delivery 闭合路径", "focus": ["full-test", "architecture-final", "delivery-final", "repository-integration"], "note": "Verification、derived architecture、Final 与 Git integration 使用不同 authority。" },
+      { "id": "stop-boundary", "label": "失败与停止", "focus": ["review-action", "stop-correct"], "note": "发现问题时停止，等待新的 Owner-controlled correction boundary。" }
+    ]
+  },
+  "lanes": [
+    { "id": "owner", "label": "Owner / Policy" },
+    { "id": "change", "label": "Author / Reviewer" },
+    { "id": "verification", "label": "Verification" },
+    { "id": "architecture", "label": "Architecture" },
+    { "id": "repository", "label": "Repository" },
+    { "id": "exception", "label": "STOP / Correction", "variant": "exception" }
+  ],
+  "phases": [
+    { "id": "decide", "label": "决定与绑定", "fromCol": 0, "toCol": 1, "variant": "security" },
+    { "id": "execute", "label": "执行与审查", "fromCol": 2, "toCol": 3, "variant": "emphasis" },
+    { "id": "close", "label": "闭合与集成", "fromCol": 4, "toCol": 5, "variant": "dashed" }
+  ],
+  "mainPath": ["owner-scope", "action-package", "author-action", "review-action", "archive"],
+  "nodes": [
+    { "id": "owner-scope", "lane": "owner", "col": 0, "type": "external", "label": "Owner", "sublabel": "explicit scope", "tag": "WHAT" },
+    { "id": "action-package", "lane": "owner", "col": 1, "type": "security", "label": "Package", "sublabel": "facts + Guidance", "tag": "exact input" },
+    { "id": "author-action", "lane": "change", "col": 2, "type": "backend", "label": "Author", "sublabel": "one Action", "tag": "STOP" },
+    { "id": "review-action", "lane": "change", "col": 3, "width": 78, "type": "security", "label": "Review", "sublabel": "independent", "tag": "verdict" },
+    { "id": "archive", "lane": "change", "col": 5, "width": 78, "type": "database", "label": "Archive", "sublabel": "spec sync", "tag": "closed" },
+    { "id": "full-test", "lane": "verification", "col": 1, "type": "cloud", "label": "Full Test", "sublabel": "exact checks", "tag": "evidence" },
+    { "id": "architecture-final", "lane": "architecture", "col": 2, "type": "external", "label": "Architecture", "sublabel": "derived JSON", "tag": "six slots" },
+    { "id": "delivery-final", "lane": "repository", "col": 3, "width": 78, "type": "backend", "label": "Final", "sublabel": "lineage closure", "tag": "no Git" },
+    { "id": "repository-integration", "lane": "repository", "col": 5, "width": 78, "type": "database", "label": "Git", "sublabel": "Owner-controlled", "tag": "accepted" },
+    { "id": "stop-correct", "lane": "exception", "col": 3, "type": "security", "label": "STOP", "sublabel": "new authority", "tag": "fail closed" }
+  ],
+  "edges": [
+    { "from": "owner-scope", "to": "action-package" },
+    { "from": "action-package", "to": "author-action", "variant": "emphasis", "route": "drop", "fromSide": "bottom", "toSide": "top" },
+    { "from": "author-action", "to": "review-action" },
+    { "from": "review-action", "to": "archive", "variant": "security" },
+    { "from": "full-test", "to": "architecture-final", "variant": "emphasis", "route": "drop", "fromSide": "bottom", "toSide": "top" },
+    { "from": "architecture-final", "to": "delivery-final", "variant": "emphasis", "route": "drop", "fromSide": "bottom", "toSide": "top" },
+    { "from": "delivery-final", "to": "repository-integration", "variant": "security" }
+  ],
+  "cards": [
+    { "dot": "emerald", "title": "Single-operation Discipline", "items": ["一次 invocation 只执行一个 operation", "Package 绑定 exact facts 与 Guidance content", "terminal 后不自动进入下一步"] },
+    { "dot": "cyan", "title": "Independent Authorities", "items": ["Reviewer 不修改 Author artifacts", "Verification 不产生 mutation 或 Git authority", "Archify 只形成 derived descriptions"] },
+    { "dot": "rose", "title": "Fail Closed", "items": ["身份、来源或 prestate 不一致立即停止", "产品修正返回正常 Change 流程", "没有 hidden retry、auto-next 或 auto-commit"] }
+  ]
+}
