@@ -47,10 +47,7 @@ async function exists(target: string): Promise<boolean> {
 
 async function verifyManagedPrerequisites(flowkitHome: string): Promise<void> {
   const lock = JSON.parse(await readFile(TOOL_LOCK, "utf8"));
-  for (const [tool, version] of [
-    ["openspec", "1.10.0"],
-    ["archify", "2.15.0"],
-  ] as const) {
+  for (const [tool, version] of [["openspec", "1.10.0"]] as const) {
     const runtime = path.join(flowkitHome, "tools", tool, version);
     const pkg = JSON.parse(
       await readFile(path.join(runtime, "package.json"), "utf8"),
@@ -422,7 +419,6 @@ test("doctor uses exact managed runtimes and ignores fake PATH executables", asy
       result.diagnostics.map((d: any) => [d.id, d.status, d.version ?? null]),
       [
         ["openspec-runtime", "pass", "1.10.0"],
-        ["archify-runtime", "pass", "2.15.0"],
         ["openspec-root", "pass", null],
       ],
     );

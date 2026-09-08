@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { access, mkdtemp, mkdir, rm, writeFile } from "node:fs/promises";
+import { mkdtemp, mkdir, rm, writeFile } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import test from "node:test";
@@ -29,7 +29,6 @@ interface Fixture {
   readonly root: string;
   readonly repositoryRoot: string;
   readonly flowkitHome: string;
-  readonly archifyMarker: string;
 }
 
 async function writeCoordinationManifest(
@@ -61,7 +60,6 @@ async function createFixture(): Promise<Fixture> {
   const root = await mkdtemp(path.join(os.tmpdir(), "flowkit-cli-"));
   const repositoryRoot = path.join(root, "repo");
   const flowkitHome = path.join(root, "home");
-  const archifyMarker = path.join(root, "archify-invoked");
   await mkdir(path.join(repositoryRoot, "config", "tools"), {
     recursive: true,
   });
@@ -71,11 +69,6 @@ async function createFixture(): Promise<Fixture> {
       packageName: "@fission-ai/openspec",
       version: "1.10.0",
       entrypoint: "bin/openspec.js",
-    },
-    archify: {
-      packageName: "archify",
-      version: "2.15.0",
-      entrypoint: "bin/archify.mjs",
     },
   } as const;
 
@@ -88,10 +81,6 @@ async function createFixture(): Promise<Fixture> {
         ...tools.openspec,
         runtimeRoot: "${FLOWKIT_HOME}/tools/openspec/1.10.0",
       },
-      archify: {
-        ...tools.archify,
-        runtimeRoot: "${FLOWKIT_HOME}/tools/archify/2.15.0",
-      },
     }),
   );
 
@@ -103,15 +92,9 @@ async function createFixture(): Promise<Fixture> {
       path.join(runtimeRoot, "package.json"),
       JSON.stringify({ name: entry.packageName, version: entry.version }),
     );
-    if (toolId === "archify") {
-      await writeFile(
-        entrypoint,
-        `import { writeFileSync } from "node:fs"; writeFileSync(${JSON.stringify(archifyMarker)}, "used");`,
-      );
-    } else {
-      await writeFile(
-        entrypoint,
-        `
+    await writeFile(
+      entrypoint,
+      `
 const args = process.argv.slice(2);
 const root = ${JSON.stringify(repositoryRoot)};
 if (args[0] === "list" && args[1] === "--json") {
@@ -136,12 +119,11 @@ if (args[0] === "status" && args[1] === "--change" && args[3] === "--json") {
 console.log(JSON.stringify({ status: [{ severity: "error", code: "unsupported", message: "unsupported" }] }));
 process.exit(1);
 `,
-      );
-    }
+    );
   }
 
   await writeCoordinationManifest(repositoryRoot);
-  return { root, repositoryRoot, flowkitHome, archifyMarker };
+  return { root, repositoryRoot, flowkitHome };
 }
 
 async function cleanup(fixture: Fixture): Promise<void> {
@@ -470,9 +452,12 @@ test("doctor reports bounded diagnostics and never invokes Archify", async () =>
     });
     assert.equal(result.kind, "doctor");
     assert.equal(result.status, "pass");
-    await assert.rejects(access(fixture.archifyMarker));
+    assert.deepEqual(
+      result.diagnostics.map((item) => item.id),
+      ["openspec-runtime", "openspec-root"],
+    );
 
-    await rm(path.join(fixture.flowkitHome, "tools", "archify"), {
+    await rm(path.join(fixture.flowkitHome, "tools", "openspec"), {
       recursive: true,
       force: true,
     });
@@ -485,7 +470,10 @@ test("doctor reports bounded diagnostics and never invokes Archify", async () =>
     });
     assert.equal(failed.kind, "doctor");
     assert.equal(failed.status, "fail");
-    await assert.rejects(access(fixture.archifyMarker));
+    assert.deepEqual(
+      result.diagnostics.map((item) => item.id),
+      ["openspec-runtime", "openspec-root"],
+    );
   } finally {
     await cleanup(fixture);
   }

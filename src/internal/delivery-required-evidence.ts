@@ -26,7 +26,6 @@ export interface RequiredChangeClosureEvidence {
 
 export interface RequiredExternalEvidence {
   readonly executionRef?: string;
-  readonly architectureFinalizationRef?: string;
   readonly sourceRef: string;
   readonly artifacts: readonly EvidenceArtifactRef[];
 }
@@ -38,15 +37,11 @@ export interface DeliveryRequiredEvidence {
   readonly fullTest: RequiredExternalEvidence & {
     readonly executionRef: string;
   };
-  readonly architecture: RequiredExternalEvidence & {
-    readonly architectureFinalizationRef: string;
-  };
 }
 
 const HASH = /^[0-9a-f]{64}$/;
 const RUN_ID = /^\d{8}-\d{3}-[a-z0-9][a-z0-9-]*$/;
 const FULL_TEST_REF = /^full-test-execution:sha256:[0-9a-f]{64}$/;
-const ARCHITECTURE_REF = /^architecture-finalization:sha256:[0-9a-f]{64}$/;
 
 export function isEvidenceArtifactRef(
   value: unknown,
@@ -138,21 +133,6 @@ function isFullTest(value: unknown): boolean {
   );
 }
 
-function isArchitecture(value: unknown): boolean {
-  return (
-    isPlainRecord(value) &&
-    hasExactlyFields(value, [
-      "architectureFinalizationRef",
-      "sourceRef",
-      "artifacts",
-    ]) &&
-    typeof value.architectureFinalizationRef === "string" &&
-    ARCHITECTURE_REF.test(value.architectureFinalizationRef) &&
-    isSafeText(value.sourceRef) &&
-    isSortedArtifacts(value.artifacts)
-  );
-}
-
 export function isDeliveryRequiredEvidence(
   value: unknown,
 ): value is DeliveryRequiredEvidence {
@@ -163,15 +143,13 @@ export function isDeliveryRequiredEvidence(
       "deliveryId",
       "changeClosures",
       "fullTest",
-      "architecture",
     ]) &&
     isSemanticId(value.projectId) &&
     isSemanticId(value.deliveryId) &&
     Array.isArray(value.changeClosures) &&
     value.changeClosures.length > 0 &&
     value.changeClosures.every(isChangeClosure) &&
-    isFullTest(value.fullTest) &&
-    isArchitecture(value.architecture)
+    isFullTest(value.fullTest)
   );
 }
 
@@ -201,12 +179,6 @@ export function cloneDeliveryRequiredEvidence(
       executionRef: value.fullTest.executionRef,
       sourceRef: value.fullTest.sourceRef,
       artifacts: value.fullTest.artifacts.map(cloneArtifact),
-    },
-    architecture: {
-      architectureFinalizationRef:
-        value.architecture.architectureFinalizationRef,
-      sourceRef: value.architecture.sourceRef,
-      artifacts: value.architecture.artifacts.map(cloneArtifact),
     },
   };
 }

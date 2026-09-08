@@ -130,7 +130,6 @@ config/tools/toolchain.lock.json
 
 ```text
 OpenSpec  1.10.0
-Archify   2.15.0
 ```
 
 Host/runtime truth 分离：
@@ -146,8 +145,7 @@ Executable managed runtime 位于外部 `FLOWKIT_HOME`，例如：
 ```text
 FLOWKIT_HOME/
 └─ tools/
-   ├─ openspec/1.10.0/
-   └─ archify/2.15.0/
+   └─ openspec/1.10.0/
 ```
 
 Git repository 不保存：
@@ -161,7 +159,7 @@ temporary unpacked tool distributions
 generated Archify HTML
 ```
 
-Managed OpenSpec/Archify 不得静默使用 PATH/global 其他版本，也不得在正式执行里自动 install/update/download `latest`。
+Managed OpenSpec 不得静默使用 PATH/global 其他版本，也不得在正式执行里自动 install/update/download `latest`。
 
 如果 exact runtime 不匹配或缺失且当前操作依赖它：
 
@@ -288,40 +286,15 @@ OpenSpec 是 formal Change/specification authority。Flowkit 只做 thin integra
 
 历史 archived Change 不因后续 guidance convergence 而重写。
 
-## 11. Archify / Architecture boundary
+## 11. 独立 Archify / Architecture boundary
 
-Archify 只负责 derived architecture description validation / rendering / visualization。
+Archify 仅作为独立的派生架构描述、校验和可视化工具，不属于 Flowkit managed tool 或 Delivery operation。
 
-Durable Delivery architecture assets：
+Delivery Start、Full Test、Final 和 repository integration 不要求 Current/Planned/Actual、compare、render、Architecture outcome 或 skip 证明；Previous Actual 不是下一 Delivery Start 的前置条件。
 
-```text
-architecture/<delivery-id>/json/
-├─ current.architecture.json
-├─ planned.architecture.json
-├─ actual.architecture.json
-├─ current-to-planned.compare.json
-├─ current-to-actual.compare.json
-└─ planned-to-actual.compare.json
-```
+历史 `architecture/**`、Delivery manifest、archive 与 Runs 按原始 bytes 保留并可读取，不迁移、不补图、不重新解释为新的执行输入。图与 HTML 不得替代 OpenSpec、Git 或 Verification 事实。
 
-规则：
-
-```text
-OpenSpec / repository facts / Verification
-→ Architecture Description JSON
-→ disposable HTML presentation
-```
-
-Compare 必须保持 thin、ref-based；不复制左右 Architecture JSON。HTML 不进 Git，也不是 truth。
-
-正常 continuity：
-
-```text
-Accepted Actual(n)
-→ 下一 Delivery Current(n+1) 的事实输入
-```
-
-但下一 Delivery 的 Current 仍需结合 exact repository revision 与 OpenSpec facts 重新确认，不能把 Actual 自身升级为真相源。
+不删除用户外部 Archify runtime 或独立 Skill。产品 Guidance 不读取 `.agents/skills/**`。
 
 ## 12. Verification ≠ mutation authority
 

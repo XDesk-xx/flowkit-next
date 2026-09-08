@@ -1,0 +1,206 @@
+{
+  "kind": "propose-validation",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "remove-archify-from-delivery-workflow",
+  "runId": "20260908-003-propose",
+  "attempt": "attempt-03",
+  "recordedAt": "2026-09-08T03:29:04.392Z",
+  "status": "passed",
+  "inputs": [
+    {
+      "path": "openspec/changes/remove-archify-from-delivery-workflow/proposal.md",
+      "sha256": "702691f6af7539b12a868dfd007f505a1348ccd392a077392617ba0abd87b510",
+      "bytes": 3726
+    },
+    {
+      "path": "openspec/changes/remove-archify-from-delivery-workflow/design.md",
+      "sha256": "a94f6c6c7a8ae8020486d586116e5d349abead5240c90adee9369b3022595e50",
+      "bytes": 10375
+    },
+    {
+      "path": "openspec/changes/remove-archify-from-delivery-workflow/tasks.md",
+      "sha256": "780b7b06bb1b508efdc32125ca5229c94a9d37f937b65ed5359e3442a7651242",
+      "bytes": 4366
+    },
+    {
+      "path": "openspec/changes/remove-archify-from-delivery-workflow/specs/architecture-and-canonical-diagram-continuity/spec.md",
+      "sha256": "8b0337cd2c724d6268ac5a7c2eb89402fb19555e2dbc61639b616cd53bdf7c92",
+      "bytes": 4548
+    },
+    {
+      "path": "openspec/changes/remove-archify-from-delivery-workflow/specs/delivery-finalization/spec.md",
+      "sha256": "a2ae1034824942727381417899437a8b5c56c654e14e4b83fa20f97c9c82f5c1",
+      "bytes": 9303
+    },
+    {
+      "path": "openspec/changes/remove-archify-from-delivery-workflow/specs/delivery-operation-execution-and-start-continuity/spec.md",
+      "sha256": "7b4fbd5082a54b10c190fd161e1a6c5899f0a3dc786eed8b39d8ca6088acd5cf",
+      "bytes": 7214
+    },
+    {
+      "path": "openspec/changes/remove-archify-from-delivery-workflow/specs/foundation-cli-surface/spec.md",
+      "sha256": "00fc7e0910d6f7dda3e456bcf466e1f69f2d75918ad92cb3064635657271cbb4",
+      "bytes": 2733
+    },
+    {
+      "path": "openspec/changes/remove-archify-from-delivery-workflow/specs/managed-toolchain-resolution/spec.md",
+      "sha256": "2ea0319a580f924979413adc32de106440ec88f4b1c20bf7eac858a542fe40d6",
+      "bytes": 3780
+    },
+    {
+      "path": "openspec/changes/remove-archify-from-delivery-workflow/specs/repository-integration-and-next-base-continuity/spec.md",
+      "sha256": "fe9b170724b138d54225ecf19af216a169987af62013a321a447f70aa64cc951",
+      "bytes": 1497
+    }
+  ],
+  "mapping": [
+    {
+      "capability": "architecture-and-canonical-diagram-continuity",
+      "operation": "REMOVED",
+      "requirement": "Architecture Finalization consumes one exact passed Full Test candidate and exact architecture inputs"
+    },
+    {
+      "capability": "architecture-and-canonical-diagram-continuity",
+      "operation": "REMOVED",
+      "requirement": "Trusted Architecture Finalization host owns exactly six fixed derived output slots"
+    },
+    {
+      "capability": "architecture-and-canonical-diagram-continuity",
+      "operation": "REMOVED",
+      "requirement": "Architecture Finalization materializes one complete Actual and two thin exact compares"
+    },
+    {
+      "capability": "architecture-and-canonical-diagram-continuity",
+      "operation": "REMOVED",
+      "requirement": "Canonical Workflow Lifecycle and Data Flow use one repository-scoped baseline continuity rule"
+    },
+    {
+      "capability": "architecture-and-canonical-diagram-continuity",
+      "operation": "REMOVED",
+      "requirement": "Product-truth correction exits Architecture Finalization and restarts verification on a new candidate"
+    },
+    {
+      "capability": "architecture-and-canonical-diagram-continuity",
+      "operation": "REMOVED",
+      "requirement": "Architecture Finalization isolates trusted lineage from derived logic"
+    },
+    {
+      "capability": "architecture-and-canonical-diagram-continuity",
+      "operation": "REMOVED",
+      "requirement": "Architecture Finalization closure binds the post-materialization repository candidate"
+    },
+    {
+      "capability": "architecture-and-canonical-diagram-continuity",
+      "operation": "REMOVED",
+      "requirement": "Architecture 使用共享 v2 材料并保持阶段来源"
+    },
+    {
+      "capability": "architecture-and-canonical-diagram-continuity",
+      "operation": "ADDED",
+      "requirement": "Architecture retirement preserves historical material without executing a legacy workflow"
+    },
+    {
+      "capability": "architecture-and-canonical-diagram-continuity",
+      "operation": "ADDED",
+      "requirement": "Independent diagrams are not Delivery completion requirements"
+    },
+    {
+      "capability": "delivery-finalization",
+      "operation": "MODIFIED",
+      "requirement": "Delivery Final consumes complete exact prerequisite outcomes"
+    },
+    {
+      "capability": "delivery-finalization",
+      "operation": "MODIFIED",
+      "requirement": "Delivery Final requires one exact bounded Owner authority"
+    },
+    {
+      "capability": "delivery-finalization",
+      "operation": "MODIFIED",
+      "requirement": "Trusted host owns one exact Delivery coordination closure"
+    },
+    {
+      "capability": "delivery-finalization",
+      "operation": "MODIFIED",
+      "requirement": "Terminal Delivery Final records exact causal continuity and stops without Git"
+    },
+    {
+      "capability": "delivery-finalization",
+      "operation": "MODIFIED",
+      "requirement": "必要证据是 Final 的有限前置快照而非可选清单"
+    },
+    {
+      "capability": "delivery-operation-execution-and-start-continuity",
+      "operation": "MODIFIED",
+      "requirement": "Delivery operation identity is closed and maps deterministically to canonical Guidance"
+    },
+    {
+      "capability": "delivery-operation-execution-and-start-continuity",
+      "operation": "MODIFIED",
+      "requirement": "Delivery Start package facts are minimal and anchored to exact accepted repository truth"
+    },
+    {
+      "capability": "delivery-operation-execution-and-start-continuity",
+      "operation": "MODIFIED",
+      "requirement": "Delivery Final package binds exact accepted closure facts and exact Final authority"
+    },
+    {
+      "capability": "delivery-operation-execution-and-start-continuity",
+      "operation": "MODIFIED",
+      "requirement": "Delivery Start 在内容完成边界返回可核验记录"
+    },
+    {
+      "capability": "delivery-operation-execution-and-start-continuity",
+      "operation": "REMOVED",
+      "requirement": "Delivery Architecture Finalization package binds exact passed verification and derived-input prestate without Owner mutation authority"
+    },
+    {
+      "capability": "foundation-cli-surface",
+      "operation": "MODIFIED",
+      "requirement": "doctor performs only bounded Foundation runtime diagnostics"
+    },
+    {
+      "capability": "foundation-cli-surface",
+      "operation": "MODIFIED",
+      "requirement": "Foundation CLI remains a thin bootstrap-era surface without self-management"
+    },
+    {
+      "capability": "managed-toolchain-resolution",
+      "operation": "MODIFIED",
+      "requirement": "Managed tool identity is closed and repository-defined"
+    },
+    {
+      "capability": "managed-toolchain-resolution",
+      "operation": "MODIFIED",
+      "requirement": "Resolved package identity and entrypoint are validated exactly"
+    },
+    {
+      "capability": "managed-toolchain-resolution",
+      "operation": "MODIFIED",
+      "requirement": "Managed tools are resolved on demand"
+    },
+    {
+      "capability": "managed-toolchain-resolution",
+      "operation": "ADDED",
+      "requirement": "Product distribution does not require or ship Archify assets"
+    },
+    {
+      "capability": "repository-integration-and-next-base-continuity",
+      "operation": "ADDED",
+      "requirement": "Integration consumes architecture-free Final without restoring retired prerequisites"
+    }
+  ],
+  "checks": {
+    "openspecStrict": true,
+    "planningComplete": true,
+    "requirementHeadersMatchBase": true,
+    "tasksUnchecked": 16,
+    "predecessorApprovedAndHashesMatch": true,
+    "oldAuthorArtifactsUnchanged": true,
+    "productionAndMainSpecsUnchanged": true,
+    "gitDiffCheck": true
+  },
+  "limitations": [
+    "Structure and local planning checks only; not independent review, implementation acceptance, or Full Test."
+  ]
+}

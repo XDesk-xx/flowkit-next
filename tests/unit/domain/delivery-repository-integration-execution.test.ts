@@ -177,17 +177,12 @@ async function makeFixture(): Promise<{
       deliveryId,
       changeIds: ["change-one"],
       fullTestExecutionRef: evidenceOutcomes.fullTest.record.executionRef,
-      architectureFinalizationRef:
-        evidenceOutcomes.architecture.record.architectureFinalizationRef,
     },
   );
   assert.notEqual(requiredEvidence, null);
   const finalFacts = {
     verifiedCandidateRef: `candidate:sha256:${"1".repeat(64)}`,
     fullTestExecutionRef: evidenceOutcomes.fullTest.record.executionRef,
-    architectureFinalizationRef:
-      evidenceOutcomes.architecture.record.architectureFinalizationRef,
-    architectureMaterializedCandidateRef: `candidate:sha256:${"4".repeat(64)}`,
     coordinationPrestateRef: {
       artifact: `openspec/delivery-groups/${deliveryId}.yaml`,
       contentSha256: "5".repeat(64),
@@ -235,9 +230,6 @@ async function makeFixture(): Promise<{
       deliveryFinalizationRef: deliveryFinalizationRef!,
       verifiedCandidateRef: finalFacts.verifiedCandidateRef,
       fullTestExecutionRef: finalFacts.fullTestExecutionRef,
-      architectureFinalizationRef: finalFacts.architectureFinalizationRef,
-      architectureMaterializedCandidateRef:
-        finalFacts.architectureMaterializedCandidateRef,
       coordinationRef,
       finalizedCandidateRef: finalizedCandidateRef!,
     },

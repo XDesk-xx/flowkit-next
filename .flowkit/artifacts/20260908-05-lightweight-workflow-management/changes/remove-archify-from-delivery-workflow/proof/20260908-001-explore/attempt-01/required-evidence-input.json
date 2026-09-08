@@ -1,0 +1,58 @@
+{
+  "fixtureOnly": true,
+  "evidence": {
+    "projectId": "probe-project",
+    "deliveryId": "probe-delivery",
+    "changeClosures": [
+      {
+        "changeId": "probe-change",
+        "archiveRunId": "20260908-001-archive",
+        "reviewApplyRunId": "20260908-001-archive",
+        "runs": [
+          {
+            "runId": "20260908-001-archive",
+            "artifacts": [
+              {
+                "artifact": "action.md",
+                "contentSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "bytes": 1
+              },
+              {
+                "artifact": "context.json",
+                "contentSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "bytes": 1
+              },
+              {
+                "artifact": "result.json",
+                "contentSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "bytes": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "fullTest": {
+      "executionRef": "full-test-execution:sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "sourceRef": "probe:full-test",
+      "artifacts": [
+        {
+          "artifact": "full-test.json",
+          "contentSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "bytes": 1
+        }
+      ]
+    },
+    "architecture": {
+      "architectureFinalizationRef": "architecture-finalization:sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "sourceRef": "probe:architecture",
+      "artifacts": [
+        {
+          "artifact": "architecture.json",
+          "contentSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "bytes": 1
+        }
+      ]
+    }
+  }
+}

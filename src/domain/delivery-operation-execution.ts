@@ -13,11 +13,6 @@ import {
   isHashRef,
 } from "../internal/applicable-check-identity.js";
 import {
-  cloneArchitectureFinalizationFacts,
-  isArchitectureFinalizationFactsForDelivery,
-  type DeliveryArchitectureFinalizationOperationFacts,
-} from "./delivery-architecture-finalization-operation.js";
-import {
   cloneDeliveryFinalOperationFacts,
   isDeliveryFinalAuthorityForDelivery,
   isDeliveryFinalOperationFactsForDelivery,
@@ -33,7 +28,6 @@ import {
 export const DELIVERY_OPERATIONS = [
   "delivery-start",
   "delivery-full-test",
-  "delivery-architecture-finalization",
   "delivery-final",
   "delivery-repository-integration",
 ] as const;
@@ -52,8 +46,6 @@ export function isDeliveryOperationId(
 const DELIVERY_GUIDANCE_PATHS: Readonly<Record<DeliveryOperationId, string>> = {
   "delivery-start": "skills/delivery/start/SKILL.md",
   "delivery-full-test": "skills/delivery/full-test/SKILL.md",
-  "delivery-architecture-finalization":
-    "skills/delivery/architecture-finalization/SKILL.md",
   "delivery-final": "skills/delivery/final/SKILL.md",
   "delivery-repository-integration":
     "skills/delivery/repository-integration/SKILL.md",
@@ -305,7 +297,6 @@ export function isFormalFullTestAuthorityForDelivery(
 export type DeliveryOperationFacts =
   | DeliveryStartOperationFacts
   | DeliveryFullTestOperationFacts
-  | DeliveryArchitectureFinalizationOperationFacts
   | DeliveryFinalOperationFacts
   | DeliveryRepositoryIntegrationOperationFacts;
 
@@ -325,12 +316,6 @@ export interface DeliveryFullTestOperationPackage extends DeliveryOperationPacka
   readonly operationFacts: DeliveryFullTestOperationFacts;
 }
 
-export interface DeliveryArchitectureFinalizationOperationPackage extends DeliveryOperationPackageBase {
-  readonly operationId: "delivery-architecture-finalization";
-  readonly ownerAuthority: null;
-  readonly operationFacts: DeliveryArchitectureFinalizationOperationFacts;
-}
-
 export interface DeliveryFinalOperationPackage extends DeliveryOperationPackageBase {
   readonly operationId: "delivery-final";
   readonly ownerAuthority: OwnerAuthorityFact;
@@ -346,7 +331,6 @@ export interface DeliveryRepositoryIntegrationOperationPackage extends DeliveryO
 export type DeliveryOperationPackage =
   | DeliveryStartOperationPackage
   | DeliveryFullTestOperationPackage
-  | DeliveryArchitectureFinalizationOperationPackage
   | DeliveryFinalOperationPackage
   | DeliveryRepositoryIntegrationOperationPackage;
 
@@ -390,14 +374,6 @@ export function isDeliveryOperationPackage(
         isDeliveryFullTestOperationFacts(value.operationFacts) &&
         isFormalFullTestAuthorityForDelivery(
           value.ownerAuthority,
-          value.deliveryId,
-        )
-      );
-    case "delivery-architecture-finalization":
-      return (
-        value.ownerAuthority === null &&
-        isArchitectureFinalizationFactsForDelivery(
-          value.operationFacts,
           value.deliveryId,
         )
       );
@@ -523,23 +499,6 @@ export function formDeliveryOperationPackage(
       operationId,
       ownerAuthority: cloneAuthority(ownerAuthority),
       operationFacts: cloneFullTestFacts(operationFacts),
-      guidanceRef: cloneGuidanceRef(guidanceRef),
-    };
-    return isDeliveryOperationPackage(candidate) ? candidate : null;
-  }
-
-  if (operationId === "delivery-architecture-finalization") {
-    if (ownerAuthority !== null) return null;
-    if (
-      !isArchitectureFinalizationFactsForDelivery(operationFacts, deliveryId)
-    ) {
-      return null;
-    }
-    const candidate: DeliveryArchitectureFinalizationOperationPackage = {
-      deliveryId,
-      operationId,
-      ownerAuthority: null,
-      operationFacts: cloneArchitectureFinalizationFacts(operationFacts),
       guidanceRef: cloneGuidanceRef(guidanceRef),
     };
     return isDeliveryOperationPackage(candidate) ? candidate : null;

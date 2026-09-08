@@ -3,11 +3,9 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 
 import {
-  deriveDeliveryArchitectureFinalizationRef,
   deriveDeliveryFullTestExecutionRef,
   formDeliveryOperationPackage,
   resolveApplicableChecksInDeclaredOrder,
-  type DeliveryArchitectureFinalizationTerminal,
   type DeliveryFullTestInvocationTerminal,
   type ReadDeliveryRequiredEvidence,
 } from "../../../src/domain/index.js";
@@ -15,7 +13,6 @@ import type { RequiredChangeClosureMaterial } from "../../../src/internal/delive
 
 export function acceptedEvidenceOutcomes(deliveryId: string): {
   readonly fullTest: DeliveryFullTestInvocationTerminal;
-  readonly architecture: DeliveryArchitectureFinalizationTerminal;
 } {
   const candidateRef = `candidate:sha256:${"1".repeat(64)}`;
   const checks = resolveApplicableChecksInDeclaredOrder({
@@ -70,84 +67,7 @@ export function acceptedEvidenceOutcomes(deliveryId: string): {
     },
   };
 
-  const prefix = `architecture/${deliveryId}/json`;
-  const architecturePackage = formDeliveryOperationPackage(
-    deliveryId,
-    "delivery-architecture-finalization",
-    null,
-    {
-      verifiedCandidateRef: candidateRef,
-      fullTestExecutionRef: executionRef!,
-      currentArchitectureRef: {
-        artifact: `${prefix}/current.architecture.json`,
-        contentSha256: "3".repeat(64),
-      },
-      plannedArchitectureRef: {
-        artifact: `${prefix}/planned.architecture.json`,
-        contentSha256: "4".repeat(64),
-      },
-      systemViewPrestate: {
-        workflowSha256: null,
-        lifecycleSha256: null,
-        dataFlowSha256: null,
-      },
-    },
-    {
-      path: "skills/delivery/architecture-finalization/SKILL.md",
-      contentSha256: "5".repeat(64),
-    },
-  );
-  assert.equal(
-    architecturePackage?.operationId,
-    "delivery-architecture-finalization",
-  );
-  if (
-    architecturePackage?.operationId !== "delivery-architecture-finalization"
-  ) {
-    throw new Error("invalid Architecture fixture");
-  }
-  const artifact = (name: string) => ({
-    artifact: name,
-    contentSha256: "6".repeat(64),
-    bytes: 10,
-  });
-  const recordWithoutRef = {
-    verifiedCandidateRef: candidateRef,
-    fullTestExecutionRef: executionRef!,
-    outputs: {
-      actualArchitectureRef: artifact(`${prefix}/actual.architecture.json`),
-      currentToActualCompareRef: artifact(
-        `${prefix}/current-to-actual.compare.json`,
-      ),
-      plannedToActualCompareRef: artifact(
-        `${prefix}/planned-to-actual.compare.json`,
-      ),
-      workflowRef: artifact("architecture/system/workflow.json"),
-      lifecycleRef: artifact("architecture/system/lifecycle.json"),
-      dataFlowRef: artifact("architecture/system/data-flow.json"),
-    },
-    architectureMaterializedCandidateRef: `candidate:sha256:${"7".repeat(64)}`,
-  };
-  const placeholder = {
-    architectureFinalizationRef: `architecture-finalization:sha256:${"8".repeat(64)}`,
-    ...recordWithoutRef,
-  };
-  const architectureFinalizationRef = deriveDeliveryArchitectureFinalizationRef(
-    architecturePackage,
-    placeholder,
-  );
-  assert.notEqual(architectureFinalizationRef, null);
-  return {
-    fullTest,
-    architecture: {
-      status: "terminal",
-      operationPackage: architecturePackage,
-      record: {
-        architectureFinalizationRef: architectureFinalizationRef!,
-        ...recordWithoutRef,
-      },
-    },
-  };
+  return { fullTest };
 }
 
 export function evidenceSourceFor(
@@ -157,9 +77,6 @@ export function evidenceSourceFor(
   outcomes: ReturnType<typeof acceptedEvidenceOutcomes>,
 ): ReadDeliveryRequiredEvidence {
   const fullTestOutcome = Buffer.from(`${JSON.stringify(outcomes.fullTest)}\n`);
-  const architectureOutcome = Buffer.from(
-    `${JSON.stringify(outcomes.architecture)}\n`,
-  );
   return {
     readChangeClosure: async ({
       projectId,
@@ -203,26 +120,6 @@ export function evidenceSourceFor(
         outcomeJson: Buffer.from(fullTestOutcome),
         artifacts: [
           { artifact: "full-test/outcome.json", bytes: fullTestOutcome },
-        ],
-      };
-    },
-    readArchitecture: ({
-      projectId,
-      deliveryId: requested,
-      architectureFinalizationRef,
-    }) => {
-      if (
-        projectId !== "flowkit-next" ||
-        requested !== deliveryId ||
-        architectureFinalizationRef !==
-          outcomes.architecture.record.architectureFinalizationRef
-      )
-        throw new Error("wrong Architecture request");
-      return {
-        sourceRef: "test:architecture-source",
-        outcomeJson: Buffer.from(architectureOutcome),
-        artifacts: [
-          { artifact: "architecture/outcome.json", bytes: architectureOutcome },
         ],
       };
     },

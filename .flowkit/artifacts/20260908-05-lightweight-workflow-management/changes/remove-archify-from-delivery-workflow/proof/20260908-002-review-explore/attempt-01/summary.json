@@ -1,0 +1,96 @@
+{
+  "kind": "independent-review-explore-observations",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "remove-archify-from-delivery-workflow",
+  "reviewedRunId": "20260908-001-explore",
+  "reviewRunId": "20260908-002-review-explore",
+  "attempt": "attempt-01",
+  "startedAt": "2026-09-08T03:03:59.266Z",
+  "finishedAt": "2026-09-08T03:04:29.276Z",
+  "node": "v22.23.2",
+  "platform": "win32",
+  "arch": "x64",
+  "observations": {
+    "chain": {
+      "reviewedRunId": "20260908-001-explore",
+      "projectOrdinal": 33,
+      "soleActiveChange": true,
+      "ordinalFactsMatch": true,
+      "independentBootstrap": true
+    },
+    "integrity": {
+      "authorResultSha256": "392322bb1d4d7b1c65cf1f618b0ae229c615371bc784af5bb05faffa45e62a28",
+      "handoffAuditSha256": "dd144c2908f6949dd6ccd4805ccb2e68561dbd9695ea3ccc4ea40bcd49441842",
+      "handoffFiles": 29,
+      "sourceInputs": 39,
+      "historicalFiles": 2,
+      "allListedBytesMatch": true,
+      "sourceHead": "97bcd2f99dcf6946b646fb1759b2e64584007c30",
+      "authorSourceHead": "97bcd2f99dcf6946b646fb1759b2e64584007c30"
+    },
+    "counterexamples": {
+      "doctor": "same missing-Archify-only diagnostic",
+      "start": "same early fixed-output rejection",
+      "sharedEvidence": "same mandatory architecture shape",
+      "limitation": "Candidate functions are fixture test objects, not lifecycle authority or D05 implementation acceptance."
+    },
+    "focusedBaseline": {
+      "files": 7,
+      "tests": 59,
+      "pass": 59,
+      "fail": 0,
+      "skipped": 0,
+      "formalFullTest": false,
+      "limitation": "Existing D04 contract regression baseline only; no D05 implementation acceptance."
+    }
+  },
+  "outputs": [
+    {
+      "file": "doctor-observation.json",
+      "bytes": 366,
+      "sha256": "6ce71f80b5d9f5d5314f760718c0ac33db6fb3f9deb4ec18757de97e3522a2ba"
+    },
+    {
+      "file": "focused-tests.command.json",
+      "bytes": 715,
+      "sha256": "fdef1ba212a8611ae619334d37304393ee3e1825ada13b3a9d66d4dc3832a892"
+    },
+    {
+      "file": "focused-tests.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "focused-tests.stdout.txt",
+      "bytes": 13044,
+      "sha256": "f0cbac905e8c88e28788023374bf338cf54f4db02a680661fae8630859663c53"
+    },
+    {
+      "file": "required-evidence-observation.json",
+      "bytes": 171,
+      "sha256": "9f0cadf80d026ef3738b21c772aeef33bff009c387af4faac8e458feea203eb3"
+    },
+    {
+      "file": "source-head.command.json",
+      "bytes": 246,
+      "sha256": "43fcc4c7f1c5a327d9995c128647320425ffb53a865b72f85fe4faba91963344"
+    },
+    {
+      "file": "source-head.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "source-head.stdout.txt",
+      "bytes": 41,
+      "sha256": "13e5249d835fa63b6a306fd5db5d1b855115b90d458c35a72fda71fafbca1c40"
+    },
+    {
+      "file": "start-observation.json",
+      "bytes": 161,
+      "sha256": "c4ae08d2d3aa81559ac8f63faa96ac878bc481c23fb910ecfe039431df413b69"
+    }
+  ],
+  "sourceAndAuthorProofUnchanged": true,
+  "formalFullTestExecuted": false
+}

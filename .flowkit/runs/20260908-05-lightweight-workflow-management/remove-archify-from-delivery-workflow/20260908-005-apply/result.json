@@ -1,0 +1,221 @@
+{
+  "kind": "external-orchestrator-apply-result",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "author",
+  "action": "apply",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "remove-archify-from-delivery-workflow",
+  "runId": "20260908-005-apply",
+  "runNumber": 5,
+  "projectOrdinal": 33,
+  "previousRunId": "20260908-004-review-propose",
+  "status": "terminal",
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "taskProgress": {
+    "complete": 16,
+    "total": 16
+  },
+  "nextBoundary": "review-apply",
+  "stop": true,
+  "verification": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/remove-archify-from-delivery-workflow/proof/20260908-005-apply/summary.json",
+    "bytes": 39926,
+    "sha256": "530d13964982c7eb4a765226bbc761b77b7059b45baab8e003f3d1bb6a8c37f7"
+  },
+  "artifactHashes": {
+    "actionSha256": "95172aa49e0f555b2fedd3c7fddf790e04a6ffca1539ed813425573eb3afe355",
+    "contextSha256": "9f85c166f02a5c8a4c8976920318de848575d2e2669e137d3aee69ba3863eae7"
+  },
+  "changedArtifacts": [
+    {
+      "path": "AGENTS.md",
+      "bytes": 15065,
+      "sha256": "fef331fc290b91c354c2a814a601d999363d704e8a0708bc1af3e5c8d1f1bc73"
+    },
+    {
+      "path": "README.md",
+      "bytes": 4353,
+      "sha256": "f98f2820f0a7406887801204a64043b33f923d53ddccf5cc04e447fa45345614"
+    },
+    {
+      "path": "config/tools/toolchain.lock.json",
+      "bytes": 555,
+      "sha256": "a0481fc8a3fddfbcdd65a504e0e7a065e6ab74a3a871af3ab8838d201eecd4a2"
+    },
+    {
+      "path": "skills/delivery/final/SKILL.md",
+      "bytes": 2896,
+      "sha256": "11f7f10d217b64ac8a0b226d317b388d9b2c2a98e8af47212a250772d39ac397"
+    },
+    {
+      "path": "skills/delivery/start/SKILL.md",
+      "bytes": 3213,
+      "sha256": "6a5403d93dce4e58980a55053ed91830340576f671d3e8ee2e9fef2daaf059ce"
+    },
+    {
+      "path": "src/cli/foundation-cli.ts",
+      "bytes": 9655,
+      "sha256": "7952ae2811cea83062fff3a39a71bb2a907c1b6e7e86182d04ad6161b7430df5"
+    },
+    {
+      "path": "src/domain/delivery-final-execution.ts",
+      "bytes": 15053,
+      "sha256": "b3455adc8954f0ac2c7bce62517c3d056f0cfd8f603bab246611cd379df9abc0"
+    },
+    {
+      "path": "src/domain/delivery-final-operation.ts",
+      "bytes": 4720,
+      "sha256": "406cb62da169a60b7e82efcaa331c63b232d08c649156dea28ea05577c1f9493"
+    },
+    {
+      "path": "src/domain/delivery-operation-execution.ts",
+      "bytes": 16110,
+      "sha256": "9098e7b67ff74d40eea96d6390dcd9f56f2ed348eeb1a1a561468d49ccc87e5a"
+    },
+    {
+      "path": "src/domain/index.ts",
+      "bytes": 980,
+      "sha256": "5dc2cb396dd80e8056b9d9e786cc77394843e6341b10977a5652a324422b08a4"
+    },
+    {
+      "path": "src/domain/managed-tool-resolution.ts",
+      "bytes": 11470,
+      "sha256": "b780344c574c294614dc4d0e56c44dcf5173bdedb327b4e7c41510f96999c0c6"
+    },
+    {
+      "path": "src/internal/delivery-final-coordination.ts",
+      "bytes": 12882,
+      "sha256": "245a39d77c0d0e83b24e5c24b7a61197ae04d4ea569d5410c56fc29ff226590a"
+    },
+    {
+      "path": "src/internal/delivery-required-evidence-source.ts",
+      "bytes": 13194,
+      "sha256": "457f1b7eda232f9bb76f4acf90885cb33512370306afb681aa420bad725bb9d0"
+    },
+    {
+      "path": "src/internal/delivery-required-evidence.ts",
+      "bytes": 5150,
+      "sha256": "7dc7e9303f0c4dce72957183cd37e642798a2913b8375797e94885c0892a5dd2"
+    },
+    {
+      "path": "src/internal/delivery-start-content.ts",
+      "bytes": 10733,
+      "sha256": "159bc6cc237605eea37d7394c2e544678ff875cc6a1e7f9bef5d380efa352abe"
+    },
+    {
+      "path": "tests/acceptance/foundation-manager.acceptance.test.ts",
+      "bytes": 15826,
+      "sha256": "07b6eb882b357fe429a5c1ac18a50b209e1b3f4ac9a0ef60911601418ed61309"
+    },
+    {
+      "path": "tests/unit/domain/delivery-continuity-semantic-boundaries.test.ts",
+      "bytes": 18058,
+      "sha256": "cf86702626a1dfc50557c448ee6c075ff4d3ea63d661daa41ebf4dddbf3710a4"
+    },
+    {
+      "path": "tests/unit/domain/delivery-evidence-outcome-fixture.ts",
+      "bytes": 4077,
+      "sha256": "57c731111319949fc47c645cede6a93fb5ced3a595b95d441de2da8ca2b6471f"
+    },
+    {
+      "path": "tests/unit/domain/delivery-final-execution.test.ts",
+      "bytes": 15474,
+      "sha256": "c687d892e418575beb247354079a45f312abdf75581b1b2c83123397ec463d02"
+    },
+    {
+      "path": "tests/unit/domain/delivery-final-fixture.ts",
+      "bytes": 10211,
+      "sha256": "a23663495117b2508e062b63b98af874f3bc81c386141464a2a2229c59ee28fd"
+    },
+    {
+      "path": "tests/unit/domain/delivery-final-projection.test.ts",
+      "bytes": 6215,
+      "sha256": "04bc7850e2cc98a90bb6ee514ddc29ee033ad6cda20cdfa3e3b602a5cf3fe824"
+    },
+    {
+      "path": "tests/unit/domain/delivery-operation-execution.test.ts",
+      "bytes": 18922,
+      "sha256": "9ab2767b4f4975623a3c5e29f0d1a25d25085153912b962e0c679c54164fe1a6"
+    },
+    {
+      "path": "tests/unit/domain/delivery-operation-fixture.ts",
+      "bytes": 1449,
+      "sha256": "f65afe228029065e33380caf037eae2ce2c1a6ae97f10793d64bdabd3fcc6916"
+    },
+    {
+      "path": "tests/unit/domain/delivery-repository-integration-accepted-object.test.ts",
+      "bytes": 21156,
+      "sha256": "4ebc9872a30481c7d23a3835d6004d460681788e988799da4af95346f6a32c84"
+    },
+    {
+      "path": "tests/unit/domain/delivery-repository-integration-execution.test.ts",
+      "bytes": 19792,
+      "sha256": "ca3c5a0efe475c30c5a9b025b671ed33755ed3f5d602ae4c4c14e2008bdf28a6"
+    },
+    {
+      "path": "tests/unit/domain/delivery-required-evidence-source.test.ts",
+      "bytes": 6133,
+      "sha256": "4538505596164ebeb8ef1d9dffb7eca2628896cf0147fa93bdc709e62c7af704"
+    },
+    {
+      "path": "tests/unit/domain/delivery-start-execution.test.ts",
+      "bytes": 16140,
+      "sha256": "67a2ebb2893c1b1489a0cb723b650f7d351ba095187423b662ef71935c2fa0ae"
+    },
+    {
+      "path": "tests/unit/domain/delivery-start-validation-fixture.ts",
+      "bytes": 2980,
+      "sha256": "f899d808ee39a725a97b0fd4fa9ee9e2ca01c40566f153fc57e9396a4fa0cf5c"
+    },
+    {
+      "path": "tests/unit/domain/foundation-cli-surface.test.ts",
+      "bytes": 13633,
+      "sha256": "00b30008b3d9e25a341059ff8fd40ca62b5e677b41892e75b13929f7bc67f2bd"
+    },
+    {
+      "path": "tests/unit/domain/managed-tool-resolution.test.ts",
+      "bytes": 9255,
+      "sha256": "2f16f15875825af80ce7bb6d46a71ce9983653a63bb0a71e38a72c7410fcba7e"
+    },
+    {
+      "path": "tests/unit/domain/delivery-without-archify.test.ts",
+      "bytes": 8771,
+      "sha256": "db23b11b9fdb352830e9891ccdd1d658c485f6b981bf0099a832f1a7119a5507"
+    },
+    {
+      "path": "tests/fixtures/delivery/legacy-architecture-package.json",
+      "bytes": 1137,
+      "sha256": "ecf402d3ca4d3d27d8d545428c6e5ea6ee6d5990cd051bf3db29adbff3d2b964"
+    },
+    {
+      "path": "openspec/changes/remove-archify-from-delivery-workflow/tasks.md",
+      "bytes": 4366,
+      "sha256": "09f55cc64b476d65534dcb189ceeff0fbce22b263150d6b45aaf47db164eb98b"
+    }
+  ],
+  "deletedArtifacts": [
+    "src/domain/delivery-architecture-finalization-execution.ts",
+    "src/domain/delivery-architecture-finalization-identity.ts",
+    "src/domain/delivery-architecture-finalization-operation.ts",
+    "src/internal/delivery-architecture-finalization-archify.ts",
+    "src/internal/delivery-architecture-finalization-artifacts.ts",
+    "src/internal/delivery-architecture-finalization-closure.ts",
+    "tests/unit/domain/delivery-architecture-finalization-execution.test.ts",
+    "skills/delivery/architecture-finalization/SKILL.md",
+    "skills/tools/archify/SKILL.md",
+    "skills/vendors/archify/LICENSE",
+    "skills/vendors/archify/UPSTREAM-SKILL.md",
+    "skills/vendors/archify/UPSTREAM.json",
+    "skills/vendors/archify/references/authoring-contract.md",
+    "skills/vendors/archify/references/brand-marks.md",
+    "skills/vendors/archify/references/delivery-contract.md",
+    "skills/vendors/archify/references/viewer-runtime.md"
+  ],
+  "gitMutationExecuted": false,
+  "formalFullTestExecuted": false,
+  "continuationExecuted": false,
+  "handoff": "独立 review-apply 审查当前未提交工作树；不自动 Git/Archive。必要证据在项目 .flowkit/artifacts；历史 Explore 不是当前实现 PASS。后续 archive/spec-sync 按已批准 design 更新两处 Purpose。"
+}

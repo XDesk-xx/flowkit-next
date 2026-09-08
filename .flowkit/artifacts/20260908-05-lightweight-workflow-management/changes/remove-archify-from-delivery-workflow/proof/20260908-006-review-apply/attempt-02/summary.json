@@ -1,0 +1,165 @@
+{
+  "kind": "independent-review-apply-checks",
+  "reviewedRunId": "20260908-005-apply",
+  "reviewRunId": "20260908-006-review-apply",
+  "startedAt": "2026-09-08T04:24:50.107Z",
+  "completedAt": "2026-09-08T04:25:30.229Z",
+  "platform": "win32",
+  "node": "v22.23.2",
+  "reviewedResultSha256": "ff262d46f5913c85023cd94ba8dbbabc0ea8e17b7f70bc294f0aac8cd1ae54cc",
+  "authorVerificationRef": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/remove-archify-from-delivery-workflow/proof/20260908-005-apply/summary.json",
+    "bytes": 39926,
+    "sha256": "530d13964982c7eb4a765226bbc761b77b7059b45baab8e003f3d1bb6a8c37f7"
+  },
+  "sourceScopeSha256": "57845c28259f5d1d06d9189ec71268b8086f3b7d8deb7a7afe521ed4b22f25a2",
+  "readback": {
+    "changedArtifacts": 33,
+    "sourceInputs": 135,
+    "deletedArtifacts": 16,
+    "approvedPlanningSemanticsUnchanged": true,
+    "allBoundBytesMatch": true
+  },
+  "focusedTests": {
+    "files": 12,
+    "tests": 87,
+    "pass": 87,
+    "fail": 0,
+    "skipped": 0
+  },
+  "commands": {
+    "typecheck": {
+      "program": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "node_modules/typescript/bin/tsc",
+        "--noEmit"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "startedAt": "2026-09-08T04:24:50.212Z",
+      "finishedAt": "2026-09-08T04:24:52.357Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null
+    },
+    "focused-tests": {
+      "program": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "--import",
+        "tsx",
+        "--test",
+        "tests/unit/domain/delivery-without-archify.test.ts",
+        "tests/unit/domain/delivery-final-execution.test.ts",
+        "tests/unit/domain/delivery-final-projection.test.ts",
+        "tests/unit/domain/delivery-operation-execution.test.ts",
+        "tests/unit/domain/delivery-repository-integration-execution.test.ts",
+        "tests/unit/domain/delivery-repository-integration-accepted-object.test.ts",
+        "tests/unit/domain/delivery-required-evidence-source.test.ts",
+        "tests/unit/domain/delivery-start-execution.test.ts",
+        "tests/unit/domain/delivery-continuity-semantic-boundaries.test.ts",
+        "tests/unit/domain/managed-tool-resolution.test.ts",
+        "tests/unit/domain/foundation-cli-surface.test.ts",
+        "tests/unit/domain/delivery-full-test-execution.test.ts"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "startedAt": "2026-09-08T04:24:52.358Z",
+      "finishedAt": "2026-09-08T04:25:28.322Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null
+    },
+    "openspec-validate": {
+      "program": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js",
+        "validate",
+        "remove-archify-from-delivery-workflow",
+        "--strict"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "startedAt": "2026-09-08T04:25:28.323Z",
+      "finishedAt": "2026-09-08T04:25:30.021Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null
+    },
+    "git-diff-check": {
+      "program": "git",
+      "args": [
+        "diff",
+        "--check"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "startedAt": "2026-09-08T04:25:30.022Z",
+      "finishedAt": "2026-09-08T04:25:30.147Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null
+    }
+  },
+  "outputs": [
+    {
+      "file": "focused-tests.command.json",
+      "bytes": 1048,
+      "sha256": "5b7246b4784747d131b3be39cbc7c302efa9797ae39be92718c9a06e2065c408"
+    },
+    {
+      "file": "focused-tests.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "focused-tests.stdout.txt",
+      "bytes": 19231,
+      "sha256": "23056e645afc27222fdec736711637d80993e2f7af17584e62b19c35cfc58dd3"
+    },
+    {
+      "file": "git-diff-check.command.json",
+      "bytes": 244,
+      "sha256": "d7b5ff5cf3a97b61f583cac550eb44c73c19875e9c4fe1c1f857534daa8ae979"
+    },
+    {
+      "file": "git-diff-check.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "git-diff-check.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "openspec-validate.command.json",
+      "bytes": 387,
+      "sha256": "a6b78fd788ca6962effe6ff640dcaa99af7cd1e586b8ffe679aaa6152acc1f55"
+    },
+    {
+      "file": "openspec-validate.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "openspec-validate.stdout.txt",
+      "bytes": 56,
+      "sha256": "855aee2d1dff5b04dff561ea302dc1ac113a59b29914492010f0a98c9086b20d"
+    },
+    {
+      "file": "typecheck.command.json",
+      "bytes": 296,
+      "sha256": "43c6e8db026c311772ee533b7a9f550ddbef2151f7c2cf151c78bab1ce671798"
+    },
+    {
+      "file": "typecheck.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "typecheck.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "limits": [
+    "Reviewer focused checks only, not Formal Full Test; Linux evidence is separately read back, not re-executed here.",
+    "No candidate Reviewer Guidance or lifecycle authority was invoked."
+  ]
+}

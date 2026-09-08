@@ -13,8 +13,6 @@ export function finalFacts(): DeliveryFinalOperationFacts {
   return {
     verifiedCandidateRef: `candidate:sha256:${"1".repeat(64)}`,
     fullTestExecutionRef: `full-test-execution:sha256:${"2".repeat(64)}`,
-    architectureFinalizationRef: `architecture-finalization:sha256:${"3".repeat(64)}`,
-    architectureMaterializedCandidateRef: `candidate:sha256:${"4".repeat(64)}`,
     coordinationPrestateRef: {
       artifact: `openspec/delivery-groups/${deliveryId}.yaml`,
       contentSha256: "5".repeat(64),
@@ -36,11 +34,6 @@ export function finalFacts(): DeliveryFinalOperationFacts {
       fullTest: {
         executionRef: `full-test-execution:sha256:${"2".repeat(64)}`,
         sourceRef: "test:full",
-        artifacts: [artifacts[0]],
-      },
-      architecture: {
-        architectureFinalizationRef: `architecture-finalization:sha256:${"3".repeat(64)}`,
-        sourceRef: "test:architecture",
         artifacts: [artifacts[0]],
       },
     },

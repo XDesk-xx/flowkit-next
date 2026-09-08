@@ -266,7 +266,7 @@ async function nextCommand(request: NextRequest) {
 
 type DoctorDiagnostic =
   | {
-      readonly id: "openspec-runtime" | "archify-runtime";
+      readonly id: "openspec-runtime";
       readonly status: "pass";
       readonly version: string;
     }
@@ -276,14 +276,14 @@ type DoctorDiagnostic =
       readonly activeChangeCount: number;
     }
   | {
-      readonly id: "openspec-runtime" | "archify-runtime" | "openspec-root";
+      readonly id: "openspec-runtime" | "openspec-root";
       readonly status: "fail";
       readonly diagnosticKind: string;
     };
 
 async function runtimeDiagnostic(
   request: DoctorRequest,
-  toolId: "openspec" | "archify",
+  toolId: "openspec",
 ): Promise<DoctorDiagnostic> {
   try {
     const tool = await resolveManagedTool({ ...request, toolId });
@@ -332,7 +332,6 @@ async function openspecRootDiagnostic(
 async function doctorCommand(request: DoctorRequest) {
   const diagnostics = await Promise.all([
     runtimeDiagnostic(request, "openspec"),
-    runtimeDiagnostic(request, "archify"),
     openspecRootDiagnostic(request),
   ]);
   return Object.freeze({

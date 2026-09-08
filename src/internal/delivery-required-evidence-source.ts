@@ -20,7 +20,6 @@ import {
 } from "../domain/action-package-result-admission.js";
 import { compareUtf8 } from "./applicable-check-material.js";
 import { isTrustedPassedFullTestOutcome } from "../domain/delivery-full-test-execution.js";
-import { deriveDeliveryArchitectureFinalizationRef } from "../domain/delivery-architecture-finalization-execution.js";
 import { isSafeText } from "./applicable-check-identity.js";
 import {
   cloneDeliveryRequiredEvidence,
@@ -71,11 +70,6 @@ export interface ReadDeliveryRequiredEvidence {
     readonly projectId: string;
     readonly deliveryId: string;
     readonly executionRef: string;
-  }) => ExternalEvidenceMaterial | Promise<ExternalEvidenceMaterial>;
-  readonly readArchitecture: (request: {
-    readonly projectId: string;
-    readonly deliveryId: string;
-    readonly architectureFinalizationRef: string;
   }) => ExternalEvidenceMaterial | Promise<ExternalEvidenceMaterial>;
 }
 
@@ -251,32 +245,6 @@ function containsExactOutcome(material: ExternalEvidenceMaterial): boolean {
   );
 }
 
-function validArchitectureOutcome(
-  value: unknown,
-  deliveryId: string,
-  architectureFinalizationRef: string,
-): boolean {
-  if (
-    typeof value !== "object" ||
-    value === null ||
-    (value as { status?: unknown }).status !== "terminal"
-  )
-    return false;
-  const candidate = value as {
-    operationPackage?: { deliveryId?: unknown };
-    record?: { architectureFinalizationRef?: unknown };
-  };
-  return (
-    candidate.operationPackage?.deliveryId === deliveryId &&
-    candidate.record?.architectureFinalizationRef ===
-      architectureFinalizationRef &&
-    deriveDeliveryArchitectureFinalizationRef(
-      candidate.operationPackage,
-      candidate.record,
-    ) === architectureFinalizationRef
-  );
-}
-
 function isTrustedSource(
   value: unknown,
 ): value is ReadDeliveryRequiredEvidence {
@@ -285,10 +253,7 @@ function isTrustedSource(
     value !== null &&
     typeof (value as ReadDeliveryRequiredEvidence).readChangeClosure ===
       "function" &&
-    typeof (value as ReadDeliveryRequiredEvidence).readFullTest ===
-      "function" &&
-    typeof (value as ReadDeliveryRequiredEvidence).readArchitecture ===
-      "function"
+    typeof (value as ReadDeliveryRequiredEvidence).readFullTest === "function"
   );
 }
 
@@ -299,9 +264,7 @@ export async function deriveDeliveryRequiredEvidenceFromSource(
     readonly deliveryId: string;
     readonly changeIds: readonly string[];
     readonly fullTestExecutionRef: string;
-    readonly architectureFinalizationRef: string;
     readonly fullTestOutcome?: unknown;
-    readonly architectureOutcome?: unknown;
   },
 ): Promise<DeliveryRequiredEvidence | null> {
   if (!isTrustedSource(read)) return null;
@@ -355,42 +318,26 @@ export async function deriveDeliveryRequiredEvidenceFromSource(
     });
   }
   let fullTest: ExternalEvidenceMaterial;
-  let architecture: ExternalEvidenceMaterial;
   try {
     fullTest = await read.readFullTest({
       projectId: expected.projectId,
       deliveryId: expected.deliveryId,
       executionRef: expected.fullTestExecutionRef,
     });
-    architecture = await read.readArchitecture({
-      projectId: expected.projectId,
-      deliveryId: expected.deliveryId,
-      architectureFinalizationRef: expected.architectureFinalizationRef,
-    });
   } catch {
     return null;
   }
   const fullTestOutcome = parseJson(fullTest.outcomeJson);
-  const architectureOutcome = parseJson(architecture.outcomeJson);
   if (
     !containsExactOutcome(fullTest) ||
-    !containsExactOutcome(architecture) ||
     !isTrustedPassedFullTestOutcome(fullTestOutcome, expected.deliveryId) ||
     fullTestOutcome.record.executionRef !== expected.fullTestExecutionRef ||
-    !validArchitectureOutcome(
-      architectureOutcome,
-      expected.deliveryId,
-      expected.architectureFinalizationRef,
-    ) ||
     (expected.fullTestOutcome !== undefined &&
-      !isDeepStrictEqual(fullTestOutcome, expected.fullTestOutcome)) ||
-    (expected.architectureOutcome !== undefined &&
-      !isDeepStrictEqual(architectureOutcome, expected.architectureOutcome))
+      !isDeepStrictEqual(fullTestOutcome, expected.fullTestOutcome))
   )
     return null;
   const fullTestArtifacts = externalArtifacts(fullTest.artifacts);
-  const architectureArtifacts = externalArtifacts(architecture.artifacts);
-  if (fullTestArtifacts === null || architectureArtifacts === null) return null;
+  if (fullTestArtifacts === null) return null;
   const evidence: DeliveryRequiredEvidence = {
     projectId: expected.projectId,
     deliveryId: expected.deliveryId,
@@ -399,11 +346,6 @@ export async function deriveDeliveryRequiredEvidenceFromSource(
       executionRef: expected.fullTestExecutionRef,
       sourceRef: fullTest.sourceRef,
       artifacts: fullTestArtifacts,
-    },
-    architecture: {
-      architectureFinalizationRef: expected.architectureFinalizationRef,
-      sourceRef: architecture.sourceRef,
-      artifacts: architectureArtifacts,
     },
   };
   return isDeliveryRequiredEvidence(evidence) ? evidence : null;
@@ -419,8 +361,6 @@ export async function revalidateDeliveryRequiredEvidenceSource(
     deliveryId: evidence.deliveryId,
     changeIds: evidence.changeClosures.map((entry) => entry.changeId),
     fullTestExecutionRef: evidence.fullTest.executionRef,
-    architectureFinalizationRef:
-      evidence.architecture.architectureFinalizationRef,
   });
   return (
     derived !== null &&

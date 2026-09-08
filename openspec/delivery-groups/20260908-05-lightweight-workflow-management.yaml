@@ -17,14 +17,14 @@ reference:
 
 scope:
   included:
-    - "按最新版规划登记六个语义 Change，保留其直接依赖；本次全部保持 planned。"
+    - "按最新版规划登记六个语义 Change，保留其直接依赖；Delivery Start 时全部保持 planned，后续按 Owner 授权单独激活。"
     - "严格 OpenSpec Action、独立 Reviewer、合法 revise、真实 Run/Result 与一次执行后 STOP。"
     - "manager 资产、target 项目及 FLOWKIT_HOME/tools 分离，接通一个实际支持的既有 Agent/宿主。"
     - "Full Test 项目配置与 .gitignore、Git index 和 tracked/untracked 独立。"
     - "必要 proof、Full Test 结果与报告在目标项目 .flowkit/artifacts/ 默认长期保留；.tmp 仅承载可丢弃工作文件。"
     - "过程事实在生成、接纳与相关消费时校验，不把真实历史材料作为产品扫描输入。"
     - "Full Test 当前尝试及输入有效性核对，新的失败或未完成不得回落至旧 PASS。"
-    - "轻量 Start/Final 与独立授权 Git 节点；Archify 退役范围仅按计划登记，等待后续单独激活。"
+    - "轻量 Start/Final 与独立授权 Git 节点；Archify 退役范围按计划登记，本次后续授权仅激活其 proof-based Explore。"
   excluded:
     - "本次启动中激活 Change、执行 Explore/Propose/Apply/Review/Archive 或分配 projectOrdinal。"
     - "本次启动中处理 Archify：不绘图、不校验图、不修改代码/配置/Skill、不卸载工具、不迁移或删除历史图。"
@@ -39,7 +39,8 @@ changes:
     goal: "按计划移除活动 Delivery 路径中的 Archify operation、图表前置、专属适配器及必需工具依赖，保留历史与独立用户安装。"
     required: true
     dependsOn: []
-    state: planned
+    state: completed
+    projectOrdinal: 33
     outputs:
       - "Start/Full Test/Final/Integration 不要求图表或 Architecture outcome。"
       - "活动代码、specs、HOW、doctor 与发行配置的直接消费者一致收敛。"
@@ -113,13 +114,21 @@ ownerDecisions:
       - "delivery-start"
       - "git-create-delivery-branch"
 
+  - ref: "owner:9fbce3acfd773efa4def5cbc64dd4b703d2b50e4a07407bade9c4d1b05f893d6"
+    decision: "activate-change"
+    deliveryId: "20260908-05-lightweight-workflow-management"
+    changeId: "remove-archify-from-delivery-workflow"
+    sourceRef: "owner-input:2026-09-08:activate-change:remove-archify-from-delivery-workflow:proof-explore:durable-artifacts"
+    scope:
+      - "explore"
+
 bootstrap:
   mode: "independent-bootstrap"
   executorRole: "author"
   instruction: "根据文档开始下一个 delivery，处理 branch 和 manifest；沿用独立 bootstrap，现在不要处理 Archify。"
-  boundary: "本次仅创建/切换分支与建立 manifest；六个 Change 均未激活，不产生 Standard Action Run。"
+  boundary: "Delivery Start 仅创建/切换分支与建立 manifest，当时六个 Change 均未激活；后续 Owner 已授权第一个 Change 的独立 bootstrap Explore，其余保持 planned。"
   authorityNote: "ownerDecisions 记录本次实际用户指令；ref 是来源标识，不是 candidate runtime 接纳或执行成功证明。"
   gitBaseNote: "从本次只读核对的 origin/main 创建分支；base 表达 Git 分支来源，不建立 Delivery 的 SHA 准入门槛。"
   implementationNote: "D05 文档中的新产品合同尚待各 Change 实现；本次 bootstrap 启动不声称 candidate 已完成这些能力。"
   memoNote: "已读到 open Memo pre-explore-repository-fixed-point-continuity-check；本次不改变其状态、不自动纳入需求或增加 SHA 前置。"
-  stop: "等待后续明确的 Change 激活指令；本次不处理 Archify，也不绕过既有计划依赖去激活其他 Change。"
+  stop: "本次 Explore 完成后交接独立 review-explore 并 STOP；不进入 Propose/Apply，不修改产品或执行 Git mutation。必要 proof 按 D05 文档在 .flowkit/artifacts/ 默认长期保存。"

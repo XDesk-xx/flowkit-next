@@ -4,15 +4,17 @@ Execute an already-authorized `delivery-final` operation from its exact `Deliver
 
 ## Contract
 
-Derive `requiredEvidence` from canonical required Changes and trusted accepted archive/review anchors, plus the complete Full Test and Architecture sources. Bind the finite snapshot into Final operation facts; callers cannot shrink it, substitute self-signed hashes, or treat excluded Run/Memo bytes as dispensable evidence. This is not an evidence Registry or a new persistence service.
+Derive `requiredEvidence` from canonical required Changes and trusted accepted archive/review anchors, plus the complete Full Test source. Bind the finite snapshot into Final operation facts; callers cannot shrink it, substitute self-signed hashes, or treat excluded Run/Memo bytes as dispensable evidence. This is not an evidence Registry or a new persistence service.
 
-1. Treat the package-bound Delivery identity, verified candidate, Full Test execution, Architecture Finalization closure, Architecture-materialized candidate, completed required Change identities, canonical coordination prestate, content-bound Guidance, and exact `finalize-delivery` Owner authority as fixed input.
-2. Revalidate the complete trusted Full Test and Architecture outcomes, all six fixed Architecture output bytes, current repository candidate, empty managed OpenSpec active Change set, and canonical Delivery coordination before execution. Do not accept booleans, arbitrary paths, standalone digests, or Run prose as substitutes.
+1. Treat the package-bound Delivery identity, verified candidate, Full Test execution, completed required Change identities, canonical coordination prestate, content-bound Guidance, and exact `finalize-delivery` Owner authority as fixed input.
+2. Revalidate the complete trusted Full Test outcome and its passed complete checks, current repository candidate equal to that Full Test record.candidateRef, empty managed OpenSpec active Change set, and canonical Delivery coordination before execution. Do not accept booleans, arbitrary paths, standalone digests, or Run prose as substitutes.
 3. Derived execution receives only a defensive package copy and Guidance bytes. It may return bounded `ready` or `correction-required` content; it does not choose a path, patch, Git command, next operation, or authority.
 4. On `ready`, the trusted host may update only the fixed canonical Delivery coordination artifact from its exact active/pending prestate to the specified completed closure. Revalidate original bytes before replacement and exact bytes after replacement.
-5. Record the verified → Architecture-materialized → finalized candidate lineage and exact content-bound closure identity only after successful materialization and reread.
+5. Record the verified → finalized candidate lineage and exact content-bound closure identity only after successful materialization and reread.
 6. On invalid input/result, prerequisite drift, repository drift, coordination drift, write failure, or correction-required, fail closed or return the bounded correction STOP without terminal success or automatic correction.
 7. STOP after the Delivery Final terminal or correction boundary.
+
+No Architecture outcome, reader, runtime, diagram, or skip proof is a prerequisite. Final manifest changes may produce a finalized candidate distinct from the verified pre-Final candidate.
 
 ## Boundaries
 

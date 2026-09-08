@@ -38,7 +38,7 @@ test("Delivery Final prepares complete prerequisites and materializes one bounde
     );
     assert.equal(
       await deriveApplicableCheckCandidateRef(fixture.root),
-      outcomes.architecture.record.architectureMaterializedCandidateRef,
+      outcomes.fullTest.record.candidateRef,
     );
     const prepared = await prepareDeliveryFinalOperationPackage(
       fixture.root,
@@ -71,7 +71,7 @@ test("Delivery Final prepares complete prerequisites and materializes one bounde
     );
     assert.notEqual(
       outcome.record.finalizedCandidateRef,
-      outcome.record.architectureMaterializedCandidateRef,
+      outcome.record.verifiedCandidateRef,
     );
     const manifestBytes = await readFile(fixture.manifestPath, "utf8");
     assert.match(manifestBytes, /state: completed/);
@@ -120,8 +120,6 @@ test("Delivery Final writer preserves all non-target manifest bytes and ordering
           "  state: completed",
           `  verifiedCandidateRef: ${JSON.stringify(facts.verifiedCandidateRef)}`,
           `  fullTestExecutionRef: ${JSON.stringify(facts.fullTestExecutionRef)}`,
-          `  architectureFinalizationRef: ${JSON.stringify(facts.architectureFinalizationRef)}`,
-          `  architectureMaterializedCandidateRef: ${JSON.stringify(facts.architectureMaterializedCandidateRef)}`,
           "  gitCheckpoint: pending-owner-authorized-local-delivery-commit",
           "",
         ].join("\n"),
@@ -339,24 +337,6 @@ test("Delivery Final preparation rejects partial facts, active OpenSpec, output 
       `console.log(JSON.stringify({changes:[],root:{path:${JSON.stringify(fixture.root)},source:"nearest"}}));\n`,
     );
 
-    const actualPath = path.join(
-      fixture.root,
-      "architecture",
-      deliveryId,
-      "json",
-      "actual.architecture.json",
-    );
-    const actual = await readFile(actualPath);
-    await writeFile(actualPath, "{}\n");
-    assert.equal(
-      await prepareDeliveryFinalOperationPackage(
-        fixture.root,
-        input,
-        evidenceSource(outcomes, fixture.root),
-      ),
-      null,
-    );
-    await writeFile(actualPath, actual);
     await writeFile(fixture.openspecEntrypoint, "process.exit(7);\n");
     assert.equal(
       await prepareDeliveryFinalOperationPackage(

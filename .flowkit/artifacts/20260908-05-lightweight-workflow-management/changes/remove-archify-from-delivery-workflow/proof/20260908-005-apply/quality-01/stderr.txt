@@ -1,0 +1,7 @@
+$ git diff --check HEAD && pnpm format:check && pnpm lint && pnpm check:forbidden-tracked-artifacts
+$ prettier --check src tests tsconfig.json tsconfig.build.json package.json eslint.config.mjs scripts/check-forbidden-tracked-artifacts.mjs
+$ eslint src tests
+$ node scripts/check-forbidden-tracked-artifacts.mjs
+$ depcruise --config dependency-cruiser.config.mjs --output-type err src tests
+$ node --test tests/unit/quality/production-reachability.test.mjs
+$ node scripts/check-production-reachability.mjs

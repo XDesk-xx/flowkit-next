@@ -1,7 +1,7 @@
 import { realpath, readFile, stat } from "node:fs/promises";
 import path from "node:path";
 
-export const MANAGED_TOOL_IDS = ["openspec", "archify"] as const;
+export const MANAGED_TOOL_IDS = ["openspec"] as const;
 export type ManagedToolId = (typeof MANAGED_TOOL_IDS)[number];
 
 export const MANAGED_TOOL_RESOLUTION_DIAGNOSTICS = [
@@ -48,7 +48,6 @@ const ALLOWED_LOCK_ROOT_KEYS = new Set([
   "schemaVersion",
   "generatedFor",
   "openspec",
-  "archify",
 ]);
 const ALLOWED_ENTRY_KEYS = new Set([
   "packageName",

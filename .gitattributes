@@ -9,3 +9,9 @@
 *.tgz binary
 *.gz binary
 *.tar binary
+
+# Raw execution logs retain exact bytes; source text rules do not apply.
+.flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/remove-archify-from-delivery-workflow/proof/**/stdout.txt -text -whitespace
+.flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/remove-archify-from-delivery-workflow/proof/**/stderr.txt -text -whitespace
+.flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/remove-archify-from-delivery-workflow/proof/**/*.stdout.txt -text -whitespace
+.flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/remove-archify-from-delivery-workflow/proof/**/*.stderr.txt -text -whitespace

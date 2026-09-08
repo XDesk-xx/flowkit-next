@@ -1,0 +1,10 @@
+Change 'remove-archify-from-delivery-workflow' has issues
+✗ [ERROR] delivery-finalization/spec.md: MODIFIED "Delivery Final consumes complete exact prerequisite outcomes" omits scenario(s) the current spec still has: "Reject stale or partial verification and Architecture facts". Copy them into the MODIFIED block (a MODIFIED requirement replaces the whole block, so archive refuses to drop them).
+✗ [ERROR] foundation-cli-surface/spec.md: MODIFIED "doctor performs only bounded Foundation runtime diagnostics" omits scenario(s) the current spec still has: "Managed Archify cannot be resolved". Copy them into the MODIFIED block (a MODIFIED requirement replaces the whole block, so archive refuses to drop them).
+✗ [ERROR] foundation-cli-surface/spec.md: MODIFIED "Foundation CLI remains a thin bootstrap-era surface without self-management" omits scenario(s) the current spec still has: "Archify is managed but not lifecycle authority". Copy them into the MODIFIED block (a MODIFIED requirement replaces the whole block, so archive refuses to drop them).
+✗ [ERROR] managed-toolchain-resolution/spec.md: MODIFIED "Resolved package identity and entrypoint are validated exactly" omits scenario(s) the current spec still has: "Exact Archify identity is present". Copy them into the MODIFIED block (a MODIFIED requirement replaces the whole block, so archive refuses to drop them).
+✗ [ERROR] managed-toolchain-resolution/spec.md: MODIFIED "Managed tools are resolved on demand" omits scenario(s) the current spec still has: "Archify is requested while OpenSpec is absent". Copy them into the MODIFIED block (a MODIFIED requirement replaces the whole block, so archive refuses to drop them).
+Next steps:
+  - Ensure change has deltas in specs/: use headers ## ADDED/MODIFIED/REMOVED/RENAMED Requirements
+  - Each requirement MUST include at least one #### Scenario: block
+  - Debug parsed deltas: openspec show remove-archify-from-delivery-workflow --json --deltas-only

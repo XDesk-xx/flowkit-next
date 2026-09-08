@@ -1,0 +1,136 @@
+TAP version 13
+# Subtest: entrypoint returns machine error for unknown command
+ok 1 - entrypoint returns machine error for unknown command
+  ---
+  duration_ms: 402.4063
+  type: 'test'
+  ...
+# Subtest: entrypoint distinguishes malformed JSON and formal Policy blocked outcome
+ok 2 - entrypoint distinguishes malformed JSON and formal Policy blocked outcome
+  ---
+  duration_ms: 1082.7936
+  type: 'test'
+  ...
+# Subtest: command and request parsing stay closed and distinguish explicit null
+ok 3 - command and request parsing stay closed and distinguish explicit null
+  ---
+  duration_ms: 3.0462
+  type: 'test'
+  ...
+# Subtest: next explicit null reaches canonical explore without reading Run history
+ok 4 - next explicit null reaches canonical explore without reading Run history
+  ---
+  duration_ms: 42.4135
+  type: 'test'
+  ...
+# Subtest: next exact Run ignores disconnected higher sequence and uses selected terminal facts
+ok 5 - next exact Run ignores disconnected higher sequence and uses selected terminal facts
+  ---
+  duration_ms: 28.0365
+  type: 'test'
+  ...
+# Subtest: malformed or mismatched exact Run fails closed without alternate selection
+ok 6 - malformed or mismatched exact Run fails closed without alternate selection
+  ---
+  duration_ms: 25.1537
+  type: 'test'
+  ...
+# Subtest: checkpoint authorization is exact, pure, and never inferred
+ok 7 - checkpoint authorization is exact, pure, and never inferred
+  ---
+  duration_ms: 0.5126
+  type: 'test'
+  ...
+# Subtest: status reports exact selected Run and approved OpenSpec facts only
+ok 8 - status reports exact selected Run and approved OpenSpec facts only
+  ---
+  duration_ms: 234.2771
+  type: 'test'
+  ...
+# Subtest: doctor reports bounded diagnostics and never invokes Archify
+ok 9 - doctor reports bounded diagnostics and never invokes Archify
+  ---
+  duration_ms: 107.8244
+  type: 'test'
+  ...
+# Subtest: resolves exact OpenSpec identity with the closed resolved shape
+ok 10 - resolves exact OpenSpec identity with the closed resolved shape
+  ---
+  duration_ms: 22.8004
+  type: 'test'
+  ...
+# Subtest: rejects unsupported managed tool ids before any fallback
+ok 11 - rejects unsupported managed tool ids before any fallback
+  ---
+  duration_ms: 3.3745
+  type: 'test'
+  ...
+# Subtest: requires explicit FLOWKIT_HOME
+ok 12 - requires explicit FLOWKIT_HOME
+  ---
+  duration_ms: 3.3648
+  type: 'test'
+  ...
+# Subtest: rejects invalid or expanded managed-tool lock authority
+ok 13 - rejects invalid or expanded managed-tool lock authority
+  ---
+  duration_ms: 4.7296
+  type: 'test'
+  ...
+# Subtest: rejects traversing runtime-root material
+ok 14 - rejects traversing runtime-root material
+  ---
+  duration_ms: 3.797
+  type: 'test'
+  ...
+# Subtest: ignores conflicting PATH executable and returns only managed runtime facts
+ok 15 - ignores conflicting PATH executable and returns only managed runtime facts
+  ---
+  duration_ms: 11.15
+  type: 'test'
+  ...
+# Subtest: Archify is unsupported before home, lock, or runtime lookup
+ok 16 - Archify is unsupported before home, lock, or runtime lookup
+  ---
+  duration_ms: 9.6866
+  type: 'test'
+  ...
+# Subtest: fails closed when requested managed runtime is absent
+ok 17 - fails closed when requested managed runtime is absent
+  ---
+  duration_ms: 3.4686
+  type: 'test'
+  ...
+# Subtest: rejects exact package name or version mismatch
+ok 18 - rejects exact package name or version mismatch
+  ---
+  duration_ms: 17.332
+  type: 'test'
+  ...
+# Subtest: rejects missing and escaping entrypoints
+ok 19 - rejects missing and escaping entrypoints
+  ---
+  duration_ms: 16.6266
+  type: 'test'
+  ...
+# Subtest: resolves requested tool on demand without requiring its peer
+ok 20 - resolves requested tool on demand without requiring its peer
+  ---
+  duration_ms: 24.3129
+  type: 'test'
+  ...
+# Subtest: resolution never invokes the managed entrypoint or requires archive provenance
+ok 21 - resolution never invokes the managed entrypoint or requires archive provenance
+  ---
+  duration_ms: 15.2959
+  type: 'test'
+  ...
+1..21
+# tests 21
+# suites 0
+# pass 21
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1695.1646

@@ -51,16 +51,11 @@ export interface DeliveryStartValidationMaterial {
 }
 
 type DeliveryStartCheckId =
-  | "git-start-prestate"
-  | "openspec-delivery-manifest"
-  | "archify-current"
-  | "archify-planned"
-  | "archify-current-to-planned"
-  | "content-receipt";
+  "git-start-prestate" | "openspec-delivery-manifest" | "content-receipt";
 
 interface DeliveryStartCheckOutcome {
   readonly checkId: DeliveryStartCheckId;
-  readonly tool: "git" | "openspec" | "archify" | "flowkit";
+  readonly tool: "git" | "openspec" | "flowkit";
   readonly exitCode: 0;
   readonly inputs: readonly string[];
   readonly outputArtifacts: readonly string[];
@@ -73,13 +68,7 @@ export type ReadDeliveryStartValidation = (
 const HASH = /^[0-9a-f]{64}$/;
 
 function fixedOutputs(deliveryId: string): string[] {
-  const architecture = `architecture/${deliveryId}/json`;
-  return [
-    `openspec/delivery-groups/${deliveryId}.yaml`,
-    `${architecture}/current.architecture.json`,
-    `${architecture}/planned.architecture.json`,
-    `${architecture}/current-to-planned.compare.json`,
-  ];
+  return [`openspec/delivery-groups/${deliveryId}.yaml`];
 }
 
 export function isDeliveryStartValidatedSurface(
@@ -244,13 +233,6 @@ function expectedValidationChecks(
     ]),
     check("openspec-delivery-manifest", "openspec", [
       artifactInput(outputs[0]),
-    ]),
-    check("archify-current", "archify", [artifactInput(outputs[1])]),
-    check("archify-planned", "archify", [artifactInput(outputs[2])]),
-    check("archify-current-to-planned", "archify", [
-      artifactInput(outputs[1]),
-      artifactInput(outputs[2]),
-      artifactInput(outputs[3]),
     ]),
     check("content-receipt", "flowkit", [
       `planning:${planningReference.artifact}@sha256:${planningReference.contentSha256}`,

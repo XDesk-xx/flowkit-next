@@ -35,10 +35,7 @@ function expected(outcomes: Awaited<ReturnType<typeof acceptedOutcomes>>) {
     deliveryId,
     changeIds: ["first-change", "second-change"],
     fullTestExecutionRef: outcomes.fullTest.record.executionRef,
-    architectureFinalizationRef:
-      outcomes.architecture.record.architectureFinalizationRef,
     fullTestOutcome: outcomes.fullTest,
-    architectureOutcome: outcomes.architecture,
   };
 }
 

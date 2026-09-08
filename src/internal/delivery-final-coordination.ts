@@ -34,8 +34,6 @@ const FINALIZATION_FIELDS = [
   "state",
   "verifiedCandidateRef",
   "fullTestExecutionRef",
-  "architectureFinalizationRef",
-  "architectureMaterializedCandidateRef",
   "gitCheckpoint",
 ] as const;
 
@@ -163,10 +161,6 @@ function parseCompleted(
       operationPackage.operationFacts.verifiedCandidateRef ||
     document.finalization.fullTestExecutionRef !==
       operationPackage.operationFacts.fullTestExecutionRef ||
-    document.finalization.architectureFinalizationRef !==
-      operationPackage.operationFacts.architectureFinalizationRef ||
-    document.finalization.architectureMaterializedCandidateRef !==
-      operationPackage.operationFacts.architectureMaterializedCandidateRef ||
     document.finalization.gitCheckpoint !==
       "pending-owner-authorized-local-delivery-commit"
   ) {
@@ -265,8 +259,6 @@ function materializeCompletedManifestBytes(
     `${deliveryIndent}state: completed`,
     `${deliveryIndent}verifiedCandidateRef: ${quoted(facts.verifiedCandidateRef)}`,
     `${deliveryIndent}fullTestExecutionRef: ${quoted(facts.fullTestExecutionRef)}`,
-    `${deliveryIndent}architectureFinalizationRef: ${quoted(facts.architectureFinalizationRef)}`,
-    `${deliveryIndent}architectureMaterializedCandidateRef: ${quoted(facts.architectureMaterializedCandidateRef)}`,
     `${deliveryIndent}gitCheckpoint: pending-owner-authorized-local-delivery-commit`,
     "",
   ].join(newline);

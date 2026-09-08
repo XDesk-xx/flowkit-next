@@ -26,16 +26,12 @@ Fail closed if package identity, Guidance identity, Delivery identity, accepted 
 ## Execution
 
 1. Verify the repository is at the exact accepted base and the working tree satisfies the clean-start precondition.
-2. Read current Git/OpenSpec/Memo/Previous-Actual inputs from their canonical owners. Do not accept caller-supplied substitutes as truth.
+2. Read current Git/OpenSpec/Memo inputs from their canonical owners. Do not accept caller-supplied substitutes as truth.
 3. Reuse exact repository/history/runtime state when it already exists. Restore only missing exact state, verify it, then continue through the same Start path. Do not create local/detached/ZIP/bundle lifecycle modes.
-4. Materialize only the bounded Delivery Start surface:
-   - Delivery manifest;
-   - Current Architecture;
-   - Planned Architecture;
-   - Current → Planned compare.
-5. Keep Archify evidence valid at each document's declared repository revision. Do not cite newly-created Start files as evidence for an older accepted-base revision.
-6. Validate the complete Start surface with the applicable OpenSpec, Archify, Git and receipt/hash checks. Do not activate a Change automatically.
-7. Read back the four fixed outputs, bind their artifact/hash/bytes plus project, Delivery, accepted base, planning reference, the post-output v2 candidate, and the complete trusted validation source as `contentCompletion`.
+4. Materialize only the bounded Delivery Start manifest at `openspec/delivery-groups/<delivery-id>.yaml`.
+5. Do not require architecture diagrams, previous Actual, rendering, or architecture skip evidence.
+6. Validate the manifest with exactly `git-start-prestate`, `openspec-delivery-manifest`, and `content-receipt`, in that order. Do not activate a Change automatically.
+7. Read back the single fixed manifest, bind its artifact/hash/bytes plus project, Delivery, accepted base, planning reference, the post-output v2 candidate, and the complete trusted validation source as `contentCompletion`.
 8. If explicit bounded commit authority is absent, return terminal success with `fixedPointCommit=null`, do not invoke Git mutation, and STOP.
 9. If that authority is present and validation is PASS, create at most one ordinary Delivery Start fixed-point commit; independently read and verify its SHA, parent/count, clean poststate and v2 object content, then STOP. Failure must not claim Git success or auto-retry.
 

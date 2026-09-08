@@ -92,19 +92,24 @@
 - **THEN** checkpoint authorization SHALL NOT 被声明成立，即使 caller 提供 structural-valid Owner authority fact
 
 ### Requirement: doctor performs only bounded Foundation runtime diagnostics
-`flowkit doctor` SHALL 对当前 Foundation CLI 真实运行依赖执行 fail-closed diagnostics：通过既有 managed-tool resolver 验证 exact OpenSpec 与 Archify runtime identity，并通过既有 OpenSpec observation seam 验证 requested repository 的 OpenSpec exact-root observation。Archify SHALL 仅被 resolve，不得在本 command 中被调用生成、比较或验证 Delivery architecture projection。Node SHALL 继续由 repository host compatibility declaration 约束，而不得被 doctor 转换为 exact managed-tool patch lock。
+
+`flowkit doctor` SHALL 仅通过既有 resolver 验证 exact OpenSpec runtime identity，并通过 OpenSpec observation 验证 requested repository 的 exact-root；diagnostics SHALL 仅为 `openspec-runtime` 和 `openspec-root`，整体 pass 当且仅当两者通过。SHALL NOT 解析、调用或输出 Archify diagnostic，也不返回其 skip/not-applicable。Node SHALL 继续使用 host compatibility declaration，不转为 exact managed patch lock。
 
 #### Scenario: Managed runtimes and OpenSpec root are valid
-- **WHEN** exact managed OpenSpec/Archify 均可解析，且 OpenSpec observation exact-bind requested repository root
-- **THEN** `doctor` SHALL 返回 machine-readable PASS diagnostics，而不调用 Archify rendering/materialization
+- **WHEN** exact OpenSpec 可解析且 observation exact-bind requested root，没有 Archify runtime 或任何图
+- **THEN** doctor SHALL 返回 machine-readable pass，只有两个 OpenSpec diagnostics
+
+#### Scenario: Required OpenSpec cannot be resolved
+- **WHEN** 所需 OpenSpec runtime 缺失或 identity 不符
+- **THEN** doctor SHALL 报告既有 closed diagnostic 与整体 fail，不回退 PATH/global
 
 #### Scenario: Managed Archify cannot be resolved
-- **WHEN** existing managed-tool resolver 对 Archify fail closed
-- **THEN** `doctor` SHALL 报告对应 closed diagnostic，且 MUST NOT fallback 到 PATH/global Archify
+- **WHEN** 原 Archify runtime 不可解析，但所需 OpenSpec runtime/root 均有效
+- **THEN** doctor SHALL 只报告两个 OpenSpec diagnostics 并整体 pass，不尝试解析 Archify；这是该旧场景的新预期
 
 #### Scenario: OpenSpec binds to a parent repository root
-- **WHEN** OpenSpec observation 成功但 reported root 与 requested repository root 不精确一致
-- **THEN** `doctor` SHALL fail closed with the existing root-mismatch integration diagnostic semantics
+- **WHEN** observation 成功但 reported root 不等于 requested root
+- **THEN** doctor SHALL 按既有 root-mismatch semantics fail closed
 
 ### Requirement: CLI machine outcomes distinguish valid formal results from command/integration failure
 所有 Foundation CLI command SHALL 输出 deterministic machine-readable result。合法的 `status` result、Policy `blocked` decision、checkpoint `authorized=false` 与 bounded doctor diagnostic SHALL 保持为正式 machine outcome；malformed CLI input、无法读取 exact Run、managed-tool/integration failure、invalid machine shape 或 unknown command SHALL 产生 machine-distinguishable failure，并 SHALL 以非零 process exit 结束。CLI MUST NOT 通过解析 free-text message 来重建 domain semantics。
@@ -118,15 +123,20 @@
 - **THEN** CLI SHALL 输出 machine-distinguishable failure 并以非零 exit 结束，且 MUST NOT 尝试另选一个 Run
 
 ### Requirement: Foundation CLI remains a thin bootstrap-era surface without self-management
-本 capability 的 production CLI SHALL 只组合既有 canonical domain/integration seams，MUST NOT 读取或执行 `.agents/skills/**`、自动发现 active Delivery/current Run、建立 current-state registry、执行 Author/Reviewer/provider transport、驱动 OpenSpec mutation/workflow、触发 Archify architecture materialization、执行 Git mutation、运行 Delivery Full Test 或执行 Delivery Final/Owner promotion。
+
+Production CLI SHALL 仅组合既有 canonical domain/integration seams，不读取/执行 `.agents/skills/**`、自动发现 active Delivery/current Run、建立 registry、执行 Author/Reviewer/provider transport、驱动 OpenSpec mutation、运行 Delivery Full Test/Final、执行 Git mutation 或 Owner promotion。CLI SHALL 不提供 Archify 解析或绘图入口。
 
 #### Scenario: Bootstrap Skills are absent from production call path
-- **WHEN** `flowkit status`、`next` 或 `doctor` 在 production runtime 中执行
-- **THEN** command SHALL 不读取/执行 `.agents/skills/**`，并 SHALL 仅依赖其正式 Core/integration input contract
+- **WHEN** status、next 或 doctor 在 production 执行
+- **THEN** command SHALL 只依赖正式 Core/integration input，不读取/执行 bootstrap Skill
+
+#### Scenario: Independent diagrams do not provide lifecycle authority
+- **WHEN** repository 包含独立或历史架构描述
+- **THEN** CLI SHALL 不读取这些图来推导 lifecycle truth，也不触发绘图或 Delivery Start/Final
 
 #### Scenario: Archify is managed but not lifecycle authority
-- **WHEN** doctor 成功解析 exact managed Archify runtime
-- **THEN** CLI SHALL 仅报告 runtime diagnostic，且 MUST NOT 读取 Archify projection 作为 lifecycle truth 或触发 Delivery Start/Final architecture generation
+- **WHEN** 用户独立管理着历史 Archify 安装或图文件
+- **THEN** CLI SHALL 不将其视为 Flowkit managed tool，不解析该安装或从图推导 lifecycle authority；保留场景身份不保留旧产品集成
 
 ### Requirement: CLI resolves trusted Delivery-Change coordination state before lifecycle use
 对于 `status` 与 `next`，CLI SHALL 以 exact repository root、Delivery ID 与 Change ID 定位 repository-owned durable Delivery coordination truth，并在报告 Change state 或构造 Policy facts 前解析唯一 trusted canonical `ChangeState`。CLI SHALL fail closed on missing/mismatched Delivery identity、missing/duplicate exact Change、invalid state，或其他无法得到唯一 canonical coordination fact 的输入；resolver SHALL read only and SHALL NOT mutate Delivery state、Owner authority、OpenSpec Change artifacts、Run/Result 或 Git。

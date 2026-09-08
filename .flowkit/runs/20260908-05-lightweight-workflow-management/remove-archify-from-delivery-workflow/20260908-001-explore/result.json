@@ -1,0 +1,39 @@
+{
+  "kind": "external-orchestrator-explore-result",
+  "canonicalFlowkitRuntimeRun": false,
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "remove-archify-from-delivery-workflow",
+  "runId": "20260908-001-explore",
+  "action": "explore",
+  "role": "author",
+  "status": "terminal",
+  "verdict": "PASS",
+  "verdictMeaning": "Author bounded Explore completed; no implementation acceptance or Review approval claimed.",
+  "projectOrdinal": 33,
+  "previousRunId": null,
+  "summary": "三个真实有界反例确认 doctor、Start 与共享证据的 Archify 强制依赖；59/59 现行定向测试通过。退役需覆盖 operation、工具、Final/共享证据/协调/Integration 直接消费者，不扩大至其余五个 Change。",
+  "exploreArtifact": "openspec/changes/remove-archify-from-delivery-workflow/explore.md",
+  "proofRoot": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/remove-archify-from-delivery-workflow/proof/20260908-001-explore",
+  "proofSummary": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/remove-archify-from-delivery-workflow/proof/20260908-001-explore/attempt-01/summary.json",
+  "handoffAudit": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/remove-archify-from-delivery-workflow/proof/20260908-001-explore/handoff-audit.json",
+    "sha256": "dd144c2908f6949dd6ccd4805ccb2e68561dbd9695ea3ccc4ea40bcd49441842"
+  },
+  "ownerActivationRef": "owner:9fbce3acfd773efa4def5cbc64dd4b703d2b50e4a07407bade9c4d1b05f893d6",
+  "retention": "必要 proof 默认长期保存到本项目 .flowkit/artifacts；不覆盖旧执行，不只引用 .tmp，不迁移 D04 历史",
+  "nextBoundary": "review-explore",
+  "reviewerVerdict": null,
+  "proposalAllowed": false,
+  "applyAllowed": false,
+  "gitMutationAllowed": false,
+  "formalFullTestExecuted": false,
+  "productionMutation": false,
+  "blockingUnknown": null,
+  "limitations": [
+    "Fixture test, not actual installed OpenSpec execution or lifecycle invocation.",
+    "Early guard only; source inventory establishes the exact mandatory paths.",
+    "Not semantic admission; Final and Integration source consumers must converge together."
+  ],
+  "completedAt": "2026-09-08T02:51:55.430Z",
+  "stop": true
+}

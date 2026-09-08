@@ -96,11 +96,10 @@ async function writeGuidance(
   return entry;
 }
 
-test("DeliveryOperationId is a closed exact five-value catalog with deterministic Guidance mapping", () => {
+test("DeliveryOperationId is a closed exact four-value catalog with deterministic Guidance mapping", () => {
   assert.deepEqual(DELIVERY_OPERATIONS, [
     "delivery-start",
     "delivery-full-test",
-    "delivery-architecture-finalization",
     "delivery-final",
     "delivery-repository-integration",
   ]);
@@ -108,10 +107,6 @@ test("DeliveryOperationId is a closed exact five-value catalog with deterministi
   const expected = new Map([
     ["delivery-start", "skills/delivery/start/SKILL.md"],
     ["delivery-full-test", "skills/delivery/full-test/SKILL.md"],
-    [
-      "delivery-architecture-finalization",
-      "skills/delivery/architecture-finalization/SKILL.md",
-    ],
     ["delivery-final", "skills/delivery/final/SKILL.md"],
     [
       "delivery-repository-integration",
@@ -127,6 +122,14 @@ test("DeliveryOperationId is a closed exact five-value catalog with deterministi
     );
   }
 
+  assert.equal(
+    isDeliveryOperationId("delivery-architecture-finalization"),
+    false,
+  );
+  assert.equal(
+    canonicalDeliveryGuidancePath("delivery-architecture-finalization"),
+    null,
+  );
   assert.equal(isDeliveryOperationId("start"), false);
   assert.equal(isDeliveryOperationId("Delivery-Start"), false);
   assert.equal(canonicalDeliveryGuidancePath("delivery_start"), null);
@@ -436,11 +439,12 @@ test("DeliveryOperationPackage forms only the concrete Start variant and rejects
 });
 
 test("Delivery Final package is closed to exact facts, Guidance, and singleton authority", () => {
+  const inputFacts = finalFacts();
   const valid = formDeliveryOperationPackage(
     deliveryId,
     "delivery-final",
     finalAuthority(),
-    finalFacts(),
+    inputFacts,
     guidanceRef("delivery-final"),
   );
   assert.notEqual(valid, null);
@@ -451,7 +455,39 @@ test("Delivery Final package is closed to exact facts, Guidance, and singleton a
     isDeliveryFinalAuthorityForDelivery(valid?.ownerAuthority, deliveryId),
     true,
   );
-  assert.notEqual(valid?.operationFacts, finalFacts());
+  assert.notEqual(valid?.operationFacts, inputFacts);
+  if (valid?.operationId !== "delivery-final")
+    throw new Error("invalid fixture");
+  assert.notEqual(
+    valid.operationFacts.requiredEvidence,
+    inputFacts.requiredEvidence,
+  );
+  assert.notEqual(
+    valid.operationFacts.requiredEvidence.fullTest.artifacts,
+    inputFacts.requiredEvidence.fullTest.artifacts,
+  );
+  assert.notEqual(
+    valid.operationFacts.requiredEvidence.changeClosures[0].runs[0]
+      .artifacts[0],
+    inputFacts.requiredEvidence.changeClosures[0].runs[0].artifacts[0],
+  );
+  for (const key of Object.keys(inputFacts)) {
+    const missing = Object.fromEntries(
+      Object.entries(inputFacts).filter(([name]) => name !== key),
+    );
+    assert.equal(isDeliveryFinalOperationFacts(missing), false);
+  }
+  for (const key of Object.keys(inputFacts.requiredEvidence)) {
+    const requiredEvidence = Object.fromEntries(
+      Object.entries(inputFacts.requiredEvidence).filter(
+        ([name]) => name !== key,
+      ),
+    );
+    assert.equal(
+      isDeliveryFinalOperationFacts({ ...inputFacts, requiredEvidence }),
+      false,
+    );
+  }
 
   const invalidFacts = [
     { ...finalFacts(), extra: true },
@@ -549,7 +585,12 @@ test("canonical Delivery Final Guidance is generic, content-bound, and operation
   const body = await readFile("skills/delivery/final/SKILL.md", "utf8");
   assert.equal(body.includes(deliveryId), false);
   assert.equal(body.includes("complete trusted Full Test"), true);
-  assert.equal(body.includes("all six fixed Architecture output bytes"), true);
+  assert.equal(
+    body.includes(
+      "current repository candidate equal to that Full Test record.candidateRef",
+    ),
+    true,
+  );
   assert.equal(
     body.includes("only the fixed canonical Delivery coordination"),
     true,
@@ -563,7 +604,7 @@ test("canonical Delivery Final Guidance is generic, content-bound, and operation
   );
 });
 
-test("repository integration package is the fifth exact variant and requires singleton Owner authority", () => {
+test("repository integration package is the fourth exact variant and requires singleton Owner authority", () => {
   const repoAuthority: OwnerAuthorityFact = {
     ref: `owner:${"9".repeat(64)}`,
     decision: "authorize-repository-integration",

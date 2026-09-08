@@ -4,11 +4,6 @@ import path from "node:path";
 
 import { deriveApplicableCheckCandidateRef } from "./applicable-check-execution.js";
 import {
-  deriveDeliveryArchitectureFinalizationRef,
-  type DeliveryArchitectureFinalizationOutcome,
-} from "./delivery-architecture-finalization-execution.js";
-import type { DeliveryArchitectureFinalizationClosureRecord } from "./delivery-architecture-finalization-identity.js";
-import {
   formDeliveryOperationPackage,
   isDeliveryOperationPackage,
   readExactDeliveryGuidance,
@@ -34,7 +29,6 @@ import {
 } from "./delivery-full-test-execution.js";
 import { isSemanticId, type DeliveryId } from "./identity.js";
 import { observeOpenSpecActiveChanges } from "./openspec-observation.js";
-import { revalidateArchitectureFinalizationClosureOutputs } from "../internal/delivery-architecture-finalization-closure.js";
 import {
   readDeliveryFinalCoordinationPrestate,
   revalidateDeliveryFinalCoordinationPrestate,
@@ -45,7 +39,6 @@ export interface DeliveryFinalPreparationInput {
   readonly deliveryId: DeliveryId;
   readonly ownerAuthority: DeliveryFinalOperationPackage["ownerAuthority"];
   readonly fullTestOutcome: DeliveryFullTestInvocationTerminal;
-  readonly architectureOutcome: DeliveryArchitectureFinalizationOutcome;
   readonly flowkitHome: string;
 }
 
@@ -74,8 +67,6 @@ export interface DeliveryFinalizationRecord {
   readonly deliveryFinalizationRef: string;
   readonly verifiedCandidateRef: string;
   readonly fullTestExecutionRef: string;
-  readonly architectureFinalizationRef: string;
-  readonly architectureMaterializedCandidateRef: string;
   readonly coordinationRef: {
     readonly artifact: string;
     readonly contentSha256: string;
@@ -115,8 +106,6 @@ export type DeliveryFinalInvocationOutcome =
   | DeliveryFinalInvocationCorrectionRequired
   | DeliveryFinalInvocationTerminal;
 
-const ARCHITECTURE_FINALIZATION_REF_PATTERN =
-  /^architecture-finalization:sha256:[0-9a-f]{64}$/;
 const CANDIDATE_REF_PATTERN = /^candidate:sha256:[0-9a-f]{64}$/;
 const DELIVERY_FINALIZATION_REF_PATTERN =
   /^delivery-finalization:sha256:[0-9a-f]{64}$/;
@@ -149,7 +138,6 @@ function isPreparationInput(
       "deliveryId",
       "ownerAuthority",
       "fullTestOutcome",
-      "architectureOutcome",
       "flowkitHome",
     ]) &&
     isSemanticId(value.deliveryId) &&
@@ -178,63 +166,6 @@ async function readProjectId(repositoryRoot: string): Promise<string | null> {
   }
 }
 
-function trustedArchitectureRecord(
-  value: unknown,
-  deliveryId: DeliveryId,
-  fullTestOutcome: DeliveryFullTestInvocationTerminal,
-): {
-  readonly operationPackage: Extract<
-    DeliveryArchitectureFinalizationOutcome,
-    { readonly status: "terminal" }
-  >["operationPackage"];
-  readonly record: DeliveryArchitectureFinalizationClosureRecord;
-} | null {
-  if (
-    !isRecord(value) ||
-    !hasExactlyFields(value, ["status", "operationPackage", "record"]) ||
-    value.status !== "terminal" ||
-    !isDeliveryOperationPackage(value.operationPackage) ||
-    value.operationPackage.operationId !==
-      "delivery-architecture-finalization" ||
-    value.operationPackage.deliveryId !== deliveryId ||
-    !isRecord(value.record) ||
-    !hasExactlyFields(value.record, [
-      "architectureFinalizationRef",
-      "verifiedCandidateRef",
-      "fullTestExecutionRef",
-      "outputs",
-      "architectureMaterializedCandidateRef",
-    ]) ||
-    typeof value.record.architectureFinalizationRef !== "string" ||
-    !ARCHITECTURE_FINALIZATION_REF_PATTERN.test(
-      value.record.architectureFinalizationRef,
-    ) ||
-    typeof value.record.architectureMaterializedCandidateRef !== "string" ||
-    !CANDIDATE_REF_PATTERN.test(
-      value.record.architectureMaterializedCandidateRef,
-    ) ||
-    value.operationPackage.operationFacts.verifiedCandidateRef !==
-      fullTestOutcome.record.candidateRef ||
-    value.operationPackage.operationFacts.fullTestExecutionRef !==
-      fullTestOutcome.record.executionRef ||
-    value.record.verifiedCandidateRef !== fullTestOutcome.record.candidateRef ||
-    value.record.fullTestExecutionRef !== fullTestOutcome.record.executionRef ||
-    deriveDeliveryArchitectureFinalizationRef(
-      value.operationPackage,
-      value.record,
-    ) !== value.record.architectureFinalizationRef
-  ) {
-    return null;
-  }
-  return value as unknown as {
-    readonly operationPackage: Extract<
-      DeliveryArchitectureFinalizationOutcome,
-      { readonly status: "terminal" }
-    >["operationPackage"];
-    readonly record: DeliveryArchitectureFinalizationClosureRecord;
-  };
-}
-
 export async function prepareDeliveryFinalOperationPackage(
   repositoryRoot: unknown,
   input: unknown,
@@ -248,26 +179,10 @@ export async function prepareDeliveryFinalOperationPackage(
   ) {
     return null;
   }
-  const architecture = trustedArchitectureRecord(
-    input.architectureOutcome,
-    input.deliveryId,
-    input.fullTestOutcome,
-  );
-  if (architecture === null) return null;
-  if (
-    !(await revalidateArchitectureFinalizationClosureOutputs(
-      repositoryRoot,
-      architecture.operationPackage,
-      architecture.record,
-    ))
-  ) {
-    return null;
-  }
-
   const candidateRef = await deriveApplicableCheckCandidateRef(repositoryRoot);
   if (
     candidateRef === null ||
-    candidateRef !== architecture.record.architectureMaterializedCandidateRef
+    candidateRef !== input.fullTestOutcome.record.candidateRef
   ) {
     return null;
   }
@@ -285,10 +200,7 @@ export async function prepareDeliveryFinalOperationPackage(
       deliveryId: input.deliveryId,
       changeIds: coordination.completedRequiredChangeIds,
       fullTestExecutionRef: input.fullTestOutcome.record.executionRef,
-      architectureFinalizationRef:
-        architecture.record.architectureFinalizationRef,
       fullTestOutcome: input.fullTestOutcome,
-      architectureOutcome: input.architectureOutcome,
     },
   );
   if (
@@ -319,10 +231,6 @@ export async function prepareDeliveryFinalOperationPackage(
     {
       verifiedCandidateRef: input.fullTestOutcome.record.candidateRef,
       fullTestExecutionRef: input.fullTestOutcome.record.executionRef,
-      architectureFinalizationRef:
-        architecture.record.architectureFinalizationRef,
-      architectureMaterializedCandidateRef:
-        architecture.record.architectureMaterializedCandidateRef,
       coordinationPrestateRef: coordination.ref,
       completedRequiredChangeIds: coordination.completedRequiredChangeIds,
       requiredEvidence,
@@ -374,10 +282,6 @@ function finalizationHashMaterial(
         operationPackage.operationFacts.verifiedCandidateRef,
       fullTestExecutionRef:
         operationPackage.operationFacts.fullTestExecutionRef,
-      architectureFinalizationRef:
-        operationPackage.operationFacts.architectureFinalizationRef,
-      architectureMaterializedCandidateRef:
-        operationPackage.operationFacts.architectureMaterializedCandidateRef,
       coordinationPrestateRef: {
         artifact:
           operationPackage.operationFacts.coordinationPrestateRef.artifact,
@@ -446,8 +350,6 @@ export function isDeliveryFinalizationRecordForPackage(
       "deliveryFinalizationRef",
       "verifiedCandidateRef",
       "fullTestExecutionRef",
-      "architectureFinalizationRef",
-      "architectureMaterializedCandidateRef",
       "coordinationRef",
       "finalizedCandidateRef",
     ]) ||
@@ -458,11 +360,7 @@ export function isDeliveryFinalizationRecordForPackage(
     value.verifiedCandidateRef !==
       operationPackage.operationFacts.verifiedCandidateRef ||
     value.fullTestExecutionRef !==
-      operationPackage.operationFacts.fullTestExecutionRef ||
-    value.architectureFinalizationRef !==
-      operationPackage.operationFacts.architectureFinalizationRef ||
-    value.architectureMaterializedCandidateRef !==
-      operationPackage.operationFacts.architectureMaterializedCandidateRef
+      operationPackage.operationFacts.fullTestExecutionRef
   ) {
     return false;
   }
@@ -584,10 +482,6 @@ export async function invokeDeliveryFinalOperation(
     deliveryFinalizationRef,
     verifiedCandidateRef: operationPackage.operationFacts.verifiedCandidateRef,
     fullTestExecutionRef: operationPackage.operationFacts.fullTestExecutionRef,
-    architectureFinalizationRef:
-      operationPackage.operationFacts.architectureFinalizationRef,
-    architectureMaterializedCandidateRef:
-      operationPackage.operationFacts.architectureMaterializedCandidateRef,
     coordinationRef,
     finalizedCandidateRef,
   };

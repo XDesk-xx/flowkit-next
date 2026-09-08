@@ -7,19 +7,20 @@
 ## Requirements
 
 ### Requirement: Delivery operation identity is closed and maps deterministically to canonical Guidance
-系统 SHALL 只接受以下五个 canonical `DeliveryOperationId` literal：`delivery-start`、`delivery-full-test`、`delivery-architecture-finalization`、`delivery-final`、`delivery-repository-integration`。每个 exact operation SHALL 通过固定 1:1 映射唯一对应 canonical repository-relative Delivery Guidance path；未知 literal、alias、模糊匹配、动态 registration、ranking 或 Agent-selected operation SHALL fail closed。`DeliveryOperationId` SHALL 只表达 already-decided execution identity，且 SHALL NOT 决定下一 Delivery operation、Change activation、Reviewer/Verification truth 或 Git authority。
+
+系统 SHALL 只接受四个 canonical `DeliveryOperationId`：`delivery-start`、`delivery-full-test`、`delivery-final`、`delivery-repository-integration`。每个 exact operation SHALL 通过固定 1:1 映射唯一对应 canonical repository-relative Delivery Guidance path；未知 literal、已退役的 `delivery-architecture-finalization`、alias、模糊匹配、动态 registration/ranking SHALL fail closed。identity SHALL 只表达 already-decided execution，不决定下一 operation、Change activation、Reviewer/Verification truth 或 Git authority。
 
 #### Scenario: Resolve the canonical Guidance path for Delivery Start
-- **WHEN** already-decided exact operation 为 `delivery-start`
-- **THEN** 系统 SHALL 唯一解析 `skills/delivery/start/SKILL.md` 作为该 operation 的 canonical Guidance entry
+- **WHEN** already-decided operation 为 `delivery-start`
+- **THEN** 系统 SHALL 唯一解析 `skills/delivery/start/SKILL.md`
 
 #### Scenario: Reject unknown Delivery operation
-- **WHEN** 输入 operation literal 不在 closed five-value catalog 中
-- **THEN** 系统 SHALL fail closed，且 SHALL NOT 通过 registry、alias、discovery 或 fuzzy matching 把它转换成可执行 Delivery operation
+- **WHEN** operation 不在四值集合中，包括 `delivery-architecture-finalization`
+- **THEN** 系统 SHALL 拒绝，不通过 alias/discovery 转换，不返回 optional、skip 或空成功结果
 
 #### Scenario: Operation identity cannot advance the Delivery lifecycle
-- **WHEN** 一个 valid `DeliveryOperationId` 已被识别
-- **THEN** 该 identity SHALL NOT 自行推导下一 operation、Owner authorization、Change state 或 repository mutation permission
+- **WHEN** valid operation 已识别
+- **THEN** 该 identity SHALL NOT 推导 next operation、Owner authority、Change state 或 mutation permission
 
 ### Requirement: Delivery Guidance identity is exact, content-bound, and product-canonical
 系统 SHALL 只从 trusted canonical repository root 与 exact `DeliveryOperationId` 解析 Delivery Guidance，并将可执行 `DeliveryGuidanceRef` 绑定到 exact canonical repository-relative path 与 exact file-content SHA-256 identity。canonical entry SHALL 是 readable regular file；missing、unreadable、non-regular、symlink、wrong-operation mapping 或 content mismatch SHALL fail closed。caller / Agent SHALL NOT 任意指定 Guidance path 或 content identity，且 product Delivery execution SHALL NOT fallback 到 `.agents/skills/**`、conversation memory、Run prose 或 repository-wide Skill discovery。
@@ -53,20 +54,17 @@
 
 ### Requirement: Delivery Start package facts are minimal and anchored to exact accepted repository truth
 
-`delivery-start` SHALL 保持 closed operation facts，绑定 exact `acceptedBaseCommit` 与 Owner-approved planning reference identity/content SHA-256。可信 host SHALL 从 Git/OpenSpec/Memo/Previous-Actual 各 owner 读取实时输入，验证 canonical repository 当前处于 exact accepted base 且满足 clean-start，不能把 caller 声明当成这些事实。Start SHALL 要求精确匹配 Delivery 且包含 `delivery-start` scope 的 Owner authority；只有明确要求执行专属 checkpoint 时才 SHALL 另外要求 `single-delivery-start-fixed-point-commit` 权限，内容完成本身不要求该权限。
+`delivery-start` SHALL 保持 closed facts，绑定 exact `acceptedBaseCommit` 与 Owner-approved planning reference identity/content SHA-256。可信 host SHALL 从 Git/OpenSpec/Memo 各 owner 读取实时输入，验证 canonical repository 位于 exact accepted base 且满足 clean-start，不以 caller 声明代替事实；SHALL NOT 要求 Previous-Actual 或任何架构输入。Start SHALL 要求精确匹配 Delivery 且包含 `delivery-start` scope 的 Owner authority；仅明确要求专属 checkpoint 时另需 `single-delivery-start-fixed-point-commit`，内容完成不要求此权限。
 
 #### Scenario: Accept exact Delivery Start facts and authority
-
-- **WHEN** accepted base、planning reference/hash、Delivery 与 create-delivery authority 匹配且包含 delivery-start
-- **THEN** host SHALL 允许形成 Start package，不要求同时具有 commit scope
+- **WHEN** accepted base、planning reference/hash、Delivery 与 create-delivery authority 匹配且包含 delivery-start，无 Previous-Actual
+- **THEN** host SHALL 允许形成 Start package，不要求 commit scope 或图表历史
 
 #### Scenario: Reject stale base or wrong planning reference
-
-- **WHEN** preparation 或实际 mutation 前的 HEAD、规划或 canonical 输入不匹配
-- **THEN** Start SHALL 拒绝，不以另一 SHA 内容等价为由静默重新绑定原 package
+- **WHEN** preparation 或 mutation 前 HEAD、规划或本 operation 的 canonical 输入不匹配
+- **THEN** Start SHALL 拒绝，不以另一 SHA 内容等价静默重绑定
 
 #### Scenario: Reject missing bounded Start authority
-
 - **WHEN** authority 缺失、Delivery 不符或没有 delivery-start scope
 - **THEN** 系统 SHALL 不形成 executable Start package
 
@@ -92,41 +90,23 @@ D04 当前 Delivery 的 self-development SHALL 继续使用 repository-local `.a
 - **WHEN** `delivery-full-test` 需要执行 project-local checks
 - **THEN** 系统 SHALL 复用 existing check declaration/ref/process mechanics，但 SHALL NOT 构造假的 Standard Action / ActionPackage 作为 Delivery Full Test 的 execution authority
 
-### Requirement: Delivery Architecture Finalization package binds exact passed verification and derived-input prestate without Owner mutation authority
-`delivery-architecture-finalization` SHALL 使用现有 `DeliveryOperationPackage` envelope 的一个 closed concrete facts variant，绑定 exact passed `verifiedCandidateRef`、exact `fullTestExecutionRef`、Current/Planned Architecture exact content identity 与 Workflow/Lifecycle/Data Flow fixed system-view prestate。Trusted preparation host SHALL 从 current repository 与 trusted terminal passed Full Test outcome验证/形成这些 facts，而 SHALL NOT 接受 caller 提交 reusable candidate/architecture identity覆盖 canonical facts。该 operation 的 `ownerAuthority` SHALL 为 explicit `null`；non-null Full Test/Delivery Final/Git/other Owner authority SHALL fail closed。Package SHALL 只绑定已经由 trusted Delivery boundary/caller决定的 `delivery-architecture-finalization` WHAT 与 exact HOW/context，不得决定 next operation。
-
-#### Scenario: Form a valid Architecture Finalization package
-- **WHEN** exact Delivery、matching canonical Architecture Finalization Guidance、trusted passed Full Test candidate/execution identity、exact Current/Planned content identity与fixed system-view prestate全部一致，且 `ownerAuthority=null`
-- **THEN** 系统 SHALL 形成 executable `delivery-architecture-finalization` concrete `DeliveryOperationPackage`
-
-#### Scenario: Reject stale proof, mismatched architecture inputs, or smuggled Owner authority
-- **WHEN** current candidate 不等于 passed Full Test candidate、Full Test execution identity不一致、Current/Planned/system-view prestate stale/mismatched，或 package 携带 non-null Owner authority
-- **THEN** package formation SHALL fail closed，并 SHALL NOT 从 Full Test authority、Delivery Final authority或 Git authority推导 Architecture Finalization permission
-
-#### Scenario: Existing Delivery Start and Full Test package behavior remains unchanged
-- **WHEN** 新增 `delivery-final` concrete variant
-- **THEN** accepted `delivery-start`、`delivery-full-test`与`delivery-architecture-finalization` package validation/execution semantics SHALL 保持其各自exact authority边界，且`delivery-repository-integration`仍 SHALL fail closed直到其独立Change实现
-
 ### Requirement: Delivery Final package binds exact accepted closure facts and exact Final authority
 
-`delivery-final` SHALL 保持既有 package envelope，绑定 verified candidate、Full Test execution、Architecture closure、post-materialization candidate、coordination prestate、manifest-order completed required Change IDs，并增加 `requiredEvidence`。后者 SHALL 由可信 host 从各自 durable owner 与被绑定的完整 prerequisite outcomes 派生，覆盖每个 required Change 的 accepted archive/review 及其必要完整性链接、Full Test 与 Architecture 来源，不能由 caller 缩小列表。
+`delivery-final` SHALL 保持既有 package envelope，绑定 verified candidate、Full Test execution、coordination prestate、manifest-order completed required Change IDs 和 `requiredEvidence`。可信 host SHALL 从各 durable owner 与完整 prerequisite outcomes 派生证据，覆盖每个 required Change 的 accepted archive/review 及必要完整性链接和 Full Test 来源，不允许 caller 缩小集合。Package SHALL 不包含 Architecture closure、post-Architecture candidate 或架构证据字段。
 
-Final SHALL 保持 exact `finalize-delivery` singleton authority 与 matching canonical Guidance；extra/malformed/stale/mismatched facts、来源不明、coverage 不完整或 Guidance/authority 不符 SHALL 拒绝。Package SHALL 不决定 next operation 或产生 Git 权限。
+Final SHALL 保持 exact `finalize-delivery` singleton authority 与 matching canonical Guidance；extra/malformed/stale/mismatched facts、来源不明、coverage 不全或 Guidance/authority 不符 SHALL 拒绝。Package SHALL 不决定 next operation 或产生 Git 权限。
 
 #### Scenario: Form a valid Delivery Final package
-
-- **WHEN** complete prerequisites、必要证据覆盖/来源、canonical Guidance 与 singleton Final authority 全部匹配
-- **THEN** host SHALL 形成 content-bound Final package，保留各 owner 的因果链接
+- **WHEN** 无架构字段的 complete prerequisites、必要证据、Guidance 与 singleton Final authority 全部匹配
+- **THEN** host SHALL 形成 content-bound package，直接保留 Full Test → Final 因果链接
 
 #### Scenario: Reject caller-substituted or stale Final facts
-
-- **WHEN** caller 提供 boolean completion、任意 path/digest、遗漏 Change 的证据集合、伪造来源或 stale candidate
-- **THEN** host SHALL 拒绝，不用 package 自洽 hash 代替可信事实
+- **WHEN** caller 提供 boolean completion、任意 path/digest、遗漏 Change 的证据、伪造来源、stale candidate 或旧架构字段
+- **THEN** host SHALL 拒绝，不用自洽 hash 代替可信事实，不静默转换旧 package
 
 #### Scenario: Final package cannot select repository integration
-
 - **WHEN** Final package 形成或执行完毕
-- **THEN** 系统 SHALL 不选择 repository integration、不取得 Git authority
+- **THEN** 系统 SHALL 不选择 Integration、不取得 Git authority
 
 ### Requirement: Repository Integration package binds exact finalized continuity Git prestate and exact Git authority
 
@@ -151,28 +131,24 @@ Package SHALL 仍要求 exact `authorize-repository-integration` singleton autho
 
 ### Requirement: Delivery Start 在内容完成边界返回可核验记录
 
-Start SHALL 保持 state-first：exact repository/history/environment 已有则 verify/reuse，缺失则只恢复必要状态并重新验证同一 preparation；不得引入 local/detached/ZIP/bundle lifecycle mode。Start SHALL materialize manifest、Current、Planned、Current→Planned compare，并由可信 host 对实际输出及要求的 OpenSpec/Archify/Git/receipt validation 取得完整证明。
+Start SHALL 保持 state-first：exact repository/history/environment 已有则 verify/reuse，缺失则只恢复必要状态并重验同一 preparation；不引入 local/detached/ZIP/bundle lifecycle mode。Start SHALL 仅以 canonical Delivery manifest 为固定输出，不要求或生成 Current、Planned、compare 或 system views。可信 host SHALL 对实际 manifest 与保留的 Git/OpenSpec/receipt validation 取得完整证明，不执行 Archify check。
 
-成功 terminal SHALL 返回 `contentCompletion`，绑定 project/Delivery、exact accepted base、planning reference、四个固定输出的 artifact/hash/bytes、输出后 v2 candidate 与真实 validation 来源；仅 Agent 返回 validated、伪造 hash 或缺少实际输出 SHALL 不足以成功。后续 Change SHALL 使用这些被核验的内容事实，而非要求虚构的专属 Start SHA。
+成功 terminal SHALL 返回 `contentCompletion`，绑定 project/Delivery、exact accepted base、planning reference、唯一固定 manifest 输出的 artifact/hash/bytes、输出后 v2 candidate 与真实 validation 来源；Agent 的 validated 标记、伪造 hash 或缺实际输出不足以成功。后续 Change SHALL 使用被核验的内容事实，不要求虚构 Start SHA。
 
-没有 checkpoint 请求/权限时，内容完成 SHALL 可成功且 `fixedPointCommit=null`、不得调用 Git mutation。明确要求 checkpoint 时 SHALL 验证该权限及实际 Git 结果；checkpoint 失败不得谎报 Git 完成，已形成内容事实不等于授权自动重试。一次 invocation SHALL 在该明确边界 STOP，不创建第二 Start lifecycle。
+无 checkpoint 请求/权限时，内容完成 SHALL 可成功且 `fixedPointCommit=null`，不得调用 Git mutation。明确要求 checkpoint 时 SHALL 验证权限及实际 Git 结果；失败不得谎报 Git 完成或自动重试。一次 invocation SHALL 在明确边界 STOP，不创建第二 Start lifecycle。
 
 #### Scenario: 无 Git 权限也可完成内容
-
-- **WHEN** Start authority 有效，四个输出及验证来源完整，无 checkpoint 请求/权限
-- **THEN** terminal SHALL 返回完整 contentCompletion 与 null fixedPointCommit，Git callback SHALL 不执行
+- **WHEN** Start authority 有效，manifest 与验证来源完整，无图且无 checkpoint 请求/权限
+- **THEN** terminal SHALL 返回完整 contentCompletion 与 null fixedPointCommit，不执行 Git callback 或 Archify
 
 #### Scenario: validated 标记不能充当证明
-
-- **WHEN** Agent 只返回 validated，或输出缺失/漂移、验证输入不匹配或来源不明
-- **THEN** host SHALL 拒绝内容完成，不把 stopped-before-commit 简单更名为成功
+- **WHEN** 只有 validated，或 manifest 缺失/漂移、验证输入不符或来源不明
+- **THEN** host SHALL 拒绝内容完成，不用空 receipt 代替真实验证
 
 #### Scenario: 显式 checkpoint 独立核验
-
-- **WHEN** Owner 明确要求且授权至多一个普通 Start commit，内容完成已验证
-- **THEN** host SHALL 从 Git 独立读取并核验实际 commit、parent/数量、clean poststate 与内容连续性；成功后记录真实 SHA 并 STOP
+- **WHEN** Owner 明确要求并授权至多一个普通 Start commit，内容完成已验证
+- **THEN** host SHALL 从 Git 核验实际 commit、parent/数量、clean poststate 与内容连续性，记录真实 SHA 并 STOP
 
 #### Scenario: 已有 exact 状态无需强制 transport
-
-- **WHEN** 所需 accepted repository/history/runtime 已可取得
-- **THEN** Start SHALL 直接验证复用；缺失时 SHALL 停止到外部恢复并重验，不强制额外 ZIP 或 bundle
+- **WHEN** 所需 accepted repository/history/OpenSpec runtime 已可取得
+- **THEN** Start SHALL 直接验证复用；缺失则停止到外部恢复，不强制 ZIP/bundle 或 Archify runtime

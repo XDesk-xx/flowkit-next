@@ -19,8 +19,6 @@ export interface DeliveryCoordinationRef {
 export interface DeliveryFinalOperationFacts {
   readonly verifiedCandidateRef: string;
   readonly fullTestExecutionRef: string;
-  readonly architectureFinalizationRef: string;
-  readonly architectureMaterializedCandidateRef: string;
   readonly coordinationPrestateRef: DeliveryCoordinationRef;
   readonly completedRequiredChangeIds: readonly string[];
   readonly requiredEvidence: DeliveryRequiredEvidence;
@@ -29,14 +27,10 @@ export interface DeliveryFinalOperationFacts {
 const SHA256_HEX_PATTERN = /^[0-9a-f]{64}$/;
 const FULL_TEST_EXECUTION_REF_PATTERN =
   /^full-test-execution:sha256:[0-9a-f]{64}$/;
-const ARCHITECTURE_FINALIZATION_REF_PATTERN =
-  /^architecture-finalization:sha256:[0-9a-f]{64}$/;
 const COORDINATION_REF_FIELDS = ["artifact", "contentSha256", "bytes"] as const;
 const FINAL_FACT_FIELDS = [
   "verifiedCandidateRef",
   "fullTestExecutionRef",
-  "architectureFinalizationRef",
-  "architectureMaterializedCandidateRef",
   "coordinationPrestateRef",
   "completedRequiredChangeIds",
   "requiredEvidence",
@@ -96,11 +90,6 @@ export function isDeliveryFinalOperationFacts(
     isHashRef(value.verifiedCandidateRef, "candidate") &&
     typeof value.fullTestExecutionRef === "string" &&
     FULL_TEST_EXECUTION_REF_PATTERN.test(value.fullTestExecutionRef) &&
-    typeof value.architectureFinalizationRef === "string" &&
-    ARCHITECTURE_FINALIZATION_REF_PATTERN.test(
-      value.architectureFinalizationRef,
-    ) &&
-    isHashRef(value.architectureMaterializedCandidateRef, "candidate") &&
     isDeliveryCoordinationRef(value.coordinationPrestateRef) &&
     value.requiredEvidence.changeClosures.length === changeIds.length &&
     value.requiredEvidence.changeClosures.every(
@@ -141,9 +130,6 @@ export function cloneDeliveryFinalOperationFacts(
   return {
     verifiedCandidateRef: facts.verifiedCandidateRef,
     fullTestExecutionRef: facts.fullTestExecutionRef,
-    architectureFinalizationRef: facts.architectureFinalizationRef,
-    architectureMaterializedCandidateRef:
-      facts.architectureMaterializedCandidateRef,
     coordinationPrestateRef: {
       artifact: facts.coordinationPrestateRef.artifact,
       contentSha256: facts.coordinationPrestateRef.contentSha256,

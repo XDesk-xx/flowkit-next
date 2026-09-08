@@ -20,7 +20,7 @@ The repository now contains the D01 Foundation plus the D02 lightweight engineer
 - durable Run / Result persistence and exact ActionPackage / Result admission;
 - deterministic Policy legal-boundary calculation without automatic next execution;
 - cross-Delivery Memo persistence;
-- exact managed OpenSpec `1.10.0` / Archify `2.15.0` runtime resolution;
+- exact managed OpenSpec `1.10.0` runtime resolution;
 - thin, portable OpenSpec observation;
 - minimal `flowkit` CLI surface: `status`, `next`, `doctor`;
 - lightweight incremental engineering gate;
@@ -79,16 +79,13 @@ Current identities:
 
 ```text
 OpenSpec 1.10.0
-Archify  2.15.0
 ```
 
 Executable managed runtimes live under external `FLOWKIT_HOME`, not in Git. Repository Node compatibility is `>=22.20.0`; deterministic fixture is Node `22.23.2`; package manager identity is `pnpm@11.22.0`.
 
-## Durable architecture descriptions
+## Independent architecture descriptions
 
-Delivery architecture assets live under `architecture/<delivery-id>/json/` and contain `current`, `planned`, `actual` plus three thin compare descriptors. Generated HTML remains disposable and excluded from Git.
-
-Accepted `actual` is a derived continuity input for the next Delivery; OpenSpec and Git remain the truth sources.
+Archify is independent of the Flowkit Delivery workflow. Start, Full Test, Final and repository integration require no diagrams, rendering, Architecture outcome, or skip proof. Historical `architecture/**` assets remain readable derived descriptions; they are not new Delivery prerequisites or code facts. Existing history is not converted or rewritten.
 
 ## Historical initialization snapshot
 

@@ -1,0 +1,21 @@
+{
+  "startedAt": "2026-09-08T04:24:35.026Z",
+  "completedAt": "2026-09-08T04:24:35.137Z",
+  "commands": {
+    "typecheck": {
+      "program": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "node_modules/typescript/bin/tsc",
+        "--noEmit"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "startedAt": "2026-09-08T04:24:35.133Z",
+      "finishedAt": "2026-09-08T04:24:35.136Z",
+      "exitCode": null,
+      "signal": null,
+      "error": "spawnSync C:\\nvm4w\\nodejs\\node.exe EPERM"
+    }
+  },
+  "error": "AssertionError [ERR_ASSERTION]: typecheck: Error: spawnSync C:\\nvm4w\\nodejs\\node.exe EPERM\n\nnull !== 0\n",
+  "stack": "AssertionError [ERR_ASSERTION]: typecheck: Error: spawnSync C:\\nvm4w\\nodejs\\node.exe EPERM\n\nnull !== 0\n\n    at command (file:///D:/Projects/flowkit-next/.flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/remove-archify-from-delivery-workflow/proof/20260908-006-review-apply/verify.mjs:42:10)\n    at async file:///D:/Projects/flowkit-next/.flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/remove-archify-from-delivery-workflow/proof/20260908-006-review-apply/verify.mjs:79:3"
+}

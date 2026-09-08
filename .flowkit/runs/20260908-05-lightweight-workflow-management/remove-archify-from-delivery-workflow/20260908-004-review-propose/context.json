@@ -1,0 +1,98 @@
+{
+  "kind": "external-orchestrator-review-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "reviewer",
+  "action": "review-propose",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "remove-archify-from-delivery-workflow",
+  "runId": "20260908-004-review-propose",
+  "runNumber": 4,
+  "projectOrdinal": 33,
+  "previousRunId": "20260908-003-propose",
+  "reviewedRunId": "20260908-003-propose",
+  "ownerInstruction": "根据最新run，review-propose   我只说 根据最新run，review 你能理解吗？",
+  "reviewShorthand": "依当前有效 Run 链匹配待审阶段；歧义则 STOP，不按最大序号猜，不自动连续执行。",
+  "authoritySource": "当前 Owner 单次 Reviewer 请求及 D05 manifest 的 independent-bootstrap；不从历史批准推导 Git/后续 invocation 权限。",
+  "sourceHead": "97bcd2f99dcf6946b646fb1759b2e64584007c30",
+  "sourceHeadMeaning": "仅定位本次输入，不作为新的 checkpoint/SHA 准入条件。",
+  "physicalRunPath": ".flowkit/runs/20260908-05-lightweight-workflow-management/remove-archify-from-delivery-workflow/20260908-004-review-propose",
+  "reviewedResult": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/remove-archify-from-delivery-workflow/20260908-003-propose/result.json",
+    "bytes": 3605,
+    "sha256": "6a887f45d00806785e0d0037bceb6eb7070f9cfdefcb24aa5e420e98fd79ccc1"
+  },
+  "acceptedExploreReview": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/remove-archify-from-delivery-workflow/20260908-002-review-explore/result.json",
+    "bytes": 5324,
+    "sha256": "6c8c9098e852783c4808352ad72d9d7d5bb18240677e41a13de949515ee4273b"
+  },
+  "reviewedArtifacts": [
+    {
+      "path": "openspec/changes/remove-archify-from-delivery-workflow/proposal.md",
+      "sha256": "702691f6af7539b12a868dfd007f505a1348ccd392a077392617ba0abd87b510",
+      "bytes": 3726
+    },
+    {
+      "path": "openspec/changes/remove-archify-from-delivery-workflow/design.md",
+      "sha256": "a94f6c6c7a8ae8020486d586116e5d349abead5240c90adee9369b3022595e50",
+      "bytes": 10375
+    },
+    {
+      "path": "openspec/changes/remove-archify-from-delivery-workflow/tasks.md",
+      "sha256": "780b7b06bb1b508efdc32125ca5229c94a9d37f937b65ed5359e3442a7651242",
+      "bytes": 4366
+    },
+    {
+      "path": "openspec/changes/remove-archify-from-delivery-workflow/specs/architecture-and-canonical-diagram-continuity/spec.md",
+      "sha256": "8b0337cd2c724d6268ac5a7c2eb89402fb19555e2dbc61639b616cd53bdf7c92",
+      "bytes": 4548
+    },
+    {
+      "path": "openspec/changes/remove-archify-from-delivery-workflow/specs/delivery-finalization/spec.md",
+      "sha256": "a2ae1034824942727381417899437a8b5c56c654e14e4b83fa20f97c9c82f5c1",
+      "bytes": 9303
+    },
+    {
+      "path": "openspec/changes/remove-archify-from-delivery-workflow/specs/delivery-operation-execution-and-start-continuity/spec.md",
+      "sha256": "7b4fbd5082a54b10c190fd161e1a6c5899f0a3dc786eed8b39d8ca6088acd5cf",
+      "bytes": 7214
+    },
+    {
+      "path": "openspec/changes/remove-archify-from-delivery-workflow/specs/foundation-cli-surface/spec.md",
+      "sha256": "00fc7e0910d6f7dda3e456bcf466e1f69f2d75918ad92cb3064635657271cbb4",
+      "bytes": 2733
+    },
+    {
+      "path": "openspec/changes/remove-archify-from-delivery-workflow/specs/managed-toolchain-resolution/spec.md",
+      "sha256": "2ea0319a580f924979413adc32de106440ec88f4b1c20bf7eac858a542fe40d6",
+      "bytes": 3780
+    },
+    {
+      "path": "openspec/changes/remove-archify-from-delivery-workflow/specs/repository-integration-and-next-base-continuity/spec.md",
+      "sha256": "fe9b170724b138d54225ecf19af216a169987af62013a321a447f70aa64cc951",
+      "bytes": 1497
+    }
+  ],
+  "reviewerProofRoot": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/remove-archify-from-delivery-workflow/proof/20260908-004-review-propose",
+  "reviewerProofSummary": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/remove-archify-from-delivery-workflow/proof/20260908-004-review-propose/attempt-02/summary.json",
+    "bytes": 11310,
+    "sha256": "9aab173c78908313156398acba2cec0ced80c2ec9694e60fd27a086107f49b09"
+  },
+  "skillsUsed": [
+    ".agents/skills/review-propose",
+    "C:/Users/xuser/.agents/skills/debugging-and-error-recovery"
+  ],
+  "errorRecoveryScope": "仅定位 EPERM 子进程限制并核对获准后的同脚本重试；不改 Author/产品，不展开产品调试。",
+  "protectedBefore": {
+    "files": 1584,
+    "sha256": "aa4e710a79ca64cb0e2da03eaec4c744491346b2c93aba6f5f62b7aba1e48b6e",
+    "head": "97bcd2f99dcf6946b646fb1759b2e64584007c30"
+  },
+  "protectedScope": "tracked 与 nonignored untracked 文件，排除本次自有 Run/proof；仅审查写入隔离。",
+  "candidateLifecycleInvoked": false,
+  "implementationTestsExecuted": false,
+  "formalFullTestExecuted": false,
+  "gitMutationAllowed": false
+}

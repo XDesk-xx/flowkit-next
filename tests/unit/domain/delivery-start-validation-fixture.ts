@@ -34,12 +34,7 @@ export async function createStartValidationFixture(
     value,
 ) {
   const { deliveryId, acceptedBaseCommit, planningReference } = input;
-  const artifacts = [
-    `openspec/delivery-groups/${deliveryId}.yaml`,
-    `architecture/${deliveryId}/json/current.architecture.json`,
-    `architecture/${deliveryId}/json/planned.architecture.json`,
-    `architecture/${deliveryId}/json/current-to-planned.compare.json`,
-  ];
+  const artifacts = [`openspec/delivery-groups/${deliveryId}.yaml`];
   const outputs = await Promise.all(
     artifacts.map(async (artifact) =>
       artifactRef(
@@ -72,31 +67,6 @@ export async function createStartValidationFixture(
       tool: "openspec",
       exitCode,
       inputs: [artifactInput(outputs[0])],
-      outputArtifacts,
-    },
-    {
-      checkId: "archify-current",
-      tool: "archify",
-      exitCode,
-      inputs: [artifactInput(outputs[1])],
-      outputArtifacts,
-    },
-    {
-      checkId: "archify-planned",
-      tool: "archify",
-      exitCode,
-      inputs: [artifactInput(outputs[2])],
-      outputArtifacts,
-    },
-    {
-      checkId: "archify-current-to-planned",
-      tool: "archify",
-      exitCode,
-      inputs: [
-        artifactInput(outputs[1]),
-        artifactInput(outputs[2]),
-        artifactInput(outputs[3]),
-      ],
       outputArtifacts,
     },
     {

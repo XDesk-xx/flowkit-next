@@ -1,0 +1,4 @@
+$ tsc --noEmit
+$ tsc -p tsconfig.build.json
+$ node --import tsx --test tests/unit/domain/*.test.ts
+$ node --import tsx --test tests/acceptance/*.test.ts

@@ -10,7 +10,7 @@ import {
   type ManagedToolResolutionDiagnosticKind,
 } from "../../../src/domain/index.js";
 
-type ToolId = "openspec" | "archify";
+type ToolId = "openspec";
 
 interface ToolFixture {
   packageName: string;
@@ -23,11 +23,6 @@ const TOOL_FIXTURES: Record<ToolId, ToolFixture> = {
     packageName: "@fission-ai/openspec",
     version: "1.10.0",
     entrypoint: "bin/openspec.js",
-  },
-  archify: {
-    packageName: "archify",
-    version: "2.15.0",
-    entrypoint: "bin/archify.mjs",
   },
 };
 
@@ -52,7 +47,6 @@ async function writeLock(
   repositoryRoot: string,
   overrides: {
     openspec?: Record<string, unknown>;
-    archify?: Record<string, unknown>;
     root?: Record<string, unknown>;
   } = {},
 ): Promise<void> {
@@ -67,7 +61,6 @@ async function writeLock(
     schemaVersion: 1,
     generatedFor: "test",
     openspec: lockEntry("openspec", overrides.openspec),
-    archify: lockEntry("archify", overrides.archify),
     ...overrides.root,
   };
   await writeFile(target, `${JSON.stringify(document, null, 2)}\n`);
@@ -208,64 +201,24 @@ test("ignores conflicting PATH executable and returns only managed runtime facts
   }
 });
 
-test("ignores absent or malformed peer lock entries during on-demand resolution", async () => {
-  const openspecWithMalformedPeer = await setup();
-  await createRuntime(openspecWithMalformedPeer.flowkitHome, "openspec");
-  await writeLock(openspecWithMalformedPeer.repositoryRoot, {
-    archify: { entrypoint: undefined },
-  });
-  assert.equal(
-    (
-      await resolveManagedTool({
-        ...openspecWithMalformedPeer,
-        toolId: "openspec",
-      })
-    ).toolId,
-    "openspec",
+test("Archify is unsupported before home, lock, or runtime lookup", async () => {
+  await expectDiagnostic(
+    resolveManagedTool({ repositoryRoot: "missing-root", toolId: "archify" }),
+    "unsupported-managed-tool",
   );
-
-  const archifyWithMalformedPeer = await setup();
-  await createRuntime(archifyWithMalformedPeer.flowkitHome, "archify");
-  await writeLock(archifyWithMalformedPeer.repositoryRoot, {
-    openspec: { entrypoint: undefined },
-  });
-  assert.equal(
-    (
-      await resolveManagedTool({
-        ...archifyWithMalformedPeer,
-        toolId: "archify",
-      })
-    ).toolId,
-    "archify",
-  );
-
-  const openspecWithoutPeer = await setup();
-  await createRuntime(openspecWithoutPeer.flowkitHome, "openspec");
-  await writeLock(openspecWithoutPeer.repositoryRoot, {
-    root: { archify: undefined },
-  });
-  assert.equal(
-    (await resolveManagedTool({ ...openspecWithoutPeer, toolId: "openspec" }))
-      .toolId,
-    "openspec",
-  );
-
-  const archifyWithoutPeer = await setup();
-  await createRuntime(archifyWithoutPeer.flowkitHome, "archify");
-  await writeLock(archifyWithoutPeer.repositoryRoot, {
-    root: { openspec: undefined },
-  });
-  assert.equal(
-    (await resolveManagedTool({ ...archifyWithoutPeer, toolId: "archify" }))
-      .toolId,
-    "archify",
+  const fixture = await setup();
+  await createRuntime(fixture.flowkitHome, "openspec");
+  await writeLock(fixture.repositoryRoot, { root: { archify: {} } });
+  await expectDiagnostic(
+    resolveManagedTool({ ...fixture, toolId: "openspec" }),
+    "invalid-lock",
   );
 });
 
 test("fails closed when requested managed runtime is absent", async () => {
   const { repositoryRoot, flowkitHome } = await setup();
   await expectDiagnostic(
-    resolveManagedTool({ repositoryRoot, flowkitHome, toolId: "archify" }),
+    resolveManagedTool({ repositoryRoot, flowkitHome, toolId: "openspec" }),
     "missing-runtime",
   );
 });
@@ -281,9 +234,9 @@ test("rejects exact package name or version mismatch", async () => {
   );
 
   const second = await setup();
-  await createRuntime(second.flowkitHome, "archify", { version: "2.15.1" });
+  await createRuntime(second.flowkitHome, "openspec", { version: "1.10.1" });
   await expectDiagnostic(
-    resolveManagedTool({ ...second, toolId: "archify" }),
+    resolveManagedTool({ ...second, toolId: "openspec" }),
     "package-identity-mismatch",
   );
 });
@@ -319,17 +272,6 @@ test("resolves requested tool on demand without requiring its peer", async () =>
   );
   await assert.rejects(
     stat(path.join(openspecOnly.flowkitHome, "tools", "archify")),
-    { code: "ENOENT" },
-  );
-
-  const archifyOnly = await setup();
-  await createRuntime(archifyOnly.flowkitHome, "archify");
-  assert.equal(
-    (await resolveManagedTool({ ...archifyOnly, toolId: "archify" })).toolId,
-    "archify",
-  );
-  await assert.rejects(
-    stat(path.join(archifyOnly.flowkitHome, "tools", "openspec")),
     { code: "ENOENT" },
   );
 });

@@ -97,27 +97,6 @@ async function makeProductRoot(): Promise<string> {
   );
   const outputPaths = [
     path.join(root, "openspec", "delivery-groups", `${deliveryId}.yaml`),
-    path.join(
-      root,
-      "architecture",
-      deliveryId,
-      "json",
-      "current.architecture.json",
-    ),
-    path.join(
-      root,
-      "architecture",
-      deliveryId,
-      "json",
-      "planned.architecture.json",
-    ),
-    path.join(
-      root,
-      "architecture",
-      deliveryId,
-      "json",
-      "current-to-planned.compare.json",
-    ),
   ];
   for (const output of outputPaths) {
     await mkdir(path.dirname(output), { recursive: true });
@@ -283,12 +262,7 @@ test("successful validation without commit authority stops before Git mutation",
     );
     assert.deepEqual(
       outcome.contentCompletion.outputs.map((output) => output.artifact),
-      [
-        `openspec/delivery-groups/${deliveryId}.yaml`,
-        `architecture/${deliveryId}/json/current.architecture.json`,
-        `architecture/${deliveryId}/json/planned.architecture.json`,
-        `architecture/${deliveryId}/json/current-to-planned.compare.json`,
-      ],
+      [`openspec/delivery-groups/${deliveryId}.yaml`],
     );
     assert.match(
       outcome.contentCompletion.candidateRef,

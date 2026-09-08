@@ -252,14 +252,7 @@ test("Start artifact refs compare semantic fields while preserving strict values
       path.join(root, ".flowkit", "project.json"),
       '{"projectId":"flowkit-next"}\n',
     );
-    const artifacts = [
-      `openspec/delivery-groups/${deliveryId}.yaml`,
-      ...[
-        "current.architecture.json",
-        "planned.architecture.json",
-        "current-to-planned.compare.json",
-      ].map((name) => `architecture/${deliveryId}/json/${name}`),
-    ];
+    const artifacts = [`openspec/delivery-groups/${deliveryId}.yaml`];
     for (const artifact of artifacts) {
       const target = path.join(root, ...artifact.split("/"));
       await mkdir(path.dirname(target), { recursive: true });
@@ -347,7 +340,7 @@ test("Start artifact refs compare semantic fields while preserving strict values
     for (const rejected of [
       changedHash,
       unknownField,
-      { ...material, outputs: [...material.outputs].reverse() },
+      { ...material, outputs: [...material.outputs, material.outputs[0]] },
     ]) {
       assert.equal(
         (
@@ -363,9 +356,30 @@ test("Start artifact refs compare semantic fields while preserving strict values
       );
     }
 
+    const reversedChecks = await createStartValidationFixture(
+      root,
+      { deliveryId, acceptedBaseCommit, planningReference },
+      0,
+      (value) => ({
+        ...value,
+        checks: [...(value.checks as unknown[])].reverse(),
+      }),
+    );
+    assert.equal(
+      (
+        await invokeDeliveryStartOperation(
+          root,
+          input,
+          observe,
+          reversedChecks.surface,
+          reversedChecks.read,
+        )
+      ).status,
+      "failed",
+    );
     const allOutputHoles = new Array(material.outputs.length);
     const oneOutputHole = [...material.outputs];
-    delete oneOutputHole[1];
+    delete oneOutputHole[0];
     const sparseMaterialArtifacts = [...material.artifacts];
     delete sparseMaterialArtifacts[0];
     const malformedMaterials = [
