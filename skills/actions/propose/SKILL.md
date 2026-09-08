@@ -14,6 +14,8 @@ This Guidance owns HOW only. It does not decide lifecycle legality, Reviewer ver
 
 ## Required inputs
 
+本 Skill 与 `skills/tools/openspec/SKILL.md` 均相对 manager 安装根解析；项目事实与 OpenSpec 命令 cwd 使用 target repositoryRoot。target 同名 Skills/lock 不接管系统来源，系统文件缺失不回退到 target 或 bootstrap。
+
 Read the exact approved Explore and approving review, current OpenSpec Change status/instructions, and controlling Owner scope.
 
 Include materially relevant Owner decisions that affect current judgment, including authorized material relocation or retention boundaries. Preserve concise decision/scope references, not the whole conversation.

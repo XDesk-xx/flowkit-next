@@ -1,0 +1,48 @@
+{
+  "kind": "external-orchestrator-apply-result",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "author",
+  "action": "apply",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "separate-manager-assets-from-target-project",
+  "runId": "20260908-012-apply",
+  "runNumber": 12,
+  "projectOrdinal": 34,
+  "previousRunId": "20260908-011-review-propose",
+  "status": "terminal",
+  "verdict": "PASS",
+  "verdictMeaning": "Author 已实施已批准合同并完成本轮验证；不是独立 Reviewer approved，也不是 Delivery Formal Full Test",
+  "summary": "manager/target/FLOWKIT_HOME 分根、同源 Guidance 与最小发行完成；12/12 tasks，Windows/Linux 各 262 domain 与 6 installed acceptance PASS。",
+  "reviewSource": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/separate-manager-assets-from-target-project/20260908-011-review-propose/result.json",
+    "bytes": 6717,
+    "sha256": "cf83de7d2c2e7d5a83620429116a3295ce228036eee9f64592f3448ea7c05e7c"
+  },
+  "evidence": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/summary.json",
+    "bytes": 65464,
+    "sha256": "eee271f2cc5a533c4fab8a4a1c5d84ee0ab185f1f55d8dd4eba2d5d1e0e6fbae"
+  },
+  "runArtifacts": {
+    "action": {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/separate-manager-assets-from-target-project/20260908-012-apply/action.md",
+      "bytes": 415,
+      "sha256": "693c82c221a987517db41dca6d5235f2cdc780b2fb66579010cf399013b52e2e"
+    },
+    "context": {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/separate-manager-assets-from-target-project/20260908-012-apply/context.json",
+      "bytes": 1104,
+      "sha256": "e0935df5cab7ff63134393e18dca6b7f6f38df29e85fda6999011b86fa9690cb"
+    }
+  },
+  "nextBoundary": "review-apply",
+  "reviewerVerdict": null,
+  "productionMutation": true,
+  "canonicalSpecMutation": false,
+  "applyExecuted": true,
+  "formalFullTestExecuted": false,
+  "gitMutationExecuted": false,
+  "completedAt": "2026-09-08T07:33:50.676Z",
+  "stop": true
+}

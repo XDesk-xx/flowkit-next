@@ -1,0 +1,53 @@
+{
+  "kind": "external-orchestrator-review-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "separate-manager-assets-from-target-project",
+  "projectOrdinal": 34,
+  "runId": "20260908-013-review-apply",
+  "action": "review-apply",
+  "role": "reviewer",
+  "ownerInstruction": "根据最新run，review",
+  "previousRunId": "20260908-012-apply",
+  "reviewedRunId": "20260908-012-apply",
+  "sourceHead": "01d82dba4593ea0c5b85ac67da03e6261dccfba6",
+  "sourceBranch": "delivery/20260908-05-lightweight-workflow-management",
+  "identityMeaning": "Git HEAD/diff/hash 只绑定本次审查输入，不新增产品 Delivery SHA 准入或 checkpoint authority。",
+  "reviewedResult": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/separate-manager-assets-from-target-project/20260908-012-apply/result.json",
+    "bytes": 2215,
+    "sha256": "2b0e404f12719991aaac6269ab151bac660ee9a345416b8c5a1275238aa89d95"
+  },
+  "acceptedProposalReview": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/separate-manager-assets-from-target-project/20260908-011-review-propose/result.json",
+    "bytes": 6717,
+    "sha256": "cf83de7d2c2e7d5a83620429116a3295ce228036eee9f64592f3448ea7c05e7c"
+  },
+  "evidence": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-013-review-apply/attempt-02/summary.json",
+    "bytes": 68522,
+    "sha256": "7be60493b39a718c3a0891e7267e89adb4bd01f02d0c801225a00457b7025ba1"
+  },
+  "skills": [
+    ".agents/skills/review-apply/SKILL.md",
+    "C:/Users/xuser/.agents/skills/debugging-and-error-recovery/SKILL.md"
+  ],
+  "scope": [
+    "approved planning fidelity and necessary implementation convergence",
+    "manager/target/FLOWKIT_HOME ownership and four Delivery operation exact reads",
+    "installed package completeness, relocation, fail-closed and target mutation isolation",
+    "current candidate and retained applicable check evidence binding"
+  ],
+  "exclusions": [
+    "Author implementation/test/planning/history mutation",
+    "candidate product Reviewer HOW consumption",
+    "candidate self-management of D05",
+    "Formal Delivery Full Test / archive / Git mutation / automatic continuation"
+  ],
+  "writeScope": [
+    ".flowkit/runs/20260908-05-lightweight-workflow-management/separate-manager-assets-from-target-project/20260908-013-review-apply",
+    ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-013-review-apply"
+  ],
+  "stopAfterResult": true
+}

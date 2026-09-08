@@ -11,6 +11,8 @@ Execute the exact `delivery-start` operation after its identity and Owner bounda
 
 ## Required package facts
 
+Guidance 的准备与 exact read 均使用同一 manager 安装来源；相对 path/contentSha256 身份不包含绝对安装根。项目读写、检查 cwd、Git 与证据仍属于 target repositoryRoot；不得回退读取 target 的同名系统 Guidance。
+
 Consume the exact package supplied by Flowkit. Treat its content-bound Guidance identity and operation facts as fixed execution inputs.
 
 Required Start facts include:

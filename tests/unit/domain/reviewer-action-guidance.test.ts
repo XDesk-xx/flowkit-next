@@ -1,3 +1,4 @@
+import { fixtureInstallation } from "./manager-installation-fixture.js";
 import assert from "node:assert/strict";
 import { readFile, readdir } from "node:fs/promises";
 import path from "node:path";
@@ -56,7 +57,7 @@ test("all three Reviewer Standard Actions have canonical identity-complete produ
     );
 
     const guidanceRef = await resolveActionGuidanceRef(
-      REPOSITORY_ROOT,
+      fixtureInstallation(REPOSITORY_ROOT),
       actionId,
     );
     assert.notEqual(guidanceRef, null, `resolver must bind ${actionId}`);

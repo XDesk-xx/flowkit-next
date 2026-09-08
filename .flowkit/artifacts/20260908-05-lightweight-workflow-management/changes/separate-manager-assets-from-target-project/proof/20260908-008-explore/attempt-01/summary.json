@@ -1,0 +1,125 @@
+{
+  "status": "PASS",
+  "meaning": "Bounded Explore assertions only; not implementation acceptance",
+  "completedAt": "2026-09-08T05:01:01.567Z",
+  "platform": "win32",
+  "node": "v22.23.2",
+  "observations": [
+    {
+      "id": "bare-target",
+      "noLock": {
+        "outcome": "rejected",
+        "kind": "invalid-lock",
+        "message": "cannot read managed-tool lock at D:\\Projects\\flowkit-next\\.flowkit\\artifacts\\20260908-05-lightweight-workflow-management\\changes\\separate-manager-assets-from-target-project\\proof\\20260908-008-explore\\attempt-01\\target\\config\\tools\\toolchain.lock.json"
+      },
+      "actionGuidance": null,
+      "deliveryGuidance": null
+    },
+    {
+      "id": "split-root-composition",
+      "installedTool": {
+        "toolId": "openspec",
+        "version": "1.10.0",
+        "runtimeRoot": "C:\\Users\\xuser\\.flowkit\\tools\\openspec\\1.10.0",
+        "entrypoint": "C:\\Users\\xuser\\.flowkit\\tools\\openspec\\1.10.0\\bin\\openspec.js"
+      },
+      "version": "1.10.0",
+      "listing": {
+        "changes": [],
+        "root": {
+          "path": "D:\\Projects\\flowkit-next\\.flowkit\\artifacts\\20260908-05-lightweight-workflow-management\\changes\\separate-manager-assets-from-target-project\\proof\\20260908-008-explore\\attempt-01\\target",
+          "source": "nearest"
+        }
+      },
+      "meaning": "Existing resolver selected from manager; actual OpenSpec invoked at target. Not an implemented Flowkit adapter."
+    },
+    {
+      "id": "same-name-collision",
+      "targetLock": {
+        "outcome": "rejected",
+        "kind": "missing-runtime",
+        "message": "managed runtime is missing: C:\\Users\\xuser\\.flowkit\\tools\\openspec\\99.0.0"
+      },
+      "targetAction": {
+        "path": "skills/actions/apply/SKILL.md",
+        "contentSha256": "66e05092f1915834c4a6ca791ad8cee50a3909648fcffdf2d04c3e705dacf935"
+      },
+      "managerAction": {
+        "path": "skills/actions/apply/SKILL.md",
+        "contentSha256": "fde5b83d130738c42f1563ee3a7d55c813b9232e6ac7a2f8f353fbc98428de60"
+      },
+      "targetDelivery": {
+        "path": "skills/delivery/start/SKILL.md",
+        "contentSha256": "6ed713c7da4b673605d3f80e1d234d3cdfb6d9afd85c6fbd88fa77efef982f04"
+      },
+      "managerDelivery": {
+        "path": "skills/delivery/start/SKILL.md",
+        "contentSha256": "695623115f470a8e94b682525451f9ad77ff445cbd2afacd37ab1013b209f383"
+      }
+    },
+    {
+      "id": "relocated-assets-and-missing-runtime",
+      "movedTool": {
+        "toolId": "openspec",
+        "version": "1.10.0",
+        "runtimeRoot": "C:\\Users\\xuser\\.flowkit\\tools\\openspec\\1.10.0",
+        "entrypoint": "C:\\Users\\xuser\\.flowkit\\tools\\openspec\\1.10.0\\bin\\openspec.js"
+      },
+      "missing": {
+        "outcome": "rejected",
+        "kind": "missing-runtime",
+        "message": "managed runtime is missing: D:\\Projects\\flowkit-next\\.flowkit\\artifacts\\20260908-05-lightweight-workflow-management\\changes\\separate-manager-assets-from-target-project\\proof\\20260908-008-explore\\attempt-01\\absent-home\\tools\\openspec\\1.10.0"
+      },
+      "limit": "Asset relocation only, not a shipped/installed CLI relocation acceptance."
+    }
+  ],
+  "sourceRefs": [
+    {
+      "path": "src/domain/managed-tool-resolution.ts",
+      "bytes": 11470,
+      "sha256": "b780344c574c294614dc4d0e56c44dcf5173bdedb327b4e7c41510f96999c0c6"
+    },
+    {
+      "path": "src/domain/action-guidance-execution.ts",
+      "bytes": 3055,
+      "sha256": "00e168ae0bdbbce946add6472f2f1e2ff2591aec9b817e2236100b27a7f65824"
+    },
+    {
+      "path": "src/domain/delivery-operation-execution.ts",
+      "bytes": 16110,
+      "sha256": "9098e7b67ff74d40eea96d6390dcd9f56f2ed348eeb1a1a561468d49ccc87e5a"
+    },
+    {
+      "path": "src/domain/openspec-observation.ts",
+      "bytes": 11423,
+      "sha256": "01051280e26656d24740cfdd7a670a9393fb825d7c0ad31ece1ca5ab01c8a785"
+    },
+    {
+      "path": "src/domain/single-action-execution.ts",
+      "bytes": 5138,
+      "sha256": "6efca921655a904790b04040048e40ee1f6c6536d4e28185da6e24118919b56d"
+    },
+    {
+      "path": "src/cli/foundation-cli.ts",
+      "bytes": 9655,
+      "sha256": "7952ae2811cea83062fff3a39a71bb2a907c1b6e7e86182d04ad6161b7430df5"
+    },
+    {
+      "path": "package.json",
+      "bytes": 1613,
+      "sha256": "c79508605c34371eea6903f7dad39d388531f6b84e04c74d10ecd4938b4a9d76"
+    },
+    {
+      "path": "config/tools/toolchain.lock.json",
+      "bytes": 555,
+      "sha256": "a0481fc8a3fddfbcdd65a504e0e7a065e6ab74a3a871af3ab8838d201eecd4a2"
+    }
+  ],
+  "actualManagedOpenSpec": true,
+  "productionMutation": false,
+  "limitations": [
+    "No full installed-manager end-to-end status or lifecycle execution",
+    "No Full Test scope implementation or Git workflow change",
+    "Windows native experiment; no Linux acceptance claim"
+  ]
+}

@@ -1,3 +1,5 @@
+import { fixtureInstallation } from "./manager-installation-fixture.js";
+import { loadManagerInstallation } from "../../../src/internal/manager-installation.js";
 import assert from "node:assert/strict";
 import { execFile } from "node:child_process";
 import { mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
@@ -122,6 +124,7 @@ test("Start preparation validates trusted exact repository/planning facts before
         observations += 1;
         return observed();
       },
+      fixtureInstallation(root),
     );
     assert.equal(observations, 1);
     assert.notEqual(prepared, null);
@@ -140,25 +143,35 @@ test("stale head, dirty tree, or wrong planning reference reject before Agent ex
   const root = await makeProductRoot();
   try {
     assert.equal(
-      await prepareDeliveryStartOperationPackage(root, input(), () =>
-        observed({ headCommit: "d".repeat(40) }),
+      await prepareDeliveryStartOperationPackage(
+        root,
+        input(),
+        () => observed({ headCommit: "d".repeat(40) }),
+        fixtureInstallation(root),
       ),
       null,
     );
     assert.equal(
-      await prepareDeliveryStartOperationPackage(root, input(), () =>
-        observed({ workingTreeClean: false }),
+      await prepareDeliveryStartOperationPackage(
+        root,
+        input(),
+        () => observed({ workingTreeClean: false }),
+        fixtureInstallation(root),
       ),
       null,
     );
     assert.equal(
-      await prepareDeliveryStartOperationPackage(root, input(), () =>
-        observed({
-          planningReference: {
-            ...planningReference,
-            contentSha256: "e".repeat(64),
-          },
-        }),
+      await prepareDeliveryStartOperationPackage(
+        root,
+        input(),
+        () =>
+          observed({
+            planningReference: {
+              ...planningReference,
+              contentSha256: "e".repeat(64),
+            },
+          }),
+        fixtureInstallation(root),
       ),
       null,
     );
@@ -184,6 +197,8 @@ test("missing or mismatched Start authority rejects package formation and calls 
         return validation.surface();
       },
       validation.read,
+      undefined,
+      fixtureInstallation(root),
     );
     assert.equal(outcome.status, "failed");
     assert.equal(executeCalls, 0);
@@ -208,6 +223,8 @@ test("execution callback receives the exact package and matching canonical Guida
         return validation.surface();
       },
       validation.read,
+      undefined,
+      fixtureInstallation(root),
     );
 
     assert.equal(outcome.status, "terminal");
@@ -244,6 +261,7 @@ test("successful validation without commit authority stops before Git mutation",
         commitCalls += 1;
         return "f".repeat(40);
       },
+      loadManagerInstallation(),
     );
     assert.equal(executeCalls, 1);
     assert.equal(commitCalls, 0);
@@ -294,6 +312,8 @@ test("missing validation source and callback authority escalation fail closed", 
           () => observed(),
           failedValidation.surface,
           failedValidation.read,
+          undefined,
+          fixtureInstallation(root),
         )
       ).status,
       "failed",
@@ -315,6 +335,8 @@ test("missing validation source and callback authority escalation fail closed", 
           () => observed(),
           incomplete.surface,
           incomplete.read,
+          undefined,
+          fixtureInstallation(root),
         )
       ).status,
       "failed",
@@ -341,6 +363,8 @@ test("missing validation source and callback authority escalation fail closed", 
           () => observed(),
           wrongInput.surface,
           wrongInput.read,
+          undefined,
+          fixtureInstallation(root),
         )
       ).status,
       "failed",
@@ -353,6 +377,8 @@ test("missing validation source and callback authority escalation fail closed", 
       async () => {
         throw new Error("validation source unavailable");
       },
+      undefined,
+      fixtureInstallation(root),
     );
     assert.deepEqual(missing, {
       status: "failed",
@@ -377,6 +403,7 @@ test("missing validation source and callback authority escalation fail closed", 
         commitCalls += 1;
         return "f".repeat(40);
       },
+      fixtureInstallation(root),
     );
     assert.equal(escalated.status, "terminal");
     assert.equal(commitCalls, 0);
@@ -421,6 +448,7 @@ test("bounded commit authority permits exactly one fixed-point commit callback t
         await git(root, "commit", "-qm", "start checkpoint");
         return git(root, "rev-parse", "HEAD");
       },
+      fixtureInstallation(root),
     );
 
     assert.equal(executeCalls, 1);
@@ -463,6 +491,7 @@ test("Start rejects a two-parent checkpoint even when the second parent is other
         await git(root, "update-ref", "HEAD", merge, base);
         return merge;
       },
+      fixtureInstallation(root),
     );
     assert.equal(outcome.status, "failed");
     if (outcome.status === "failed") {
@@ -483,6 +512,8 @@ test("commit authority without a commit callback fails closed after validation",
       () => observed(),
       validation.surface,
       validation.read,
+      undefined,
+      fixtureInstallation(root),
     );
     assert.equal(outcome.status, "failed");
     if (outcome.status === "failed") {
@@ -503,6 +534,8 @@ test("invalid surface result or invalid fixed-point SHA fails closed", async () 
       () => observed(),
       () => ({ status: "partial" }),
       validation.read,
+      undefined,
+      fixtureInstallation(root),
     );
     assert.equal(invalidSurface.status, "failed");
 
@@ -513,6 +546,7 @@ test("invalid surface result or invalid fixed-point SHA fails closed", async () 
       validation.surface,
       validation.read,
       () => "not-a-commit",
+      fixtureInstallation(root),
     );
     assert.equal(invalidCommit.status, "failed");
     if (invalidCommit.status === "failed") {
@@ -549,6 +583,8 @@ test("no candidate product Guidance means package formation fails even when .age
       async () => {
         throw new Error("must not read validation");
       },
+      undefined,
+      fixtureInstallation(root),
     );
     assert.equal(outcome.status, "failed");
     assert.equal(executeCalls, 0);

@@ -1,4 +1,8 @@
 import {
+  loadManagerInstallation,
+  type ManagerInstallation,
+} from "../internal/manager-installation.js";
+import {
   formDeliveryOperationPackage,
   hasDeliveryStartCommitAuthority,
   isDeliveryPlanningReference,
@@ -109,6 +113,7 @@ export async function prepareDeliveryStartOperationPackage(
   repositoryRoot: unknown,
   input: unknown,
   observe: DeliveryStartObservationCallback,
+  installation: ManagerInstallation = loadManagerInstallation(),
 ): Promise<DeliveryStartOperationPackage | null> {
   if (!isPreparationInput(input)) return null;
 
@@ -133,7 +138,7 @@ export async function prepareDeliveryStartOperationPackage(
   }
 
   const guidanceRef = await resolveDeliveryGuidanceRef(
-    repositoryRoot,
+    installation,
     "delivery-start",
   );
   if (guidanceRef === null) return null;
@@ -211,18 +216,20 @@ export async function invokeDeliveryStartOperation(
   executeSurface: DeliveryStartExecutionCallback,
   readValidation: ReadDeliveryStartValidation,
   commitFixedPoint?: DeliveryStartCommitCallback,
+  installation: ManagerInstallation = loadManagerInstallation(),
 ): Promise<DeliveryStartInvocationOutcome> {
   const operationPackage = await prepareDeliveryStartOperationPackage(
     repositoryRoot,
     input,
     observe,
+    installation,
   );
   if (operationPackage === null) {
     return failure("package-formation-rejected");
   }
 
   const guidanceBytes = await readExactDeliveryGuidance(
-    repositoryRoot,
+    installation,
     operationPackage.guidanceRef,
   );
   if (guidanceBytes === null) {
@@ -233,6 +240,7 @@ export async function invokeDeliveryStartOperation(
     repositoryRoot,
     input,
     observe,
+    installation,
   );
   if (
     revalidated === null ||

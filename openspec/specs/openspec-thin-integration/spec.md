@@ -7,30 +7,32 @@
 ## Requirements
 
 ### Requirement: OpenSpec observation uses only the exact managed OpenSpec runtime
-系统 SHALL 只通过既有 managed-tool resolution contract 获取 `openspec` runtime，并使用该已验证 entrypoint 执行本 capability 允许的只读 machine observation。系统 MUST NOT 从 PATH、global installation、shell lookup 或其他 runtime location 选择 OpenSpec。
+
+系统 SHALL 从当前 manager 安装持有的 managed-tool contract 解析 exact `openspec` runtime，并使用经验证的 entrypoint 执行既有两种只读观察。child cwd SHALL 为本次请求的 target root，不是 manager 安装根。系统 SHALL NOT 从 target lock、PATH、global installation、shell lookup 或其他 runtime location 选择 OpenSpec，不新增任意命令执行接口。
 
 #### Scenario: Managed OpenSpec is available
-- **WHEN** caller 请求一个受支持的 OpenSpec observation，且 `resolveManagedTool("openspec")` 成功返回 exact managed runtime
-- **THEN** 系统 SHALL 仅使用该 runtime 的 validated entrypoint 执行 observation
+- **WHEN** 受支持观察所需的 manager lock 与 exact runtime 有效，target 没有 Flowkit lock/Skills/scripts
+- **THEN** 系统 SHALL 在 target cwd 调用 validated entrypoint，并返回该 target 的正式观察结果
 
 #### Scenario: Conflicting PATH OpenSpec exists
-- **WHEN** PATH 中存在不同 identity 的 `openspec` executable，同时 managed OpenSpec runtime 有效
-- **THEN** observation SHALL 继续使用 managed runtime，且 MUST NOT 调用 PATH executable
+- **WHEN** PATH 或 target 同名 lock 声明不同 OpenSpec identity，而 manager 所需 runtime 有效
+- **THEN** observation SHALL 忽略这些替代来源，仅调用 manager 约定的 managed runtime
 
 #### Scenario: Managed OpenSpec cannot be resolved
-- **WHEN** existing managed-tool resolver 因 lock、`FLOWKIT_HOME`、runtime identity 或 entrypoint 问题 fail closed
-- **THEN** observation SHALL 停止并保留该 managed-tool resolution failure，而 MUST NOT fallback 到其他 OpenSpec runtime
+- **WHEN** manager lock、FLOWKIT_HOME、runtime identity 或 entrypoint 无效
+- **THEN** observation SHALL 保留既有 managed-tool failure，不 fallback，不复制资产到 target
 
 ### Requirement: Successful observations bind exactly to the requested repository root
-系统 SHALL 将 caller 提供的 repository root 与成功 OpenSpec observation 返回的 `root.path` 使用当前 host canonical path semantics 进行精确比较。二者不完全一致时 observation MUST fail closed；系统 MUST NOT 接受 OpenSpec nearest-root 向上解析到另一个 parent project 的结果。
+
+系统 SHALL 将请求的 target root 与成功观察的 `root.path` 按当前 host canonical path semantics 精确比较，二者不一致时 SHALL fail closed。系统 SHALL NOT 接受 nearest-root 向 parent 项目解析的结果，也 SHALL NOT 将 manager 安装根当作请求项目。manager 和 target 可以同位置开发，也可以分离安装；逻辑归属不依赖二者是否同目录。
 
 #### Scenario: OpenSpec reports the exact requested root
-- **WHEN** successful machine observation 的 reported `root.path` canonicalizes 后与 requested repository root 精确一致
-- **THEN** 系统 MAY 返回该 observation
+- **WHEN** reported `root.path` canonicalizes 后等于 requested target root
+- **THEN** 系统 SHALL 继续既有 machine shape/identity 校验，并仅在有效时返回观察
 
 #### Scenario: Nested or wrong cwd binds to a parent OpenSpec project
-- **WHEN** OpenSpec 成功返回 machine JSON，但 reported `root.path` canonicalizes 后不同于 requested repository root
-- **THEN** 系统 SHALL fail closed with a machine-distinguishable root-mismatch integration diagnostic
+- **WHEN** OpenSpec 返回成功 JSON，但 root 是 parent 或 manager，而不是 requested target
+- **THEN** observation SHALL 以既有 root-mismatch integration diagnostic 拒绝
 
 ### Requirement: Active Change observation projects only required formal identity facts
 Active Change observation SHALL 只投影 Flowkit 当前需要的 formal Change identifier 集合。每个 returned Change identifier SHALL 满足既有 canonical `ChangeId` / semantic-id contract。系统 MUST NOT 将 OpenSpec 的 task counts、timestamps、free-text status 或其他 list payload fields 自动提升为稳定 Flowkit contract。

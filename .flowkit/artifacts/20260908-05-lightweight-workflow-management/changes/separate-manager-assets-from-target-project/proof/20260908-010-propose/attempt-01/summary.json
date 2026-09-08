@@ -1,0 +1,88 @@
+{
+  "kind": "bootstrap-propose-validation",
+  "status": "PASS",
+  "completedAt": "2026-09-08T06:04:39.686Z",
+  "review": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/separate-manager-assets-from-target-project/20260908-009-review-explore/result.json",
+    "bytes": 6621,
+    "sha256": "5e617f15b92df703cfc71ee07b58cd9697d2c6464c5b0f78d01fd22f63ed15a4"
+  },
+  "acceptedExplore": {
+    "path": "openspec/changes/separate-manager-assets-from-target-project/explore.md",
+    "bytes": 10261,
+    "sha256": "894b1aeac3040a7f936b1e17de1c478e81f377448407ae3658bf0cba791a2289"
+  },
+  "manifest": {
+    "path": "openspec/delivery-groups/20260908-05-lightweight-workflow-management.yaml",
+    "bytes": 8429,
+    "sha256": "c7fdf5e778e55fa6b27f39565b083509bcf10c56388d5851a729a728263115af"
+  },
+  "artifacts": [
+    {
+      "path": "openspec/changes/separate-manager-assets-from-target-project/proposal.md",
+      "bytes": 3295,
+      "sha256": "0ca3f865d15f63730b417fc91d091999395134495fb0dbf5aa4585ad6d5ed768"
+    },
+    {
+      "path": "openspec/changes/separate-manager-assets-from-target-project/design.md",
+      "bytes": 10984,
+      "sha256": "14ec40690ed73091475b5e0ddbf7cfd4cbd24f9379c07ab7ff78db6a9fa2602f"
+    },
+    {
+      "path": "openspec/changes/separate-manager-assets-from-target-project/tasks.md",
+      "bytes": 3535,
+      "sha256": "637cefdfdd6742892611b5091c573dd8c901b8c4128e921e270a1809a32ce02f"
+    },
+    {
+      "path": "openspec/changes/separate-manager-assets-from-target-project/specs/action-guidance-execution/spec.md",
+      "bytes": 3324,
+      "sha256": "e5d5046503c3889fe035eeb82c85ce15549ecd644a779fc456a3cb2cd4ed71b1"
+    },
+    {
+      "path": "openspec/changes/separate-manager-assets-from-target-project/specs/delivery-operation-execution-and-start-continuity/spec.md",
+      "bytes": 2395,
+      "sha256": "3c2eae35cfbfcb3d21a62ba4719ee9a4416b11ce4c5e03124d62794b454502eb"
+    },
+    {
+      "path": "openspec/changes/separate-manager-assets-from-target-project/specs/foundation-cli-surface/spec.md",
+      "bytes": 3303,
+      "sha256": "c32a28ad67764723988a96a8acd3b158eb5a78cd402aba58d3854354368d3855"
+    },
+    {
+      "path": "openspec/changes/separate-manager-assets-from-target-project/specs/managed-toolchain-resolution/spec.md",
+      "bytes": 2753,
+      "sha256": "5e2d30d0ea0f70e14204b01c825050083a8033f91e58a4f13c57ace76c0a53d0"
+    },
+    {
+      "path": "openspec/changes/separate-manager-assets-from-target-project/specs/openspec-thin-integration/spec.md",
+      "bytes": 2266,
+      "sha256": "6c543b03c9a5163bacbac42aded97dc94541ab612b8c825a5a7772fee4ee8b85"
+    }
+  ],
+  "deltaStats": [
+    {
+      "capability": "action-guidance-execution",
+      "requirements": 3
+    },
+    {
+      "capability": "delivery-operation-execution-and-start-continuity",
+      "requirements": 1
+    },
+    {
+      "capability": "foundation-cli-surface",
+      "requirements": 2
+    },
+    {
+      "capability": "managed-toolchain-resolution",
+      "requirements": 2
+    },
+    {
+      "capability": "openspec-thin-integration",
+      "requirements": 2
+    }
+  ],
+  "taskCount": 12,
+  "implementationTasksCompleted": 0,
+  "scope": "仅新建当前计划与本 Run/proof；既有 manifest 未在本轮修改，Review/Explore 精确引用不变",
+  "checkMeaning": "OpenSpec结构/旧场景保留/计划文本与作用域检查，不是独立审查或实现验收"
+}

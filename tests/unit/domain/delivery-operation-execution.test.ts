@@ -1,3 +1,4 @@
+import { fixtureInstallation } from "./manager-installation-fixture.js";
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
 import {
@@ -170,18 +171,30 @@ test("resolver binds exact canonical bytes and byte drift changes identity", asy
       "delivery-start",
       "# start\nfirst\n",
     );
-    const first = await resolveDeliveryGuidanceRef(root, "delivery-start");
+    const first = await resolveDeliveryGuidanceRef(
+      fixtureInstallation(root),
+      "delivery-start",
+    );
     assert.notEqual(first, null);
     assert.equal(first!.path, "skills/delivery/start/SKILL.md");
 
-    const bytes = await readExactDeliveryGuidance(root, first);
+    const bytes = await readExactDeliveryGuidance(
+      fixtureInstallation(root),
+      first,
+    );
     assert.equal(bytes?.toString("utf8"), "# start\nfirst\n");
 
     await writeFile(entry, "# start\nsecond\n", "utf8");
-    const second = await resolveDeliveryGuidanceRef(root, "delivery-start");
+    const second = await resolveDeliveryGuidanceRef(
+      fixtureInstallation(root),
+      "delivery-start",
+    );
     assert.notEqual(second, null);
     assert.notEqual(first!.contentSha256, second!.contentSha256);
-    assert.equal(await readExactDeliveryGuidance(root, first), null);
+    assert.equal(
+      await readExactDeliveryGuidance(fixtureInstallation(root), first),
+      null,
+    );
   } finally {
     await rm(root, { recursive: true, force: true });
   }
@@ -200,7 +213,10 @@ test("missing product Guidance never falls back to .agents", async () => {
     await mkdir(path.dirname(bootstrap), { recursive: true });
     await writeFile(bootstrap, "# bootstrap only\n", "utf8");
     assert.equal(
-      await resolveDeliveryGuidanceRef(root, "delivery-start"),
+      await resolveDeliveryGuidanceRef(
+        fixtureInstallation(root),
+        "delivery-start",
+      ),
       null,
     );
   } finally {
@@ -215,7 +231,10 @@ test("non-regular, symlink, and parent-path redirected Guidance fail closed", as
     const entry = path.join(root, "skills", "delivery", "start", "SKILL.md");
     await mkdir(entry, { recursive: true });
     assert.equal(
-      await resolveDeliveryGuidanceRef(root, "delivery-start"),
+      await resolveDeliveryGuidanceRef(
+        fixtureInstallation(root),
+        "delivery-start",
+      ),
       null,
     );
 
@@ -234,7 +253,10 @@ test("non-regular, symlink, and parent-path redirected Guidance fail closed", as
       throw error;
     }
     assert.equal(
-      await resolveDeliveryGuidanceRef(root, "delivery-start"),
+      await resolveDeliveryGuidanceRef(
+        fixtureInstallation(root),
+        "delivery-start",
+      ),
       null,
     );
 
@@ -252,7 +274,10 @@ test("non-regular, symlink, and parent-path redirected Guidance fail closed", as
       "dir",
     );
     assert.equal(
-      await resolveDeliveryGuidanceRef(root, "delivery-start"),
+      await resolveDeliveryGuidanceRef(
+        fixtureInstallation(root),
+        "delivery-start",
+      ),
       null,
     );
   } finally {
@@ -300,7 +325,10 @@ test("unreadable canonical Delivery Guidance fails closed when permissions are e
       },
       assertUnreadable: async () => {
         assert.equal(
-          await resolveDeliveryGuidanceRef(root, "delivery-start"),
+          await resolveDeliveryGuidanceRef(
+            fixtureInstallation(root),
+            "delivery-start",
+          ),
           null,
         );
       },
@@ -599,7 +627,10 @@ test("canonical Delivery Final Guidance is generic, content-bound, and operation
   assert.equal(body.includes("Git authority"), true);
   assert.equal(body.includes("discover, rank, route, or choose"), true);
   assert.notEqual(
-    await resolveDeliveryGuidanceRef(process.cwd(), "delivery-final"),
+    await resolveDeliveryGuidanceRef(
+      fixtureInstallation(process.cwd()),
+      "delivery-final",
+    ),
     null,
   );
 });

@@ -1,5 +1,9 @@
 #!/usr/bin/env node
 import { readFile } from "node:fs/promises";
+import {
+  loadManagerInstallation,
+  ManagerInstallationError,
+} from "../internal/manager-installation.js";
 
 import {
   FoundationCliCommandError,
@@ -47,12 +51,15 @@ async function main(): Promise<number> {
     }
     const raw = parseFoundationCliRequestJson(requestText);
     const request = parseFoundationCliRequest(command, raw);
-    writeJson(await executeFoundationCliRequest(request));
+    writeJson(
+      await executeFoundationCliRequest(request, loadManagerInstallation()),
+    );
     return 0;
   } catch (error) {
     if (
       error instanceof FoundationCliInputError ||
-      error instanceof FoundationCliCommandError
+      error instanceof FoundationCliCommandError ||
+      error instanceof ManagerInstallationError
     ) {
       writeJson(failure(error.kind));
       return 2;

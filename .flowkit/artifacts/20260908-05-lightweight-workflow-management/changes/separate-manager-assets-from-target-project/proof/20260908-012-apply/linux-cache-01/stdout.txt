@@ -1,0 +1,58 @@
+? Verifying lockfile against supply-chain policies (203 entries)...
+Lockfile is up to date, resolution step is skipped
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Packages: +177
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Packages are copied from the content-addressable store to the virtual store.
+  Content-addressable store is at: /root/.local/share/pnpm/store/v11
+  Virtual store is at:             node_modules/.pnpm
+Progress: resolved 177, reused 139, downloaded 1, added 139
+
+   ╭─────────────────────────────────────────╮
+   │                                         │
+   │   Update available! 11.22.0 → 12.3.4.   │
+   │   Changelog: https://pnpm.io/v/12.3.4   │
+   │    To update, run: pnpm add -g pnpm     │
+   │                                         │
+   ╰─────────────────────────────────────────╯
+
+Progress: resolved 177, reused 139, downloaded 38, added 177, done
+✓ Lockfile passes supply-chain policies (203 entries in 3.3s)
+.../esbuild@0.28.2/node_modules/esbuild postinstall$ node install.js
+.../esbuild@0.28.2/node_modules/esbuild postinstall: Done
+
+dependencies:
++ yaml 2.9.0
+
+devDependencies:
++ @eslint/js 9.39.5
++ @types/node 22.20.1
++ dependency-cruiser 18.2.0
++ eslint 9.39.5
++ prettier 3.9.6
++ tsx 4.23.12
++ typescript 5.5.2
++ typescript-eslint 8.67.0
+
+Done in 4s using pnpm v11.22.0
+[WARN] deprecated eslint@9.39.5: This version is no longer supported. Please see https://eslint.org/version-support for other options.
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Progress: resolved 6, reused 5, downloaded 0, added 0
+Progress: resolved 42, reused 37, downloaded 2, added 0
+Progress: resolved 65, reused 58, downloaded 4, added 0
+Progress: resolved 132, reused 95, downloaded 9, added 0
+Progress: resolved 146, reused 105, downloaded 12, added 0
+Packages: +1
++
+Packages are copied from the content-addressable store to the virtual store.
+  Content-addressable store is at: /root/.local/share/pnpm/store/v11
+  Virtual store is at:             node_modules/.pnpm
+Progress: resolved 175, reused 134, downloaded 15, added 1, done
+[WARN] Failed to create bin at /work/manager-a/node_modules/.bin/acorn. ENOENT: no such file or directory, open '/work/manager-a/node_modules/.pnpm/acorn@8.18.0/node_modules/acorn/bin/acorn'
+
+dependencies:
++ yaml 2.9.0
+
+devDependencies: skipped
+
+Done in 6.2s using pnpm v11.22.0

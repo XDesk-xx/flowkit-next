@@ -1,3 +1,4 @@
+import { fixtureInstallation } from "./manager-installation-fixture.js";
 import assert from "node:assert/strict";
 import {
   mkdtemp,
@@ -206,7 +207,10 @@ test("canonical Author files carry Action-significant HOW inside the hashed file
 
 test("all seven real Author entries resolve and exact canonical byte drift changes GuidanceRef", async () => {
   for (const actionId of AUTHOR_ACTIONS) {
-    const ref = await resolveActionGuidanceRef(REPOSITORY_ROOT, actionId);
+    const ref = await resolveActionGuidanceRef(
+      fixtureInstallation(REPOSITORY_ROOT),
+      actionId,
+    );
     assert.notEqual(ref, null, `failed to resolve ${actionId}`);
     assert.equal(ref!.path, `skills/actions/${actionId}/SKILL.md`);
     assert.match(ref!.contentSha256, /^[0-9a-f]{64}$/);
@@ -221,11 +225,17 @@ test("all seven real Author entries resolve and exact canonical byte drift chang
     await mkdir(path.dirname(entry), { recursive: true });
     await writeFile(entry, canonical, "utf8");
 
-    const before = await resolveActionGuidanceRef(tempRoot, "apply");
+    const before = await resolveActionGuidanceRef(
+      fixtureInstallation(tempRoot),
+      "apply",
+    );
     assert.notEqual(before, null);
 
     await writeFile(entry, `${canonical}\n<!-- exact-byte-drift -->\n`, "utf8");
-    const after = await resolveActionGuidanceRef(tempRoot, "apply");
+    const after = await resolveActionGuidanceRef(
+      fixtureInstallation(tempRoot),
+      "apply",
+    );
     assert.notEqual(after, null);
     assert.notEqual(before!.contentSha256, after!.contentSha256);
   } finally {

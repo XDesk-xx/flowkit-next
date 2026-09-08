@@ -1,3 +1,7 @@
+import {
+  loadManagerInstallation,
+  type ManagerInstallation,
+} from "../internal/manager-installation.js";
 import { createHash } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
@@ -170,6 +174,7 @@ export async function prepareDeliveryFinalOperationPackage(
   repositoryRoot: unknown,
   input: unknown,
   readRequiredEvidence: unknown,
+  installation: ManagerInstallation = loadManagerInstallation(),
 ): Promise<DeliveryFinalOperationPackage | null> {
   if (
     typeof repositoryRoot !== "string" ||
@@ -219,7 +224,7 @@ export async function prepareDeliveryFinalOperationPackage(
     return null;
   }
   const guidanceRef = await resolveDeliveryGuidanceRef(
-    repositoryRoot,
+    installation,
     "delivery-final",
   );
   if (guidanceRef === null) return null;
@@ -384,6 +389,7 @@ export async function invokeDeliveryFinalOperation(
   input: unknown,
   execute: DeliveryFinalExecute,
   readRequiredEvidence: ReadDeliveryRequiredEvidence,
+  installation: ManagerInstallation = loadManagerInstallation(),
 ): Promise<DeliveryFinalInvocationOutcome> {
   if (
     typeof execute !== "function" ||
@@ -396,12 +402,13 @@ export async function invokeDeliveryFinalOperation(
     repositoryRoot,
     input,
     readRequiredEvidence,
+    installation,
   );
   if (operationPackage === null || typeof repositoryRoot !== "string") {
     return failure("package-formation-rejected");
   }
   const guidanceBytes = await readExactDeliveryGuidance(
-    repositoryRoot,
+    installation,
     operationPackage.guidanceRef,
   );
   if (guidanceBytes === null) return failure("guidance-drift-rejected");
@@ -441,6 +448,7 @@ export async function invokeDeliveryFinalOperation(
     repositoryRoot,
     input,
     readRequiredEvidence,
+    installation,
   );
   if (
     revalidated === null ||

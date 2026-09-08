@@ -1,3 +1,4 @@
+import { fixtureInstallation } from "./manager-installation-fixture.js";
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { execFile } from "node:child_process";
@@ -336,6 +337,7 @@ test("accepted object may use different history when its exact product and requi
         () => acceptedMainCommit,
         () => finalCheckpoint,
       ),
+      fixtureInstallation(fixture.root),
     );
     assert.equal(outcome.status, "terminal");
     if (outcome.status !== "terminal") throw new Error("expected terminal");
@@ -377,6 +379,7 @@ test("content-equivalent history replacement without trusted acceptance is rejec
       },
       fixture.readRequiredEvidence,
       fixture.integrationSource(),
+      fixtureInstallation(fixture.root),
     );
     assert.deepEqual(outcome, {
       status: "failed",
@@ -426,6 +429,7 @@ test("accepted object with product-equivalent but damaged required Run evidence 
         () => acceptedMainCommit,
         () => finalCheckpoint,
       ),
+      fixtureInstallation(fixture.root),
     );
     assert.deepEqual(outcome, {
       status: "failed",
@@ -453,6 +457,7 @@ test("wrong or broad Owner authority fails closed", async () => {
         wrongDecision,
         fixture.readRequiredEvidence,
         fixture.integrationSource(),
+        fixtureInstallation(fixture.root),
       ),
       null,
     );
@@ -470,6 +475,7 @@ test("wrong or broad Owner authority fails closed", async () => {
         broad,
         fixture.readRequiredEvidence,
         fixture.integrationSource(),
+        fixtureInstallation(fixture.root),
       ),
       null,
     );
@@ -489,6 +495,7 @@ test("zero, multiple, and candidate-changing final commits fail closed", async (
         async () => ({ status: "repository-acceptance-complete" }),
         fixture.readRequiredEvidence,
         fixture.integrationSource(),
+        fixtureInstallation(fixture.root),
       );
       assert.equal(outcome.status, "failed");
       if (outcome.status === "failed")
@@ -519,6 +526,7 @@ test("zero, multiple, and candidate-changing final commits fail closed", async (
         async () => ({ status: "repository-acceptance-complete" }),
         fixture.readRequiredEvidence,
         fixture.integrationSource(),
+        fixtureInstallation(fixture.root),
       );
       assert.equal(outcome.status, "failed");
       if (outcome.status === "failed")
@@ -567,6 +575,7 @@ test("zero, multiple, and candidate-changing final commits fail closed", async (
         async () => ({ status: "repository-acceptance-complete" }),
         fixture.readRequiredEvidence,
         fixture.integrationSource(),
+        fixtureInstallation(fixture.root),
       );
       assert.equal(outcome.status, "failed");
       if (outcome.status === "failed") {
@@ -596,6 +605,7 @@ test("zero, multiple, and candidate-changing final commits fail closed", async (
         async () => ({ status: "repository-acceptance-complete" }),
         fixture.readRequiredEvidence,
         fixture.integrationSource(),
+        fixtureInstallation(fixture.root),
       );
       assert.equal(outcome.status, "failed");
       if (outcome.status === "failed")
@@ -626,6 +636,7 @@ test("provider-reported accepted-main SHA is not admitted as truth", async () =>
       },
       fixture.readRequiredEvidence,
       fixture.integrationSource(),
+      fixtureInstallation(fixture.root),
     );
     assert.deepEqual(outcome, {
       status: "failed",

@@ -1,3 +1,4 @@
+import { fixtureInstallation } from "./manager-installation-fixture.js";
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { access, mkdir, readFile, writeFile } from "node:fs/promises";
@@ -78,6 +79,8 @@ test("without Archify: real Start/checks/Final/local Git integration; OpenSpec a
       }),
       validation.surface,
       validation.read,
+      undefined,
+      fixtureInstallation(root),
     );
     assert.equal(start.status, "terminal");
     const outcomes = await acceptedOutcomes(fixture);
@@ -91,6 +94,7 @@ test("without Archify: real Start/checks/Final/local Git integration; OpenSpec a
       finalInput(fixture, outcomes),
       () => ({ status: "ready" }),
       readRequiredEvidence,
+      fixtureInstallation(root),
     );
     assert.equal(final.status, "terminal");
     if (final.status !== "terminal") throw new Error("Final failed");
@@ -157,6 +161,7 @@ test("without Archify: real Start/checks/Final/local Git integration; OpenSpec a
       },
       readRequiredEvidence,
       source,
+      fixtureInstallation(root),
     );
     assert.equal(integrated.status, "terminal");
     await assert.rejects(access(path.join(root, "architecture")), {
@@ -188,20 +193,25 @@ test("without Archify: real Start/checks/Final/local Git integration; OpenSpec a
 test("Final rejects a real failed check, incomplete checks and legacy preparation input", async () => {
   const fixture = await createFixture();
   try {
-    const failed = await invokeDeliveryFullTestOperation(fixture.root, {
-      deliveryId,
-      ownerAuthority: authority("authorize-formal-full-test"),
-      checks: [
-        {
-          checkId: "real-failure",
-          program: process.execPath,
-          args: ["-e", "process.exit(7)"],
-          configRefs: ["config:fixture"],
-          toolRefs: ["tool:node"],
-          environmentRefs: ["environment:test"],
-        },
-      ],
-    });
+    const failed = await invokeDeliveryFullTestOperation(
+      fixture.root,
+      {
+        deliveryId,
+        ownerAuthority: authority("authorize-formal-full-test"),
+        checks: [
+          {
+            checkId: "real-failure",
+            program: process.execPath,
+            args: ["-e", "process.exit(7)"],
+            configRefs: ["config:fixture"],
+            toolRefs: ["tool:node"],
+            environmentRefs: ["environment:test"],
+          },
+        ],
+      },
+      undefined,
+      fixtureInstallation(fixture.root),
+    );
     assert.equal(failed.status, "terminal");
     if (failed.status !== "terminal") throw new Error("check did not execute");
     assert.equal(failed.verdict, "failed");
@@ -219,7 +229,12 @@ test("Final rejects a real failed check, incomplete checks and legacy preparatio
       { ...finalInput(fixture, passed), architectureOutcome: {} },
     ])
       assert.equal(
-        await prepareDeliveryFinalOperationPackage(fixture.root, input, read),
+        await prepareDeliveryFinalOperationPackage(
+          fixture.root,
+          input,
+          read,
+          fixtureInstallation(fixture.root),
+        ),
         null,
       );
   } finally {

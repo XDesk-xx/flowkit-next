@@ -1,3 +1,4 @@
+import { fixtureInstallation } from "./manager-installation-fixture.js";
 import assert from "node:assert/strict";
 import { mkdir, mkdtemp, readFile, stat, writeFile } from "node:fs/promises";
 import os from "node:os";
@@ -117,7 +118,7 @@ test("resolves exact OpenSpec identity with the closed resolved shape", async ()
   const fixture = await createRuntime(flowkitHome, "openspec");
 
   const resolved = await resolveManagedTool({
-    repositoryRoot,
+    installation: fixtureInstallation(repositoryRoot),
     flowkitHome,
     toolId: "openspec",
   });
@@ -138,7 +139,11 @@ test("resolves exact OpenSpec identity with the closed resolved shape", async ()
 test("rejects unsupported managed tool ids before any fallback", async () => {
   const { repositoryRoot, flowkitHome } = await setup();
   await expectDiagnostic(
-    resolveManagedTool({ repositoryRoot, flowkitHome, toolId: "node" }),
+    resolveManagedTool({
+      installation: fixtureInstallation(repositoryRoot),
+      flowkitHome,
+      toolId: "node",
+    }),
     "unsupported-managed-tool",
   );
 });
@@ -146,7 +151,10 @@ test("rejects unsupported managed tool ids before any fallback", async () => {
 test("requires explicit FLOWKIT_HOME", async () => {
   const { repositoryRoot } = await setup();
   await expectDiagnostic(
-    resolveManagedTool({ repositoryRoot, toolId: "openspec" }),
+    resolveManagedTool({
+      installation: fixtureInstallation(repositoryRoot),
+      toolId: "openspec",
+    }),
     "missing-flowkit-home",
   );
 });
@@ -155,7 +163,11 @@ test("rejects invalid or expanded managed-tool lock authority", async () => {
   const { repositoryRoot, flowkitHome } = await setup();
   await writeLock(repositoryRoot, { root: { node: { version: "22.23.2" } } });
   await expectDiagnostic(
-    resolveManagedTool({ repositoryRoot, flowkitHome, toolId: "openspec" }),
+    resolveManagedTool({
+      installation: fixtureInstallation(repositoryRoot),
+      flowkitHome,
+      toolId: "openspec",
+    }),
     "invalid-lock",
   );
 });
@@ -166,7 +178,11 @@ test("rejects traversing runtime-root material", async () => {
     openspec: { runtimeRoot: "${FLOWKIT_HOME}/tools/openspec/../1.10.0" },
   });
   await expectDiagnostic(
-    resolveManagedTool({ repositoryRoot, flowkitHome, toolId: "openspec" }),
+    resolveManagedTool({
+      installation: fixtureInstallation(repositoryRoot),
+      flowkitHome,
+      toolId: "openspec",
+    }),
     "invalid-runtime-root",
   );
 });
@@ -184,7 +200,7 @@ test("ignores conflicting PATH executable and returns only managed runtime facts
   process.env.PATH = `${fakePath}${path.delimiter}${previousPath ?? ""}`;
   try {
     const resolved = await resolveManagedTool({
-      repositoryRoot,
+      installation: fixtureInstallation(repositoryRoot),
       flowkitHome,
       toolId: "openspec",
     });
@@ -203,14 +219,21 @@ test("ignores conflicting PATH executable and returns only managed runtime facts
 
 test("Archify is unsupported before home, lock, or runtime lookup", async () => {
   await expectDiagnostic(
-    resolveManagedTool({ repositoryRoot: "missing-root", toolId: "archify" }),
+    resolveManagedTool({
+      installation: fixtureInstallation("missing-root"),
+      toolId: "archify",
+    }),
     "unsupported-managed-tool",
   );
   const fixture = await setup();
   await createRuntime(fixture.flowkitHome, "openspec");
   await writeLock(fixture.repositoryRoot, { root: { archify: {} } });
   await expectDiagnostic(
-    resolveManagedTool({ ...fixture, toolId: "openspec" }),
+    resolveManagedTool({
+      installation: fixtureInstallation(fixture.repositoryRoot),
+      ...fixture,
+      toolId: "openspec",
+    }),
     "invalid-lock",
   );
 });
@@ -218,7 +241,11 @@ test("Archify is unsupported before home, lock, or runtime lookup", async () => 
 test("fails closed when requested managed runtime is absent", async () => {
   const { repositoryRoot, flowkitHome } = await setup();
   await expectDiagnostic(
-    resolveManagedTool({ repositoryRoot, flowkitHome, toolId: "openspec" }),
+    resolveManagedTool({
+      installation: fixtureInstallation(repositoryRoot),
+      flowkitHome,
+      toolId: "openspec",
+    }),
     "missing-runtime",
   );
 });
@@ -229,14 +256,22 @@ test("rejects exact package name or version mismatch", async () => {
     packageName: "openspec-fake",
   });
   await expectDiagnostic(
-    resolveManagedTool({ ...first, toolId: "openspec" }),
+    resolveManagedTool({
+      installation: fixtureInstallation(first.repositoryRoot),
+      ...first,
+      toolId: "openspec",
+    }),
     "package-identity-mismatch",
   );
 
   const second = await setup();
   await createRuntime(second.flowkitHome, "openspec", { version: "1.10.1" });
   await expectDiagnostic(
-    resolveManagedTool({ ...second, toolId: "openspec" }),
+    resolveManagedTool({
+      installation: fixtureInstallation(second.repositoryRoot),
+      ...second,
+      toolId: "openspec",
+    }),
     "package-identity-mismatch",
   );
 });
@@ -248,7 +283,11 @@ test("rejects missing and escaping entrypoints", async () => {
     unlink(runtime.entrypoint),
   );
   await expectDiagnostic(
-    resolveManagedTool({ ...missing, toolId: "openspec" }),
+    resolveManagedTool({
+      installation: fixtureInstallation(missing.repositoryRoot),
+      ...missing,
+      toolId: "openspec",
+    }),
     "missing-entrypoint",
   );
 
@@ -258,7 +297,11 @@ test("rejects missing and escaping entrypoints", async () => {
     openspec: { entrypoint: "../outside.js" },
   });
   await expectDiagnostic(
-    resolveManagedTool({ ...escaping, toolId: "openspec" }),
+    resolveManagedTool({
+      installation: fixtureInstallation(escaping.repositoryRoot),
+      ...escaping,
+      toolId: "openspec",
+    }),
     "invalid-runtime-root",
   );
 });
@@ -267,7 +310,13 @@ test("resolves requested tool on demand without requiring its peer", async () =>
   const openspecOnly = await setup();
   await createRuntime(openspecOnly.flowkitHome, "openspec");
   assert.equal(
-    (await resolveManagedTool({ ...openspecOnly, toolId: "openspec" })).toolId,
+    (
+      await resolveManagedTool({
+        installation: fixtureInstallation(openspecOnly.repositoryRoot),
+        ...openspecOnly,
+        toolId: "openspec",
+      })
+    ).toolId,
     "openspec",
   );
   await assert.rejects(
@@ -292,6 +341,10 @@ test("resolution never invokes the managed entrypoint or requires archive proven
     "toolchain.lock.json",
   );
   assert.match(await readFile(lockPath, "utf8"), /runtimeArtifactSha256/);
-  await resolveManagedTool({ repositoryRoot, flowkitHome, toolId: "openspec" });
+  await resolveManagedTool({
+    installation: fixtureInstallation(repositoryRoot),
+    flowkitHome,
+    toolId: "openspec",
+  });
   await assert.rejects(stat(marker), { code: "ENOENT" });
 });

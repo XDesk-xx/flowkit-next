@@ -1,3 +1,5 @@
+import { fixtureInstallation } from "./manager-installation-fixture.js";
+import { loadManagerInstallation } from "../../../src/internal/manager-installation.js";
 import assert from "node:assert/strict";
 import fs, { mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
@@ -44,6 +46,7 @@ test("Delivery Final prepares complete prerequisites and materializes one bounde
       fixture.root,
       finalInput(fixture, outcomes),
       evidenceSource(outcomes, fixture.root),
+      fixtureInstallation(fixture.root),
     );
     assert.equal(prepared?.operationId, "delivery-final");
     assert.deepEqual(prepared?.operationFacts.completedRequiredChangeIds, [
@@ -59,6 +62,7 @@ test("Delivery Final prepares complete prerequisites and materializes one bounde
       finalInput(fixture, outcomes),
       () => ({ status: "ready" }),
       evidenceSource(outcomes, fixture.root),
+      loadManagerInstallation(),
     );
     assert.equal(outcome.status, "terminal");
     if (outcome.status !== "terminal") throw new Error("Final failed");
@@ -99,6 +103,7 @@ test("Delivery Final writer preserves all non-target manifest bytes and ordering
       fixture.root,
       finalInput(fixture, outcomes),
       evidenceSource(outcomes, fixture.root),
+      fixtureInstallation(fixture.root),
     );
     assert.notEqual(prepared, null);
     if (prepared === null) return;
@@ -174,6 +179,7 @@ test("Delivery Final coordination writer never returns success on staging, repla
       fixture.root,
       finalInput(fixture, outcomes),
       evidenceSource(outcomes, fixture.root),
+      fixtureInstallation(fixture.root),
     );
     assert.notEqual(prepared, null);
     if (prepared === null) return;
@@ -241,6 +247,7 @@ test("Delivery Final preparation rejects partial facts, active OpenSpec, output 
         fixture.root,
         input,
         evidenceSource(outcomes, fixture.root),
+        fixtureInstallation(fixture.root),
       ),
       null,
     );
@@ -250,62 +257,78 @@ test("Delivery Final preparation rejects partial facts, active OpenSpec, output 
         fixture.root,
         { ...input, requiredEvidence: { selfSigned: true } },
         evidenceSource(outcomes, fixture.root),
+        fixtureInstallation(fixture.root),
       ),
       null,
     );
     assert.equal(
-      await prepareDeliveryFinalOperationPackage(fixture.root, input, {
-        ...source,
-        readChangeClosure: async (
-          request: Parameters<typeof source.readChangeClosure>[0],
-        ) => {
-          if (request.changeId === "second-change") {
-            throw new Error("missing accepted anchor");
-          }
-          return source.readChangeClosure(request);
+      await prepareDeliveryFinalOperationPackage(
+        fixture.root,
+        input,
+        {
+          ...source,
+          readChangeClosure: async (
+            request: Parameters<typeof source.readChangeClosure>[0],
+          ) => {
+            if (request.changeId === "second-change") {
+              throw new Error("missing accepted anchor");
+            }
+            return source.readChangeClosure(request);
+          },
         },
-      }),
+        fixtureInstallation(fixture.root),
+      ),
       null,
     );
     assert.equal(
-      await prepareDeliveryFinalOperationPackage(fixture.root, input, {
-        ...source,
-        readChangeClosure: async (
-          request: Parameters<typeof source.readChangeClosure>[0],
-        ) => {
-          const closure = await source.readChangeClosure(request);
-          return request.changeId === "first-change"
-            ? {
-                ...closure,
-                runs: closure.runs.map((run) =>
-                  run.runId === closure.reviewApplyRunId
-                    ? { ...run, resultJson: Buffer.from("{}\n") }
-                    : run,
-                ),
-              }
-            : closure;
+      await prepareDeliveryFinalOperationPackage(
+        fixture.root,
+        input,
+        {
+          ...source,
+          readChangeClosure: async (
+            request: Parameters<typeof source.readChangeClosure>[0],
+          ) => {
+            const closure = await source.readChangeClosure(request);
+            return request.changeId === "first-change"
+              ? {
+                  ...closure,
+                  runs: closure.runs.map((run) =>
+                    run.runId === closure.reviewApplyRunId
+                      ? { ...run, resultJson: Buffer.from("{}\n") }
+                      : run,
+                  ),
+                }
+              : closure;
+          },
         },
-      }),
+        fixtureInstallation(fixture.root),
+      ),
       null,
     );
     assert.equal(
-      await prepareDeliveryFinalOperationPackage(fixture.root, input, {
-        ...source,
-        readFullTest: async (
-          request: Parameters<typeof source.readFullTest>[0],
-        ) => {
-          const material = await source.readFullTest(request);
-          return {
-            ...material,
-            artifacts: [
-              {
-                artifact: "../redirected.json",
-                bytes: Buffer.from("forged\n"),
-              },
-            ],
-          };
+      await prepareDeliveryFinalOperationPackage(
+        fixture.root,
+        input,
+        {
+          ...source,
+          readFullTest: async (
+            request: Parameters<typeof source.readFullTest>[0],
+          ) => {
+            const material = await source.readFullTest(request);
+            return {
+              ...material,
+              artifacts: [
+                {
+                  artifact: "../redirected.json",
+                  bytes: Buffer.from("forged\n"),
+                },
+              ],
+            };
+          },
         },
-      }),
+        fixtureInstallation(fixture.root),
+      ),
       null,
     );
     assert.equal(
@@ -316,6 +339,7 @@ test("Delivery Final preparation rejects partial facts, active OpenSpec, output 
           fullTestOutcome: { status: "passed" },
         },
         evidenceSource(outcomes, fixture.root),
+        fixtureInstallation(fixture.root),
       ),
       null,
     );
@@ -329,6 +353,7 @@ test("Delivery Final preparation rejects partial facts, active OpenSpec, output 
         fixture.root,
         input,
         evidenceSource(outcomes, fixture.root),
+        fixtureInstallation(fixture.root),
       ),
       null,
     );
@@ -343,6 +368,7 @@ test("Delivery Final preparation rejects partial facts, active OpenSpec, output 
         fixture.root,
         input,
         evidenceSource(outcomes, fixture.root),
+        fixtureInstallation(fixture.root),
       ),
       null,
     );
@@ -356,6 +382,7 @@ test("Delivery Final preparation rejects partial facts, active OpenSpec, output 
         fixture.root,
         input,
         evidenceSource(outcomes, fixture.root),
+        fixtureInstallation(fixture.root),
       ),
       null,
     );
@@ -397,20 +424,28 @@ test("Delivery Final rejects failed archive anchors and unrelated external outco
         fixture.root,
         input,
         failedArchive,
+        fixtureInstallation(fixture.root),
       ),
       null,
     );
 
     const unrelated = Buffer.from('{"status":"passed"}\n');
     assert.equal(
-      await prepareDeliveryFinalOperationPackage(fixture.root, input, {
-        ...source,
-        readFullTest: () => ({
-          sourceRef: "test:full-test-source",
-          outcomeJson: unrelated,
-          artifacts: [{ artifact: "full-test/outcome.json", bytes: unrelated }],
-        }),
-      }),
+      await prepareDeliveryFinalOperationPackage(
+        fixture.root,
+        input,
+        {
+          ...source,
+          readFullTest: () => ({
+            sourceRef: "test:full-test-source",
+            outcomeJson: unrelated,
+            artifacts: [
+              { artifact: "full-test/outcome.json", bytes: unrelated },
+            ],
+          }),
+        },
+        fixtureInstallation(fixture.root),
+      ),
       null,
     );
   } finally {
@@ -435,6 +470,7 @@ test("Delivery Final callback is defensive and correction or invalid results do 
         return { status: "correction-required", reason: "needs correction" };
       },
       evidenceSource(outcomes, fixture.root),
+      fixtureInstallation(fixture.root),
     );
     assert.equal(correction.status, "correction-required");
     assert.deepEqual(await readFile(fixture.manifestPath), before);
@@ -452,6 +488,7 @@ test("Delivery Final callback is defensive and correction or invalid results do 
       input,
       () => ({ status: "ready", extra: true }) as never,
       evidenceSource(outcomes, fixture.root),
+      fixtureInstallation(fixture.root),
     );
     assert.deepEqual(invalid, {
       status: "failed",
@@ -470,6 +507,7 @@ test("Delivery Final callback is defensive and correction or invalid results do 
         return { status: "ready" };
       },
       evidenceSource(outcomes, fixture.root),
+      fixtureInstallation(fixture.root),
     );
     assert.equal(drift.status, "correction-required");
     assert.deepEqual(await readFile(fixture.manifestPath), before);

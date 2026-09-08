@@ -4,6 +4,8 @@ Execute an already-authorized `delivery-full-test` operation from its exact `Del
 
 ## Contract
 
+Guidance 的准备与 exact read 均使用同一 manager 安装来源；相对 path/contentSha256 身份不包含绝对安装根。项目读写、检查 cwd、Git 与证据仍属于 target repositoryRoot；不得回退读取 target 的同名系统 Guidance。
+
 Use the shared v2 candidate/check identities. Preserve explicit check order and argv order; sort only declared unordered material refs by UTF-8 bytes. A PASS from the former identity domain is historical evidence and cannot be converted or reused as a v2 PASS. Checks that consume Memo or Git history bind those actual materials even when they are excluded from the product candidate.
 
 1. Treat the package-bound Delivery identity, candidate identity, ordered project-local checks, canonical Guidance identity, and exact Owner authority as fixed input.

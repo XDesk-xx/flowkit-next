@@ -1,6 +1,7 @@
 import { createHash } from "node:crypto";
 import { lstat, readFile, realpath } from "node:fs/promises";
 import path from "node:path";
+import { isManagerInstallation } from "../internal/manager-installation.js";
 
 import { isOwnerAuthorityFact, type OwnerAuthorityFact } from "./authority.js";
 import {
@@ -142,16 +143,16 @@ async function canonicalGuidanceEntry(
 }
 
 export async function resolveDeliveryGuidanceRef(
-  repositoryRoot: unknown,
+  installation: unknown,
   operationId: unknown,
 ): Promise<DeliveryGuidanceRef | null> {
-  if (typeof repositoryRoot !== "string" || repositoryRoot.length === 0) {
+  if (!isManagerInstallation(installation)) {
     return null;
   }
 
   const relativePath = canonicalDeliveryGuidancePath(operationId);
   if (relativePath === null) return null;
-  const entry = await canonicalGuidanceEntry(repositoryRoot, relativePath);
+  const entry = await canonicalGuidanceEntry(installation.root, relativePath);
   if (entry === null) return null;
 
   return {
@@ -161,18 +162,20 @@ export async function resolveDeliveryGuidanceRef(
 }
 
 export async function readExactDeliveryGuidance(
-  repositoryRoot: unknown,
+  installation: unknown,
   guidanceRef: unknown,
 ): Promise<Buffer | null> {
   if (
-    typeof repositoryRoot !== "string" ||
-    repositoryRoot.length === 0 ||
+    !isManagerInstallation(installation) ||
     !isDeliveryGuidanceRef(guidanceRef)
   ) {
     return null;
   }
 
-  const entry = await canonicalGuidanceEntry(repositoryRoot, guidanceRef.path);
+  const entry = await canonicalGuidanceEntry(
+    installation.root,
+    guidanceRef.path,
+  );
   if (entry === null) return null;
   const contentSha256 = createHash("sha256").update(entry.bytes).digest("hex");
   return contentSha256 === guidanceRef.contentSha256 ? entry.bytes : null;

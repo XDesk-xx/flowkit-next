@@ -1,5 +1,10 @@
 import { realpath, readFile, stat } from "node:fs/promises";
 import path from "node:path";
+import {
+  isManagerInstallation,
+  loadManagerInstallation,
+  type ManagerInstallation,
+} from "../internal/manager-installation.js";
 
 export const MANAGED_TOOL_IDS = ["openspec"] as const;
 export type ManagedToolId = (typeof MANAGED_TOOL_IDS)[number];
@@ -25,7 +30,7 @@ export interface ResolvedManagedTool {
 }
 
 export interface ResolveManagedToolInput {
-  readonly repositoryRoot: string;
+  readonly installation?: ManagerInstallation;
   readonly flowkitHome?: string | null;
   readonly toolId: unknown;
 }
@@ -341,11 +346,9 @@ export async function resolveManagedTool(
       `unsupported managed tool: ${String(input.toolId)}`,
     );
   }
-  if (
-    typeof input.repositoryRoot !== "string" ||
-    input.repositoryRoot.length === 0
-  ) {
-    fail("invalid-lock", "repositoryRoot must be a non-empty string");
+  const installation = input.installation ?? loadManagerInstallation();
+  if (!isManagerInstallation(installation)) {
+    fail("invalid-lock", "manager installation must be valid");
   }
   if (typeof input.flowkitHome !== "string" || input.flowkitHome.length === 0) {
     fail(
@@ -355,7 +358,7 @@ export async function resolveManagedTool(
   }
 
   const toolId = input.toolId;
-  const entry = await readManagedToolLockEntry(input.repositoryRoot, toolId);
+  const entry = await readManagedToolLockEntry(installation.root, toolId);
   const expectedTemplate = expectedRuntimeTemplate(toolId, entry.version);
   if (entry.runtimeRoot !== expectedTemplate) {
     fail(

@@ -69,6 +69,12 @@ Memo          → future cross-Delivery reconsideration only
 
 ## Managed environment
 
+Manager 安装与 target 项目分根：安装包自有 `package.json` name/version、`dist/`、系统 `skills/actions/` / `skills/delivery/`、OpenSpec HOW/vendor 静态文件及 `config/tools/toolchain.lock.json`；安装来源从自身模块位置确定，不使用 cwd、target package 或上一 Delivery SHA 定位。
+
+CLI `status / next / doctor --input <request.json>` 中的 `repositoryRoot` 仅表示 target；不新增 JSON root override。target 保存自己的 OpenSpec、代码、Run、证据和测试配置，无需复制 Flowkit Skills/lock/scripts。`GuidanceRef.path` 相对 manager，内容身份在安装移位后不变。开发此软件的本仓库同时含源码与项目事实，不意味着用户 target 也要保存系统资产。
+
+`pnpm pack` 的 prepack 清理本仓库可丢弃的 `dist` 后重新编译，发行仅包含 files allowlist 和 package 元数据/README；运行依赖由 manager 安装承担，target 不需要本仓库 devDependencies。`FLOWKIT_HOME/tools` 单独提供 exact OpenSpec executable，不随包携带。不新增宿主或自动流程；D05 继续使用已授权独立 bootstrap，安装包验收不接管本仓库生命周期。
+
 Exact managed tool identities are defined in:
 
 ```text

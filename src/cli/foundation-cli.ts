@@ -35,6 +35,10 @@ import type {
   NextRequest,
   StatusRequest,
 } from "./request.js";
+import {
+  loadManagerInstallation,
+  type ManagerInstallation,
+} from "../internal/manager-installation.js";
 
 export type FoundationCliFailureKind =
   | "invalid-current-run"
@@ -152,12 +156,18 @@ async function resolveCanonicalChangeState(
   }
 }
 
-async function statusCommand(request: StatusRequest) {
+async function statusCommand(
+  request: StatusRequest,
+  installation: ManagerInstallation,
+) {
   const changeState = await resolveCanonicalChangeState(request);
   const selected = await readSelectedRun(request, request.currentRunId);
   let activeChanges;
   try {
-    activeChanges = await observeOpenSpecActiveChanges(request);
+    activeChanges = await observeOpenSpecActiveChanges({
+      ...request,
+      installation,
+    });
   } catch (error) {
     if (
       error instanceof OpenSpecObservationError ||
@@ -176,6 +186,7 @@ async function statusCommand(request: StatusRequest) {
   if (activeChanges.changeIds.includes(request.changeId)) {
     try {
       exactChange = await observeOpenSpecChangeStatus({
+        installation,
         repositoryRoot: request.repositoryRoot,
         flowkitHome: request.flowkitHome,
         changeId: request.changeId,
@@ -284,9 +295,14 @@ type DoctorDiagnostic =
 async function runtimeDiagnostic(
   request: DoctorRequest,
   toolId: "openspec",
+  installation: ManagerInstallation,
 ): Promise<DoctorDiagnostic> {
   try {
-    const tool = await resolveManagedTool({ ...request, toolId });
+    const tool = await resolveManagedTool({
+      flowkitHome: request.flowkitHome,
+      installation,
+      toolId,
+    });
     return Object.freeze({
       id: `${toolId}-runtime`,
       status: "pass",
@@ -306,9 +322,13 @@ async function runtimeDiagnostic(
 
 async function openspecRootDiagnostic(
   request: DoctorRequest,
+  installation: ManagerInstallation,
 ): Promise<DoctorDiagnostic> {
   try {
-    const observation = await observeOpenSpecActiveChanges(request);
+    const observation = await observeOpenSpecActiveChanges({
+      ...request,
+      installation,
+    });
     return Object.freeze({
       id: "openspec-root",
       status: "pass",
@@ -329,10 +349,13 @@ async function openspecRootDiagnostic(
   }
 }
 
-async function doctorCommand(request: DoctorRequest) {
+async function doctorCommand(
+  request: DoctorRequest,
+  installation: ManagerInstallation,
+) {
   const diagnostics = await Promise.all([
-    runtimeDiagnostic(request, "openspec"),
-    openspecRootDiagnostic(request),
+    runtimeDiagnostic(request, "openspec", installation),
+    openspecRootDiagnostic(request, installation),
   ]);
   return Object.freeze({
     kind: "doctor" as const,
@@ -350,14 +373,15 @@ export type FoundationCliResult =
 
 export async function executeFoundationCliRequest(
   input: FoundationCliRequest,
+  installation: ManagerInstallation = loadManagerInstallation(),
 ): Promise<FoundationCliResult> {
   switch (input.command) {
     case "status":
-      return statusCommand(input.request);
+      return statusCommand(input.request, installation);
     case "next":
       return nextCommand(input.request);
     case "doctor":
-      return doctorCommand(input.request);
+      return doctorCommand(input.request, installation);
   }
 }
 

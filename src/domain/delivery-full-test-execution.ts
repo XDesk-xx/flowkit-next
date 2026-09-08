@@ -1,3 +1,7 @@
+import {
+  loadManagerInstallation,
+  type ManagerInstallation,
+} from "../internal/manager-installation.js";
 import { createHash } from "node:crypto";
 
 import {
@@ -208,6 +212,7 @@ export function isTrustedPassedFullTestOutcome(
 export async function prepareDeliveryFullTestOperationPackage(
   repositoryRoot: unknown,
   input: unknown,
+  installation: ManagerInstallation = loadManagerInstallation(),
 ): Promise<DeliveryFullTestOperationPackage | null> {
   if (
     typeof repositoryRoot !== "string" ||
@@ -222,7 +227,7 @@ export async function prepareDeliveryFullTestOperationPackage(
     checks: input.checks,
   });
   const guidanceRef = await resolveDeliveryGuidanceRef(
-    repositoryRoot,
+    installation,
     "delivery-full-test",
   );
   if (candidateRef === null || orderedChecks === null || guidanceRef === null) {
@@ -312,10 +317,12 @@ export async function invokeDeliveryFullTestOperation(
   repositoryRoot: unknown,
   input: unknown,
   priorFacts: readonly unknown[] = [],
+  installation: ManagerInstallation = loadManagerInstallation(),
 ): Promise<DeliveryFullTestInvocationOutcome> {
   const operationPackage = await prepareDeliveryFullTestOperationPackage(
     repositoryRoot,
     input,
+    installation,
   );
   if (
     operationPackage === null ||
@@ -331,7 +338,7 @@ export async function invokeDeliveryFullTestOperation(
   }
 
   const guidanceBytes = await readExactDeliveryGuidance(
-    repositoryRoot,
+    installation,
     operationPackage.guidanceRef,
   );
   if (guidanceBytes === null) {

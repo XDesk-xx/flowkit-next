@@ -20,6 +20,8 @@ This Guidance does not decide the next Change, activate another Change, perform 
 
 ## Required inputs
 
+本 Skill 与 `skills/tools/openspec/SKILL.md` 均相对 manager 安装根解析；项目事实与 OpenSpec 命令 cwd 使用 target repositoryRoot。target 同名 Skills/lock 不接管系统来源，系统文件缺失不回退到 target 或 bootstrap。
+
 Establish the exact current Delivery ID/manifest, semantic ChangeId, exact Change coordination entry, already-authorized `archive` Action, accepted terminal review/apply facts, current OpenSpec status/delta state, and handoff/continuity requirements.
 
 Use `skills/tools/openspec/SKILL.md` for subordinate OpenSpec mechanics.

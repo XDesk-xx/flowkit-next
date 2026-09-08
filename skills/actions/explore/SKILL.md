@@ -14,6 +14,8 @@ This Guidance owns HOW only. It does not decide activation, legality, next Actio
 
 ## Required inputs
 
+本 Skill 与 `skills/tools/openspec/SKILL.md` 均相对 manager 安装根解析；项目事实与 OpenSpec 命令 cwd 使用 target repositoryRoot。target 同名 Skills/lock 不接管系统来源，系统文件缺失不回退到 target 或 bootstrap。
+
 Establish the exact Delivery/Change context, Owner scope, repository base, OpenSpec facts, accepted references, explicit non-goals, and the exact current Delivery Change coordination entry.
 
 Use `skills/tools/openspec/SKILL.md` only for subordinate OpenSpec tool mechanics. OpenSpec remains specification/artifact truth.

@@ -1,0 +1,30 @@
+{
+  "kind": "external-orchestrator-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "author",
+  "action": "explore",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "separate-manager-assets-from-target-project",
+  "runId": "20260908-008-explore",
+  "runNumber": 8,
+  "previousRunId": null,
+  "dependencyRun": "remove-archify-from-delivery-workflow/20260908-007-archive",
+  "projectOrdinal": 34,
+  "ordinalBasis": "13 valid unique assigned coordination entries; max 33 + 1; no planned reservation",
+  "sourceHead": "01d82dba4593ea0c5b85ac67da03e6261dccfba6",
+  "sourceHeadMeaning": "实验输入定位，不是激活或 Explore 的 SHA 准入条件",
+  "ownerActivationRef": "owner:470db16c7d253d2f9a0342b49690106c2556434026b81490b918f08db52a90c9",
+  "ownerInstruction": "owner 授权激活下一个  chagne ，进入 proof explore",
+  "ownerDecisionsRelevant": [
+    "沿用独立 bootstrap，不恢复外部 manager，不让 candidate 管理自身",
+    "D05 按语义 Change 执行；必要 proof 默认长期保留在 target .flowkit/artifacts，.tmp 仅可丢弃工作材料",
+    "日志是原始执行输出，不套用源码文本格式规则；不改写证据，不添加审批节点"
+  ],
+  "proofRoot": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-008-explore",
+  "skillsUsed": [".agents/skills/explore-proof-based", ".agents/skills/openspec-explore"],
+  "nextBoundary": "review-explore",
+  "proposalAllowed": false,
+  "applyAllowed": false,
+  "gitMutationAllowed": false
+}

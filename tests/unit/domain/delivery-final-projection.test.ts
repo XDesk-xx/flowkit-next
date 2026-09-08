@@ -1,3 +1,4 @@
+import { fixtureInstallation } from "./manager-installation-fixture.js";
 import assert from "node:assert/strict";
 import test from "node:test";
 
@@ -207,5 +208,8 @@ test("Delivery Finalization ref has a fixed golden vector and ordered projection
     ),
     exact,
   );
-  assert.equal(await resolveDeliveryGuidanceRef("", "delivery-final"), null);
+  assert.equal(
+    await resolveDeliveryGuidanceRef(fixtureInstallation(""), "delivery-final"),
+    null,
+  );
 });

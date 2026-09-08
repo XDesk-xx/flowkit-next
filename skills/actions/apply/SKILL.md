@@ -14,6 +14,8 @@ This Guidance owns HOW only. It does not decide Reviewer verdict, Verification P
 
 ## Required inputs
 
+本 Skill 与 `skills/tools/openspec/SKILL.md` 均相对 manager 安装根解析；项目事实与 OpenSpec 命令 cwd 使用 target repositoryRoot。target 同名 Skills/lock 不接管系统来源，系统文件缺失不回退到 target 或 bootstrap。
+
 Read the exact approved Proposal/design/spec/tasks, latest approving `review-propose`, exact repository candidate/base, controlling Owner scope, applicable existing seams, and explicit non-goals.
 
 Use `skills/tools/openspec/SKILL.md` for subordinate OpenSpec apply/task mechanics.

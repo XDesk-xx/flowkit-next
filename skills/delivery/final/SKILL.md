@@ -4,6 +4,8 @@ Execute an already-authorized `delivery-final` operation from its exact `Deliver
 
 ## Contract
 
+Guidance 的准备与 exact read 均使用同一 manager 安装来源；相对 path/contentSha256 身份不包含绝对安装根。项目读写、检查 cwd、Git 与证据仍属于 target repositoryRoot；不得回退读取 target 的同名系统 Guidance。
+
 Derive `requiredEvidence` from canonical required Changes and trusted accepted archive/review anchors, plus the complete Full Test source. Bind the finite snapshot into Final operation facts; callers cannot shrink it, substitute self-signed hashes, or treat excluded Run/Memo bytes as dispensable evidence. This is not an evidence Registry or a new persistence service.
 
 1. Treat the package-bound Delivery identity, verified candidate, Full Test execution, completed required Change identities, canonical coordination prestate, content-bound Guidance, and exact `finalize-delivery` Owner authority as fixed input.

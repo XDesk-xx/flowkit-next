@@ -1,3 +1,5 @@
+import { fixtureInstallation } from "./manager-installation-fixture.js";
+import { loadManagerInstallation } from "../../../src/internal/manager-installation.js";
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { execFile } from "node:child_process";
@@ -311,6 +313,7 @@ test("trusted preparation binds exact finalized state and pre-integration Git fa
         fixture.input,
         fixture.readRequiredEvidence,
         fixture.integrationSource(),
+        fixtureInstallation(fixture.root),
       );
     assert.equal(
       operationPackage?.operationId,
@@ -347,6 +350,7 @@ test("trusted Owner source rejects caller checkpoint-operation substitution", as
         },
         fixture.readRequiredEvidence,
         fixture.integrationSource(),
+        fixtureInstallation(fixture.root),
       ),
       null,
     );
@@ -378,6 +382,7 @@ test("Integration accepts semantically identical reordered Final evidence", asyn
         { ...fixture.input, deliveryFinalOutcome: reordered },
         fixture.readRequiredEvidence,
         fixture.integrationSource(),
+        fixtureInstallation(fixture.root),
       ),
       null,
     );
@@ -402,6 +407,7 @@ test("coordination byte drift invalidates trusted preparation", async () => {
         fixture.input,
         fixture.readRequiredEvidence,
         fixture.integrationSource(),
+        fixtureInstallation(fixture.root),
       ),
       null,
     );
@@ -427,6 +433,7 @@ test("repository integration proves one final commit and derives accepted main a
       },
       fixture.readRequiredEvidence,
       fixture.integrationSource(),
+      loadManagerInstallation(),
     );
     assert.equal(outcome.status, "terminal");
     if (outcome.status !== "terminal") throw new Error("expected terminal");
@@ -502,6 +509,7 @@ test("repository integration reuses an explicitly bound existing checkpoint with
       },
       fixture.readRequiredEvidence,
       fixture.integrationSource(checkpointOperation),
+      fixtureInstallation(fixture.root),
     );
     assert.equal(outcome.status, "terminal");
     if (outcome.status !== "terminal") throw new Error("expected terminal");
@@ -536,6 +544,7 @@ test("target-main drift during final commit is rejected before repository accept
       },
       fixture.readRequiredEvidence,
       fixture.integrationSource(),
+      fixtureInstallation(fixture.root),
     );
     assert.deepEqual(outcome, {
       status: "failed",
@@ -581,6 +590,7 @@ test("accepted main ancestry without exact tree equality is rejected", async () 
         () => acceptedMainCommit,
         () => finalCommit,
       ),
+      fixtureInstallation(fixture.root),
     );
     assert.deepEqual(outcome, {
       status: "failed",

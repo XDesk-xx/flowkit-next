@@ -1,3 +1,4 @@
+import { fixtureInstallation } from "./manager-installation-fixture.js";
 import assert from "node:assert/strict";
 import { execFile } from "node:child_process";
 import { mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
@@ -180,11 +181,16 @@ export async function cleanup(fixture: Fixture): Promise<void> {
 export async function acceptedOutcomes(fixture: Fixture): Promise<{
   readonly fullTest: DeliveryFullTestInvocationTerminal;
 }> {
-  const fullTest = await invokeDeliveryFullTestOperation(fixture.root, {
-    deliveryId,
-    ownerAuthority: authority("authorize-formal-full-test"),
-    checks: [noOpCheck()],
-  });
+  const fullTest = await invokeDeliveryFullTestOperation(
+    fixture.root,
+    {
+      deliveryId,
+      ownerAuthority: authority("authorize-formal-full-test"),
+      checks: [noOpCheck()],
+    },
+    undefined,
+    fixtureInstallation(fixture.root),
+  );
   assert.equal(fullTest.status, "terminal");
   if (fullTest.status !== "terminal") throw new Error("Full Test failed");
   return { fullTest };

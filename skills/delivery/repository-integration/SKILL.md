@@ -4,6 +4,8 @@ Execute only an already-decided `delivery-repository-integration` operation from
 
 ## Required boundary
 
+Guidance 的准备与 exact read 均使用同一 manager 安装来源；相对 path/contentSha256 身份不包含绝对安装根。项目读写、检查 cwd、Git 与证据仍属于 target repositoryRoot；不得回退读取 target 的同名系统 Guidance。
+
 Consume the exact Final `requiredEvidence` and the Owner-bound `checkpointOperation`. For `create-new`, verify one ordinary commit with the bound parent/count/clean/v2 content. For `reuse-existing`, verify the authorized exact checkpoint object and clean current state without invoking a new commit callback or requiring a different SHA. In both cases, re-read target prestate, derive the accepted object's shared v2 product projection, and revalidate necessary evidence sources; full-tree equality or generic ancestry is not a substitute for content and acceptance-source proof.
 
 - Revalidate the exact `DeliveryFinalizationRecord`, `finalizedCandidateRef`, current Delivery branch/HEAD, target-main prestate, accepted base and singleton Owner authority before Git mutation.

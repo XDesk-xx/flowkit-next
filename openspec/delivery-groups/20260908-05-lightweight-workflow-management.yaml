@@ -52,7 +52,8 @@ changes:
     required: true
     dependsOn:
       - "remove-archify-from-delivery-workflow"
-    state: planned
+    state: completed
+    projectOrdinal: 34
     outputs:
       - "manager 自有 Guidance/工具约定与 target cwd/数据所有权分离。"
       - "所需 exact OpenSpec runtime 解析及分根外部项目验收。"
@@ -68,6 +69,7 @@ changes:
       - "一个实际可用的宿主接入，保留独立 Review、revise 和单次 Action 边界。"
       - "必要 proof 可靠保存、归属与完整性校验；固定三文件 Runs 不扩张。"
       - "idle、歧义与缺失事实诊断，不按最大目录号猜 current。"
+      - "Owner 于本次 separate-manager-assets checkpoint 明确纳入下一 Change：修复原始执行证据与源码文本/提交检查的耦合，保护原始 bytes，不以日志空白/CRLF 阻断正常 commit + push，取消每个 Change 手工追加 Git attributes 路径的做法；不与 .gitignore 或 Full Test 范围绑定。"
 
   - id: "decouple-full-test-from-repository-tracking"
     group: "delivery-verification"
@@ -119,6 +121,14 @@ ownerDecisions:
     deliveryId: "20260908-05-lightweight-workflow-management"
     changeId: "remove-archify-from-delivery-workflow"
     sourceRef: "owner-input:2026-09-08:activate-change:remove-archify-from-delivery-workflow:proof-explore:durable-artifacts"
+    scope:
+      - "explore"
+
+  - ref: "owner:470db16c7d253d2f9a0342b49690106c2556434026b81490b918f08db52a90c9"
+    decision: "activate-change"
+    deliveryId: "20260908-05-lightweight-workflow-management"
+    changeId: "separate-manager-assets-from-target-project"
+    sourceRef: "owner-input:2026-09-08:activate-change:separate-manager-assets-from-target-project:proof-explore"
     scope:
       - "explore"
 

@@ -120,6 +120,8 @@ orchestrate an automatic Author/Reviewer loop
 
 ## 6. Toolchain 与 runtime
 
+D05 当前产品实现分离 manager 安装根与 target repositoryRoot：系统 Guidance、必要静态引用及 lock 从 manager 自身模块位置定位，package name/version 来自安装自身元数据；绝对安装路径不成为持久身份，不以 target metadata/cwd/previous Delivery SHA 选择安装。GuidanceRef 的相对路径在 manager 下解释，项目事实与所有项目写入仍归 target。FLOWKIT_HOME/tools 只提供 exact executable runtime。target 无需复制 Flowkit Skills、scripts 或 lock；同名 target 文件不得接管或作为缺失回退。此安装定位不是 lifecycle authority；D05 仍沿用 Owner 已授权的独立 bootstrap，不自动恢复外部管理或让 candidate 自我接管。
+
 Managed external-tool exact identity 读取：
 
 ```text

@@ -1,3 +1,4 @@
+import { fixtureInstallation } from "./manager-installation-fixture.js";
 import assert from "node:assert/strict";
 import { mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
@@ -61,6 +62,7 @@ async function integrationFixture() {
     finalInput(fixture, outcomes),
     () => ({ status: "ready" }),
     readRequiredEvidence,
+    fixtureInstallation(fixture.root),
   );
   assert.equal(deliveryFinalOutcome.status, "terminal");
   if (deliveryFinalOutcome.status !== "terminal") {
@@ -157,6 +159,7 @@ test("Integration preparation accepts an exact authorized base across unrelated 
       input,
       readRequiredEvidence,
       await integrationSource(root, input, input.checkpointOperation),
+      fixtureInstallation(root),
     );
     assert.notEqual(baseline, null);
 
@@ -179,6 +182,7 @@ test("Integration preparation accepts an exact authorized base across unrelated 
         input,
         readRequiredEvidence,
         await integrationSource(root, input, input.checkpointOperation),
+        fixtureInstallation(root),
       ),
       null,
     );
@@ -194,6 +198,7 @@ test("Integration preparation accepts an exact authorized base across unrelated 
           input.checkpointOperation,
           orphan,
         ),
+        fixtureInstallation(root),
       ),
       null,
     );
@@ -215,6 +220,7 @@ test("Integration preparation accepts an exact authorized base across unrelated 
         input,
         readRequiredEvidence,
         await integrationSource(root, input, input.checkpointOperation),
+        fixtureInstallation(root),
       ),
       null,
     );
@@ -225,6 +231,7 @@ test("Integration preparation accepts an exact authorized base across unrelated 
         { ...input, acceptedBaseCommit: "f".repeat(40) },
         readRequiredEvidence,
         await integrationSource(root, input, input.checkpointOperation),
+        fixtureInstallation(root),
       ),
       null,
     );
@@ -308,6 +315,8 @@ test("Start artifact refs compare semantic fields while preserving strict values
           observe,
           validation.surface,
           () => reorderedOutputs,
+          undefined,
+          fixtureInstallation(root),
         )
       ).status,
       "terminal",
@@ -320,6 +329,8 @@ test("Start artifact refs compare semantic fields while preserving strict values
           observe,
           () => reorderedSurface,
           validation.read,
+          undefined,
+          fixtureInstallation(root),
         )
       ).status,
       "terminal",
@@ -350,6 +361,8 @@ test("Start artifact refs compare semantic fields while preserving strict values
             observe,
             validation.surface,
             () => rejected,
+            undefined,
+            fixtureInstallation(root),
           )
         ).status,
         "failed",
@@ -373,6 +386,8 @@ test("Start artifact refs compare semantic fields while preserving strict values
           observe,
           reversedChecks.surface,
           reversedChecks.read,
+          undefined,
+          fixtureInstallation(root),
         )
       ).status,
       "failed",
@@ -410,6 +425,7 @@ test("Start artifact refs compare semantic fields while preserving strict values
           checkpointCalls += 1;
           return "f".repeat(40);
         },
+        fixtureInstallation(root),
       );
       assert.deepEqual(outcome, {
         status: "failed",
@@ -440,6 +456,7 @@ test("Start artifact refs compare semantic fields while preserving strict values
           checkpointCalls += 1;
           return "f".repeat(40);
         },
+        fixtureInstallation(root),
       ),
       {
         status: "failed",
@@ -477,6 +494,7 @@ test("Integration operation field order is non-semantic across source, ref and r
         { ...input, checkpointOperation: operation },
         readRequiredEvidence,
         await integrationSource(fixture.root, input, operation),
+        fixtureInstallation(fixture.root),
       );
     const reorderedInput =
       await prepareDeliveryRepositoryIntegrationOperationPackage(
@@ -484,6 +502,7 @@ test("Integration operation field order is non-semantic across source, ref and r
         { ...input, checkpointOperation: reorderedOperation },
         readRequiredEvidence,
         await integrationSource(fixture.root, input, operation),
+        fixtureInstallation(fixture.root),
       );
     const reorderedSource =
       await prepareDeliveryRepositoryIntegrationOperationPackage(
@@ -496,6 +515,7 @@ test("Integration operation field order is non-semantic across source, ref and r
           operation,
           reorderedOperation,
         ),
+        fixtureInstallation(fixture.root),
       );
     assert.notEqual(canonical, null);
     assert.deepEqual(reorderedInput, canonical);

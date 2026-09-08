@@ -1,0 +1,25 @@
+{
+  "kind": "external-orchestrator-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "author",
+  "action": "apply",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "separate-manager-assets-from-target-project",
+  "runId": "20260908-012-apply",
+  "runNumber": 12,
+  "projectOrdinal": 34,
+  "previousRunId": "20260908-011-review-propose",
+  "ownerInstruction": "根据最新run，apply",
+  "sourceHead": "01d82dba4593ea0c5b85ac67da03e6261dccfba6",
+  "ownerDecisionsRelevant": [
+    "独立 bootstrap；candidate 仅为构建/测试对象",
+    "必要 proof 保留 target .flowkit/artifacts，.tmp 仅可丢弃材料",
+    "原始日志不套源码格式 gate；src 保持 650 行 gate",
+    "只实施已批准分根合同，不提前实现其余 D05 Changes"
+  ],
+  "skillsUsed": ["openspec-apply-change", "implementation-convergence", "incremental-implementation", "skill-creator", "debugging-and-error-recovery"],
+  "nextBoundary": "review-apply",
+  "gitMutationAllowed": false,
+  "formalFullTestAllowed": false
+}

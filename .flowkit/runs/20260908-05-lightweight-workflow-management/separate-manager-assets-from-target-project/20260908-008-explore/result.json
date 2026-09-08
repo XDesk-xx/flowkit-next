@@ -1,0 +1,46 @@
+{
+  "kind": "external-orchestrator-explore-result",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "separate-manager-assets-from-target-project",
+  "runId": "20260908-008-explore",
+  "action": "explore",
+  "role": "author",
+  "status": "terminal",
+  "verdict": "PASS",
+  "verdictMeaning": "Author bounded Explore completed; not Reviewer approval or implementation acceptance",
+  "projectOrdinal": 34,
+  "previousRunId": null,
+  "dependencyRun": "remove-archify-from-delivery-workflow/20260908-007-archive",
+  "summary": "已复现 target lock/Guidance 耦合及同名冲突；真实 OpenSpec 分根组合、资产移位、缺 runtime 诊断成立；现行 26 项定向测试通过。",
+  "exploreArtifact": "openspec/changes/separate-manager-assets-from-target-project/explore.md",
+  "proofRoot": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-008-explore",
+  "proofSummary": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-008-explore/attempt-01/summary.json",
+    "bytes": 4875,
+    "sha256": "ae9d69501daaef7ca72e7a567154e12656f54713d02a70e1b5f2c35ff975a0ff"
+  },
+  "handoffAudit": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-008-explore/handoff.json",
+    "bytes": 8261,
+    "sha256": "a5794cf270349a197a955940db87421dafa6e7e1876f2ed4d0b43db606fa579c"
+  },
+  "ownerActivationRef": "owner:470db16c7d253d2f9a0342b49690106c2556434026b81490b918f08db52a90c9",
+  "retention": "必要 proof 保留本项目 .flowkit/artifacts；原始日志不套源码格式规则；不改写历史材料",
+  "reviewerVerdict": null,
+  "nextBoundary": "review-explore",
+  "proposalAllowed": false,
+  "applyAllowed": false,
+  "gitMutationAllowed": false,
+  "formalFullTestExecuted": false,
+  "productionMutation": false,
+  "blockingUnknown": null,
+  "limitations": [
+    "No full installed-manager end-to-end status or lifecycle execution",
+    "No Full Test scope implementation or Git workflow change",
+    "Windows native experiment; no Linux acceptance claim"
+  ],
+  "completedAt": "2026-09-08T05:04:54.964Z",
+  "stop": true
+}

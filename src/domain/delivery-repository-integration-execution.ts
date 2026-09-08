@@ -1,4 +1,10 @@
+import {
+  loadManagerInstallation,
+  type ManagerInstallation,
+} from "../internal/manager-installation.js";
+import { deriveDeliveryRepositoryIntegrationRef } from "../internal/delivery-repository-integration-ref.js";
 import { createHash } from "node:crypto";
+export { deriveDeliveryRepositoryIntegrationRef } from "../internal/delivery-repository-integration-ref.js";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 
@@ -263,6 +269,7 @@ export async function prepareDeliveryRepositoryIntegrationOperationPackage(
   input: unknown,
   readRequiredEvidence: unknown,
   readIntegrationSource: unknown,
+  installation: ManagerInstallation = loadManagerInstallation(),
 ): Promise<DeliveryRepositoryIntegrationOperationPackage | null> {
   if (
     typeof repositoryRoot !== "string" ||
@@ -295,7 +302,7 @@ export async function prepareDeliveryRepositoryIntegrationOperationPackage(
   )
     return null;
   const guidanceRef = await resolveDeliveryGuidanceRef(
-    repositoryRoot,
+    installation,
     "delivery-repository-integration",
   );
   if (guidanceRef === null) return null;
@@ -346,35 +353,6 @@ function failure(
   reason: DeliveryRepositoryIntegrationFailureReason,
 ): DeliveryRepositoryIntegrationFailure {
   return { status: "failed", reason, record: null };
-}
-
-export function deriveDeliveryRepositoryIntegrationRef(
-  operationPackage: DeliveryRepositoryIntegrationOperationPackage,
-  finalCommit: string,
-  acceptedMainCommit: string,
-): string {
-  const digest = createHash("sha256")
-    .update("flowkit-repository-integration\0")
-    .update(
-      JSON.stringify({
-        deliveryId: operationPackage.deliveryId,
-        deliveryFinalizationRef:
-          operationPackage.operationFacts.deliveryFinalizationRef,
-        finalizedCandidateRef:
-          operationPackage.operationFacts.finalizedCandidateRef,
-        preIntegrationHead: operationPackage.operationFacts.preIntegrationHead,
-        checkpointOperation: cloneDeliveryRepositoryIntegrationOperationFacts(
-          operationPackage.operationFacts,
-        ).checkpointOperation,
-        finalCommit,
-        targetMainRef: operationPackage.operationFacts.targetMainRef,
-        targetMainPreIntegrationCommit:
-          operationPackage.operationFacts.targetMainPreIntegrationCommit,
-        acceptedMainCommit,
-      }),
-    )
-    .digest("hex");
-  return `repository-integration:sha256:${digest}`;
 }
 
 export function isDeliveryRepositoryIntegrationRecord(
@@ -447,6 +425,7 @@ export async function invokeDeliveryRepositoryIntegrationOperation(
   performRepositoryAcceptance: DeliveryRepositoryIntegrationProviderMechanics,
   readRequiredEvidence: ReadDeliveryRequiredEvidence,
   readIntegrationSource: ReadRepositoryIntegrationSource,
+  installation: ManagerInstallation = loadManagerInstallation(),
 ): Promise<DeliveryRepositoryIntegrationOutcome> {
   if (
     typeof repositoryRoot !== "string" ||
@@ -463,11 +442,12 @@ export async function invokeDeliveryRepositoryIntegrationOperation(
       input,
       readRequiredEvidence,
       readIntegrationSource,
+      installation,
     );
   if (operationPackage === null) return failure("package-formation-rejected");
 
   const guidance = await readExactDeliveryGuidance(
-    repositoryRoot,
+    installation,
     operationPackage.guidanceRef,
   );
   if (guidance === null) return failure("guidance-drift-rejected");
@@ -478,6 +458,7 @@ export async function invokeDeliveryRepositoryIntegrationOperation(
       input,
       readRequiredEvidence,
       readIntegrationSource,
+      installation,
     );
   if (
     revalidated === null ||

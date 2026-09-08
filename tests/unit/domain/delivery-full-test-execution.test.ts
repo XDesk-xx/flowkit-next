@@ -1,3 +1,5 @@
+import { fixtureInstallation } from "./manager-installation-fixture.js";
+import { loadManagerInstallation } from "../../../src/internal/manager-installation.js";
 import assert from "node:assert/strict";
 import { execFile } from "node:child_process";
 import { mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
@@ -141,7 +143,7 @@ test("Delivery Full Test package is a closed concrete variant and rejects mismat
       checks: [declaration("check-one", ["-e", "process.exit(0)"])],
     });
     const guidanceRef = await resolveDeliveryGuidanceRef(
-      root,
+      fixtureInstallation(root),
       "delivery-full-test",
     );
     assert.notEqual(checks, null);
@@ -191,11 +193,15 @@ test("Delivery Full Test package is a closed concrete variant and rejects mismat
 test("trusted Full Test preparation derives current candidate and exact canonical Guidance", async () => {
   const root = await createFixture();
   try {
-    const prepared = await prepareDeliveryFullTestOperationPackage(root, {
-      deliveryId,
-      ownerAuthority: authority(),
-      checks: [declaration("typecheck", ["-e", "process.exit(0)"])],
-    });
+    const prepared = await prepareDeliveryFullTestOperationPackage(
+      root,
+      {
+        deliveryId,
+        ownerAuthority: authority(),
+        checks: [declaration("typecheck", ["-e", "process.exit(0)"])],
+      },
+      fixtureInstallation(root),
+    );
     assert.notEqual(prepared, null);
     assert.equal(prepared!.operationId, "delivery-full-test");
     assert.match(
@@ -226,14 +232,19 @@ test("Full Test executes only package-bound checks in exact declared order", asy
       "-e",
       `require('node:fs').appendFileSync(${JSON.stringify(marker)}, ${JSON.stringify(`${label}\n`)})`,
     ];
-    const outcome = await invokeDeliveryFullTestOperation(root, {
-      deliveryId,
-      ownerAuthority: authority(),
-      checks: [
-        declaration("z-check", append("Z")),
-        declaration("a-check", append("A")),
-      ],
-    });
+    const outcome = await invokeDeliveryFullTestOperation(
+      root,
+      {
+        deliveryId,
+        ownerAuthority: authority(),
+        checks: [
+          declaration("z-check", append("Z")),
+          declaration("a-check", append("A")),
+        ],
+      },
+      undefined,
+      loadManagerInstallation(),
+    );
     assert.equal(outcome.status, "terminal");
     if (outcome.status === "terminal") {
       assert.equal(outcome.verdict, "passed");
@@ -260,14 +271,19 @@ test("same candidate reuses unchanged PASS and reruns only material check identi
       "-e",
       `require('node:fs').appendFileSync(${JSON.stringify(marker)}, ${JSON.stringify(`${label}\n`)})`,
     ];
-    const first = await invokeDeliveryFullTestOperation(root, {
-      deliveryId,
-      ownerAuthority: authority(),
-      checks: [
-        declaration("stable", append("stable-1")),
-        declaration("fixture", append("fixture-1")),
-      ],
-    });
+    const first = await invokeDeliveryFullTestOperation(
+      root,
+      {
+        deliveryId,
+        ownerAuthority: authority(),
+        checks: [
+          declaration("stable", append("stable-1")),
+          declaration("fixture", append("fixture-1")),
+        ],
+      },
+      undefined,
+      fixtureInstallation(root),
+    );
     assert.equal(first.status, "terminal");
     if (first.status !== "terminal") return;
     const prior = priorFactsFromDeliveryFullTestRecord(first.record);
@@ -287,6 +303,7 @@ test("same candidate reuses unchanged PASS and reruns only material check identi
         ],
       },
       prior!,
+      fixtureInstallation(root),
     );
     assert.equal(second.status, "terminal");
     if (second.status === "terminal") {
@@ -303,16 +320,21 @@ test("same candidate reuses unchanged PASS and reruns only material check identi
 test("repository mutation during Full Test stops terminal admission on candidate drift", async () => {
   const root = await createFixture();
   try {
-    const outcome = await invokeDeliveryFullTestOperation(root, {
-      deliveryId,
-      ownerAuthority: authority(),
-      checks: [
-        declaration("mutates-repository", [
-          "-e",
-          "require('node:fs').appendFileSync('source.txt', 'mutated\\n')",
-        ]),
-      ],
-    });
+    const outcome = await invokeDeliveryFullTestOperation(
+      root,
+      {
+        deliveryId,
+        ownerAuthority: authority(),
+        checks: [
+          declaration("mutates-repository", [
+            "-e",
+            "require('node:fs').appendFileSync('source.txt', 'mutated\\n')",
+          ]),
+        ],
+      },
+      undefined,
+      fixtureInstallation(root),
+    );
     assert.equal(outcome.status, "stopped-candidate-drift");
   } finally {
     await rm(root, { recursive: true, force: true });
@@ -326,20 +348,25 @@ test("candidate drift after an executed check stops before any later check runs"
   );
   const marker = path.join(outside, "later-check-ran.txt");
   try {
-    const outcome = await invokeDeliveryFullTestOperation(root, {
-      deliveryId,
-      ownerAuthority: authority(),
-      checks: [
-        declaration("mutates-repository", [
-          "-e",
-          "require('node:fs').appendFileSync('source.txt', 'mutated\\n')",
-        ]),
-        declaration("must-not-run-after-drift", [
-          "-e",
-          `require('node:fs').writeFileSync(${JSON.stringify(marker)}, 'ran\\n')`,
-        ]),
-      ],
-    });
+    const outcome = await invokeDeliveryFullTestOperation(
+      root,
+      {
+        deliveryId,
+        ownerAuthority: authority(),
+        checks: [
+          declaration("mutates-repository", [
+            "-e",
+            "require('node:fs').appendFileSync('source.txt', 'mutated\\n')",
+          ]),
+          declaration("must-not-run-after-drift", [
+            "-e",
+            `require('node:fs').writeFileSync(${JSON.stringify(marker)}, 'ran\\n')`,
+          ]),
+        ],
+      },
+      undefined,
+      fixtureInstallation(root),
+    );
 
     assert.equal(outcome.status, "stopped-candidate-drift");
     await assert.rejects(readFile(marker, "utf8"), { code: "ENOENT" });
@@ -376,11 +403,15 @@ test("flowkit-next six gates can be supplied as one repository-local ordered pla
       }),
       declaration("acceptance", ["test:acceptance"], { program: "pnpm" }),
     ];
-    const prepared = await prepareDeliveryFullTestOperationPackage(root, {
-      deliveryId,
-      ownerAuthority: authority(),
-      checks,
-    });
+    const prepared = await prepareDeliveryFullTestOperationPackage(
+      root,
+      {
+        deliveryId,
+        ownerAuthority: authority(),
+        checks,
+      },
+      fixtureInstallation(root),
+    );
     assert.notEqual(prepared, null);
     assert.deepEqual(
       prepared!.operationFacts.orderedChecks.map((check) => check.checkId),
