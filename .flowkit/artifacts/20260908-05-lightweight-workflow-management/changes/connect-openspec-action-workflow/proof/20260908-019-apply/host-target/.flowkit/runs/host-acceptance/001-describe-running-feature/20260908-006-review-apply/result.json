@@ -1,0 +1,102 @@
+{
+  "runId": "20260908-006-review-apply",
+  "actionIdentity": {
+    "deliveryId": "host-acceptance",
+    "changeId": "describe-running-feature",
+    "actionId": "review-apply"
+  },
+  "authorConclusion": null,
+  "reviewerVerdict": "approved",
+  "verificationVerdict": null,
+  "nextBoundary": "archive",
+  "facts": {
+    "currentStepExplanation": "独立核对当前隔离实现与 approved Proposal 并真实复现。",
+    "complexityMinimality": "两个文件使用 Node 原生能力，无额外抽象。",
+    "scopeDrift": "NONE",
+    "findings": [],
+    "proofRefs": [
+      {
+        "path": ".flowkit/artifacts/host-acceptance/changes/describe-running-feature/proof/20260908-006-review-apply/execute.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "host-acceptance",
+        "changeId": "describe-running-feature",
+        "runId": "20260908-006-review-apply",
+        "purpose": "Independent isolated Apply review and reproduction"
+      },
+      {
+        "path": ".flowkit/artifacts/host-acceptance/changes/describe-running-feature/proof/20260908-006-review-apply/execute.stdout.txt",
+        "bytes": 18,
+        "sha256": "3ad1eda227a94ad45d7456f923d3b9fb159532dc87229dc6b1e4e931b6aff215",
+        "deliveryId": "host-acceptance",
+        "changeId": "describe-running-feature",
+        "runId": "20260908-006-review-apply",
+        "purpose": "Independent isolated Apply review and reproduction"
+      },
+      {
+        "path": ".flowkit/artifacts/host-acceptance/changes/describe-running-feature/proof/20260908-006-review-apply/reproduce.mjs",
+        "bytes": 1826,
+        "sha256": "e0e713aa221fc8f4a79f28b0d55dc358b689717317ec323e38e5cb646c8e7cc7",
+        "deliveryId": "host-acceptance",
+        "changeId": "describe-running-feature",
+        "runId": "20260908-006-review-apply",
+        "purpose": "Independent isolated Apply review and reproduction"
+      },
+      {
+        "path": ".flowkit/artifacts/host-acceptance/changes/describe-running-feature/proof/20260908-006-review-apply/reproduction.json",
+        "bytes": 1709,
+        "sha256": "8a715430a78f6f9cd510062cd85f642e22402afa6c3774b97b7f5098a33cd393",
+        "deliveryId": "host-acceptance",
+        "changeId": "describe-running-feature",
+        "runId": "20260908-006-review-apply",
+        "purpose": "Independent isolated Apply review and reproduction"
+      },
+      {
+        "path": ".flowkit/artifacts/host-acceptance/changes/describe-running-feature/proof/20260908-006-review-apply/review.md",
+        "bytes": 2622,
+        "sha256": "4b4517e8a746eb26a49dd585157723d8a56d7cdebcb07958a6592929a6cd9409",
+        "deliveryId": "host-acceptance",
+        "changeId": "describe-running-feature",
+        "runId": "20260908-006-review-apply",
+        "purpose": "Independent isolated Apply review and reproduction"
+      },
+      {
+        "path": ".flowkit/artifacts/host-acceptance/changes/describe-running-feature/proof/20260908-006-review-apply/test.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "host-acceptance",
+        "changeId": "describe-running-feature",
+        "runId": "20260908-006-review-apply",
+        "purpose": "Independent isolated Apply review and reproduction"
+      },
+      {
+        "path": ".flowkit/artifacts/host-acceptance/changes/describe-running-feature/proof/20260908-006-review-apply/test.stdout.txt",
+        "bytes": 304,
+        "sha256": "a6c9920c73e952e94b2f626b9156302eca000b7fd9ac6a9e822899527de31ced",
+        "deliveryId": "host-acceptance",
+        "changeId": "describe-running-feature",
+        "runId": "20260908-006-review-apply",
+        "purpose": "Independent isolated Apply review and reproduction"
+      }
+    ],
+    "handoff": {
+      "summary": "隔离 Apply approved，无 findings；独立真实执行精确 stdout、空 stderr、exit 0 和原生测试通过。非 D05 Review 或 Full Test。",
+      "ownerDecisions": [
+        {
+          "sourceRef": "approved-task-6.1:owner-apply-input",
+          "summary": "隔离真实宿主验收，不管理 D05；合成 fixture 非真实项目 Owner 权限，必要材料保留 target。"
+        }
+      ],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20260908-006-review-apply",
+          "path": ".flowkit/artifacts/host-acceptance/changes/describe-running-feature/proof/20260908-006-review-apply/review.md"
+        },
+        {
+          "sourceRunId": "20260908-006-review-apply",
+          "path": ".flowkit/artifacts/host-acceptance/changes/describe-running-feature/proof/20260908-006-review-apply/reproduction.json"
+        }
+      ]
+    }
+  }
+}

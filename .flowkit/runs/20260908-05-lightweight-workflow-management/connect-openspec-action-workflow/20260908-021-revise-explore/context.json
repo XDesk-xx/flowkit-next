@@ -1,0 +1,47 @@
+{
+  "kind": "external-orchestrator-revise-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "author",
+  "action": "revise-explore",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "connect-openspec-action-workflow",
+  "projectOrdinal": 35,
+  "runId": "20260908-021-revise-explore",
+  "previousRunId": "20260908-020-revise-explore",
+  "ownerInstruction": "owner 授权 继续 revise explore",
+  "ownerSourceRef": "owner-input:2026-09-08:continue-revise-explore:cli-reads-agent-executes-runs",
+  "ownerDecisionsRelevant": [
+    {
+      "sourceRef": "owner-input:2026-09-08:cli-current-flow-next-agent-runs",
+      "quote": "cli 不是 只负责 当前流程就行么？ 比如 next 下一步是什么，agent 只要知道 flowkit 的 runs 怎么用就可以了？",
+      "meaning": "CLI读取和报告；Agent实际执行并记录Runs，不选择长连接或分次提交协议"
+    },
+    {
+      "sourceRef": "20260908-020-revise-explore/context.json",
+      "meaning": "延续Owner范围纠正、D05独立bootstrap、必要材料保留边界；019中断不补结果"
+    }
+  ],
+  "sourceHead": "697088391374daa67d63c20f8a365fb44ec5c058",
+  "sourceHeadMeaning": "read-only observation, not prerequisite",
+  "skillsUsed": [
+    "revise-explore",
+    "explore-proof-based",
+    "openspec-explore"
+  ],
+  "proofRoot": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-021-revise-explore",
+  "candidateSelfManagement": false,
+  "writeScope": [
+    "canonical explore.md",
+    ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-021-revise-explore",
+    ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-021-revise-explore"
+  ],
+  "excluded": [
+    "Proposal/design/tasks/specs",
+    "manifest",
+    "production/tests/Skills",
+    "Git mutation",
+    "Review execution",
+    "Full Test"
+  ]
+}

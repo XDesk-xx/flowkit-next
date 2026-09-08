@@ -1,0 +1,44 @@
+{
+  "runId": "20260908-004-review-propose",
+  "actionIdentity": {
+    "deliveryId": "host-acceptance",
+    "changeId": "describe-running-feature",
+    "actionId": "review-propose"
+  },
+  "authorConclusion": null,
+  "reviewerVerdict": "approved",
+  "verificationVerdict": null,
+  "nextBoundary": "apply",
+  "facts": {
+    "currentStepExplanation": "独立审查 Proposal 对已批准 Explore 的追溯、合同完整性与 Apply 准备度。",
+    "complexityMinimality": "一个无依赖程序和原生子进程测试，最小合同。",
+    "scopeDrift": "无范围漂移，LF/空 stderr 为已批准输出目标的验收细化。",
+    "findings": [],
+    "proofRefs": [
+      {
+        "path": ".flowkit/artifacts/host-acceptance/changes/describe-running-feature/proof/20260908-004-review-propose/review.md",
+        "bytes": 3172,
+        "sha256": "5aced581524b984c81e62fc05d4314a29b9df37f5b2bd16ebb0019d264f47118",
+        "deliveryId": "host-acceptance",
+        "changeId": "describe-running-feature",
+        "runId": "20260908-004-review-propose",
+        "purpose": "Independent isolated Proposal review report"
+      }
+    ],
+    "handoff": {
+      "summary": "隔离 Proposal approved，无 findings；10 项输入 bytes/hash 一致，具备 Apply 准备度，无实现 PASS。",
+      "ownerDecisions": [
+        {
+          "sourceRef": "approved-task-6.1:owner-apply-input",
+          "summary": "隔离验收，不接管 D05；fixture activation 非真实用户项目权限，必要材料保留 target。"
+        }
+      ],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20260908-004-review-propose",
+          "path": ".flowkit/artifacts/host-acceptance/changes/describe-running-feature/proof/20260908-004-review-propose/review.md"
+        }
+      ]
+    }
+  }
+}

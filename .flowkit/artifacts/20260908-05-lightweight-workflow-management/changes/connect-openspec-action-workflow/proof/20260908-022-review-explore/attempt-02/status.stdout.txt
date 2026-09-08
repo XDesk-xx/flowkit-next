@@ -1,0 +1,107 @@
+{
+  "changeName": "connect-openspec-action-workflow",
+  "schemaName": "spec-driven",
+  "planningHome": {
+    "kind": "repo",
+    "root": "D:\\Projects\\flowkit-next",
+    "changesDir": "D:\\Projects\\flowkit-next\\openspec\\changes",
+    "defaultSchema": "spec-driven"
+  },
+  "changeRoot": "D:\\Projects\\flowkit-next\\openspec\\changes\\connect-openspec-action-workflow",
+  "artifactPaths": {
+    "proposal": {
+      "outputPath": "proposal.md",
+      "resolvedOutputPath": "D:\\Projects\\flowkit-next\\openspec\\changes\\connect-openspec-action-workflow\\proposal.md",
+      "existingOutputPaths": [
+        "D:\\Projects\\flowkit-next\\openspec\\changes\\connect-openspec-action-workflow\\proposal.md"
+      ]
+    },
+    "specs": {
+      "outputPath": "specs/**/*.md",
+      "resolvedOutputPath": "D:\\Projects\\flowkit-next\\openspec\\changes\\connect-openspec-action-workflow\\specs\\**\\*.md",
+      "existingOutputPaths": [
+        "D:\\Projects\\flowkit-next\\openspec\\changes\\connect-openspec-action-workflow\\specs\\action-guidance-execution\\spec.md",
+        "D:\\Projects\\flowkit-next\\openspec\\changes\\connect-openspec-action-workflow\\specs\\foundation-cli-surface\\spec.md",
+        "D:\\Projects\\flowkit-next\\openspec\\changes\\connect-openspec-action-workflow\\specs\\run-result-persistence\\spec.md",
+        "D:\\Projects\\flowkit-next\\openspec\\changes\\connect-openspec-action-workflow\\specs\\single-action-execution-terminal-boundary\\spec.md"
+      ]
+    },
+    "design": {
+      "outputPath": "design.md",
+      "resolvedOutputPath": "D:\\Projects\\flowkit-next\\openspec\\changes\\connect-openspec-action-workflow\\design.md",
+      "existingOutputPaths": [
+        "D:\\Projects\\flowkit-next\\openspec\\changes\\connect-openspec-action-workflow\\design.md"
+      ]
+    },
+    "tasks": {
+      "outputPath": "tasks.md",
+      "resolvedOutputPath": "D:\\Projects\\flowkit-next\\openspec\\changes\\connect-openspec-action-workflow\\tasks.md",
+      "existingOutputPaths": [
+        "D:\\Projects\\flowkit-next\\openspec\\changes\\connect-openspec-action-workflow\\tasks.md"
+      ]
+    }
+  },
+  "isPlanningComplete": true,
+  "isComplete": true,
+  "applyRequires": [
+    "tasks"
+  ],
+  "nextSteps": [
+    "All planning artifacts are complete. Run openspec instructions apply --change \"connect-openspec-action-workflow\" --json to inspect implementation progress."
+  ],
+  "actionContext": {
+    "mode": "repo-local",
+    "sourceOfTruth": "repo",
+    "planningArtifacts": [
+      "proposal",
+      "specs",
+      "design",
+      "tasks"
+    ],
+    "linkedContext": [],
+    "allowedEditRoots": [
+      "D:\\Projects\\flowkit-next"
+    ],
+    "requiresAffectedAreaSelection": false,
+    "constraints": [
+      "Repo-local change artifacts and implementation edits are scoped to this project."
+    ]
+  },
+  "artifacts": [
+    {
+      "id": "proposal",
+      "outputPath": "proposal.md",
+      "status": "done",
+      "requires": []
+    },
+    {
+      "id": "specs",
+      "outputPath": "specs/**/*.md",
+      "status": "done",
+      "requires": [
+        "proposal"
+      ]
+    },
+    {
+      "id": "design",
+      "outputPath": "design.md",
+      "status": "done",
+      "requires": [
+        "proposal"
+      ]
+    },
+    {
+      "id": "tasks",
+      "outputPath": "tasks.md",
+      "status": "done",
+      "requires": [
+        "specs",
+        "design"
+      ]
+    }
+  ],
+  "root": {
+    "path": "D:\\Projects\\flowkit-next",
+    "source": "nearest"
+  }
+}

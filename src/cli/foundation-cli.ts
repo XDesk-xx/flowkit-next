@@ -2,7 +2,8 @@ import {
   isOwnerAuthorityFact,
   type OwnerAuthorityFact,
 } from "../domain/authority.js";
-import type { CurrentAction } from "../domain/action-lifecycle.js";
+import { resolveActionContext } from "./action-context.js";
+import { policyForRecord } from "./current-run-chain.js";
 import {
   ManagedToolResolutionError,
   resolveManagedTool,
@@ -10,25 +11,12 @@ import {
 import {
   OpenSpecObservationError,
   observeOpenSpecActiveChanges,
-  observeOpenSpecChangeStatus,
 } from "../domain/openspec-observation.js";
-import {
-  evaluatePolicyAndNextBoundary,
-  type PolicyDecision,
-} from "../domain/policy-and-next-boundary.js";
-import {
-  parseRunOccurrenceId,
-  readDurableRun,
-  type DurableRunRecord,
-} from "../domain/run-result-persistence.js";
+import type { PolicyDecision } from "../domain/policy-and-next-boundary.js";
 import {
   evaluateCheckpointAuthorization,
   type CheckpointAuthorization,
 } from "./checkpoint-authorization.js";
-import {
-  resolveTrustedChangeCoordination,
-  TrustedChangeCoordinationError,
-} from "./trusted-change-coordination.js";
 import type {
   DoctorRequest,
   FoundationCliRequest,
@@ -63,216 +51,77 @@ export class FoundationCliCommandError extends Error {
   }
 }
 
-interface SelectedRun {
-  readonly record: DurableRunRecord;
-  readonly currentAction: CurrentAction;
-}
-
-function fail(
-  kind: FoundationCliFailureKind,
-  message: string,
-  cause?: unknown,
-): never {
-  throw new FoundationCliCommandError(
-    kind,
-    message,
-    cause === undefined ? undefined : { cause },
-  );
-}
-
-async function readSelectedRun(
-  request: StatusRequest | NextRequest,
-  runId: string,
-): Promise<SelectedRun> {
-  const occurrence = parseRunOccurrenceId(runId);
-  if (occurrence === null) {
-    fail(
-      "invalid-current-run",
-      "currentRunId must be a canonical run occurrence",
-    );
-  }
-  let record: DurableRunRecord;
-  try {
-    record = await readDurableRun({
-      repositoryRoot: request.repositoryRoot,
-      deliveryId: request.deliveryId,
-      changeId: request.changeId,
-      changeStartSequence: request.changeStartSequence,
-      occurrence,
-    });
-  } catch (error) {
-    fail("run-read-failed", "selected durable Run cannot be read", error);
-  }
-  if (
-    record.context.actionIdentity.deliveryId !== request.deliveryId ||
-    record.context.actionIdentity.changeId !== request.changeId ||
-    record.context.runId !== runId ||
-    record.result.runId !== runId
-  ) {
-    fail(
-      "run-identity-mismatch",
-      "selected Run identity does not match request",
-    );
-  }
-  if (record.context.lifecycleState === null) {
-    fail("invalid-current-run", "selected Run has no lifecycle state");
-  }
-  return {
-    record,
-    currentAction: Object.freeze({
-      identity: record.context.actionIdentity,
-      state: record.context.lifecycleState,
-    }),
-  };
-}
-
-function exactRunProjection(selected: SelectedRun) {
-  return Object.freeze({
-    runId: selected.record.context.runId,
-    actionId: selected.record.context.actionIdentity.actionId,
-    state: selected.record.context.lifecycleState,
-    role: selected.record.context.role,
-  });
-}
-
-async function resolveCanonicalChangeState(
-  request: StatusRequest | NextRequest,
-) {
-  try {
-    return await resolveTrustedChangeCoordination({
-      repositoryRoot: request.repositoryRoot,
-      deliveryId: request.deliveryId,
-      changeId: request.changeId,
-    });
-  } catch (error) {
-    if (error instanceof TrustedChangeCoordinationError) {
-      fail(
-        "coordination-resolution-failed",
-        "trusted Delivery-Change coordination resolution failed",
-        error,
-      );
-    }
-    throw error;
-  }
+function fail(kind: FoundationCliFailureKind, message: string): never {
+  throw new FoundationCliCommandError(kind, message);
 }
 
 async function statusCommand(
   request: StatusRequest,
   installation: ManagerInstallation,
 ) {
-  const changeState = await resolveCanonicalChangeState(request);
-  const selected = await readSelectedRun(request, request.currentRunId);
-  let activeChanges;
-  try {
-    activeChanges = await observeOpenSpecActiveChanges({
-      ...request,
-      installation,
-    });
-  } catch (error) {
-    if (
-      error instanceof OpenSpecObservationError ||
-      error instanceof ManagedToolResolutionError
-    ) {
-      fail(
-        "openspec-integration-failed",
-        "OpenSpec active observation failed",
-        error,
-      );
-    }
-    throw error;
-  }
-
-  let exactChange = null;
-  if (activeChanges.changeIds.includes(request.changeId)) {
-    try {
-      exactChange = await observeOpenSpecChangeStatus({
-        installation,
-        repositoryRoot: request.repositoryRoot,
-        flowkitHome: request.flowkitHome,
-        changeId: request.changeId,
-      });
-    } catch (error) {
-      if (
-        error instanceof OpenSpecObservationError ||
-        error instanceof ManagedToolResolutionError
-      ) {
-        fail(
-          "openspec-integration-failed",
-          "OpenSpec Change observation failed",
-          error,
-        );
-      }
-      throw error;
-    }
-  }
-
-  return Object.freeze({
+  const context = await resolveActionContext(request, installation);
+  const selected = context.selected;
+  const current = selected?.history.current;
+  return {
     kind: "status" as const,
-    deliveryId: request.deliveryId,
-    changeId: request.changeId,
-    changeState,
-    currentRun: exactRunProjection(selected),
-    openSpec: Object.freeze({
-      activeChangeIds: activeChanges.changeIds,
-      exactChange,
-    }),
-  });
+    status: context.status,
+    repositoryRoot: context.repositoryRoot,
+    deliveryId: selected?.deliveryId ?? null,
+    changeId: selected?.changeId ?? null,
+    changeState: selected?.changeState ?? null,
+    currentRun: current
+      ? {
+          runId: current.context.runId,
+          actionId: current.context.actionIdentity.actionId,
+          state: current.context.lifecycleState,
+          role: current.context.role,
+        }
+      : null,
+    openSpec: context.openSpec,
+  };
 }
 
-async function nextCommand(request: NextRequest) {
-  const changeState = await resolveCanonicalChangeState(request);
-  let currentAction: CurrentAction | null = null;
-  let terminalRunContext = null;
-  let terminalResult = null;
-
-  if (request.currentRunId !== null) {
-    const selected = await readSelectedRun(request, request.currentRunId);
-    currentAction = selected.currentAction;
-    if (selected.currentAction.state === "terminal") {
-      terminalRunContext = selected.record.context;
-      terminalResult = selected.record.result;
-    }
+async function nextCommand(
+  request: NextRequest,
+  installation: ManagerInstallation,
+) {
+  const context = await resolveActionContext(request, installation);
+  const selected = context.selected;
+  if (selected === null || selected.history.kind === "bootstrap-history") {
+    return {
+      kind: "next" as const,
+      status: context.status,
+      decision: null,
+      checkpoint: null,
+    };
   }
-
-  const policyDecision = evaluatePolicyAndNextBoundary({
-    deliveryId: request.deliveryId,
-    changeId: request.changeId,
-    changeState,
-    currentAction,
-    terminalRunContext,
-    terminalResult,
+  const policyDecision = policyForRecord(selected.history.current, {
+    deliveryId: selected.deliveryId,
+    changeId: selected.changeId,
+    changeState: selected.changeState,
     ...(Object.hasOwn(request, "ownerCorrection")
       ? { ownerCorrection: request.ownerCorrection }
       : {}),
   });
-
   let ownerAuthority: OwnerAuthorityFact | null = null;
-  if (Object.hasOwn(request, "checkpointAuthority")) {
-    if (
-      request.checkpointAuthority !== null &&
-      request.checkpointAuthority !== undefined
-    ) {
-      if (!isOwnerAuthorityFact(request.checkpointAuthority)) {
-        fail(
-          "invalid-checkpoint-authority",
-          "checkpointAuthority must be a structural OwnerAuthorityFact or null",
-        );
-      }
-      ownerAuthority = request.checkpointAuthority;
-    }
+  if (
+    request.checkpointAuthority !== undefined &&
+    request.checkpointAuthority !== null
+  ) {
+    if (!isOwnerAuthorityFact(request.checkpointAuthority))
+      fail("invalid-checkpoint-authority", "Invalid checkpointAuthority");
+    ownerAuthority = request.checkpointAuthority;
   }
-  const checkpoint = evaluateCheckpointAuthorization({
-    policyDecision,
-    ownerAuthority,
-    deliveryId: request.deliveryId,
-    changeId: request.changeId,
-  });
-
-  return Object.freeze({
+  return {
     kind: "next" as const,
     decision: policyDecision,
-    checkpoint,
-  });
+    checkpoint: evaluateCheckpointAuthorization({
+      policyDecision,
+      ownerAuthority,
+      deliveryId: selected.deliveryId,
+      changeId: selected.changeId,
+    }),
+  };
 }
 
 type DoctorDiagnostic =
@@ -379,7 +228,7 @@ export async function executeFoundationCliRequest(
     case "status":
       return statusCommand(input.request, installation);
     case "next":
-      return nextCommand(input.request);
+      return nextCommand(input.request, installation);
     case "doctor":
       return doctorCommand(input.request, installation);
   }

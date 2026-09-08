@@ -1,0 +1,112 @@
+{
+  "verifiedAt": "2026-09-08T15:13:40.615Z",
+  "archivePath": "openspec/changes/archive/2026-09-08-035-connect-openspec-action-workflow",
+  "projectOrdinal": 35,
+  "movedFiles": [
+    {
+      "from": "openspec/changes/connect-openspec-action-workflow/.openspec.yaml",
+      "path": "openspec/changes/archive/2026-09-08-035-connect-openspec-action-workflow/.openspec.yaml",
+      "bytes": 40,
+      "sha256": "8119cfe5ad04f1801d3027066b1b671140c63203d1b9ea7592d49018a901fa91"
+    },
+    {
+      "from": "openspec/changes/connect-openspec-action-workflow/design.md",
+      "path": "openspec/changes/archive/2026-09-08-035-connect-openspec-action-workflow/design.md",
+      "bytes": 12759,
+      "sha256": "fac25b1b6f45e7635976a9bdf7ca9ca1bab0dab4b87c2f17f4cf40b77f5ca94e"
+    },
+    {
+      "from": "openspec/changes/connect-openspec-action-workflow/explore.md",
+      "path": "openspec/changes/archive/2026-09-08-035-connect-openspec-action-workflow/explore.md",
+      "bytes": 10968,
+      "sha256": "03c948fea0aab3b787b7d4e86a51f5892ea22b0e7b52a936c7cec38be109cc11"
+    },
+    {
+      "from": "openspec/changes/connect-openspec-action-workflow/proposal.md",
+      "path": "openspec/changes/archive/2026-09-08-035-connect-openspec-action-workflow/proposal.md",
+      "bytes": 3686,
+      "sha256": "4550d2dafd7ad8f862bf2ae80836c69833d8d37994b29026b7619c7a01185ff5"
+    },
+    {
+      "from": "openspec/changes/connect-openspec-action-workflow/specs/action-guidance-execution/spec.md",
+      "path": "openspec/changes/archive/2026-09-08-035-connect-openspec-action-workflow/specs/action-guidance-execution/spec.md",
+      "bytes": 5420,
+      "sha256": "0f18d3b73ebe6df46e89ab9bbe207fb64db9f7bfeda035672c8cd5ff6bec0d65"
+    },
+    {
+      "from": "openspec/changes/connect-openspec-action-workflow/specs/foundation-cli-surface/spec.md",
+      "path": "openspec/changes/archive/2026-09-08-035-connect-openspec-action-workflow/specs/foundation-cli-surface/spec.md",
+      "bytes": 10469,
+      "sha256": "2b668dce63982b87c54fcf6432480d1aad6c610e4fe29b08cd42695a59c6041c"
+    },
+    {
+      "from": "openspec/changes/connect-openspec-action-workflow/specs/run-result-persistence/spec.md",
+      "path": "openspec/changes/archive/2026-09-08-035-connect-openspec-action-workflow/specs/run-result-persistence/spec.md",
+      "bytes": 4192,
+      "sha256": "5184aa706e062b10d75197e17c7a95a3a027aae5550cf844f6dc50abd6ab4aa5"
+    },
+    {
+      "from": "openspec/changes/connect-openspec-action-workflow/specs/single-action-execution-terminal-boundary/spec.md",
+      "path": "openspec/changes/archive/2026-09-08-035-connect-openspec-action-workflow/specs/single-action-execution-terminal-boundary/spec.md",
+      "bytes": 4165,
+      "sha256": "688f49788024604d229009ff1f52f408a1b6bb2d52749fd9e90713056837b642"
+    },
+    {
+      "from": "openspec/changes/connect-openspec-action-workflow/tasks.md",
+      "path": "openspec/changes/archive/2026-09-08-035-connect-openspec-action-workflow/tasks.md",
+      "bytes": 6097,
+      "sha256": "6455b2463fb59185d74f81b31db4b3e7a7d5558c037dfb15e421665bfc155732"
+    }
+  ],
+  "mainSpecs": [
+    {
+      "path": "openspec/specs/action-guidance-execution/spec.md",
+      "bytes": 11210,
+      "sha256": "efa8f789ed188795e39f8f548c120578928c55a94b9e59ea0089f50f1e9ab803"
+    },
+    {
+      "path": "openspec/specs/foundation-cli-surface/spec.md",
+      "bytes": 20642,
+      "sha256": "1a14bf4a87096b813ba4365628e06cf08aefd820608fb77dd81d2660d8fa2cbc"
+    },
+    {
+      "path": "openspec/specs/run-result-persistence/spec.md",
+      "bytes": 12634,
+      "sha256": "016873b15be6941cc68b64d88392e8709dae14797dc8f2925c012dbcd07197b3"
+    },
+    {
+      "path": "openspec/specs/single-action-execution-terminal-boundary/spec.md",
+      "bytes": 12358,
+      "sha256": "0cf1defa8819aafab03f70d08f8fa117d2aca36b471d1a1e400a2b41eba526de"
+    }
+  ],
+  "manifest": {
+    "path": "openspec/delivery-groups/20260908-05-lightweight-workflow-management.yaml",
+    "bytes": 9225,
+    "sha256": "7a687829205f46ab99778ebcc742ebb3e02e542665fb127be0663d8c7b4539fa"
+  },
+  "manifestChange": "exact selected state active -> completed; all other bytes unchanged",
+  "unchangedReviewedArtifacts": 46,
+  "inheritedRemovals": {
+    "sourceResult": {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-025-apply/result.json",
+      "bytes": 35497,
+      "sha256": "ac2088bba9d9b31e7dfb9acc3590f3dc1b91a105af2828f74c932d1e18480aa3"
+    },
+    "paths": [
+      "src/cli/action-command.ts",
+      "src/cli/action-protocol.ts",
+      "src/internal/action-run-reservation.ts",
+      "src/internal/action-proof.ts",
+      "src/internal/action-target-files.ts",
+      "tests/unit/domain/action-command.test.ts",
+      "tests/unit/domain/action-protocol.test.ts",
+      "tests/unit/domain/action-run-reservation.test.ts",
+      "tests/unit/domain/action-proof.test.ts",
+      "tests/unit/domain/action-native-process.test.ts"
+    ]
+  },
+  "semanticConvergence": "all four canonical files exactly equal the inspected and dry-run verified merge",
+  "historicalRunRewritten": false,
+  "productionMutation": false
+}

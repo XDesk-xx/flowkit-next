@@ -1,0 +1,31 @@
+{
+  "kind": "external-orchestrator-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "author",
+  "action": "apply",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "connect-openspec-action-workflow",
+  "projectOrdinal": 35,
+  "runId": "20260908-025-apply",
+  "previousRunId": "20260908-024-review-propose",
+  "ownerInstruction": "根据最新run，apply",
+  "ownerSourceRef": "owner-input:2026-09-08:apply-approved-024",
+  "sourceHead": "697088391374daa67d63c20f8a365fb44ec5c058",
+  "sourceHeadMeaning": "observation only",
+  "proofRoot": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-025-apply",
+  "ownerDecisionsRelevant": [
+    "CLI读取/报告，Agent实际执行/记录；不引入替代宿主协议",
+    "D05保持独立bootstrap，canonical产品在测试target使用",
+    "必要材料默认保留target artifacts，无历史清理授权",
+    "不强制双Change/finding演练，不自动Review或Git"
+  ],
+  "skillsUsed": [
+    "implementation-convergence",
+    "openspec-apply-change",
+    "incremental-implementation",
+    "skill-creator",
+    "security-and-hardening"
+  ],
+  "candidateSelfManagement": false
+}

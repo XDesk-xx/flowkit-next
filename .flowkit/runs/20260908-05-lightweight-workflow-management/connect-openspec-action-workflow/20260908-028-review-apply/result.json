@@ -1,0 +1,194 @@
+{
+  "kind": "external-orchestrator-review-apply-result",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "reviewer",
+  "action": "review-apply",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "connect-openspec-action-workflow",
+  "projectOrdinal": 35,
+  "runId": "20260908-028-review-apply",
+  "previousRunId": "20260908-027-revise-apply",
+  "reviewedRunId": "20260908-027-revise-apply",
+  "status": "terminal",
+  "verdict": "approved",
+  "verdictMeaning": "027 对 026 两项 finding 的最小修订及累计候选通过独立 Review；不是 Formal Full Test、Delivery 完成或 Owner/Git authority。",
+  "reviewedResult": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-027-revise-apply/result.json",
+    "bytes": 30707,
+    "sha256": "e6b9aa27526863fa13973ffdba5217c1a64c3111af6afe9733fc5989274f188e"
+  },
+  "previousReview": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-026-review-apply/result.json",
+    "bytes": 9483,
+    "sha256": "ac65472f020c32539a712129d7fc79effcdeb91b5f6b3a62be1666a650ceb1ad"
+  },
+  "approvedProposalReview": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-024-review-propose/result.json",
+    "bytes": 7064,
+    "sha256": "45cf9da4e28ea124a2a3186d3c88e95a35b153aa39098e290a3683e64c100e46"
+  },
+  "summary": "完整 ChangeId 选择与 exact same prepared 复用均经独立探针确认修复，相关负向边界保留；批准计划、内核与历史未改，无新增阻断问题。",
+  "findings": [],
+  "findingClosure": [
+    {
+      "id": "D05-RA026-001",
+      "status": "closed",
+      "observed": "修正仅改变 canonical group 匹配表达式。后缀重叠/数字开头合法 Change 与空历史独立选择正确；真实非法前缀、重复、混合、partial 仍拒绝。"
+    },
+    {
+      "id": "D05-RA026-002",
+      "status": "closed",
+      "observed": "HOW exact prepared 复用且错误 target 拒绝；独立 Explore 示例完成 prepared失败到明确新 occurrence/package 的完整记录和查询，旧 Buffer 保持；内核 duplicate prepare 不变。"
+    }
+  ],
+  "nonBlockingObservations": [],
+  "assessments": {
+    "currentStep": "对照 024-approved 计划、026 findings 复审 027；当前实现验收与历史实验分开。",
+    "complexityAndMinimality": "15 文件修订直接覆盖两项缺陷、HOW 测试和说明，无新公共 API/协议/Registry/生命周期。保留已收敛的 41 个候选文件与 67 个受保护对象。",
+    "newContentAndScopeDrift": "scope drift: NONE；不推进 Full Test、Delivery、Git 或历史迁移。"
+  },
+  "runArtifacts": {
+    "action": {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-028-review-apply/action.md",
+      "bytes": 426,
+      "sha256": "c1190d9c92c304da616f1a2d5536a20c3fc5b374b2688e496ccb26624a751664"
+    },
+    "context": {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-028-review-apply/context.json",
+      "bytes": 1077,
+      "sha256": "c49a7b1386f4e33b76c70aa08454ecc1f7839224a4ad2e70410460b53ea48eb9"
+    }
+  },
+  "reviewReport": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-028-review-apply/review.md",
+    "bytes": 3661,
+    "sha256": "dc6f4c1c4b915a6277de9ef5873be37f046bc334d2ee2dbb7140f4a6c6423f23"
+  },
+  "reviewEvidence": {
+    "referenceAndScopeAudit": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-028-review-apply/audit.json",
+      "bytes": 64204,
+      "sha256": "ac56614ec6dc0d1776e9909f274978d5c7605598d00566544d00e5256cfe0e12"
+    },
+    "auditMethod": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-028-review-apply/audit-v2.mjs",
+      "bytes": 9312,
+      "sha256": "333dffae885627428750088bd9675cced71a1d8523d3393133083a9c590428bd"
+    },
+    "probeMethod": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-028-review-apply/probe-v2.mjs",
+      "bytes": 7711,
+      "sha256": "c294ac433585d0dc684f265e1657cdd5f80fd1aacd18a58c6910eea1b555edc3"
+    },
+    "captureMethod": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-028-review-apply/capture-v2.mjs",
+      "bytes": 2670,
+      "sha256": "9bd656693d1fc3c81750587e314a4db285869f2a90275635d660378566f6ea7b"
+    },
+    "preservedSandboxAttempt": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-028-review-apply/attempt-01/summary.json",
+      "bytes": 6665,
+      "sha256": "a89f79825ecc5c9d92a5b3c81ecfee34e146c350e47fce0953da5692b1ec7c6b"
+    },
+    "preservedFaultyProbeAttempt": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-028-review-apply/attempt-02/summary.json",
+      "bytes": 6205,
+      "sha256": "ccf293f80e63475c9f0d5e8216ded64d11c89d8c1e644fd816e21dd154b1466f"
+    },
+    "completedAttempt": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-028-review-apply/attempt-03/summary.json",
+      "bytes": 6209,
+      "sha256": "f7b0e2e8f9b52c99913def101674c241a560ac4015e5460048cba9c416213f8b"
+    },
+    "probeObservations": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-028-review-apply/attempt-03/probe.json",
+      "bytes": 1157,
+      "sha256": "238f8bcb983456cdbe2a15b7ce3a3959bf345688cfa2bdd4194eed53b0370c6f"
+    },
+    "preservedAuditFailure": {
+      "command": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-028-review-apply/audit-attempt-01.json",
+        "bytes": 188,
+        "sha256": "df375391b7d2decacdf24d3b763c3b75958f1c8f8bdaf6cb3b356e5667d067ce"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-028-review-apply/audit-attempt-01.stderr.txt",
+        "bytes": 1027,
+        "sha256": "68e85e149c66410d58d9a36994dc270e7d2c5ea3fb28b309fa26394c1bdc4961"
+      }
+    },
+    "correctedAudit": {
+      "command": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-028-review-apply/audit-attempt-02.json",
+        "bytes": 191,
+        "sha256": "d2643a92ad3ecacc7b2a373c0029687862485d8180b1df6de46f86b8134a2e4a"
+      },
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-028-review-apply/audit-attempt-02.stdout.txt",
+        "bytes": 3447,
+        "sha256": "a1e7a1e33a79c55eed0d3d7e2f2d13ec5900c2628e8c1eb0377545479153b8dc"
+      }
+    },
+    "checks": {
+      "verifiedReferences": 209,
+      "candidateArtifacts": 56,
+      "revisionDeltaFiles": 15,
+      "unchangedCandidateArtifacts": 41,
+      "protectedFilesUnchanged": 67,
+      "approvedPlanPreserved": true,
+      "incomplete019Preserved": true,
+      "inheritedRemovalsAndBackupsVerified": 10,
+      "sourceTestFiles": 22,
+      "sourceTestMaxLines": 595,
+      "sourceTestLimit": 650,
+      "authorCurrentCommandRecordsVerified": 13,
+      "independentFocusedTests": {
+        "files": 7,
+        "pass": 23,
+        "fail": 0,
+        "skipped": 0
+      },
+      "independentProbeObservationGroups": 9,
+      "exactOpenSpecVersion": "1.10.0",
+      "strictValidation": true,
+      "gitDiffCheck": true
+    },
+    "limits": "没有独立重跑 Author 全 Windows/Linux domain/acceptance；已核对其当前 284/284 与 6/6 原始输出/命令/引用。遵守 bootstrap 独立性，不读取候选 review-apply HOW 执行说明或运行全 HOW 测试循环；使用 Explore 示例独立回归，另外核对九个非当前阶段（含 Explore）修正函数一致。不是 Full Test。",
+    "methodCorrections": "所有失败方法和 raw streams 保留。Reviewer 初次 probe 多传 actionId，被既有 Policy 正确拒绝，修正后增加负向对照再通过；初版审计对 AGENTS exact 单字符串还原的假设不成立，修正版只断言可实证的当前正文/累计 diff 和身份，不将方法错误归咎 Author。审计脚本创建时一次工具模板插值错误未开始执行。",
+    "candidateReviewerHowConsumed": false,
+    "candidateLifecycleInvokedOnActualRepository": false
+  },
+  "mutationIsolation": {
+    "before": {
+      "files": 2838,
+      "sha256": "024f2e539b2b2ba6057e9a474b0b83baa38ef3870bcc5811c9643c31e65c71b4",
+      "head": "697088391374daa67d63c20f8a365fb44ec5c058",
+      "at": "2026-09-08T14:50:20.090Z"
+    },
+    "after": {
+      "files": 2838,
+      "sha256": "024f2e539b2b2ba6057e9a474b0b83baa38ef3870bcc5811c9643c31e65c71b4",
+      "head": "697088391374daa67d63c20f8a365fb44ec5c058",
+      "at": "2026-09-08T15:00:43.806Z"
+    },
+    "equal": true,
+    "scope": "tracked/nonignored untracked 与 tracked 删除标记，排除本次 Reviewer Run/proof；独立审查隔离核对，不设产品 SHA 准入。"
+  },
+  "contractReturnRequired": false,
+  "applyApproved": true,
+  "nextBoundary": "archive",
+  "continuationMeaning": "仅报告既有 approved review-apply 的 archive 交接，实际调用须遵守原 authority/host boundary。本次不执行 Archive、不自动推进，不创建 Owner 或 Git authority。",
+  "ownerDecisionsRelevant": [
+    "沿用 D05 independent-bootstrap；不恢复外部 manager，不让 candidate 管理 D05。",
+    "CLI 只读，Agent 真实执行与记录；必要 proof 长期保存且相关消费时校验。",
+    "保留历史和 019 未完成事实，一次审查结束后 STOP。"
+  ],
+  "authorArtifactMutation": false,
+  "productionMutation": false,
+  "repositoryGitMutation": false,
+  "formalFullTestExecuted": false,
+  "archiveExecuted": false,
+  "completedAt": "2026-09-08 15:02:43 UTC",
+  "stop": true
+}

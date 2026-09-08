@@ -1,0 +1,40 @@
+{
+  "executable": "docker",
+  "args": [
+    "run",
+    "--rm",
+    "--pull",
+    "never",
+    "--network",
+    "none",
+    "--mount",
+    "type=bind,source=D:\\Projects\\flowkit-next,target=/source,readonly",
+    "--mount",
+    "type=volume,source=flowkit-d05-012-runtime-03,target=/runtime,readonly",
+    "--mount",
+    "type=volume,source=flowkit-d05-012-pnpm-cache,target=/root/.cache/pnpm",
+    "--mount",
+    "type=volume,source=flowkit-d05-012-pnpm-store,target=/root/.local/share/pnpm/store",
+    "--tmpfs",
+    "/work:exec",
+    "127ee201acf8",
+    "sh",
+    "/source/.flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-025-apply/linux.sh"
+  ],
+  "cwd": "D:\\Projects\\flowkit-next",
+  "startedAt": "2026-09-08T14:03:48.321Z",
+  "finishedAt": "2026-09-08T14:04:25.622Z",
+  "exitCode": 0,
+  "signal": null,
+  "error": null,
+  "stdout": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-025-apply/linux-final/stdout.txt",
+    "bytes": 62538,
+    "sha256": "66e89b11f855d21f04699c52fc485193f3e2101941676385a5a1203188d40d56"
+  },
+  "stderr": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-025-apply/linux-final/stderr.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

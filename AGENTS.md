@@ -66,6 +66,8 @@ Memo          → future cross-Delivery reconsideration only
 
 ## 4. Stable manager / candidate boundary
 
+D05 当前按 Owner 已授权的 independent-bootstrap 执行。新产品 `status / next / doctor` 在普通测试 target 验收，不接管 D05 自身；不恢复已卸载的外部 manager。以下历史 Stable/checkpoint 模型不构成 D05 的新 SHA 准入门槛，也不改写历史执行事实。
+
 未来 Delivery 的正式关系固定为：
 
 ```text
@@ -284,7 +286,11 @@ delivery/<delivery-id>  → Delivery working branch
 
 OpenSpec 是 formal Change/specification authority。Flowkit 只做 thin integration，不重建 OpenSpec proposal/design/tasks/archive state machine。
 
-当前 candidate 的 OpenSpec integration 是 read-only/observation-oriented thin boundary；不要因为 CLI 能读取 OpenSpec 就扩展成自动 propose/apply/archive。
+当前 candidate 的 OpenSpec observation 仍只读；CLI 不提供 action/prepare/submit 写命令。OpenSpec mutation 由 Agent 依已确定 Action 和上游 mechanics 执行，复用既有 Policy/package/admission 与文件能力记录真实三文件 Run，不调用模型 API、不自动下一 Action。
+
+`flowkit <status|next|doctor> --input <path>` 从 manager 自身定位资产。status/next 从 target、可选 deliveryId/changeId 及唯一有效 Run 链解析上下文，拒绝 caller 手填 currentRunId/changeStartSequence。Agent 准备通过后先保存真实开始，工作后按同一 package/Role 接纳结果、create-once 保存并读回后 STOP；未完成记录不清理、不自动接管。bootstrap-history 只读展示，不转换成 canonical current。普通 Action 不新增 Owner 审批；D05 继续独立 bootstrap。
+
+候选验收以一个有界真实 Author 工作及同一 build 的独立查询读回为实际示例；review/revise 合成 fixtures 不声称独立 Review。不强制第二套安装、两个真人 Change 或制造 finding，仍运行适用平台/安装回归；不是 Formal Full Test。
 
 历史 archived Change 不因后续 guidance convergence 而重写。
 
@@ -329,7 +335,8 @@ baseline FAIL → candidate PASS       = improvement
 .flowkit/
 ├─ project.json
 ├─ memos.json
-└─ runs/
+├─ runs/
+└─ artifacts/
 ```
 
 含义：
@@ -337,6 +344,9 @@ baseline FAIL → candidate PASS       = improvement
 - `project.json`：project/runtime identity；
 - `memos.json`：cross-Delivery durable memo；
 - `runs/`：真实执行产生的 durable Run/Result/bootstrap-orchestrator history。
+- `artifacts/`：target 自有必要执行材料，默认长期保留；Action proof 使用 `<delivery>/changes/<change>/proof/<run-id>/`，不扩张三文件 Run，也不复制 OpenSpec/Verification authority。
+
+`.tmp` 仅用于可丢弃工作文件。必要材料生成、接纳及相关消费时核对来源、归属、可读性与完整性；只消费当前判断明确需要的引用，不遍历所有历史 proof。保留不等于有效，旧 PASS 不代替当前实现验收。材料处理的 Owner 决定以真实 sourceRef 和简要边界交接，不复制聊天；未收到授权说明不等于未授权。
 
 不得在 `.flowkit/` 中复制 OpenSpec truth、Architecture truth、managed binaries 或构造 generic verification registry。
 
@@ -451,6 +461,8 @@ LF
 no trailing whitespace
 EOF exactly one newline
 ```
+
+原始 stdout/stderr 是例外：保留 Buffer bytes，使用 `stdout.txt`、`stderr.txt`、`*.stdout.txt`、`*.stderr.txt`，由 `.flowkit/artifacts/**` 下四条通用 attributes 模式处理，不逐 Change 添加例外。不对全部 artifacts/Run 放宽；脚本、Run JSON、命令元数据、摘要仍是结构化文本，不得改名冒充日志。此规则独立于 `.gitignore` 和 Full Test 选取范围，不自动注入其他 target。
 
 Git checkpoint 前执行：
 

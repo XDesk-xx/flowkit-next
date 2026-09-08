@@ -1,0 +1,169 @@
+{
+  "kind": "external-orchestrator-review-apply-result",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "reviewer",
+  "action": "review-apply",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "connect-openspec-action-workflow",
+  "projectOrdinal": 35,
+  "runId": "20260908-026-review-apply",
+  "previousRunId": "20260908-025-apply",
+  "reviewedRunId": "20260908-025-apply",
+  "status": "terminal",
+  "verdict": "changes-requested",
+  "verdictMeaning": "当前候选有两项已独立复现的实现/HOW 合同缺口，不批准 Apply；不是否认已保存的定向测试结果，也不是 Formal Delivery Verification 结论。",
+  "reviewedResult": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-025-apply/result.json",
+    "bytes": 35497,
+    "sha256": "ac2088bba9d9b31e7dfb9acc3590f3dc1b91a105af2828f74c932d1e18480aa3"
+  },
+  "approvedProposalReview": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-024-review-propose/result.json",
+    "bytes": 7064,
+    "sha256": "45cf9da4e28ea124a2a3186d3c88e95a35b153aa39098e290a3683e64c100e46"
+  },
+  "summary": "旧协议撤出、partial 保留与计划/材料范围核对通过；但 suffix group 误匹配会阻断独立 Change 查询，HOW 重复 prepare 会阻断合法 prepared 再次执行。",
+  "findings": [
+    {
+      "id": "D05-RA026-001",
+      "severity": "P2",
+      "blocking": true,
+      "category": "implementation",
+      "path": "src/cli/current-run-chain.ts",
+      "line": 198,
+      "title": "Run group 后缀匹配混入其他 Change",
+      "observed": "feature 与 improve-feature 是不同合法 Change。只有后者历史时查询前者返回 Invalid Run group prefix；两者都有历史时返回 Multiple Run groups。无重叠后缀对照正常。",
+      "contractImpact": "违反已批准 design §1 的 exact selected Change group / 空历史约定，明确目标的 status/next 被其他合法 Change 阻断。",
+      "minimumCorrection": "按 canonical sequence + 完整 ChangeId 识别 group，bootstrap 使用 exact identity；保留当前目标真实重复/混合/损坏诊断，补后缀重叠空历史和双历史回归，不迁移目录或新增 registry。"
+    },
+    {
+      "id": "D05-RA026-002",
+      "severity": "P2",
+      "blocking": true,
+      "category": "guidance-implementation",
+      "path": "skills/actions/explore/SKILL.md",
+      "line": 114,
+      "title": "HOW 对已有 prepared Action 重复 prepare",
+      "observed": "Policy 对合法 explore/prepared 返回 ready-action(explore)，但 HOW 所写 transitionCurrentAction(previousAction,prepare) 返回 null，startRecord 拒绝 invalid package/Role；复用 exact prepared CurrentAction 的对照可形成新 occurrence package 并开始。",
+      "contractImpact": "违反既有 same-prepared reuse 与本次新 occurrence 再次执行合同。现有 HOW 测试从 null 建立 current，未验证该说明步骤的 prepared 重入。",
+      "minimumCorrection": "区分 null/不同 terminal 的 prepare 与 exact same prepared 的复用，错误 prepared target 仍拒绝；核对其他 Action 同类 HOW，补按 HOW prepared失败→明确新执行→新occurrence的回归，不修改内核放开 duplicate prepare。"
+    }
+  ],
+  "findingReport": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-026-review-apply/findings.md",
+    "bytes": 4620,
+    "sha256": "a993760c1193eb7daceca4ff4a3e0698dc01c631a53d143a7d435b5ef04e6bdb"
+  },
+  "nonBlockingObservations": [
+    {
+      "path": "AGENTS.md",
+      "line": 69,
+      "observation": "仍将已撤出的 action 列为新产品验收命令，与第10节及三命令实现不一致；在既有 task 4.5 直接说明收敛中去掉旧字样即可。"
+    }
+  ],
+  "assessments": {
+    "currentStep": "对照 024-approved/023 计划审查 025 累计候选与真实材料，独立复现两个遗漏场景并核对既有合同。",
+    "complexityAndMinimality": "主要解耦方向保持，旧协议的5源文件/5专属测试已撤出，未新增 transport/schema/Registry。两个缺口均可在既定边界内最小修正。",
+    "newContentAndScopeDrift": "scope drift: NONE；没有要求增加 Proposal/Delivery 范围。问题为 exact group 识别与 HOW prepared 复用，非新的产品需求。"
+  },
+  "runArtifacts": {
+    "action": {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-026-review-apply/action.md",
+      "bytes": 577,
+      "sha256": "9797368df0b5bb25c2d84012711f136904ccd71b6805c18e4107c18d3d9e0ba1"
+    },
+    "context": {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-026-review-apply/context.json",
+      "bytes": 1272,
+      "sha256": "a2abfab9f17169894c9a8f925c52b69c2c9a479e4e018514839779608bbf04bb"
+    }
+  },
+  "reviewEvidence": {
+    "reproductionMethod": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-026-review-apply/reproduce.mjs",
+      "bytes": 5931,
+      "sha256": "77a226277e4ec1b17761ffabba4de4824b1a2cf8450d3b9428f85000a7de514d"
+    },
+    "captureMethod": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-026-review-apply/capture.mjs",
+      "bytes": 2505,
+      "sha256": "cf0d00e7e343f43e3eb7dae7d66076b1f9d7f07825672a8b14bf2a76b6feead6"
+    },
+    "auditMethod": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-026-review-apply/audit.mjs",
+      "bytes": 5650,
+      "sha256": "30d02038854bf78304c8384de8f17cf951e81a017f0d8b1f35204f8841643c4d"
+    },
+    "referenceAndScopeAudit": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-026-review-apply/audit.json",
+      "bytes": 67127,
+      "sha256": "b67975be4c5cea91ba228baadfcf98cc48c50e36a83452cf3a09d178551984ea"
+    },
+    "sandboxBlockedAttempt": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-026-review-apply/attempt-01/summary.json",
+      "bytes": 5383,
+      "sha256": "b03c152e9fd70a4dd55f7b3182cab0c63a76204eea673d80d3aa6fb66fbed656"
+    },
+    "completedAttempt": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-026-review-apply/attempt-02/summary.json",
+      "bytes": 5238,
+      "sha256": "b97274a9b49fe9285da4e03213bd051c10bc912b281564cad7bb507482649634"
+    },
+    "counterexamples": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-026-review-apply/attempt-02/counterexamples.json",
+      "bytes": 1287,
+      "sha256": "7d0cf8fc14827239822ca30409f3bf955d34836a50fa128d66f51e491d44a4ad"
+    },
+    "checks": {
+      "verifiedRefs": 218,
+      "authorProtectedInputs": 36,
+      "protectedAuthorInputsUnchanged": true,
+      "exactRemovalsBackedUp": 10,
+      "approvedPlanBodiesPreserved": true,
+      "taskChangesCompletionMarkersOnly": true,
+      "manifestThreeApprovedStringEditsOnly": true,
+      "sourceTests": 20,
+      "sourceTestMaxLines": 595,
+      "sourceTestLimit": 650,
+      "independentFocusedTestFiles": 6,
+      "independentFocusedTests": {
+        "pass": 21,
+        "fail": 0,
+        "skipped": 0
+      },
+      "counterexampleDefectsReproduced": 2,
+      "exactOpenSpecStrict": true,
+      "gitDiffCheck": true
+    },
+    "limit": "Counterexample exit 0 means defects reproduced with controls, not candidate PASS。未跑会读取 candidate review-apply HOW 的全 HOW 循环，没有独立重演全部 Windows/Linux acceptance 或 Full Test；已核对 Author 当前相关材料，21/21 不覆盖两个遗漏场景。",
+    "candidateReviewerHowConsumed": false,
+    "candidateLifecycleInvokedOnActualRepository": false
+  },
+  "mutationIsolation": {
+    "before": {
+      "files": 2731,
+      "sha256": "b34fff00af116d0bc3a53f10e92782f335f94b4a403a891836e9178badc66f5c",
+      "head": "697088391374daa67d63c20f8a365fb44ec5c058"
+    },
+    "after": {
+      "files": 2731,
+      "sha256": "b34fff00af116d0bc3a53f10e92782f335f94b4a403a891836e9178badc66f5c",
+      "head": "697088391374daa67d63c20f8a365fb44ec5c058"
+    },
+    "equal": true,
+    "scope": "tracked/nonignored untracked 与 tracked 删除标记，排除本次 Reviewer Run/proof；仅用于写入隔离，不设产品 SHA 准入。"
+  },
+  "contractReturnRequired": false,
+  "nextBoundary": "revise-apply",
+  "continuationMeaning": "当前已批准 Proposal 足以授权最小缺陷修正；报告 changes-requested 的后续交接，不执行 revise-apply，不回到 Explore/Proposal，不恢复 JSONL，不补写019或改写025。",
+  "applyApproved": false,
+  "authorArtifactMutation": false,
+  "productionMutation": false,
+  "repositoryGitMutation": false,
+  "formalFullTestExecuted": false,
+  "reviseExecuted": false,
+  "archiveExecuted": false,
+  "completedAt": "2026-09-08T14:24:24Z",
+  "stop": true
+}

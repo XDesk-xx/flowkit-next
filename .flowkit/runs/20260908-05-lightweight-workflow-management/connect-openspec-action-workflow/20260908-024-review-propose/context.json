@@ -1,0 +1,70 @@
+{
+  "kind": "external-orchestrator-review-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "reviewer",
+  "action": "review-propose",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "connect-openspec-action-workflow",
+  "projectOrdinal": 35,
+  "runId": "20260908-024-review-propose",
+  "previousRunId": "20260908-023-revise-propose",
+  "reviewedRunId": "20260908-023-revise-propose",
+  "ownerInstruction": "根据最新run，review",
+  "reviewedResult": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-023-revise-propose/result.json",
+    "bytes": 6524,
+    "sha256": "8c2af92865b20e3bb3fb7ae391a17eb9068b83bcddb5fe96240910efd1e6aa2a"
+  },
+  "reviewedContext": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-023-revise-propose/context.json",
+    "bytes": 3133,
+    "sha256": "bb01c52651aed96a0f257ff0ccf40652a26b7fbdc9d33614d4ed4d46bd5962d4"
+  },
+  "acceptedExploreReview": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-022-review-explore/result.json",
+    "bytes": 6469,
+    "sha256": "5d3bcb9682dbf826a1cf4aae96f529ffe6c8710768dac1728e667486a719340a"
+  },
+  "acceptedExplore": {
+    "path": "openspec/changes/connect-openspec-action-workflow/explore.md",
+    "bytes": 10968,
+    "sha256": "03c948fea0aab3b787b7d4e86a51f5892ea22b0e7b52a936c7cec38be109cc11"
+  },
+  "sourceHead": "697088391374daa67d63c20f8a365fb44ec5c058",
+  "sourceHeadMeaning": "仅定位输入，不作为 Run/Delivery SHA 前置或 Git authority。",
+  "sourceBranch": "delivery/20260908-05-lightweight-workflow-management",
+  "independentHow": ".agents/skills/review-propose/SKILL.md",
+  "candidateReviewerHowConsumed": false,
+  "ownerDecisionsRelevant": [
+    {
+      "sourceRef": "owner-input:2026-09-08:cli-current-flow-next-agent-runs",
+      "recordedIn": "20260908-021-revise-explore/context.json",
+      "decision": "CLI 只读取/报告，Agent 实际执行和记录；不保留长连接或新 prepare/submit 协议。"
+    },
+    {
+      "sourceRef": "owner-input:2026-09-08:revise-propose:confirmed-seven-planning-artifacts",
+      "recordedIn": "20260908-023-revise-propose/context.json",
+      "decision": "Owner 明确要求 revise-propose；本轮七份计划修订，不修改实现、Skills 或 manifest。"
+    },
+    {
+      "sourceRef": "20260908-022-review-explore/context.json",
+      "decision": "延续必要材料长期保留、独立 bootstrap、停止固定隔离演练和无历史清理授权的交接边界。"
+    }
+  ],
+  "chainInterpretation": "021 经 022 approved 后由 023 修订计划；018 仅为旧方案历史批准。019 仍缺 Result，020 UNKNOWN 不重写，新方向不由旧实现或历史 PASS 证明。",
+  "scope": [
+    "七份计划与 021/022/Owner 边界溯源",
+    "canonical Run、package/admission、Policy 与 Agent 记录的合同相容性",
+    "中断/部分保存/有限材料/原始流/独立 HOW 与最小可执行验收"
+  ],
+  "writeScope": [
+    ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-024-review-propose",
+    ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-024-review-propose"
+  ],
+  "exclusions": [
+    "Author planning/production/tests/Skills/manifest/history mutation",
+    "candidate 管理实际 D05、外部 manager 重装",
+    "Apply 或其实现验收、Full Test、Git mutation、自动下一 Action"
+  ]
+}

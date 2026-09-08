@@ -1,0 +1,148 @@
+TAP version 13
+# Subtest: context selects unique active and distinguishes idle/planned/cancelled
+ok 1 - context selects unique active and distinguishes idle/planned/cancelled
+  ---
+  duration_ms: 1155.5463
+  type: 'test'
+  ...
+# Subtest: context reports candidates and explicit selection never fills missing facts
+ok 2 - context reports candidates and explicit selection never fills missing facts
+  ---
+  duration_ms: 555.1112
+  type: 'test'
+  ...
+# Subtest: context rejects root mismatch, orphan, activation/dependency and partial history
+ok 3 - context rejects root mismatch, orphan, activation/dependency and partial history
+  ---
+  duration_ms: 564.1857
+  type: 'test'
+  ...
+# Subtest: HOW injected action.md save failure retains actual partial and does not repeat work
+ok 4 - HOW injected action.md save failure retains actual partial and does not repeat work
+  ---
+  duration_ms: 69.2035
+  type: 'test'
+  ...
+# Subtest: HOW injected context.json save failure retains actual partial and does not repeat work
+ok 5 - HOW injected context.json save failure retains actual partial and does not repeat work
+  ---
+  duration_ms: 45.0221
+  type: 'test'
+  ...
+# Subtest: HOW injected result.json save failure retains actual partial and does not repeat work
+ok 6 - HOW injected result.json save failure retains actual partial and does not repeat work
+  ---
+  duration_ms: 39.6597
+  type: 'test'
+  ...
+# Subtest: HOW material consumer validates ownership, bytes and regular contained paths
+ok 7 - HOW material consumer validates ownership, bytes and regular contained paths
+  ---
+  duration_ms: 95.8531
+  type: 'test'
+  ...
+# Subtest: chain tip follows Policy links, not sequence or input ordering
+ok 8 - chain tip follows Policy links, not sequence or input ordering
+  ---
+  duration_ms: 4.9586
+  type: 'test'
+  ...
+# Subtest: reject disconnected higher root, fork, missing parent, cycle, duplicate sequence and Role
+ok 9 - reject disconnected higher root, fork, missing parent, cycle, duplicate sequence and Role
+  ---
+  duration_ms: 2.1773
+  type: 'test'
+  ...
+# Subtest: Owner correction uses existing Policy and rejects wrong authority
+ok 10 - Owner correction uses existing Policy and rejects wrong authority
+  ---
+  duration_ms: 2.291
+  type: 'test'
+  ...
+# Subtest: complete prepared failure retries same Action with a new occurrence
+ok 11 - complete prepared failure retries same Action with a new occurrence
+  ---
+  duration_ms: 0.8275
+  type: 'test'
+  ...
+# Subtest: canonical disk history reads selected group only and keeps partial visible
+ok 12 - canonical disk history reads selected group only and keeps partial visible
+  ---
+  duration_ms: 85.0809
+  type: 'test'
+  ...
+# Subtest: explicit bootstrap history is display-only; mixed and unmarked groups rejected
+ok 13 - explicit bootstrap history is display-only; mixed and unmarked groups rejected
+  ---
+  duration_ms: 66.7736
+  type: 'test'
+  ...
+# Subtest: actual terminal Author FAIL stays current rather than reusing prior PASS
+ok 14 - actual terminal Author FAIL stays current rather than reusing prior PASS
+  ---
+  duration_ms: 0.6441
+  type: 'test'
+  ...
+# Subtest: closed requests resolve current and reject legacy selectors and caller authority overrides
+ok 15 - closed requests resolve current and reject legacy selectors and caller authority overrides
+  ---
+  duration_ms: 2.3459
+  type: 'test'
+  ...
+# Subtest: next empty target reaches Explore; unrelated high Run cannot be hidden by caller null
+ok 16 - next empty target reaches Explore; unrelated high Run cannot be hidden by caller null
+  ---
+  duration_ms: 409.0797
+  type: 'test'
+  ...
+# Subtest: status and next read exact terminal without Run selectors or unrelated proof inspection
+ok 17 - status and next read exact terminal without Run selectors or unrelated proof inspection
+  ---
+  duration_ms: 640.7039
+  type: 'test'
+  ...
+# Subtest: planned next stays formal blocked; doctor retains bounded tool diagnostics
+ok 18 - planned next stays formal blocked; doctor retains bounded tool diagnostics
+  ---
+  duration_ms: 353.4057
+  type: 'test'
+  ...
+# Subtest: checkpoint authorization is exact, pure, and never inferred
+ok 19 - checkpoint authorization is exact, pure, and never inferred
+  ---
+  duration_ms: 0.4123
+  type: 'test'
+  ...
+# Subtest: exact Change group selection ignores overlapping canonical and bootstrap suffixes
+ok 20 - exact Change group selection ignores overlapping canonical and bootstrap suffixes
+  ---
+  duration_ms: 43.6241
+  type: 'test'
+  ...
+# Subtest: exact selected malformed, duplicate and mixed groups are still diagnosed
+ok 21 - exact selected malformed, duplicate and mixed groups are still diagnosed
+  ---
+  duration_ms: 43.2464
+  type: 'test'
+  ...
+# Subtest: writer preserves actual partial files when context.json fails
+ok 22 - writer preserves actual partial files when context.json fails
+  ---
+  duration_ms: 42.8809
+  type: 'test'
+  ...
+# Subtest: writer preserves actual partial files when result.json fails
+ok 23 - writer preserves actual partial files when result.json fails
+  ---
+  duration_ms: 30.8655
+  type: 'test'
+  ...
+1..23
+# tests 23
+# suites 0
+# pass 23
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2787.6605

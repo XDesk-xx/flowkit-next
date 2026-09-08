@@ -1,0 +1,238 @@
+{
+  "kind": "bootstrap-propose-validation",
+  "status": "PASS",
+  "verifiedAt": "2026-09-08T09:09:13.559Z",
+  "acceptedReview": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-016-review-explore/result.json",
+    "bytes": 7008,
+    "sha256": "d9407f671db93f728a14b3f25b2ada663709cdedf01d4d2bf65521c10896f476"
+  },
+  "approvedExplore": {
+    "path": "openspec/changes/connect-openspec-action-workflow/explore.md",
+    "bytes": 11073,
+    "sha256": "7bea87672d687c1db5cd45ef3e6863af875f60736a21b903c84a5d85cee0a679"
+  },
+  "authorAssessment": "规划从 approved Explore/Owner 决定/016 carry-forward 收敛；未重开 Explore 或执行实现。",
+  "artifactRefs": [
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/proposal.md",
+      "bytes": 3395,
+      "sha256": "ee0e2dcbf8b60c6f930af71ac438161183c822fff4530bbdc39b9a6f28c807c7",
+      "lines": 32
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/design.md",
+      "bytes": 19009,
+      "sha256": "4db230d3e2fe3f0e323fdb0175a3b735b2d169f91ac7b8575d77bc13d9eb13ae",
+      "lines": 132
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/tasks.md",
+      "bytes": 7824,
+      "sha256": "87d548c74e1e2bd744c45e6c2d3e3e9ceae95b9a4fed01f6f73d5516f5fd8671",
+      "lines": 56
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/specs/foundation-cli-surface/spec.md",
+      "bytes": 11123,
+      "sha256": "62bb81b89b3ddd5f4d9d14cfcea4bf3cf4cf7aa98221fba37c03536e6478647f",
+      "lines": 151
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/specs/single-action-execution-terminal-boundary/spec.md",
+      "bytes": 3759,
+      "sha256": "b58e332e33204ff3a0f20ff47736041268643305ff12ac6859720eae219ec737",
+      "lines": 45
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/specs/run-result-persistence/spec.md",
+      "bytes": 3724,
+      "sha256": "7f0547a1077957f0d3e76c6fcdae7a4b903241f3fde18192f603b24e122802a1",
+      "lines": 47
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/specs/action-guidance-execution/spec.md",
+      "bytes": 4132,
+      "sha256": "001d6c0673113f51a7403e54f67dc64c04b78aa12a87e2de1f79c3a08e66f26a",
+      "lines": 45
+    }
+  ],
+  "deltaCounts": [
+    {
+      "capability": "foundation-cli-surface",
+      "added": 1,
+      "modified": 7
+    },
+    {
+      "capability": "single-action-execution-terminal-boundary",
+      "added": 3,
+      "modified": 0
+    },
+    {
+      "capability": "run-result-persistence",
+      "added": 2,
+      "modified": 1
+    },
+    {
+      "capability": "action-guidance-execution",
+      "added": 3,
+      "modified": 0
+    }
+  ],
+  "taskCount": 27,
+  "allTasksUnchecked": true,
+  "priorSourceInputsUnchanged": true,
+  "activationManifestUnchanged": true,
+  "indexUnchanged": true,
+  "commands": [
+    {
+      "label": "openspec-version",
+      "exe": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js",
+        "--version"
+      ],
+      "startedAt": "2026-09-08T09:09:08.906Z",
+      "finishedAt": "2026-09-08T09:09:09.409Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-017-propose/attempt-01/openspec-version.stdout.txt",
+        "bytes": 7,
+        "sha256": "4f5ba6a3e380bf810cc968b58d30a8d7163eafe9e2fb1ad19bdc6d9d64a1e549"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-017-propose/attempt-01/openspec-version.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "openspec-status",
+      "exe": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js",
+        "status",
+        "--change",
+        "connect-openspec-action-workflow",
+        "--json"
+      ],
+      "startedAt": "2026-09-08T09:09:09.410Z",
+      "finishedAt": "2026-09-08T09:09:11.978Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-017-propose/attempt-01/openspec-status.stdout.txt",
+        "bytes": 3489,
+        "sha256": "358d6844a6d0eeec962416744a4a621bbcce69bc1d56a542c3119d9fd4216393"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-017-propose/attempt-01/openspec-status.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "openspec-strict",
+      "exe": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js",
+        "validate",
+        "connect-openspec-action-workflow",
+        "--strict"
+      ],
+      "startedAt": "2026-09-08T09:09:11.980Z",
+      "finishedAt": "2026-09-08T09:09:13.286Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-017-propose/attempt-01/openspec-strict.stdout.txt",
+        "bytes": 51,
+        "sha256": "360901ddba2c93f5db99ef8169d78becf370a7199f91967bed5e9e23830d3e67"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-017-propose/attempt-01/openspec-strict.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "git-diff-check",
+      "exe": "git",
+      "args": [
+        "diff",
+        "--check"
+      ],
+      "startedAt": "2026-09-08T09:09:13.287Z",
+      "finishedAt": "2026-09-08T09:09:13.413Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-017-propose/attempt-01/git-diff-check.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-017-propose/attempt-01/git-diff-check.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "tracked-diff",
+      "exe": "git",
+      "args": [
+        "diff",
+        "--name-only"
+      ],
+      "startedAt": "2026-09-08T09:09:13.415Z",
+      "finishedAt": "2026-09-08T09:09:13.506Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-017-propose/attempt-01/tracked-diff.stdout.txt",
+        "bytes": 74,
+        "sha256": "1db106dd00b18027918fab2a3844027fef7d259b351af5c4feabaf685adc950c"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-017-propose/attempt-01/tracked-diff.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "index-diff",
+      "exe": "git",
+      "args": [
+        "diff",
+        "--cached",
+        "--name-only"
+      ],
+      "startedAt": "2026-09-08T09:09:13.507Z",
+      "finishedAt": "2026-09-08T09:09:13.558Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-017-propose/attempt-01/index-diff.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-017-propose/attempt-01/index-diff.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "method": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-017-propose/audit.mjs",
+    "bytes": 8176,
+    "sha256": "cb73f7cba167f9a27e31fe701ccc19a7dd4f87fcd45388017b460b410ed96cbe"
+  },
+  "limitations": [
+    "OpenSpec strict 和结构核对不是独立语义审查",
+    "未执行任何新增产品实现或宿主双 Change 验收",
+    "未执行 Full Test/Git mutation"
+  ],
+  "nextBoundary": "review-propose"
+}

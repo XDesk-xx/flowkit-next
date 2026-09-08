@@ -1,11 +1,11 @@
 import assert from "node:assert/strict";
 import {
-  access,
   chmod,
   cp,
   mkdir,
   mkdtemp,
   readFile,
+  rename,
   rm,
   stat,
   writeFile,
@@ -13,245 +13,27 @@ import {
 import os from "node:os";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
-import { spawn } from "node:child_process";
 import { createRequire } from "node:module";
 import test from "node:test";
 
-const DELIVERY = "acceptance-delivery";
-const CHANGE = "acceptance-change";
-const START = 1;
-const ROOT = path.resolve(
-  process.env.FLOWKIT_ACCEPTANCE_INSTALLATION ??
-    path.resolve(import.meta.dirname, "../.."),
-);
-const DIST = path.join(ROOT, "dist");
-const CLI = path.resolve(
+import {
+  DELIVERY,
+  CHANGE,
   ROOT,
-  JSON.parse(await readFile(path.join(ROOT, "package.json"), "utf8")).bin
-    .flowkit,
-);
-const DOMAIN = path.join(DIST, "domain", "index.js");
-const TOOL_LOCK = path.join(ROOT, "config", "tools", "toolchain.lock.json");
-
-function requireDetachedPrerequisites(env = process.env) {
-  const flowkitHome = env.FLOWKIT_HOME;
-  assert.ok(flowkitHome, "FLOWKIT_HOME is required for detached acceptance");
-  const [major, minor] = process.versions.node.split(".").map(Number);
-  assert.ok(
-    major > 22 || (major === 22 && minor >= 20),
-    "Node >=22.20.0 is required",
-  );
-  return flowkitHome;
-}
-
-async function exists(target: string): Promise<boolean> {
-  try {
-    await access(target);
-    return true;
-  } catch {
-    return false;
-  }
-}
-
-async function verifyManagedPrerequisites(flowkitHome: string): Promise<void> {
-  const lock = JSON.parse(await readFile(TOOL_LOCK, "utf8"));
-  for (const [tool, version] of [["openspec", "1.10.0"]] as const) {
-    const runtime = path.join(flowkitHome, "tools", tool, version);
-    const pkg = JSON.parse(
-      await readFile(path.join(runtime, "package.json"), "utf8"),
-    );
-    assert.equal(pkg.name, lock[tool].packageName);
-    assert.equal(pkg.version, version);
-    await stat(path.join(runtime, ...lock[tool].entrypoint.split("/")));
-  }
-}
-
-async function runNode(
-  args: string[],
-  options: { cwd?: string; env?: NodeJS.ProcessEnv } = {},
-) {
-  return new Promise<{ code: number | null; stdout: string; stderr: string }>(
-    (resolve, reject) => {
-      const child = spawn(process.execPath, args, {
-        cwd: options.cwd ?? ROOT,
-        env: options.env ?? process.env,
-        shell: false,
-        stdio: ["ignore", "pipe", "pipe"],
-      });
-      let stdout = "",
-        stderr = "";
-      child.stdout.setEncoding("utf8").on("data", (v) => {
-        stdout += v;
-      });
-      child.stderr.setEncoding("utf8").on("data", (v) => {
-        stderr += v;
-      });
-      child.once("error", reject);
-      child.once("close", (code) => resolve({ code, stdout, stderr }));
-    },
-  );
-}
-
-async function rawCli(
-  command: "status" | "next" | "doctor",
-  request: unknown,
-  fixtureRoot: string,
-  env = process.env,
-) {
-  const requestDir = path.join(fixtureRoot, "request files with spaces");
-  await mkdir(requestDir, { recursive: true });
-  const requestPath = path.join(requestDir, `${command} request.json`);
-  await writeFile(
-    requestPath,
-    `${JSON.stringify(request, null, 2).replace(/\n/g, "\r\n")}\r\n`,
-  );
-  return runNode([CLI, command, "--input", requestPath], { env });
-}
-
-async function cli(
-  command: "status" | "next" | "doctor",
-  request: unknown,
-  fixtureRoot: string,
-  env = process.env,
-) {
-  const result = await rawCli(command, request, fixtureRoot, env);
-  assert.equal(result.code, 0, result.stderr || result.stdout);
-  return JSON.parse(result.stdout) as any;
-}
-
-async function writeCoordinationManifest(
-  repositoryRoot: string,
-  state: "planned" | "active" | "completed" | "cancelled" = "active",
-): Promise<void> {
-  const dir = path.join(repositoryRoot, "openspec", "delivery-groups");
-  await mkdir(dir, { recursive: true });
-  await writeFile(
-    path.join(dir, `${DELIVERY}.yaml`),
-    `id: ${DELIVERY}
-changes:
-  - id: ${CHANGE}
-    state: ${state}
-    dependsOn: []
-ownerDecisions:
-  - ref: owner:${"a".repeat(64)}
-    decision: activate-change
-    deliveryId: ${DELIVERY}
-    changeId: ${CHANGE}
-    sourceRef: acceptance
-    scope:
-      - explore
-`,
-  );
-}
-
-async function makeFixture(flowkitHome: string) {
-  const root = await mkdtemp(path.join(os.tmpdir(), "flowkit acceptance "));
-  const repositoryRoot = path.join(root, "repo with spaces");
-  await mkdir(path.join(repositoryRoot, "openspec", "changes", CHANGE), {
-    recursive: true,
-  });
-  await writeFile(
-    path.join(repositoryRoot, "openspec", "config.yaml"),
-    "schema: spec-driven\n",
-  );
-  await writeFile(
-    path.join(repositoryRoot, "openspec", "changes", CHANGE, ".openspec.yaml"),
-    "schema: spec-driven\n",
-  );
-  await writeFile(
-    path.join(repositoryRoot, "openspec", "changes", CHANGE, "proposal.md"),
-    "## Why\nacceptance\n\n## What Changes\n- fixture\n\n## Capabilities\n\n### New Capabilities\n- fixture\n\n## Impact\n- disposable\n",
-  );
-  await writeCoordinationManifest(repositoryRoot);
-  return { root, repositoryRoot, flowkitHome };
-}
-
-function occurrence(sequence: number, actionId: "apply" | "archive") {
-  return { date: "20260828", sequence, actionId } as const;
-}
-
-function preparedContext(sequence: number, actionId: "apply" | "archive") {
-  const runId = `20260828-${String(sequence).padStart(3, "0")}-${actionId}`;
-  return {
-    runId,
-    occurrence: occurrence(sequence, actionId),
-    actionIdentity: { deliveryId: DELIVERY, changeId: CHANGE, actionId },
-    role: "author" as const,
-    lifecycleState: "prepared" as const,
-    ownerAuthority: null,
-    previousRunId: null,
-  };
-}
-
-function candidateResult(runId: string, actionId: "apply" | "archive") {
-  return {
-    runId,
-    actionIdentity: { deliveryId: DELIVERY, changeId: CHANGE, actionId },
-    authorConclusion: "PASS",
-    reviewerVerdict: null,
-    verificationVerdict: null,
-    nextBoundary: actionId === "apply" ? "review-apply" : "checkpoint",
-    facts: { acceptance: true },
-  };
-}
-
-async function persistTerminal(
-  domain: any,
-  repositoryRoot: string,
-  sequence: number,
-  actionId: "apply" | "archive",
-  installationRoot = ROOT,
-) {
-  const context = preparedContext(sequence, actionId);
-  const outcome = await domain.invokeSingleAction(
-    (
-      await import(
-        pathToFileURL(
-          path.join(installationRoot, "dist/internal/manager-installation.js"),
-        ).href
-      )
-    ).loadManagerInstallation(),
-    null,
-    context.actionIdentity,
-    context,
-    (pkg: any) => candidateResult(pkg.runId, actionId),
-  );
-  assert.equal(outcome.status, "terminal");
-  const terminalContext = { ...context, lifecycleState: "terminal" as const };
-  await domain.writeDurableRun(
-    {
-      repositoryRoot,
-      deliveryId: DELIVERY,
-      changeId: CHANGE,
-      changeStartSequence: START,
-      occurrence: context.occurrence,
-    },
-    {
-      actionMarkdown: `# ${actionId}\n`,
-      context: terminalContext,
-      result: outcome.result,
-    },
-  );
-  const reread = await domain.readDurableRun({
-    repositoryRoot,
-    deliveryId: DELIVERY,
-    changeId: CHANGE,
-    changeStartSequence: START,
-    occurrence: context.occurrence,
-  });
-  assert.equal(reread.context.runId, context.runId);
-  return reread;
-}
-
-function common(fixture: { repositoryRoot: string; flowkitHome: string }) {
-  return {
-    repositoryRoot: fixture.repositoryRoot,
-    deliveryId: DELIVERY,
-    changeId: CHANGE,
-    changeStartSequence: START,
-    flowkitHome: fixture.flowkitHome,
-  };
-}
+  DIST,
+  CLI,
+  DOMAIN,
+  requireDetachedPrerequisites,
+  exists,
+  verifyManagedPrerequisites,
+  runNode,
+  rawCli,
+  cli,
+  writeCoordinationManifest,
+  makeFixture,
+  persistTerminal,
+  common,
+} from "./foundation-manager-fixture.js";
 
 test("installed manager relocates without target assets, dev dependencies or project writes", async () => {
   const fixture = await makeFixture(requireDetachedPrerequisites());
@@ -312,7 +94,8 @@ test("installed manager relocates without target assets, dev dependencies or pro
       "apply",
       relocated,
     );
-    const request = { ...common(fixture), currentRunId: run.context.runId };
+    const request = common(fixture);
+    assert.equal(run.context.actionIdentity.actionId, "apply");
     const expected = await cli("status", request, fixture.root);
     const bin = JSON.parse(
       await readFile(path.join(relocated, "package.json"), "utf8"),
@@ -357,8 +140,8 @@ test("installed manager relocates without target assets, dev dependencies or pro
       flowkitHome: path.join(fixture.root, "missing-runtime"),
     };
     const next = await bCli("next", missing);
-    assert.equal(next.code, 0);
-    assert.equal(JSON.parse(next.stdout).decision.actionId, "review-apply");
+    assert.equal(next.code, 2);
+    assert.match(next.stdout, /missing-runtime/);
     const missingDoctor = await bCli("doctor", {
       ...doctorRequest,
       flowkitHome: missing.flowkitHome,
@@ -366,10 +149,7 @@ test("installed manager relocates without target assets, dev dependencies or pro
     assert.match(missingDoctor.stdout, /missing-runtime/);
     const missingStatus = await bCli("status", missing);
     assert.equal(missingStatus.code, 2);
-    assert.deepEqual(JSON.parse(missingStatus.stdout), {
-      kind: "error",
-      error: { kind: "openspec-integration-failed" },
-    });
+    assert.match(missingStatus.stdout, /missing-runtime/);
     for (const relative of retained) {
       assert.equal(
         await readFile(path.join(fixture.repositoryRoot, relative), "utf8"),
@@ -449,7 +229,11 @@ test("detached whole-manager acceptance uses candidate-generated durable Runs an
     assert.equal(legacyUpgrade.code, 2);
     assert.deepEqual(JSON.parse(legacyUpgrade.stdout), {
       kind: "error",
-      error: { kind: "invalid-request" },
+      error: {
+        kind: "invalid-request",
+        message:
+          "Remove currentRunId/changeStartSequence; context is resolved from target and optional deliveryId/changeId",
+      },
     });
 
     await writeCoordinationManifest(fixture.repositoryRoot, "active");
@@ -465,35 +249,29 @@ test("detached whole-manager acceptance uses candidate-generated durable Runs an
     assert.equal(legacyDowngrade.code, 2);
     assert.deepEqual(JSON.parse(legacyDowngrade.stdout), {
       kind: "error",
-      error: { kind: "invalid-request" },
+      error: {
+        kind: "invalid-request",
+        message:
+          "Remove currentRunId/changeStartSequence; context is resolved from target and optional deliveryId/changeId",
+      },
     });
 
-    const status = await cli(
-      "status",
-      { ...common(fixture), currentRunId: applyRun.context.runId },
-      fixture.root,
-    );
+    const status = await cli("status", common(fixture), fixture.root);
     assert.equal(status.changeState, "active");
     assert.equal(status.currentRun.runId, applyRun.context.runId);
     assert.deepEqual(status.openSpec.activeChangeIds, [CHANGE]);
-    const next = await cli(
-      "next",
-      { ...common(fixture), currentRunId: applyRun.context.runId },
-      fixture.root,
-    );
+    const next = await cli("next", common(fixture), fixture.root);
     assert.deepEqual(next.decision, {
       kind: "ready-action",
       actionId: "review-apply",
     });
-    const empty = await cli(
+    const obsolete = await rawCli(
       "next",
       { ...common(fixture), currentRunId: null },
       fixture.root,
     );
-    assert.deepEqual(empty.decision, {
-      kind: "ready-action",
-      actionId: "explore",
-    });
+    assert.equal(obsolete.code, 2);
+    assert.equal(JSON.parse(obsolete.stdout).error.kind, "invalid-request");
 
     const archiveRun = await persistTerminal(
       domain,
@@ -509,12 +287,26 @@ test("detached whole-manager acceptance uses candidate-generated durable Runs an
       sourceRef: "acceptance",
       scope: ["checkpoint"],
     };
+    assert.equal(archiveRun.context.actionIdentity.actionId, "archive");
+    await mkdir(
+      path.join(fixture.repositoryRoot, "openspec", "changes", "archive"),
+      { recursive: true },
+    );
+    await rename(
+      path.join(fixture.repositoryRoot, "openspec", "changes", CHANGE),
+      path.join(
+        fixture.repositoryRoot,
+        "openspec",
+        "changes",
+        "archive",
+        "2026-09-08-001-" + CHANGE,
+      ),
+    );
     await writeCoordinationManifest(fixture.repositoryRoot, "completed");
     const checkpoint = await cli(
       "next",
       {
         ...common(fixture),
-        currentRunId: archiveRun.context.runId,
         checkpointAuthority: owner,
       },
       fixture.root,

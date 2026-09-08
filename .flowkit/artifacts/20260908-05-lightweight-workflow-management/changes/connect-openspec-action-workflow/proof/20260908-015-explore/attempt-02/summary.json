@@ -1,0 +1,428 @@
+{
+  "status": "PASS",
+  "platform": "win32",
+  "node": "v22.23.2",
+  "fixtureRoot": "D:\\Projects\\flowkit-next\\.tmp\\d05-action-explore-mCAImT",
+  "baseline": [
+    {
+      "path": ".flowkit/artifacts/future-delivery/changes/another-change/proof/run/stdout.txt",
+      "inputSha256": "4e7eaab7c988542448bdd9cac3291328f992caaa01fb748ee7f07162d16aa25a",
+      "indexSha256": "b19fa4bbc3513bc2c88d223ab0242de478384d350ec5ab9b1da8ab6c54d50ffc",
+      "exactBytes": false
+    },
+    {
+      "path": ".flowkit/artifacts/future-delivery/changes/another-change/proof/run/check.stderr.txt",
+      "inputSha256": "4e7eaab7c988542448bdd9cac3291328f992caaa01fb748ee7f07162d16aa25a",
+      "indexSha256": "b19fa4bbc3513bc2c88d223ab0242de478384d350ec5ab9b1da8ab6c54d50ffc",
+      "exactBytes": false
+    },
+    {
+      "path": ".flowkit/artifacts/future-delivery/full-test/attempt/stdout.txt",
+      "inputSha256": "4e7eaab7c988542448bdd9cac3291328f992caaa01fb748ee7f07162d16aa25a",
+      "indexSha256": "b19fa4bbc3513bc2c88d223ab0242de478384d350ec5ab9b1da8ab6c54d50ffc",
+      "exactBytes": false
+    },
+    {
+      "path": ".flowkit/artifacts/future-delivery/full-test/attempt/check.stdout.txt",
+      "inputSha256": "4e7eaab7c988542448bdd9cac3291328f992caaa01fb748ee7f07162d16aa25a",
+      "indexSha256": "b19fa4bbc3513bc2c88d223ab0242de478384d350ec5ab9b1da8ab6c54d50ffc",
+      "exactBytes": false
+    }
+  ],
+  "candidate": [
+    {
+      "path": ".flowkit/artifacts/future-delivery/changes/another-change/proof/run/stdout.txt",
+      "inputSha256": "4e7eaab7c988542448bdd9cac3291328f992caaa01fb748ee7f07162d16aa25a",
+      "indexSha256": "4e7eaab7c988542448bdd9cac3291328f992caaa01fb748ee7f07162d16aa25a",
+      "exactBytes": true
+    },
+    {
+      "path": ".flowkit/artifacts/future-delivery/changes/another-change/proof/run/check.stderr.txt",
+      "inputSha256": "4e7eaab7c988542448bdd9cac3291328f992caaa01fb748ee7f07162d16aa25a",
+      "indexSha256": "4e7eaab7c988542448bdd9cac3291328f992caaa01fb748ee7f07162d16aa25a",
+      "exactBytes": true
+    },
+    {
+      "path": ".flowkit/artifacts/future-delivery/full-test/attempt/stdout.txt",
+      "inputSha256": "4e7eaab7c988542448bdd9cac3291328f992caaa01fb748ee7f07162d16aa25a",
+      "indexSha256": "4e7eaab7c988542448bdd9cac3291328f992caaa01fb748ee7f07162d16aa25a",
+      "exactBytes": true
+    },
+    {
+      "path": ".flowkit/artifacts/future-delivery/full-test/attempt/check.stdout.txt",
+      "inputSha256": "4e7eaab7c988542448bdd9cac3291328f992caaa01fb748ee7f07162d16aa25a",
+      "indexSha256": "4e7eaab7c988542448bdd9cac3291328f992caaa01fb748ee7f07162d16aa25a",
+      "exactBytes": true
+    }
+  ],
+  "sourceRefs": [
+    {
+      "path": "src/cli/request.ts",
+      "bytes": 7288,
+      "sha256": "fbd9c517aeb0286ea0daebb7c08740b3cab72e06d067d5d0c79c6cb78c42e08b"
+    },
+    {
+      "path": "src/cli/foundation-cli.ts",
+      "bytes": 10201,
+      "sha256": "edfd6979d3943655f9a465dedc91b2be28b75ae67fba8f604136c4cfa61982aa"
+    },
+    {
+      "path": "src/cli/trusted-change-coordination.ts",
+      "bytes": 6198,
+      "sha256": "6630657526faa90bd5264206fc8fc6fe4297e2769238825548211e4be7452b15"
+    },
+    {
+      "path": "src/domain/single-action-execution.ts",
+      "bytes": 5134,
+      "sha256": "03afdc19c11aab6bb557a75b27c0c16e92d1443b96dec2504714532e94fd470a"
+    },
+    {
+      "path": "src/domain/run-result-persistence.ts",
+      "bytes": 16971,
+      "sha256": "f502c6f9a1abcb88992f3ff8720f55fd5a5935b3943f4cc1707389c6cf8b77bb"
+    },
+    {
+      "path": "src/domain/action-package-result-admission.ts",
+      "bytes": 7460,
+      "sha256": "a72115811f8ba69fadf8f1be9cf5a1f872c8dc14d54bbc8662960df70b45131a"
+    },
+    {
+      "path": ".gitattributes",
+      "bytes": 1525,
+      "sha256": "7c6161f50b1ce7b893b836c556a2347b3e504412752b5a3cadcc662f5a8336d8"
+    }
+  ],
+  "commands": [
+    {
+      "label": "baseline-init",
+      "executable": "git",
+      "args": [
+        "init",
+        "--quiet"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-action-explore-mCAImT\\baseline",
+      "startedAt": "2026-09-08T08:31:03.327Z",
+      "finishedAt": "2026-09-08T08:31:03.408Z",
+      "exitCode": 0,
+      "error": null,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "baseline-attributes",
+      "executable": "git",
+      "args": [
+        "check-attr",
+        "text",
+        "whitespace",
+        "--",
+        ".flowkit/artifacts/future-delivery/changes/another-change/proof/run/stdout.txt",
+        ".flowkit/artifacts/future-delivery/changes/another-change/proof/run/check.stderr.txt",
+        ".flowkit/artifacts/future-delivery/full-test/attempt/stdout.txt",
+        ".flowkit/artifacts/future-delivery/full-test/attempt/check.stdout.txt"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-action-explore-mCAImT\\baseline",
+      "startedAt": "2026-09-08T08:31:03.417Z",
+      "finishedAt": "2026-09-08T08:31:03.465Z",
+      "exitCode": 0,
+      "error": null,
+      "stdoutSha256": "4eeffff0d30ecc45fddec120535588c31224b276b578146fc2a19ca7b873e039",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "baseline-add",
+      "executable": "git",
+      "args": [
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.safecrlf=false",
+        "add",
+        "--",
+        ".gitattributes",
+        ".flowkit/artifacts/future-delivery/changes/another-change/proof/run/stdout.txt",
+        ".flowkit/artifacts/future-delivery/changes/another-change/proof/run/check.stderr.txt",
+        ".flowkit/artifacts/future-delivery/full-test/attempt/stdout.txt",
+        ".flowkit/artifacts/future-delivery/full-test/attempt/check.stdout.txt"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-action-explore-mCAImT\\baseline",
+      "startedAt": "2026-09-08T08:31:03.466Z",
+      "finishedAt": "2026-09-08T08:31:03.522Z",
+      "exitCode": 0,
+      "error": null,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "baseline-check",
+      "executable": "git",
+      "args": [
+        "diff",
+        "--cached",
+        "--check"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-action-explore-mCAImT\\baseline",
+      "startedAt": "2026-09-08T08:31:03.523Z",
+      "finishedAt": "2026-09-08T08:31:03.572Z",
+      "exitCode": 2,
+      "error": null,
+      "stdoutSha256": "d39ba1c34b468cedc6a41d2040f4ac69e64c2669158c45d18ef8cdbbc144be43",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "baseline-blob-0",
+      "executable": "git",
+      "args": [
+        "show",
+        ":.flowkit/artifacts/future-delivery/changes/another-change/proof/run/stdout.txt"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-action-explore-mCAImT\\baseline",
+      "startedAt": "2026-09-08T08:31:03.573Z",
+      "finishedAt": "2026-09-08T08:31:03.620Z",
+      "exitCode": 0,
+      "error": null,
+      "stdoutSha256": "b19fa4bbc3513bc2c88d223ab0242de478384d350ec5ab9b1da8ab6c54d50ffc",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "baseline-blob-1",
+      "executable": "git",
+      "args": [
+        "show",
+        ":.flowkit/artifacts/future-delivery/changes/another-change/proof/run/check.stderr.txt"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-action-explore-mCAImT\\baseline",
+      "startedAt": "2026-09-08T08:31:03.621Z",
+      "finishedAt": "2026-09-08T08:31:03.670Z",
+      "exitCode": 0,
+      "error": null,
+      "stdoutSha256": "b19fa4bbc3513bc2c88d223ab0242de478384d350ec5ab9b1da8ab6c54d50ffc",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "baseline-blob-2",
+      "executable": "git",
+      "args": [
+        "show",
+        ":.flowkit/artifacts/future-delivery/full-test/attempt/stdout.txt"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-action-explore-mCAImT\\baseline",
+      "startedAt": "2026-09-08T08:31:03.670Z",
+      "finishedAt": "2026-09-08T08:31:03.716Z",
+      "exitCode": 0,
+      "error": null,
+      "stdoutSha256": "b19fa4bbc3513bc2c88d223ab0242de478384d350ec5ab9b1da8ab6c54d50ffc",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "baseline-blob-3",
+      "executable": "git",
+      "args": [
+        "show",
+        ":.flowkit/artifacts/future-delivery/full-test/attempt/check.stdout.txt"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-action-explore-mCAImT\\baseline",
+      "startedAt": "2026-09-08T08:31:03.718Z",
+      "finishedAt": "2026-09-08T08:31:03.764Z",
+      "exitCode": 0,
+      "error": null,
+      "stdoutSha256": "b19fa4bbc3513bc2c88d223ab0242de478384d350ec5ab9b1da8ab6c54d50ffc",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "generalized-init",
+      "executable": "git",
+      "args": [
+        "init",
+        "--quiet"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-action-explore-mCAImT\\generalized",
+      "startedAt": "2026-09-08T08:31:03.765Z",
+      "finishedAt": "2026-09-08T08:31:03.833Z",
+      "exitCode": 0,
+      "error": null,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "generalized-attributes",
+      "executable": "git",
+      "args": [
+        "check-attr",
+        "text",
+        "whitespace",
+        "--",
+        ".flowkit/artifacts/future-delivery/changes/another-change/proof/run/stdout.txt",
+        ".flowkit/artifacts/future-delivery/changes/another-change/proof/run/check.stderr.txt",
+        ".flowkit/artifacts/future-delivery/full-test/attempt/stdout.txt",
+        ".flowkit/artifacts/future-delivery/full-test/attempt/check.stdout.txt"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-action-explore-mCAImT\\generalized",
+      "startedAt": "2026-09-08T08:31:03.841Z",
+      "finishedAt": "2026-09-08T08:31:03.888Z",
+      "exitCode": 0,
+      "error": null,
+      "stdoutSha256": "1b83c1691f351f08963765666dc526f7ed56dbf35dc1d421657022c2b88881e4",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "generalized-add",
+      "executable": "git",
+      "args": [
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.safecrlf=false",
+        "add",
+        "--",
+        ".gitattributes",
+        ".flowkit/artifacts/future-delivery/changes/another-change/proof/run/stdout.txt",
+        ".flowkit/artifacts/future-delivery/changes/another-change/proof/run/check.stderr.txt",
+        ".flowkit/artifacts/future-delivery/full-test/attempt/stdout.txt",
+        ".flowkit/artifacts/future-delivery/full-test/attempt/check.stdout.txt"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-action-explore-mCAImT\\generalized",
+      "startedAt": "2026-09-08T08:31:03.889Z",
+      "finishedAt": "2026-09-08T08:31:03.947Z",
+      "exitCode": 0,
+      "error": null,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "generalized-check",
+      "executable": "git",
+      "args": [
+        "diff",
+        "--cached",
+        "--check"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-action-explore-mCAImT\\generalized",
+      "startedAt": "2026-09-08T08:31:03.948Z",
+      "finishedAt": "2026-09-08T08:31:04.000Z",
+      "exitCode": 0,
+      "error": null,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "generalized-blob-0",
+      "executable": "git",
+      "args": [
+        "show",
+        ":.flowkit/artifacts/future-delivery/changes/another-change/proof/run/stdout.txt"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-action-explore-mCAImT\\generalized",
+      "startedAt": "2026-09-08T08:31:04.001Z",
+      "finishedAt": "2026-09-08T08:31:04.048Z",
+      "exitCode": 0,
+      "error": null,
+      "stdoutSha256": "4e7eaab7c988542448bdd9cac3291328f992caaa01fb748ee7f07162d16aa25a",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "generalized-blob-1",
+      "executable": "git",
+      "args": [
+        "show",
+        ":.flowkit/artifacts/future-delivery/changes/another-change/proof/run/check.stderr.txt"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-action-explore-mCAImT\\generalized",
+      "startedAt": "2026-09-08T08:31:04.049Z",
+      "finishedAt": "2026-09-08T08:31:04.096Z",
+      "exitCode": 0,
+      "error": null,
+      "stdoutSha256": "4e7eaab7c988542448bdd9cac3291328f992caaa01fb748ee7f07162d16aa25a",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "generalized-blob-2",
+      "executable": "git",
+      "args": [
+        "show",
+        ":.flowkit/artifacts/future-delivery/full-test/attempt/stdout.txt"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-action-explore-mCAImT\\generalized",
+      "startedAt": "2026-09-08T08:31:04.097Z",
+      "finishedAt": "2026-09-08T08:31:04.143Z",
+      "exitCode": 0,
+      "error": null,
+      "stdoutSha256": "4e7eaab7c988542448bdd9cac3291328f992caaa01fb748ee7f07162d16aa25a",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "generalized-blob-3",
+      "executable": "git",
+      "args": [
+        "show",
+        ":.flowkit/artifacts/future-delivery/full-test/attempt/check.stdout.txt"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-action-explore-mCAImT\\generalized",
+      "startedAt": "2026-09-08T08:31:04.144Z",
+      "finishedAt": "2026-09-08T08:31:04.207Z",
+      "exitCode": 0,
+      "error": null,
+      "stdoutSha256": "4e7eaab7c988542448bdd9cac3291328f992caaa01fb748ee7f07162d16aa25a",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "generalized-source-add",
+      "executable": "git",
+      "args": [
+        "add",
+        "--",
+        "src/control.ts"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-action-explore-mCAImT\\generalized",
+      "startedAt": "2026-09-08T08:31:04.209Z",
+      "finishedAt": "2026-09-08T08:31:04.262Z",
+      "exitCode": 0,
+      "error": null,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "generalized-source-check",
+      "executable": "git",
+      "args": [
+        "diff",
+        "--cached",
+        "--check"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-action-explore-mCAImT\\generalized",
+      "startedAt": "2026-09-08T08:31:04.263Z",
+      "finishedAt": "2026-09-08T08:31:04.311Z",
+      "exitCode": 2,
+      "error": null,
+      "stdoutSha256": "cf8cac6c3d902b0d68430b6ce01552b50bc3dd9d84f5898b3a861a5ba5b64e1c",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "existing-focused-tests",
+      "executable": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "--import",
+        "tsx",
+        "--test",
+        "tests/unit/domain/single-action-execution.test.ts",
+        "tests/unit/domain/run-result-persistence.test.ts",
+        "tests/unit/domain/foundation-cli-surface.test.ts"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "startedAt": "2026-09-08T08:31:04.314Z",
+      "finishedAt": "2026-09-08T08:31:05.148Z",
+      "exitCode": 0,
+      "error": null,
+      "stdoutSha256": "70ffe6ac8f9f1d78c6da655a3e0eb2852f6339d11fe32d1ddd9eacb0197f75d6",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "sourceWhitespaceStillRejected": true,
+  "repositoryAttributesUnchanged": true,
+  "testMeaning": "Existing seam regression only, not actual host integration acceptance",
+  "limits": [
+    "仅 Windows 原生 Git 实验，未运行 Linux",
+    "通用模式覆盖声明的 stdout/stderr 命名，不覆盖任意报告格式",
+    "未实施宿主接入、上下文自动选择或证据接纳；不声称新产品 PASS"
+  ]
+}

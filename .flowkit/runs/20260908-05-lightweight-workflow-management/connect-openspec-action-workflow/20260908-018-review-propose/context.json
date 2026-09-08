@@ -1,0 +1,50 @@
+{
+  "kind": "external-orchestrator-review-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "reviewer",
+  "action": "review-propose",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "connect-openspec-action-workflow",
+  "projectOrdinal": 35,
+  "runId": "20260908-018-review-propose",
+  "previousRunId": "20260908-017-propose",
+  "reviewedRunId": "20260908-017-propose",
+  "ownerInstruction": "根据最新run，review",
+  "reviewedResult": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-017-propose/result.json",
+    "bytes": 3898,
+    "sha256": "8235dde30c336835c5721c97cb8705c471833e719c26755cfbeef86fb553bcd1"
+  },
+  "acceptedExploreReview": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-016-review-explore/result.json",
+    "bytes": 7008,
+    "sha256": "d9407f671db93f728a14b3f25b2ada663709cdedf01d4d2bf65521c10896f476"
+  },
+  "sourceHead": "697088391374daa67d63c20f8a365fb44ec5c058",
+  "sourceHeadMeaning": "只定位审查输入；不是新的 Action/Delivery SHA 前置或 checkpoint authority。",
+  "sourceBranch": "delivery/20260908-05-lightweight-workflow-management",
+  "ownerActivationRef": "owner:03920835f3bd9c9278283d95ee0694d362e9fc06d4e9b429d473dd7f8feb00de",
+  "independentHow": ".agents/skills/review-propose/SKILL.md",
+  "candidateReviewerHowConsumed": false,
+  "scope": [
+    "approved Explore/Owner 边界溯源",
+    "CLI/current 链与既有 Policy 相容性",
+    "宿主协议、Run 预占/失败保存/读回和必要 proof 交接",
+    "原始流文本边界、独立 HOW 与真实 Apply 验收完整性"
+  ],
+  "writeScope": [
+    ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-018-review-propose",
+    ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-018-review-propose"
+  ],
+  "verification": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-018-review-propose/attempt-01/summary.json",
+    "bytes": 25374,
+    "sha256": "db7c901bc094b6bcfe56a0a670f9b3bdbdbe1571d6bd0fee0ec56c361653fe07"
+  },
+  "exclusions": [
+    "Author planning/production/tests/Skills/history mutation",
+    "Apply/new implementation acceptance/Formal Full Test",
+    "candidate self-management/real repository Git mutation/automatic continuation"
+  ]
+}

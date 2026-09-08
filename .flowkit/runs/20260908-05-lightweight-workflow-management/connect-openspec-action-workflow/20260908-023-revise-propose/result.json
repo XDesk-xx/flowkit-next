@@ -1,0 +1,137 @@
+{
+  "kind": "external-orchestrator-revise-propose-result",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "author",
+  "action": "revise-propose",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "connect-openspec-action-workflow",
+  "projectOrdinal": 35,
+  "runId": "20260908-023-revise-propose",
+  "previousRunId": "20260908-022-review-explore",
+  "status": "terminal",
+  "verdict": "PASS",
+  "verdictMeaning": "Author计划修订与结构/范围核对完成；不是独立review-propose批准或实现验收PASS",
+  "summary": "已按021/022批准边界原位修订七份计划：三命令只读流程、Agent规范记录、未完成保留、必要材料和通用原始流，撤出未发布宿主协议及固定真人演练。",
+  "artifacts": [
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/proposal.md",
+      "bytes": 3686,
+      "sha256": "4550d2dafd7ad8f862bf2ae80836c69833d8d37994b29026b7619c7a01185ff5"
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/design.md",
+      "bytes": 12759,
+      "sha256": "fac25b1b6f45e7635976a9bdf7ca9ca1bab0dab4b87c2f17f4cf40b77f5ca94e"
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/tasks.md",
+      "bytes": 6097,
+      "sha256": "73154a2d5b396fcd2c61cb9653c057cddaf5b6cc492ff3f2d95c65f89764ffbb"
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/specs/foundation-cli-surface/spec.md",
+      "bytes": 10469,
+      "sha256": "2b668dce63982b87c54fcf6432480d1aad6c610e4fe29b08cd42695a59c6041c"
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/specs/single-action-execution-terminal-boundary/spec.md",
+      "bytes": 4165,
+      "sha256": "688f49788024604d229009ff1f52f408a1b6bb2d52749fd9e90713056837b642"
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/specs/run-result-persistence/spec.md",
+      "bytes": 4192,
+      "sha256": "5184aa706e062b10d75197e17c7a95a3a027aae5550cf844f6dc50abd6ab4aa5"
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/specs/action-guidance-execution/spec.md",
+      "bytes": 5420,
+      "sha256": "0f18d3b73ebe6df46e89ab9bbe207fb64db9f7bfeda035672c8cd5ff6bec0d65"
+    }
+  ],
+  "planChecks": {
+    "openSpecExactVersion": "1.10.0",
+    "strictValidation": {
+      "exitCode": 0,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-023-revise-propose/attempt-02/strict.stdout.txt",
+        "bytes": 51,
+        "sha256": "360901ddba2c93f5db99ef8169d78becf370a7199f91967bed5e9e23830d3e67"
+      }
+    },
+    "gitDiffCheckExitCode": 0,
+    "modifiedRequirementHeadersMatchCanonical": true,
+    "textChecksPassed": true,
+    "protectedFiles": 217,
+    "protectedFilesUnchanged": true,
+    "contractTraceability": "design.md §6 maps 021/022 and Owner decisions to scope/acceptance",
+    "unknowns": [],
+    "scopeDrift": "NONE; manifest wording alignment is planned for Apply, not changed in this Run"
+  },
+  "evidence": [
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-023-revise-propose/baseline.json",
+      "bytes": 42428,
+      "sha256": "8c710e6bc3c3f47084dadd4ffe1f20b754f27ab7b07a1115b6ba54dd15531396"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-023-revise-propose/check.mjs",
+      "bytes": 5419,
+      "sha256": "e2abe7e8c3d94f118819570e35a4e51afe9281787ef3daee9bb3acf42520b8b3"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-023-revise-propose/attempt-02/summary.json",
+      "bytes": 6199,
+      "sha256": "1e76267997ea66a198cabdd858277d8d4dfb3313fbeb81d905a1a9b9b6249bfd"
+    }
+  ],
+  "taskState": {
+    "checked": 2,
+    "unchecked": 19,
+    "meaning": "保留019中未受方向纠正影响的目标解析与原始流修复进度；受影响项重新待完成，不表示新候选PASS",
+    "priorChecklist": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-023-revise-propose/prior-plan/tasks.md"
+  },
+  "history": {
+    "priorApplyRunId": "20260908-019-apply",
+    "priorApplyResultAbsent": true,
+    "priorApplyCompleted": false,
+    "unknownRunPreserved": "20260908-020-revise-explore",
+    "reviewRunConsumed": "20260908-022-review-explore",
+    "historicalRunsRewritten": false
+  },
+  "handoff": {
+    "ownerDecisions": "见本Run context.json；不复制聊天，不推断材料清理权限",
+    "requiredInputs": [
+      "openspec/changes/connect-openspec-action-workflow/explore.md",
+      "20260908-022-review-explore/result.json",
+      "openspec/changes/connect-openspec-action-workflow/proposal.md",
+      "openspec/changes/connect-openspec-action-workflow/design.md",
+      "openspec/changes/connect-openspec-action-workflow/tasks.md",
+      "openspec/changes/connect-openspec-action-workflow/specs/foundation-cli-surface/spec.md",
+      "openspec/changes/connect-openspec-action-workflow/specs/single-action-execution-terminal-boundary/spec.md",
+      "openspec/changes/connect-openspec-action-workflow/specs/run-result-persistence/spec.md",
+      "openspec/changes/connect-openspec-action-workflow/specs/action-guidance-execution/spec.md"
+    ],
+    "materialRetention": "必要材料保存target artifacts，.tmp仅可丢弃；旧材料无清理授权",
+    "implementationNotes": [
+      "撤出action/JSONL/live reservation，不改名为另一宿主协议",
+      "Agent实际开始/完成/未完成顺序及相关验证必须实现，不能只直接填terminal JSON",
+      "既有complete-record writer保留原用法，仅修正部分写失败清理的直接缺口",
+      "manifest说明性窄改列入Apply；当前manifest状态和facts未改",
+      "650行gate保持，超限按职责拆分"
+    ]
+  },
+  "reviewerVerdict": null,
+  "readyForReviewPropose": true,
+  "implementationApproved": false,
+  "productionMutation": false,
+  "skillMutation": false,
+  "manifestMutation": false,
+  "canonicalSpecMutation": false,
+  "gitMutation": false,
+  "formalFullTestExecuted": false,
+  "nextBoundary": "review-propose",
+  "stop": true,
+  "completedAt": "2026-09-08T13:19:33.450Z"
+}

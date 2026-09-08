@@ -1,0 +1,25 @@
+{
+  "kind": "external-orchestrator-revise-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "author",
+  "action": "revise-apply",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "connect-openspec-action-workflow",
+  "projectOrdinal": 35,
+  "runId": "20260908-027-revise-apply",
+  "previousRunId": "20260908-026-review-apply",
+  "ownerInstruction": "根据最新run，revise",
+  "ownerSourceRef": "owner-input:2026-09-08:revise-after-026",
+  "findings": [
+    "D05-RA026-001",
+    "D05-RA026-002"
+  ],
+  "proofRoot": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply",
+  "nextBoundaryAfterCompletion": "review-apply",
+  "ownerDecisionsRelevant": [
+    "D05 独立 bootstrap，CLI 只读而 Agent 执行记录",
+    "必要材料留在 target artifacts，.tmp 可丢弃，不重写历史",
+    "单次修订后 STOP，不自动 Review/Archive/Git"
+  ]
+}

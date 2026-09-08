@@ -1,0 +1,140 @@
+{
+  "platform": "win32",
+  "node": "v22.23.2",
+  "commands": [
+    {
+      "label": "independent-probe",
+      "executable": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "--import",
+        "tsx",
+        "D:\\Projects\\flowkit-next\\.flowkit\\artifacts\\20260908-05-lightweight-workflow-management\\changes\\connect-openspec-action-workflow\\proof\\20260908-028-review-apply\\probe.mjs",
+        "D:\\Projects\\flowkit-next\\.flowkit\\artifacts\\20260908-05-lightweight-workflow-management\\changes\\connect-openspec-action-workflow\\proof\\20260908-028-review-apply\\attempt-02"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "startedAt": "2026-09-08T14:53:31.865Z",
+      "finishedAt": "2026-09-08T14:53:32.399Z",
+      "exitCode": 1,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-028-review-apply/attempt-02/independent-probe.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-028-review-apply/attempt-02/independent-probe.stderr.txt",
+        "bytes": 747,
+        "sha256": "fa9be278ea0c63b16b34c5a63d8c29351c98695b3971f66838e2f46aff455d56"
+      }
+    },
+    {
+      "label": "focused-tests",
+      "executable": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "--import",
+        "tsx",
+        "--test",
+        "tests/unit/domain/run-group-selection.test.ts",
+        "tests/unit/domain/current-run-chain.test.ts",
+        "tests/unit/domain/action-context.test.ts",
+        "tests/unit/domain/run-partial-preservation.test.ts",
+        "tests/unit/domain/agent-how-failure.test.ts",
+        "tests/unit/domain/agent-how-material.test.ts",
+        "tests/unit/domain/foundation-cli-surface.test.ts"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "startedAt": "2026-09-08T14:53:32.403Z",
+      "finishedAt": "2026-09-08T14:53:35.252Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-028-review-apply/attempt-02/focused-tests.stdout.txt",
+        "bytes": 5207,
+        "sha256": "650474c16f462665cf40e4f2259a8b055ac3e0b9ee340e9ab819dd78b16503e0"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-028-review-apply/attempt-02/focused-tests.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "openspec-version",
+      "executable": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js",
+        "--version"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "startedAt": "2026-09-08T14:53:35.253Z",
+      "finishedAt": "2026-09-08T14:53:35.892Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-028-review-apply/attempt-02/openspec-version.stdout.txt",
+        "bytes": 7,
+        "sha256": "4f5ba6a3e380bf810cc968b58d30a8d7163eafe9e2fb1ad19bdc6d9d64a1e549"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-028-review-apply/attempt-02/openspec-version.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "openspec-strict",
+      "executable": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js",
+        "validate",
+        "connect-openspec-action-workflow",
+        "--strict"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "startedAt": "2026-09-08T14:53:35.892Z",
+      "finishedAt": "2026-09-08T14:53:39.734Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-028-review-apply/attempt-02/openspec-strict.stdout.txt",
+        "bytes": 51,
+        "sha256": "360901ddba2c93f5db99ef8169d78becf370a7199f91967bed5e9e23830d3e67"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-028-review-apply/attempt-02/openspec-strict.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "diff-check",
+      "executable": "git",
+      "args": [
+        "diff",
+        "--check",
+        "HEAD"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "startedAt": "2026-09-08T14:53:39.734Z",
+      "finishedAt": "2026-09-08T14:53:39.865Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-028-review-apply/attempt-02/diff-check.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-028-review-apply/attempt-02/diff-check.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "limits": "No candidate review-apply HOW, actual D05 lifecycle, full domain suite, Linux replay or Formal Full Test executed."
+}

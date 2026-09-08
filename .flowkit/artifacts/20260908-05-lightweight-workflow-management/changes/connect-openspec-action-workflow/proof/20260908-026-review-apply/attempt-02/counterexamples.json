@@ -1,0 +1,37 @@
+{
+  "kind": "independent-synthetic-counterexamples",
+  "observations": [
+    {
+      "label": "empty selected history before unrelated group",
+      "kind": "canonical",
+      "currentRun": null
+    },
+    {
+      "label": "valid improve-feature exists but feature remains empty",
+      "errorKind": "run-chain-invalid",
+      "message": "Invalid Run group prefix: 001-improve-feature"
+    },
+    {
+      "label": "both exact feature and distinct improve-feature have valid records",
+      "errorKind": "context-ambiguous",
+      "message": "Multiple Run groups for feature"
+    },
+    {
+      "label": "control with unrelated non-suffix Change",
+      "kind": "canonical",
+      "currentRun": "20260908-001-explore"
+    },
+    {
+      "label": "prepared retry HOW contradicts unchanged kernel",
+      "decision": {
+        "kind": "ready-action",
+        "actionId": "explore"
+      },
+      "publishedPrepareReturned": null,
+      "actual": "startRecord rejected invalid package/Role before new occurrence",
+      "control": "reusing exact prepared CurrentAction forms a valid new package and starts new occurrence",
+      "oldOccurrenceUnchanged": true
+    }
+  ],
+  "limit": "Synthetic source-level checks only, no D05 candidate lifecycle invocation or independent fixture Review."
+}

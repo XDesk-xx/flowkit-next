@@ -1,0 +1,52 @@
+{
+  "kind": "external-orchestrator-explore-result",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "author",
+  "action": "explore",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "connect-openspec-action-workflow",
+  "runId": "20260908-015-explore",
+  "runNumber": 15,
+  "projectOrdinal": 35,
+  "previousRunId": null,
+  "dependencyRun": "separate-manager-assets-from-target-project/20260908-014-archive",
+  "status": "terminal",
+  "verdict": "PASS",
+  "verdictMeaning": "Author bounded Explore completed; no Reviewer approval or new implementation acceptance",
+  "summary": "已复现逐 Change attributes 耦合；隔离通用规则保留 4/4 原始流且源码检查仍生效；实际单进程宿主交接、7 项拓扑反例及必要材料文件反例成立，30 项既有定向测试通过。",
+  "explore": {
+    "path": "openspec/changes/connect-openspec-action-workflow/explore.md",
+    "bytes": 11073,
+    "sha256": "7bea87672d687c1db5cd45ef3e6863af875f60736a21b903c84a5d85cee0a679"
+  },
+  "proofSummary": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/summary.json",
+    "bytes": 16984,
+    "sha256": "3e6a3b2b3987c6e5cdf12cb78d05f45f8029b7f9b77934250eb5a67af20380f4"
+  },
+  "handoff": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/handoff.json",
+    "bytes": 24396,
+    "sha256": "4470362cd951864889dc68157f84e7509882ba59f603a0cde16436a9f1577396"
+  },
+  "ownerActivationRef": "owner:03920835f3bd9c9278283d95ee0694d362e9fc06d4e9b429d473dd7f8feb00de",
+  "reviewerVerdict": null,
+  "implementationVerificationVerdict": null,
+  "nextBoundary": "review-explore",
+  "productionMutation": false,
+  "skillMutation": false,
+  "repositoryGitMutation": false,
+  "isolatedFixtureGitMutation": true,
+  "formalFullTestExecuted": false,
+  "limitations": [
+    "Windows 实验，未执行 Linux",
+    "宿主仅真实传输可行性，不是两个 Changes/独立 Review/revise 产品验收",
+    "拓扑与证据实验不是产品 resolver/admission；Propose 固定精确命令与失败写入顺序"
+  ],
+  "blockingUnknown": null,
+  "proposalAllowed": false,
+  "applyAllowed": false,
+  "completedAt": "2026-09-08T08:38:27.495Z",
+  "stop": true
+}

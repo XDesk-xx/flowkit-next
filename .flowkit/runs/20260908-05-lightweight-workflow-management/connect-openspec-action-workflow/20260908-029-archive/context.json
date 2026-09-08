@@ -1,0 +1,34 @@
+{
+  "kind": "external-orchestrator-archive-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "author",
+  "action": "archive",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "connect-openspec-action-workflow",
+  "projectOrdinal": 35,
+  "runId": "20260908-029-archive",
+  "previousRunId": "20260908-028-review-apply",
+  "startedAt": "2026-09-08 15:11:56 UTC",
+  "ownerInstruction": "根据最新run，archive",
+  "ownerSourceRef": "current-owner-message:根据最新run，archive",
+  "archivePath": "openspec/changes/archive/2026-09-08-035-connect-openspec-action-workflow",
+  "preparation": {
+    "status": "PASS",
+    "evidence": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-029-archive/preflight/command.json",
+    "dryRun": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-029-archive/dry-run/command.json"
+  },
+  "scope": [
+    "同步四个已批准 delta specs",
+    "保持 Change 文件 bytes 移动到 ordinal archive 路径",
+    "仅更新对应 manifest state",
+    "记录真实 bootstrap archive 结果后 STOP"
+  ],
+  "exclusions": [
+    "修改生产实现或 Skill",
+    "Git mutation",
+    "Full Test",
+    "下一 Change 激活",
+    "candidate 自管理 D05"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "kind": "external-orchestrator-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "author",
+  "action": "propose",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "connect-openspec-action-workflow",
+  "projectOrdinal": 35,
+  "runId": "20260908-017-propose",
+  "runNumber": 17,
+  "previousRunId": "20260908-016-review-explore",
+  "approvedExploreRunId": "20260908-015-explore",
+  "ownerInstruction": "根据最新run，propose",
+  "ownerActivationRef": "owner:03920835f3bd9c9278283d95ee0694d362e9fc06d4e9b429d473dd7f8feb00de",
+  "sourceHead": "697088391374daa67d63c20f8a365fb44ec5c058",
+  "sourceHeadMeaning": "Source observation only; not an Action or checkpoint prerequisite",
+  "ownerDecisionsRelevant": [
+    "D05 继续独立 bootstrap，不恢复外部 manager，不让 candidate 管理自身",
+    "本 Change 修复逐 Change attributes 耦合；不与 .gitignore 或 Full Test 范围绑定",
+    "必要 proof 留在 target .flowkit/artifacts 默认长期保存，.tmp 仅可丢弃材料",
+    "历史材料/Owner 清理授权不追溯改写；相关决定随交接，未收到说明不等于未授权",
+    "不增加 Registry、恢复服务或审批节点；源码超过 650 行须按职责拆分"
+  ],
+  "reviewCarryForward": [
+    "固定宿主入口、结构化回交与准备/执行/证据/接纳/持久读回顺序，EOF/中断/写失败不退回 idle 或旧 PASS",
+    "明确 explicit-current CLI delta，真实 Run schema/Role/前序/Policy 边验证，bootstrap 不转换",
+    "真实两个 Changes、独立 Review、一次 revise、新会话和失败边界留作当前实现验收；通用 raw-stream 命名不豁免结构化文本"
+  ],
+  "skillsUsed": ["proposal-convergence", "openspec-propose", "planning-and-task-breakdown"],
+  "proofRoot": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-017-propose",
+  "nextBoundary": "review-propose",
+  "applyAllowed": false,
+  "gitMutationAllowed": false
+}

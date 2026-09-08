@@ -1,0 +1,24 @@
+{
+  "executable": "pwsh",
+  "args": [
+    "-NoProfile",
+    "-Command",
+    "foreach ($skillAction in @(\"explore\",\"propose\",\"apply\",\"archive\",\"revise-explore\",\"revise-propose\",\"revise-apply\",\"review-explore\",\"review-propose\",\"review-apply\")) { python -X utf8 C:/Users/xuser/.codex/skills/.system/skill-creator/scripts/quick_validate.py skills/actions/$skillAction; if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE } }"
+  ],
+  "cwd": "D:\\Projects\\flowkit-next",
+  "startedAt": "2026-09-08T14:34:37.395Z",
+  "finishedAt": "2026-09-08T14:34:38.367Z",
+  "exitCode": 0,
+  "signal": null,
+  "error": null,
+  "stdout": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/skill-validation-02/stdout.txt",
+    "bytes": 170,
+    "sha256": "0e582bd90567947d36ae887530f0e75ccb0a45a4abb07be12941774b00a9f090"
+  },
+  "stderr": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/skill-validation-02/stderr.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "runId": "20260908-007-archive",
+  "actionIdentity": {
+    "deliveryId": "host-acceptance",
+    "changeId": "describe-running-feature",
+    "actionId": "archive"
+  },
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": null,
+  "facts": {
+    "proofRefs": [
+      {
+        "path": ".flowkit/artifacts/host-acceptance/changes/describe-running-feature/proof/20260908-007-archive/archive.md",
+        "bytes": 1214,
+        "sha256": "d794e30066f4f444fe0453ba32aee9e8bc709f3d2f9d84c388e0d5525c070238",
+        "deliveryId": "host-acceptance",
+        "changeId": "describe-running-feature",
+        "runId": "20260908-007-archive",
+        "purpose": "Actual archive and isolated dry convergence"
+      }
+    ],
+    "handoff": {
+      "summary": "真实归档与唯一规范汇合完成，ordinal 1 未变，第一 Change completed，第二仍 planned；无 Git。",
+      "ownerDecisions": [
+        {
+          "sourceRef": "approved-task-6.1:owner-apply-input",
+          "summary": "仅隔离验收，不是 D05 archive。"
+        }
+      ],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20260908-007-archive",
+          "path": ".flowkit/artifacts/host-acceptance/changes/describe-running-feature/proof/20260908-007-archive/archive.md"
+        }
+      ]
+    }
+  }
+}

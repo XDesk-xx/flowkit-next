@@ -1,0 +1,82 @@
+TAP version 13
+# Subtest: writer preserves actual partial files when context.json fails
+ok 1 - writer preserves actual partial files when context.json fails
+  ---
+  duration_ms: 19.8255
+  type: 'test'
+  ...
+# Subtest: writer preserves actual partial files when result.json fails
+ok 2 - writer preserves actual partial files when result.json fails
+  ---
+  duration_ms: 11.0648
+  type: 'test'
+  ...
+# Subtest: keeps repeated Standard Action executions as distinct Change-scoped occurrences
+ok 3 - keeps repeated Standard Action executions as distinct Change-scoped occurrences
+  ---
+  duration_ms: 1.7774
+  type: 'test'
+  ...
+# Subtest: generates canonical dated direct-child addresses from controlled inputs
+ok 4 - generates canonical dated direct-child addresses from controlled inputs
+  ---
+  duration_ms: 0.5067
+  type: 'test'
+  ...
+# Subtest: rejects invalid controlled address inputs before filesystem use
+ok 5 - rejects invalid controlled address inputs before filesystem use
+  ---
+  duration_ms: 11.0176
+  type: 'test'
+  ...
+# Subtest: validates exact context and preserves explicit or absent Owner authority
+ok 6 - validates exact context and preserves explicit or absent Owner authority
+  ---
+  duration_ms: 17.2884
+  type: 'test'
+  ...
+# Subtest: keeps Author, Reviewer and Verification outcomes separate and preserves next boundary as data
+ok 7 - keeps Author, Reviewer and Verification outcomes separate and preserves next boundary as data
+  ---
+  duration_ms: 10.3973
+  type: 'test'
+  ...
+# Subtest: rejects context/result linkage mismatch and unknown envelope fields
+ok 8 - rejects context/result linkage mismatch and unknown envelope fields
+  ---
+  duration_ms: 1.2247
+  type: 'test'
+  ...
+# Subtest: writes the stable three-file surface once and preserves prior bytes on collision
+ok 9 - writes the stable three-file surface once and preserves prior bytes on collision
+  ---
+  duration_ms: 11.8593
+  type: 'test'
+  ...
+# Subtest: rejects duplicate controlled sequence even when date or Action differs
+ok 10 - rejects duplicate controlled sequence even when date or Action differs
+  ---
+  duration_ms: 9.8524
+  type: 'test'
+  ...
+# Subtest: fails closed on missing, truncated or malformed machine records
+ok 11 - fails closed on missing, truncated or malformed machine records
+  ---
+  duration_ms: 13.0497
+  type: 'test'
+  ...
+# Subtest: lists Change-local Author → Reviewer → Author history in controlled sequence order without auto-execution
+ok 12 - lists Change-local Author → Reviewer → Author history in controlled sequence order without auto-execution
+  ---
+  duration_ms: 21.4571
+  type: 'test'
+  ...
+1..12
+# tests 12
+# suites 0
+# pass 12
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 546.9645

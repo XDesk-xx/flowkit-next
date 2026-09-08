@@ -1,0 +1,52 @@
+{
+  "kind": "synthetic-existing-contract-check",
+  "examples": [
+    {
+      "action": "revise-propose",
+      "role": "author",
+      "verdict": "PASS",
+      "decision": {
+        "kind": "ready-action",
+        "actionId": "review-propose"
+      }
+    },
+    {
+      "action": "review-propose",
+      "role": "reviewer",
+      "verdict": "approved",
+      "decision": {
+        "kind": "ready-action",
+        "actionId": "apply"
+      }
+    },
+    {
+      "action": "review-propose",
+      "role": "reviewer",
+      "verdict": "changes-requested",
+      "decision": {
+        "kind": "ready-action",
+        "actionId": "revise-propose"
+      }
+    },
+    {
+      "action": "apply",
+      "role": "author",
+      "verdict": "FAIL",
+      "decision": {
+        "kind": "blocked",
+        "reason": "unrecognized-or-unsuccessful-author-outcome"
+      }
+    },
+    {
+      "action": "apply",
+      "state": "prepared",
+      "noTransportFailureKey": true,
+      "decision": {
+        "kind": "ready-action",
+        "actionId": "apply"
+      }
+    }
+  ],
+  "exactAdmissionAndTransition": true,
+  "limit": "Pure existing-contract examples, not Agent HOW acceptance or Reviewer/Owner authority."
+}

@@ -1,0 +1,150 @@
+{
+  "protectedFiles": 36,
+  "exactRemovals": [
+    {
+      "path": "src/cli/action-command.ts",
+      "sha256": "6783759fb943775c44d6e36460c72646cd91198badb48b2fb788af40dd07b2ab"
+    },
+    {
+      "path": "src/cli/action-protocol.ts",
+      "sha256": "8e508b6d5cef8fdeb1be00b2270d999a9cae3d30707be517d19f1caa5de12ca5"
+    },
+    {
+      "path": "src/internal/action-run-reservation.ts",
+      "sha256": "0925cb4fcc8bac19bdbcfc7e722508b7a6b5c5c67317c92c143b5266b572843e"
+    },
+    {
+      "path": "src/internal/action-proof.ts",
+      "sha256": "5304bcc375f40b243d170c44c82d46e1e265d7ba396597b9295e95a6227595a7"
+    },
+    {
+      "path": "src/internal/action-target-files.ts",
+      "sha256": "9475e2ce992992400a23d14cb9dae9d983098bcb9be4cc29794baf4533f13131"
+    },
+    {
+      "path": "tests/unit/domain/action-command.test.ts",
+      "sha256": "7a083288305526ce5555dfd2b34a400c8d906afb23a933cf6f5a3aa245168b0e"
+    },
+    {
+      "path": "tests/unit/domain/action-protocol.test.ts",
+      "sha256": "9db8a9f08c88d0c19aea5f4da14532dc857fc406ce1b581d9187e59dff7c6f6b"
+    },
+    {
+      "path": "tests/unit/domain/action-run-reservation.test.ts",
+      "sha256": "2324663074a6fc738db715d951c8e68578a5043296e67fa3cfcd492d87125581"
+    },
+    {
+      "path": "tests/unit/domain/action-proof.test.ts",
+      "sha256": "7c032550b25a2e8e24f36eedc3f7a577898b3a671fc73aada26d1cd31593a3e8"
+    },
+    {
+      "path": "tests/unit/domain/action-native-process.test.ts",
+      "sha256": "6adf1286aaf918b6b682e45c1f413e6948cddeff8925974464aa510b2691fa1a"
+    }
+  ],
+  "manifestOnlyChangedLines": [
+    {
+      "line": 22,
+      "before": "    - \"manager 资产、target 项目及 FLOWKIT_HOME/tools 分离，接通一个实际支持的既有 Agent/宿主。\"",
+      "after": "    - \"manager 资产、target 项目及 FLOWKIT_HOME/tools 分离，CLI 查询流程事实，Agent 执行并记录一个明确 Action。\""
+    },
+    {
+      "line": 63,
+      "before": "    goal: \"从真实 OpenSpec/coordination/Run 链定位上下文，经既有 Agent/宿主完成一次 Action、结果接纳与跨会话交接。\"",
+      "after": "    goal: \"从真实 OpenSpec/coordination/Run 链定位上下文，由 Agent 完成一次 Action、结果接纳与跨会话交接，CLI 只读查询。\""
+    },
+    {
+      "line": 70,
+      "before": "      - \"一个实际可用的宿主接入，保留独立 Review、revise 和单次 Action 边界。\"",
+      "after": "      - \"可实际采用的 Agent 执行与 Run 记录 HOW，保留独立 Review、revise 和单次 Action 边界。\""
+    }
+  ],
+  "sourceTestGate": {
+    "limit": 650,
+    "includesBlankAndCommentLines": true,
+    "files": [
+      {
+        "path": "src/cli/entrypoint.ts",
+        "lines": 97
+      },
+      {
+        "path": "src/cli/foundation-cli.ts",
+        "lines": 237
+      },
+      {
+        "path": "src/cli/request.ts",
+        "lines": 228
+      },
+      {
+        "path": "src/cli/trusted-change-coordination.ts",
+        "lines": 238
+      },
+      {
+        "path": "src/domain/run-result-persistence.ts",
+        "lines": 595
+      },
+      {
+        "path": "tests/acceptance/foundation-manager.acceptance.test.ts",
+        "lines": 445
+      },
+      {
+        "path": "tests/unit/domain/foundation-cli-entrypoint.test.ts",
+        "lines": 89
+      },
+      {
+        "path": "tests/unit/domain/foundation-cli-surface.test.ts",
+        "lines": 247
+      },
+      {
+        "path": "src/cli/action-context.ts",
+        "lines": 191
+      },
+      {
+        "path": "src/cli/current-run-chain.ts",
+        "lines": 282
+      },
+      {
+        "path": "tests/acceptance/foundation-manager-fixture.ts",
+        "lines": 273
+      },
+      {
+        "path": "tests/unit/domain/action-context-fixture.ts",
+        "lines": 77
+      },
+      {
+        "path": "tests/unit/domain/action-context.test.ts",
+        "lines": 144
+      },
+      {
+        "path": "tests/unit/domain/agent-how-failure.test.ts",
+        "lines": 64
+      },
+      {
+        "path": "tests/unit/domain/agent-how-fixture.ts",
+        "lines": 110
+      },
+      {
+        "path": "tests/unit/domain/agent-how-material.test.ts",
+        "lines": 64
+      },
+      {
+        "path": "tests/unit/domain/agent-how-record.test.ts",
+        "lines": 169
+      },
+      {
+        "path": "tests/unit/domain/current-run-chain.test.ts",
+        "lines": 254
+      },
+      {
+        "path": "tests/unit/domain/raw-stream-attributes.test.ts",
+        "lines": 63
+      },
+      {
+        "path": "tests/unit/domain/run-partial-preservation.test.ts",
+        "lines": 100
+      }
+    ]
+  },
+  "noGitMutation": true,
+  "status": "PASS"
+}

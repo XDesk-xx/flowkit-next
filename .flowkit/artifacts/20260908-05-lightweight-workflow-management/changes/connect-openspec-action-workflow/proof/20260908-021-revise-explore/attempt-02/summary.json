@@ -1,0 +1,890 @@
+{
+  "kind": "readonly-explore-audit",
+  "recordedAt": "2026-09-08T12:51:54.617Z",
+  "inputs": [
+    {
+      "path": "src/cli/action-command.ts",
+      "sha256": "6783759fb943775c44d6e36460c72646cd91198badb48b2fb788af40dd07b2ab"
+    },
+    {
+      "path": "src/cli/action-context.ts",
+      "sha256": "cd724c9e22a94bd7ffa2833acf6c1c89ca66fdf448d1a58c2389dcf3ea67b6f5"
+    },
+    {
+      "path": "src/cli/action-protocol.ts",
+      "sha256": "8e508b6d5cef8fdeb1be00b2270d999a9cae3d30707be517d19f1caa5de12ca5"
+    },
+    {
+      "path": "src/cli/checkpoint-authorization.ts",
+      "sha256": "5c9779900ba8fc508171979a428f821b246c040404cfa50d9b23ec3ab560e6f8"
+    },
+    {
+      "path": "src/cli/current-run-chain.ts",
+      "sha256": "22f550c34852b9df78400f0a59d981cf535195641e2608c040dbfffa2af10eb5"
+    },
+    {
+      "path": "src/cli/entrypoint.ts",
+      "sha256": "b48dbe2f42a14ec88c92554126332d8c1eda0dea86e058fc631ffde8b432138c"
+    },
+    {
+      "path": "src/cli/foundation-cli.ts",
+      "sha256": "52f514f3b05826cde700ead942e7a09ff002a40bfaa13dec5880271911e5b553"
+    },
+    {
+      "path": "src/cli/request.ts",
+      "sha256": "457c2c887d14f13bc44d1dc8998fe97aa4b42fc2ec4a59e1e68c6c281fdc1d2f"
+    },
+    {
+      "path": "src/cli/trusted-change-coordination.ts",
+      "sha256": "d167891ed9e0b9c73e96492d06220203578ea7f79ab2dc3ccdbec7f484dd14f1"
+    },
+    {
+      "path": "src/domain/action-guidance-execution.ts",
+      "sha256": "0abdc391aac82ae9718c4fed0ec458187bb8fc1ea48ef02a0d6e5f37b0a7c574"
+    },
+    {
+      "path": "src/domain/action-lifecycle.ts",
+      "sha256": "f52ae49fc776f7e938da19e82ae7e57aed34cfc49deafe6587aa7a0e1c1a1eff"
+    },
+    {
+      "path": "src/domain/action-package-result-admission.ts",
+      "sha256": "a72115811f8ba69fadf8f1be9cf5a1f872c8dc14d54bbc8662960df70b45131a"
+    },
+    {
+      "path": "src/domain/applicable-check-execution.ts",
+      "sha256": "f9caa051ccaec0f1fa245167de95c242d571311729b526cf087b63e47e9ffee6"
+    },
+    {
+      "path": "src/domain/authority.ts",
+      "sha256": "3f313046ce78508efbf43fbbb2c5dc4d239f59a555476eba1d0fd17f7ae283c7"
+    },
+    {
+      "path": "src/domain/cross-delivery-memo-persistence.ts",
+      "sha256": "d193982cd1f41de6f08fe04f713123eed68635a286b5c074891e1ed38304293a"
+    },
+    {
+      "path": "src/domain/cross-delivery-memo.ts",
+      "sha256": "bef8b5a0bb1fafca95c96b27f83794e73278af36b23842e9a777e922e5a6f913"
+    },
+    {
+      "path": "src/domain/delivery-final-execution.ts",
+      "sha256": "eefbebfdb20affd8610e90b3fa97ff3dc51bd3c961b507bbb68c391b3d01158e"
+    },
+    {
+      "path": "src/domain/delivery-final-operation.ts",
+      "sha256": "406cb62da169a60b7e82efcaa331c63b232d08c649156dea28ea05577c1f9493"
+    },
+    {
+      "path": "src/domain/delivery-full-test-execution.ts",
+      "sha256": "86ffc283edb90d22e95cb0231bb42b5c7ca7c12b478bf0ec0004eeaf653f6090"
+    },
+    {
+      "path": "src/domain/delivery-operation-execution.ts",
+      "sha256": "8c803f9067f7dc6ddbf0681a26a0c67a1e0ace1d01231f3aeb5450d5eb77403f"
+    },
+    {
+      "path": "src/domain/delivery-repository-integration-execution.ts",
+      "sha256": "2341f72e0321340f39e34dd41a6853f6ca111956d3613171345f128eed714292"
+    },
+    {
+      "path": "src/domain/delivery-repository-integration-operation.ts",
+      "sha256": "75c13e855970f179fa8a9dd79366aa892a29882c3e84ef5af516501539e5816b"
+    },
+    {
+      "path": "src/domain/delivery-start-execution.ts",
+      "sha256": "de3be406e5ea171ee1a0a740ee7bfe0e6bff7a708ffcbd9398c85c336c31a0f4"
+    },
+    {
+      "path": "src/domain/identity.ts",
+      "sha256": "666c4a0c388ae15134dd76977fc5a0549bb11be8228b86c7d911b9b88b147f66"
+    },
+    {
+      "path": "src/domain/index.ts",
+      "sha256": "5dc2cb396dd80e8056b9d9e786cc77394843e6341b10977a5652a324422b08a4"
+    },
+    {
+      "path": "src/domain/managed-tool-resolution.ts",
+      "sha256": "d1857f12b9524cfbffabb6de58b2b1f231c4614bc0889c59b832331d1de333ec"
+    },
+    {
+      "path": "src/domain/openspec-observation.ts",
+      "sha256": "bd5d762d50bac5d042fe937cf86d94155a59f352afa84cb339ed9bcaefe86822"
+    },
+    {
+      "path": "src/domain/policy-and-next-boundary.ts",
+      "sha256": "36b4e6ec74fe3f01b3377c15491ed1832b419a7ea275a8eded57507129a0001a"
+    },
+    {
+      "path": "src/domain/run-result-persistence.ts",
+      "sha256": "f502c6f9a1abcb88992f3ff8720f55fd5a5935b3943f4cc1707389c6cf8b77bb"
+    },
+    {
+      "path": "src/domain/single-action-execution.ts",
+      "sha256": "03afdc19c11aab6bb557a75b27c0c16e92d1443b96dec2504714532e94fd470a"
+    },
+    {
+      "path": "src/domain/state.ts",
+      "sha256": "3772e34b0c52b59e3f5e6b32b18722fa2299820fd58095bafb2d2ac88c45019c"
+    },
+    {
+      "path": "src/internal/action-proof.ts",
+      "sha256": "5304bcc375f40b243d170c44c82d46e1e265d7ba396597b9295e95a6227595a7"
+    },
+    {
+      "path": "src/internal/action-run-reservation.ts",
+      "sha256": "0925cb4fcc8bac19bdbcfc7e722508b7a6b5c5c67317c92c143b5266b572843e"
+    },
+    {
+      "path": "src/internal/action-target-files.ts",
+      "sha256": "9475e2ce992992400a23d14cb9dae9d983098bcb9be4cc29794baf4533f13131"
+    },
+    {
+      "path": "src/internal/applicable-check-candidate.ts",
+      "sha256": "dac0cbafeb68dfa687c2775827c386be00012790cd18d974b2f659f921e4dbc6"
+    },
+    {
+      "path": "src/internal/applicable-check-facts.ts",
+      "sha256": "e8a42bc11aa106b31839b6e7b8830fb60a3250c092bcfe9783b6af7ed7191fb7"
+    },
+    {
+      "path": "src/internal/applicable-check-identity.ts",
+      "sha256": "f8873e9f5ca32cbea5b099a48c8094c2f4f51cebd84026e6a150619b0d08acf3"
+    },
+    {
+      "path": "src/internal/applicable-check-material.ts",
+      "sha256": "0c0042bd0f5b3da36faf7870a1f9662e367b79c2e21a5ef5d53b58544b37ce4e"
+    },
+    {
+      "path": "src/internal/applicable-check-process.ts",
+      "sha256": "32f02089106c28b5a3a0b461a85e6bcda6b667a18ddad7ceedb75c0fbb0184fc"
+    },
+    {
+      "path": "src/internal/delivery-final-coordination.ts",
+      "sha256": "245a39d77c0d0e83b24e5c24b7a61197ae04d4ea569d5410c56fc29ff226590a"
+    },
+    {
+      "path": "src/internal/delivery-repository-integration-git.ts",
+      "sha256": "92759ff3b5fe0c3181d47c4fb1fe9b7f4020975fa50e7ee558b9a6036dee71d3"
+    },
+    {
+      "path": "src/internal/delivery-repository-integration-ref.ts",
+      "sha256": "5ef8a337c290f635425c1b1923bc43ad1d4edd551d81a5a70b6a3ece87af43be"
+    },
+    {
+      "path": "src/internal/delivery-repository-integration-source.ts",
+      "sha256": "b6518d36521e3252c2e0695fe7e0ecb5c1aaaacef8bfe9b149ffff6950a5a331"
+    },
+    {
+      "path": "src/internal/delivery-required-evidence-source.ts",
+      "sha256": "457f1b7eda232f9bb76f4acf90885cb33512370306afb681aa420bad725bb9d0"
+    },
+    {
+      "path": "src/internal/delivery-required-evidence.ts",
+      "sha256": "7dc7e9303f0c4dce72957183cd37e642798a2913b8375797e94885c0892a5dd2"
+    },
+    {
+      "path": "src/internal/delivery-start-content.ts",
+      "sha256": "159bc6cc237605eea37d7394c2e544678ff875cc6a1e7f9bef5d380efa352abe"
+    },
+    {
+      "path": "src/internal/manager-installation.ts",
+      "sha256": "9bf5b0f251b46d6ef6dac6e700339d9640399a98be3fbeb7ffe0da7489552998"
+    },
+    {
+      "path": "src/internal/openspec-process-outcome.ts",
+      "sha256": "e0ddead78362a41d3193b7aaa26c56a2d85a101209eb82f01fa2fa5fcd5a01ed"
+    },
+    {
+      "path": "src/README.md",
+      "sha256": "235f5c93579a1596741ce700af9b8d8519a0600a7a6b3aec979ba0f7af4931ea"
+    },
+    {
+      "path": "tests/acceptance/foundation-manager-fixture.ts",
+      "sha256": "aee9a528eeff173ddc74147d7889bdf3695d37d21670d9d5a6e5ed4845db7134"
+    },
+    {
+      "path": "tests/acceptance/foundation-manager.acceptance.test.ts",
+      "sha256": "6aaf13949de25a35044dfd6190a6b303721946f59b4146d3ad0da1dcf5ba5d2c"
+    },
+    {
+      "path": "tests/fixtures/delivery/legacy-architecture-package.json",
+      "sha256": "ecf402d3ca4d3d27d8d545428c6e5ea6ee6d5990cd051bf3db29adbff3d2b964"
+    },
+    {
+      "path": "tests/README.md",
+      "sha256": "eeda53198e63fd4d1c42e75829b0b0ee9def5d875af7312041ee0536ead49487"
+    },
+    {
+      "path": "tests/unit/domain/action-command.test.ts",
+      "sha256": "7a083288305526ce5555dfd2b34a400c8d906afb23a933cf6f5a3aa245168b0e"
+    },
+    {
+      "path": "tests/unit/domain/action-context-fixture.ts",
+      "sha256": "60beb485d01345adce488a760aee2a21d54c07f8ea76949ffa4fbe29dfc7460b"
+    },
+    {
+      "path": "tests/unit/domain/action-context.test.ts",
+      "sha256": "e7b6b07494e4d8d24b2dea04b3eb75ec0c29870d9363d9b5fb7ff30652e3705d"
+    },
+    {
+      "path": "tests/unit/domain/action-guidance-execution.test.ts",
+      "sha256": "50eb442e0bd4c4cf675cab347975932a14d69da7d8c835fe7ae3b09a4582c2f0"
+    },
+    {
+      "path": "tests/unit/domain/action-lifecycle.test.ts",
+      "sha256": "fd32be16ba4b5147da41a1d2965463a6c23e6ab8b842d3611d1120ab079b55f6"
+    },
+    {
+      "path": "tests/unit/domain/action-native-process.test.ts",
+      "sha256": "6adf1286aaf918b6b682e45c1f413e6948cddeff8925974464aa510b2691fa1a"
+    },
+    {
+      "path": "tests/unit/domain/action-package-result-admission.test.ts",
+      "sha256": "c76c75b4d427f0cee4facf9015828ab6527e05410fe3fb3550b8d8c3a19b141b"
+    },
+    {
+      "path": "tests/unit/domain/action-proof.test.ts",
+      "sha256": "7c032550b25a2e8e24f36eedc3f7a577898b3a671fc73aada26d1cd31593a3e8"
+    },
+    {
+      "path": "tests/unit/domain/action-protocol.test.ts",
+      "sha256": "9db8a9f08c88d0c19aea5f4da14532dc857fc406ce1b581d9187e59dff7c6f6b"
+    },
+    {
+      "path": "tests/unit/domain/action-run-reservation.test.ts",
+      "sha256": "2324663074a6fc738db715d951c8e68578a5043296e67fa3cfcd492d87125581"
+    },
+    {
+      "path": "tests/unit/domain/applicable-check-admission.test.ts",
+      "sha256": "3e4d4d55256103ce8078805f4a6ccdb61db27a1d776a61e9517331dd5ca8e396"
+    },
+    {
+      "path": "tests/unit/domain/applicable-check-execution.test.ts",
+      "sha256": "7a6d953e6d8e9704dc704b7e628d917d4399b561c9a1dba8cb55dae269dcb584"
+    },
+    {
+      "path": "tests/unit/domain/author-action-guidance.test.ts",
+      "sha256": "4ad0214a9a6521d71f03de095e565026d434ec7c5dd707ce0485241a042d5221"
+    },
+    {
+      "path": "tests/unit/domain/author-stage-guidance.test.ts",
+      "sha256": "a14034478cf80882d0b5b84748cd5b757862c2f28be97640df2c9df30a55eafc"
+    },
+    {
+      "path": "tests/unit/domain/authority.test.ts",
+      "sha256": "9e425fd8459ad2bc34ece07beef681f3a71b0ee3d677a114ee3b1f83baae1c10"
+    },
+    {
+      "path": "tests/unit/domain/cross-delivery-memo-persistence.test.ts",
+      "sha256": "627c567d4dc0b8bc9eaa012d6f21d85023045ba551c7a29c4f1f15399936bb3a"
+    },
+    {
+      "path": "tests/unit/domain/cross-delivery-memo.test.ts",
+      "sha256": "0c5bb830742691236b4ca382c6495cf628b4c80f68d799f9fd42a4a2654cd447"
+    },
+    {
+      "path": "tests/unit/domain/current-run-chain.test.ts",
+      "sha256": "875152ac6b51fc8fe24b7c748fffb1e21be6a97edcd02fd95a2a0c538a812c4e"
+    },
+    {
+      "path": "tests/unit/domain/delivery-continuity-semantic-boundaries.test.ts",
+      "sha256": "2230724ede275bcf3ae7bbf433c2d60b69f300e43f9653401f81017cd68c531b"
+    },
+    {
+      "path": "tests/unit/domain/delivery-evidence-outcome-fixture.ts",
+      "sha256": "57c731111319949fc47c645cede6a93fb5ced3a595b95d441de2da8ca2b6471f"
+    },
+    {
+      "path": "tests/unit/domain/delivery-final-execution.test.ts",
+      "sha256": "ad09c86cc18ff9bf7cf6254a723071000de5968e924b86c1af4fd142cf5b4fb6"
+    },
+    {
+      "path": "tests/unit/domain/delivery-final-fixture.ts",
+      "sha256": "6f49ba53b6998f8eeafb08d378af65990fdfcb667234e29ed7a82ed602d55dbe"
+    },
+    {
+      "path": "tests/unit/domain/delivery-final-projection.test.ts",
+      "sha256": "66aab2177a83c97233deaa34865a0d9720131e1a093d7f285d17b77cf490868a"
+    },
+    {
+      "path": "tests/unit/domain/delivery-full-test-execution.test.ts",
+      "sha256": "516df469d844921ade652d03be7243ef3eac8b3528151ae079034c80ae6db3fb"
+    },
+    {
+      "path": "tests/unit/domain/delivery-operation-execution.test.ts",
+      "sha256": "b42ecff86ced2c9edebfc522b7a2585119c9e34c2f21abefc69e7f808ec06d5c"
+    },
+    {
+      "path": "tests/unit/domain/delivery-operation-fixture.ts",
+      "sha256": "f65afe228029065e33380caf037eae2ce2c1a6ae97f10793d64bdabd3fcc6916"
+    },
+    {
+      "path": "tests/unit/domain/delivery-repository-integration-accepted-object.test.ts",
+      "sha256": "ad92f1c8a61f9237d714cf7a417ce7ae6e0f55a3dcc543b6d5a1183587e49bcf"
+    },
+    {
+      "path": "tests/unit/domain/delivery-repository-integration-execution.test.ts",
+      "sha256": "d0be77aa9e06ba7467f8217f66aff2bb0c39ae441f173cb0a7bf5fb07eccaae8"
+    },
+    {
+      "path": "tests/unit/domain/delivery-required-evidence-source.test.ts",
+      "sha256": "4538505596164ebeb8ef1d9dffb7eca2628896cf0147fa93bdc709e62c7af704"
+    },
+    {
+      "path": "tests/unit/domain/delivery-run-evidence-fixture.ts",
+      "sha256": "a64dea9d20255cac72c31c745c2f86d1ee07b3f4860ec1236ead021ee49fa56a"
+    },
+    {
+      "path": "tests/unit/domain/delivery-start-execution.test.ts",
+      "sha256": "92ce527a4b12970c205d078fae1b2380d8510bcbda07c30543da71566a3e54c8"
+    },
+    {
+      "path": "tests/unit/domain/delivery-start-validation-fixture.ts",
+      "sha256": "f899d808ee39a725a97b0fd4fa9ee9e2ca01c40566f153fc57e9396a4fa0cf5c"
+    },
+    {
+      "path": "tests/unit/domain/delivery-without-archify.test.ts",
+      "sha256": "d96b18773d7085db202cf28546c975f9eee18a4f9c319dfcc786c7a36464af66"
+    },
+    {
+      "path": "tests/unit/domain/foundation-cli-entrypoint.test.ts",
+      "sha256": "2152164ac1fe48e240782c84844e36d176d485ec011263949a66ff488d656d15"
+    },
+    {
+      "path": "tests/unit/domain/foundation-cli-surface.test.ts",
+      "sha256": "15144c063ef8343195d975ef7d82df9a0389ed821fb741859218ddd89635498c"
+    },
+    {
+      "path": "tests/unit/domain/identity.test.ts",
+      "sha256": "7b350d139b6a05a582b7c5b5b7f8835b657819fbb364ca8e12984f4a154aa32e"
+    },
+    {
+      "path": "tests/unit/domain/managed-tool-resolution.test.ts",
+      "sha256": "7de10b176f53bcbe24e9776262ec2fbc690aaed1cd3e613c56ef5e1764c2b470"
+    },
+    {
+      "path": "tests/unit/domain/manager-assets-boundary.test.ts",
+      "sha256": "d053ffdee79e32df8cefc1e082e86dc1ee466132f0a27d5c7548f567e6fb613d"
+    },
+    {
+      "path": "tests/unit/domain/manager-installation-fixture.ts",
+      "sha256": "7dd9c86e5eff986efac3de3827b26824c80f3dc5641e9db978ec5d0b7699c672"
+    },
+    {
+      "path": "tests/unit/domain/manager-installation.test.ts",
+      "sha256": "2b45f33ddfe9b7fb54aa027d0361f21d72b5b70aeec3402dff7e8703ddd3d1fe"
+    },
+    {
+      "path": "tests/unit/domain/openspec-observation-boundary.test.ts",
+      "sha256": "83c4fbc6a5950b3ad1eca55b138147f088696e7af1fe83c97b807959da34b2d0"
+    },
+    {
+      "path": "tests/unit/domain/openspec-observation.test.ts",
+      "sha256": "e54995f9f6a209763d69edbc5cad19917d9d50a609205a17f075aa98ca46be66"
+    },
+    {
+      "path": "tests/unit/domain/policy-and-next-boundary.test.ts",
+      "sha256": "2bb79653d0cfe972cc0f779da7b003dee69fbed9aa6d3bd3cbc4c31e45565502"
+    },
+    {
+      "path": "tests/unit/domain/policy-owner-correction.test.ts",
+      "sha256": "9ead5235e970c00db4df4febb00ea3f1f0ad20c621927ea8e20be747274a9168"
+    },
+    {
+      "path": "tests/unit/domain/raw-stream-attributes.test.ts",
+      "sha256": "ccdc68f2dd511340a33ebd296a5f78800ea0c2e4ff30a7a6f3b6ca27c6bdd227"
+    },
+    {
+      "path": "tests/unit/domain/reviewer-action-guidance.test.ts",
+      "sha256": "7102b10ee6d2e9bdc31def01fe7dc34e3b826c402093fbba084328f5c2bd8139"
+    },
+    {
+      "path": "tests/unit/domain/run-result-persistence.test.ts",
+      "sha256": "df7860e364bf438424ade6e06cc0f7603aa90099a0d3a82e98f675da9faafc4e"
+    },
+    {
+      "path": "tests/unit/domain/single-action-execution.test.ts",
+      "sha256": "f03fa1c0e50bac0b13e81cb7755be323be2d58e16f9d29505d366bc7c20baa5e"
+    },
+    {
+      "path": "tests/unit/domain/state.test.ts",
+      "sha256": "dd5c1081afb7120e6f00d2c4c8ec9c5b0ef0dc9b8f63d28e9567f4b8be8e01fb"
+    },
+    {
+      "path": "tests/unit/domain/trusted-change-coordination.test.ts",
+      "sha256": "9e62608d20848572a9bb867311e61cf65796a51130d7d78688bf23a24688cb8c"
+    },
+    {
+      "path": "tests/unit/domain/unreadable-guidance-fixture.ts",
+      "sha256": "4ef47bce81044ec0cc7b06c3c30c9bd648c1ae6e38a923aae5cba6b52d221af0"
+    },
+    {
+      "path": "tests/unit/quality/production-reachability.test.mjs",
+      "sha256": "ea9e4f9436fceb2ca285c72e2ecba2ac843e7f929218f49fbda7b84091ecd78b"
+    },
+    {
+      "path": "skills/actions/apply/SKILL.md",
+      "sha256": "d5069a6cad8e24379b58a162712d3470af9b0fc963192c17b3dc49a7c496f4bf"
+    },
+    {
+      "path": "skills/actions/archive/SKILL.md",
+      "sha256": "837fadcb4d82ad8f251c6c586611ae590ebc062a4253c36a8f6ac2b4fd64447b"
+    },
+    {
+      "path": "skills/actions/explore/SKILL.md",
+      "sha256": "a31e8f2bcdcd5335e23ad3f41ca907375c060a8e6a4efc56f8e870620db0a69a"
+    },
+    {
+      "path": "skills/actions/propose/SKILL.md",
+      "sha256": "7a340dc4ee6e1e031e0cfc7197fdbf9c78e5f43e679c3685d667ce7b5c707d8e"
+    },
+    {
+      "path": "skills/actions/README.md",
+      "sha256": "f740bdc8a1d9a8a410775fb99ab4f58ad95cdc216970fac1bb0da893e4b600cc"
+    },
+    {
+      "path": "skills/actions/review-apply/SKILL.md",
+      "sha256": "3dac11669891353354b1757ba2242d42cc4bba2fd4b5179e7d07201fb05b0c9a"
+    },
+    {
+      "path": "skills/actions/review-explore/SKILL.md",
+      "sha256": "9517f01ea1df76ed340dc4797ba19e2e8853aed9515248702737bf6d3d30c8f0"
+    },
+    {
+      "path": "skills/actions/review-propose/SKILL.md",
+      "sha256": "c074e7e97484b4e09f6fe40418f672f1aeeb2c9713e0ed51ae558b4b475f27ae"
+    },
+    {
+      "path": "skills/actions/revise-apply/SKILL.md",
+      "sha256": "608ac683609aed28d952a97e3b3dc6f1513195c47566d03947232811f832bec1"
+    },
+    {
+      "path": "skills/actions/revise-explore/SKILL.md",
+      "sha256": "98d6753feded319c74974e2c5a9cf650728b181c005bb8846c7fc3c631366744"
+    },
+    {
+      "path": "skills/actions/revise-propose/SKILL.md",
+      "sha256": "eee0dad11ce3be2db9af25f8568f62c270e97fed28d9ca75e64d3e3a81173fda"
+    },
+    {
+      "path": "skills/delivery/final/SKILL.md",
+      "sha256": "76cf8c9d3dd97d6d225a059f39cf6f3de277af131ee4256343ad4e5aa0e7b7f5"
+    },
+    {
+      "path": "skills/delivery/full-test/SKILL.md",
+      "sha256": "e3a0273a1a1aa8cc8e21cc2aa269a90011636bbacda34e68d361f2b13957e9e7"
+    },
+    {
+      "path": "skills/delivery/repository-integration/SKILL.md",
+      "sha256": "dc5ebd15df52abd520e1824ac6785dd883ed5634bc93650552ed965d808d2332"
+    },
+    {
+      "path": "skills/delivery/start/SKILL.md",
+      "sha256": "0df71625ac1e435444fc6c1d560e7a1dbe480f0b6e1da9caa259b370baef3eaa"
+    },
+    {
+      "path": "skills/engineering/README.md",
+      "sha256": "16eaaf0217222bd92e4a5d6ccc31073555b76a13d23d5c0291063a01170b5025"
+    },
+    {
+      "path": "skills/README.md",
+      "sha256": "e0bc49fb213b2389af6a008cc4af271807d44915cd045044f4c26064a6df674f"
+    },
+    {
+      "path": "skills/tools/openspec/SKILL.md",
+      "sha256": "a2350339a5318a84885e55b96f0537b78bee145a369ed9c035bb4486da8e9871"
+    },
+    {
+      "path": "skills/vendors/openspec/LICENSE",
+      "sha256": "c3c7235bea1214ab62df643473975c2e8b8848f528901a976693f7d069713e64"
+    },
+    {
+      "path": "skills/vendors/openspec/openspec-apply-change/SKILL.md",
+      "sha256": "0cf1cb26935b55d83e240631500c8cee484a7b241c84a705387c0eeb88676ccf"
+    },
+    {
+      "path": "skills/vendors/openspec/openspec-archive-change/SKILL.md",
+      "sha256": "3ad0def4d299469fdfd5b05e4842284d65558e6b28710b5962f7f214d6153855"
+    },
+    {
+      "path": "skills/vendors/openspec/openspec-bulk-archive-change/SKILL.md",
+      "sha256": "2d962cb0e4e03ef8fc579d79c6444be64833bc2eac27c990ff1ad5d972297db5"
+    },
+    {
+      "path": "skills/vendors/openspec/openspec-continue-change/SKILL.md",
+      "sha256": "5120ec867288e4a117949e333f980f51df79e641739c9f4a23df6656311af920"
+    },
+    {
+      "path": "skills/vendors/openspec/openspec-explore/SKILL.md",
+      "sha256": "7e0281fc4f094dcced0c5469e7cbceba2dce9f113f22a4e34efcdce4315edf81"
+    },
+    {
+      "path": "skills/vendors/openspec/openspec-ff-change/SKILL.md",
+      "sha256": "457be39012799e11581e43185b679c54a50182f3a58453d17c5444a24ab53926"
+    },
+    {
+      "path": "skills/vendors/openspec/openspec-new-change/SKILL.md",
+      "sha256": "0752814373e90dc368eb1f4c7fd4b15c3df1b26fa2d6a0e99232b15a29fe4f22"
+    },
+    {
+      "path": "skills/vendors/openspec/openspec-onboard/SKILL.md",
+      "sha256": "9add352e1582a7c80213006ef2d0acf188583541a931c209feb09d43ec6bb805"
+    },
+    {
+      "path": "skills/vendors/openspec/openspec-propose/SKILL.md",
+      "sha256": "c0537ce311115878e7e0a04e6ff4fc6456056f21024079c228b6b24325e38613"
+    },
+    {
+      "path": "skills/vendors/openspec/openspec-sync-specs/SKILL.md",
+      "sha256": "daf0e52b188a3010e1f494427eb6807fb61a68df653403759b2be54a3aa37e74"
+    },
+    {
+      "path": "skills/vendors/openspec/openspec-update-change/SKILL.md",
+      "sha256": "f9e08302d75e873e9ca801211e6151e3f9b663ac6205903e7d79b6520cea30f5"
+    },
+    {
+      "path": "skills/vendors/openspec/openspec-verify-change/SKILL.md",
+      "sha256": "02a810d3fb265df77ec22891cef25f0510fe0f07b608d837ba361debced81840"
+    },
+    {
+      "path": "skills/vendors/openspec/README.md",
+      "sha256": "28ec3c79ef355a7603516503936ffb479b941f4633440f83a71a1366d2caee43"
+    },
+    {
+      "path": "skills/vendors/openspec/UPSTREAM.json",
+      "sha256": "207d21394665a4359cf6a308a33f6619b715507a747ba79100dc5bc86d57e649"
+    },
+    {
+      "path": ".agents/skills/.openspec-target",
+      "sha256": "243b0dc9b847e66c440dca985e10fe0ce9e29c379b018ddd5747ba8948f84cc8"
+    },
+    {
+      "path": ".agents/skills/archive/SKILL.md",
+      "sha256": "5a42a6fb11b8b2f29028f7f23619ed8d17d5ed4b03829274b3f19bb146482fda"
+    },
+    {
+      "path": ".agents/skills/explore-proof-based/SKILL.md",
+      "sha256": "ea661e76ace353ae6873b62ecd0f0f661c730bb6e063f62a0f528f3f01a37e80"
+    },
+    {
+      "path": ".agents/skills/implementation-convergence/SKILL.md",
+      "sha256": "8aa04e2c6567e8345cb777f272336c93eb059169bfd432df5de4ac94d40cc820"
+    },
+    {
+      "path": ".agents/skills/openspec-apply-change/SKILL.md",
+      "sha256": "9a8c4451009e64f6b8ad0e8e382afb5ad0ff74e262be9e6486ae4d9cc67827cb"
+    },
+    {
+      "path": ".agents/skills/openspec-archive-change/SKILL.md",
+      "sha256": "c6bedae20cf8de2af4c76b742a09782d820e9f586a9c0b41bbbbf4483361286c"
+    },
+    {
+      "path": ".agents/skills/openspec-explore/SKILL.md",
+      "sha256": "e30095eb3baa9870935826f752204ea72e0b1e76bf06952f555287423a2c601b"
+    },
+    {
+      "path": ".agents/skills/openspec-propose/SKILL.md",
+      "sha256": "9c57136297e26a183046d33a555a9e7a9bbe7752b77486e94338e34810ce2ef4"
+    },
+    {
+      "path": ".agents/skills/openspec-sync-specs/SKILL.md",
+      "sha256": "169a351444e4039e52c95790c47e5c84d70bf37165e0b4e09fe528e58a56b899"
+    },
+    {
+      "path": ".agents/skills/openspec-update-change/SKILL.md",
+      "sha256": "5f2890abe9714b76cb914211a7f4f9ea44e260c32cc065c405ed378859646440"
+    },
+    {
+      "path": ".agents/skills/proposal-convergence/SKILL.md",
+      "sha256": "724e66e251cec21a3e9ec8f1880140ec00738ad4d32d68d81e3e89779e00355f"
+    },
+    {
+      "path": ".agents/skills/review-apply/SKILL.md",
+      "sha256": "cfcf3f93f124439536b58168729bc3e8c0191cc74c78f018ac999509acb3d9aa"
+    },
+    {
+      "path": ".agents/skills/review-explore/SKILL.md",
+      "sha256": "2a690232943a538922f27195ae39ad71716acbe5da2c5b175b06bd8af4615dd7"
+    },
+    {
+      "path": ".agents/skills/review-propose/SKILL.md",
+      "sha256": "b6f38193857acf7728469cab51f9b79342539d734ae25aa1606ab294a3c7048e"
+    },
+    {
+      "path": ".agents/skills/revise-apply/SKILL.md",
+      "sha256": "d4e7b614618fc8e8195aed34c8052225449e39b616a9253e55b639d5206e460e"
+    },
+    {
+      "path": ".agents/skills/revise-explore/SKILL.md",
+      "sha256": "53dc2c0d578c87967c58aa82c2454c1221cd5c2c219ecc125a62f9be4cb637a1"
+    },
+    {
+      "path": ".agents/skills/revise-propose/SKILL.md",
+      "sha256": "8836313201310262a2d3e74a10419dd639894da7ba89da3c4b222783a244d07a"
+    },
+    {
+      "path": "config/actions/README.md",
+      "sha256": "2ccee59b56eefb0c296d53a31fdbf9284acdb378a95e538188322bebacce322d"
+    },
+    {
+      "path": "config/tools/toolchain.lock.json",
+      "sha256": "a0481fc8a3fddfbcdd65a504e0e7a065e6ab74a3a871af3ab8838d201eecd4a2"
+    },
+    {
+      "path": "openspec/delivery-groups/20260824-01-foundation-lifecycle-kernel.yaml",
+      "sha256": "2b74d703e9dbb372d4a5ceb7a58b50e217d6013f685db87f82bcbfddf6a404b5"
+    },
+    {
+      "path": "openspec/delivery-groups/20260829-02-lightweight-incremental-engineering-quality.yaml",
+      "sha256": "3432e820abfecd06fccdb4d966c2cc5a61bc8c20025e67b1ca9e56a1cc43b8ed"
+    },
+    {
+      "path": "openspec/delivery-groups/20260831-03-action-guidance-bounded-agent-execution.yaml",
+      "sha256": "ec8909fc5f1f9384be107d71ca14753d64133f327e2d9544e5b1b7bc9ab842fa"
+    },
+    {
+      "path": "openspec/delivery-groups/20260902-04-delivery-continuity-stable-core-closure.yaml",
+      "sha256": "c3d462c644dc643cab4ce1233d780af3f81c9417002aa48e2edf1972a063589a"
+    },
+    {
+      "path": "openspec/delivery-groups/20260908-05-lightweight-workflow-management.yaml",
+      "sha256": "f35a9d8a0af69ec36f62b1ec5221f8337bc5f7730758bec49876cdcc4d6c049f"
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/.openspec.yaml",
+      "sha256": "8119cfe5ad04f1801d3027066b1b671140c63203d1b9ea7592d49018a901fa91"
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/design.md",
+      "sha256": "4db230d3e2fe3f0e323fdb0175a3b735b2d169f91ac7b8575d77bc13d9eb13ae"
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/explore.md",
+      "sha256": "e68d6faf5b94d4c75ddb281e2bc7e7386962a61da04a95f9c0633f2eec8d12ab"
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/proposal.md",
+      "sha256": "ee0e2dcbf8b60c6f930af71ac438161183c822fff4530bbdc39b9a6f28c807c7"
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/specs/action-guidance-execution/spec.md",
+      "sha256": "001d6c0673113f51a7403e54f67dc64c04b78aa12a87e2de1f79c3a08e66f26a"
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/specs/foundation-cli-surface/spec.md",
+      "sha256": "62bb81b89b3ddd5f4d9d14cfcea4bf3cf4cf7aa98221fba37c03536e6478647f"
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/specs/run-result-persistence/spec.md",
+      "sha256": "7f0547a1077957f0d3e76c6fcdae7a4b903241f3fde18192f603b24e122802a1"
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/specs/single-action-execution-terminal-boundary/spec.md",
+      "sha256": "b58e332e33204ff3a0f20ff47736041268643305ff12ac6859720eae219ec737"
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/tasks.md",
+      "sha256": "564b7a3ac018cd6c9787d3830fa2e227307f479702afa92ea1b4c517739d5e27"
+    },
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-015-explore/action.md",
+      "sha256": "954de5f8e7c869cbc39b1f6c8aadf95cd638249aa1918f5c46e1c0d649ad9267"
+    },
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-015-explore/context.json",
+      "sha256": "661540c507e790fbef5b8403c4cc32a40d343834733e0c182a703ed749c40efb"
+    },
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-015-explore/result.json",
+      "sha256": "2189e3ac993ca0592c534f2382f687dd4a687155f601cb77274e20c79661a33d"
+    },
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-016-review-explore/action.md",
+      "sha256": "ff382e3cada6f7204f61c1ac835429371ee5020624e1708fc6c8e98a27435c17"
+    },
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-016-review-explore/context.json",
+      "sha256": "138e41815f9b717ff25e83c379b837c2c3affcc4928b3679f872e81f8d40a7e4"
+    },
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-016-review-explore/result.json",
+      "sha256": "d9407f671db93f728a14b3f25b2ada663709cdedf01d4d2bf65521c10896f476"
+    },
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-017-propose/action.md",
+      "sha256": "34cc6754fd43e0316cf214d3ee7a2549618c0ff754d0c4ba481664553d0333b4"
+    },
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-017-propose/context.json",
+      "sha256": "f539a7230163b4e8362b4e1d60c9ec12693f4ed8f911b2d61a6a62e72c3ee8f7"
+    },
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-017-propose/result.json",
+      "sha256": "8235dde30c336835c5721c97cb8705c471833e719c26755cfbeef86fb553bcd1"
+    },
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-018-review-propose/action.md",
+      "sha256": "9c5a1e55be904f9122214007c442ab2586059adc251590e6b448f1e69f6cfa24"
+    },
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-018-review-propose/context.json",
+      "sha256": "1d11cf9446d943d8f978f6c449b025c5c55714b51ef250b3b3351207f8118b8b"
+    },
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-018-review-propose/result.json",
+      "sha256": "4cd42f81a1ee924f899d582996153a11da466d180cb70f93b709e86ddad485ae"
+    },
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-019-apply/action.md",
+      "sha256": "4b2ac5f5b87bc9e4443fc0b4661470cafdc143c9f9cf2302d93ac81b1867f833"
+    },
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-019-apply/context.json",
+      "sha256": "e13b734d7025bfeffba212920b4ca3ce1b99f74f31753954ced7993beb0fcc5c"
+    },
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-020-revise-explore/action.md",
+      "sha256": "96a11ef56b8872a785122c9687d13cb17e50bf3f692f41304f42644438c824d9"
+    },
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-020-revise-explore/context.json",
+      "sha256": "420c18329decfb99c568397fc19dad2032da02a04d2b9fddfe79efb87adbceb5"
+    },
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-020-revise-explore/result.json",
+      "sha256": "7ea991f706ffa9634053f930cc750245ada0d908c7f1dd254c2f090024f22c91"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "cc8bf8b8c92a2bd158e91dd7c05e91ef4bacab8d46fb8537697632dd651153fe"
+    },
+    {
+      "path": "README.md",
+      "sha256": "9e1e4596959daae947afe5c6a4d8ea308eea69da395748d6605474bde15fa456"
+    },
+    {
+      "path": ".gitattributes",
+      "sha256": "2f2072c6d51c6756389cf400010bc6a8b4bfb4137529873f7066dc772f8bae85"
+    },
+    {
+      "path": "package.json",
+      "sha256": "752ba2a55d84e6d165b4203f00e092fe201dac0b1f8311ae3c74a4d818675dbb"
+    }
+  ],
+  "results": [
+    {
+      "name": "version",
+      "executable": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js",
+        "--version"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "startedAt": "2026-09-08T12:51:50.378Z",
+      "finishedAt": "2026-09-08T12:51:50.852Z",
+      "exitCode": 0,
+      "error": null,
+      "streams": {
+        "stdout": {
+          "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-021-revise-explore/attempt-02/version.stdout.txt",
+          "bytes": 7,
+          "sha256": "4f5ba6a3e380bf810cc968b58d30a8d7163eafe9e2fb1ad19bdc6d9d64a1e549"
+        },
+        "stderr": {
+          "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-021-revise-explore/attempt-02/version.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "name": "list",
+      "executable": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js",
+        "list",
+        "--json"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "startedAt": "2026-09-08T12:51:50.852Z",
+      "finishedAt": "2026-09-08T12:51:52.136Z",
+      "exitCode": 0,
+      "error": null,
+      "streams": {
+        "stdout": {
+          "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-021-revise-explore/attempt-02/list.stdout.txt",
+          "bytes": 300,
+          "sha256": "853ea4bbc3638733868ea9533aaa4cee1cb5bf49e9f71ebe583a4e21b2c34a33"
+        },
+        "stderr": {
+          "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-021-revise-explore/attempt-02/list.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "name": "status",
+      "executable": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js",
+        "status",
+        "--change",
+        "connect-openspec-action-workflow",
+        "--json"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "startedAt": "2026-09-08T12:51:52.136Z",
+      "finishedAt": "2026-09-08T12:51:54.544Z",
+      "exitCode": 0,
+      "error": null,
+      "streams": {
+        "stdout": {
+          "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-021-revise-explore/attempt-02/status.stdout.txt",
+          "bytes": 3489,
+          "sha256": "358d6844a6d0eeec962416744a4a621bbcce69bc1d56a542c3119d9fd4216393"
+        },
+        "stderr": {
+          "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-021-revise-explore/attempt-02/status.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "name": "existing-kernel",
+      "executable": "git",
+      "args": [
+        "diff",
+        "HEAD",
+        "--",
+        "src/domain/run-result-persistence.ts",
+        "src/domain/single-action-execution.ts",
+        "src/domain/policy-and-next-boundary.ts"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "startedAt": "2026-09-08T12:51:54.544Z",
+      "finishedAt": "2026-09-08T12:51:54.596Z",
+      "exitCode": 0,
+      "error": null,
+      "streams": {
+        "stdout": {
+          "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-021-revise-explore/attempt-02/existing-kernel.stdout.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-021-revise-explore/attempt-02/existing-kernel.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    }
+  ],
+  "changed": [],
+  "priorApplyFiles": [
+    "action.md",
+    "context.json"
+  ],
+  "meaning": "Source inspection and OpenSpec observation only; no candidate Action, implementation acceptance, Reviewer verdict or Full Test."
+}

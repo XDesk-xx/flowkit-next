@@ -1,0 +1,94 @@
+TAP version 13
+# Subtest: raw Buffer proof survives disposable tmp and existing facts remain intact
+ok 1 - raw Buffer proof survives disposable tmp and existing facts remain intact
+  ---
+  duration_ms: 47.5534
+  type: 'test'
+  ...
+# Subtest: proof rejects missing, changed bytes, wrong ownership and conflicting declarations
+ok 2 - proof rejects missing, changed bytes, wrong ownership and conflicting declarations
+  ---
+  duration_ms: 51.9502
+  type: 'test'
+  ...
+# Subtest: parent junction escape cannot become target-owned proof
+ok 3 - parent junction escape cannot become target-owned proof
+  ---
+  duration_ms: 24.7507
+  type: 'test'
+  ...
+# Subtest: closed material fields, reserved failure and overall JSON limits
+ok 4 - closed material fields, reserved failure and overall JSON limits
+  ---
+  duration_ms: 18.6302
+  type: 'test'
+  ...
+# Subtest: handoff consumes only explicitly related files, not unrelated old proof
+ok 5 - handoff consumes only explicitly related files, not unrelated old proof
+  ---
+  duration_ms: 32.9085
+  type: 'test'
+  ...
+# Subtest: JSONL supports split buffers and emits exact prepare then execute
+ok 6 - JSONL supports split buffers and emits exact prepare then execute
+  ---
+  duration_ms: 4.0612
+  type: 'test'
+  ...
+# Subtest: protocol rejects invalid input garbage\\n
+ok 7 - protocol rejects invalid input garbage\\n
+  ---
+  duration_ms: 0.702
+  type: 'test'
+  ...
+# Subtest: protocol rejects invalid input {}\\n
+ok 8 - protocol rejects invalid input {}\\n
+  ---
+  duration_ms: 0.4519
+  type: 'test'
+  ...
+# Subtest: protocol rejects invalid input {"kind":"result","runId"
+ok 9 - protocol rejects invalid input {"kind":"result","runId"
+  ---
+  duration_ms: 0.2121
+  type: 'test'
+  ...
+# Subtest: protocol rejects invalid input {"kind":"prepared","runI
+ok 10 - protocol rejects invalid input {"kind":"prepared","runI
+  ---
+  duration_ms: 0.2988
+  type: 'test'
+  ...
+# Subtest: protocol rejects invalid input {"kind":"prepared","runI
+ok 11 - protocol rejects invalid input {"kind":"prepared","runI
+  ---
+  duration_ms: 0.217
+  type: 'test'
+  ...
+# Subtest: protocol rejects invalid input xxxxxxxxxxxxxxxxxxxxxxxx
+ok 12 - protocol rejects invalid input xxxxxxxxxxxxxxxxxxxxxxxx
+  ---
+  duration_ms: 0.4416
+  type: 'test'
+  ...
+# Subtest: EOF rejects pending response and duplicate frames reject before completion
+ok 13 - EOF rejects pending response and duplicate frames reject before completion
+  ---
+  duration_ms: 5.2258
+  type: 'test'
+  ...
+# Subtest: generic raw-stream attributes preserve index bytes across Change/Full Test paths without hiding structured whitespace
+ok 14 - generic raw-stream attributes preserve index bytes across Change/Full Test paths without hiding structured whitespace
+  ---
+  duration_ms: 5203.5996
+  type: 'test'
+  ...
+1..14
+# tests 14
+# suites 0
+# pass 14
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 5710.0983

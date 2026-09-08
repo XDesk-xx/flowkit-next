@@ -1,0 +1,166 @@
+TAP version 13
+# Subtest: context selects unique active and distinguishes idle/planned/cancelled
+ok 1 - context selects unique active and distinguishes idle/planned/cancelled
+  ---
+  duration_ms: 1065.9934
+  type: 'test'
+  ...
+# Subtest: context reports candidates and explicit selection never fills missing facts
+ok 2 - context reports candidates and explicit selection never fills missing facts
+  ---
+  duration_ms: 629.703
+  type: 'test'
+  ...
+# Subtest: context rejects root mismatch, orphan, activation/dependency and partial history
+ok 3 - context rejects root mismatch, orphan, activation/dependency and partial history
+  ---
+  duration_ms: 656.2883
+  type: 'test'
+  ...
+# Subtest: chain tip follows Policy links, not sequence or input ordering
+ok 4 - chain tip follows Policy links, not sequence or input ordering
+  ---
+  duration_ms: 6.1261
+  type: 'test'
+  ...
+# Subtest: reject disconnected higher root, fork, missing parent, cycle, duplicate sequence and Role
+ok 5 - reject disconnected higher root, fork, missing parent, cycle, duplicate sequence and Role
+  ---
+  duration_ms: 1.2291
+  type: 'test'
+  ...
+# Subtest: Owner correction uses existing Policy and rejects wrong authority
+ok 6 - Owner correction uses existing Policy and rejects wrong authority
+  ---
+  duration_ms: 0.9897
+  type: 'test'
+  ...
+# Subtest: complete prepared failure retries same Action with a new occurrence
+ok 7 - complete prepared failure retries same Action with a new occurrence
+  ---
+  duration_ms: 0.3056
+  type: 'test'
+  ...
+# Subtest: canonical disk history reads selected group only and keeps partial visible
+ok 8 - canonical disk history reads selected group only and keeps partial visible
+  ---
+  duration_ms: 48.7743
+  type: 'test'
+  ...
+# Subtest: explicit bootstrap history is display-only; mixed and unmarked groups rejected
+ok 9 - explicit bootstrap history is display-only; mixed and unmarked groups rejected
+  ---
+  duration_ms: 20.507
+  type: 'test'
+  ...
+# Subtest: entrypoint returns machine error for unknown command
+ok 10 - entrypoint returns machine error for unknown command
+  ---
+  duration_ms: 491.6192
+  type: 'test'
+  ...
+# Subtest: entrypoint distinguishes malformed JSON, obsolete selectors and formal Policy blocked
+ok 11 - entrypoint distinguishes malformed JSON, obsolete selectors and formal Policy blocked
+  ---
+  duration_ms: 1860.5967
+  type: 'test'
+  ...
+# Subtest: closed requests resolve current and reject legacy selectors and caller authority overrides
+ok 12 - closed requests resolve current and reject legacy selectors and caller authority overrides
+  ---
+  duration_ms: 1.7768
+  type: 'test'
+  ...
+# Subtest: next empty target reaches Explore; unrelated high Run cannot be hidden by caller null
+ok 13 - next empty target reaches Explore; unrelated high Run cannot be hidden by caller null
+  ---
+  duration_ms: 402.514
+  type: 'test'
+  ...
+# Subtest: status and next consume exact terminal without caller Run number and remain read-only
+ok 14 - status and next consume exact terminal without caller Run number and remain read-only
+  ---
+  duration_ms: 721.6605
+  type: 'test'
+  ...
+# Subtest: planned next stays formal blocked; doctor retains bounded tool diagnostics
+ok 15 - planned next stays formal blocked; doctor retains bounded tool diagnostics
+  ---
+  duration_ms: 391.5996
+  type: 'test'
+  ...
+# Subtest: checkpoint authorization is exact, pure, and never inferred
+ok 16 - checkpoint authorization is exact, pure, and never inferred
+  ---
+  duration_ms: 0.4974
+  type: 'test'
+  ...
+# Subtest: keeps repeated Standard Action executions as distinct Change-scoped occurrences
+ok 17 - keeps repeated Standard Action executions as distinct Change-scoped occurrences
+  ---
+  duration_ms: 1.8763
+  type: 'test'
+  ...
+# Subtest: generates canonical dated direct-child addresses from controlled inputs
+ok 18 - generates canonical dated direct-child addresses from controlled inputs
+  ---
+  duration_ms: 0.406
+  type: 'test'
+  ...
+# Subtest: rejects invalid controlled address inputs before filesystem use
+ok 19 - rejects invalid controlled address inputs before filesystem use
+  ---
+  duration_ms: 12.5442
+  type: 'test'
+  ...
+# Subtest: validates exact context and preserves explicit or absent Owner authority
+ok 20 - validates exact context and preserves explicit or absent Owner authority
+  ---
+  duration_ms: 36.9712
+  type: 'test'
+  ...
+# Subtest: keeps Author, Reviewer and Verification outcomes separate and preserves next boundary as data
+ok 21 - keeps Author, Reviewer and Verification outcomes separate and preserves next boundary as data
+  ---
+  duration_ms: 14.3498
+  type: 'test'
+  ...
+# Subtest: rejects context/result linkage mismatch and unknown envelope fields
+ok 22 - rejects context/result linkage mismatch and unknown envelope fields
+  ---
+  duration_ms: 1.713
+  type: 'test'
+  ...
+# Subtest: writes the stable three-file surface once and preserves prior bytes on collision
+ok 23 - writes the stable three-file surface once and preserves prior bytes on collision
+  ---
+  duration_ms: 17.9315
+  type: 'test'
+  ...
+# Subtest: rejects duplicate controlled sequence even when date or Action differs
+ok 24 - rejects duplicate controlled sequence even when date or Action differs
+  ---
+  duration_ms: 18.0629
+  type: 'test'
+  ...
+# Subtest: fails closed on missing, truncated or malformed machine records
+ok 25 - fails closed on missing, truncated or malformed machine records
+  ---
+  duration_ms: 22.9767
+  type: 'test'
+  ...
+# Subtest: lists Change-local Author → Reviewer → Author history in controlled sequence order without auto-execution
+ok 26 - lists Change-local Author → Reviewer → Author history in controlled sequence order without auto-execution
+  ---
+  duration_ms: 36.3912
+  type: 'test'
+  ...
+1..26
+# tests 26
+# suites 0
+# pass 26
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2860.6683

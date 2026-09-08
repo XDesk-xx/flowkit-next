@@ -1,0 +1,26 @@
+{
+  "kind": "external-orchestrator-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "author",
+  "action": "apply",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "connect-openspec-action-workflow",
+  "projectOrdinal": 35,
+  "runId": "20260908-019-apply",
+  "runNumber": 19,
+  "previousRunId": "20260908-018-review-propose",
+  "ownerInstruction": "根据最新run，apply",
+  "sourceHead": "697088391374daa67d63c20f8a365fb44ec5c058",
+  "sourceHeadMeaning": "Source observation only, not Action or Git permission",
+  "proofRoot": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-019-apply",
+  "ownerDecisionsRelevant": [
+    "D05 沿用 independent-bootstrap，不恢复外部管理或候选自管理",
+    "必要材料保留 target artifacts，.tmp 仅可丢弃材料；原始流保留实际 Buffer bytes",
+    "一次性通用 attributes 规则不与 .gitignore、Full Test、Archify 耦合",
+    "源码 650 行含空行注释，超限按职责拆分",
+    "仅已批准 Apply；无 D05 Archive、Formal Full Test 或 Git mutation"
+  ],
+  "isolatedAcceptanceMeaning": "Approved tasks 6.1/6.2 fixture execution; synthetic activation prerequisites are labelled and do not create real project Owner authority",
+  "gitMutationAllowed": false
+}

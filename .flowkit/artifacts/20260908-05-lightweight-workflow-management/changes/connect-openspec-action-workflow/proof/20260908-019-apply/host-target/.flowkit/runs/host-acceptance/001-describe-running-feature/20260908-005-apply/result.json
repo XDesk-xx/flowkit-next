@@ -1,0 +1,103 @@
+{
+  "runId": "20260908-005-apply",
+  "actionIdentity": {
+    "deliveryId": "host-acceptance",
+    "changeId": "describe-running-feature",
+    "actionId": "apply"
+  },
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-apply",
+  "facts": {
+    "proofRefs": [
+      {
+        "path": ".flowkit/artifacts/host-acceptance/changes/describe-running-feature/proof/20260908-005-apply/execute.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "host-acceptance",
+        "changeId": "describe-running-feature",
+        "runId": "20260908-005-apply",
+        "purpose": "Actual isolated Apply verification"
+      },
+      {
+        "path": ".flowkit/artifacts/host-acceptance/changes/describe-running-feature/proof/20260908-005-apply/execute.stdout.txt",
+        "bytes": 18,
+        "sha256": "3ad1eda227a94ad45d7456f923d3b9fb159532dc87229dc6b1e4e931b6aff215",
+        "deliveryId": "host-acceptance",
+        "changeId": "describe-running-feature",
+        "runId": "20260908-005-apply",
+        "purpose": "Actual isolated Apply verification"
+      },
+      {
+        "path": ".flowkit/artifacts/host-acceptance/changes/describe-running-feature/proof/20260908-005-apply/strict.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "host-acceptance",
+        "changeId": "describe-running-feature",
+        "runId": "20260908-005-apply",
+        "purpose": "Actual isolated Apply verification"
+      },
+      {
+        "path": ".flowkit/artifacts/host-acceptance/changes/describe-running-feature/proof/20260908-005-apply/strict.stdout.txt",
+        "bytes": 43,
+        "sha256": "73d325e26c1a0b0d5b02d689464a43bacf55add826d1c2e7803fd425fe0c6a7d",
+        "deliveryId": "host-acceptance",
+        "changeId": "describe-running-feature",
+        "runId": "20260908-005-apply",
+        "purpose": "Actual isolated Apply verification"
+      },
+      {
+        "path": ".flowkit/artifacts/host-acceptance/changes/describe-running-feature/proof/20260908-005-apply/test.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "host-acceptance",
+        "changeId": "describe-running-feature",
+        "runId": "20260908-005-apply",
+        "purpose": "Actual isolated Apply verification"
+      },
+      {
+        "path": ".flowkit/artifacts/host-acceptance/changes/describe-running-feature/proof/20260908-005-apply/test.stdout.txt",
+        "bytes": 304,
+        "sha256": "fa06aa5599d3cbd98ae4f2eb9c2d4294626d7fb4d3a020f5c8e6eec9e7d6201b",
+        "deliveryId": "host-acceptance",
+        "changeId": "describe-running-feature",
+        "runId": "20260908-005-apply",
+        "purpose": "Actual isolated Apply verification"
+      },
+      {
+        "path": ".flowkit/artifacts/host-acceptance/changes/describe-running-feature/proof/20260908-005-apply/verification.json",
+        "bytes": 1491,
+        "sha256": "7290dd8df9b7263bf55f56825b1b4f0cca85ff614e01bb89397d5b89f1d88a3d",
+        "deliveryId": "host-acceptance",
+        "changeId": "describe-running-feature",
+        "runId": "20260908-005-apply",
+        "purpose": "Actual isolated Apply verification"
+      },
+      {
+        "path": ".flowkit/artifacts/host-acceptance/changes/describe-running-feature/proof/20260908-005-apply/verify.mjs",
+        "bytes": 1302,
+        "sha256": "28b015a6700a98bb25f5a8e3eb5a257514c9828aeb4aae5f3f931f91bde35172",
+        "deliveryId": "host-acceptance",
+        "changeId": "describe-running-feature",
+        "runId": "20260908-005-apply",
+        "purpose": "Actual isolated Apply verification"
+      }
+    ],
+    "handoff": {
+      "summary": "实现 feature.mjs 和原生子进程测试，实际 stdout 18 bytes、stderr 空、exit 0；test 与 strict PASS，tasks 2/2 完成。隔离目标不适用 D05 质量命令；无依赖、Git 或额外行为。",
+      "ownerDecisions": [
+        {
+          "sourceRef": "approved-task-6.1:owner-apply-input",
+          "summary": "隔离真实宿主验收，不管理 D05；必要材料保留 target。"
+        }
+      ],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20260908-005-apply",
+          "path": ".flowkit/artifacts/host-acceptance/changes/describe-running-feature/proof/20260908-005-apply/verification.json"
+        }
+      ]
+    }
+  }
+}

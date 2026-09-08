@@ -1,0 +1,32 @@
+{
+  "kind": "external-orchestrator-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "author",
+  "action": "explore",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "connect-openspec-action-workflow",
+  "runId": "20260908-015-explore",
+  "runNumber": 15,
+  "previousRunId": null,
+  "dependencyRun": "separate-manager-assets-from-target-project/20260908-014-archive",
+  "projectOrdinal": 35,
+  "ordinalBasis": "14 valid unique assigned manifest entries; max 34 + 1; planned entries reserve nothing",
+  "sourceHead": "697088391374daa67d63c20f8a365fb44ec5c058",
+  "sourceHeadMeaning": "Source observation only; not an Explore SHA prerequisite",
+  "ownerActivationRef": "owner:03920835f3bd9c9278283d95ee0694d362e9fc06d4e9b429d473dd7f8feb00de",
+  "ownerInstruction": "owner 授权激活下一个  chagne ，进入 proof explore，并且需要处理 刚才的耦合问题，每次修改 .gitattributes 肯定不合理",
+  "ownerDecisionsRelevant": [
+    "独立 bootstrap，不恢复外部 manager，不让 candidate 管理自身",
+    "本 Change 纳入原始执行证据与源码文本/Git 检查解耦，不再逐 Change 追加 attributes 例外",
+    "必要 proof 在 target .flowkit/artifacts 默认长期保留，.tmp 只放可丢弃工作文件",
+    "原始 bytes 不格式化、不补造；历史材料/清理授权不追溯改写",
+    "Git、.gitignore、Full Test 配置彼此独立；不增加审批节点或提前执行后续 Changes"
+  ],
+  "proofRoot": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore",
+  "skillsUsed": [".agents/skills/explore-proof-based", ".agents/skills/openspec-explore", "debugging-and-error-recovery"],
+  "nextBoundary": "review-explore",
+  "proposalAllowed": false,
+  "applyAllowed": false,
+  "gitMutationAllowed": false
+}

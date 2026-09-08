@@ -1,0 +1,50 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "empty",
+      "actual": "idle",
+      "expected": "idle"
+    },
+    {
+      "name": "linear",
+      "actual": "b",
+      "expected": "b"
+    },
+    {
+      "name": "reordered",
+      "actual": "b",
+      "expected": "b"
+    },
+    {
+      "name": "higher-unrelated",
+      "actual": "ambiguous",
+      "expected": "ambiguous"
+    },
+    {
+      "name": "missing-parent",
+      "actual": "missing",
+      "expected": "missing"
+    },
+    {
+      "name": "fork",
+      "actual": "ambiguous",
+      "expected": "ambiguous"
+    },
+    {
+      "name": "disconnected-cycle",
+      "actual": "disconnected",
+      "expected": "disconnected"
+    }
+  ],
+  "retainedSha256": "baa05d35a66b3029af06b467c1715d2d884d40d91566ec1ad23e3f8d759c3045",
+  "scratchRemoved": true,
+  "retainedReadback": true,
+  "overwriteRejected": true,
+  "missingRejected": true,
+  "limits": [
+    "拓扑模型不决定 Policy legality；产品还须按真实 schema、Role、身份与边界验证每条链边",
+    "hash/归属反例不证明来源真实；本实验不是产品证据接纳器或独立 Review",
+    "不支持多 writer、进程崩溃自动恢复或迁移 bootstrap history"
+  ]
+}

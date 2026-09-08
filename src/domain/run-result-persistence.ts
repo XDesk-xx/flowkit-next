@@ -1,4 +1,4 @@
-import { mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
+import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 
 import {
@@ -479,27 +479,23 @@ export async function writeDurableRun(
     throw error;
   }
 
-  try {
-    await writeFile(
-      path.join(address.runDirectory, "action.md"),
-      record.actionMarkdown,
-      { encoding: "utf8", flag: "wx" },
-    );
-    await writeFile(
-      path.join(address.runDirectory, "context.json"),
-      `${JSON.stringify(record.context, null, 2)}\n`,
-      { encoding: "utf8", flag: "wx" },
-    );
-    await writeFile(
-      path.join(address.runDirectory, "result.json"),
-      `${JSON.stringify(record.result, null, 2)}\n`,
-      { encoding: "utf8", flag: "wx" },
-    );
-    return address;
-  } catch (error) {
-    await rm(address.runDirectory, { recursive: true, force: true });
-    throw error;
-  }
+  // Preserve the started/partial record on failure; failure is not absence.
+  await writeFile(
+    path.join(address.runDirectory, "action.md"),
+    record.actionMarkdown,
+    { encoding: "utf8", flag: "wx" },
+  );
+  await writeFile(
+    path.join(address.runDirectory, "context.json"),
+    `${JSON.stringify(record.context, null, 2)}\n`,
+    { encoding: "utf8", flag: "wx" },
+  );
+  await writeFile(
+    path.join(address.runDirectory, "result.json"),
+    `${JSON.stringify(record.result, null, 2)}\n`,
+    { encoding: "utf8", flag: "wx" },
+  );
+  return address;
 }
 
 function parseJson(text: string, label: string): unknown {

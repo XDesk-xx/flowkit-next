@@ -1,0 +1,62 @@
+{
+  "kind": "external-orchestrator-revise-explore-result",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "author",
+  "action": "revise-explore",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "connect-openspec-action-workflow",
+  "projectOrdinal": 35,
+  "runId": "20260908-020-revise-explore",
+  "previousRunId": "20260908-019-apply",
+  "status": "terminal",
+  "verdict": "UNKNOWN",
+  "verdictMeaning": "有界源码核查及只读proof完成；Action交互合同仍需Owner选择，不是实现PASS或Reviewer approved",
+  "proposalReady": false,
+  "summary": "已确认源码构建目录可自定位，区分必要事实/资源边界、可变宿主接缝和过重真人验收；不整体保留或删除实现。",
+  "blockingUnknown": {
+    "id": "action-cli-interaction-model",
+    "question": "Action 使用普通短命令分次取上下文/回交，还是一个长进程等待同一宿主完成？",
+    "reason": "本机源码目标不能独自决定此选择；不同选择改变 live reservation 与 invocation 合同",
+    "authorPreference": "普通短命令，但未视为Owner批准，也未证明其完整闭环"
+  },
+  "evidence": [
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/explore.md",
+      "bytes": 8152,
+      "sha256": "e68d6faf5b94d4c75ddb281e2bc7e7386962a61da04a95f9c0633f2eec8d12ab"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-020-revise-explore/audit.mjs",
+      "bytes": 3335,
+      "sha256": "3a3f5515e556fc5ce2a5718b3ccc041f0c6e4ce0d2b7cdd5e8910bea2a511fc4"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-020-revise-explore/attempt-01/summary.json",
+      "bytes": 7645,
+      "sha256": "29e411e14c42628f07dc44dd7bd7ffb827e69c78c0e93b7b143a0192d09ca1b5"
+    }
+  ],
+  "verification": {
+    "readonlyCommands": 4,
+    "exitCodes": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "protectedInputsUnchanged": true,
+    "meaning": "Bounded Explore evidence only"
+  },
+  "priorApplyCompleted": false,
+  "productionMutation": false,
+  "proposalMutation": false,
+  "skillMutation": false,
+  "gitMutation": false,
+  "formalFullTestExecuted": false,
+  "reviewerVerdict": null,
+  "nextBoundary": "owner-direction",
+  "afterDirection": "bounded proof then independent review-explore; no automatic continuation",
+  "completedAt": "2026-09-08T12:39:59.490Z",
+  "stop": true
+}
