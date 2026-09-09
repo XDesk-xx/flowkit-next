@@ -1,0 +1,32 @@
+{
+  "reviewedResult": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/005-simplify-delivery-coordination/20260909-043-explore/result.json",
+    "bytes": 6279,
+    "sha256": "40b20f3407adb878b017bb04cb80b9768b0d5541a1816c5110c93572ce9c1457"
+  },
+  "previousArchive": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/004-decouple-full-test-from-repository-tracking/20260909-042-archive/result.json",
+    "bytes": 21900,
+    "sha256": "df552c1012234ba316469c19b1f1a5411c7b1f1e29728490e99f0a4add5489fb"
+  },
+  "verifiedReferences": 31,
+  "observationCount": 7,
+  "selectedChange": {
+    "id": "simplify-delivery-coordination",
+    "group": "delivery-coordination",
+    "goal": "简化 Start 与 Final：Start 无指定 commit 前置，Final 消费 required Changes 完成事实和当前有效 Full Test 结果。",
+    "required": true,
+    "dependsOn": [
+      "connect-openspec-action-workflow",
+      "decouple-full-test-from-repository-tracking"
+    ],
+    "state": "active",
+    "projectOrdinal": 37,
+    "outputs": [
+      "无首个 commit 或有无关未提交文件时的 Start，保留真实写入冲突检查。",
+      "消除剩余整仓摘要连锁，窄写完成状态，不复制完整结果或重演全部历史。",
+      "必要过程事实的相关消费校验，无证据转存或周期清理前置。"
+    ]
+  },
+  "ownerSourceRef": "owner-input:2026-09-09:activate-change:simplify-delivery-coordination:proof-explore"
+}

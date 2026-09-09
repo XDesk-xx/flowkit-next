@@ -1,6 +1,5 @@
 import { isOwnerAuthorityFact, type OwnerAuthorityFact } from "./authority.js";
 import { isSemanticId, type DeliveryId } from "./identity.js";
-import { isHashRef } from "../internal/applicable-check-identity.js";
 
 const GIT_COMMIT_PATTERN = /^[0-9a-f]{40}$/;
 const DELIVERY_FINALIZATION_REF_PATTERN =
@@ -11,7 +10,6 @@ const TARGET_MAIN_REF_PATTERN = /^refs\/heads\/[!-~]{1,240}$/;
 
 export interface DeliveryRepositoryIntegrationOperationFacts {
   readonly deliveryFinalizationRef: string;
-  readonly finalizedCandidateRef: string;
   readonly preIntegrationHead: string;
   readonly checkpointOperation: DeliveryCheckpointOperation;
   readonly deliveryBranch: string;
@@ -26,7 +24,6 @@ export type DeliveryCheckpointOperation =
 
 const FACT_FIELDS = [
   "deliveryFinalizationRef",
-  "finalizedCandidateRef",
   "preIntegrationHead",
   "checkpointOperation",
   "deliveryBranch",
@@ -75,7 +72,6 @@ export function isDeliveryRepositoryIntegrationOperationFacts(
     hasExactlyFields(value, FACT_FIELDS) &&
     typeof value.deliveryFinalizationRef === "string" &&
     DELIVERY_FINALIZATION_REF_PATTERN.test(value.deliveryFinalizationRef) &&
-    isHashRef(value.finalizedCandidateRef, "candidate") &&
     typeof value.preIntegrationHead === "string" &&
     GIT_COMMIT_PATTERN.test(value.preIntegrationHead) &&
     isDeliveryCheckpointOperation(value.checkpointOperation) &&

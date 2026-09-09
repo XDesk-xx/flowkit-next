@@ -1,0 +1,122 @@
+{
+  "kind": "reviewer-active-set-drift-reproduction",
+  "expectation": "active work appearing before confirmation must not acquire Final success",
+  "candidateObservedContradiction": true,
+  "syntheticFixtures": true,
+  "formalD05FullTest": false,
+  "outcomes": [
+    {
+      "mode": "control",
+      "fixture": {
+        "root": "C:\\Users\\xuser\\AppData\\Local\\Temp\\flowkit-delivery-final-otYtvp",
+        "flowkitHome": "C:\\Users\\xuser\\AppData\\Local\\Temp\\flowkit-delivery-final-home-LYZyZI",
+        "manifestPath": "C:\\Users\\xuser\\AppData\\Local\\Temp\\flowkit-delivery-final-otYtvp\\openspec\\delivery-groups\\test-delivery-finalization.yaml",
+        "openspecEntrypoint": "C:\\Users\\xuser\\AppData\\Local\\Temp\\flowkit-delivery-final-home-LYZyZI\\tools\\openspec\\1.10.0\\bin\\openspec.js"
+      },
+      "syntheticHost": true,
+      "syntheticOpenSpecProcess": true,
+      "renames": 2,
+      "stages": 2,
+      "invocationStatus": "terminal",
+      "reason": null,
+      "mutationStatus": null,
+      "activeChangeIds": [],
+      "readerStatus": "completed",
+      "record": {
+        "projectId": "flowkit-next",
+        "deliveryId": "test-delivery-finalization",
+        "ownerAuthorityRef": "owner:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "sourceRef": "owner-input:finalize-delivery",
+        "fullTestAttempt": "c1f59dd1-bbd0-44f7-8203-74e80336b173",
+        "verifiedCandidateRef": "full-test-input:sha256:4cc9ef73f6fb3264c7cf6ce93b62189ba80153c6e2c4314543fbf71375eb3030",
+        "fullTestExecutionRef": "full-test-execution:sha256:0d7e59304d347ef23bc5075f6f2c3c788eb2fd73bf3af92f42110dc0e001531c",
+        "deliveryFinalizationRef": "delivery-finalization:sha256:c952a1517925e2ef0886da82fadf2f4e5111dea441738e1f1a3bbaa0e7b731a4"
+      },
+      "manifestSha256": "cfd5afc83af4479922de6ceceae191971585b0929bdf6f3c3be0a699b7441acd"
+    },
+    {
+      "mode": "before-invoke",
+      "fixture": {
+        "root": "C:\\Users\\xuser\\AppData\\Local\\Temp\\flowkit-delivery-final-fDA2op",
+        "flowkitHome": "C:\\Users\\xuser\\AppData\\Local\\Temp\\flowkit-delivery-final-home-Jp8Odn",
+        "manifestPath": "C:\\Users\\xuser\\AppData\\Local\\Temp\\flowkit-delivery-final-fDA2op\\openspec\\delivery-groups\\test-delivery-finalization.yaml",
+        "openspecEntrypoint": "C:\\Users\\xuser\\AppData\\Local\\Temp\\flowkit-delivery-final-home-Jp8Odn\\tools\\openspec\\1.10.0\\bin\\openspec.js"
+      },
+      "syntheticHost": true,
+      "syntheticOpenSpecProcess": true,
+      "renames": 0,
+      "stages": 0,
+      "invocationStatus": "failed",
+      "reason": "package-formation-rejected",
+      "mutationStatus": "not-written",
+      "activeChangeIds": [
+        "late-change"
+      ],
+      "readerStatus": "not-completed",
+      "record": null,
+      "manifestSha256": "736f8080ce992f0a73363753b1e41cebf0db44678ffb1a344013fe2bc2835d83"
+    },
+    {
+      "mode": "after-content-write",
+      "fixture": {
+        "root": "C:\\Users\\xuser\\AppData\\Local\\Temp\\flowkit-delivery-final-kjzDVU",
+        "flowkitHome": "C:\\Users\\xuser\\AppData\\Local\\Temp\\flowkit-delivery-final-home-lyNYO9",
+        "manifestPath": "C:\\Users\\xuser\\AppData\\Local\\Temp\\flowkit-delivery-final-kjzDVU\\openspec\\delivery-groups\\test-delivery-finalization.yaml",
+        "openspecEntrypoint": "C:\\Users\\xuser\\AppData\\Local\\Temp\\flowkit-delivery-final-home-lyNYO9\\tools\\openspec\\1.10.0\\bin\\openspec.js"
+      },
+      "syntheticHost": true,
+      "syntheticOpenSpecProcess": true,
+      "renames": 2,
+      "stages": 2,
+      "invocationStatus": "terminal",
+      "reason": null,
+      "mutationStatus": null,
+      "activeChangeIds": [
+        "late-change"
+      ],
+      "readerStatus": "completed",
+      "record": {
+        "projectId": "flowkit-next",
+        "deliveryId": "test-delivery-finalization",
+        "ownerAuthorityRef": "owner:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "sourceRef": "owner-input:finalize-delivery",
+        "fullTestAttempt": "388a5c91-ff93-4075-aca4-12c9dd8de123",
+        "verifiedCandidateRef": "full-test-input:sha256:4cc9ef73f6fb3264c7cf6ce93b62189ba80153c6e2c4314543fbf71375eb3030",
+        "fullTestExecutionRef": "full-test-execution:sha256:bb39b112682bfc59d7fa2ee4b27052070616ea404a907e7abbd6438eb8add404",
+        "deliveryFinalizationRef": "delivery-finalization:sha256:d94fced55bf202ec0f44afab3fb6b1ea1437b652eafb86f5c8475ca2bf07f098"
+      },
+      "manifestSha256": "7418569d6ee166a31c06ffc2683dc06ca8b01623d0e6c6ac021c2ece659e6ea3"
+    },
+    {
+      "mode": "during-confirmation-staging",
+      "fixture": {
+        "root": "C:\\Users\\xuser\\AppData\\Local\\Temp\\flowkit-delivery-final-HaK5sa",
+        "flowkitHome": "C:\\Users\\xuser\\AppData\\Local\\Temp\\flowkit-delivery-final-home-8FAHKs",
+        "manifestPath": "C:\\Users\\xuser\\AppData\\Local\\Temp\\flowkit-delivery-final-HaK5sa\\openspec\\delivery-groups\\test-delivery-finalization.yaml",
+        "openspecEntrypoint": "C:\\Users\\xuser\\AppData\\Local\\Temp\\flowkit-delivery-final-home-8FAHKs\\tools\\openspec\\1.10.0\\bin\\openspec.js"
+      },
+      "syntheticHost": true,
+      "syntheticOpenSpecProcess": true,
+      "renames": 2,
+      "stages": 2,
+      "invocationStatus": "terminal",
+      "reason": null,
+      "mutationStatus": null,
+      "activeChangeIds": [
+        "late-change"
+      ],
+      "readerStatus": "completed",
+      "record": {
+        "projectId": "flowkit-next",
+        "deliveryId": "test-delivery-finalization",
+        "ownerAuthorityRef": "owner:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "sourceRef": "owner-input:finalize-delivery",
+        "fullTestAttempt": "1c54cfd5-59e2-461d-aa81-f30aec52c23c",
+        "verifiedCandidateRef": "full-test-input:sha256:4cc9ef73f6fb3264c7cf6ce93b62189ba80153c6e2c4314543fbf71375eb3030",
+        "fullTestExecutionRef": "full-test-execution:sha256:1663ac40b5c33014240611e8d8abe45c64ff3e78fa33713c02c485f5100f3961",
+        "deliveryFinalizationRef": "delivery-finalization:sha256:9da97c1b6538f47b8186dbd5a9ca0e6536d3d7e9edfb8a4b70f8691fd3547a7f"
+      },
+      "manifestSha256": "761706f931506796f61032492e38dbd7bdb857cebc52ef09f4479fe9fc760059"
+    }
+  ]
+}

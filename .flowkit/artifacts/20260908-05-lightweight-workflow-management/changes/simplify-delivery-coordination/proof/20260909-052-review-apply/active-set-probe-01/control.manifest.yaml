@@ -1,0 +1,21 @@
+id: test-delivery-finalization
+delivery:
+  state: completed
+  fullTestStatus: "passed"
+  finalizationStatus: completed
+  fullTestAttempt: "eba98725-4051-4490-bf31-e6d9c576d816"
+finalization:
+  state: completed
+  verifiedCandidateRef: "full-test-input:sha256:4cc9ef73f6fb3264c7cf6ce93b62189ba80153c6e2c4314543fbf71375eb3030"
+  fullTestExecutionRef: "full-test-execution:sha256:df7db34a3ec8ccfde386321d656d2f467cfc8bc2dc69af8e40b769407555483b"
+  ownerAuthorityRef: "owner:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+  sourceRef: "owner-input:finalize-delivery"
+  fullTestAttempt: "eba98725-4051-4490-bf31-e6d9c576d816"
+  confirmationRef: "delivery-finalization:sha256:2a66d3145d67d4bafeeebf26a99987f79d52f5858c415a9f17492f08f9921840"
+changes:
+  - id: first-change
+    required: true
+    state: completed
+  - id: second-change
+    required: true
+    state: completed

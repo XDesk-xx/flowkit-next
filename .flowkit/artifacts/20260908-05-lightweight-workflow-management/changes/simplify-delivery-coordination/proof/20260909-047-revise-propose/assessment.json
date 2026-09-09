@@ -1,0 +1,175 @@
+{
+  "finding": "R046-01",
+  "classification": "contract inconsistency / verification gap",
+  "authorDisposition": "addressed-in-plan-awaiting-independent-review",
+  "correction": "manifest confirmationRef initially null; publish only after required checks; publication is success commit point; reader and Integration require matching confirmation",
+  "counterexampleClosure": [
+    {
+      "case": "content readback fails",
+      "persisted": "completed + null confirmationRef",
+      "newSession": "unconfirmed",
+      "integration": "reject"
+    },
+    {
+      "case": "input drifts before confirmation",
+      "persisted": "completed + null confirmationRef",
+      "newSession": "unconfirmed",
+      "integration": "reject"
+    },
+    {
+      "case": "normal success",
+      "persisted": "completed + valid confirmationRef",
+      "newSession": "completed",
+      "integration": "eligible subject to independent Git checks"
+    },
+    {
+      "case": "confirmation committed, response lost",
+      "persisted": "completed + valid confirmationRef",
+      "newSession": "recognize actual committed completion; no automatic replay",
+      "integration": "eligible subject to independent Git checks"
+    }
+  ],
+  "evidenceClass": "planning semantic analysis, NOT product fault-injection or implementation PASS",
+  "scope": "exactly four confirmed planning files changed; other 045 bound artifacts, manifest and approved Explore preserved",
+  "beforeAfter": [
+    {
+      "before": {
+        "path": "openspec/changes/simplify-delivery-coordination/design.md",
+        "bytes": 12919,
+        "sha256": "ef4b22c44249509d83e23ecdaa5e75b1413fe6a05feedb418cc5138348d29d2f"
+      },
+      "after": {
+        "path": "openspec/changes/simplify-delivery-coordination/design.md",
+        "bytes": 14829,
+        "sha256": "a85de7558faa27a75590cacded32f017139f1ef970dbff04697427b944139023"
+      }
+    },
+    {
+      "before": {
+        "path": "openspec/changes/simplify-delivery-coordination/tasks.md",
+        "bytes": 3931,
+        "sha256": "51fd46d930f186dcb435456b6a7ca4a47203e603bb790c092b9ad6db89871e55"
+      },
+      "after": {
+        "path": "openspec/changes/simplify-delivery-coordination/tasks.md",
+        "bytes": 4402,
+        "sha256": "898037bc6a6be69a75619799ee25a2c620529e3b47aaced25225338d534ec5c4"
+      }
+    },
+    {
+      "before": {
+        "path": "openspec/changes/simplify-delivery-coordination/specs/delivery-finalization/spec.md",
+        "bytes": 8414,
+        "sha256": "a190a8f8ffe7acc98e90b4dff46711a98c42f114f7e433333b4475fc7d346298"
+      },
+      "after": {
+        "path": "openspec/changes/simplify-delivery-coordination/specs/delivery-finalization/spec.md",
+        "bytes": 10447,
+        "sha256": "2080861c5e34d0e7183c75eb7345cef386dfcfa4d3cb87a4e48b1d082e37c4b4"
+      }
+    },
+    {
+      "before": {
+        "path": "openspec/changes/simplify-delivery-coordination/specs/repository-integration-and-next-base-continuity/spec.md",
+        "bytes": 8001,
+        "sha256": "cc60c114fc69da5aa876673321cfd7d4d52effc18f7170f11c7bc1f885a1b843"
+      },
+      "after": {
+        "path": "openspec/changes/simplify-delivery-coordination/specs/repository-integration-and-next-base-continuity/spec.md",
+        "bytes": 8894,
+        "sha256": "8d874356951171ddaf95fa054bf0f45d96347d91cc8382e58f354b01587ac17e"
+      }
+    }
+  ],
+  "commands": [
+    {
+      "program": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js",
+        "--version"
+      ],
+      "startedAt": "2026-09-09T08:16:12.720Z",
+      "completedAt": "2026-09-09T08:16:13.192Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-047-revise-propose/version.stdout.txt",
+        "bytes": 7,
+        "sha256": "4f5ba6a3e380bf810cc968b58d30a8d7163eafe9e2fb1ad19bdc6d9d64a1e549"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-047-revise-propose/version.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "program": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js",
+        "validate",
+        "simplify-delivery-coordination",
+        "--strict"
+      ],
+      "startedAt": "2026-09-09T08:16:13.194Z",
+      "completedAt": "2026-09-09T08:16:14.439Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-047-revise-propose/validate.stdout.txt",
+        "bytes": 49,
+        "sha256": "12fa2f22cdcc62fdc86da02965b984c0eec778dc02d2974b37017bcc25ae431a"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-047-revise-propose/validate.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "program": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js",
+        "status",
+        "--change",
+        "simplify-delivery-coordination",
+        "--json"
+      ],
+      "startedAt": "2026-09-09T08:16:14.441Z",
+      "completedAt": "2026-09-09T08:16:15.696Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-047-revise-propose/status.stdout.txt",
+        "bytes": 3361,
+        "sha256": "7c03a7e282dc00a70e8a071fbbd56abed67fda993e56a46aa6533c96268d00d0"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-047-revise-propose/status.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "program": "git",
+      "args": [
+        "diff",
+        "--name-only"
+      ],
+      "startedAt": "2026-09-09T08:16:15.698Z",
+      "completedAt": "2026-09-09T08:16:15.790Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-047-revise-propose/scope.stdout.txt",
+        "bytes": 74,
+        "sha256": "1db106dd00b18027918fab2a3844027fef7d259b351af5c4feabaf685adc950c"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-047-revise-propose/scope.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ]
+}

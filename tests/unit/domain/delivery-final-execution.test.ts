@@ -10,6 +10,7 @@ import test, { mock } from "node:test";
 import {
   invokeDeliveryFinalOperation,
   isDeliveryFinalizationRecordForPackage,
+  readDeliveryFinalization,
   prepareDeliveryFinalOperationPackage,
 } from "../../../src/domain/index.js";
 import {
@@ -73,16 +74,17 @@ test("Delivery Final prepares complete prerequisites and materializes one bounde
       ),
       true,
     );
-    assert.notEqual(
-      outcome.record.finalizedCandidateRef,
-      outcome.record.verifiedCandidateRef,
+    assert.equal(Object.hasOwn(outcome.record, "finalizedCandidateRef"), false);
+    assert.deepEqual(
+      (await readDeliveryFinalization(fixture.root, deliveryId)).record,
+      outcome.record,
     );
     const manifestBytes = await readFile(fixture.manifestPath, "utf8");
     assert.match(manifestBytes, /state: completed/);
     assert.match(manifestBytes, /fullTestStatus: "passed"/);
     assert.match(
       manifestBytes,
-      /gitCheckpoint: pending-owner-authorized-local-delivery-commit/,
+      /confirmationRef: "delivery-finalization:sha256:[0-9a-f]{64}"/,
     );
     assert.equal(manifestBytes.includes("finalizedCandidateRef"), false);
     const after = (await git(fixture.root, "status", "--short")).split(/\r?\n/);
@@ -123,21 +125,38 @@ test("Delivery Final writer preserves all non-target manifest bytes and ordering
         `  fullTestAttempt: "${outcomes.fullTest.record.attemptId}"\n`,
         [
           `  fullTestAttempt: "${outcomes.fullTest.record.attemptId}"`,
-          `  formalVerificationCandidate: ${JSON.stringify(facts.verifiedCandidateRef)}`,
           "finalization:",
           "  state: completed",
           `  verifiedCandidateRef: ${JSON.stringify(facts.verifiedCandidateRef)}`,
           `  fullTestExecutionRef: ${JSON.stringify(facts.fullTestExecutionRef)}`,
-          "  gitCheckpoint: pending-owner-authorized-local-delivery-commit",
+          `  ownerAuthorityRef: ${JSON.stringify(prepared.ownerAuthority.ref)}`,
+          `  sourceRef: ${JSON.stringify(prepared.ownerAuthority.sourceRef)}`,
+          `  fullTestAttempt: ${JSON.stringify(facts.fullTestAttempt)}`,
+          "  confirmationRef: null",
           "",
         ].join("\n"),
       );
 
-    assert.notEqual(
-      await writeDeliveryFinalCoordinationClosure(fixture.root, prepared),
-      null,
+    const stages: string[] = [];
+    const result = await writeDeliveryFinalCoordinationClosure(
+      fixture.root,
+      prepared,
+      async () => {
+        stages.push(await readFile(fixture.manifestPath, "utf8"));
+        return true;
+      },
     );
-    assert.equal(await readFile(fixture.manifestPath, "utf8"), expected);
+    assert.equal(result.status, "confirmed");
+    if (result.status !== "confirmed") throw new Error("write failed");
+    assert.deepEqual(stages, [expected, expected]);
+    assert.equal(
+      await readFile(fixture.manifestPath, "utf8"),
+      expected.replace(
+        "confirmationRef: null",
+        "confirmationRef: " +
+          JSON.stringify(result.record.deliveryFinalizationRef),
+      ),
+    );
   } finally {
     await cleanup(fixture);
   }
@@ -192,8 +211,14 @@ test("Delivery Final coordination writer never returns success on staging, repla
       throw new Error("injected staging failure");
     });
     assert.equal(
-      await writeDeliveryFinalCoordinationClosure(fixture.root, prepared),
-      null,
+      (
+        await writeDeliveryFinalCoordinationClosure(
+          fixture.root,
+          prepared,
+          async () => true,
+        )
+      ).status,
+      "failed",
     );
     stagingFailure.mock.restore();
     assert.deepEqual(await readFile(fixture.manifestPath), original);
@@ -202,8 +227,14 @@ test("Delivery Final coordination writer never returns success on staging, repla
       throw new Error("injected replace failure");
     });
     assert.equal(
-      await writeDeliveryFinalCoordinationClosure(fixture.root, prepared),
-      null,
+      (
+        await writeDeliveryFinalCoordinationClosure(
+          fixture.root,
+          prepared,
+          async () => true,
+        )
+      ).status,
+      "failed",
     );
     replaceFailure.mock.restore();
     assert.deepEqual(await readFile(fixture.manifestPath), original);
@@ -221,8 +252,14 @@ test("Delivery Final coordination writer never returns success on staging, repla
       },
     );
     assert.equal(
-      await writeDeliveryFinalCoordinationClosure(fixture.root, prepared),
-      null,
+      (
+        await writeDeliveryFinalCoordinationClosure(
+          fixture.root,
+          prepared,
+          async () => true,
+        )
+      ).status,
+      "failed",
     );
     readbackFailure.mock.restore();
     assert.match(
@@ -296,11 +333,7 @@ test("Delivery Final preparation rejects partial facts, active OpenSpec, output 
             return request.changeId === "first-change"
               ? {
                   ...closure,
-                  runs: closure.runs.map((run) =>
-                    run.runId === closure.reviewApplyRunId
-                      ? { ...run, resultJson: Buffer.from("{}\n") }
-                      : run,
-                  ),
+                  reviewApply: { ...closure.reviewApply, artifacts: [] },
                 }
               : closure;
           },
@@ -397,17 +430,7 @@ test("Delivery Final rejects failed archive anchors and unrelated external outco
         const closure = await source.readChangeClosure(request);
         return {
           ...closure,
-          runs: closure.runs.map((run) => {
-            if (run.runId !== closure.archiveRunId) return run;
-            const result = JSON.parse(
-              Buffer.from(run.resultJson).toString("utf8"),
-            ) as Record<string, unknown>;
-            result.authorConclusion = "FAIL";
-            return {
-              ...run,
-              resultJson: Buffer.from(`${JSON.stringify(result)}\n`),
-            };
-          }),
+          archive: { ...closure.archive, sourceRef: "" },
         };
       },
     };
@@ -485,6 +508,7 @@ test("Delivery Final callback is defensive and correction or invalid results do 
     assert.deepEqual(invalid, {
       status: "failed",
       reason: "execution-result-rejected",
+      mutationStatus: "not-written",
       record: null,
     });
     assert.deepEqual(await readFile(fixture.manifestPath), before);

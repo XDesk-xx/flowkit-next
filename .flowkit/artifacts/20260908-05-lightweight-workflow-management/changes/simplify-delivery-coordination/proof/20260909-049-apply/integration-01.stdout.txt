@@ -1,0 +1,169 @@
+TAP version 13
+# Subtest: Integration preparation accepts an exact authorized base across unrelated HEAD or target history
+not ok 1 - Integration preparation accepts an exact authorized base across unrelated HEAD or target history
+  ---
+  duration_ms: 1709.1705
+  type: 'test'
+  location: 'D:\\Projects\\flowkit-next\\tests\\unit\\domain\\delivery-continuity-semantic-boundaries.test.ts:1:3852'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'failed'
+    - 'terminal'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'terminal'
+  actual: 'failed'
+  operator: 'strictEqual'
+  stack: |-
+    integrationFixture (D:\Projects\flowkit-next\tests\unit\domain\delivery-continuity-semantic-boundaries.test.ts:64:10)
+    async TestContext.<anonymous> (D:\Projects\flowkit-next\tests\unit\domain\delivery-continuity-semantic-boundaries.test.ts:140:17)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: Integration operation field order is non-semantic across source, ref and record consumers
+not ok 2 - Integration operation field order is non-semantic across source, ref and record consumers
+  ---
+  duration_ms: 1645.2815
+  type: 'test'
+  location: 'D:\\Projects\\flowkit-next\\tests\\unit\\domain\\delivery-continuity-semantic-boundaries.test.ts:1:5435'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'failed'
+    - 'terminal'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'terminal'
+  actual: 'failed'
+  operator: 'strictEqual'
+  stack: |-
+    integrationFixture (D:\Projects\flowkit-next\tests\unit\domain\delivery-continuity-semantic-boundaries.test.ts:64:10)
+    async TestContext.<anonymous> (D:\Projects\flowkit-next\tests\unit\domain\delivery-continuity-semantic-boundaries.test.ts:222:17)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: trusted acceptance may identify an exact object with different history
+ok 3 - trusted acceptance may identify an exact object with different history
+  ---
+  duration_ms: 1403.1708
+  type: 'test'
+  ...
+# Subtest: content-equivalent history replacement without trusted acceptance is rejected
+ok 4 - content-equivalent history replacement without trusted acceptance is rejected
+  ---
+  duration_ms: 1405.4397
+  type: 'test'
+  ...
+# Subtest: Integration does not reread historical Run evidence outside its operation
+ok 5 - Integration does not reread historical Run evidence outside its operation
+  ---
+  duration_ms: 1545.4718
+  type: 'test'
+  ...
+# Subtest: wrong or broad Owner authority fails closed
+ok 6 - wrong or broad Owner authority fails closed
+  ---
+  duration_ms: 507.8967
+  type: 'test'
+  ...
+# Subtest: zero, multiple, and candidate-changing final commits fail closed
+    # Subtest: zero commit
+    ok 1 - zero commit
+      ---
+      duration_ms: 674.8193
+      type: 'test'
+      ...
+    # Subtest: multiple commits
+    ok 2 - multiple commits
+      ---
+      duration_ms: 1106.1995
+      type: 'test'
+      ...
+    # Subtest: two-parent commit
+    ok 3 - two-parent commit
+      ---
+      duration_ms: 1158.4816
+      type: 'test'
+      ...
+    # Subtest: candidate-changing commit
+    ok 4 - candidate-changing commit
+      ---
+      duration_ms: 1109.4408
+      type: 'test'
+      ...
+    1..4
+ok 7 - zero, multiple, and candidate-changing final commits fail closed
+  ---
+  duration_ms: 4050.2418
+  type: 'test'
+  ...
+# Subtest: provider-reported accepted-main SHA is not admitted as truth
+ok 8 - provider-reported accepted-main SHA is not admitted as truth
+  ---
+  duration_ms: 1074.117
+  type: 'test'
+  ...
+# Subtest: trusted preparation binds exact finalized state and pre-integration Git facts
+ok 9 - trusted preparation binds exact finalized state and pre-integration Git facts
+  ---
+  duration_ms: 642.7385
+  type: 'test'
+  ...
+# Subtest: trusted Owner source rejects caller checkpoint-operation substitution
+ok 10 - trusted Owner source rejects caller checkpoint-operation substitution
+  ---
+  duration_ms: 610.3836
+  type: 'test'
+  ...
+# Subtest: Integration rejects caller old Final packages instead of translating them
+ok 11 - Integration rejects caller old Final packages instead of translating them
+  ---
+  duration_ms: 552.0076
+  type: 'test'
+  ...
+# Subtest: coordination byte drift invalidates trusted preparation
+ok 12 - coordination byte drift invalidates trusted preparation
+  ---
+  duration_ms: 542.0975
+  type: 'test'
+  ...
+# Subtest: repository integration proves one final commit and derives accepted main as next base
+ok 13 - repository integration proves one final commit and derives accepted main as next base
+  ---
+  duration_ms: 1319.752
+  type: 'test'
+  ...
+# Subtest: repository integration reuses an explicitly bound existing checkpoint without creating a second commit
+ok 14 - repository integration reuses an explicitly bound existing checkpoint without creating a second commit
+  ---
+  duration_ms: 1105.0011
+  type: 'test'
+  ...
+# Subtest: target-main drift during final commit is rejected before repository acceptance
+ok 15 - target-main drift during final commit is rejected before repository acceptance
+  ---
+  duration_ms: 1164.9134
+  type: 'test'
+  ...
+# Subtest: trusted accepted operation does not reapply Final whole-tree equality
+ok 16 - trusted accepted operation does not reapply Final whole-tree equality
+  ---
+  duration_ms: 1451.1875
+  type: 'test'
+  ...
+1..16
+# tests 20
+# suites 0
+# pass 18
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 10489.8317

@@ -1,0 +1,21 @@
+{
+  "kind": "external-orchestrator-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "author",
+  "action": "apply",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "simplify-delivery-coordination",
+  "projectOrdinal": 37,
+  "runId": "20260909-049-apply",
+  "previousRunId": "20260909-048-review-propose",
+  "startedAt": "2026-09-09T08:50:00Z",
+  "ownerInstruction": "根据最新run，apply",
+  "ownerSourceRef": "owner-input:2026-09-09:apply-after-048",
+  "scope": "批准的 simplify-delivery-coordination tasks；不扩展下一 Git Change",
+  "ownerDecisionsRelevant": [{
+    "sourceRef": ".flowkit/runs/20260908-05-lightweight-workflow-management/005-simplify-delivery-coordination/20260909-043-explore/context.json#ownerDecisionHandoff",
+    "decision": "独立 bootstrap；必要材料留 target artifacts，.tmp 可丢弃；历史不改写。"
+  }],
+  "nonGoals": ["Git mutation", "实际 D05 Full Test", "自动 Review/Archive/下一操作", "修改批准计划语义"]
+}

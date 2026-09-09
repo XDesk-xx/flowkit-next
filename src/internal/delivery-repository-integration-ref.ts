@@ -1,12 +1,21 @@
 import { createHash } from "node:crypto";
-import type { DeliveryRepositoryIntegrationOperationPackage } from "../domain/delivery-operation-execution.js";
+import { isDeliveryOperationPackage } from "../domain/delivery-operation-execution.js";
 import { cloneDeliveryRepositoryIntegrationOperationFacts } from "../domain/delivery-repository-integration-operation.js";
 
 export function deriveDeliveryRepositoryIntegrationRef(
-  operationPackage: DeliveryRepositoryIntegrationOperationPackage,
-  finalCommit: string,
-  acceptedMainCommit: string,
-): string {
+  operationPackage: unknown,
+  finalCommit: unknown,
+  acceptedMainCommit: unknown,
+): string | null {
+  if (
+    !isDeliveryOperationPackage(operationPackage) ||
+    operationPackage.operationId !== "delivery-repository-integration" ||
+    typeof finalCommit !== "string" ||
+    !/^[0-9a-f]{40}$/.test(finalCommit) ||
+    typeof acceptedMainCommit !== "string" ||
+    !/^[0-9a-f]{40}$/.test(acceptedMainCommit)
+  )
+    return null;
   const digest = createHash("sha256")
     .update("flowkit-repository-integration\0")
     .update(
@@ -14,8 +23,6 @@ export function deriveDeliveryRepositoryIntegrationRef(
         deliveryId: operationPackage.deliveryId,
         deliveryFinalizationRef:
           operationPackage.operationFacts.deliveryFinalizationRef,
-        finalizedCandidateRef:
-          operationPackage.operationFacts.finalizedCandidateRef,
         preIntegrationHead: operationPackage.operationFacts.preIntegrationHead,
         checkpointOperation: cloneDeliveryRepositoryIntegrationOperationFacts(
           operationPackage.operationFacts,

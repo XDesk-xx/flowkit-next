@@ -19,16 +19,17 @@ import {
   readFullTestJson,
   readFullTestCoordination,
 } from "./full-test-storage.js";
-import type {
-  EvidenceArtifactRef,
-  DeliveryRequiredEvidence,
-} from "./delivery-required-evidence.js";
+import type { EvidenceArtifactRef } from "./delivery-required-evidence.js";
 
 export type CurrentFullTest =
   | {
       readonly status: "passed";
       readonly outcome: DeliveryFullTestInvocationTerminal;
-      readonly evidence: DeliveryRequiredEvidence["fullTest"];
+      readonly evidence: {
+        readonly executionRef: string;
+        readonly sourceRef: string;
+        readonly artifacts: readonly EvidenceArtifactRef[];
+      };
     }
   | {
       readonly status:

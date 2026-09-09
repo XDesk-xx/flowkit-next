@@ -1,0 +1,36 @@
+{
+  "kind": "external-orchestrator-revise-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "author",
+  "action": "revise-propose",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "simplify-delivery-coordination",
+  "projectOrdinal": 37,
+  "runId": "20260909-047-revise-propose",
+  "previousRunId": "20260909-046-review-propose",
+  "startedAt": "2026-09-09T08:05:41Z",
+  "ownerInstruction": "是的  revise-propose",
+  "ownerSourceRef": "owner-input:2026-09-09:confirm-r046-01-revise-propose",
+  "scope": [
+    "design.md",
+    "specs/delivery-finalization/spec.md",
+    "specs/repository-integration-and-next-base-continuity/spec.md",
+    "tasks.md"
+  ],
+  "findingIds": [
+    "R046-01"
+  ],
+  "ownerDecisionsRelevant": [
+    {
+      "sourceRef": ".flowkit/runs/20260908-05-lightweight-workflow-management/005-simplify-delivery-coordination/20260909-043-explore/context.json#ownerDecisionHandoff",
+      "decision": "独立 bootstrap；必要材料留 target artifacts，.tmp 可丢弃；历史不改写。"
+    }
+  ],
+  "nonGoals": [
+    "生产实现",
+    "Git",
+    "重做 Explore",
+    "新证据库或全仓摘要"
+  ]
+}

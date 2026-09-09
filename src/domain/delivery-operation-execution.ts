@@ -14,6 +14,8 @@ import { isSemanticId, type DeliveryId } from "./identity.js";
 import { hasNoDuplicates } from "../internal/applicable-check-identity.js";
 import {
   cloneDeliveryFinalOperationFacts,
+  isDeliveryCoordinationRef,
+  type DeliveryCoordinationRef,
   isDeliveryFinalAuthorityForDelivery,
   isDeliveryFinalOperationFactsForDelivery,
   type DeliveryFinalOperationFacts,
@@ -65,7 +67,6 @@ export interface DeliveryGuidanceRef {
 
 const GUIDANCE_REF_FIELDS = ["path", "contentSha256"] as const;
 const SHA256_HEX_PATTERN = /^[0-9a-f]{64}$/;
-const GIT_COMMIT_PATTERN = /^[0-9a-f]{40}$/;
 const ARTIFACT_PATTERN = /^[!-~]{1,512}$/;
 
 function isRecord(value: unknown): value is Record<string, unknown> {
@@ -203,13 +204,18 @@ export function isDeliveryPlanningReference(
 }
 
 export interface DeliveryStartOperationFacts {
-  readonly acceptedBaseCommit: string;
+  readonly projectId: string;
   readonly planningReference: DeliveryPlanningReference;
+  readonly coordinationPrestate: {
+    readonly artifact: string;
+    readonly contentRef: DeliveryCoordinationRef | null;
+  };
 }
 
 const DELIVERY_START_FACT_FIELDS = [
-  "acceptedBaseCommit",
+  "projectId",
   "planningReference",
+  "coordinationPrestate",
 ] as const;
 
 export function isDeliveryStartOperationFacts(
@@ -222,9 +228,18 @@ export function isDeliveryStartOperationFacts(
     return false;
   }
   return (
-    typeof value.acceptedBaseCommit === "string" &&
-    GIT_COMMIT_PATTERN.test(value.acceptedBaseCommit) &&
-    isDeliveryPlanningReference(value.planningReference)
+    isSemanticId(value.projectId) &&
+    isDeliveryPlanningReference(value.planningReference) &&
+    isRecord(value.coordinationPrestate) &&
+    hasExactlyFields(value.coordinationPrestate, ["artifact", "contentRef"]) &&
+    typeof value.coordinationPrestate.artifact === "string" &&
+    /^openspec\/delivery-groups\/[^/]+\.yaml$/.test(
+      value.coordinationPrestate.artifact,
+    ) &&
+    (value.coordinationPrestate.contentRef === null ||
+      (isDeliveryCoordinationRef(value.coordinationPrestate.contentRef) &&
+        value.coordinationPrestate.contentRef.artifact ===
+          value.coordinationPrestate.artifact))
   );
 }
 
@@ -239,16 +254,6 @@ export function isDeliveryStartAuthorityForDelivery(
     value.changeId === undefined &&
     value.decision === "create-delivery" &&
     value.scope.includes("delivery-start")
-  );
-}
-
-export function hasDeliveryStartCommitAuthority(
-  value: unknown,
-  deliveryId: unknown,
-): value is OwnerAuthorityFact {
-  return (
-    isDeliveryStartAuthorityForDelivery(value, deliveryId) &&
-    value.scope.includes("single-delivery-start-fixed-point-commit")
   );
 }
 
@@ -372,6 +377,8 @@ export function isDeliveryOperationPackage(
     case "delivery-start":
       return (
         isDeliveryStartOperationFacts(value.operationFacts) &&
+        value.operationFacts.coordinationPrestate.artifact ===
+          `openspec/delivery-groups/${value.deliveryId}.yaml` &&
         isDeliveryStartAuthorityForDelivery(
           value.ownerAuthority,
           value.deliveryId,
@@ -423,8 +430,15 @@ function cloneStartFacts(
   facts: DeliveryStartOperationFacts,
 ): DeliveryStartOperationFacts {
   return {
-    acceptedBaseCommit: facts.acceptedBaseCommit,
+    projectId: facts.projectId,
     planningReference: clonePlanningReference(facts.planningReference),
+    coordinationPrestate: {
+      artifact: facts.coordinationPrestate.artifact,
+      contentRef:
+        facts.coordinationPrestate.contentRef === null
+          ? null
+          : { ...facts.coordinationPrestate.contentRef },
+    },
   };
 }
 

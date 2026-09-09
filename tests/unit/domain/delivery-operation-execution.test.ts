@@ -17,7 +17,6 @@ import {
   DELIVERY_OPERATIONS,
   canonicalDeliveryGuidancePath,
   formDeliveryOperationPackage,
-  hasDeliveryStartCommitAuthority,
   isDeliveryGuidanceRef,
   isDeliveryGuidanceRefForOperation,
   isDeliveryFinalAuthorityForDelivery,
@@ -36,7 +35,6 @@ import { finalFacts } from "./delivery-operation-fixture.js";
 import { withUnreadableGuidanceFixture } from "./unreadable-guidance-fixture.js";
 
 const deliveryId = "20260902-04-delivery-continuity-stable-core-closure";
-const acceptedBaseCommit = "a".repeat(40);
 const planningReference = {
   artifact: "flowkit-next-d04-stable-core-closure-final-reference.md",
   contentSha256: "b".repeat(64),
@@ -55,7 +53,14 @@ function authority(
 }
 
 function startFacts(): DeliveryStartOperationFacts {
-  return { acceptedBaseCommit, planningReference };
+  return {
+    projectId: "flowkit-next",
+    planningReference,
+    coordinationPrestate: {
+      artifact: `openspec/delivery-groups/${deliveryId}.yaml`,
+      contentRef: null,
+    },
+  };
 }
 
 function finalAuthority(
@@ -336,8 +341,10 @@ test("Delivery Start authority recognition is exact to create-delivery, Delivery
     isDeliveryStartAuthorityForDelivery(startOnly, deliveryId),
     true,
   );
-  assert.equal(hasDeliveryStartCommitAuthority(startOnly, deliveryId), false);
-  assert.equal(hasDeliveryStartCommitAuthority(withCommit, deliveryId), true);
+  assert.equal(
+    isDeliveryStartAuthorityForDelivery(withCommit, deliveryId),
+    true,
+  );
   assert.equal(
     isDeliveryStartAuthorityForDelivery(
       { ...startOnly, deliveryId: "other-delivery" },
@@ -445,17 +452,12 @@ test("Delivery Final package is closed to exact facts, Guidance, and singleton a
   if (valid?.operationId !== "delivery-final")
     throw new Error("invalid fixture");
   assert.notEqual(
-    valid.operationFacts.requiredEvidence,
-    inputFacts.requiredEvidence,
+    valid.operationFacts.changeCompletions,
+    inputFacts.changeCompletions,
   );
   assert.notEqual(
-    valid.operationFacts.requiredEvidence.fullTest.artifacts,
-    inputFacts.requiredEvidence.fullTest.artifacts,
-  );
-  assert.notEqual(
-    valid.operationFacts.requiredEvidence.changeClosures[0].runs[0]
-      .artifacts[0],
-    inputFacts.requiredEvidence.changeClosures[0].runs[0].artifacts[0],
+    valid.operationFacts.changeCompletions[0].archiveResultRef,
+    inputFacts.changeCompletions[0].archiveResultRef,
   );
   for (const key of Object.keys(inputFacts)) {
     const missing = Object.fromEntries(
@@ -463,14 +465,17 @@ test("Delivery Final package is closed to exact facts, Guidance, and singleton a
     );
     assert.equal(isDeliveryFinalOperationFacts(missing), false);
   }
-  for (const key of Object.keys(inputFacts.requiredEvidence)) {
-    const requiredEvidence = Object.fromEntries(
-      Object.entries(inputFacts.requiredEvidence).filter(
+  for (const key of Object.keys(inputFacts.changeCompletions[0])) {
+    const entry = Object.fromEntries(
+      Object.entries(inputFacts.changeCompletions[0]).filter(
         ([name]) => name !== key,
       ),
     );
     assert.equal(
-      isDeliveryFinalOperationFacts({ ...inputFacts, requiredEvidence }),
+      isDeliveryFinalOperationFacts({
+        ...inputFacts,
+        changeCompletions: [entry, inputFacts.changeCompletions[1]],
+      }),
       false,
     );
   }
@@ -577,7 +582,6 @@ test("repository integration package is the fourth exact variant and requires si
   };
   const facts = {
     deliveryFinalizationRef: `delivery-finalization:sha256:${"1".repeat(64)}`,
-    finalizedCandidateRef: `candidate:sha256:${"2".repeat(64)}`,
     preIntegrationHead: "3".repeat(40),
     checkpointOperation: { kind: "create-new" },
     deliveryBranch: "delivery/d04",

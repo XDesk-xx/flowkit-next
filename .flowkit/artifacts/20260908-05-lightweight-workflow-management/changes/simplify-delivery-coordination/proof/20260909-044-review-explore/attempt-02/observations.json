@@ -1,0 +1,87 @@
+{
+  "executedAt": "2026-09-09T07:25:15.904Z",
+  "node": "v22.23.2",
+  "platform": "win32",
+  "rows": [
+    {
+      "name": "clean-control",
+      "packageFormed": true,
+      "level": "controlled observation callback, not real Git repository"
+    },
+    {
+      "name": "unrelated-dirty",
+      "packageFormed": false,
+      "level": "controlled observation callback, not real Git repository"
+    },
+    {
+      "name": "unborn-head",
+      "packageFormed": false,
+      "level": "controlled observation callback, not real Git repository"
+    },
+    {
+      "name": "different-head",
+      "packageFormed": false,
+      "level": "controlled observation callback, not real Git repository"
+    },
+    {
+      "name": "actual-target-conflict",
+      "rejected": true,
+      "concurrentBytesPreserved": true
+    },
+    {
+      "name": "bounded-coordination-write",
+      "completed": true,
+      "nonTargetTailPreserved": true,
+      "level": "internal writer only; synthetic package, NOT accepted Final or Full Test"
+    },
+    {
+      "name": "source-order-and-chain",
+      "writeBeforeGitProjection": true,
+      "replaysAdmissionAndPreviousChain": true,
+      "level": "source inspection, not injected post-write failure"
+    }
+  ],
+  "sources": [
+    {
+      "path": "src/domain/delivery-start-execution.ts",
+      "bytes": 10803,
+      "sha256": "de3be406e5ea171ee1a0a740ee7bfe0e6bff7a708ffcbd9398c85c336c31a0f4"
+    },
+    {
+      "path": "src/internal/delivery-start-content.ts",
+      "bytes": 10733,
+      "sha256": "159bc6cc237605eea37d7394c2e544678ff875cc6a1e7f9bef5d380efa352abe"
+    },
+    {
+      "path": "src/domain/delivery-final-execution.ts",
+      "bytes": 15387,
+      "sha256": "d4bb31855509a61e6c7768d08172f8d458c740151ea828dec865611e2e8bd114"
+    },
+    {
+      "path": "src/internal/delivery-required-evidence-source.ts",
+      "bytes": 11254,
+      "sha256": "637849aadf76e0c1d6b249179f2761b4b9291909a984d8dc5bae27660829a69c"
+    },
+    {
+      "path": "src/internal/delivery-final-coordination.ts",
+      "bytes": 12868,
+      "sha256": "328b5e02b6a247c920344b4d4642ffda74ed0c1345872cbdcf5ce4e3cd600d47"
+    },
+    {
+      "path": "src/domain/delivery-repository-integration-execution.ts",
+      "bytes": 20769,
+      "sha256": "52779b6f03caa79436d7401702f46fc1c7b87e1e21016d8d2be50ceb6fe15679"
+    },
+    {
+      "path": "src/internal/applicable-check-candidate.ts",
+      "bytes": 14943,
+      "sha256": "dac0cbafeb68dfa687c2775827c386be00012790cd18d974b2f659f921e4dbc6"
+    }
+  ],
+  "limits": [
+    "No production implementation",
+    "No full Final invocation",
+    "No real D05 Full Test",
+    "Synthetic callback observations do not prove native Git scenarios"
+  ]
+}

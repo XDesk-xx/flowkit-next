@@ -1,0 +1,2154 @@
+{
+  "reviewedResult": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/005-simplify-delivery-coordination/20260909-051-revise-apply/result.json",
+    "bytes": 20610,
+    "sha256": "65cb429bfb1731a65a7498d038a39177d7218074a3d89a2e5e6b461c456f046f"
+  },
+  "verifiedReferences": [
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/005-simplify-delivery-coordination/20260909-050-review-apply/result.json",
+      "bytes": 12443,
+      "sha256": "276f4b94d94400f36f3a21c05bebe33da64448670e419719d678d8e1cd704c48"
+    },
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/005-simplify-delivery-coordination/20260909-049-apply/result.json",
+      "bytes": 19922,
+      "sha256": "88364a40e669b3df0a04d42e0ad400c14bd9334ef6ae147fa041e1694c9dae5e"
+    },
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/005-simplify-delivery-coordination/20260909-047-revise-propose/result.json",
+      "bytes": 4669,
+      "sha256": "004085cd22367d0970ce0ede3bdcfee66ea5b0c45cfb0a3b1e53aecfcc4944a0"
+    },
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/005-simplify-delivery-coordination/20260909-048-review-propose/result.json",
+      "bytes": 8148,
+      "sha256": "325f9e087ccc655438a5d57466ba514cd455e5c49861e8faf519c86297a0186c"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/regression-before.json",
+      "bytes": 365,
+      "sha256": "7c90769b2bbf45f3844c641a2f9614938f17384377bc866c8ba748953ef84e76"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/regression-after.json",
+      "bytes": 365,
+      "sha256": "18a992274ce66d6dd2548d84ea4c172573811744156c25bdb37c8d70ead4fa80"
+    },
+    {
+      "path": "src/domain/delivery-final-execution.ts",
+      "bytes": 13221,
+      "sha256": "fe16380ed43675340bb35b478188571174c0495a7f23c6fdd0b331e1066cd64b"
+    },
+    {
+      "path": "tests/unit/domain/delivery-final-confirmation.test.ts",
+      "bytes": 11085,
+      "sha256": "dc3cb9f01cd5b31d9b4cf47b207446ea98d65b6f96224f1c362f1e2ad953cd56"
+    },
+    {
+      "path": "AGENTS.md",
+      "bytes": 19607,
+      "sha256": "bedb6d5eeeaafc17662a4dc4ef02192ad9993a26059c1dc15f24bf6d953be5a4"
+    },
+    {
+      "path": "skills/delivery/final/SKILL.md",
+      "bytes": 2998,
+      "sha256": "5153ad7f6cbe943518b59a9577ed23af758c869f8175d66969ac51f05f0d7431"
+    },
+    {
+      "path": "skills/delivery/repository-integration/SKILL.md",
+      "bytes": 2155,
+      "sha256": "b2a2c2b5635acceef8eebb3199b952e1bc5edbde0943a0aa807e17580c4f79ab"
+    },
+    {
+      "path": "skills/delivery/start/SKILL.md",
+      "bytes": 1714,
+      "sha256": "ba418022138e015a64beae064857ad03af8e7f4c085ca999b87bedd296d3f457"
+    },
+    {
+      "path": "src/domain/delivery-final-operation.ts",
+      "bytes": 5365,
+      "sha256": "ded95c9b6c5f65cecc76bbdb7b1ddb7c4332c5a5620269dc7aac6dc2b6bb38d4"
+    },
+    {
+      "path": "src/domain/delivery-finalization.ts",
+      "bytes": 5790,
+      "sha256": "cd0e4c395423ea05abdc88398d3b18446fab68eb209203386327dc0f40317c0a"
+    },
+    {
+      "path": "src/domain/delivery-operation-execution.ts",
+      "bytes": 17038,
+      "sha256": "0e09ea11cc331d8d634e3357f767fd4689363164d78a70b47a570a0021f5f9b4"
+    },
+    {
+      "path": "src/domain/delivery-repository-integration-execution.ts",
+      "bytes": 19807,
+      "sha256": "fbc3814c448b729161aa2911abc26084a712108d9baebf67dcd415d0196dce1b"
+    },
+    {
+      "path": "src/domain/delivery-repository-integration-operation.ts",
+      "bytes": 4499,
+      "sha256": "c838521ef4bd17f79f47e085936408877e0da0e0bcfb2a4033fa564037922df1"
+    },
+    {
+      "path": "src/domain/delivery-start-execution.ts",
+      "bytes": 8014,
+      "sha256": "627be7b1d880613046e10092a9cccb80c3b97b2a7466750bc350dac64cada3db"
+    },
+    {
+      "path": "src/internal/delivery-final-coordination.ts",
+      "bytes": 15941,
+      "sha256": "1d73dc9069c45eefbfd8d36dd7e4bc0c4e49036ae7e64de36e1acfd78b21c4a6"
+    },
+    {
+      "path": "src/internal/delivery-repository-integration-ref.ts",
+      "bytes": 1570,
+      "sha256": "302a8102dad4817e42acdff4145896950188c2b819f6436338d8ac83a83825d7"
+    },
+    {
+      "path": "src/internal/delivery-required-evidence-source.ts",
+      "bytes": 7734,
+      "sha256": "8cf72befd03a83dbaffe967d93c640b43e6d34c9296f156330ba0b9781825259"
+    },
+    {
+      "path": "src/internal/delivery-required-evidence.ts",
+      "bytes": 684,
+      "sha256": "b5fbbbae2eb6796fdcb6898f7921a6db7bf68a383f38d21c8ae0be1a00600045"
+    },
+    {
+      "path": "src/internal/delivery-start-content.ts",
+      "bytes": 5213,
+      "sha256": "d204ae70be7c6c4834982132967d3f596e10edd53698a7fbbf8cf4a72bd95492"
+    },
+    {
+      "path": "src/internal/full-test-current.ts",
+      "bytes": 6998,
+      "sha256": "de11cff5ecd49c3967fa8f7164d8d93106a405102cffa16fa84ba7f2ec348ce8"
+    },
+    {
+      "path": "tests/unit/domain/delivery-continuity-semantic-boundaries.test.ts",
+      "bytes": 10821,
+      "sha256": "3fb80daf08e4a6bad5f3341517b47597669ac0efc27f2c3b78fe261fc6a9bf2c"
+    },
+    {
+      "path": "tests/unit/domain/delivery-final-execution.test.ts",
+      "bytes": 16870,
+      "sha256": "3ebc80d262323668857433d7895b77469f82eb74821dbdd3b2deacf1501a6b59"
+    },
+    {
+      "path": "tests/unit/domain/delivery-final-fixture.ts",
+      "bytes": 10037,
+      "sha256": "79c5057b17fa678e2d67f1d98887d86e987eef5a04d2d23e8c803666a4e75222"
+    },
+    {
+      "path": "tests/unit/domain/delivery-final-projection.test.ts",
+      "bytes": 2881,
+      "sha256": "a6e125b3894e703eb07a4aee334582fbbb680778322f39263d73bbf512523b75"
+    },
+    {
+      "path": "tests/unit/domain/delivery-finalization-reader.test.ts",
+      "bytes": 4874,
+      "sha256": "4bcb655d1c06e84b9b5c4e3a918623ff61046be271c67e03ac2732f6110b92cf"
+    },
+    {
+      "path": "tests/unit/domain/delivery-guidance-contract.test.ts",
+      "bytes": 2816,
+      "sha256": "839f80541813ae1f9d1ee11ce2aa3ba8766e7733bca5ff9597c2d52557767b6b"
+    },
+    {
+      "path": "tests/unit/domain/delivery-integration-fixture.ts",
+      "bytes": 4850,
+      "sha256": "f70815bbe91b0f2c58f2ba6345519a9b7bce762894bbefcb48d36bd37d331451"
+    },
+    {
+      "path": "tests/unit/domain/delivery-integration-projection.test.ts",
+      "bytes": 2946,
+      "sha256": "effd948d5806193ebe2c9b895538d5f5eae756a7905742b1f39d2348515bd772"
+    },
+    {
+      "path": "tests/unit/domain/delivery-operation-execution.test.ts",
+      "bytes": 17073,
+      "sha256": "cbb479ea682d62784d25d861870ccac2a857214327c17e5038dfa7cef49aa128"
+    },
+    {
+      "path": "tests/unit/domain/delivery-operation-fixture.ts",
+      "bytes": 1446,
+      "sha256": "8ab1307e748093c9c58b19a7f5289e6bdd8c934fb6af9466fc609c006e948264"
+    },
+    {
+      "path": "tests/unit/domain/delivery-repository-integration-accepted-object.test.ts",
+      "bytes": 11802,
+      "sha256": "2c3bc79f515f122007f3edfb045246178d8def5baea91977df7b303f6025eebe"
+    },
+    {
+      "path": "tests/unit/domain/delivery-repository-integration-execution.test.ts",
+      "bytes": 10783,
+      "sha256": "5f5d8ee298139c64ea1286db6a05fefe11faa41daa00012546a25ee7acc96b1a"
+    },
+    {
+      "path": "tests/unit/domain/delivery-required-evidence-source.test.ts",
+      "bytes": 9053,
+      "sha256": "c4612f3ceaff7807576dbde247cbc43b386bcf86ba420a946da5acfb3694a2c7"
+    },
+    {
+      "path": "tests/unit/domain/delivery-run-evidence-fixture.ts",
+      "bytes": 2142,
+      "sha256": "ca1e8bc03b77bf22f721f428c6f7f9b52a8d8d31a0d1d61f0a16224833e8a7d1"
+    },
+    {
+      "path": "tests/unit/domain/delivery-start-execution.test.ts",
+      "bytes": 10110,
+      "sha256": "3861f69d3421887349ab45b557105fd764870572b3a2baba19756d46af96a688"
+    },
+    {
+      "path": "tests/unit/domain/delivery-without-archify.test.ts",
+      "bytes": 9898,
+      "sha256": "2dacfd06f4f951340981ff171e82a2135721c49a488d08ad6effa638d35229e4"
+    },
+    {
+      "path": "openspec/changes/simplify-delivery-coordination/proposal.md",
+      "bytes": 2574,
+      "sha256": "87221019fab4d80f235fa78b146702fbf56e214019bbc6b6975dffd87cc317b7"
+    },
+    {
+      "path": "openspec/changes/simplify-delivery-coordination/design.md",
+      "bytes": 14829,
+      "sha256": "a85de7558faa27a75590cacded32f017139f1ef970dbff04697427b944139023"
+    },
+    {
+      "path": "openspec/changes/simplify-delivery-coordination/tasks.md",
+      "bytes": 4402,
+      "sha256": "2c5832102500208b20ad8a81d253d62baf8566231ac4980a389ba71b844ad7fd"
+    },
+    {
+      "path": "openspec/changes/simplify-delivery-coordination/specs/delivery-finalization/spec.md",
+      "bytes": 10447,
+      "sha256": "2080861c5e34d0e7183c75eb7345cef386dfcfa4d3cb87a4e48b1d082e37c4b4"
+    },
+    {
+      "path": "openspec/changes/simplify-delivery-coordination/specs/delivery-operation-execution-and-start-continuity/spec.md",
+      "bytes": 7014,
+      "sha256": "7106c654323a98b103c7a69dcdda686b96857960029a5465516acb7ba6f5ddb9"
+    },
+    {
+      "path": "openspec/changes/simplify-delivery-coordination/specs/repository-integration-and-next-base-continuity/spec.md",
+      "bytes": 8894,
+      "sha256": "8d874356951171ddaf95fa054bf0f45d96347d91cc8382e58f354b01587ac17e"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/win-final-format-check.json",
+      "bytes": 517,
+      "sha256": "5ff4f1a8f17eacb064cd68d9d2d3ae9a7538de551972d56ab17390cb798eedac"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/win-final-lint.json",
+      "bytes": 351,
+      "sha256": "334cb881a7712d39f545678f5e841c62e89adaed2127075164a9b3a8c59e4c25"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/win-final-typecheck.json",
+      "bytes": 341,
+      "sha256": "6d3321697f524d5de74ad062492c285daffa3a2918bbd1039c67adab96341c26"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/win-final-build.json",
+      "bytes": 322,
+      "sha256": "f179b56d2eeb8df1d8dc8f8db1e98e64a859eb18db620cc795109f8c5901619d"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/win-final-domain.json",
+      "bytes": 362,
+      "sha256": "1ac4ff78ae1c87ba481a578663b1620ee126e74a35bc1ebce6d05057628bbd66"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/win-final-acceptance.json",
+      "bytes": 361,
+      "sha256": "d14fac8965f1eba7d5ef467159200ccda82cd17acbb087772b189f4183e571ff"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/win-final-dependency-health.json",
+      "bytes": 460,
+      "sha256": "0d76930362e23c848e269dffb1459a8f34c3c76a667350ef578112b4efe66bc0"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/win-final-entropy-tests.json",
+      "bytes": 359,
+      "sha256": "55e656418960107438b89a7f6bb7b98e98d54f90f97baa2bd46ac89ee86db249"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/win-final-entropy.json",
+      "bytes": 335,
+      "sha256": "d674492b38e004df9c940fff1538e3ad63319930eab949d4c89f40fb7cc7ff97"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/linux-final-format-check.json",
+      "bytes": 496,
+      "sha256": "edb340ed761ae48b3f55856fd0851c757a8828c0278806e6d235d3f780e3a277"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/linux-final-lint.json",
+      "bytes": 330,
+      "sha256": "bcd7fb47574371537992126cb9e03c529face721a3b92254bf495343a6c9ff46"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/linux-final-typecheck.json",
+      "bytes": 320,
+      "sha256": "daebdfa3500322581040cb4ca0b735a026325545c647eedecbc3086544dadbc1"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/linux-final-build.json",
+      "bytes": 301,
+      "sha256": "38dfb5d7632cf50cf2498d9a08684df5b19a56ba80d7179fb241c32a0282f6dc"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/linux-final-domain.json",
+      "bytes": 341,
+      "sha256": "16f1e39f87c2f0009bfc4c92a23d4fcabc188a6ff994024bf106f1b6fb1e77ba"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/linux-final-acceptance.json",
+      "bytes": 340,
+      "sha256": "5d2c371e371910c72f67c9ba5b5fd755f1684f45b899b9fa8d83236517af80b9"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/linux-final-dependency-health.json",
+      "bytes": 439,
+      "sha256": "c6419099cd73738f6e63519a3bf2649b3ae9e9dff4d6d05ceb47b9a460594854"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/linux-final-entropy-tests.json",
+      "bytes": 338,
+      "sha256": "913d616e9b63488b22b40040f38ab843712c893da77f8a7f34ac04530dbb02c5"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/linux-final-entropy.json",
+      "bytes": 314,
+      "sha256": "e82a317ab0825d0c836853f5458ef73b32725c7301e902e9766f16db1934954b"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/openspec-strict.json",
+      "bytes": 402,
+      "sha256": "89e3e2f32e51e1f5bb75b205a837db362d90bc396b8a3374ddef6f2ef13c49cd"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/linux-container.json",
+      "bytes": 1120,
+      "sha256": "292aceedaa7285a2e9b9b3640338f3457b7cfd4aa5628baa792b087d6af1fd84"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/linux-dependencies.json",
+      "bytes": 403,
+      "sha256": "4e432dd5b3f130c37816e89a9f9366ddd8d84f48517edb2bd5cdcec852e3a590"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/revision-report.md",
+      "bytes": 2839,
+      "sha256": "1c656f51e0dcd5d786a62ef917d406be917c53657891c3bbd654a83033a931e3"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/evidence-index.json",
+      "bytes": 23918,
+      "sha256": "9efb0ef65af05b35664d6f2c9a63ad5e641553d7c1f742b768d9b69186c86a1f"
+    },
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/005-simplify-delivery-coordination/20260909-051-revise-apply/action.md",
+      "bytes": 284,
+      "sha256": "2e839d83d1ac16b4f4a469ca2b43b3c86e6d415ae05b7b7a166f7ba039ec6be5"
+    },
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/005-simplify-delivery-coordination/20260909-051-revise-apply/context.json",
+      "bytes": 1014,
+      "sha256": "88d559ebcf6c05c77b792dbab982ce119b74d1657aabbff63fedc7649ab6ce63"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/candidate-checks.mjs",
+      "bytes": 789,
+      "sha256": "69d026b4baada903b32f00f44146979a63352fe59272f416f7f107a2a6323692"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/finish-revise.mjs",
+      "bytes": 9499,
+      "sha256": "fce19d2fe09470b428c2eb2090287befbe07930fbd5e2bdecde606f544f9a08f"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/format.json",
+      "bytes": 431,
+      "sha256": "bdc0328350b5bbf55d9a0d3da33660cefdab5c23837af42108cebc49d1699936"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/format.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/format.stdout.txt",
+      "bytes": 116,
+      "sha256": "fcb9355d9d734c35d342c9781988f7272bd7d96f560c13dca984297cb05ea2be"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/linux-container.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/linux-container.stdout.txt",
+      "bytes": 72582,
+      "sha256": "63f296775d9454171dda5b2cff9899c8aa5d76be00c8fbfd1628545f3cce3154"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/linux-dependencies.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/linux-dependencies.stdout.txt",
+      "bytes": 806,
+      "sha256": "dd238d284dd0dc51f38d6fa57ccea66cd119f4ac9d6200a46208a753fb575787"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/linux-final-acceptance.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/linux-final-acceptance.stdout.txt",
+      "bytes": 1469,
+      "sha256": "bd9eb031df6101efea4c2385d44116ad47c4671ed4d97e3688e81b01832c200c"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/linux-final-build.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/linux-final-build.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/linux-final-dependency-health.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/linux-final-dependency-health.stdout.txt",
+      "bytes": 77,
+      "sha256": "0c5b209c2c9d7beca7249b2ac5fafa0bfe35d6effc3dd7b6203c736a64ac5984"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/linux-final-domain.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/linux-final-domain.stdout.txt",
+      "bytes": 65635,
+      "sha256": "47b7da272400db8c01184853d340b9c4e0fbb7def4a1f89b590c394a0be23eec"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/linux-final-entropy-tests.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/linux-final-entropy-tests.stdout.txt",
+      "bytes": 1478,
+      "sha256": "d1340ae26c8ad839a88d2acdce43f74563231166311a449b7a1ecd7f090cd464"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/linux-final-entropy.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/linux-final-entropy.stdout.txt",
+      "bytes": 64,
+      "sha256": "7054dc8c3d4cebfc57fd1c84dc0bd44d363b2fb711aabc9ac791a84860c6842a"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/linux-final-format-check.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/linux-final-format-check.stdout.txt",
+      "bytes": 66,
+      "sha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/linux-final-lint.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/linux-final-lint.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/linux-final-typecheck.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/linux-final-typecheck.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/linux-prepare.mjs",
+      "bytes": 1352,
+      "sha256": "4bbc2b507488d1ab949268fd75d6921f3fed6927137e14a59464996457eb320c"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/linux-run.sh",
+      "bytes": 326,
+      "sha256": "21a48f79a9d42109f46afdef3f4c0646edea8bb524f9f8364ae4ed035511812d"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/linux-source.json",
+      "bytes": 31540,
+      "sha256": "71fb88d1edb6ccc565b764a3448bceae4769cca755e04b529c84bfc1403a8148"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/openspec-strict.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/openspec-strict.stdout.txt",
+      "bytes": 49,
+      "sha256": "12fa2f22cdcc62fdc86da02965b984c0eec778dc02d2974b37017bcc25ae431a"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/regression-after.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/regression-after.stdout.txt",
+      "bytes": 2194,
+      "sha256": "906833a0b4dfef570157957ef11207e552e57ae36ad9826ac8ab6181c3f40544"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/regression-before.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/regression-before.stdout.txt",
+      "bytes": 6395,
+      "sha256": "5681b66d131435cd1b9c0335a6572a42c90bd6f6d6a8d4bd0b6ddac047f2bf59"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/verify.mjs",
+      "bytes": 1188,
+      "sha256": "afcd6b0d52a45813f22f8149d4ed692fdd18f2cb6f792289cb4f15c0962f4d25"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/win-final-acceptance.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/win-final-acceptance.stdout.txt",
+      "bytes": 1459,
+      "sha256": "a028be63f584f7b7e3bc1c71c0bfcfa634091885006a15daa8bbb21f000ee872"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/win-final-build.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/win-final-build.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/win-final-dependency-health.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/win-final-dependency-health.stdout.txt",
+      "bytes": 80,
+      "sha256": "c2573592f9c742e73c38e903b4b51ddd2be39d84f6bbeb48cb2ebb2040511858"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/win-final-domain.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/win-final-domain.stdout.txt",
+      "bytes": 65098,
+      "sha256": "59830c9067927f1ee9417ab16bc1fec3518f1b27e27e41437e2e30facacc25ad"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/win-final-entropy-tests.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/win-final-entropy-tests.stdout.txt",
+      "bytes": 1466,
+      "sha256": "3cdcbde4a8babd2cc2b04997b7f13be2936a36ede863f9417a399f2c2e30eef7"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/win-final-entropy.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/win-final-entropy.stdout.txt",
+      "bytes": 64,
+      "sha256": "7054dc8c3d4cebfc57fd1c84dc0bd44d363b2fb711aabc9ac791a84860c6842a"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/win-final-format-check.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/win-final-format-check.stdout.txt",
+      "bytes": 66,
+      "sha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/win-final-lint.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/win-final-lint.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/win-final-typecheck.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/win-final-typecheck.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "unchangedImplementationFrom049": [
+    {
+      "path": "AGENTS.md",
+      "bytes": 19607,
+      "sha256": "bedb6d5eeeaafc17662a4dc4ef02192ad9993a26059c1dc15f24bf6d953be5a4"
+    },
+    {
+      "path": "skills/delivery/final/SKILL.md",
+      "bytes": 2998,
+      "sha256": "5153ad7f6cbe943518b59a9577ed23af758c869f8175d66969ac51f05f0d7431"
+    },
+    {
+      "path": "skills/delivery/repository-integration/SKILL.md",
+      "bytes": 2155,
+      "sha256": "b2a2c2b5635acceef8eebb3199b952e1bc5edbde0943a0aa807e17580c4f79ab"
+    },
+    {
+      "path": "skills/delivery/start/SKILL.md",
+      "bytes": 1714,
+      "sha256": "ba418022138e015a64beae064857ad03af8e7f4c085ca999b87bedd296d3f457"
+    },
+    {
+      "path": "src/domain/delivery-final-operation.ts",
+      "bytes": 5365,
+      "sha256": "ded95c9b6c5f65cecc76bbdb7b1ddb7c4332c5a5620269dc7aac6dc2b6bb38d4"
+    },
+    {
+      "path": "src/domain/delivery-finalization.ts",
+      "bytes": 5790,
+      "sha256": "cd0e4c395423ea05abdc88398d3b18446fab68eb209203386327dc0f40317c0a"
+    },
+    {
+      "path": "src/domain/delivery-operation-execution.ts",
+      "bytes": 17038,
+      "sha256": "0e09ea11cc331d8d634e3357f767fd4689363164d78a70b47a570a0021f5f9b4"
+    },
+    {
+      "path": "src/domain/delivery-repository-integration-execution.ts",
+      "bytes": 19807,
+      "sha256": "fbc3814c448b729161aa2911abc26084a712108d9baebf67dcd415d0196dce1b"
+    },
+    {
+      "path": "src/domain/delivery-repository-integration-operation.ts",
+      "bytes": 4499,
+      "sha256": "c838521ef4bd17f79f47e085936408877e0da0e0bcfb2a4033fa564037922df1"
+    },
+    {
+      "path": "src/domain/delivery-start-execution.ts",
+      "bytes": 8014,
+      "sha256": "627be7b1d880613046e10092a9cccb80c3b97b2a7466750bc350dac64cada3db"
+    },
+    {
+      "path": "src/internal/delivery-final-coordination.ts",
+      "bytes": 15941,
+      "sha256": "1d73dc9069c45eefbfd8d36dd7e4bc0c4e49036ae7e64de36e1acfd78b21c4a6"
+    },
+    {
+      "path": "src/internal/delivery-repository-integration-ref.ts",
+      "bytes": 1570,
+      "sha256": "302a8102dad4817e42acdff4145896950188c2b819f6436338d8ac83a83825d7"
+    },
+    {
+      "path": "src/internal/delivery-required-evidence-source.ts",
+      "bytes": 7734,
+      "sha256": "8cf72befd03a83dbaffe967d93c640b43e6d34c9296f156330ba0b9781825259"
+    },
+    {
+      "path": "src/internal/delivery-required-evidence.ts",
+      "bytes": 684,
+      "sha256": "b5fbbbae2eb6796fdcb6898f7921a6db7bf68a383f38d21c8ae0be1a00600045"
+    },
+    {
+      "path": "src/internal/delivery-start-content.ts",
+      "bytes": 5213,
+      "sha256": "d204ae70be7c6c4834982132967d3f596e10edd53698a7fbbf8cf4a72bd95492"
+    },
+    {
+      "path": "src/internal/full-test-current.ts",
+      "bytes": 6998,
+      "sha256": "de11cff5ecd49c3967fa8f7164d8d93106a405102cffa16fa84ba7f2ec348ce8"
+    },
+    {
+      "path": "tests/unit/domain/delivery-continuity-semantic-boundaries.test.ts",
+      "bytes": 10821,
+      "sha256": "3fb80daf08e4a6bad5f3341517b47597669ac0efc27f2c3b78fe261fc6a9bf2c"
+    },
+    {
+      "path": "tests/unit/domain/delivery-final-execution.test.ts",
+      "bytes": 16870,
+      "sha256": "3ebc80d262323668857433d7895b77469f82eb74821dbdd3b2deacf1501a6b59"
+    },
+    {
+      "path": "tests/unit/domain/delivery-final-fixture.ts",
+      "bytes": 10037,
+      "sha256": "79c5057b17fa678e2d67f1d98887d86e987eef5a04d2d23e8c803666a4e75222"
+    },
+    {
+      "path": "tests/unit/domain/delivery-final-projection.test.ts",
+      "bytes": 2881,
+      "sha256": "a6e125b3894e703eb07a4aee334582fbbb680778322f39263d73bbf512523b75"
+    },
+    {
+      "path": "tests/unit/domain/delivery-finalization-reader.test.ts",
+      "bytes": 4874,
+      "sha256": "4bcb655d1c06e84b9b5c4e3a918623ff61046be271c67e03ac2732f6110b92cf"
+    },
+    {
+      "path": "tests/unit/domain/delivery-guidance-contract.test.ts",
+      "bytes": 2816,
+      "sha256": "839f80541813ae1f9d1ee11ce2aa3ba8766e7733bca5ff9597c2d52557767b6b"
+    },
+    {
+      "path": "tests/unit/domain/delivery-integration-fixture.ts",
+      "bytes": 4850,
+      "sha256": "f70815bbe91b0f2c58f2ba6345519a9b7bce762894bbefcb48d36bd37d331451"
+    },
+    {
+      "path": "tests/unit/domain/delivery-integration-projection.test.ts",
+      "bytes": 2946,
+      "sha256": "effd948d5806193ebe2c9b895538d5f5eae756a7905742b1f39d2348515bd772"
+    },
+    {
+      "path": "tests/unit/domain/delivery-operation-execution.test.ts",
+      "bytes": 17073,
+      "sha256": "cbb479ea682d62784d25d861870ccac2a857214327c17e5038dfa7cef49aa128"
+    },
+    {
+      "path": "tests/unit/domain/delivery-operation-fixture.ts",
+      "bytes": 1446,
+      "sha256": "8ab1307e748093c9c58b19a7f5289e6bdd8c934fb6af9466fc609c006e948264"
+    },
+    {
+      "path": "tests/unit/domain/delivery-repository-integration-accepted-object.test.ts",
+      "bytes": 11802,
+      "sha256": "2c3bc79f515f122007f3edfb045246178d8def5baea91977df7b303f6025eebe"
+    },
+    {
+      "path": "tests/unit/domain/delivery-repository-integration-execution.test.ts",
+      "bytes": 10783,
+      "sha256": "5f5d8ee298139c64ea1286db6a05fefe11faa41daa00012546a25ee7acc96b1a"
+    },
+    {
+      "path": "tests/unit/domain/delivery-required-evidence-source.test.ts",
+      "bytes": 9053,
+      "sha256": "c4612f3ceaff7807576dbde247cbc43b386bcf86ba420a946da5acfb3694a2c7"
+    },
+    {
+      "path": "tests/unit/domain/delivery-run-evidence-fixture.ts",
+      "bytes": 2142,
+      "sha256": "ca1e8bc03b77bf22f721f428c6f7f9b52a8d8d31a0d1d61f0a16224833e8a7d1"
+    },
+    {
+      "path": "tests/unit/domain/delivery-start-execution.test.ts",
+      "bytes": 10110,
+      "sha256": "3861f69d3421887349ab45b557105fd764870572b3a2baba19756d46af96a688"
+    },
+    {
+      "path": "tests/unit/domain/delivery-without-archify.test.ts",
+      "bytes": 9898,
+      "sha256": "2dacfd06f4f951340981ff171e82a2135721c49a488d08ad6effa638d35229e4"
+    }
+  ],
+  "modifiedImplementationPaths": [
+    "src/domain/delivery-final-execution.ts",
+    "tests/unit/domain/delivery-final-confirmation.test.ts"
+  ],
+  "productionDeltaExactlyGuardAndActiveObservation": true,
+  "planningUnchangedFrom049": true,
+  "approved047ContractUnchanged": true,
+  "removedPaths": [
+    "tests/unit/domain/delivery-evidence-outcome-fixture.ts",
+    "tests/unit/domain/delivery-start-validation-fixture.ts"
+  ],
+  "linuxInputs": [
+    {
+      "path": "src/README.md",
+      "bytes": 1099,
+      "sha256": "235f5c93579a1596741ce700af9b8d8519a0600a7a6b3aec979ba0f7af4931ea"
+    },
+    {
+      "path": "src/cli/action-context.ts",
+      "bytes": 5676,
+      "sha256": "cd724c9e22a94bd7ffa2833acf6c1c89ca66fdf448d1a58c2389dcf3ea67b6f5"
+    },
+    {
+      "path": "src/cli/checkpoint-authorization.ts",
+      "bytes": 1684,
+      "sha256": "5c9779900ba8fc508171979a428f821b246c040404cfa50d9b23ec3ab560e6f8"
+    },
+    {
+      "path": "src/cli/current-run-chain.ts",
+      "bytes": 8949,
+      "sha256": "98b05afe36166d2ed983159d4dce99a46b1c7a0de41a8fbd7584b02df86978df"
+    },
+    {
+      "path": "src/cli/entrypoint.ts",
+      "bytes": 2809,
+      "sha256": "366a22951c50b8c9389ef8cf70c9e3e4ef2384755a23110fbacfc2921e0cb2d3"
+    },
+    {
+      "path": "src/cli/foundation-cli.ts",
+      "bytes": 6500,
+      "sha256": "94b84df2b119f8c502a5397853470ba415dcf57abada940aeee2c63b374f61db"
+    },
+    {
+      "path": "src/cli/request.ts",
+      "bytes": 6578,
+      "sha256": "fd91fe0064bf039f73b6d50ef3bdae89e22ca6d49363ddc9b8c68e46641c14cc"
+    },
+    {
+      "path": "src/cli/trusted-change-coordination.ts",
+      "bytes": 6242,
+      "sha256": "d167891ed9e0b9c73e96492d06220203578ea7f79ab2dc3ccdbec7f484dd14f1"
+    },
+    {
+      "path": "src/domain/action-guidance-execution.ts",
+      "bytes": 3104,
+      "sha256": "0abdc391aac82ae9718c4fed0ec458187bb8fc1ea48ef02a0d6e5f37b0a7c574"
+    },
+    {
+      "path": "src/domain/action-lifecycle.ts",
+      "bytes": 3626,
+      "sha256": "f52ae49fc776f7e938da19e82ae7e57aed34cfc49deafe6587aa7a0e1c1a1eff"
+    },
+    {
+      "path": "src/domain/action-package-result-admission.ts",
+      "bytes": 7460,
+      "sha256": "a72115811f8ba69fadf8f1be9cf5a1f872c8dc14d54bbc8662960df70b45131a"
+    },
+    {
+      "path": "src/domain/applicable-check-execution.ts",
+      "bytes": 16803,
+      "sha256": "f9caa051ccaec0f1fa245167de95c242d571311729b526cf087b63e47e9ffee6"
+    },
+    {
+      "path": "src/domain/authority.ts",
+      "bytes": 3375,
+      "sha256": "3f313046ce78508efbf43fbbb2c5dc4d239f59a555476eba1d0fd17f7ae283c7"
+    },
+    {
+      "path": "src/domain/cross-delivery-memo-persistence.ts",
+      "bytes": 4843,
+      "sha256": "d193982cd1f41de6f08fe04f713123eed68635a286b5c074891e1ed38304293a"
+    },
+    {
+      "path": "src/domain/cross-delivery-memo.ts",
+      "bytes": 7688,
+      "sha256": "bef8b5a0bb1fafca95c96b27f83794e73278af36b23842e9a777e922e5a6f913"
+    },
+    {
+      "path": "src/domain/delivery-final-execution.ts",
+      "bytes": 13221,
+      "sha256": "fe16380ed43675340bb35b478188571174c0495a7f23c6fdd0b331e1066cd64b"
+    },
+    {
+      "path": "src/domain/delivery-final-operation.ts",
+      "bytes": 5365,
+      "sha256": "ded95c9b6c5f65cecc76bbdb7b1ddb7c4332c5a5620269dc7aac6dc2b6bb38d4"
+    },
+    {
+      "path": "src/domain/delivery-finalization.ts",
+      "bytes": 5790,
+      "sha256": "cd0e4c395423ea05abdc88398d3b18446fab68eb209203386327dc0f40317c0a"
+    },
+    {
+      "path": "src/domain/delivery-full-test-execution.ts",
+      "bytes": 9451,
+      "sha256": "9022e0c19ea8d47ee2559e6a91c834977569c41f82126f7b14198ef62497eabd"
+    },
+    {
+      "path": "src/domain/delivery-operation-execution.ts",
+      "bytes": 17038,
+      "sha256": "0e09ea11cc331d8d634e3357f767fd4689363164d78a70b47a570a0021f5f9b4"
+    },
+    {
+      "path": "src/domain/delivery-repository-integration-execution.ts",
+      "bytes": 19807,
+      "sha256": "fbc3814c448b729161aa2911abc26084a712108d9baebf67dcd415d0196dce1b"
+    },
+    {
+      "path": "src/domain/delivery-repository-integration-operation.ts",
+      "bytes": 4499,
+      "sha256": "c838521ef4bd17f79f47e085936408877e0da0e0bcfb2a4033fa564037922df1"
+    },
+    {
+      "path": "src/domain/delivery-start-execution.ts",
+      "bytes": 8014,
+      "sha256": "627be7b1d880613046e10092a9cccb80c3b97b2a7466750bc350dac64cada3db"
+    },
+    {
+      "path": "src/domain/identity.ts",
+      "bytes": 1346,
+      "sha256": "666c4a0c388ae15134dd76977fc5a0549bb11be8228b86c7d911b9b88b147f66"
+    },
+    {
+      "path": "src/domain/index.ts",
+      "bytes": 1060,
+      "sha256": "e5532685223b3016cfcf77a7e9255528bed7df36ebf5cc1551ba3a504b0145cf"
+    },
+    {
+      "path": "src/domain/managed-tool-resolution.ts",
+      "bytes": 11626,
+      "sha256": "d1857f12b9524cfbffabb6de58b2b1f231c4614bc0889c59b832331d1de333ec"
+    },
+    {
+      "path": "src/domain/openspec-observation.ts",
+      "bytes": 11568,
+      "sha256": "bd5d762d50bac5d042fe937cf86d94155a59f352afa84cb339ed9bcaefe86822"
+    },
+    {
+      "path": "src/domain/policy-and-next-boundary.ts",
+      "bytes": 12628,
+      "sha256": "36b4e6ec74fe3f01b3377c15491ed1832b419a7ea275a8eded57507129a0001a"
+    },
+    {
+      "path": "src/domain/run-result-persistence.ts",
+      "bytes": 16893,
+      "sha256": "6dbb7d81393f65da53c97c7ef6fb6f69d7846dad32348f825482922340129e2f"
+    },
+    {
+      "path": "src/domain/single-action-execution.ts",
+      "bytes": 5134,
+      "sha256": "03afdc19c11aab6bb557a75b27c0c16e92d1443b96dec2504714532e94fd470a"
+    },
+    {
+      "path": "src/domain/state.ts",
+      "bytes": 661,
+      "sha256": "3772e34b0c52b59e3f5e6b32b18722fa2299820fd58095bafb2d2ac88c45019c"
+    },
+    {
+      "path": "src/internal/applicable-check-candidate.ts",
+      "bytes": 14943,
+      "sha256": "dac0cbafeb68dfa687c2775827c386be00012790cd18d974b2f659f921e4dbc6"
+    },
+    {
+      "path": "src/internal/applicable-check-facts.ts",
+      "bytes": 2688,
+      "sha256": "e8a42bc11aa106b31839b6e7b8830fb60a3250c092bcfe9783b6af7ed7191fb7"
+    },
+    {
+      "path": "src/internal/applicable-check-identity.ts",
+      "bytes": 2512,
+      "sha256": "f8873e9f5ca32cbea5b099a48c8094c2f4f51cebd84026e6a150619b0d08acf3"
+    },
+    {
+      "path": "src/internal/applicable-check-material.ts",
+      "bytes": 1240,
+      "sha256": "0c0042bd0f5b3da36faf7870a1f9662e367b79c2e21a5ef5d53b58544b37ce4e"
+    },
+    {
+      "path": "src/internal/applicable-check-process.ts",
+      "bytes": 1244,
+      "sha256": "32f02089106c28b5a3a0b461a85e6bcda6b667a18ddad7ceedb75c0fbb0184fc"
+    },
+    {
+      "path": "src/internal/delivery-final-coordination.ts",
+      "bytes": 15941,
+      "sha256": "1d73dc9069c45eefbfd8d36dd7e4bc0c4e49036ae7e64de36e1acfd78b21c4a6"
+    },
+    {
+      "path": "src/internal/delivery-repository-integration-git.ts",
+      "bytes": 3213,
+      "sha256": "92759ff3b5fe0c3181d47c4fb1fe9b7f4020975fa50e7ee558b9a6036dee71d3"
+    },
+    {
+      "path": "src/internal/delivery-repository-integration-ref.ts",
+      "bytes": 1570,
+      "sha256": "302a8102dad4817e42acdff4145896950188c2b819f6436338d8ac83a83825d7"
+    },
+    {
+      "path": "src/internal/delivery-repository-integration-source.ts",
+      "bytes": 5161,
+      "sha256": "b6518d36521e3252c2e0695fe7e0ecb5c1aaaacef8bfe9b149ffff6950a5a331"
+    },
+    {
+      "path": "src/internal/delivery-required-evidence-source.ts",
+      "bytes": 7734,
+      "sha256": "8cf72befd03a83dbaffe967d93c640b43e6d34c9296f156330ba0b9781825259"
+    },
+    {
+      "path": "src/internal/delivery-required-evidence.ts",
+      "bytes": 684,
+      "sha256": "b5fbbbae2eb6796fdcb6898f7921a6db7bf68a383f38d21c8ae0be1a00600045"
+    },
+    {
+      "path": "src/internal/delivery-start-content.ts",
+      "bytes": 5213,
+      "sha256": "d204ae70be7c6c4834982132967d3f596e10edd53698a7fbbf8cf4a72bd95492"
+    },
+    {
+      "path": "src/internal/full-test-current.ts",
+      "bytes": 6998,
+      "sha256": "de11cff5ecd49c3967fa8f7164d8d93106a405102cffa16fa84ba7f2ec348ce8"
+    },
+    {
+      "path": "src/internal/full-test-input.ts",
+      "bytes": 10355,
+      "sha256": "ae4fccc6db6ff2624801e82808331a28f8e70d32a57a41a75fc847c85f17bc96"
+    },
+    {
+      "path": "src/internal/full-test-process.ts",
+      "bytes": 3599,
+      "sha256": "862be4823d4593f59345089969629d9fe6c95ec693ab5a26bbe64ce1b2b88ca7"
+    },
+    {
+      "path": "src/internal/full-test-result.ts",
+      "bytes": 3201,
+      "sha256": "d2a9c94f58cceddf83571d4c14dec8e3b1ac6d0ad31494d51659697861d8cb77"
+    },
+    {
+      "path": "src/internal/full-test-storage.ts",
+      "bytes": 6917,
+      "sha256": "9c6d7c917f51c2e44ba46252c3632a2f917d04f8eec750908259bd0abf0a3354"
+    },
+    {
+      "path": "src/internal/full-test-tool.ts",
+      "bytes": 5207,
+      "sha256": "6c1cbfc7a37f6de7c033ba5a9ecef2b0362a3d209789a3707255df966219e3f5"
+    },
+    {
+      "path": "src/internal/manager-installation.ts",
+      "bytes": 1816,
+      "sha256": "9bf5b0f251b46d6ef6dac6e700339d9640399a98be3fbeb7ffe0da7489552998"
+    },
+    {
+      "path": "src/internal/openspec-process-outcome.ts",
+      "bytes": 295,
+      "sha256": "e0ddead78362a41d3193b7aaa26c56a2d85a101209eb82f01fa2fa5fcd5a01ed"
+    },
+    {
+      "path": "tests/README.md",
+      "bytes": 811,
+      "sha256": "eeda53198e63fd4d1c42e75829b0b0ee9def5d875af7312041ee0536ead49487"
+    },
+    {
+      "path": "tests/acceptance/foundation-manager-fixture.ts",
+      "bytes": 7890,
+      "sha256": "aee9a528eeff173ddc74147d7889bdf3695d37d21670d9d5a6e5ed4845db7134"
+    },
+    {
+      "path": "tests/acceptance/foundation-manager.acceptance.test.ts",
+      "bytes": 14429,
+      "sha256": "6e59e7bd916586d4dfa4f36d0e2982fd383e98126b35186637922d4444a885eb"
+    },
+    {
+      "path": "tests/fixtures/delivery/legacy-architecture-package.json",
+      "bytes": 1137,
+      "sha256": "ecf402d3ca4d3d27d8d545428c6e5ea6ee6d5990cd051bf3db29adbff3d2b964"
+    },
+    {
+      "path": "tests/unit/bootstrap/author-history.test.ts",
+      "bytes": 8182,
+      "sha256": "9b1c51157b42fbe64bab12b8b54b125e15f6cf7a5133517054b6bf588d0a54a3"
+    },
+    {
+      "path": "tests/unit/bootstrap/author-material-boundary.test.ts",
+      "bytes": 824,
+      "sha256": "61dd18e5be9935237aaf6bf7aa7cdd251e3ec072cf1a9f3fa82f81e728c54c74"
+    },
+    {
+      "path": "tests/unit/bootstrap/reviewer-history.test.ts",
+      "bytes": 3428,
+      "sha256": "a38b755e691340fe01349ebef023cc769b845b1c7e1febf109bac7f7504a8daa"
+    },
+    {
+      "path": "tests/unit/domain/action-context-fixture.ts",
+      "bytes": 2625,
+      "sha256": "60beb485d01345adce488a760aee2a21d54c07f8ea76949ffa4fbe29dfc7460b"
+    },
+    {
+      "path": "tests/unit/domain/action-context.test.ts",
+      "bytes": 4324,
+      "sha256": "e7b6b07494e4d8d24b2dea04b3eb75ec0c29870d9363d9b5fb7ff30652e3705d"
+    },
+    {
+      "path": "tests/unit/domain/action-guidance-execution.test.ts",
+      "bytes": 8848,
+      "sha256": "50eb442e0bd4c4cf675cab347975932a14d69da7d8c835fe7ae3b09a4582c2f0"
+    },
+    {
+      "path": "tests/unit/domain/action-lifecycle.test.ts",
+      "bytes": 4913,
+      "sha256": "fd32be16ba4b5147da41a1d2965463a6c23e6ab8b842d3611d1120ab079b55f6"
+    },
+    {
+      "path": "tests/unit/domain/action-package-result-admission.test.ts",
+      "bytes": 9638,
+      "sha256": "c76c75b4d427f0cee4facf9015828ab6527e05410fe3fb3550b8d8c3a19b141b"
+    },
+    {
+      "path": "tests/unit/domain/agent-how-failure.test.ts",
+      "bytes": 2302,
+      "sha256": "5fc70687667218a34f11a59d3553bde15ff384714e5fc9cf183f275ba13fa59d"
+    },
+    {
+      "path": "tests/unit/domain/agent-how-fixture.ts",
+      "bytes": 3084,
+      "sha256": "e14aa19b980c102bcbe8f19424cd99161b380f004b22d94b67036a817779526f"
+    },
+    {
+      "path": "tests/unit/domain/agent-how-material.test.ts",
+      "bytes": 2416,
+      "sha256": "669ab55e4dd36ef0e83cf0a5382f787a8f795368ffacc5857fd5def44091a78b"
+    },
+    {
+      "path": "tests/unit/domain/agent-how-prepared.test.ts",
+      "bytes": 5312,
+      "sha256": "5290bff783b5fdb4d63f6917588b954ef015906d4d551969fc743d0da36a4a58"
+    },
+    {
+      "path": "tests/unit/domain/agent-how-record.test.ts",
+      "bytes": 5183,
+      "sha256": "8b69b6990712617a0125c6add6aa9923851229bc9236c347d84cf66b58bb8580"
+    },
+    {
+      "path": "tests/unit/domain/applicable-check-admission.test.ts",
+      "bytes": 15087,
+      "sha256": "3e4d4d55256103ce8078805f4a6ccdb61db27a1d776a61e9517331dd5ca8e396"
+    },
+    {
+      "path": "tests/unit/domain/applicable-check-execution.test.ts",
+      "bytes": 19337,
+      "sha256": "7a6d953e6d8e9704dc704b7e628d917d4399b561c9a1dba8cb55dae269dcb584"
+    },
+    {
+      "path": "tests/unit/domain/author-action-guidance.test.ts",
+      "bytes": 12087,
+      "sha256": "2eff7fcabecbd8d351fd6e51752aa291030f9a918d1436d1c6126d1bbb881d7f"
+    },
+    {
+      "path": "tests/unit/domain/author-stage-guidance.test.ts",
+      "bytes": 3010,
+      "sha256": "0d40b9025bcdbd230e8084b4e4849349220d8c1e9cdd1b135ce4498966f57d87"
+    },
+    {
+      "path": "tests/unit/domain/authority.test.ts",
+      "bytes": 3931,
+      "sha256": "9e425fd8459ad2bc34ece07beef681f3a71b0ee3d677a114ee3b1f83baae1c10"
+    },
+    {
+      "path": "tests/unit/domain/code-gate-boundary.test.ts",
+      "bytes": 3097,
+      "sha256": "5b8fb4575619a78d93df424a05d024a5b755a081d4acf84f7b1fa233cf505369"
+    },
+    {
+      "path": "tests/unit/domain/cross-delivery-memo-persistence.test.ts",
+      "bytes": 5759,
+      "sha256": "627c567d4dc0b8bc9eaa012d6f21d85023045ba551c7a29c4f1f15399936bb3a"
+    },
+    {
+      "path": "tests/unit/domain/cross-delivery-memo.test.ts",
+      "bytes": 6122,
+      "sha256": "0c5bb830742691236b4ca382c6495cf628b4c80f68d799f9fd42a4a2654cd447"
+    },
+    {
+      "path": "tests/unit/domain/current-run-chain.test.ts",
+      "bytes": 7890,
+      "sha256": "0da6f6a10c408edad9b7ee758974602e049785fc58b71cfdece658dfb5b7b846"
+    },
+    {
+      "path": "tests/unit/domain/delivery-continuity-semantic-boundaries.test.ts",
+      "bytes": 10821,
+      "sha256": "3fb80daf08e4a6bad5f3341517b47597669ac0efc27f2c3b78fe261fc6a9bf2c"
+    },
+    {
+      "path": "tests/unit/domain/delivery-final-confirmation.test.ts",
+      "bytes": 11085,
+      "sha256": "dc3cb9f01cd5b31d9b4cf47b207446ea98d65b6f96224f1c362f1e2ad953cd56"
+    },
+    {
+      "path": "tests/unit/domain/delivery-final-execution.test.ts",
+      "bytes": 16870,
+      "sha256": "3ebc80d262323668857433d7895b77469f82eb74821dbdd3b2deacf1501a6b59"
+    },
+    {
+      "path": "tests/unit/domain/delivery-final-fixture.ts",
+      "bytes": 10037,
+      "sha256": "79c5057b17fa678e2d67f1d98887d86e987eef5a04d2d23e8c803666a4e75222"
+    },
+    {
+      "path": "tests/unit/domain/delivery-final-projection.test.ts",
+      "bytes": 2881,
+      "sha256": "a6e125b3894e703eb07a4aee334582fbbb680778322f39263d73bbf512523b75"
+    },
+    {
+      "path": "tests/unit/domain/delivery-finalization-reader.test.ts",
+      "bytes": 4874,
+      "sha256": "4bcb655d1c06e84b9b5c4e3a918623ff61046be271c67e03ac2732f6110b92cf"
+    },
+    {
+      "path": "tests/unit/domain/delivery-full-test-execution.test.ts",
+      "bytes": 13030,
+      "sha256": "9b8c81662e44236ee8994efbec6fe19f70fe55b8c808b4fe8d3bbcc0da44446d"
+    },
+    {
+      "path": "tests/unit/domain/delivery-guidance-contract.test.ts",
+      "bytes": 2816,
+      "sha256": "839f80541813ae1f9d1ee11ce2aa3ba8766e7733bca5ff9597c2d52557767b6b"
+    },
+    {
+      "path": "tests/unit/domain/delivery-integration-fixture.ts",
+      "bytes": 4850,
+      "sha256": "f70815bbe91b0f2c58f2ba6345519a9b7bce762894bbefcb48d36bd37d331451"
+    },
+    {
+      "path": "tests/unit/domain/delivery-integration-projection.test.ts",
+      "bytes": 2946,
+      "sha256": "effd948d5806193ebe2c9b895538d5f5eae756a7905742b1f39d2348515bd772"
+    },
+    {
+      "path": "tests/unit/domain/delivery-operation-execution.test.ts",
+      "bytes": 17073,
+      "sha256": "cbb479ea682d62784d25d861870ccac2a857214327c17e5038dfa7cef49aa128"
+    },
+    {
+      "path": "tests/unit/domain/delivery-operation-fixture.ts",
+      "bytes": 1446,
+      "sha256": "8ab1307e748093c9c58b19a7f5289e6bdd8c934fb6af9466fc609c006e948264"
+    },
+    {
+      "path": "tests/unit/domain/delivery-repository-integration-accepted-object.test.ts",
+      "bytes": 11802,
+      "sha256": "2c3bc79f515f122007f3edfb045246178d8def5baea91977df7b303f6025eebe"
+    },
+    {
+      "path": "tests/unit/domain/delivery-repository-integration-execution.test.ts",
+      "bytes": 10783,
+      "sha256": "5f5d8ee298139c64ea1286db6a05fefe11faa41daa00012546a25ee7acc96b1a"
+    },
+    {
+      "path": "tests/unit/domain/delivery-required-evidence-source.test.ts",
+      "bytes": 9053,
+      "sha256": "c4612f3ceaff7807576dbde247cbc43b386bcf86ba420a946da5acfb3694a2c7"
+    },
+    {
+      "path": "tests/unit/domain/delivery-run-evidence-fixture.ts",
+      "bytes": 2142,
+      "sha256": "ca1e8bc03b77bf22f721f428c6f7f9b52a8d8d31a0d1d61f0a16224833e8a7d1"
+    },
+    {
+      "path": "tests/unit/domain/delivery-start-execution.test.ts",
+      "bytes": 10110,
+      "sha256": "3861f69d3421887349ab45b557105fd764870572b3a2baba19756d46af96a688"
+    },
+    {
+      "path": "tests/unit/domain/delivery-without-archify.test.ts",
+      "bytes": 9898,
+      "sha256": "2dacfd06f4f951340981ff171e82a2135721c49a488d08ad6effa638d35229e4"
+    },
+    {
+      "path": "tests/unit/domain/foundation-cli-entrypoint.test.ts",
+      "bytes": 3083,
+      "sha256": "512463ff206c09c39342c473ba95f9a8485672142f2755b590616362f35f28ff"
+    },
+    {
+      "path": "tests/unit/domain/foundation-cli-surface.test.ts",
+      "bytes": 7526,
+      "sha256": "dd3662d6b2adde9ba1ce113ab2e0099a0683a92575eceaf3688786acf2cd805d"
+    },
+    {
+      "path": "tests/unit/domain/full-test-input.test.ts",
+      "bytes": 5503,
+      "sha256": "c0b1be66f26b46cb5b46b005875f775b11bcfa782889857afdcb1031ce8beb52"
+    },
+    {
+      "path": "tests/unit/domain/full-test-revision.test.ts",
+      "bytes": 12678,
+      "sha256": "36a2c63c27ae51f58d99d66f105a32576683b35b00e90a76a02df325ba616ce7"
+    },
+    {
+      "path": "tests/unit/domain/full-test-storage.test.ts",
+      "bytes": 2062,
+      "sha256": "39caf49b336096b212a5305033439313973b7348e935c5b3dd9ec602c25daa75"
+    },
+    {
+      "path": "tests/unit/domain/identity.test.ts",
+      "bytes": 1820,
+      "sha256": "7b350d139b6a05a582b7c5b5b7f8835b657819fbb364ca8e12984f4a154aa32e"
+    },
+    {
+      "path": "tests/unit/domain/managed-tool-resolution.test.ts",
+      "bytes": 10283,
+      "sha256": "7de10b176f53bcbe24e9776262ec2fbc690aaed1cd3e613c56ef5e1764c2b470"
+    },
+    {
+      "path": "tests/unit/domain/manager-assets-boundary.test.ts",
+      "bytes": 3238,
+      "sha256": "d053ffdee79e32df8cefc1e082e86dc1ee466132f0a27d5c7548f567e6fb613d"
+    },
+    {
+      "path": "tests/unit/domain/manager-installation-fixture.ts",
+      "bytes": 370,
+      "sha256": "7dd9c86e5eff986efac3de3827b26824c80f3dc5641e9db978ec5d0b7699c672"
+    },
+    {
+      "path": "tests/unit/domain/manager-installation.test.ts",
+      "bytes": 1891,
+      "sha256": "2b45f33ddfe9b7fb54aa027d0361f21d72b5b70aeec3402dff7e8703ddd3d1fe"
+    },
+    {
+      "path": "tests/unit/domain/openspec-observation-boundary.test.ts",
+      "bytes": 8746,
+      "sha256": "83c4fbc6a5950b3ad1eca55b138147f088696e7af1fe83c97b807959da34b2d0"
+    },
+    {
+      "path": "tests/unit/domain/openspec-observation.test.ts",
+      "bytes": 8688,
+      "sha256": "e54995f9f6a209763d69edbc5cad19917d9d50a609205a17f075aa98ca46be66"
+    },
+    {
+      "path": "tests/unit/domain/policy-and-next-boundary.test.ts",
+      "bytes": 9159,
+      "sha256": "2bb79653d0cfe972cc0f779da7b003dee69fbed9aa6d3bd3cbc4c31e45565502"
+    },
+    {
+      "path": "tests/unit/domain/policy-owner-correction.test.ts",
+      "bytes": 9013,
+      "sha256": "9ead5235e970c00db4df4febb00ea3f1f0ad20c621927ea8e20be747274a9168"
+    },
+    {
+      "path": "tests/unit/domain/raw-stream-attributes.test.ts",
+      "bytes": 2434,
+      "sha256": "ccdc68f2dd511340a33ebd296a5f78800ea0c2e4ff30a7a6f3b6ca27c6bdd227"
+    },
+    {
+      "path": "tests/unit/domain/reviewer-action-guidance.test.ts",
+      "bytes": 4435,
+      "sha256": "46ff4677f1a4918aebc98879ace3c8ddd72cc4c0bb5dbd36ee1fc13e5e5a0f23"
+    },
+    {
+      "path": "tests/unit/domain/run-group-selection.test.ts",
+      "bytes": 2780,
+      "sha256": "9f72bf210b7c557c8220c99d724b1f51d1c647a559bd172cc553f145079f6600"
+    },
+    {
+      "path": "tests/unit/domain/run-partial-preservation.test.ts",
+      "bytes": 2988,
+      "sha256": "e37f50c516f2241a1a7fef92076a1d56960f5b41ba641ad19b818c352dc5db89"
+    },
+    {
+      "path": "tests/unit/domain/run-result-persistence.test.ts",
+      "bytes": 12938,
+      "sha256": "df7860e364bf438424ade6e06cc0f7603aa90099a0d3a82e98f675da9faafc4e"
+    },
+    {
+      "path": "tests/unit/domain/single-action-execution.test.ts",
+      "bytes": 13071,
+      "sha256": "f03fa1c0e50bac0b13e81cb7755be323be2d58e16f9d29505d366bc7c20baa5e"
+    },
+    {
+      "path": "tests/unit/domain/state.test.ts",
+      "bytes": 1280,
+      "sha256": "dd5c1081afb7120e6f00d2c4c8ec9c5b0ef0dc9b8f63d28e9567f4b8be8e01fb"
+    },
+    {
+      "path": "tests/unit/domain/trusted-change-coordination.test.ts",
+      "bytes": 11456,
+      "sha256": "9e62608d20848572a9bb867311e61cf65796a51130d7d78688bf23a24688cb8c"
+    },
+    {
+      "path": "tests/unit/domain/unreadable-guidance-fixture.ts",
+      "bytes": 5965,
+      "sha256": "4ef47bce81044ec0cc7b06c3c30c9bd648c1ae6e38a923aae5cba6b52d221af0"
+    },
+    {
+      "path": "tests/unit/quality/production-reachability.test.mjs",
+      "bytes": 3117,
+      "sha256": "ea9e4f9436fceb2ca285c72e2ecba2ac843e7f929218f49fbda7b84091ecd78b"
+    },
+    {
+      "path": "scripts/README.md",
+      "bytes": 461,
+      "sha256": "13a51293510396c2c57561cd609f7486dbff26e53004bb1f0a4f21e1a6d6f256"
+    },
+    {
+      "path": "scripts/build-production.mjs",
+      "bytes": 922,
+      "sha256": "6984d2ea55d874885731d2b6217bf9d10b8c77788648eebcc744862f1ca5df2b"
+    },
+    {
+      "path": "scripts/check-forbidden-tracked-artifacts.mjs",
+      "bytes": 1196,
+      "sha256": "0b821d01dc5f1b7494d7b95410f21b7b2e76eaf6d8b6fcdedfcab317e8d2c968"
+    },
+    {
+      "path": "scripts/check-production-reachability.mjs",
+      "bytes": 5447,
+      "sha256": "af35327c5fb35fe6c6db7f50fa3c9dbaabff5ff51c757636d2a222a034887ea7"
+    },
+    {
+      "path": "skills/README.md",
+      "bytes": 964,
+      "sha256": "e0bc49fb213b2389af6a008cc4af271807d44915cd045044f4c26064a6df674f"
+    },
+    {
+      "path": "skills/actions/README.md",
+      "bytes": 634,
+      "sha256": "f740bdc8a1d9a8a410775fb99ab4f58ad95cdc216970fac1bb0da893e4b600cc"
+    },
+    {
+      "path": "skills/actions/apply/SKILL.md",
+      "bytes": 15134,
+      "sha256": "ab65b6d2386f5f3c6752ab40d6d62a81de689d313b07bb8c821401de959577a5"
+    },
+    {
+      "path": "skills/actions/archive/SKILL.md",
+      "bytes": 17826,
+      "sha256": "efe2ae645d39dd497cde0d6f038a49fc73533e9ee47adefdc70ffce4c679fd05"
+    },
+    {
+      "path": "skills/actions/explore/SKILL.md",
+      "bytes": 17871,
+      "sha256": "c5313d0d2a4356dcd084e753a0a7fcd7df9056235621823cb347ddd499d0ac6b"
+    },
+    {
+      "path": "skills/actions/propose/SKILL.md",
+      "bytes": 14627,
+      "sha256": "aaa0d363c7cf70e100d2ccae6b62df86ac75bca096540505d41cdfdd98e545b6"
+    },
+    {
+      "path": "skills/actions/review-apply/SKILL.md",
+      "bytes": 15824,
+      "sha256": "5610e1604e57ee51a214c32bfccc7f45653157b0261c9aa3559a959c97fd42c5"
+    },
+    {
+      "path": "skills/actions/review-explore/SKILL.md",
+      "bytes": 15742,
+      "sha256": "cbc5c0227bb94ea777c07f6cb731a8e3a7efa1d409ff229ad2c21fe4f6369bfd"
+    },
+    {
+      "path": "skills/actions/review-propose/SKILL.md",
+      "bytes": 16465,
+      "sha256": "c47e22cce1e491aba5940b3e9ef3ad997d5193057e8732f51cb2e28a2f1fc384"
+    },
+    {
+      "path": "skills/actions/revise-apply/SKILL.md",
+      "bytes": 14211,
+      "sha256": "3146cb79acb5f909633f2570345b036c9d195f8a3940b9aa34fcd89d1caedca6"
+    },
+    {
+      "path": "skills/actions/revise-explore/SKILL.md",
+      "bytes": 13411,
+      "sha256": "e0cc3d393ad987b556e905cf035c45cef4a7b482ff04496176f1aaa62d489193"
+    },
+    {
+      "path": "skills/actions/revise-propose/SKILL.md",
+      "bytes": 13867,
+      "sha256": "5978d093d198610c907166bcfa30004a4b8a942584fa4dabddbeeede8d4cd1d6"
+    },
+    {
+      "path": "skills/delivery/final/SKILL.md",
+      "bytes": 2998,
+      "sha256": "5153ad7f6cbe943518b59a9577ed23af758c869f8175d66969ac51f05f0d7431"
+    },
+    {
+      "path": "skills/delivery/full-test/SKILL.md",
+      "bytes": 2295,
+      "sha256": "87cefd02307b01a7f2ed4824df9b179a999d816c045f4a75feb9ca63a417915d"
+    },
+    {
+      "path": "skills/delivery/repository-integration/SKILL.md",
+      "bytes": 2155,
+      "sha256": "b2a2c2b5635acceef8eebb3199b952e1bc5edbde0943a0aa807e17580c4f79ab"
+    },
+    {
+      "path": "skills/delivery/start/SKILL.md",
+      "bytes": 1714,
+      "sha256": "ba418022138e015a64beae064857ad03af8e7f4c085ca999b87bedd296d3f457"
+    },
+    {
+      "path": "skills/engineering/README.md",
+      "bytes": 318,
+      "sha256": "16eaaf0217222bd92e4a5d6ccc31073555b76a13d23d5c0291063a01170b5025"
+    },
+    {
+      "path": "skills/tools/openspec/SKILL.md",
+      "bytes": 1736,
+      "sha256": "a2350339a5318a84885e55b96f0537b78bee145a369ed9c035bb4486da8e9871"
+    },
+    {
+      "path": "skills/vendors/openspec/LICENSE",
+      "bytes": 1079,
+      "sha256": "c3c7235bea1214ab62df643473975c2e8b8848f528901a976693f7d069713e64"
+    },
+    {
+      "path": "skills/vendors/openspec/README.md",
+      "bytes": 623,
+      "sha256": "28ec3c79ef355a7603516503936ffb479b941f4633440f83a71a1366d2caee43"
+    },
+    {
+      "path": "skills/vendors/openspec/UPSTREAM.json",
+      "bytes": 496,
+      "sha256": "207d21394665a4359cf6a308a33f6619b715507a747ba79100dc5bc86d57e649"
+    },
+    {
+      "path": "skills/vendors/openspec/openspec-apply-change/SKILL.md",
+      "bytes": 8198,
+      "sha256": "0cf1cb26935b55d83e240631500c8cee484a7b241c84a705387c0eeb88676ccf"
+    },
+    {
+      "path": "skills/vendors/openspec/openspec-archive-change/SKILL.md",
+      "bytes": 10656,
+      "sha256": "3ad0def4d299469fdfd5b05e4842284d65558e6b28710b5962f7f214d6153855"
+    },
+    {
+      "path": "skills/vendors/openspec/openspec-bulk-archive-change/SKILL.md",
+      "bytes": 16894,
+      "sha256": "2d962cb0e4e03ef8fc579d79c6444be64833bc2eac27c990ff1ad5d972297db5"
+    },
+    {
+      "path": "skills/vendors/openspec/openspec-continue-change/SKILL.md",
+      "bytes": 6858,
+      "sha256": "5120ec867288e4a117949e333f980f51df79e641739c9f4a23df6656311af920"
+    },
+    {
+      "path": "skills/vendors/openspec/openspec-explore/SKILL.md",
+      "bytes": 16213,
+      "sha256": "7e0281fc4f094dcced0c5469e7cbceba2dce9f113f22a4e34efcdce4315edf81"
+    },
+    {
+      "path": "skills/vendors/openspec/openspec-ff-change/SKILL.md",
+      "bytes": 7965,
+      "sha256": "457be39012799e11581e43185b679c54a50182f3a58453d17c5444a24ab53926"
+    },
+    {
+      "path": "skills/vendors/openspec/openspec-new-change/SKILL.md",
+      "bytes": 3751,
+      "sha256": "0752814373e90dc368eb1f4c7fd4b15c3df1b26fa2d6a0e99232b15a29fe4f22"
+    },
+    {
+      "path": "skills/vendors/openspec/openspec-onboard/SKILL.md",
+      "bytes": 16483,
+      "sha256": "9add352e1582a7c80213006ef2d0acf188583541a931c209feb09d43ec6bb805"
+    },
+    {
+      "path": "skills/vendors/openspec/openspec-propose/SKILL.md",
+      "bytes": 11272,
+      "sha256": "c0537ce311115878e7e0a04e6ff4fc6456056f21024079c228b6b24325e38613"
+    },
+    {
+      "path": "skills/vendors/openspec/openspec-sync-specs/SKILL.md",
+      "bytes": 12483,
+      "sha256": "daf0e52b188a3010e1f494427eb6807fb61a68df653403759b2be54a3aa37e74"
+    },
+    {
+      "path": "skills/vendors/openspec/openspec-update-change/SKILL.md",
+      "bytes": 6925,
+      "sha256": "f9e08302d75e873e9ca801211e6151e3f9b663ac6205903e7d79b6520cea30f5"
+    },
+    {
+      "path": "skills/vendors/openspec/openspec-verify-change/SKILL.md",
+      "bytes": 7725,
+      "sha256": "02a810d3fb265df77ec22891cef25f0510fe0f07b608d837ba361debced81840"
+    },
+    {
+      "path": "config/actions/README.md",
+      "bytes": 380,
+      "sha256": "2ccee59b56eefb0c296d53a31fdbf9284acdb378a95e538188322bebacce322d"
+    },
+    {
+      "path": "config/tools/toolchain.lock.json",
+      "bytes": 555,
+      "sha256": "a0481fc8a3fddfbcdd65a504e0e7a065e6ab74a3a871af3ab8838d201eecd4a2"
+    },
+    {
+      "path": "config/verification/full-test.json",
+      "bytes": 2286,
+      "sha256": "32b03e4f1fa154586a2e29ca6cda849f630af29f75ff578b86b1bb90dc186686"
+    },
+    {
+      "path": "package.json",
+      "bytes": 1865,
+      "sha256": "64534acf730ccad4b35f047aae4bbe643e60ee09de6883ab29004a5362e1d0f4"
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "bytes": 58165,
+      "sha256": "bf5ef071f2b4b8140f05493ebd53098660250f2cd5a834fe321ce8685bdb65e5"
+    },
+    {
+      "path": "pnpm-workspace.yaml",
+      "bytes": 29,
+      "sha256": "ac02d96368617c760f093cfe61fdec64b6244007ab3553e0d6621f706f54a353"
+    },
+    {
+      "path": "tsconfig.json",
+      "bytes": 327,
+      "sha256": "23dc32943d41310efc0bf7a1c2fd572a4f2fc4eaa9ed9d69d27e6cd47a36a3ff"
+    },
+    {
+      "path": "tsconfig.build.json",
+      "bytes": 239,
+      "sha256": "f7409e7831a908dde7393ab47744f0dc1dfa8bace136a6b495b517621580139c"
+    },
+    {
+      "path": "eslint.config.mjs",
+      "bytes": 874,
+      "sha256": "03d491ab3aa03396a4780763cfb99bfdfb0edac71e22239964423f30047ccadd"
+    },
+    {
+      "path": "dependency-cruiser.config.mjs",
+      "bytes": 1243,
+      "sha256": "b2faff94dd1bb58d59f645ebdde50788c976da9ff638ba3c5ce16500e256b833"
+    },
+    {
+      "path": ".node-version",
+      "bytes": 8,
+      "sha256": "08062faf0d7a2d22f5d7933c50e975dd1527034275597be7c1b3b9fd2b9d079a"
+    },
+    {
+      "path": ".gitattributes",
+      "bytes": 446,
+      "sha256": "2f2072c6d51c6756389cf400010bc6a8b4bfb4137529873f7066dc772f8bae85"
+    }
+  ],
+  "commandEvidence": [
+    {
+      "label": "regression-before",
+      "metadata": {
+        "command": "node",
+        "args": [
+          "--import",
+          "tsx",
+          "--test",
+          "tests/unit/domain/delivery-final-confirmation.test.ts"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-09-09T12:09:49.383Z",
+        "finishedAt": "2026-09-09T12:10:24.798Z",
+        "platform": "win32",
+        "node": "v22.23.2",
+        "exitCode": 1,
+        "signal": null,
+        "error": null
+      },
+      "tail": "  failureType: 'subtestsFailed'\n  error: '4 subtests failed'\n  code: 'ERR_TEST_FAILURE'\n  ...\n1..1\n# tests 15\n# suites 0\n# pass 10\n# fail 5\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 35289.5875\n"
+    },
+    {
+      "label": "regression-after",
+      "metadata": {
+        "command": "node",
+        "args": [
+          "--import",
+          "tsx",
+          "--test",
+          "tests/unit/domain/delivery-final-confirmation.test.ts"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-09-09T12:10:59.748Z",
+        "finishedAt": "2026-09-09T12:11:37.452Z",
+        "platform": "win32",
+        "node": "v22.23.2",
+        "exitCode": 0,
+        "signal": null,
+        "error": null
+      },
+      "tail": "  ---\n  duration_ms: 37105.367\n  type: 'test'\n  ...\n1..1\n# tests 15\n# suites 0\n# pass 15\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 37586.5732\n"
+    },
+    {
+      "label": "openspec-strict",
+      "metadata": {
+        "command": "node",
+        "args": [
+          "C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js",
+          "validate",
+          "simplify-delivery-coordination",
+          "--strict"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-09-09T12:11:32.989Z",
+        "finishedAt": "2026-09-09T12:11:34.475Z",
+        "platform": "win32",
+        "node": "v22.23.2",
+        "exitCode": 0,
+        "signal": null,
+        "error": null
+      },
+      "tail": "Change 'simplify-delivery-coordination' is valid\n"
+    },
+    {
+      "label": "linux-container",
+      "metadata": {
+        "command": "docker",
+        "args": [
+          "run",
+          "--rm",
+          "--network",
+          "none",
+          "--platform",
+          "linux/amd64",
+          "--mount",
+          "type=bind,source=D:/Projects/flowkit-next,target=/source,readonly",
+          "--mount",
+          "type=bind,source=D:/Projects/flowkit-next/.flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-051-revise-apply/,target=/evidence",
+          "--mount",
+          "type=volume,source=flowkit-d05-012-runtime-03,target=/runtime,readonly",
+          "--mount",
+          "type=volume,source=flowkit-d05-012-pnpm-store,target=/store",
+          "--mount",
+          "type=volume,source=flowkit-d05-012-pnpm-cache,target=/root/.cache/pnpm",
+          "--tmpfs",
+          "/work:exec",
+          "--env",
+          "FLOWKIT_HOME=/runtime",
+          "sha256:127ee201acf84b60dc929a6d5823f24969d96893b0d790fb0ed6dd800ee57c62",
+          "sh",
+          "/evidence/linux-run.sh"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-09-09T12:12:14.877Z",
+        "finishedAt": "2026-09-09T12:14:19.849Z",
+        "platform": "win32",
+        "node": "v22.23.2",
+        "exitCode": 0,
+        "signal": null,
+        "error": null
+      },
+      "tail": "  ...\n1..7\n# tests 7\n# suites 0\n# pass 7\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 1707.309454\n{\"command\":\"/usr/local/bin/node\",\"args\":[\"--test\",\"tests/unit/quality/production-reachability.test.mjs\"],\"cwd\":\"/work/project\",\"startedAt\":\"2026-09-09T12:14:16.292Z\",\"finishedAt\":\"2026-09-09T12:14:18.042Z\",\"platform\":\"linux\",\"node\":\"v22.23.2\",\"exitCode\":0,\"signal\":null,\"error\":null}\nRepository entropy hygiene: 50/50 production modules reachable.\n{\"command\":\"/usr/local/bin/node\",\"args\":[\"scripts/check-production-reachability.mjs\"],\"cwd\":\"/work/project\",\"startedAt\":\"2026-09-09T12:14:18.081Z\",\"finishedAt\":\"2026-09-09T12:14:19.671Z\",\"platform\":\"linux\",\"node\":\"v22.23.2\",\"exitCode\":0,\"signal\":null,\"error\":null}\n"
+    },
+    {
+      "label": "linux-dependencies",
+      "metadata": {
+        "command": "node",
+        "args": [
+          "/root/.cache/node/corepack/v1/pnpm/11.22.0/bin/pnpm.cjs",
+          "install",
+          "--offline",
+          "--frozen-lockfile",
+          "--store-dir",
+          "/store"
+        ],
+        "cwd": "/work/project",
+        "startedAt": "2026-09-09T12:12:22.913Z",
+        "finishedAt": "2026-09-09T12:12:27.844Z",
+        "platform": "linux",
+        "node": "v22.23.2",
+        "exitCode": 0,
+        "signal": null,
+        "error": null
+      },
+      "tail": "+ yaml 2.9.0\n\ndevDependencies:\n+ @eslint/js 9.39.5\n+ @types/node 22.20.1\n+ dependency-cruiser 18.2.0\n+ eslint 9.39.5\n+ prettier 3.9.6\n+ tsx 4.23.12\n+ typescript 5.5.2\n+ typescript-eslint 8.67.0\n\nDone in 4.7s using pnpm v11.22.0\n"
+    },
+    {
+      "label": "win-final-format-check",
+      "metadata": {
+        "command": "C:\\nvm4w\\nodejs\\node.exe",
+        "args": [
+          "node_modules/prettier/bin/prettier.cjs",
+          "--check",
+          "src",
+          "tests",
+          "tsconfig.json",
+          "tsconfig.build.json",
+          "package.json",
+          "eslint.config.mjs",
+          "scripts/check-forbidden-tracked-artifacts.mjs"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-09-09T12:12:04.678Z",
+        "finishedAt": "2026-09-09T12:12:06.880Z",
+        "platform": "win32",
+        "node": "v22.23.2",
+        "exitCode": 0,
+        "signal": null,
+        "error": null
+      },
+      "tail": "Checking formatting...\nAll matched files use Prettier code style!\n"
+    },
+    {
+      "label": "win-final-lint",
+      "metadata": {
+        "command": "C:\\nvm4w\\nodejs\\node.exe",
+        "args": [
+          "node_modules/eslint/bin/eslint.js",
+          "src",
+          "tests"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-09-09T12:12:06.983Z",
+        "finishedAt": "2026-09-09T12:12:10.112Z",
+        "platform": "win32",
+        "node": "v22.23.2",
+        "exitCode": 0,
+        "signal": null,
+        "error": null
+      },
+      "tail": ""
+    },
+    {
+      "label": "win-final-typecheck",
+      "metadata": {
+        "command": "C:\\nvm4w\\nodejs\\node.exe",
+        "args": [
+          "node_modules/typescript/bin/tsc",
+          "--noEmit"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-09-09T12:12:10.206Z",
+        "finishedAt": "2026-09-09T12:12:12.667Z",
+        "platform": "win32",
+        "node": "v22.23.2",
+        "exitCode": 0,
+        "signal": null,
+        "error": null
+      },
+      "tail": ""
+    },
+    {
+      "label": "win-final-build",
+      "metadata": {
+        "command": "C:\\nvm4w\\nodejs\\node.exe",
+        "args": [
+          "scripts/build-production.mjs"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-09-09T12:12:12.767Z",
+        "finishedAt": "2026-09-09T12:12:14.992Z",
+        "platform": "win32",
+        "node": "v22.23.2",
+        "exitCode": 0,
+        "signal": null,
+        "error": null
+      },
+      "tail": ""
+    },
+    {
+      "label": "win-final-domain",
+      "metadata": {
+        "command": "C:\\nvm4w\\nodejs\\node.exe",
+        "args": [
+          "--import",
+          "tsx",
+          "--test",
+          "tests/unit/domain/*.test.ts"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-09-09T12:12:15.111Z",
+        "finishedAt": "2026-09-09T12:14:10.611Z",
+        "platform": "win32",
+        "node": "v22.23.2",
+        "exitCode": 0,
+        "signal": null,
+        "error": null
+      },
+      "tail": "  ---\n  duration_ms: 54.4508\n  type: 'test'\n  ...\n1..287\n# tests 309\n# suites 0\n# pass 309\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 115316.508\n"
+    },
+    {
+      "label": "win-final-acceptance",
+      "metadata": {
+        "command": "C:\\nvm4w\\nodejs\\node.exe",
+        "args": [
+          "--import",
+          "tsx",
+          "--test",
+          "tests/acceptance/*.test.ts"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-09-09T12:14:10.726Z",
+        "finishedAt": "2026-09-09T12:14:37.784Z",
+        "platform": "win32",
+        "node": "v22.23.2",
+        "exitCode": 0,
+        "signal": null,
+        "error": null
+      },
+      "tail": "  ---\n  duration_ms: 1.8029\n  type: 'test'\n  ...\n1..6\n# tests 6\n# suites 0\n# pass 6\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 26929.5059\n"
+    },
+    {
+      "label": "win-final-dependency-health",
+      "metadata": {
+        "command": "C:\\nvm4w\\nodejs\\node.exe",
+        "args": [
+          "node_modules/dependency-cruiser/bin/dependency-cruise.mjs",
+          "--config",
+          "dependency-cruiser.config.mjs",
+          "--output-type",
+          "err",
+          "src",
+          "tests"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-09-09T12:14:37.877Z",
+        "finishedAt": "2026-09-09T12:14:40.368Z",
+        "platform": "win32",
+        "node": "v22.23.2",
+        "exitCode": 0,
+        "signal": null,
+        "error": null
+      },
+      "tail": "\n✔ no dependency violations found (129 modules, 696 dependencies cruised)\n\n"
+    },
+    {
+      "label": "win-final-entropy-tests",
+      "metadata": {
+        "command": "C:\\nvm4w\\nodejs\\node.exe",
+        "args": [
+          "--test",
+          "tests/unit/quality/production-reachability.test.mjs"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-09-09T12:14:40.474Z",
+        "finishedAt": "2026-09-09T12:14:42.525Z",
+        "platform": "win32",
+        "node": "v22.23.2",
+        "exitCode": 0,
+        "signal": null,
+        "error": null
+      },
+      "tail": "  ---\n  duration_ms: 0.2037\n  type: 'test'\n  ...\n1..7\n# tests 7\n# suites 0\n# pass 7\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 1925.4167\n"
+    },
+    {
+      "label": "win-final-entropy",
+      "metadata": {
+        "command": "C:\\nvm4w\\nodejs\\node.exe",
+        "args": [
+          "scripts/check-production-reachability.mjs"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-09-09T12:14:42.623Z",
+        "finishedAt": "2026-09-09T12:14:44.509Z",
+        "platform": "win32",
+        "node": "v22.23.2",
+        "exitCode": 0,
+        "signal": null,
+        "error": null
+      },
+      "tail": "Repository entropy hygiene: 50/50 production modules reachable.\n"
+    },
+    {
+      "label": "linux-final-format-check",
+      "metadata": {
+        "command": "/usr/local/bin/node",
+        "args": [
+          "node_modules/prettier/bin/prettier.cjs",
+          "--check",
+          "src",
+          "tests",
+          "tsconfig.json",
+          "tsconfig.build.json",
+          "package.json",
+          "eslint.config.mjs",
+          "scripts/check-forbidden-tracked-artifacts.mjs"
+        ],
+        "cwd": "/work/project",
+        "startedAt": "2026-09-09T12:12:28.202Z",
+        "finishedAt": "2026-09-09T12:12:34.487Z",
+        "platform": "linux",
+        "node": "v22.23.2",
+        "exitCode": 0,
+        "signal": null,
+        "error": null
+      },
+      "tail": "Checking formatting...\nAll matched files use Prettier code style!\n"
+    },
+    {
+      "label": "linux-final-lint",
+      "metadata": {
+        "command": "/usr/local/bin/node",
+        "args": [
+          "node_modules/eslint/bin/eslint.js",
+          "src",
+          "tests"
+        ],
+        "cwd": "/work/project",
+        "startedAt": "2026-09-09T12:12:34.658Z",
+        "finishedAt": "2026-09-09T12:12:45.245Z",
+        "platform": "linux",
+        "node": "v22.23.2",
+        "exitCode": 0,
+        "signal": null,
+        "error": null
+      },
+      "tail": ""
+    },
+    {
+      "label": "linux-final-typecheck",
+      "metadata": {
+        "command": "/usr/local/bin/node",
+        "args": [
+          "node_modules/typescript/bin/tsc",
+          "--noEmit"
+        ],
+        "cwd": "/work/project",
+        "startedAt": "2026-09-09T12:12:45.412Z",
+        "finishedAt": "2026-09-09T12:12:53.148Z",
+        "platform": "linux",
+        "node": "v22.23.2",
+        "exitCode": 0,
+        "signal": null,
+        "error": null
+      },
+      "tail": ""
+    },
+    {
+      "label": "linux-final-build",
+      "metadata": {
+        "command": "/usr/local/bin/node",
+        "args": [
+          "scripts/build-production.mjs"
+        ],
+        "cwd": "/work/project",
+        "startedAt": "2026-09-09T12:12:53.585Z",
+        "finishedAt": "2026-09-09T12:12:59.072Z",
+        "platform": "linux",
+        "node": "v22.23.2",
+        "exitCode": 0,
+        "signal": null,
+        "error": null
+      },
+      "tail": ""
+    },
+    {
+      "label": "linux-final-domain",
+      "metadata": {
+        "command": "/usr/local/bin/node",
+        "args": [
+          "--import",
+          "tsx",
+          "--test",
+          "tests/unit/domain/*.test.ts"
+        ],
+        "cwd": "/work/project",
+        "startedAt": "2026-09-09T12:12:59.185Z",
+        "finishedAt": "2026-09-09T12:14:06.666Z",
+        "platform": "linux",
+        "node": "v22.23.2",
+        "exitCode": 0,
+        "signal": null,
+        "error": null
+      },
+      "tail": "  ---\n  duration_ms: 23.243422\n  type: 'test'\n  ...\n1..287\n# tests 309\n# suites 0\n# pass 309\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 67363.703241\n"
+    },
+    {
+      "label": "linux-final-acceptance",
+      "metadata": {
+        "command": "/usr/local/bin/node",
+        "args": [
+          "--import",
+          "tsx",
+          "--test",
+          "tests/acceptance/*.test.ts"
+        ],
+        "cwd": "/work/project",
+        "startedAt": "2026-09-09T12:14:06.711Z",
+        "finishedAt": "2026-09-09T12:14:13.905Z",
+        "platform": "linux",
+        "node": "v22.23.2",
+        "exitCode": 0,
+        "signal": null,
+        "error": null
+      },
+      "tail": "  ---\n  duration_ms: 2.871229\n  type: 'test'\n  ...\n1..6\n# tests 6\n# suites 0\n# pass 6\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 7151.802478\n"
+    },
+    {
+      "label": "linux-final-dependency-health",
+      "metadata": {
+        "command": "/usr/local/bin/node",
+        "args": [
+          "node_modules/dependency-cruiser/bin/dependency-cruise.mjs",
+          "--config",
+          "dependency-cruiser.config.mjs",
+          "--output-type",
+          "err",
+          "src",
+          "tests"
+        ],
+        "cwd": "/work/project",
+        "startedAt": "2026-09-09T12:14:13.947Z",
+        "finishedAt": "2026-09-09T12:14:16.247Z",
+        "platform": "linux",
+        "node": "v22.23.2",
+        "exitCode": 0,
+        "signal": null,
+        "error": null
+      },
+      "tail": "\n✔ no dependency violations found (129 modules, 696 dependencies cruised)\n\n"
+    },
+    {
+      "label": "linux-final-entropy-tests",
+      "metadata": {
+        "command": "/usr/local/bin/node",
+        "args": [
+          "--test",
+          "tests/unit/quality/production-reachability.test.mjs"
+        ],
+        "cwd": "/work/project",
+        "startedAt": "2026-09-09T12:14:16.292Z",
+        "finishedAt": "2026-09-09T12:14:18.042Z",
+        "platform": "linux",
+        "node": "v22.23.2",
+        "exitCode": 0,
+        "signal": null,
+        "error": null
+      },
+      "tail": "  ---\n  duration_ms: 0.210818\n  type: 'test'\n  ...\n1..7\n# tests 7\n# suites 0\n# pass 7\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 1707.309454\n"
+    },
+    {
+      "label": "linux-final-entropy",
+      "metadata": {
+        "command": "/usr/local/bin/node",
+        "args": [
+          "scripts/check-production-reachability.mjs"
+        ],
+        "cwd": "/work/project",
+        "startedAt": "2026-09-09T12:14:18.081Z",
+        "finishedAt": "2026-09-09T12:14:19.671Z",
+        "platform": "linux",
+        "node": "v22.23.2",
+        "exitCode": 0,
+        "signal": null,
+        "error": null
+      },
+      "tail": "Repository entropy hygiene: 50/50 production modules reachable.\n"
+    }
+  ]
+}

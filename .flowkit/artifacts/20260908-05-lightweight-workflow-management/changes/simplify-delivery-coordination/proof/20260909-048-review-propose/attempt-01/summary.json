@@ -1,0 +1,55 @@
+{
+  "kind": "independent-review-propose-read-only-checks",
+  "node": "v22.23.2",
+  "platform": "win32",
+  "attempt": "attempt-01",
+  "inputAudit": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-048-review-propose/attempt-01/input-audit.json",
+    "bytes": 11066,
+    "sha256": "ae6d6977d7c7e8d4a4b247badd9ba2125012be19bef1f1b7880adbbf6c4a9861"
+  },
+  "verifiedReferences": 27,
+  "changedPlanningFiles": [
+    "openspec/changes/simplify-delivery-coordination/design.md",
+    "openspec/changes/simplify-delivery-coordination/specs/delivery-finalization/spec.md",
+    "openspec/changes/simplify-delivery-coordination/specs/repository-integration-and-next-base-continuity/spec.md",
+    "openspec/changes/simplify-delivery-coordination/tasks.md"
+  ],
+  "deltaCounts": {
+    "MODIFIED": 12,
+    "REMOVED": 1,
+    "ADDED": 1
+  },
+  "commands": [
+    {
+      "name": "version",
+      "program": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js",
+        "--version"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "startedAt": "2026-09-09T08:21:37.360Z",
+      "completedAt": "2026-09-09T08:21:37.362Z",
+      "exitCode": null,
+      "signal": null,
+      "error": {
+        "code": "EPERM",
+        "message": "spawnSync C:\\nvm4w\\nodejs\\node.exe EPERM"
+      },
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-048-review-propose/attempt-01/version.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-048-review-propose/attempt-01/version.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "allCommandsSucceeded": false,
+  "implementationAcceptance": false,
+  "formalFullTest": false
+}

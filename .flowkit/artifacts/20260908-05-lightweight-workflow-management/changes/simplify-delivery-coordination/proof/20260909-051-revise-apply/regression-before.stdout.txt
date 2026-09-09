@@ -1,0 +1,189 @@
+TAP version 13
+# Subtest: Final confirmation commit point survives fresh sessions without promoting pre-confirmation failures
+    # Subtest: success
+    ok 1 - success
+      ---
+      duration_ms: 3444.7529
+      type: 'test'
+      ...
+    # Subtest: first-readback
+    ok 2 - first-readback
+      ---
+      duration_ms: 2395.9068
+      type: 'test'
+      ...
+    # Subtest: input-drift
+    ok 3 - input-drift
+      ---
+      duration_ms: 2304.2517
+      type: 'test'
+      ...
+    # Subtest: related-run-drift
+    ok 4 - related-run-drift
+      ---
+      duration_ms: 2237.637
+      type: 'test'
+      ...
+    # Subtest: before-confirmation
+    ok 5 - before-confirmation
+      ---
+      duration_ms: 2333.7552
+      type: 'test'
+      ...
+    # Subtest: pre-publication-input-drift
+    ok 6 - pre-publication-input-drift
+      ---
+      duration_ms: 2381.1226
+      type: 'test'
+      ...
+    # Subtest: publish-failure
+    ok 7 - publish-failure
+      ---
+      duration_ms: 2542.2591
+      type: 'test'
+      ...
+    # Subtest: published-response-loss
+    ok 8 - published-response-loss
+      ---
+      duration_ms: 2488.553
+      type: 'test'
+      ...
+    # Subtest: before-active
+    ok 9 - before-active
+      ---
+      duration_ms: 1982.2357
+      type: 'test'
+      ...
+    # Subtest: after-active
+    not ok 10 - after-active
+      ---
+      duration_ms: 2482.0863
+      type: 'test'
+      location: 'D:\\Projects\\flowkit-next\\tests\\unit\\domain\\delivery-final-confirmation.test.ts:23:619'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        + actual - expected
+        
+        + 'completed'
+        - 'unconfirmed'
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 'unconfirmed'
+      actual: 'completed'
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (D:\Projects\flowkit-next\tests\unit\domain\delivery-final-confirmation.test.ts:195:16)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (D:\Projects\flowkit-next\tests\unit\domain\delivery-final-confirmation.test.ts:79:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+    # Subtest: staged-active
+    not ok 11 - staged-active
+      ---
+      duration_ms: 2418.1482
+      type: 'test'
+      location: 'D:\\Projects\\flowkit-next\\tests\\unit\\domain\\delivery-final-confirmation.test.ts:23:619'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        + actual - expected
+        
+        + 'completed'
+        - 'unconfirmed'
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 'unconfirmed'
+      actual: 'completed'
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (D:\Projects\flowkit-next\tests\unit\domain\delivery-final-confirmation.test.ts:195:16)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (D:\Projects\flowkit-next\tests\unit\domain\delivery-final-confirmation.test.ts:79:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+    # Subtest: after-unavailable
+    not ok 12 - after-unavailable
+      ---
+      duration_ms: 2414.4638
+      type: 'test'
+      location: 'D:\\Projects\\flowkit-next\\tests\\unit\\domain\\delivery-final-confirmation.test.ts:23:619'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        + actual - expected
+        
+        + 'completed'
+        - 'unconfirmed'
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 'unconfirmed'
+      actual: 'completed'
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (D:\Projects\flowkit-next\tests\unit\domain\delivery-final-confirmation.test.ts:195:16)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (D:\Projects\flowkit-next\tests\unit\domain\delivery-final-confirmation.test.ts:79:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+    # Subtest: staged-unavailable
+    not ok 13 - staged-unavailable
+      ---
+      duration_ms: 2496.1043
+      type: 'test'
+      location: 'D:\\Projects\\flowkit-next\\tests\\unit\\domain\\delivery-final-confirmation.test.ts:23:619'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        + actual - expected
+        
+        + 'completed'
+        - 'unconfirmed'
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 'unconfirmed'
+      actual: 'completed'
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (D:\Projects\flowkit-next\tests\unit\domain\delivery-final-confirmation.test.ts:195:16)
+        process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async TestContext.<anonymous> (D:\Projects\flowkit-next\tests\unit\domain\delivery-final-confirmation.test.ts:79:5)
+        async Test.run (node:internal/test_runner/test:1054:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+    # Subtest: published-active
+    ok 14 - published-active
+      ---
+      duration_ms: 2867.8688
+      type: 'test'
+      ...
+    1..14
+not ok 1 - Final confirmation commit point survives fresh sessions without promoting pre-confirmation failures
+  ---
+  duration_ms: 34802.6618
+  type: 'test'
+  location: 'D:\\Projects\\flowkit-next\\tests\\unit\\domain\\delivery-final-confirmation.test.ts:23:210'
+  failureType: 'subtestsFailed'
+  error: '4 subtests failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+1..1
+# tests 15
+# suites 0
+# pass 10
+# fail 5
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 35289.5875

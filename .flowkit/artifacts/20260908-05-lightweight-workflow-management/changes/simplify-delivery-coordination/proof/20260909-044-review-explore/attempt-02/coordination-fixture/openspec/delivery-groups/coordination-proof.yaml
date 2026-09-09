@@ -1,0 +1,18 @@
+id: coordination-proof
+delivery:
+  state: completed # retain comment
+  fullTestStatus: passed
+  fullTestAttempt: fixture-only
+  finalizationStatus: completed
+  formalVerificationCandidate: "full-test-input:sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+finalization:
+  state: completed
+  verifiedCandidateRef: "full-test-input:sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+  fullTestExecutionRef: "full-test-execution:sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+  gitCheckpoint: pending-owner-authorized-local-delivery-commit
+unrelated:
+  note: "preserve quotes and exact tail"
+changes:
+  - id: finished-change
+    required: true
+    state: completed

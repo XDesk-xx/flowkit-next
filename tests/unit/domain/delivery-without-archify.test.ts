@@ -1,7 +1,7 @@
 import { fixtureInstallation } from "./manager-installation-fixture.js";
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { access, mkdir, readFile, writeFile } from "node:fs/promises";
+import { access, mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 import test from "node:test";
 import {
@@ -24,7 +24,7 @@ import {
   evidenceSource,
   finalInput,
 } from "./delivery-final-fixture.js";
-import { createStartValidationFixture } from "./delivery-start-validation-fixture.js";
+import { stringify } from "yaml";
 
 test("without Archify: real Start/checks/Final/local Git integration; OpenSpec and remote are simulated", async () => {
   const fixture = await createFixture();
@@ -54,11 +54,8 @@ test("without Archify: real Start/checks/Final/local Git integration; OpenSpec a
       artifact: "plan.md",
       contentSha256: createHash("sha256").update(planningBytes).digest("hex"),
     };
-    const validation = await createStartValidationFixture(root, {
-      deliveryId,
-      acceptedBaseCommit,
-      planningReference,
-    });
+    const completedFixture = await readFile(fixture.manifestPath);
+    await rm(fixture.manifestPath);
     const start = await invokeDeliveryStartOperation(
       root,
       {
@@ -70,19 +67,34 @@ test("without Archify: real Start/checks/Final/local Git integration; OpenSpec a
           sourceRef: "test:start-owner",
           scope: ["delivery-start"],
         },
-        operationFacts: { acceptedBaseCommit, planningReference },
-      },
-      async () => ({
-        headCommit: await git(root, "rev-parse", "HEAD"),
-        workingTreeClean: (await git(root, "status", "--porcelain")) === "",
         planningReference,
-      }),
-      validation.surface,
-      validation.read,
-      undefined,
+      },
+      async ({ writeManifest }) => {
+        await writeManifest(
+          Buffer.from(
+            stringify({
+              id: deliveryId,
+              projectId: "flowkit-next",
+              planningReference,
+              delivery: {
+                state: "active",
+                fullTestStatus: "pending",
+                finalizationStatus: "pending",
+              },
+              changes: [
+                { id: "first-change", required: true, state: "planned" },
+                { id: "second-change", required: true, state: "planned" },
+              ],
+            }),
+          ),
+        );
+        return { status: "ready" };
+      },
       fixtureInstallation(root),
     );
     assert.equal(start.status, "terminal");
+    // Synthetic completed Changes supplied by the fixture, not an independent Review claim.
+    await writeFile(fixture.manifestPath, completedFixture);
     const outcomes = await acceptedOutcomes(fixture);
     const readRequiredEvidence = evidenceSource(outcomes, root);
     assert.deepEqual(Object.keys(readRequiredEvidence), ["readChangeClosure"]);
@@ -99,10 +111,7 @@ test("without Archify: real Start/checks/Final/local Git integration; OpenSpec a
       final.record.verifiedCandidateRef,
       outcomes.fullTest.record.inputRef,
     );
-    assert.notEqual(
-      final.record.finalizedCandidateRef,
-      final.record.verifiedCandidateRef,
-    );
+    assert.equal(Object.hasOwn(final.record, "finalizedCandidateRef"), false);
     const ownerAuthority = {
       ref: `owner:${"c".repeat(64)}`,
       decision: "authorize-repository-integration" as const,
@@ -141,7 +150,6 @@ test("without Archify: real Start/checks/Final/local Git integration; OpenSpec a
       {
         deliveryId,
         ownerAuthority,
-        deliveryFinalOutcome: final,
         deliveryBranch,
         targetMainRef: "refs/heads/main",
         acceptedBaseCommit,
@@ -156,7 +164,6 @@ test("without Archify: real Start/checks/Final/local Git integration; OpenSpec a
         await git(root, "update-ref", "refs/heads/main", finalCommit);
         return { status: "repository-acceptance-complete" };
       },
-      readRequiredEvidence,
       source,
       fixtureInstallation(root),
     );
@@ -220,6 +227,15 @@ test("Final rejects a real failed check, incomplete checks and legacy preparatio
     assert.equal(failed.status, "terminal");
     if (failed.status !== "terminal") throw new Error("check did not execute");
     assert.equal(failed.verdict, "failed");
+    assert.equal(
+      await prepareDeliveryFinalOperationPackage(
+        fixture.root,
+        finalInput(fixture, { fullTest: failed }),
+        evidenceSource({ fullTest: failed }, fixture.root),
+        fixtureInstallation(fixture.root),
+      ),
+      null,
+    );
     const passed = await acceptedOutcomes(fixture);
     const read = evidenceSource(passed, fixture.root);
     for (const input of [

@@ -1,31 +1,30 @@
+---
+name: flowkit-delivery-final
+description: 在已授权 Final 边界消费相关完成终点与当前 Full Test，以两笔窄写发布成功确认。
+---
+
 # Delivery Final
 
-Execute an already-authorized `delivery-final` operation from its exact `DeliveryOperationPackage` after complete accepted Delivery prerequisites exist.
+只执行已确定的 `delivery-final`。精确 singleton finalize-delivery/delivery-final Owner authority 与同一 manager 的 content-bound Guidance 保持；不回退到 target 同名系统材料或 `.agents/skills/**`。
 
-## Contract
+## 有限前置
 
-Guidance 的准备与 exact read 均使用同一 manager 安装来源；相对 path/contentSha256 身份不包含绝对安装根。项目读写、检查 cwd、Git 与证据仍属于 target repositoryRoot；不得回退读取 target 的同名系统 Guidance。
+- 从 canonical manifest 取得全部 required Changes；它们 completed，managed OpenSpec active set 为空。不可由 caller 缩小集合。
+- 使用可信 host 已接纳来源选定每个 Change 唯一 archive 及其直接 approved review-apply；来源负责排除歧义/未完成矛盾。host 实读这两个受控三文件，核对身份、Role、terminal 完成、verdict、linkage 及 source-bound bytes。
+- 结构合法、自签 hash 或 caller JSON 不等于已接纳；来源能力缺失报 completion-source-unavailable。不要重放祖先 admission 或遍历历史 proof。
+- 复用 target 当前 fullTestAttempt reader：完整真实 PASS、当前输入及必要材料有效。新的 FAIL/partial/缺失/损坏/输入变化不得回用旧 PASS。verifiedCandidateRef 是 Full Test inputRef，不是 Git candidate。
+- Package 的 changeCompletions 只在本次内存中用于相关重验，不持久复制第二份 evidence 快照。
 
-Derive `requiredEvidence` from canonical required Changes and trusted accepted archive/review anchors, plus the complete Full Test source. Bind the finite snapshot into Final operation facts; callers cannot shrink it, substitute self-signed hashes, or treat excluded Run/Memo bytes as dispensable evidence. This is not an evidence Registry or a new persistence service.
+## 窄写与确认
 
-1. Treat the package-bound Delivery identity, verified candidate, Full Test execution, completed required Change identities, canonical coordination prestate, content-bound Guidance, and exact `finalize-delivery` Owner authority as fixed input.
-2. 从 target 当前 fullTestAttempt 读取完整真实 PASS、必要材料与当前 inputRef，拒绝 caller fullTestOutcome/readFullTest 替换；另核对 empty managed OpenSpec active Change set 和 canonical Delivery coordination。普通 Git candidate 不定义测试有效性；不能用 boolean、摘要或 Run prose 代替来源。
-3. Derived execution receives only a defensive package copy and Guidance bytes. It may return bounded `ready` or `correction-required` content; it does not choose a path, patch, Git command, next operation, or authority.
-4. On `ready`, the trusted host may update only the fixed canonical Delivery coordination artifact from its exact active/passed/pending prestate to the specified completed closure. Revalidate original bytes before replacement and exact bytes after replacement; preserve fullTestAttempt and non-target bytes.
-5. Record the verified → finalized candidate lineage and exact content-bound closure identity only after successful materialization and reread.
-6. On invalid input/result, prerequisite drift, repository drift, coordination drift, write failure, or correction-required, fail closed or return the bounded correction STOP without terminal success or automatic correction.
-7. STOP after the Delivery Final terminal or correction boundary.
+Agent 仅返回 defensive package 对应的 ready/correction-required，不指定任意路径或获得 Git capability。
 
-No Architecture outcome, reader, runtime, diagram, or skip proof is a prerequisite. verifiedCandidateRef 承载 Full Test inputRef；finalizedCandidateRef 仍是独立 Git 投影，二者不作同域相等比较。Change closure reader 只负责原 required Change 链，不遍历全部历史，不复制 Full Test outcome。
+1. host 写前重验本次 prerequisites、Guidance 和固定 manifest prestate。
+2. 第一笔仅将 delivery state/finalizationStatus 完成，保留 passed/fullTestAttempt 和非目标 bytes；finalization 保存 state、ownerAuthorityRef、sourceRef、fullTestAttempt、verifiedCandidateRef、fullTestExecutionRef、confirmationRef=null。
+3. 精确读回并复验相关完成事实、当前 attempt/输入及必要材料后，第二笔仅写 confirmationRef=局部 deliveryFinalizationRef。发布前再核对目标与当前输入。
+4. 确认的原子替换是成功提交点；其后只有标记读回/响应，不追加决定本次成功资格的业务验收。
+5. 成功返回最小 record 并 STOP。只读 readDeliveryFinalization 从 project/manifest 和有效确认识别完成，不依赖聊天 package，也不再次执行 Final/Review/测试。
 
-## Boundaries
+确认前失败留下 null，不得仅因 completed 或自签 ref 宣称成功。确认发布后的读回/响应失败如实报告；新会话只依据实际有效标记识别已提交事实，不补确认或重试。失败区分 not-written/written-unconfirmed/unknown。确认不证明未来代码永远未变。
 
-MUST NOT:
-
-- discover, rank, route, or choose a Delivery operation;
-- create Owner, Reviewer, Verification, lifecycle, next-operation, or Git authority;
-- execute actual repository integration, commit, branch, push, PR, merge, tag, or accepted-main discovery;
-- write `finalizedCandidateRef` into the manifest and create candidate self-reference;
-- create a generic manifest API, schema/hash registry, transaction platform, evidence store, or second Delivery lifecycle;
-- use `.agents/skills/**` as product Guidance fallback;
-- embed project-specific Delivery bytes, Change identities, or continuation instructions in this Guidance.
+不写 gitCheckpoint、重复 formalVerificationCandidate、requiredEvidence 或 finalizedCandidateRef；不生成 Git/全仓摘要、额外结果库、事务平台或 Archify 证明。历史不迁移/重签。没有 commit、push、PR、merge、自动下一操作权限；D05 继续独立 bootstrap。

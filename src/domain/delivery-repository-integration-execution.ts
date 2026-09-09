@@ -3,25 +3,16 @@ import {
   type ManagerInstallation,
 } from "../internal/manager-installation.js";
 import { deriveDeliveryRepositoryIntegrationRef } from "../internal/delivery-repository-integration-ref.js";
-import { createHash } from "node:crypto";
 export { deriveDeliveryRepositoryIntegrationRef } from "../internal/delivery-repository-integration-ref.js";
-import { readFile } from "node:fs/promises";
-import path from "node:path";
 
 import {
-  deriveApplicableCheckCandidateRef,
-  deriveApplicableCheckObjectCandidateRef,
-} from "./applicable-check-execution.js";
-import {
   formDeliveryOperationPackage,
+  isDeliveryOperationPackage,
   readExactDeliveryGuidance,
   resolveDeliveryGuidanceRef,
   type DeliveryRepositoryIntegrationOperationPackage,
 } from "./delivery-operation-execution.js";
-import {
-  isDeliveryFinalizationRecordForPackage,
-  type DeliveryFinalInvocationTerminal,
-} from "./delivery-final-execution.js";
+import { readDeliveryFinalization } from "./delivery-finalization.js";
 import {
   cloneDeliveryRepositoryIntegrationOperationFacts,
   isDeliveryCheckpointOperation,
@@ -39,11 +30,6 @@ import {
   resolveGitCommit,
 } from "../internal/delivery-repository-integration-git.js";
 import {
-  revalidateDeliveryRequiredEvidenceAtObject,
-  revalidateDeliveryRequiredEvidenceSource,
-  type ReadDeliveryRequiredEvidence,
-} from "../internal/delivery-required-evidence-source.js";
-import {
   validateRepositoryIntegrationAcceptance,
   validateRepositoryIntegrationAuthorization,
   type ReadRepositoryIntegrationSource,
@@ -53,7 +39,6 @@ export type { ReadRepositoryIntegrationSource } from "../internal/delivery-repos
 export interface DeliveryRepositoryIntegrationPreparationInput {
   readonly deliveryId: DeliveryId;
   readonly ownerAuthority: DeliveryRepositoryIntegrationOperationPackage["ownerAuthority"];
-  readonly deliveryFinalOutcome: DeliveryFinalInvocationTerminal;
   readonly deliveryBranch: string;
   readonly targetMainRef: string;
   readonly acceptedBaseCommit: string;
@@ -87,7 +72,6 @@ export type DeliveryRepositoryIntegrationProviderMechanics = (
 export interface DeliveryRepositoryIntegrationRecord {
   readonly repositoryIntegrationRef: string;
   readonly deliveryFinalizationRef: string;
-  readonly finalizedCandidateRef: string;
   readonly preIntegrationHead: string;
   readonly checkpointOperation: DeliveryCheckpointOperation;
   readonly finalCommit: string;
@@ -108,6 +92,10 @@ export type DeliveryRepositoryIntegrationFailureReason =
 export interface DeliveryRepositoryIntegrationFailure {
   readonly status: "failed";
   readonly reason: DeliveryRepositoryIntegrationFailureReason;
+  readonly gitEffects?: {
+    readonly observedHead: string | null;
+    readonly observedTargetMainCommit: string | null;
+  };
   readonly record: null;
 }
 
@@ -163,7 +151,6 @@ function isPreparationInput(
     hasExactlyFields(value, [
       "deliveryId",
       "ownerAuthority",
-      "deliveryFinalOutcome",
       "deliveryBranch",
       "targetMainRef",
       "acceptedBaseCommit",
@@ -184,57 +171,16 @@ function isPreparationInput(
   );
 }
 
-function trustedFinalOutcome(
-  value: unknown,
-  deliveryId: DeliveryId,
-): value is DeliveryFinalInvocationTerminal {
-  return (
-    isRecord(value) &&
-    value.status === "terminal" &&
-    isRecord(value.operationPackage) &&
-    value.operationPackage.operationId === "delivery-final" &&
-    value.operationPackage.deliveryId === deliveryId &&
-    isDeliveryFinalizationRecordForPackage(value.record, value.operationPackage)
-  );
-}
-
-async function exactCoordinationRefStillMatches(
-  repositoryRoot: string,
-  input: DeliveryFinalInvocationTerminal,
-): Promise<boolean> {
-  const ref = input.record.coordinationRef;
-  try {
-    const bytes = await readFile(
-      path.join(repositoryRoot, ...ref.artifact.split("/")),
-    );
-    return (
-      bytes.length === ref.bytes &&
-      createHash("sha256").update(bytes).digest("hex") === ref.contentSha256
-    );
-  } catch {
-    return false;
-  }
-}
-
 async function observePreparationFacts(
   repositoryRoot: string,
   input: DeliveryRepositoryIntegrationPreparationInput,
 ): Promise<DeliveryRepositoryIntegrationOperationFacts | null> {
-  if (!trustedFinalOutcome(input.deliveryFinalOutcome, input.deliveryId)) {
-    return null;
-  }
-  if (
-    !(await exactCoordinationRefStillMatches(
-      repositoryRoot,
-      input.deliveryFinalOutcome,
-    ))
-  ) {
-    return null;
-  }
-  const finalRecord = input.deliveryFinalOutcome.record;
-  const currentCandidate =
-    await deriveApplicableCheckCandidateRef(repositoryRoot);
-  if (currentCandidate !== finalRecord.finalizedCandidateRef) return null;
+  const final = await readDeliveryFinalization(
+    repositoryRoot,
+    input.deliveryId,
+  );
+  if (final.status !== "completed") return null;
+  const finalRecord = final.record;
 
   const [head, branch, targetMainCommit, acceptedBaseCommit] =
     await Promise.all([
@@ -254,7 +200,6 @@ async function observePreparationFacts(
 
   return {
     deliveryFinalizationRef: finalRecord.deliveryFinalizationRef,
-    finalizedCandidateRef: finalRecord.finalizedCandidateRef,
     preIntegrationHead: head,
     checkpointOperation: input.checkpointOperation,
     deliveryBranch: branch,
@@ -267,7 +212,6 @@ async function observePreparationFacts(
 export async function prepareDeliveryRepositoryIntegrationOperationPackage(
   repositoryRoot: unknown,
   input: unknown,
-  readRequiredEvidence: unknown,
   readIntegrationSource: unknown,
   installation: ManagerInstallation = loadManagerInstallation(),
 ): Promise<DeliveryRepositoryIntegrationOperationPackage | null> {
@@ -291,15 +235,6 @@ export async function prepareDeliveryRepositoryIntegrationOperationPackage(
       acceptedBaseCommit: facts.acceptedBaseCommit,
       checkpointOperation: facts.checkpointOperation,
     }))
-  )
-    return null;
-  if (
-    !(await revalidateDeliveryRequiredEvidenceSource(
-      input.deliveryFinalOutcome.operationPackage.operationFacts
-        .requiredEvidence,
-      readRequiredEvidence,
-      repositoryRoot,
-    ))
   )
     return null;
   const guidanceRef = await resolveDeliveryGuidanceRef(
@@ -350,10 +285,23 @@ function isProviderResult(
   );
 }
 
-function failure(
+async function failure(
   reason: DeliveryRepositoryIntegrationFailureReason,
-): DeliveryRepositoryIntegrationFailure {
-  return { status: "failed", reason, record: null };
+  mutation?: { root: string; target: string },
+): Promise<DeliveryRepositoryIntegrationFailure> {
+  if (!mutation) return { status: "failed", reason, record: null };
+  return {
+    status: "failed",
+    reason,
+    record: null,
+    gitEffects: {
+      observedHead: await observeGitHead(mutation.root),
+      observedTargetMainCommit: await resolveGitCommit(
+        mutation.root,
+        mutation.target,
+      ),
+    },
+  };
 }
 
 export function isDeliveryRepositoryIntegrationRecord(
@@ -364,7 +312,6 @@ export function isDeliveryRepositoryIntegrationRecord(
     hasExactlyFields(value, [
       "repositoryIntegrationRef",
       "deliveryFinalizationRef",
-      "finalizedCandidateRef",
       "preIntegrationHead",
       "checkpointOperation",
       "finalCommit",
@@ -375,6 +322,18 @@ export function isDeliveryRepositoryIntegrationRecord(
     ]) &&
     typeof value.repositoryIntegrationRef === "string" &&
     REPOSITORY_INTEGRATION_REF_PATTERN.test(value.repositoryIntegrationRef) &&
+    typeof value.deliveryFinalizationRef === "string" &&
+    /^delivery-finalization:sha256:[0-9a-f]{64}$/.test(
+      value.deliveryFinalizationRef,
+    ) &&
+    typeof value.preIntegrationHead === "string" &&
+    GIT_COMMIT_PATTERN.test(value.preIntegrationHead) &&
+    typeof value.finalCommit === "string" &&
+    GIT_COMMIT_PATTERN.test(value.finalCommit) &&
+    typeof value.targetMainPreIntegrationCommit === "string" &&
+    GIT_COMMIT_PATTERN.test(value.targetMainPreIntegrationCommit) &&
+    typeof value.targetMainRef === "string" &&
+    value.targetMainRef.startsWith("refs/heads/") &&
     isDeliveryCheckpointOperation(value.checkpointOperation) &&
     typeof value.acceptedMainCommit === "string" &&
     GIT_COMMIT_PATTERN.test(value.acceptedMainCommit) &&
@@ -388,13 +347,11 @@ export function isDeliveryRepositoryIntegrationRecordForPackage(
 ): value is DeliveryRepositoryIntegrationRecord {
   if (
     !isDeliveryRepositoryIntegrationRecord(value) ||
-    !isRecord(operationPackage) ||
+    !isDeliveryOperationPackage(operationPackage) ||
     operationPackage.operationId !== "delivery-repository-integration" ||
     !isRecord(operationPackage.operationFacts) ||
     value.deliveryFinalizationRef !==
       operationPackage.operationFacts.deliveryFinalizationRef ||
-    value.finalizedCandidateRef !==
-      operationPackage.operationFacts.finalizedCandidateRef ||
     value.preIntegrationHead !==
       operationPackage.operationFacts.preIntegrationHead ||
     !isDeliveryCheckpointOperation(
@@ -424,7 +381,6 @@ export async function invokeDeliveryRepositoryIntegrationOperation(
   input: unknown,
   commitFinal: DeliveryRepositoryIntegrationCommit | undefined,
   performRepositoryAcceptance: DeliveryRepositoryIntegrationProviderMechanics,
-  readRequiredEvidence: ReadDeliveryRequiredEvidence,
   readIntegrationSource: ReadRepositoryIntegrationSource,
   installation: ManagerInstallation = loadManagerInstallation(),
 ): Promise<DeliveryRepositoryIntegrationOutcome> {
@@ -432,7 +388,6 @@ export async function invokeDeliveryRepositoryIntegrationOperation(
     typeof repositoryRoot !== "string" ||
     !isPreparationInput(input) ||
     typeof performRepositoryAcceptance !== "function" ||
-    typeof readRequiredEvidence !== "object" ||
     typeof readIntegrationSource !== "object"
   ) {
     return failure("package-formation-rejected");
@@ -441,7 +396,6 @@ export async function invokeDeliveryRepositoryIntegrationOperation(
     await prepareDeliveryRepositoryIntegrationOperationPackage(
       repositoryRoot,
       input,
-      readRequiredEvidence,
       readIntegrationSource,
       installation,
     );
@@ -457,7 +411,6 @@ export async function invokeDeliveryRepositoryIntegrationOperation(
     await prepareDeliveryRepositoryIntegrationOperationPackage(
       repositoryRoot,
       input,
-      readRequiredEvidence,
       readIntegrationSource,
       installation,
     );
@@ -479,23 +432,40 @@ export async function invokeDeliveryRepositoryIntegrationOperation(
     return failure("package-formation-rejected");
   }
 
+  const confirmed = await readDeliveryFinalization(
+    repositoryRoot,
+    operationPackage.deliveryId,
+  );
+  if (
+    confirmed.status !== "completed" ||
+    confirmed.record.deliveryFinalizationRef !==
+      operationPackage.operationFacts.deliveryFinalizationRef
+  )
+    return failure("pre-integration-drift-rejected");
+
+  let mutation: { root: string; target: string } | undefined;
   let finalCommit: string;
   if (
     operationPackage.operationFacts.checkpointOperation.kind === "create-new"
   ) {
     if (typeof commitFinal !== "function") {
-      return failure("package-formation-rejected");
+      return failure("package-formation-rejected", mutation);
     }
     let commitResult: unknown;
     try {
+      mutation = {
+        root: repositoryRoot,
+        target: operationPackage.operationFacts.targetMainRef,
+      };
       commitResult = await commitFinal({
         operationPackage: callbackPackage,
         guidance: Buffer.from(guidance),
       });
     } catch {
-      return failure("final-commit-rejected");
+      return failure("final-commit-rejected", mutation);
     }
-    if (!isCommitResult(commitResult)) return failure("final-commit-rejected");
+    if (!isCommitResult(commitResult))
+      return failure("final-commit-rejected", mutation);
     const observed = await observeGitHead(repositoryRoot);
     if (
       observed === null ||
@@ -508,32 +478,36 @@ export async function invokeDeliveryRepositoryIntegrationOperation(
         observed,
       )) !== 1
     )
-      return failure("final-commit-rejected");
+      return failure("final-commit-rejected", mutation);
     finalCommit = observed;
   } else {
     const checkpoint =
       operationPackage.operationFacts.checkpointOperation.checkpointCommit;
     if ((await resolveGitCommit(repositoryRoot, checkpoint)) !== checkpoint) {
-      return failure("final-commit-rejected");
+      return failure("final-commit-rejected", mutation);
     }
     finalCommit = checkpoint;
   }
   if (
     !(await isGitIndexAndWorktreeClean(repositoryRoot)) ||
-    (await deriveApplicableCheckCandidateRef(repositoryRoot)) !==
-      operationPackage.operationFacts.finalizedCandidateRef ||
-    (await deriveApplicableCheckObjectCandidateRef(
-      repositoryRoot,
-      finalCommit,
-    )) !== operationPackage.operationFacts.finalizedCandidateRef ||
     (await resolveGitCommit(
       repositoryRoot,
       operationPackage.operationFacts.targetMainRef,
     )) !== operationPackage.operationFacts.targetMainPreIntegrationCommit
   )
-    return failure("final-commit-rejected");
+    return failure("final-commit-rejected", mutation);
 
   let providerResult: unknown;
+  const beforeAcceptance = await readDeliveryFinalization(
+    repositoryRoot,
+    operationPackage.deliveryId,
+  );
+  if (
+    beforeAcceptance.status !== "completed" ||
+    beforeAcceptance.record.deliveryFinalizationRef !==
+      operationPackage.operationFacts.deliveryFinalizationRef
+  )
+    return failure("repository-acceptance-rejected", mutation);
   try {
     const providerPackage = formDeliveryOperationPackage(
       operationPackage.deliveryId,
@@ -543,18 +517,22 @@ export async function invokeDeliveryRepositoryIntegrationOperation(
       operationPackage.guidanceRef,
     );
     if (providerPackage?.operationId !== "delivery-repository-integration") {
-      return failure("repository-acceptance-rejected");
+      return failure("repository-acceptance-rejected", mutation);
     }
+    mutation = {
+      root: repositoryRoot,
+      target: operationPackage.operationFacts.targetMainRef,
+    };
     providerResult = await performRepositoryAcceptance({
       operationPackage: providerPackage,
       guidance: Buffer.from(guidance),
       finalCommit,
     });
   } catch {
-    return failure("repository-acceptance-rejected");
+    return failure("repository-acceptance-rejected", mutation);
   }
   if (!isProviderResult(providerResult)) {
-    return failure("repository-acceptance-rejected");
+    return failure("repository-acceptance-rejected", mutation);
   }
 
   const acceptedMainCommit = await resolveGitCommit(
@@ -562,7 +540,7 @@ export async function invokeDeliveryRepositoryIntegrationOperation(
     operationPackage.operationFacts.targetMainRef,
   );
   if (acceptedMainCommit === null) {
-    return failure("repository-acceptance-rejected");
+    return failure("repository-acceptance-rejected", mutation);
   }
   if (
     !(await validateRepositoryIntegrationAcceptance(readIntegrationSource, {
@@ -576,35 +554,19 @@ export async function invokeDeliveryRepositoryIntegrationOperation(
       acceptedMainCommit,
     }))
   ) {
-    return failure("repository-acceptance-rejected");
+    return failure("repository-acceptance-rejected", mutation);
   }
-  if (
-    (await deriveApplicableCheckObjectCandidateRef(
-      repositoryRoot,
-      acceptedMainCommit,
-    )) !== operationPackage.operationFacts.finalizedCandidateRef ||
-    !(await revalidateDeliveryRequiredEvidenceAtObject(
-      repositoryRoot,
-      acceptedMainCommit,
-      input.deliveryFinalOutcome.operationPackage.operationFacts
-        .requiredEvidence,
-      readRequiredEvidence,
-    ))
-  ) {
-    return failure("accepted-main-content-rejected");
-  }
-
   const repositoryIntegrationRef = deriveDeliveryRepositoryIntegrationRef(
     operationPackage,
     finalCommit,
     acceptedMainCommit,
   );
+  if (repositoryIntegrationRef === null)
+    return failure("repository-acceptance-rejected", mutation);
   const record: DeliveryRepositoryIntegrationRecord = {
     repositoryIntegrationRef,
     deliveryFinalizationRef:
       operationPackage.operationFacts.deliveryFinalizationRef,
-    finalizedCandidateRef:
-      operationPackage.operationFacts.finalizedCandidateRef,
     preIntegrationHead: operationPackage.operationFacts.preIntegrationHead,
     checkpointOperation: cloneDeliveryRepositoryIntegrationOperationFacts(
       operationPackage.operationFacts,
@@ -621,5 +583,5 @@ export async function invokeDeliveryRepositoryIntegrationOperation(
     operationPackage,
   )
     ? { status: "terminal", operationPackage, record }
-    : failure("repository-acceptance-rejected");
+    : failure("repository-acceptance-rejected", mutation);
 }

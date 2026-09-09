@@ -93,7 +93,8 @@ changes:
     dependsOn:
       - "connect-openspec-action-workflow"
       - "decouple-full-test-from-repository-tracking"
-    state: planned
+    state: completed
+    projectOrdinal: 37
     outputs:
       - "无首个 commit 或有无关未提交文件时的 Start，保留真实写入冲突检查。"
       - "消除剩余整仓摘要连锁，窄写完成状态，不复制完整结果或重演全部历史。"
@@ -148,6 +149,14 @@ ownerDecisions:
     deliveryId: "20260908-05-lightweight-workflow-management"
     changeId: "decouple-full-test-from-repository-tracking"
     sourceRef: "owner-input:2026-09-09:activate-change:decouple-full-test-from-repository-tracking:proof-explore"
+    scope:
+      - "explore"
+
+  - ref: "owner:b9ed09c73210416e79af6492354a253ef0bfc802367f7a99abd12c98dde572f4"
+    decision: "activate-change"
+    deliveryId: "20260908-05-lightweight-workflow-management"
+    changeId: "simplify-delivery-coordination"
+    sourceRef: "owner-input:2026-09-09:activate-change:simplify-delivery-coordination:proof-explore"
     scope:
       - "explore"
 

@@ -1,7 +1,8 @@
+import { createHash } from "node:crypto";
 import { fixtureInstallation } from "./manager-installation-fixture.js";
 import assert from "node:assert/strict";
 import { execFile } from "node:child_process";
-import { mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
+import { mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { promisify } from "node:util";
@@ -270,9 +271,10 @@ function buildChangeClosures() {
   });
 }
 
+/** Synthetic accepted-source fixture, not an independent Review claim. */
 export function evidenceSource(
   _outcomes: Awaited<ReturnType<typeof acceptedOutcomes>>,
-  repositoryRoot: string,
+  _repositoryRoot: string,
 ): ReadDeliveryRequiredEvidence {
   const changeClosures = buildChangeClosures();
   return {
@@ -281,31 +283,35 @@ export function evidenceSource(
       deliveryId: requested,
       changeId,
     }) => {
-      if (projectId !== "flowkit-next" || requested !== deliveryId) {
-        throw new Error("wrong evidence identity");
-      }
-      const closure = changeClosures.find(
+      if (projectId !== "flowkit-next" || requested !== deliveryId)
+        throw new Error("wrong identity");
+      const index = changeClosures.findIndex(
         (entry) => entry.changeId === changeId,
       );
-      if (closure === undefined) throw new Error("unknown Change");
+      if (index < 0) throw new Error("unknown Change");
+      const closure = changeClosures[index];
+      const selected = (run: (typeof closure.runs)[number]) => ({
+        runId: run.runId,
+        changeStartSequence: index + 1,
+        sourceRef: run.admission.sourceRef,
+        artifacts: [
+          ["action.md", run.actionMarkdown],
+          ["context.json", run.contextJson],
+          ["result.json", run.resultJson],
+        ].map(([name, bytes]) => ({
+          artifact: run.artifactRoot + "/" + name,
+          contentSha256: createHash("sha256")
+            .update(bytes as Uint8Array)
+            .digest("hex"),
+          bytes: (bytes as Uint8Array).byteLength,
+        })),
+      });
       return {
-        ...closure,
-        runs: await Promise.all(
-          closure.runs.map(async (run) => {
-            const target = path.join(
-              repositoryRoot,
-              ...run.artifactRoot.split("/"),
-            );
-            return {
-              runId: run.runId,
-              artifactRoot: run.artifactRoot,
-              actionMarkdown: await readFile(path.join(target, "action.md")),
-              contextJson: await readFile(path.join(target, "context.json")),
-              resultJson: await readFile(path.join(target, "result.json")),
-              admission: run.admission,
-            };
-          }),
-        ),
+        projectId,
+        deliveryId,
+        changeId,
+        archive: selected(closure.runs[1]),
+        reviewApply: selected(closure.runs[0]),
       };
     },
   };

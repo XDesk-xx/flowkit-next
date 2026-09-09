@@ -1,0 +1,228 @@
+{
+  "kind": "external-orchestrator-review-apply-result",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "reviewer",
+  "action": "review-apply",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "simplify-delivery-coordination",
+  "projectOrdinal": 37,
+  "runId": "20260909-050-review-apply",
+  "previousRunId": "20260909-049-apply",
+  "reviewedRunId": "20260909-049-apply",
+  "status": "terminal",
+  "verdict": "changes-requested",
+  "verdictMeaning": "049 总体按 047/048 批准范围实现，但确认发布前遗漏 active OpenSpec set 复验，可将活动工作存在的 Delivery 确认为成功；R050-01 需在当前 Change revise-apply 修正。不是撤销 048，也不等于 Formal Full Test 或 Git authority。",
+  "startedAt": "2026-09-09T10:26:39.272Z",
+  "completedAt": "2026-09-09T10:39:57Z",
+  "reviewedResult": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/005-simplify-delivery-coordination/20260909-049-apply/result.json",
+    "bytes": 19922,
+    "sha256": "88364a40e669b3df0a04d42e0ad400c14bd9334ef6ae147fa041e1694c9dae5e"
+  },
+  "approvedProposal": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/005-simplify-delivery-coordination/20260909-047-revise-propose/result.json",
+    "bytes": 4669,
+    "sha256": "004085cd22367d0970ce0ede3bdcfee66ea5b0c45cfb0a3b1e53aecfcc4944a0"
+  },
+  "approvedReview": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/005-simplify-delivery-coordination/20260909-048-review-propose/result.json",
+    "bytes": 8148,
+    "sha256": "325f9e087ccc655438a5d57466ba514cd455e5c49861e8faf519c86297a0186c"
+  },
+  "runArtifacts": {
+    "action": {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/005-simplify-delivery-coordination/20260909-050-review-apply/action.md",
+      "bytes": 388,
+      "sha256": "1fa03d4b7276d992108814acef6ec369426ebeab0d392a95d60cad6a53ca3ee0"
+    },
+    "context": {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/005-simplify-delivery-coordination/20260909-050-review-apply/context.json",
+      "bytes": 1541,
+      "sha256": "bd7e79617e81cbe80965ca9d2a98d5c25eaf79526a51a116f450e71529a97cc1"
+    }
+  },
+  "reviewReport": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-050-review-apply/review.md",
+    "bytes": 5980,
+    "sha256": "9db87b1a1e61ae26cecf49afa16b578bd353c197b747e2e2bbc7662b47c7db2a"
+  },
+  "candidateIdentity": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-049-apply/candidate-files.json",
+    "bytes": 9038,
+    "sha256": "cfed8aa0dd24e9a7d2dd76ce3752a8c21f38118078f4367eae2d03fed5746b6a"
+  },
+  "authorEvidenceIndex": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-049-apply/evidence-index.json",
+    "bytes": 69772,
+    "sha256": "a6599d4193437b5fc41b3491349e0d75d7bf4a0a2a7f86adbd2966c57857fdd7"
+  },
+  "authorImplementationReport": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-049-apply/implementation-report.md",
+    "bytes": 6790,
+    "sha256": "9b9e9baefe03e9d412059513b10090dce0ce2a0fcefab018841c4dc455e99d9d"
+  },
+  "findings": [
+    {
+      "id": "R050-01",
+      "priority": "P2",
+      "classification": "implementation-defect",
+      "title": "Final 确认发布前遗漏 active OpenSpec set 复验",
+      "location": {
+        "path": "src/domain/delivery-final-execution.ts",
+        "line": 372
+      },
+      "relatedLocations": [
+        "src/domain/delivery-final-execution.ts:200",
+        "src/internal/delivery-final-coordination.ts:474",
+        "src/internal/delivery-final-coordination.ts:500"
+      ],
+      "observedFact": "准备前已有活动 Change 会拒绝；但第一笔内容替换后或第二笔确认 staging 时新增真实 fixture Change，既有 revalidateRelated 不观察 active set，Final 仍 terminal 且 reader=completed。两种注入均发生在确认前复验之前。",
+      "contractImpact": "批准 Final delta 要求 empty active set，且全部必要复验完成后才发布成功确认。只检查 current Full Test 不足以覆盖配置范围之外的活动 OpenSpec 工作。",
+      "contractLocations": [
+        "openspec/changes/simplify-delivery-coordination/specs/delivery-finalization/spec.md:5",
+        "openspec/changes/simplify-delivery-coordination/specs/delivery-finalization/spec.md:33",
+        "openspec/changes/simplify-delivery-coordination/design.md:53"
+      ],
+      "minimumCorrection": "在既有确认前相关复验中重读同一 target/runtime 的 active OpenSpec set，非空/不可确认时拒绝发布；已写第一笔则保留 null confirmationRef 与真实失败诊断。增加内容写后及确认 staging 时漂移的定向回归及正常/调用前拒绝对照，核对未确认结果不能获得 reader/Integration 成功资格。",
+      "scopeBoundary": "补齐已有前置；不要求所有并发 writer 强事务保证、连续监控、提交点后业务重验、历史重放、新平台或新 Change。",
+      "evidence": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-050-review-apply/active-set-probe-01/observations.json",
+        "bytes": 6278,
+        "sha256": "461be07c894c8b974e3c024af4378244b4196e517cab66609a7037e56e99de6c"
+      },
+      "affectedBytes": [
+        {
+          "path": "src/domain/delivery-final-execution.ts",
+          "bytes": 12936,
+          "sha256": "8ebc60d7c1a9f8c3edffb31818a3296fb784e7e86a67933b8c748cfb6eb780f2"
+        },
+        {
+          "path": "src/internal/delivery-final-coordination.ts",
+          "bytes": 15941,
+          "sha256": "1d73dc9069c45eefbfd8d36dd7e4bc0c4e49036ae7e64de36e1acfd78b21c4a6"
+        }
+      ]
+    }
+  ],
+  "blockingUnknowns": [],
+  "contractBlocker": false,
+  "applyAccepted": false,
+  "archiveReady": false,
+  "findingResolutions": [
+    {
+      "id": "R046-01",
+      "disposition": "core-implementation-present-with-related-revalidation-gap",
+      "basis": "两笔窄写、null/匹配 confirmationRef、跨进程 reader/Integration 区分确认前失败与确认后响应未知已实现并在当前 domain 回归通过；本次 R050-01 阻止完整 Apply 批准，不撤回已接受计划。"
+    }
+  ],
+  "assessments": {
+    "currentStep": "独立 review-apply：批准合同/049 实现/引用/原始检查核对，当前 domain/typecheck/strict 独立运行，并用四场景隔离故障探针复现必要前置遗漏。",
+    "complexityAndMinimality": "整体消除 Start Git 固定点和 Final 外围重复快照；局部 record/确认保留在同一 manifest，修正可复用现有有限复验节点，无需新增平台。",
+    "newContentAndScopeDrift": "NONE；实现及 HOW 修改在批准闭包内，未引入新 Git 节点、Registry、自动恢复或下一操作。"
+  },
+  "reviewEvidence": {
+    "method": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-050-review-apply/verify-review.mjs",
+      "bytes": 5658,
+      "sha256": "5265cd21e58fb93abae4f01d3f59d020a75264526f85d0943e7c7fbc11aa92c4"
+    },
+    "probeMethod": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-050-review-apply/probe-active-set.mjs",
+      "bytes": 5739,
+      "sha256": "49ce0d4516642029a65997d25f6a9c017191c884050722819747dd03c5d46aa4"
+    },
+    "sandboxAttemptAudit": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-050-review-apply/attempt-01/input-audit.json",
+      "bytes": 79759,
+      "sha256": "d39fc30f35233c9fd4b1218850b43eae72dd2f44009bf27cb72bf9c2074bd3f5"
+    },
+    "sandboxAttemptOutcome": "input audit 后 spawn 同步 EPERM，工具返回 exit 1；未产生该次命令 streams/summary，不补造，保留 audit。获准后原样重跑到新 attempt-02。",
+    "completedAttempt": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-050-review-apply/attempt-02/summary.json",
+      "bytes": 4774,
+      "sha256": "4ada1239aa2d08a9186521b1a45c037bcb284bd9f7d35d88a2cc5efeb14bb19b"
+    },
+    "inputAudit": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-050-review-apply/attempt-02/input-audit.json",
+      "bytes": 79759,
+      "sha256": "d39fc30f35233c9fd4b1218850b43eae72dd2f44009bf27cb72bf9c2074bd3f5"
+    },
+    "probeObservations": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-050-review-apply/active-set-probe-01/observations.json",
+      "bytes": 6278,
+      "sha256": "461be07c894c8b974e3c024af4378244b4196e517cab66609a7037e56e99de6c"
+    },
+    "probeCommand": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-050-review-apply/active-set-probe-01/command.json",
+      "bytes": 1194,
+      "sha256": "c1dda7822d8d864528bad9b7032fc343193b69c505f29af334142c63a7e72866"
+    },
+    "verifiedReferences": 126,
+    "verifiedLinuxCurrentInputs": 168,
+    "approvedPlanningUnchangedExceptTaskCheckboxes": true,
+    "checkedTasks": 19,
+    "independentChecks": {
+      "exactOpenSpecVersion": "1.10.0",
+      "domain": {
+        "tests": 303,
+        "passed": 303,
+        "failed": 0
+      },
+      "typecheckExitCode": 0,
+      "strictExitCode": 0
+    },
+    "probe": {
+      "scenarios": 4,
+      "contradictoryConfirmationScenarios": 2,
+      "exitCode": 0,
+      "meaning": "成功复现缺陷，不是产品验收 PASS",
+      "syntheticHost": true,
+      "syntheticOpenSpecProcess": true,
+      "actualD05Lifecycle": false
+    },
+    "limitations": "本轮独立运行 Windows 源码 domain/typecheck/strict 与有界探针；核对 Author 当前 Windows/Linux 材料和来源，不将其改称 Reviewer 独立重跑；未执行实际 D05 Full Test。"
+  },
+  "mutationIsolation": {
+    "before": {
+      "files": 4506,
+      "sha256": "b3e409324caf8317bfa022b90ffd4cc45f9f66c38ab614a6ab96421b6c729881",
+      "head": "ba53f8ac9f48c71e334ec4d0ac3811a323fbd525",
+      "at": "2026-09-09T10:26:39.272Z"
+    },
+    "after": {
+      "files": 4506,
+      "sha256": "b3e409324caf8317bfa022b90ffd4cc45f9f66c38ab614a6ab96421b6c729881",
+      "head": "ba53f8ac9f48c71e334ec4d0ac3811a323fbd525",
+      "at": "2026-09-09T10:38:30.356Z"
+    },
+    "equal": true,
+    "scope": "tracked/nonignored untracked 与 tracked 删除标记，目录递归；仅排除本轮 Reviewer Run/proof。审查隔离，不是产品 SHA 准入。"
+  },
+  "ownerDecisionsRelevant": [
+    {
+      "sourceRef": ".flowkit/runs/20260908-05-lightweight-workflow-management/005-simplify-delivery-coordination/20260909-049-apply/context.json#ownerDecisionsRelevant",
+      "decision": "D05 independent-bootstrap；必要材料留 target artifacts，.tmp 可丢弃；历史不改写，不执行实际 D05 Full Test/Final 或 Git。"
+    }
+  ],
+  "nextBoundary": "revise-apply",
+  "continuationMeaning": "报告既有 review-apply changes-requested 的当前 Change Author 修正交接；修正后重新独立 review-apply，不重新设计 Proposal 或另拆 Change，本轮不自动执行。",
+  "reviewerHow": ".agents/skills/review-apply/SKILL.md",
+  "diagnosticHow": "C:/Users/xuser/.agents/skills/debugging-and-error-recovery/SKILL.md",
+  "candidateReviewerHowConsumed": false,
+  "authorArtifactMutation": false,
+  "productionMutation": false,
+  "testMutation": false,
+  "skillMutation": false,
+  "specMutation": false,
+  "manifestMutation": false,
+  "historicalRunMutation": false,
+  "candidateLifecycleInvokedOnActualDelivery": false,
+  "formalD05FullTestExecuted": false,
+  "deliveryFinalExecutedOnActualDelivery": false,
+  "reviseExecuted": false,
+  "applyExecuted": false,
+  "archiveExecuted": false,
+  "repositoryGitMutation": false,
+  "stop": true
+}

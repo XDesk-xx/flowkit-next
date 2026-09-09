@@ -1,0 +1,273 @@
+TAP version 13
+# Subtest: Delivery Final prepares complete prerequisites and materializes one bounded closure
+not ok 1 - Delivery Final prepares complete prerequisites and materializes one bounded closure
+  ---
+  duration_ms: 2524.5536
+  type: 'test'
+  location: 'D:\\Projects\\flowkit-next\\tests\\unit\\domain\\delivery-final-execution.test.ts:1:985'
+  failureType: 'testCodeFailure'
+  error: |-
+    The input did not match the regular expression /gitCheckpoint: pending-owner-authorized-local-delivery-commit/. Input:
+    
+    'id: test-delivery-finalization\n' +
+      'delivery:\n' +
+      '  state: completed\n' +
+      '  fullTestStatus: "passed"\n' +
+      '  finalizationStatus: completed\n' +
+      '  fullTestAttempt: "38451524-b439-43c7-adb7-c78a43c04a4e"\n' +
+      'finalization:\n' +
+      '  state: completed\n' +
+      '  verifiedCandidateRef: "full-test-input:sha256:4cc9ef73f6fb3264c7cf6ce93b62189ba80153c6e2c4314543fbf71375eb3030"\n' +
+      '  fullTestExecutionRef: "full-test-execution:sha256:2d7f6d4da718728a5c62f3ba9daa5045d0c9c75463453643094d07757c3b9d50"\n' +
+      '  ownerAuthorityRef: "owner:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"\n' +
+      '  sourceRef: "owner-input:finalize-delivery"\n' +
+      '  fullTestAttempt: "38451524-b439-43c7-adb7-c78a43c04a4e"\n' +
+      '  confirmationRef: "delivery-finalization:sha256:8261a4b2dc3199916e0d9d7b388c1235a2bd292419e9d05fd71dcf29b33d05aa"\n' +
+      'changes:\n' +
+      '  - id: first-change\n' +
+      '    required: true\n' +
+      '    state: completed\n' +
+      '  - id: second-change\n' +
+      '    required: true\n' +
+      '    state: completed\n'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual: |-
+    id: test-delivery-finalization
+    delivery:
+      state: completed
+      fullTestStatus: "passed"
+      finalizationStatus: completed
+      fullTestAttempt: "38451524-b439-43c7-adb7-c78a43c04a4e"
+    finalization:
+      state: completed
+      verifiedCandidateRef: "full-test-input:sha256:4cc9ef73f6fb3264c7cf6ce93b62189ba80153c6e2c4314543fbf71375eb3030"
+      fullTestExecutionRef: "full-test-execution:sha256:2d7f6d4da718728a5c62f3ba9daa5045d0c9c75463453643094d07757c3b9d50"
+      ownerAuthorityRef: "owner:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      sourceRef: "owner-input:finalize-delivery"
+      fullTestAttempt: "38451524-b439-43c7-adb7-c78a43c04a4e"
+      confirmationRef: "delivery-finalization:sha256:8261a4b2dc3199916e0d9d7b388c1235a2bd292419e9d05fd71dcf29b33d05aa"
+    changes:
+      - id: first-change
+        required: true
+        state: completed
+      - id: second-change
+        required: true
+        state: completed
+    
+  operator: 'match'
+  stack: |-
+    TestContext.<anonymous> (D:\Projects\flowkit-next\tests\unit\domain\delivery-final-execution.test.ts:83:12)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: Delivery Final writer preserves all non-target manifest bytes and ordering
+not ok 2 - Delivery Final writer preserves all non-target manifest bytes and ordering
+  ---
+  duration_ms: 1445.4881
+  type: 'test'
+  location: 'D:\\Projects\\flowkit-next\\tests\\unit\\domain\\delivery-final-execution.test.ts:1:2790'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    ... Skipped lines
+    
+      '# retained manifest header\n' +
+        'id: "test-delivery-finalization"\n' +
+        '\n' +
+        'delivery:\n' +
+        '  state: completed # retain this delivery-state comment\n' +
+    ...
+        '  fullTestAttempt: "e9a86235-0e6d-455e-8b05-7699e9f308bd"\n' +
+    -   '  formalVerificationCandidate: "full-test-input:sha256:4cc9ef73f6fb3264c7cf6ce93b62189ba80153c6e2c4314543fbf71375eb3030"\n' +
+        'finalization:\n' +
+        '  state: completed\n' +
+        '  verifiedCandidateRef: "full-test-input:sha256:4cc9ef73f6fb3264c7cf6ce93b62189ba80153c6e2c4314543fbf71375eb3030"\n' +
+        '  fullTestExecutionRef: "full-test-execution:sha256:d590429839b50b59a80053ed46757f28ad21aa722b5bed0f0bf4e0f7cbc30cf1"\n' +
+    +   '  ownerAuthorityRef: "owner:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"\n' +
+    +   '  sourceRef: "owner-input:finalize-delivery"\n' +
+    +   '  fullTestAttempt: "e9a86235-0e6d-455e-8b05-7699e9f308bd"\n' +
+    +   '  confirmationRef: null\n' +
+    -   '  gitCheckpoint: pending-owner-authorized-local-delivery-commit\n' +
+        '\n' +
+        'reference:\n' +
+        '  kind: "quoted-kind"\n' +
+        '  note: "This deliberately long quoted scalar must stay on exactly one source line after Delivery Final updates the approved closure fields."\n' +
+        '\n' +
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: |-
+    # retained manifest header
+    id: "test-delivery-finalization"
+    
+    delivery:
+      state: completed # retain this delivery-state comment
+      fullTestStatus: "passed"
+      finalizationStatus: completed
+      fullTestAttempt: "e9a86235-0e6d-455e-8b05-7699e9f308bd"
+      formalVerificationCandidate: "full-test-input:sha256:4cc9ef73f6fb3264c7cf6ce93b62189ba80153c6e2c4314543fbf71375eb3030"
+    finalization:
+      state: completed
+      verifiedCandidateRef: "full-test-input:sha256:4cc9ef73f6fb3264c7cf6ce93b62189ba80153c6e2c4314543fbf71375eb3030"
+      fullTestExecutionRef: "full-test-execution:sha256:d590429839b50b59a80053ed46757f28ad21aa722b5bed0f0bf4e0f7cbc30cf1"
+      gitCheckpoint: pending-owner-authorized-local-delivery-commit
+    
+    reference:
+      kind: "quoted-kind"
+      note: "This deliberately long quoted scalar must stay on exactly one source line after Delivery Final updates the approved closure fields."
+    
+    unrelated:
+      quoted: "preserve these quotes"
+      literal: |-
+        preserve
+        these lines
+    
+    changes:
+      - id: first-change
+        required: true
+        state: completed
+    
+      - id: second-change
+        required: true
+        state: completed
+    
+  actual: |-
+    # retained manifest header
+    id: "test-delivery-finalization"
+    
+    delivery:
+      state: completed # retain this delivery-state comment
+      fullTestStatus: "passed"
+      finalizationStatus: completed
+      fullTestAttempt: "e9a86235-0e6d-455e-8b05-7699e9f308bd"
+    finalization:
+      state: completed
+      verifiedCandidateRef: "full-test-input:sha256:4cc9ef73f6fb3264c7cf6ce93b62189ba80153c6e2c4314543fbf71375eb3030"
+      fullTestExecutionRef: "full-test-execution:sha256:d590429839b50b59a80053ed46757f28ad21aa722b5bed0f0bf4e0f7cbc30cf1"
+      ownerAuthorityRef: "owner:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      sourceRef: "owner-input:finalize-delivery"
+      fullTestAttempt: "e9a86235-0e6d-455e-8b05-7699e9f308bd"
+      confirmationRef: null
+    
+    reference:
+      kind: "quoted-kind"
+      note: "This deliberately long quoted scalar must stay on exactly one source line after Delivery Final updates the approved closure fields."
+    
+    unrelated:
+      quoted: "preserve these quotes"
+      literal: |-
+        preserve
+        these lines
+    
+    changes:
+      - id: first-change
+        required: true
+        state: completed
+    
+      - id: second-change
+        required: true
+        state: completed
+    
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (D:\Projects\flowkit-next\tests\unit\domain\delivery-final-execution.test.ts:140:12)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: Delivery Final coordination reader rejects missing, mismatched, duplicate, and incomplete manifests
+ok 3 - Delivery Final coordination reader rejects missing, mismatched, duplicate, and incomplete manifests
+  ---
+  duration_ms: 16.4934
+  type: 'test'
+  ...
+# Subtest: Delivery Final coordination writer never returns success on staging, replace, or readback failure
+not ok 4 - Delivery Final coordination writer never returns success on staging, replace, or readback failure
+  ---
+  duration_ms: 1624.8236
+  type: 'test'
+  location: 'D:\\Projects\\flowkit-next\\tests\\unit\\domain\\delivery-final-execution.test.ts:5:186'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + {
+    +   mutationStatus: 'not-written',
+    +   reason: 'content-validation-failed',
+    +   status: 'failed'
+    + }
+    - null
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: ~
+  actual:
+    status: 'failed'
+    mutationStatus: 'not-written'
+    reason: 'content-validation-failed'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (D:\Projects\flowkit-next\tests\unit\domain\delivery-final-execution.test.ts:194:12)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: Delivery Final preparation rejects partial facts, active OpenSpec, output drift, and candidate drift
+ok 5 - Delivery Final preparation rejects partial facts, active OpenSpec, output drift, and candidate drift
+  ---
+  duration_ms: 2507.8664
+  type: 'test'
+  ...
+# Subtest: Delivery Final rejects failed archive anchors and unrelated external outcome bytes
+ok 6 - Delivery Final rejects failed archive anchors and unrelated external outcome bytes
+  ---
+  duration_ms: 1411.9735
+  type: 'test'
+  ...
+# Subtest: Delivery Final callback is defensive and correction or invalid results do not close coordination
+not ok 7 - Delivery Final callback is defensive and correction or invalid results do not close coordination
+  ---
+  duration_ms: 1584.4135
+  type: 'test'
+  location: 'D:\\Projects\\flowkit-next\\tests\\unit\\domain\\delivery-final-execution.test.ts:9:540'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+      {
+    +   mutationStatus: 'not-written',
+        reason: 'execution-result-rejected',
+        record: null,
+        status: 'failed'
+      }
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    status: 'failed'
+    reason: 'execution-result-rejected'
+    record: ~
+  actual:
+    status: 'failed'
+    reason: 'execution-result-rejected'
+    mutationStatus: 'not-written'
+    record: ~
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (D:\Projects\flowkit-next\tests\unit\domain\delivery-final-execution.test.ts:485:12)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 3
+# fail 4
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 11556.1011

@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 import {
@@ -53,21 +54,14 @@ test("DeliveryOperationId is a closed exact four-value catalog with deterministi
 test("canonical Delivery Final Guidance is generic, content-bound, and operation-bounded", async () => {
   const body = await readFile("skills/delivery/final/SKILL.md", "utf8");
   assert.equal(body.includes(deliveryId), false);
-  assert.equal(body.includes("完整真实 PASS"), true);
-  assert.equal(body.includes("当前 inputRef"), true);
-  assert.equal(
-    body.includes("only the fixed canonical Delivery coordination"),
-    true,
+  const ref = await resolveDeliveryGuidanceRef(
+    fixtureInstallation(process.cwd()),
+    "delivery-final",
   );
-  assert.equal(body.includes("STOP"), true);
-  assert.equal(body.includes("Git authority"), true);
-  assert.equal(body.includes("discover, rank, route, or choose"), true);
-  assert.notEqual(
-    await resolveDeliveryGuidanceRef(
-      fixtureInstallation(process.cwd()),
-      "delivery-final",
-    ),
-    null,
+  assert.equal(ref?.path, "skills/delivery/final/SKILL.md");
+  assert.equal(
+    ref?.contentSha256,
+    createHash("sha256").update(body).digest("hex"),
   );
 });
 

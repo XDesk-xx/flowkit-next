@@ -1,215 +1,93 @@
-import { fixtureInstallation } from "./manager-installation-fixture.js";
 import assert from "node:assert/strict";
 import test from "node:test";
-
 import {
   deriveDeliveryFinalizationRef,
+  isDeliveryFinalizationRecord,
   formDeliveryOperationPackage,
-  resolveDeliveryGuidanceRef,
+  isDeliveryFinalizationRecordForPackage,
 } from "../../../src/domain/index.js";
-import { authority, deliveryId } from "./delivery-final-fixture.js";
+import { finalFacts } from "./delivery-operation-fixture.js";
 
-test("Delivery Finalization ref has a fixed golden vector and ordered projection", async () => {
-  const guidanceRef = {
-    path: "skills/delivery/final/SKILL.md",
-    contentSha256: "c".repeat(64),
-  } as const;
+test("Final local ref fixed golden vector rejects old packages and every missing/extra field", () => {
+  const links = {
+    projectId: "test-project",
+    deliveryId: "test-delivery",
+    ownerAuthorityRef: "owner:" + "a".repeat(64),
+    sourceRef: "owner-input:final",
+    fullTestAttempt: "12345678-1234-4123-8123-123456789abc",
+    verifiedCandidateRef: "full-test-input:sha256:" + "b".repeat(64),
+    fullTestExecutionRef: "full-test-execution:sha256:" + "c".repeat(64),
+  };
+  const ref =
+    "delivery-finalization:sha256:28232af29234ec01048689bd3c5eae996a92806ff1c24150ee3734e238634b1e";
+  assert.equal(deriveDeliveryFinalizationRef(links), ref);
+  assert.equal(
+    deriveDeliveryFinalizationRef(
+      Object.fromEntries(Object.entries(links).reverse()),
+    ),
+    ref,
+  );
+  for (const key of Object.keys(links)) {
+    const copy = { ...links } as Record<string, unknown>;
+    delete copy[key];
+    assert.equal(deriveDeliveryFinalizationRef(copy), null);
+  }
+  for (const key of [
+    "requiredEvidence",
+    "finalizedCandidateRef",
+    "coordinationRef",
+    "confirmationRef",
+    "guidanceRef",
+    "architecture",
+  ]) {
+    assert.equal(deriveDeliveryFinalizationRef({ ...links, [key]: {} }), null);
+    assert.equal(
+      isDeliveryFinalizationRecord({
+        ...links,
+        deliveryFinalizationRef: ref,
+        [key]: {},
+      }),
+      false,
+    );
+  }
+  const facts = finalFacts();
+  const deliveryId = "20260902-04-delivery-continuity-stable-core-closure";
+  const ownerAuthority = {
+    ref: links.ownerAuthorityRef,
+    decision: "finalize-delivery",
+    deliveryId,
+    sourceRef: links.sourceRef,
+    scope: ["delivery-final"],
+  };
   const operationPackage = formDeliveryOperationPackage(
     deliveryId,
     "delivery-final",
-    authority("finalize-delivery"),
-    {
-      verifiedCandidateRef: `full-test-input:sha256:${"1".repeat(64)}`,
-      fullTestExecutionRef: `full-test-execution:sha256:${"2".repeat(64)}`,
-      coordinationPrestateRef: {
-        artifact: `openspec/delivery-groups/${deliveryId}.yaml`,
-        contentSha256: "5".repeat(64),
-        bytes: 101,
-      },
-      completedRequiredChangeIds: ["first-change", "second-change"],
-      requiredEvidence: {
-        projectId: "flowkit-next",
-        deliveryId,
-        changeClosures: ["first-change", "second-change"].map(
-          (changeId, index) => ({
-            changeId,
-            archiveRunId: `2026090${index + 1}-002-archive`,
-            reviewApplyRunId: `2026090${index + 1}-001-review-apply`,
-            runs: [
-              `2026090${index + 1}-001-review-apply`,
-              `2026090${index + 1}-002-archive`,
-            ].map((runId) => ({
-              runId,
-              artifacts: ["action.md", "context.json", "result.json"].map(
-                (name, artifactIndex) => ({
-                  artifact: `runs/${name}`,
-                  contentSha256: String(artifactIndex + 6).repeat(64),
-                  bytes: 10,
-                }),
-              ),
-            })),
-          }),
-        ),
-        fullTest: {
-          executionRef: `full-test-execution:sha256:${"2".repeat(64)}`,
-          sourceRef: "test:full-test-source",
-          artifacts: [
-            {
-              artifact: "full-test/outcome.json",
-              contentSha256: "9".repeat(64),
-              bytes: 10,
-            },
-          ],
-        },
-      },
-    },
-    guidanceRef,
+    ownerAuthority,
+    facts,
+    { path: "skills/delivery/final/SKILL.md", contentSha256: "d".repeat(64) },
   );
   assert.notEqual(operationPackage, null);
-  if (operationPackage?.operationId !== "delivery-final") {
-    throw new Error("invalid Final package fixture");
-  }
-  const coordinationRef = {
-    artifact: `openspec/delivery-groups/${deliveryId}.yaml`,
-    contentSha256: "6".repeat(64),
-    bytes: 202,
-  };
-  const finalizedCandidateRef = `candidate:sha256:${"7".repeat(64)}`;
-  const exact = deriveDeliveryFinalizationRef(
-    operationPackage,
-    coordinationRef,
-    finalizedCandidateRef,
-  );
-  assert.equal(
-    exact,
-    "delivery-finalization:sha256:185906f5f098fb3e8f049e4d1f3cb02235ac205d1f967f48f3352c7efb7dcf8a",
-  );
-  assert.deepEqual(Object.keys(operationPackage.operationFacts), [
-    "verifiedCandidateRef",
-    "fullTestExecutionRef",
-    "coordinationPrestateRef",
-    "completedRequiredChangeIds",
-    "requiredEvidence",
-  ]);
-  assert.deepEqual(
-    Object.keys(operationPackage.operationFacts.requiredEvidence),
-    ["projectId", "deliveryId", "changeClosures", "fullTest"],
-  );
-  for (const legacyFacts of [
-    {
-      ...operationPackage.operationFacts,
-      architectureFinalizationRef: `architecture-finalization:sha256:${"3".repeat(64)}`,
-    },
-    {
-      ...operationPackage.operationFacts,
-      architectureMaterializedCandidateRef: `candidate:sha256:${"4".repeat(64)}`,
-    },
-    {
-      ...operationPackage.operationFacts,
-      requiredEvidence: {
-        ...operationPackage.operationFacts.requiredEvidence,
-        architecture: {},
-      },
-    },
-  ]) {
-    assert.equal(
-      formDeliveryOperationPackage(
-        deliveryId,
-        "delivery-final",
-        operationPackage.ownerAuthority,
-        legacyFacts,
-        guidanceRef,
-      ),
-      null,
-    );
-    assert.equal(
-      deriveDeliveryFinalizationRef(
-        { ...operationPackage, operationFacts: legacyFacts },
-        coordinationRef,
-        finalizedCandidateRef,
-      ),
-      null,
-    );
-  }
-  const reverseFields = (value: unknown): unknown => {
-    if (Array.isArray(value)) return value.map(reverseFields);
-    if (typeof value !== "object" || value === null) return value;
-    return Object.fromEntries(
-      Object.entries(value)
-        .reverse()
-        .map(([key, entry]) => [key, reverseFields(entry)]),
-    );
-  };
-  const reordered = {
-    ...operationPackage,
-    operationFacts: {
-      ...operationPackage.operationFacts,
-      requiredEvidence: reverseFields(
-        operationPackage.operationFacts.requiredEvidence,
-      ),
-    },
-  };
-  assert.equal(
-    deriveDeliveryFinalizationRef(
-      reordered,
-      coordinationRef,
-      finalizedCandidateRef,
-    ),
-    exact,
-  );
-  assert.equal(
-    deriveDeliveryFinalizationRef(
-      {
-        guidanceRef,
-        operationFacts: operationPackage.operationFacts,
-        ownerAuthority: operationPackage.ownerAuthority,
-        operationId: "delivery-final",
-        deliveryId,
-      },
-      {
-        bytes: 202,
-        contentSha256: "6".repeat(64),
-        artifact: coordinationRef.artifact,
-      },
-      finalizedCandidateRef,
-    ),
-    exact,
-  );
-  const reversed = formDeliveryOperationPackage(
+  assert.equal(deriveDeliveryFinalizationRef(operationPackage), null);
+  const matching = {
+    ...links,
     deliveryId,
-    "delivery-final",
-    authority("finalize-delivery"),
-    {
-      ...operationPackage.operationFacts,
-      completedRequiredChangeIds: ["second-change", "first-change"],
-      requiredEvidence: {
-        ...operationPackage.operationFacts.requiredEvidence,
-        changeClosures: [
-          ...operationPackage.operationFacts.requiredEvidence.changeClosures,
-        ].reverse(),
-      },
-    },
-    guidanceRef,
-  );
-  assert.notEqual(reversed, null);
-  assert.notEqual(
-    deriveDeliveryFinalizationRef(
-      reversed,
-      coordinationRef,
-      finalizedCandidateRef,
-    ),
-    exact,
-  );
-  assert.notEqual(
-    deriveDeliveryFinalizationRef(
-      operationPackage,
-      { ...coordinationRef, bytes: 203 },
-      finalizedCandidateRef,
-    ),
-    exact,
+    projectId: facts.projectId,
+    verifiedCandidateRef: facts.verifiedCandidateRef,
+    fullTestExecutionRef: facts.fullTestExecutionRef,
+  };
+  const record = {
+    ...matching,
+    deliveryFinalizationRef: deriveDeliveryFinalizationRef(matching),
+  };
+  assert.equal(
+    isDeliveryFinalizationRecordForPackage(record, operationPackage),
+    true,
   );
   assert.equal(
-    await resolveDeliveryGuidanceRef(fixtureInstallation(""), "delivery-final"),
-    null,
+    isDeliveryFinalizationRecordForPackage(
+      { ...record, fullTestAttempt: "wrong" },
+      operationPackage,
+    ),
+    false,
   );
 });

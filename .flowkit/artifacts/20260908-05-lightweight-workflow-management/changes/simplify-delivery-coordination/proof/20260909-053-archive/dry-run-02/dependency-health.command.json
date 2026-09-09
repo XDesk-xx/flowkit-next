@@ -1,0 +1,29 @@
+{
+  "checkId": "dependency-health",
+  "program": "/usr/local/bin/node",
+  "args": [
+    "node_modules/dependency-cruiser/bin/dependency-cruise.mjs",
+    "--config",
+    "dependency-cruiser.config.mjs",
+    "--output-type",
+    "err",
+    "src",
+    "tests"
+  ],
+  "cwd": "/work/project",
+  "startedAt": "2026-09-09T12:33:03.831Z",
+  "finishedAt": "2026-09-09T12:33:06.111Z",
+  "exitCode": 0,
+  "signal": null,
+  "error": null,
+  "stdout": {
+    "file": "dependency-health.stdout.txt",
+    "bytes": 77,
+    "sha256": "0c5b209c2c9d7beca7249b2ac5fafa0bfe35d6effc3dd7b6203c736a64ac5984"
+  },
+  "stderr": {
+    "file": "dependency-health.stderr.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

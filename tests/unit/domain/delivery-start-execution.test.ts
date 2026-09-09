@@ -1,594 +1,317 @@
-import { fixtureInstallation } from "./manager-installation-fixture.js";
-import { loadManagerInstallation } from "../../../src/internal/manager-installation.js";
 import assert from "node:assert/strict";
-import { execFile } from "node:child_process";
-import { mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
+import { createHash } from "node:crypto";
+import {
+  mkdir,
+  mkdtemp,
+  readFile,
+  rm,
+  writeFile,
+  rename,
+  symlink,
+} from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import test from "node:test";
-import { promisify } from "node:util";
-
+import { stringify } from "yaml";
 import {
   invokeDeliveryStartOperation,
   prepareDeliveryStartOperationPackage,
   type DeliveryStartPreparationInput,
-  type OwnerAuthorityFact,
 } from "../../../src/domain/index.js";
-import { createStartValidationFixture } from "./delivery-start-validation-fixture.js";
+import { fixtureInstallation } from "./manager-installation-fixture.js";
+import { git } from "./delivery-final-fixture.js";
 
-const deliveryId = "20260902-04-delivery-continuity-stable-core-closure";
-const acceptedBaseCommit = "a".repeat(40);
-const planningReference = {
-  artifact: "flowkit-next-d04-stable-core-closure-final-reference.md",
-  contentSha256: "b".repeat(64),
-};
-const execFileAsync = promisify(execFile);
-
-async function git(root: string, ...args: string[]): Promise<string> {
-  const { stdout } = await execFileAsync("git", args, {
-    cwd: root,
-    encoding: "utf8",
-    windowsHide: true,
-  });
-  return stdout.trim();
-}
-
-function authority(commit = false): OwnerAuthorityFact {
-  return {
-    ref: `owner:${"c".repeat(64)}`,
-    decision: "create-delivery",
-    deliveryId,
-    sourceRef: "conversation:owner-delivery-start",
-    scope: commit
-      ? ["delivery-start", "single-delivery-start-fixed-point-commit"]
-      : ["delivery-start"],
-  };
-}
-
-function input(
-  commit = false,
-  base = acceptedBaseCommit,
-): DeliveryStartPreparationInput {
-  return {
-    deliveryId,
-    operationFacts: { acceptedBaseCommit: base, planningReference },
-    ownerAuthority: authority(commit),
-  };
-}
-
-function observed(
-  overrides: Record<string, unknown> = {},
-  base = acceptedBaseCommit,
-) {
-  return {
-    headCommit: base,
-    workingTreeClean: true,
-    planningReference,
-    ...overrides,
-  };
-}
-
-async function trustedValidation(
-  root: string,
-  base = acceptedBaseCommit,
-  requestedExitCode = 0,
-  transformOutcome?: (value: Record<string, unknown>) => unknown,
-) {
-  return createStartValidationFixture(
-    root,
-    {
-      deliveryId,
-      acceptedBaseCommit: base,
-      planningReference,
-    },
-    requestedExitCode,
-    transformOutcome,
-  );
-}
-
-async function makeProductRoot(): Promise<string> {
-  const root = await mkdtemp(path.join(tmpdir(), "flowkit-delivery-start-"));
-  const entry = path.join(root, "skills", "delivery", "start", "SKILL.md");
-  await mkdir(path.dirname(entry), { recursive: true });
-  await writeFile(entry, "# exact delivery start\n", "utf8");
-  await mkdir(path.join(root, ".flowkit"), { recursive: true });
-  await writeFile(
-    path.join(root, ".flowkit", "project.json"),
-    '{"projectId":"flowkit-next"}\n',
-    "utf8",
-  );
-  const outputPaths = [
-    path.join(root, "openspec", "delivery-groups", `${deliveryId}.yaml`),
-  ];
-  for (const output of outputPaths) {
-    await mkdir(path.dirname(output), { recursive: true });
-    await writeFile(output, "{}\n", "utf8");
-  }
+export async function startFixture() {
+  const root = await mkdtemp(path.join(tmpdir(), "flowkit-start-unborn-"));
   await git(root, "init", "-q");
-  await git(root, "config", "user.email", "flowkit@example.invalid");
-  await git(root, "config", "user.name", "Flowkit Test");
-  await git(root, "config", "core.autocrlf", "false");
-  await git(root, "add", ".");
-  await git(root, "commit", "-qm", "fixture");
-  return root;
-}
-
-test("Start preparation validates trusted exact repository/planning facts before package formation", async () => {
-  const root = await makeProductRoot();
-  try {
-    let observations = 0;
-    const prepared = await prepareDeliveryStartOperationPackage(
-      root,
-      input(),
-      () => {
-        observations += 1;
-        return observed();
-      },
-      fixtureInstallation(root),
-    );
-    assert.equal(observations, 1);
-    assert.notEqual(prepared, null);
-    assert.equal(prepared!.operationId, "delivery-start");
-    assert.equal(
-      prepared!.operationFacts.acceptedBaseCommit,
-      acceptedBaseCommit,
-    );
-    assert.match(prepared!.guidanceRef.contentSha256, /^[0-9a-f]{64}$/);
-  } finally {
-    await rm(root, { recursive: true, force: true });
-  }
-});
-
-test("stale head, dirty tree, or wrong planning reference reject before Agent execution", async () => {
-  const root = await makeProductRoot();
-  try {
-    assert.equal(
-      await prepareDeliveryStartOperationPackage(
-        root,
-        input(),
-        () => observed({ headCommit: "d".repeat(40) }),
-        fixtureInstallation(root),
-      ),
-      null,
-    );
-    assert.equal(
-      await prepareDeliveryStartOperationPackage(
-        root,
-        input(),
-        () => observed({ workingTreeClean: false }),
-        fixtureInstallation(root),
-      ),
-      null,
-    );
-    assert.equal(
-      await prepareDeliveryStartOperationPackage(
-        root,
-        input(),
-        () =>
-          observed({
-            planningReference: {
-              ...planningReference,
-              contentSha256: "e".repeat(64),
-            },
-          }),
-        fixtureInstallation(root),
-      ),
-      null,
-    );
-  } finally {
-    await rm(root, { recursive: true, force: true });
-  }
-});
-
-test("missing or mismatched Start authority rejects package formation and calls execution zero times", async () => {
-  const root = await makeProductRoot();
-  try {
-    const validation = await trustedValidation(root);
-    let executeCalls = 0;
-    const outcome = await invokeDeliveryStartOperation(
-      root,
-      {
-        ...input(),
-        ownerAuthority: { ...authority(), decision: "activate-change" },
-      },
-      () => observed(),
-      () => {
-        executeCalls += 1;
-        return validation.surface();
-      },
-      validation.read,
-      undefined,
-      fixtureInstallation(root),
-    );
-    assert.equal(outcome.status, "failed");
-    assert.equal(executeCalls, 0);
-  } finally {
-    await rm(root, { recursive: true, force: true });
-  }
-});
-
-test("execution callback receives the exact package and matching canonical Guidance bytes", async () => {
-  const root = await makeProductRoot();
-  try {
-    const validation = await trustedValidation(root);
-    let seenPackage: unknown = null;
-    let seenGuidance = "";
-    const outcome = await invokeDeliveryStartOperation(
-      root,
-      input(),
-      () => observed(),
-      (operationPackage, guidanceBytes) => {
-        seenPackage = operationPackage;
-        seenGuidance = guidanceBytes.toString("utf8");
-        return validation.surface();
-      },
-      validation.read,
-      undefined,
-      fixtureInstallation(root),
-    );
-
-    assert.equal(outcome.status, "terminal");
-    assert.notEqual(
-      seenPackage,
-      outcome.status === "terminal" ? outcome.operationPackage : null,
-    );
-    assert.deepEqual(
-      seenPackage,
-      outcome.status === "terminal" ? outcome.operationPackage : null,
-    );
-    assert.equal(seenGuidance, "# exact delivery start\n");
-  } finally {
-    await rm(root, { recursive: true, force: true });
-  }
-});
-
-test("successful validation without commit authority stops before Git mutation", async () => {
-  const root = await makeProductRoot();
-  try {
-    const validation = await trustedValidation(root);
-    let executeCalls = 0;
-    let commitCalls = 0;
-    const outcome = await invokeDeliveryStartOperation(
-      root,
-      input(false),
-      () => observed(),
-      () => {
-        executeCalls += 1;
-        return validation.surface();
-      },
-      validation.read,
-      () => {
-        commitCalls += 1;
-        return "f".repeat(40);
-      },
-      loadManagerInstallation(),
-    );
-    assert.equal(executeCalls, 1);
-    assert.equal(commitCalls, 0);
-    assert.equal(outcome.status, "terminal");
-    assert.equal(outcome.fixedPointCommit, null);
-    if (outcome.status !== "terminal") throw new Error("expected terminal");
-    assert.equal(outcome.contentCompletion.projectId, "flowkit-next");
-    assert.equal(outcome.contentCompletion.deliveryId, deliveryId);
-    assert.equal(
-      outcome.contentCompletion.acceptedBaseCommit,
-      acceptedBaseCommit,
-    );
-    assert.deepEqual(
-      outcome.contentCompletion.planningReference,
-      planningReference,
-    );
-    assert.deepEqual(
-      outcome.contentCompletion.outputs.map((output) => output.artifact),
-      [`openspec/delivery-groups/${deliveryId}.yaml`],
-    );
-    assert.match(
-      outcome.contentCompletion.candidateRef,
-      /^candidate:sha256:[0-9a-f]{64}$/,
-    );
-    assert.deepEqual(
-      outcome.contentCompletion.validation,
-      validation.surface().validation,
-    );
-  } finally {
-    await rm(root, { recursive: true, force: true });
-  }
-});
-
-test("missing validation source and callback authority escalation fail closed", async () => {
-  const root = await makeProductRoot();
-  try {
-    const validation = await trustedValidation(root);
-    const failedValidation = await trustedValidation(
-      root,
-      acceptedBaseCommit,
-      1,
-    );
-    assert.equal(
-      (
-        await invokeDeliveryStartOperation(
-          root,
-          input(false),
-          () => observed(),
-          failedValidation.surface,
-          failedValidation.read,
-          undefined,
-          fixtureInstallation(root),
-        )
-      ).status,
-      "failed",
-    );
-    const incomplete = await trustedValidation(
-      root,
-      acceptedBaseCommit,
-      0,
-      (outcome) => ({
-        ...outcome,
-        checks: (outcome.checks as unknown[]).slice(0, -1),
-      }),
-    );
-    assert.equal(
-      (
-        await invokeDeliveryStartOperation(
-          root,
-          input(false),
-          () => observed(),
-          incomplete.surface,
-          incomplete.read,
-          undefined,
-          fixtureInstallation(root),
-        )
-      ).status,
-      "failed",
-    );
-    const wrongInput = await trustedValidation(
-      root,
-      acceptedBaseCommit,
-      0,
-      (outcome) => ({
-        ...outcome,
-        checks: (outcome.checks as Record<string, unknown>[]).map(
-          (check, index) =>
-            index === 0
-              ? { ...check, inputs: [`commit:${"f".repeat(40)}`] }
-              : check,
-        ),
-      }),
-    );
-    assert.equal(
-      (
-        await invokeDeliveryStartOperation(
-          root,
-          input(false),
-          () => observed(),
-          wrongInput.surface,
-          wrongInput.read,
-          undefined,
-          fixtureInstallation(root),
-        )
-      ).status,
-      "failed",
-    );
-    const missing = await invokeDeliveryStartOperation(
-      root,
-      input(false),
-      () => observed(),
-      validation.surface,
-      async () => {
-        throw new Error("validation source unavailable");
-      },
-      undefined,
-      fixtureInstallation(root),
-    );
-    assert.deepEqual(missing, {
-      status: "failed",
-      reason: "content-completion-rejected",
-      fixedPointCommit: null,
-      contentCompletion: null,
-    });
-
-    let commitCalls = 0;
-    const escalated = await invokeDeliveryStartOperation(
-      root,
-      input(false),
-      () => observed(),
-      (operationPackage) => {
-        (operationPackage.ownerAuthority!.scope as string[]).push(
-          "single-delivery-start-fixed-point-commit",
-        );
-        return validation.surface();
-      },
-      validation.read,
-      () => {
-        commitCalls += 1;
-        return "f".repeat(40);
-      },
-      fixtureInstallation(root),
-    );
-    assert.equal(escalated.status, "terminal");
-    assert.equal(commitCalls, 0);
-    if (escalated.status === "terminal") {
-      assert.deepEqual(escalated.operationPackage.ownerAuthority!.scope, [
-        "delivery-start",
-      ]);
-    }
-  } finally {
-    await rm(root, { recursive: true, force: true });
-  }
-});
-
-test("bounded commit authority permits exactly one fixed-point commit callback then stops terminal", async () => {
-  const root = await makeProductRoot();
-  try {
-    const base = await git(root, "rev-parse", "HEAD");
-    const validation = await trustedValidation(root, base);
-    let executeCalls = 0;
-    let commitCalls = 0;
-    let executedPackage: unknown = null;
-    let committedPackage: unknown = null;
-    const outcome = await invokeDeliveryStartOperation(
-      root,
-      input(true, base),
-      () => observed({}, base),
-      (operationPackage) => {
-        executeCalls += 1;
-        executedPackage = operationPackage;
-        return validation.surface();
-      },
-      validation.read,
-      async (operationPackage) => {
-        commitCalls += 1;
-        committedPackage = operationPackage;
-        await writeFile(
-          path.join(root, ".flowkit", "memos.json"),
-          '{"memos":[]}\n',
-          "utf8",
-        );
-        await git(root, "add", ".flowkit/memos.json");
-        await git(root, "commit", "-qm", "start checkpoint");
-        return git(root, "rev-parse", "HEAD");
-      },
-      fixtureInstallation(root),
-    );
-
-    assert.equal(executeCalls, 1);
-    assert.equal(commitCalls, 1);
-    assert.notEqual(executedPackage, committedPackage);
-    assert.deepEqual(executedPackage, committedPackage);
-    assert.equal(outcome.status, "terminal");
-    assert.match(outcome.fixedPointCommit!, /^[0-9a-f]{40}$/);
-  } finally {
-    await rm(root, { recursive: true, force: true });
-  }
-});
-
-test("Start rejects a two-parent checkpoint even when the second parent is otherwise valid", async () => {
-  const root = await makeProductRoot();
-  try {
-    const base = await git(root, "rev-parse", "HEAD");
-    const validation = await trustedValidation(root, base);
-    const baseTree = await git(root, "rev-parse", `${base}^{tree}`);
-    const other = await git(root, "commit-tree", baseTree, "-m", "other root");
-    const outcome = await invokeDeliveryStartOperation(
-      root,
-      input(true, base),
-      () => observed({}, base),
-      validation.surface,
-      validation.read,
-      async () => {
-        const tree = await git(root, "write-tree");
-        const merge = await git(
-          root,
-          "commit-tree",
-          tree,
-          "-p",
-          base,
-          "-p",
-          other,
-          "-m",
-          "invalid merge checkpoint",
-        );
-        await git(root, "update-ref", "HEAD", merge, base);
-        return merge;
-      },
-      fixtureInstallation(root),
-    );
-    assert.equal(outcome.status, "failed");
-    if (outcome.status === "failed") {
-      assert.equal(outcome.reason, "fixed-point-commit-rejected");
-    }
-  } finally {
-    await rm(root, { recursive: true, force: true });
-  }
-});
-
-test("commit authority without a commit callback fails closed after validation", async () => {
-  const root = await makeProductRoot();
-  try {
-    const validation = await trustedValidation(root);
-    const outcome = await invokeDeliveryStartOperation(
-      root,
-      input(true),
-      () => observed(),
-      validation.surface,
-      validation.read,
-      undefined,
-      fixtureInstallation(root),
-    );
-    assert.equal(outcome.status, "failed");
-    if (outcome.status === "failed") {
-      assert.equal(outcome.reason, "commit-callback-missing");
-    }
-  } finally {
-    await rm(root, { recursive: true, force: true });
-  }
-});
-
-test("invalid surface result or invalid fixed-point SHA fails closed", async () => {
-  const root = await makeProductRoot();
-  try {
-    const validation = await trustedValidation(root);
-    const invalidSurface = await invokeDeliveryStartOperation(
-      root,
-      input(false),
-      () => observed(),
-      () => ({ status: "partial" }),
-      validation.read,
-      undefined,
-      fixtureInstallation(root),
-    );
-    assert.equal(invalidSurface.status, "failed");
-
-    const invalidCommit = await invokeDeliveryStartOperation(
-      root,
-      input(true),
-      () => observed(),
-      validation.surface,
-      validation.read,
-      () => "not-a-commit",
-      fixtureInstallation(root),
-    );
-    assert.equal(invalidCommit.status, "failed");
-    if (invalidCommit.status === "failed") {
-      assert.equal(invalidCommit.reason, "fixed-point-commit-rejected");
-    }
-  } finally {
-    await rm(root, { recursive: true, force: true });
-  }
-});
-
-test("no candidate product Guidance means package formation fails even when .agents bootstrap exists", async () => {
-  const root = await mkdtemp(
-    path.join(tmpdir(), "flowkit-delivery-start-bootstrap-"),
+  await mkdir(path.join(root, ".flowkit"));
+  await mkdir(path.join(root, "openspec/delivery-groups"), { recursive: true });
+  await mkdir(path.join(root, "skills/delivery/start"), { recursive: true });
+  await writeFile(
+    path.join(root, "skills/delivery/start/SKILL.md"),
+    "# Start\n",
   );
+  await writeFile(
+    path.join(root, ".flowkit/project.json"),
+    '{"projectId":"start-project"}\n',
+  );
+  await writeFile(path.join(root, "plan.md"), "# Owner plan\n");
+  await writeFile(path.join(root, "unrelated.txt"), "preserve dirty bytes\n");
+  const input: DeliveryStartPreparationInput = {
+    deliveryId: "new-delivery",
+    ownerAuthority: {
+      ref: "owner:" + "a".repeat(64),
+      decision: "create-delivery",
+      deliveryId: "new-delivery",
+      sourceRef: "owner-input:start",
+      scope: ["delivery-start", "single-delivery-start-fixed-point-commit"],
+    },
+    planningReference: {
+      artifact: "plan.md",
+      contentSha256: createHash("sha256")
+        .update("# Owner plan\n")
+        .digest("hex"),
+    },
+  };
+  const content = Buffer.from(
+    stringify({
+      id: input.deliveryId,
+      projectId: "start-project",
+      planningReference: input.planningReference,
+      delivery: {
+        state: "active",
+        fullTestStatus: "pending",
+        finalizationStatus: "pending",
+      },
+      changes: [{ id: "first-change", required: true, state: "planned" }],
+    }),
+  );
+  return {
+    root,
+    input,
+    content,
+    target: path.join(root, "openspec/delivery-groups/new-delivery.yaml"),
+    installation: fixtureInstallation(root),
+  };
+}
+test("unborn repository and unrelated dirty bytes complete Start without Git or receipt callbacks", async () => {
+  const f = await startFixture();
   try {
-    const bootstrap = path.join(
-      root,
-      ".agents",
-      "skills",
-      "delivery-start",
-      "SKILL.md",
+    await assert.rejects(git(f.root, "rev-parse", "--verify", "HEAD"));
+    const before = await git(f.root, "status", "--porcelain");
+    const prepared = await prepareDeliveryStartOperationPackage(
+      f.root,
+      f.input,
+      f.installation,
     );
-    await mkdir(path.dirname(bootstrap), { recursive: true });
-    await writeFile(bootstrap, "# bootstrap\n", "utf8");
-    let executeCalls = 0;
-    const outcome = await invokeDeliveryStartOperation(
-      root,
-      input(),
-      () => observed(),
+    assert.equal(
+      prepared?.operationFacts.coordinationPrestate.contentRef,
+      null,
+    );
+    const result = await invokeDeliveryStartOperation(
+      f.root,
+      f.input,
+      async ({ writeManifest, guidance, operationPackage }) => {
+        assert.match(guidance.toString(), /Start/);
+        assert.equal(
+          Object.hasOwn(operationPackage.operationFacts, "acceptedBaseCommit"),
+          false,
+        );
+        await writeManifest(f.content);
+        return { status: "ready" };
+      },
+      f.installation,
+    );
+    assert.equal(result.status, "terminal");
+    if (result.status !== "terminal") throw new Error("Start failed");
+    assert.deepEqual(Object.keys(result), [
+      "status",
+      "operationPackage",
+      "contentCompletion",
+    ]);
+    assert.deepEqual(Object.keys(result.contentCompletion), [
+      "projectId",
+      "deliveryId",
+      "planningReference",
+      "coordinationRef",
+    ]);
+    assert.deepEqual(await readFile(f.target), f.content);
+    assert.equal(
+      await readFile(path.join(f.root, "unrelated.txt"), "utf8"),
+      "preserve dirty bytes\n",
+    );
+    await assert.rejects(git(f.root, "rev-parse", "--verify", "HEAD"));
+    assert.match(await git(f.root, "status", "--porcelain"), /unrelated.txt/);
+    assert.ok(before.includes("unrelated.txt"));
+    const reused = await invokeDeliveryStartOperation(
+      f.root,
+      f.input,
       () => {
-        executeCalls += 1;
-        return { status: "partial" };
+        throw new Error("must not rerun");
       },
-      async () => {
-        throw new Error("must not read validation");
+      f.installation,
+    );
+    assert.equal(reused.status, "terminal");
+    if (reused.status === "terminal")
+      assert.deepEqual(reused.contentCompletion, result.contentCompletion);
+  } finally {
+    await rm(f.root, { recursive: true, force: true });
+  }
+});
+test("Start rejects obsolete inputs, wrong scope, missing or changed plan, conflicting and ambiguous target", async () => {
+  const f = await startFixture();
+  try {
+    const prepare = (input: unknown) =>
+      prepareDeliveryStartOperationPackage(f.root, input, f.installation);
+    for (const input of [
+      { ...f.input, operationFacts: { acceptedBaseCommit: "a".repeat(40) } },
+      {
+        ...f.input,
+        ownerAuthority: { ...f.input.ownerAuthority, changeId: "wrong" },
       },
-      undefined,
-      fixtureInstallation(root),
+      {
+        ...f.input,
+        ownerAuthority: { ...f.input.ownerAuthority, deliveryId: "wrong" },
+      },
+      {
+        ...f.input,
+        ownerAuthority: { ...f.input.ownerAuthority, scope: ["git"] },
+      },
+      {
+        ...f.input,
+        planningReference: {
+          ...f.input.planningReference,
+          artifact: "../outside.md",
+        },
+      },
+      {
+        ...f.input,
+        planningReference: {
+          ...f.input.planningReference,
+          artifact: "missing.md",
+        },
+      },
+    ])
+      assert.equal(await prepare(input), null);
+    await writeFile(path.join(f.root, "plan.md"), "changed\n");
+    assert.equal(await prepare(f.input), null);
+    await writeFile(path.join(f.root, "plan.md"), "# Owner plan\n");
+    await writeFile(f.target, "id: conflicting\n");
+    assert.equal(await prepare(f.input), null);
+    await rm(f.target);
+    await writeFile(
+      path.join(f.root, "openspec/delivery-groups/other.yaml"),
+      "id: other\ndelivery:\n  state: active\n",
+    );
+    assert.equal(await prepare(f.input), null);
+  } finally {
+    await rm(f.root, { recursive: true, force: true });
+  }
+});
+test("Start rejects wrong project, redirected parent and concurrent target without overwriting", async () => {
+  const f = await startFixture();
+  try {
+    await writeFile(
+      f.target,
+      f.content
+        .toString()
+        .replace("projectId: start-project", "projectId: other-project"),
+    );
+    const wrong = await readFile(f.target);
+    assert.equal(
+      await prepareDeliveryStartOperationPackage(
+        f.root,
+        f.input,
+        f.installation,
+      ),
+      null,
+    );
+    assert.deepEqual(await readFile(f.target), wrong);
+    await rm(f.target);
+    const parent = path.dirname(f.target);
+    const redirected = path.join(f.root, "redirected");
+    await rename(parent, redirected);
+    await symlink(
+      redirected,
+      parent,
+      process.platform === "win32" ? "junction" : "dir",
+    );
+    assert.equal(
+      await prepareDeliveryStartOperationPackage(
+        f.root,
+        f.input,
+        f.installation,
+      ),
+      null,
+    );
+    await rm(parent);
+    await rename(redirected, parent);
+    const competing = Buffer.from("id: someone-else\n");
+    const outcome = await invokeDeliveryStartOperation(
+      f.root,
+      f.input,
+      async ({ writeManifest }) => {
+        await writeFile(f.target, competing);
+        await writeManifest(f.content);
+        return { status: "ready" };
+      },
+      f.installation,
     );
     assert.equal(outcome.status, "failed");
-    assert.equal(executeCalls, 0);
+    assert.deepEqual(await readFile(f.target), competing);
+    assert.equal(
+      await readFile(path.join(f.root, "unrelated.txt"), "utf8"),
+      "preserve dirty bytes\n",
+    );
   } finally {
-    await rm(root, { recursive: true, force: true });
+    await rm(f.root, { recursive: true, force: true });
+  }
+});
+
+test("Start refuses a different valid manifest after its own write without repairing concurrent bytes", async () => {
+  const f = await startFixture();
+  try {
+    const other = Buffer.from(
+      f.content.toString().replace("first-change", "other-change"),
+    );
+    const outcome = await invokeDeliveryStartOperation(
+      f.root,
+      f.input,
+      async ({ writeManifest }) => {
+        await writeManifest(f.content);
+        await writeFile(f.target, other);
+        return { status: "ready" };
+      },
+      f.installation,
+    );
+    assert.equal(outcome.status, "failed");
+    if (outcome.status === "failed")
+      assert.equal(outcome.mutationStatus, "written-unconfirmed");
+    assert.deepEqual(await readFile(f.target), other);
+  } finally {
+    await rm(f.root, { recursive: true, force: true });
+  }
+});
+
+test("Start rechecks plan before create, refuses validated-only and reports write-then-throw truth", async () => {
+  const f = await startFixture();
+  try {
+    let outcome = await invokeDeliveryStartOperation(
+      f.root,
+      f.input,
+      () => ({ status: "validated" }),
+      f.installation,
+    );
+    assert.equal(outcome.status, "failed");
+    if (outcome.status === "failed")
+      assert.equal(outcome.mutationStatus, "not-written");
+    outcome = await invokeDeliveryStartOperation(
+      f.root,
+      f.input,
+      async ({ writeManifest }) => {
+        await writeFile(path.join(f.root, "plan.md"), "drift\n");
+        await writeManifest(f.content);
+        return { status: "ready" };
+      },
+      f.installation,
+    );
+    assert.equal(outcome.status, "failed");
+    await assert.rejects(readFile(f.target), { code: "ENOENT" });
+    await writeFile(path.join(f.root, "plan.md"), "# Owner plan\n");
+    outcome = await invokeDeliveryStartOperation(
+      f.root,
+      f.input,
+      async ({ writeManifest }) => {
+        await writeManifest(f.content);
+        throw new Error("lost response");
+      },
+      f.installation,
+    );
+    assert.equal(outcome.status, "failed");
+    if (outcome.status === "failed")
+      assert.equal(outcome.mutationStatus, "written-unconfirmed");
+    assert.deepEqual(await readFile(f.target), f.content);
+  } finally {
+    await rm(f.root, { recursive: true, force: true });
   }
 });

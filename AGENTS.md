@@ -294,6 +294,8 @@ OpenSpec 是 formal Change/specification authority。Flowkit 只做 thin integra
 
 历史 archived Change 不因后续 guidance convergence 而重写。
 
+Delivery 内容操作保持轻量：Start 只核对项目、Owner 选定规划和固定 manifest，不要求 Git SHA/clean，也不内嵌 commit。Final 只消费 required Change 的可信已接纳 archive/直接 review-apply 和当前 Full Test，不重放祖先 admission；先窄写完成内容及 null confirmationRef，经相关复验后再发布确认。跨会话和 Integration 仅消费有效确认，不以 completed 或自签 hash 补造成功；Integration 不重新验证 Final 全仓摘要或历史 proof。Git 实际操作/来源/对象核验仍独立，D05 继续 independent-bootstrap，不用 candidate HOW 自我管理。
+
 ## 11. 独立 Archify / Architecture boundary
 
 Archify 仅作为独立的派生架构描述、校验和可视化工具，不属于 Flowkit managed tool 或 Delivery operation。
