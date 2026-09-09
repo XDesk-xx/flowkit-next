@@ -1,0 +1,52 @@
+TAP version 13
+# Subtest: accepted repository baseline has every production source reachable
+ok 1 - accepted repository baseline has every production source reachable
+  ---
+  duration_ms: 1257.417215
+  type: 'test'
+  ...
+# Subtest: healthy graph passes and type-only local source edges remain liveness edges
+ok 2 - healthy graph passes and type-only local source edges remain liveness edges
+  ---
+  duration_ms: 0.47306
+  type: 'test'
+  ...
+# Subtest: isolated unreachable production source is reported
+ok 3 - isolated unreachable production source is reported
+  ---
+  duration_ms: 0.327994
+  type: 'test'
+  ...
+# Subtest: internally connected unreachable subgraph reports every module deterministically
+ok 4 - internally connected unreachable subgraph reports every module deterministically
+  ---
+  duration_ms: 0.167047
+  type: 'test'
+  ...
+# Subtest: test-only reference does not create production liveness
+ok 5 - test-only reference does not create production liveness
+  ---
+  duration_ms: 0.186228
+  type: 'test'
+  ...
+# Subtest: missing exact production root fails closed
+ok 6 - missing exact production root fails closed
+  ---
+  duration_ms: 0.429489
+  type: 'test'
+  ...
+# Subtest: malformed graph and dangling local src dependencies fail closed
+ok 7 - malformed graph and dangling local src dependencies fail closed
+  ---
+  duration_ms: 0.255581
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1313.34835

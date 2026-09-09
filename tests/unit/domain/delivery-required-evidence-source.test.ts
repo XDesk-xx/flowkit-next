@@ -29,8 +29,12 @@ async function persistRun(
   ]);
 }
 
-function expected(outcomes: Awaited<ReturnType<typeof acceptedOutcomes>>) {
+function expected(
+  repositoryRoot: string,
+  outcomes: Awaited<ReturnType<typeof acceptedOutcomes>>,
+) {
   return {
+    repositoryRoot,
     projectId: "flowkit-next",
     deliveryId,
     changeIds: ["first-change", "second-change"],
@@ -76,7 +80,7 @@ test("Final rejects a source-bound Run that canonical admission rejects", async 
             : closure;
         },
       },
-      expected(outcomes),
+      expected(fixture.root, outcomes),
     );
     assert.equal(rejected, null);
   } finally {
@@ -176,7 +180,7 @@ test("Final follows an admitted persisted required link across Change roots", as
           };
         },
       },
-      expected(outcomes),
+      expected(fixture.root, outcomes),
     );
     assert.notEqual(evidence, null);
     assert.equal(evidence!.changeClosures[0].runs.length, 3);

@@ -1,0 +1,136 @@
+{
+  "synthetic": true,
+  "observations": [
+    {
+      "case": "Git visibility",
+      "observed": "ignore rule alone drops unchanged product; ignored product byte change is invisible; force-tracking restores inclusion"
+    },
+    {
+      "case": "Process material",
+      "observed": "raw artifact changes old candidate; Run descriptor does not"
+    },
+    {
+      "case": "Whitespace scope",
+      "observed": "staged necessary input/method blocked while raw stdout exception works",
+      "diagnostic": ".flowkit/artifacts/sample/proof/audit.mjs:2: new blank line at EOF.\n.flowkit/artifacts/sample/proof/input.bin:1: trailing whitespace.\n+fixture data  \n.flowkit/artifacts/sample/proof/input.bin:2: new blank line at EOF.\n"
+    },
+    {
+      "case": "Process output retention",
+      "observed": {
+        "status": "passed",
+        "exitCode": 0,
+        "signal": null
+      }
+    },
+    {
+      "case": "Execution identity/current selection",
+      "observed": "two actual same-input calls share executionRef; validator still accepts old object after separately declared failing check",
+      "limitation": "pure outcome validation is not current-attempt selection; no actual Final executed or claimed bypass"
+    },
+    {
+      "case": "Non-Git target",
+      "observed": {
+        "status": "failed",
+        "reason": "package-formation-rejected",
+        "record": null
+      }
+    },
+    {
+      "case": "Bounded filesystem scope feasibility",
+      "observed": "Git ignore/history/presentation do not affect declared regular input digest; product change does",
+      "limitation": "not a production config, scanner, sandbox or implementation acceptance"
+    }
+  ],
+  "gitCommands": [
+    {
+      "args": [
+        "init",
+        "-q"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "config",
+        "user.name",
+        "Reviewer isolated fixture"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "config",
+        "user.email",
+        "fixture@example.invalid"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "add",
+        "src/main.txt",
+        ".gitattributes"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "commit",
+        "-qm",
+        "synthetic review fixture"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "add",
+        "-f",
+        "src/optional.txt"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "diff",
+        "--check"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "add",
+        ".flowkit/artifacts"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "warning: in the working copy of '.flowkit/artifacts/sample/proof/input.bin', CRLF will be replaced by LF the next time Git touches it\n"
+    },
+    {
+      "args": [
+        "diff",
+        "--cached",
+        "--check"
+      ],
+      "exitCode": 2,
+      "stdout": ".flowkit/artifacts/sample/proof/audit.mjs:2: new blank line at EOF.\n.flowkit/artifacts/sample/proof/input.bin:1: trailing whitespace.\n+fixture data  \n.flowkit/artifacts/sample/proof/input.bin:2: new blank line at EOF.\n",
+      "stderr": ""
+    }
+  ],
+  "formalFullTestExecuted": false,
+  "repositoryGitMutation": false,
+  "fixtureGitMutation": true
+}

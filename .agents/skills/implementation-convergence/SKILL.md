@@ -197,3 +197,6 @@ When Apply hands off uncommitted work, preserve the latest delta plus all materi
 此条款用于 D05 independent-bootstrap；不读取、调用或委托 candidate 产品 HOW 管理 D05。三文件 Run 记录真实本次执行，材料置于 artifacts，不新增 Run 文件、Registry、自动 Review/下一步或 Git 权限。
 
 只读准备通过后，在业务修改前记录实际开始的 action.md/context.json；真实工作完成后才写 result.json 并读回。开始记录失败不做业务修改，开始后中断或保存失败保留已写 bytes 并明确报告未完成，不补造 PASS、不覆盖或清理历史、不从目录存在推断已获接管权限。bootstrap 三文件不是 canonical 产品 Run 的 schema 样例；D05 历史不转换，后续独立 Reviewer 记录自己的实际 verdict。
+## 代码 gate 与 Git checkpoint
+
+代码质量保持 bounded formatting、lint 与适用行数要求；Git whitespace/禁止入库内容分别诊断，不混作 Full Test 代码 verdict。历史 proof、测试输入、原始日志的空白不自动阻断 checkpoint，不要求重复豁免，不逐 Change 加 attributes 或重写已接受材料。核对本次授权、范围、真实冲突及 Git 结果；此 HOW 不创建提交权限。Full Test 使用项目独立范围与当前 attempt，不继承普通 Action 的 candidate/reuse。

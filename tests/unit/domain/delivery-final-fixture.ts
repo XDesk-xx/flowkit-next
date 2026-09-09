@@ -8,7 +8,6 @@ import { promisify } from "node:util";
 
 import {
   invokeDeliveryFullTestOperation,
-  type ApplicableCheckDeclaration,
   type DeliveryFullTestInvocationTerminal,
   type ReadDeliveryRequiredEvidence,
   type OwnerAuthorityFact,
@@ -39,17 +38,6 @@ export function authority(
         ? "delivery-final"
         : "delivery-full-test",
     ],
-  };
-}
-
-function noOpCheck(): ApplicableCheckDeclaration {
-  return {
-    checkId: "fixture-check",
-    program: process.execPath,
-    args: ["-e", "process.exit(0)"],
-    configRefs: ["config:fixture"],
-    toolRefs: ["tool:node"],
-    environmentRefs: ["environment:test"],
   };
 }
 
@@ -181,14 +169,31 @@ export async function cleanup(fixture: Fixture): Promise<void> {
 export async function acceptedOutcomes(fixture: Fixture): Promise<{
   readonly fullTest: DeliveryFullTestInvocationTerminal;
 }> {
+  await mkdir(path.join(fixture.root, "config/verification"), {
+    recursive: true,
+  });
+  await writeFile(
+    path.join(fixture.root, "config/verification/full-test.json"),
+    JSON.stringify({
+      inputs: ["source.txt"],
+      exclude: [".flowkit"],
+      environment: [],
+      checks: [
+        {
+          checkId: "fixture-check",
+          program: process.execPath,
+          args: ["-e", "process.exit(0)"],
+          cwd: ".",
+        },
+      ],
+    }),
+  );
   const fullTest = await invokeDeliveryFullTestOperation(
     fixture.root,
     {
       deliveryId,
       ownerAuthority: authority("authorize-formal-full-test"),
-      checks: [noOpCheck()],
     },
-    undefined,
     fixtureInstallation(fixture.root),
   );
   assert.equal(fullTest.status, "terminal");
@@ -198,12 +203,11 @@ export async function acceptedOutcomes(fixture: Fixture): Promise<{
 
 export function finalInput(
   fixture: Fixture,
-  outcomes: Awaited<ReturnType<typeof acceptedOutcomes>>,
+  _outcomes: Awaited<ReturnType<typeof acceptedOutcomes>>,
 ): object {
   return {
     deliveryId,
     ownerAuthority: authority("finalize-delivery"),
-    fullTestOutcome: outcomes.fullTest,
     flowkitHome: fixture.flowkitHome,
   };
 }
@@ -267,11 +271,10 @@ function buildChangeClosures() {
 }
 
 export function evidenceSource(
-  outcomes: Awaited<ReturnType<typeof acceptedOutcomes>>,
+  _outcomes: Awaited<ReturnType<typeof acceptedOutcomes>>,
   repositoryRoot: string,
 ): ReadDeliveryRequiredEvidence {
   const changeClosures = buildChangeClosures();
-  const fullTestOutcome = Buffer.from(`${JSON.stringify(outcomes.fullTest)}\n`);
   return {
     readChangeClosure: async ({
       projectId,
@@ -303,24 +306,6 @@ export function evidenceSource(
             };
           }),
         ),
-      };
-    },
-    readFullTest: ({ projectId, deliveryId: requested, executionRef }) => {
-      if (
-        projectId !== "flowkit-next" ||
-        requested !== deliveryId ||
-        executionRef !== outcomes.fullTest.record.executionRef
-      )
-        throw new Error("wrong Full Test request");
-      return {
-        sourceRef: "test:full-test-source",
-        outcomeJson: Buffer.from(fullTestOutcome),
-        artifacts: [
-          {
-            artifact: "full-test/outcome.json",
-            bytes: Buffer.from(fullTestOutcome),
-          },
-        ],
       };
     },
   };

@@ -1,0 +1,28 @@
+{
+  "checkId": "domain",
+  "checkRef": "full-test-check:sha256:c129e9d09da2dd00d0094f5ef33f3a44dc2f19fe71999104c2f6b3981e2dce71",
+  "program": "/usr/local/bin/node",
+  "args": [
+    "--import",
+    "tsx",
+    "--test",
+    "tests/unit/domain/*.test.ts"
+  ],
+  "cwd": ".",
+  "startedAt": "2026-09-09T05:39:58.797Z",
+  "finishedAt": "2026-09-09T05:40:27.154Z",
+  "exitCode": 1,
+  "signal": null,
+  "processError": null,
+  "saveError": null,
+  "stdout": {
+    "artifact": ".flowkit/artifacts/revise-full-test-fixture/full-test/8963319c-42e9-4787-b09e-5d1b9f2650bd/checks/domain/stdout.txt",
+    "contentSha256": "6f3ddc522aa87dca2fbc70632737be76a060d566373715275d534b6325697e21",
+    "bytes": 64249
+  },
+  "stderr": {
+    "artifact": ".flowkit/artifacts/revise-full-test-fixture/full-test/8963319c-42e9-4787-b09e-5d1b9f2650bd/checks/domain/stderr.txt",
+    "contentSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  }
+}

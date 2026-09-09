@@ -1,0 +1,148 @@
+TAP version 13
+# Subtest: code gate retains formatting, lint and exact 650-line rule independently from Git
+ok 1 - code gate retains formatting, lint and exact 650-line rule independently from Git
+  ---
+  duration_ms: 6451.9088
+  type: 'test'
+  ...
+# Subtest: historical raw proof whitespace is a Git diagnostic, not a code verdict
+ok 2 - historical raw proof whitespace is a Git diagnostic, not a code verdict
+  ---
+  duration_ms: 1479.4001
+  type: 'test'
+  ...
+# Subtest: Delivery Final prepares complete prerequisites and materializes one bounded closure
+ok 3 - Delivery Final prepares complete prerequisites and materializes one bounded closure
+  ---
+  duration_ms: 4117.4454
+  type: 'test'
+  ...
+# Subtest: Delivery Final writer preserves all non-target manifest bytes and ordering
+ok 4 - Delivery Final writer preserves all non-target manifest bytes and ordering
+  ---
+  duration_ms: 1771.6662
+  type: 'test'
+  ...
+# Subtest: Delivery Final coordination reader rejects missing, mismatched, duplicate, and incomplete manifests
+ok 5 - Delivery Final coordination reader rejects missing, mismatched, duplicate, and incomplete manifests
+  ---
+  duration_ms: 16.862
+  type: 'test'
+  ...
+# Subtest: Delivery Final coordination writer never returns success on staging, replace, or readback failure
+ok 6 - Delivery Final coordination writer never returns success on staging, replace, or readback failure
+  ---
+  duration_ms: 1662.3957
+  type: 'test'
+  ...
+# Subtest: Delivery Final preparation rejects partial facts, active OpenSpec, output drift, and candidate drift
+ok 7 - Delivery Final preparation rejects partial facts, active OpenSpec, output drift, and candidate drift
+  ---
+  duration_ms: 2698.3902
+  type: 'test'
+  ...
+# Subtest: Delivery Final rejects failed archive anchors and unrelated external outcome bytes
+ok 8 - Delivery Final rejects failed archive anchors and unrelated external outcome bytes
+  ---
+  duration_ms: 1430.9413
+  type: 'test'
+  ...
+# Subtest: Delivery Final callback is defensive and correction or invalid results do not close coordination
+ok 9 - Delivery Final callback is defensive and correction or invalid results do not close coordination
+  ---
+  duration_ms: 2310.5085
+  type: 'test'
+  ...
+# Subtest: exact Full Test authority and closed configuration reject caller overrides
+ok 10 - exact Full Test authority and closed configuration reject caller overrides
+  ---
+  duration_ms: 425.2864
+  type: 'test'
+  ...
+# Subtest: no Git target executes fresh attempts and saves exact raw bytes for cross-session reading
+ok 11 - no Git target executes fresh attempts and saves exact raw bytes for cross-session reading
+  ---
+  duration_ms: 2462.3954
+  type: 'test'
+  ...
+# Subtest: failed current attempt never falls back to a previous pass
+ok 12 - failed current attempt never falls back to a previous pass
+  ---
+  duration_ms: 1604.0241
+  type: 'test'
+  ...
+# Subtest: selected source drift stops later checks and is saved as a real failed attempt
+ok 13 - selected source drift stops later checks and is saved as a real failed attempt
+  ---
+  duration_ms: 1289.0172
+  type: 'test'
+  ...
+# Subtest: saved stream damage and incomplete latest results cannot be consumed as PASS
+ok 14 - saved stream damage and incomplete latest results cannot be consumed as PASS
+  ---
+  duration_ms: 763.6294
+  type: 'test'
+  ...
+# Subtest: start, stream-open, stream-write, result and status-publication failures never expose old PASS
+ok 15 - start, stream-open, stream-write, result and status-publication failures never expose old PASS
+  ---
+  duration_ms: 10694.4115
+  type: 'test'
+  ...
+# Subtest: checks remain ordered, preserve large stderr and continue after command failure
+ok 16 - checks remain ordered, preserve large stderr and continue after command failure
+  ---
+  duration_ms: 1132.7731
+  type: 'test'
+  ...
+# Subtest: spawn failure and process termination cannot become PASS
+ok 17 - spawn failure and process termination cannot become PASS
+  ---
+  duration_ms: 696.0293
+  type: 'test'
+  ...
+# Subtest: current reader rejects wrong ownership, escaping and non-regular material
+ok 18 - current reader rejects wrong ownership, escaping and non-regular material
+  ---
+  duration_ms: 2391.0536
+  type: 'test'
+  ...
+# Subtest: Final rejects a source-bound Run that canonical admission rejects
+ok 19 - Final rejects a source-bound Run that canonical admission rejects
+  ---
+  duration_ms: 1885.7727
+  type: 'test'
+  ...
+# Subtest: Final follows an admitted persisted required link across Change roots
+ok 20 - Final follows an admitted persisted required link across Change roots
+  ---
+  duration_ms: 1877.6197
+  type: 'test'
+  ...
+# Subtest: Full Test inputs use configured files without Git and ignore process artifacts
+ok 21 - Full Test inputs use configured files without Git and ignore process artifacts
+  ---
+  duration_ms: 589.2499
+  type: 'test'
+  ...
+# Subtest: input parser rejects ambiguous paths and selected links, binds command and declared environment
+ok 22 - input parser rejects ambiguous paths and selected links, binds command and declared environment
+  ---
+  duration_ms: 641.492
+  type: 'test'
+  ...
+# Subtest: attempt publication preserves all non-target YAML bytes and rejects drift
+ok 23 - attempt publication preserves all non-target YAML bytes and rejects drift
+  ---
+  duration_ms: 54.0957
+  type: 'test'
+  ...
+1..23
+# tests 23
+# suites 0
+# pass 23
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 21973.4675

@@ -1,0 +1,104 @@
+{
+  "inputs": [
+    "src",
+    "tests",
+    "scripts",
+    "skills",
+    "config",
+    "package.json",
+    "pnpm-lock.yaml",
+    "pnpm-workspace.yaml",
+    "tsconfig.json",
+    "tsconfig.build.json",
+    "eslint.config.mjs",
+    "dependency-cruiser.config.mjs",
+    ".node-version",
+    ".gitattributes"
+  ],
+  "exclude": [
+    ".flowkit",
+    ".tmp",
+    "architecture",
+    ".agents",
+    ".git",
+    "node_modules",
+    "dist",
+    "coverage",
+    ".codebuddy"
+  ],
+  "environment": ["NODE_OPTIONS", "CI"],
+  "checks": [
+    {
+      "checkId": "format-check",
+      "program": "node",
+      "args": [
+        "node_modules/prettier/bin/prettier.cjs",
+        "--check",
+        "src",
+        "tests",
+        "tsconfig.json",
+        "tsconfig.build.json",
+        "package.json",
+        "eslint.config.mjs",
+        "scripts/check-forbidden-tracked-artifacts.mjs"
+      ],
+      "cwd": "."
+    },
+    {
+      "checkId": "lint",
+      "program": "node",
+      "args": ["node_modules/eslint/bin/eslint.js", "src", "tests"],
+      "cwd": "."
+    },
+    {
+      "checkId": "typecheck",
+      "program": "node",
+      "args": ["node_modules/typescript/bin/tsc", "--noEmit"],
+      "cwd": "."
+    },
+    {
+      "checkId": "build",
+      "program": "node",
+      "args": ["scripts/build-production.mjs"],
+      "cwd": "."
+    },
+    {
+      "checkId": "domain",
+      "program": "node",
+      "args": ["--import", "tsx", "--test", "tests/unit/domain/*.test.ts"],
+      "cwd": "."
+    },
+    {
+      "checkId": "acceptance",
+      "program": "node",
+      "args": ["--import", "tsx", "--test", "tests/acceptance/*.test.ts"],
+      "cwd": "."
+    },
+    {
+      "checkId": "dependency-health",
+      "program": "node",
+      "args": [
+        "node_modules/dependency-cruiser/bin/dependency-cruise.mjs",
+        "--config",
+        "dependency-cruiser.config.mjs",
+        "--output-type",
+        "err",
+        "src",
+        "tests"
+      ],
+      "cwd": "."
+    },
+    {
+      "checkId": "entropy-tests",
+      "program": "node",
+      "args": ["--test", "tests/unit/quality/production-reachability.test.mjs"],
+      "cwd": "."
+    },
+    {
+      "checkId": "entropy",
+      "program": "node",
+      "args": ["scripts/check-production-reachability.mjs"],
+      "cwd": "."
+    }
+  ]
+}

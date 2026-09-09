@@ -1,0 +1,212 @@
+{
+  "kind": "external-orchestrator-review-apply-result",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "reviewer",
+  "action": "review-apply",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "decouple-full-test-from-repository-tracking",
+  "projectOrdinal": 36,
+  "runId": "20260909-041-review-apply",
+  "previousRunId": "20260909-040-revise-apply",
+  "reviewedRunId": "20260909-040-revise-apply",
+  "status": "terminal",
+  "verdict": "approved",
+  "verdictMeaning": "040 对 RA039-001 的修正通过独立复验，原 RA035/037 修复保持，批准计划/未改候选连续性成立；当前 Change Apply 审查通过，不是 D05 Formal Full Test、Delivery completion 或 Owner/Git authority。",
+  "startedAt": "2026-09-09T05:51:41.440Z",
+  "completedAt": "2026-09-09 05:56:25 UTC",
+  "reviewedResult": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/004-decouple-full-test-from-repository-tracking/20260909-040-revise-apply/result.json",
+    "bytes": 16272,
+    "sha256": "3c249caa09f3c8e974a074c62ddbb1ebe69b4925c6a7851e9c2a6e67abc04b63"
+  },
+  "previousReview": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/004-decouple-full-test-from-repository-tracking/20260909-039-review-apply/result.json",
+    "bytes": 11066,
+    "sha256": "1d5b0ef8416361d8963cc4d5ab41c67a3feb67a6a8a2f553dded5ee0ecc6694d"
+  },
+  "approvedProposalReview": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/004-decouple-full-test-from-repository-tracking/20260909-033-review-propose/result.json",
+    "bytes": 7375,
+    "sha256": "3928c78923ae83069008c203825735ff9fe764abe4fd8777a8d5c70803641832"
+  },
+  "runArtifacts": {
+    "action": {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/004-decouple-full-test-from-repository-tracking/20260909-041-review-apply/action.md",
+      "bytes": 411,
+      "sha256": "038b0fa8201efcef3659ea76972feda4d923cab604fc83dfff5093b48d827653"
+    },
+    "context": {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/004-decouple-full-test-from-repository-tracking/20260909-041-review-apply/context.json",
+      "bytes": 1624,
+      "sha256": "fd987c0719df1a8a92ff3a336863450772e8d11ce9dbaf6759a3965448dd508d"
+    }
+  },
+  "reviewReport": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-041-review-apply/review.md",
+    "bytes": 4879,
+    "sha256": "d480d7f9e96d0fb3867ca357f554098be9e5f4be4841c6b84aa0c32d5a8ac177"
+  },
+  "findingResolutions": [
+    {
+      "findingId": "D05-RA039-001",
+      "status": "verified-corrected",
+      "evidence": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-041-review-apply/attempt-02/option-observations.json",
+        "bytes": 1250,
+        "sha256": "f8fd2a34d6406e3dfed4f01f6e48a5962e6c2cfc567ac1512c7e7fea15418ff3"
+      },
+      "scope": "原带值 Node 选项反例：真实工具变化使 inputRef/checkRef 改变、旧结果 stale，新失败成为 current failed；相关测试覆盖 equals/短名与未知形式准备拒绝。"
+    },
+    {
+      "findingId": "D05-RA035-001",
+      "status": "verified-preserved",
+      "evidence": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-041-review-apply/attempt-02/observations.json",
+        "bytes": 1140,
+        "sha256": "d5dd7957c26b54599854bb55b9a38c94a2dc5d734c0846b4ff9b9eb019eb4a52"
+      },
+      "scope": "直接工具变化 stale；包内实现/preload 回归保持，不扫描无关包。"
+    },
+    {
+      "findingId": "D05-RA035-002",
+      "status": "verified-preserved",
+      "evidence": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-041-review-apply/attempt-02/observations.json",
+        "bytes": 1140,
+        "sha256": "d5dd7957c26b54599854bb55b9a38c94a2dc5d734c0846b4ff9b9eb019eb4a52"
+      },
+      "scope": "四类具体准备失败诊断保持；对应缺值/未知形式/JSON 非回显和不发布 attempt 测试通过。"
+    },
+    {
+      "findingId": "D05-RA037-001",
+      "status": "verified-preserved",
+      "evidence": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-041-review-apply/attempt-02/output-observations.json",
+        "bytes": 1269,
+        "sha256": "2b9b82cac9566884c68795b37f9608ba9e5c24b5f859cdca8126e5ddbbb84be5"
+      },
+      "scope": "新建和覆盖已排除报告均 passed，选中输入/工具身份保持；script/--/eval 测试通过。"
+    }
+  ],
+  "findings": [],
+  "blockingUnknowns": [],
+  "contractBlocker": false,
+  "assessments": {
+    "currentStep": "独立 review-apply：040 的有界修复、上轮 finding 收敛与批准计划及祖先候选保持。",
+    "complexityAndMinimality": "2 文件、既有 helper 内明确 Node 参数支持和具体拒绝，规模144/396行；无新层、Registry、配置平台或通用解释器。",
+    "newContentAndScopeDrift": "NONE；工具身份必要实现细节，不扩张 Runtime/Policy/Run/Git 或 Owner scope。"
+  },
+  "reviewEvidence": {
+    "method": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-041-review-apply/verify-review.mjs",
+      "bytes": 4399,
+      "sha256": "e6e736a82a25f2ef7bdf02b2ef253264e46c328bc77769f2c79758f332de1152"
+    },
+    "originalCounterexampleMethod": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-041-review-apply/original-counterexamples.mjs",
+      "bytes": 4339,
+      "sha256": "0c0e213eb52b5af5391b9473b33ade2a5e7cbf5954984360c2d09c8b3b438675"
+    },
+    "nodeOptionMethod": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-041-review-apply/node-option-probe.mjs",
+      "bytes": 4421,
+      "sha256": "fa8e4dc8bf73f716e7ef765b597690a726a2357af5678694329895f419cc7653"
+    },
+    "outputScopeMethod": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-041-review-apply/output-probe.mjs",
+      "bytes": 3358,
+      "sha256": "612bf7d4370328444955b37ba6bece1b9949ff8d1c28cdec52dd0069dfd16a79"
+    },
+    "sandboxBlockedAttempt": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-041-review-apply/attempt-01/summary.json",
+      "bytes": 8541,
+      "sha256": "07563a024b78e1a9e448552c58285db9ed31ca58c846bde4ad18fdccb7fb3f55"
+    },
+    "completedAttempt": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-041-review-apply/attempt-02/summary.json",
+      "bytes": 8289,
+      "sha256": "1fb22bbceb91700142ba7f987d035b0a45b44bb03da0db626d8cccaea25af138"
+    },
+    "inputAudit": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-041-review-apply/attempt-02/input-audit.json",
+      "bytes": 2589,
+      "sha256": "5a1fb2e7e0a3f5a9ef8e8b6aeecb0532ac190d84a2a61d2067263cd540e84426"
+    },
+    "verifiedReferences": 221,
+    "cumulativeCandidateFiles": 48,
+    "revisionFiles": 2,
+    "unchangedCandidateFiles": 46,
+    "ancestorFilesAllCovered": true,
+    "planningUnchanged": true,
+    "focusedTests": {
+      "tests": 33,
+      "passed": 33,
+      "failed": 0
+    },
+    "typecheckExitCode": 0,
+    "openSpecStrictExitCode": 0,
+    "exactOpenSpecVersion": "1.10.0",
+    "probeExitCodes": [
+      0,
+      0,
+      0
+    ],
+    "authorPlatformEvidence": {
+      "windowsDomain": 296,
+      "windowsAcceptance": 6,
+      "linuxProjectChecks": 9,
+      "linuxDomain": 296,
+      "linuxAcceptance": 6,
+      "linuxEntropyTests": 7,
+      "linuxCurrentReadback": "passed",
+      "afterTmpRemoval": "passed",
+      "failedAttemptsRetained": [
+        "domain-01",
+        "linux-01"
+      ]
+    },
+    "limitations": "独立当前源码 Windows fixture 检查；已核对 Author 最终 Linux 9-check 来源/原始记录/结果及读回，本轮未重跑完整 Linux 或真实 D05 Full Test。未知 Node 启动形式明确拒绝，不声称完整 Node CLI/任意命令沙箱。sandbox EPERM 保留，获准原样另存重跑。"
+  },
+  "mutationIsolation": {
+    "before": {
+      "files": 4021,
+      "sha256": "2ff8fa8d8f623676122cfad218f5a15e5ca8958ca8737cd1ffaecbdc56cb2971",
+      "head": "7625ecdef3115db45b062b544728ea2459519a09",
+      "at": "2026-09-09T05:51:41.440Z"
+    },
+    "after": {
+      "files": 4021,
+      "sha256": "2ff8fa8d8f623676122cfad218f5a15e5ca8958ca8737cd1ffaecbdc56cb2971",
+      "head": "7625ecdef3115db45b062b544728ea2459519a09",
+      "at": "2026-09-09T05:54:46.434Z"
+    },
+    "equal": true,
+    "scope": "tracked/nonignored untracked 与 tracked 删除标记，目录递归；仅排除本轮 Reviewer Run/proof。审查隔离，不是产品 Git/SHA 准入。"
+  },
+  "ownerDecisionsRelevant": [
+    {
+      "sourceRef": ".flowkit/runs/20260908-05-lightweight-workflow-management/004-decouple-full-test-from-repository-tracking/20260909-040-revise-apply/result.json#ownerDecisionsRelevant",
+      "decision": "D05 independent-bootstrap；004/projectOrdinal36；必要材料保留 target artifacts；不修改历史/Author 内容，不执行实际 D05 Full Test 或 Git。"
+    }
+  ],
+  "nextBoundary": "archive",
+  "continuationMeaning": "仅报告既有 approved review-apply 后续 archive 交接；实际调用仍需相应 authority/host boundary，本轮不自动继续。",
+  "continuationContractRef": "src/domain/policy-and-next-boundary.ts:248",
+  "remainingDeliveryScope": [
+    "simplify-delivery-coordination",
+    "invoke-git-at-workflow-boundaries"
+  ],
+  "authorArtifactMutation": false,
+  "productionMutation": false,
+  "skillMutation": false,
+  "manifestMutation": false,
+  "historicalRunMutation": false,
+  "candidateReviewerHowConsumed": false,
+  "candidateLifecycleInvokedOnActualRepository": false,
+  "fixtureProductApiExecuted": true,
+  "formalD05FullTestExecuted": false,
+  "archiveExecuted": false,
+  "repositoryGitMutation": false,
+  "stop": true
+}

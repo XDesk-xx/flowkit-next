@@ -1,0 +1,64 @@
+TAP version 13
+# Subtest: excluded output argv remains output (script, existing=false)
+ok 1 - excluded output argv remains output (script, existing=false)
+  ---
+  duration_ms: 1013.4073
+  type: 'test'
+  ...
+# Subtest: excluded output argv remains output (separator, existing=false)
+ok 2 - excluded output argv remains output (separator, existing=false)
+  ---
+  duration_ms: 924.5804
+  type: 'test'
+  ...
+# Subtest: excluded output argv remains output (eval, existing=false)
+ok 3 - excluded output argv remains output (eval, existing=false)
+  ---
+  duration_ms: 837.6867
+  type: 'test'
+  ...
+# Subtest: excluded output argv remains output (script, existing=true)
+ok 4 - excluded output argv remains output (script, existing=true)
+  ---
+  duration_ms: 836.9828
+  type: 'test'
+  ...
+# Subtest: excluded output argv remains output (separator, existing=true)
+ok 5 - excluded output argv remains output (separator, existing=true)
+  ---
+  duration_ms: 817.1875
+  type: 'test'
+  ...
+# Subtest: excluded output argv remains output (eval, existing=true)
+ok 6 - excluded output argv remains output (eval, existing=true)
+  ---
+  duration_ms: 832.3939
+  type: 'test'
+  ...
+# Subtest: Node-launched tool bytes, including its package implementation, invalidate current PASS without lock drift
+ok 7 - Node-launched tool bytes, including its package implementation, invalidate current PASS without lock drift
+  ---
+  duration_ms: 1267.7969
+  type: 'test'
+  ...
+# Subtest: invocation diagnoses configuration, input and executable preparation errors without publishing an attempt
+ok 8 - invocation diagnoses configuration, input and executable preparation errors without publishing an attempt
+  ---
+  duration_ms: 33.6206
+  type: 'test'
+  ...
+# Subtest: Node preload package implementation bytes are bound without reading unrelated packages
+ok 9 - Node preload package implementation bytes are bound without reading unrelated packages
+  ---
+  duration_ms: 311.0573
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 7247.8879

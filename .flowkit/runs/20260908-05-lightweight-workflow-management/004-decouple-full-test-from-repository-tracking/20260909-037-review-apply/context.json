@@ -1,0 +1,22 @@
+{
+  "kind": "external-orchestrator-review-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "reviewer",
+  "action": "review-apply",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "decouple-full-test-from-repository-tracking",
+  "projectOrdinal": 36,
+  "runId": "20260909-037-review-apply",
+  "previousRunId": "20260909-036-revise-apply",
+  "startedAt": "2026-09-09T04:40:49.737Z",
+  "ownerInstruction": "根据最新run，review，review 完，简短解释当前解耦方案",
+  "scope": "核对 036 对 035 两个 findings 的修正及既有批准边界保持；只写本轮 Reviewer Run/proof",
+  "ownerBoundary": "D05 independent-bootstrap；不执行生产修正、Archive、正式 Full Test 或 Git mutation，不恢复 manager 或 self-management",
+  "mutationBaseline": {
+    "files": 3582,
+    "sha256": "d7fe0e02f997f125117b4a76637c1687aeabff0115e905deff42d5ea92a00a37",
+    "head": "7625ecdef3115db45b062b544728ea2459519a09",
+    "at": "2026-09-09T04:40:49.737Z"
+  }
+}

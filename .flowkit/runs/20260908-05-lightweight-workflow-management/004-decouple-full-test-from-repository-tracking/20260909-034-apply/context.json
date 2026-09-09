@@ -1,0 +1,21 @@
+{
+  "kind": "external-orchestrator-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "author",
+  "action": "apply",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "decouple-full-test-from-repository-tracking",
+  "projectOrdinal": 36,
+  "runId": "20260909-034-apply",
+  "previousRunId": "20260909-033-review-propose",
+  "startedAt": "2026-09-09T02:27:35.551Z",
+  "ownerInstruction": "根据最新run，apply",
+  "scope": "已批准配置/输入/当前attempt/必要消费者/gate与HOW及验收20项任务",
+  "ownerDecisionsRelevant": [
+    "非产品历史空白不自动阻断checkpoint；不逐Change补attributes、不改历史",
+    "仅当前Run分组004；projectOrdinal36独立",
+    "D05 independent-bootstrap；必要proof在target artifacts；无Git或正式FullTest授权"
+  ],
+  "nextBoundary": "review-apply"
+}

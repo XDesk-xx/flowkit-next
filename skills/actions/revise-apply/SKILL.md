@@ -193,3 +193,6 @@ async function finishRecord(domain, held, result, materialChecked, terminal = tr
 Stop at `review-apply`. Do not archive/activate/finalize/Git mutate.
 
 STOP after the revised Apply Result.
+## 代码 gate 与 Git checkpoint
+
+代码质量保持 bounded formatting、lint 与适用行数要求；Git whitespace/禁止入库内容分别诊断，不混作 Full Test 代码 verdict。历史 proof、测试输入、原始日志的空白不自动阻断 checkpoint，不要求重复豁免，不逐 Change 加 attributes 或重写已接受材料。核对本次授权、范围、真实冲突及 Git 结果；此 HOW 不创建提交权限。Full Test 使用项目独立范围与当前 attempt，不继承普通 Action 的 candidate/reuse。

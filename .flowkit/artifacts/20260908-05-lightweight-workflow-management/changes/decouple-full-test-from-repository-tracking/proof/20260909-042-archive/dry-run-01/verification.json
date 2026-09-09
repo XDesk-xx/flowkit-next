@@ -1,0 +1,264 @@
+{
+  "fixtureOnly": true,
+  "canonicalConvergence": true,
+  "formalD05FullTest": false,
+  "results": [
+    {
+      "checkId": "format-check",
+      "program": "/usr/local/bin/node",
+      "args": [
+        "node_modules/prettier/bin/prettier.cjs",
+        "--check",
+        "src",
+        "tests",
+        "tsconfig.json",
+        "tsconfig.build.json",
+        "package.json",
+        "eslint.config.mjs",
+        "scripts/check-forbidden-tracked-artifacts.mjs"
+      ],
+      "cwd": "/work/project",
+      "startedAt": "2026-09-09T06:05:24.687Z",
+      "finishedAt": "2026-09-09T06:05:26.258Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "format-check.stdout.txt",
+        "bytes": 66,
+        "sha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20"
+      },
+      "stderr": {
+        "file": "format-check.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "checkId": "lint",
+      "program": "/usr/local/bin/node",
+      "args": [
+        "node_modules/eslint/bin/eslint.js",
+        "src",
+        "tests"
+      ],
+      "cwd": "/work/project",
+      "startedAt": "2026-09-09T06:05:26.261Z",
+      "finishedAt": "2026-09-09T06:05:28.247Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "lint.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "lint.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "checkId": "typecheck",
+      "program": "/usr/local/bin/node",
+      "args": [
+        "node_modules/typescript/bin/tsc",
+        "--noEmit"
+      ],
+      "cwd": "/work/project",
+      "startedAt": "2026-09-09T06:05:28.249Z",
+      "finishedAt": "2026-09-09T06:05:30.014Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "typecheck.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "typecheck.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "checkId": "build",
+      "program": "/usr/local/bin/node",
+      "args": [
+        "scripts/build-production.mjs"
+      ],
+      "cwd": "/work/project",
+      "startedAt": "2026-09-09T06:05:30.016Z",
+      "finishedAt": "2026-09-09T06:05:31.430Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "build.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "build.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "checkId": "domain",
+      "program": "/usr/local/bin/node",
+      "args": [
+        "--import",
+        "tsx",
+        "--test",
+        "tests/unit/domain/*.test.ts"
+      ],
+      "cwd": "/work/project",
+      "startedAt": "2026-09-09T06:05:31.433Z",
+      "finishedAt": "2026-09-09T06:06:01.917Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "domain.stdout.txt",
+        "bytes": 63740,
+        "sha256": "b2914107ba7e153fa83619c35bed69741754da9247fb3fd42121286a5d3a3565"
+      },
+      "stderr": {
+        "file": "domain.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "checkId": "acceptance",
+      "program": "/usr/local/bin/node",
+      "args": [
+        "--import",
+        "tsx",
+        "--test",
+        "tests/acceptance/*.test.ts"
+      ],
+      "cwd": "/work/project",
+      "startedAt": "2026-09-09T06:06:01.920Z",
+      "finishedAt": "2026-09-09T06:06:06.967Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "acceptance.stdout.txt",
+        "bytes": 1469,
+        "sha256": "d0faae499bfe288450bb93642cadd43781dffe60692e2788df96a999cdd46e88"
+      },
+      "stderr": {
+        "file": "acceptance.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "checkId": "dependency-health",
+      "program": "/usr/local/bin/node",
+      "args": [
+        "node_modules/dependency-cruiser/bin/dependency-cruise.mjs",
+        "--config",
+        "dependency-cruiser.config.mjs",
+        "--output-type",
+        "err",
+        "src",
+        "tests"
+      ],
+      "cwd": "/work/project",
+      "startedAt": "2026-09-09T06:06:06.969Z",
+      "finishedAt": "2026-09-09T06:06:08.628Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "dependency-health.stdout.txt",
+        "bytes": 77,
+        "sha256": "c7893e56ac98d2626a112ad75cdcbb60183b75b2b3bcd339d62cf8da01a86eff"
+      },
+      "stderr": {
+        "file": "dependency-health.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "checkId": "entropy-tests",
+      "program": "/usr/local/bin/node",
+      "args": [
+        "--test",
+        "tests/unit/quality/production-reachability.test.mjs"
+      ],
+      "cwd": "/work/project",
+      "startedAt": "2026-09-09T06:06:08.630Z",
+      "finishedAt": "2026-09-09T06:06:09.786Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "entropy-tests.stdout.txt",
+        "bytes": 1481,
+        "sha256": "e91bec96efe76084ef30001f9f1c627fbe2da7353a25e81cce704462e8f8a9a0"
+      },
+      "stderr": {
+        "file": "entropy-tests.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "checkId": "entropy",
+      "program": "/usr/local/bin/node",
+      "args": [
+        "scripts/check-production-reachability.mjs"
+      ],
+      "cwd": "/work/project",
+      "startedAt": "2026-09-09T06:06:09.789Z",
+      "finishedAt": "2026-09-09T06:06:10.935Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "entropy.stdout.txt",
+        "bytes": 64,
+        "sha256": "f04a184e782b6c271822d8363b3e658f3ecd505dd2cd1942d28d7b902d3aa1e3"
+      },
+      "stderr": {
+        "file": "entropy.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "checkId": "specs-strict",
+      "program": "/usr/local/bin/node",
+      "args": [
+        "/runtime/tools/openspec/1.10.0/bin/openspec.js",
+        "validate",
+        "--specs",
+        "--strict"
+      ],
+      "cwd": "/work/project",
+      "startedAt": "2026-09-09T06:06:10.937Z",
+      "finishedAt": "2026-09-09T06:06:11.206Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "specs-strict.stdout.txt",
+        "bytes": 905,
+        "sha256": "56dcc3106210498e68f84abacd1d91b24e7151b84854932531a27f67dadf9dcc"
+      },
+      "stderr": {
+        "file": "specs-strict.stderr.txt",
+        "bytes": 140,
+        "sha256": "bee4df4987f0f7f60d5d891c75a933cf1c16191edc2c4b437ba3f09eeb078aab"
+      }
+    }
+  ]
+}

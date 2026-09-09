@@ -1,0 +1,27 @@
+{
+  "projectId": "review-fixture",
+  "deliveryId": "review-full-test",
+  "attemptId": "48792ffd-d230-43da-9f94-0e7d3b099b2f",
+  "executionRef": "full-test-execution:sha256:538f0de259085cccf6375623fbff7e86fb64feed394712944334d46a7eee191e",
+  "startedAt": "2026-09-09T05:24:06.006Z",
+  "finishedAt": "2026-09-09T05:24:06.332Z",
+  "configRef": "full-test-config:sha256:839b4ea3ecbb071323c7f8bc0b412a7a3becaefecbaf8cd1ad35090a6c397296",
+  "inputRef": "full-test-input:sha256:9430801d98f7e2f7669999da89957ce4e8c12b3dda6da0998cd46b9d7888fd77",
+  "status": "failed",
+  "failureReasons": [
+    "tool:failed"
+  ],
+  "checks": [
+    {
+      "checkId": "tool",
+      "checkRef": "full-test-check:sha256:eb049c640117a5bd634f30837dc80ab89d12a50829e99859803f521126ccd812",
+      "status": "failed",
+      "reason": null,
+      "command": {
+        "artifact": ".flowkit/artifacts/review-full-test/full-test/48792ffd-d230-43da-9f94-0e7d3b099b2f/checks/tool/command.json",
+        "contentSha256": "9ede3829c1bbde6c84ff95511a6465e2a311dde6dd351079bbb28be7923d9881",
+        "bytes": 976
+      }
+    }
+  ]
+}

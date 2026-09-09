@@ -1,0 +1,144 @@
+{
+  "kind": "independent-review-apply-checks",
+  "inputAudit": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-037-review-apply/attempt-02/input-audit.json",
+    "bytes": 3276,
+    "sha256": "7b90808abfc81e2b58b1d2abce1a766a27f73c83cd3f769d5aaad6bfcb6bc99f"
+  },
+  "commands": [
+    {
+      "id": "original-counterexamples",
+      "program": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "--import",
+        "tsx",
+        "D:\\Projects\\flowkit-next\\.flowkit\\artifacts\\20260908-05-lightweight-workflow-management\\changes\\decouple-full-test-from-repository-tracking\\proof\\20260909-037-review-apply\\original-counterexamples.mjs",
+        "D:\\Projects\\flowkit-next\\.flowkit\\artifacts\\20260908-05-lightweight-workflow-management\\changes\\decouple-full-test-from-repository-tracking\\proof\\20260909-037-review-apply\\attempt-02"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "startedAt": "2026-09-09T04:43:32.616Z",
+      "finishedAt": "2026-09-09T04:43:34.227Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-037-review-apply/attempt-02/original-counterexamples.stdout.txt",
+        "bytes": 1140,
+        "sha256": "5cc09e6a50006434df698933ba55959aad6697ec33063ebf38875d1992d1bf09"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-037-review-apply/attempt-02/original-counterexamples.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "output-scope",
+      "program": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "--import",
+        "tsx",
+        "D:\\Projects\\flowkit-next\\.flowkit\\artifacts\\20260908-05-lightweight-workflow-management\\changes\\decouple-full-test-from-repository-tracking\\proof\\20260909-037-review-apply\\output-probe.mjs",
+        "D:\\Projects\\flowkit-next\\.flowkit\\artifacts\\20260908-05-lightweight-workflow-management\\changes\\decouple-full-test-from-repository-tracking\\proof\\20260909-037-review-apply\\attempt-02"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "startedAt": "2026-09-09T04:43:34.229Z",
+      "finishedAt": "2026-09-09T04:43:35.687Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-037-review-apply/attempt-02/output-scope.stdout.txt",
+        "bytes": 1341,
+        "sha256": "761565615332d4afa1feec6af6488dbb8fe79b8c318a045facea679d3a14a282"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-037-review-apply/attempt-02/output-scope.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "focused",
+      "program": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "--import",
+        "tsx",
+        "--test",
+        "tests/unit/domain/full-test-revision.test.ts",
+        "tests/unit/domain/full-test-input.test.ts",
+        "tests/unit/domain/full-test-storage.test.ts",
+        "tests/unit/domain/delivery-full-test-execution.test.ts",
+        "tests/unit/domain/delivery-final-execution.test.ts"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "startedAt": "2026-09-09T04:43:35.688Z",
+      "finishedAt": "2026-09-09T04:43:51.330Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-037-review-apply/attempt-02/focused.stdout.txt",
+        "bytes": 5406,
+        "sha256": "6b8bdefdb7209414b829c2d6ec778fd2db045449c1b7d5579099d441cba28346"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-037-review-apply/attempt-02/focused.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "typecheck",
+      "program": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "node_modules/typescript/bin/tsc",
+        "--noEmit"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "startedAt": "2026-09-09T04:43:51.331Z",
+      "finishedAt": "2026-09-09T04:43:53.144Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-037-review-apply/attempt-02/typecheck.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-037-review-apply/attempt-02/typecheck.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "openspec",
+      "program": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js",
+        "validate",
+        "decouple-full-test-from-repository-tracking",
+        "--strict"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "startedAt": "2026-09-09T04:43:53.145Z",
+      "finishedAt": "2026-09-09T04:43:54.337Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-037-review-apply/attempt-02/openspec.stdout.txt",
+        "bytes": 62,
+        "sha256": "02148cb361b65c9455ab77296d8a7c2395c7491679c1453fe1be5993f1c76714"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-037-review-apply/attempt-02/openspec.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "allCommandsExitZero": true,
+  "notFormalFullTest": true
+}

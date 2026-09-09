@@ -1,0 +1,23 @@
+{
+  "kind": "external-orchestrator-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "author",
+  "action": "propose",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "decouple-full-test-from-repository-tracking",
+  "runId": "20260909-032-propose",
+  "projectOrdinal": 36,
+  "physicalRunPath": ".flowkit/runs/20260908-05-lightweight-workflow-management/004-decouple-full-test-from-repository-tracking/20260909-032-propose",
+  "previousRunId": "20260909-031-review-explore",
+  "startedAt": "2026-09-09T02:03:08Z",
+  "ownerInstruction": "根据最新run，propose",
+  "readiness": "031 approved / next propose，reviewed Explore/030/manifest 哈希一致",
+  "scope": "只生成 proposal/design/delta specs/tasks 并验证；不重新 Explore，不修改源码、主规范、Skill 或 manifest",
+  "ownerDecisionsRelevant": [
+    "当前 Change 纳入 gate 范围和 checkpoint 阻断修正",
+    "仅当前 Run 分组使用004；历史不改",
+    "D05 independent-bootstrap；必要材料在 target artifacts，.tmp 仅可丢弃"
+  ],
+  "nextBoundary": "review-propose"
+}

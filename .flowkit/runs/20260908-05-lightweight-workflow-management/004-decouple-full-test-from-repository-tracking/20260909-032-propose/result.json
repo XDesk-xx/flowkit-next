@@ -1,0 +1,163 @@
+{
+  "kind": "external-orchestrator-propose-result",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "author",
+  "action": "propose",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "decouple-full-test-from-repository-tracking",
+  "projectOrdinal": 36,
+  "runId": "20260909-032-propose",
+  "previousRunId": "20260909-031-review-explore",
+  "status": "terminal",
+  "outcome": "PASS",
+  "outcomeMeaning": "Author 已完成本轮中文计划及结构/一致性核对；不是 Reviewer approved、实现验收或 Formal Full Test PASS。",
+  "startedAt": "2026-09-09T02:03:08Z",
+  "completedAt": "2026-09-09T02:14:04.478Z",
+  "inputReview": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/004-decouple-full-test-from-repository-tracking/20260909-031-review-explore/result.json",
+    "bytes": 8642,
+    "sha256": "bfbd504f1907916798165fc7e2ef002d91ec0f6d4ea7d56de5e634a862fd831a"
+  },
+  "acceptedInputsUnchanged": [
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/004-decouple-full-test-from-repository-tracking/20260909-030-explore/result.json",
+      "bytes": 10546,
+      "sha256": "4dbec4173f1ab987d224275f9c657ec49e41fae67299923006f1c04228c973ae"
+    },
+    {
+      "path": "openspec/changes/decouple-full-test-from-repository-tracking/explore.md",
+      "bytes": 11392,
+      "sha256": "a536020a032782a9d39c80e06512ead16fe16e361ae557be687d6b2b37a70985"
+    },
+    {
+      "path": "openspec/delivery-groups/20260908-05-lightweight-workflow-management.yaml",
+      "bytes": 10220,
+      "sha256": "8a9ebbdd2430da92b2bc5cee0cd9139c6b8e6385d71585219265bb27e570e84f"
+    }
+  ],
+  "runArtifacts": {
+    "action": {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/004-decouple-full-test-from-repository-tracking/20260909-032-propose/action.md",
+      "bytes": 357,
+      "sha256": "f5637a03a16b2fb99caaa3dfc9d698f0ffed06e1f1ccae89075cab1dd3ebb8f8"
+    },
+    "context": {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/004-decouple-full-test-from-repository-tracking/20260909-032-propose/context.json",
+      "bytes": 1161,
+      "sha256": "b4b79756f978cee300a91c177025aa5a65b1e957b8b54a0853a8210082cca6b2"
+    }
+  },
+  "planningArtifacts": [
+    {
+      "path": "openspec/changes/decouple-full-test-from-repository-tracking/proposal.md",
+      "bytes": 3047,
+      "sha256": "03b0df4266c189fa5e1c1e039d366f181195b1256f87501922fb4f891e3edb60"
+    },
+    {
+      "path": "openspec/changes/decouple-full-test-from-repository-tracking/design.md",
+      "bytes": 13786,
+      "sha256": "d376afcadac3333acd40e8212292d85f087c17f43ca1fdf793bab0356ecd6327"
+    },
+    {
+      "path": "openspec/changes/decouple-full-test-from-repository-tracking/tasks.md",
+      "bytes": 4938,
+      "sha256": "ae8868f976ec6459936fd607a2d2022ae3decf0b50de76c48e762c23e528ce5a"
+    },
+    {
+      "path": "openspec/changes/decouple-full-test-from-repository-tracking/specs/applicable-check-execution/spec.md",
+      "bytes": 969,
+      "sha256": "0a7a56e757f26853cb337cb5c5dd7a10f421bfa060ac67aa2a9496afcf9dd03d"
+    },
+    {
+      "path": "openspec/changes/decouple-full-test-from-repository-tracking/specs/delivery-finalization/spec.md",
+      "bytes": 9194,
+      "sha256": "62e869b930bb92ff647ebf544ef4be337fccb7236b025e709694756a362c9bba"
+    },
+    {
+      "path": "openspec/changes/decouple-full-test-from-repository-tracking/specs/delivery-operation-execution-and-start-continuity/spec.md",
+      "bytes": 2373,
+      "sha256": "3091e11f157fb7fd1a7bfc9e065d83680a7028457d0057131e213cad37387f9d"
+    },
+    {
+      "path": "openspec/changes/decouple-full-test-from-repository-tracking/specs/formal-full-test-execution-and-correction/spec.md",
+      "bytes": 7743,
+      "sha256": "99bbf590fa7ffd3bc02ab848f29e2a9cab8fb35059056faa24d188ed9b82e448"
+    },
+    {
+      "path": "openspec/changes/decouple-full-test-from-repository-tracking/specs/lightweight-engineering-gate/spec.md",
+      "bytes": 4571,
+      "sha256": "7ba38b023cdebe2f178d7dbbef6a72eccae6c7373ab482a7d15a433600048751"
+    }
+  ],
+  "verification": {
+    "method": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-032-propose/verify-plan.mjs",
+      "bytes": 4421,
+      "sha256": "31a2298452ca119255820d6ee88d09f399d16576ebe568d7f6b2c0608271c81e"
+    },
+    "completedAttempt": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-032-propose/attempt-02/verification.json",
+      "bytes": 8222,
+      "sha256": "d98d984fc0a0a3ccc5e0296c2b28f745bfe2fd61812800ecb15c02fc4ec12f07"
+    },
+    "firstSandboxBlockedCommands": [
+      {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-032-propose/strict.command.json",
+        "bytes": 1037,
+        "sha256": "d1ef55fd9954dfd03514c1ee8b5266ff583fc2a178383801b11421740a91946e"
+      },
+      {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-032-propose/status.command.json",
+        "bytes": 1049,
+        "sha256": "4bd8f2f0cebcfaebab997b89b0d84dcf61c63e3857b3dd29da4d70fa3c87593c"
+      },
+      {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-032-propose/diff-check.command.json",
+        "bytes": 876,
+        "sha256": "c9879371800bb302145ed55ba4dd6f78718db827910da5459eb73e360f3a1d4c"
+      }
+    ],
+    "exactOpenSpecVersion": "1.10.0",
+    "strictExitCode": 0,
+    "statusPlanningComplete": true,
+    "gitDiffCheckExitCode": 0,
+    "uncheckedTasks": 20,
+    "modifiedRequirementsChecked": 11,
+    "preservedScenarioNames": 37,
+    "limitations": "首次 spawnSync EPERM，脚本随后未处理空 stdout 而中止；保留原始失败命令文件。补充空输出处理和独立 attempt 输出目录后获准重跑，三条命令均退出0。git diff --check 不覆盖 untracked planning；OpenSpec strict/场景核对仅证明计划结构与保留，不是独立语义审查或产品验收。"
+  },
+  "convergence": {
+    "scope": "固定项目配置/文件输入，当前 attempt 的发布/执行/保存/读取，Full Test 直接 Final 消费者，以及 Owner 指定 gate/checkpoint 分离。",
+    "minimality": "复用既有 operation/进程/文件/YAML 能力；无 Registry、写 CLI、Agent transport、并发恢复平台或全流程重构。",
+    "nonGoals": "不重新 Explore；不修改生产代码、测试、Skill、主规范、manifest 或历史材料；其他 Action candidate/reuse 规则不变。",
+    "materialUnknowns": []
+  },
+  "ownerDecisionsRelevant": [
+    {
+      "sourceRef": "Owner：owner 授权激活 下一个 change 进行 proof explore；当前 Change Explore/030 与 review-explore/031",
+      "decision": "当前 Change 纳入既有 checkpoint 非产品空白阻断/gate 耦合修复，不逐 Change 加 attributes 或改写历史。"
+    },
+    {
+      "sourceRef": "Owner：当前 change 修正就好，不要改历史，继续 explore",
+      "decision": "仅当前 Change Run 分组004；不重命名此前 D05 三个历史分组，projectOrdinal36与Run032独立。"
+    },
+    {
+      "sourceRef": "031-review-explore/result.json#ownerDecisionsRelevant；现行 proposal-convergence Skill",
+      "decision": "D05 independent-bootstrap；必要 proof 保存在 target artifacts，.tmp可丢弃。不恢复外部 manager，不让 candidate 自管理。"
+    },
+    {
+      "sourceRef": "Owner：根据最新run，propose",
+      "decision": "只执行本次 Propose；无 Apply/Review/Git授权。"
+    }
+  ],
+  "nextBoundary": "review-propose",
+  "continuationMeaning": "交给独立 Reviewer 审查本次8份计划；Author 不自审，不自动继续 Apply。",
+  "productionMutation": false,
+  "skillMutation": false,
+  "manifestMutation": false,
+  "historicalRunMutation": false,
+  "formalFullTestExecuted": false,
+  "repositoryGitMutation": false,
+  "stop": true
+}

@@ -1,0 +1,28 @@
+{
+  "checkId": "acceptance",
+  "checkRef": "full-test-check:sha256:62721e10c3c3a52b2768bc9b527110bcdffb75c160593a5b820e8fe1d5cc6843",
+  "program": "/usr/local/bin/node",
+  "args": [
+    "--import",
+    "tsx",
+    "--test",
+    "tests/acceptance/*.test.ts"
+  ],
+  "cwd": ".",
+  "startedAt": "2026-09-09T04:08:14.546Z",
+  "finishedAt": "2026-09-09T04:08:20.220Z",
+  "exitCode": 0,
+  "signal": null,
+  "processError": null,
+  "saveError": null,
+  "stdout": {
+    "artifact": ".flowkit/artifacts/apply-full-test-fixture/full-test/f0a4cfb2-f64c-439c-adda-61466fa137c5/checks/acceptance/stdout.txt",
+    "contentSha256": "4659f9e7cb31d1aef3a0dae268b325265e00396ac636ba58dad6af5d1f19df05",
+    "bytes": 1471
+  },
+  "stderr": {
+    "artifact": ".flowkit/artifacts/apply-full-test-fixture/full-test/f0a4cfb2-f64c-439c-adda-61466fa137c5/checks/acceptance/stderr.txt",
+    "contentSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  }
+}

@@ -1,0 +1,15 @@
+? Verifying lockfile against supply-chain policies (203 entries)...
+Lockfile is up to date, resolution step is skipped
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Packages: +177
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Packages are copied from the content-addressable store to the virtual store.
+  Content-addressable store is at: /store/v11
+  Virtual store is at:             node_modules/.pnpm
+✗ Lockfile failed supply-chain policy check (203 entries in 782ms)
+Progress: resolved 177, reused 177, downloaded 0, added 23
+Progress: resolved 177, reused 177, downloaded 0, added 66
+Progress: resolved 177, reused 177, downloaded 0, added 110
+Progress: resolved 177, reused 177, downloaded 0, added 156
+Progress: resolved 177, reused 177, downloaded 0, added 177, done
+[ERR_PNPM_NO_OFFLINE_META] Failed to resolve ansi-regex in package mirror /root/.cache/pnpm/v11/metadata-full/registry.npmjs.org/ansi-regex.jsonl

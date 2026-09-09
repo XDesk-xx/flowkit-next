@@ -24,6 +24,7 @@ interface ParsedManifestPrestate {
 const PRE_FINAL_DELIVERY_FIELDS = [
   "state",
   "fullTestStatus",
+  "fullTestAttempt",
   "finalizationStatus",
 ] as const;
 const COMPLETED_DELIVERY_FIELDS = [
@@ -125,7 +126,7 @@ function parsePrestate(
     !isRecord(document.delivery) ||
     !hasExactlyFields(document.delivery, PRE_FINAL_DELIVERY_FIELDS) ||
     document.delivery.state !== "active" ||
-    document.delivery.fullTestStatus !== "pending" ||
+    document.delivery.fullTestStatus !== "passed" ||
     document.delivery.finalizationStatus !== "pending" ||
     Object.prototype.hasOwnProperty.call(document, "finalization")
   ) {
@@ -210,7 +211,6 @@ function materializeCompletedManifestBytes(
 
   const replacements = new Map<string, string>([
     ["state", "completed"],
-    ["fullTestStatus", "passed"],
     ["finalizationStatus", "completed"],
   ]);
   const edits: Array<{

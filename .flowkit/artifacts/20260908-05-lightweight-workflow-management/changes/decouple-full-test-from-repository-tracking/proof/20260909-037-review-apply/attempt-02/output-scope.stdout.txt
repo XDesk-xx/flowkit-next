@@ -1,0 +1,53 @@
+{
+  "kind": "independent-output-scope-probe",
+  "fixtureOnly": true,
+  "formalD05FullTest": false,
+  "observations": [
+    {
+      "preexisting": false,
+      "selectedFilesBefore": [
+        "config/verification/full-test.json",
+        "src/check.cjs"
+      ],
+      "selectedFilesAfter": [
+        "config/verification/full-test.json",
+        "src/check.cjs"
+      ],
+      "filesUnchanged": true,
+      "configRefUnchanged": true,
+      "inputRefUnchanged": false,
+      "toolRefUnchanged": false,
+      "commandExitCode": 0,
+      "checkStatus": "passed",
+      "fullTestVerdict": "failed",
+      "failureReasons": [
+        "test-input-drift"
+      ],
+      "currentStatus": "failed",
+      "report": "new report"
+    },
+    {
+      "preexisting": true,
+      "selectedFilesBefore": [
+        "config/verification/full-test.json",
+        "src/check.cjs"
+      ],
+      "selectedFilesAfter": [
+        "config/verification/full-test.json",
+        "src/check.cjs"
+      ],
+      "filesUnchanged": true,
+      "configRefUnchanged": true,
+      "inputRefUnchanged": false,
+      "toolRefUnchanged": false,
+      "commandExitCode": 0,
+      "checkStatus": "passed",
+      "fullTestVerdict": "failed",
+      "failureReasons": [
+        "test-input-drift"
+      ],
+      "currentStatus": "failed",
+      "report": "new report"
+    }
+  ]
+}

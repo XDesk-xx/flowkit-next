@@ -1,0 +1,38 @@
+{
+  "projectId": "review-fixture",
+  "deliveryId": "review-full-test",
+  "attemptId": "04beee38-01ec-4f39-90f1-4cd1df2e03b1",
+  "startedAt": "2026-09-09T04:35:27.189Z",
+  "ownerAuthority": {
+    "ref": "owner:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "decision": "authorize-formal-full-test",
+    "deliveryId": "review-full-test",
+    "sourceRef": "synthetic:review35:no-real-owner-authority",
+    "scope": [
+      "delivery-full-test"
+    ]
+  },
+  "guidanceRef": {
+    "path": "skills/delivery/full-test/SKILL.md",
+    "contentSha256": "87cefd02307b01a7f2ed4824df9b179a999d816c045f4a75feb9ca63a417915d"
+  },
+  "configRef": "full-test-config:sha256:80c36f3a433e4f125eb9f4b022e1dbb60ab186d35ad96b557c15f5a156769fa6",
+  "inputRef": "full-test-input:sha256:d13e72b7e2ef9c7ed25d0afcc58c1ea9531b16bf553040488994b8811dc7d550",
+  "orderedChecks": [
+    {
+      "checkId": "tool",
+      "program": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "node_modules/review-tool/cli.cjs"
+      ],
+      "cwd": ".",
+      "toolRef": "full-test-tool:sha256:1892d627b16fbeb1496b0951924b50c216b0abb2e7293092632b7641c4bc54d8",
+      "environmentRefs": [
+        "win32",
+        "x64",
+        "v22.23.2"
+      ],
+      "checkRef": "full-test-check:sha256:964d01b0c27e7d967229e040bc63c077ee904609161af944bff7e57c5d6bc422"
+    }
+  ]
+}

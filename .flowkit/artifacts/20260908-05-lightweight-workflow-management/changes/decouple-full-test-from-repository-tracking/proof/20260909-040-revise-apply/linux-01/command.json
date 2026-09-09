@@ -1,0 +1,44 @@
+{
+  "program": "docker",
+  "args": [
+    "run",
+    "--rm",
+    "--network",
+    "none",
+    "--mount",
+    "type=bind,source=D:/Projects/flowkit-next,target=/source,readonly",
+    "--mount",
+    "type=bind,source=D:/Projects/flowkit-next/.flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-040-revise-apply,target=/evidence",
+    "--mount",
+    "type=volume,source=flowkit-d05-012-runtime-03,target=/runtime,readonly",
+    "--mount",
+    "type=volume,source=flowkit-d05-012-pnpm-store,target=/store",
+    "--mount",
+    "type=volume,source=flowkit-d05-012-pnpm-cache,target=/root/.cache/pnpm",
+    "-e",
+    "FLOWKIT_HOME=/runtime",
+    "-e",
+    "EVIDENCE_DIR=/evidence/linux-01",
+    "127ee201acf8",
+    "sh",
+    "/evidence/linux-run.sh"
+  ],
+  "cwd": "D:\\Projects\\flowkit-next",
+  "startedAt": "2026-09-09T05:39:13.184Z",
+  "finishedAt": "2026-09-09T05:40:42.992Z",
+  "exitCode": 1,
+  "signal": null,
+  "error": null,
+  "node": "v22.23.2",
+  "platform": "win32",
+  "stdout": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-040-revise-apply/linux-01/stdout.txt",
+    "bytes": 8740,
+    "sha256": "1772a48c2b8bba2fa20aaab42372f68e18ba3af4d408a0be1acb97f16f02b220"
+  },
+  "stderr": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-040-revise-apply/linux-01/stderr.txt",
+    "bytes": 372,
+    "sha256": "a9bfb843d83a2659fa048c3262f2e67a4d4c7000586d579bd19cee5871d0ca63"
+  }
+}

@@ -1,4 +1,5 @@
 import { fixtureInstallation } from "./manager-installation-fixture.js";
+import { readFullTestInput } from "../../../src/internal/full-test-input.js";
 import { loadManagerInstallation } from "../../../src/internal/manager-installation.js";
 import assert from "node:assert/strict";
 import fs, { mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
@@ -7,7 +8,6 @@ import path from "node:path";
 import test, { mock } from "node:test";
 
 import {
-  deriveApplicableCheckCandidateRef,
   invokeDeliveryFinalOperation,
   isDeliveryFinalizationRecordForPackage,
   prepareDeliveryFinalOperationPackage,
@@ -39,8 +39,8 @@ test("Delivery Final prepares complete prerequisites and materializes one bounde
       "{}\n",
     );
     assert.equal(
-      await deriveApplicableCheckCandidateRef(fixture.root),
-      outcomes.fullTest.record.candidateRef,
+      (await readFullTestInput(fixture.root)).inputRef,
+      outcomes.fullTest.record.inputRef,
     );
     const prepared = await prepareDeliveryFinalOperationPackage(
       fixture.root,
@@ -79,7 +79,7 @@ test("Delivery Final prepares complete prerequisites and materializes one bounde
     );
     const manifestBytes = await readFile(fixture.manifestPath, "utf8");
     assert.match(manifestBytes, /state: completed/);
-    assert.match(manifestBytes, /fullTestStatus: passed/);
+    assert.match(manifestBytes, /fullTestStatus: "passed"/);
     assert.match(
       manifestBytes,
       /gitCheckpoint: pending-owner-authorized-local-delivery-commit/,
@@ -88,7 +88,7 @@ test("Delivery Final prepares complete prerequisites and materializes one bounde
     const after = (await git(fixture.root, "status", "--short")).split(/\r?\n/);
     assert.deepEqual(
       after.filter((line) => !before.includes(line)),
-      [`M openspec/delivery-groups/${deliveryId}.yaml`],
+      [],
     );
   } finally {
     await cleanup(fixture);
@@ -115,11 +115,14 @@ test("Delivery Final writer preserves all non-target manifest bytes and ordering
         "  state: active # retain this delivery-state comment\n",
         "  state: completed # retain this delivery-state comment\n",
       )
-      .replace("  fullTestStatus: pending\n", "  fullTestStatus: passed\n")
       .replace(
         "  finalizationStatus: pending\n",
+        "  finalizationStatus: completed\n",
+      )
+      .replace(
+        `  fullTestAttempt: "${outcomes.fullTest.record.attemptId}"\n`,
         [
-          "  finalizationStatus: completed",
+          `  fullTestAttempt: "${outcomes.fullTest.record.attemptId}"`,
           `  formalVerificationCandidate: ${JSON.stringify(facts.verifiedCandidateRef)}`,
           "finalization:",
           "  state: completed",
@@ -312,19 +315,8 @@ test("Delivery Final preparation rejects partial facts, active OpenSpec, output 
         input,
         {
           ...source,
-          readFullTest: async (
-            request: Parameters<typeof source.readFullTest>[0],
-          ) => {
-            const material = await source.readFullTest(request);
-            return {
-              ...material,
-              artifacts: [
-                {
-                  artifact: "../redirected.json",
-                  bytes: Buffer.from("forged\n"),
-                },
-              ],
-            };
+          readFullTest: () => {
+            throw new Error("caller source must not be consumed");
           },
         },
         fixtureInstallation(fixture.root),

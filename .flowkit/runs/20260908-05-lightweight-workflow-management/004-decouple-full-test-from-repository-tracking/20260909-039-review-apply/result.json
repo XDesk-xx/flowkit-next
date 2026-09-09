@@ -1,0 +1,202 @@
+{
+  "kind": "external-orchestrator-review-apply-result",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "reviewer",
+  "action": "review-apply",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "decouple-full-test-from-repository-tracking",
+  "projectOrdinal": 36,
+  "runId": "20260909-039-review-apply",
+  "previousRunId": "20260909-038-revise-apply",
+  "reviewedRunId": "20260909-038-revise-apply",
+  "status": "terminal",
+  "verdict": "changes-requested",
+  "verdictMeaning": "038 已修复普通输出参数误绑定；带值 Node 选项仍会使真实工具入口漏绑并错误保留旧 PASS，当前 Apply 不可批准。",
+  "startedAt": "2026-09-09T05:22:15.094Z",
+  "completedAt": "2026-09-09 05:25:55 UTC",
+  "reviewedResult": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/004-decouple-full-test-from-repository-tracking/20260909-038-revise-apply/result.json",
+    "bytes": 15836,
+    "sha256": "0200d5d94d8578f897198ea47e8954e419f4d89dbcc8099f9d3f1e82937d70ad"
+  },
+  "previousReview": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/004-decouple-full-test-from-repository-tracking/20260909-037-review-apply/result.json",
+    "bytes": 10537,
+    "sha256": "0c24ae2d581d64c47cdc975a3c606c55cc34d2397c756ec528394db1d0919f1b"
+  },
+  "approvedProposalReview": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/004-decouple-full-test-from-repository-tracking/20260909-033-review-propose/result.json",
+    "bytes": 7375,
+    "sha256": "3928c78923ae83069008c203825735ff9fe764abe4fd8777a8d5c70803641832"
+  },
+  "runArtifacts": {
+    "action": {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/004-decouple-full-test-from-repository-tracking/20260909-039-review-apply/action.md",
+      "bytes": 414,
+      "sha256": "6411a9e1921ab53c32f9c5e68cb403da962afb24b13b61114b39a04b9c94929c"
+    },
+    "context": {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/004-decouple-full-test-from-repository-tracking/20260909-039-review-apply/context.json",
+      "bytes": 1625,
+      "sha256": "e20cb798457e9b400c683237a88bca6483ab393f0e45657c8e18691dac9091a1"
+    }
+  },
+  "reviewReport": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-039-review-apply/review.md",
+    "bytes": 4777,
+    "sha256": "52854cb64a05cdf323e29078297c9c75f8cef87406b660e4c1ac668eac2b8100"
+  },
+  "findingResolutions": [
+    {
+      "findingId": "D05-RA037-001",
+      "status": "verified-corrected",
+      "evidence": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-039-review-apply/attempt-02/output-observations.json",
+        "bytes": 1269,
+        "sha256": "2b9b82cac9566884c68795b37f9608ba9e5c24b5f859cdca8126e5ddbbb84be5"
+      },
+      "scope": "新建及覆盖排除输出均 passed，files/configRef/inputRef/toolRef 保持；28 项相关测试覆盖 script/--/eval。"
+    },
+    {
+      "findingId": "D05-RA035-001",
+      "status": "original-counterexample-preserved-with-related-gap",
+      "evidence": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-039-review-apply/attempt-02/observations.json",
+        "bytes": 1140,
+        "sha256": "431fe5178d1148b5ca53959892e0ff7435dfb599a9b54b075fcbccb68af0a661"
+      },
+      "scope": "直接工具脚本变化仍使当前结论 stale；带值 Node 选项变体另见 RA039-001，不声称全部工具形式已完整绑定。"
+    },
+    {
+      "findingId": "D05-RA035-002",
+      "status": "verified-preserved",
+      "evidence": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-039-review-apply/attempt-02/observations.json",
+        "bytes": 1140,
+        "sha256": "431fe5178d1148b5ca53959892e0ff7435dfb599a9b54b075fcbccb68af0a661"
+      },
+      "scope": "四类准备失败具体诊断保持，相关测试通过。"
+    }
+  ],
+  "findings": [
+    {
+      "findingId": "D05-RA039-001",
+      "priority": "P1",
+      "title": "带值 Node 选项截断工具入口识别，实际工具变化后仍消费旧 PASS",
+      "location": {
+        "path": "src/internal/full-test-tool.ts",
+        "startLine": 85,
+        "endLine": 94
+      },
+      "observed": "node --conditions development node_modules/review-tool/cli.cjs 中 --conditions 被跳过，development 被误认入口并因 ENOENT break；真正 cli.cjs 未绑定。独立 fixture 首次真实 passed，只改工具脚本为 exitCode 7，inputRef/checkRef 均不变、current reader 仍 passed；新执行实际 failed。",
+      "contractImpact": "违反 approved design §1–2、tasks 1.1/1.3 与 Full Test exact material check identity/drift 合同。已声明直接工具资源不能静默漏绑；本轮没有声称完整 Final 绕过已实测。",
+      "minimumCorrection": "在现有有界实现内区分 Node 选项及其值、入口/preload 与普通 argv；受支持形式绑定真正启动资源，无法可靠识别则在准备阶段明确拒绝，不静默接纳不完整 toolRef。补上述实际入口回归并保留输出/包内漂移/诊断测试；不以仅改本项目命令绕过，不新建 Registry、通用 CLI/依赖解析平台或另开 Change。",
+      "evidence": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-039-review-apply/attempt-02/option-observations.json",
+        "bytes": 1249,
+        "sha256": "e7a87090bc7f6a21b561a0e677661513d52bf9f1a8e60721052b0107fa793611"
+      },
+      "contractBlocker": false
+    }
+  ],
+  "contractBlocker": false,
+  "assessments": {
+    "currentStep": "独立 review-apply：038 finding 修复、批准计划和祖先候选保持。",
+    "complexityAndMinimality": "2 文件的最小修订范围合理；启动参数边界仍需在当前 helper 内 fail closed 收敛。",
+    "newContentAndScopeDrift": "NONE；当前 finding 是已批准检查身份要求的实现缺口，没有新增业务范围。"
+  },
+  "reviewEvidence": {
+    "method": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-039-review-apply/verify-review.mjs",
+      "bytes": 4399,
+      "sha256": "b56e8675f6b2f513f2692f45cce28e4c1c2b221a059b53dc6a51f6f572670525"
+    },
+    "originalCounterexampleMethod": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-039-review-apply/original-counterexamples.mjs",
+      "bytes": 4339,
+      "sha256": "0c0e213eb52b5af5391b9473b33ade2a5e7cbf5954984360c2d09c8b3b438675"
+    },
+    "outputScopeMethod": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-039-review-apply/output-probe.mjs",
+      "bytes": 3358,
+      "sha256": "612bf7d4370328444955b37ba6bece1b9949ff8d1c28cdec52dd0069dfd16a79"
+    },
+    "nodeOptionMethod": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-039-review-apply/node-option-probe.mjs",
+      "bytes": 4421,
+      "sha256": "fa8e4dc8bf73f716e7ef765b597690a726a2357af5678694329895f419cc7653"
+    },
+    "sandboxBlockedAttempt": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-039-review-apply/attempt-01/summary.json",
+      "bytes": 8541,
+      "sha256": "5e92573ed90afb3d819cec180c4e5eeeab563c30ede7ddbe5c7218b186bb8d35"
+    },
+    "completedAttempt": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-039-review-apply/attempt-02/summary.json",
+      "bytes": 8289,
+      "sha256": "b228a497f0542fc390376e8898d0247be84fbbf65d19d0078cc597045456af0b"
+    },
+    "inputAudit": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-039-review-apply/attempt-02/input-audit.json",
+      "bytes": 2588,
+      "sha256": "a441d65b5d2773aeb747d9a4238c7ef777089e2dbdec3c7ea7c64f2898442132"
+    },
+    "verifiedReferences": 167,
+    "cumulativeCandidateFiles": 48,
+    "revisionFiles": 2,
+    "unchangedCandidateFiles": 46,
+    "ancestorFilesAllCovered": true,
+    "planningUnchanged": true,
+    "focusedTests": {
+      "tests": 28,
+      "passed": 28,
+      "failed": 0
+    },
+    "typecheckExitCode": 0,
+    "openSpecStrictExitCode": 0,
+    "exactOpenSpecVersion": "1.10.0",
+    "probeExitCodes": [
+      0,
+      0,
+      0
+    ],
+    "limitations": "探测退出0为实际观察完成，不等于被探测条件正确。Windows 独立源码 fixture；Author 当前 Linux 9-check 来源/记录已核对，本轮未重跑完整 Linux 或真实 D05 Full Test。sandbox EPERM 保留，获准原样另存重跑。"
+  },
+  "mutationIsolation": {
+    "before": {
+      "files": 3763,
+      "sha256": "752dd783aedd5395d844d13cba691abda0b9e85c93390f3f6ef9b338a7dbeefb",
+      "head": "7625ecdef3115db45b062b544728ea2459519a09",
+      "at": "2026-09-09T05:22:15.094Z"
+    },
+    "after": {
+      "files": 3763,
+      "sha256": "752dd783aedd5395d844d13cba691abda0b9e85c93390f3f6ef9b338a7dbeefb",
+      "head": "7625ecdef3115db45b062b544728ea2459519a09",
+      "at": "2026-09-09T05:24:51.680Z"
+    },
+    "equal": true,
+    "scope": "tracked/nonignored untracked 与 tracked 删除标记，目录递归；仅排除本轮 Reviewer Run/proof。审查隔离不是产品 Git/SHA 准入。"
+  },
+  "ownerDecisionsRelevant": [
+    {
+      "sourceRef": ".flowkit/runs/20260908-05-lightweight-workflow-management/004-decouple-full-test-from-repository-tracking/20260909-038-revise-apply/result.json#ownerDecisionsRelevant",
+      "decision": "D05 independent-bootstrap；004/projectOrdinal36；必要材料保留 target artifacts；不修改历史、Author artifacts，不执行实际 D05 Full Test 或 Git。"
+    }
+  ],
+  "nextBoundary": "revise-apply",
+  "continuationMeaning": "继续当前 Change 的唯一有界修正后重新独立 review-apply；报告既有交接，不自动执行下一 Action。",
+  "authorArtifactMutation": false,
+  "productionMutation": false,
+  "skillMutation": false,
+  "manifestMutation": false,
+  "historicalRunMutation": false,
+  "candidateReviewerHowConsumed": false,
+  "candidateLifecycleInvokedOnActualRepository": false,
+  "fixtureProductApiExecuted": true,
+  "formalD05FullTestExecuted": false,
+  "archiveExecuted": false,
+  "repositoryGitMutation": false,
+  "stop": true
+}

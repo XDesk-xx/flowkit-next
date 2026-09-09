@@ -1,21 +1,19 @@
 # Delivery Full Test
 
-Execute an already-authorized `delivery-full-test` operation from its exact `DeliveryOperationPackage`.
+Execute an already-authorized `delivery-full-test` operation; Verification does not grant correction or Git authority.
 
 ## Contract
 
-Guidance 的准备与 exact read 均使用同一 manager 安装来源；相对 path/contentSha256 身份不包含绝对安装根。项目读写、检查 cwd、Git 与证据仍属于 target repositoryRoot；不得回退读取 target 的同名系统 Guidance。
+Guidance 从同一 manager 安装解析并 exact read；项目配置和所有项目写入归 target。通过发行包已有 `invokeDeliveryFullTestOperation(repositoryRoot, {deliveryId, ownerAuthority}, installation)` 调用，不需要 target adapter 或写 CLI。
 
-Use the shared v2 candidate/check identities. Preserve explicit check order and argv order; sort only declared unordered material refs by UTF-8 bytes. A PASS from the former identity domain is historical evidence and cannot be converted or reused as a v2 PASS. Checks that consume Memo or Git history bind those actual materials even when they are excluded from the product candidate.
-
-1. Treat the package-bound Delivery identity, candidate identity, ordered project-local checks, canonical Guidance identity, and exact Owner authority as fixed input.
-2. Execute only the checks explicitly bound to the package, in their declared order. Do not discover, infer, add, remove, or reorder project checks.
-3. Admit PASS evidence only when the current repository candidate and the material check identity still exactly match the package/evidence identity.
-4. If only external environment, fixture, tool, or command-setup mechanics change while the repository candidate remains exact, rerun the affected checks; unchanged exact PASS evidence may be reused.
-5. If any repository or canonical Git-visible bytes must change, STOP the current Full Test attempt. Repository correction belongs to the normal Owner-controlled correction/revise flow. A new candidate requires a new exact Full Test boundary/package and a restarted Formal Full Test.
-6. Platform fixture mechanics may differ only when they prove the same semantic obligation. Never weaken or skip the obligation because a fixture differs by platform.
-7. STOP at the Formal Full Test boundary. This Guidance does not grant correction, Change, Git, architecture-finalization, Delivery-final, or next-operation authority.
+1. 从 target 固定 `config/verification/full-test.json` 读取 inputs/exclude/environment/checks；checks 显式 program/args/cwd，不接受 caller checks/priorFacts、不从 Git 或 package scripts 推导。
+2. 核对配置/实际工具/声明环境与有界文件输入，使用独立 inputRef。被 ignore/untracked 的选中产品仍覆盖；真实 Runs/artifacts、非产品图文和合法管理变化不自动使测试失效。命令须实际遵守范围，父配置不是子进程沙箱。
+3. 建立 create-once UUID attempt；先保存并读回 start.json，再窄写并读回 Delivery fullTestAttempt/fullTestStatus，之后才执行。必要开始、命令、stdout/stderr 原始 bytes 与结果保存在 target `.flowkit/artifacts/<delivery>/full-test/<attempt>/`，不保存到 manager 或仓库外，不使用 Standard Action Run。
+4. 每次调用按声明顺序真实执行全部检查，不跨尝试 reuse。输出打开/保存失败不得 PASS，partial 原样保留。新失败/中断不选旧 PASS；只读准备不是 durable start。
+5. 消费者使用 `readCurrentDeliveryFullTest(repositoryRoot, deliveryId)` 读取当前关联、归属、完整材料与当前输入；不枚举最大目录、不由 caller outcome 替换。必要材料损坏先处理材料问题，不因图文变化盲目重测。
+6. 需要修改产品时按正常 Change/revise 权限 STOP；重跑前先用当前 reader 报告已有失败/partial，后续明确授权调用创建新 attempt，不补造旧结果或自动恢复。平台 fixture 可不同但语义义务不削弱。
+7. STOP。Full Test 不决定下一 operation，不自动 correction、Final、Git 或 Review。
 
 ## Non-goals
 
-Do not create a command registry, check planner, finding database, candidate invalidation subsystem, automatic correction path, or Standard Action wrapper for this Delivery operation.
+无检查 Registry、PASS 缓存平台、日志转存平台、自动恢复/清理或新的 Runtime/Policy/Run schema。普通 Action 的 shared v2/reuse 不受本 operation 改变。

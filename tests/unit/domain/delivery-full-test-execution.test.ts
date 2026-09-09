@@ -1,444 +1,402 @@
-import { fixtureInstallation } from "./manager-installation-fixture.js";
-import { loadManagerInstallation } from "../../../src/internal/manager-installation.js";
 import assert from "node:assert/strict";
-import { execFile } from "node:child_process";
-import { mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
-import { tmpdir } from "node:os";
+import fs from "node:fs/promises";
+import os from "node:os";
 import path from "node:path";
-import { promisify } from "node:util";
-import test from "node:test";
-
+import test, { mock } from "node:test";
 import {
-  deriveApplicableCheckRef,
-  formDeliveryOperationPackage,
   invokeDeliveryFullTestOperation,
-  isDeliveryFullTestOperationFacts,
-  isDeliveryOperationPackage,
-  isFormalFullTestAuthorityForDelivery,
   prepareDeliveryFullTestOperationPackage,
-  priorFactsFromDeliveryFullTestRecord,
-  resolveApplicableChecksInDeclaredOrder,
-  resolveDeliveryGuidanceRef,
-  type ApplicableCheckDeclaration,
-  type OwnerAuthorityFact,
+  isFormalFullTestAuthorityForDelivery,
+  isDeliveryFullTestOperationFacts,
+  deriveDeliveryFullTestExecutionRef,
+  readCurrentDeliveryFullTest,
 } from "../../../src/domain/index.js";
+import { fixtureInstallation } from "./manager-installation-fixture.js";
+import {
+  FULL_TEST_CONFIG,
+  readFullTestInput,
+  deriveFullTestCheckRef,
+} from "../../../src/internal/full-test-input.js";
+import { executeFullTestCheck } from "../../../src/internal/full-test-process.js";
 
-const execFileAsync = promisify(execFile);
-const deliveryId = "20260902-04-delivery-continuity-stable-core-closure";
-
-async function git(root: string, ...args: string[]): Promise<string> {
-  const { stdout } = await execFileAsync("git", args, {
-    cwd: root,
-    encoding: "utf8",
-    windowsHide: true,
-  });
-  return stdout.trim();
-}
-
-function authority(
-  overrides: Partial<OwnerAuthorityFact> = {},
-): OwnerAuthorityFact {
-  return {
-    ref: `owner:${"a".repeat(64)}`,
-    decision: "authorize-formal-full-test",
-    deliveryId,
-    sourceRef: "conversation:owner-formal-full-test",
-    scope: ["delivery-full-test"],
-    ...overrides,
-  };
-}
-
-function declaration(
-  checkId: string,
-  args: readonly string[],
-  overrides: Partial<ApplicableCheckDeclaration> = {},
-): ApplicableCheckDeclaration {
-  return {
-    checkId,
+const deliveryId = "test-full-test";
+const ownerAuthority = {
+  ref: "owner:" + "a".repeat(64),
+  decision: "authorize-formal-full-test",
+  deliveryId,
+  sourceRef: "test:owner-input",
+  scope: ["delivery-full-test"],
+} as const;
+const input = { deliveryId, ownerAuthority };
+async function fixture(
+  scripts: string[] = ["process.stdout.write(Buffer.from([0,255,13,10]))"],
+) {
+  const root = await fs.mkdtemp(path.join(os.tmpdir(), "flowkit-ft-"));
+  const checks = scripts.map((script, index) => ({
+    checkId: "check-" + index,
     program: process.execPath,
-    args,
-    configRefs: ["config:project-full-test"],
-    toolRefs: ["tool:node-22.23.2"],
-    environmentRefs: ["environment:linux-x64"],
-    ...overrides,
-  };
-}
-
-async function createFixture(): Promise<string> {
-  const root = await mkdtemp(
-    path.join(tmpdir(), "flowkit-delivery-full-test-"),
+    args: ["-e", script],
+    cwd: ".",
+  }));
+  for (const dir of [
+    "config/verification",
+    ".flowkit",
+    "openspec/delivery-groups",
+    "skills/delivery/full-test",
+  ])
+    await fs.mkdir(path.join(root, dir), { recursive: true });
+  await fs.writeFile(path.join(root, "source.txt"), "base\n");
+  await fs.writeFile(
+    path.join(root, ".flowkit/project.json"),
+    '{"projectId":"test-project"}',
   );
-  await git(root, "init", "-q");
-  await git(root, "config", "user.email", "flowkit@example.invalid");
-  await git(root, "config", "user.name", "Flowkit Test");
-  await writeFile(path.join(root, "source.txt"), "base\n", "utf8");
-  const skill = path.join(root, "skills", "delivery", "full-test", "SKILL.md");
-  await mkdir(path.dirname(skill), { recursive: true });
-  await writeFile(
-    skill,
-    "# generic full test\nexecute exact package checks\n",
-    "utf8",
+  await fs.writeFile(
+    path.join(root, "skills/delivery/full-test/SKILL.md"),
+    "# Full Test\n",
   );
-  await git(root, "add", ".");
-  await git(root, "commit", "-qm", "fixture");
+  await fs.writeFile(
+    path.join(root, "openspec/delivery-groups/" + deliveryId + ".yaml"),
+    "id: " +
+      deliveryId +
+      "\ndelivery:\n  state: active\n  fullTestStatus: pending\n  finalizationStatus: pending\n# retained\n",
+  );
+  await fs.writeFile(
+    path.join(root, FULL_TEST_CONFIG),
+    JSON.stringify({
+      inputs: ["source.txt"],
+      exclude: [".flowkit"],
+      environment: [],
+      checks,
+    }),
+  );
   return root;
 }
+const invoke = (root: string) =>
+  invokeDeliveryFullTestOperation(root, input, fixtureInstallation(root));
+const remove = (root: string) => fs.rm(root, { recursive: true, force: true });
 
-test("Full Test check resolution preserves declared order while retaining exact check identity", () => {
-  const plan = {
-    checks: [
-      declaration("z-last-lexically", ["-e", "process.exit(0)"]),
-      declaration("a-first-lexically", ["-e", "process.exit(0)"]),
-    ],
-  };
-  const resolved = resolveApplicableChecksInDeclaredOrder(plan);
-  assert.notEqual(resolved, null);
-  assert.deepEqual(
-    resolved!.map((check) => check.checkId),
-    ["z-last-lexically", "a-first-lexically"],
-  );
-  assert.equal(resolved![0].checkRef, deriveApplicableCheckRef(plan.checks[0]));
-  assert.equal(resolved![1].checkRef, deriveApplicableCheckRef(plan.checks[1]));
-});
-
-test("Full Test authority is exact singleton-scoped and cannot carry Change or broader authority", () => {
+test("exact Full Test authority and closed configuration reject caller overrides", async () => {
   assert.equal(
-    isFormalFullTestAuthorityForDelivery(authority(), deliveryId),
+    isFormalFullTestAuthorityForDelivery(ownerAuthority, deliveryId),
     true,
   );
-  assert.equal(
-    isFormalFullTestAuthorityForDelivery(
-      authority({ scope: ["delivery-full-test", "git-mutation"] }),
-      deliveryId,
-    ),
-    false,
-  );
-  assert.equal(
-    isFormalFullTestAuthorityForDelivery(
-      authority({ changeId: "some-change" }),
-      deliveryId,
-    ),
-    false,
-  );
-  assert.equal(
-    isFormalFullTestAuthorityForDelivery(
-      authority({ decision: "create-delivery" }),
-      deliveryId,
-    ),
-    false,
-  );
-  assert.equal(
-    isFormalFullTestAuthorityForDelivery(
-      authority({ deliveryId: "other-delivery" }),
-      deliveryId,
-    ),
-    false,
-  );
-});
-
-test("Delivery Full Test package is a closed concrete variant and rejects mismatched facts", async () => {
-  const root = await createFixture();
-  try {
-    const checks = resolveApplicableChecksInDeclaredOrder({
-      checks: [declaration("check-one", ["-e", "process.exit(0)"])],
-    });
-    const guidanceRef = await resolveDeliveryGuidanceRef(
-      fixtureInstallation(root),
-      "delivery-full-test",
-    );
-    assert.notEqual(checks, null);
-    assert.notEqual(guidanceRef, null);
-    const facts = {
-      candidateRef: `candidate:sha256:${"b".repeat(64)}`,
-      orderedChecks: checks!,
-    };
-    assert.equal(isDeliveryFullTestOperationFacts(facts), true);
-
-    const pkg = formDeliveryOperationPackage(
-      deliveryId,
-      "delivery-full-test",
-      authority(),
-      facts,
-      guidanceRef,
-    );
-    assert.notEqual(pkg, null);
-    assert.equal(pkg!.operationId, "delivery-full-test");
-    assert.equal(isDeliveryOperationPackage(pkg), true);
-
+  for (const overrides of [
+    { scope: ["delivery-full-test", "git"] },
+    { changeId: "change" },
+    { decision: "create-delivery" },
+    { deliveryId: "wrong" },
+  ])
     assert.equal(
-      formDeliveryOperationPackage(
+      isFormalFullTestAuthorityForDelivery(
+        { ...ownerAuthority, ...overrides },
         deliveryId,
-        "delivery-full-test",
-        authority(),
-        { ...facts, orderedChecks: [checks![0], checks![0]] },
-        guidanceRef,
+      ),
+      false,
+    );
+  const root = await fixture();
+  try {
+    assert.equal(
+      await prepareDeliveryFullTestOperationPackage(
+        root,
+        { ...input, checks: [] },
+        fixtureInstallation(root),
       ),
       null,
     );
-    assert.equal(
-      formDeliveryOperationPackage(
-        deliveryId,
-        "delivery-full-test",
-        authority({ scope: ["delivery-full-test", "git-mutation"] }),
-        facts,
-        guidanceRef,
-      ),
-      null,
-    );
-  } finally {
-    await rm(root, { recursive: true, force: true });
-  }
-});
-
-test("trusted Full Test preparation derives current candidate and exact canonical Guidance", async () => {
-  const root = await createFixture();
-  try {
-    const prepared = await prepareDeliveryFullTestOperationPackage(
+    const a = await prepareDeliveryFullTestOperationPackage(
       root,
-      {
-        deliveryId,
-        ownerAuthority: authority(),
-        checks: [declaration("typecheck", ["-e", "process.exit(0)"])],
-      },
+      input,
       fixtureInstallation(root),
     );
-    assert.notEqual(prepared, null);
-    assert.equal(prepared!.operationId, "delivery-full-test");
-    assert.match(
-      prepared!.operationFacts.candidateRef,
-      /^candidate:sha256:[0-9a-f]{64}$/,
+    const b = await prepareDeliveryFullTestOperationPackage(
+      root,
+      input,
+      fixtureInstallation(root),
     );
-    assert.deepEqual(
-      prepared!.operationFacts.orderedChecks.map((check) => check.checkId),
-      ["typecheck"],
+    assert.ok(a && b);
+    assert.ok(isDeliveryFullTestOperationFacts(a.operationFacts));
+    assert.equal(
+      isDeliveryFullTestOperationFacts({
+        ...a.operationFacts,
+        candidateRef: "old",
+      }),
+      false,
     );
     assert.equal(
-      prepared!.guidanceRef.path,
-      "skills/delivery/full-test/SKILL.md",
-    );
-  } finally {
-    await rm(root, { recursive: true, force: true });
-  }
-});
-
-test("Full Test executes only package-bound checks in exact declared order", async () => {
-  const root = await createFixture();
-  const outside = await mkdtemp(
-    path.join(tmpdir(), "flowkit-full-test-order-"),
-  );
-  const marker = path.join(outside, "order.txt");
-  try {
-    const append = (label: string) => [
-      "-e",
-      `require('node:fs').appendFileSync(${JSON.stringify(marker)}, ${JSON.stringify(`${label}\n`)})`,
-    ];
-    const outcome = await invokeDeliveryFullTestOperation(
-      root,
-      {
-        deliveryId,
-        ownerAuthority: authority(),
-        checks: [
-          declaration("z-check", append("Z")),
-          declaration("a-check", append("A")),
+      isDeliveryFullTestOperationFacts({
+        ...a.operationFacts,
+        orderedChecks: [
+          ...a.operationFacts.orderedChecks,
+          ...a.operationFacts.orderedChecks,
         ],
-      },
-      undefined,
-      loadManagerInstallation(),
+      }),
+      false,
     );
-    assert.equal(outcome.status, "terminal");
-    if (outcome.status === "terminal") {
-      assert.equal(outcome.verdict, "passed");
-      assert.deepEqual(
-        outcome.record.checks.map((fact) => fact.checkId),
-        ["z-check", "a-check"],
+    assert.notEqual(
+      deriveDeliveryFullTestExecutionRef(a),
+      deriveDeliveryFullTestExecutionRef(b),
+    );
+  } finally {
+    await remove(root);
+  }
+});
+
+test("no Git target executes fresh attempts and saves exact raw bytes for cross-session reading", async () => {
+  const root = await fixture();
+  try {
+    const first = await invoke(root);
+    assert.equal(first.status, "terminal", JSON.stringify(first));
+    if (first.status !== "terminal") throw Error("not terminal");
+    assert.equal(first.verdict, "passed");
+    const base =
+      ".flowkit/artifacts/" +
+      deliveryId +
+      "/full-test/" +
+      first.record.attemptId;
+    assert.deepEqual(
+      await fs.readFile(path.join(root, base, "checks/check-0/stdout.txt")),
+      Buffer.from([0, 255, 13, 10]),
+    );
+    assert.equal(
+      (await readCurrentDeliveryFullTest(root, deliveryId)).status,
+      "passed",
+    );
+    const second = await invoke(root);
+    assert.equal(second.status, "terminal");
+    if (second.status !== "terminal") throw Error("not terminal");
+    assert.notEqual(second.record.executionRef, first.record.executionRef);
+    assert.equal(second.record.inputRef, first.record.inputRef);
+    await fs.appendFile(path.join(root, "source.txt"), "drift");
+    assert.equal(
+      (await readCurrentDeliveryFullTest(root, deliveryId)).status,
+      "stale",
+    );
+  } finally {
+    await remove(root);
+  }
+});
+
+test("failed current attempt never falls back to a previous pass", async () => {
+  const root = await fixture([
+    "const fs=require('fs');process.exit(fs.existsSync('.tmp-fail')?1:0)",
+  ]);
+  try {
+    assert.equal((await invoke(root)).status, "terminal");
+    await fs.writeFile(path.join(root, ".tmp-fail"), "fail");
+    const second = await invoke(root);
+    assert.equal(second.status, "terminal");
+    if (second.status !== "terminal") throw Error("not terminal");
+    assert.equal(second.verdict, "failed");
+    assert.equal(
+      (await readCurrentDeliveryFullTest(root, deliveryId)).status,
+      "failed",
+    );
+  } finally {
+    await remove(root);
+  }
+});
+
+test("selected source drift stops later checks and is saved as a real failed attempt", async () => {
+  const root = await fixture([
+    "require('fs').appendFileSync('source.txt','changed')",
+    "throw Error('must not execute')",
+  ]);
+  try {
+    const result = await invoke(root);
+    assert.equal(result.status, "terminal");
+    if (result.status !== "terminal") throw Error("not terminal");
+    assert.equal(result.verdict, "failed");
+    assert.equal(result.record.checks[1].status, "not-executed");
+  } finally {
+    await remove(root);
+  }
+});
+
+test("saved stream damage and incomplete latest results cannot be consumed as PASS", async () => {
+  const root = await fixture();
+  try {
+    const result = await invoke(root);
+    if (result.status !== "terminal") throw Error(JSON.stringify(result));
+    const base = path.join(
+      root,
+      ".flowkit/artifacts",
+      deliveryId,
+      "full-test",
+      result.record.attemptId,
+    );
+    await fs.appendFile(path.join(base, "checks/check-0/stdout.txt"), "damage");
+    assert.equal(
+      (await readCurrentDeliveryFullTest(root, deliveryId)).status,
+      "invalid",
+    );
+    await fs.rm(path.join(base, "result.json"));
+    assert.equal(
+      (await readCurrentDeliveryFullTest(root, deliveryId)).status,
+      "invalid",
+    );
+  } finally {
+    await remove(root);
+  }
+});
+test("start, stream-open, stream-write, result and status-publication failures never expose old PASS", async () => {
+  for (const phase of [
+    "start",
+    "select",
+    "stdout",
+    "stream-write",
+    "result",
+    "publish",
+  ]) {
+    const root = await fixture();
+    try {
+      const previous = await invoke(root);
+      assert.equal(previous.status, "terminal");
+      const originalOpen = fs.open;
+      const originalRename = fs.rename;
+      let renames = 0;
+      if (phase === "publish" || phase === "select")
+        mock.method(
+          fs,
+          "rename",
+          async (...args: Parameters<typeof fs.rename>) => {
+            renames += 1;
+            if (renames === (phase === "select" ? 1 : 2))
+              throw new Error("fixture status publication failure");
+            return originalRename(...args);
+          },
+        );
+      else
+        mock.method(fs, "open", async (...args: Parameters<typeof fs.open>) => {
+          const target = String(args[0]);
+          if (
+            (phase === "start" && target.endsWith("start.json")) ||
+            (phase === "stdout" && target.endsWith("stdout.txt")) ||
+            (phase === "result" && target.endsWith("result.json"))
+          )
+            throw new Error("fixture save failure");
+          const handle = await originalOpen(...args);
+          if (phase === "stream-write" && target.endsWith("stdout.txt"))
+            mock.method(handle, "writeFile", async () => {
+              throw Error("fixture stream failure");
+            });
+          return handle;
+        });
+      const failed = await invoke(root);
+      assert.equal(failed.status, "failed", phase);
+      mock.restoreAll();
+      const current = await readCurrentDeliveryFullTest(root, deliveryId);
+      assert.equal(
+        current.status,
+        phase === "start" || phase === "select" ? "passed" : "incomplete",
+        phase,
+      );
+      // Having reported the incomplete current attempt, a new explicit invocation replaces it without rewriting it.
+      assert.equal((await invoke(root)).status, "terminal");
+    } finally {
+      mock.restoreAll();
+      await remove(root);
+    }
+  }
+});
+
+test("checks remain ordered, preserve large stderr and continue after command failure", async () => {
+  const root = await fixture([
+    "process.stderr.write(Buffer.alloc(1024*1024,255),()=>process.exit(7))",
+    "process.stdout.write('second')",
+  ]);
+  try {
+    const outcome = await invoke(root);
+    if (outcome.status !== "terminal") throw Error(JSON.stringify(outcome));
+    assert.equal(outcome.verdict, "failed");
+    assert.deepEqual(
+      outcome.record.checks.map((c) => c.status),
+      ["failed", "passed"],
+    );
+    const base = path.join(
+      root,
+      ".flowkit/artifacts",
+      deliveryId,
+      "full-test",
+      outcome.record.attemptId,
+    );
+    const stderr = await fs.readFile(
+      path.join(base, "checks/check-0/stderr.txt"),
+    );
+    assert.equal(stderr.length, 1024 * 1024);
+    assert.equal(stderr.equals(Buffer.alloc(1024 * 1024, 255)), true);
+  } finally {
+    await remove(root);
+  }
+});
+
+test("spawn failure and process termination cannot become PASS", async () => {
+  const root = await fixture(["process.kill(process.pid, 'SIGTERM')"]);
+  try {
+    const selected = await readFullTestInput(root);
+    const check = { ...selected.orderedChecks[0], cwd: "source.txt" };
+    check.checkRef = deriveFullTestCheckRef(check);
+    const failed = await executeFullTestCheck(
+      root,
+      ".flowkit/artifacts/spawn-fixture",
+      check,
+    );
+    assert.equal(failed.status, "process-failed");
+    const outcome = await invoke(root);
+    if (outcome.status !== "terminal") throw Error(JSON.stringify(outcome));
+    assert.equal(outcome.verdict, "failed");
+    assert.notEqual(outcome.record.checks[0].status, "passed");
+    const command = JSON.parse(
+      await fs.readFile(
+        path.join(root, outcome.record.checks[0].command!.artifact),
+        "utf8",
+      ),
+    );
+    if (process.platform !== "win32") assert.equal(command.signal, "SIGTERM");
+  } finally {
+    await remove(root);
+  }
+});
+
+test("current reader rejects wrong ownership, escaping and non-regular material", async () => {
+  const root = await fixture();
+  try {
+    for (const damage of ["ownership", "escape", "directory", "junction"]) {
+      const outcome = await invoke(root);
+      if (outcome.status !== "terminal") throw Error(JSON.stringify(outcome));
+      const base = path.join(
+        root,
+        ".flowkit/artifacts",
+        deliveryId,
+        "full-test",
+        outcome.record.attemptId,
+      );
+      const resultPath = path.join(base, "result.json");
+      const record = JSON.parse(await fs.readFile(resultPath, "utf8"));
+      if (damage === "ownership") record.projectId = "wrong-project";
+      if (damage === "escape") record.checks[0].command.artifact = "../outside";
+      if (damage === "ownership" || damage === "escape")
+        await fs.writeFile(resultPath, JSON.stringify(record));
+      else if (damage === "directory") {
+        await fs.rm(path.join(base, "checks/check-0/stdout.txt"));
+        await fs.mkdir(path.join(base, "checks/check-0/stdout.txt"));
+      } else {
+        await fs.rename(
+          path.join(base, "checks"),
+          path.join(base, "original-checks"),
+        );
+        await fs.symlink(
+          path.join(base, "original-checks"),
+          path.join(base, "checks"),
+          "junction",
+        );
+      }
+      assert.equal(
+        (await readCurrentDeliveryFullTest(root, deliveryId)).status,
+        "invalid",
+        damage,
       );
     }
-    assert.equal(await readFile(marker, "utf8"), "Z\nA\n");
   } finally {
-    await rm(root, { recursive: true, force: true });
-    await rm(outside, { recursive: true, force: true });
-  }
-});
-
-test("same candidate reuses unchanged PASS and reruns only material check identity drift", async () => {
-  const root = await createFixture();
-  const outside = await mkdtemp(
-    path.join(tmpdir(), "flowkit-full-test-reuse-"),
-  );
-  const marker = path.join(outside, "runs.txt");
-  try {
-    const append = (label: string) => [
-      "-e",
-      `require('node:fs').appendFileSync(${JSON.stringify(marker)}, ${JSON.stringify(`${label}\n`)})`,
-    ];
-    const first = await invokeDeliveryFullTestOperation(
-      root,
-      {
-        deliveryId,
-        ownerAuthority: authority(),
-        checks: [
-          declaration("stable", append("stable-1")),
-          declaration("fixture", append("fixture-1")),
-        ],
-      },
-      undefined,
-      fixtureInstallation(root),
-    );
-    assert.equal(first.status, "terminal");
-    if (first.status !== "terminal") return;
-    const prior = priorFactsFromDeliveryFullTestRecord(first.record);
-    assert.notEqual(prior, null);
-
-    await writeFile(marker, "", "utf8");
-    const second = await invokeDeliveryFullTestOperation(
-      root,
-      {
-        deliveryId,
-        ownerAuthority: authority(),
-        checks: [
-          declaration("stable", append("stable-1")),
-          declaration("fixture", append("fixture-2"), {
-            environmentRefs: ["environment:linux-x64-fixture-v2"],
-          }),
-        ],
-      },
-      prior!,
-      fixtureInstallation(root),
-    );
-    assert.equal(second.status, "terminal");
-    if (second.status === "terminal") {
-      assert.equal(second.record.checks[0].status, "reused-passed");
-      assert.equal(second.record.checks[1].status, "passed");
-    }
-    assert.equal(await readFile(marker, "utf8"), "fixture-2\n");
-  } finally {
-    await rm(root, { recursive: true, force: true });
-    await rm(outside, { recursive: true, force: true });
-  }
-});
-
-test("repository mutation during Full Test stops terminal admission on candidate drift", async () => {
-  const root = await createFixture();
-  try {
-    const outcome = await invokeDeliveryFullTestOperation(
-      root,
-      {
-        deliveryId,
-        ownerAuthority: authority(),
-        checks: [
-          declaration("mutates-repository", [
-            "-e",
-            "require('node:fs').appendFileSync('source.txt', 'mutated\\n')",
-          ]),
-        ],
-      },
-      undefined,
-      fixtureInstallation(root),
-    );
-    assert.equal(outcome.status, "stopped-candidate-drift");
-  } finally {
-    await rm(root, { recursive: true, force: true });
-  }
-});
-
-test("candidate drift after an executed check stops before any later check runs", async () => {
-  const root = await createFixture();
-  const outside = await mkdtemp(
-    path.join(tmpdir(), "flowkit-full-test-immediate-stop-"),
-  );
-  const marker = path.join(outside, "later-check-ran.txt");
-  try {
-    const outcome = await invokeDeliveryFullTestOperation(
-      root,
-      {
-        deliveryId,
-        ownerAuthority: authority(),
-        checks: [
-          declaration("mutates-repository", [
-            "-e",
-            "require('node:fs').appendFileSync('source.txt', 'mutated\\n')",
-          ]),
-          declaration("must-not-run-after-drift", [
-            "-e",
-            `require('node:fs').writeFileSync(${JSON.stringify(marker)}, 'ran\\n')`,
-          ]),
-        ],
-      },
-      undefined,
-      fixtureInstallation(root),
-    );
-
-    assert.equal(outcome.status, "stopped-candidate-drift");
-    await assert.rejects(readFile(marker, "utf8"), { code: "ENOENT" });
-  } finally {
-    await rm(root, { recursive: true, force: true });
-    await rm(outside, { recursive: true, force: true });
-  }
-});
-
-test("platform fixture identity may differ but the same semantic check cannot be silently reused", async () => {
-  const linux = declaration("permission-proof", ["-e", "process.exit(0)"], {
-    environmentRefs: ["environment:linux-permission-fixture"],
-  });
-  const windows = declaration("permission-proof", ["-e", "process.exit(0)"], {
-    environmentRefs: ["environment:windows-permission-fixture"],
-  });
-  assert.notEqual(
-    deriveApplicableCheckRef(linux),
-    deriveApplicableCheckRef(windows),
-  );
-  assert.equal(linux.checkId, windows.checkId);
-});
-
-test("flowkit-next six gates can be supplied as one repository-local ordered plan without entering product Guidance", async () => {
-  const root = await createFixture();
-  try {
-    const checks: ApplicableCheckDeclaration[] = [
-      declaration("typecheck", ["typecheck"], { program: "pnpm" }),
-      declaration("format-check", ["format:check"], { program: "pnpm" }),
-      declaration("build", ["build"], { program: "pnpm" }),
-      declaration("domain", ["test:domain"], { program: "pnpm" }),
-      declaration("openspec", ["validate", "--all", "--strict"], {
-        program: "openspec",
-      }),
-      declaration("acceptance", ["test:acceptance"], { program: "pnpm" }),
-    ];
-    const prepared = await prepareDeliveryFullTestOperationPackage(
-      root,
-      {
-        deliveryId,
-        ownerAuthority: authority(),
-        checks,
-      },
-      fixtureInstallation(root),
-    );
-    assert.notEqual(prepared, null);
-    assert.deepEqual(
-      prepared!.operationFacts.orderedChecks.map((check) => check.checkId),
-      [
-        "typecheck",
-        "format-check",
-        "build",
-        "domain",
-        "openspec",
-        "acceptance",
-      ],
-    );
-  } finally {
-    await rm(root, { recursive: true, force: true });
-  }
-});
-
-test("canonical Full Test Guidance remains generic and does not embed flowkit-next's six commands", async () => {
-  const body = await readFile("skills/delivery/full-test/SKILL.md", "utf8");
-  for (const forbidden of [
-    "pnpm typecheck",
-    "pnpm format:check",
-    "pnpm build",
-    "pnpm test:domain",
-    "openspec validate --all --strict",
-    "pnpm test:acceptance",
-  ]) {
-    assert.equal(body.includes(forbidden), false, forbidden);
+    await remove(root);
   }
 });

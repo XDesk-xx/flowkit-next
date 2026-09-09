@@ -147,7 +147,7 @@ async function makeFixture(): Promise<{
     path: "skills/delivery/final/SKILL.md",
     contentSha256: "b".repeat(64),
   };
-  const evidenceOutcomes = acceptedEvidenceOutcomes(deliveryId);
+  const evidenceOutcomes = await acceptedEvidenceOutcomes(deliveryId, root);
   const readRequiredEvidence: ReadDeliveryRequiredEvidence = evidenceSourceFor(
     root,
     deliveryId,
@@ -164,6 +164,7 @@ async function makeFixture(): Promise<{
   const requiredEvidence = await deriveDeliveryRequiredEvidenceFromSource(
     readRequiredEvidence,
     {
+      repositoryRoot: root,
       projectId: "flowkit-next",
       deliveryId,
       changeIds: ["change-one"],
@@ -172,7 +173,7 @@ async function makeFixture(): Promise<{
   );
   assert.notEqual(requiredEvidence, null);
   const finalFacts = {
-    verifiedCandidateRef: `candidate:sha256:${"1".repeat(64)}`,
+    verifiedCandidateRef: evidenceOutcomes.fullTest.record.inputRef,
     fullTestExecutionRef: evidenceOutcomes.fullTest.record.executionRef,
     coordinationPrestateRef: {
       artifact: `openspec/delivery-groups/${deliveryId}.yaml`,
@@ -195,7 +196,7 @@ async function makeFixture(): Promise<{
 
   const coordinationArtifact = `openspec/delivery-groups/${deliveryId}.yaml`;
   const coordinationBytes = Buffer.from(
-    `id: ${deliveryId}\nstate: completed\n`,
+    `id: ${deliveryId}\ndelivery:\n  state: completed\n  fullTestStatus: passed\n  fullTestAttempt: ${evidenceOutcomes.fullTest.record.attemptId}\n`,
     "utf8",
   );
   const coordinationPath = path.join(root, ...coordinationArtifact.split("/"));

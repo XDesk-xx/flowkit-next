@@ -19,7 +19,7 @@ import {
   type ActionPackage,
 } from "../domain/action-package-result-admission.js";
 import { compareUtf8 } from "./applicable-check-material.js";
-import { isTrustedPassedFullTestOutcome } from "../domain/delivery-full-test-execution.js";
+import { readCurrentDeliveryFullTest } from "./full-test-current.js";
 import { isSafeText } from "./applicable-check-identity.js";
 import {
   cloneDeliveryRequiredEvidence,
@@ -66,11 +66,6 @@ export interface ReadDeliveryRequiredEvidence {
     readonly deliveryId: string;
     readonly changeId: string;
   }) => RequiredChangeClosureMaterial | Promise<RequiredChangeClosureMaterial>;
-  readonly readFullTest: (request: {
-    readonly projectId: string;
-    readonly deliveryId: string;
-    readonly executionRef: string;
-  }) => ExternalEvidenceMaterial | Promise<ExternalEvidenceMaterial>;
 }
 
 interface ParsedRunMaterial {
@@ -204,62 +199,22 @@ function chainIsComplete(
   return reachedReview && visited.size === runs.length;
 }
 
-function externalArtifacts(
-  values: readonly EvidenceArtifactMaterial[],
-): readonly EvidenceArtifactRef[] | null {
-  if (!Array.isArray(values) || values.length === 0) return null;
-  const seen = new Set<string>();
-  const refs: EvidenceArtifactRef[] = [];
-  for (const value of values) {
-    if (
-      typeof value?.artifact !== "string" ||
-      value.artifact.length === 0 ||
-      value.artifact.startsWith("/") ||
-      value.artifact.includes("\\") ||
-      value.artifact
-        .split("/")
-        .some(
-          (part: string) => part.length === 0 || part === "." || part === "..",
-        ) ||
-      !(value.bytes instanceof Uint8Array) ||
-      value.bytes.byteLength === 0 ||
-      seen.has(value.artifact)
-    )
-      return null;
-    seen.add(value.artifact);
-    refs.push(artifactRef(value.artifact, value.bytes));
-  }
-  return refs.sort((left, right) => compareUtf8(left.artifact, right.artifact));
-}
-
-function containsExactOutcome(material: ExternalEvidenceMaterial): boolean {
-  return (
-    material.outcomeJson instanceof Uint8Array &&
-    material.outcomeJson.byteLength > 0 &&
-    Array.isArray(material.artifacts) &&
-    material.artifacts.some(
-      (artifact) =>
-        artifact?.bytes instanceof Uint8Array &&
-        Buffer.from(artifact.bytes).equals(Buffer.from(material.outcomeJson)),
-    )
-  );
-}
-
 function isTrustedSource(
   value: unknown,
 ): value is ReadDeliveryRequiredEvidence {
   return (
     typeof value === "object" &&
     value !== null &&
+    Object.keys(value).length === 1 &&
     typeof (value as ReadDeliveryRequiredEvidence).readChangeClosure ===
-      "function" &&
-    typeof (value as ReadDeliveryRequiredEvidence).readFullTest === "function"
+      "function"
   );
 }
 
 export async function deriveDeliveryRequiredEvidenceFromSource(
   read: unknown,
   expected: {
+    readonly repositoryRoot: string;
     readonly projectId: string;
     readonly deliveryId: string;
     readonly changeIds: readonly string[];
@@ -317,36 +272,23 @@ export async function deriveDeliveryRequiredEvidenceFromSource(
       })),
     });
   }
-  let fullTest: ExternalEvidenceMaterial;
-  try {
-    fullTest = await read.readFullTest({
-      projectId: expected.projectId,
-      deliveryId: expected.deliveryId,
-      executionRef: expected.fullTestExecutionRef,
-    });
-  } catch {
-    return null;
-  }
-  const fullTestOutcome = parseJson(fullTest.outcomeJson);
+  const current = await readCurrentDeliveryFullTest(
+    expected.repositoryRoot,
+    expected.deliveryId,
+  );
   if (
-    !containsExactOutcome(fullTest) ||
-    !isTrustedPassedFullTestOutcome(fullTestOutcome, expected.deliveryId) ||
-    fullTestOutcome.record.executionRef !== expected.fullTestExecutionRef ||
+    current.status !== "passed" ||
+    current.outcome.record.projectId !== expected.projectId ||
+    current.outcome.record.executionRef !== expected.fullTestExecutionRef ||
     (expected.fullTestOutcome !== undefined &&
-      !isDeepStrictEqual(fullTestOutcome, expected.fullTestOutcome))
+      !isDeepStrictEqual(expected.fullTestOutcome, current.outcome))
   )
     return null;
-  const fullTestArtifacts = externalArtifacts(fullTest.artifacts);
-  if (fullTestArtifacts === null) return null;
   const evidence: DeliveryRequiredEvidence = {
     projectId: expected.projectId,
     deliveryId: expected.deliveryId,
     changeClosures,
-    fullTest: {
-      executionRef: expected.fullTestExecutionRef,
-      sourceRef: fullTest.sourceRef,
-      artifacts: fullTestArtifacts,
-    },
+    fullTest: current.evidence,
   };
   return isDeliveryRequiredEvidence(evidence) ? evidence : null;
 }
@@ -354,9 +296,11 @@ export async function deriveDeliveryRequiredEvidenceFromSource(
 export async function revalidateDeliveryRequiredEvidenceSource(
   evidence: DeliveryRequiredEvidence,
   read: unknown,
+  repositoryRoot: string,
 ): Promise<boolean> {
   if (!isDeliveryRequiredEvidence(evidence)) return false;
   const derived = await deriveDeliveryRequiredEvidenceFromSource(read, {
+    repositoryRoot,
     projectId: evidence.projectId,
     deliveryId: evidence.deliveryId,
     changeIds: evidence.changeClosures.map((entry) => entry.changeId),
@@ -401,7 +345,11 @@ export async function revalidateDeliveryRequiredEvidenceAtObject(
 ): Promise<boolean> {
   if (
     !COMMIT.test(commit) ||
-    !(await revalidateDeliveryRequiredEvidenceSource(evidence, read))
+    !(await revalidateDeliveryRequiredEvidenceSource(
+      evidence,
+      read,
+      repositoryRoot,
+    ))
   ) {
     return false;
   }

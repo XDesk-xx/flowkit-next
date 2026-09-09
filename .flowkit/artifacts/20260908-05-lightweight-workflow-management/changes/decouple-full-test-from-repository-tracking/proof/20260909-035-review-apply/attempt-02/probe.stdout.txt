@@ -1,0 +1,38 @@
+{
+  "kind": "independent-apply-review-probe",
+  "fixtureOnly": true,
+  "formalD05FullTest": false,
+  "sourceEntry": "src/domain/delivery-full-test-execution.ts",
+  "toolDrift": {
+    "inputRefUnchanged": true,
+    "checkRefUnchanged": true,
+    "readerBefore": "passed",
+    "readerAfterToolChanged": "passed",
+    "oldAttempt": "6b28a956-740e-496a-8c4d-f6a708a9fced",
+    "newExecutionStatus": "terminal",
+    "newExecutionVerdict": "failed",
+    "readerAfterNewFailure": "failed"
+  },
+  "diagnostics": [
+    {
+      "case": "missing",
+      "status": "failed",
+      "reason": "package-formation-rejected"
+    },
+    {
+      "case": "unknown-field",
+      "status": "failed",
+      "reason": "package-formation-rejected"
+    },
+    {
+      "case": "missing-input",
+      "status": "failed",
+      "reason": "package-formation-rejected"
+    },
+    {
+      "case": "missing-tool",
+      "status": "failed",
+      "reason": "package-formation-rejected"
+    }
+  ]
+}

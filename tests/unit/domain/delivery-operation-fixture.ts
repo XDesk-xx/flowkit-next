@@ -11,7 +11,7 @@ export function finalFacts(): DeliveryFinalOperationFacts {
     }),
   );
   return {
-    verifiedCandidateRef: `candidate:sha256:${"1".repeat(64)}`,
+    verifiedCandidateRef: `full-test-input:sha256:${"1".repeat(64)}`,
     fullTestExecutionRef: `full-test-execution:sha256:${"2".repeat(64)}`,
     coordinationPrestateRef: {
       artifact: `openspec/delivery-groups/${deliveryId}.yaml`,

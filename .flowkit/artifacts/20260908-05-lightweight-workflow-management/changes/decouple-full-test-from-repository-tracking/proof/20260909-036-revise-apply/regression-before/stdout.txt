@@ -1,0 +1,50 @@
+TAP version 13
+# Subtest: Node-launched tool bytes, including its package implementation, invalidate current PASS without lock drift
+not ok 1 - Node-launched tool bytes, including its package implementation, invalidate current PASS without lock drift
+  ---
+  duration_ms: 948.4317
+  type: 'test'
+  location: 'D:\\Projects\\flowkit-next\\tests\\unit\\domain\\full-test-revision.test.ts:6:278'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected "actual" to be strictly unequal to:
+    
+    'full-test-input:sha256:9c8f24ef58b6e41b0cd06dd804170838d6a37dd25e43e3ab6903ad9c99d6de1e'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'full-test-input:sha256:9c8f24ef58b6e41b0cd06dd804170838d6a37dd25e43e3ab6903ad9c99d6de1e'
+  actual: 'full-test-input:sha256:9c8f24ef58b6e41b0cd06dd804170838d6a37dd25e43e3ab6903ad9c99d6de1e'
+  operator: 'notStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (D:\Projects\flowkit-next\tests\unit\domain\full-test-revision.test.ts:39:10)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: invocation diagnoses configuration, input and executable preparation errors without publishing an attempt
+not ok 2 - invocation diagnoses configuration, input and executable preparation errors without publishing an attempt
+  ---
+  duration_ms: 15.732
+  type: 'test'
+  location: 'D:\\Projects\\flowkit-next\\tests\\unit\\domain\\full-test-revision.test.ts:6:1388'
+  failureType: 'testCodeFailure'
+  error: 'missing'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual: 'package-formation-rejected'
+  operator: 'match'
+  stack: |-
+    TestContext.<anonymous> (D:\Projects\flowkit-next\tests\unit\domain\full-test-revision.test.ts:61:39)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 0
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1320.0942

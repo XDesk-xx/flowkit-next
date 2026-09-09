@@ -85,10 +85,7 @@ test("without Archify: real Start/checks/Final/local Git integration; OpenSpec a
     assert.equal(start.status, "terminal");
     const outcomes = await acceptedOutcomes(fixture);
     const readRequiredEvidence = evidenceSource(outcomes, root);
-    assert.deepEqual(Object.keys(readRequiredEvidence), [
-      "readChangeClosure",
-      "readFullTest",
-    ]);
+    assert.deepEqual(Object.keys(readRequiredEvidence), ["readChangeClosure"]);
     const final = await invokeDeliveryFinalOperation(
       root,
       finalInput(fixture, outcomes),
@@ -100,7 +97,7 @@ test("without Archify: real Start/checks/Final/local Git integration; OpenSpec a
     if (final.status !== "terminal") throw new Error("Final failed");
     assert.equal(
       final.record.verifiedCandidateRef,
-      outcomes.fullTest.record.candidateRef,
+      outcomes.fullTest.record.inputRef,
     );
     assert.notEqual(
       final.record.finalizedCandidateRef,
@@ -193,23 +190,31 @@ test("without Archify: real Start/checks/Final/local Git integration; OpenSpec a
 test("Final rejects a real failed check, incomplete checks and legacy preparation input", async () => {
   const fixture = await createFixture();
   try {
-    const failed = await invokeDeliveryFullTestOperation(
-      fixture.root,
-      {
-        deliveryId,
-        ownerAuthority: authority("authorize-formal-full-test"),
+    await mkdir(path.join(fixture.root, "config/verification"), {
+      recursive: true,
+    });
+    await writeFile(
+      path.join(fixture.root, "config/verification/full-test.json"),
+      JSON.stringify({
+        inputs: ["source.txt"],
+        exclude: [".flowkit"],
+        environment: [],
         checks: [
           {
             checkId: "real-failure",
             program: process.execPath,
             args: ["-e", "process.exit(7)"],
-            configRefs: ["config:fixture"],
-            toolRefs: ["tool:node"],
-            environmentRefs: ["environment:test"],
+            cwd: ".",
           },
         ],
+      }),
+    );
+    const failed = await invokeDeliveryFullTestOperation(
+      fixture.root,
+      {
+        deliveryId,
+        ownerAuthority: authority("authorize-formal-full-test"),
       },
-      undefined,
       fixtureInstallation(fixture.root),
     );
     assert.equal(failed.status, "terminal");

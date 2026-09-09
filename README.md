@@ -99,6 +99,14 @@ OpenSpec 1.10.0
 
 Executable managed runtimes live under external `FLOWKIT_HOME`, not in Git. Repository Node compatibility is `>=22.20.0`; deterministic fixture is Node `22.23.2`; package manager identity is `pnpm@11.22.0`.
 
+### 项目 Full Test 与 Git 节点
+
+项目在 `config/verification/full-test.json` 显式配置 `inputs / exclude / environment / checks`。输入由文件系统和精确目录排除决定，不读取 Git index、HEAD 或 `.gitignore`；配置自身不可排除。命令按配置顺序真实运行，每次调用都创建新尝试，不复用上一次 PASS。
+
+已发行模块的 `invokeDeliveryFullTestOperation(repositoryRoot, { deliveryId, ownerAuthority }, installation)` 使用该配置；CLI 仍只查询，不增加 Full Test 写命令。当前尝试由 manifest 的 `delivery.fullTestAttempt` 指向 `.flowkit/artifacts/<delivery>/full-test/<attempt>/`，保存 start、逐命令原始 stdout/stderr、command 和 result。`readCurrentDeliveryFullTest` 校验当前材料与测试输入；Final 从 target 读取，不接受 caller 替换结果。新失败或 partial 不回退旧成功；先报告 partial，下一次明确授权调用创建新目录，不覆盖旧材料。
+
+本项目 Full Test 的产品测试使用 fixture，不扫描真实历史 Runs、OpenSpec archive 或 bootstrap Skills。独立开发自检通过 `pnpm test:bootstrap` 执行。`quality:gate` 只聚合代码格式、lint 与既有 650 行规则；禁止入库内容单独检查，Git 空白诊断不因非产品历史 proof 自动阻断 checkpoint。测试正确性不产生 Git 授权。
+
 ## Independent architecture descriptions
 
 Archify is independent of the Flowkit Delivery workflow. Start, Full Test, Final and repository integration require no diagrams, rendering, Architecture outcome, or skip proof. Historical `architecture/**` assets remain readable derived descriptions; they are not new Delivery prerequisites or code facts. Existing history is not converted or rewritten.

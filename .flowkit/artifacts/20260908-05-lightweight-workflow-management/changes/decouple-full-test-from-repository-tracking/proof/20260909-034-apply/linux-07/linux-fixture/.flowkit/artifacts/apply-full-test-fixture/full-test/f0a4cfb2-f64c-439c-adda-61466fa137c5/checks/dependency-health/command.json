@@ -1,0 +1,31 @@
+{
+  "checkId": "dependency-health",
+  "checkRef": "full-test-check:sha256:32823db787f165e662ffc284877221fc00ea6e8d61fded5180412b2c6642a01b",
+  "program": "/usr/local/bin/node",
+  "args": [
+    "node_modules/dependency-cruiser/bin/dependency-cruise.mjs",
+    "--config",
+    "dependency-cruiser.config.mjs",
+    "--output-type",
+    "err",
+    "src",
+    "tests"
+  ],
+  "cwd": ".",
+  "startedAt": "2026-09-09T04:08:21.347Z",
+  "finishedAt": "2026-09-09T04:08:23.176Z",
+  "exitCode": 0,
+  "signal": null,
+  "processError": null,
+  "saveError": null,
+  "stdout": {
+    "artifact": ".flowkit/artifacts/apply-full-test-fixture/full-test/f0a4cfb2-f64c-439c-adda-61466fa137c5/checks/dependency-health/stdout.txt",
+    "contentSha256": "b703fb229c35cf2456e07b9f8669118d5a6a96e04357b7f12a8bddf891ce580b",
+    "bytes": 77
+  },
+  "stderr": {
+    "artifact": ".flowkit/artifacts/apply-full-test-fixture/full-test/f0a4cfb2-f64c-439c-adda-61466fa137c5/checks/dependency-health/stderr.txt",
+    "contentSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  }
+}

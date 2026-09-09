@@ -464,7 +464,7 @@ EOF exactly one newline
 
 原始 stdout/stderr 是例外：保留 Buffer bytes，使用 `stdout.txt`、`stderr.txt`、`*.stdout.txt`、`*.stderr.txt`，由 `.flowkit/artifacts/**` 下四条通用 attributes 模式处理，不逐 Change 添加例外。不对全部 artifacts/Run 放宽；脚本、Run JSON、命令元数据、摘要仍是结构化文本，不得改名冒充日志。此规则独立于 `.gitignore` 和 Full Test 选取范围，不自动注入其他 target。
 
-Git checkpoint 前执行：
+Git checkpoint 的空白诊断（不是统一提交阻断）：
 
 ```text
 git diff --check
@@ -475,6 +475,10 @@ staging 后执行：
 ```text
 git diff --cached --check
 ```
+
+源码 quality:gate 只聚合 bounded formatting 与 lint/既有行数要求；禁止入库内容使用独立 check:forbidden-tracked-artifacts。Git 节点核对授权范围、真实冲突和提交结果，不仅因历史 proof/测试输入/原始日志空白阻断正常 checkpoint，不要求重复豁免，不重写历史、不逐 Change 追加 attributes。原始 bytes 仍须真实保留，不伪造代码 PASS。
+
+Full Test 配置固定为 target config/verification/full-test.json，独立于 .gitignore/index/HEAD；当前结果由 Delivery fullTestAttempt 关联 target artifacts/full-test 材料。新失败/partial 不回用旧 PASS，代码输入与必要材料完整性分开核对。bootstrap/history 自检用 test:bootstrap，不属于代码 Full Test。
 
 ## 18. 代码探索与过度设计
 

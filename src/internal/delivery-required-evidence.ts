@@ -53,7 +53,7 @@ export function isEvidenceArtifactRef(
     !value.artifact.includes("..") &&
     HASH.test(value.contentSha256 as string) &&
     Number.isSafeInteger(value.bytes) &&
-    (value.bytes as number) > 0
+    (value.bytes as number) >= 0
   );
 }
 
@@ -83,6 +83,7 @@ function isRunEvidence(value: unknown): value is RequiredRunEvidence {
     return false;
   const names = value.artifacts.map((item) => item.artifact.split("/").at(-1));
   return (
+    value.artifacts.every((item) => item.bytes > 0) &&
     names.length === 3 &&
     names[0] === "action.md" &&
     names[1] === "context.json" &&

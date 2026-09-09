@@ -1,0 +1,213 @@
+{
+  "kind": "author-plan-verification",
+  "implementationAcceptance": false,
+  "commands": [
+    {
+      "id": "strict",
+      "program": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js",
+        "validate",
+        "decouple-full-test-from-repository-tracking",
+        "--strict"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "startedAt": "2026-09-09T02:13:46.514Z",
+      "finishedAt": "2026-09-09T02:13:47.994Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-032-propose/attempt-02/strict.stdout.txt",
+        "bytes": 62,
+        "sha256": "02148cb361b65c9455ab77296d8a7c2395c7491679c1453fe1be5993f1c76714"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-032-propose/attempt-02/strict.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "status",
+      "program": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js",
+        "status",
+        "--change",
+        "decouple-full-test-from-repository-tracking",
+        "--json"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "startedAt": "2026-09-09T02:13:47.997Z",
+      "finishedAt": "2026-09-09T02:13:49.729Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-032-propose/attempt-02/status.stdout.txt",
+        "bytes": 3818,
+        "sha256": "7cae76ce510ec8c5ddfd4429465171e51711657db6caac20aecfc6d4c51589f4"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-032-propose/attempt-02/status.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "diff-check",
+      "program": "git",
+      "args": [
+        "diff",
+        "--check"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "startedAt": "2026-09-09T02:13:49.732Z",
+      "finishedAt": "2026-09-09T02:13:49.839Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-032-propose/attempt-02/diff-check.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-032-propose/attempt-02/diff-check.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "planningComplete": true,
+  "scenarioPreservation": [
+    {
+      "cap": "delivery-finalization",
+      "requirement": "Delivery Final consumes complete exact prerequisite outcomes",
+      "preserved": 5,
+      "missing": []
+    },
+    {
+      "cap": "delivery-finalization",
+      "requirement": "Trusted host owns one exact Delivery coordination closure",
+      "preserved": 2,
+      "missing": []
+    },
+    {
+      "cap": "delivery-finalization",
+      "requirement": "Terminal Delivery Final records exact causal continuity and stops without Git",
+      "preserved": 3,
+      "missing": []
+    },
+    {
+      "cap": "delivery-finalization",
+      "requirement": "必要证据是 Final 的有限前置快照而非可选清单",
+      "preserved": 5,
+      "missing": []
+    },
+    {
+      "cap": "delivery-operation-execution-and-start-continuity",
+      "requirement": "Delivery Full Test package facts bind one exact candidate, one exact ordered check set, and exact Full Test authority",
+      "preserved": 3,
+      "missing": []
+    },
+    {
+      "cap": "formal-full-test-execution-and-correction",
+      "requirement": "Formal Full Test executes only the exact project-local check contract bound to the package",
+      "preserved": 2,
+      "missing": []
+    },
+    {
+      "cap": "formal-full-test-execution-and-correction",
+      "requirement": "Full Test evidence is admitted only for the exact current candidate and exact material check identities",
+      "preserved": 4,
+      "missing": []
+    },
+    {
+      "cap": "formal-full-test-execution-and-correction",
+      "requirement": "Pure external correction may remain on the same candidate but repository correction ends the current Full Test attempt",
+      "preserved": 3,
+      "missing": []
+    },
+    {
+      "cap": "lightweight-engineering-gate",
+      "requirement": "Stable lightweight engineering Gate",
+      "preserved": 3,
+      "missing": []
+    },
+    {
+      "cap": "lightweight-engineering-gate",
+      "requirement": "Tracked whitespace and bounded formatting",
+      "preserved": 3,
+      "missing": []
+    },
+    {
+      "cap": "lightweight-engineering-gate",
+      "requirement": "Forbidden tracked generated and runtime artifacts",
+      "preserved": 4,
+      "missing": []
+    }
+  ],
+  "unchangedInputs": [
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/004-decouple-full-test-from-repository-tracking/20260909-030-explore/result.json",
+      "bytes": 10546,
+      "sha256": "4dbec4173f1ab987d224275f9c657ec49e41fae67299923006f1c04228c973ae"
+    },
+    {
+      "path": "openspec/changes/decouple-full-test-from-repository-tracking/explore.md",
+      "bytes": 11392,
+      "sha256": "a536020a032782a9d39c80e06512ead16fe16e361ae557be687d6b2b37a70985"
+    },
+    {
+      "path": "openspec/delivery-groups/20260908-05-lightweight-workflow-management.yaml",
+      "bytes": 10220,
+      "sha256": "8a9ebbdd2430da92b2bc5cee0cd9139c6b8e6385d71585219265bb27e570e84f"
+    }
+  ],
+  "taskCount": 20,
+  "planningArtifacts": [
+    {
+      "path": "openspec/changes/decouple-full-test-from-repository-tracking/proposal.md",
+      "bytes": 3047,
+      "sha256": "03b0df4266c189fa5e1c1e039d366f181195b1256f87501922fb4f891e3edb60"
+    },
+    {
+      "path": "openspec/changes/decouple-full-test-from-repository-tracking/design.md",
+      "bytes": 13786,
+      "sha256": "d376afcadac3333acd40e8212292d85f087c17f43ca1fdf793bab0356ecd6327"
+    },
+    {
+      "path": "openspec/changes/decouple-full-test-from-repository-tracking/tasks.md",
+      "bytes": 4938,
+      "sha256": "ae8868f976ec6459936fd607a2d2022ae3decf0b50de76c48e762c23e528ce5a"
+    },
+    {
+      "path": "openspec/changes/decouple-full-test-from-repository-tracking/specs/applicable-check-execution/spec.md",
+      "bytes": 969,
+      "sha256": "0a7a56e757f26853cb337cb5c5dd7a10f421bfa060ac67aa2a9496afcf9dd03d"
+    },
+    {
+      "path": "openspec/changes/decouple-full-test-from-repository-tracking/specs/delivery-finalization/spec.md",
+      "bytes": 9194,
+      "sha256": "62e869b930bb92ff647ebf544ef4be337fccb7236b025e709694756a362c9bba"
+    },
+    {
+      "path": "openspec/changes/decouple-full-test-from-repository-tracking/specs/delivery-operation-execution-and-start-continuity/spec.md",
+      "bytes": 2373,
+      "sha256": "3091e11f157fb7fd1a7bfc9e065d83680a7028457d0057131e213cad37387f9d"
+    },
+    {
+      "path": "openspec/changes/decouple-full-test-from-repository-tracking/specs/formal-full-test-execution-and-correction/spec.md",
+      "bytes": 7743,
+      "sha256": "99bbf590fa7ffd3bc02ab848f29e2a9cab8fb35059056faa24d188ed9b82e448"
+    },
+    {
+      "path": "openspec/changes/decouple-full-test-from-repository-tracking/specs/lightweight-engineering-gate/spec.md",
+      "bytes": 4571,
+      "sha256": "7ba38b023cdebe2f178d7dbbef6a72eccae6c7373ab482a7d15a433600048751"
+    }
+  ],
+  "passed": true
+}

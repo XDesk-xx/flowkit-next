@@ -1,0 +1,17 @@
+* text=auto eol=lf
+*.cmd text eol=crlf
+*.bat text eol=crlf
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.zip binary
+*.tgz binary
+*.gz binary
+*.tar binary
+
+# Raw execution logs retain exact bytes; source text rules do not apply.
+.flowkit/artifacts/**/stdout.txt -text -whitespace
+.flowkit/artifacts/**/stderr.txt -text -whitespace
+.flowkit/artifacts/**/*.stdout.txt -text -whitespace
+.flowkit/artifacts/**/*.stderr.txt -text -whitespace

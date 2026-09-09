@@ -1,0 +1,88 @@
+TAP version 13
+# Subtest: exact Full Test authority and closed configuration reject caller overrides
+ok 1 - exact Full Test authority and closed configuration reject caller overrides
+  ---
+  duration_ms: 288.8601
+  type: 'test'
+  ...
+# Subtest: no Git target executes fresh attempts and saves exact raw bytes for cross-session reading
+ok 2 - no Git target executes fresh attempts and saves exact raw bytes for cross-session reading
+  ---
+  duration_ms: 1552.5829
+  type: 'test'
+  ...
+# Subtest: failed current attempt never falls back to a previous pass
+ok 3 - failed current attempt never falls back to a previous pass
+  ---
+  duration_ms: 1035.0506
+  type: 'test'
+  ...
+# Subtest: selected source drift stops later checks and is saved as a real failed attempt
+ok 4 - selected source drift stops later checks and is saved as a real failed attempt
+  ---
+  duration_ms: 1007.3493
+  type: 'test'
+  ...
+# Subtest: saved stream damage and incomplete latest results cannot be consumed as PASS
+ok 5 - saved stream damage and incomplete latest results cannot be consumed as PASS
+  ---
+  duration_ms: 639.5948
+  type: 'test'
+  ...
+# Subtest: start, stream-open, stream-write, result and status-publication failures never expose old PASS
+ok 6 - start, stream-open, stream-write, result and status-publication failures never expose old PASS
+  ---
+  duration_ms: 9239.3237
+  type: 'test'
+  ...
+# Subtest: checks remain ordered, preserve large stderr and continue after command failure
+ok 7 - checks remain ordered, preserve large stderr and continue after command failure
+  ---
+  duration_ms: 1130.6605
+  type: 'test'
+  ...
+# Subtest: spawn failure and process termination cannot become PASS
+ok 8 - spawn failure and process termination cannot become PASS
+  ---
+  duration_ms: 700.7192
+  type: 'test'
+  ...
+# Subtest: current reader rejects wrong ownership, escaping and non-regular material
+ok 9 - current reader rejects wrong ownership, escaping and non-regular material
+  ---
+  duration_ms: 2365.0762
+  type: 'test'
+  ...
+# Subtest: Full Test inputs use configured files without Git and ignore process artifacts
+ok 10 - Full Test inputs use configured files without Git and ignore process artifacts
+  ---
+  duration_ms: 389.3893
+  type: 'test'
+  ...
+# Subtest: input parser rejects ambiguous paths and selected links, binds command and declared environment
+ok 11 - input parser rejects ambiguous paths and selected links, binds command and declared environment
+  ---
+  duration_ms: 402.2064
+  type: 'test'
+  ...
+# Subtest: Node-launched tool bytes, including its package implementation, invalidate current PASS without lock drift
+ok 12 - Node-launched tool bytes, including its package implementation, invalidate current PASS without lock drift
+  ---
+  duration_ms: 1754.0908
+  type: 'test'
+  ...
+# Subtest: invocation diagnoses configuration, input and executable preparation errors without publishing an attempt
+ok 13 - invocation diagnoses configuration, input and executable preparation errors without publishing an attempt
+  ---
+  duration_ms: 36.7628
+  type: 'test'
+  ...
+1..13
+# tests 13
+# suites 0
+# pass 13
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 18364.6837

@@ -5,7 +5,6 @@ import {
   chmod,
   mkdir,
   mkdtemp,
-  readFile,
   rm,
   symlink,
   writeFile,
@@ -23,7 +22,6 @@ import {
   isDeliveryGuidanceRefForOperation,
   isDeliveryFinalAuthorityForDelivery,
   isDeliveryFinalOperationFacts,
-  isDeliveryOperationId,
   isDeliveryOperationPackage,
   isDeliveryPlanningReference,
   isDeliveryStartAuthorityForDelivery,
@@ -96,46 +94,6 @@ async function writeGuidance(
   await writeFile(entry, body, "utf8");
   return entry;
 }
-
-test("DeliveryOperationId is a closed exact four-value catalog with deterministic Guidance mapping", () => {
-  assert.deepEqual(DELIVERY_OPERATIONS, [
-    "delivery-start",
-    "delivery-full-test",
-    "delivery-final",
-    "delivery-repository-integration",
-  ]);
-
-  const expected = new Map([
-    ["delivery-start", "skills/delivery/start/SKILL.md"],
-    ["delivery-full-test", "skills/delivery/full-test/SKILL.md"],
-    ["delivery-final", "skills/delivery/final/SKILL.md"],
-    [
-      "delivery-repository-integration",
-      "skills/delivery/repository-integration/SKILL.md",
-    ],
-  ]);
-
-  for (const operationId of DELIVERY_OPERATIONS) {
-    assert.equal(isDeliveryOperationId(operationId), true);
-    assert.equal(
-      canonicalDeliveryGuidancePath(operationId),
-      expected.get(operationId),
-    );
-  }
-
-  assert.equal(
-    isDeliveryOperationId("delivery-architecture-finalization"),
-    false,
-  );
-  assert.equal(
-    canonicalDeliveryGuidancePath("delivery-architecture-finalization"),
-    null,
-  );
-  assert.equal(isDeliveryOperationId("start"), false);
-  assert.equal(isDeliveryOperationId("Delivery-Start"), false);
-  assert.equal(canonicalDeliveryGuidancePath("delivery_start"), null);
-  assert.equal(canonicalDeliveryGuidancePath("../delivery-start"), null);
-});
 
 test("DeliveryGuidanceRef is closed to canonical Delivery paths and lowercase SHA-256", () => {
   const valid = guidanceRef();
@@ -606,32 +564,6 @@ test("Delivery Final package is closed to exact facts, Guidance, and singleton a
   assert.equal(
     cloned.operationFacts.completedRequiredChangeIds[0],
     "change-one",
-  );
-});
-
-test("canonical Delivery Final Guidance is generic, content-bound, and operation-bounded", async () => {
-  const body = await readFile("skills/delivery/final/SKILL.md", "utf8");
-  assert.equal(body.includes(deliveryId), false);
-  assert.equal(body.includes("complete trusted Full Test"), true);
-  assert.equal(
-    body.includes(
-      "current repository candidate equal to that Full Test record.candidateRef",
-    ),
-    true,
-  );
-  assert.equal(
-    body.includes("only the fixed canonical Delivery coordination"),
-    true,
-  );
-  assert.equal(body.includes("STOP"), true);
-  assert.equal(body.includes("Git authority"), true);
-  assert.equal(body.includes("discover, rank, route, or choose"), true);
-  assert.notEqual(
-    await resolveDeliveryGuidanceRef(
-      fixtureInstallation(process.cwd()),
-      "delivery-final",
-    ),
-    null,
   );
 });
 

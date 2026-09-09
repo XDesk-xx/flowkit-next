@@ -1,0 +1,27 @@
+{
+  "checkId": "lint",
+  "checkRef": "full-test-check:sha256:b77465f4aa14d2fa41ad2b302b8d9db3917294fd2a0da5dac9a86f4c71e03e26",
+  "program": "/usr/local/bin/node",
+  "args": [
+    "node_modules/eslint/bin/eslint.js",
+    "src",
+    "tests"
+  ],
+  "cwd": ".",
+  "startedAt": "2026-09-09T03:54:26.303Z",
+  "finishedAt": "2026-09-09T03:54:28.785Z",
+  "exitCode": 1,
+  "signal": null,
+  "processError": null,
+  "saveError": null,
+  "stdout": {
+    "artifact": ".flowkit/artifacts/apply-full-test-fixture/full-test/fe72829b-c749-4f2d-a499-a08ca46e7e41/checks/lint/stdout.txt",
+    "contentSha256": "302170c870a1e8b91e5eb94371dfddff6d4a43e2295d1b89930cb439b9e7a286",
+    "bytes": 232
+  },
+  "stderr": {
+    "artifact": ".flowkit/artifacts/apply-full-test-fixture/full-test/fe72829b-c749-4f2d-a499-a08ca46e7e41/checks/lint/stderr.txt",
+    "contentSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  }
+}

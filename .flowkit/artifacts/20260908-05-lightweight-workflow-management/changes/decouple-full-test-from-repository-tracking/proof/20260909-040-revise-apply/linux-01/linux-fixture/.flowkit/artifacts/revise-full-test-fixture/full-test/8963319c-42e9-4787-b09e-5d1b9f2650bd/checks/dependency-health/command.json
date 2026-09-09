@@ -1,0 +1,31 @@
+{
+  "checkId": "dependency-health",
+  "checkRef": "full-test-check:sha256:2a8458168eab8be672949caa2073b4ce1d980bd1c661f2d3324ceb2cd78dff61",
+  "program": "/usr/local/bin/node",
+  "args": [
+    "node_modules/dependency-cruiser/bin/dependency-cruise.mjs",
+    "--config",
+    "dependency-cruiser.config.mjs",
+    "--output-type",
+    "err",
+    "src",
+    "tests"
+  ],
+  "cwd": ".",
+  "startedAt": "2026-09-09T05:40:34.820Z",
+  "finishedAt": "2026-09-09T05:40:36.357Z",
+  "exitCode": 0,
+  "signal": null,
+  "processError": null,
+  "saveError": null,
+  "stdout": {
+    "artifact": ".flowkit/artifacts/revise-full-test-fixture/full-test/8963319c-42e9-4787-b09e-5d1b9f2650bd/checks/dependency-health/stdout.txt",
+    "contentSha256": "c7893e56ac98d2626a112ad75cdcbb60183b75b2b3bcd339d62cf8da01a86eff",
+    "bytes": 77
+  },
+  "stderr": {
+    "artifact": ".flowkit/artifacts/revise-full-test-fixture/full-test/8963319c-42e9-4787-b09e-5d1b9f2650bd/checks/dependency-health/stderr.txt",
+    "contentSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "projectId": "apply-code-fixture",
+  "deliveryId": "apply-full-test-fixture",
+  "attemptId": "f0a4cfb2-f64c-439c-adda-61466fa137c5",
+  "executionRef": "full-test-execution:sha256:0105e2534e839da9e2014d36cef7745e8f6f07ac45294e2f4da89d298c11e0b5",
+  "startedAt": "2026-09-09T04:07:19.280Z",
+  "finishedAt": "2026-09-09T04:08:29.195Z",
+  "configRef": "full-test-config:sha256:90ceeab86da20ffae9d0fb17007eac75e5990115e6c99c9ad4d37d9e9d6c256e",
+  "inputRef": "full-test-input:sha256:f36b96baf35f5da28b603e5b2b4e17b064ac1a159c93dcb701f05248d259a73d",
+  "status": "passed",
+  "failureReasons": [],
+  "checks": [
+    {
+      "checkId": "format-check",
+      "checkRef": "full-test-check:sha256:b5fc7b1b358532afa6e117d8cbfd3eba3f026b91e798b1369481b9e5cde2992d",
+      "status": "passed",
+      "reason": null,
+      "command": {
+        "artifact": ".flowkit/artifacts/apply-full-test-fixture/full-test/f0a4cfb2-f64c-439c-adda-61466fa137c5/checks/format-check/command.json",
+        "contentSha256": "31aaf0cb9eea561d5aa41b26c63c92656adc51c0879b1580d1813bae99e9cf2c",
+        "bytes": 1128
+      }
+    },
+    {
+      "checkId": "lint",
+      "checkRef": "full-test-check:sha256:b77465f4aa14d2fa41ad2b302b8d9db3917294fd2a0da5dac9a86f4c71e03e26",
+      "status": "passed",
+      "reason": null,
+      "command": {
+        "artifact": ".flowkit/artifacts/apply-full-test-fixture/full-test/f0a4cfb2-f64c-439c-adda-61466fa137c5/checks/lint/command.json",
+        "contentSha256": "08659fddefdd6fb8b13057e6a3886db6373eaa2f6c369dbc675f3e13e36c3a01",
+        "bytes": 937
+      }
+    },
+    {
+      "checkId": "typecheck",
+      "checkRef": "full-test-check:sha256:3d915d1e3d48e7a52144270da3da91c1131b2e3b7c440f3b9ce0655db61822de",
+      "status": "passed",
+      "reason": null,
+      "command": {
+        "artifact": ".flowkit/artifacts/apply-full-test-fixture/full-test/f0a4cfb2-f64c-439c-adda-61466fa137c5/checks/typecheck/command.json",
+        "contentSha256": "e96a0e3baa9e1415dc2da0276a4ff9da4d86afea6ef50c77858fed355e7a12b7",
+        "bytes": 942
+      }
+    },
+    {
+      "checkId": "build",
+      "checkRef": "full-test-check:sha256:3d4870a944d21c4b3fc5b51cb5760756fcf2e674460e770756a17ca1ae3626e1",
+      "status": "passed",
+      "reason": null,
+      "command": {
+        "artifact": ".flowkit/artifacts/apply-full-test-fixture/full-test/f0a4cfb2-f64c-439c-adda-61466fa137c5/checks/build/command.json",
+        "contentSha256": "9e05f4665b554e6c1715ef781ac6f8521006de1268c0f93de32acef012fca73d",
+        "bytes": 911
+      }
+    },
+    {
+      "checkId": "domain",
+      "checkRef": "full-test-check:sha256:5e91c1533314fef02204b5496f39e3b96d86d7d7b0182d65d7db491466f5cc4d",
+      "status": "passed",
+      "reason": null,
+      "command": {
+        "artifact": ".flowkit/artifacts/apply-full-test-fixture/full-test/f0a4cfb2-f64c-439c-adda-61466fa137c5/checks/domain/command.json",
+        "contentSha256": "f0329e322ae65fd6e26bfaa7e49e58688efbed7d3adab6dff34d94af30a5a31d",
+        "bytes": 958
+      }
+    },
+    {
+      "checkId": "acceptance",
+      "checkRef": "full-test-check:sha256:62721e10c3c3a52b2768bc9b527110bcdffb75c160593a5b820e8fe1d5cc6843",
+      "status": "passed",
+      "reason": null,
+      "command": {
+        "artifact": ".flowkit/artifacts/apply-full-test-fixture/full-test/f0a4cfb2-f64c-439c-adda-61466fa137c5/checks/acceptance/command.json",
+        "contentSha256": "eedc9f25aa7b3b16bb20165316038c7f13501a54690904d27091bc35ef023a57",
+        "bytes": 968
+      }
+    },
+    {
+      "checkId": "dependency-health",
+      "checkRef": "full-test-check:sha256:32823db787f165e662ffc284877221fc00ea6e8d61fded5180412b2c6642a01b",
+      "status": "passed",
+      "reason": null,
+      "command": {
+        "artifact": ".flowkit/artifacts/apply-full-test-fixture/full-test/f0a4cfb2-f64c-439c-adda-61466fa137c5/checks/dependency-health/command.json",
+        "contentSha256": "a25bdacae99d96b650c4ffb58906416e1088ed3aedbef9d2ab5b874cc48ed890",
+        "bytes": 1086
+      }
+    },
+    {
+      "checkId": "entropy-tests",
+      "checkRef": "full-test-check:sha256:ce8f579a4ec9e5ffae9ca3fb176ac35330ad1be9e939a2774a28d5de7c045bad",
+      "status": "passed",
+      "reason": null,
+      "command": {
+        "artifact": ".flowkit/artifacts/apply-full-test-fixture/full-test/f0a4cfb2-f64c-439c-adda-61466fa137c5/checks/entropy-tests/command.json",
+        "contentSha256": "80c3d4d99e3d8bf3127d1aba6f3867bfcb0f435a5ba87d7dd82e9133741fa595",
+        "bytes": 975
+      }
+    },
+    {
+      "checkId": "entropy",
+      "checkRef": "full-test-check:sha256:a7c13f5aeda1f3e86d6d9f167c5344ddb2e616732755c8c0eb27e5a739d7c33d",
+      "status": "passed",
+      "reason": null,
+      "command": {
+        "artifact": ".flowkit/artifacts/apply-full-test-fixture/full-test/f0a4cfb2-f64c-439c-adda-61466fa137c5/checks/entropy/command.json",
+        "contentSha256": "4c67029a4df56e98e34fce9e2a32e49720fac615dd4c94e55dd3d4d24fda3b0f",
+        "bytes": 931
+      }
+    }
+  ]
+}

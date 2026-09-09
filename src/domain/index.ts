@@ -24,3 +24,4 @@ export * from "./delivery-final-execution.js";
 
 export * from "./delivery-repository-integration-operation.js";
 export * from "./delivery-repository-integration-execution.js";
+export { readCurrentDeliveryFullTest } from "../internal/full-test-current.js";

@@ -5,14 +5,13 @@ import { isManagerInstallation } from "../internal/manager-installation.js";
 
 import { isOwnerAuthorityFact, type OwnerAuthorityFact } from "./authority.js";
 import {
-  isResolvedApplicableCheck,
-  type ResolvedApplicableCheck,
-} from "./applicable-check-execution.js";
+  isFullTestCheck,
+  isFullTestRef,
+  type FullTestCheck,
+} from "../internal/full-test-input.js";
+import { isAttemptId } from "../internal/full-test-storage.js";
 import { isSemanticId, type DeliveryId } from "./identity.js";
-import {
-  hasNoDuplicates,
-  isHashRef,
-} from "../internal/applicable-check-identity.js";
+import { hasNoDuplicates } from "../internal/applicable-check-identity.js";
 import {
   cloneDeliveryFinalOperationFacts,
   isDeliveryFinalAuthorityForDelivery,
@@ -254,12 +253,16 @@ export function hasDeliveryStartCommitAuthority(
 }
 
 export interface DeliveryFullTestOperationFacts {
-  readonly candidateRef: string;
-  readonly orderedChecks: readonly ResolvedApplicableCheck[];
+  readonly attemptId: string;
+  readonly configRef: string;
+  readonly inputRef: string;
+  readonly orderedChecks: readonly FullTestCheck[];
 }
 
 const DELIVERY_FULL_TEST_FACT_FIELDS = [
-  "candidateRef",
+  "attemptId",
+  "configRef",
+  "inputRef",
   "orderedChecks",
 ] as const;
 
@@ -269,10 +272,12 @@ export function isDeliveryFullTestOperationFacts(
   if (
     !isRecord(value) ||
     !hasExactlyFields(value, DELIVERY_FULL_TEST_FACT_FIELDS) ||
-    !isHashRef(value.candidateRef, "candidate") ||
+    !isAttemptId(value.attemptId) ||
+    !isFullTestRef(value.configRef, "full-test-config") ||
+    !isFullTestRef(value.inputRef, "full-test-input") ||
     !Array.isArray(value.orderedChecks) ||
     value.orderedChecks.length < 1 ||
-    !value.orderedChecks.every(isResolvedApplicableCheck)
+    !value.orderedChecks.every(isFullTestCheck)
   ) {
     return false;
   }
@@ -423,15 +428,13 @@ function cloneStartFacts(
   };
 }
 
-function cloneResolvedCheck(
-  check: ResolvedApplicableCheck,
-): ResolvedApplicableCheck {
+function cloneResolvedCheck(check: FullTestCheck): FullTestCheck {
   return {
     checkId: check.checkId,
     program: check.program,
     args: [...check.args],
-    configRefs: [...check.configRefs],
-    toolRefs: [...check.toolRefs],
+    cwd: check.cwd,
+    toolRef: check.toolRef,
     environmentRefs: [...check.environmentRefs],
     checkRef: check.checkRef,
   };
@@ -441,7 +444,9 @@ function cloneFullTestFacts(
   facts: DeliveryFullTestOperationFacts,
 ): DeliveryFullTestOperationFacts {
   return {
-    candidateRef: facts.candidateRef,
+    attemptId: facts.attemptId,
+    configRef: facts.configRef,
+    inputRef: facts.inputRef,
     orderedChecks: facts.orderedChecks.map(cloneResolvedCheck),
   };
 }

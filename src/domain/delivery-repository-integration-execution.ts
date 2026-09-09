@@ -298,6 +298,7 @@ export async function prepareDeliveryRepositoryIntegrationOperationPackage(
       input.deliveryFinalOutcome.operationPackage.operationFacts
         .requiredEvidence,
       readRequiredEvidence,
+      repositoryRoot,
     ))
   )
     return null;

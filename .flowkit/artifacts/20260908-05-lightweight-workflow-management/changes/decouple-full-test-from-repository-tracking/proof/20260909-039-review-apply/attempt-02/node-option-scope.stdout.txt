@@ -1,0 +1,43 @@
+{
+  "kind": "independent-node-option-launch-boundary-probe",
+  "argv": [
+    "--conditions",
+    "development",
+    "node_modules/review-tool/cli.cjs"
+  ],
+  "fixtureOnly": true,
+  "formalD05FullTest": false,
+  "sourceEntry": "src/domain/delivery-full-test-execution.ts",
+  "toolDrift": {
+    "inputRefUnchanged": true,
+    "checkRefUnchanged": true,
+    "readerBefore": "passed",
+    "readerAfterToolChanged": "passed",
+    "oldAttempt": "cd6b0725-58f1-4151-9fe4-78a6d078972e",
+    "newExecutionStatus": "terminal",
+    "newExecutionVerdict": "failed",
+    "readerAfterNewFailure": "failed"
+  },
+  "diagnostics": [
+    {
+      "case": "missing",
+      "status": "failed",
+      "reason": "preparation-rejected: config.read:config/verification/full-test.json: ENOENT"
+    },
+    {
+      "case": "unknown-field",
+      "status": "failed",
+      "reason": "preparation-rejected: config.parse: invalid Full Test config: unknown-or-missing-fields"
+    },
+    {
+      "case": "missing-input",
+      "status": "failed",
+      "reason": "preparation-rejected: inputs[0]: ENOENT"
+    },
+    {
+      "case": "missing-tool",
+      "status": "failed",
+      "reason": "preparation-rejected: checks[0].executable: executable missing or unsupported"
+    }
+  ]
+}

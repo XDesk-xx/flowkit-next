@@ -1,0 +1,64 @@
+TAP version 13
+# Subtest: exact Full Test authority and closed configuration reject caller overrides
+ok 1 - exact Full Test authority and closed configuration reject caller overrides
+  ---
+  duration_ms: 255.3076
+  type: 'test'
+  ...
+# Subtest: no Git target executes fresh attempts and saves exact raw bytes for cross-session reading
+ok 2 - no Git target executes fresh attempts and saves exact raw bytes for cross-session reading
+  ---
+  duration_ms: 1524.8834
+  type: 'test'
+  ...
+# Subtest: failed current attempt never falls back to a previous pass
+ok 3 - failed current attempt never falls back to a previous pass
+  ---
+  duration_ms: 1042.0088
+  type: 'test'
+  ...
+# Subtest: selected source drift stops later checks and is saved as a real failed attempt
+ok 4 - selected source drift stops later checks and is saved as a real failed attempt
+  ---
+  duration_ms: 1018.7453
+  type: 'test'
+  ...
+# Subtest: saved stream damage and incomplete latest results cannot be consumed as PASS
+ok 5 - saved stream damage and incomplete latest results cannot be consumed as PASS
+  ---
+  duration_ms: 713.4607
+  type: 'test'
+  ...
+# Subtest: start, stream-open, stream-write, result and status-publication failures never expose old PASS
+ok 6 - start, stream-open, stream-write, result and status-publication failures never expose old PASS
+  ---
+  duration_ms: 9603.6542
+  type: 'test'
+  ...
+# Subtest: checks remain ordered, preserve large stderr and continue after command failure
+ok 7 - checks remain ordered, preserve large stderr and continue after command failure
+  ---
+  duration_ms: 1161.9349
+  type: 'test'
+  ...
+# Subtest: spawn failure and process termination cannot become PASS
+ok 8 - spawn failure and process termination cannot become PASS
+  ---
+  duration_ms: 708.3881
+  type: 'test'
+  ...
+# Subtest: current reader rejects wrong ownership, escaping and non-regular material
+ok 9 - current reader rejects wrong ownership, escaping and non-regular material
+  ---
+  duration_ms: 2426.315
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 18877.3704

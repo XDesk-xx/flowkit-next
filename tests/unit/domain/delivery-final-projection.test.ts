@@ -19,7 +19,7 @@ test("Delivery Finalization ref has a fixed golden vector and ordered projection
     "delivery-final",
     authority("finalize-delivery"),
     {
-      verifiedCandidateRef: `candidate:sha256:${"1".repeat(64)}`,
+      verifiedCandidateRef: `full-test-input:sha256:${"1".repeat(64)}`,
       fullTestExecutionRef: `full-test-execution:sha256:${"2".repeat(64)}`,
       coordinationPrestateRef: {
         artifact: `openspec/delivery-groups/${deliveryId}.yaml`,
@@ -82,7 +82,7 @@ test("Delivery Finalization ref has a fixed golden vector and ordered projection
   );
   assert.equal(
     exact,
-    "delivery-finalization:sha256:c46e34fec60f616675266c9260870fbb253078094ff02fdea84ecd8f482d5fc3",
+    "delivery-finalization:sha256:185906f5f098fb3e8f049e4d1f3cb02235ac205d1f967f48f3352c7efb7dcf8a",
   );
   assert.deepEqual(Object.keys(operationPackage.operationFacts), [
     "verifiedCandidateRef",

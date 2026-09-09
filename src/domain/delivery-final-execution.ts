@@ -27,10 +27,7 @@ import {
   type ReadDeliveryRequiredEvidence,
 } from "../internal/delivery-required-evidence-source.js";
 export type { ReadDeliveryRequiredEvidence } from "../internal/delivery-required-evidence-source.js";
-import {
-  isTrustedPassedFullTestOutcome,
-  type DeliveryFullTestInvocationTerminal,
-} from "./delivery-full-test-execution.js";
+import { readCurrentDeliveryFullTest } from "../internal/full-test-current.js";
 import { isSemanticId, type DeliveryId } from "./identity.js";
 import { observeOpenSpecActiveChanges } from "./openspec-observation.js";
 import {
@@ -42,7 +39,6 @@ import {
 export interface DeliveryFinalPreparationInput {
   readonly deliveryId: DeliveryId;
   readonly ownerAuthority: DeliveryFinalOperationPackage["ownerAuthority"];
-  readonly fullTestOutcome: DeliveryFullTestInvocationTerminal;
   readonly flowkitHome: string;
 }
 
@@ -138,12 +134,7 @@ function isPreparationInput(
 ): value is DeliveryFinalPreparationInput {
   return (
     isRecord(value) &&
-    hasExactlyFields(value, [
-      "deliveryId",
-      "ownerAuthority",
-      "fullTestOutcome",
-      "flowkitHome",
-    ]) &&
+    hasExactlyFields(value, ["deliveryId", "ownerAuthority", "flowkitHome"]) &&
     isSemanticId(value.deliveryId) &&
     isDeliveryFinalAuthorityForDelivery(
       value.ownerAuthority,
@@ -179,18 +170,16 @@ export async function prepareDeliveryFinalOperationPackage(
   if (
     typeof repositoryRoot !== "string" ||
     repositoryRoot.length === 0 ||
-    !isPreparationInput(input) ||
-    !isTrustedPassedFullTestOutcome(input.fullTestOutcome, input.deliveryId)
+    !isPreparationInput(input)
   ) {
     return null;
   }
-  const candidateRef = await deriveApplicableCheckCandidateRef(repositoryRoot);
-  if (
-    candidateRef === null ||
-    candidateRef !== input.fullTestOutcome.record.candidateRef
-  ) {
-    return null;
-  }
+  const current = await readCurrentDeliveryFullTest(
+    repositoryRoot,
+    input.deliveryId,
+  );
+  if (current.status !== "passed") return null;
+  const fullTestOutcome = current.outcome;
   const coordination = await readDeliveryFinalCoordinationPrestate(
     repositoryRoot,
     input.deliveryId,
@@ -201,11 +190,12 @@ export async function prepareDeliveryFinalOperationPackage(
   const requiredEvidence = await deriveDeliveryRequiredEvidenceFromSource(
     readRequiredEvidence,
     {
+      repositoryRoot,
       projectId,
       deliveryId: input.deliveryId,
       changeIds: coordination.completedRequiredChangeIds,
-      fullTestExecutionRef: input.fullTestOutcome.record.executionRef,
-      fullTestOutcome: input.fullTestOutcome,
+      fullTestExecutionRef: fullTestOutcome.record.executionRef,
+      fullTestOutcome: fullTestOutcome,
     },
   );
   if (
@@ -234,8 +224,8 @@ export async function prepareDeliveryFinalOperationPackage(
     "delivery-final",
     input.ownerAuthority,
     {
-      verifiedCandidateRef: input.fullTestOutcome.record.candidateRef,
-      fullTestExecutionRef: input.fullTestOutcome.record.executionRef,
+      verifiedCandidateRef: fullTestOutcome.record.inputRef,
+      fullTestExecutionRef: fullTestOutcome.record.executionRef,
       coordinationPrestateRef: coordination.ref,
       completedRequiredChangeIds: coordination.completedRequiredChangeIds,
       requiredEvidence,
@@ -473,6 +463,16 @@ export async function invokeDeliveryFinalOperation(
   if (coordinationRef === null) {
     return failure("coordination-materialization-rejected");
   }
+  const currentAfter = await readCurrentDeliveryFullTest(
+    repositoryRoot,
+    operationPackage.deliveryId,
+  );
+  if (
+    currentAfter.status !== "passed" ||
+    currentAfter.outcome.record.executionRef !==
+      operationPackage.operationFacts.fullTestExecutionRef
+  )
+    return failure("finalized-candidate-rejected");
   const finalizedCandidateRef =
     await deriveApplicableCheckCandidateRef(repositoryRoot);
   if (finalizedCandidateRef === null) {

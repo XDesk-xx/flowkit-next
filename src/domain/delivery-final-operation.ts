@@ -1,9 +1,7 @@
+import { isFullTestRef } from "../internal/full-test-input.js";
 import { isOwnerAuthorityFact, type OwnerAuthorityFact } from "./authority.js";
 import { isSemanticId, type DeliveryId } from "./identity.js";
-import {
-  hasNoDuplicates,
-  isHashRef,
-} from "../internal/applicable-check-identity.js";
+import { hasNoDuplicates } from "../internal/applicable-check-identity.js";
 import {
   cloneDeliveryRequiredEvidence,
   isDeliveryRequiredEvidence,
@@ -87,7 +85,7 @@ export function isDeliveryFinalOperationFacts(
   const changeIds = value.completedRequiredChangeIds as string[];
   return (
     changeIds.length > 0 &&
-    isHashRef(value.verifiedCandidateRef, "candidate") &&
+    isFullTestRef(value.verifiedCandidateRef, "full-test-input") &&
     typeof value.fullTestExecutionRef === "string" &&
     FULL_TEST_EXECUTION_REF_PATTERN.test(value.fullTestExecutionRef) &&
     isDeliveryCoordinationRef(value.coordinationPrestateRef) &&

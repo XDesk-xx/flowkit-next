@@ -1,0 +1,269 @@
+{
+  "kind": "Explore observations, not production acceptance or Formal Full Test",
+  "platform": "win32",
+  "node": "v22.23.2",
+  "fixtureRoot": "D:\\Projects\\flowkit-next\\.tmp\\d05-030-proof-RUMeFR",
+  "gitVisibility": {
+    "before": [
+      ".gitattributes",
+      "extra-product.txt",
+      "source.txt"
+    ],
+    "afterIgnored": [
+      ".gitattributes",
+      "source.txt"
+    ],
+    "sameProductBytesDifferentSelection": true
+  },
+  "artifactDrift": {
+    "beforeArtifact": "candidate:sha256:f0704e1d89dd5860f68343d63c139f0331962774dcb3dc1b51ba230fffa1f47b",
+    "afterArtifact": "candidate:sha256:8ea965159b9ef32547cb40c29a350c76d4905d3c1ec79635e874741ee8bc6be0",
+    "runExcluded": true
+  },
+  "whitespace": {
+    "untrackedExit": 0,
+    "stagedExit": 2,
+    "diagnostic": ".flowkit/artifacts/synthetic-delivery/proof/audit.mjs:2: new blank line at EOF.\n.flowkit/artifacts/synthetic-delivery/proof/input.bin:1: trailing whitespace.\n+test input  \n.flowkit/artifacts/synthetic-delivery/proof/input.bin:2: new blank line at EOF.\n",
+    "rawStdoutExcluded": true
+  },
+  "processOutcome": {
+    "status": "passed",
+    "exitCode": 0,
+    "signal": null
+  },
+  "attempts": {
+    "passed": {
+      "status": "terminal",
+      "operationPackage": {
+        "deliveryId": "synthetic-proof-delivery",
+        "operationId": "delivery-full-test",
+        "ownerAuthority": {
+          "ref": "owner:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "decision": "authorize-formal-full-test",
+          "deliveryId": "synthetic-proof-delivery",
+          "sourceRef": "fixture:synthetic-not-owner-authority",
+          "scope": [
+            "delivery-full-test"
+          ]
+        },
+        "operationFacts": {
+          "candidateRef": "candidate:sha256:ad5389c95727bf6d8342f6658e0f1a19e8df16bd9286e69e73a42377c9b3ebe8",
+          "orderedChecks": [
+            {
+              "checkId": "probe",
+              "program": "C:\\nvm4w\\nodejs\\node.exe",
+              "args": [
+                "-e",
+                "process.exit(Number(process.env.FLOWKIT_EXPLORE_PROBE_EXIT??0))"
+              ],
+              "configRefs": [
+                "config:fixture"
+              ],
+              "toolRefs": [
+                "tool:node"
+              ],
+              "environmentRefs": [
+                "environment:synthetic-probe"
+              ],
+              "checkRef": "check:sha256:915a7e162e8fdf766fcc755b6dfee569a8d50aabce727bf94cea3a980d62613d"
+            }
+          ]
+        },
+        "guidanceRef": {
+          "path": "skills/delivery/full-test/SKILL.md",
+          "contentSha256": "e3a0273a1a1aa8cc8e21cc2aa269a90011636bbacda34e68d361f2b13957e9e7"
+        }
+      },
+      "verdict": "passed",
+      "record": {
+        "executionRef": "full-test-execution:sha256:f9d97b6a9a11a52c4b399bbc0d3b80ceeda82601e3f2ed25aa6e35e0674bbd6a",
+        "candidateRef": "candidate:sha256:ad5389c95727bf6d8342f6658e0f1a19e8df16bd9286e69e73a42377c9b3ebe8",
+        "checks": [
+          {
+            "checkId": "probe",
+            "checkRef": "check:sha256:915a7e162e8fdf766fcc755b6dfee569a8d50aabce727bf94cea3a980d62613d",
+            "status": "passed",
+            "exitCode": 0,
+            "signal": null
+          }
+        ]
+      }
+    },
+    "failed": {
+      "status": "terminal",
+      "operationPackage": {
+        "deliveryId": "synthetic-proof-delivery",
+        "operationId": "delivery-full-test",
+        "ownerAuthority": {
+          "ref": "owner:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "decision": "authorize-formal-full-test",
+          "deliveryId": "synthetic-proof-delivery",
+          "sourceRef": "fixture:synthetic-not-owner-authority",
+          "scope": [
+            "delivery-full-test"
+          ]
+        },
+        "operationFacts": {
+          "candidateRef": "candidate:sha256:ad5389c95727bf6d8342f6658e0f1a19e8df16bd9286e69e73a42377c9b3ebe8",
+          "orderedChecks": [
+            {
+              "checkId": "probe",
+              "program": "C:\\nvm4w\\nodejs\\node.exe",
+              "args": [
+                "-e",
+                "process.exit(Number(process.env.FLOWKIT_EXPLORE_PROBE_EXIT??0))"
+              ],
+              "configRefs": [
+                "config:fixture"
+              ],
+              "toolRefs": [
+                "tool:node"
+              ],
+              "environmentRefs": [
+                "environment:synthetic-probe"
+              ],
+              "checkRef": "check:sha256:915a7e162e8fdf766fcc755b6dfee569a8d50aabce727bf94cea3a980d62613d"
+            }
+          ]
+        },
+        "guidanceRef": {
+          "path": "skills/delivery/full-test/SKILL.md",
+          "contentSha256": "e3a0273a1a1aa8cc8e21cc2aa269a90011636bbacda34e68d361f2b13957e9e7"
+        }
+      },
+      "verdict": "failed",
+      "record": {
+        "executionRef": "full-test-execution:sha256:f9d97b6a9a11a52c4b399bbc0d3b80ceeda82601e3f2ed25aa6e35e0674bbd6a",
+        "candidateRef": "candidate:sha256:ad5389c95727bf6d8342f6658e0f1a19e8df16bd9286e69e73a42377c9b3ebe8",
+        "checks": [
+          {
+            "checkId": "probe",
+            "checkRef": "check:sha256:915a7e162e8fdf766fcc755b6dfee569a8d50aabce727bf94cea3a980d62613d",
+            "status": "failed",
+            "exitCode": 7,
+            "signal": null
+          }
+        ]
+      }
+    },
+    "reused": {
+      "status": "terminal",
+      "operationPackage": {
+        "deliveryId": "synthetic-proof-delivery",
+        "operationId": "delivery-full-test",
+        "ownerAuthority": {
+          "ref": "owner:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "decision": "authorize-formal-full-test",
+          "deliveryId": "synthetic-proof-delivery",
+          "sourceRef": "fixture:synthetic-not-owner-authority",
+          "scope": [
+            "delivery-full-test"
+          ]
+        },
+        "operationFacts": {
+          "candidateRef": "candidate:sha256:ad5389c95727bf6d8342f6658e0f1a19e8df16bd9286e69e73a42377c9b3ebe8",
+          "orderedChecks": [
+            {
+              "checkId": "probe",
+              "program": "C:\\nvm4w\\nodejs\\node.exe",
+              "args": [
+                "-e",
+                "process.exit(Number(process.env.FLOWKIT_EXPLORE_PROBE_EXIT??0))"
+              ],
+              "configRefs": [
+                "config:fixture"
+              ],
+              "toolRefs": [
+                "tool:node"
+              ],
+              "environmentRefs": [
+                "environment:synthetic-probe"
+              ],
+              "checkRef": "check:sha256:915a7e162e8fdf766fcc755b6dfee569a8d50aabce727bf94cea3a980d62613d"
+            }
+          ]
+        },
+        "guidanceRef": {
+          "path": "skills/delivery/full-test/SKILL.md",
+          "contentSha256": "e3a0273a1a1aa8cc8e21cc2aa269a90011636bbacda34e68d361f2b13957e9e7"
+        }
+      },
+      "verdict": "passed",
+      "record": {
+        "executionRef": "full-test-execution:sha256:f9d97b6a9a11a52c4b399bbc0d3b80ceeda82601e3f2ed25aa6e35e0674bbd6a",
+        "candidateRef": "candidate:sha256:ad5389c95727bf6d8342f6658e0f1a19e8df16bd9286e69e73a42377c9b3ebe8",
+        "checks": [
+          {
+            "checkId": "probe",
+            "checkRef": "check:sha256:915a7e162e8fdf766fcc755b6dfee569a8d50aabce727bf94cea3a980d62613d",
+            "status": "reused-passed",
+            "exitCode": null,
+            "signal": null
+          }
+        ]
+      }
+    },
+    "oldPassValidatorStillTrue": true,
+    "limitation": "Synthetic authority and changing controlled environment; proves missing durable current-attempt selection at this API, not actual Final bypass"
+  },
+  "commands": [
+    {
+      "args": [
+        "init",
+        "-q"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "config",
+        "user.name",
+        "Explore fixture"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "config",
+        "user.email",
+        "fixture@example.invalid"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "add",
+        "source.txt",
+        ".gitattributes"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "commit",
+        "-qm",
+        "synthetic fixture baseline"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "add",
+        ".flowkit/artifacts"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "warning: in the working copy of '.flowkit/artifacts/synthetic-delivery/proof/input.bin', CRLF will be replaced by LF the next time Git touches it\n"
+    }
+  ]
+}

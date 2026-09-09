@@ -1,0 +1,30 @@
+{
+  "kind": "external-orchestrator-review-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "reviewer",
+  "action": "review-apply",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "decouple-full-test-from-repository-tracking",
+  "projectOrdinal": 36,
+  "runId": "20260909-039-review-apply",
+  "previousRunId": "20260909-038-revise-apply",
+  "reviewedRunId": "20260909-038-revise-apply",
+  "startedAt": "2026-09-09T05:22:15.094Z",
+  "ownerInstruction": "根据最新run，review，review 完，简短解释当前解耦方案",
+  "scope": "独立复验 RA037-001 的输入/输出边界修正，保留 RA035 两项修复并核对批准合同与未改候选连续性。",
+  "reviewerHow": ".agents/skills/review-apply/SKILL.md",
+  "mutationBaseline": {
+    "files": 3763,
+    "sha256": "752dd783aedd5395d844d13cba691abda0b9e85c93390f3f6ef9b338a7dbeefb",
+    "head": "7625ecdef3115db45b062b544728ea2459519a09",
+    "at": "2026-09-09T05:22:15.094Z"
+  },
+  "proofRoot": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-039-review-apply",
+  "ownerDecisionsRelevant": [
+    {
+      "sourceRef": ".flowkit/runs/20260908-05-lightweight-workflow-management/004-decouple-full-test-from-repository-tracking/20260909-038-revise-apply/result.json#ownerDecisionsRelevant",
+      "decision": "D05 independent-bootstrap；004/projectOrdinal36；必要材料保留 target artifacts；不修改历史、Author artifacts，不执行实际 D05 Full Test 或 Git。"
+    }
+  ]
+}
