@@ -6,9 +6,19 @@ base: "main"
 goal: "将 Flowkit 收敛为严格管理 OpenSpec Change Action、轻量组织 Delivery 的独立流程管理软件：分离管理资产与目标项目，接通真实 Action 和 Full Test，独立配置测试范围，可靠保存必要执行产物，简化交付完成确认，并在授权节点调用 Git。"
 
 delivery:
-  state: active
-  fullTestStatus: pending
-  finalizationStatus: pending
+  state: completed
+  fullTestStatus: passed
+  fullTestAttempt: "a8c1d48a-fb77-4f1d-b535-e828ca86c3f3"
+  finalizationStatus: completed
+
+finalization:
+  state: completed
+  ownerAuthorityRef: "owner:36ac73fa0fe7b1df9056cecf429c9b7343ae12d11767e51c0bc20f299f85461c"
+  sourceRef: "owner-input:2026-09-11:authorize-d05-delivery-final"
+  fullTestAttempt: "a8c1d48a-fb77-4f1d-b535-e828ca86c3f3"
+  verifiedCandidateRef: "full-test-input:sha256:204cdac444286edc06e3d25c5283430dcda2578ec10993bb65b61521c01e68f3"
+  fullTestExecutionRef: "full-test-execution:sha256:9241e2dc903f5af4989b500229042b362d7734075eb9639760fb3e732f9298b9"
+  confirmationRef: "delivery-finalization:sha256:11899a8c0624793e55aaad109edc740738a9bcc9d49d19ecf8db590a5f409f2c"
 
 reference:
   kind: "owner-selected-delivery-plan"
@@ -191,8 +201,16 @@ ownerDecisions:
     scope:
       - "explore"
 
+  - ref: "owner:36ac73fa0fe7b1df9056cecf429c9b7343ae12d11767e51c0bc20f299f85461c"
+    decision: "finalize-delivery"
+    deliveryId: "20260908-05-lightweight-workflow-management"
+    sourceRef: "owner-input:2026-09-11:authorize-d05-delivery-final"
+    scope:
+      - "delivery-final"
+
 bootstrap:
   mode: "independent-bootstrap"
+  finalizationNote: "本次按 Owner 的“授权进入 delivery final”执行独立 bootstrap Final，不调用 candidate 生命周期。verifiedCandidateRef 对应当前 Full Test 的 185 文件输入摘要；fullTestExecutionRef 对应 .flowkit/artifacts/20260908-05-lightweight-workflow-management/full-test/a8c1d48a-fb77-4f1d-b535-e828ca86c3f3/result.json 的 SHA-256，不伪装 canonical runtime admission。只核对七个 archive 与直接 review-apply、当前 Full Test 输入和必要结果材料；窄写后复验并发布 confirmationRef，不创建 Action Run、不要求 Archify、不执行 Git。"
   planningHistoryNote: "reference 保留 Delivery Start 时 Owner 选定的历史规划出处；039 按授权退役旧根文档，Git 恢复出处见其 Apply 材料，当前产品入口见 README.md。"
   executorRole: "author"
   instruction: "根据文档开始下一个 delivery，处理 branch 和 manifest；沿用独立 bootstrap，现在不要处理 Archify。"

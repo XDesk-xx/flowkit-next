@@ -1,0 +1,29 @@
+{
+  "checkId": "acceptance",
+  "program": "/usr/local/bin/node",
+  "args": [
+    "--import",
+    "tsx",
+    "--test",
+    "tests/acceptance/*.test.ts"
+  ],
+  "cwd": ".",
+  "startedAt": "2026-09-11T08:07:18.617Z",
+  "finishedAt": "2026-09-11T08:10:18.062Z",
+  "exitCode": 0,
+  "signal": null,
+  "error": null,
+  "status": "passed",
+  "streams": [
+    {
+      "path": "acceptance/stdout.txt",
+      "bytes": 1723,
+      "sha256": "74cd0e3040eea4dfd739b4058e11236da01e29ac3e893d846e44cfe069709064"
+    },
+    {
+      "path": "acceptance/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+import fs from 'node:fs';
+import {spawnSync} from 'node:child_process';
+import assert from 'node:assert/strict';
+const config=JSON.parse(fs.readFileSync('/repo/config/verification/full-test.json'));
+assert.notEqual(process.getuid(),0,'Full Test permission fixtures require a non-root user');
+const work='/tmp/d05-work';fs.mkdirSync(work);
+for(const p of [...config.inputs,'README.md','docs'])fs.cpSync('/repo/'+p,work+'/'+p,{recursive:true});
+fs.symlinkSync('/build/flowkit-next-dependency-environment/node_modules',work+'/node_modules','dir');
+process.env.FLOWKIT_HOME='/tool-home';
+delete process.env.FLOWKIT_ACCEPTANCE_INSTALLATION;
+const r=spawnSync('node',['/repo/.tmp/d05-full-test-runner.mjs',work,'/evidence/linux','linux-x64-glibc-primary'],{cwd:work,env:process.env,stdio:'inherit'});assert.equal(r.status,0,'Linux Full Test failed');

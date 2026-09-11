@@ -1,0 +1,31 @@
+{
+  "kind": "independent-bootstrap-full-test-start",
+  "canonicalFlowkitRuntimeOperation": false,
+  "projectId": "flowkit-next",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "attemptId": "e7da9bb7-ec51-4d40-a6f5-2ae13cd5436a",
+  "startedAt": "2026-09-11T08:06:29.832Z",
+  "ownerAuthority": {
+    "sourceRef": "owner-input:2026-09-11:authorize-d05-full-test",
+    "decision": "authorize-formal-full-test",
+    "deliveryId": "20260908-05-lightweight-workflow-management",
+    "scope": [
+      "delivery-full-test"
+    ]
+  },
+  "config": {
+    "path": "config/verification/full-test.json",
+    "bytes": 2286,
+    "sha256": "32b03e4f1fa154586a2e29ca6cda849f630af29f75ff578b86b1bb90dc186686"
+  },
+  "platforms": [
+    "linux-x64-glibc-primary",
+    "windows-native-supplement"
+  ],
+  "dockerImage": "sha256:127ee201acf84b60dc929a6d5823f24969d96893b0d790fb0ed6dd800ee57c62",
+  "extraConsumedInputFiles": [
+    "README.md",
+    "docs/onboarding.md"
+  ],
+  "note": "Independent bootstrap adapter executes all configured checks. No candidate lifecycle/Guidance invocation; no Standard Action Run. Documentation resources consumed by current tests are additionally bound without changing project configuration."
+}

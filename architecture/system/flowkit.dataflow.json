@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "diagram_type": "dataflow",
+  "meta": {
+    "title": "Flowkit · 事实与材料数据流",
+    "subtitle": "三条不同用途的本地文件链：Action 记录、Full Test 验证、独立架构派生",
+    "animation": "none",
+    "visual_preset": "signal-flow",
+    "quality_profile": "showcase",
+    "viewBox": [900, 760]
+  },
+  "stages": [
+    { "label": "事实输入" },
+    { "label": "显式执行" },
+    { "label": "记录与材料" },
+    { "label": "按需消费" }
+  ],
+  "nodes": [
+    { "id": "action-contract", "type": "database", "label": "OpenSpec 合同", "sublabel": "目标与角色边界", "stage": 0, "row": 0 },
+    { "id": "action-work", "type": "backend", "label": "真实 Action", "sublabel": "工作与结果接纳", "stage": 1, "row": 0 },
+    { "id": "action-record", "type": "database", "label": "Run 与材料", "sublabel": "target .flowkit", "stage": 2, "row": 0 },
+    { "id": "read-next", "type": "frontend", "label": "后续查询", "sublabel": "上下文与 Policy", "stage": 3, "row": 0 },
+    { "id": "test-input", "type": "database", "label": "代码与配置", "sublabel": "显式输入和排除", "stage": 0, "row": 2 },
+    { "id": "test-work", "type": "backend", "label": "Full Test", "sublabel": "执行适用 checks", "stage": 1, "row": 2 },
+    { "id": "test-record", "type": "database", "label": "当前 attempt", "sublabel": "结果与原始日志", "stage": 2, "row": 2 },
+    { "id": "final-consumer", "type": "security", "label": "Final 校验", "sublabel": "确认当前可用结果", "stage": 3, "row": 2 },
+    { "id": "diagram-source", "type": "database", "label": "规范与实现", "sublabel": "只读分析来源", "stage": 0, "row": 4 },
+    { "id": "diagram-work", "type": "external", "label": "Archify", "sublabel": "独立分析与校验", "stage": 1, "row": 4 },
+    { "id": "diagram-json", "type": "database", "label": "图 JSON", "sublabel": "architecture/system", "stage": 2, "row": 4 },
+    { "id": "diagram-html", "type": "frontend", "label": "独立 HTML", "sublabel": "渲染与探索", "stage": 3, "row": 4 }
+  ],
+  "flows": [
+    { "id": "bounded-contract", "from": "action-contract", "to": "action-work", "label": "合同", "variant": "emphasis" },
+    { "id": "admitted-result", "from": "action-work", "to": "action-record", "label": "接纳结果", "variant": "emphasis" },
+    { "id": "verified-reference", "from": "action-record", "to": "read-next", "label": "有效记录", "variant": "emphasis" },
+    { "id": "selected-input", "from": "test-input", "to": "test-work", "label": "输入 bytes", "variant": "security" },
+    { "id": "actual-evidence", "from": "test-work", "to": "test-record", "label": "真实证据", "variant": "security" },
+    { "id": "current-attempt", "from": "test-record", "to": "final-consumer", "label": "当前引用", "variant": "security" },
+    { "id": "read-only-source", "from": "diagram-source", "to": "diagram-work", "label": "只读依据", "variant": "dashed" },
+    { "id": "derived-description", "from": "diagram-work", "to": "diagram-json", "label": "派生描述", "variant": "dashed" },
+    { "id": "render-output", "from": "diagram-json", "to": "diagram-html", "label": "渲染", "variant": "dashed" }
+  ],
+  "cards": [
+    { "dot": "cyan", "title": "记录不复制事实权威", "items": ["OpenSpec 保存合同与归档，Git 保存代码版本；Run 记录单次真实执行。", "查询还核对 manifest 与 OpenSpec；图中横向链按材料类别展开，并非所有依赖。", "必要 proof 位于 target artifacts；.tmp 是可丢弃工作区，不新增统一证据平台。"] },
+    { "dot": "amber", "title": "验证材料按当前判断消费", "items": ["full-test.json 选取范围，与 Git tracking、.gitignore、architecture 分离。", "manifest 的 fullTestAttempt 关联当前 attempt；新失败或 partial 不回用旧 PASS。", "Final 同时需要 required Change 的可信完成依据；Full Test 不写 Action Run。"] },
+    { "dot": "emerald", "title": "Archify 无反向验收依赖", "items": ["JSON 与 HTML 是派生描述，不改变代码或 OpenSpec 事实。", "当前 Full Test 排除 architecture；只改这些图不改变代码输入。", "图不作为 Start、Full Test、Final 或 Integration 的前置条件。"] }
+  ]
+}

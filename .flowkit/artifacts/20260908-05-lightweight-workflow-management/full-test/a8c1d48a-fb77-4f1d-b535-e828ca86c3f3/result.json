@@ -1,0 +1,60 @@
+{
+  "kind": "independent-bootstrap-full-test-result",
+  "canonicalFlowkitRuntimeOperation": false,
+  "projectId": "flowkit-next",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "attemptId": "a8c1d48a-fb77-4f1d-b535-e828ca86c3f3",
+  "startedAt": "2026-09-11T08:11:53.332Z",
+  "finishedAt": "2026-09-11T08:15:45.911Z",
+  "status": "passed",
+  "ownerAuthority": {
+    "sourceRef": "owner-input:2026-09-11:authorize-d05-full-test",
+    "decision": "authorize-formal-full-test",
+    "deliveryId": "20260908-05-lightweight-workflow-management",
+    "scope": [
+      "delivery-full-test"
+    ]
+  },
+  "config": {
+    "path": "config/verification/full-test.json",
+    "bytes": 2286,
+    "sha256": "32b03e4f1fa154586a2e29ca6cda849f630af29f75ff578b86b1bb90dc186686"
+  },
+  "platforms": [
+    {
+      "platform": "linux",
+      "status": "passed",
+      "failedChecks": [],
+      "result": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/full-test/a8c1d48a-fb77-4f1d-b535-e828ca86c3f3/linux/result.json",
+        "bytes": 35140,
+        "sha256": "f5e0f896a6fd4668d8440f5e97b230b75fa3723497cbdee237ef5c7e42d8857c"
+      },
+      "inputHash": "204cdac444286edc06e3d25c5283430dcda2578ec10993bb65b61521c01e68f3"
+    },
+    {
+      "platform": "windows",
+      "status": "passed",
+      "failedChecks": [],
+      "result": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/full-test/a8c1d48a-fb77-4f1d-b535-e828ca86c3f3/windows/result.json",
+        "bytes": 35230,
+        "sha256": "f713fcdf200e25cd985de8518c0ecbd249fc9a10c4c1613413fb188c847a0e90"
+      },
+      "inputHash": "204cdac444286edc06e3d25c5283430dcda2578ec10993bb65b61521c01e68f3"
+    }
+  ],
+  "inputIdentityMatchesCurrent": true,
+  "rawStreamsVerified": true,
+  "standardActionRunCreated": false,
+  "productionMutation": false,
+  "gitMutation": false,
+  "deliveryFinalExecuted": false,
+  "nextBoundary": "owner-decision",
+  "previousAttempt": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/full-test/e7da9bb7-ec51-4d40-a6f5-2ae13cd5436a/result.json",
+    "bytes": 2210,
+    "sha256": "299e446b167f9f9f9b29b67ec01e53f452c31d3551a3eebf0bf5b0de361477e8"
+  },
+  "note": "本记录为 D05 independent-bootstrap 真实验证结果，不伪装 candidate 生命周期接纳。仅将 Linux 测试环境改为非 root，两个平台全部检查重新执行；前一失败尝试原样保留，不复用 PASS。"
+}

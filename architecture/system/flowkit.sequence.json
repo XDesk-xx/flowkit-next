@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "Flowkit · next 查询时序",
+    "subtitle": "已选定 canonical target 的正常查询路径；本次查询不执行 Action、不写 Run",
+    "animation": "none",
+    "visual_preset": "blueprint",
+    "quality_profile": "showcase",
+    "viewBox": [1100, 870]
+  },
+  "participants": [
+    { "id": "agent", "type": "external", "label": "Agent", "sublabel": "显式查询" },
+    { "id": "cli", "type": "frontend", "label": "CLI", "sublabel": "next --input" },
+    { "id": "context", "type": "backend", "label": "Context", "sublabel": "绑定唯一上下文" },
+    { "id": "openspec", "type": "external", "label": "OpenSpec", "sublabel": "exact runtime" },
+    { "id": "files", "type": "database", "label": "Target 文件", "sublabel": "manifest 与 Runs" },
+    { "id": "policy", "type": "security", "label": "Policy", "sublabel": "仅计算边界" }
+  ],
+  "messages": [
+    { "id": "request", "from": "agent", "to": "cli", "y": 180, "label": "next 请求", "variant": "emphasis" },
+    { "id": "resolve", "from": "cli", "to": "context", "y": 230, "label": "解析 target", "variant": "emphasis" },
+    { "id": "list", "from": "context", "to": "openspec", "y": 280, "label": "观察活跃 Change" },
+    { "id": "list-result", "from": "openspec", "to": "context", "y": 330, "label": "Change 列表", "variant": "return" },
+    { "id": "read-chain", "from": "context", "to": "files", "y": 380, "label": "读取协调事实与 Run 链" },
+    { "id": "verified-chain", "from": "files", "to": "context", "y": 430, "label": "待校验的持久记录", "variant": "return" },
+    { "id": "observe-status", "from": "context", "to": "openspec", "y": 480, "label": "查询 Change 状态" },
+    { "id": "status-result", "from": "openspec", "to": "context", "y": 530, "label": "OpenSpec 状态", "variant": "return" },
+    { "id": "context-result", "from": "context", "to": "cli", "y": 580, "label": "校验并绑定上下文", "variant": "return" },
+    { "id": "evaluate", "from": "cli", "to": "policy", "y": 630, "label": "依据角色、结果、合同计算", "variant": "security" },
+    { "id": "decision", "from": "policy", "to": "cli", "y": 680, "label": "ready 或 blocked", "variant": "return" },
+    { "id": "response", "from": "cli", "to": "agent", "y": 730, "label": "只读 JSON", "variant": "return" }
+  ],
+  "activations": [
+    { "participant": "cli", "from": 180, "to": 736, "type": "frontend" },
+    { "participant": "context", "from": 230, "to": 585, "type": "backend" },
+    { "participant": "policy", "from": 630, "to": 685, "type": "security" }
+  ],
+  "cards": [
+    { "dot": "cyan", "title": "查询不是执行", "items": ["status 展示事实；next 计算边界；doctor 核对运行环境与 exact OpenSpec。", "Agent 在合法 Role / Action 已确定后读取安装内 Skill；HOW 不决定下一步。", "CLI 无 apply / review / prepare / submit 写命令，不调用模型或自动切换角色。"] },
+    { "dot": "amber", "title": "上下文不是最大 Run 编号", "items": ["验证目标归属、唯一 Run 链、previousRunId 与可接受结果。", "歧义、断链或冲突报告阻断，不猜 target，不靠调用者手填 currentRunId。", "无选定 Change 或 bootstrap-history 展示走相应分支，不伪装 canonical 决策。"] },
+    { "dot": "emerald", "title": "安装与项目分离", "items": ["安装自定位 package 与系统 Guidance；target 同名文件不接管安装。", "FLOWKIT_HOME/tools 提供锁定 executable；不静默使用 PATH 的其他版本。", "所有项目事实与后续项目写入归 target；图中的文件参与者不是数据库服务。"] }
+  ]
+}

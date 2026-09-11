@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "diagram_type": "lifecycle",
+  "meta": {
+    "title": "Flowkit · Action 生命周期",
+    "subtitle": "唯一正式状态为 prepared / terminal；null 表示尚无 CurrentAction，不是第三个状态",
+    "animation": "none",
+    "visual_preset": "classic",
+    "quality_profile": "showcase",
+    "viewBox": [820, 640]
+  },
+  "lanes": [
+    { "id": "main", "label": "准备：仅建立一个 CurrentAction" },
+    { "id": "work", "label": "执行期间：仍为 prepared，不增加 running / resumed 状态" },
+    { "id": "terminal", "label": "结束：结果接纳后 terminal，并 STOP" }
+  ],
+  "states": [
+    { "id": "empty-slot", "type": "start", "label": "null", "sublabel": "尚无 CurrentAction", "lane": "main", "col": 0, "tag": "非状态枚举" },
+    { "id": "prepared", "type": "active", "label": "prepared", "sublabel": "本次 Action 已准备", "lane": "main", "col": 2, "tag": "持有精确 identity" },
+    { "id": "terminal", "type": "neutral", "label": "terminal", "sublabel": "本次 Action 已结束", "lane": "terminal", "col": 0, "tag": "接纳结果后 STOP" }
+  ],
+  "transitions": [
+    { "id": "prepare-first", "from": "empty-slot", "to": "prepared", "label": "prepare", "variant": "emphasis" },
+    { "id": "exact-terminal", "from": "prepared", "to": "terminal", "label": "执行并接纳结果", "variant": "emphasis" },
+    { "id": "next-occurrence", "from": "terminal", "to": "prepared", "label": "另行调用新 Action", "variant": "dashed", "fromSide": "right", "toSide": "right", "route": "right-channel" }
+  ],
+  "cards": [
+    { "dot": "cyan", "title": "主线转换", "items": ["null → prepared：合法 Action 确定后，prepare 建立精确 CurrentAction。", "prepared → terminal：同一 package / Role / occurrence 的结果接纳成功后结束。", "prepare 是内部事件，不是独立 Action 或额外 Run；一次只执行一个 Action。"] },
+    { "dot": "amber", "title": "异常不创造新状态", "items": ["执行或接纳失败时不伪造 terminal；未完成的 prepared 记录保留。", "无 resumed、running、retrying 等额外 lifecycle 枚举；不自动重试或接管。", "terminal 表示执行闭合，不等于 PASS、Review approved、Git 授权或 Delivery 完成。"] },
+    { "dot": "emerald", "title": "记录与下一次调用", "items": ["Run / Result 按 create-once 保存并读回；旧终态不回写。", "Policy 只给下一合法边界；虚线表示新的显式调用，不是自动循环。", "同一 identity 不得在 terminal 后再次 prepare；prepared 时不得另开当前 Action。"] }
+  ]
+}
