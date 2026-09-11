@@ -1,0 +1,277 @@
+{
+  "kind": "external-orchestrator-apply-result",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "author",
+  "action": "apply",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "correct-project-onboarding-and-agent-entry",
+  "projectOrdinal": 39,
+  "runId": "20260911-067-apply",
+  "previousRunId": "20260911-066-review-propose",
+  "status": "terminal",
+  "authorConclusion": "PASS",
+  "conclusionMeaning": "当前实现与有界接入验收完成；不是独立 Review 或 Formal Full Test。",
+  "startedAt": "2026-09-11T06:05:39.641Z",
+  "completedAt": "2026-09-11T06:59:35.313Z",
+  "acceptedReview": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/007-correct-project-onboarding-and-agent-entry/20260911-066-review-propose/result.json",
+    "bytes": 8557,
+    "sha256": "0a16898a20573288a848abdadd7664d79aa8592c22523e108b031a12fc162a24"
+  },
+  "ownerDecisionsRelevant": [
+    {
+      "sourceRef": "owner-input:2026-09-11:bounded-correct-change-and-root-flowkit-documents",
+      "decision": "将接入补齐及三份根 flowkit*.md 清理纳入同一 Change，不重开前六个、不重构内核。"
+    },
+    {
+      "sourceRef": "owner-input:2026-09-11:real-cross-session-not-over-simulated",
+      "decision": "真实新会话不能以重启 CLI/合成 fixture 替代；读取验收不必额外执行 Action、制造 finding 或演完整 Delivery；未执行如实记录。"
+    },
+    {
+      "sourceRef": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260911-062-archive/result.json#ownerDecisionsRelevant",
+      "decision": "D05 独立 bootstrap；必要材料保存在 target artifacts，临时 fixture 放 .tmp；不改历史。"
+    },
+    {
+      "sourceRef": "owner-input:2026-09-11:onboarding-first-ordinal-and-bounded-explore",
+      "decision": "授权示例首次序号及有界 Explore，不执行下一 Review。"
+    },
+    {
+      "sourceRef": "owner-input:2026-09-11:fresh-session-readback-completed-and-continue",
+      "decision": "Owner 确认真实新会话已完成只读入口验收并回传结果，继续完成当前 Apply。"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "README.md",
+      "bytes": 4843,
+      "sha256": "4ac9d2c6e2700cb8ba8e402f44c86e2fb6448becc879f695c5d6faf7c66614da"
+    },
+    {
+      "path": "docs/onboarding.md",
+      "bytes": 9150,
+      "sha256": "f7ba3ca086f1560e38f609feb434cfec0186e442c40cc9895ba1f4fa66cfb484"
+    },
+    {
+      "path": "package.json",
+      "bytes": 1891,
+      "sha256": "31cd2b51113ce1afd9c8a319c580ce01d0d7eddd1580c0658a5d6bf6207183ea"
+    },
+    {
+      "path": "tests/unit/domain/project-onboarding.test.ts",
+      "bytes": 2234,
+      "sha256": "9c4c458a3dd1d769583717ccdc6bb91be47bbaa3ad88dcd1de7b7001eb17713a"
+    },
+    {
+      "path": "openspec/delivery-groups/20260908-05-lightweight-workflow-management.yaml",
+      "bytes": 12478,
+      "sha256": "8385cffba74eeb16a794ededcb0e4362e7539a6f1aa2721231507fa1e474a519"
+    },
+    {
+      "path": "openspec/changes/correct-project-onboarding-and-agent-entry/.openspec.yaml",
+      "bytes": 40,
+      "sha256": "e6a45440b7b6b8096938fece82a34e09416bcecfda2ceef5ba18c854e4341abf"
+    },
+    {
+      "path": "openspec/changes/correct-project-onboarding-and-agent-entry/design.md",
+      "bytes": 9929,
+      "sha256": "0b1177ae6ef4747ae4aaad3f9c0b2b0c8cb361834f9f7392aa63855566c3a86e"
+    },
+    {
+      "path": "openspec/changes/correct-project-onboarding-and-agent-entry/explore.md",
+      "bytes": 10541,
+      "sha256": "f1953b0dbaeaa1f5bd3f792d0680933545aea96bdbd81f9829dbea10e31c68e7"
+    },
+    {
+      "path": "openspec/changes/correct-project-onboarding-and-agent-entry/proposal.md",
+      "bytes": 2252,
+      "sha256": "28eff087978850ac081341823f0e77e3664c4ea0e76fc45d25043f543067ffc5"
+    },
+    {
+      "path": "openspec/changes/correct-project-onboarding-and-agent-entry/specs/foundation-cli-surface/spec.md",
+      "bytes": 6620,
+      "sha256": "3c671ceffa50e5cfbde6966dd0c79917c3661b1ded203327045f78535567f494"
+    },
+    {
+      "path": "openspec/changes/correct-project-onboarding-and-agent-entry/tasks.md",
+      "bytes": 3145,
+      "sha256": "28694611ecb39ab94f5de218d3fdbda42c8a7e335417ddf46f0ee1f3dff7ad95"
+    }
+  ],
+  "ancestorRunRefs": [
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/007-correct-project-onboarding-and-agent-entry/20260911-063-explore/result.json",
+      "bytes": 6615,
+      "sha256": "615053015fa494f26368a3ed51a173bf1ff8e120f09d28e5e5d327c12ba6d138"
+    },
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/007-correct-project-onboarding-and-agent-entry/20260911-064-review-explore/result.json",
+      "bytes": 7977,
+      "sha256": "181feb64c2dd99a0b31c2efec3a21c2f033c3d143a3b8c303b0fc9dca099ccd4"
+    },
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/007-correct-project-onboarding-and-agent-entry/20260911-065-propose/result.json",
+      "bytes": 4681,
+      "sha256": "9a8411def1b98c2ce14f6f8be258542be28332997fc2c61e6a629148d4ffb53e"
+    },
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/007-correct-project-onboarding-and-agent-entry/20260911-066-review-propose/result.json",
+      "bytes": 8557,
+      "sha256": "0a16898a20573288a848abdadd7664d79aa8592c22523e108b031a12fc162a24"
+    }
+  ],
+  "removedPaths": [
+    "flowkit-next-d04-stable-core-closure-final-reference(1).md",
+    "flowkit-next-d05-decoupling-analysis.md",
+    "flowkit-next-delivery-change-plan.md"
+  ],
+  "removalSources": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-067-apply/removal-sources.json",
+    "bytes": 928,
+    "sha256": "7a642cd74e148735f50b155651ce734688720deac14b04550a6c565f393bd39b"
+  },
+  "proofRefs": [
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-067-apply/completion-audit.json",
+      "bytes": 6012,
+      "sha256": "b444c4bc17f951b5417037766d7c44232d2b0386d0fca7ff953bb8ac0146fc64"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-067-apply/fresh-session-owner-return.md",
+      "bytes": 1496,
+      "sha256": "63734c7c464a368ad878e38138f37b5ce4523d4e8558d15d1ce79d0c485d57d0"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-067-apply/apply-handoff.md",
+      "bytes": 1991,
+      "sha256": "080c2e81567924cc02b0806288bd0f1ef051b2ad50c034c4837d0061bcbf785d"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-067-apply/example-evidence.json",
+      "bytes": 27354,
+      "sha256": "de5f8c29e9dc47efbc5a4edbbd268bc428bd2e4b4e5ebd544657876d512dde62"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-067-apply/owner-example-authorization.md",
+      "bytes": 637,
+      "sha256": "1c5a905ef8978c3fa7bf98241fcb490c37c656c95cea1389709703f82527cc60"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-067-apply/progress.json",
+      "bytes": 8086,
+      "sha256": "5eb6b3affc3a2d5602c7c9d66d00003aae11e19ca4c8b5c0d6e42221d3b083eb"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-067-apply/progress-after-example.json",
+      "bytes": 2642,
+      "sha256": "8e5fdb501dea61425b5c56dd57e0052205e72b45aa917222ed8167d62547f2fe"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-067-apply/installation-audit.json",
+      "bytes": 1607,
+      "sha256": "dc4d2f973bed4a7d4946a360f2e452a5f18d520d92f9e2989696a86658ccc6dd"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-067-apply/onboarding-preservation.json",
+      "bytes": 1017,
+      "sha256": "0bbfca34b1518ea1cd40c1cf4f7908c1249dd23349b6b8fd53ec9864c32ac256"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-067-apply/implementation-audit.json",
+      "bytes": 2509,
+      "sha256": "9a95fcdd3297c178a698c86ea7a63221aec14456b50726b3f31575f17cc6bd6d"
+    }
+  ],
+  "commands": [
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-067-apply/pack-final/command.json",
+      "bytes": 1008,
+      "sha256": "312ea894c167e784e600fad30da8604cbe1aa5156ebe548cf4ac0682f04ade5d"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-067-apply/install-final/command.json",
+      "bytes": 1137,
+      "sha256": "8717a32e81554980ffb3768ebd345f9a865e39b02c1427bb97efa787a81c05a2"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-067-apply/focused/command.json",
+      "bytes": 1121,
+      "sha256": "3d29b67eb610128e266ee6057c20c947afd3fe89e55a73051c32a971a0294630"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-067-apply/query-regression/command.json",
+      "bytes": 1136,
+      "sha256": "4d064828078e43ff03528dd831c38df6a54a462176433029ee98a5749a931ad2"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-067-apply/powershell-query/command.json",
+      "bytes": 963,
+      "sha256": "63c9a72a87673b18c7f33b649530656e2b55edfc6fd3b6b913a8a8e6f0e30d47"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-067-apply/windows-install-regression/command.json",
+      "bytes": 1008,
+      "sha256": "e6eddb42e26ad22c48e5e1316455e29871cb51247420326ce333fdec7dca5fb6"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-067-apply/linux-install/command.json",
+      "bytes": 1222,
+      "sha256": "a3c0101cce5640cab4845377290d226ebcd281d6a47d33d8ff67f406b36ba419"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-067-apply/typecheck/command.json",
+      "bytes": 923,
+      "sha256": "53865fef7462259d766b919738fbe4d0b8336ec671b39de68ea0e8545e31f153"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-067-apply/format-check/command.json",
+      "bytes": 1106,
+      "sha256": "28cc3183a74362f348bc35d2dfd705ac80b2f67e54da3599e0ffe9964cd455e6"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-067-apply/lint/command.json",
+      "bytes": 923,
+      "sha256": "aedc2c5bfc3862d08d8b02f66801198507121ae9e25925335035a1069d3820a1"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-067-apply/openspec-validate/command.json",
+      "bytes": 1036,
+      "sha256": "08b5077e3234e92f580406058f14cd49c6cbff7c7a0856b79d9255d7bf6e839c"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-067-apply/example-status-after/command.json",
+      "bytes": 1055,
+      "sha256": "7132ba8880d5855742b1a09b8a4f8c5b2b9831a9b7b1dd24610eaf4a85eb5491"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-067-apply/example-next-after/command.json",
+      "bytes": 1049,
+      "sha256": "90668acad22c625d301206985a55f03408908d44d677cea2d3d01ab2e8f096a3"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-067-apply/final-openspec-validate/command.json",
+      "bytes": 1048,
+      "sha256": "c8581195921cf1d6d5080618fa566d83191f23e4a6615fbd716e331d8b09fa59"
+    }
+  ],
+  "tasks": {
+    "total": 12,
+    "completed": 12
+  },
+  "acceptance": {
+    "realAuthorWork": "PASS",
+    "independentCliReadback": "PASS",
+    "freshSession": "Owner 回传真实新会话输出，已与当前目标记录核对一致；未补造原始工具日志。"
+  },
+  "limitations": {
+    "independentReview": "not-executed",
+    "formalFullTest": "not-executed",
+    "rawFreshSessionLog": "not-provided"
+  },
+  "productionSourceMutation": false,
+  "skillMutation": false,
+  "gitMutation": false,
+  "historicalRunMutation": false,
+  "nextBoundary": "review-apply",
+  "stop": true
+}

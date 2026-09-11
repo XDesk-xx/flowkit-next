@@ -1,0 +1,220 @@
+{
+  "kind": "external-orchestrator-review-apply-result",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "reviewer",
+  "action": "review-apply",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "correct-project-onboarding-and-agent-entry",
+  "projectOrdinal": 39,
+  "runId": "20260911-068-review-apply",
+  "previousRunId": "20260911-067-apply",
+  "reviewedRunId": "20260911-067-apply",
+  "status": "terminal",
+  "reviewerVerdict": "approved",
+  "findings": [],
+  "startedAt": "2026-09-11T07:09:32.285Z",
+  "completedAt": "2026-09-11T07:22:44.842Z",
+  "ownerInstruction": "根据最新run，review，review 完，简短解释当前方案",
+  "ownerDecisionsRelevant": [
+    {
+      "sourceRef": "owner-input:2026-09-11:bounded-correct-change-and-root-flowkit-documents",
+      "decision": "将接入补齐及三份根 flowkit*.md 清理纳入同一 Change，不重开前六个、不重构内核。"
+    },
+    {
+      "sourceRef": "owner-input:2026-09-11:real-cross-session-not-over-simulated",
+      "decision": "真实新会话不能以重启 CLI/合成 fixture 替代；读取验收不必额外执行 Action、制造 finding 或演完整 Delivery；未执行如实记录。"
+    },
+    {
+      "sourceRef": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260911-062-archive/result.json#ownerDecisionsRelevant",
+      "decision": "D05 独立 bootstrap；必要材料保存在 target artifacts，临时 fixture 放 .tmp；不改历史。"
+    },
+    {
+      "sourceRef": "owner-input:2026-09-11:onboarding-first-ordinal-and-bounded-explore",
+      "decision": "授权示例首次序号及有界 Explore，不执行下一 Review。"
+    },
+    {
+      "sourceRef": "owner-input:2026-09-11:fresh-session-readback-completed-and-continue",
+      "decision": "Owner 确认真实新会话已完成只读入口验收并回传结果，继续完成当前 Apply。"
+    }
+  ],
+  "reviewedResult": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/007-correct-project-onboarding-and-agent-entry/20260911-067-apply/result.json",
+    "bytes": 13768,
+    "sha256": "533f8683508814379942193612e35ee4c3a00e6bb84dd4df448ce6441da877ab"
+  },
+  "acceptedReview": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/007-correct-project-onboarding-and-agent-entry/20260911-066-review-propose/result.json",
+    "bytes": 8557,
+    "sha256": "0a16898a20573288a848abdadd7664d79aa8592c22523e108b031a12fc162a24"
+  },
+  "candidateArtifacts": [
+    {
+      "path": "README.md",
+      "bytes": 4843,
+      "sha256": "4ac9d2c6e2700cb8ba8e402f44c86e2fb6448becc879f695c5d6faf7c66614da"
+    },
+    {
+      "path": "docs/onboarding.md",
+      "bytes": 9150,
+      "sha256": "f7ba3ca086f1560e38f609feb434cfec0186e442c40cc9895ba1f4fa66cfb484"
+    },
+    {
+      "path": "package.json",
+      "bytes": 1891,
+      "sha256": "31cd2b51113ce1afd9c8a319c580ce01d0d7eddd1580c0658a5d6bf6207183ea"
+    },
+    {
+      "path": "tests/unit/domain/project-onboarding.test.ts",
+      "bytes": 2234,
+      "sha256": "9c4c458a3dd1d769583717ccdc6bb91be47bbaa3ad88dcd1de7b7001eb17713a"
+    },
+    {
+      "path": "openspec/delivery-groups/20260908-05-lightweight-workflow-management.yaml",
+      "bytes": 12478,
+      "sha256": "8385cffba74eeb16a794ededcb0e4362e7539a6f1aa2721231507fa1e474a519"
+    },
+    {
+      "path": "openspec/changes/correct-project-onboarding-and-agent-entry/tasks.md",
+      "bytes": 3145,
+      "sha256": "28694611ecb39ab94f5de218d3fdbda42c8a7e335417ddf46f0ee1f3dff7ad95"
+    }
+  ],
+  "runInputs": [
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/007-correct-project-onboarding-and-agent-entry/20260911-068-review-apply/action.md",
+      "bytes": 318,
+      "sha256": "3c6f54669492122ce9954fa4de2aea66bb2c90137ea2cf79a3362e30d87a32bb"
+    },
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/007-correct-project-onboarding-and-agent-entry/20260911-068-review-apply/context.json",
+      "bytes": 6228,
+      "sha256": "4461d16a4ff4c2bd52e2d4e3f02e69412f17e055a37b95ccc91e06881bba825e"
+    }
+  ],
+  "proofRefs": [
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-068-review-apply/review.md",
+      "bytes": 5017,
+      "sha256": "d394ea03ccddf63ef8fae1cd6dadcea01c04121562c9a386c9ba88d935d82659"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-068-review-apply/audit.mjs",
+      "bytes": 8566,
+      "sha256": "2ff5d4a806b6deef1a27b9a512a202b3e497c81f7decd140ed27a1746b702439"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-068-review-apply/capture.mjs",
+      "bytes": 1609,
+      "sha256": "dd5af667984efa35b0b49de02c22ebcbbefe2b13d8c41248507c4735610f981c"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-068-review-apply/audit/command.json",
+      "bytes": 1040,
+      "sha256": "c79ae7b2c72b2894e0018bc0bda61c27f802f11284421cbeb9a898cc3f1a29cc"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-068-review-apply/focused/command.json",
+      "bytes": 1132,
+      "sha256": "d8a07609d3f90fee2bc381a4529af98ba51eabcf9fec2529ef8ce10edb78dc0b"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-068-review-apply/validate/command.json",
+      "bytes": 1032,
+      "sha256": "9eb3249b1a5d19272293d4b2c195ba407fdfa1a207b663752a47498123ca76af"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-068-review-apply/example-status/command.json",
+      "bytes": 1057,
+      "sha256": "caf2c01cbebc85bc66dd8252909f30124e850b2a6497bfa9e9c0a410c4369351"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-068-review-apply/example-next/command.json",
+      "bytes": 1051,
+      "sha256": "9dda5592f3e025cdae4c8058daae57b24308ef659019f3b9f52ea00b4a2fb3e0"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-068-review-apply/example-doctor/command.json",
+      "bytes": 1057,
+      "sha256": "78b4a1824d44fec62cd6414cc9d5820b5f3aa3b733b81ece3595ba86d46cb0ff"
+    }
+  ],
+  "currentStepExplanation": "审查 067 实现对 066 approved Proposal 的忠实性、实际安装/示例/新会话证据、精确退役、最小性和范围；不以结构校验替代语义审查。",
+  "complexityMinimalityAssessment": "随包接入文档内嵌短入口、README/单一发行条目/有界测试及精确文档退役；复用既有查询/Role/Guidance，无 src、Skill、依赖、Registry 或第二套流程。",
+  "newContentScopeDriftAssessment": "scope drift: NONE；真实示例首次初始化和新会话均在已批准验收及 Owner sourceRef 边界内，没有重开前六个 Changes。",
+  "decisiveEvidence": {
+    "directInputReferencesVerified": 41,
+    "authorCommandRecordsAndStreamsVerified": 14,
+    "independentFocusedTests": {
+      "tests": 13,
+      "passed": 13,
+      "failed": 0
+    },
+    "exactOpenSpecValidation": "passed-structure-only",
+    "packageAndExample": {
+      "finalPackage": {
+        "path": ".tmp/onboarding-039-pack-final/flowkit-next-0.1.0.tgz",
+        "bytes": 127875,
+        "sha256": "421a679c4763b6d88fefa426a2a978760f6281314c5851d241fc392cf8d153c1"
+      },
+      "packageEntryCount": 92,
+      "durableExampleFilesVerified": 18,
+      "liveReadback": {
+        "runId": "20260911-001-explore",
+        "state": "terminal",
+        "nextAction": "review-explore",
+        "doctor": "pass"
+      },
+      "freshSession": {
+        "basis": "Owner-returned actual session output corroborated against current project facts; not a new session executed by this Reviewer",
+        "report": {
+          "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-067-apply/fresh-session-owner-return.md",
+          "bytes": 1496,
+          "sha256": "63734c7c464a368ad878e38138f37b5ce4523d4e8558d15d1ce79d0c485d57d0"
+        },
+        "rawLogProvided": false
+      },
+      "focused": {
+        "tests": 13,
+        "passed": 13,
+        "failed": 0
+      }
+    },
+    "manifestBytesPreservedExceptOneHistoryNote": true,
+    "approvedPlanningUnchangedExceptTaskCheckboxes": true,
+    "threeExactDeletedDocumentsRecoverableFromGit": true,
+    "historicalAndProductionScopesUnchanged": true
+  },
+  "mutationIsolation": {
+    "before": {
+      "files": 5515,
+      "sha256": "23372c5a52289488390826ecc957ee088485933bd9da2d92cabb0ac5e5d0e28d",
+      "head": "7af7d85788503dafc50ee162b14deaaf679f99cb",
+      "method": "Git cached and nonignored files by sorted path/bytes/raw SHA256; excludes only own Run/proof; ignored scratch outside snapshot"
+    },
+    "after": {
+      "files": 5515,
+      "sha256": "23372c5a52289488390826ecc957ee088485933bd9da2d92cabb0ac5e5d0e28d",
+      "head": "7af7d85788503dafc50ee162b14deaaf679f99cb",
+      "method": "Git cached and nonignored files by sorted path/bytes/raw SHA256; excludes only own Run/proof; ignored scratch outside snapshot"
+    },
+    "equal": true,
+    "checkedAt": "2026-09-11T07:20:50.599Z"
+  },
+  "limitations": {
+    "formalDeliveryFullTest": "not-executed",
+    "linuxInstallation": "Author current evidence audited; not rerun by this Reviewer",
+    "freshSessionRawToolLog": "not-provided; Owner-returned actual output corroborated",
+    "exampleNextAction": "not-executed",
+    "ownerOrGitAuthorityCreated": false
+  },
+  "authorArtifactsModified": false,
+  "historicalRecordsModified": false,
+  "reviewerDeletedUserFiles": false,
+  "gitMutation": false,
+  "approvalMeaning": "当前 Change 的已批准实现与有界接入验收可进入 archive；不是 Formal Delivery Full Test PASS、Final 完成或 Owner/Git authority。",
+  "nextBoundary": "archive",
+  "continuationSource": "既有 Policy 的 review-apply + approved 映射；D05 independent-bootstrap 交接。",
+  "nextActionExecuted": false,
+  "stop": true
+}

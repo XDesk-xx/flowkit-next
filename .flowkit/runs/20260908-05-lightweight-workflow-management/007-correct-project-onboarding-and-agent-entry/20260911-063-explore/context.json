@@ -1,0 +1,39 @@
+{
+  "kind": "external-orchestrator-explore-context",
+  "executionMode": "independent-bootstrap",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "action": "explore",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "correct-project-onboarding-and-agent-entry",
+  "projectOrdinal": 39,
+  "runId": "20260911-063-explore",
+  "previousRunId": null,
+  "priorDeliveryRun": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260911-062-archive/result.json",
+    "bytes": 15905,
+    "sha256": "e7c7a0c75f3bc3edd8cac7146c6d9d7fbb254f1856e811d99b6da4e04298c1cb"
+  },
+  "repositoryHead": "7af7d85788503dafc50ee162b14deaaf679f99cb",
+  "startedAt": "2026-09-11T05:19:38.446Z",
+  "ownerInstruction": "owner 授权创建 change ，并且 进行 proof explore",
+  "ownerSourceRef": "owner-input:2026-09-11:create-correct-project-onboarding-and-agent-entry:proof-explore",
+  "ownerAuthorityRef": "owner:aa33e6a09124d87ec6c650956fa91cf58e71216719e7ddf7f7681ccfaedb109f",
+  "proofRoot": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-063-explore",
+  "scope": "单个 correct Change：新项目接入、Agent 薄入口、README 整理和三份根目录规划文档清理边界；本轮仅创建/激活和 Explore。",
+  "ownerDecisionsRelevant": [
+    {
+      "sourceRef": "owner-input:2026-09-11:bounded-correct-change-and-root-flowkit-documents",
+      "decision": "将接入补齐及三份根 flowkit*.md 清理纳入同一 Change，不重开前六个、不重构内核。"
+    },
+    {
+      "sourceRef": "owner-input:2026-09-11:real-cross-session-not-over-simulated",
+      "decision": "真实新会话不能以重启 CLI/合成 fixture 替代；读取验收不必额外执行 Action、制造 finding 或演完整 Delivery；未执行如实记录。"
+    },
+    {
+      "sourceRef": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260911-062-archive/result.json#ownerDecisionsRelevant",
+      "decision": "D05 独立 bootstrap；必要材料保存在 target artifacts，临时 fixture 放 .tmp；不改历史。"
+    }
+  ],
+  "nextBoundary": "review-explore"
+}

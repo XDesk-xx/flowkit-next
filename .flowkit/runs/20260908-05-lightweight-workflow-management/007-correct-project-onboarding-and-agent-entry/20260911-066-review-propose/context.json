@@ -1,0 +1,76 @@
+{
+  "kind": "external-orchestrator-review-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "reviewer",
+  "action": "review-propose",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "correct-project-onboarding-and-agent-entry",
+  "projectOrdinal": 39,
+  "runId": "20260911-066-review-propose",
+  "previousRunId": "20260911-065-propose",
+  "reviewedRunId": "20260911-065-propose",
+  "startedAt": "2026-09-11T05:56:31.890Z",
+  "ownerInstruction": "根据最新run，review，review 完，简短解释当前方案",
+  "reviewerHow": ".agents/skills/review-propose/SKILL.md",
+  "scope": "独立审查 065 Proposal 对 064 approved Explore 的承接、最小合同、任务及真实验收可执行性；只写本次 Reviewer Run/proof，不实施、删除文档或运行 Full Test。",
+  "reviewedResult": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/007-correct-project-onboarding-and-agent-entry/20260911-065-propose/result.json",
+    "bytes": 4681,
+    "sha256": "9a8411def1b98c2ce14f6f8be258542be28332997fc2c61e6a629148d4ffb53e"
+  },
+  "acceptedReview": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/007-correct-project-onboarding-and-agent-entry/20260911-064-review-explore/result.json",
+    "bytes": 7977,
+    "sha256": "181feb64c2dd99a0b31c2efec3a21c2f033c3d143a3b8c303b0fc9dca099ccd4"
+  },
+  "approvedExplore": {
+    "path": "openspec/changes/correct-project-onboarding-and-agent-entry/explore.md",
+    "bytes": 10541,
+    "sha256": "f1953b0dbaeaa1f5bd3f792d0680933545aea96bdbd81f9829dbea10e31c68e7"
+  },
+  "artifacts": [
+    {
+      "path": "openspec/changes/correct-project-onboarding-and-agent-entry/proposal.md",
+      "bytes": 2252,
+      "sha256": "28eff087978850ac081341823f0e77e3664c4ea0e76fc45d25043f543067ffc5"
+    },
+    {
+      "path": "openspec/changes/correct-project-onboarding-and-agent-entry/design.md",
+      "bytes": 9929,
+      "sha256": "0b1177ae6ef4747ae4aaad3f9c0b2b0c8cb361834f9f7392aa63855566c3a86e"
+    },
+    {
+      "path": "openspec/changes/correct-project-onboarding-and-agent-entry/tasks.md",
+      "bytes": 3145,
+      "sha256": "e9673a8d0a15ab20c8bcf2a19c8aa928b6e0c15a46b512f92d24d137fcda4b7d"
+    },
+    {
+      "path": "openspec/changes/correct-project-onboarding-and-agent-entry/specs/foundation-cli-surface/spec.md",
+      "bytes": 6620,
+      "sha256": "3c671ceffa50e5cfbde6966dd0c79917c3661b1ded203327045f78535567f494"
+    }
+  ],
+  "ownerDecisionsRelevant": [
+    {
+      "sourceRef": "owner-input:2026-09-11:bounded-correct-change-and-root-flowkit-documents",
+      "decision": "将接入补齐及三份根 flowkit*.md 清理纳入同一 Change，不重开前六个、不重构内核。"
+    },
+    {
+      "sourceRef": "owner-input:2026-09-11:real-cross-session-not-over-simulated",
+      "decision": "真实新会话不能以重启 CLI/合成 fixture 替代；读取验收不必额外执行 Action、制造 finding 或演完整 Delivery；未执行如实记录。"
+    },
+    {
+      "sourceRef": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260911-062-archive/result.json#ownerDecisionsRelevant",
+      "decision": "D05 独立 bootstrap；必要材料保存在 target artifacts，临时 fixture 放 .tmp；不改历史。"
+    }
+  ],
+  "mutationBaseline": {
+    "files": 5412,
+    "sha256": "2053b431a5ba0e2075e37995f135573252d53d487cd8074ef979953e571144a5",
+    "head": "7af7d85788503dafc50ee162b14deaaf679f99cb",
+    "method": "Git cached and nonignored files by sorted path/bytes/raw SHA256; excludes only own Run/proof; ignored scratch outside snapshot"
+  },
+  "verifiedInputReferences": 24,
+  "proofRoot": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-066-review-propose"
+}

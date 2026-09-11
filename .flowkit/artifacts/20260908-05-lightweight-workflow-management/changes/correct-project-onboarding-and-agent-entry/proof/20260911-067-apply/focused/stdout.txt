@@ -1,0 +1,70 @@
+TAP version 13
+# Subtest: context selects unique active and distinguishes idle/planned/cancelled
+ok 1 - context selects unique active and distinguishes idle/planned/cancelled
+  ---
+  duration_ms: 777.177
+  type: 'test'
+  ...
+# Subtest: context reports candidates and explicit selection never fills missing facts
+ok 2 - context reports candidates and explicit selection never fills missing facts
+  ---
+  duration_ms: 444.5604
+  type: 'test'
+  ...
+# Subtest: context rejects root mismatch, orphan, activation/dependency and partial history
+ok 3 - context rejects root mismatch, orphan, activation/dependency and partial history
+  ---
+  duration_ms: 514.4541
+  type: 'test'
+  ...
+# Subtest: entrypoint returns machine error for unknown command
+ok 4 - entrypoint returns machine error for unknown command
+  ---
+  duration_ms: 292.8466
+  type: 'test'
+  ...
+# Subtest: entrypoint distinguishes malformed JSON, obsolete selectors and formal Policy blocked
+ok 5 - entrypoint distinguishes malformed JSON, obsolete selectors and formal Policy blocked
+  ---
+  duration_ms: 1457.0733
+  type: 'test'
+  ...
+# Subtest: installation metadata belongs to the loaded package, not cwd
+ok 6 - installation metadata belongs to the loaded package, not cwd
+  ---
+  duration_ms: 13.7213
+  type: 'test'
+  ...
+# Subtest: trusted installations relocate without depending on target metadata
+ok 7 - trusted installations relocate without depending on target metadata
+  ---
+  duration_ms: 11.1733
+  type: 'test'
+  ...
+# Subtest: onboarding is an exact distribution asset reachable from README
+ok 8 - onboarding is an exact distribution asset reachable from README
+  ---
+  duration_ms: 3.6021
+  type: 'test'
+  ...
+# Subtest: short entry is extractable without carrying state or Action machinery
+ok 9 - short entry is extractable without carrying state or Action machinery
+  ---
+  duration_ms: 0.3089
+  type: 'test'
+  ...
+# Subtest: installation examples use package-owned bin and disposable query input
+ok 10 - installation examples use package-owned bin and disposable query input
+  ---
+  duration_ms: 0.1386
+  type: 'test'
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 10
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2074.1029

@@ -1,116 +1,48 @@
 # flowkit-next
 
-`flowkit-next` has completed Delivery `20260829-02-lightweight-incremental-engineering-quality` Delivery Final materialization on top of the Foundation Lifecycle Kernel.
+Flowkit 是面向 Agent 的轻量流程管理软件：OpenSpec 管理 Change 与代码合同，Flowkit 查询当前事实和合法边界，Agent 读取对应 Skill、完成一次真实工作并保存 Run 后停止。不调用模型，不自动切 Role 或连续执行。
 
-The D02 implementation candidate passed the authorized Formal Full Test on exact Git candidate:
+## 安装与新项目接入
 
-```text
-d78acb135d5317145f52c7559393a3d1c0ff42eb
-```
+从明确选定的实际 tgz 安装到独立 manager 目录，再按[接入说明](docs/onboarding.md)准备 exact OpenSpec runtime 与项目短 AGENTS 入口。说明包含 Windows/PowerShell 命令、已有项目保护、首次 Delivery/Change 准备和阶段指令用法。当前包为 private，不假设公开 latest。
 
-After that PASS, Delivery Final materialized repository guidance and derived Archify assets only. It did **not** modify verified production implementation, tests, canonical OpenSpec specifications, or package/lock truth.
+manager 拥有发行代码、系统 Skills、工具 HOW/vendor 与 lock；target 拥有业务代码、OpenSpec、Run、必要证据和测试配置；FLOWKIT_HOME/tools 单独提供 executable runtime。target 不复制 Flowkit 开发依赖、Skills 或长期胶水。安装路径不是生命周期身份。
 
-## Current Stable Core capabilities
+CLI 仅提供 `status / next / doctor --input <request.json>`。请求包含 repositoryRoot、flowkitHome，可选 deliveryId/changeId；当前记录来自唯一有效 Run 链，不接受 currentRunId/changeStartSequence。doctor 成功不意味着已激活 Change。
 
-The repository now contains the D01 Foundation plus the D02 lightweight engineering-quality slice:
+收到阶段指令后，Agent 核对 target、实际 Role、安装来源和查询边界，再读安装内 `skills/actions/<actionId>/SKILL.md`。歧义、blocked、partial、bootstrap-history、角色或阶段冲突先报告并停止。只问下一步不执行 Action；Author 不自审。
 
-- Owner / Author / Reviewer / Verification authority separation;
-- Delivery / Change / Action identity and minimal trusted coordination-state binding;
-- prepared / terminal Action lifecycle with a single current Action;
-- durable Run / Result persistence and exact ActionPackage / Result admission;
-- deterministic Policy legal-boundary calculation without automatic next execution;
-- cross-Delivery Memo persistence;
-- exact managed OpenSpec `1.10.0` runtime resolution;
-- thin, portable OpenSpec observation;
-- minimal `flowkit` CLI surface: `status`, `next`, `doctor`;
-- lightweight incremental engineering gate;
-- structural dependency-health checks for selected high-confidence bad edges;
-- production-root reachability entropy hygiene;
-- exact execution of already-required applicable checks with candidate/check-bound Result facts and bounded exact PASS reuse.
+## 当前能力与事实归属
 
-D02 intentionally does **not** introduce Gate/Check Registries, a Verification Planner, Evidence Platform, Quality Dashboard, candidate snapshot database, smart test selection, or automatic Author/Reviewer workflow.
+- OpenSpec：proposal/design/specs/tasks/archive；不重建第二套 Change 状态机。
+- Runtime / Policy：prepared/terminal、单个当前 Action、三文件 Run/Result 接纳、合法边界计算；不自动下一步。
+- Owner / Reviewer / Verification：分别决定授权、独立审查、提供真实测试证据。
+- Delivery：轻量 Start、required Change 完成事实与当前 Full Test 的 Final 确认。
+- Git：版本、分支、提交和历史；在独立授权节点调用，PASS 或 Final 不自动授权 commit/push/merge。
+- Skills：改善已确定操作的 HOW；Memo：仅保留未来重议事项，不自动成为需求。
 
-## Verification and detached environment
+不提供 Registry、模型平台、自动 Author/Reviewer 循环或证据平台。D05 自身按 Owner 授权的 independent-bootstrap 开发，不让 candidate 安装接管管理自己。
 
-Formal Full Test keeps the frozen six-gate Delivery-level contract:
+## 测试与执行材料
 
-```text
-pnpm typecheck
-pnpm format:check
-pnpm build
-pnpm test:domain
-exact managed OpenSpec 1.10.0 validate --all --strict
-pnpm test:acceptance
-```
+项目 Full Test 由 `config/verification/full-test.json` 的 inputs/exclude/environment/checks 配置，与 .gitignore、Git index、HEAD 独立。每次真实执行形成新 attempt，由 Delivery fullTestAttempt 关联 target 的 `.flowkit/artifacts/<delivery>/full-test/`；新失败或 partial 不回用旧 PASS。不是所有项目固定共用六项测试。
 
-The final detached Linux dependency artifact is external to Git and is validated for Node `22.23.2` / pnpm `11.22.0`. It restores `yaml@2.9.0` correctly, does not contain the rejected Knip experiment, and requires no manual `node_modules` repair before the repository checks run.
+Action 必要 proof 在 target `.flowkit/artifacts/<delivery>/changes/<change>/proof/<run-id>/`，按需交接引用；.tmp 仅承载可丢弃材料。旧证据不代替当前实现验收，原始 stdout/stderr 保留 bytes。
 
-## Stable manager boundary
+本仓库开发检查见 package.json：typecheck、build、test:domain、test:acceptance；quality:gate 聚合 bounded 格式、lint 与既有 650 行要求。历史/bootstrap 自检单独用 test:bootstrap，不属于代码 Full Test。禁止入库内容检查与 Git 空白诊断独立，不把非代码历史日志空白当作代码失败。
 
-A repository build is not automatically the lifecycle authority for its own active Delivery.
+主要 detached 验收平台为 Linux x64 glibc；Windows compatibility simulation 不自动代表 native Windows 全面 PASS，报告以实际执行范围为准。Windows/Linux node_modules 不共用。
 
-Formal future Delivery execution uses the **previous Delivery Owner-authorized exact Delivery Final Git checkpoint** as the Stable manager. Delivery Final itself does not execute commit, push, merge, or tag and does not create Git checkpoint authority.
+接入可用性分别验证真实固定包安装与有界 Author 工作、独立 CLI 读回、真实新 Agent 会话读取；合成用例、CLI 重启不冒充新会话或独立 Review。以上不自动等于 Formal Delivery Full Test。
 
-This detached D02 closure is commit-ready. The exact Delivery Git checkpoint is formed later in the local repository only after explicit Owner authorization.
+## 工具与开发环境
 
-## Repository truth boundaries
+Node 兼容范围 >=22.20.0，确定性 fixture 为 22.23.2；仓库包管理器 pnpm@11.22.0。OpenSpec exact runtime 为 1.10.0，身份由安装内 config/tools/toolchain.lock.json 规定，executable 位于外部 FLOWKIT_HOME，不随 Flowkit tgz 或 Git 保存。缺失不自动下载或回退全局版本。
 
-```text
-OpenSpec      → Change/specification authority
-Git           → repository bytes/history
-Runtime       → Run/Result/current Action facts
-Policy        → legal boundary calculation
-Reviewer      → independent review verdict
-Verification  → test/check evidence
-Owner         → explicit authorization and checkpoint decisions
-Archify       → derived architecture projection only
-Memo          → future cross-Delivery reconsideration only
-```
+Archify 是独立派生架构工具；Start、Full Test、Final、repository integration 不要求图、render 或 skip 证明。历史 architecture 文件不是代码事实，不因接入而迁移。
 
-## Managed environment
+## 历史说明
 
-Manager 安装与 target 项目分根：安装包自有 `package.json` name/version、`dist/`、系统 `skills/actions/` / `skills/delivery/`、OpenSpec HOW/vendor 静态文件及 `config/tools/toolchain.lock.json`；安装来源从自身模块位置确定，不使用 cwd、target package 或上一 Delivery SHA 定位。
+D01 Foundation、D02 工程质量及后续 Delivery 的执行与结论以对应 OpenSpec、历史 Run 和 Git 为准；旧六项测试、旧 exact candidate SHA 或架构描述不代表当前所有项目的前置条件。
 
-CLI `status / next / doctor --input <request.json>` 中的 `repositoryRoot` 仅表示 target；不新增 JSON root override。target 保存自己的 OpenSpec、代码、Run、证据和测试配置，无需复制 Flowkit Skills/lock/scripts。`GuidanceRef.path` 相对 manager，内容身份在安装移位后不变。开发此软件的本仓库同时含源码与项目事实，不意味着用户 target 也要保存系统资产。
-
-`pnpm pack` 的 prepack 清理本仓库可丢弃的 `dist` 后重新编译，发行仅包含 files allowlist 和 package 元数据/README；运行依赖由 manager 安装承担，target 不需要本仓库 devDependencies。`FLOWKIT_HOME/tools` 单独提供 exact OpenSpec executable，不随包携带。CLI 不调用模型或执行 Action；D05 继续使用已授权独立 bootstrap，安装包验收不接管本仓库生命周期。
-
-### 单次 Action
-
-status/next 请求使用 repositoryRoot、flowkitHome，可选 deliveryId/changeId；current 来自选定 Change 的唯一有效 Run 链，不再接受 currentRunId/changeStartSequence。没有唯一 active 时明确报告 idle/歧义，bootstrap 历史只供展示。
-
-Agent 读取已安装 manager 的 exact Guidance，按既有 package/Role/admission 完成真实工作和 canonical 三文件记录；CLI 查询结束即退出。准备通过后先 create-once 保存 action.md，工作与材料核对完成后只创建 context/result 并读回；不要求存活进程、callback 或 target helper。产品各 Action HOW 提供现有发行模块与文件工具的分段示例。Author 与独立 Reviewer 分别记录真实结论。
-
-本 Change 验收使用一个有界真实 Author 工作及同一 build 的独立查询进程，review/revise 负向用例明确标为合成。无需第二套安装、两个真人 Change 或制造 finding；适用安装/分根及 Windows/Linux 回归保留。这些检查不是 Formal Delivery Full Test。
-
-必要 proof 在 target 的 `.flowkit/artifacts/<delivery>/changes/<change>/proof/<run-id>/`，以 Result facts.proofRefs/handoff 交接当前需要的引用；`.tmp` 仅用于可丢弃工作。失败后的 partial 保留并诊断，不自动删除、接管或回用旧 PASS。原始 stdout/stderr 保留 bytes；四条通用 attributes 规则不等于 `.gitignore` 或 Full Test 配置。
-
-Exact managed tool identities are defined in:
-
-```text
-config/tools/toolchain.lock.json
-```
-
-Current identities:
-
-```text
-OpenSpec 1.10.0
-```
-
-Executable managed runtimes live under external `FLOWKIT_HOME`, not in Git. Repository Node compatibility is `>=22.20.0`; deterministic fixture is Node `22.23.2`; package manager identity is `pnpm@11.22.0`.
-
-### 项目 Full Test 与 Git 节点
-
-项目在 `config/verification/full-test.json` 显式配置 `inputs / exclude / environment / checks`。输入由文件系统和精确目录排除决定，不读取 Git index、HEAD 或 `.gitignore`；配置自身不可排除。命令按配置顺序真实运行，每次调用都创建新尝试，不复用上一次 PASS。
-
-已发行模块的 `invokeDeliveryFullTestOperation(repositoryRoot, { deliveryId, ownerAuthority }, installation)` 使用该配置；CLI 仍只查询，不增加 Full Test 写命令。当前尝试由 manifest 的 `delivery.fullTestAttempt` 指向 `.flowkit/artifacts/<delivery>/full-test/<attempt>/`，保存 start、逐命令原始 stdout/stderr、command 和 result。`readCurrentDeliveryFullTest` 校验当前材料与测试输入；Final 从 target 读取，不接受 caller 替换结果。新失败或 partial 不回退旧成功；先报告 partial，下一次明确授权调用创建新目录，不覆盖旧材料。
-
-本项目 Full Test 的产品测试使用 fixture，不扫描真实历史 Runs、OpenSpec archive 或 bootstrap Skills。独立开发自检通过 `pnpm test:bootstrap` 执行。`quality:gate` 只聚合代码格式、lint 与既有 650 行规则；禁止入库内容单独检查，Git 空白诊断不因非产品历史 proof 自动阻断 checkpoint。测试正确性不产生 Git 授权。
-
-## Independent architecture descriptions
-
-Archify is independent of the Flowkit Delivery workflow. Start, Full Test, Final and repository integration require no diagrams, rendering, Architecture outcome, or skip proof. Historical `architecture/**` assets remain readable derived descriptions; they are not new Delivery prerequisites or code facts. Existing history is not converted or rewritten.
-
-## Historical initialization snapshot
-
-`FOUNDATION-INIT.md` is retained only as the historical bootstrap snapshot that preceded the Foundation lifecycle implementation. It is not a statement of current repository capability.
+源码仓库中的 FOUNDATION-INIT.md 是历史初始化快照，不是当前使用手册。退役的根规划文档从 Git 历史恢复；旧 Run/archive 保持原始记录。发行包使用本 README 与随包接入说明，不要求开发仓库历史材料。

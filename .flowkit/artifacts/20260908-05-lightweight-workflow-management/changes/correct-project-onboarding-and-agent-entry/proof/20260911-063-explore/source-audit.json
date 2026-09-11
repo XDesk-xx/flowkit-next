@@ -1,0 +1,119 @@
+{
+  "documentsAtCheckpoint": [
+    {
+      "path": "flowkit-next-d04-stable-core-closure-final-reference(1).md",
+      "bytes": 27179,
+      "sha256": "b26217a2ae397772aea7fd96140855b0099a1089e2c2f8c9b2614e50809320a9",
+      "gitSource": "7af7d85788503dafc50ee162b14deaaf679f99cb:flowkit-next-d04-stable-core-closure-final-reference(1).md"
+    },
+    {
+      "path": "flowkit-next-d05-decoupling-analysis.md",
+      "bytes": 20639,
+      "sha256": "3b68f1a4672e667db7922b3772033d6e9b5cdb7aa9d692ad2e0c11086461e46a",
+      "gitSource": "7af7d85788503dafc50ee162b14deaaf679f99cb:flowkit-next-d05-decoupling-analysis.md"
+    },
+    {
+      "path": "flowkit-next-delivery-change-plan.md",
+      "bytes": 30820,
+      "sha256": "3d5b212c1c7effbe8540aa843812b1a22625eeb978fa4ecef196ba674d251fc4",
+      "gitSource": "7af7d85788503dafc50ee162b14deaaf679f99cb:flowkit-next-delivery-change-plan.md"
+    }
+  ],
+  "inputs": [
+    {
+      "path": "README.md",
+      "bytes": 8372,
+      "sha256": "4998c804f3ba56116a3683ab8dd851dbf9fdc6e1b86fc19d619f1e5eaa91a384"
+    },
+    {
+      "path": "package.json",
+      "bytes": 1865,
+      "sha256": "64534acf730ccad4b35f047aae4bbe643e60ee09de6883ab29004a5362e1d0f4"
+    },
+    {
+      "path": "config/verification/full-test.json",
+      "bytes": 2286,
+      "sha256": "32b03e4f1fa154586a2e29ca6cda849f630af29f75ff578b86b1bb90dc186686"
+    },
+    {
+      "path": "src/cli/request.ts",
+      "bytes": 6578,
+      "sha256": "fd91fe0064bf039f73b6d50ef3bdae89e22ca6d49363ddc9b8c68e46641c14cc"
+    },
+    {
+      "path": "src/cli/action-context.ts",
+      "bytes": 5676,
+      "sha256": "cd724c9e22a94bd7ffa2833acf6c1c89ca66fdf448d1a58c2389dcf3ea67b6f5"
+    },
+    {
+      "path": "src/cli/current-run-chain.ts",
+      "bytes": 8949,
+      "sha256": "98b05afe36166d2ed983159d4dce99a46b1c7a0de41a8fbd7584b02df86978df"
+    },
+    {
+      "path": "src/cli/trusted-change-coordination.ts",
+      "bytes": 6242,
+      "sha256": "d167891ed9e0b9c73e96492d06220203578ea7f79ab2dc3ccdbec7f484dd14f1"
+    },
+    {
+      "path": "src/cli/foundation-cli.ts",
+      "bytes": 6500,
+      "sha256": "94b84df2b119f8c502a5397853470ba415dcf57abada940aeee2c63b374f61db"
+    },
+    {
+      "path": "src/internal/manager-installation.ts",
+      "bytes": 1816,
+      "sha256": "9bf5b0f251b46d6ef6dac6e700339d9640399a98be3fbeb7ffe0da7489552998"
+    },
+    {
+      "path": "src/internal/delivery-start-content.ts",
+      "bytes": 5213,
+      "sha256": "d204ae70be7c6c4834982132967d3f596e10edd53698a7fbbf8cf4a72bd95492"
+    },
+    {
+      "path": "src/domain/action-guidance-execution.ts",
+      "bytes": 3104,
+      "sha256": "0abdc391aac82ae9718c4fed0ec458187bb8fc1ea48ef02a0d6e5f37b0a7c574"
+    },
+    {
+      "path": "openspec/specs/foundation-cli-surface/spec.md",
+      "bytes": 20642,
+      "sha256": "1a14bf4a87096b813ba4365628e06cf08aefd820608fb77dd81d2660d8fa2cbc"
+    },
+    {
+      "path": "openspec/specs/author-action-guidance/spec.md",
+      "bytes": 20439,
+      "sha256": "5bfdcd680bd03946479b0db6a608c9a11e81dc1a4c47dc494d0d76f1193da08a"
+    },
+    {
+      "path": "openspec/changes/archive/2026-09-08-035-connect-openspec-action-workflow/design.md",
+      "bytes": 12759,
+      "sha256": "fac25b1b6f45e7635976a9bdf7ca9ca1bab0dab4b87c2f17f4cf40b77f5ca94e"
+    }
+  ],
+  "currentConsumerReferences": [
+    {
+      "path": "openspec/delivery-groups/20260902-04-delivery-continuity-stable-core-closure.yaml",
+      "line": 15,
+      "document": "flowkit-next-d04-stable-core-closure-final-reference(1).md",
+      "text": "artifact: \"flowkit-next-d04-stable-core-closure-final-reference(1).md\""
+    },
+    {
+      "path": "openspec/delivery-groups/20260908-05-lightweight-workflow-management.yaml",
+      "line": 15,
+      "document": "flowkit-next-delivery-change-plan.md",
+      "text": "artifact: \"flowkit-next-delivery-change-plan.md\""
+    },
+    {
+      "path": "openspec/delivery-groups/20260908-05-lightweight-workflow-management.yaml",
+      "line": 16,
+      "document": "flowkit-next-d05-decoupling-analysis.md",
+      "text": "analysisArtifact: \"flowkit-next-d05-decoupling-analysis.md\""
+    }
+  ],
+  "interpretation": "三个根文件的 exact filename 在所查活动代码/测试/产品 HOW/config 中无读取；D04/D05 manifest 的 reference 是规划出处。Start 的任意 planningReference.artifact 仍是实际输入，不能推广为所有未来规划都可删除。旧历史引用不改写，删除仅限已明确三个文件，Git 保留原内容。",
+  "limitations": [
+    "未执行真实新会话；未安装新发行包；pack 是当前 build 的 dry-run 清单。",
+    "源码扫描不是运行时无依赖的完整证明，Apply 需验证删除后的相关消费者与实际接入路径。"
+  ]
+}

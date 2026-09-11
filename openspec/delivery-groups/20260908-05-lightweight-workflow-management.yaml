@@ -112,6 +112,20 @@ changes:
       - "Git 调用不依赖架构资格或遍历 Full Test 日志，不夹带无关文件。"
       - "实际结果读回与部分成功诊断，无盲目重试、自动回滚或回写 SHA 的提交循环。"
 
+  - id: "correct-project-onboarding-and-agent-entry"
+    group: "project-onboarding"
+    goal: "补齐新项目首次接入与 Agent 薄入口，统一当前使用说明，并清理已被正式合同接管的根目录规划文档；不重构内核。"
+    required: true
+    dependsOn:
+      - "invoke-git-at-workflow-boundaries"
+    state: completed
+    projectOrdinal: 39
+    outputs:
+      - "固定发行包与 exact OpenSpec runtime 的最小接入说明，保留已有项目内容，target 不复制系统 Skills 或长期胶水。"
+      - "Agent 明确 target、Role 和安装来源，查询合法边界后读取对应 Skill，歧义或不合法时停止。"
+      - "README 与短项目入口、三份根目录 flowkit*.md 的清理及引用接管；不改旧 Runs/archives。"
+      - "真实工作、独立查询进程、真实新会话读取分开验收；无真实新会话时不以合成测试补 PASS。"
+
 ownerDecisions:
   - ref: "owner:172a9ccf0dea297ad8cb3ae29811c58f31f52d0145860a4d3b287f0b5a220348"
     decision: "create-delivery"
@@ -169,8 +183,17 @@ ownerDecisions:
     scope:
       - "explore"
 
+  - ref: "owner:aa33e6a09124d87ec6c650956fa91cf58e71216719e7ddf7f7681ccfaedb109f"
+    decision: "activate-change"
+    deliveryId: "20260908-05-lightweight-workflow-management"
+    changeId: "correct-project-onboarding-and-agent-entry"
+    sourceRef: "owner-input:2026-09-11:create-correct-project-onboarding-and-agent-entry:proof-explore"
+    scope:
+      - "explore"
+
 bootstrap:
   mode: "independent-bootstrap"
+  planningHistoryNote: "reference 保留 Delivery Start 时 Owner 选定的历史规划出处；039 按授权退役旧根文档，Git 恢复出处见其 Apply 材料，当前产品入口见 README.md。"
   executorRole: "author"
   instruction: "根据文档开始下一个 delivery，处理 branch 和 manifest；沿用独立 bootstrap，现在不要处理 Archify。"
   boundary: "Delivery Start 仅创建/切换分支与建立 manifest，当时六个 Change 均未激活；后续 Owner 已授权第一个 Change 的独立 bootstrap Explore，其余保持 planned。"

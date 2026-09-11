@@ -1,0 +1,136 @@
+{
+  "kind": "external-orchestrator-review-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "reviewer",
+  "action": "review-apply",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "correct-project-onboarding-and-agent-entry",
+  "projectOrdinal": 39,
+  "runId": "20260911-068-review-apply",
+  "previousRunId": "20260911-067-apply",
+  "reviewedRunId": "20260911-067-apply",
+  "startedAt": "2026-09-11T07:09:32.285Z",
+  "ownerInstruction": "根据最新run，review，review 完，简短解释当前方案",
+  "reviewerHow": ".agents/skills/review-apply/SKILL.md",
+  "scope": "独立审查已批准接入计划的实现、精确三文档退役、实际发行/Author 工作/新会话证据及最小性；仅写本次 Reviewer Run/proof，不实施或运行 Formal Full Test。",
+  "reviewedResult": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/007-correct-project-onboarding-and-agent-entry/20260911-067-apply/result.json",
+    "bytes": 13768,
+    "sha256": "533f8683508814379942193612e35ee4c3a00e6bb84dd4df448ce6441da877ab"
+  },
+  "acceptedReview": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/007-correct-project-onboarding-and-agent-entry/20260911-066-review-propose/result.json",
+    "bytes": 8557,
+    "sha256": "0a16898a20573288a848abdadd7664d79aa8592c22523e108b031a12fc162a24"
+  },
+  "approvedArtifacts": [
+    {
+      "path": "openspec/changes/correct-project-onboarding-and-agent-entry/proposal.md",
+      "bytes": 2252,
+      "sha256": "28eff087978850ac081341823f0e77e3664c4ea0e76fc45d25043f543067ffc5"
+    },
+    {
+      "path": "openspec/changes/correct-project-onboarding-and-agent-entry/design.md",
+      "bytes": 9929,
+      "sha256": "0b1177ae6ef4747ae4aaad3f9c0b2b0c8cb361834f9f7392aa63855566c3a86e"
+    },
+    {
+      "path": "openspec/changes/correct-project-onboarding-and-agent-entry/tasks.md",
+      "bytes": 3145,
+      "sha256": "e9673a8d0a15ab20c8bcf2a19c8aa928b6e0c15a46b512f92d24d137fcda4b7d"
+    },
+    {
+      "path": "openspec/changes/correct-project-onboarding-and-agent-entry/specs/foundation-cli-surface/spec.md",
+      "bytes": 6620,
+      "sha256": "3c671ceffa50e5cfbde6966dd0c79917c3661b1ded203327045f78535567f494"
+    }
+  ],
+  "candidateArtifacts": [
+    {
+      "path": "README.md",
+      "bytes": 4843,
+      "sha256": "4ac9d2c6e2700cb8ba8e402f44c86e2fb6448becc879f695c5d6faf7c66614da"
+    },
+    {
+      "path": "docs/onboarding.md",
+      "bytes": 9150,
+      "sha256": "f7ba3ca086f1560e38f609feb434cfec0186e442c40cc9895ba1f4fa66cfb484"
+    },
+    {
+      "path": "package.json",
+      "bytes": 1891,
+      "sha256": "31cd2b51113ce1afd9c8a319c580ce01d0d7eddd1580c0658a5d6bf6207183ea"
+    },
+    {
+      "path": "tests/unit/domain/project-onboarding.test.ts",
+      "bytes": 2234,
+      "sha256": "9c4c458a3dd1d769583717ccdc6bb91be47bbaa3ad88dcd1de7b7001eb17713a"
+    },
+    {
+      "path": "openspec/delivery-groups/20260908-05-lightweight-workflow-management.yaml",
+      "bytes": 12478,
+      "sha256": "8385cffba74eeb16a794ededcb0e4362e7539a6f1aa2721231507fa1e474a519"
+    },
+    {
+      "path": "openspec/changes/correct-project-onboarding-and-agent-entry/.openspec.yaml",
+      "bytes": 40,
+      "sha256": "e6a45440b7b6b8096938fece82a34e09416bcecfda2ceef5ba18c854e4341abf"
+    },
+    {
+      "path": "openspec/changes/correct-project-onboarding-and-agent-entry/design.md",
+      "bytes": 9929,
+      "sha256": "0b1177ae6ef4747ae4aaad3f9c0b2b0c8cb361834f9f7392aa63855566c3a86e"
+    },
+    {
+      "path": "openspec/changes/correct-project-onboarding-and-agent-entry/explore.md",
+      "bytes": 10541,
+      "sha256": "f1953b0dbaeaa1f5bd3f792d0680933545aea96bdbd81f9829dbea10e31c68e7"
+    },
+    {
+      "path": "openspec/changes/correct-project-onboarding-and-agent-entry/proposal.md",
+      "bytes": 2252,
+      "sha256": "28eff087978850ac081341823f0e77e3664c4ea0e76fc45d25043f543067ffc5"
+    },
+    {
+      "path": "openspec/changes/correct-project-onboarding-and-agent-entry/specs/foundation-cli-surface/spec.md",
+      "bytes": 6620,
+      "sha256": "3c671ceffa50e5cfbde6966dd0c79917c3661b1ded203327045f78535567f494"
+    },
+    {
+      "path": "openspec/changes/correct-project-onboarding-and-agent-entry/tasks.md",
+      "bytes": 3145,
+      "sha256": "28694611ecb39ab94f5de218d3fdbda42c8a7e335417ddf46f0ee1f3dff7ad95"
+    }
+  ],
+  "ownerDecisionsRelevant": [
+    {
+      "sourceRef": "owner-input:2026-09-11:bounded-correct-change-and-root-flowkit-documents",
+      "decision": "将接入补齐及三份根 flowkit*.md 清理纳入同一 Change，不重开前六个、不重构内核。"
+    },
+    {
+      "sourceRef": "owner-input:2026-09-11:real-cross-session-not-over-simulated",
+      "decision": "真实新会话不能以重启 CLI/合成 fixture 替代；读取验收不必额外执行 Action、制造 finding 或演完整 Delivery；未执行如实记录。"
+    },
+    {
+      "sourceRef": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260911-062-archive/result.json#ownerDecisionsRelevant",
+      "decision": "D05 独立 bootstrap；必要材料保存在 target artifacts，临时 fixture 放 .tmp；不改历史。"
+    },
+    {
+      "sourceRef": "owner-input:2026-09-11:onboarding-first-ordinal-and-bounded-explore",
+      "decision": "授权示例首次序号及有界 Explore，不执行下一 Review。"
+    },
+    {
+      "sourceRef": "owner-input:2026-09-11:fresh-session-readback-completed-and-continue",
+      "decision": "Owner 确认真实新会话已完成只读入口验收并回传结果，继续完成当前 Apply。"
+    }
+  ],
+  "mutationBaseline": {
+    "files": 5515,
+    "sha256": "23372c5a52289488390826ecc957ee088485933bd9da2d92cabb0ac5e5d0e28d",
+    "head": "7af7d85788503dafc50ee162b14deaaf679f99cb",
+    "method": "Git cached and nonignored files by sorted path/bytes/raw SHA256; excludes only own Run/proof; ignored scratch outside snapshot"
+  },
+  "verifiedDirectReferences": 41,
+  "proofRoot": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-068-review-apply"
+}

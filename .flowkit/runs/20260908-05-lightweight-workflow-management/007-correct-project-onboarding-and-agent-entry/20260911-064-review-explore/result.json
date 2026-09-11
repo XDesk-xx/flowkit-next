@@ -1,0 +1,141 @@
+{
+  "kind": "external-orchestrator-review-explore-result",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "reviewer",
+  "action": "review-explore",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "correct-project-onboarding-and-agent-entry",
+  "projectOrdinal": 39,
+  "runId": "20260911-064-review-explore",
+  "previousRunId": "20260911-063-explore",
+  "reviewedRunId": "20260911-063-explore",
+  "status": "terminal",
+  "reviewerVerdict": "approved",
+  "findings": [],
+  "startedAt": "2026-09-11T05:34:02.037Z",
+  "completedAt": "2026-09-11T05:42:46.983Z",
+  "ownerInstruction": "根据最新run，review，review 完，简短解释当前方案",
+  "ownerDecisionsRelevant": [
+    {
+      "sourceRef": "owner-input:2026-09-11:bounded-correct-change-and-root-flowkit-documents",
+      "decision": "将接入补齐及三份根 flowkit*.md 清理纳入同一 Change，不重开前六个、不重构内核。"
+    },
+    {
+      "sourceRef": "owner-input:2026-09-11:real-cross-session-not-over-simulated",
+      "decision": "真实新会话不能以重启 CLI/合成 fixture 替代；读取验收不必额外执行 Action、制造 finding 或演完整 Delivery；未执行如实记录。"
+    },
+    {
+      "sourceRef": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260911-062-archive/result.json#ownerDecisionsRelevant",
+      "decision": "D05 独立 bootstrap；必要材料保存在 target artifacts，临时 fixture 放 .tmp；不改历史。"
+    }
+  ],
+  "reviewedResult": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/007-correct-project-onboarding-and-agent-entry/20260911-063-explore/result.json",
+    "bytes": 6615,
+    "sha256": "615053015fa494f26368a3ed51a173bf1ff8e120f09d28e5e5d327c12ba6d138"
+  },
+  "reviewedExplore": {
+    "path": "openspec/changes/correct-project-onboarding-and-agent-entry/explore.md",
+    "bytes": 10541,
+    "sha256": "f1953b0dbaeaa1f5bd3f792d0680933545aea96bdbd81f9829dbea10e31c68e7"
+  },
+  "runInputs": [
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/007-correct-project-onboarding-and-agent-entry/20260911-064-review-explore/action.md",
+      "bytes": 345,
+      "sha256": "155f0ffaecb520fd8b60d545b1b1c157f9f987e43563cc5aff862c7a3992d39a"
+    },
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/007-correct-project-onboarding-and-agent-entry/20260911-064-review-explore/context.json",
+      "bytes": 2798,
+      "sha256": "b4d06398b33cad214c5c7a2129161fb5521829069380b14e89acc50bd818d4f1"
+    }
+  ],
+  "proofRefs": [
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-064-review-explore/review.md",
+      "bytes": 3799,
+      "sha256": "0ff301419ab77d7c48532863d09d004257808df0c1ba8804b290493f17fb8f0d"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-064-review-explore/evidence-audit.json",
+      "bytes": 5190,
+      "sha256": "9dd29d67706efad4020126c2d0e0ce05f3a7a491e53d2b1aa8ec86b27bd53ef0"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-064-review-explore/observations.json",
+      "bytes": 15065,
+      "sha256": "9cb516f50084c3f20ab0b33879edbc42a38dfa14d8829aea5ede2085f78431ff"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-064-review-explore/probe/command.json",
+      "bytes": 1045,
+      "sha256": "5b5302d2500415176eae7958c7f3fd30a7a601d3036d9b9f722f826c2b7e8354"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-064-review-explore/probe.mjs",
+      "bytes": 5728,
+      "sha256": "f6b393bc9b121a9eb72fa40f782b39999c22e47199933ea242d7560b4407cec1"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-064-review-explore/capture.mjs",
+      "bytes": 1609,
+      "sha256": "dd5af667984efa35b0b49de02c22ebcbbefe2b13d8c41248507c4735610f981c"
+    }
+  ],
+  "currentStepExplanation": "独立审查 063 Explore 的事实、决定性 proof、Owner 范围和 Proposal readiness；不是安装、实现或真实新会话验收。",
+  "complexityMinimalityAssessment": "固定包接入说明与项目薄入口复用既有查询/Role/Guidance，README 更正及精确三文档退役收敛在同一已授权 correct Change；无需内核重构、第二套 Policy、Registry 或自动流程。",
+  "newContentScopeDriftAssessment": "未发现范围漂移；文档退役及真实跨会话要求均已由 063 的 Owner sourceRef 交接，不重开前六个 archived Changes。",
+  "decisiveObservations": {
+    "inputReferencesVerified": 56,
+    "authorCommandRecordsChecked": 6,
+    "packageDryRunFiles": 91,
+    "independentQueryCases": 7,
+    "exactOpenSpecInitObserved": true,
+    "recoverableRootDocuments": 3,
+    "existingFixtureTargetBytesPreserved": true,
+    "queryProbeCreatedActionRun": false
+  },
+  "proposalHandoff": [
+    "固定实际发行包、exact managed tool 与按用途分层的 target 准备；保护已有内容，不以 doctor PASS 或空历史代替 Owner/bootstrap 事实。",
+    "项目薄入口仅指向安装及随包说明；根据既有查询所得唯一合法阶段、真实 Role 和请求读取对应 Skill，不建立自然语言代码路由或自动下一步。",
+    "README 当前/历史说明分离；精确三份根规划在 Apply 退役，保留原路径与 Git 恢复出处，历史 Run/archive 不重写，不泛化为删除活动 planning artifact。",
+    "实际包下真实 Author 工作、独立 CLI 进程读回、真实新 Agent 会话读取分别验收；当前未执行的不得以 fixture 或 CLI 重启替代。"
+  ],
+  "mutationIsolation": {
+    "before": {
+      "files": 5361,
+      "sha256": "c910e4e8fa99a4cbbeb82f7f7060ce7b5be94d08e09b28088e2ba5e6f1271895",
+      "head": "7af7d85788503dafc50ee162b14deaaf679f99cb",
+      "at": "2026-09-11T05:34:02.037Z",
+      "method": "SHA256 of sorted unique git cached and nonignored other paths mapped to path/bytes/raw SHA256; absent/link explicit; excluding only own Run/proof"
+    },
+    "after": {
+      "files": 5361,
+      "sha256": "c910e4e8fa99a4cbbeb82f7f7060ce7b5be94d08e09b28088e2ba5e6f1271895",
+      "head": "7af7d85788503dafc50ee162b14deaaf679f99cb",
+      "at": "2026-09-11T05:41:32.887Z",
+      "method": "SHA256 of sorted unique git cached and nonignored other paths mapped to path/bytes/raw SHA256; absent/link explicit; excluding only own Run/proof"
+    },
+    "equal": true,
+    "excluded": "Only own Reviewer Run/proof within Git-selected files; ignored disposable .tmp fixture writes are not included in this snapshot."
+  },
+  "limitations": {
+    "newPackageInstallation": "not-executed",
+    "realActionAcceptance": "not-executed",
+    "actualNewAgentSessionRead": "not-executed",
+    "formalDeliveryFullTest": "not-executed",
+    "verificationAcceptanceGranted": false,
+    "ownerOrGitAuthorityCreated": false
+  },
+  "authorArtifactsModified": false,
+  "rootPlanningDocumentsDeleted": false,
+  "historicalRecordsModified": false,
+  "gitMutation": false,
+  "approvalMeaning": "Explore 已足够进入 Proposal；不是 Proposal/Apply 批准、实现/Verification PASS 或 Owner/Git authority。",
+  "nextBoundary": "propose",
+  "continuationSource": "既有 src/domain/policy-and-next-boundary.ts 的 review-explore + approved 映射；D05 independent-bootstrap 交接，不调用 candidate 自我管理。",
+  "nextActionExecuted": false,
+  "stop": true
+}
