@@ -1,0 +1,157 @@
+{
+  "recordedAt": "2026-09-08T13:18:30.150Z",
+  "results": [
+    {
+      "name": "version",
+      "executable": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js",
+        "--version"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "startedAt": "2026-09-08T13:18:26.821Z",
+      "finishedAt": "2026-09-08T13:18:27.332Z",
+      "exitCode": 0,
+      "error": null,
+      "streams": {
+        "stdout": {
+          "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-023-revise-propose/attempt-02/version.stdout.txt",
+          "bytes": 7,
+          "sha256": "4f5ba6a3e380bf810cc968b58d30a8d7163eafe9e2fb1ad19bdc6d9d64a1e549"
+        },
+        "stderr": {
+          "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-023-revise-propose/attempt-02/version.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "name": "strict",
+      "executable": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js",
+        "validate",
+        "connect-openspec-action-workflow",
+        "--strict"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "startedAt": "2026-09-08T13:18:27.332Z",
+      "finishedAt": "2026-09-08T13:18:28.634Z",
+      "exitCode": 0,
+      "error": null,
+      "streams": {
+        "stdout": {
+          "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-023-revise-propose/attempt-02/strict.stdout.txt",
+          "bytes": 51,
+          "sha256": "360901ddba2c93f5db99ef8169d78becf370a7199f91967bed5e9e23830d3e67"
+        },
+        "stderr": {
+          "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-023-revise-propose/attempt-02/strict.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "name": "status",
+      "executable": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js",
+        "status",
+        "--change",
+        "connect-openspec-action-workflow",
+        "--json"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "startedAt": "2026-09-08T13:18:28.634Z",
+      "finishedAt": "2026-09-08T13:18:30.006Z",
+      "exitCode": 0,
+      "error": null,
+      "streams": {
+        "stdout": {
+          "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-023-revise-propose/attempt-02/status.stdout.txt",
+          "bytes": 3489,
+          "sha256": "358d6844a6d0eeec962416744a4a621bbcce69bc1d56a542c3119d9fd4216393"
+        },
+        "stderr": {
+          "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-023-revise-propose/attempt-02/status.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "name": "diff-check",
+      "executable": "git",
+      "args": [
+        "diff",
+        "--check"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "startedAt": "2026-09-08T13:18:30.006Z",
+      "finishedAt": "2026-09-08T13:18:30.108Z",
+      "exitCode": 0,
+      "error": null,
+      "streams": {
+        "stdout": {
+          "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-023-revise-propose/attempt-02/diff-check.stdout.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-023-revise-propose/attempt-02/diff-check.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    }
+  ],
+  "protectedFiles": 217,
+  "changed": [],
+  "textIssues": [],
+  "missingModified": [],
+  "tasks": {
+    "checked": 2,
+    "unchecked": 19
+  },
+  "artifacts": [
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/proposal.md",
+      "bytes": 3686,
+      "sha256": "4550d2dafd7ad8f862bf2ae80836c69833d8d37994b29026b7619c7a01185ff5"
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/design.md",
+      "bytes": 12759,
+      "sha256": "fac25b1b6f45e7635976a9bdf7ca9ca1bab0dab4b87c2f17f4cf40b77f5ca94e"
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/tasks.md",
+      "bytes": 6097,
+      "sha256": "73154a2d5b396fcd2c61cb9653c057cddaf5b6cc492ff3f2d95c65f89764ffbb"
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/specs/foundation-cli-surface/spec.md",
+      "bytes": 10469,
+      "sha256": "2b668dce63982b87c54fcf6432480d1aad6c610e4fe29b08cd42695a59c6041c"
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/specs/single-action-execution-terminal-boundary/spec.md",
+      "bytes": 4165,
+      "sha256": "688f49788024604d229009ff1f52f408a1b6bb2d52749fd9e90713056837b642"
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/specs/run-result-persistence/spec.md",
+      "bytes": 4192,
+      "sha256": "5184aa706e062b10d75197e17c7a95a3a027aae5550cf844f6dc50abd6ab4aa5"
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/specs/action-guidance-execution/spec.md",
+      "bytes": 5420,
+      "sha256": "0f18d3b73ebe6df46e89ab9bbe207fb64db9f7bfeda035672c8cd5ff6bec0d65"
+    }
+  ],
+  "priorApplyResultAbsent": true,
+  "meaning": "Planning validation only; no implementation, independent review or Full Test."
+}

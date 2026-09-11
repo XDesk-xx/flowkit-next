@@ -1,0 +1,183 @@
+{
+  "kind": "external-orchestrator-review-apply-result",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "reviewer",
+  "action": "review-apply",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "decouple-full-test-from-repository-tracking",
+  "projectOrdinal": 36,
+  "runId": "20260909-037-review-apply",
+  "previousRunId": "20260909-036-revise-apply",
+  "reviewedRunId": "20260909-036-revise-apply",
+  "status": "terminal",
+  "verdict": "changes-requested",
+  "verdictMeaning": "036 对上轮工具漂移和失败诊断的直接修复已验证；新增普通输出参数被纳入工具输入的阻断回归，当前 Apply 尚不可批准。",
+  "startedAt": "2026-09-09T04:40:49.737Z",
+  "completedAt": "2026-09-09 04:47:04 UTC",
+  "reviewedResult": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/004-decouple-full-test-from-repository-tracking/20260909-036-revise-apply/result.json",
+    "bytes": 16513,
+    "sha256": "ca20519e44e620b96640f0804d050e0343ad300daf20b4fc01a712eda7fe79a6"
+  },
+  "previousReview": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/004-decouple-full-test-from-repository-tracking/20260909-035-review-apply/result.json",
+    "bytes": 10042,
+    "sha256": "d7b6f64c40bb741cf1f076592e077822ef09f39870116e0bbd7992dda29d7447"
+  },
+  "approvedProposalReview": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/004-decouple-full-test-from-repository-tracking/20260909-033-review-propose/result.json",
+    "bytes": 7375,
+    "sha256": "3928c78923ae83069008c203825735ff9fe764abe4fd8777a8d5c70803641832"
+  },
+  "runArtifacts": {
+    "action": {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/004-decouple-full-test-from-repository-tracking/20260909-037-review-apply/action.md",
+      "bytes": 376,
+      "sha256": "97d014358007d1a926586b9fc0043ef58a5724b11c18177f72bf9c754d5a0871"
+    },
+    "context": {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/004-decouple-full-test-from-repository-tracking/20260909-037-review-apply/context.json",
+      "bytes": 1068,
+      "sha256": "a16c4772cd6c4e487e48c3348442c2ddac298483c00ea14ad8a3cec3cd74a418"
+    }
+  },
+  "reviewReport": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-037-review-apply/review.md",
+    "bytes": 3982,
+    "sha256": "8ce620bd7388ac1c51f08033a35b68c0a676f72ed70e48cfa4a8e878af47ad89"
+  },
+  "findingResolutions": [
+    {
+      "findingId": "D05-RA035-001",
+      "status": "verified-corrected",
+      "scope": "原工具文件/包内实现变化使 input/check 身份改变并拒绝旧 PASS；新增输出误绑定单列 RA037-001。",
+      "evidence": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-037-review-apply/attempt-02/observations.json",
+        "bytes": 1140,
+        "sha256": "5cc09e6a50006434df698933ba55959aad6697ec33063ebf38875d1992d1bf09"
+      }
+    },
+    {
+      "findingId": "D05-RA035-002",
+      "status": "verified-corrected",
+      "scope": "四种准备失败实际入口诊断可区分；新测试验证不启动 attempt、不回显 malformed JSON。",
+      "evidence": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-037-review-apply/attempt-02/observations.json",
+        "bytes": 1140,
+        "sha256": "5cc09e6a50006434df698933ba55959aad6697ec33063ebf38875d1992d1bf09"
+      }
+    }
+  ],
+  "findings": [
+    {
+      "findingId": "D05-RA037-001",
+      "priority": "P1",
+      "title": "普通输出文件参数被误识别为工具输入，成功检查被判测试输入漂移",
+      "location": {
+        "path": "src/internal/full-test-tool.ts",
+        "startLine": 73,
+        "endLine": 86
+      },
+      "observed": "非 preload 分支将普通 argv 中可解析为现存文件的路径都加入 resources/toolRef，未区分启动资源与脚本输出参数，也不遵循该输出的排除边界。独立 fixture 的 node src/check.cjs .tmp/report.json 只写已明确 exclude 的报告；新建和覆盖已有报告两种情况均 check passed/exit 0，但 toolRef/inputRef 改变，Full Test failed/test-input-drift。选中 source/config 文件及其 bytes 未变。",
+      "contractImpact": "违反已批准 design §2/Tasks 1.3–1.4 与 Full Test delta 'Process material is not a product scan input'：必要工具身份应绑定，但非产品报告/临时输出不得自动变成测试输入。正常生成报告即可使其他项目的 Full Test 无法通过。",
+      "minimumCorrection": "把有界支持的真实启动脚本/preload/工具资源与普通程序参数区分，停止按文件存在性把输出参数猜作工具输入；保留已修复实际工具/包内实现漂移检测。不要求全量依赖扫描或新配置平台。补新建及覆盖已排除输出文件的实际入口回归，均应 check/Full Test passed 且测试输入身份不变；必要工具变化仍应 stale。",
+      "evidence": "attempt-02/output-observations.json",
+      "contractBlocker": false
+    }
+  ],
+  "contractBlocker": false,
+  "assessments": {
+    "currentStep": "独立 review-apply：036 对 035 findings 的收敛、批准计划保持及未改部分连续性。",
+    "complexityAndMinimality": "共享有界准备诊断合理；工具 helper 的普通 argv 推断过宽，需缩回真实启动资源边界。",
+    "newContentAndScopeDrift": "无额外业务子系统/Registry/Runtime/Policy/Run/Git scope；本 finding 为批准范围内的输入输出边界回归，不是新 Owner scope。"
+  },
+  "reviewEvidence": {
+    "method": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-037-review-apply/verify-review.mjs",
+      "bytes": 3977,
+      "sha256": "394d21836507d3584e4875464306f0a3e2ee584f67db7fc17fdf60258eaf3bc5"
+    },
+    "originalCounterexampleMethod": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-037-review-apply/original-counterexamples.mjs",
+      "bytes": 4339,
+      "sha256": "0c0e213eb52b5af5391b9473b33ade2a5e7cbf5954984360c2d09c8b3b438675"
+    },
+    "outputScopeMethod": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-037-review-apply/output-probe.mjs",
+      "bytes": 3358,
+      "sha256": "612bf7d4370328444955b37ba6bece1b9949ff8d1c28cdec52dd0069dfd16a79"
+    },
+    "sandboxBlockedAttempt": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-037-review-apply/attempt-01/summary.json",
+      "bytes": 7048,
+      "sha256": "4d95ca7d7c496592d89e295302daae91cf408cb14cefc1795e6c9d83c3d251ae"
+    },
+    "completedAttempt": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-037-review-apply/attempt-02/summary.json",
+      "bytes": 6837,
+      "sha256": "6c8873a69fbbe584d274842f498ccce27da521e0863b16315b1aa5480da9d5e6"
+    },
+    "inputAudit": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-037-review-apply/attempt-02/input-audit.json",
+      "bytes": 3276,
+      "sha256": "7b90808abfc81e2b58b1d2abce1a766a27f73c83cd3f769d5aaad6bfcb6bc99f"
+    },
+    "findingObservations": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-037-review-apply/attempt-02/output-observations.json",
+      "bytes": 1341,
+      "sha256": "761565615332d4afa1feec6af6488dbb8fe79b8c318a045facea679d3a14a282"
+    },
+    "verifiedReferences": 150,
+    "cumulativeCandidateFiles": 48,
+    "revisionFiles": 6,
+    "ancestorFilesAllCovered": true,
+    "planningUnchanged": true,
+    "focusedTests": {
+      "tests": 22,
+      "passed": 22,
+      "failed": 0
+    },
+    "typecheckExitCode": 0,
+    "openSpecStrictExitCode": 0,
+    "originalCounterexampleExitCode": 0,
+    "outputScopeProbeExitCode": 0,
+    "limitations": "Windows 当前源码上的独立 fixture；探测退出0表示执行完成，输出反例中的 Full Test 实际 failed。Author Linux 相关来源已核对，本轮未重跑整套 Linux 或正式 D05 Full Test。首次 sandbox EPERM 保留，获准同样检查另存重跑。"
+  },
+  "mutationIsolation": {
+    "before": {
+      "files": 3582,
+      "sha256": "d7fe0e02f997f125117b4a76637c1687aeabff0115e905deff42d5ea92a00a37",
+      "head": "7625ecdef3115db45b062b544728ea2459519a09",
+      "at": "2026-09-09T04:40:49.737Z"
+    },
+    "after": {
+      "files": 3582,
+      "sha256": "d7fe0e02f997f125117b4a76637c1687aeabff0115e905deff42d5ea92a00a37",
+      "head": "7625ecdef3115db45b062b544728ea2459519a09",
+      "at": "2026-09-09T04:45:04.969Z"
+    },
+    "equal": true,
+    "scope": "tracked/nonignored untracked 与 tracked 删除标记，目录条目递归纳入，排除本轮 Reviewer Run/proof。只是审查隔离，不是产品 Git/SHA 准入。"
+  },
+  "ownerDecisionsRelevant": [
+    {
+      "sourceRef": ".flowkit/runs/20260908-05-lightweight-workflow-management/004-decouple-full-test-from-repository-tracking/20260909-036-revise-apply/result.json#ownerDecisionsRelevant",
+      "decision": "D05 independent-bootstrap；当前004/projectOrdinal36，必要 proof 留 target artifacts；不修改历史，不执行 Git/正式 Full Test。"
+    }
+  ],
+  "nextBoundary": "revise-apply",
+  "continuationMeaning": "继续当前 Change 的有界修正，保留两个已验证修复，解决唯一新 finding 后重新独立 review-apply；本轮不自动继续。",
+  "authorArtifactMutation": false,
+  "productionMutation": false,
+  "skillMutation": false,
+  "manifestMutation": false,
+  "historicalRunMutation": false,
+  "candidateReviewerHowConsumed": false,
+  "candidateLifecycleInvokedOnActualRepository": false,
+  "fixtureProductApiExecuted": true,
+  "formalD05FullTestExecuted": false,
+  "archiveExecuted": false,
+  "repositoryGitMutation": false,
+  "stop": true
+}

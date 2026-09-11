@@ -1,0 +1,424 @@
+{
+  "kind": "external-orchestrator-revise-apply-result",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "author",
+  "action": "revise-apply",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "decouple-full-test-from-repository-tracking",
+  "projectOrdinal": 36,
+  "runId": "20260909-040-revise-apply",
+  "previousRunId": "20260909-039-review-apply",
+  "status": "terminal",
+  "verdict": "corrected",
+  "startedAt": "2026-09-09 05:28:48 UTC",
+  "completedAt": "2026-09-09T05:51:01.768Z",
+  "reviewedFindingsSource": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/004-decouple-full-test-from-repository-tracking/20260909-039-review-apply/result.json",
+    "bytes": 11066,
+    "sha256": "1d5b0ef8416361d8963cc4d5ab41c67a3feb67a6a8a2f553dded5ee0ecc6694d"
+  },
+  "ancestorApply": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/004-decouple-full-test-from-repository-tracking/20260909-038-revise-apply/result.json",
+    "bytes": 15836,
+    "sha256": "0200d5d94d8578f897198ea47e8954e419f4d89dbcc8099f9d3f1e82937d70ad"
+  },
+  "findingCorrections": [
+    {
+      "findingId": "D05-RA039-001",
+      "status": "corrected-pending-independent-review",
+      "before": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-040-revise-apply/probe-before/option-observations.json",
+        "bytes": 1249,
+        "sha256": "6b19f05c495eb1edac9db4f9e209d209e0f77ddf03e9600ed57269fe0dba9cde"
+      },
+      "after": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-040-revise-apply/probe-after/option-observations.json",
+        "bytes": 1250,
+        "sha256": "bc34255f4291dba9868b05a82fb81cc85dec3b5ffd9f2fd17e78b20ae2c9823f"
+      },
+      "implementation": "Bounded Node option arity before entry/preload; unknown/unresolved launch rejects preparation without an attempt."
+    }
+  ],
+  "preservedCorrections": [
+    "D05-RA035-001",
+    "D05-RA035-002",
+    "D05-RA037-001"
+  ],
+  "revisionArtifacts": [
+    {
+      "path": "src/internal/full-test-tool.ts",
+      "bytes": 5207,
+      "sha256": "6c1cbfc7a37f6de7c033ba5a9ecef2b0362a3d209789a3707255df966219e3f5",
+      "lines": 144
+    },
+    {
+      "path": "tests/unit/domain/full-test-revision.test.ts",
+      "bytes": 12678,
+      "sha256": "36a2c63c27ae51f58d99d66f105a32576683b35b00e90a76a02df325ba616ce7",
+      "lines": 396
+    }
+  ],
+  "cumulativeCandidateArtifacts": [
+    {
+      "path": ".agents/skills/implementation-convergence/SKILL.md",
+      "bytes": 8224,
+      "sha256": "450f5d9c729b2638d8d6c845c942a8edce4abd8dc6361a1cfa7c353fd2e1b52f"
+    },
+    {
+      "path": ".agents/skills/revise-apply/SKILL.md",
+      "bytes": 5107,
+      "sha256": "39857dba497c52da39dbc8592c7dac1330d472e551e03e5f61adc06d37e76ac8"
+    },
+    {
+      "path": "AGENTS.md",
+      "bytes": 18966,
+      "sha256": "f2b6cd4809447bfb15d8bcb42b5b73823e4bbcae0c4e8567b8e08139e8dc5bb8"
+    },
+    {
+      "path": "README.md",
+      "bytes": 8372,
+      "sha256": "4998c804f3ba56116a3683ab8dd851dbf9fdc6e1b86fc19d619f1e5eaa91a384"
+    },
+    {
+      "path": "config/verification/full-test.json",
+      "bytes": 2286,
+      "sha256": "32b03e4f1fa154586a2e29ca6cda849f630af29f75ff578b86b1bb90dc186686"
+    },
+    {
+      "path": "openspec/delivery-groups/20260908-05-lightweight-workflow-management.yaml",
+      "bytes": 10220,
+      "sha256": "8a9ebbdd2430da92b2bc5cee0cd9139c6b8e6385d71585219265bb27e570e84f"
+    },
+    {
+      "path": "package.json",
+      "bytes": 1865,
+      "sha256": "64534acf730ccad4b35f047aae4bbe643e60ee09de6883ab29004a5362e1d0f4"
+    },
+    {
+      "path": "skills/actions/apply/SKILL.md",
+      "bytes": 15134,
+      "sha256": "ab65b6d2386f5f3c6752ab40d6d62a81de689d313b07bb8c821401de959577a5"
+    },
+    {
+      "path": "skills/actions/revise-apply/SKILL.md",
+      "bytes": 14211,
+      "sha256": "3146cb79acb5f909633f2570345b036c9d195f8a3940b9aa34fcd89d1caedca6"
+    },
+    {
+      "path": "skills/delivery/final/SKILL.md",
+      "bytes": 3344,
+      "sha256": "08e6b66f43b2f3b3b7f9a763dde2fb3ee4ed93037610f405b77858a82fa5d875"
+    },
+    {
+      "path": "skills/delivery/full-test/SKILL.md",
+      "bytes": 2295,
+      "sha256": "87cefd02307b01a7f2ed4824df9b179a999d816c045f4a75feb9ca63a417915d"
+    },
+    {
+      "path": "src/domain/delivery-final-execution.ts",
+      "bytes": 15387,
+      "sha256": "d4bb31855509a61e6c7768d08172f8d458c740151ea828dec865611e2e8bd114"
+    },
+    {
+      "path": "src/domain/delivery-final-operation.ts",
+      "bytes": 4778,
+      "sha256": "a58eef459f93b377ea375c8062bf576881d684a04d3c4a5c11b0be3b00cdc64e"
+    },
+    {
+      "path": "src/domain/delivery-full-test-execution.ts",
+      "bytes": 9451,
+      "sha256": "9022e0c19ea8d47ee2559e6a91c834977569c41f82126f7b14198ef62497eabd"
+    },
+    {
+      "path": "src/domain/delivery-operation-execution.ts",
+      "bytes": 16353,
+      "sha256": "c63f6d3280cecfc3cc04589e9878436eef953186810ed69a42e69fdf0390464e"
+    },
+    {
+      "path": "src/domain/delivery-repository-integration-execution.ts",
+      "bytes": 20769,
+      "sha256": "52779b6f03caa79436d7401702f46fc1c7b87e1e21016d8d2be50ceb6fe15679"
+    },
+    {
+      "path": "src/domain/index.ts",
+      "bytes": 1060,
+      "sha256": "e5532685223b3016cfcf77a7e9255528bed7df36ebf5cc1551ba3a504b0145cf"
+    },
+    {
+      "path": "src/internal/delivery-final-coordination.ts",
+      "bytes": 12868,
+      "sha256": "328b5e02b6a247c920344b4d4642ffda74ed0c1345872cbdcf5ce4e3cd600d47"
+    },
+    {
+      "path": "src/internal/delivery-required-evidence-source.ts",
+      "bytes": 11254,
+      "sha256": "637849aadf76e0c1d6b249179f2761b4b9291909a984d8dc5bae27660829a69c"
+    },
+    {
+      "path": "src/internal/delivery-required-evidence.ts",
+      "bytes": 5206,
+      "sha256": "32603d19f20bdd126cc41a990e995bc2b06e47bd58c7285db208145ee8e1371b"
+    },
+    {
+      "path": "src/internal/full-test-current.ts",
+      "bytes": 6921,
+      "sha256": "10ac08e81c96f7ffe4903e0d7fe8dbfcad06cc7601d73c712fe78ec12d45afe1"
+    },
+    {
+      "path": "src/internal/full-test-input.ts",
+      "bytes": 10355,
+      "sha256": "ae4fccc6db6ff2624801e82808331a28f8e70d32a57a41a75fc847c85f17bc96"
+    },
+    {
+      "path": "src/internal/full-test-process.ts",
+      "bytes": 3599,
+      "sha256": "862be4823d4593f59345089969629d9fe6c95ec693ab5a26bbe64ce1b2b88ca7"
+    },
+    {
+      "path": "src/internal/full-test-result.ts",
+      "bytes": 3201,
+      "sha256": "d2a9c94f58cceddf83571d4c14dec8e3b1ac6d0ad31494d51659697861d8cb77"
+    },
+    {
+      "path": "src/internal/full-test-storage.ts",
+      "bytes": 6917,
+      "sha256": "9c6d7c917f51c2e44ba46252c3632a2f917d04f8eec750908259bd0abf0a3354"
+    },
+    {
+      "path": "tests/unit/bootstrap/author-history.test.ts",
+      "bytes": 8182,
+      "sha256": "9b1c51157b42fbe64bab12b8b54b125e15f6cf7a5133517054b6bf588d0a54a3"
+    },
+    {
+      "path": "tests/unit/bootstrap/author-material-boundary.test.ts",
+      "bytes": 824,
+      "sha256": "61dd18e5be9935237aaf6bf7aa7cdd251e3ec072cf1a9f3fa82f81e728c54c74"
+    },
+    {
+      "path": "tests/unit/bootstrap/reviewer-history.test.ts",
+      "bytes": 3428,
+      "sha256": "a38b755e691340fe01349ebef023cc769b845b1c7e1febf109bac7f7504a8daa"
+    },
+    {
+      "path": "tests/unit/domain/author-action-guidance.test.ts",
+      "bytes": 12087,
+      "sha256": "2eff7fcabecbd8d351fd6e51752aa291030f9a918d1436d1c6126d1bbb881d7f"
+    },
+    {
+      "path": "tests/unit/domain/author-stage-guidance.test.ts",
+      "bytes": 3010,
+      "sha256": "0d40b9025bcdbd230e8084b4e4849349220d8c1e9cdd1b135ce4498966f57d87"
+    },
+    {
+      "path": "tests/unit/domain/code-gate-boundary.test.ts",
+      "bytes": 3097,
+      "sha256": "5b8fb4575619a78d93df424a05d024a5b755a081d4acf84f7b1fa233cf505369"
+    },
+    {
+      "path": "tests/unit/domain/delivery-evidence-outcome-fixture.ts",
+      "bytes": 3199,
+      "sha256": "0ddda980d6557e3499a41aaa114e45bda1a97d58cd8663de9fb8db25645da1c5"
+    },
+    {
+      "path": "tests/unit/domain/delivery-final-execution.test.ts",
+      "bytes": 16405,
+      "sha256": "8bae662331497d6dcfe5813ed2b528e9ac6c5c7fec793a06245321d972d3a3b0"
+    },
+    {
+      "path": "tests/unit/domain/delivery-final-fixture.ts",
+      "bytes": 9794,
+      "sha256": "a59ec6f478b24d891a10823cc48b1651080f975046ef096fde73f2408472f65b"
+    },
+    {
+      "path": "tests/unit/domain/delivery-final-projection.test.ts",
+      "bytes": 6328,
+      "sha256": "23753699c2613e076bead9b2c05e6cf3482b2a1862341dfb4cf786d14b1f3398"
+    },
+    {
+      "path": "tests/unit/domain/delivery-full-test-execution.test.ts",
+      "bytes": 13030,
+      "sha256": "9b8c81662e44236ee8994efbec6fe19f70fe55b8c808b4fe8d3bbcc0da44446d"
+    },
+    {
+      "path": "tests/unit/domain/delivery-guidance-contract.test.ts",
+      "bytes": 3031,
+      "sha256": "2874b084cecafcd58da4a20fdc4c3d9a9286c293d6161e5ad82caa0878fa1002"
+    },
+    {
+      "path": "tests/unit/domain/delivery-operation-execution.test.ts",
+      "bytes": 17254,
+      "sha256": "130a664fd2686e06f428151d16d7ac5245c6be47aa636c914f286c797407b25c"
+    },
+    {
+      "path": "tests/unit/domain/delivery-operation-fixture.ts",
+      "bytes": 1455,
+      "sha256": "2c7e5511c3a5aaf10a2ef697f6bbfaca52f360aeddf64055d26e206a6221900a"
+    },
+    {
+      "path": "tests/unit/domain/delivery-repository-integration-accepted-object.test.ts",
+      "bytes": 21801,
+      "sha256": "038bd825f2ac40c4559c03b0843dfba4b0fdab5dbfd7db3b037e86e25b3d9b82"
+    },
+    {
+      "path": "tests/unit/domain/delivery-repository-integration-execution.test.ts",
+      "bytes": 20432,
+      "sha256": "d59b836722d88e213e2d73e7fb596bf7e468acdbbd0fece2a027040292541a19"
+    },
+    {
+      "path": "tests/unit/domain/delivery-required-evidence-source.test.ts",
+      "bytes": 6212,
+      "sha256": "2709e4eaa37333951450205c858ecbbe3557faf691cca2a8cde4c0f4958301be"
+    },
+    {
+      "path": "tests/unit/domain/delivery-without-archify.test.ts",
+      "bytes": 9298,
+      "sha256": "33c4fc8b75ea1915f9e9c62996ce3492def28bf72913bc63664d4969ec1eac6b"
+    },
+    {
+      "path": "tests/unit/domain/full-test-input.test.ts",
+      "bytes": 5503,
+      "sha256": "c0b1be66f26b46cb5b46b005875f775b11bcfa782889857afdcb1031ce8beb52"
+    },
+    {
+      "path": "tests/unit/domain/full-test-storage.test.ts",
+      "bytes": 2062,
+      "sha256": "39caf49b336096b212a5305033439313973b7348e935c5b3dd9ec602c25daa75"
+    },
+    {
+      "path": "tests/unit/domain/reviewer-action-guidance.test.ts",
+      "bytes": 4435,
+      "sha256": "46ff4677f1a4918aebc98879ace3c8ddd72cc4c0bb5dbd36ee1fc13e5e5a0f23"
+    },
+    {
+      "path": "src/internal/full-test-tool.ts",
+      "bytes": 5207,
+      "sha256": "6c1cbfc7a37f6de7c033ba5a9ecef2b0362a3d209789a3707255df966219e3f5"
+    },
+    {
+      "path": "tests/unit/domain/full-test-revision.test.ts",
+      "bytes": 12678,
+      "sha256": "36a2c63c27ae51f58d99d66f105a32576683b35b00e90a76a02df325ba616ce7"
+    }
+  ],
+  "removedPaths": [],
+  "ancestorRemovalSource": ".flowkit/runs/20260908-05-lightweight-workflow-management/004-decouple-full-test-from-repository-tracking/20260909-038-revise-apply/result.json#ancestorRemovalSource",
+  "planningArtifacts": [
+    {
+      "path": "openspec/changes/decouple-full-test-from-repository-tracking/proposal.md",
+      "bytes": 3047,
+      "sha256": "03b0df4266c189fa5e1c1e039d366f181195b1256f87501922fb4f891e3edb60"
+    },
+    {
+      "path": "openspec/changes/decouple-full-test-from-repository-tracking/design.md",
+      "bytes": 13786,
+      "sha256": "d376afcadac3333acd40e8212292d85f087c17f43ca1fdf793bab0356ecd6327"
+    },
+    {
+      "path": "openspec/changes/decouple-full-test-from-repository-tracking/tasks.md",
+      "bytes": 4938,
+      "sha256": "0ef2a01ed92f0051451a0e66a8fa40e13124b4674c0ceb9cbb869aeee269da43"
+    },
+    {
+      "path": "openspec/changes/decouple-full-test-from-repository-tracking/specs/applicable-check-execution/spec.md",
+      "bytes": 969,
+      "sha256": "0a7a56e757f26853cb337cb5c5dd7a10f421bfa060ac67aa2a9496afcf9dd03d"
+    },
+    {
+      "path": "openspec/changes/decouple-full-test-from-repository-tracking/specs/delivery-finalization/spec.md",
+      "bytes": 9194,
+      "sha256": "62e869b930bb92ff647ebf544ef4be337fccb7236b025e709694756a362c9bba"
+    },
+    {
+      "path": "openspec/changes/decouple-full-test-from-repository-tracking/specs/delivery-operation-execution-and-start-continuity/spec.md",
+      "bytes": 2373,
+      "sha256": "3091e11f157fb7fd1a7bfc9e065d83680a7028457d0057131e213cad37387f9d"
+    },
+    {
+      "path": "openspec/changes/decouple-full-test-from-repository-tracking/specs/formal-full-test-execution-and-correction/spec.md",
+      "bytes": 7743,
+      "sha256": "99bbf590fa7ffd3bc02ab848f29e2a9cab8fb35059056faa24d188ed9b82e448"
+    },
+    {
+      "path": "openspec/changes/decouple-full-test-from-repository-tracking/specs/lightweight-engineering-gate/spec.md",
+      "bytes": 4571,
+      "sha256": "7ba38b023cdebe2f178d7dbbef6a72eccae6c7373ab482a7d15a433600048751"
+    }
+  ],
+  "tasks": {
+    "total": 20,
+    "complete": 20,
+    "remaining": 0
+  },
+  "verification": {
+    "focused": 14,
+    "windowsDomain": 296,
+    "windowsAcceptance": 6,
+    "linuxProjectChecks": 9,
+    "linuxDomain": 296,
+    "linuxAcceptance": 6,
+    "linuxEntropyTests": 7,
+    "strictOpenSpec": "passed",
+    "formalD05FullTest": false,
+    "independentReviewerVerdict": false,
+    "retainedFailedAttempts": [
+      "domain-01",
+      "linux-01"
+    ],
+    "failureCorrection": "Restored existing valueless --version/-v support; no test weakening."
+  },
+  "facts": {
+    "proofRefs": [
+      {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-040-revise-apply/evidence-index.json",
+        "bytes": 51778,
+        "sha256": "08908c4c090550336a3bdca0dceda7f181273bb029452729c8eb006c15dd9532"
+      },
+      {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-040-revise-apply/revision-report.md",
+        "bytes": 3365,
+        "sha256": "cffdcba13da5c6d420cc07d3b17cf94ef35afdb5fb65238db20e606410e24cd7"
+      }
+    ],
+    "maxRevisionFileLines": 396,
+    "approvedPlanningUnchanged": true,
+    "realManifestUnchanged": true,
+    "skillsUnchanged": true,
+    "attributesUnchanged": true,
+    "gitMutation": false,
+    "runtimePolicyRunSchemaMutation": false
+  },
+  "ownerDecisionsRelevant": [
+    {
+      "sourceRef": ".flowkit/runs/20260908-05-lightweight-workflow-management/004-decouple-full-test-from-repository-tracking/20260909-039-review-apply/result.json#ownerDecisionsRelevant",
+      "decision": "D05 independent-bootstrap；004/projectOrdinal36；必要材料保留 target artifacts；历史不改，无 Git/正式 D05 Full Test 操作。"
+    }
+  ],
+  "runArtifacts": {
+    "action": {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/004-decouple-full-test-from-repository-tracking/20260909-040-revise-apply/action.md",
+      "bytes": 563,
+      "sha256": "62e6394d54f2de3cafaed268112d3bad4206a523e468463978de05a4a7d140d8"
+    },
+    "context": {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/004-decouple-full-test-from-repository-tracking/20260909-040-revise-apply/context.json",
+      "bytes": 1120,
+      "sha256": "c25e7b0cc25ea47ed6640266a2d43b7e6438af1a1e8dd5549ad2a0adc7d6dc44"
+    }
+  },
+  "nextBoundary": "review-apply",
+  "handoff": {
+    "nextBoundary": "review-apply",
+    "independentReviewRequired": true,
+    "report": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-040-revise-apply/revision-report.md",
+    "continuity": "48 cumulative current files and exact 038/039 ancestors; 2 revised files, no new removals",
+    "notExecuted": [
+      "review-apply",
+      "archive",
+      "D05 Formal Full Test",
+      "Git mutation"
+    ],
+    "stop": true
+  },
+  "stop": true
+}

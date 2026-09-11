@@ -1,0 +1,647 @@
+{
+  "kind": "independent-proposal-structure-and-seam-audit",
+  "completedAt": "2026-09-08T09:17:43.605Z",
+  "sourceHead": "697088391374daa67d63c20f8a365fb44ec5c058",
+  "method": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-018-review-propose/audit.mjs",
+    "bytes": 9437,
+    "sha256": "d3f4cdba0edb619b5d88c0fae405475c106c12db0748c414f31da1fe0a30b7e3"
+  },
+  "reviewedResult": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-017-propose/result.json",
+    "bytes": 3898,
+    "sha256": "8235dde30c336835c5721c97cb8705c471833e719c26755cfbeef86fb553bcd1"
+  },
+  "acceptedExploreReview": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-016-review-explore/result.json",
+    "bytes": 7008,
+    "sha256": "d9407f671db93f728a14b3f25b2ada663709cdedf01d4d2bf65521c10896f476"
+  },
+  "verifiedRefCount": 38,
+  "verifiedRefs": [
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-016-review-explore/result.json",
+      "bytes": 7008,
+      "sha256": "d9407f671db93f728a14b3f25b2ada663709cdedf01d4d2bf65521c10896f476"
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/proposal.md",
+      "bytes": 3395,
+      "sha256": "ee0e2dcbf8b60c6f930af71ac438161183c822fff4530bbdc39b9a6f28c807c7"
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/design.md",
+      "bytes": 19009,
+      "sha256": "4db230d3e2fe3f0e323fdb0175a3b735b2d169f91ac7b8575d77bc13d9eb13ae"
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/tasks.md",
+      "bytes": 7824,
+      "sha256": "87d548c74e1e2bd744c45e6c2d3e3e9ceae95b9a4fed01f6f73d5516f5fd8671"
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/specs/foundation-cli-surface/spec.md",
+      "bytes": 11123,
+      "sha256": "62bb81b89b3ddd5f4d9d14cfcea4bf3cf4cf7aa98221fba37c03536e6478647f"
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/specs/single-action-execution-terminal-boundary/spec.md",
+      "bytes": 3759,
+      "sha256": "b58e332e33204ff3a0f20ff47736041268643305ff12ac6859720eae219ec737"
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/specs/run-result-persistence/spec.md",
+      "bytes": 3724,
+      "sha256": "7f0547a1077957f0d3e76c6fcdae7a4b903241f3fde18192f603b24e122802a1"
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/specs/action-guidance-execution/spec.md",
+      "bytes": 4132,
+      "sha256": "001d6c0673113f51a7403e54f67dc64c04b78aa12a87e2de1f79c3a08e66f26a"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-017-propose/attempt-01/summary.json",
+      "bytes": 9286,
+      "sha256": "c86e70ded12bbd067524f49c1bfa5432c5011ebc53966647247419f3fd8ca2eb"
+    },
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-017-propose/action.md",
+      "bytes": 684,
+      "sha256": "34cc6754fd43e0316cf214d3ee7a2549618c0ff754d0c4ba481664553d0333b4"
+    },
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-017-propose/context.json",
+      "bytes": 2087,
+      "sha256": "f539a7230163b4e8362b4e1d60c9ec12693f4ed8f911b2d61a6a62e72c3ee8f7"
+    },
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-015-explore/result.json",
+      "bytes": 2428,
+      "sha256": "2189e3ac993ca0592c534f2382f687dd4a687155f601cb77274e20c79661a33d"
+    },
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-016-review-explore/action.md",
+      "bytes": 2335,
+      "sha256": "ff382e3cada6f7204f61c1ac835429371ee5020624e1708fc6c8e98a27435c17"
+    },
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-016-review-explore/context.json",
+      "bytes": 2374,
+      "sha256": "138e41815f9b717ff25e83c379b837c2c3affcc4928b3679f872e81f8d40a7e4"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-016-review-explore/audit.mjs",
+      "bytes": 9592,
+      "sha256": "2df8416b0aef68640dae3aa579b9d3169f3662faf30988e5f1e2b9e4682b5703"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-016-review-explore/attempt-01/summary.json",
+      "bytes": 43532,
+      "sha256": "eb4b6feffc71824dadc9c87fd05d9f43a10492da6b4723b99cecb54ee0dec090"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-016-review-explore/README.md",
+      "bytes": 2841,
+      "sha256": "f223d28241c9ffcf9c5983d7f5722b918f512c64b04c4c62e88f35cb74a8895b"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-016-review-explore/host-probe.mjs",
+      "bytes": 1755,
+      "sha256": "e1b4cf59edb5d12a42bebdc96e98267efaabc91d8ed632f1a2461f9c02279505"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-016-review-explore/host-request.json",
+      "bytes": 253,
+      "sha256": "fddb752f836c4d3d16693796bfecfe2b3b2667b5805d8c729ec645c4ddd68f41"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-016-review-explore/host-response.json",
+      "bytes": 220,
+      "sha256": "e08eabfb2617966265359f98e4e3fafedc87e6bd689b9e5e121c596fe2971141"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-016-review-explore/host-summary.json",
+      "bytes": 525,
+      "sha256": "7852a2d92fea58c473415a5424b063d9749794c6f9a84a3c5ec9abe8ad72f697"
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/explore.md",
+      "bytes": 11073,
+      "sha256": "7bea87672d687c1db5cd45ef3e6863af875f60736a21b903c84a5d85cee0a679"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/summary.json",
+      "bytes": 16984,
+      "sha256": "3e6a3b2b3987c6e5cdf12cb78d05f45f8029b7f9b77934250eb5a67af20380f4"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/handoff.json",
+      "bytes": 24396,
+      "sha256": "4470362cd951864889dc68157f84e7509882ba59f603a0cde16436a9f1577396"
+    },
+    {
+      "path": "openspec/delivery-groups/20260908-05-lightweight-workflow-management.yaml",
+      "bytes": 9180,
+      "sha256": "f35a9d8a0af69ec36f62b1ec5221f8337bc5f7730758bec49876cdcc4d6c049f"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-017-propose/attempt-01/openspec-version.stdout.txt",
+      "bytes": 7,
+      "sha256": "4f5ba6a3e380bf810cc968b58d30a8d7163eafe9e2fb1ad19bdc6d9d64a1e549"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-017-propose/attempt-01/openspec-version.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-017-propose/attempt-01/openspec-status.stdout.txt",
+      "bytes": 3489,
+      "sha256": "358d6844a6d0eeec962416744a4a621bbcce69bc1d56a542c3119d9fd4216393"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-017-propose/attempt-01/openspec-status.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-017-propose/attempt-01/openspec-strict.stdout.txt",
+      "bytes": 51,
+      "sha256": "360901ddba2c93f5db99ef8169d78becf370a7199f91967bed5e9e23830d3e67"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-017-propose/attempt-01/openspec-strict.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-017-propose/attempt-01/git-diff-check.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-017-propose/attempt-01/git-diff-check.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-017-propose/attempt-01/tracked-diff.stdout.txt",
+      "bytes": 74,
+      "sha256": "1db106dd00b18027918fab2a3844027fef7d259b351af5c4feabaf685adc950c"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-017-propose/attempt-01/tracked-diff.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-017-propose/attempt-01/index-diff.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-017-propose/attempt-01/index-diff.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-017-propose/audit.mjs",
+      "bytes": 8176,
+      "sha256": "cb73f7cba167f9a27e31fe701ccc19a7dd4f87fcd45388017b460b410ed96cbe"
+    }
+  ],
+  "sourceInputs": [
+    {
+      "path": "AGENTS.md",
+      "bytes": 15804,
+      "sha256": "c5cce997a1d319a73e143092ad6bda3cda1804011b240c214ff01ea9c50ea725"
+    },
+    {
+      "path": ".agents/skills/review-propose/SKILL.md",
+      "bytes": 3926,
+      "sha256": "081def399c8c4f5d556ccd15c60d20ed052b63fb1bf5be5d5eda080d233ee433"
+    },
+    {
+      "path": "config/tools/toolchain.lock.json",
+      "bytes": 555,
+      "sha256": "a0481fc8a3fddfbcdd65a504e0e7a065e6ab74a3a871af3ab8838d201eecd4a2"
+    },
+    {
+      "path": ".flowkit/project.json",
+      "bytes": 149,
+      "sha256": "acd31e7acdd13078e2de6b869e84b9c6dd62f9ad1c76e331ae7bbc62006c3263"
+    },
+    {
+      "path": ".flowkit/memos.json",
+      "bytes": 21126,
+      "sha256": "ecea78153c221f82469431a2de325e486e03a39efcb2715bf40dcc614db20230"
+    },
+    {
+      "path": "flowkit-next-delivery-change-plan.md",
+      "bytes": 30820,
+      "sha256": "3d5b212c1c7effbe8540aa843812b1a22625eeb978fa4ecef196ba674d251fc4"
+    },
+    {
+      "path": "flowkit-next-d05-decoupling-analysis.md",
+      "bytes": 20639,
+      "sha256": "3b68f1a4672e667db7922b3772033d6e9b5cdb7aa9d692ad2e0c11086461e46a"
+    },
+    {
+      "path": "openspec/specs/foundation-cli-surface/spec.md",
+      "bytes": 21478,
+      "sha256": "b2480b09b92a24d91f329a9056a971f10b3417d5922de723ede7134748910674"
+    },
+    {
+      "path": "openspec/specs/single-action-execution-terminal-boundary/spec.md",
+      "bytes": 8215,
+      "sha256": "08f55107fef7825c21be4a034ef172d309655b6dd6e1f12936508c02008c21c1"
+    },
+    {
+      "path": "openspec/specs/run-result-persistence/spec.md",
+      "bytes": 9759,
+      "sha256": "dffd6debb5ae16eb2698c14c98187f9c5e3793c1b2eeba40c46431aaa87c4b1e"
+    },
+    {
+      "path": "openspec/specs/action-guidance-execution/spec.md",
+      "bytes": 5812,
+      "sha256": "3b52459373127c1f670b6eafe7ad86a701927bd9e92a08849896f109cff53f8f"
+    },
+    {
+      "path": "src/domain/policy-and-next-boundary.ts",
+      "bytes": 12628,
+      "sha256": "36b4e6ec74fe3f01b3377c15491ed1832b419a7ea275a8eded57507129a0001a"
+    },
+    {
+      "path": "src/domain/run-result-persistence.ts",
+      "bytes": 16971,
+      "sha256": "f502c6f9a1abcb88992f3ff8720f55fd5a5935b3943f4cc1707389c6cf8b77bb"
+    },
+    {
+      "path": "src/domain/single-action-execution.ts",
+      "bytes": 5134,
+      "sha256": "03afdc19c11aab6bb557a75b27c0c16e92d1443b96dec2504714532e94fd470a"
+    },
+    {
+      "path": "src/domain/action-package-result-admission.ts",
+      "bytes": 7460,
+      "sha256": "a72115811f8ba69fadf8f1be9cf5a1f872c8dc14d54bbc8662960df70b45131a"
+    },
+    {
+      "path": "src/cli/request.ts",
+      "bytes": 7288,
+      "sha256": "fbd9c517aeb0286ea0daebb7c08740b3cab72e06d067d5d0c79c6cb78c42e08b"
+    }
+  ],
+  "planningArtifacts": [
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/proposal.md",
+      "bytes": 3395,
+      "sha256": "ee0e2dcbf8b60c6f930af71ac438161183c822fff4530bbdc39b9a6f28c807c7",
+      "lines": 32
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/design.md",
+      "bytes": 19009,
+      "sha256": "4db230d3e2fe3f0e323fdb0175a3b735b2d169f91ac7b8575d77bc13d9eb13ae",
+      "lines": 132
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/tasks.md",
+      "bytes": 7824,
+      "sha256": "87d548c74e1e2bd744c45e6c2d3e3e9ceae95b9a4fed01f6f73d5516f5fd8671",
+      "lines": 56
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/specs/foundation-cli-surface/spec.md",
+      "bytes": 11123,
+      "sha256": "62bb81b89b3ddd5f4d9d14cfcea4bf3cf4cf7aa98221fba37c03536e6478647f",
+      "lines": 151
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/specs/single-action-execution-terminal-boundary/spec.md",
+      "bytes": 3759,
+      "sha256": "b58e332e33204ff3a0f20ff47736041268643305ff12ac6859720eae219ec737",
+      "lines": 45
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/specs/run-result-persistence/spec.md",
+      "bytes": 3724,
+      "sha256": "7f0547a1077957f0d3e76c6fcdae7a4b903241f3fde18192f603b24e122802a1",
+      "lines": 47
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/specs/action-guidance-execution/spec.md",
+      "bytes": 4132,
+      "sha256": "001d6c0673113f51a7403e54f67dc64c04b78aa12a87e2de1f79c3a08e66f26a",
+      "lines": 45
+    }
+  ],
+  "capabilityCounts": [
+    {
+      "capability": "foundation-cli-surface",
+      "modified": 7,
+      "added": 1,
+      "scenarios": 29
+    },
+    {
+      "capability": "single-action-execution-terminal-boundary",
+      "modified": 0,
+      "added": 3,
+      "scenarios": 8
+    },
+    {
+      "capability": "run-result-persistence",
+      "modified": 1,
+      "added": 2,
+      "scenarios": 8
+    },
+    {
+      "capability": "action-guidance-execution",
+      "modified": 0,
+      "added": 3,
+      "scenarios": 8
+    }
+  ],
+  "pendingTasks": 27,
+  "commands": [
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-018-review-propose/attempt-01/openspec-version.command.json",
+      "bytes": 965,
+      "sha256": "d83482df4838467715d3caabab516c75484921b0a5567b22bfc6d22d992a5ba5"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-018-review-propose/attempt-01/openspec-status.command.json",
+      "bytes": 1032,
+      "sha256": "16fc4c5a0072595c1d8e597daa67c4e751cef45faf40d3c46ad968731275446b"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-018-review-propose/attempt-01/openspec-strict.command.json",
+      "bytes": 1018,
+      "sha256": "26150ff107fbcdbde45de2fc6217e922a24f8c4b76bd22cb85d16f493948e770"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-018-review-propose/attempt-01/diff-check.command.json",
+      "bytes": 856,
+      "sha256": "70bfd04a4273cd78f43c3595fb51ea13f1a927d18953ac60149b534619666536"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-018-review-propose/attempt-01/source-head.command.json",
+      "bytes": 862,
+      "sha256": "4bfd015ec719deac2dd1edbeca5c0bcfcf94e8485e1484a25855c172ea524660"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-018-review-propose/attempt-01/index-diff.command.json",
+      "bytes": 876,
+      "sha256": "c71ce82c0013d2874620f64146456ced1092ccca75e67445dd64507e5647dee5"
+    }
+  ],
+  "existingPolicyExamples": [
+    {
+      "name": "prepared-retry",
+      "input": {
+        "deliveryId": "synthetic-delivery",
+        "changeId": "synthetic-change",
+        "changeState": "active",
+        "currentAction": {
+          "identity": {
+            "deliveryId": "synthetic-delivery",
+            "changeId": "synthetic-change",
+            "actionId": "apply"
+          },
+          "state": "prepared"
+        },
+        "terminalRunContext": null,
+        "terminalResult": null
+      },
+      "expected": {
+        "kind": "ready-action",
+        "actionId": "apply"
+      },
+      "actual": {
+        "kind": "ready-action",
+        "actionId": "apply"
+      }
+    },
+    {
+      "name": "author-pass",
+      "input": {
+        "deliveryId": "synthetic-delivery",
+        "changeId": "synthetic-change",
+        "changeState": "active",
+        "currentAction": {
+          "identity": {
+            "deliveryId": "synthetic-delivery",
+            "changeId": "synthetic-change",
+            "actionId": "apply"
+          },
+          "state": "terminal"
+        },
+        "terminalRunContext": {
+          "runId": "20260908-001-apply",
+          "occurrence": {
+            "date": "20260908",
+            "sequence": 1,
+            "actionId": "apply"
+          },
+          "actionIdentity": {
+            "deliveryId": "synthetic-delivery",
+            "changeId": "synthetic-change",
+            "actionId": "apply"
+          },
+          "role": "author",
+          "lifecycleState": "terminal",
+          "ownerAuthority": null,
+          "previousRunId": null
+        },
+        "terminalResult": {
+          "runId": "20260908-001-apply",
+          "actionIdentity": {
+            "deliveryId": "synthetic-delivery",
+            "changeId": "synthetic-change",
+            "actionId": "apply"
+          },
+          "authorConclusion": "PASS",
+          "reviewerVerdict": null,
+          "verificationVerdict": null,
+          "nextBoundary": "review-apply",
+          "facts": {}
+        }
+      },
+      "expected": {
+        "kind": "ready-action",
+        "actionId": "review-apply"
+      },
+      "actual": {
+        "kind": "ready-action",
+        "actionId": "review-apply"
+      }
+    },
+    {
+      "name": "author-fail",
+      "input": {
+        "deliveryId": "synthetic-delivery",
+        "changeId": "synthetic-change",
+        "changeState": "active",
+        "currentAction": {
+          "identity": {
+            "deliveryId": "synthetic-delivery",
+            "changeId": "synthetic-change",
+            "actionId": "apply"
+          },
+          "state": "terminal"
+        },
+        "terminalRunContext": {
+          "runId": "20260908-001-apply",
+          "occurrence": {
+            "date": "20260908",
+            "sequence": 1,
+            "actionId": "apply"
+          },
+          "actionIdentity": {
+            "deliveryId": "synthetic-delivery",
+            "changeId": "synthetic-change",
+            "actionId": "apply"
+          },
+          "role": "author",
+          "lifecycleState": "terminal",
+          "ownerAuthority": null,
+          "previousRunId": null
+        },
+        "terminalResult": {
+          "runId": "20260908-001-apply",
+          "actionIdentity": {
+            "deliveryId": "synthetic-delivery",
+            "changeId": "synthetic-change",
+            "actionId": "apply"
+          },
+          "authorConclusion": "FAIL",
+          "reviewerVerdict": null,
+          "verificationVerdict": null,
+          "nextBoundary": null,
+          "facts": {}
+        }
+      },
+      "expected": {
+        "kind": "blocked",
+        "reason": "unrecognized-or-unsuccessful-author-outcome"
+      },
+      "actual": {
+        "kind": "blocked",
+        "reason": "unrecognized-or-unsuccessful-author-outcome"
+      }
+    },
+    {
+      "name": "review-revise",
+      "input": {
+        "deliveryId": "synthetic-delivery",
+        "changeId": "synthetic-change",
+        "changeState": "active",
+        "currentAction": {
+          "identity": {
+            "deliveryId": "synthetic-delivery",
+            "changeId": "synthetic-change",
+            "actionId": "review-apply"
+          },
+          "state": "terminal"
+        },
+        "terminalRunContext": {
+          "runId": "20260908-001-review-apply",
+          "occurrence": {
+            "date": "20260908",
+            "sequence": 1,
+            "actionId": "review-apply"
+          },
+          "actionIdentity": {
+            "deliveryId": "synthetic-delivery",
+            "changeId": "synthetic-change",
+            "actionId": "review-apply"
+          },
+          "role": "reviewer",
+          "lifecycleState": "terminal",
+          "ownerAuthority": null,
+          "previousRunId": null
+        },
+        "terminalResult": {
+          "runId": "20260908-001-review-apply",
+          "actionIdentity": {
+            "deliveryId": "synthetic-delivery",
+            "changeId": "synthetic-change",
+            "actionId": "review-apply"
+          },
+          "authorConclusion": null,
+          "reviewerVerdict": "changes-requested",
+          "verificationVerdict": null,
+          "nextBoundary": "revise-apply",
+          "facts": {}
+        }
+      },
+      "expected": {
+        "kind": "ready-action",
+        "actionId": "revise-apply"
+      },
+      "actual": {
+        "kind": "ready-action",
+        "actionId": "revise-apply"
+      }
+    },
+    {
+      "name": "skip-review-rejected",
+      "input": {
+        "deliveryId": "synthetic-delivery",
+        "changeId": "synthetic-change",
+        "changeState": "active",
+        "currentAction": {
+          "identity": {
+            "deliveryId": "synthetic-delivery",
+            "changeId": "synthetic-change",
+            "actionId": "apply"
+          },
+          "state": "terminal"
+        },
+        "terminalRunContext": {
+          "runId": "20260908-001-apply",
+          "occurrence": {
+            "date": "20260908",
+            "sequence": 1,
+            "actionId": "apply"
+          },
+          "actionIdentity": {
+            "deliveryId": "synthetic-delivery",
+            "changeId": "synthetic-change",
+            "actionId": "apply"
+          },
+          "role": "author",
+          "lifecycleState": "terminal",
+          "ownerAuthority": null,
+          "previousRunId": null
+        },
+        "terminalResult": {
+          "runId": "20260908-001-apply",
+          "actionIdentity": {
+            "deliveryId": "synthetic-delivery",
+            "changeId": "synthetic-change",
+            "actionId": "apply"
+          },
+          "authorConclusion": "PASS",
+          "reviewerVerdict": null,
+          "verificationVerdict": null,
+          "nextBoundary": "archive",
+          "facts": {}
+        }
+      },
+      "expected": {
+        "kind": "blocked",
+        "reason": "reported-boundary-conflict"
+      },
+      "actual": {
+        "kind": "blocked",
+        "reason": "reported-boundary-conflict"
+      }
+    }
+  ],
+  "limits": [
+    "Structure and existing Policy compatibility checks do not generate the Reviewer semantic verdict.",
+    "Synthetic in-memory examples only; no persisted product Runs or forged authority/verdict.",
+    "No new implementation tests, actual-host acceptance, Full Test, Author mutation or Git mutation."
+  ]
+}

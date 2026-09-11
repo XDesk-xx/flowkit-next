@@ -1,0 +1,45 @@
+{
+  "kind": "external-orchestrator-review-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "reviewer",
+  "action": "review-explore",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "connect-openspec-action-workflow",
+  "projectOrdinal": 35,
+  "runId": "20260908-016-review-explore",
+  "previousRunId": "20260908-015-explore",
+  "reviewedRunId": "20260908-015-explore",
+  "ownerInstruction": "根据最新run，review",
+  "reviewedResult": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-015-explore/result.json",
+    "bytes": 2428,
+    "sha256": "2189e3ac993ca0592c534f2382f687dd4a687155f601cb77274e20c79661a33d"
+  },
+  "sourceHead": "697088391374daa67d63c20f8a365fb44ec5c058",
+  "sourceHeadMeaning": "仅记录审查输入，不新增 checkpoint/Explore SHA 前置。",
+  "sourceBranch": "delivery/20260908-05-lightweight-workflow-management",
+  "dependencyRun": "separate-manager-assets-from-target-project/20260908-014-archive",
+  "ownerActivationRef": "owner:03920835f3bd9c9278283d95ee0694d362e9fc06d4e9b429d473dd7f8feb00de",
+  "independentHow": ".agents/skills/review-explore/SKILL.md",
+  "candidateReviewerHowConsumed": false,
+  "scope": [
+    "Owner 授权的宿主 Action 接通、上下文/链定位、必要 proof 交接及一次性 raw-stream 文本边界",
+    "源码/合同与实际 proof 的证明范围，进入 Proposal 所需最小边界",
+    "有界独立 Git fixture 与真实宿主传输实验"
+  ],
+  "writeScope": [
+    ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-016-review-explore",
+    ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-016-review-explore"
+  ],
+  "exclusions": [
+    "Author/生产/测试/Skills/历史 Run mutation",
+    "Propose/Apply/Archive/Full Test",
+    "candidate self-management / real repository Git mutation / automatic continuation"
+  ],
+  "verification": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-016-review-explore/attempt-01/summary.json",
+    "bytes": 43532,
+    "sha256": "eb4b6feffc71824dadc9c87fd05d9f43a10492da6b4723b99cecb54ee0dec090"
+  }
+}

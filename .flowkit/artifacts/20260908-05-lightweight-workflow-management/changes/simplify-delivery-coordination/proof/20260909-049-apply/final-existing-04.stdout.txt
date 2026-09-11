@@ -1,0 +1,52 @@
+TAP version 13
+# Subtest: Delivery Final prepares complete prerequisites and materializes one bounded closure
+ok 1 - Delivery Final prepares complete prerequisites and materializes one bounded closure
+  ---
+  duration_ms: 2792.6174
+  type: 'test'
+  ...
+# Subtest: Delivery Final writer preserves all non-target manifest bytes and ordering
+ok 2 - Delivery Final writer preserves all non-target manifest bytes and ordering
+  ---
+  duration_ms: 1702.4146
+  type: 'test'
+  ...
+# Subtest: Delivery Final coordination reader rejects missing, mismatched, duplicate, and incomplete manifests
+ok 3 - Delivery Final coordination reader rejects missing, mismatched, duplicate, and incomplete manifests
+  ---
+  duration_ms: 15.7682
+  type: 'test'
+  ...
+# Subtest: Delivery Final coordination writer never returns success on staging, replace, or readback failure
+ok 4 - Delivery Final coordination writer never returns success on staging, replace, or readback failure
+  ---
+  duration_ms: 1620.1092
+  type: 'test'
+  ...
+# Subtest: Delivery Final preparation rejects partial facts, active OpenSpec, output drift, and candidate drift
+ok 5 - Delivery Final preparation rejects partial facts, active OpenSpec, output drift, and candidate drift
+  ---
+  duration_ms: 2838.6546
+  type: 'test'
+  ...
+# Subtest: Delivery Final rejects failed archive anchors and unrelated external outcome bytes
+ok 6 - Delivery Final rejects failed archive anchors and unrelated external outcome bytes
+  ---
+  duration_ms: 1463.2724
+  type: 'test'
+  ...
+# Subtest: Delivery Final callback is defensive and correction or invalid results do not close coordination
+ok 7 - Delivery Final callback is defensive and correction or invalid results do not close coordination
+  ---
+  duration_ms: 2086.068
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 12969.9692

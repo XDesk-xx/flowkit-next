@@ -1,9 +1,9 @@
 import assert from "node:assert/strict";
-import { mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
-import os from "node:os";
+import { writeFile } from "node:fs/promises";
 import path from "node:path";
 import { spawn } from "node:child_process";
 import test from "node:test";
+import { contextFixture } from "./action-context-fixture.js";
 
 interface ProcessResult {
   readonly code: number;
@@ -34,7 +34,7 @@ async function runSourceCli(args: readonly string[]): Promise<ProcessResult> {
 }
 
 test("entrypoint returns machine error for unknown command", async () => {
-  const result = await runSourceCli(["archive", "--input", "missing.json"]);
+  const result = await runSourceCli(["action", "--input", "missing.json"]);
   assert.equal(result.code, 2);
   assert.deepEqual(JSON.parse(result.stdout), {
     kind: "error",
@@ -42,87 +42,48 @@ test("entrypoint returns machine error for unknown command", async () => {
   });
 });
 
-test("entrypoint distinguishes malformed JSON and formal Policy blocked outcome", async () => {
-  const root = await mkdtemp(path.join(os.tmpdir(), "flowkit-cli-entry-"));
+test("entrypoint distinguishes malformed JSON, obsolete selectors and formal Policy blocked", async () => {
+  const f = await contextFixture();
   try {
-    const malformed = path.join(root, "malformed.json");
-    await writeFile(malformed, "{");
-    const malformedResult = await runSourceCli(["next", "--input", malformed]);
-    assert.equal(malformedResult.code, 2);
-    assert.deepEqual(JSON.parse(malformedResult.stdout), {
-      kind: "error",
-      error: { kind: "invalid-request-json" },
-    });
-
-    const deliveryDir = path.join(root, "openspec", "delivery-groups");
-    await mkdir(deliveryDir, { recursive: true });
-    await writeFile(
-      path.join(deliveryDir, "delivery-one.yaml"),
-      "id: delivery-one\nchanges:\n  - id: cli-change\n    state: planned\n    dependsOn: []\nownerDecisions: []\n",
+    const requestPath = path.join(f.root, "request.json");
+    await writeFile(requestPath, "{");
+    const malformed = await runSourceCli(["next", "--input", requestPath]);
+    assert.equal(malformed.code, 2);
+    assert.equal(
+      JSON.parse(malformed.stdout).error.kind,
+      "invalid-request-json",
     );
-
-    const blocked = path.join(root, "blocked.json");
+    const request = {
+      repositoryRoot: f.repositoryRoot,
+      flowkitHome: f.flowkitHome,
+      deliveryId: "delivery-one",
+      changeId: "change-one",
+    };
     await writeFile(
-      blocked,
-      JSON.stringify({
-        repositoryRoot: root,
-        deliveryId: "delivery-one",
-        changeId: "cli-change",
-        changeStartSequence: 100,
-        currentRunId: null,
-        flowkitHome: root,
-      }),
+      requestPath,
+      JSON.stringify({ ...request, currentRunId: null }),
     );
-    const blockedResult = await runSourceCli(["next", "--input", blocked]);
-    assert.equal(blockedResult.code, 0);
-    assert.deepEqual(JSON.parse(blockedResult.stdout), {
+    const old = await runSourceCli(["next", "--input", requestPath]);
+    assert.equal(old.code, 2);
+    assert.equal(JSON.parse(old.stdout).error.kind, "invalid-request");
+    assert.match(JSON.parse(old.stdout).error.message, /currentRunId/);
+    await f.manifest("delivery-one", "change-one", "planned");
+    await writeFile(requestPath, JSON.stringify(request));
+    const blocked = await runSourceCli(["next", "--input", requestPath]);
+    assert.equal(blocked.code, 0);
+    assert.deepEqual(JSON.parse(blocked.stdout), {
       kind: "next",
       decision: { kind: "blocked", reason: "change-not-active" },
       checkpoint: { authorized: false, reason: "policy-not-ready" },
     });
-
-    const untrusted = path.join(root, "untrusted.json");
     await writeFile(
-      untrusted,
-      JSON.stringify({
-        repositoryRoot: path.join(root, "missing-repository"),
-        deliveryId: "delivery-one",
-        changeId: "cli-change",
-        changeStartSequence: 100,
-        currentRunId: null,
-        flowkitHome: root,
-      }),
+      requestPath,
+      JSON.stringify({ ...request, changeId: "missing" }),
     );
-    const untrustedResult = await runSourceCli(["next", "--input", untrusted]);
-    assert.equal(untrustedResult.code, 2);
-    assert.deepEqual(JSON.parse(untrustedResult.stdout), {
-      kind: "error",
-      error: { kind: "coordination-resolution-failed" },
-    });
-
-    const untrustedStatus = path.join(root, "untrusted-status.json");
-    await writeFile(
-      untrustedStatus,
-      JSON.stringify({
-        repositoryRoot: path.join(root, "missing-repository"),
-        deliveryId: "delivery-one",
-        changeId: "cli-change",
-        changeStartSequence: 100,
-        currentRunId: "20260828-101-apply",
-        flowkitHome: root,
-      }),
-    );
-    const untrustedStatusResult = await runSourceCli([
-      "status",
-      "--input",
-      untrustedStatus,
-    ]);
-    assert.equal(untrustedStatusResult.code, 2);
-    assert.deepEqual(JSON.parse(untrustedStatusResult.stdout), {
-      kind: "error",
-      error: { kind: "coordination-resolution-failed" },
-    });
+    const missing = await runSourceCli(["status", "--input", requestPath]);
+    assert.equal(missing.code, 2);
+    assert.equal(JSON.parse(missing.stdout).error.kind, "context-missing");
   } finally {
-    await rm(root, { recursive: true, force: true });
+    await f.cleanup();
   }
 });

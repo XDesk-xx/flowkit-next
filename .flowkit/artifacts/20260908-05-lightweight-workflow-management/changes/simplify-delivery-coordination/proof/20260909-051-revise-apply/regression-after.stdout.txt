@@ -1,0 +1,101 @@
+TAP version 13
+# Subtest: Final confirmation commit point survives fresh sessions without promoting pre-confirmation failures
+    # Subtest: success
+    ok 1 - success
+      ---
+      duration_ms: 3435.6397
+      type: 'test'
+      ...
+    # Subtest: first-readback
+    ok 2 - first-readback
+      ---
+      duration_ms: 2365.5389
+      type: 'test'
+      ...
+    # Subtest: input-drift
+    ok 3 - input-drift
+      ---
+      duration_ms: 2681.5282
+      type: 'test'
+      ...
+    # Subtest: related-run-drift
+    ok 4 - related-run-drift
+      ---
+      duration_ms: 2449.8732
+      type: 'test'
+      ...
+    # Subtest: before-confirmation
+    ok 5 - before-confirmation
+      ---
+      duration_ms: 2603.0722
+      type: 'test'
+      ...
+    # Subtest: pre-publication-input-drift
+    ok 6 - pre-publication-input-drift
+      ---
+      duration_ms: 2873.3638
+      type: 'test'
+      ...
+    # Subtest: publish-failure
+    ok 7 - publish-failure
+      ---
+      duration_ms: 2747.0989
+      type: 'test'
+      ...
+    # Subtest: published-response-loss
+    ok 8 - published-response-loss
+      ---
+      duration_ms: 2790.7554
+      type: 'test'
+      ...
+    # Subtest: before-active
+    ok 9 - before-active
+      ---
+      duration_ms: 2107.1586
+      type: 'test'
+      ...
+    # Subtest: after-active
+    ok 10 - after-active
+      ---
+      duration_ms: 2383.2453
+      type: 'test'
+      ...
+    # Subtest: staged-active
+    ok 11 - staged-active
+      ---
+      duration_ms: 2794.6281
+      type: 'test'
+      ...
+    # Subtest: after-unavailable
+    ok 12 - after-unavailable
+      ---
+      duration_ms: 2342.4095
+      type: 'test'
+      ...
+    # Subtest: staged-unavailable
+    ok 13 - staged-unavailable
+      ---
+      duration_ms: 2527.4662
+      type: 'test'
+      ...
+    # Subtest: published-active
+    ok 14 - published-active
+      ---
+      duration_ms: 2988.8035
+      type: 'test'
+      ...
+    1..14
+ok 1 - Final confirmation commit point survives fresh sessions without promoting pre-confirmation failures
+  ---
+  duration_ms: 37105.367
+  type: 'test'
+  ...
+1..1
+# tests 15
+# suites 0
+# pass 15
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 37586.5732

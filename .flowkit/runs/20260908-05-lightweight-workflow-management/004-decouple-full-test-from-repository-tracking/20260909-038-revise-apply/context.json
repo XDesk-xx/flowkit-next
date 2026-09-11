@@ -1,0 +1,25 @@
+{
+  "kind": "external-orchestrator-revise-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "author",
+  "action": "revise-apply",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "decouple-full-test-from-repository-tracking",
+  "projectOrdinal": 36,
+  "runId": "20260909-038-revise-apply",
+  "previousRunId": "20260909-037-review-apply",
+  "inputRunId": "20260909-036-revise-apply",
+  "startedAt": "2026-09-09 05:09:59 UTC",
+  "findingIds": [
+    "D05-RA037-001"
+  ],
+  "scope": "区分真实 Node 启动/preload 资源和普通 argv；不按文件存在性猜测输出为工具输入。",
+  "ownerDecisionsRelevant": [
+    {
+      "sourceRef": ".flowkit/runs/20260908-05-lightweight-workflow-management/004-decouple-full-test-from-repository-tracking/20260909-037-review-apply/result.json#ownerDecisionsRelevant",
+      "decision": "D05 independent-bootstrap；004/projectOrdinal36；必要材料留 target artifacts，历史不改，不执行 Git 或正式 D05 Full Test。"
+    }
+  ],
+  "proofRoot": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-038-revise-apply"
+}

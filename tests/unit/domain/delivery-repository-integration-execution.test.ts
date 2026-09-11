@@ -1,314 +1,63 @@
+import { fixtureInstallation } from "./manager-installation-fixture.js";
+import { loadManagerInstallation } from "../../../src/internal/manager-installation.js";
 import assert from "node:assert/strict";
-import { createHash } from "node:crypto";
-import { execFile } from "node:child_process";
-import { mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
-import { tmpdir } from "node:os";
+import { rm, writeFile, readFile } from "node:fs/promises";
 import path from "node:path";
 import test from "node:test";
-import { promisify } from "node:util";
-
 import {
-  deriveApplicableCheckCandidateRef,
-  deriveDeliveryFinalizationRef,
-  formDeliveryOperationPackage,
   invokeDeliveryRepositoryIntegrationOperation,
   prepareDeliveryRepositoryIntegrationOperationPackage,
-  type DeliveryFinalInvocationTerminal,
-  type DeliveryCheckpointOperation,
-  type ReadDeliveryRequiredEvidence,
-  type OwnerAuthorityFact,
 } from "../../../src/domain/index.js";
-import { deriveDeliveryRequiredEvidenceFromSource } from "../../../src/internal/delivery-required-evidence-source.js";
-import type { ReadRepositoryIntegrationSource } from "../../../src/internal/delivery-repository-integration-source.js";
 import {
-  acceptedEvidenceOutcomes,
-  evidenceSourceFor,
-} from "./delivery-evidence-outcome-fixture.js";
-import { admittedRunMaterial } from "./delivery-run-evidence-fixture.js";
+  makeFixture,
+  git,
+  deliveryId,
+} from "./delivery-integration-fixture.js";
 
-const execFileAsync = promisify(execFile);
-const deliveryId = "20260902-04-delivery-continuity-stable-core-closure";
-
-async function git(root: string, ...args: string[]): Promise<string> {
-  const { stdout } = await execFileAsync("git", args, {
-    cwd: root,
-    encoding: "utf8",
-  });
-  return stdout.trim();
-}
-
-function reverseObjectFields(value: unknown): unknown {
-  if (Array.isArray(value)) return value.map(reverseObjectFields);
-  if (typeof value !== "object" || value === null) return value;
-  return Object.fromEntries(
-    Object.entries(value)
-      .reverse()
-      .map(([key, entry]) => [key, reverseObjectFields(entry)]),
-  );
-}
-
-async function makeFixture(): Promise<{
-  root: string;
-  readRequiredEvidence: ReadDeliveryRequiredEvidence;
-  input: {
-    deliveryId: typeof deliveryId;
-    ownerAuthority: OwnerAuthorityFact;
-    deliveryFinalOutcome: DeliveryFinalInvocationTerminal;
-    deliveryBranch: string;
-    targetMainRef: string;
-    acceptedBaseCommit: string;
-    checkpointOperation: { readonly kind: "create-new" };
-  };
-  integrationSource: (
-    operation?:
-      | { readonly kind: "create-new" }
-      | {
-          readonly kind: "reuse-existing";
-          readonly checkpointCommit: string;
-        },
-    acceptedMain?: () => string | Promise<string>,
-    finalCommit?: () => string | Promise<string>,
-  ) => ReadRepositoryIntegrationSource;
-}> {
-  const root = await mkdtemp(path.join(tmpdir(), "flowkit-repo-integration-"));
-  await git(root, "init", "-b", "main");
-  await git(root, "config", "user.name", "Flowkit Test");
-  await git(root, "config", "user.email", "flowkit@example.invalid");
-  await writeFile(path.join(root, "product.txt"), "base\n", "utf8");
-  await git(root, "add", ".");
-  await git(root, "commit", "-m", "base");
-  const acceptedBaseCommit = await git(root, "rev-parse", "HEAD");
-
-  await git(root, "checkout", "-b", "delivery/d04");
-  await mkdir(path.join(root, "skills", "delivery", "repository-integration"), {
-    recursive: true,
-  });
-  await writeFile(
-    path.join(root, "skills", "delivery", "repository-integration", "SKILL.md"),
-    "# repository integration\n",
-    "utf8",
-  );
-  await writeFile(path.join(root, "product.txt"), "finalized\n", "utf8");
-  await mkdir(path.join(root, ".flowkit"), { recursive: true });
-  await writeFile(
-    path.join(root, ".flowkit", "project.json"),
-    '{"projectId":"flowkit-next"}\n',
-  );
-
-  const reviewApplyRunId = "20260901-001-review-apply";
-  const archiveRunId = "20260901-002-archive";
-  const runRoot = `.flowkit/runs/${deliveryId}/001-change-one`;
-  const makeRun = (
-    runId: string,
-    sequence: number,
-    actionId: "review-apply" | "archive",
-    previousRunId: string | null,
-  ) => {
-    const actionIdentity = { deliveryId, changeId: "change-one", actionId };
-    return admittedRunMaterial({
-      runId,
-      artifactRoot: `${runRoot}/${runId}`,
-      actionMarkdown: Buffer.from(`# ${actionId}\n`),
-      contextJson: Buffer.from(
-        `${JSON.stringify({
-          runId,
-          occurrence: { date: "20260901", sequence, actionId },
-          actionIdentity,
-          role: actionId === "review-apply" ? "reviewer" : "author",
-          lifecycleState: "prepared",
-          ownerAuthority: null,
-          previousRunId,
-        })}\n`,
-      ),
-      resultJson: Buffer.from(
-        `${JSON.stringify({
-          runId,
-          actionIdentity,
-          authorConclusion: actionId === "archive" ? "PASS" : null,
-          reviewerVerdict: actionId === "review-apply" ? "approved" : null,
-          verificationVerdict: null,
-          nextBoundary: actionId === "review-apply" ? "archive" : "checkpoint",
-          facts: {},
-        })}\n`,
-      ),
-    });
-  };
-  const runMaterials = [
-    makeRun(reviewApplyRunId, 1, "review-apply", null),
-    makeRun(archiveRunId, 2, "archive", reviewApplyRunId),
-  ];
-  for (const run of runMaterials) {
-    const target = path.join(root, ...run.artifactRoot.split("/"));
-    await mkdir(target, { recursive: true });
-    await writeFile(path.join(target, "action.md"), run.actionMarkdown);
-    await writeFile(path.join(target, "context.json"), run.contextJson);
-    await writeFile(path.join(target, "result.json"), run.resultJson);
+test("confirmation lost during final authorization read rejects before Git callback", async () => {
+  const f = await makeFixture();
+  try {
+    const source = f.integrationSource();
+    let reads = 0;
+    let callbacks = 0;
+    const drifting = {
+      ...source,
+      readAuthorization: async (
+        ...args: Parameters<typeof source.readAuthorization>
+      ) => {
+        const result = await source.readAuthorization(...args);
+        if (++reads === 2) {
+          const bytes = await readFile(f.manifestPath, "utf8");
+          await writeFile(
+            f.manifestPath,
+            bytes.replace(f.confirmationRef, "unpublished"),
+          );
+        }
+        return result;
+      },
+    };
+    const before = await git(f.root, "rev-parse", "HEAD");
+    const result = await invokeDeliveryRepositoryIntegrationOperation(
+      f.root,
+      f.input,
+      () => {
+        callbacks++;
+        return { status: "committed" };
+      },
+      () => {
+        callbacks++;
+        return { status: "repository-acceptance-complete" };
+      },
+      drifting,
+      fixtureInstallation(f.root),
+    );
+    assert.equal(result.status, "failed");
+    assert.equal(callbacks, 0);
+    assert.equal(await git(f.root, "rev-parse", "HEAD"), before);
+  } finally {
+    await rm(f.root, { recursive: true, force: true });
   }
-
-  const finalAuthority: OwnerAuthorityFact = {
-    ref: `owner:${"a".repeat(64)}`,
-    decision: "finalize-delivery",
-    deliveryId,
-    sourceRef: "test:delivery-final",
-    scope: ["delivery-final"],
-  };
-  const finalGuidance = {
-    path: "skills/delivery/final/SKILL.md",
-    contentSha256: "b".repeat(64),
-  };
-  const evidenceOutcomes = acceptedEvidenceOutcomes(deliveryId);
-  const readRequiredEvidence: ReadDeliveryRequiredEvidence = evidenceSourceFor(
-    root,
-    deliveryId,
-    [
-      {
-        changeId: "change-one",
-        archiveRunId,
-        reviewApplyRunId,
-        runs: runMaterials,
-      },
-    ],
-    evidenceOutcomes,
-  );
-  const requiredEvidence = await deriveDeliveryRequiredEvidenceFromSource(
-    readRequiredEvidence,
-    {
-      projectId: "flowkit-next",
-      deliveryId,
-      changeIds: ["change-one"],
-      fullTestExecutionRef: evidenceOutcomes.fullTest.record.executionRef,
-      architectureFinalizationRef:
-        evidenceOutcomes.architecture.record.architectureFinalizationRef,
-    },
-  );
-  assert.notEqual(requiredEvidence, null);
-  const finalFacts = {
-    verifiedCandidateRef: `candidate:sha256:${"1".repeat(64)}`,
-    fullTestExecutionRef: evidenceOutcomes.fullTest.record.executionRef,
-    architectureFinalizationRef:
-      evidenceOutcomes.architecture.record.architectureFinalizationRef,
-    architectureMaterializedCandidateRef: `candidate:sha256:${"4".repeat(64)}`,
-    coordinationPrestateRef: {
-      artifact: `openspec/delivery-groups/${deliveryId}.yaml`,
-      contentSha256: "5".repeat(64),
-      bytes: 100,
-    },
-    completedRequiredChangeIds: ["change-one"],
-    requiredEvidence: requiredEvidence!,
-  };
-  const finalPackage = formDeliveryOperationPackage(
-    deliveryId,
-    "delivery-final",
-    finalAuthority,
-    finalFacts,
-    finalGuidance,
-  );
-  assert.equal(finalPackage?.operationId, "delivery-final");
-  if (finalPackage?.operationId !== "delivery-final")
-    throw new Error("fixture");
-
-  const coordinationArtifact = `openspec/delivery-groups/${deliveryId}.yaml`;
-  const coordinationBytes = Buffer.from(
-    `id: ${deliveryId}\nstate: completed\n`,
-    "utf8",
-  );
-  const coordinationPath = path.join(root, ...coordinationArtifact.split("/"));
-  await mkdir(path.dirname(coordinationPath), { recursive: true });
-  await writeFile(coordinationPath, coordinationBytes);
-  const coordinationRef = {
-    artifact: coordinationArtifact,
-    contentSha256: createHash("sha256").update(coordinationBytes).digest("hex"),
-    bytes: coordinationBytes.length,
-  };
-  const finalizedCandidateRef = await deriveApplicableCheckCandidateRef(root);
-  assert.notEqual(finalizedCandidateRef, null);
-  const deliveryFinalizationRef = deriveDeliveryFinalizationRef(
-    finalPackage,
-    coordinationRef,
-    finalizedCandidateRef!,
-  );
-  assert.notEqual(deliveryFinalizationRef, null);
-  const deliveryFinalOutcome: DeliveryFinalInvocationTerminal = {
-    status: "terminal",
-    operationPackage: finalPackage,
-    record: {
-      deliveryFinalizationRef: deliveryFinalizationRef!,
-      verifiedCandidateRef: finalFacts.verifiedCandidateRef,
-      fullTestExecutionRef: finalFacts.fullTestExecutionRef,
-      architectureFinalizationRef: finalFacts.architectureFinalizationRef,
-      architectureMaterializedCandidateRef:
-        finalFacts.architectureMaterializedCandidateRef,
-      coordinationRef,
-      finalizedCandidateRef: finalizedCandidateRef!,
-    },
-  };
-  const preIntegrationHead = await git(root, "rev-parse", "HEAD");
-  const integrationSource = (
-    operation: DeliveryCheckpointOperation = { kind: "create-new" },
-    acceptedMain?: () => string | Promise<string>,
-    acceptedFinal?: () => string | Promise<string>,
-  ): ReadRepositoryIntegrationSource => ({
-    readAuthorization: () => ({
-      sourceRef: "test:owner-repository-integration",
-      ownerAuthorityRef: `owner:${"c".repeat(64)}`,
-      ownerAuthoritySourceRef: "test:repo-integration",
-      deliveryId,
-      deliveryBranch: "delivery/d04",
-      targetMainRef: "refs/heads/main",
-      targetMainPreIntegrationCommit: acceptedBaseCommit,
-      preIntegrationHead:
-        operation.kind === "reuse-existing"
-          ? operation.checkpointCommit
-          : preIntegrationHead,
-      acceptedBaseCommit,
-      checkpointOperation: operation,
-      reuseCheckpointSourceRef:
-        operation.kind === "reuse-existing"
-          ? "test:authorized-checkpoint"
-          : null,
-    }),
-    readAcceptance: async () => {
-      const finalCommit =
-        acceptedFinal !== undefined
-          ? await acceptedFinal()
-          : operation.kind === "reuse-existing"
-            ? operation.checkpointCommit
-            : await git(root, "rev-parse", "HEAD");
-      return {
-        sourceRef: "test:accepted-repository-operation",
-        ownerAuthorityRef: `owner:${"c".repeat(64)}`,
-        deliveryId,
-        targetMainRef: "refs/heads/main",
-        targetMainPreIntegrationCommit: acceptedBaseCommit,
-        checkpointOperation: operation,
-        finalCommit,
-        acceptedMainCommit:
-          acceptedMain === undefined ? finalCommit : await acceptedMain(),
-      };
-    },
-  });
-
-  return {
-    root,
-    readRequiredEvidence,
-    integrationSource,
-    input: {
-      deliveryId,
-      ownerAuthority: {
-        ref: `owner:${"c".repeat(64)}`,
-        decision: "authorize-repository-integration",
-        deliveryId,
-        sourceRef: "test:repo-integration",
-        scope: ["delivery-repository-integration"],
-      },
-      deliveryFinalOutcome,
-      deliveryBranch: "delivery/d04",
-      targetMainRef: "refs/heads/main",
-      acceptedBaseCommit,
-      checkpointOperation: { kind: "create-new" as const },
-    },
-  };
-}
+});
 
 test("trusted preparation binds exact finalized state and pre-integration Git facts", async () => {
   const fixture = await makeFixture();
@@ -317,8 +66,8 @@ test("trusted preparation binds exact finalized state and pre-integration Git fa
       await prepareDeliveryRepositoryIntegrationOperationPackage(
         fixture.root,
         fixture.input,
-        fixture.readRequiredEvidence,
         fixture.integrationSource(),
+        fixtureInstallation(fixture.root),
       );
     assert.equal(
       operationPackage?.operationId,
@@ -353,8 +102,8 @@ test("trusted Owner source rejects caller checkpoint-operation substitution", as
             checkpointCommit: fixture.input.acceptedBaseCommit,
           },
         },
-        fixture.readRequiredEvidence,
         fixture.integrationSource(),
+        fixtureInstallation(fixture.root),
       ),
       null,
     );
@@ -363,29 +112,15 @@ test("trusted Owner source rejects caller checkpoint-operation substitution", as
   }
 });
 
-test("Integration accepts semantically identical reordered Final evidence", async () => {
+test("Integration rejects caller old Final packages instead of translating them", async () => {
   const fixture = await makeFixture();
   try {
-    const outcome = fixture.input.deliveryFinalOutcome;
-    const operationFacts = outcome.operationPackage.operationFacts;
-    const reordered = {
-      ...outcome,
-      operationPackage: {
-        ...outcome.operationPackage,
-        operationFacts: {
-          ...operationFacts,
-          requiredEvidence: reverseObjectFields(
-            operationFacts.requiredEvidence,
-          ),
-        },
-      },
-    } as DeliveryFinalInvocationTerminal;
-    assert.notEqual(
+    assert.equal(
       await prepareDeliveryRepositoryIntegrationOperationPackage(
         fixture.root,
-        { ...fixture.input, deliveryFinalOutcome: reordered },
-        fixture.readRequiredEvidence,
+        { ...fixture.input, deliveryFinalOutcome: { status: "terminal" } },
         fixture.integrationSource(),
+        fixtureInstallation(fixture.root),
       ),
       null,
     );
@@ -397,8 +132,7 @@ test("Integration accepts semantically identical reordered Final evidence", asyn
 test("coordination byte drift invalidates trusted preparation", async () => {
   const fixture = await makeFixture();
   try {
-    const artifact =
-      fixture.input.deliveryFinalOutcome.record.coordinationRef.artifact;
+    const artifact = `openspec/delivery-groups/${deliveryId}.yaml`;
     await writeFile(
       path.join(fixture.root, ...artifact.split("/")),
       "drift\n",
@@ -408,8 +142,8 @@ test("coordination byte drift invalidates trusted preparation", async () => {
       await prepareDeliveryRepositoryIntegrationOperationPackage(
         fixture.root,
         fixture.input,
-        fixture.readRequiredEvidence,
         fixture.integrationSource(),
+        fixtureInstallation(fixture.root),
       ),
       null,
     );
@@ -433,8 +167,8 @@ test("repository integration proves one final commit and derives accepted main a
         await git(fixture.root, "update-ref", "refs/heads/main", finalCommit);
         return { status: "repository-acceptance-complete", auditRef: "pr:1" };
       },
-      fixture.readRequiredEvidence,
       fixture.integrationSource(),
+      loadManagerInstallation(),
     );
     assert.equal(outcome.status, "terminal");
     if (outcome.status !== "terminal") throw new Error("expected terminal");
@@ -508,8 +242,8 @@ test("repository integration reuses an explicitly bound existing checkpoint with
         await git(fixture.root, "update-ref", "refs/heads/main", finalCommit);
         return { status: "repository-acceptance-complete" };
       },
-      fixture.readRequiredEvidence,
       fixture.integrationSource(checkpointOperation),
+      fixtureInstallation(fixture.root),
     );
     assert.equal(outcome.status, "terminal");
     if (outcome.status !== "terminal") throw new Error("expected terminal");
@@ -542,13 +276,25 @@ test("target-main drift during final commit is rejected before repository accept
         providerCalled = true;
         return { status: "repository-acceptance-complete" };
       },
-      fixture.readRequiredEvidence,
       fixture.integrationSource(),
+      fixtureInstallation(fixture.root),
     );
     assert.deepEqual(outcome, {
       status: "failed",
       reason: "final-commit-rejected",
       record: null,
+      gitEffects: {
+        phase: "commit",
+        effect: "confirmed",
+        checkpointCommit: await git(fixture.root, "rev-parse", "HEAD"),
+        remaining: ["核对 checkpoint 已有效果与当前权限"],
+        observedHead: await git(fixture.root, "rev-parse", "HEAD"),
+        observedTargetMainCommit: await git(
+          fixture.root,
+          "rev-parse",
+          "refs/heads/main",
+        ),
+      },
     });
     assert.equal(providerCalled, false);
   } finally {
@@ -556,7 +302,7 @@ test("target-main drift during final commit is rejected before repository accept
   }
 });
 
-test("accepted main ancestry without exact tree equality is rejected", async () => {
+test("trusted accepted operation does not reapply Final whole-tree equality", async () => {
   const fixture = await makeFixture();
   try {
     let acceptedMainCommit = "";
@@ -583,18 +329,14 @@ test("accepted main ancestry without exact tree equality is rejected", async () 
         acceptedMainCommit = await git(fixture.root, "rev-parse", "HEAD");
         return { status: "repository-acceptance-complete" };
       },
-      fixture.readRequiredEvidence,
       fixture.integrationSource(
         undefined,
         () => acceptedMainCommit,
         () => finalCommit,
       ),
+      fixtureInstallation(fixture.root),
     );
-    assert.deepEqual(outcome, {
-      status: "failed",
-      reason: "accepted-main-content-rejected",
-      record: null,
-    });
+    assert.equal(outcome.status, "terminal");
   } finally {
     await rm(fixture.root, { recursive: true, force: true });
   }

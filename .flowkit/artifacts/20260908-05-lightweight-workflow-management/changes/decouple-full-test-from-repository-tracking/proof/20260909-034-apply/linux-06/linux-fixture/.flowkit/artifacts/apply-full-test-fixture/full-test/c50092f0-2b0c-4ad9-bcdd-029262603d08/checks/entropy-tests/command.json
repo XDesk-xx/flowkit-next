@@ -1,0 +1,26 @@
+{
+  "checkId": "entropy-tests",
+  "checkRef": "full-test-check:sha256:ce8f579a4ec9e5ffae9ca3fb176ac35330ad1be9e939a2774a28d5de7c045bad",
+  "program": "/usr/local/bin/node",
+  "args": [
+    "--test",
+    "tests/unit/quality/production-reachability.test.mjs"
+  ],
+  "cwd": ".",
+  "startedAt": "2026-09-09T04:05:24.062Z",
+  "finishedAt": "2026-09-09T04:05:25.413Z",
+  "exitCode": 0,
+  "signal": null,
+  "processError": null,
+  "saveError": null,
+  "stdout": {
+    "artifact": ".flowkit/artifacts/apply-full-test-fixture/full-test/c50092f0-2b0c-4ad9-bcdd-029262603d08/checks/entropy-tests/stdout.txt",
+    "contentSha256": "2ee2b878128de58d063a5bb41dc767613b6a5c66c2e5d23b9a78315555b91413",
+    "bytes": 1480
+  },
+  "stderr": {
+    "artifact": ".flowkit/artifacts/apply-full-test-fixture/full-test/c50092f0-2b0c-4ad9-bcdd-029262603d08/checks/entropy-tests/stderr.txt",
+    "contentSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "kind": "external-orchestrator-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "author",
+  "action": "propose",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "simplify-delivery-coordination",
+  "projectOrdinal": 37,
+  "runId": "20260909-045-propose",
+  "previousRunId": "20260909-044-review-explore",
+  "startedAt": "2026-09-09T07:36:01Z",
+  "ownerInstruction": "根据最新run，propose",
+  "acceptedReview": ".flowkit/runs/20260908-05-lightweight-workflow-management/005-simplify-delivery-coordination/20260909-044-review-explore/result.json",
+  "scope": "044 approved Explore 的 Start/Final 轻量协调与删除字段的 Integration 直接闭包",
+  "ownerDecisionsRelevant": [
+    {
+      "sourceRef": ".flowkit/runs/20260908-05-lightweight-workflow-management/005-simplify-delivery-coordination/20260909-043-explore/context.json#ownerDecisionHandoff",
+      "decision": "独立 bootstrap；必要 proof/Full Test 保存 target artifacts 默认长期保留，.tmp 可丢弃；不改写历史。"
+    }
+  ],
+  "nonGoals": [
+    "Apply",
+    "Git mutation",
+    "重做 Explore",
+    "实际 D05 Full Test",
+    "新增 Registry/快照库/恢复平台"
+  ],
+  "repositoryHead": "ba53f8ac9f48c71e334ec4d0ac3811a323fbd525"
+}

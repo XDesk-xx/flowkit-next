@@ -1,6 +1,6 @@
 # Skills
 
-Canonical project Skill root.
+Manager-distributed system Skill root. Product Action/Delivery Guidance and tool/vendor references resolve within the same manager installation, not the target repository. The target need not copy these assets; bootstrap `.agents/skills` remains independent.
 
 ```text
 skills/

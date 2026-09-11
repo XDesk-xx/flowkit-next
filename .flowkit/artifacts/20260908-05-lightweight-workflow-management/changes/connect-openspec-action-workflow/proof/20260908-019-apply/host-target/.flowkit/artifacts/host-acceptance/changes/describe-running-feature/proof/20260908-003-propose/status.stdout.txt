@@ -1,0 +1,104 @@
+{
+  "changeName": "describe-running-feature",
+  "schemaName": "spec-driven",
+  "planningHome": {
+    "kind": "repo",
+    "root": "D:\\Projects\\flowkit-next\\.flowkit\\artifacts\\20260908-05-lightweight-workflow-management\\changes\\connect-openspec-action-workflow\\proof\\20260908-019-apply\\host-target",
+    "changesDir": "D:\\Projects\\flowkit-next\\.flowkit\\artifacts\\20260908-05-lightweight-workflow-management\\changes\\connect-openspec-action-workflow\\proof\\20260908-019-apply\\host-target\\openspec\\changes",
+    "defaultSchema": "spec-driven"
+  },
+  "changeRoot": "D:\\Projects\\flowkit-next\\.flowkit\\artifacts\\20260908-05-lightweight-workflow-management\\changes\\connect-openspec-action-workflow\\proof\\20260908-019-apply\\host-target\\openspec\\changes\\describe-running-feature",
+  "artifactPaths": {
+    "proposal": {
+      "outputPath": "proposal.md",
+      "resolvedOutputPath": "D:\\Projects\\flowkit-next\\.flowkit\\artifacts\\20260908-05-lightweight-workflow-management\\changes\\connect-openspec-action-workflow\\proof\\20260908-019-apply\\host-target\\openspec\\changes\\describe-running-feature\\proposal.md",
+      "existingOutputPaths": [
+        "D:\\Projects\\flowkit-next\\.flowkit\\artifacts\\20260908-05-lightweight-workflow-management\\changes\\connect-openspec-action-workflow\\proof\\20260908-019-apply\\host-target\\openspec\\changes\\describe-running-feature\\proposal.md"
+      ]
+    },
+    "specs": {
+      "outputPath": "specs/**/*.md",
+      "resolvedOutputPath": "D:\\Projects\\flowkit-next\\.flowkit\\artifacts\\20260908-05-lightweight-workflow-management\\changes\\connect-openspec-action-workflow\\proof\\20260908-019-apply\\host-target\\openspec\\changes\\describe-running-feature\\specs\\**\\*.md",
+      "existingOutputPaths": [
+        "D:\\Projects\\flowkit-next\\.flowkit\\artifacts\\20260908-05-lightweight-workflow-management\\changes\\connect-openspec-action-workflow\\proof\\20260908-019-apply\\host-target\\openspec\\changes\\describe-running-feature\\specs\\feature-description\\spec.md"
+      ]
+    },
+    "design": {
+      "outputPath": "design.md",
+      "resolvedOutputPath": "D:\\Projects\\flowkit-next\\.flowkit\\artifacts\\20260908-05-lightweight-workflow-management\\changes\\connect-openspec-action-workflow\\proof\\20260908-019-apply\\host-target\\openspec\\changes\\describe-running-feature\\design.md",
+      "existingOutputPaths": [
+        "D:\\Projects\\flowkit-next\\.flowkit\\artifacts\\20260908-05-lightweight-workflow-management\\changes\\connect-openspec-action-workflow\\proof\\20260908-019-apply\\host-target\\openspec\\changes\\describe-running-feature\\design.md"
+      ]
+    },
+    "tasks": {
+      "outputPath": "tasks.md",
+      "resolvedOutputPath": "D:\\Projects\\flowkit-next\\.flowkit\\artifacts\\20260908-05-lightweight-workflow-management\\changes\\connect-openspec-action-workflow\\proof\\20260908-019-apply\\host-target\\openspec\\changes\\describe-running-feature\\tasks.md",
+      "existingOutputPaths": [
+        "D:\\Projects\\flowkit-next\\.flowkit\\artifacts\\20260908-05-lightweight-workflow-management\\changes\\connect-openspec-action-workflow\\proof\\20260908-019-apply\\host-target\\openspec\\changes\\describe-running-feature\\tasks.md"
+      ]
+    }
+  },
+  "isPlanningComplete": true,
+  "isComplete": true,
+  "applyRequires": [
+    "tasks"
+  ],
+  "nextSteps": [
+    "All planning artifacts are complete. Run openspec instructions apply --change \"describe-running-feature\" --json to inspect implementation progress."
+  ],
+  "actionContext": {
+    "mode": "repo-local",
+    "sourceOfTruth": "repo",
+    "planningArtifacts": [
+      "proposal",
+      "specs",
+      "design",
+      "tasks"
+    ],
+    "linkedContext": [],
+    "allowedEditRoots": [
+      "D:\\Projects\\flowkit-next\\.flowkit\\artifacts\\20260908-05-lightweight-workflow-management\\changes\\connect-openspec-action-workflow\\proof\\20260908-019-apply\\host-target"
+    ],
+    "requiresAffectedAreaSelection": false,
+    "constraints": [
+      "Repo-local change artifacts and implementation edits are scoped to this project."
+    ]
+  },
+  "artifacts": [
+    {
+      "id": "proposal",
+      "outputPath": "proposal.md",
+      "status": "done",
+      "requires": []
+    },
+    {
+      "id": "specs",
+      "outputPath": "specs/**/*.md",
+      "status": "done",
+      "requires": [
+        "proposal"
+      ]
+    },
+    {
+      "id": "design",
+      "outputPath": "design.md",
+      "status": "done",
+      "requires": [
+        "proposal"
+      ]
+    },
+    {
+      "id": "tasks",
+      "outputPath": "tasks.md",
+      "status": "done",
+      "requires": [
+        "specs",
+        "design"
+      ]
+    }
+  ],
+  "root": {
+    "path": "D:\\Projects\\flowkit-next\\.flowkit\\artifacts\\20260908-05-lightweight-workflow-management\\changes\\connect-openspec-action-workflow\\proof\\20260908-019-apply\\host-target",
+    "source": "nearest"
+  }
+}

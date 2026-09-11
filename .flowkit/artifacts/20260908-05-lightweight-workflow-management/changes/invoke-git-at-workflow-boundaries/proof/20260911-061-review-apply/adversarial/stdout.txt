@@ -1,0 +1,89 @@
+{
+  "observations": [
+    {
+      "case": "push-follow-tags-expands-ref-scope",
+      "fixtureRoot": "D:\\Projects\\flowkit-next\\.tmp\\d05-061-review-git-WSukOz\\follow-tags",
+      "authorizedOperation": {
+        "kind": "push",
+        "localCommit": "628583186334c1ff480bc59dabc3cb6dd75d17ea",
+        "remote": "origin",
+        "targetRef": "refs/heads/main"
+      },
+      "beforeRefs": "",
+      "afterRefs": [
+        "refs/heads/main"
+      ],
+      "outcome": {
+        "status": "completed",
+        "phase": "readback",
+        "reason": null,
+        "observed": {
+          "checkpointCommit": "628583186334c1ff480bc59dabc3cb6dd75d17ea",
+          "remoteCommit": "628583186334c1ff480bc59dabc3cb6dd75d17ea"
+        },
+        "effect": "confirmed",
+        "remaining": []
+      },
+      "unauthorizedTagPublished": false
+    },
+    {
+      "case": "ordinary-checkpoint-completes-pending-merge",
+      "fixtureRoot": "D:\\Projects\\flowkit-next\\.tmp\\d05-061-review-git-WSukOz\\pending-merge",
+      "authorizedOperation": {
+        "kind": "create-new",
+        "paths": [
+          "a.txt"
+        ],
+        "commitMessage": "ordinary checkpoint only",
+        "commitShape": null
+      },
+      "beforeHead": "bb3f7dd88f843ad5870f59feed510358a0c0ec4b",
+      "mergeHead": "9cbeab4852c883117dbf40920c54d56271bc09ef",
+      "afterHead": "bb3f7dd88f843ad5870f59feed510358a0c0ec4b",
+      "parents": [
+        "3a3d75fec1b2630e477c20924679c3422e2de66a"
+      ],
+      "mergeHeadStillExists": true,
+      "outcome": {
+        "status": "incomplete",
+        "phase": "preflight",
+        "reason": "普通 checkpoint 不接续待完成 Git 操作: MERGE_HEAD",
+        "observed": {
+          "checkpointCommit": null,
+          "remoteCommit": null
+        },
+        "effect": "none",
+        "remaining": [
+          "核对本次权限、范围和目标后显式调用"
+        ]
+      }
+    },
+    {
+      "case": "reused-checkpoint-lost-before-acceptance",
+      "fixtureRoot": "D:\\Projects\\flowkit-next\\.tmp\\d05-061-review-git-WSukOz\\flowkit-integration-iWJuEm",
+      "knownCheckpoint": "9b06d66a14a695c78b36d1502ca5dd00483624c8",
+      "actualHead": "9b06d66a14a695c78b36d1502ca5dd00483624c8",
+      "sourceReads": 3,
+      "acceptanceCalled": false,
+      "outcome": {
+        "status": "incomplete",
+        "phase": "acceptance",
+        "reason": "repository-acceptance-rejected",
+        "observed": {
+          "checkpointCommit": "9b06d66a14a695c78b36d1502ca5dd00483624c8",
+          "remoteCommit": null
+        },
+        "effect": "none",
+        "remaining": [
+          "完成并核对真实 repository acceptance"
+        ]
+      }
+    }
+  ],
+  "nativeCommands": 32,
+  "evidence": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/adversarial-observations.json",
+    "bytes": 33961,
+    "sha256": "92cf6d0ac6517df944b1d5abb66f3ce17c801bb4d987117905d0f420c2c42c09"
+  }
+}

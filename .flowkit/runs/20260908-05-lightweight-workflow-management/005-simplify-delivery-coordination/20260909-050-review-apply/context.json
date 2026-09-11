@@ -1,0 +1,30 @@
+{
+  "kind": "external-orchestrator-review-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "reviewer",
+  "action": "review-apply",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "simplify-delivery-coordination",
+  "projectOrdinal": 37,
+  "runId": "20260909-050-review-apply",
+  "previousRunId": "20260909-049-apply",
+  "reviewedRunId": "20260909-049-apply",
+  "startedAt": "2026-09-09T10:26:39.272Z",
+  "ownerInstruction": "根据最新run，review，review 完，简短解释当前方案",
+  "reviewerHow": ".agents/skills/review-apply/SKILL.md",
+  "scope": "独立审查 049 实现、047/048 批准合同及 R046-01 验收；Reviewer 仅写自有 Run/proof，不修改 Author artifacts。",
+  "mutationBaseline": {
+    "files": 4506,
+    "sha256": "b3e409324caf8317bfa022b90ffd4cc45f9f66c38ab614a6ab96421b6c729881",
+    "head": "ba53f8ac9f48c71e334ec4d0ac3811a323fbd525",
+    "at": "2026-09-09T10:26:39.272Z"
+  },
+  "proofRoot": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-050-review-apply",
+  "ownerDecisionsRelevant": [
+    {
+      "sourceRef": ".flowkit/runs/20260908-05-lightweight-workflow-management/005-simplify-delivery-coordination/20260909-049-apply/context.json#ownerDecisionsRelevant",
+      "decision": "D05 independent-bootstrap；必要材料留 target artifacts，.tmp 可丢弃，历史不改写；不执行实际 D05 Full Test/Final 或 Git。"
+    }
+  ]
+}

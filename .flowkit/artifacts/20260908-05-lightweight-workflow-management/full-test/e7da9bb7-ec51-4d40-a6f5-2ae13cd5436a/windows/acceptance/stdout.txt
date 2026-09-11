@@ -1,0 +1,52 @@
+TAP version 13
+# Subtest: installed manager relocates without target assets, dev dependencies or project writes
+ok 1 - installed manager relocates without target assets, dev dependencies or project writes
+  ---
+  duration_ms: 13910.4216
+  type: 'test'
+  ...
+# Subtest: detached prerequisites are explicit and fail closed
+ok 2 - detached prerequisites are explicit and fail closed
+  ---
+  duration_ms: 12.3751
+  type: 'test'
+  ...
+# Subtest: detached whole-manager acceptance uses candidate-generated durable Runs and emitted CLI
+ok 3 - detached whole-manager acceptance uses candidate-generated durable Runs and emitted CLI
+  ---
+  duration_ms: 9257.8994
+  type: 'test'
+  ...
+# Subtest: doctor uses exact managed runtimes and ignores fake PATH executables
+ok 4 - doctor uses exact managed runtimes and ignores fake PATH executables
+  ---
+  duration_ms: 1510.3782
+  type: 'test'
+  ...
+# Subtest: windows-compatibility-simulation covers current path and process portability surface
+ok 5 - windows-compatibility-simulation covers current path and process portability surface
+  ---
+  duration_ms: 1.316
+  type: 'test'
+  ...
+# Subtest: Delivery Final public contract is exact and has no Git or next-operation capability
+ok 6 - Delivery Final public contract is exact and has no Git or next-operation capability
+  ---
+  duration_ms: 1.2622
+  type: 'test'
+  ...
+# Subtest: shipped host relocates independently of target assets and import has no Git side effects
+ok 7 - shipped host relocates independently of target assets and import has no Git side effects
+  ---
+  duration_ms: 4120.8227
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 24888.6413

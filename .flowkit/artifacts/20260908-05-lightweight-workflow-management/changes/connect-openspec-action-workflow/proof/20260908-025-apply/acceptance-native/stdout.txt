@@ -1,0 +1,77 @@
+TAP version 13
+# Subtest: installed manager relocates without target assets, dev dependencies or project writes
+ok 1 - installed manager relocates without target assets, dev dependencies or project writes
+  ---
+  duration_ms: 21959.2391
+  type: 'test'
+  ...
+# Subtest: detached prerequisites are explicit and fail closed
+ok 2 - detached prerequisites are explicit and fail closed
+  ---
+  duration_ms: 19.2554
+  type: 'test'
+  ...
+# Subtest: detached whole-manager acceptance uses candidate-generated durable Runs and emitted CLI
+not ok 3 - detached whole-manager acceptance uses candidate-generated durable Runs and emitted CLI
+  ---
+  duration_ms: 292.0637
+  type: 'test'
+  location: 'D:\\Projects\\flowkit-next\\tests\\acceptance\\foundation-manager.acceptance.test.ts:1:5654'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+      {
+        error: {
+          kind: 'invalid-request',
+    +     message: 'Remove currentRunId/changeStartSequence; context is resolved from target and optional deliveryId/changeId'
+        },
+        kind: 'error'
+      }
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    kind: 'error'
+    error:
+      kind: 'invalid-request'
+  actual:
+    kind: 'error'
+    error:
+      kind: 'invalid-request'
+      message: 'Remove currentRunId/changeStartSequence; context is resolved from target and optional deliveryId/changeId'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (D:\Projects\flowkit-next\tests\acceptance\foundation-manager.acceptance.test.ts:230:12)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: doctor uses exact managed runtimes and ignores fake PATH executables
+ok 4 - doctor uses exact managed runtimes and ignores fake PATH executables
+  ---
+  duration_ms: 2899.807
+  type: 'test'
+  ...
+# Subtest: windows-compatibility-simulation covers current path and process portability surface
+ok 5 - windows-compatibility-simulation covers current path and process portability surface
+  ---
+  duration_ms: 1.6131
+  type: 'test'
+  ...
+# Subtest: Delivery Final public contract is exact and has no Git or next-operation capability
+ok 6 - Delivery Final public contract is exact and has no Git or next-operation capability
+  ---
+  duration_ms: 2.346
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 5
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 25596.2436

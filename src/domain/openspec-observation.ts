@@ -1,6 +1,7 @@
 import { spawn } from "node:child_process";
 import { realpath } from "node:fs/promises";
 import path from "node:path";
+import type { ManagerInstallation } from "../internal/manager-installation.js";
 
 import { asChangeId, type ChangeId } from "./identity.js";
 import { resolveManagedTool } from "./managed-tool-resolution.js";
@@ -9,6 +10,7 @@ import { classifyManagedOpenSpecClose } from "../internal/openspec-process-outco
 export type OpenSpecArtifactStatus = "ready" | "blocked" | "done" | "skipped";
 
 export interface OpenSpecObservationInput {
+  readonly installation?: ManagerInstallation;
   readonly repositoryRoot: string;
   readonly flowkitHome: string;
 }
@@ -227,7 +229,7 @@ async function invokeManagedOpenSpec(
 }> {
   const repositoryRoot = await canonicalRepositoryRoot(input.repositoryRoot);
   const tool = await resolveManagedTool({
-    repositoryRoot,
+    installation: input.installation,
     flowkitHome: input.flowkitHome,
     toolId: "openspec",
   });

@@ -1,0 +1,408 @@
+{
+  "fixtureOnly": true,
+  "prototypeNotProductAdapter": true,
+  "platform": "win32",
+  "node": "v22.23.2",
+  "localBareRemoteOnly": true,
+  "scopedCommitPreservesUnrelated": true,
+  "pushFailureRetainsCommit": true,
+  "pushReadBackMatches": true,
+  "noShaWriteBackCommit": true,
+  "outOfScopeIndexDetectedAndLeft": true,
+  "commands": [
+    {
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-054-git-explore\\native-git-OVB9cs\\target",
+      "args": [
+        "init",
+        "-b",
+        "main"
+      ],
+      "startedAt": "2026-09-09T13:15:52.468Z",
+      "finishedAt": "2026-09-09T13:15:52.581Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "file": "native-01.stdout.txt",
+        "bytes": 117,
+        "sha256": "4fbe531553b6aaab6ef6c3397d6fdeadfd0d1d4b14fb02e3667585b2f73568fc"
+      },
+      "stderr": {
+        "file": "native-01.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-054-git-explore\\native-git-OVB9cs\\target",
+      "args": [
+        "config",
+        "user.name",
+        "Flowkit Proof"
+      ],
+      "startedAt": "2026-09-09T13:15:52.581Z",
+      "finishedAt": "2026-09-09T13:15:52.651Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "file": "native-02.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "native-02.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-054-git-explore\\native-git-OVB9cs\\target",
+      "args": [
+        "config",
+        "user.email",
+        "proof@example.invalid"
+      ],
+      "startedAt": "2026-09-09T13:15:52.651Z",
+      "finishedAt": "2026-09-09T13:15:52.717Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "file": "native-03.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "native-03.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-054-git-explore\\native-git-OVB9cs\\target",
+      "args": [
+        "add",
+        "--",
+        "owned.txt"
+      ],
+      "startedAt": "2026-09-09T13:15:52.718Z",
+      "finishedAt": "2026-09-09T13:15:52.787Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "file": "native-04.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "native-04.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-054-git-explore\\native-git-OVB9cs\\target",
+      "args": [
+        "diff",
+        "--cached",
+        "--name-only"
+      ],
+      "startedAt": "2026-09-09T13:15:52.787Z",
+      "finishedAt": "2026-09-09T13:15:52.852Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "file": "native-05.stdout.txt",
+        "bytes": 10,
+        "sha256": "6c813a95c778ce7f028c1b8040aef2bd6641c5cc6a726a37f7f9bcc291e46144"
+      },
+      "stderr": {
+        "file": "native-05.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-054-git-explore\\native-git-OVB9cs\\target",
+      "args": [
+        "commit",
+        "-m",
+        "fixture bounded checkpoint"
+      ],
+      "startedAt": "2026-09-09T13:15:52.852Z",
+      "finishedAt": "2026-09-09T13:15:52.970Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "file": "native-06.stdout.txt",
+        "bytes": 118,
+        "sha256": "c91e1697c24ef574c0664de6bfe4bef7b0ca11a1c3f57d3a9552dc21fd0ed349"
+      },
+      "stderr": {
+        "file": "native-06.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-054-git-explore\\native-git-OVB9cs\\target",
+      "args": [
+        "rev-parse",
+        "HEAD"
+      ],
+      "startedAt": "2026-09-09T13:15:52.970Z",
+      "finishedAt": "2026-09-09T13:15:53.037Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "file": "native-07.stdout.txt",
+        "bytes": 41,
+        "sha256": "5dd5a8f66331c0a4c7290898af33e365e9683ebea16b11f0323eb7f1f38093bd"
+      },
+      "stderr": {
+        "file": "native-07.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-054-git-explore\\native-git-OVB9cs\\target",
+      "args": [
+        "show",
+        "--format=",
+        "--name-only",
+        "b23d4d779f5e01e975257acbe9668239a6d3cefe"
+      ],
+      "startedAt": "2026-09-09T13:15:53.037Z",
+      "finishedAt": "2026-09-09T13:15:53.102Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "file": "native-08.stdout.txt",
+        "bytes": 10,
+        "sha256": "6c813a95c778ce7f028c1b8040aef2bd6641c5cc6a726a37f7f9bcc291e46144"
+      },
+      "stderr": {
+        "file": "native-08.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-054-git-explore\\native-git-OVB9cs\\target",
+      "args": [
+        "status",
+        "--porcelain=v1",
+        "-uall"
+      ],
+      "startedAt": "2026-09-09T13:15:53.102Z",
+      "finishedAt": "2026-09-09T13:15:53.183Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "file": "native-09.stdout.txt",
+        "bytes": 17,
+        "sha256": "d9c59dac0b6e5c5d4473de00e5e4c82a11136b4d810840c252119322b051f70b"
+      },
+      "stderr": {
+        "file": "native-09.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-054-git-explore\\native-git-OVB9cs\\target",
+      "args": [
+        "push",
+        "D:\\Projects\\flowkit-next\\.tmp\\d05-054-git-explore\\native-git-OVB9cs\\missing.git",
+        "HEAD:refs/heads/main"
+      ],
+      "startedAt": "2026-09-09T13:15:53.183Z",
+      "finishedAt": "2026-09-09T13:15:53.337Z",
+      "exitCode": 128,
+      "error": null,
+      "stdout": {
+        "file": "native-10.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "native-10.stderr.txt",
+        "bytes": 254,
+        "sha256": "c23f40c06b8bc7851468fc553aaade1f3479de6e5399e9306301e9b0e159599f"
+      }
+    },
+    {
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-054-git-explore\\native-git-OVB9cs\\target",
+      "args": [
+        "rev-parse",
+        "HEAD"
+      ],
+      "startedAt": "2026-09-09T13:15:53.337Z",
+      "finishedAt": "2026-09-09T13:15:53.398Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "file": "native-11.stdout.txt",
+        "bytes": 41,
+        "sha256": "5dd5a8f66331c0a4c7290898af33e365e9683ebea16b11f0323eb7f1f38093bd"
+      },
+      "stderr": {
+        "file": "native-11.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-054-git-explore\\native-git-OVB9cs",
+      "args": [
+        "init",
+        "--bare",
+        "D:\\Projects\\flowkit-next\\.tmp\\d05-054-git-explore\\native-git-OVB9cs\\remote.git"
+      ],
+      "startedAt": "2026-09-09T13:15:53.398Z",
+      "finishedAt": "2026-09-09T13:15:53.501Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "file": "native-12.stdout.txt",
+        "bytes": 116,
+        "sha256": "5f02900c66371fdfc29206bdc00357ffc39e2b317226b334ead1706156e951cc"
+      },
+      "stderr": {
+        "file": "native-12.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-054-git-explore\\native-git-OVB9cs\\target",
+      "args": [
+        "push",
+        "D:\\Projects\\flowkit-next\\.tmp\\d05-054-git-explore\\native-git-OVB9cs\\remote.git",
+        "HEAD:refs/heads/main"
+      ],
+      "startedAt": "2026-09-09T13:15:53.501Z",
+      "finishedAt": "2026-09-09T13:15:53.841Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "file": "native-13.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "native-13.stderr.txt",
+        "bytes": 116,
+        "sha256": "ae258902210e17ff6f954789699f87b23565681cd9b0915901c8caf25dfad746"
+      }
+    },
+    {
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-054-git-explore\\native-git-OVB9cs\\target",
+      "args": [
+        "ls-remote",
+        "D:\\Projects\\flowkit-next\\.tmp\\d05-054-git-explore\\native-git-OVB9cs\\remote.git",
+        "refs/heads/main"
+      ],
+      "startedAt": "2026-09-09T13:15:53.841Z",
+      "finishedAt": "2026-09-09T13:15:53.979Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "file": "native-14.stdout.txt",
+        "bytes": 57,
+        "sha256": "f7671e7199c80c2cb336ff55c0fbfbb8f47fbdbcc7a27d02429e90a662d1c8fd"
+      },
+      "stderr": {
+        "file": "native-14.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-054-git-explore\\native-git-OVB9cs\\target",
+      "args": [
+        "rev-list",
+        "--count",
+        "HEAD"
+      ],
+      "startedAt": "2026-09-09T13:15:53.979Z",
+      "finishedAt": "2026-09-09T13:15:54.048Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "file": "native-15.stdout.txt",
+        "bytes": 2,
+        "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+      },
+      "stderr": {
+        "file": "native-15.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-054-git-explore\\native-git-OVB9cs\\target",
+      "args": [
+        "add",
+        "--",
+        "unrelated.txt"
+      ],
+      "startedAt": "2026-09-09T13:15:54.050Z",
+      "finishedAt": "2026-09-09T13:15:54.124Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "file": "native-16.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "native-16.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-054-git-explore\\native-git-OVB9cs\\target",
+      "args": [
+        "diff",
+        "--cached",
+        "--name-only"
+      ],
+      "startedAt": "2026-09-09T13:15:54.124Z",
+      "finishedAt": "2026-09-09T13:15:54.192Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "file": "native-17.stdout.txt",
+        "bytes": 14,
+        "sha256": "4552d859ee8e32574d1d8ae44ede2e114e0ea77708f7ab123c014070a9f8fcc3"
+      },
+      "stderr": {
+        "file": "native-17.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-054-git-explore\\native-git-OVB9cs\\target",
+      "args": [
+        "rev-parse",
+        "HEAD"
+      ],
+      "startedAt": "2026-09-09T13:15:54.192Z",
+      "finishedAt": "2026-09-09T13:15:54.259Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "file": "native-18.stdout.txt",
+        "bytes": 41,
+        "sha256": "5dd5a8f66331c0a4c7290898af33e365e9683ebea16b11f0323eb7f1f38093bd"
+      },
+      "stderr": {
+        "file": "native-18.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ]
+}

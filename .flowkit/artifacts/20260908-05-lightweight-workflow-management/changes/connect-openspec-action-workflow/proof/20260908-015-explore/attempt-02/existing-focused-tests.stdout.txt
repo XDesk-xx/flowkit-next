@@ -1,0 +1,190 @@
+TAP version 13
+# Subtest: command and request parsing stay closed and distinguish explicit null
+ok 1 - command and request parsing stay closed and distinguish explicit null
+  ---
+  duration_ms: 2.4236
+  type: 'test'
+  ...
+# Subtest: next explicit null reaches canonical explore without reading Run history
+ok 2 - next explicit null reaches canonical explore without reading Run history
+  ---
+  duration_ms: 46.3233
+  type: 'test'
+  ...
+# Subtest: next exact Run ignores disconnected higher sequence and uses selected terminal facts
+ok 3 - next exact Run ignores disconnected higher sequence and uses selected terminal facts
+  ---
+  duration_ms: 28.52
+  type: 'test'
+  ...
+# Subtest: malformed or mismatched exact Run fails closed without alternate selection
+ok 4 - malformed or mismatched exact Run fails closed without alternate selection
+  ---
+  duration_ms: 24.1917
+  type: 'test'
+  ...
+# Subtest: checkpoint authorization is exact, pure, and never inferred
+ok 5 - checkpoint authorization is exact, pure, and never inferred
+  ---
+  duration_ms: 0.3444
+  type: 'test'
+  ...
+# Subtest: status reports exact selected Run and approved OpenSpec facts only
+ok 6 - status reports exact selected Run and approved OpenSpec facts only
+  ---
+  duration_ms: 201.3659
+  type: 'test'
+  ...
+# Subtest: doctor reports bounded diagnostics and never invokes Archify
+ok 7 - doctor reports bounded diagnostics and never invokes Archify
+  ---
+  duration_ms: 94.0402
+  type: 'test'
+  ...
+# Subtest: keeps repeated Standard Action executions as distinct Change-scoped occurrences
+ok 8 - keeps repeated Standard Action executions as distinct Change-scoped occurrences
+  ---
+  duration_ms: 2.656
+  type: 'test'
+  ...
+# Subtest: generates canonical dated direct-child addresses from controlled inputs
+ok 9 - generates canonical dated direct-child addresses from controlled inputs
+  ---
+  duration_ms: 0.578
+  type: 'test'
+  ...
+# Subtest: rejects invalid controlled address inputs before filesystem use
+ok 10 - rejects invalid controlled address inputs before filesystem use
+  ---
+  duration_ms: 11.772
+  type: 'test'
+  ...
+# Subtest: validates exact context and preserves explicit or absent Owner authority
+ok 11 - validates exact context and preserves explicit or absent Owner authority
+  ---
+  duration_ms: 22.0587
+  type: 'test'
+  ...
+# Subtest: keeps Author, Reviewer and Verification outcomes separate and preserves next boundary as data
+ok 12 - keeps Author, Reviewer and Verification outcomes separate and preserves next boundary as data
+  ---
+  duration_ms: 12.0109
+  type: 'test'
+  ...
+# Subtest: rejects context/result linkage mismatch and unknown envelope fields
+ok 13 - rejects context/result linkage mismatch and unknown envelope fields
+  ---
+  duration_ms: 2.0527
+  type: 'test'
+  ...
+# Subtest: writes the stable three-file surface once and preserves prior bytes on collision
+ok 14 - writes the stable three-file surface once and preserves prior bytes on collision
+  ---
+  duration_ms: 13.1679
+  type: 'test'
+  ...
+# Subtest: rejects duplicate controlled sequence even when date or Action differs
+ok 15 - rejects duplicate controlled sequence even when date or Action differs
+  ---
+  duration_ms: 11.6589
+  type: 'test'
+  ...
+# Subtest: fails closed on missing, truncated or malformed machine records
+ok 16 - fails closed on missing, truncated or malformed machine records
+  ---
+  duration_ms: 17.7095
+  type: 'test'
+  ...
+# Subtest: lists Change-local Author → Reviewer → Author history in controlled sequence order without auto-execution
+ok 17 - lists Change-local Author → Reviewer → Author history in controlled sequence order without auto-execution
+  ---
+  duration_ms: 28.6946
+  type: 'test'
+  ...
+# Subtest: internally prepares an empty slot and completes one invocation
+ok 18 - internally prepares an empty slot and completes one invocation
+  ---
+  duration_ms: 16.7956
+  type: 'test'
+  ...
+# Subtest: reuses exact prepared A without duplicate prepare
+ok 19 - reuses exact prepared A without duplicate prepare
+  ---
+  duration_ms: 2.0652
+  type: 'test'
+  ...
+# Subtest: prepares a different target after terminal but rejects a different target over prepared
+ok 20 - prepares a different target after terminal but rejects a different target over prepared
+  ---
+  duration_ms: 1.2612
+  type: 'test'
+  ...
+# Subtest: package formation failure invokes host callback zero times
+ok 21 - package formation failure invokes host callback zero times
+  ---
+  duration_ms: 1.1456
+  type: 'test'
+  ...
+# Subtest: missing canonical Guidance fails package formation before callback
+ok 22 - missing canonical Guidance fails package formation before callback
+  ---
+  duration_ms: 6.91
+  type: 'test'
+  ...
+# Subtest: callback failure preserves prepared Action and stops
+ok 23 - callback failure preserves prepared Action and stops
+  ---
+  duration_ms: 1.2476
+  type: 'test'
+  ...
+# Subtest: admission failure leaves exact Action prepared and executes callback only once
+ok 24 - admission failure leaves exact Action prepared and executes callback only once
+  ---
+  duration_ms: 1.5596
+  type: 'test'
+  ...
+# Subtest: later invocation reuses same prepared A with a new Run occurrence
+ok 25 - later invocation reuses same prepared A with a new Run occurrence
+  ---
+  duration_ms: 3.0649
+  type: 'test'
+  ...
+# Subtest: package-bound preparation uses the same exact ActionPackage identity as execution
+ok 26 - package-bound preparation uses the same exact ActionPackage identity as execution
+  ---
+  duration_ms: 1.4761
+  type: 'test'
+  ...
+# Subtest: blocked preparation discards a newly staged prepared Action and skips execution
+ok 27 - blocked preparation discards a newly staged prepared Action and skips execution
+  ---
+  duration_ms: 1.6726
+  type: 'test'
+  ...
+# Subtest: preparation failure preserves an already-prepared Action for retry
+ok 28 - preparation failure preserves an already-prepared Action for retry
+  ---
+  duration_ms: 1.8008
+  type: 'test'
+  ...
+# Subtest: pre-preparation package failures do not leak a newly staged prepared Action
+ok 29 - pre-preparation package failures do not leak a newly staged prepared Action
+  ---
+  duration_ms: 3.1847
+  type: 'test'
+  ...
+# Subtest: successful invocation preserves opaque nextBoundary and never executes a second callback
+ok 30 - successful invocation preserves opaque nextBoundary and never executes a second callback
+  ---
+  duration_ms: 1.4026
+  type: 'test'
+  ...
+1..30
+# tests 30
+# suites 0
+# pass 30
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 746.096

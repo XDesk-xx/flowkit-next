@@ -1,0 +1,57 @@
+{
+  "kind": "independent-bootstrap-full-test-result",
+  "canonicalFlowkitRuntimeOperation": false,
+  "projectId": "flowkit-next",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "attemptId": "e7da9bb7-ec51-4d40-a6f5-2ae13cd5436a",
+  "startedAt": "2026-09-11T08:06:29.832Z",
+  "finishedAt": "2026-09-11T08:10:42.703Z",
+  "status": "failed",
+  "ownerAuthority": {
+    "sourceRef": "owner-input:2026-09-11:authorize-d05-full-test",
+    "decision": "authorize-formal-full-test",
+    "deliveryId": "20260908-05-lightweight-workflow-management",
+    "scope": [
+      "delivery-full-test"
+    ]
+  },
+  "config": {
+    "path": "config/verification/full-test.json",
+    "bytes": 2286,
+    "sha256": "32b03e4f1fa154586a2e29ca6cda849f630af29f75ff578b86b1bb90dc186686"
+  },
+  "platforms": [
+    {
+      "platform": "linux",
+      "status": "failed",
+      "failedChecks": [
+        "domain"
+      ],
+      "result": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/full-test/e7da9bb7-ec51-4d40-a6f5-2ae13cd5436a/linux/result.json",
+        "bytes": 35125,
+        "sha256": "7c9c6485869a6345f804df32eb3c22c00e9f47355736b932eb732fef3f3c7a02"
+      },
+      "inputHash": "204cdac444286edc06e3d25c5283430dcda2578ec10993bb65b61521c01e68f3"
+    },
+    {
+      "platform": "windows",
+      "status": "passed",
+      "failedChecks": [],
+      "result": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/full-test/e7da9bb7-ec51-4d40-a6f5-2ae13cd5436a/windows/result.json",
+        "bytes": 35215,
+        "sha256": "9cc89ff74a6447d289630f2f84fd0dee78a7ec316144196bb6e536db354c6c6b"
+      },
+      "inputHash": "204cdac444286edc06e3d25c5283430dcda2578ec10993bb65b61521c01e68f3"
+    }
+  ],
+  "inputIdentityMatchesCurrent": true,
+  "rawStreamsVerified": true,
+  "standardActionRunCreated": false,
+  "productionMutation": false,
+  "gitMutation": false,
+  "deliveryFinalExecuted": false,
+  "nextBoundary": "owner-decision",
+  "note": "本记录为 D05 independent-bootstrap 真实验证结果，不伪装 candidate 生命周期接纳。Linux 初始容器 root 执行导致 chmod(000) 读取拒绝用例失败；原始失败保留，不计为 PASS。"
+}

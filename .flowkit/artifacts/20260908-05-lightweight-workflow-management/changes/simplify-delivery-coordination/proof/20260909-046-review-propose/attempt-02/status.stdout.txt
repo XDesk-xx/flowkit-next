@@ -1,0 +1,106 @@
+{
+  "changeName": "simplify-delivery-coordination",
+  "schemaName": "spec-driven",
+  "planningHome": {
+    "kind": "repo",
+    "root": "D:\\Projects\\flowkit-next",
+    "changesDir": "D:\\Projects\\flowkit-next\\openspec\\changes",
+    "defaultSchema": "spec-driven"
+  },
+  "changeRoot": "D:\\Projects\\flowkit-next\\openspec\\changes\\simplify-delivery-coordination",
+  "artifactPaths": {
+    "proposal": {
+      "outputPath": "proposal.md",
+      "resolvedOutputPath": "D:\\Projects\\flowkit-next\\openspec\\changes\\simplify-delivery-coordination\\proposal.md",
+      "existingOutputPaths": [
+        "D:\\Projects\\flowkit-next\\openspec\\changes\\simplify-delivery-coordination\\proposal.md"
+      ]
+    },
+    "specs": {
+      "outputPath": "specs/**/*.md",
+      "resolvedOutputPath": "D:\\Projects\\flowkit-next\\openspec\\changes\\simplify-delivery-coordination\\specs\\**\\*.md",
+      "existingOutputPaths": [
+        "D:\\Projects\\flowkit-next\\openspec\\changes\\simplify-delivery-coordination\\specs\\delivery-finalization\\spec.md",
+        "D:\\Projects\\flowkit-next\\openspec\\changes\\simplify-delivery-coordination\\specs\\delivery-operation-execution-and-start-continuity\\spec.md",
+        "D:\\Projects\\flowkit-next\\openspec\\changes\\simplify-delivery-coordination\\specs\\repository-integration-and-next-base-continuity\\spec.md"
+      ]
+    },
+    "design": {
+      "outputPath": "design.md",
+      "resolvedOutputPath": "D:\\Projects\\flowkit-next\\openspec\\changes\\simplify-delivery-coordination\\design.md",
+      "existingOutputPaths": [
+        "D:\\Projects\\flowkit-next\\openspec\\changes\\simplify-delivery-coordination\\design.md"
+      ]
+    },
+    "tasks": {
+      "outputPath": "tasks.md",
+      "resolvedOutputPath": "D:\\Projects\\flowkit-next\\openspec\\changes\\simplify-delivery-coordination\\tasks.md",
+      "existingOutputPaths": [
+        "D:\\Projects\\flowkit-next\\openspec\\changes\\simplify-delivery-coordination\\tasks.md"
+      ]
+    }
+  },
+  "isPlanningComplete": true,
+  "isComplete": true,
+  "applyRequires": [
+    "tasks"
+  ],
+  "nextSteps": [
+    "All planning artifacts are complete. Run openspec instructions apply --change \"simplify-delivery-coordination\" --json to inspect implementation progress."
+  ],
+  "actionContext": {
+    "mode": "repo-local",
+    "sourceOfTruth": "repo",
+    "planningArtifacts": [
+      "proposal",
+      "specs",
+      "design",
+      "tasks"
+    ],
+    "linkedContext": [],
+    "allowedEditRoots": [
+      "D:\\Projects\\flowkit-next"
+    ],
+    "requiresAffectedAreaSelection": false,
+    "constraints": [
+      "Repo-local change artifacts and implementation edits are scoped to this project."
+    ]
+  },
+  "artifacts": [
+    {
+      "id": "proposal",
+      "outputPath": "proposal.md",
+      "status": "done",
+      "requires": []
+    },
+    {
+      "id": "specs",
+      "outputPath": "specs/**/*.md",
+      "status": "done",
+      "requires": [
+        "proposal"
+      ]
+    },
+    {
+      "id": "design",
+      "outputPath": "design.md",
+      "status": "done",
+      "requires": [
+        "proposal"
+      ]
+    },
+    {
+      "id": "tasks",
+      "outputPath": "tasks.md",
+      "status": "done",
+      "requires": [
+        "specs",
+        "design"
+      ]
+    }
+  ],
+  "root": {
+    "path": "D:\\Projects\\flowkit-next",
+    "source": "nearest"
+  }
+}

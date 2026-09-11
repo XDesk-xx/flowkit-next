@@ -1,0 +1,142 @@
+TAP version 13
+# Subtest: Delivery Final prepares complete prerequisites and materializes one bounded closure
+ok 1 - Delivery Final prepares complete prerequisites and materializes one bounded closure
+  ---
+  duration_ms: 2947.2143
+  type: 'test'
+  ...
+# Subtest: Delivery Final writer preserves all non-target manifest bytes and ordering
+ok 2 - Delivery Final writer preserves all non-target manifest bytes and ordering
+  ---
+  duration_ms: 1284.9429
+  type: 'test'
+  ...
+# Subtest: Delivery Final coordination reader rejects missing, mismatched, duplicate, and incomplete manifests
+ok 3 - Delivery Final coordination reader rejects missing, mismatched, duplicate, and incomplete manifests
+  ---
+  duration_ms: 12.8461
+  type: 'test'
+  ...
+# Subtest: Delivery Final coordination writer never returns success on staging, replace, or readback failure
+ok 4 - Delivery Final coordination writer never returns success on staging, replace, or readback failure
+  ---
+  duration_ms: 1261.6052
+  type: 'test'
+  ...
+# Subtest: Delivery Final preparation rejects partial facts, active OpenSpec, output drift, and candidate drift
+ok 5 - Delivery Final preparation rejects partial facts, active OpenSpec, output drift, and candidate drift
+  ---
+  duration_ms: 2057.5732
+  type: 'test'
+  ...
+# Subtest: Delivery Final rejects failed archive anchors and unrelated external outcome bytes
+ok 6 - Delivery Final rejects failed archive anchors and unrelated external outcome bytes
+  ---
+  duration_ms: 1156.3125
+  type: 'test'
+  ...
+# Subtest: Delivery Final callback is defensive and correction or invalid results do not close coordination
+ok 7 - Delivery Final callback is defensive and correction or invalid results do not close coordination
+  ---
+  duration_ms: 1735.5199
+  type: 'test'
+  ...
+# Subtest: exact Full Test authority and closed configuration reject caller overrides
+ok 8 - exact Full Test authority and closed configuration reject caller overrides
+  ---
+  duration_ms: 301.7909
+  type: 'test'
+  ...
+# Subtest: no Git target executes fresh attempts and saves exact raw bytes for cross-session reading
+ok 9 - no Git target executes fresh attempts and saves exact raw bytes for cross-session reading
+  ---
+  duration_ms: 1684.3799
+  type: 'test'
+  ...
+# Subtest: failed current attempt never falls back to a previous pass
+ok 10 - failed current attempt never falls back to a previous pass
+  ---
+  duration_ms: 1061.2984
+  type: 'test'
+  ...
+# Subtest: selected source drift stops later checks and is saved as a real failed attempt
+ok 11 - selected source drift stops later checks and is saved as a real failed attempt
+  ---
+  duration_ms: 814.9824
+  type: 'test'
+  ...
+# Subtest: saved stream damage and incomplete latest results cannot be consumed as PASS
+ok 12 - saved stream damage and incomplete latest results cannot be consumed as PASS
+  ---
+  duration_ms: 543.6004
+  type: 'test'
+  ...
+# Subtest: start, stream-open, stream-write, result and status-publication failures never expose old PASS
+ok 13 - start, stream-open, stream-write, result and status-publication failures never expose old PASS
+  ---
+  duration_ms: 7598.5491
+  type: 'test'
+  ...
+# Subtest: checks remain ordered, preserve large stderr and continue after command failure
+ok 14 - checks remain ordered, preserve large stderr and continue after command failure
+  ---
+  duration_ms: 863.8595
+  type: 'test'
+  ...
+# Subtest: spawn failure and process termination cannot become PASS
+ok 15 - spawn failure and process termination cannot become PASS
+  ---
+  duration_ms: 519.5823
+  type: 'test'
+  ...
+# Subtest: current reader rejects wrong ownership, escaping and non-regular material
+ok 16 - current reader rejects wrong ownership, escaping and non-regular material
+  ---
+  duration_ms: 1802.416
+  type: 'test'
+  ...
+# Subtest: Full Test inputs use configured files without Git and ignore process artifacts
+ok 17 - Full Test inputs use configured files without Git and ignore process artifacts
+  ---
+  duration_ms: 416.6636
+  type: 'test'
+  ...
+# Subtest: input parser rejects ambiguous paths and selected links, binds command and declared environment
+ok 18 - input parser rejects ambiguous paths and selected links, binds command and declared environment
+  ---
+  duration_ms: 430.0857
+  type: 'test'
+  ...
+# Subtest: Node-launched tool bytes, including its package implementation, invalidate current PASS without lock drift
+ok 19 - Node-launched tool bytes, including its package implementation, invalidate current PASS without lock drift
+  ---
+  duration_ms: 2010.1722
+  type: 'test'
+  ...
+# Subtest: invocation diagnoses configuration, input and executable preparation errors without publishing an attempt
+ok 20 - invocation diagnoses configuration, input and executable preparation errors without publishing an attempt
+  ---
+  duration_ms: 46.8196
+  type: 'test'
+  ...
+# Subtest: Node preload package implementation bytes are bound without reading unrelated packages
+ok 21 - Node preload package implementation bytes are bound without reading unrelated packages
+  ---
+  duration_ms: 388.7815
+  type: 'test'
+  ...
+# Subtest: attempt publication preserves all non-target YAML bytes and rejects drift
+ok 22 - attempt publication preserves all non-target YAML bytes and rejects drift
+  ---
+  duration_ms: 43.4016
+  type: 'test'
+  ...
+1..22
+# tests 22
+# suites 0
+# pass 22
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 15552.1202

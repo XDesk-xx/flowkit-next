@@ -1,3 +1,4 @@
+import { fixtureInstallation } from "./manager-installation-fixture.js";
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
 import {
@@ -82,13 +83,19 @@ test("resolver binds exact canonical bytes and content drift changes identity", 
   try {
     const entry = await writeGuidance(root, "apply", "# apply\nfirst\n");
 
-    const first = await resolveActionGuidanceRef(root, "apply");
+    const first = await resolveActionGuidanceRef(
+      fixtureInstallation(root),
+      "apply",
+    );
     assert.notEqual(first, null);
     assert.equal(first!.path, "skills/actions/apply/SKILL.md");
     assert.match(first!.contentSha256, /^[0-9a-f]{64}$/);
 
     await writeFile(entry, "# apply\nsecond\n", "utf8");
-    const second = await resolveActionGuidanceRef(root, "apply");
+    const second = await resolveActionGuidanceRef(
+      fixtureInstallation(root),
+      "apply",
+    );
     assert.notEqual(second, null);
     assert.notEqual(first!.contentSha256, second!.contentSha256);
   } finally {
@@ -103,7 +110,10 @@ test("missing canonical product Guidance fails closed and never falls back to .a
     await mkdir(path.dirname(bootstrap), { recursive: true });
     await writeFile(bootstrap, "# bootstrap apply\n", "utf8");
 
-    assert.equal(await resolveActionGuidanceRef(root, "apply"), null);
+    assert.equal(
+      await resolveActionGuidanceRef(fixtureInstallation(root), "apply"),
+      null,
+    );
   } finally {
     await rm(root, { recursive: true, force: true });
   }
@@ -120,7 +130,10 @@ test("non-regular and final-entry symlink Guidance fail closed", async (t) => {
       "SKILL.md",
     );
     await mkdir(directoryEntry, { recursive: true });
-    assert.equal(await resolveActionGuidanceRef(root, "apply"), null);
+    assert.equal(
+      await resolveActionGuidanceRef(fixtureInstallation(root), "apply"),
+      null,
+    );
 
     await rm(path.join(root, "skills"), { recursive: true, force: true });
     const target = path.join(root, "target.md");
@@ -137,7 +150,10 @@ test("non-regular and final-entry symlink Guidance fail closed", async (t) => {
       }
       throw error;
     }
-    assert.equal(await resolveActionGuidanceRef(root, "apply"), null);
+    assert.equal(
+      await resolveActionGuidanceRef(fixtureInstallation(root), "apply"),
+      null,
+    );
   } finally {
     await rm(root, { recursive: true, force: true });
   }
@@ -162,7 +178,10 @@ test("parent-path redirection through symlink fails closed", async (t) => {
       throw error;
     }
 
-    assert.equal(await resolveActionGuidanceRef(root, "apply"), null);
+    assert.equal(
+      await resolveActionGuidanceRef(fixtureInstallation(root), "apply"),
+      null,
+    );
   } finally {
     await rm(root, { recursive: true, force: true });
     await rm(outside, { recursive: true, force: true });
@@ -223,7 +242,10 @@ if (result !== null) {
         fixtureOwnsCleanup = true;
       },
       assertUnreadable: async () => {
-        assert.equal(await resolveActionGuidanceRef(root, "apply"), null);
+        assert.equal(
+          await resolveActionGuidanceRef(fixtureInstallation(root), "apply"),
+          null,
+        );
       },
     });
   } finally {

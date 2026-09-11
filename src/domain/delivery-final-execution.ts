@@ -1,13 +1,10 @@
-import { createHash } from "node:crypto";
+import {
+  loadManagerInstallation,
+  type ManagerInstallation,
+} from "../internal/manager-installation.js";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 
-import { deriveApplicableCheckCandidateRef } from "./applicable-check-execution.js";
-import {
-  deriveDeliveryArchitectureFinalizationRef,
-  type DeliveryArchitectureFinalizationOutcome,
-} from "./delivery-architecture-finalization-execution.js";
-import type { DeliveryArchitectureFinalizationClosureRecord } from "./delivery-architecture-finalization-identity.js";
 import {
   formDeliveryOperationPackage,
   isDeliveryOperationPackage,
@@ -15,26 +12,31 @@ import {
   resolveDeliveryGuidanceRef,
   type DeliveryFinalOperationPackage,
 } from "./delivery-operation-execution.js";
+import { isDeliveryFinalAuthorityForDelivery } from "./delivery-final-operation.js";
 import {
-  isDeliveryCoordinationRef,
-  isDeliveryFinalAuthorityForDelivery,
-} from "./delivery-final-operation.js";
-import {
-  cloneDeliveryRequiredEvidence,
-  isDeliveryRequiredEvidence,
-} from "../internal/delivery-required-evidence.js";
-import {
-  deriveDeliveryRequiredEvidenceFromSource,
+  readDeliveryChangeCompletions,
+  isCompletionSource,
   type ReadDeliveryRequiredEvidence,
 } from "../internal/delivery-required-evidence-source.js";
 export type { ReadDeliveryRequiredEvidence } from "../internal/delivery-required-evidence-source.js";
+import { isDeepStrictEqual } from "node:util";
 import {
-  isTrustedPassedFullTestOutcome,
-  type DeliveryFullTestInvocationTerminal,
-} from "./delivery-full-test-execution.js";
+  isDeliveryFinalizationRecord,
+  type DeliveryFinalizationRecord,
+} from "./delivery-finalization.js";
+export {
+  deriveDeliveryFinalizationRef,
+  readDeliveryFinalization,
+  isDeliveryFinalizationRecord,
+} from "./delivery-finalization.js";
+export type {
+  DeliveryFinalizationRecord,
+  DeliveryFinalizationLinks,
+  DeliveryFinalizationObservation,
+} from "./delivery-finalization.js";
+import { readCurrentDeliveryFullTest } from "../internal/full-test-current.js";
 import { isSemanticId, type DeliveryId } from "./identity.js";
 import { observeOpenSpecActiveChanges } from "./openspec-observation.js";
-import { revalidateArchitectureFinalizationClosureOutputs } from "../internal/delivery-architecture-finalization-closure.js";
 import {
   readDeliveryFinalCoordinationPrestate,
   revalidateDeliveryFinalCoordinationPrestate,
@@ -44,8 +46,6 @@ import {
 export interface DeliveryFinalPreparationInput {
   readonly deliveryId: DeliveryId;
   readonly ownerAuthority: DeliveryFinalOperationPackage["ownerAuthority"];
-  readonly fullTestOutcome: DeliveryFullTestInvocationTerminal;
-  readonly architectureOutcome: DeliveryArchitectureFinalizationOutcome;
   readonly flowkitHome: string;
 }
 
@@ -70,31 +70,22 @@ export type DeliveryFinalExecute = (
   input: DeliveryFinalExecutionInput,
 ) => DeliveryFinalExecutionResult | Promise<DeliveryFinalExecutionResult>;
 
-export interface DeliveryFinalizationRecord {
-  readonly deliveryFinalizationRef: string;
-  readonly verifiedCandidateRef: string;
-  readonly fullTestExecutionRef: string;
-  readonly architectureFinalizationRef: string;
-  readonly architectureMaterializedCandidateRef: string;
-  readonly coordinationRef: {
-    readonly artifact: string;
-    readonly contentSha256: string;
-    readonly bytes: number;
-  };
-  readonly finalizedCandidateRef: string;
-}
-
 export type DeliveryFinalInvocationFailureReason =
   | "package-formation-rejected"
   | "guidance-drift-rejected"
   | "execution-result-rejected"
   | "coordination-materialization-rejected"
-  | "finalized-candidate-rejected";
+  | "completion-source-unavailable"
+  | "content-validation-failed"
+  | "confirmation-publication-failed"
+  | "confirmation-readback-failed";
 
 export interface DeliveryFinalInvocationFailure {
   readonly status: "failed";
   readonly reason: DeliveryFinalInvocationFailureReason;
+  readonly mutationStatus: "not-written" | "written-unconfirmed" | "unknown";
   readonly record: null;
+  readonly completionChangeId?: string;
 }
 
 export interface DeliveryFinalInvocationCorrectionRequired {
@@ -114,12 +105,6 @@ export type DeliveryFinalInvocationOutcome =
   | DeliveryFinalInvocationFailure
   | DeliveryFinalInvocationCorrectionRequired
   | DeliveryFinalInvocationTerminal;
-
-const ARCHITECTURE_FINALIZATION_REF_PATTERN =
-  /^architecture-finalization:sha256:[0-9a-f]{64}$/;
-const CANDIDATE_REF_PATTERN = /^candidate:sha256:[0-9a-f]{64}$/;
-const DELIVERY_FINALIZATION_REF_PATTERN =
-  /^delivery-finalization:sha256:[0-9a-f]{64}$/;
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   if (typeof value !== "object" || value === null || Array.isArray(value)) {
@@ -145,13 +130,7 @@ function isPreparationInput(
 ): value is DeliveryFinalPreparationInput {
   return (
     isRecord(value) &&
-    hasExactlyFields(value, [
-      "deliveryId",
-      "ownerAuthority",
-      "fullTestOutcome",
-      "architectureOutcome",
-      "flowkitHome",
-    ]) &&
+    hasExactlyFields(value, ["deliveryId", "ownerAuthority", "flowkitHome"]) &&
     isSemanticId(value.deliveryId) &&
     isDeliveryFinalAuthorityForDelivery(
       value.ownerAuthority,
@@ -178,99 +157,26 @@ async function readProjectId(repositoryRoot: string): Promise<string | null> {
   }
 }
 
-function trustedArchitectureRecord(
-  value: unknown,
-  deliveryId: DeliveryId,
-  fullTestOutcome: DeliveryFullTestInvocationTerminal,
-): {
-  readonly operationPackage: Extract<
-    DeliveryArchitectureFinalizationOutcome,
-    { readonly status: "terminal" }
-  >["operationPackage"];
-  readonly record: DeliveryArchitectureFinalizationClosureRecord;
-} | null {
-  if (
-    !isRecord(value) ||
-    !hasExactlyFields(value, ["status", "operationPackage", "record"]) ||
-    value.status !== "terminal" ||
-    !isDeliveryOperationPackage(value.operationPackage) ||
-    value.operationPackage.operationId !==
-      "delivery-architecture-finalization" ||
-    value.operationPackage.deliveryId !== deliveryId ||
-    !isRecord(value.record) ||
-    !hasExactlyFields(value.record, [
-      "architectureFinalizationRef",
-      "verifiedCandidateRef",
-      "fullTestExecutionRef",
-      "outputs",
-      "architectureMaterializedCandidateRef",
-    ]) ||
-    typeof value.record.architectureFinalizationRef !== "string" ||
-    !ARCHITECTURE_FINALIZATION_REF_PATTERN.test(
-      value.record.architectureFinalizationRef,
-    ) ||
-    typeof value.record.architectureMaterializedCandidateRef !== "string" ||
-    !CANDIDATE_REF_PATTERN.test(
-      value.record.architectureMaterializedCandidateRef,
-    ) ||
-    value.operationPackage.operationFacts.verifiedCandidateRef !==
-      fullTestOutcome.record.candidateRef ||
-    value.operationPackage.operationFacts.fullTestExecutionRef !==
-      fullTestOutcome.record.executionRef ||
-    value.record.verifiedCandidateRef !== fullTestOutcome.record.candidateRef ||
-    value.record.fullTestExecutionRef !== fullTestOutcome.record.executionRef ||
-    deriveDeliveryArchitectureFinalizationRef(
-      value.operationPackage,
-      value.record,
-    ) !== value.record.architectureFinalizationRef
-  ) {
-    return null;
-  }
-  return value as unknown as {
-    readonly operationPackage: Extract<
-      DeliveryArchitectureFinalizationOutcome,
-      { readonly status: "terminal" }
-    >["operationPackage"];
-    readonly record: DeliveryArchitectureFinalizationClosureRecord;
-  };
-}
-
 export async function prepareDeliveryFinalOperationPackage(
   repositoryRoot: unknown,
   input: unknown,
   readRequiredEvidence: unknown,
+  installation: ManagerInstallation = loadManagerInstallation(),
+  onCompletionRejected?: (changeId: string) => void,
 ): Promise<DeliveryFinalOperationPackage | null> {
   if (
     typeof repositoryRoot !== "string" ||
     repositoryRoot.length === 0 ||
-    !isPreparationInput(input) ||
-    !isTrustedPassedFullTestOutcome(input.fullTestOutcome, input.deliveryId)
+    !isPreparationInput(input)
   ) {
     return null;
   }
-  const architecture = trustedArchitectureRecord(
-    input.architectureOutcome,
+  const current = await readCurrentDeliveryFullTest(
+    repositoryRoot,
     input.deliveryId,
-    input.fullTestOutcome,
   );
-  if (architecture === null) return null;
-  if (
-    !(await revalidateArchitectureFinalizationClosureOutputs(
-      repositoryRoot,
-      architecture.operationPackage,
-      architecture.record,
-    ))
-  ) {
-    return null;
-  }
-
-  const candidateRef = await deriveApplicableCheckCandidateRef(repositoryRoot);
-  if (
-    candidateRef === null ||
-    candidateRef !== architecture.record.architectureMaterializedCandidateRef
-  ) {
-    return null;
-  }
+  if (current.status !== "passed") return null;
+  const fullTestOutcome = current.outcome;
   const coordination = await readDeliveryFinalCoordinationPrestate(
     repositoryRoot,
     input.deliveryId,
@@ -278,24 +184,17 @@ export async function prepareDeliveryFinalOperationPackage(
   if (coordination === null) return null;
   const projectId = await readProjectId(repositoryRoot);
   if (projectId === null) return null;
-  const requiredEvidence = await deriveDeliveryRequiredEvidenceFromSource(
+  const changeCompletions = await readDeliveryChangeCompletions(
     readRequiredEvidence,
     {
+      repositoryRoot,
       projectId,
       deliveryId: input.deliveryId,
       changeIds: coordination.completedRequiredChangeIds,
-      fullTestExecutionRef: input.fullTestOutcome.record.executionRef,
-      architectureFinalizationRef:
-        architecture.record.architectureFinalizationRef,
-      fullTestOutcome: input.fullTestOutcome,
-      architectureOutcome: input.architectureOutcome,
     },
+    onCompletionRejected,
   );
-  if (
-    requiredEvidence === null ||
-    !isDeliveryRequiredEvidence(requiredEvidence)
-  )
-    return null;
+  if (changeCompletions === null) return null;
 
   try {
     const activeChanges = await observeOpenSpecActiveChanges({
@@ -307,7 +206,7 @@ export async function prepareDeliveryFinalOperationPackage(
     return null;
   }
   const guidanceRef = await resolveDeliveryGuidanceRef(
-    repositoryRoot,
+    installation,
     "delivery-final",
   );
   if (guidanceRef === null) return null;
@@ -317,15 +216,13 @@ export async function prepareDeliveryFinalOperationPackage(
     "delivery-final",
     input.ownerAuthority,
     {
-      verifiedCandidateRef: input.fullTestOutcome.record.candidateRef,
-      fullTestExecutionRef: input.fullTestOutcome.record.executionRef,
-      architectureFinalizationRef:
-        architecture.record.architectureFinalizationRef,
-      architectureMaterializedCandidateRef:
-        architecture.record.architectureMaterializedCandidateRef,
+      verifiedCandidateRef: fullTestOutcome.record.inputRef,
+      fullTestExecutionRef: fullTestOutcome.record.executionRef,
       coordinationPrestateRef: coordination.ref,
       completedRequiredChangeIds: coordination.completedRequiredChangeIds,
-      requiredEvidence,
+      projectId,
+      fullTestAttempt: fullTestOutcome.record.attemptId,
+      changeCompletions,
     },
     guidanceRef,
   );
@@ -354,131 +251,31 @@ function exactPackageEqual(
   return JSON.stringify(left) === JSON.stringify(right);
 }
 
-function finalizationHashMaterial(
-  operationPackage: DeliveryFinalOperationPackage,
-  coordinationRef: DeliveryFinalizationRecord["coordinationRef"],
-  finalizedCandidateRef: string,
-): unknown {
-  return {
-    deliveryId: operationPackage.deliveryId,
-    operationId: operationPackage.operationId,
-    ownerAuthority: {
-      ref: operationPackage.ownerAuthority.ref,
-      decision: operationPackage.ownerAuthority.decision,
-      deliveryId: operationPackage.ownerAuthority.deliveryId,
-      sourceRef: operationPackage.ownerAuthority.sourceRef,
-      scope: [...operationPackage.ownerAuthority.scope],
-    },
-    operationFacts: {
-      verifiedCandidateRef:
-        operationPackage.operationFacts.verifiedCandidateRef,
-      fullTestExecutionRef:
-        operationPackage.operationFacts.fullTestExecutionRef,
-      architectureFinalizationRef:
-        operationPackage.operationFacts.architectureFinalizationRef,
-      architectureMaterializedCandidateRef:
-        operationPackage.operationFacts.architectureMaterializedCandidateRef,
-      coordinationPrestateRef: {
-        artifact:
-          operationPackage.operationFacts.coordinationPrestateRef.artifact,
-        contentSha256:
-          operationPackage.operationFacts.coordinationPrestateRef.contentSha256,
-        bytes: operationPackage.operationFacts.coordinationPrestateRef.bytes,
-      },
-      completedRequiredChangeIds: [
-        ...operationPackage.operationFacts.completedRequiredChangeIds,
-      ],
-      requiredEvidence: cloneDeliveryRequiredEvidence(
-        operationPackage.operationFacts.requiredEvidence,
-      ),
-    },
-    guidanceRef: {
-      path: operationPackage.guidanceRef.path,
-      contentSha256: operationPackage.guidanceRef.contentSha256,
-    },
-    coordinationRef: {
-      artifact: coordinationRef.artifact,
-      contentSha256: coordinationRef.contentSha256,
-      bytes: coordinationRef.bytes,
-    },
-    finalizedCandidateRef,
-  };
-}
-
-export function deriveDeliveryFinalizationRef(
-  operationPackage: unknown,
-  coordinationRef: unknown,
-  finalizedCandidateRef: unknown,
-): string | null {
-  if (
-    !isDeliveryOperationPackage(operationPackage) ||
-    operationPackage.operationId !== "delivery-final" ||
-    !isDeliveryCoordinationRef(coordinationRef) ||
-    coordinationRef.artifact !==
-      `openspec/delivery-groups/${operationPackage.deliveryId}.yaml` ||
-    typeof finalizedCandidateRef !== "string" ||
-    !CANDIDATE_REF_PATTERN.test(finalizedCandidateRef)
-  ) {
-    return null;
-  }
-  const digest = createHash("sha256")
-    .update("flowkit-delivery-finalization\0")
-    .update(
-      JSON.stringify(
-        finalizationHashMaterial(
-          operationPackage,
-          coordinationRef,
-          finalizedCandidateRef,
-        ),
-      ),
-    )
-    .digest("hex");
-  return `delivery-finalization:sha256:${digest}`;
-}
-
 export function isDeliveryFinalizationRecordForPackage(
   value: unknown,
   operationPackage: unknown,
 ): value is DeliveryFinalizationRecord {
-  if (
-    !isRecord(value) ||
-    !hasExactlyFields(value, [
-      "deliveryFinalizationRef",
-      "verifiedCandidateRef",
-      "fullTestExecutionRef",
-      "architectureFinalizationRef",
-      "architectureMaterializedCandidateRef",
-      "coordinationRef",
-      "finalizedCandidateRef",
-    ]) ||
-    typeof value.deliveryFinalizationRef !== "string" ||
-    !DELIVERY_FINALIZATION_REF_PATTERN.test(value.deliveryFinalizationRef) ||
-    !isDeliveryOperationPackage(operationPackage) ||
-    operationPackage.operationId !== "delivery-final" ||
-    value.verifiedCandidateRef !==
-      operationPackage.operationFacts.verifiedCandidateRef ||
-    value.fullTestExecutionRef !==
-      operationPackage.operationFacts.fullTestExecutionRef ||
-    value.architectureFinalizationRef !==
-      operationPackage.operationFacts.architectureFinalizationRef ||
-    value.architectureMaterializedCandidateRef !==
-      operationPackage.operationFacts.architectureMaterializedCandidateRef
-  ) {
-    return false;
-  }
   return (
-    deriveDeliveryFinalizationRef(
-      operationPackage,
-      value.coordinationRef,
-      value.finalizedCandidateRef,
-    ) === value.deliveryFinalizationRef
+    isDeliveryFinalizationRecord(value) &&
+    isDeliveryOperationPackage(operationPackage) &&
+    operationPackage.operationId === "delivery-final" &&
+    value.projectId === operationPackage.operationFacts.projectId &&
+    value.deliveryId === operationPackage.deliveryId &&
+    value.ownerAuthorityRef === operationPackage.ownerAuthority.ref &&
+    value.sourceRef === operationPackage.ownerAuthority.sourceRef &&
+    value.fullTestAttempt === operationPackage.operationFacts.fullTestAttempt &&
+    value.verifiedCandidateRef ===
+      operationPackage.operationFacts.verifiedCandidateRef &&
+    value.fullTestExecutionRef ===
+      operationPackage.operationFacts.fullTestExecutionRef
   );
 }
 
 function failure(
   reason: DeliveryFinalInvocationFailureReason,
+  mutationStatus: DeliveryFinalInvocationFailure["mutationStatus"] = "not-written",
 ): DeliveryFinalInvocationFailure {
-  return { status: "failed", reason, record: null };
+  return { status: "failed", reason, mutationStatus, record: null };
 }
 
 export async function invokeDeliveryFinalOperation(
@@ -486,24 +283,36 @@ export async function invokeDeliveryFinalOperation(
   input: unknown,
   execute: DeliveryFinalExecute,
   readRequiredEvidence: ReadDeliveryRequiredEvidence,
+  installation: ManagerInstallation = loadManagerInstallation(),
 ): Promise<DeliveryFinalInvocationOutcome> {
+  if (!isCompletionSource(readRequiredEvidence))
+    return failure("completion-source-unavailable");
   if (
     typeof execute !== "function" ||
+    !isPreparationInput(input) ||
     typeof readRequiredEvidence !== "object" ||
     readRequiredEvidence === null
   ) {
     return failure("package-formation-rejected");
   }
+  let completionChangeId: string | undefined;
   const operationPackage = await prepareDeliveryFinalOperationPackage(
     repositoryRoot,
     input,
     readRequiredEvidence,
+    installation,
+    (changeId) => {
+      completionChangeId = changeId;
+    },
   );
   if (operationPackage === null || typeof repositoryRoot !== "string") {
-    return failure("package-formation-rejected");
+    const rejected = failure("package-formation-rejected");
+    return completionChangeId === undefined
+      ? rejected
+      : { ...rejected, completionChangeId };
   }
   const guidanceBytes = await readExactDeliveryGuidance(
-    repositoryRoot,
+    installation,
     operationPackage.guidanceRef,
   );
   if (guidanceBytes === null) return failure("guidance-drift-rejected");
@@ -543,6 +352,7 @@ export async function invokeDeliveryFinalOperation(
     repositoryRoot,
     input,
     readRequiredEvidence,
+    installation,
   );
   if (
     revalidated === null ||
@@ -560,38 +370,56 @@ export async function invokeDeliveryFinalOperation(
     };
   }
 
-  const coordinationRef = await writeDeliveryFinalCoordinationClosure(
+  const revalidateRelated = async (): Promise<boolean> => {
+    const facts = operationPackage.operationFacts;
+    if ((await readProjectId(repositoryRoot)) !== facts.projectId) return false;
+    const completions = await readDeliveryChangeCompletions(
+      readRequiredEvidence,
+      {
+        repositoryRoot,
+        projectId: facts.projectId,
+        deliveryId: operationPackage.deliveryId,
+        changeIds: facts.completedRequiredChangeIds,
+      },
+    );
+    if (!isDeepStrictEqual(completions, facts.changeCompletions)) return false;
+    try {
+      const activeChanges = await observeOpenSpecActiveChanges({
+        repositoryRoot,
+        flowkitHome: input.flowkitHome,
+      });
+      if (activeChanges.changeIds.length !== 0) return false;
+    } catch {
+      return false;
+    }
+    if (
+      (await readExactDeliveryGuidance(
+        installation,
+        operationPackage.guidanceRef,
+      )) === null
+    )
+      return false;
+    const current = await readCurrentDeliveryFullTest(
+      repositoryRoot,
+      operationPackage.deliveryId,
+    );
+    return (
+      current.status === "passed" &&
+      current.outcome.record.attemptId === facts.fullTestAttempt &&
+      current.outcome.record.inputRef === facts.verifiedCandidateRef &&
+      current.outcome.record.executionRef === facts.fullTestExecutionRef
+    );
+  };
+  const written = await writeDeliveryFinalCoordinationClosure(
     repositoryRoot,
     operationPackage,
+    revalidateRelated,
   );
-  if (coordinationRef === null) {
-    return failure("coordination-materialization-rejected");
+  if (written.status !== "confirmed") {
+    return failure(
+      written.reason as DeliveryFinalInvocationFailureReason,
+      written.mutationStatus,
+    );
   }
-  const finalizedCandidateRef =
-    await deriveApplicableCheckCandidateRef(repositoryRoot);
-  if (finalizedCandidateRef === null) {
-    return failure("finalized-candidate-rejected");
-  }
-  const deliveryFinalizationRef = deriveDeliveryFinalizationRef(
-    operationPackage,
-    coordinationRef,
-    finalizedCandidateRef,
-  );
-  if (deliveryFinalizationRef === null) {
-    return failure("finalized-candidate-rejected");
-  }
-  const record: DeliveryFinalizationRecord = {
-    deliveryFinalizationRef,
-    verifiedCandidateRef: operationPackage.operationFacts.verifiedCandidateRef,
-    fullTestExecutionRef: operationPackage.operationFacts.fullTestExecutionRef,
-    architectureFinalizationRef:
-      operationPackage.operationFacts.architectureFinalizationRef,
-    architectureMaterializedCandidateRef:
-      operationPackage.operationFacts.architectureMaterializedCandidateRef,
-    coordinationRef,
-    finalizedCandidateRef,
-  };
-  return isDeliveryFinalizationRecordForPackage(record, operationPackage)
-    ? { status: "terminal", operationPackage, record }
-    : failure("finalized-candidate-rejected");
+  return { status: "terminal", operationPackage, record: written.record };
 }

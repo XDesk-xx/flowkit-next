@@ -1,0 +1,337 @@
+TAP version 13
+# Subtest: Delivery Final prepares complete prerequisites and materializes one bounded closure
+ok 1 - Delivery Final prepares complete prerequisites and materializes one bounded closure
+  ---
+  duration_ms: 4716.2309
+  type: 'test'
+  ...
+# Subtest: Delivery Final writer preserves all non-target manifest bytes and ordering
+ok 2 - Delivery Final writer preserves all non-target manifest bytes and ordering
+  ---
+  duration_ms: 2395.429
+  type: 'test'
+  ...
+# Subtest: Delivery Final coordination reader rejects missing, mismatched, duplicate, and incomplete manifests
+ok 3 - Delivery Final coordination reader rejects missing, mismatched, duplicate, and incomplete manifests
+  ---
+  duration_ms: 81.4726
+  type: 'test'
+  ...
+# Subtest: Delivery Final coordination writer never returns success on staging, replace, or readback failure
+ok 4 - Delivery Final coordination writer never returns success on staging, replace, or readback failure
+  ---
+  duration_ms: 2435.682
+  type: 'test'
+  ...
+# Subtest: Delivery Final preparation rejects partial facts, active OpenSpec, output drift, and candidate drift
+ok 5 - Delivery Final preparation rejects partial facts, active OpenSpec, output drift, and candidate drift
+  ---
+  duration_ms: 4398.2588
+  type: 'test'
+  ...
+# Subtest: Delivery Final rejects failed archive anchors and unrelated external outcome bytes
+ok 6 - Delivery Final rejects failed archive anchors and unrelated external outcome bytes
+  ---
+  duration_ms: 2093.2769
+  type: 'test'
+  ...
+# Subtest: Delivery Final callback is defensive and correction or invalid results do not close coordination
+ok 7 - Delivery Final callback is defensive and correction or invalid results do not close coordination
+  ---
+  duration_ms: 2896.949
+  type: 'test'
+  ...
+# Subtest: Delivery Finalization ref has a fixed golden vector and ordered projection
+not ok 8 - Delivery Finalization ref has a fixed golden vector and ordered projection
+  ---
+  duration_ms: 6.5922
+  type: 'test'
+  location: 'D:\\Projects\\flowkit-next\\tests\\unit\\domain\\delivery-final-projection.test.ts:1:372'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'delivery-finalization:sha256:c46e34fec60f616675266c9260870fbb253078094ff02fdea84ecd8f482d5fc3'
+    - 'delivery-finalization:sha256:16c11736e7925b85d0d181667fb5d22f192c8666e918a960fd9ba9c3703de7d0'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'delivery-finalization:sha256:16c11736e7925b85d0d181667fb5d22f192c8666e918a960fd9ba9c3703de7d0'
+  actual: 'delivery-finalization:sha256:c46e34fec60f616675266c9260870fbb253078094ff02fdea84ecd8f482d5fc3'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (D:\Projects\flowkit-next\tests\unit\domain\delivery-final-projection.test.ts:82:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.start (node:internal/test_runner/test:944:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+# Subtest: DeliveryOperationId is a closed exact four-value catalog with deterministic Guidance mapping
+ok 9 - DeliveryOperationId is a closed exact four-value catalog with deterministic Guidance mapping
+  ---
+  duration_ms: 3.7086
+  type: 'test'
+  ...
+# Subtest: DeliveryGuidanceRef is closed to canonical Delivery paths and lowercase SHA-256
+ok 10 - DeliveryGuidanceRef is closed to canonical Delivery paths and lowercase SHA-256
+  ---
+  duration_ms: 0.5949
+  type: 'test'
+  ...
+# Subtest: resolver binds exact canonical bytes and byte drift changes identity
+ok 11 - resolver binds exact canonical bytes and byte drift changes identity
+  ---
+  duration_ms: 40.2993
+  type: 'test'
+  ...
+# Subtest: missing product Guidance never falls back to .agents
+ok 12 - missing product Guidance never falls back to .agents
+  ---
+  duration_ms: 8.2028
+  type: 'test'
+  ...
+# Subtest: non-regular, symlink, and parent-path redirected Guidance fail closed
+ok 13 - non-regular, symlink, and parent-path redirected Guidance fail closed
+  ---
+  duration_ms: 43.22
+  type: 'test'
+  ...
+# Subtest: unreadable canonical Delivery Guidance fails closed when permissions are enforceable
+ok 14 - unreadable canonical Delivery Guidance fails closed when permissions are enforceable
+  ---
+  duration_ms: 153.2922
+  type: 'test'
+  ...
+# Subtest: Delivery planning reference and Start facts are exact closed values
+ok 15 - Delivery planning reference and Start facts are exact closed values
+  ---
+  duration_ms: 0.7324
+  type: 'test'
+  ...
+# Subtest: Delivery Start authority recognition is exact to create-delivery, Delivery, and bounded scopes
+ok 16 - Delivery Start authority recognition is exact to create-delivery, Delivery, and bounded scopes
+  ---
+  duration_ms: 0.4335
+  type: 'test'
+  ...
+# Subtest: DeliveryOperationPackage forms only the concrete Start variant and rejects mismatches
+ok 17 - DeliveryOperationPackage forms only the concrete Start variant and rejects mismatches
+  ---
+  duration_ms: 0.7038
+  type: 'test'
+  ...
+# Subtest: Delivery Final package is closed to exact facts, Guidance, and singleton authority
+ok 18 - Delivery Final package is closed to exact facts, Guidance, and singleton authority
+  ---
+  duration_ms: 2.5059
+  type: 'test'
+  ...
+# Subtest: canonical Delivery Final Guidance is generic, content-bound, and operation-bounded
+ok 19 - canonical Delivery Final Guidance is generic, content-bound, and operation-bounded
+  ---
+  duration_ms: 4.3575
+  type: 'test'
+  ...
+# Subtest: repository integration package is the fifth exact variant and requires singleton Owner authority
+ok 20 - repository integration package is the fifth exact variant and requires singleton Owner authority
+  ---
+  duration_ms: 1.1883
+  type: 'test'
+  ...
+# Subtest: accepted object may use different history when its exact product and required evidence match
+ok 21 - accepted object may use different history when its exact product and required evidence match
+  ---
+  duration_ms: 5298.2292
+  type: 'test'
+  ...
+# Subtest: content-equivalent history replacement without trusted acceptance is rejected
+ok 22 - content-equivalent history replacement without trusted acceptance is rejected
+  ---
+  duration_ms: 3900.8787
+  type: 'test'
+  ...
+# Subtest: accepted object with product-equivalent but damaged required Run evidence is rejected
+ok 23 - accepted object with product-equivalent but damaged required Run evidence is rejected
+  ---
+  duration_ms: 4224.114
+  type: 'test'
+  ...
+# Subtest: wrong or broad Owner authority fails closed
+ok 24 - wrong or broad Owner authority fails closed
+  ---
+  duration_ms: 853.4806
+  type: 'test'
+  ...
+# Subtest: zero, multiple, and candidate-changing final commits fail closed
+    # Subtest: zero commit
+    ok 1 - zero commit
+      ---
+      duration_ms: 1696.2883
+      type: 'test'
+      ...
+    # Subtest: multiple commits
+    ok 2 - multiple commits
+      ---
+      duration_ms: 2067.6147
+      type: 'test'
+      ...
+    # Subtest: two-parent commit
+    ok 3 - two-parent commit
+      ---
+      duration_ms: 2060.7294
+      type: 'test'
+      ...
+    # Subtest: candidate-changing commit
+    ok 4 - candidate-changing commit
+      ---
+      duration_ms: 2015.6094
+      type: 'test'
+      ...
+    1..4
+ok 25 - zero, multiple, and candidate-changing final commits fail closed
+  ---
+  duration_ms: 7841.8338
+  type: 'test'
+  ...
+# Subtest: provider-reported accepted-main SHA is not admitted as truth
+ok 26 - provider-reported accepted-main SHA is not admitted as truth
+  ---
+  duration_ms: 2540.6236
+  type: 'test'
+  ...
+# Subtest: trusted preparation binds exact finalized state and pre-integration Git facts
+ok 27 - trusted preparation binds exact finalized state and pre-integration Git facts
+  ---
+  duration_ms: 1709.1629
+  type: 'test'
+  ...
+# Subtest: trusted Owner source rejects caller checkpoint-operation substitution
+ok 28 - trusted Owner source rejects caller checkpoint-operation substitution
+  ---
+  duration_ms: 1679.7064
+  type: 'test'
+  ...
+# Subtest: Integration accepts semantically identical reordered Final evidence
+ok 29 - Integration accepts semantically identical reordered Final evidence
+  ---
+  duration_ms: 1508.377
+  type: 'test'
+  ...
+# Subtest: coordination byte drift invalidates trusted preparation
+ok 30 - coordination byte drift invalidates trusted preparation
+  ---
+  duration_ms: 961.9415
+  type: 'test'
+  ...
+# Subtest: repository integration proves one final commit and derives accepted main as next base
+ok 31 - repository integration proves one final commit and derives accepted main as next base
+  ---
+  duration_ms: 4781.0006
+  type: 'test'
+  ...
+# Subtest: repository integration reuses an explicitly bound existing checkpoint without creating a second commit
+ok 32 - repository integration reuses an explicitly bound existing checkpoint without creating a second commit
+  ---
+  duration_ms: 4203.3586
+  type: 'test'
+  ...
+# Subtest: target-main drift during final commit is rejected before repository acceptance
+ok 33 - target-main drift during final commit is rejected before repository acceptance
+  ---
+  duration_ms: 2928.3837
+  type: 'test'
+  ...
+# Subtest: accepted main ancestry without exact tree equality is rejected
+ok 34 - accepted main ancestry without exact tree equality is rejected
+  ---
+  duration_ms: 3675.1527
+  type: 'test'
+  ...
+# Subtest: Final rejects a source-bound Run that canonical admission rejects
+ok 35 - Final rejects a source-bound Run that canonical admission rejects
+  ---
+  duration_ms: 2184.5264
+  type: 'test'
+  ...
+# Subtest: Final follows an admitted persisted required link across Change roots
+ok 36 - Final follows an admitted persisted required link across Change roots
+  ---
+  duration_ms: 1986.3988
+  type: 'test'
+  ...
+# Subtest: Start preparation validates trusted exact repository/planning facts before package formation
+ok 37 - Start preparation validates trusted exact repository/planning facts before package formation
+  ---
+  duration_ms: 629.8025
+  type: 'test'
+  ...
+# Subtest: stale head, dirty tree, or wrong planning reference reject before Agent execution
+ok 38 - stale head, dirty tree, or wrong planning reference reject before Agent execution
+  ---
+  duration_ms: 913.8677
+  type: 'test'
+  ...
+# Subtest: missing or mismatched Start authority rejects package formation and calls execution zero times
+ok 39 - missing or mismatched Start authority rejects package formation and calls execution zero times
+  ---
+  duration_ms: 884.9586
+  type: 'test'
+  ...
+# Subtest: execution callback receives the exact package and matching canonical Guidance bytes
+ok 40 - execution callback receives the exact package and matching canonical Guidance bytes
+  ---
+  duration_ms: 1266.8102
+  type: 'test'
+  ...
+# Subtest: successful validation without commit authority stops before Git mutation
+ok 41 - successful validation without commit authority stops before Git mutation
+  ---
+  duration_ms: 1114.843
+  type: 'test'
+  ...
+# Subtest: missing validation source and callback authority escalation fail closed
+ok 42 - missing validation source and callback authority escalation fail closed
+  ---
+  duration_ms: 2946.6639
+  type: 'test'
+  ...
+# Subtest: bounded commit authority permits exactly one fixed-point commit callback then stops terminal
+ok 43 - bounded commit authority permits exactly one fixed-point commit callback then stops terminal
+  ---
+  duration_ms: 2183.2428
+  type: 'test'
+  ...
+# Subtest: Start rejects a two-parent checkpoint even when the second parent is otherwise valid
+ok 44 - Start rejects a two-parent checkpoint even when the second parent is otherwise valid
+  ---
+  duration_ms: 1621.144
+  type: 'test'
+  ...
+# Subtest: commit authority without a commit callback fails closed after validation
+ok 45 - commit authority without a commit callback fails closed after validation
+  ---
+  duration_ms: 1070.8417
+  type: 'test'
+  ...
+# Subtest: invalid surface result or invalid fixed-point SHA fails closed
+ok 46 - invalid surface result or invalid fixed-point SHA fails closed
+  ---
+  duration_ms: 1002.641
+  type: 'test'
+  ...
+# Subtest: no candidate product Guidance means package formation fails even when .agents bootstrap exists
+ok 47 - no candidate product Guidance means package formation fails even when .agents bootstrap exists
+  ---
+  duration_ms: 6.8187
+  type: 'test'
+  ...
+1..47
+# tests 51
+# suites 0
+# pass 50
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 25452.2149

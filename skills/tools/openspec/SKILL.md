@@ -8,10 +8,12 @@ description: Use the repository-distributed OpenSpec 1.10.0 skills with the exac
 ## Authority
 
 OpenSpec owns Change proposal/design/spec/tasks/archive facts.
-This Skill explains HOW to use the exact OpenSpec tool selected by the project toolchain.
+This Skill explains HOW to use the exact OpenSpec tool selected by the manager installation toolchain.
 It never decides the current Flowkit Action, Role, Owner authority, Review verdict, or next boundary.
 
 ## Runtime identity
+
+系统 lock 位于 `<manager-installation>/config/tools/toolchain.lock.json`；本 Skill 与以下 vendor 路径也相对该安装解析。OpenSpec 的 cwd/观察根仍为 target repositoryRoot，不要求 target 复制 lock、Skills 或 Flowkit scripts。安装包 name/version 只标识 manager 来源，不要求 target commit 或上一 Delivery SHA。缺 runtime 仅阻断实际依赖该工具的操作；Guidance identity 解析不依赖 executable，status/next/action 的 target 上下文观察使用 exact OpenSpec。
 
 Required version: `1.10.0`.
 

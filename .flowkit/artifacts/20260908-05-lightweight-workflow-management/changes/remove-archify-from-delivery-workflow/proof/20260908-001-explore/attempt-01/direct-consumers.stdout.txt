@@ -1,0 +1,183 @@
+README.md:11:After that PASS, Delivery Final materialized repository guidance and derived Archify assets only. It did **not** modify verified production implementation, tests, canonical OpenSpec specifications, or package/lock truth.
+README.md:23:- exact managed OpenSpec `1.10.0` / Archify `2.15.0` runtime resolution;
+README.md:66:Archify       → derived architecture projection only
+README.md:82:Archify  2.15.0
+AGENTS.md:55:Archify       → derived architecture validation / rendering / visualization
+AGENTS.md:133:Archify   2.15.0
+AGENTS.md:150:   └─ archify/2.15.0/
+AGENTS.md:156:OpenSpec/Archify executable runtime
+AGENTS.md:161:generated Archify HTML
+AGENTS.md:164:Managed OpenSpec/Archify 不得静默使用 PATH/global 其他版本，也不得在正式执行里自动 install/update/download `latest`。
+AGENTS.md:291:## 11. Archify / Architecture boundary
+AGENTS.md:293:Archify 只负责 derived architecture description validation / rendering / visualization。
+AGENTS.md:557:Archify visualizes derived architecture only.
+config/tools\toolchain.lock.json:14:  "archify": {
+config/tools\toolchain.lock.json:15:    "packageName": "archify",
+config/tools\toolchain.lock.json:17:    "runtimeRoot": "${FLOWKIT_HOME}/tools/archify/2.15.0",
+config/tools\toolchain.lock.json:18:    "entrypoint": "bin/archify.mjs",
+config/tools\toolchain.lock.json:19:    "runtimeArtifact": "archify.zip",
+config/tools\toolchain.lock.json:21:    "sourceArtifact": "archify-2.15.0.zip",
+skills/tools\archify\SKILL.md:2:name: project-archify
+skills/tools\archify\SKILL.md:3:description: Use the repository-distributed Archify 2.15.0 guidance with the exact externally managed Archify runtime. Archify is derived visualization only.
+skills/tools\archify\SKILL.md:6:# Project Archify Tool Skill
+skills/tools\archify\SKILL.md:10:Archify is a derived architecture visualization/validation tool.
+skills/tools\archify\SKILL.md:20:<FLOWKIT_HOME>/tools/archify/2.15.0/
+skills/tools\archify\SKILL.md:26:<FLOWKIT_HOME>/tools/archify/2.15.0/bin/archify.mjs
+skills/tools\archify\SKILL.md:29:Do not vendor the runtime into the Git repository and do not silently use another Archify installation.
+skills/tools\archify\SKILL.md:36:skills/vendors/archify/UPSTREAM-SKILL.md
+skills/tools\archify\SKILL.md:42:skills/vendors/archify/references/
+skills/tools\archify\SKILL.md:48:node bin/archify.mjs ...
+skills/tools\archify\SKILL.md:51:resolve `bin/archify.mjs` against the managed runtime root above, not against the repository Skill directory.
+skills/tools\archify\SKILL.md:60:Archify runtime version
+skills/delivery\architecture-finalization\SKILL.md:3:Execute an already-decided `delivery-architecture-finalization` operation from its exact `DeliveryOperationPackage` after a valid terminal Formal Full Test PASS.
+skills/delivery\architecture-finalization\SKILL.md:13:5. Validate all effective six-slot output content before repository materialization. Use the exact managed Archify runtime only as derived validation/compare mechanics; Archify never becomes a truth or authority source.
+skills/delivery\start\SKILL.md:36:5. Keep Archify evidence valid at each document's declared repository revision. Do not cite newly-created Start files as evidence for an older accepted-base revision.
+skills/delivery\start\SKILL.md:37:6. Validate the complete Start surface with the applicable OpenSpec, Archify, Git and receipt/hash checks. Do not activate a Change automatically.
+openspec/specs\delivery-operation-execution-and-start-continuity\spec.md:10:系统 SHALL 只接受以下五个 canonical `DeliveryOperationId` literal：`delivery-start`、`delivery-full-test`、`delivery-architecture-finalization`、`delivery-final`、`delivery-repository-integration`。每个 exact operation SHALL 通过固定 1:1 映射唯一对应 canonical repository-relative Delivery Guidance path；未知 literal、alias、模糊匹配、动态 registration、ranking 或 Agent-selected operation SHALL fail closed。`DeliveryOperationId` SHALL 只表达 already-decided execution identity，且 SHALL NOT 决定下一 Delivery operation、Change activation、Reviewer/Verification truth 或 Git authority。
+openspec/specs\delivery-operation-execution-and-start-continuity\spec.md:96:`delivery-architecture-finalization` SHALL 使用现有 `DeliveryOperationPackage` envelope 的一个 closed concrete facts variant，绑定 exact passed `verifiedCandidateRef`、exact `fullTestExecutionRef`、Current/Planned Architecture exact content identity 与 Workflow/Lifecycle/Data Flow fixed system-view prestate。Trusted preparation host SHALL 从 current repository 与 trusted terminal passed Full Test outcome验证/形成这些 facts，而 SHALL NOT 接受 caller 提交 reusable candidate/architecture identity覆盖 canonical facts。该 operation 的 `ownerAuthority` SHALL 为 explicit `null`；non-null Full Test/Delivery Final/Git/other Owner authority SHALL fail closed。Package SHALL 只绑定已经由 trusted Delivery boundary/caller决定的 `delivery-architecture-finalization` WHAT 与 exact HOW/context，不得决定 next operation。
+openspec/specs\delivery-operation-execution-and-start-continuity\spec.md:100:- **THEN** 系统 SHALL 形成 executable `delivery-architecture-finalization` concrete `DeliveryOperationPackage`
+openspec/specs\delivery-operation-execution-and-start-continuity\spec.md:108:- **THEN** accepted `delivery-start`、`delivery-full-test`与`delivery-architecture-finalization` package validation/execution semantics SHALL 保持其各自exact authority边界，且`delivery-repository-integration`仍 SHALL fail closed直到其独立Change实现
+openspec/specs\delivery-operation-execution-and-start-continuity\spec.md:154:Start SHALL 保持 state-first：exact repository/history/environment 已有则 verify/reuse，缺失则只恢复必要状态并重新验证同一 preparation；不得引入 local/detached/ZIP/bundle lifecycle mode。Start SHALL materialize manifest、Current、Planned、Current→Planned compare，并由可信 host 对实际输出及要求的 OpenSpec/Archify/Git/receipt validation 取得完整证明。
+openspec/specs\delivery-finalization\spec.md:61:Projection SHALL 按顺序为 deliveryId、operationId、exact ownerAuthority（ref/decision/deliveryId/sourceRef/scope，不合成 absent changeId）、operationFacts、guidanceRef（path/contentSha256）、coordinationRef（artifact/contentSha256/bytes）、finalizedCandidateRef。operationFacts SHALL 依次为 verifiedCandidateRef、fullTestExecutionRef、architectureFinalizationRef、architectureMaterializedCandidateRef、coordinationPrestateRef（artifact/contentSha256/bytes）、manifest-order completedRequiredChangeIds、requiredEvidence。requiredEvidence SHALL 使用本 capability 的固定形状/顺序；projection 不包含自身 derived ref。
+skills/delivery\full-test\SKILL.md:15:7. STOP at the Formal Full Test boundary. This Guidance does not grant correction, Change, Git, architecture-finalization, Delivery-final, or next-operation authority.
+openspec/specs\architecture-and-canonical-diagram-continuity\spec.md:43:- **THEN** Architecture Finalization SHALL reject该compare，且 SHALL NOT仅凭Archify process PASS或file hash/bytes接受其语义
+openspec/specs\architecture-and-canonical-diagram-continuity\spec.md:46:Repository-scoped canonical system views SHALL 固定为 Workflow、Lifecycle、Data Flow 三种。若某 fixed view 在建立 repository-scoped ownership 时不存在，Architecture Finalization MAY 从已接受语义首次 materialize baseline；baseline 一旦存在，represented accepted semantics 未变化时 SHALL exact-byte preserve，只有 represented accepted semantics 发生变化时才 SHALL 更新 derived current view。每个 materialized/updated canonical view SHALL 使用 exact managed Archify validation；生成的 HTML SHALL NOT 作为 canonical repository truth。
+openspec/specs\architecture-and-canonical-diagram-continuity\spec.md:75:Architecture Finalization SHALL 在六个fixed derived outputs全部validated/materialized并exact重读后，使用existing repository candidate contract派生post-materialization candidate。Terminal closure SHALL 同时绑定pre-Architecture verified candidate、Full Test execution、六个output identities与该post-materialization candidate，并 SHALL 形成`architecture-finalization:sha256:<64 lowercase hex>` closure ref。该ref SHALL 对UTF-8 domain tag `flowkit-delivery-architecture-finalization`、一个single `0x00` byte及无BOM/newline的`JSON.stringify` projection bytes依次做SHA-256。Projection SHALL 由validator重建，并按顺序只包含：`deliveryId`；`operationId`；`ownerAuthority=null`；`operationFacts`中的`verifiedCandidateRef`、`fullTestExecutionRef`、`currentArchitectureRef {artifact, contentSha256}`、`plannedArchitectureRef {artifact, contentSha256}`、`systemViewPrestate {workflowSha256, lifecycleSha256, dataFlowSha256}`；`guidanceRef {path, contentSha256}`；以及`record`中的`verifiedCandidateRef`、`fullTestExecutionRef`、ordered `outputs`和`architectureMaterializedCandidateRef`。Ordered outputs SHALL 固定为`actualArchitectureRef`、`currentToActualCompareRef`、`plannedToActualCompareRef`、`workflowRef`、`lifecycleRef`、`dataFlowRef`，每项exact为`{artifact, contentSha256, bytes}`；projection SHALL NOT包含derived ref自身。Validator与Delivery Final SHALL 使用同一projection重算；golden vector SHALL 冻结domain/projection顺序，input property reordering SHALL NOT改变ref，任一included value改变 SHALL 改变ref。实现 SHALL NOT依赖Run prose或generic canonicalization；derive failure、ref mismatch或materialization后的unexplained drift SHALL NOT产生terminal success。
+openspec/specs\foundation-cli-surface\spec.md:42:`flowkit status` SHALL 以显式 caller-owned repository、Delivery/Change identity、Change-start facts 与 exact selected durable Run 为输入，并 SHALL 在报告 `changeState` 前通过同一 trusted coordination resolver 得到 exact Delivery + Change 的 canonical coordination state；caller MUST NOT 提供 authority-bearing `changeState`。`status` MAY 组合既有只读 OpenSpec active/exact-Change observation，返回 deterministic machine-readable status document。`status` MUST NOT 调用 Policy 来创造 next boundary，MUST NOT 从 history ordering 推断 currentness，且 MUST NOT 修改 lifecycle、Run/Result、OpenSpec、Memo、Archify、Delivery coordination truth 或 Git state。
+openspec/specs\foundation-cli-surface\spec.md:95:`flowkit doctor` SHALL 对当前 Foundation CLI 真实运行依赖执行 fail-closed diagnostics：通过既有 managed-tool resolver 验证 exact OpenSpec 与 Archify runtime identity，并通过既有 OpenSpec observation seam 验证 requested repository 的 OpenSpec exact-root observation。Archify SHALL 仅被 resolve，不得在本 command 中被调用生成、比较或验证 Delivery architecture projection。Node SHALL 继续由 repository host compatibility declaration 约束，而不得被 doctor 转换为 exact managed-tool patch lock。
+openspec/specs\foundation-cli-surface\spec.md:98:- **WHEN** exact managed OpenSpec/Archify 均可解析，且 OpenSpec observation exact-bind requested repository root
+openspec/specs\foundation-cli-surface\spec.md:99:- **THEN** `doctor` SHALL 返回 machine-readable PASS diagnostics，而不调用 Archify rendering/materialization
+openspec/specs\foundation-cli-surface\spec.md:101:#### Scenario: Managed Archify cannot be resolved
+openspec/specs\foundation-cli-surface\spec.md:102:- **WHEN** existing managed-tool resolver 对 Archify fail closed
+openspec/specs\foundation-cli-surface\spec.md:103:- **THEN** `doctor` SHALL 报告对应 closed diagnostic，且 MUST NOT fallback 到 PATH/global Archify
+openspec/specs\foundation-cli-surface\spec.md:121:本 capability 的 production CLI SHALL 只组合既有 canonical domain/integration seams，MUST NOT 读取或执行 `.agents/skills/**`、自动发现 active Delivery/current Run、建立 current-state registry、执行 Author/Reviewer/provider transport、驱动 OpenSpec mutation/workflow、触发 Archify architecture materialization、执行 Git mutation、运行 Delivery Full Test 或执行 Delivery Final/Owner promotion。
+openspec/specs\foundation-cli-surface\spec.md:127:#### Scenario: Archify is managed but not lifecycle authority
+openspec/specs\foundation-cli-surface\spec.md:128:- **WHEN** doctor 成功解析 exact managed Archify runtime
+openspec/specs\foundation-cli-surface\spec.md:129:- **THEN** CLI SHALL 仅报告 runtime diagnostic，且 MUST NOT 读取 Archify projection 作为 lifecycle truth 或触发 Delivery Start/Final architecture generation
+src\internal\delivery-architecture-finalization-closure.ts:4:} from "../domain/delivery-architecture-finalization-identity.js";
+src\internal\delivery-architecture-finalization-closure.ts:15:} from "./delivery-architecture-finalization-artifacts.js";
+openspec/specs\lightweight-engineering-gate\spec.md:11:该 Gate MUST NOT 执行或声称拥有 typecheck、build、domain tests、acceptance tests、OpenSpec validation、Archify、dependency-cruiser、Knip 或 Formal Full Test，也 MUST NOT 产生 Formal Verification verdict、Owner authority、Reviewer verdict 或新的 Flowkit lifecycle fact。
+openspec/specs\lightweight-engineering-gate\spec.md:23:- **THEN** 它 MUST NOT 因为 typecheck、build、tests、OpenSpec、Archify、dependency-cruiser、Knip 或 Formal Full Test 的状态而扩大自身检查面
+src\internal\delivery-architecture-finalization-artifacts.ts:14:import type { DeliveryArchitectureClosureOutputRef } from "../domain/delivery-architecture-finalization-identity.js";
+src\internal\delivery-architecture-finalization-artifacts.ts:15:import type { DeliveryArchitectureSystemViewPrestate } from "../domain/delivery-architecture-finalization-operation.js";
+src\internal\delivery-architecture-finalization-artifacts.ts:16:import type { DeliveryArchitectureFinalizationDerivedOutputs } from "../domain/delivery-architecture-finalization-execution.js";
+src\internal\delivery-architecture-finalization-artifacts.ts:19:import { validateArchitectureFinalizationWithManagedArchify } from "./delivery-architecture-finalization-archify.js";
+src\internal\delivery-architecture-finalization-artifacts.ts:143:export async function readArchitectureInputContext(
+src\internal\delivery-architecture-finalization-artifacts.ts:231:  const context = await readArchitectureInputContext(
+src\internal\delivery-architecture-finalization-artifacts.ts:466:        | "managed-archify-rejected"
+src\internal\delivery-architecture-finalization-artifacts.ts:524:    path.join(tmpdir(), "flowkit-architecture-finalization-"),
+src\internal\delivery-architecture-finalization-artifacts.ts:544:      !(await validateArchitectureFinalizationWithManagedArchify(
+src\internal\delivery-architecture-finalization-artifacts.ts:556:      return { status: "managed-archify-rejected" };
+openspec/specs\managed-toolchain-resolution\spec.md:4:Define deterministic, fail-closed resolution of the exact OpenSpec and Archify runtimes managed by Flowkit from repository-tracked identity and `FLOWKIT_HOME`, while keeping host runtime compatibility outside managed-tool authority.
+openspec/specs\managed-toolchain-resolution\spec.md:9:The system SHALL support managed runtime resolution for exactly `openspec` and `archify`. For each supported tool, repository-tracked managed-tool identity SHALL provide the expected package identity, exact managed-tool version, runtime location relative to `FLOWKIT_HOME`, and entrypoint needed to identify the runtime.
+openspec/specs\managed-toolchain-resolution\spec.md:12:- **WHEN** the caller requests `openspec` or `archify`
+openspec/specs\managed-toolchain-resolution\spec.md:16:- **WHEN** the caller requests a tool id outside `openspec` and `archify`
+openspec/specs\managed-toolchain-resolution\spec.md:41:#### Scenario: Exact Archify identity is present
+openspec/specs\managed-toolchain-resolution\spec.md:42:- **WHEN** the resolved Archify runtime reports package `archify`, version `2.15.0`, and contains its declared entrypoint beneath the runtime root
+openspec/specs\managed-toolchain-resolution\spec.md:43:- **THEN** the system returns a resolved Archify identity containing its tool id, version, runtime root, and entrypoint
+openspec/specs\managed-toolchain-resolution\spec.md:56:#### Scenario: OpenSpec is requested while Archify is absent
+openspec/specs\managed-toolchain-resolution\spec.md:57:- **WHEN** OpenSpec is valid under `FLOWKIT_HOME` and Archify is absent
+openspec/specs\managed-toolchain-resolution\spec.md:58:- **THEN** OpenSpec resolution succeeds without requiring Archify
+openspec/specs\managed-toolchain-resolution\spec.md:60:#### Scenario: Archify is requested while OpenSpec is absent
+openspec/specs\managed-toolchain-resolution\spec.md:61:- **WHEN** Archify is valid under `FLOWKIT_HOME` and OpenSpec is absent
+openspec/specs\managed-toolchain-resolution\spec.md:62:- **THEN** Archify resolution succeeds without requiring OpenSpec
+openspec/specs\managed-toolchain-resolution\spec.md:87:A successful resolution SHALL return only validated managed-tool identity and location facts. This capability MUST NOT install, download, update, invoke, or interpret lifecycle output from OpenSpec or Archify.
+src\internal\delivery-architecture-finalization-archify.ts:9:async function runManagedArchify(
+src\internal\delivery-architecture-finalization-archify.ts:18:      toolId: "archify",
+src\internal\delivery-architecture-finalization-archify.ts:32:export async function validateArchitectureFinalizationWithManagedArchify(
+src\internal\delivery-architecture-finalization-archify.ts:51:      !(await runManagedArchify(repositoryRoot, flowkitHome, [
+src\internal\delivery-architecture-finalization-archify.ts:71:      !(await runManagedArchify(repositoryRoot, flowkitHome, [
+src\internal\delivery-architecture-finalization-archify.ts:78:        path.join(stagingRoot, `${label}-to-actual.archify-receipt.json`),
+src\cli\foundation-cli.ts:269:      readonly id: "openspec-runtime" | "archify-runtime";
+src\cli\foundation-cli.ts:279:      readonly id: "openspec-runtime" | "archify-runtime" | "openspec-root";
+src\cli\foundation-cli.ts:286:  toolId: "openspec" | "archify",
+src\cli\foundation-cli.ts:335:    runtimeDiagnostic(request, "archify"),
+src\domain\delivery-final-execution.ts:9:} from "./delivery-architecture-finalization-execution.js";
+src\domain\delivery-final-execution.ts:10:import type { DeliveryArchitectureFinalizationClosureRecord } from "./delivery-architecture-finalization-identity.js";
+src\domain\delivery-final-execution.ts:37:import { revalidateArchitectureFinalizationClosureOutputs } from "../internal/delivery-architecture-finalization-closure.js";
+src\domain\delivery-final-execution.ts:48:  readonly architectureOutcome: DeliveryArchitectureFinalizationOutcome;
+src\domain\delivery-final-execution.ts:78:  readonly architectureMaterializedCandidateRef: string;
+src\domain\delivery-final-execution.ts:119:  /^architecture-finalization:sha256:[0-9a-f]{64}$/;
+src\domain\delivery-final-execution.ts:152:      "architectureOutcome",
+src\domain\delivery-final-execution.ts:198:      "delivery-architecture-finalization" ||
+src\domain\delivery-final-execution.ts:206:      "architectureMaterializedCandidateRef",
+src\domain\delivery-final-execution.ts:212:    typeof value.record.architectureMaterializedCandidateRef !== "string" ||
+src\domain\delivery-final-execution.ts:214:      value.record.architectureMaterializedCandidateRef,
+src\domain\delivery-final-execution.ts:252:    input.architectureOutcome,
+src\domain\delivery-final-execution.ts:270:    candidateRef !== architecture.record.architectureMaterializedCandidateRef
+src\domain\delivery-final-execution.ts:291:      architectureOutcome: input.architectureOutcome,
+src\domain\delivery-final-execution.ts:324:      architectureMaterializedCandidateRef:
+src\domain\delivery-final-execution.ts:325:        architecture.record.architectureMaterializedCandidateRef,
+src\domain\delivery-final-execution.ts:379:      architectureMaterializedCandidateRef:
+src\domain\delivery-final-execution.ts:380:        operationPackage.operationFacts.architectureMaterializedCandidateRef,
+src\domain\delivery-final-execution.ts:450:      "architectureMaterializedCandidateRef",
+src\domain\delivery-final-execution.ts:464:    value.architectureMaterializedCandidateRef !==
+src\domain\delivery-final-execution.ts:465:      operationPackage.operationFacts.architectureMaterializedCandidateRef
+src\domain\delivery-final-execution.ts:589:    architectureMaterializedCandidateRef:
+src\domain\delivery-final-execution.ts:590:      operationPackage.operationFacts.architectureMaterializedCandidateRef,
+src\internal\delivery-start-content.ts:56:  | "archify-current"
+src\internal\delivery-start-content.ts:57:  | "archify-planned"
+src\internal\delivery-start-content.ts:58:  | "archify-current-to-planned"
+src\internal\delivery-start-content.ts:63:  readonly tool: "git" | "openspec" | "archify" | "flowkit";
+src\internal\delivery-start-content.ts:248:    check("archify-current", "archify", [artifactInput(outputs[1])]),
+src\internal\delivery-start-content.ts:249:    check("archify-planned", "archify", [artifactInput(outputs[2])]),
+src\internal\delivery-start-content.ts:250:    check("archify-current-to-planned", "archify", [
+src\internal\delivery-required-evidence-source.ts:23:import { deriveDeliveryArchitectureFinalizationRef } from "../domain/delivery-architecture-finalization-execution.js";
+src\internal\delivery-required-evidence-source.ts:75:  readonly readArchitecture: (request: {
+src\internal\delivery-required-evidence-source.ts:254:function validArchitectureOutcome(
+src\internal\delivery-required-evidence-source.ts:290:    typeof (value as ReadDeliveryRequiredEvidence).readArchitecture ===
+src\internal\delivery-required-evidence-source.ts:304:    readonly architectureOutcome?: unknown;
+src\internal\delivery-required-evidence-source.ts:365:    architecture = await read.readArchitecture({
+src\internal\delivery-required-evidence-source.ts:374:  const architectureOutcome = parseJson(architecture.outcomeJson);
+src\internal\delivery-required-evidence-source.ts:380:    !validArchitectureOutcome(
+src\internal\delivery-required-evidence-source.ts:381:      architectureOutcome,
+src\internal\delivery-required-evidence-source.ts:387:    (expected.architectureOutcome !== undefined &&
+src\internal\delivery-required-evidence-source.ts:388:      !isDeepStrictEqual(architectureOutcome, expected.architectureOutcome))
+src\domain\delivery-architecture-finalization-execution.ts:18:} from "./delivery-architecture-finalization-identity.js";
+src\domain\delivery-architecture-finalization-execution.ts:25:  readArchitectureInputContext,
+src\domain\delivery-architecture-finalization-execution.ts:28:} from "../internal/delivery-architecture-finalization-artifacts.js";
+src\domain\delivery-architecture-finalization-execution.ts:79:    readArchitectureInputContext(repositoryRoot, input.deliveryId),
+src\domain\delivery-architecture-finalization-execution.ts:82:      "delivery-architecture-finalization",
+src\domain\delivery-architecture-finalization-execution.ts:95:    "delivery-architecture-finalization",
+src\domain\delivery-architecture-finalization-execution.ts:112:  return formed?.operationId === "delivery-architecture-finalization"
+src\domain\delivery-architecture-finalization-execution.ts:235:  /^architecture-finalization:sha256:[0-9a-f]{64}$/;
+src\domain\delivery-architecture-finalization-execution.ts:274:      "architectureMaterializedCandidateRef",
+src\domain\delivery-architecture-finalization-execution.ts:280:    typeof value.architectureMaterializedCandidateRef !== "string" ||
+src\domain\delivery-architecture-finalization-execution.ts:281:    !CANDIDATE_REF_PATTERN.test(value.architectureMaterializedCandidateRef) ||
+src\domain\delivery-architecture-finalization-execution.ts:368:      architectureMaterializedCandidateRef:
+src\domain\delivery-architecture-finalization-execution.ts:369:        record.architectureMaterializedCandidateRef,
+src\domain\delivery-architecture-finalization-execution.ts:379:    .update("flowkit-delivery-architecture-finalization\0")
+src\domain\delivery-architecture-finalization-execution.ts:386:  return `architecture-finalization:sha256:${digest}`;
+src\domain\delivery-architecture-finalization-execution.ts:395:    operationPackage.operationId !== "delivery-architecture-finalization" ||
+src\domain\delivery-architecture-finalization-execution.ts:402:      "architectureMaterializedCandidateRef",
+src\domain\delivery-architecture-finalization-execution.ts:415:    architectureMaterializedCandidateRef:
+src\domain\delivery-architecture-finalization-execution.ts:416:      record.architectureMaterializedCandidateRef,
+src\domain\delivery-architecture-finalization-execution.ts:432:  | "managed-archify-rejected";
+src\domain\delivery-architecture-finalization-execution.ts:530:    callbackPackage.operationId !== "delivery-architecture-finalization"
+src\domain\delivery-architecture-finalization-execution.ts:580:  const architectureMaterializedCandidateRef =
+src\domain\delivery-architecture-finalization-execution.ts:582:  if (architectureMaterializedCandidateRef === null) {
+src\domain\delivery-architecture-finalization-execution.ts:589:    architectureMaterializedCandidateRef,
+src\domain\delivery-architecture-finalization-identity.ts:19:  readonly architectureMaterializedCandidateRef: string;
+src\internal\delivery-final-coordination.ts:38:  "architectureMaterializedCandidateRef",
+src\internal\delivery-final-coordination.ts:168:    document.finalization.architectureMaterializedCandidateRef !==
+src\internal\delivery-final-coordination.ts:169:      operationPackage.operationFacts.architectureMaterializedCandidateRef ||
+src\internal\delivery-final-coordination.ts:269:    `${deliveryIndent}architectureMaterializedCandidateRef: ${quoted(facts.architectureMaterializedCandidateRef)}`,
+src\internal\delivery-required-evidence.ts:49:const ARCHITECTURE_REF = /^architecture-finalization:sha256:[0-9a-f]{64}$/;
+src\domain\delivery-operation-execution.ts:19:} from "./delivery-architecture-finalization-operation.js";
+src\domain\delivery-operation-execution.ts:36:  "delivery-architecture-finalization",
+src\domain\delivery-operation-execution.ts:55:  "delivery-architecture-finalization":
+src\domain\delivery-operation-execution.ts:56:    "skills/delivery/architecture-finalization/SKILL.md",
+src\domain\delivery-operation-execution.ts:329:  readonly operationId: "delivery-architecture-finalization";
+src\domain\delivery-operation-execution.ts:396:    case "delivery-architecture-finalization":
+src\domain\delivery-operation-execution.ts:531:  if (operationId === "delivery-architecture-finalization") {
+src\domain\delivery-final-operation.ts:23:  readonly architectureMaterializedCandidateRef: string;
+src\domain\delivery-final-operation.ts:33:  /^architecture-finalization:sha256:[0-9a-f]{64}$/;
+src\domain\delivery-final-operation.ts:39:  "architectureMaterializedCandidateRef",
+src\domain\delivery-final-operation.ts:103:    isHashRef(value.architectureMaterializedCandidateRef, "candidate") &&
+src\domain\delivery-final-operation.ts:145:    architectureMaterializedCandidateRef:
+src\domain\delivery-final-operation.ts:146:      facts.architectureMaterializedCandidateRef,
+src\domain\index.ts:23:export * from "./delivery-architecture-finalization-operation.js";
+src\domain\index.ts:24:export * from "./delivery-architecture-finalization-identity.js";
+src\domain\index.ts:25:export * from "./delivery-architecture-finalization-execution.js";
+src\domain\managed-tool-resolution.ts:4:export const MANAGED_TOOL_IDS = ["openspec", "archify"] as const;
+src\domain\managed-tool-resolution.ts:51:  "archify",

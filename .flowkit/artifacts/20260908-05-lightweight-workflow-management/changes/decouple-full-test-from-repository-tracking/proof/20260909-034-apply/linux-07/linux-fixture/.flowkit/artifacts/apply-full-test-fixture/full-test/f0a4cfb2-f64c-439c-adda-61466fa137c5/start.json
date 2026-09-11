@@ -1,0 +1,200 @@
+{
+  "projectId": "apply-code-fixture",
+  "deliveryId": "apply-full-test-fixture",
+  "attemptId": "f0a4cfb2-f64c-439c-adda-61466fa137c5",
+  "startedAt": "2026-09-09T04:07:19.280Z",
+  "ownerAuthority": {
+    "ref": "owner:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "decision": "authorize-formal-full-test",
+    "deliveryId": "apply-full-test-fixture",
+    "sourceRef": "test:synthetic-implementation-fixture-only",
+    "scope": [
+      "delivery-full-test"
+    ]
+  },
+  "guidanceRef": {
+    "path": "skills/delivery/full-test/SKILL.md",
+    "contentSha256": "87cefd02307b01a7f2ed4824df9b179a999d816c045f4a75feb9ca63a417915d"
+  },
+  "configRef": "full-test-config:sha256:90ceeab86da20ffae9d0fb17007eac75e5990115e6c99c9ad4d37d9e9d6c256e",
+  "inputRef": "full-test-input:sha256:f36b96baf35f5da28b603e5b2b4e17b064ac1a159c93dcb701f05248d259a73d",
+  "orderedChecks": [
+    {
+      "checkId": "format-check",
+      "program": "node",
+      "args": [
+        "node_modules/prettier/bin/prettier.cjs",
+        "--check",
+        "src",
+        "tests",
+        "tsconfig.json",
+        "tsconfig.build.json",
+        "package.json",
+        "eslint.config.mjs",
+        "scripts/check-forbidden-tracked-artifacts.mjs"
+      ],
+      "cwd": ".",
+      "toolRef": "full-test-tool:sha256:9e816e4590aea8cd9a6c522076d06e96a514f585905e2e9a289438fc6f45effe",
+      "environmentRefs": [
+        "linux",
+        "x64",
+        "v22.23.2",
+        "NODE_OPTIONS:absent",
+        "CI:absent"
+      ],
+      "checkRef": "full-test-check:sha256:b5fc7b1b358532afa6e117d8cbfd3eba3f026b91e798b1369481b9e5cde2992d"
+    },
+    {
+      "checkId": "lint",
+      "program": "node",
+      "args": [
+        "node_modules/eslint/bin/eslint.js",
+        "src",
+        "tests"
+      ],
+      "cwd": ".",
+      "toolRef": "full-test-tool:sha256:9e816e4590aea8cd9a6c522076d06e96a514f585905e2e9a289438fc6f45effe",
+      "environmentRefs": [
+        "linux",
+        "x64",
+        "v22.23.2",
+        "NODE_OPTIONS:absent",
+        "CI:absent"
+      ],
+      "checkRef": "full-test-check:sha256:b77465f4aa14d2fa41ad2b302b8d9db3917294fd2a0da5dac9a86f4c71e03e26"
+    },
+    {
+      "checkId": "typecheck",
+      "program": "node",
+      "args": [
+        "node_modules/typescript/bin/tsc",
+        "--noEmit"
+      ],
+      "cwd": ".",
+      "toolRef": "full-test-tool:sha256:9e816e4590aea8cd9a6c522076d06e96a514f585905e2e9a289438fc6f45effe",
+      "environmentRefs": [
+        "linux",
+        "x64",
+        "v22.23.2",
+        "NODE_OPTIONS:absent",
+        "CI:absent"
+      ],
+      "checkRef": "full-test-check:sha256:3d915d1e3d48e7a52144270da3da91c1131b2e3b7c440f3b9ce0655db61822de"
+    },
+    {
+      "checkId": "build",
+      "program": "node",
+      "args": [
+        "scripts/build-production.mjs"
+      ],
+      "cwd": ".",
+      "toolRef": "full-test-tool:sha256:9e816e4590aea8cd9a6c522076d06e96a514f585905e2e9a289438fc6f45effe",
+      "environmentRefs": [
+        "linux",
+        "x64",
+        "v22.23.2",
+        "NODE_OPTIONS:absent",
+        "CI:absent"
+      ],
+      "checkRef": "full-test-check:sha256:3d4870a944d21c4b3fc5b51cb5760756fcf2e674460e770756a17ca1ae3626e1"
+    },
+    {
+      "checkId": "domain",
+      "program": "node",
+      "args": [
+        "--import",
+        "tsx",
+        "--test",
+        "tests/unit/domain/*.test.ts"
+      ],
+      "cwd": ".",
+      "toolRef": "full-test-tool:sha256:9e816e4590aea8cd9a6c522076d06e96a514f585905e2e9a289438fc6f45effe",
+      "environmentRefs": [
+        "linux",
+        "x64",
+        "v22.23.2",
+        "NODE_OPTIONS:absent",
+        "CI:absent"
+      ],
+      "checkRef": "full-test-check:sha256:5e91c1533314fef02204b5496f39e3b96d86d7d7b0182d65d7db491466f5cc4d"
+    },
+    {
+      "checkId": "acceptance",
+      "program": "node",
+      "args": [
+        "--import",
+        "tsx",
+        "--test",
+        "tests/acceptance/*.test.ts"
+      ],
+      "cwd": ".",
+      "toolRef": "full-test-tool:sha256:9e816e4590aea8cd9a6c522076d06e96a514f585905e2e9a289438fc6f45effe",
+      "environmentRefs": [
+        "linux",
+        "x64",
+        "v22.23.2",
+        "NODE_OPTIONS:absent",
+        "CI:absent"
+      ],
+      "checkRef": "full-test-check:sha256:62721e10c3c3a52b2768bc9b527110bcdffb75c160593a5b820e8fe1d5cc6843"
+    },
+    {
+      "checkId": "dependency-health",
+      "program": "node",
+      "args": [
+        "node_modules/dependency-cruiser/bin/dependency-cruise.mjs",
+        "--config",
+        "dependency-cruiser.config.mjs",
+        "--output-type",
+        "err",
+        "src",
+        "tests"
+      ],
+      "cwd": ".",
+      "toolRef": "full-test-tool:sha256:9e816e4590aea8cd9a6c522076d06e96a514f585905e2e9a289438fc6f45effe",
+      "environmentRefs": [
+        "linux",
+        "x64",
+        "v22.23.2",
+        "NODE_OPTIONS:absent",
+        "CI:absent"
+      ],
+      "checkRef": "full-test-check:sha256:32823db787f165e662ffc284877221fc00ea6e8d61fded5180412b2c6642a01b"
+    },
+    {
+      "checkId": "entropy-tests",
+      "program": "node",
+      "args": [
+        "--test",
+        "tests/unit/quality/production-reachability.test.mjs"
+      ],
+      "cwd": ".",
+      "toolRef": "full-test-tool:sha256:9e816e4590aea8cd9a6c522076d06e96a514f585905e2e9a289438fc6f45effe",
+      "environmentRefs": [
+        "linux",
+        "x64",
+        "v22.23.2",
+        "NODE_OPTIONS:absent",
+        "CI:absent"
+      ],
+      "checkRef": "full-test-check:sha256:ce8f579a4ec9e5ffae9ca3fb176ac35330ad1be9e939a2774a28d5de7c045bad"
+    },
+    {
+      "checkId": "entropy",
+      "program": "node",
+      "args": [
+        "scripts/check-production-reachability.mjs"
+      ],
+      "cwd": ".",
+      "toolRef": "full-test-tool:sha256:9e816e4590aea8cd9a6c522076d06e96a514f585905e2e9a289438fc6f45effe",
+      "environmentRefs": [
+        "linux",
+        "x64",
+        "v22.23.2",
+        "NODE_OPTIONS:absent",
+        "CI:absent"
+      ],
+      "checkRef": "full-test-check:sha256:a7c13f5aeda1f3e86d6d9f167c5344ddb2e616732755c8c0eb27e5a739d7c33d"
+    }
+  ]
+}

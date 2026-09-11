@@ -1,0 +1,41 @@
+{
+  "kind": "external-orchestrator-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "author",
+  "action": "explore",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "simplify-delivery-coordination",
+  "runId": "20260909-043-explore",
+  "projectOrdinal": 37,
+  "previousRunId": null,
+  "previousDeliveryRun": ".flowkit/runs/20260908-05-lightweight-workflow-management/004-decouple-full-test-from-repository-tracking/20260909-042-archive/result.json",
+  "startedAt": "2026-09-09T06:52:57Z",
+  "ownerInstruction": "owner 授权激活下一个 change ，并且proof explore",
+  "ownerSourceRef": "owner-input:2026-09-09:activate-change:simplify-delivery-coordination:proof-explore",
+  "repositoryHead": "ba53f8ac9f48c71e334ec4d0ac3811a323fbd525",
+  "preparation": "无活动 OpenSpec Change；manifest 两项依赖 completed；已分配 ordinal 21..36 有效唯一，next=37；工作区干净。HEAD 只定位源码，不作为产品 Start SHA 门槛。",
+  "proofRoot": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-043-explore",
+  "scope": [
+    "Start 无 SHA/全仓 clean 前置",
+    "Final 相关完成事实与当前 Full Test 消费",
+    "窄写协调状态及直接 Integration 消费者影响"
+  ],
+  "nonGoals": [
+    "Propose/Apply/Review",
+    "Git mutation",
+    "实际 D05 Full Test",
+    "改写历史",
+    "自动清理或证据平台"
+  ],
+  "ownerDecisionHandoff": [
+    {
+      "sourceRef": "flowkit-next-delivery-change-plan.md#决策与文档边界",
+      "decision": "Owner 已选择必要 proof/Full Test 材料在 target .flowkit/artifacts 默认长期保留，.tmp 仅可丢弃；不沿用早期项目外/周期清理方案。"
+    },
+    {
+      "sourceRef": "openspec/delivery-groups/20260908-05-lightweight-workflow-management.yaml#bootstrap",
+      "decision": "沿用独立 bootstrap，不恢复外部管理，不让 candidate 管理 D05。"
+    }
+  ]
+}

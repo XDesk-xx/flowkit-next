@@ -1,0 +1,141 @@
+{
+  "kind": "external-orchestrator-review-apply-result",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "remove-archify-from-delivery-workflow",
+  "runId": "20260908-006-review-apply",
+  "action": "review-apply",
+  "role": "reviewer",
+  "status": "terminal",
+  "verdict": "approved",
+  "verdictMeaning": "当前 Apply 符合 approved Proposal，独立语义与证据审查通过；不等于 Formal Delivery Full Test PASS、整个 D05 完成或 Owner/Git authority。",
+  "projectOrdinal": 33,
+  "previousRunId": "20260908-005-apply",
+  "reviewedRunId": "20260908-005-apply",
+  "reviewedResult": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/remove-archify-from-delivery-workflow/20260908-005-apply/result.json",
+    "bytes": 8411,
+    "sha256": "ff262d46f5913c85023cd94ba8dbbabc0ea8e17b7f70bc294f0aac8cd1ae54cc"
+  },
+  "approvedProposalReview": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/remove-archify-from-delivery-workflow/20260908-004-review-propose/result.json",
+    "bytes": 5526,
+    "sha256": "b84083459fbb10cc69eca86ad59aa4cd1ba9964b4f11de905e778fa9316fa56b"
+  },
+  "sourceScopeSha256": "57845c28259f5d1d06d9189ec71268b8086f3b7d8deb7a7afe521ed4b22f25a2",
+  "summary": "Archify 的活动 producer/consumer、Final projection、Guidance/toolchain 已按批准范围退役；非架构失败保护和历史边界保留。无阻断 finding。",
+  "findings": [],
+  "blockingUnknown": null,
+  "nonBlockingObservations": [
+    {
+      "id": "D05-RA006-OBS-001",
+      "target": "本地 ignored dist/ 的 6 个旧架构 emit 文件",
+      "observedFact": "当前入口/源映射输出不引用这些文件；独立全新 outDir 构建成功，39 个输出与当前源码对应，无退役模块或 Archify 引用。",
+      "impact": "不阻断当前源实现审查，但混合旧 dist 不作为本次批准的发布物。",
+      "boundary": "Reviewer 未清理缓存；后续发布使用干净构建。",
+      "evidence": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/remove-archify-from-delivery-workflow/proof/20260908-006-review-apply/build-readback.json"
+    }
+  ],
+  "assessments": {
+    "currentStep": "审查有效 003 → 004 approved → 005 terminal Apply 链；核对 approved planning、实际 diff、精确来源与真实检查输出，并独立执行有限复验。",
+    "complexityAndMinimality": "生产以删除和必要共享消费者收敛为主，无新增生产层、依赖或平台；测试修正对应新形状，不削弱非架构失败保护。",
+    "newContentAndScopeDrift": "scope drift: NONE。分根/宿主/测试范围与持久化/Start Git 前置/整体 Final 简化等仍属其他 Changes。"
+  },
+  "runArtifacts": {
+    "action": {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/remove-archify-from-delivery-workflow/20260908-006-review-apply/action.md",
+      "bytes": 4520,
+      "sha256": "2fc198688a77e5888302dd5d555beec2fc1cbcd8bbe4021e85f9d2afebfc37f5"
+    },
+    "context": {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/remove-archify-from-delivery-workflow/20260908-006-review-apply/context.json",
+      "bytes": 3235,
+      "sha256": "280fd8afc3d5cd70206b0532f8af1a324b575fb9619d050c0894729bfa1b6028"
+    }
+  },
+  "verification": {
+    "summary": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/remove-archify-from-delivery-workflow/proof/20260908-006-review-apply/attempt-02/summary.json",
+      "bytes": 5503,
+      "sha256": "6165450010054170bb1d3722740f5387d9672becef97fcbb69dfe8382e2ac1eb"
+    },
+    "method": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/remove-archify-from-delivery-workflow/proof/20260908-006-review-apply/verify.mjs",
+      "bytes": 6731,
+      "sha256": "5bc5a0b99db1e05f93df090bcd1f3c3c532016f4ebeaaedbd5955bc23a4a5420"
+    },
+    "readme": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/remove-archify-from-delivery-workflow/proof/20260908-006-review-apply/README.md",
+      "bytes": 2157,
+      "sha256": "a63bf4b4526f49fc19199d1126f7ee9995d83427a8cd58c70debce3b068f4a38"
+    },
+    "cleanBuildReadback": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/remove-archify-from-delivery-workflow/proof/20260908-006-review-apply/build-readback.json",
+      "bytes": 1663,
+      "sha256": "4e0bd652b3f795b46260c877cd8fdf06e3cbeacaccbcaa37a8fb17b1d40c8fa0"
+    },
+    "readback": {
+      "changedArtifacts": 33,
+      "sourceInputs": 135,
+      "deletedArtifacts": 16,
+      "approvedPlanningSemanticsUnchanged": true,
+      "allBoundBytesMatch": true
+    },
+    "focusedTests": {
+      "files": 12,
+      "tests": 87,
+      "pass": 87,
+      "fail": 0,
+      "skipped": 0
+    },
+    "checks": {
+      "typecheck": true,
+      "openspecStrict": true,
+      "gitDiffCheck": true,
+      "cleanBuild": true,
+      "inputsUnchanged": true
+    },
+    "authorEvidence": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/remove-archify-from-delivery-workflow/proof/20260908-005-apply/summary.json",
+      "bytes": 39926,
+      "sha256": "530d13964982c7eb4a765226bbc761b77b7059b45baab8e003f3d1bb6a8c37f7"
+    },
+    "authorEvidenceMeaning": "已核对 Author Windows/Linux 当前原始最终输出、exact source/lock 与 259 domain + 5 acceptance 结果；本 Reviewer 未重跑 Linux 全套。",
+    "failedAttempt": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/remove-archify-from-delivery-workflow/proof/20260908-006-review-apply/attempt-01/failure.json",
+      "bytes": 1178,
+      "sha256": "2a1b08eccfe9f413f2f7577e22cfbcf966a7bdb4fba252786bfafe1cd6b172d1"
+    },
+    "environmentNote": "attempt-01 沙箱 spawnSync Node EPERM；同一脚本获准后在 attempt-02 成功执行，未改产品消除环境错误，失败记录保留。",
+    "limit": "独立 focused checks 与 Author evidence readback 不是 Formal Delivery Full Test；fixture 的 OpenSpec/远端/既有 Change acceptance 模拟边界未升级为真实外部执行。"
+  },
+  "mutationIsolation": {
+    "before": {
+      "files": 1663,
+      "sha256": "b1fdfe7c2fd858cf440854eed6e0970ee313658693ba982af5470800795c52e0",
+      "head": "97bcd2f99dcf6946b646fb1759b2e64584007c30"
+    },
+    "after": {
+      "files": 1663,
+      "sha256": "b1fdfe7c2fd858cf440854eed6e0970ee313658693ba982af5470800795c52e0",
+      "head": "97bcd2f99dcf6946b646fb1759b2e64584007c30"
+    },
+    "equal": true,
+    "scope": "tracked/nonignored untracked 与 tracked 删除标记，排除本次自有 Run/proof；仅为 Reviewer 写入隔离检查，不新增产品 SHA/checkpoint 准入门槛。"
+  },
+  "nextBoundary": "archive",
+  "continuationMeaning": "报告现行约定下的 archive readiness；本次不执行 Archive/spec-sync、下一 Action 或 Git，不产生新 Owner authority。",
+  "archiveReady": true,
+  "archiveExecuted": false,
+  "specSyncExecuted": false,
+  "implementationTestsExecuted": true,
+  "formalFullTestExecuted": false,
+  "linuxSuiteReexecuted": false,
+  "candidateLifecycleInvoked": false,
+  "authorArtifactMutation": false,
+  "productionMutation": false,
+  "gitMutationAllowed": false,
+  "completedAt": "2026-09-08T04:33:57Z",
+  "stop": true
+}

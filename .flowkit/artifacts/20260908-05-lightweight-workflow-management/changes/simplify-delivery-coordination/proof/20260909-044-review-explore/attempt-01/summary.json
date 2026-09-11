@@ -1,0 +1,89 @@
+{
+  "kind": "independent-review-explore-checks",
+  "inputAudit": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-044-review-explore/attempt-01/input-audit.json",
+    "bytes": 1488,
+    "sha256": "b6229fd7ac92d8c4a997c4d3f544c9b606d9d16be09b3ac4df2870fe93c5ec4a"
+  },
+  "commands": [
+    {
+      "id": "bounded-proof",
+      "program": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "--import",
+        "tsx",
+        "D:\\Projects\\flowkit-next\\.flowkit\\artifacts\\20260908-05-lightweight-workflow-management\\changes\\simplify-delivery-coordination\\proof\\20260909-044-review-explore\\probe.mjs",
+        "D:\\Projects\\flowkit-next\\.flowkit\\artifacts\\20260908-05-lightweight-workflow-management\\changes\\simplify-delivery-coordination\\proof\\20260909-044-review-explore\\attempt-01"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "startedAt": "2026-09-09T07:16:20.789Z",
+      "finishedAt": "2026-09-09T07:16:20.792Z",
+      "exitCode": null,
+      "signal": null,
+      "error": "spawnSync C:\\nvm4w\\nodejs\\node.exe EPERM",
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-044-review-explore/attempt-01/bounded-proof.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-044-review-explore/attempt-01/bounded-proof.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "openspec-version",
+      "program": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js",
+        "--version"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "startedAt": "2026-09-09T07:16:20.794Z",
+      "finishedAt": "2026-09-09T07:16:20.795Z",
+      "exitCode": null,
+      "signal": null,
+      "error": "spawnSync C:\\nvm4w\\nodejs\\node.exe EPERM",
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-044-review-explore/attempt-01/openspec-version.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-044-review-explore/attempt-01/openspec-version.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "openspec-active",
+      "program": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js",
+        "list",
+        "--json"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "startedAt": "2026-09-09T07:16:20.796Z",
+      "finishedAt": "2026-09-09T07:16:20.797Z",
+      "exitCode": null,
+      "signal": null,
+      "error": "spawnSync C:\\nvm4w\\nodejs\\node.exe EPERM",
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-044-review-explore/attempt-01/openspec-active.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-044-review-explore/attempt-01/openspec-active.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "observationsMatch": null,
+  "allCommandsExitZero": false,
+  "implementationAcceptance": false,
+  "formalD05FullTest": false
+}

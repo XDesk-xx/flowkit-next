@@ -1,0 +1,33 @@
+{
+  "kind": "external-orchestrator-archive-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "author",
+  "action": "archive",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "separate-manager-assets-from-target-project",
+  "runId": "20260908-014-archive",
+  "previousRunId": "20260908-013-review-apply",
+  "projectOrdinal": 34,
+  "ownerInstruction": "根据最新run，archive",
+  "sourceHead": "01d82dba4593ea0c5b85ac67da03e6261dccfba6",
+  "archiveTarget": "openspec/changes/archive/2026-09-08-034-separate-manager-assets-from-target-project",
+  "skills": ["archive", "openspec-archive-change", "openspec-sync-specs"],
+  "openSpecObservation": {
+    "version": "1.10.0",
+    "planningRoot": "D:/Projects/flowkit-next",
+    "schema": "spec-driven",
+    "artifacts": "all done",
+    "tasks": "12/12",
+    "specsInstructionReadOnce": true,
+    "specsRules": "omitted in successful artifact instruction JSON",
+    "operationGuidance": "omitted",
+    "contextConsidered": "OpenSpec authority, external/bootstrap governance, semantic Change identity, distinct authorities and Simplified Chinese output"
+  },
+  "syncCapabilities": ["action-guidance-execution", "delivery-operation-execution-and-start-continuity", "foundation-cli-surface", "managed-toolchain-resolution", "openspec-thin-integration"],
+  "ownerDecisionsRelevant": ["沿用独立 bootstrap，不恢复外部 manager，不让 candidate 自我接管", "Archive 同时同步已批准 delta，无需重复确认", "必要 proof 项目内保留；原始日志不套源码格式 gate"],
+  "nextBoundary": "checkpoint",
+  "gitMutationAllowed": false,
+  "formalFullTestAllowed": false,
+  "stopAfterResult": true
+}

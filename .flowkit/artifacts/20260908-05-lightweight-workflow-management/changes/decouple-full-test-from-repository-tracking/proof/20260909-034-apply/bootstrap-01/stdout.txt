@@ -1,0 +1,64 @@
+TAP version 13
+# Subtest: project ordinal namespace stays distinct from Run sequence, changeStartSequence and physical group prefix
+ok 1 - project ordinal namespace stays distinct from Run sequence, changeStartSequence and physical group prefix
+  ---
+  duration_ms: 70.1566
+  type: 'test'
+  ...
+# Subtest: historical D01 archive preserves the cancelled 008 gap as lineage evidence
+ok 2 - historical D01 archive preserves the cancelled 008 gap as lineage evidence
+  ---
+  duration_ms: 12.8265
+  type: 'test'
+  ...
+# Subtest: bootstrap Explore/archive ordinal parity stays independent from product candidate
+ok 3 - bootstrap Explore/archive ordinal parity stays independent from product candidate
+  ---
+  duration_ms: 1.9681
+  type: 'test'
+  ...
+# Subtest: independent bootstrap Author and Reviewer HOW preserve bounded provenance without product self-hosting
+ok 4 - independent bootstrap Author and Reviewer HOW preserve bounded provenance without product self-hosting
+  ---
+  duration_ms: 3.5474
+  type: 'test'
+  ...
+# Subtest: bootstrap archive preparation and Explore HOW preserve independent boundaries
+ok 5 - bootstrap archive preparation and Explore HOW preserve independent boundaries
+  ---
+  duration_ms: 1.5114
+  type: 'test'
+  ...
+# Subtest: bootstrap Author material handling remains independent
+ok 6 - bootstrap Author material handling remains independent
+  ---
+  duration_ms: 6.9484
+  type: 'test'
+  ...
+# Subtest: Stable Core bootstrap Reviewer HOW remains independent and non-delegating
+ok 7 - Stable Core bootstrap Reviewer HOW remains independent and non-delegating
+  ---
+  duration_ms: 9.621
+  type: 'test'
+  ...
+# Subtest: bootstrap review-propose checks material ownership before blocking
+ok 8 - bootstrap review-propose checks material ownership before blocking
+  ---
+  duration_ms: 1.1043
+  type: 'test'
+  ...
+# Subtest: live temporary Run bridge is retired without erasing historical provenance
+ok 9 - live temporary Run bridge is retired without erasing historical provenance
+  ---
+  duration_ms: 2.0178
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 358.2604

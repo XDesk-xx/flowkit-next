@@ -1,0 +1,159 @@
+{
+  "kind": "external-orchestrator-review-propose-result",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "reviewer",
+  "action": "review-propose",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "correct-project-onboarding-and-agent-entry",
+  "projectOrdinal": 39,
+  "runId": "20260911-066-review-propose",
+  "previousRunId": "20260911-065-propose",
+  "reviewedRunId": "20260911-065-propose",
+  "status": "terminal",
+  "reviewerVerdict": "approved",
+  "findings": [],
+  "startedAt": "2026-09-11T05:56:31.890Z",
+  "completedAt": "2026-09-11T06:03:14.572Z",
+  "ownerInstruction": "根据最新run，review，review 完，简短解释当前方案",
+  "ownerDecisionsRelevant": [
+    {
+      "sourceRef": "owner-input:2026-09-11:bounded-correct-change-and-root-flowkit-documents",
+      "decision": "将接入补齐及三份根 flowkit*.md 清理纳入同一 Change，不重开前六个、不重构内核。"
+    },
+    {
+      "sourceRef": "owner-input:2026-09-11:real-cross-session-not-over-simulated",
+      "decision": "真实新会话不能以重启 CLI/合成 fixture 替代；读取验收不必额外执行 Action、制造 finding 或演完整 Delivery；未执行如实记录。"
+    },
+    {
+      "sourceRef": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260911-062-archive/result.json#ownerDecisionsRelevant",
+      "decision": "D05 独立 bootstrap；必要材料保存在 target artifacts，临时 fixture 放 .tmp；不改历史。"
+    }
+  ],
+  "reviewedResult": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/007-correct-project-onboarding-and-agent-entry/20260911-065-propose/result.json",
+    "bytes": 4681,
+    "sha256": "9a8411def1b98c2ce14f6f8be258542be28332997fc2c61e6a629148d4ffb53e"
+  },
+  "acceptedReview": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/007-correct-project-onboarding-and-agent-entry/20260911-064-review-explore/result.json",
+    "bytes": 7977,
+    "sha256": "181feb64c2dd99a0b31c2efec3a21c2f033c3d143a3b8c303b0fc9dca099ccd4"
+  },
+  "approvedExplore": {
+    "path": "openspec/changes/correct-project-onboarding-and-agent-entry/explore.md",
+    "bytes": 10541,
+    "sha256": "f1953b0dbaeaa1f5bd3f792d0680933545aea96bdbd81f9829dbea10e31c68e7"
+  },
+  "artifacts": [
+    {
+      "path": "openspec/changes/correct-project-onboarding-and-agent-entry/proposal.md",
+      "bytes": 2252,
+      "sha256": "28eff087978850ac081341823f0e77e3664c4ea0e76fc45d25043f543067ffc5"
+    },
+    {
+      "path": "openspec/changes/correct-project-onboarding-and-agent-entry/design.md",
+      "bytes": 9929,
+      "sha256": "0b1177ae6ef4747ae4aaad3f9c0b2b0c8cb361834f9f7392aa63855566c3a86e"
+    },
+    {
+      "path": "openspec/changes/correct-project-onboarding-and-agent-entry/tasks.md",
+      "bytes": 3145,
+      "sha256": "e9673a8d0a15ab20c8bcf2a19c8aa928b6e0c15a46b512f92d24d137fcda4b7d"
+    },
+    {
+      "path": "openspec/changes/correct-project-onboarding-and-agent-entry/specs/foundation-cli-surface/spec.md",
+      "bytes": 6620,
+      "sha256": "3c671ceffa50e5cfbde6966dd0c79917c3661b1ded203327045f78535567f494"
+    }
+  ],
+  "runInputs": [
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/007-correct-project-onboarding-and-agent-entry/20260911-066-review-propose/action.md",
+      "bytes": 329,
+      "sha256": "52974083facb84f278b1567ae59a121590a00cb873fa458b7db14895ae118b1b"
+    },
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/007-correct-project-onboarding-and-agent-entry/20260911-066-review-propose/context.json",
+      "bytes": 3909,
+      "sha256": "09ed2f0beb414fd3a712644689653baf524165e79e5103fa6adc702972f53eeb"
+    }
+  ],
+  "proofRefs": [
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-066-review-propose/review.md",
+      "bytes": 3913,
+      "sha256": "0b1c26fcd66b301faf3fb200b2722868c7fd0779c4a4419cc20b0d2a47619bdc"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-066-review-propose/planning-audit.json",
+      "bytes": 3686,
+      "sha256": "e3cd788f1bbe91b8283a586ef7c863126b8adad9eefd9b623d9d05432f96f6ce"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-066-review-propose/capture.mjs",
+      "bytes": 1609,
+      "sha256": "dd5af667984efa35b0b49de02c22ebcbbefe2b13d8c41248507c4735610f981c"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-066-review-propose/validate/command.json",
+      "bytes": 1036,
+      "sha256": "e899d774b1a99909fd689d0a7c598b9e197159f93d06766ef159ff1eb2b07117"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-066-review-propose/status/command.json",
+      "bytes": 1046,
+      "sha256": "3a5c50d412175eff23a23e00a138a18fa35e5c4e4aa94c97f688eea379821b67"
+    }
+  ],
+  "currentStepExplanation": "核对 065 四份计划与 approved Explore/064/Owner/当前合同的承接、最小完整性、失败行为、任务覆盖及 Apply readiness；不是实现验收。",
+  "complexityMinimalityAssessment": "一个随包文档内嵌项目短模板，README/发行配置小改、三份精确文档退役及必要回归，复用现有查询/Role/Skill；不新增内核、路由器、Registry、状态或永久 helper。",
+  "newContentScopeDriftAssessment": "未发现 scope drift；布局、幂等合并、负例和分层验收是已接受语义的必要细节，文档退役和真实新会话均有 Owner sourceRef，不重开前六个 Change。",
+  "observations": {
+    "verifiedInputReferences": 24,
+    "addedRequirements": 3,
+    "scenarios": 12,
+    "uncheckedImplementationTasks": 12,
+    "openSpecStrictValidation": "passed-structure-only",
+    "openSpecPlanningStatus": "complete-planning-only"
+  },
+  "applyHandoff": [
+    "按已批准计划交付 docs/onboarding.md 内嵌短 AGENTS 模板、README 当前说明与确切发行 allowlist，不复制十个 Action HOW 或修改其 content identity。",
+    "接入保留已有内容，按用途准备材料；真实 Role/请求与既有查询匹配后才进入 Skill，不新增初始化、Git 或自动下一步权限。",
+    "只退役计划列出的三份旧根文档；保留 Git 恢复出处及历史 bytes，仅窄补 D05 bootstrap 提示，不泛化为删除活动 planning input。",
+    "分别完成固定实际包下真实有界 Author 工作、独立 CLI 进程读回和真实新 Agent 会话读取；task 4.3 未实际完成就保持未勾，不以 fixture/重启 CLI 代替。"
+  ],
+  "mutationIsolation": {
+    "before": {
+      "files": 5412,
+      "sha256": "2053b431a5ba0e2075e37995f135573252d53d487cd8074ef979953e571144a5",
+      "head": "7af7d85788503dafc50ee162b14deaaf679f99cb",
+      "method": "Git cached and nonignored files by sorted path/bytes/raw SHA256; excludes only own Run/proof; ignored scratch outside snapshot"
+    },
+    "after": {
+      "files": 5412,
+      "sha256": "2053b431a5ba0e2075e37995f135573252d53d487cd8074ef979953e571144a5",
+      "head": "7af7d85788503dafc50ee162b14deaaf679f99cb",
+      "method": "Git cached and nonignored files by sorted path/bytes/raw SHA256; excludes only own Run/proof; ignored scratch outside snapshot"
+    },
+    "equal": true,
+    "checkedAt": "2026-09-11T06:01:50.572Z"
+  },
+  "limitations": {
+    "implementation": "not-executed",
+    "installationAcceptance": "not-executed",
+    "actualNewAgentSessionRead": "not-executed",
+    "formalDeliveryFullTest": "not-executed",
+    "verificationAcceptanceGranted": false,
+    "ownerOrGitAuthorityCreated": false
+  },
+  "authorArtifactsModified": false,
+  "rootPlanningDocumentsDeleted": false,
+  "historicalRecordsModified": false,
+  "gitMutation": false,
+  "approvalMeaning": "Proposal 可进入 Apply；不是实现或 Verification PASS，不新增 Owner/Git authority。",
+  "nextBoundary": "apply",
+  "continuationSource": "既有 src/domain/policy-and-next-boundary.ts: review-propose + approved；D05 independent-bootstrap 交接，不调用 candidate 自我管理。",
+  "nextActionExecuted": false,
+  "stop": true
+}

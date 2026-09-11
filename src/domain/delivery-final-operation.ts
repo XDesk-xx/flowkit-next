@@ -1,14 +1,13 @@
+import { isFullTestRef } from "../internal/full-test-input.js";
 import { isOwnerAuthorityFact, type OwnerAuthorityFact } from "./authority.js";
 import { isSemanticId, type DeliveryId } from "./identity.js";
+import { hasNoDuplicates } from "../internal/applicable-check-identity.js";
 import {
-  hasNoDuplicates,
-  isHashRef,
-} from "../internal/applicable-check-identity.js";
-import {
-  cloneDeliveryRequiredEvidence,
-  isDeliveryRequiredEvidence,
-  type DeliveryRequiredEvidence,
-} from "../internal/delivery-required-evidence.js";
+  isDeliveryChangeCompletion,
+  completionBelongsToDelivery,
+  type DeliveryChangeCompletion,
+} from "../internal/delivery-required-evidence-source.js";
+import { isAttemptId } from "../internal/full-test-storage.js";
 
 export interface DeliveryCoordinationRef {
   readonly artifact: string;
@@ -17,29 +16,27 @@ export interface DeliveryCoordinationRef {
 }
 
 export interface DeliveryFinalOperationFacts {
+  readonly projectId: string;
+  readonly fullTestAttempt: string;
   readonly verifiedCandidateRef: string;
   readonly fullTestExecutionRef: string;
-  readonly architectureFinalizationRef: string;
-  readonly architectureMaterializedCandidateRef: string;
   readonly coordinationPrestateRef: DeliveryCoordinationRef;
   readonly completedRequiredChangeIds: readonly string[];
-  readonly requiredEvidence: DeliveryRequiredEvidence;
+  readonly changeCompletions: readonly DeliveryChangeCompletion[];
 }
 
 const SHA256_HEX_PATTERN = /^[0-9a-f]{64}$/;
 const FULL_TEST_EXECUTION_REF_PATTERN =
   /^full-test-execution:sha256:[0-9a-f]{64}$/;
-const ARCHITECTURE_FINALIZATION_REF_PATTERN =
-  /^architecture-finalization:sha256:[0-9a-f]{64}$/;
 const COORDINATION_REF_FIELDS = ["artifact", "contentSha256", "bytes"] as const;
 const FINAL_FACT_FIELDS = [
+  "projectId",
+  "fullTestAttempt",
   "verifiedCandidateRef",
   "fullTestExecutionRef",
-  "architectureFinalizationRef",
-  "architectureMaterializedCandidateRef",
   "coordinationPrestateRef",
   "completedRequiredChangeIds",
-  "requiredEvidence",
+  "changeCompletions",
 ] as const;
 
 function isRecord(value: unknown): value is Record<string, unknown> {
@@ -85,25 +82,23 @@ export function isDeliveryFinalOperationFacts(
     return false;
   if (
     !Array.isArray(value.completedRequiredChangeIds) ||
-    !value.completedRequiredChangeIds.every(isSemanticId) ||
+    !Array.from(value.completedRequiredChangeIds).every(isSemanticId) ||
     !hasNoDuplicates(value.completedRequiredChangeIds) ||
-    !isDeliveryRequiredEvidence(value.requiredEvidence)
+    !Array.isArray(value.changeCompletions) ||
+    !Array.from(value.changeCompletions).every(isDeliveryChangeCompletion)
   )
     return false;
   const changeIds = value.completedRequiredChangeIds as string[];
   return (
     changeIds.length > 0 &&
-    isHashRef(value.verifiedCandidateRef, "candidate") &&
+    isSemanticId(value.projectId) &&
+    isAttemptId(value.fullTestAttempt) &&
+    isFullTestRef(value.verifiedCandidateRef, "full-test-input") &&
     typeof value.fullTestExecutionRef === "string" &&
     FULL_TEST_EXECUTION_REF_PATTERN.test(value.fullTestExecutionRef) &&
-    typeof value.architectureFinalizationRef === "string" &&
-    ARCHITECTURE_FINALIZATION_REF_PATTERN.test(
-      value.architectureFinalizationRef,
-    ) &&
-    isHashRef(value.architectureMaterializedCandidateRef, "candidate") &&
     isDeliveryCoordinationRef(value.coordinationPrestateRef) &&
-    value.requiredEvidence.changeClosures.length === changeIds.length &&
-    value.requiredEvidence.changeClosures.every(
+    value.changeCompletions.length === changeIds.length &&
+    value.changeCompletions.every(
       (entry, index) => entry.changeId === changeIds[index],
     )
   );
@@ -116,7 +111,10 @@ export function isDeliveryFinalOperationFactsForDelivery(
   return (
     isDeliveryFinalOperationFacts(value) &&
     value.coordinationPrestateRef.artifact ===
-      `openspec/delivery-groups/${deliveryId}.yaml`
+      `openspec/delivery-groups/${deliveryId}.yaml` &&
+    value.changeCompletions.every((entry) =>
+      completionBelongsToDelivery(entry, deliveryId),
+    )
   );
 }
 
@@ -139,22 +137,22 @@ export function cloneDeliveryFinalOperationFacts(
   facts: DeliveryFinalOperationFacts,
 ): DeliveryFinalOperationFacts {
   return {
+    projectId: facts.projectId,
+    fullTestAttempt: facts.fullTestAttempt,
     verifiedCandidateRef: facts.verifiedCandidateRef,
     fullTestExecutionRef: facts.fullTestExecutionRef,
-    architectureFinalizationRef: facts.architectureFinalizationRef,
-    architectureMaterializedCandidateRef:
-      facts.architectureMaterializedCandidateRef,
     coordinationPrestateRef: {
       artifact: facts.coordinationPrestateRef.artifact,
       contentSha256: facts.coordinationPrestateRef.contentSha256,
       bytes: facts.coordinationPrestateRef.bytes,
     },
     completedRequiredChangeIds: [...facts.completedRequiredChangeIds],
-    requiredEvidence: cloneDeliveryRequiredEvidence(facts.requiredEvidence),
+    changeCompletions: facts.changeCompletions.map((entry) => ({
+      ...entry,
+      archiveResultRef: { ...entry.archiveResultRef },
+      reviewResultRef: { ...entry.reviewResultRef },
+    })),
   };
 }
 
-export type {
-  DeliveryRequiredEvidence,
-  EvidenceArtifactRef,
-} from "../internal/delivery-required-evidence.js";
+export type { EvidenceArtifactRef } from "../internal/delivery-required-evidence.js";

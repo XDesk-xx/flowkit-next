@@ -1,0 +1,6 @@
+$ prettier --check src tests tsconfig.json tsconfig.build.json package.json eslint.config.mjs scripts/check-forbidden-tracked-artifacts.mjs
+$ eslint src tests
+$ depcruise --config dependency-cruiser.config.mjs --output-type err src tests
+$ node scripts/check-production-reachability.mjs
+Note: OpenSpec collects anonymous usage stats. Opt out: OPENSPEC_TELEMETRY=0 or openspec config set telemetry.enabled false
+- Validating...

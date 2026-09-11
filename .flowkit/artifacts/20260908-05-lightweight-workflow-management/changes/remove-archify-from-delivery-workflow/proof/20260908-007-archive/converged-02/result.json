@@ -1,0 +1,14 @@
+{
+  "label": "converged-02",
+  "command": "node node_modules/typescript/bin/tsc --noEmit && node node_modules/typescript/bin/tsc -p tsconfig.build.json --outDir .tmp/clean-dist && node --import tsx --test tests/unit/domain/*.test.ts && node node_modules/prettier/bin/prettier.cjs --check src tests tsconfig.json tsconfig.build.json package.json eslint.config.mjs scripts/check-forbidden-tracked-artifacts.mjs && node node_modules/eslint/bin/eslint.js src tests && node scripts/check-forbidden-tracked-artifacts.mjs && node node_modules/dependency-cruiser/bin/dependency-cruise.mjs --config dependency-cruiser.config.mjs --output-type err src tests && node --test tests/unit/quality/production-reachability.test.mjs && node scripts/check-production-reachability.mjs && git diff --check HEAD",
+  "cwd": "D:\\Projects\\flowkit-next\\.tmp\\archive-007-converged",
+  "startedAt": "2026-09-08T04:42:10.797Z",
+  "finishedAt": "2026-09-08T04:43:22.650Z",
+  "node": "v22.23.2",
+  "platform": "win32",
+  "exitCode": 0,
+  "signal": null,
+  "error": null,
+  "stdoutSha256": "9ccf78ad81f84154689f80b54d5184c140a963fe942df8048dd733c4a5cda6e5",
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

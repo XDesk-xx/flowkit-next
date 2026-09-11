@@ -1,0 +1,39 @@
+{
+  "kind": "external-orchestrator-archive-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "author",
+  "action": "archive",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "remove-archify-from-delivery-workflow",
+  "runId": "20260908-007-archive",
+  "runNumber": 7,
+  "projectOrdinal": 33,
+  "previousRunId": "20260908-006-review-apply",
+  "reviewedResult": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/remove-archify-from-delivery-workflow/20260908-006-review-apply/result.json",
+    "bytes": 7490,
+    "sha256": "c248ed91492329744bfe25c7e182ced90d15789b3a6109c86c13e1709817b288"
+  },
+  "ownerInstruction": "根据最新run，archive",
+  "archiveTarget": "openspec/changes/archive/2026-09-08-033-remove-archify-from-delivery-workflow",
+  "proofRoot": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/remove-archify-from-delivery-workflow/proof/20260908-007-archive",
+  "preparation": "隔离 canonical convergence 27/27；259 domain；22 specs strict；typecheck/clean build/format/lint/650 gate/dependency/entropy passed。",
+  "scope": "仅6个canonical specs及已批准的两处Purpose、Change原bytes移动、manifest当前Change state、真实Run/必要proof。",
+  "skills": [
+    "archive",
+    "openspec-archive-change",
+    "openspec-sync-specs",
+    "debugging-and-error-recovery"
+  ],
+  "specRules": {
+    "artifactId": "specs",
+    "schemaName": "spec-driven",
+    "rulesAbsent": true,
+    "source": "本轮成功的 exact OpenSpec instructions specs JSON；不重复获取"
+  },
+  "gitMutationAllowed": false,
+  "formalFullTest": false,
+  "nextBoundary": "checkpoint",
+  "stopAfterArchive": true
+}

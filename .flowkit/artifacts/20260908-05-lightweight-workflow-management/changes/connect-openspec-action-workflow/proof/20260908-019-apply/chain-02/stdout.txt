@@ -1,0 +1,46 @@
+TAP version 13
+# Subtest: chain tip follows Policy links, not sequence or input ordering
+ok 1 - chain tip follows Policy links, not sequence or input ordering
+  ---
+  duration_ms: 3.0837
+  type: 'test'
+  ...
+# Subtest: reject disconnected higher root, fork, missing parent, cycle, duplicate sequence and Role
+ok 2 - reject disconnected higher root, fork, missing parent, cycle, duplicate sequence and Role
+  ---
+  duration_ms: 0.9217
+  type: 'test'
+  ...
+# Subtest: Owner correction uses existing Policy and rejects wrong authority
+ok 3 - Owner correction uses existing Policy and rejects wrong authority
+  ---
+  duration_ms: 0.9469
+  type: 'test'
+  ...
+# Subtest: complete prepared failure retries same Action with a new occurrence
+ok 4 - complete prepared failure retries same Action with a new occurrence
+  ---
+  duration_ms: 0.3181
+  type: 'test'
+  ...
+# Subtest: canonical disk history reads selected group only and keeps partial visible
+ok 5 - canonical disk history reads selected group only and keeps partial visible
+  ---
+  duration_ms: 27.7655
+  type: 'test'
+  ...
+# Subtest: explicit bootstrap history is display-only; mixed and unmarked groups rejected
+ok 6 - explicit bootstrap history is display-only; mixed and unmarked groups rejected
+  ---
+  duration_ms: 13.8786
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 381.592

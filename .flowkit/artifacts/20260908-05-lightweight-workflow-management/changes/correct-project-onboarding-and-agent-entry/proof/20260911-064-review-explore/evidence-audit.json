@@ -1,0 +1,120 @@
+{
+  "kind": "independent-review-explore-evidence-audit",
+  "checkedAt": "2026-09-11T05:41:15.035Z",
+  "authorCommands": [
+    {
+      "id": "current-build",
+      "exitCode": 0,
+      "command": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-063-explore/current-build/command.json",
+        "bytes": 916,
+        "sha256": "79d0f01dff9c57e3a7802c64e1b4da20c17cbf5554d0f05b81363dedde3d4de3"
+      }
+    },
+    {
+      "id": "package-inventory",
+      "exitCode": 0,
+      "command": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-063-explore/package-inventory/command.json",
+        "bytes": 1059,
+        "sha256": "f405a9cbba8a878f01a7f72ddb4d1206c8e3063fd044ef0c7b78875f513a02ec"
+      }
+    },
+    {
+      "id": "query-probe",
+      "exitCode": 0,
+      "command": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-063-explore/query-probe/command.json",
+        "bytes": 1042,
+        "sha256": "0bc4cc24663a89645a0ad9bec908ce68cb794e31a3b24f77146ce353788426c4"
+      }
+    },
+    {
+      "id": "source-audit",
+      "exitCode": 0,
+      "command": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-063-explore/source-audit/command.json",
+        "bytes": 1040,
+        "sha256": "3c516bad9cefa97e7df43f5eed7047725ba76d3b7ec465be6de9a9306c95aeff"
+      }
+    },
+    {
+      "id": "openspec-init",
+      "exitCode": 0,
+      "command": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-063-explore/openspec-init/command.json",
+        "bytes": 1070,
+        "sha256": "f645ce14027f081eb82b4bc4848f8de01edb7cfff9a442e503aa9eeedfa0d656"
+      }
+    },
+    {
+      "id": "openspec-status",
+      "exitCode": 0,
+      "command": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-063-explore/openspec-status/command.json",
+        "bytes": 1050,
+        "sha256": "fb4c26ef958968b93f1a613d1fafbc4435ea769c466c8c7182da8838611ba330"
+      }
+    }
+  ],
+  "rawReferencesVerified": 36,
+  "packageDryRun": {
+    "files": 91,
+    "id": "flowkit-next@0.1.0",
+    "requiredAssetsPresent": true,
+    "developmentHistoryExcluded": true,
+    "installationAcceptance": false
+  },
+  "independentProbe": {
+    "command": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-064-review-explore/probe/command.json",
+      "bytes": 1045,
+      "sha256": "5b5302d2500415176eae7958c7f3fd30a7a601d3036d9b9f722f826c2b7e8354"
+    },
+    "observations": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-064-review-explore/observations.json",
+      "bytes": 15065,
+      "sha256": "9cb516f50084c3f20ab0b33879edbc42a38dfa14d8829aea5ede2085f78431ff"
+    },
+    "queryCases": 7,
+    "expectedNegativeCasesAccepted": true,
+    "exactOpenSpecInit": true,
+    "recoverableDocuments": 3,
+    "noActionRunCreated": true,
+    "existingTargetBytesPreserved": true
+  },
+  "actualNewAgentSession": "not-executed",
+  "formalDeliveryFullTest": "not-executed",
+  "inputIntegrity": {
+    "beforeReferencesVerified": 56,
+    "afterReferencesVerified": 56,
+    "reviewedResult": {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/007-correct-project-onboarding-and-agent-entry/20260911-063-explore/result.json",
+      "bytes": 6615,
+      "sha256": "615053015fa494f26368a3ed51a173bf1ff8e120f09d28e5e5d327c12ba6d138"
+    },
+    "reviewedExplore": {
+      "path": "openspec/changes/correct-project-onboarding-and-agent-entry/explore.md",
+      "bytes": 10541,
+      "sha256": "f1953b0dbaeaa1f5bd3f792d0680933545aea96bdbd81f9829dbea10e31c68e7"
+    }
+  },
+  "mutationIsolation": {
+    "before": {
+      "files": 5361,
+      "sha256": "c910e4e8fa99a4cbbeb82f7f7060ce7b5be94d08e09b28088e2ba5e6f1271895",
+      "head": "7af7d85788503dafc50ee162b14deaaf679f99cb",
+      "at": "2026-09-11T05:34:02.037Z",
+      "method": "SHA256 of sorted unique git cached and nonignored other paths mapped to path/bytes/raw SHA256; absent/link explicit; excluding only own Run/proof"
+    },
+    "after": {
+      "files": 5361,
+      "sha256": "c910e4e8fa99a4cbbeb82f7f7060ce7b5be94d08e09b28088e2ba5e6f1271895",
+      "head": "7af7d85788503dafc50ee162b14deaaf679f99cb",
+      "at": "2026-09-11T05:41:32.887Z",
+      "method": "SHA256 of sorted unique git cached and nonignored other paths mapped to path/bytes/raw SHA256; absent/link explicit; excluding only own Run/proof"
+    },
+    "equal": true,
+    "excluded": "Only own Reviewer Run/proof within Git-selected files; ignored disposable .tmp fixture writes are not included in this snapshot."
+  }
+}

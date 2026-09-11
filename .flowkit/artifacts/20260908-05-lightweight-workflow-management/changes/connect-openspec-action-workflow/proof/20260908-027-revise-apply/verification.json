@@ -1,0 +1,384 @@
+{
+  "status": "PASS",
+  "head": "697088391374daa67d63c20f8a365fb44ec5c058",
+  "protectedFilesUnchanged": 67,
+  "changed": [
+    {
+      "path": "AGENTS.md",
+      "bytes": 18157,
+      "sha256": "6a51d185a3ec10e2b0887883743e6e34bc819de4c4d6a329bccb335f301143c5"
+    },
+    {
+      "path": "skills/actions/apply/SKILL.md",
+      "bytes": 14594,
+      "sha256": "2162c38db89412186f32f397d4f7f2e8860e3bc504aa8c0dc4e75d6a470f4735"
+    },
+    {
+      "path": "skills/actions/archive/SKILL.md",
+      "bytes": 17826,
+      "sha256": "efe2ae645d39dd497cde0d6f038a49fc73533e9ee47adefdc70ffce4c679fd05"
+    },
+    {
+      "path": "skills/actions/explore/SKILL.md",
+      "bytes": 17871,
+      "sha256": "c5313d0d2a4356dcd084e753a0a7fcd7df9056235621823cb347ddd499d0ac6b"
+    },
+    {
+      "path": "skills/actions/propose/SKILL.md",
+      "bytes": 14627,
+      "sha256": "aaa0d363c7cf70e100d2ccae6b62df86ac75bca096540505d41cdfdd98e545b6"
+    },
+    {
+      "path": "skills/actions/review-apply/SKILL.md",
+      "bytes": 15824,
+      "sha256": "5610e1604e57ee51a214c32bfccc7f45653157b0261c9aa3559a959c97fd42c5"
+    },
+    {
+      "path": "skills/actions/review-explore/SKILL.md",
+      "bytes": 15742,
+      "sha256": "cbc5c0227bb94ea777c07f6cb731a8e3a7efa1d409ff229ad2c21fe4f6369bfd"
+    },
+    {
+      "path": "skills/actions/review-propose/SKILL.md",
+      "bytes": 16465,
+      "sha256": "c47e22cce1e491aba5940b3e9ef3ad997d5193057e8732f51cb2e28a2f1fc384"
+    },
+    {
+      "path": "skills/actions/revise-apply/SKILL.md",
+      "bytes": 13671,
+      "sha256": "f0217190af175225be314d1dc4686945c4fcb5128228e8c5e7d8993fb137694c"
+    },
+    {
+      "path": "skills/actions/revise-explore/SKILL.md",
+      "bytes": 13411,
+      "sha256": "e0cc3d393ad987b556e905cf035c45cef4a7b482ff04496176f1aaa62d489193"
+    },
+    {
+      "path": "skills/actions/revise-propose/SKILL.md",
+      "bytes": 13867,
+      "sha256": "5978d093d198610c907166bcfa30004a4b8a942584fa4dabddbeeede8d4cd1d6"
+    },
+    {
+      "path": "src/cli/current-run-chain.ts",
+      "bytes": 8949,
+      "sha256": "98b05afe36166d2ed983159d4dce99a46b1c7a0de41a8fbd7584b02df86978df"
+    },
+    {
+      "path": "tests/unit/domain/agent-how-fixture.ts",
+      "bytes": 3084,
+      "sha256": "e14aa19b980c102bcbe8f19424cd99161b380f004b22d94b67036a817779526f"
+    },
+    {
+      "path": "tests/unit/domain/run-group-selection.test.ts",
+      "bytes": 2780,
+      "sha256": "9f72bf210b7c557c8220c99d724b1f51d1c647a559bd172cc553f145079f6600"
+    },
+    {
+      "path": "tests/unit/domain/agent-how-prepared.test.ts",
+      "bytes": 5312,
+      "sha256": "5290bff783b5fdb4d63f6917588b954ef015906d4d551969fc743d0da36a4a58"
+    }
+  ],
+  "exactRemovals": [],
+  "gate": {
+    "limit": 650,
+    "includesBlankAndCommentLines": true,
+    "maxLines": 595,
+    "files": [
+      {
+        "path": "src/cli/entrypoint.ts",
+        "lines": 97
+      },
+      {
+        "path": "src/cli/foundation-cli.ts",
+        "lines": 237
+      },
+      {
+        "path": "src/cli/request.ts",
+        "lines": 228
+      },
+      {
+        "path": "src/cli/trusted-change-coordination.ts",
+        "lines": 238
+      },
+      {
+        "path": "src/domain/run-result-persistence.ts",
+        "lines": 595
+      },
+      {
+        "path": "tests/acceptance/foundation-manager.acceptance.test.ts",
+        "lines": 445
+      },
+      {
+        "path": "tests/unit/domain/foundation-cli-entrypoint.test.ts",
+        "lines": 89
+      },
+      {
+        "path": "tests/unit/domain/foundation-cli-surface.test.ts",
+        "lines": 257
+      },
+      {
+        "path": "src/cli/action-context.ts",
+        "lines": 191
+      },
+      {
+        "path": "src/cli/current-run-chain.ts",
+        "lines": 282
+      },
+      {
+        "path": "tests/acceptance/foundation-manager-fixture.ts",
+        "lines": 273
+      },
+      {
+        "path": "tests/unit/domain/action-context-fixture.ts",
+        "lines": 77
+      },
+      {
+        "path": "tests/unit/domain/action-context.test.ts",
+        "lines": 144
+      },
+      {
+        "path": "tests/unit/domain/agent-how-failure.test.ts",
+        "lines": 64
+      },
+      {
+        "path": "tests/unit/domain/agent-how-fixture.ts",
+        "lines": 116
+      },
+      {
+        "path": "tests/unit/domain/agent-how-material.test.ts",
+        "lines": 64
+      },
+      {
+        "path": "tests/unit/domain/agent-how-record.test.ts",
+        "lines": 169
+      },
+      {
+        "path": "tests/unit/domain/current-run-chain.test.ts",
+        "lines": 254
+      },
+      {
+        "path": "tests/unit/domain/raw-stream-attributes.test.ts",
+        "lines": 63
+      },
+      {
+        "path": "tests/unit/domain/run-partial-preservation.test.ts",
+        "lines": 100
+      },
+      {
+        "path": "tests/unit/domain/run-group-selection.test.ts",
+        "lines": 86
+      },
+      {
+        "path": "tests/unit/domain/agent-how-prepared.test.ts",
+        "lines": 154
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/group-fixed-native/stdout.txt",
+      "bytes": 2732,
+      "sha256": "6c12c32ec42df7444fcb102fcbdb1c246fcc58329c4f75437d5d44cd22667dd9"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/group-fixed-native/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/group-fixed-native/command.json",
+      "bytes": 1011,
+      "sha256": "62e9deb9d24c52604a3dec9ca85d471e4a1bcad76c8e83689e346412b9496571"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/prepared-fixed/stdout.txt",
+      "bytes": 2045,
+      "sha256": "64f2545ff20254508bda1bf48f256576d3f6846369bf5842d5ca7f06ac59532c"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/prepared-fixed/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/prepared-fixed/command.json",
+      "bytes": 1004,
+      "sha256": "3c988ce35b682ee5fefbe5074232a5ba242f86b42669a6a54f63510238b29db5"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/typecheck/stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/typecheck/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/typecheck/command.json",
+      "bytes": 852,
+      "sha256": "234105c535392a0142726bf55f2210f06a6f0103cb425c3c3f135f5313819cb4"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/build/stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/build/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/build/command.json",
+      "bytes": 825,
+      "sha256": "14e89d73fa29e7799445c5c5f6c9ad4587535cd15897bb1537b72b96161ffb1c"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/lint/stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/lint/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/lint/command.json",
+      "bytes": 852,
+      "sha256": "808517c982ca303452a003c21dc3694820db0a7c0b6faa20ee14313ef35c0c90"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/format-check/stdout.txt",
+      "bytes": 66,
+      "sha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/format-check/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/format-check/command.json",
+      "bytes": 1035,
+      "sha256": "7618bc2baa8334fba4805ea54e840dd708699e18bab5aab743e5e7d5d08c8936"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/domain-windows/stdout.txt",
+      "bytes": 60796,
+      "sha256": "9da35b6a19572ed2a4c841a8c3bb337820cd5ded8316079d2fd169a99f7000bc"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/domain-windows/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/domain-windows/command.json",
+      "bytes": 887,
+      "sha256": "e15dd82f05979463bc323f355b6756b51519bc311c159e1d2c6cdbbd15b4fad5"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/linux/stdout.txt",
+      "bytes": 63521,
+      "sha256": "833bbe258a5ff53999944a99671f074e8bb829f7167c7e109bdf3e7c61e5f151"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/linux/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/linux/command.json",
+      "bytes": 1478,
+      "sha256": "90a5c47e1059f0b529ad97e131bcd88598d226cc0d54633ecc82e1b63b711a30"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/acceptance-windows/stdout.txt",
+      "bytes": 1459,
+      "sha256": "e61d4fe5224e785964b60ec1955113116f1fbc1a7b4fe0424d711735efcb12ae"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/acceptance-windows/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/acceptance-windows/command.json",
+      "bytes": 893,
+      "sha256": "cdcf76bb5d537464aee4c1229c05183e9994a03263575257af1511fc1195ae69"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/dependency/stdout.txt",
+      "bytes": 80,
+      "sha256": "742b244af0851479665ac2165d544b360ae6d3a1ba2577eb3f30559bc94398b8"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/dependency/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/dependency/command.json",
+      "bytes": 974,
+      "sha256": "06580ccd8b726c6ba7ab34bf88d3a397d83af1bbb640cd41a2143497a27b34d2"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/entropy/stdout.txt",
+      "bytes": 64,
+      "sha256": "c311d2e55b1cafa7352d9c0a59f772df5a761b6da9da23893595d26a7513011f"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/entropy/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/entropy/command.json",
+      "bytes": 843,
+      "sha256": "e1bd703c42e30145079034589ff9f0c0f554a30a6eb305ab561a7287b16b7388"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/strict/stdout.txt",
+      "bytes": 51,
+      "sha256": "360901ddba2c93f5db99ef8169d78becf370a7199f91967bed5e9e23830d3e67"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/strict/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/strict/command.json",
+      "bytes": 933,
+      "sha256": "16263d7f50028b7c0774bebef81a95673002f6757fd7aa84840d38c8cc37cff4"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/skill-validation-02/stdout.txt",
+      "bytes": 170,
+      "sha256": "0e582bd90567947d36ae887530f0e75ccb0a45a4abb07be12941774b00a9f090"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/skill-validation-02/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/skill-validation-02/command.json",
+      "bytes": 1218,
+      "sha256": "3095b60f5aeba41380e57e6baaf57ab09e77d3d9f64cf034091d2334da8c9ed4"
+    }
+  ],
+  "previousReview": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-026-review-apply/result.json",
+    "sha256": "ac65472f020c32539a712129d7fc79effcdeb91b5f6b3a62be1666a650ceb1ad"
+  },
+  "priorApply": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-025-apply/result.json",
+    "bytes": 35497,
+    "sha256": "ac2088bba9d9b31e7dfb9acc3590f3dc1b91a105af2828f74c932d1e18480aa3"
+  }
+}

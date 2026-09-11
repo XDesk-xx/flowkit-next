@@ -1,0 +1,765 @@
+{
+  "kind": "external-orchestrator-revise-apply-result",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "author",
+  "action": "revise-apply",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "connect-openspec-action-workflow",
+  "projectOrdinal": 35,
+  "runId": "20260908-027-revise-apply",
+  "previousRunId": "20260908-026-review-apply",
+  "status": "terminal",
+  "verdict": "PASS",
+  "verdictMeaning": "Author 已完成 finding 修正及本轮验证；不代表独立 Review approved 或 Delivery Full Test",
+  "summary": "修正 exact Change group 后缀误匹配与十个 HOW 的 same-prepared 复用，保留内核及历史边界。",
+  "findingsAddressed": [
+    "D05-RA026-001",
+    "D05-RA026-002"
+  ],
+  "nonBlockingObservationAddressed": "AGENTS 第4节已撤出旧 action 命令字样",
+  "previousReview": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-026-review-apply/result.json",
+    "sha256": "ac65472f020c32539a712129d7fc79effcdeb91b5f6b3a62be1666a650ceb1ad",
+    "bytes": 9483
+  },
+  "previousApply": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-025-apply/result.json",
+    "bytes": 35497,
+    "sha256": "ac2088bba9d9b31e7dfb9acc3590f3dc1b91a105af2828f74c932d1e18480aa3"
+  },
+  "artifacts": [
+    {
+      "path": ".agents/skills/archive/SKILL.md",
+      "bytes": 7180,
+      "sha256": "72f5704eeb1b93409405e4b2d09f6e91e8c4f5048e0652be5bab1ac4ddbc1939"
+    },
+    {
+      "path": ".agents/skills/explore-proof-based/SKILL.md",
+      "bytes": 10044,
+      "sha256": "ae1278143e347100ae0f1d57c8a2884c5c6bb0b2c91dfd1098cb380c9a394309"
+    },
+    {
+      "path": ".agents/skills/implementation-convergence/SKILL.md",
+      "bytes": 7684,
+      "sha256": "3bc0246d38a3720b9c68ebc497f8c017f68c6a838e79f093a19ba8df78e0024c"
+    },
+    {
+      "path": ".agents/skills/proposal-convergence/SKILL.md",
+      "bytes": 6464,
+      "sha256": "4d7d87d095969b323dba7df79a7cd9720056e58c667e086f6ef36d8958c575a8"
+    },
+    {
+      "path": ".agents/skills/review-apply/SKILL.md",
+      "bytes": 5537,
+      "sha256": "d2e6f3471cfc8d74cc87ef7d42c5e9b0448c0b4d97ecdc12db5c87b67a14df9a"
+    },
+    {
+      "path": ".agents/skills/review-explore/SKILL.md",
+      "bytes": 5470,
+      "sha256": "13e7bc63ef1e2d048b8f2e0dcc01c8410168a93e1f2f9aa15cc5f833e2fe8912"
+    },
+    {
+      "path": ".agents/skills/review-propose/SKILL.md",
+      "bytes": 5982,
+      "sha256": "9530a07f849d164b4addea6d9790a244c53d2af8248ae6f7094b1a5ba62c08bd"
+    },
+    {
+      "path": ".agents/skills/revise-apply/SKILL.md",
+      "bytes": 4567,
+      "sha256": "d28a63eed2e7c615139cb72db47814280be9c02c742c30fe1cd8f5019b20116b"
+    },
+    {
+      "path": ".agents/skills/revise-explore/SKILL.md",
+      "bytes": 4766,
+      "sha256": "9ef469ca1cbca4618a31462484a07bd7181d747d2456c5b3e9b04877a650ef12"
+    },
+    {
+      "path": ".agents/skills/revise-propose/SKILL.md",
+      "bytes": 4756,
+      "sha256": "cb68e1f935fb8939f7d090cac867f6851636c5ee37e55cf965049827873a4452"
+    },
+    {
+      "path": ".gitattributes",
+      "bytes": 446,
+      "sha256": "2f2072c6d51c6756389cf400010bc6a8b4bfb4137529873f7066dc772f8bae85"
+    },
+    {
+      "path": "AGENTS.md",
+      "bytes": 18157,
+      "sha256": "6a51d185a3ec10e2b0887883743e6e34bc819de4c4d6a329bccb335f301143c5"
+    },
+    {
+      "path": "README.md",
+      "bytes": 6996,
+      "sha256": "7a33057a7afc965995f971d4d099c9103784258ea90fb1a00031f6254ec7e11a"
+    },
+    {
+      "path": "openspec/delivery-groups/20260908-05-lightweight-workflow-management.yaml",
+      "bytes": 9222,
+      "sha256": "b23ca627214c86d0c13e2a8b44d68c5610d8fc0c884879b5e6c902955fbb2060"
+    },
+    {
+      "path": "skills/actions/apply/SKILL.md",
+      "bytes": 14594,
+      "sha256": "2162c38db89412186f32f397d4f7f2e8860e3bc504aa8c0dc4e75d6a470f4735"
+    },
+    {
+      "path": "skills/actions/archive/SKILL.md",
+      "bytes": 17826,
+      "sha256": "efe2ae645d39dd497cde0d6f038a49fc73533e9ee47adefdc70ffce4c679fd05"
+    },
+    {
+      "path": "skills/actions/explore/SKILL.md",
+      "bytes": 17871,
+      "sha256": "c5313d0d2a4356dcd084e753a0a7fcd7df9056235621823cb347ddd499d0ac6b"
+    },
+    {
+      "path": "skills/actions/propose/SKILL.md",
+      "bytes": 14627,
+      "sha256": "aaa0d363c7cf70e100d2ccae6b62df86ac75bca096540505d41cdfdd98e545b6"
+    },
+    {
+      "path": "skills/actions/review-apply/SKILL.md",
+      "bytes": 15824,
+      "sha256": "5610e1604e57ee51a214c32bfccc7f45653157b0261c9aa3559a959c97fd42c5"
+    },
+    {
+      "path": "skills/actions/review-explore/SKILL.md",
+      "bytes": 15742,
+      "sha256": "cbc5c0227bb94ea777c07f6cb731a8e3a7efa1d409ff229ad2c21fe4f6369bfd"
+    },
+    {
+      "path": "skills/actions/review-propose/SKILL.md",
+      "bytes": 16465,
+      "sha256": "c47e22cce1e491aba5940b3e9ef3ad997d5193057e8732f51cb2e28a2f1fc384"
+    },
+    {
+      "path": "skills/actions/revise-apply/SKILL.md",
+      "bytes": 13671,
+      "sha256": "f0217190af175225be314d1dc4686945c4fcb5128228e8c5e7d8993fb137694c"
+    },
+    {
+      "path": "skills/actions/revise-explore/SKILL.md",
+      "bytes": 13411,
+      "sha256": "e0cc3d393ad987b556e905cf035c45cef4a7b482ff04496176f1aaa62d489193"
+    },
+    {
+      "path": "skills/actions/revise-propose/SKILL.md",
+      "bytes": 13867,
+      "sha256": "5978d093d198610c907166bcfa30004a4b8a942584fa4dabddbeeede8d4cd1d6"
+    },
+    {
+      "path": "skills/tools/openspec/SKILL.md",
+      "bytes": 1736,
+      "sha256": "a2350339a5318a84885e55b96f0537b78bee145a369ed9c035bb4486da8e9871"
+    },
+    {
+      "path": "src/cli/entrypoint.ts",
+      "bytes": 2809,
+      "sha256": "366a22951c50b8c9389ef8cf70c9e3e4ef2384755a23110fbacfc2921e0cb2d3"
+    },
+    {
+      "path": "src/cli/foundation-cli.ts",
+      "bytes": 6500,
+      "sha256": "94b84df2b119f8c502a5397853470ba415dcf57abada940aeee2c63b374f61db"
+    },
+    {
+      "path": "src/cli/request.ts",
+      "bytes": 6578,
+      "sha256": "fd91fe0064bf039f73b6d50ef3bdae89e22ca6d49363ddc9b8c68e46641c14cc"
+    },
+    {
+      "path": "src/cli/trusted-change-coordination.ts",
+      "bytes": 6242,
+      "sha256": "d167891ed9e0b9c73e96492d06220203578ea7f79ab2dc3ccdbec7f484dd14f1"
+    },
+    {
+      "path": "src/domain/run-result-persistence.ts",
+      "bytes": 16893,
+      "sha256": "6dbb7d81393f65da53c97c7ef6fb6f69d7846dad32348f825482922340129e2f"
+    },
+    {
+      "path": "tests/acceptance/foundation-manager.acceptance.test.ts",
+      "bytes": 14429,
+      "sha256": "6e59e7bd916586d4dfa4f36d0e2982fd383e98126b35186637922d4444a885eb"
+    },
+    {
+      "path": "tests/unit/domain/foundation-cli-entrypoint.test.ts",
+      "bytes": 3083,
+      "sha256": "512463ff206c09c39342c473ba95f9a8485672142f2755b590616362f35f28ff"
+    },
+    {
+      "path": "tests/unit/domain/foundation-cli-surface.test.ts",
+      "bytes": 7526,
+      "sha256": "dd3662d6b2adde9ba1ce113ab2e0099a0683a92575eceaf3688786acf2cd805d"
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/.openspec.yaml",
+      "bytes": 40,
+      "sha256": "8119cfe5ad04f1801d3027066b1b671140c63203d1b9ea7592d49018a901fa91"
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/design.md",
+      "bytes": 12759,
+      "sha256": "fac25b1b6f45e7635976a9bdf7ca9ca1bab0dab4b87c2f17f4cf40b77f5ca94e"
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/explore.md",
+      "bytes": 10968,
+      "sha256": "03c948fea0aab3b787b7d4e86a51f5892ea22b0e7b52a936c7cec38be109cc11"
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/proposal.md",
+      "bytes": 3686,
+      "sha256": "4550d2dafd7ad8f862bf2ae80836c69833d8d37994b29026b7619c7a01185ff5"
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/specs/action-guidance-execution/spec.md",
+      "bytes": 5420,
+      "sha256": "0f18d3b73ebe6df46e89ab9bbe207fb64db9f7bfeda035672c8cd5ff6bec0d65"
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/specs/foundation-cli-surface/spec.md",
+      "bytes": 10469,
+      "sha256": "2b668dce63982b87c54fcf6432480d1aad6c610e4fe29b08cd42695a59c6041c"
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/specs/run-result-persistence/spec.md",
+      "bytes": 4192,
+      "sha256": "5184aa706e062b10d75197e17c7a95a3a027aae5550cf844f6dc50abd6ab4aa5"
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/specs/single-action-execution-terminal-boundary/spec.md",
+      "bytes": 4165,
+      "sha256": "688f49788024604d229009ff1f52f408a1b6bb2d52749fd9e90713056837b642"
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/tasks.md",
+      "bytes": 6097,
+      "sha256": "6455b2463fb59185d74f81b31db4b3e7a7d5558c037dfb15e421665bfc155732"
+    },
+    {
+      "path": "src/cli/action-context.ts",
+      "bytes": 5676,
+      "sha256": "cd724c9e22a94bd7ffa2833acf6c1c89ca66fdf448d1a58c2389dcf3ea67b6f5"
+    },
+    {
+      "path": "src/cli/current-run-chain.ts",
+      "bytes": 8949,
+      "sha256": "98b05afe36166d2ed983159d4dce99a46b1c7a0de41a8fbd7584b02df86978df"
+    },
+    {
+      "path": "tests/acceptance/foundation-manager-fixture.ts",
+      "bytes": 7890,
+      "sha256": "aee9a528eeff173ddc74147d7889bdf3695d37d21670d9d5a6e5ed4845db7134"
+    },
+    {
+      "path": "tests/unit/domain/action-context-fixture.ts",
+      "bytes": 2625,
+      "sha256": "60beb485d01345adce488a760aee2a21d54c07f8ea76949ffa4fbe29dfc7460b"
+    },
+    {
+      "path": "tests/unit/domain/action-context.test.ts",
+      "bytes": 4324,
+      "sha256": "e7b6b07494e4d8d24b2dea04b3eb75ec0c29870d9363d9b5fb7ff30652e3705d"
+    },
+    {
+      "path": "tests/unit/domain/agent-how-failure.test.ts",
+      "bytes": 2302,
+      "sha256": "5fc70687667218a34f11a59d3553bde15ff384714e5fc9cf183f275ba13fa59d"
+    },
+    {
+      "path": "tests/unit/domain/agent-how-fixture.ts",
+      "bytes": 3084,
+      "sha256": "e14aa19b980c102bcbe8f19424cd99161b380f004b22d94b67036a817779526f"
+    },
+    {
+      "path": "tests/unit/domain/agent-how-material.test.ts",
+      "bytes": 2416,
+      "sha256": "669ab55e4dd36ef0e83cf0a5382f787a8f795368ffacc5857fd5def44091a78b"
+    },
+    {
+      "path": "tests/unit/domain/agent-how-record.test.ts",
+      "bytes": 5183,
+      "sha256": "8b69b6990712617a0125c6add6aa9923851229bc9236c347d84cf66b58bb8580"
+    },
+    {
+      "path": "tests/unit/domain/current-run-chain.test.ts",
+      "bytes": 7890,
+      "sha256": "0da6f6a10c408edad9b7ee758974602e049785fc58b71cfdece658dfb5b7b846"
+    },
+    {
+      "path": "tests/unit/domain/raw-stream-attributes.test.ts",
+      "bytes": 2434,
+      "sha256": "ccdc68f2dd511340a33ebd296a5f78800ea0c2e4ff30a7a6f3b6ca27c6bdd227"
+    },
+    {
+      "path": "tests/unit/domain/run-partial-preservation.test.ts",
+      "bytes": 2988,
+      "sha256": "e37f50c516f2241a1a7fef92076a1d56960f5b41ba641ad19b818c352dc5db89"
+    },
+    {
+      "path": "tests/unit/domain/run-group-selection.test.ts",
+      "bytes": 2780,
+      "sha256": "9f72bf210b7c557c8220c99d724b1f51d1c647a559bd172cc553f145079f6600"
+    },
+    {
+      "path": "tests/unit/domain/agent-how-prepared.test.ts",
+      "bytes": 5312,
+      "sha256": "5290bff783b5fdb4d63f6917588b954ef015906d4d551969fc743d0da36a4a58"
+    }
+  ],
+  "revisionDelta": [
+    {
+      "path": "AGENTS.md",
+      "bytes": 18157,
+      "sha256": "6a51d185a3ec10e2b0887883743e6e34bc819de4c4d6a329bccb335f301143c5"
+    },
+    {
+      "path": "skills/actions/apply/SKILL.md",
+      "bytes": 14594,
+      "sha256": "2162c38db89412186f32f397d4f7f2e8860e3bc504aa8c0dc4e75d6a470f4735"
+    },
+    {
+      "path": "skills/actions/archive/SKILL.md",
+      "bytes": 17826,
+      "sha256": "efe2ae645d39dd497cde0d6f038a49fc73533e9ee47adefdc70ffce4c679fd05"
+    },
+    {
+      "path": "skills/actions/explore/SKILL.md",
+      "bytes": 17871,
+      "sha256": "c5313d0d2a4356dcd084e753a0a7fcd7df9056235621823cb347ddd499d0ac6b"
+    },
+    {
+      "path": "skills/actions/propose/SKILL.md",
+      "bytes": 14627,
+      "sha256": "aaa0d363c7cf70e100d2ccae6b62df86ac75bca096540505d41cdfdd98e545b6"
+    },
+    {
+      "path": "skills/actions/review-apply/SKILL.md",
+      "bytes": 15824,
+      "sha256": "5610e1604e57ee51a214c32bfccc7f45653157b0261c9aa3559a959c97fd42c5"
+    },
+    {
+      "path": "skills/actions/review-explore/SKILL.md",
+      "bytes": 15742,
+      "sha256": "cbc5c0227bb94ea777c07f6cb731a8e3a7efa1d409ff229ad2c21fe4f6369bfd"
+    },
+    {
+      "path": "skills/actions/review-propose/SKILL.md",
+      "bytes": 16465,
+      "sha256": "c47e22cce1e491aba5940b3e9ef3ad997d5193057e8732f51cb2e28a2f1fc384"
+    },
+    {
+      "path": "skills/actions/revise-apply/SKILL.md",
+      "bytes": 13671,
+      "sha256": "f0217190af175225be314d1dc4686945c4fcb5128228e8c5e7d8993fb137694c"
+    },
+    {
+      "path": "skills/actions/revise-explore/SKILL.md",
+      "bytes": 13411,
+      "sha256": "e0cc3d393ad987b556e905cf035c45cef4a7b482ff04496176f1aaa62d489193"
+    },
+    {
+      "path": "skills/actions/revise-propose/SKILL.md",
+      "bytes": 13867,
+      "sha256": "5978d093d198610c907166bcfa30004a4b8a942584fa4dabddbeeede8d4cd1d6"
+    },
+    {
+      "path": "src/cli/current-run-chain.ts",
+      "bytes": 8949,
+      "sha256": "98b05afe36166d2ed983159d4dce99a46b1c7a0de41a8fbd7584b02df86978df"
+    },
+    {
+      "path": "tests/unit/domain/agent-how-fixture.ts",
+      "bytes": 3084,
+      "sha256": "e14aa19b980c102bcbe8f19424cd99161b380f004b22d94b67036a817779526f"
+    },
+    {
+      "path": "tests/unit/domain/run-group-selection.test.ts",
+      "bytes": 2780,
+      "sha256": "9f72bf210b7c557c8220c99d724b1f51d1c647a559bd172cc553f145079f6600"
+    },
+    {
+      "path": "tests/unit/domain/agent-how-prepared.test.ts",
+      "bytes": 5312,
+      "sha256": "5290bff783b5fdb4d63f6917588b954ef015906d4d551969fc743d0da36a4a58"
+    }
+  ],
+  "exactRemovals": [],
+  "inheritedRemovals": {
+    "sourceResult": {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-025-apply/result.json",
+      "bytes": 35497,
+      "sha256": "ac2088bba9d9b31e7dfb9acc3590f3dc1b91a105af2828f74c932d1e18480aa3"
+    },
+    "paths": [
+      "src/cli/action-command.ts",
+      "src/cli/action-protocol.ts",
+      "src/internal/action-run-reservation.ts",
+      "src/internal/action-proof.ts",
+      "src/internal/action-target-files.ts",
+      "tests/unit/domain/action-command.test.ts",
+      "tests/unit/domain/action-protocol.test.ts",
+      "tests/unit/domain/action-run-reservation.test.ts",
+      "tests/unit/domain/action-proof.test.ts",
+      "tests/unit/domain/action-native-process.test.ts"
+    ]
+  },
+  "tasks": {
+    "total": 21,
+    "complete": 21,
+    "remaining": 0,
+    "planRewritten": false
+  },
+  "verification": {
+    "windowsDomain": {
+      "pass": 284,
+      "fail": 0,
+      "skipped": 0
+    },
+    "windowsAcceptance": {
+      "pass": 6,
+      "fail": 0,
+      "skipped": 0
+    },
+    "linuxDomain": {
+      "pass": 284,
+      "fail": 0,
+      "skipped": 0
+    },
+    "linuxAcceptance": {
+      "pass": 6,
+      "fail": 0,
+      "skipped": 0
+    },
+    "sourceTestGate": {
+      "limit": 650,
+      "includesBlankAndCommentLines": true,
+      "maxLines": 595,
+      "files": [
+        {
+          "path": "src/cli/entrypoint.ts",
+          "lines": 97
+        },
+        {
+          "path": "src/cli/foundation-cli.ts",
+          "lines": 237
+        },
+        {
+          "path": "src/cli/request.ts",
+          "lines": 228
+        },
+        {
+          "path": "src/cli/trusted-change-coordination.ts",
+          "lines": 238
+        },
+        {
+          "path": "src/domain/run-result-persistence.ts",
+          "lines": 595
+        },
+        {
+          "path": "tests/acceptance/foundation-manager.acceptance.test.ts",
+          "lines": 445
+        },
+        {
+          "path": "tests/unit/domain/foundation-cli-entrypoint.test.ts",
+          "lines": 89
+        },
+        {
+          "path": "tests/unit/domain/foundation-cli-surface.test.ts",
+          "lines": 257
+        },
+        {
+          "path": "src/cli/action-context.ts",
+          "lines": 191
+        },
+        {
+          "path": "src/cli/current-run-chain.ts",
+          "lines": 282
+        },
+        {
+          "path": "tests/acceptance/foundation-manager-fixture.ts",
+          "lines": 273
+        },
+        {
+          "path": "tests/unit/domain/action-context-fixture.ts",
+          "lines": 77
+        },
+        {
+          "path": "tests/unit/domain/action-context.test.ts",
+          "lines": 144
+        },
+        {
+          "path": "tests/unit/domain/agent-how-failure.test.ts",
+          "lines": 64
+        },
+        {
+          "path": "tests/unit/domain/agent-how-fixture.ts",
+          "lines": 116
+        },
+        {
+          "path": "tests/unit/domain/agent-how-material.test.ts",
+          "lines": 64
+        },
+        {
+          "path": "tests/unit/domain/agent-how-record.test.ts",
+          "lines": 169
+        },
+        {
+          "path": "tests/unit/domain/current-run-chain.test.ts",
+          "lines": 254
+        },
+        {
+          "path": "tests/unit/domain/raw-stream-attributes.test.ts",
+          "lines": 63
+        },
+        {
+          "path": "tests/unit/domain/run-partial-preservation.test.ts",
+          "lines": 100
+        },
+        {
+          "path": "tests/unit/domain/run-group-selection.test.ts",
+          "lines": 86
+        },
+        {
+          "path": "tests/unit/domain/agent-how-prepared.test.ts",
+          "lines": 154
+        }
+      ]
+    },
+    "protectedFilesUnchanged": 67
+  },
+  "evidence": [
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/group-fixed-native/stdout.txt",
+      "bytes": 2732,
+      "sha256": "6c12c32ec42df7444fcb102fcbdb1c246fcc58329c4f75437d5d44cd22667dd9"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/group-fixed-native/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/group-fixed-native/command.json",
+      "bytes": 1011,
+      "sha256": "62e9deb9d24c52604a3dec9ca85d471e4a1bcad76c8e83689e346412b9496571"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/prepared-fixed/stdout.txt",
+      "bytes": 2045,
+      "sha256": "64f2545ff20254508bda1bf48f256576d3f6846369bf5842d5ca7f06ac59532c"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/prepared-fixed/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/prepared-fixed/command.json",
+      "bytes": 1004,
+      "sha256": "3c988ce35b682ee5fefbe5074232a5ba242f86b42669a6a54f63510238b29db5"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/typecheck/stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/typecheck/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/typecheck/command.json",
+      "bytes": 852,
+      "sha256": "234105c535392a0142726bf55f2210f06a6f0103cb425c3c3f135f5313819cb4"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/build/stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/build/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/build/command.json",
+      "bytes": 825,
+      "sha256": "14e89d73fa29e7799445c5c5f6c9ad4587535cd15897bb1537b72b96161ffb1c"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/lint/stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/lint/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/lint/command.json",
+      "bytes": 852,
+      "sha256": "808517c982ca303452a003c21dc3694820db0a7c0b6faa20ee14313ef35c0c90"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/format-check/stdout.txt",
+      "bytes": 66,
+      "sha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/format-check/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/format-check/command.json",
+      "bytes": 1035,
+      "sha256": "7618bc2baa8334fba4805ea54e840dd708699e18bab5aab743e5e7d5d08c8936"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/domain-windows/stdout.txt",
+      "bytes": 60796,
+      "sha256": "9da35b6a19572ed2a4c841a8c3bb337820cd5ded8316079d2fd169a99f7000bc"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/domain-windows/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/domain-windows/command.json",
+      "bytes": 887,
+      "sha256": "e15dd82f05979463bc323f355b6756b51519bc311c159e1d2c6cdbbd15b4fad5"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/linux/stdout.txt",
+      "bytes": 63521,
+      "sha256": "833bbe258a5ff53999944a99671f074e8bb829f7167c7e109bdf3e7c61e5f151"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/linux/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/linux/command.json",
+      "bytes": 1478,
+      "sha256": "90a5c47e1059f0b529ad97e131bcd88598d226cc0d54633ecc82e1b63b711a30"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/acceptance-windows/stdout.txt",
+      "bytes": 1459,
+      "sha256": "e61d4fe5224e785964b60ec1955113116f1fbc1a7b4fe0424d711735efcb12ae"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/acceptance-windows/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/acceptance-windows/command.json",
+      "bytes": 893,
+      "sha256": "cdcf76bb5d537464aee4c1229c05183e9994a03263575257af1511fc1195ae69"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/dependency/stdout.txt",
+      "bytes": 80,
+      "sha256": "742b244af0851479665ac2165d544b360ae6d3a1ba2577eb3f30559bc94398b8"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/dependency/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/dependency/command.json",
+      "bytes": 974,
+      "sha256": "06580ccd8b726c6ba7ab34bf88d3a397d83af1bbb640cd41a2143497a27b34d2"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/entropy/stdout.txt",
+      "bytes": 64,
+      "sha256": "c311d2e55b1cafa7352d9c0a59f772df5a761b6da9da23893595d26a7513011f"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/entropy/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/entropy/command.json",
+      "bytes": 843,
+      "sha256": "e1bd703c42e30145079034589ff9f0c0f554a30a6eb305ab561a7287b16b7388"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/strict/stdout.txt",
+      "bytes": 51,
+      "sha256": "360901ddba2c93f5db99ef8169d78becf370a7199f91967bed5e9e23830d3e67"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/strict/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/strict/command.json",
+      "bytes": 933,
+      "sha256": "16263d7f50028b7c0774bebef81a95673002f6757fd7aa84840d38c8cc37cff4"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/skill-validation-02/stdout.txt",
+      "bytes": 170,
+      "sha256": "0e582bd90567947d36ae887530f0e75ccb0a45a4abb07be12941774b00a9f090"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/skill-validation-02/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/skill-validation-02/command.json",
+      "bytes": 1218,
+      "sha256": "3095b60f5aeba41380e57e6baaf57ab09e77d3d9f64cf034091d2334da8c9ed4"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/verification.json",
+      "bytes": 16871,
+      "sha256": "28450c67bb2ee5e1884fb4e0a10ad5131f2e0b5d31375c704f9cb3991642027e"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/baseline.json",
+      "bytes": 23861,
+      "sha256": "dd62979e68d3fd39d849c98317f192031bc33d058f112bc2e5ac520c5a3d4ce7"
+    }
+  ],
+  "handoff": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/handoff.md",
+    "bytes": 3268,
+    "sha256": "3f11525e684b72d8cf6f75055d04ed63a524b830072a734a49564608169ce114"
+  },
+  "ownerSourceRef": "owner-input:2026-09-08:revise-after-026",
+  "ownerDecisionsRelevant": [
+    "D05 独立 bootstrap，CLI 只读而 Agent 执行记录",
+    "必要材料留在 target artifacts，.tmp 可丢弃，不重写历史",
+    "单次修订后 STOP，不自动 Review/Archive/Git"
+  ],
+  "historicalRunsRewritten": false,
+  "kernelChanged": false,
+  "planChanged": false,
+  "candidateSelfManagement": false,
+  "scopeDrift": "NONE",
+  "reviewerVerdict": null,
+  "formalFullTestExecuted": false,
+  "archiveExecuted": false,
+  "gitOperations": [],
+  "startedAt": "2026-09-08T14:27:02.650Z",
+  "completedAt": "2026-09-08T14:36:36.504Z",
+  "nextBoundary": "review-apply",
+  "stop": true
+}

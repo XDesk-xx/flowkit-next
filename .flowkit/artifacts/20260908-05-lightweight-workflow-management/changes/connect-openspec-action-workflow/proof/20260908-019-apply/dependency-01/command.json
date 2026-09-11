@@ -1,0 +1,28 @@
+{
+  "executable": "node",
+  "args": [
+    "node_modules/dependency-cruiser/bin/dependency-cruise.mjs",
+    "--config",
+    "dependency-cruiser.config.mjs",
+    "--output-type",
+    "err",
+    "src",
+    "tests"
+  ],
+  "cwd": "D:\\Projects\\flowkit-next",
+  "startedAt": "2026-09-08T11:00:01.523Z",
+  "finishedAt": "2026-09-08T11:00:03.621Z",
+  "exitCode": 0,
+  "signal": null,
+  "error": null,
+  "stdout": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-019-apply/dependency-01/stdout.txt",
+    "bytes": 80,
+    "sha256": "71deb85cc7960dd851affc5fedbe62c010ce2e4954d8b409a6a3e2b354ceffc9"
+  },
+  "stderr": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-019-apply/dependency-01/stderr.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

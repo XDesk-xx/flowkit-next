@@ -1,0 +1,134 @@
+{
+  "kind": "bounded-example-evidence-copy-not-current-truth",
+  "capturedAt": "2026-09-11T06:42:41.372Z",
+  "sourceRoot": "D:\\Projects\\flowkit-next\\.tmp\\onboarding-039-target",
+  "purpose": "Retain exact actual example evidence for 067 Apply; not a second active project or reconstructed Run",
+  "files": [
+    {
+      "path": ".tmp/onboarding-039-target/AGENTS.md",
+      "bytes": 897,
+      "sha256": "5aaa21b4d38df856c462a20b5bec93fc2184d59b898c8d39f7267b30e0e6e757",
+      "targetRelativePath": "AGENTS.md",
+      "content": "# 示例项目约束\n\n库存条目不可重复，保留原始数据；不自动执行 Git。\n\n<!-- flowkit-entry:start -->\n## Flowkit 项目入口\n\n- target：D:/Projects/flowkit-next/.tmp/onboarding-039-target\n- manager：D:/Projects/flowkit-next/.tmp/onboarding-039-manager/node_modules/flowkit-next\n- FLOWKIT_HOME：C:/Users/xuser/.flowkit\n- 实际 Role 取当前会话/Owner 明确职责，不从上一 Run role 推断，不自动切换。\n- 先读 manager/docs/onboarding.md，使用其 package.json 的 bin 查询本 target 的 status/next。\n- 阶段请求先核对唯一合法 Action 与实际 Role，再读该安装的 skills/actions/<actionId>/SKILL.md；仅询问下一步则只读后 STOP。\n- 歧义、blocked、partial、bootstrap-history、角色/阶段冲突或缺事实先报告并 STOP；不猜编号、不回退旧 PASS、不自动下一步或 Git。\n<!-- flowkit-entry:end -->\n"
+    },
+    {
+      "path": ".tmp/onboarding-039-target/stock.mjs",
+      "bytes": 104,
+      "sha256": "10d1120aecb95ebcbcac777bad14c10d7ba6d08d0f42cf518e1fb795f5538ca5",
+      "targetRelativePath": "stock.mjs",
+      "content": "export function totalUnits(items) {\n  return items.reduce((total, item) => total + item.quantity, 0);\n}\n"
+    },
+    {
+      "path": ".tmp/onboarding-039-target/stock.json",
+      "bytes": 82,
+      "sha256": "0387cdc3f85be31e9e5b536a892673b677b448eebafa197ebbde450dae9ac318",
+      "targetRelativePath": "stock.json",
+      "content": "[\n  { \"sku\": \"notebook\", \"quantity\": 8 },\n  { \"sku\": \"pencil\", \"quantity\": 12 }\n]\n"
+    },
+    {
+      "path": ".tmp/onboarding-039-target/onboarding-plan.md",
+      "bytes": 785,
+      "sha256": "926ccaad4d8364a3bd5dc60b0a719931be8fa1749b6ae0ea92aaf9b1b4e139db",
+      "targetRelativePath": "onboarding-plan.md",
+      "content": "# 库存示例：有界 Explore\n\n目的：核定已有 stock.mjs 对 stock.json 的汇总行为及输入约束。仅阅读与探针，不改业务实现，不进入 Propose，不制造 Review finding。\n\n本项目为 Flowkit 039 接入验收的普通 target，不管理 D05。真实安装、真实工作与 CLI 读回属于本次 Apply 验收；新 Agent 会话仍须另行真实读取，不能以该工作代替。\n\nOwner 来源：2026-09-11 对“授权 .tmp/onboarding-039-target 首次 projectOrdinal=1，并执行一次有界 Explore”的请求，明确回复“授权 首次，执行有界 explore”。本示例初始化组织为 onboarding-stock-delivery / inspect-stock-total，首次序号 1；只承载本次已授权工作，无 Git、Full Test 或后续 Action 授权。\n"
+    },
+    {
+      "path": ".tmp/onboarding-039-target/.flowkit/project.json",
+      "bytes": 120,
+      "sha256": "747b9603c7e155a5a86252dd192888dfbbd06a095706f5ec65297310f66c664a",
+      "targetRelativePath": ".flowkit/project.json",
+      "content": "{\n  \"formatVersion\": 1,\n  \"projectId\": \"onboarding-stock-example\",\n  \"runtimeFamily\": \"new\",\n  \"state\": \"initialized\"\n}\n"
+    },
+    {
+      "path": ".tmp/onboarding-039-target/openspec/config.yaml",
+      "bytes": 922,
+      "sha256": "2a791b0ccc50e2c2ebbb3ba28692a4ad0e4b6ab94ed2151375ac404d7056e89a",
+      "targetRelativePath": "openspec/config.yaml",
+      "content": "schema: spec-driven\n\n# Project context (optional)\n# This is shown to AI when creating artifacts.\n# Add your tech stack, conventions, style guides, domain knowledge, etc.\n# Example:\n#   context: |\n#     Tech stack: TypeScript, React, Node.js\n#     We use conventional commits\n#     Domain: e-commerce platform\n\n# Per-artifact rules (optional)\n# Add custom rules for specific artifacts.\n# Example:\n#   rules:\n#     proposal:\n#       - Keep proposals under 500 words\n#       - Always include a \"Non-goals\" section\n#     tasks:\n#       - Break tasks into chunks of max 2 hours\n\n# Per-operation guidance (optional)\n# Add advisory guidance for how apply and archive work should be conducted.\n# This is separate from artifact rules above.\n# Example:\n#   operations:\n#     apply:\n#       guidance:\n#         - Keep test summaries concise\n#     archive:\n#       guidance:\n#         - Summarize the archive outcome before finishing\n"
+    },
+    {
+      "path": ".tmp/onboarding-039-target/openspec/delivery-groups/onboarding-stock-delivery.yaml",
+      "bytes": 1310,
+      "sha256": "84ee6a6ad1cdf5e2a987a36aca2ac7365016fbaff7b1f3f73202ef024fec1ef3",
+      "targetRelativePath": "openspec/delivery-groups/onboarding-stock-delivery.yaml",
+      "content": "{\n  \"id\": \"onboarding-stock-delivery\",\n  \"projectId\": \"onboarding-stock-example\",\n  \"planningReference\": {\n    \"artifact\": \"onboarding-plan.md\",\n    \"contentSha256\": \"926ccaad4d8364a3bd5dc60b0a719931be8fa1749b6ae0ea92aaf9b1b4e139db\"\n  },\n  \"delivery\": {\n    \"state\": \"active\",\n    \"fullTestStatus\": \"pending\",\n    \"finalizationStatus\": \"pending\"\n  },\n  \"changes\": [\n    {\n      \"id\": \"inspect-stock-total\",\n      \"required\": true,\n      \"dependsOn\": [],\n      \"state\": \"active\",\n      \"projectOrdinal\": 1,\n      \"ordinalSourceRef\": \"owner-input:2026-09-11:onboarding-first-ordinal-and-bounded-explore\"\n    }\n  ],\n  \"ownerDecisions\": [\n    {\n      \"ref\": \"owner:8b5ea2ff8f89cee3dd5c31ab71ba8f2c5db582245bea5ef61589db174d12fabd\",\n      \"decision\": \"activate-change\",\n      \"deliveryId\": \"onboarding-stock-delivery\",\n      \"changeId\": \"inspect-stock-total\",\n      \"sourceRef\": \"owner-input:2026-09-11:onboarding-first-ordinal-and-bounded-explore\",\n      \"scope\": [\"explore\"]\n    },\n    {\n      \"ref\": \"owner:08759eca3d3ca07e32c3a8cc4092d1717fbf67489486ad585e1133655da8a751\",\n      \"decision\": \"create-delivery\",\n      \"deliveryId\": \"onboarding-stock-delivery\",\n      \"sourceRef\": \"owner-input:2026-09-11:onboarding-first-ordinal-and-bounded-explore\",\n      \"scope\": [\n        \"delivery-start\"\n      ]\n    }\n  ]\n}\n"
+    },
+    {
+      "path": ".tmp/onboarding-039-target/openspec/changes/inspect-stock-total/.openspec.yaml",
+      "bytes": 40,
+      "sha256": "e6a45440b7b6b8096938fece82a34e09416bcecfda2ceef5ba18c854e4341abf",
+      "targetRelativePath": "openspec/changes/inspect-stock-total/.openspec.yaml",
+      "content": "schema: spec-driven\ncreated: 2026-09-11\n"
+    },
+    {
+      "path": ".tmp/onboarding-039-target/openspec/changes/inspect-stock-total/explore.md",
+      "bytes": 2562,
+      "sha256": "6c85e602811ccabb08e1c51d3254c21b71d87888c81417a3ca4f823a836a723d",
+      "targetRelativePath": "openspec/changes/inspect-stock-total/explore.md",
+      "content": "# 库存汇总输入边界 Explore\n\n## 范围与真实来源\n\nOwner 已授权该接入示例首次 projectOrdinal=1、一次有界 Explore。仅核对现有 stock.mjs/stock.json，未修改业务代码或进入 Propose。该库存工程是接入验收示例，不是实际客户业务系统；探针调用实际导出的函数，不使用伪造 terminal 代替工作。\n\n## 事实与最小证据\n\nstock.mjs 用初值 0 的 reduce 累加 quantity，不读取 sku、不转换类型、不校验数量。stock.json 的两个条目数量是 8 与 12，实际合计 20。\n\n| 实际输入 | 观察结果 | 判断 |\n| --- | --- | --- |\n| 现有 stock.json | number 20 | 当前样本正常数值累加 |\n| 空数组 | number 0 | 初始累加值定义空输入结果 |\n| 同一 SKU 数量 8、12 | number 20 | 无去重或重复检测；不能保证 AGENTS 中不重复条目的约束 |\n| 数量为字符串 \"8\"，后接数字 12 | string \"0812\" | JS 加法发生拼接；调用方必须确保数值类型才有求和语义 |\n| 单个数量 -1 | number -1 | 当前未限制负数；其业务含义尚未规定 |\n\n证据：`.flowkit/artifacts/onboarding-stock-delivery/changes/inspect-stock-total/proof/20260911-001-explore/stock-probe/` 的原始输出及 command.json。输出同时保存实际源码/数据 bytes 与 SHA。探针首次因相对路径多一级未能导入；修正探针路径后才得到上述结果，未改 stock.mjs。\n\n## 已核定边界与后续最小方向\n\n本次目标是确认“已有函数做了什么”，该未知已由源码和五组真实调用消除。对于当前两个唯一 SKU、数字数量的样本，数值合计正确；不能将此结论推广为任意输入均有效。\n\n如以后要正式保证库存输入，应在 Proposal 中明确验证归属（入口验证还是函数验证）、重复 SKU 的拒绝/合并规则，以及负数是否允许。现有项目约束不支持静默去重；也无依据把字符串自动转换写成既定要求。这些是后续业务选择，不是本轮隐含修复任务。\n\n本轮未引入注册表、验证框架、异常协议或状态系统，没有未解决的“现有行为是什么”问题。业务规则选择保持未授权，不伪称已接受。\n\n## 结论\n\nPASS：已完成获准的有界行为调查，可交独立 review-explore。不是实现 PASS、Review approved、Full Test 或真实新 Agent 会话验收。保持 stock.mjs、stock.json 和原 Agent 约束 bytes；本次只有初始化、Explore 材料与真实记录。下一边界 review-explore，本轮 STOP。\n"
+    },
+    {
+      "path": ".tmp/onboarding-039-target/.flowkit/runs/onboarding-stock-delivery/001-inspect-stock-total/20260911-001-explore/action.md",
+      "bytes": 1084,
+      "sha256": "cd8dfd9041f67fbfe60d95556ec98380c328d4b344d27253cbe0e488407c9c9d",
+      "targetRelativePath": ".flowkit/runs/onboarding-stock-delivery/001-inspect-stock-total/20260911-001-explore/action.md",
+      "content": "# Action started\n\n{\n  \"startedAt\": \"2026-09-11T06:27:19.626Z\",\n  \"repositoryRoot\": \"D:\\\\Projects\\\\flowkit-next\\\\.tmp\\\\onboarding-039-target\",\n  \"actionPackage\": {\n    \"runId\": \"20260911-001-explore\",\n    \"occurrence\": {\n      \"date\": \"20260911\",\n      \"sequence\": 1,\n      \"actionId\": \"explore\"\n    },\n    \"actionIdentity\": {\n      \"deliveryId\": \"onboarding-stock-delivery\",\n      \"changeId\": \"inspect-stock-total\",\n      \"actionId\": \"explore\"\n    },\n    \"role\": \"author\",\n    \"lifecycleState\": \"prepared\",\n    \"ownerAuthority\": {\n      \"ref\": \"owner:8b5ea2ff8f89cee3dd5c31ab71ba8f2c5db582245bea5ef61589db174d12fabd\",\n      \"decision\": \"activate-change\",\n      \"deliveryId\": \"onboarding-stock-delivery\",\n      \"changeId\": \"inspect-stock-total\",\n      \"sourceRef\": \"owner-input:2026-09-11:onboarding-first-ordinal-and-bounded-explore\",\n      \"scope\": [\n        \"explore\"\n      ]\n    },\n    \"previousRunId\": null,\n    \"guidanceRef\": {\n      \"path\": \"skills/actions/explore/SKILL.md\",\n      \"contentSha256\": \"c5313d0d2a4356dcd084e753a0a7fcd7df9056235621823cb347ddd499d0ac6b\"\n    }\n  }\n}\n"
+    },
+    {
+      "path": ".tmp/onboarding-039-target/.flowkit/runs/onboarding-stock-delivery/001-inspect-stock-total/20260911-001-explore/context.json",
+      "bytes": 704,
+      "sha256": "23a654ad9fbce0f719c793873594666cb6333a2615107eff8e9575016051aed0",
+      "targetRelativePath": ".flowkit/runs/onboarding-stock-delivery/001-inspect-stock-total/20260911-001-explore/context.json",
+      "content": "{\n  \"runId\": \"20260911-001-explore\",\n  \"occurrence\": {\n    \"date\": \"20260911\",\n    \"sequence\": 1,\n    \"actionId\": \"explore\"\n  },\n  \"actionIdentity\": {\n    \"deliveryId\": \"onboarding-stock-delivery\",\n    \"changeId\": \"inspect-stock-total\",\n    \"actionId\": \"explore\"\n  },\n  \"role\": \"author\",\n  \"lifecycleState\": \"terminal\",\n  \"ownerAuthority\": {\n    \"ref\": \"owner:8b5ea2ff8f89cee3dd5c31ab71ba8f2c5db582245bea5ef61589db174d12fabd\",\n    \"decision\": \"activate-change\",\n    \"deliveryId\": \"onboarding-stock-delivery\",\n    \"changeId\": \"inspect-stock-total\",\n    \"sourceRef\": \"owner-input:2026-09-11:onboarding-first-ordinal-and-bounded-explore\",\n    \"scope\": [\n      \"explore\"\n    ]\n  },\n  \"previousRunId\": null\n}\n"
+    },
+    {
+      "path": ".tmp/onboarding-039-target/.flowkit/runs/onboarding-stock-delivery/001-inspect-stock-total/20260911-001-explore/result.json",
+      "bytes": 3864,
+      "sha256": "644c47882068528f681061883afd12e6c9f6484a9e254172c6027b05783b3fb5",
+      "targetRelativePath": ".flowkit/runs/onboarding-stock-delivery/001-inspect-stock-total/20260911-001-explore/result.json",
+      "content": "{\n  \"runId\": \"20260911-001-explore\",\n  \"actionIdentity\": {\n    \"deliveryId\": \"onboarding-stock-delivery\",\n    \"changeId\": \"inspect-stock-total\",\n    \"actionId\": \"explore\"\n  },\n  \"authorConclusion\": \"PASS\",\n  \"reviewerVerdict\": null,\n  \"verificationVerdict\": null,\n  \"nextBoundary\": \"review-explore\",\n  \"facts\": {\n    \"completedAt\": \"2026-09-11T06:29:23.626Z\",\n    \"projectOrdinal\": 1,\n    \"scope\": \"Existing stock sum behavior only; no production changes, Proposal, Review or Git\",\n    \"artifacts\": [\n      {\n        \"path\": \"openspec/changes/inspect-stock-total/explore.md\",\n        \"bytes\": 2562,\n        \"sha256\": \"6c85e602811ccabb08e1c51d3254c21b71d87888c81417a3ca4f823a836a723d\"\n      }\n    ],\n    \"proofRefs\": [\n      {\n        \"path\": \".flowkit/artifacts/onboarding-stock-delivery/changes/inspect-stock-total/proof/20260911-001-explore/probe.mjs\",\n        \"bytes\": 1076,\n        \"sha256\": \"4011fda7e5f237b156284a2a5fbf8931b3d1afbf419ea6fc9d3dafe9f7844a27\",\n        \"deliveryId\": \"onboarding-stock-delivery\",\n        \"changeId\": \"inspect-stock-total\",\n        \"runId\": \"20260911-001-explore\",\n        \"purpose\": \"actual-stock-behavior-exploration\"\n      },\n      {\n        \"path\": \".flowkit/artifacts/onboarding-stock-delivery/changes/inspect-stock-total/proof/20260911-001-explore/stock-probe/stdout.txt\",\n        \"bytes\": 1584,\n        \"sha256\": \"eb12fa041eb6ec5e422867e894099127df9a52bba90dbeb0510462198dbd04c6\",\n        \"deliveryId\": \"onboarding-stock-delivery\",\n        \"changeId\": \"inspect-stock-total\",\n        \"runId\": \"20260911-001-explore\",\n        \"purpose\": \"actual-stock-behavior-exploration\"\n      },\n      {\n        \"path\": \".flowkit/artifacts/onboarding-stock-delivery/changes/inspect-stock-total/proof/20260911-001-explore/stock-probe/stderr.txt\",\n        \"bytes\": 0,\n        \"sha256\": \"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\n        \"deliveryId\": \"onboarding-stock-delivery\",\n        \"changeId\": \"inspect-stock-total\",\n        \"runId\": \"20260911-001-explore\",\n        \"purpose\": \"actual-stock-behavior-exploration\"\n      },\n      {\n        \"path\": \".flowkit/artifacts/onboarding-stock-delivery/changes/inspect-stock-total/proof/20260911-001-explore/stock-probe/command.json\",\n        \"bytes\": 943,\n        \"sha256\": \"600374a7fea24a4327906d0048a36b949647c8ffce0537fbfa00e50a6aec242e\",\n        \"deliveryId\": \"onboarding-stock-delivery\",\n        \"changeId\": \"inspect-stock-total\",\n        \"runId\": \"20260911-001-explore\",\n        \"purpose\": \"actual-stock-behavior-exploration\"\n      }\n    ],\n    \"handoff\": {\n      \"summary\": \"Actual stock sample sums to 20; input checking absent; five measured cases and bounded analysis recorded. STOP at independent review-explore.\",\n      \"ownerDecisions\": [\n        {\n          \"sourceRef\": \"owner-input:2026-09-11:onboarding-first-ordinal-and-bounded-explore\",\n          \"summary\": \"Owner authorized example first ordinal 1 and one bounded Explore; no subsequent Action.\"\n        }\n      ],\n      \"evidenceRefs\": [\n        {\n          \"sourceRunId\": \"20260911-001-explore\",\n          \"path\": \".flowkit/artifacts/onboarding-stock-delivery/changes/inspect-stock-total/proof/20260911-001-explore/probe.mjs\"\n        },\n        {\n          \"sourceRunId\": \"20260911-001-explore\",\n          \"path\": \".flowkit/artifacts/onboarding-stock-delivery/changes/inspect-stock-total/proof/20260911-001-explore/stock-probe/stdout.txt\"\n        },\n        {\n          \"sourceRunId\": \"20260911-001-explore\",\n          \"path\": \".flowkit/artifacts/onboarding-stock-delivery/changes/inspect-stock-total/proof/20260911-001-explore/stock-probe/stderr.txt\"\n        },\n        {\n          \"sourceRunId\": \"20260911-001-explore\",\n          \"path\": \".flowkit/artifacts/onboarding-stock-delivery/changes/inspect-stock-total/proof/20260911-001-explore/stock-probe/command.json\"\n        }\n      ]\n    }\n  }\n}\n"
+    },
+    {
+      "path": ".tmp/onboarding-039-target/.flowkit/artifacts/onboarding-stock-delivery/onboarding/start.json",
+      "bytes": 1778,
+      "sha256": "479737b8ffba57c48889aec3ec6c32aa695398f0f45dd824257ca3b03c852fd9",
+      "targetRelativePath": ".flowkit/artifacts/onboarding-stock-delivery/onboarding/start.json",
+      "content": "{\n  \"actualCompletedAt\": \"2026-09-11T06:25:52.540Z\",\n  \"outcome\": {\n    \"status\": \"terminal\",\n    \"operationPackage\": {\n      \"deliveryId\": \"onboarding-stock-delivery\",\n      \"operationId\": \"delivery-start\",\n      \"ownerAuthority\": {\n        \"ref\": \"owner:08759eca3d3ca07e32c3a8cc4092d1717fbf67489486ad585e1133655da8a751\",\n        \"decision\": \"create-delivery\",\n        \"deliveryId\": \"onboarding-stock-delivery\",\n        \"sourceRef\": \"owner-input:2026-09-11:onboarding-first-ordinal-and-bounded-explore\",\n        \"scope\": [\n          \"delivery-start\"\n        ]\n      },\n      \"operationFacts\": {\n        \"projectId\": \"onboarding-stock-example\",\n        \"planningReference\": {\n          \"artifact\": \"onboarding-plan.md\",\n          \"contentSha256\": \"926ccaad4d8364a3bd5dc60b0a719931be8fa1749b6ae0ea92aaf9b1b4e139db\"\n        },\n        \"coordinationPrestate\": {\n          \"artifact\": \"openspec/delivery-groups/onboarding-stock-delivery.yaml\",\n          \"contentRef\": null\n        }\n      },\n      \"guidanceRef\": {\n        \"path\": \"skills/delivery/start/SKILL.md\",\n        \"contentSha256\": \"f21c9083c77704ab7088b504afb8dc8d2f35a5bb404c3f6ccfb27d6760b259d9\"\n      }\n    },\n    \"contentCompletion\": {\n      \"projectId\": \"onboarding-stock-example\",\n      \"deliveryId\": \"onboarding-stock-delivery\",\n      \"planningReference\": {\n        \"artifact\": \"onboarding-plan.md\",\n        \"contentSha256\": \"926ccaad4d8364a3bd5dc60b0a719931be8fa1749b6ae0ea92aaf9b1b4e139db\"\n      },\n      \"coordinationRef\": {\n        \"artifact\": \"openspec/delivery-groups/onboarding-stock-delivery.yaml\",\n        \"contentSha256\": \"c6702c43b99e27d26dfa56c6633b2bb4d656dc2eaaedb54866b8e7f8d31bc966\",\n        \"bytes\": 843\n      }\n    }\n  },\n  \"meaning\": \"real initialization for explicitly authorized example only\"\n}\n"
+    },
+    {
+      "path": ".tmp/onboarding-039-target/.flowkit/artifacts/onboarding-stock-delivery/changes/inspect-stock-total/proof/20260911-001-explore/probe.mjs",
+      "bytes": 1076,
+      "sha256": "4011fda7e5f237b156284a2a5fbf8931b3d1afbf419ea6fc9d3dafe9f7844a27",
+      "targetRelativePath": ".flowkit/artifacts/onboarding-stock-delivery/changes/inspect-stock-total/proof/20260911-001-explore/probe.mjs",
+      "content": "import fs from 'node:fs';\nimport {createHash} from 'node:crypto';\nimport {totalUnits} from '../../../../../../../stock.mjs';\nconst target=new URL('../../../../../../../',import.meta.url);\nconst sample=JSON.parse(fs.readFileSync(new URL('stock.json',target),'utf8'));\nconst cases=[['current-stock',sample],['empty',[]],['duplicate-sku',[{sku:'pencil',quantity:8},{sku:'pencil',quantity:12}]],['string-quantity',[{sku:'notebook',quantity:'8'},{sku:'pencil',quantity:12}]],['negative-quantity',[{sku:'notebook',quantity:-1}]]];\nconst observations=cases.map(([name,input])=>{const actual=totalUnits(input);return {name,input,actual,type:typeof actual};});\nconst sourceRefs=['stock.mjs','stock.json'].map(path=>{const bytes=fs.readFileSync(new URL(path,target));return {path,bytes:bytes.length,sha256:createHash('sha256').update(bytes).digest('hex')};});\nconsole.log(JSON.stringify({executedAt:new Date().toISOString(),node:process.version,sourceRefs,observations,meaning:'Actual imported source observations; not a new input validation contract or implementation PASS'},null,2));\n"
+    },
+    {
+      "path": ".tmp/onboarding-039-target/.flowkit/artifacts/onboarding-stock-delivery/changes/inspect-stock-total/proof/20260911-001-explore/capture.mjs",
+      "bytes": 1609,
+      "sha256": "dd5af667984efa35b0b49de02c22ebcbbefe2b13d8c41248507c4735610f981c",
+      "targetRelativePath": ".flowkit/artifacts/onboarding-stock-delivery/changes/inspect-stock-total/proof/20260911-001-explore/capture.mjs",
+      "content": "import fs from \"node:fs\";\nimport path from \"node:path\";\nimport { spawn } from \"node:child_process\";\nimport { createHash } from \"node:crypto\";\nimport { fileURLToPath } from \"node:url\";\nconst [id, program, ...args] = process.argv.slice(2);\nif (!/^[a-z0-9-]+$/.test(id) || !program) throw Error(\"capture id/program required\");\nconst base = path.dirname(fileURLToPath(import.meta.url));\nconst directory = path.join(base, id);\nfs.mkdirSync(directory);\nconst stdout = fs.openSync(path.join(directory, \"stdout.txt\"), \"wx\");\nconst stderr = fs.openSync(path.join(directory, \"stderr.txt\"), \"wx\");\nconst startedAt = new Date().toISOString();\nconst actual = program === \"node\" ? process.execPath : program;\nlet error = null;\nconst child = spawn(actual, args, { cwd: process.cwd(), windowsHide: true, shell: false, stdio: [\"ignore\", stdout, stderr] });\nchild.on(\"error\", e => { error = e.message; });\nchild.on(\"close\", (exitCode, signal) => {\n fs.closeSync(stdout); fs.closeSync(stderr);\n const ref = name => { const p = path.join(directory, name); const b = fs.readFileSync(p); return {path: path.relative(process.cwd(), p).replaceAll(\"\\\\\",\"/\"), bytes:b.length, sha256:createHash(\"sha256\").update(b).digest(\"hex\")}; };\n const record = {program:actual,args,cwd:process.cwd(),startedAt,finishedAt:new Date().toISOString(),exitCode,signal,error,node:process.version,platform:process.platform,stdout:ref(\"stdout.txt\"),stderr:ref(\"stderr.txt\")};\n fs.writeFileSync(path.join(directory,\"command.json\"),JSON.stringify(record,null,2)+\"\\n\",{flag:\"wx\"});\n console.log(JSON.stringify(record));\n process.exitCode = exitCode ?? 1;\n});\n"
+    },
+    {
+      "path": ".tmp/onboarding-039-target/.flowkit/artifacts/onboarding-stock-delivery/changes/inspect-stock-total/proof/20260911-001-explore/stock-probe/stdout.txt",
+      "bytes": 1584,
+      "sha256": "eb12fa041eb6ec5e422867e894099127df9a52bba90dbeb0510462198dbd04c6",
+      "targetRelativePath": ".flowkit/artifacts/onboarding-stock-delivery/changes/inspect-stock-total/proof/20260911-001-explore/stock-probe/stdout.txt",
+      "content": "{\n  \"executedAt\": \"2026-09-11T06:28:19.494Z\",\n  \"node\": \"v22.23.2\",\n  \"sourceRefs\": [\n    {\n      \"path\": \"stock.mjs\",\n      \"bytes\": 104,\n      \"sha256\": \"10d1120aecb95ebcbcac777bad14c10d7ba6d08d0f42cf518e1fb795f5538ca5\"\n    },\n    {\n      \"path\": \"stock.json\",\n      \"bytes\": 82,\n      \"sha256\": \"0387cdc3f85be31e9e5b536a892673b677b448eebafa197ebbde450dae9ac318\"\n    }\n  ],\n  \"observations\": [\n    {\n      \"name\": \"current-stock\",\n      \"input\": [\n        {\n          \"sku\": \"notebook\",\n          \"quantity\": 8\n        },\n        {\n          \"sku\": \"pencil\",\n          \"quantity\": 12\n        }\n      ],\n      \"actual\": 20,\n      \"type\": \"number\"\n    },\n    {\n      \"name\": \"empty\",\n      \"input\": [],\n      \"actual\": 0,\n      \"type\": \"number\"\n    },\n    {\n      \"name\": \"duplicate-sku\",\n      \"input\": [\n        {\n          \"sku\": \"pencil\",\n          \"quantity\": 8\n        },\n        {\n          \"sku\": \"pencil\",\n          \"quantity\": 12\n        }\n      ],\n      \"actual\": 20,\n      \"type\": \"number\"\n    },\n    {\n      \"name\": \"string-quantity\",\n      \"input\": [\n        {\n          \"sku\": \"notebook\",\n          \"quantity\": \"8\"\n        },\n        {\n          \"sku\": \"pencil\",\n          \"quantity\": 12\n        }\n      ],\n      \"actual\": \"0812\",\n      \"type\": \"string\"\n    },\n    {\n      \"name\": \"negative-quantity\",\n      \"input\": [\n        {\n          \"sku\": \"notebook\",\n          \"quantity\": -1\n        }\n      ],\n      \"actual\": -1,\n      \"type\": \"number\"\n    }\n  ],\n  \"meaning\": \"Actual imported source observations; not a new input validation contract or implementation PASS\"\n}\n"
+    },
+    {
+      "path": ".tmp/onboarding-039-target/.flowkit/artifacts/onboarding-stock-delivery/changes/inspect-stock-total/proof/20260911-001-explore/stock-probe/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "targetRelativePath": ".flowkit/artifacts/onboarding-stock-delivery/changes/inspect-stock-total/proof/20260911-001-explore/stock-probe/stderr.txt",
+      "content": ""
+    },
+    {
+      "path": ".tmp/onboarding-039-target/.flowkit/artifacts/onboarding-stock-delivery/changes/inspect-stock-total/proof/20260911-001-explore/stock-probe/command.json",
+      "bytes": 943,
+      "sha256": "600374a7fea24a4327906d0048a36b949647c8ffce0537fbfa00e50a6aec242e",
+      "targetRelativePath": ".flowkit/artifacts/onboarding-stock-delivery/changes/inspect-stock-total/proof/20260911-001-explore/stock-probe/command.json",
+      "content": "{\n  \"program\": \"C:\\\\nvm4w\\\\nodejs\\\\node.exe\",\n  \"args\": [\n    \".flowkit/artifacts/onboarding-stock-delivery/changes/inspect-stock-total/proof/20260911-001-explore/probe.mjs\"\n  ],\n  \"cwd\": \"D:\\\\Projects\\\\flowkit-next\\\\.tmp\\\\onboarding-039-target\",\n  \"startedAt\": \"2026-09-11T06:28:19.419Z\",\n  \"finishedAt\": \"2026-09-11T06:28:19.501Z\",\n  \"exitCode\": 0,\n  \"signal\": null,\n  \"error\": null,\n  \"node\": \"v22.23.2\",\n  \"platform\": \"win32\",\n  \"stdout\": {\n    \"path\": \".flowkit/artifacts/onboarding-stock-delivery/changes/inspect-stock-total/proof/20260911-001-explore/stock-probe/stdout.txt\",\n    \"bytes\": 1584,\n    \"sha256\": \"eb12fa041eb6ec5e422867e894099127df9a52bba90dbeb0510462198dbd04c6\"\n  },\n  \"stderr\": {\n    \"path\": \".flowkit/artifacts/onboarding-stock-delivery/changes/inspect-stock-total/proof/20260911-001-explore/stock-probe/stderr.txt\",\n    \"bytes\": 0,\n    \"sha256\": \"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\"\n  }\n}\n"
+    }
+  ]
+}

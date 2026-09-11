@@ -1,0 +1,68 @@
+{
+  "kind": "external-orchestrator-revise-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "author",
+  "action": "revise-propose",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "connect-openspec-action-workflow",
+  "projectOrdinal": 35,
+  "runId": "20260908-023-revise-propose",
+  "previousRunId": "20260908-022-review-explore",
+  "ownerInstruction": "根据最新run，revise propose",
+  "ownerSourceRef": "owner-input:2026-09-08:revise-propose:confirmed-seven-planning-artifacts",
+  "authorityMeaning": "Owner在上轮逐项修订清单与写前确认问题后明确要求执行；不把review批准当作新Owner/Git权限",
+  "sourceHead": "697088391374daa67d63c20f8a365fb44ec5c058",
+  "sourceHeadMeaning": "只读观察，不构成SHA准入",
+  "startedAt": "2026-09-08T13:09:09.112Z",
+  "acceptedReview": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-022-review-explore/result.json",
+    "bytes": 6469,
+    "sha256": "5d3bcb9682dbf826a1cf4aae96f529ffe6c8710768dac1728e667486a719340a"
+  },
+  "acceptedExplore": {
+    "path": "openspec/changes/connect-openspec-action-workflow/explore.md",
+    "sha256": "03c948fea0aab3b787b7d4e86a51f5892ea22b0e7b52a936c7cec38be109cc11"
+  },
+  "ownerDecisionsRelevant": [
+    {
+      "sourceRef": "owner-input:2026-09-08:cli-current-flow-next-agent-runs",
+      "recordedIn": "20260908-021-revise-explore/context.json",
+      "decision": "CLI读取/报告，Agent实际执行/记录，不保留长连接或新prepare/submit协议"
+    },
+    {
+      "sourceRef": "20260908-022-review-explore/context.json",
+      "decision": "延续已交接的必要材料长期保留、独立bootstrap和停止固定隔离演练边界；无历史清理授权"
+    }
+  ],
+  "skillsUsed": [
+    "revise-propose",
+    "proposal-convergence",
+    "openspec-update-change"
+  ],
+  "writeScope": [
+    "openspec/changes/connect-openspec-action-workflow/proposal.md",
+    "openspec/changes/connect-openspec-action-workflow/design.md",
+    "openspec/changes/connect-openspec-action-workflow/tasks.md",
+    "openspec/changes/connect-openspec-action-workflow/specs/foundation-cli-surface/spec.md",
+    "openspec/changes/connect-openspec-action-workflow/specs/single-action-execution-terminal-boundary/spec.md",
+    "openspec/changes/connect-openspec-action-workflow/specs/run-result-persistence/spec.md",
+    "openspec/changes/connect-openspec-action-workflow/specs/action-guidance-execution/spec.md",
+    ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-023-revise-propose",
+    ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-023-revise-propose"
+  ],
+  "excluded": [
+    "production code",
+    "tests",
+    "Skills",
+    "AGENTS/README",
+    "manifest",
+    "canonical specs/archive",
+    "existing Runs",
+    "Git mutation",
+    "Apply",
+    "Full Test",
+    "independent review execution"
+  ],
+  "candidateSelfManagement": false
+}

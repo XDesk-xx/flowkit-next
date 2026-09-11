@@ -1,0 +1,131 @@
+{
+  "kind": "external-orchestrator-review-explore-result",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "separate-manager-assets-from-target-project",
+  "runId": "20260908-009-review-explore",
+  "action": "review-explore",
+  "role": "reviewer",
+  "status": "terminal",
+  "verdict": "approved",
+  "verdictMeaning": "Explore 的事实、最小边界与 Proposal readiness 审查通过，不是分根实现、安装验收、Formal Full Test PASS 或新 Owner/Git authority。",
+  "projectOrdinal": 34,
+  "previousRunId": "20260908-008-explore",
+  "reviewedRunId": "20260908-008-explore",
+  "reviewedResult": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/separate-manager-assets-from-target-project/20260908-008-explore/result.json",
+    "bytes": 2406,
+    "sha256": "01bc2f3f3d92580748afebc026077b37b4ffbe4ac7ea61d55e9f25c5c41099ca"
+  },
+  "reviewedExplore": {
+    "path": "openspec/changes/separate-manager-assets-from-target-project/explore.md",
+    "bytes": 10261,
+    "sha256": "894b1aeac3040a7f936b1e17de1c478e81f377448407ae3658bf0cba791a2289"
+  },
+  "manifest": {
+    "path": "openspec/delivery-groups/20260908-05-lightweight-workflow-management.yaml",
+    "bytes": 8429,
+    "sha256": "c7fdf5e778e55fa6b27f39565b083509bcf10c56388d5851a729a728263115af"
+  },
+  "dependencyRun": "remove-archify-from-delivery-workflow/20260908-007-archive",
+  "summary": "同根耦合、同名资产反例和分根组合成立；prepare/read、运行安装资产与目标事实的边界有界完整。实际安装验收留待 Apply，无阻断 finding。",
+  "findings": [],
+  "blockingUnknown": null,
+  "assessments": {
+    "currentStep": "审查 matching active/Owner/dependency/008 Explore 链与精确材料，独立复现决定分根合同的事实，不修改 Author 内容。",
+    "complexityAndMinimality": "复用固定 Guidance 路径/内容绑定、managed resolver 和 OpenSpec 薄观察；安装根注入及最小发行内容是必要闭包，不引入 Registry、runtime 全目录证明或宿主运行器。",
+    "newContentAndScopeDrift": "scope drift: NONE。宿主、Full Test 范围/保存、Start Git 前置、Final 简化和实际 Git 调用不提前纳入。"
+  },
+  "runArtifacts": {
+    "action": {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/separate-manager-assets-from-target-project/20260908-009-review-explore/action.md",
+      "bytes": 3548,
+      "sha256": "57a941695abff83dcebf7452533668372db95eb7eaef22439694f8e7d4713d77"
+    },
+    "context": {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/separate-manager-assets-from-target-project/20260908-009-review-explore/context.json",
+      "bytes": 2955,
+      "sha256": "a052560a456ffeefc06ee59d2c9dd01678d2524a3fe4e669395a9451d0604999"
+    }
+  },
+  "verification": {
+    "summary": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-009-review-explore/attempt-02/summary.json",
+      "bytes": 26465,
+      "sha256": "0a9fca1f807f8da58e52b713e70c2429c25b39c48a5c4ce7c568611bb1051ccd"
+    },
+    "method": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-009-review-explore/audit.mjs",
+      "bytes": 11880,
+      "sha256": "0cfa6554f456eb6b5a301c58f9b23a6594c1880f42dd81f406a1d18623c82e3b"
+    },
+    "readme": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-009-review-explore/README.md",
+      "bytes": 1868,
+      "sha256": "43977cffb86339f22b7263f6f1bd063bf70ababa29923b0e673a880d72db6b98"
+    },
+    "failedAttempt": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-009-review-explore/attempt-01/failure.json",
+      "bytes": 2912,
+      "sha256": "98fa41e33a52a664a1834e3c96636f81864e1fb3f4d98960968787e92105c325"
+    },
+    "checks": {
+      "exactInputRefs": 54,
+      "bareTargetFailure": true,
+      "targetCollision": true,
+      "relocatedAssetIdentity": true,
+      "exactDeliveryReadRootAndContent": true,
+      "missingRuntime": true,
+      "actualOpenSpecVersion": "1.10.0",
+      "exactTargetRoot": true,
+      "gitDiffCheck": true,
+      "inputsUnchanged": true
+    },
+    "authorTestsReadback": {
+      "tests": 26,
+      "pass": 26,
+      "fail": 0,
+      "skipped": 0
+    },
+    "authorTestsMeaning": "只核对 Author 原始定向测试命令、输出和摘要；本 Reviewer 未重跑这 26 项。",
+    "ordinalReadback": {
+      "existing": 13,
+      "max": 33,
+      "assigned": 34
+    },
+    "ordinalMeaning": "本次分配事实，不把既有数量、ordinal 或 HEAD 编码为产品永久准入条件。",
+    "environmentNote": "脚本生成前有工具模板插值错误，未写文件/执行实验；实际 attempt-01 为沙箱 Git spawn EPERM，失败记录保留。同脚本在获准后的 attempt-02 成功，未更改产品或检查语义。",
+    "limits": [
+      "分根组合不等于可发布安装包或安装后 CLI end-to-end；这些已明确为 Propose/Apply 工作。",
+      "没有执行产品同名 Reviewer HOW、candidate lifecycle、implementation test suite 或 Formal Full Test。",
+      "独立实验为 Windows native，不声称 Linux acceptance。"
+    ]
+  },
+  "mutationIsolation": {
+    "before": {
+      "files": 1717,
+      "sha256": "6a109ab34a90cd85eca65daf46848aef7b933b0d60c64940786ae99d31b48994",
+      "head": "01d82dba4593ea0c5b85ac67da03e6261dccfba6"
+    },
+    "after": {
+      "files": 1717,
+      "sha256": "6a109ab34a90cd85eca65daf46848aef7b933b0d60c64940786ae99d31b48994",
+      "head": "01d82dba4593ea0c5b85ac67da03e6261dccfba6"
+    },
+    "equal": true,
+    "scope": "tracked/nonignored untracked 与 tracked 删除标记，排除本次 Reviewer Run/proof；仅写入隔离核对，不建立产品 SHA gate。"
+  },
+  "nextBoundary": "propose",
+  "continuationMeaning": "报告现行约定下的 Propose readiness；本次不执行下一 Action 或新增 Owner/Git authority。",
+  "proposalReady": true,
+  "proposalExecuted": false,
+  "applyExecuted": false,
+  "formalFullTestExecuted": false,
+  "candidateLifecycleInvoked": false,
+  "authorArtifactMutation": false,
+  "productionMutation": false,
+  "gitMutationAllowed": false,
+  "completedAt": "2026-09-08T05:27:40Z",
+  "stop": true
+}

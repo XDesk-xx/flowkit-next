@@ -1,0 +1,44 @@
+{
+  "runId": "20260908-002-review-explore",
+  "actionIdentity": {
+    "deliveryId": "host-acceptance",
+    "changeId": "describe-running-feature",
+    "actionId": "review-explore"
+  },
+  "authorConclusion": null,
+  "reviewerVerdict": "approved",
+  "verificationVerdict": null,
+  "nextBoundary": "propose",
+  "facts": {
+    "currentStepExplanation": "独立验证隔离 target Explore 事实、证据与 Proposal 准备度。",
+    "complexityMinimality": "一个无依赖程序和 stdout/退出状态测试为最小方向。",
+    "scopeDrift": "无新增 capability 或 authority；fixture 非真实 Owner 决定。",
+    "findings": [],
+    "proofRefs": [
+      {
+        "path": ".flowkit/artifacts/host-acceptance/changes/describe-running-feature/proof/20260908-002-review-explore/review.md",
+        "bytes": 2903,
+        "sha256": "4b7cb74b5b865b124ee27f7594ed9ba5e40d96403a7b459c2f5a207879df4880",
+        "deliveryId": "host-acceptance",
+        "changeId": "describe-running-feature",
+        "runId": "20260908-002-review-explore",
+        "purpose": "Independent isolated Explore review report"
+      }
+    ],
+    "handoff": {
+      "summary": "隔离 Explore 独立 approved，无 findings；仅具备最小 Proposal 方向，无实现或 D05 验收结论。",
+      "ownerDecisions": [
+        {
+          "sourceRef": "approved-task-6.1:owner-apply-input",
+          "summary": "隔离宿主验收，必要材料保留在 target；合成 activation 不构成真实用户项目权限。"
+        }
+      ],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20260908-002-review-explore",
+          "path": ".flowkit/artifacts/host-acceptance/changes/describe-running-feature/proof/20260908-002-review-explore/review.md"
+        }
+      ]
+    }
+  }
+}

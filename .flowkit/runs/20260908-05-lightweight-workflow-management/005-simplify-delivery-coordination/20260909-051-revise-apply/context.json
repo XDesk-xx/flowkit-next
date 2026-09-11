@@ -1,0 +1,24 @@
+{
+  "kind": "external-orchestrator-revise-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "author",
+  "action": "revise-apply",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "simplify-delivery-coordination",
+  "projectOrdinal": 37,
+  "runId": "20260909-051-revise-apply",
+  "previousRunId": "20260909-050-review-apply",
+  "startedAt": "2026-09-09 12:08:58 UTC",
+  "ownerInstruction": "根据最新run，revise apply",
+  "findingIds": [
+    "R050-01"
+  ],
+  "scope": "补齐确认前 active OpenSpec set 复验及定向测试；不改批准计划",
+  "ownerDecisionsRelevant": [
+    {
+      "sourceRef": ".flowkit/runs/20260908-05-lightweight-workflow-management/005-simplify-delivery-coordination/20260909-050-review-apply/result.json#ownerDecisionsRelevant",
+      "decision": "D05 independent-bootstrap；必要材料留 target artifacts，.tmp 可丢弃；历史不改写，无 Git/实际 D05 Full Test。"
+    }
+  ]
+}

@@ -1,0 +1,166 @@
+TAP version 13
+# Subtest: canonical Guidance path is deterministic for the closed Standard Action set
+ok 1 - canonical Guidance path is deterministic for the closed Standard Action set
+  ---
+  duration_ms: 2.1293
+  type: 'test'
+  ...
+# Subtest: ActionGuidanceRef is a closed canonical path + lowercase SHA-256 envelope
+ok 2 - ActionGuidanceRef is a closed canonical path + lowercase SHA-256 envelope
+  ---
+  duration_ms: 0.5991
+  type: 'test'
+  ...
+# Subtest: resolver binds exact canonical bytes and content drift changes identity
+ok 3 - resolver binds exact canonical bytes and content drift changes identity
+  ---
+  duration_ms: 20.2643
+  type: 'test'
+  ...
+# Subtest: missing canonical product Guidance fails closed and never falls back to .agents
+ok 4 - missing canonical product Guidance fails closed and never falls back to .agents
+  ---
+  duration_ms: 6.7642
+  type: 'test'
+  ...
+# Subtest: non-regular and final-entry symlink Guidance fail closed
+ok 5 - non-regular and final-entry symlink Guidance fail closed
+  ---
+  duration_ms: 14.3987
+  type: 'test'
+  ...
+# Subtest: parent-path redirection through symlink fails closed
+ok 6 - parent-path redirection through symlink fails closed
+  ---
+  duration_ms: 13.2433
+  type: 'test'
+  ...
+# Subtest: unreadable canonical Guidance fails closed when host permissions are enforceable
+ok 7 - unreadable canonical Guidance fails closed when host permissions are enforceable
+  ---
+  duration_ms: 154.5204
+  type: 'test'
+  ...
+# Subtest: accepted fixture root is cleaned when Windows SID setup fails
+ok 8 - accepted fixture root is cleaned when Windows SID setup fails
+  ---
+  duration_ms: 12.2736
+  type: 'test'
+  ...
+# Subtest: resolves exact OpenSpec identity with the closed resolved shape
+ok 9 - resolves exact OpenSpec identity with the closed resolved shape
+  ---
+  duration_ms: 20.944
+  type: 'test'
+  ...
+# Subtest: rejects unsupported managed tool ids before any fallback
+ok 10 - rejects unsupported managed tool ids before any fallback
+  ---
+  duration_ms: 3.2391
+  type: 'test'
+  ...
+# Subtest: requires explicit FLOWKIT_HOME
+ok 11 - requires explicit FLOWKIT_HOME
+  ---
+  duration_ms: 2.7458
+  type: 'test'
+  ...
+# Subtest: rejects invalid or expanded managed-tool lock authority
+ok 12 - rejects invalid or expanded managed-tool lock authority
+  ---
+  duration_ms: 4.723
+  type: 'test'
+  ...
+# Subtest: rejects traversing runtime-root material
+ok 13 - rejects traversing runtime-root material
+  ---
+  duration_ms: 5.4077
+  type: 'test'
+  ...
+# Subtest: ignores conflicting PATH executable and returns only managed runtime facts
+ok 14 - ignores conflicting PATH executable and returns only managed runtime facts
+  ---
+  duration_ms: 12.6749
+  type: 'test'
+  ...
+# Subtest: Archify is unsupported before home, lock, or runtime lookup
+ok 15 - Archify is unsupported before home, lock, or runtime lookup
+  ---
+  duration_ms: 11.2008
+  type: 'test'
+  ...
+# Subtest: fails closed when requested managed runtime is absent
+ok 16 - fails closed when requested managed runtime is absent
+  ---
+  duration_ms: 4.4723
+  type: 'test'
+  ...
+# Subtest: rejects exact package name or version mismatch
+ok 17 - rejects exact package name or version mismatch
+  ---
+  duration_ms: 24.82
+  type: 'test'
+  ...
+# Subtest: rejects missing and escaping entrypoints
+ok 18 - rejects missing and escaping entrypoints
+  ---
+  duration_ms: 19.1623
+  type: 'test'
+  ...
+# Subtest: resolves requested tool on demand without requiring its peer
+ok 19 - resolves requested tool on demand without requiring its peer
+  ---
+  duration_ms: 11.9793
+  type: 'test'
+  ...
+# Subtest: resolution never invokes the managed entrypoint or requires archive provenance
+ok 20 - resolution never invokes the managed entrypoint or requires archive provenance
+  ---
+  duration_ms: 9.1523
+  type: 'test'
+  ...
+# Subtest: active Change observation projects only canonical identifiers
+ok 21 - active Change observation projects only canonical identifiers
+  ---
+  duration_ms: 129.796
+  type: 'test'
+  ...
+# Subtest: active Change observation rejects invalid Change identifiers
+ok 22 - active Change observation rejects invalid Change identifiers
+  ---
+  duration_ms: 103.7185
+  type: 'test'
+  ...
+# Subtest: exact Change status projects only approved planning/artifact facts
+ok 23 - exact Change status projects only approved planning/artifact facts
+  ---
+  duration_ms: 97.7778
+  type: 'test'
+  ...
+# Subtest: exact Change status rejects identity drift and malformed readiness
+ok 24 - exact Change status rejects identity drift and malformed readiness
+  ---
+  duration_ms: 191.1133
+  type: 'test'
+  ...
+# Subtest: invalid observation input fails before invoking OpenSpec
+ok 25 - invalid observation input fails before invoking OpenSpec
+  ---
+  duration_ms: 10.2431
+  type: 'test'
+  ...
+# Subtest: fake PATH OpenSpec is ignored and managed-resolution failure never falls back
+ok 26 - fake PATH OpenSpec is ignored and managed-resolution failure never falls back
+  ---
+  duration_ms: 99.5642
+  type: 'test'
+  ...
+1..26
+# tests 26
+# suites 0
+# pass 26
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1036.4098

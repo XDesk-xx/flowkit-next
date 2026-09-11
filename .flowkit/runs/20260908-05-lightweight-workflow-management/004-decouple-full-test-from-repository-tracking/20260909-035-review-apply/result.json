@@ -1,0 +1,166 @@
+{
+  "kind": "external-orchestrator-review-apply-result",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "reviewer",
+  "action": "review-apply",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "decouple-full-test-from-repository-tracking",
+  "projectOrdinal": 36,
+  "runId": "20260909-035-review-apply",
+  "previousRunId": "20260909-034-apply",
+  "reviewedRunId": "20260909-034-apply",
+  "status": "terminal",
+  "verdict": "changes-requested",
+  "verdictMeaning": "总体实现范围符合 033 approved plan，但实际检查工具身份未完整绑定、准备失败诊断缺失；当前 Apply 尚不可批准。",
+  "startedAt": "2026-09-09T04:13:11.935Z",
+  "completedAt": "2026-09-09 04:21:51 UTC",
+  "reviewedResult": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/004-decouple-full-test-from-repository-tracking/20260909-034-apply/result.json",
+    "bytes": 13107,
+    "sha256": "0c65300a30c87d4e271fa9df1066be36fcaa10fc3e44bca28e8b0b08d314d0d3"
+  },
+  "approvedProposalReview": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/004-decouple-full-test-from-repository-tracking/20260909-033-review-propose/result.json",
+    "bytes": 7375,
+    "sha256": "3928c78923ae83069008c203825735ff9fe764abe4fd8777a8d5c70803641832"
+  },
+  "runArtifacts": {
+    "action": {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/004-decouple-full-test-from-repository-tracking/20260909-035-review-apply/action.md",
+      "bytes": 385,
+      "sha256": "bcd5573c79825a74a036c8fa53b9708eab39f0eb08b334f6daa7fd87fc3bf5e2"
+    },
+    "context": {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/004-decouple-full-test-from-repository-tracking/20260909-035-review-apply/context.json",
+      "bytes": 1068,
+      "sha256": "9e0280b439bd33bb96d66d34567729a02baf3a05e7b36af1fe36efec082caa7e"
+    }
+  },
+  "reviewReport": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-035-review-apply/review.md",
+    "bytes": 4401,
+    "sha256": "9c3033fd7f6aeda1340f34bb7fc0ee1ba12f9dbd7fc56163c3b902d8b5a5aab1"
+  },
+  "candidateSnapshot": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-035-review-apply/candidate.json",
+    "bytes": 8299,
+    "sha256": "5b846271a47254cf1e96c21073024d9418b7136f9ece757c0d79d0139645e380"
+  },
+  "findings": [
+    {
+      "findingId": "D05-RA035-001",
+      "priority": "P1",
+      "title": "实际检查工具未绑定，工具漂移仍可消费旧 PASS",
+      "location": {
+        "path": "src/internal/full-test-input.ts",
+        "startLine": 250,
+        "endLine": 256
+      },
+      "relatedPath": "config/verification/full-test.json",
+      "observed": "toolRef 只散列 program 解析到的 executable。本项目以 node 执行 node_modules 中的 Prettier/ESLint/TypeScript 等入口，而 node_modules 不在输入范围；实际 JS 检查工具没有绑定。隔离 fixture 保持 source/config/package/lock/Node 不变，只将实际工具从成功改为 exit 7，inputRef/checkRef 均不变，current reader 仍 passed；随后真实新执行 failed。",
+      "contractImpact": "违反 approved design §1–2 / Tasks 1.3 / formal-full-test 的实际工具与检查资源覆盖及输入变化失效义务，必要 Final reader 可收到错误的当前有效性结论。此处未执行真实 Final，非 Final 绕过证明。",
+      "minimumCorrection": "在已支持命令模型中有界绑定实际检查工具/资源或核实其真实安装身份，不以 Node binary+lock 字符串替代实际工具；补 Node-launched 工具发生变化而 lock/Node 不变时旧结果不可消费的回归。不要全扫 node_modules、引入通用命令解析器/Registry 或暗改已批准边界。",
+      "evidence": "attempt-02/observations.json#toolDrift"
+    },
+    {
+      "findingId": "D05-RA035-002",
+      "priority": "P2",
+      "title": "准备失败原因被抹成同一 package-formation-rejected",
+      "location": {
+        "path": "src/domain/delivery-full-test-execution.ts",
+        "startLine": 121,
+        "endLine": 142
+      },
+      "observed": "prepare catch 吞掉输入读取/解析错误并返回 null；正式 invocation 只返回 package-formation-rejected。独立调用缺配置、unknown field、missing input、missing executable 四种输入得到同一结果，无可定位原因。",
+      "contractImpact": "违反 approved Full Test 'Reject inferred or malformed Full Test plan' 的执行前报告具体原因要求；新项目配置失败时 Agent 无法从已发行 API 获得缺失项/错误阶段，不应被迫另写探测 glue。",
+      "minimumCorrection": "保留 bounded stage/reason 及必要安全路径/字段诊断，维持执行前 fail-closed；增加上述四类实际入口断言，不仅断言 null/failed。不泄露环境 secret，不把配置失败伪装为已执行 attempt。",
+      "evidence": "attempt-02/observations.json#diagnostics"
+    }
+  ],
+  "contractBlocker": false,
+  "assessments": {
+    "currentStep": "核对最新有效 034 Apply 与 033 approved Proposal、当前实现和必要真实证据；独立运行决定性反例。",
+    "complexityAndMinimality": "本地配置、独立输入、create-once attempt、必要持久化与有限消费者适配比例合理；无新 Registry/Runtime/自动恢复。",
+    "newContentAndScopeDrift": "NONE；gate 扩充有 Owner 来源，普通 Action 与完整 Start/Final/Git 后续边界未扩大。"
+  },
+  "verification": {
+    "method": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-035-review-apply/verify-review.mjs",
+      "bytes": 3306,
+      "sha256": "9ff1e22c0905d6b7c0101e3bab6fdc479d2c9738fef00b19b0a301437ecdb671"
+    },
+    "probeMethod": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-035-review-apply/probe.mjs",
+      "bytes": 4339,
+      "sha256": "0c0e213eb52b5af5391b9473b33ade2a5e7cbf5954984360c2d09c8b3b438675"
+    },
+    "sandboxBlockedAttempt": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-035-review-apply/attempt-01/summary.json",
+      "bytes": 5572,
+      "sha256": "ffec1233d0be9d6c1cadffca7f467a29f36b9fc10c380567d30ccf881f13176a"
+    },
+    "completedAttempt": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-035-review-apply/attempt-02/summary.json",
+      "bytes": 5401,
+      "sha256": "01ffb2585b38a593ab4743f19220b8bc8df05ff4998710ca5fa2fbef61ba7fd7"
+    },
+    "observations": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-035-review-apply/attempt-02/observations.json",
+      "bytes": 964,
+      "sha256": "d4ba7622563340a1e51e9cbe6c1b7504d11e35b4af4cd0721edda88b5737a123"
+    },
+    "verifiedAuthorReferences": 136,
+    "focusedTests": {
+      "tests": 23,
+      "passed": 23,
+      "failed": 0
+    },
+    "typecheckExitCode": 0,
+    "openSpecStrictExitCode": 0,
+    "probeExitCode": 0,
+    "planningUnchangedExceptTaskCompletion": true,
+    "manifestUnchangedFromApprovedReview": true,
+    "limitations": "针对当前源码的 Windows 独立 fixture 检查，非 D05 Formal Full Test。Author Linux 相关来源已校验，但本轮未重跑整套 Linux。反例证明当前 reader 对实际工具漂移仍返回 PASS，不宣称真实 Final 已被绕过。首次 sandbox EPERM 原样保留，获准后另存重跑。"
+  },
+  "mutationIsolation": {
+    "before": {
+      "files": 3425,
+      "sha256": "7a543c19cda634166d8873df751d9d2842f79ef01bc56181ae3d9c0cdd1a8946",
+      "head": "7625ecdef3115db45b062b544728ea2459519a09",
+      "at": "2026-09-09T04:13:11.935Z"
+    },
+    "after": {
+      "files": 3425,
+      "sha256": "7a543c19cda634166d8873df751d9d2842f79ef01bc56181ae3d9c0cdd1a8946",
+      "head": "7625ecdef3115db45b062b544728ea2459519a09",
+      "at": "2026-09-09T04:19:35.668Z"
+    },
+    "equal": true,
+    "scope": "tracked/nonignored untracked 和 tracked 删除标记；目录条目递归纳入；排除本轮 Reviewer Run/proof。只是审查隔离，不是新的 Git/SHA 产品准入门槛。"
+  },
+  "ownerDecisionsRelevant": [
+    {
+      "sourceRef": ".flowkit/runs/20260908-05-lightweight-workflow-management/004-decouple-full-test-from-repository-tracking/20260909-033-review-propose/result.json#ownerDecisionsRelevant",
+      "decision": "当前 Change 纳入 gate/Git 非产品空白诊断分离；必要 proof 长期保留，不改历史或逐 Change 追加 attributes。"
+    },
+    {
+      "sourceRef": ".flowkit/runs/20260908-05-lightweight-workflow-management/004-decouple-full-test-from-repository-tracking/20260909-034-apply/result.json#ownerDecisionsRelevant",
+      "decision": "D05 independent-bootstrap；当前分组004/projectOrdinal36保持；无自动正式 Full Test/Git/Archive 权限。"
+    }
+  ],
+  "nextBoundary": "revise-apply",
+  "continuationMeaning": "按既有 review findings 修正当前 Change 后重新独立 review-apply；本轮不执行修正或下一 Action。若需实质修改批准合同则先明确报告边界，不暗改计划。",
+  "authorArtifactMutation": false,
+  "productionMutation": false,
+  "skillMutation": false,
+  "manifestMutation": false,
+  "historicalRunMutation": false,
+  "candidateReviewerHowConsumed": false,
+  "candidateLifecycleInvokedOnActualRepository": false,
+  "fixtureProductApiExecuted": true,
+  "formalD05FullTestExecuted": false,
+  "archiveExecuted": false,
+  "repositoryGitMutation": false,
+  "stop": true
+}

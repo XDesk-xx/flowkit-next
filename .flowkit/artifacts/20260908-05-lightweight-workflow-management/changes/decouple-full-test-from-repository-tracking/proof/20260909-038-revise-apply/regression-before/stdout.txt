@@ -1,0 +1,31 @@
+TAP version 13
+# Subtest: tests\\unit\\domain\\full-test-revision.test.ts
+not ok 1 - tests\\unit\\domain\\full-test-revision.test.ts
+  ---
+  duration_ms: 2.1709
+  type: 'test'
+  location: 'D:\\Projects\\flowkit-next\\tests\\unit\\domain\\full-test-revision.test.ts:1:1'
+  failureType: 'testCodeFailure'
+  error: 'spawn EPERM'
+  code: 'EPERM'
+  stack: |-
+    ChildProcess.spawn (node:internal/child_process:420:11)
+    spawn (node:child_process:787:9)
+    TestContext.<anonymous> (node:internal/test_runner/runner:377:19)
+    FileTest.runInAsyncScope (node:async_hooks:214:14)
+    FileTest.run (node:internal/test_runner/test:1047:25)
+    FileTest.start (node:internal/test_runner/test:944:17)
+    runTestFile (node:internal/test_runner/runner:456:32)
+    node:internal/test_runner/runner:727:25
+    node:internal/per_context/primordials:561:37
+    new Promise (<anonymous>)
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 0
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 9.8341

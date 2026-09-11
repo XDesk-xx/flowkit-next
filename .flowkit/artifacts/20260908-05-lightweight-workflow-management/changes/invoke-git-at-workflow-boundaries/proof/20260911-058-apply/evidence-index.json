@@ -1,0 +1,597 @@
+{
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "invoke-git-at-workflow-boundaries",
+  "runId": "20260911-058-apply",
+  "files": [
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/candidate-checks.mjs",
+      "bytes": 762,
+      "sha256": "d7a3f6679fff78efc33bf3c109397967795a8d52481b66a2846a5830972fdf90"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/capture.mjs",
+      "bytes": 1631,
+      "sha256": "12b5f21600d744fe936c752d7d46b802d7c63c1b6a322fa56822a74c4d96373f"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/conflict-check/command.json",
+      "bytes": 1020,
+      "sha256": "347f03583cf33caec19a2dbfa2f619eb116be8ef77b98b8f24c0b8c34f748633"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/conflict-check/stderr.txt",
+      "bytes": 59,
+      "sha256": "3c83fcb376e0e469322d8ed9fa3df3e42e9cd65efcf3a1f61c807a6478cb1407"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/conflict-check/stdout.txt",
+      "bytes": 1985,
+      "sha256": "cd05d8618d5b1e9cf7e2eb282d93cbec61f328c3317edacedf20adfb815877c7"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/conflict-check.mjs",
+      "bytes": 2044,
+      "sha256": "60f953ab3478166ac4ac0063d7399956149041823170a277364f3b48aa49a9ef"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/example-01.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/example-01.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/example-02.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/example-02.stdout.txt",
+      "bytes": 114,
+      "sha256": "6dea0345050777a9ccb5311bbbc9e0b8d05937568d8bd2e8f7f8c5250eca742f"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/example-03.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/example-03.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/example-04.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/example-04.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/example-05.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/example-05.stdout.txt",
+      "bytes": 41,
+      "sha256": "e32401249effe02d07f9744d1c4ddd4f69106014539c62f53b6762c9a47d9136"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/example-06.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/example-06.stdout.txt",
+      "bytes": 106,
+      "sha256": "2a6300dc9b58c3d1d5b6e655f79ca0f9767ab56aa7deceb3e8a1925afa85c924"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/example-07.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/example-07.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/example-08.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/example-08.stdout.txt",
+      "bytes": 41,
+      "sha256": "a46162383af7a68b7e93a05465fad440f1a72819be429554e0dd8c7005fbd014"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/example-09.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/example-09.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/example-10.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/example-10.stdout.txt",
+      "bytes": 14,
+      "sha256": "4552d859ee8e32574d1d8ae44ede2e114e0ea77708f7ab123c014070a9f8fcc3"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/example-11.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/example-11.stdout.txt",
+      "bytes": 41,
+      "sha256": "a46162383af7a68b7e93a05465fad440f1a72819be429554e0dd8c7005fbd014"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/finish-apply.mjs",
+      "bytes": 6302,
+      "sha256": "e27c09045517ac99f38ed76274f440c2ed3ad223ada75d4a0d489a75eaaaf7d0"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/implementation-report.md",
+      "bytes": 5166,
+      "sha256": "ab93da473b7cb001c32e301177491ff2fa603dc035885da6c783372037141cce"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/linux-container/command.json",
+      "bytes": 1693,
+      "sha256": "f9e03c948a6886f0e8b6be02b44bcf795a6872e80b1dae5dcf2147c73f6cbd83"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/linux-container/stderr.txt",
+      "bytes": 224,
+      "sha256": "e9133cf10b02b0b91c8b119848513db0ac541e7c3c19681266939e4b9952f7cc"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/linux-container/stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/linux-container-retry/command.json",
+      "bytes": 1706,
+      "sha256": "d7f8c88e485658c76718af2911b88a2990a0c7b982c4d20243d5bba1767a6ab9"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/linux-container-retry/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/linux-container-retry/stdout.txt",
+      "bytes": 6095,
+      "sha256": "4e2abcb19959397ce8882e69cb42556e0f02461b671c5866bca2ddfab023d37d"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/linux-dependencies/command.json",
+      "bytes": 772,
+      "sha256": "960b66812e1f164707724582532c04ef9648dc032178ebccc8109b8cfc6783e4"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/linux-dependencies/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/linux-dependencies/stdout.txt",
+      "bytes": 747,
+      "sha256": "089f44d2ffb23374bfeb75d3a5b709482635aa6aafb778faa7d1c2adaa29a962"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/linux-final-acceptance/command.json",
+      "bytes": 703,
+      "sha256": "96d724f4ad3d42563d4777553dcfdba8d32c55c5cf5dc4c4f00d3605724b109c"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/linux-final-acceptance/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/linux-final-acceptance/stdout.txt",
+      "bytes": 1718,
+      "sha256": "4f4a48d7dbef958e9c94edb962c0f386795f5e56dc2e93a99826f443d8f84361"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/linux-final-build/command.json",
+      "bytes": 651,
+      "sha256": "b8666791c7fc2a27db67f811a866379accc9408ed69006889d847d8d6a099b80"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/linux-final-build/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/linux-final-build/stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/linux-final-dependency-health/command.json",
+      "bytes": 814,
+      "sha256": "d318b637179ce60fe0ff23e747e2be4193e5610bf69b8f4f7940ae6e750bf8f0"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/linux-final-dependency-health/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/linux-final-dependency-health/stdout.txt",
+      "bytes": 77,
+      "sha256": "6094b027879657fcaf82dfbbb9f71fedb45d36434d7963002ce85b462e6e8331"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/linux-final-domain/command.json",
+      "bytes": 697,
+      "sha256": "4ce10f7a676203826c00170e26bf3953d3a57fee3ca96b4811e0e691acd4a2e6"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/linux-final-domain/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/linux-final-domain/stdout.txt",
+      "bytes": 67991,
+      "sha256": "210d6e87380a967f243c06b98b5d14c0e88a8ad7a4e4a730131d46e21adbc2c1"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/linux-final-entropy/command.json",
+      "bytes": 669,
+      "sha256": "0f18e3cad06af7359ba5519d5a84f3d615d15b3d1e730852ee10b460259759e9"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/linux-final-entropy/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/linux-final-entropy/stdout.txt",
+      "bytes": 64,
+      "sha256": "3893b41ddd6a29de2cd5f3dadc87d346bcde5c30674878a27b66643e7b261de1"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/linux-final-entropy-tests/command.json",
+      "bytes": 707,
+      "sha256": "4c220e6d6878957e80252cd352299441e16428ca7cec3c4843cfa9eaf1ca466c"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/linux-final-entropy-tests/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/linux-final-entropy-tests/stdout.txt",
+      "bytes": 1479,
+      "sha256": "161cfe86d1ffb0b45a7beca0921fceb57cabf95be6d545707af0f514eb551785"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/linux-final-format-check/command.json",
+      "bytes": 861,
+      "sha256": "0f13c12b5e4bcab212650d020928a42c47d33af34efa812304c300fe68a7ebc5"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/linux-final-format-check/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/linux-final-format-check/stdout.txt",
+      "bytes": 66,
+      "sha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/linux-final-lint/command.json",
+      "bytes": 678,
+      "sha256": "043a1da5c374ba59de8423e16c4dd77ea44b48abc3fb46cfa0c46c82e6ba846b"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/linux-final-lint/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/linux-final-lint/stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/linux-final-typecheck/command.json",
+      "bytes": 678,
+      "sha256": "f9524e923d68a69bd906c90c0886d3cd334636d4a326b20faedf5a44a062a531"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/linux-final-typecheck/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/linux-final-typecheck/stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/linux-prepare.mjs",
+      "bytes": 1349,
+      "sha256": "466089de7eb09c09de6ffc04e6b7dadcc72104089d7c65a776b1a115e63764ee"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/linux-run.sh",
+      "bytes": 327,
+      "sha256": "b87c81a231dcca677aa67f26e13076eba5b8a1d9c302140503c65efe43b085d3"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/linux-source.json",
+      "bytes": 34041,
+      "sha256": "6b6b0c47e16747c113f37f8dc9d13d244894e6b2eb17ed02543009343e6f0bfa"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/openspec-all-done/command.json",
+      "bytes": 1042,
+      "sha256": "ce91172b2d8ece9927e9c58ba9e9fc6d6498111b9566b3d4ec5697379cec2263"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/openspec-all-done/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/openspec-all-done/stdout.txt",
+      "bytes": 6964,
+      "sha256": "1a8d60550158f5b27f6f4f28a2fdb15cc96abdccd596c745e56f828b1fd48f45"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/openspec-strict/command.json",
+      "bytes": 1005,
+      "sha256": "5ca3890afa7fd7ab99f015713d81b5dc9f7b1c71242c92e15e1d9b30f3edf489"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/openspec-strict/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/openspec-strict/stdout.txt",
+      "bytes": 52,
+      "sha256": "50ac72634ab52d4b33c4929b35150b1d26e731716cff62f2e74330a9b5addab3"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/pack/command.json",
+      "bytes": 1032,
+      "sha256": "7e129fe3034d904292ee63f9aaa5b68eaaa68fca92f14c797f17921ff344d78b"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/pack/stderr.txt",
+      "bytes": 5841,
+      "sha256": "eab0ab6824d7986c6a1b92d151618b3f2667a3b863c8e953a6e1f073597ea11e"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/pack/stdout.txt",
+      "bytes": 23,
+      "sha256": "9133aa9af430c872cdf6c885ac932b2ba4fe75a55b983e9021c76bab1f1f45e8"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/packed-example/command.json",
+      "bytes": 1019,
+      "sha256": "86cfe0b7d9ef64bfead0ffe24d150262897aefe454fcc3c343be161c08619318"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/packed-example/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/packed-example/stdout.txt",
+      "bytes": 7822,
+      "sha256": "5576bba6a171160b7600bb8b192dd6bb84e02ed21f1f6e26ca485b1f06ed4955"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/packed-example.json",
+      "bytes": 10034,
+      "sha256": "837e722cc97b4e94384c58dd4ec0a86702322f7d4b7c83cf6cd82c508952f20e"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/packed-example.mjs",
+      "bytes": 9382,
+      "sha256": "d4a2ef7fb77c4a9ee74f35d497d588fe478d0ae0c0ed2453777539aa5f4146de"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/payload.json",
+      "bytes": 8025,
+      "sha256": "6b5e7923fab06144d6ed0bad5f32b3df28b17b47bc9e22dd2bafcc4572d9409f"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/supplemental/command.json",
+      "bytes": 1022,
+      "sha256": "57befc89b22894d887d710c840558afc0cc46ef3c649d1229f93ef0eea094846"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/supplemental/stderr.txt",
+      "bytes": 208,
+      "sha256": "2163174f5b9304831933211d607acad886624c481ddb78ee173e99a11cc13695"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/supplemental/stdout.txt",
+      "bytes": 5127,
+      "sha256": "96e87e5bd4d996b68a501726535c8583926518eea2060aaa54c072f30f57c3c3"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/supplemental-checks.json",
+      "bytes": 6060,
+      "sha256": "c6096b4d45315704f571e7f1e03253d868d4da760aafa43f4e550231a72d9e52"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/supplemental-checks.mjs",
+      "bytes": 4979,
+      "sha256": "e28852ca508d884a33e2183aa4c421ce1c6340f5e6cd61cbb0d6d904eadd789c"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/verification-audit.json",
+      "bytes": 2977,
+      "sha256": "ddecd0671f862a991e61b6505bd334b54522f73f00619aaa775ba70fe5708ada"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/verify-current.mjs",
+      "bytes": 3967,
+      "sha256": "90ae30c142cf597f188ea5edd9d1ec2b20fb8b62989eed6588ae84bc89fb17f4"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/win-final-acceptance/command.json",
+      "bytes": 950,
+      "sha256": "dd793392e2a1b90e88c21dc59e35c29c9c121496e89be5ccb553ee3a98eaadac"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/win-final-acceptance/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/win-final-acceptance/stdout.txt",
+      "bytes": 1708,
+      "sha256": "61e9589834b6070d462e6d5e087e5c20569e4ce36ddb5e94ad1c58f9053eb7fe"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/win-final-build/command.json",
+      "bytes": 898,
+      "sha256": "a72331c418f4832beecdcc92c2a287f0da1bbd59ce0a0b36d4844388cd0933c3"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/win-final-build/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/win-final-build/stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/win-final-dependency-health/command.json",
+      "bytes": 1061,
+      "sha256": "e8f329dca6816ef07072594856571b7501c53e170b0ec197c6f8aa75974f8855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/win-final-dependency-health/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/win-final-dependency-health/stdout.txt",
+      "bytes": 80,
+      "sha256": "6baa4936699e634689f5e415d39ba27b1d9513f35c032b0931e693802e3967a0"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/win-final-domain/command.json",
+      "bytes": 944,
+      "sha256": "9f01ff5b4ef76d322f3115ac9e437d99eeb6e63ecf1d6d6dc63d947e94d3ea92"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/win-final-domain/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/win-final-domain/stdout.txt",
+      "bytes": 67461,
+      "sha256": "035bff93f7d2642a31e04e5d950ea180307c7dfc6bebda4d0253641c0dc0a460"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/win-final-entropy/command.json",
+      "bytes": 916,
+      "sha256": "5aa1b398ad3ff70adfd19d84d1993ae6384da259392c054eb1904b7d40f9acb2"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/win-final-entropy/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/win-final-entropy/stdout.txt",
+      "bytes": 64,
+      "sha256": "3893b41ddd6a29de2cd5f3dadc87d346bcde5c30674878a27b66643e7b261de1"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/win-final-entropy-tests/command.json",
+      "bytes": 954,
+      "sha256": "585e4ca9905e66ff99c95fbe8dcb588b4f3ad595a702b5e65cacc9604e0070f0"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/win-final-entropy-tests/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/win-final-entropy-tests/stdout.txt",
+      "bytes": 1465,
+      "sha256": "98a7137e4340ce047cc164d20f8048d09289486db551d8f0b74e0f5fd9e62b8a"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/win-final-format-check/command.json",
+      "bytes": 1108,
+      "sha256": "3eeb800426c3428d4364cb72e942e25f2c7cabf738e3d69a6d793bd11514c4d8"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/win-final-format-check/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/win-final-format-check/stdout.txt",
+      "bytes": 66,
+      "sha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/win-final-lint/command.json",
+      "bytes": 925,
+      "sha256": "6389815905ec0fb20df25f9e24a41a47ebd7a355f1f15f26916cddf49c8dd5af"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/win-final-lint/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/win-final-lint/stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/win-final-typecheck/command.json",
+      "bytes": 925,
+      "sha256": "8b4f6ee69d8b3eaf66843ab7127ffc38405807c47b6f521b8d99ea0f14f64b43"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/win-final-typecheck/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply/win-final-typecheck/stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

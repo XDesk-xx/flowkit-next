@@ -1,0 +1,14 @@
+{
+  "label": "windows-final-01",
+  "command": "pnpm typecheck && pnpm build && pnpm test:domain && pnpm test:acceptance && pnpm quality:gate && pnpm quality:dependency-health && pnpm test:entropy && pnpm quality:entropy && node C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js validate remove-archify-from-delivery-workflow --strict",
+  "cwd": "D:\\Projects\\flowkit-next",
+  "startedAt": "2026-09-08T04:15:20.348Z",
+  "finishedAt": "2026-09-08T04:16:46.743Z",
+  "node": "v22.23.2",
+  "platform": "win32",
+  "exitCode": 0,
+  "signal": null,
+  "error": null,
+  "stdoutSha256": "e9945d3061d4b207374f49580708356ab0b5c10477088ecc15735aa81b8331e6",
+  "stderrSha256": "c90a7d9f3bf957907fe2ced768daa76e3fc833704270ad56955d02febb22860c"
+}

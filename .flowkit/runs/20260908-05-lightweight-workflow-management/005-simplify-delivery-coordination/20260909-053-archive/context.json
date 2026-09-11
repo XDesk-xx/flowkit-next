@@ -1,0 +1,28 @@
+{
+  "kind": "external-orchestrator-archive-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "author",
+  "action": "archive",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "simplify-delivery-coordination",
+  "projectOrdinal": 37,
+  "runId": "20260909-053-archive",
+  "previousRunId": "20260909-052-review-apply",
+  "startedAt": "2026-09-09 12:30:43 UTC",
+  "ownerInstruction": "根据最新run，archive",
+  "archivePath": "openspec/changes/archive/2026-09-09-037-simplify-delivery-coordination",
+  "proofRoot": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-053-archive",
+  "bootstrapHow": [
+    ".agents/skills/archive/SKILL.md",
+    ".agents/skills/openspec-archive-change/SKILL.md",
+    ".agents/skills/openspec-sync-specs/SKILL.md"
+  ],
+  "ownerDecisionsRelevant": [
+    {
+      "sourceRef": ".flowkit/runs/20260908-05-lightweight-workflow-management/005-simplify-delivery-coordination/20260909-051-revise-apply/context.json#ownerDecisionsRelevant",
+      "decision": "D05 independent-bootstrap；必要材料保存在 target artifacts，.tmp 可丢弃；不改历史，不执行 Git 或实际 D05 Full Test。"
+    }
+  ],
+  "scope": "先隔离验证三份规范收敛，再同步、按既有 ordinal 归档并窄写 Change completed；不修实现、不激活下一 Change。"
+}

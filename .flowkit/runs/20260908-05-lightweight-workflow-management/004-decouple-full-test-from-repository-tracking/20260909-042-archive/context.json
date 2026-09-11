@@ -1,0 +1,32 @@
+{
+  "kind": "external-orchestrator-archive-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "author",
+  "action": "archive",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "decouple-full-test-from-repository-tracking",
+  "projectOrdinal": 36,
+  "runId": "20260909-042-archive",
+  "previousRunId": "20260909-041-review-apply",
+  "startedAt": "2026-09-09 06:03:55 UTC",
+  "archivePath": "openspec/changes/archive/2026-09-09-036-decouple-full-test-from-repository-tracking",
+  "specsRulesSnapshot": {
+    "source": "openspec instructions specs --change decouple-full-test-from-repository-tracking --json",
+    "artifactId": "specs",
+    "schemaName": "spec-driven",
+    "rulesAbsent": true,
+    "readBeforeMainWrite": true
+  },
+  "ownerDecisionsRelevant": [
+    {
+      "sourceRef": "owner-input:current-turn:根据最新run，archive",
+      "decision": "执行当前 Archive。"
+    },
+    {
+      "sourceRef": "MEMORY.md:61",
+      "decision": "既有明确交接偏好：目标和范围明确时，Archive 同步规范，不重复询问；当前批准合同及指令控制实际范围。"
+    }
+  ],
+  "stopBoundary": "checkpoint-owner-authorization"
+}

@@ -1,0 +1,24 @@
+{
+  "kind": "external-orchestrator-revise-apply-context",
+  "executionMode": "independent-bootstrap",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "action": "revise-apply",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "invoke-git-at-workflow-boundaries",
+  "projectOrdinal": 38,
+  "runId": "20260911-060-revise-apply",
+  "previousRunId": "20260911-059-review-apply",
+  "startedAt": "2026-09-11T03:54:10Z",
+  "ownerInstruction": "根据最新run，revise apply",
+  "repositoryHead": "a0edb690d7208a3b81855e30a31dbc175f060a93",
+  "findings": ["D05-RA038-001", "D05-RA038-002", "D05-RA038-003"],
+  "classification": "implementation defects; approved contract unchanged",
+  "proofRoot": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-060-revise-apply",
+  "ownerDecisionsRelevant": [{
+    "sourceRef": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260909-054-explore/context.json#ownerDecisionsRelevant",
+    "decision": "Git 按明确范围执行，必要材料留 target artifacts，.tmp 可丢弃；不恢复全仓 clean/固定形状 gate，不自动恢复；D05 independent-bootstrap。"
+  }],
+  "nextBoundary": "review-apply",
+  "nonGoals": ["Proposal 修订", "历史结果改写", "Skill/Policy/Run schema 扩张", "当前仓库 Git mutation", "实际 D05 Full Test", "自动独立审查"]
+}

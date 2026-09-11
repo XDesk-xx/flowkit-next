@@ -1,0 +1,122 @@
+{
+  "kind": "external-orchestrator-review-apply-result",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "separate-manager-assets-from-target-project",
+  "projectOrdinal": 34,
+  "runId": "20260908-013-review-apply",
+  "action": "review-apply",
+  "role": "reviewer",
+  "status": "terminal",
+  "verdict": "approved",
+  "verdictMeaning": "已批准合同的实现收敛、安装分根、必要发行与当前适用证据通过独立审查；不是 Formal Delivery Full Test、Archive 或 Owner/Git authority。",
+  "previousRunId": "20260908-012-apply",
+  "reviewedRunId": "20260908-012-apply",
+  "reviewedResult": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/separate-manager-assets-from-target-project/20260908-012-apply/result.json",
+    "bytes": 2215,
+    "sha256": "2b0e404f12719991aaac6269ab151bac660ee9a345416b8c5a1275238aa89d95"
+  },
+  "acceptedProposalReview": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/separate-manager-assets-from-target-project/20260908-011-review-propose/result.json",
+    "bytes": 6717,
+    "sha256": "cf83de7d2c2e7d5a83620429116a3295ce228036eee9f64592f3448ea7c05e7c"
+  },
+  "summary": "manager/target/FLOWKIT_HOME 分根闭包符合 approved Proposal；131 项独立定向测试与 6 项真实安装验收通过，41 个生产模块与干净编译一致，无阻断 finding。",
+  "findings": [],
+  "blockingUnknown": null,
+  "nonBlockingObservations": [],
+  "assessments": {
+    "currentStep": "对照 011 approved 的规划与 012 的真实变更，核对 root 来源、直接调用闭包、包完整性、target 写入归属及适用证据。",
+    "complexityAndMinimality": "小型内部安装描述、直接参数传递、files allowlist 和干净 build 属于必要实现；Integration ref 提取保持原语义及 650 行 gate，没有新增生产依赖/注册表/管理平台。",
+    "newContentAndScopeDrift": "scope drift: NONE；未提前加入真实宿主 Action/current、Full Test 配置/存储、Start 去 Git 前置、Final 简化或 Git 执行。"
+  },
+  "runArtifacts": {
+    "action": {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/separate-manager-assets-from-target-project/20260908-013-review-apply/action.md",
+      "bytes": 2222,
+      "sha256": "603a66de8a7303c6fe1fd3578240db1a6a8d919790d2949932c50893ebe16552"
+    },
+    "context": {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/separate-manager-assets-from-target-project/20260908-013-review-apply/context.json",
+      "bytes": 2723,
+      "sha256": "a232eb1b7953e35d713cc95bdfbdc4a3a27a874d68eaa0d302bdf601217d088b"
+    }
+  },
+  "verification": {
+    "summary": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-013-review-apply/attempt-02/summary.json",
+      "bytes": 68522,
+      "sha256": "7be60493b39a718c3a0891e7267e89adb4bd01f02d0c801225a00457b7025ba1"
+    },
+    "method": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-013-review-apply/audit.mjs",
+      "bytes": 9329,
+      "sha256": "cd08f2867ec4b14495684af21531ab0a0dedc72d1877ffd60659b97e160f11cf"
+    },
+    "readme": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-013-review-apply/README.md",
+      "bytes": 2520,
+      "sha256": "c80c6f401fd5300661eab22b727864f7e8ece2c56fbf3d59bd245bff972dc3bc"
+    },
+    "checks": {
+      "candidateFiles": 58,
+      "exactInputRefs": 185,
+      "approvedPlanningPreserved": true,
+      "tasksCompleted": 12,
+      "authorFinalApplicableChecks": 17,
+      "packageFiles": 75,
+      "emittedModules": 41,
+      "freshCompilationMatchesPackageAndInstalledBytes": true,
+      "reviewerDomain": {
+        "tests": 131,
+        "passed": 131,
+        "failed": 0,
+        "skipped": 0
+      },
+      "reviewerInstalledWindows": {
+        "tests": 6,
+        "passed": 6,
+        "failed": 0,
+        "skipped": 0
+      },
+      "typecheck": true,
+      "gitDiffCheck": true,
+      "authorLinuxEvidence": {
+        "domain": 262,
+        "acceptance": 6,
+        "glibc": "2.36",
+        "node": "22.23.2",
+        "network": "none",
+        "reviewerRerun": false
+      }
+    },
+    "limit": "Reviewer 有界独立验证，不冒称重跑全部 domain 或 Linux；Author 全套结果经引用/方法/当前候选核对。历史或保留 PASS 不自动授权新输入。",
+    "startupRecovery": "Reviewer 自有脚本语法错误及 sandbox EPERM 已保留并定位；不归因 Author，不改 Author；最终有效复核 attempt-02。"
+  },
+  "mutationIsolation": {
+    "before": {
+      "files": 1929,
+      "sha256": "5b966ced558dd391d2d24488b36378dfb109dfaee324d59a1ca546d31c4f6a32",
+      "head": "01d82dba4593ea0c5b85ac67da03e6261dccfba6"
+    },
+    "after": {
+      "files": 1929,
+      "sha256": "5b966ced558dd391d2d24488b36378dfb109dfaee324d59a1ca546d31c4f6a32",
+      "head": "01d82dba4593ea0c5b85ac67da03e6261dccfba6"
+    },
+    "equal": true,
+    "scope": "tracked/nonignored untracked 与 tracked 删除标记，排除本次 Reviewer Run/proof；用于审查写入隔离，不是新增产品整仓 SHA gate。"
+  },
+  "nextBoundary": "archive",
+  "continuationMeaning": "仅报告既有 Policy 对 approved review-apply 的后续交接事实；本次不执行，不生成新 Owner authority。",
+  "archiveExecuted": false,
+  "formalFullTestExecuted": false,
+  "candidateLifecycleInvokedOnActualRepository": false,
+  "authorArtifactMutation": false,
+  "productionMutation": false,
+  "gitMutationExecuted": false,
+  "completedAt": "2026-09-08T08:02:21Z",
+  "stop": true
+}

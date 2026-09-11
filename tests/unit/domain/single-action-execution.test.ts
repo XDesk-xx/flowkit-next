@@ -1,3 +1,4 @@
+import { fixtureInstallation } from "./manager-installation-fixture.js";
 import assert from "node:assert/strict";
 import { mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
@@ -126,7 +127,7 @@ function terminal(identity: ActionIdentity = applyIdentity): CurrentAction {
 test("internally prepares an empty slot and completes one invocation", async () => {
   let calls = 0;
   const outcome = await invokeSingleAction(
-    guidanceRoot,
+    fixtureInstallation(guidanceRoot),
     null,
     applyIdentity,
     context(54),
@@ -150,7 +151,7 @@ test("internally prepares an empty slot and completes one invocation", async () 
 test("reuses exact prepared A without duplicate prepare", async () => {
   const current = prepared();
   const outcome = await invokeSingleAction(
-    guidanceRoot,
+    fixtureInstallation(guidanceRoot),
     current,
     { ...applyIdentity },
     context(54),
@@ -163,7 +164,7 @@ test("reuses exact prepared A without duplicate prepare", async () => {
 
 test("prepares a different target after terminal but rejects a different target over prepared", async () => {
   const afterTerminal = await invokeSingleAction(
-    guidanceRoot,
+    fixtureInstallation(guidanceRoot),
     terminal(reviewIdentity),
     applyIdentity,
     context(54),
@@ -173,7 +174,7 @@ test("prepares a different target after terminal but rejects a different target 
 
   let calls = 0;
   const rejected = await invokeSingleAction(
-    guidanceRoot,
+    fixtureInstallation(guidanceRoot),
     prepared(reviewIdentity),
     applyIdentity,
     context(54),
@@ -190,7 +191,7 @@ test("prepares a different target after terminal but rejects a different target 
 test("package formation failure invokes host callback zero times", async () => {
   let calls = 0;
   const outcome = await invokeSingleAction(
-    guidanceRoot,
+    fixtureInstallation(guidanceRoot),
     prepared(),
     applyIdentity,
     context(54, reviewIdentity),
@@ -222,7 +223,7 @@ test("missing canonical Guidance fails package formation before callback", async
 
     let calls = 0;
     const outcome = await invokeSingleAction(
-      emptyRoot,
+      fixtureInstallation(emptyRoot),
       prepared(),
       applyIdentity,
       context(54),
@@ -243,7 +244,7 @@ test("missing canonical Guidance fails package formation before callback", async
 test("callback failure preserves prepared Action and stops", async () => {
   let calls = 0;
   const outcome = await invokeSingleAction(
-    guidanceRoot,
+    fixtureInstallation(guidanceRoot),
     prepared(),
     applyIdentity,
     context(54),
@@ -262,7 +263,7 @@ test("callback failure preserves prepared Action and stops", async () => {
 test("admission failure leaves exact Action prepared and executes callback only once", async () => {
   let calls = 0;
   const outcome = await invokeSingleAction(
-    guidanceRoot,
+    fixtureInstallation(guidanceRoot),
     prepared(),
     applyIdentity,
     context(54),
@@ -282,7 +283,7 @@ test("later invocation reuses same prepared A with a new Run occurrence", async 
   const current = prepared();
 
   const first = await invokeSingleAction(
-    guidanceRoot,
+    fixtureInstallation(guidanceRoot),
     current,
     applyIdentity,
     context(54),
@@ -308,7 +309,7 @@ test("later invocation reuses same prepared A with a new Run occurrence", async 
 
   let secondCalls = 0;
   const second = await invokeSingleAction(
-    guidanceRoot,
+    fixtureInstallation(guidanceRoot),
     current,
     applyIdentity,
     context(55),
@@ -326,7 +327,7 @@ test("package-bound preparation uses the same exact ActionPackage identity as ex
   let preparedPackage: unknown = null;
   let executedPackage: unknown = null;
   const outcome = await invokeSingleAction(
-    guidanceRoot,
+    fixtureInstallation(guidanceRoot),
     null,
     applyIdentity,
     context(54),
@@ -358,7 +359,7 @@ test("blocked preparation discards a newly staged prepared Action and skips exec
     previousRunId: null,
   };
   const outcome = await invokeSingleAction(
-    guidanceRoot,
+    fixtureInstallation(guidanceRoot),
     prior,
     archiveIdentity,
     archiveContext,
@@ -379,7 +380,7 @@ test("preparation failure preserves an already-prepared Action for retry", async
   const current = prepared();
   let executionCalls = 0;
   const outcome = await invokeSingleAction(
-    guidanceRoot,
+    fixtureInstallation(guidanceRoot),
     current,
     applyIdentity,
     context(54),
@@ -403,7 +404,7 @@ test("pre-preparation package failures do not leak a newly staged prepared Actio
   const prior = terminal(reviewIdentity);
 
   const invalidContext = await invokeSingleAction(
-    guidanceRoot,
+    fixtureInstallation(guidanceRoot),
     prior,
     applyIdentity,
     { bad: true },
@@ -421,7 +422,7 @@ test("pre-preparation package failures do not leak a newly staged prepared Actio
   assert.deepEqual(invalidContext.currentAction, prior);
 
   const mismatchedContext = await invokeSingleAction(
-    guidanceRoot,
+    fixtureInstallation(guidanceRoot),
     prior,
     applyIdentity,
     context(54, reviewIdentity),
@@ -443,7 +444,7 @@ test("pre-preparation package failures do not leak a newly staged prepared Actio
   );
   try {
     const missingGuidance = await invokeSingleAction(
-      missingGuidanceRoot,
+      fixtureInstallation(missingGuidanceRoot),
       prior,
       applyIdentity,
       context(54),
@@ -470,7 +471,7 @@ test("pre-preparation package failures do not leak a newly staged prepared Actio
 test("successful invocation preserves opaque nextBoundary and never executes a second callback", async () => {
   let calls = 0;
   const outcome = await invokeSingleAction(
-    guidanceRoot,
+    fixtureInstallation(guidanceRoot),
     prepared(),
     applyIdentity,
     context(54),

@@ -1,5 +1,13 @@
 #!/usr/bin/env node
 import { readFile } from "node:fs/promises";
+import { ActionContextError } from "./current-run-chain.js";
+import { TrustedChangeCoordinationError } from "./trusted-change-coordination.js";
+import { OpenSpecObservationError } from "../domain/openspec-observation.js";
+import { ManagedToolResolutionError } from "../domain/managed-tool-resolution.js";
+import {
+  loadManagerInstallation,
+  ManagerInstallationError,
+} from "../internal/manager-installation.js";
 
 import {
   FoundationCliCommandError,
@@ -47,14 +55,38 @@ async function main(): Promise<number> {
     }
     const raw = parseFoundationCliRequestJson(requestText);
     const request = parseFoundationCliRequest(command, raw);
-    writeJson(await executeFoundationCliRequest(request));
+    writeJson(
+      await executeFoundationCliRequest(request, loadManagerInstallation()),
+    );
     return 0;
   } catch (error) {
     if (
       error instanceof FoundationCliInputError ||
-      error instanceof FoundationCliCommandError
+      error instanceof FoundationCliCommandError ||
+      error instanceof ManagerInstallationError ||
+      error instanceof ActionContextError ||
+      error instanceof TrustedChangeCoordinationError ||
+      error instanceof OpenSpecObservationError ||
+      error instanceof ManagedToolResolutionError
     ) {
-      writeJson(failure(error.kind));
+      writeJson(
+        error instanceof ActionContextError
+          ? {
+              kind: "error",
+              error: {
+                kind: error.kind,
+                message: error.message,
+                candidates: error.candidates,
+              },
+            }
+          : error instanceof FoundationCliInputError &&
+              error.kind === "invalid-request"
+            ? {
+                kind: "error",
+                error: { kind: error.kind, message: error.message },
+              }
+            : failure(error.kind),
+      );
       return 2;
     }
     writeJson(failure("internal-error"));

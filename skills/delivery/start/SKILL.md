@@ -1,55 +1,19 @@
 ---
 name: flowkit-delivery-start
-summary: Execute an already-decided Flowkit Delivery Start from exact accepted repository truth and return verified content completion.
+description: 在已确定的 Owner Delivery Start 边界建立并读回本项目交付内容，不执行 Git。
 ---
 
-# Flowkit Delivery Start
+# Delivery Start
 
-## Purpose
+只执行已经确定的 `delivery-start`，不选择操作、激活 Change 或创造权限。Guidance 从同一 manager 安装来源实读；项目写入归 target，不回退到 target 同名 Guidance 或 `.agents/skills/**`。
 
-Execute the exact `delivery-start` operation after its identity and Owner boundary have already been decided. This Guidance owns HOW only. It does not select a Delivery operation, activate a Change, create authority, or replace Git/OpenSpec truth.
+- 输入为 deliveryId、ownerAuthority、planningReference；Owner 已选规划文件必须从 target 实读并匹配 artifact/contentSha256。
+- Package 只绑定 projectId、规划引用和固定 manifest 的 coordinationPrestate；不存在以 contentRef=null 表示。不要求 HEAD、acceptedBaseCommit、首个 commit 或全仓 clean。
+- 唯一业务输出是 `openspec/delivery-groups/<deliveryId>.yaml`。使用 host 提供的 writeManifest create-once 能力，保存项目/Delivery、规划引用与 Change 组织；已有匹配内容只读复用，不覆盖冲突或不安全地址。
+- 写入前复核规划、目标及活动 Delivery 歧义。无关 dirty 文件不是 Start 冲突；不要求 Archify、ZIP/bundle、Git/OpenSpec PASS receipt。
+- 真实内容验证和读回成功，返回 contentCompletion：projectId、deliveryId、planningReference、coordinationRef。没有 candidateRef、validation 快照或 fixedPointCommit。
+- 失败如实报告 not-written、written-unconfirmed 或 unknown；写后抛错不等于没有副作用，不自动回滚或重试。
 
-## Required package facts
+额外 Git scope 不在 Start 内执行；没有 commit callback。Git 节点另依明确授权处理。成功或失败后 STOP，不创建 Delivery Run，不使用 candidate HOW 管理当前 independent-bootstrap Delivery。
 
-Consume the exact package supplied by Flowkit. Treat its content-bound Guidance identity and operation facts as fixed execution inputs.
-
-Required Start facts include:
-
-- exact Delivery identity;
-- exact accepted-base commit;
-- exact Owner-approved planning-reference artifact and content hash;
-- explicit Owner `create-delivery` authority whose scope includes `delivery-start`;
-- optional `single-delivery-start-fixed-point-commit` scope when one ordinary Start commit is authorized.
-
-Fail closed if package identity, Guidance identity, Delivery identity, accepted base, planning reference, or authority does not match the trusted repository facts.
-
-## Execution
-
-1. Verify the repository is at the exact accepted base and the working tree satisfies the clean-start precondition.
-2. Read current Git/OpenSpec/Memo/Previous-Actual inputs from their canonical owners. Do not accept caller-supplied substitutes as truth.
-3. Reuse exact repository/history/runtime state when it already exists. Restore only missing exact state, verify it, then continue through the same Start path. Do not create local/detached/ZIP/bundle lifecycle modes.
-4. Materialize only the bounded Delivery Start surface:
-   - Delivery manifest;
-   - Current Architecture;
-   - Planned Architecture;
-   - Current → Planned compare.
-5. Keep Archify evidence valid at each document's declared repository revision. Do not cite newly-created Start files as evidence for an older accepted-base revision.
-6. Validate the complete Start surface with the applicable OpenSpec, Archify, Git and receipt/hash checks. Do not activate a Change automatically.
-7. Read back the four fixed outputs, bind their artifact/hash/bytes plus project, Delivery, accepted base, planning reference, the post-output v2 candidate, and the complete trusted validation source as `contentCompletion`.
-8. If explicit bounded commit authority is absent, return terminal success with `fixedPointCommit=null`, do not invoke Git mutation, and STOP.
-9. If that authority is present and validation is PASS, create at most one ordinary Delivery Start fixed-point commit; independently read and verify its SHA, parent/count, clean poststate and v2 object content, then STOP. Failure must not claim Git success or auto-retry.
-
-## Boundaries
-
-MUST NOT:
-
-- discover, rank, route or choose another Delivery operation;
-- create a Skill Registry/Router/Planner;
-- turn Delivery operations into Standard Actions;
-- infer Git mutation authority from successful validation;
-- require transport artifacts when exact state is already available;
-- use `.agents/skills/**` as product Guidance fallback;
-- use this candidate Guidance as authority for D04 self-acceptance;
-- enter Change 1 Explore/Proposal/Apply bytes in the Delivery Start fixed-point commit.
-
-At the verified Delivery Start content-completion boundary: **STOP**.
+单独授权 Start 后 Git 时，可使用本安装 [Git 宿主 HOW](../repository-integration/references/host-call.md) 的普通节点；不要求 Final、不把 commit 内嵌 Start。

@@ -1,0 +1,27 @@
+{
+  "kind": "review-clean-build-observation",
+  "command": {
+    "cmd": "if (Test-Path -LiteralPath '.tmp/review-20260908-006-clean-build') { throw 'Reviewer clean-build target already exists; do not overwrite' }\nnode node_modules/typescript/bin/tsc -p tsconfig.build.json --outDir .tmp/review-20260908-006-clean-build",
+    "chunk_id": "836809",
+    "wall_time_seconds": 1.933546,
+    "exit_code": 0,
+    "original_token_count": 0,
+    "output": ""
+  },
+  "method": "枚举 src/**/*.ts 并映射相对路径 .js，与全新 outDir 的实际文件集合精确比较；扫描新输出及现存 dist 中当前源映射输出的 Archify/retired-operation 引用；dist 多余输出单独列出。",
+  "cleanOutputRoot": ".tmp/review-20260908-006-clean-build",
+  "compiledCurrentModules": 39,
+  "retiredModulesInCleanBuild": 0,
+  "archifyReferencesInCurrentSourceMappedOutputs": 0,
+  "staleIgnoredLocalDistFiles": [
+    "dist/domain/delivery-architecture-finalization-execution.js",
+    "dist/domain/delivery-architecture-finalization-identity.js",
+    "dist/domain/delivery-architecture-finalization-operation.js",
+    "dist/internal/delivery-architecture-finalization-archify.js",
+    "dist/internal/delivery-architecture-finalization-artifacts.js",
+    "dist/internal/delivery-architecture-finalization-closure.js"
+  ],
+  "distIndexSha256": "2e78bacf7e5ccc1b7c91bf225f018721fcaa9091783aef05a3cea59b55e41c86",
+  "sourceScopeSha256": "57845c28259f5d1d06d9189ec71268b8086f3b7d8deb7a7afe521ed4b22f25a2",
+  "limit": "仅验证构建输出；旧 dist 未删除/安装/晋升。临时编译 bytes 可丢弃，必要方法、观察与输入关联保存在本 proof。"
+}

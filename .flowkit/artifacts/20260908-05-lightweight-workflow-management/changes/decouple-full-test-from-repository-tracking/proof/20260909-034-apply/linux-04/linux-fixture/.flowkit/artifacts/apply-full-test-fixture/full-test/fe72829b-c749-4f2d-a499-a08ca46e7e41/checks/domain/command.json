@@ -1,0 +1,28 @@
+{
+  "checkId": "domain",
+  "checkRef": "full-test-check:sha256:5e91c1533314fef02204b5496f39e3b96d86d7d7b0182d65d7db491466f5cc4d",
+  "program": "/usr/local/bin/node",
+  "args": [
+    "--import",
+    "tsx",
+    "--test",
+    "tests/unit/domain/*.test.ts"
+  ],
+  "cwd": ".",
+  "startedAt": "2026-09-09T03:54:37.999Z",
+  "finishedAt": "2026-09-09T03:55:55.828Z",
+  "exitCode": 1,
+  "signal": null,
+  "processError": null,
+  "saveError": null,
+  "stdout": {
+    "artifact": ".flowkit/artifacts/apply-full-test-fixture/full-test/fe72829b-c749-4f2d-a499-a08ca46e7e41/checks/domain/stdout.txt",
+    "contentSha256": "a05a209e43178e5b51777aa7843b7f2c3870a390b280789f143ba6974dc7fa87",
+    "bytes": 60315
+  },
+  "stderr": {
+    "artifact": ".flowkit/artifacts/apply-full-test-fixture/full-test/fe72829b-c749-4f2d-a499-a08ca46e7e41/checks/domain/stderr.txt",
+    "contentSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  }
+}

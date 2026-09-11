@@ -1,10 +1,10 @@
+import { fixtureInstallation } from "./manager-installation-fixture.js";
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
 import {
   chmod,
   mkdir,
   mkdtemp,
-  readFile,
   rm,
   symlink,
   writeFile,
@@ -17,12 +17,10 @@ import {
   DELIVERY_OPERATIONS,
   canonicalDeliveryGuidancePath,
   formDeliveryOperationPackage,
-  hasDeliveryStartCommitAuthority,
   isDeliveryGuidanceRef,
   isDeliveryGuidanceRefForOperation,
   isDeliveryFinalAuthorityForDelivery,
   isDeliveryFinalOperationFacts,
-  isDeliveryOperationId,
   isDeliveryOperationPackage,
   isDeliveryPlanningReference,
   isDeliveryStartAuthorityForDelivery,
@@ -37,7 +35,6 @@ import { finalFacts } from "./delivery-operation-fixture.js";
 import { withUnreadableGuidanceFixture } from "./unreadable-guidance-fixture.js";
 
 const deliveryId = "20260902-04-delivery-continuity-stable-core-closure";
-const acceptedBaseCommit = "a".repeat(40);
 const planningReference = {
   artifact: "flowkit-next-d04-stable-core-closure-final-reference.md",
   contentSha256: "b".repeat(64),
@@ -56,7 +53,14 @@ function authority(
 }
 
 function startFacts(): DeliveryStartOperationFacts {
-  return { acceptedBaseCommit, planningReference };
+  return {
+    projectId: "flowkit-next",
+    planningReference,
+    coordinationPrestate: {
+      artifact: `openspec/delivery-groups/${deliveryId}.yaml`,
+      contentRef: null,
+    },
+  };
 }
 
 function finalAuthority(
@@ -96,43 +100,6 @@ async function writeGuidance(
   return entry;
 }
 
-test("DeliveryOperationId is a closed exact five-value catalog with deterministic Guidance mapping", () => {
-  assert.deepEqual(DELIVERY_OPERATIONS, [
-    "delivery-start",
-    "delivery-full-test",
-    "delivery-architecture-finalization",
-    "delivery-final",
-    "delivery-repository-integration",
-  ]);
-
-  const expected = new Map([
-    ["delivery-start", "skills/delivery/start/SKILL.md"],
-    ["delivery-full-test", "skills/delivery/full-test/SKILL.md"],
-    [
-      "delivery-architecture-finalization",
-      "skills/delivery/architecture-finalization/SKILL.md",
-    ],
-    ["delivery-final", "skills/delivery/final/SKILL.md"],
-    [
-      "delivery-repository-integration",
-      "skills/delivery/repository-integration/SKILL.md",
-    ],
-  ]);
-
-  for (const operationId of DELIVERY_OPERATIONS) {
-    assert.equal(isDeliveryOperationId(operationId), true);
-    assert.equal(
-      canonicalDeliveryGuidancePath(operationId),
-      expected.get(operationId),
-    );
-  }
-
-  assert.equal(isDeliveryOperationId("start"), false);
-  assert.equal(isDeliveryOperationId("Delivery-Start"), false);
-  assert.equal(canonicalDeliveryGuidancePath("delivery_start"), null);
-  assert.equal(canonicalDeliveryGuidancePath("../delivery-start"), null);
-});
-
 test("DeliveryGuidanceRef is closed to canonical Delivery paths and lowercase SHA-256", () => {
   const valid = guidanceRef();
   assert.equal(isDeliveryGuidanceRef(valid), true);
@@ -167,18 +134,30 @@ test("resolver binds exact canonical bytes and byte drift changes identity", asy
       "delivery-start",
       "# start\nfirst\n",
     );
-    const first = await resolveDeliveryGuidanceRef(root, "delivery-start");
+    const first = await resolveDeliveryGuidanceRef(
+      fixtureInstallation(root),
+      "delivery-start",
+    );
     assert.notEqual(first, null);
     assert.equal(first!.path, "skills/delivery/start/SKILL.md");
 
-    const bytes = await readExactDeliveryGuidance(root, first);
+    const bytes = await readExactDeliveryGuidance(
+      fixtureInstallation(root),
+      first,
+    );
     assert.equal(bytes?.toString("utf8"), "# start\nfirst\n");
 
     await writeFile(entry, "# start\nsecond\n", "utf8");
-    const second = await resolveDeliveryGuidanceRef(root, "delivery-start");
+    const second = await resolveDeliveryGuidanceRef(
+      fixtureInstallation(root),
+      "delivery-start",
+    );
     assert.notEqual(second, null);
     assert.notEqual(first!.contentSha256, second!.contentSha256);
-    assert.equal(await readExactDeliveryGuidance(root, first), null);
+    assert.equal(
+      await readExactDeliveryGuidance(fixtureInstallation(root), first),
+      null,
+    );
   } finally {
     await rm(root, { recursive: true, force: true });
   }
@@ -197,7 +176,10 @@ test("missing product Guidance never falls back to .agents", async () => {
     await mkdir(path.dirname(bootstrap), { recursive: true });
     await writeFile(bootstrap, "# bootstrap only\n", "utf8");
     assert.equal(
-      await resolveDeliveryGuidanceRef(root, "delivery-start"),
+      await resolveDeliveryGuidanceRef(
+        fixtureInstallation(root),
+        "delivery-start",
+      ),
       null,
     );
   } finally {
@@ -212,7 +194,10 @@ test("non-regular, symlink, and parent-path redirected Guidance fail closed", as
     const entry = path.join(root, "skills", "delivery", "start", "SKILL.md");
     await mkdir(entry, { recursive: true });
     assert.equal(
-      await resolveDeliveryGuidanceRef(root, "delivery-start"),
+      await resolveDeliveryGuidanceRef(
+        fixtureInstallation(root),
+        "delivery-start",
+      ),
       null,
     );
 
@@ -231,7 +216,10 @@ test("non-regular, symlink, and parent-path redirected Guidance fail closed", as
       throw error;
     }
     assert.equal(
-      await resolveDeliveryGuidanceRef(root, "delivery-start"),
+      await resolveDeliveryGuidanceRef(
+        fixtureInstallation(root),
+        "delivery-start",
+      ),
       null,
     );
 
@@ -249,7 +237,10 @@ test("non-regular, symlink, and parent-path redirected Guidance fail closed", as
       "dir",
     );
     assert.equal(
-      await resolveDeliveryGuidanceRef(root, "delivery-start"),
+      await resolveDeliveryGuidanceRef(
+        fixtureInstallation(root),
+        "delivery-start",
+      ),
       null,
     );
   } finally {
@@ -297,7 +288,10 @@ test("unreadable canonical Delivery Guidance fails closed when permissions are e
       },
       assertUnreadable: async () => {
         assert.equal(
-          await resolveDeliveryGuidanceRef(root, "delivery-start"),
+          await resolveDeliveryGuidanceRef(
+            fixtureInstallation(root),
+            "delivery-start",
+          ),
           null,
         );
       },
@@ -347,8 +341,10 @@ test("Delivery Start authority recognition is exact to create-delivery, Delivery
     isDeliveryStartAuthorityForDelivery(startOnly, deliveryId),
     true,
   );
-  assert.equal(hasDeliveryStartCommitAuthority(startOnly, deliveryId), false);
-  assert.equal(hasDeliveryStartCommitAuthority(withCommit, deliveryId), true);
+  assert.equal(
+    isDeliveryStartAuthorityForDelivery(withCommit, deliveryId),
+    true,
+  );
   assert.equal(
     isDeliveryStartAuthorityForDelivery(
       { ...startOnly, deliveryId: "other-delivery" },
@@ -436,11 +432,12 @@ test("DeliveryOperationPackage forms only the concrete Start variant and rejects
 });
 
 test("Delivery Final package is closed to exact facts, Guidance, and singleton authority", () => {
+  const inputFacts = finalFacts();
   const valid = formDeliveryOperationPackage(
     deliveryId,
     "delivery-final",
     finalAuthority(),
-    finalFacts(),
+    inputFacts,
     guidanceRef("delivery-final"),
   );
   assert.notEqual(valid, null);
@@ -451,7 +448,37 @@ test("Delivery Final package is closed to exact facts, Guidance, and singleton a
     isDeliveryFinalAuthorityForDelivery(valid?.ownerAuthority, deliveryId),
     true,
   );
-  assert.notEqual(valid?.operationFacts, finalFacts());
+  assert.notEqual(valid?.operationFacts, inputFacts);
+  if (valid?.operationId !== "delivery-final")
+    throw new Error("invalid fixture");
+  assert.notEqual(
+    valid.operationFacts.changeCompletions,
+    inputFacts.changeCompletions,
+  );
+  assert.notEqual(
+    valid.operationFacts.changeCompletions[0].archiveResultRef,
+    inputFacts.changeCompletions[0].archiveResultRef,
+  );
+  for (const key of Object.keys(inputFacts)) {
+    const missing = Object.fromEntries(
+      Object.entries(inputFacts).filter(([name]) => name !== key),
+    );
+    assert.equal(isDeliveryFinalOperationFacts(missing), false);
+  }
+  for (const key of Object.keys(inputFacts.changeCompletions[0])) {
+    const entry = Object.fromEntries(
+      Object.entries(inputFacts.changeCompletions[0]).filter(
+        ([name]) => name !== key,
+      ),
+    );
+    assert.equal(
+      isDeliveryFinalOperationFacts({
+        ...inputFacts,
+        changeCompletions: [entry, inputFacts.changeCompletions[1]],
+      }),
+      false,
+    );
+  }
 
   const invalidFacts = [
     { ...finalFacts(), extra: true },
@@ -545,25 +572,7 @@ test("Delivery Final package is closed to exact facts, Guidance, and singleton a
   );
 });
 
-test("canonical Delivery Final Guidance is generic, content-bound, and operation-bounded", async () => {
-  const body = await readFile("skills/delivery/final/SKILL.md", "utf8");
-  assert.equal(body.includes(deliveryId), false);
-  assert.equal(body.includes("complete trusted Full Test"), true);
-  assert.equal(body.includes("all six fixed Architecture output bytes"), true);
-  assert.equal(
-    body.includes("only the fixed canonical Delivery coordination"),
-    true,
-  );
-  assert.equal(body.includes("STOP"), true);
-  assert.equal(body.includes("Git authority"), true);
-  assert.equal(body.includes("discover, rank, route, or choose"), true);
-  assert.notEqual(
-    await resolveDeliveryGuidanceRef(process.cwd(), "delivery-final"),
-    null,
-  );
-});
-
-test("repository integration package is the fifth exact variant and requires singleton Owner authority", () => {
+test("repository integration package is the fourth exact variant and requires singleton Owner authority", () => {
   const repoAuthority: OwnerAuthorityFact = {
     ref: `owner:${"9".repeat(64)}`,
     decision: "authorize-repository-integration",
@@ -573,9 +582,13 @@ test("repository integration package is the fifth exact variant and requires sin
   };
   const facts = {
     deliveryFinalizationRef: `delivery-finalization:sha256:${"1".repeat(64)}`,
-    finalizedCandidateRef: `candidate:sha256:${"2".repeat(64)}`,
     preIntegrationHead: "3".repeat(40),
-    checkpointOperation: { kind: "create-new" },
+    checkpointOperation: {
+      kind: "create-new",
+      paths: ["product.txt"],
+      commitMessage: "checkpoint",
+      commitShape: null,
+    },
     deliveryBranch: "delivery/d04",
     targetMainRef: "refs/heads/main",
     targetMainPreIntegrationCommit: "4".repeat(40),

@@ -1,0 +1,88 @@
+TAP version 13
+# Subtest: context selects unique active and distinguishes idle/planned/cancelled
+ok 1 - context selects unique active and distinguishes idle/planned/cancelled
+  ---
+  duration_ms: 864.4362
+  type: 'test'
+  ...
+# Subtest: context reports candidates and explicit selection never fills missing facts
+ok 2 - context reports candidates and explicit selection never fills missing facts
+  ---
+  duration_ms: 515.7038
+  type: 'test'
+  ...
+# Subtest: context rejects root mismatch, orphan, activation/dependency and partial history
+ok 3 - context rejects root mismatch, orphan, activation/dependency and partial history
+  ---
+  duration_ms: 579.9095
+  type: 'test'
+  ...
+# Subtest: closed requests resolve current and reject legacy selectors and caller authority overrides
+ok 4 - closed requests resolve current and reject legacy selectors and caller authority overrides
+  ---
+  duration_ms: 1.7297
+  type: 'test'
+  ...
+# Subtest: next empty target reaches Explore; unrelated high Run cannot be hidden by caller null
+ok 5 - next empty target reaches Explore; unrelated high Run cannot be hidden by caller null
+  ---
+  duration_ms: 322.3456
+  type: 'test'
+  ...
+# Subtest: status and next read exact terminal without Run selectors or unrelated proof inspection
+ok 6 - status and next read exact terminal without Run selectors or unrelated proof inspection
+  ---
+  duration_ms: 635.2339
+  type: 'test'
+  ...
+# Subtest: planned next stays formal blocked; doctor retains bounded tool diagnostics
+ok 7 - planned next stays formal blocked; doctor retains bounded tool diagnostics
+  ---
+  duration_ms: 317.8842
+  type: 'test'
+  ...
+# Subtest: checkpoint authorization is exact, pure, and never inferred
+ok 8 - checkpoint authorization is exact, pure, and never inferred
+  ---
+  duration_ms: 0.3997
+  type: 'test'
+  ...
+# Subtest: installation metadata belongs to the loaded package, not cwd
+ok 9 - installation metadata belongs to the loaded package, not cwd
+  ---
+  duration_ms: 7.5214
+  type: 'test'
+  ...
+# Subtest: trusted installations relocate without depending on target metadata
+ok 10 - trusted installations relocate without depending on target metadata
+  ---
+  duration_ms: 9.9309
+  type: 'test'
+  ...
+# Subtest: onboarding is an exact distribution asset reachable from README
+ok 11 - onboarding is an exact distribution asset reachable from README
+  ---
+  duration_ms: 4.2841
+  type: 'test'
+  ...
+# Subtest: short entry is extractable without carrying state or Action machinery
+ok 12 - short entry is extractable without carrying state or Action machinery
+  ---
+  duration_ms: 0.3018
+  type: 'test'
+  ...
+# Subtest: installation examples use package-owned bin and disposable query input
+ok 13 - installation examples use package-owned bin and disposable query input
+  ---
+  duration_ms: 0.1406
+  type: 'test'
+  ...
+1..13
+# tests 13
+# suites 0
+# pass 13
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2270.7221

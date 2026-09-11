@@ -1,0 +1,56 @@
+{
+  "kind": "external-orchestrator-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "author",
+  "action": "apply",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "correct-project-onboarding-and-agent-entry",
+  "projectOrdinal": 39,
+  "runId": "20260911-067-apply",
+  "previousRunId": "20260911-066-review-propose",
+  "startedAt": "2026-09-11T06:05:39.641Z",
+  "ownerInstruction": "根据最新run，apply",
+  "acceptedReview": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/007-correct-project-onboarding-and-agent-entry/20260911-066-review-propose/result.json",
+    "bytes": 8557,
+    "sha256": "0a16898a20573288a848abdadd7664d79aa8592c22523e108b031a12fc162a24"
+  },
+  "approvedArtifacts": [
+    {
+      "path": "openspec/changes/correct-project-onboarding-and-agent-entry/proposal.md",
+      "bytes": 2252,
+      "sha256": "28eff087978850ac081341823f0e77e3664c4ea0e76fc45d25043f543067ffc5"
+    },
+    {
+      "path": "openspec/changes/correct-project-onboarding-and-agent-entry/design.md",
+      "bytes": 9929,
+      "sha256": "0b1177ae6ef4747ae4aaad3f9c0b2b0c8cb361834f9f7392aa63855566c3a86e"
+    },
+    {
+      "path": "openspec/changes/correct-project-onboarding-and-agent-entry/tasks.md",
+      "bytes": 3145,
+      "sha256": "e9673a8d0a15ab20c8bcf2a19c8aa928b6e0c15a46b512f92d24d137fcda4b7d"
+    },
+    {
+      "path": "openspec/changes/correct-project-onboarding-and-agent-entry/specs/foundation-cli-surface/spec.md",
+      "bytes": 6620,
+      "sha256": "3c671ceffa50e5cfbde6966dd0c79917c3661b1ded203327045f78535567f494"
+    }
+  ],
+  "ownerDecisionsRelevant": [
+    {
+      "sourceRef": "owner-input:2026-09-11:bounded-correct-change-and-root-flowkit-documents",
+      "decision": "将接入补齐及三份根 flowkit*.md 清理纳入同一 Change，不重开前六个、不重构内核。"
+    },
+    {
+      "sourceRef": "owner-input:2026-09-11:real-cross-session-not-over-simulated",
+      "decision": "真实新会话不能以重启 CLI/合成 fixture 替代；读取验收不必额外执行 Action、制造 finding 或演完整 Delivery；未执行如实记录。"
+    },
+    {
+      "sourceRef": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260911-062-archive/result.json#ownerDecisionsRelevant",
+      "decision": "D05 独立 bootstrap；必要材料保存在 target artifacts，临时 fixture 放 .tmp；不改历史。"
+    }
+  ],
+  "proofRoot": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-067-apply"
+}

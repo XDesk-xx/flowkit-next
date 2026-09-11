@@ -1,0 +1,364 @@
+TAP version 13
+# Subtest: Delivery Final prepares complete prerequisites and materializes one bounded closure
+ok 1 - Delivery Final prepares complete prerequisites and materializes one bounded closure
+  ---
+  duration_ms: 6558.6406
+  type: 'test'
+  ...
+# Subtest: Delivery Final writer preserves all non-target manifest bytes and ordering
+ok 2 - Delivery Final writer preserves all non-target manifest bytes and ordering
+  ---
+  duration_ms: 4056.2594
+  type: 'test'
+  ...
+# Subtest: Delivery Final coordination reader rejects missing, mismatched, duplicate, and incomplete manifests
+ok 3 - Delivery Final coordination reader rejects missing, mismatched, duplicate, and incomplete manifests
+  ---
+  duration_ms: 13.5824
+  type: 'test'
+  ...
+# Subtest: Delivery Final coordination writer never returns success on staging, replace, or readback failure
+ok 4 - Delivery Final coordination writer never returns success on staging, replace, or readback failure
+  ---
+  duration_ms: 3730.6471
+  type: 'test'
+  ...
+# Subtest: Delivery Final preparation rejects partial facts, active OpenSpec, output drift, and candidate drift
+ok 5 - Delivery Final preparation rejects partial facts, active OpenSpec, output drift, and candidate drift
+  ---
+  duration_ms: 5267.3254
+  type: 'test'
+  ...
+# Subtest: Delivery Final rejects failed archive anchors and unrelated external outcome bytes
+ok 6 - Delivery Final rejects failed archive anchors and unrelated external outcome bytes
+  ---
+  duration_ms: 3574.2004
+  type: 'test'
+  ...
+# Subtest: Delivery Final callback is defensive and correction or invalid results do not close coordination
+ok 7 - Delivery Final callback is defensive and correction or invalid results do not close coordination
+  ---
+  duration_ms: 4356.0824
+  type: 'test'
+  ...
+# Subtest: DeliveryOperationId is a closed exact five-value catalog with deterministic Guidance mapping
+ok 8 - DeliveryOperationId is a closed exact five-value catalog with deterministic Guidance mapping
+  ---
+  duration_ms: 2.665
+  type: 'test'
+  ...
+# Subtest: DeliveryGuidanceRef is closed to canonical Delivery paths and lowercase SHA-256
+ok 9 - DeliveryGuidanceRef is closed to canonical Delivery paths and lowercase SHA-256
+  ---
+  duration_ms: 0.6637
+  type: 'test'
+  ...
+# Subtest: resolver binds exact canonical bytes and byte drift changes identity
+ok 10 - resolver binds exact canonical bytes and byte drift changes identity
+  ---
+  duration_ms: 29.1924
+  type: 'test'
+  ...
+# Subtest: missing product Guidance never falls back to .agents
+ok 11 - missing product Guidance never falls back to .agents
+  ---
+  duration_ms: 9.7807
+  type: 'test'
+  ...
+# Subtest: non-regular, symlink, and parent-path redirected Guidance fail closed
+ok 12 - non-regular, symlink, and parent-path redirected Guidance fail closed
+  ---
+  duration_ms: 30.2689
+  type: 'test'
+  ...
+# Subtest: unreadable canonical Delivery Guidance fails closed when permissions are enforceable
+ok 13 - unreadable canonical Delivery Guidance fails closed when permissions are enforceable
+  ---
+  duration_ms: 150.0838
+  type: 'test'
+  ...
+# Subtest: Delivery planning reference and Start facts are exact closed values
+ok 14 - Delivery planning reference and Start facts are exact closed values
+  ---
+  duration_ms: 0.596
+  type: 'test'
+  ...
+# Subtest: Delivery Start authority recognition is exact to create-delivery, Delivery, and bounded scopes
+ok 15 - Delivery Start authority recognition is exact to create-delivery, Delivery, and bounded scopes
+  ---
+  duration_ms: 0.4934
+  type: 'test'
+  ...
+# Subtest: DeliveryOperationPackage forms only the concrete Start variant and rejects mismatches
+ok 16 - DeliveryOperationPackage forms only the concrete Start variant and rejects mismatches
+  ---
+  duration_ms: 1.0395
+  type: 'test'
+  ...
+# Subtest: Delivery Final package is closed to exact facts, Guidance, and singleton authority
+ok 17 - Delivery Final package is closed to exact facts, Guidance, and singleton authority
+  ---
+  duration_ms: 3.6927
+  type: 'test'
+  ...
+# Subtest: canonical Delivery Final Guidance is generic, content-bound, and operation-bounded
+ok 18 - canonical Delivery Final Guidance is generic, content-bound, and operation-bounded
+  ---
+  duration_ms: 3.7885
+  type: 'test'
+  ...
+# Subtest: repository integration package is the fifth exact variant and requires singleton Owner authority
+ok 19 - repository integration package is the fifth exact variant and requires singleton Owner authority
+  ---
+  duration_ms: 1.2029
+  type: 'test'
+  ...
+# Subtest: trusted preparation binds exact finalized state and pre-integration Git facts
+ok 20 - trusted preparation binds exact finalized state and pre-integration Git facts
+  ---
+  duration_ms: 1528.7041
+  type: 'test'
+  ...
+# Subtest: trusted Owner source rejects caller checkpoint-operation substitution
+ok 21 - trusted Owner source rejects caller checkpoint-operation substitution
+  ---
+  duration_ms: 1244.7782
+  type: 'test'
+  ...
+# Subtest: Integration accepts semantically identical reordered Final evidence
+ok 22 - Integration accepts semantically identical reordered Final evidence
+  ---
+  duration_ms: 1351.3644
+  type: 'test'
+  ...
+# Subtest: coordination byte drift invalidates trusted preparation
+ok 23 - coordination byte drift invalidates trusted preparation
+  ---
+  duration_ms: 902.6523
+  type: 'test'
+  ...
+# Subtest: repository integration proves one final commit and derives accepted main as next base
+ok 24 - repository integration proves one final commit and derives accepted main as next base
+  ---
+  duration_ms: 4215.5774
+  type: 'test'
+  ...
+# Subtest: repository integration reuses an explicitly bound existing checkpoint without creating a second commit
+ok 25 - repository integration reuses an explicitly bound existing checkpoint without creating a second commit
+  ---
+  duration_ms: 3649.7922
+  type: 'test'
+  ...
+# Subtest: target-main drift during final commit is rejected before repository acceptance
+ok 26 - target-main drift during final commit is rejected before repository acceptance
+  ---
+  duration_ms: 2683.7902
+  type: 'test'
+  ...
+# Subtest: accepted main ancestry without exact tree equality is rejected
+ok 27 - accepted main ancestry without exact tree equality is rejected
+  ---
+  duration_ms: 3373.6477
+  type: 'test'
+  ...
+# Subtest: Final rejects a source-bound Run that canonical admission rejects
+ok 28 - Final rejects a source-bound Run that canonical admission rejects
+  ---
+  duration_ms: 4326.837
+  type: 'test'
+  ...
+# Subtest: Final follows an admitted persisted required link across Change roots
+ok 29 - Final follows an admitted persisted required link across Change roots
+  ---
+  duration_ms: 3978.0146
+  type: 'test'
+  ...
+# Subtest: Start preparation validates trusted exact repository/planning facts before package formation
+ok 30 - Start preparation validates trusted exact repository/planning facts before package formation
+  ---
+  duration_ms: 702.8603
+  type: 'test'
+  ...
+# Subtest: stale head, dirty tree, or wrong planning reference reject before Agent execution
+ok 31 - stale head, dirty tree, or wrong planning reference reject before Agent execution
+  ---
+  duration_ms: 593.7971
+  type: 'test'
+  ...
+# Subtest: missing or mismatched Start authority rejects package formation and calls execution zero times
+ok 32 - missing or mismatched Start authority rejects package formation and calls execution zero times
+  ---
+  duration_ms: 728.6498
+  type: 'test'
+  ...
+# Subtest: execution callback receives the exact package and matching canonical Guidance bytes
+ok 33 - execution callback receives the exact package and matching canonical Guidance bytes
+  ---
+  duration_ms: 1050.3365
+  type: 'test'
+  ...
+# Subtest: successful validation without commit authority stops before Git mutation
+ok 34 - successful validation without commit authority stops before Git mutation
+  ---
+  duration_ms: 1098.7979
+  type: 'test'
+  ...
+# Subtest: missing validation source and callback authority escalation fail closed
+ok 35 - missing validation source and callback authority escalation fail closed
+  ---
+  duration_ms: 2593.4852
+  type: 'test'
+  ...
+# Subtest: bounded commit authority permits exactly one fixed-point commit callback then stops terminal
+ok 36 - bounded commit authority permits exactly one fixed-point commit callback then stops terminal
+  ---
+  duration_ms: 2220.9437
+  type: 'test'
+  ...
+# Subtest: Start rejects a two-parent checkpoint even when the second parent is otherwise valid
+ok 37 - Start rejects a two-parent checkpoint even when the second parent is otherwise valid
+  ---
+  duration_ms: 1382.8003
+  type: 'test'
+  ...
+# Subtest: commit authority without a commit callback fails closed after validation
+ok 38 - commit authority without a commit callback fails closed after validation
+  ---
+  duration_ms: 892.4808
+  type: 'test'
+  ...
+# Subtest: invalid surface result or invalid fixed-point SHA fails closed
+ok 39 - invalid surface result or invalid fixed-point SHA fails closed
+  ---
+  duration_ms: 863.8077
+  type: 'test'
+  ...
+# Subtest: no candidate product Guidance means package formation fails even when .agents bootstrap exists
+ok 40 - no candidate product Guidance means package formation fails even when .agents bootstrap exists
+  ---
+  duration_ms: 7.0389
+  type: 'test'
+  ...
+# Subtest: command and request parsing stay closed and distinguish explicit null
+ok 41 - command and request parsing stay closed and distinguish explicit null
+  ---
+  duration_ms: 2.7876
+  type: 'test'
+  ...
+# Subtest: next explicit null reaches canonical explore without reading Run history
+ok 42 - next explicit null reaches canonical explore without reading Run history
+  ---
+  duration_ms: 55.5119
+  type: 'test'
+  ...
+# Subtest: next exact Run ignores disconnected higher sequence and uses selected terminal facts
+ok 43 - next exact Run ignores disconnected higher sequence and uses selected terminal facts
+  ---
+  duration_ms: 38.1029
+  type: 'test'
+  ...
+# Subtest: malformed or mismatched exact Run fails closed without alternate selection
+ok 44 - malformed or mismatched exact Run fails closed without alternate selection
+  ---
+  duration_ms: 30.533
+  type: 'test'
+  ...
+# Subtest: checkpoint authorization is exact, pure, and never inferred
+ok 45 - checkpoint authorization is exact, pure, and never inferred
+  ---
+  duration_ms: 0.6746
+  type: 'test'
+  ...
+# Subtest: status reports exact selected Run and approved OpenSpec facts only
+ok 46 - status reports exact selected Run and approved OpenSpec facts only
+  ---
+  duration_ms: 224.7443
+  type: 'test'
+  ...
+# Subtest: doctor reports bounded diagnostics and never invokes Archify
+ok 47 - doctor reports bounded diagnostics and never invokes Archify
+  ---
+  duration_ms: 255.6769
+  type: 'test'
+  ...
+# Subtest: resolves exact OpenSpec identity with the closed resolved shape
+ok 48 - resolves exact OpenSpec identity with the closed resolved shape
+  ---
+  duration_ms: 24.4819
+  type: 'test'
+  ...
+# Subtest: rejects unsupported managed tool ids before any fallback
+ok 49 - rejects unsupported managed tool ids before any fallback
+  ---
+  duration_ms: 4.4589
+  type: 'test'
+  ...
+# Subtest: requires explicit FLOWKIT_HOME
+ok 50 - requires explicit FLOWKIT_HOME
+  ---
+  duration_ms: 3.1231
+  type: 'test'
+  ...
+# Subtest: rejects invalid or expanded managed-tool lock authority
+ok 51 - rejects invalid or expanded managed-tool lock authority
+  ---
+  duration_ms: 4.5573
+  type: 'test'
+  ...
+# Subtest: rejects traversing runtime-root material
+ok 52 - rejects traversing runtime-root material
+  ---
+  duration_ms: 5.5636
+  type: 'test'
+  ...
+# Subtest: ignores conflicting PATH executable and returns only managed runtime facts
+ok 53 - ignores conflicting PATH executable and returns only managed runtime facts
+  ---
+  duration_ms: 12.3349
+  type: 'test'
+  ...
+# Subtest: ignores absent or malformed peer lock entries during on-demand resolution
+ok 54 - ignores absent or malformed peer lock entries during on-demand resolution
+  ---
+  duration_ms: 40.4139
+  type: 'test'
+  ...
+# Subtest: fails closed when requested managed runtime is absent
+ok 55 - fails closed when requested managed runtime is absent
+  ---
+  duration_ms: 3.3078
+  type: 'test'
+  ...
+# Subtest: rejects exact package name or version mismatch
+ok 56 - rejects exact package name or version mismatch
+  ---
+  duration_ms: 19.5392
+  type: 'test'
+  ...
+# Subtest: rejects missing and escaping entrypoints
+ok 57 - rejects missing and escaping entrypoints
+  ---
+  duration_ms: 28.5568
+  type: 'test'
+  ...
+# Subtest: resolves requested tool on demand without requiring its peer
+ok 58 - resolves requested tool on demand without requiring its peer
+  ---
+  duration_ms: 26.1578
+  type: 'test'
+  ...
+# Subtest: resolution never invokes the managed entrypoint or requires archive provenance
+ok 59 - resolution never invokes the managed entrypoint or requires archive provenance
+  ---
+  duration_ms: 10.1975
+  type: 'test'
+  ...
+1..59
+# tests 59
+# suites 0
+# pass 59
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 27984.0478

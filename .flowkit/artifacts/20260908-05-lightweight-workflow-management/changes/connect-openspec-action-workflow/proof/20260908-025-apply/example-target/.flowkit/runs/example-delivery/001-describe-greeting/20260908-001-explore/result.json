@@ -1,0 +1,92 @@
+{
+  "runId": "20260908-001-explore",
+  "actionIdentity": {
+    "deliveryId": "example-delivery",
+    "changeId": "describe-greeting",
+    "actionId": "explore"
+  },
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-explore",
+  "facts": {
+    "proofRefs": [
+      {
+        "deliveryId": "example-delivery",
+        "changeId": "describe-greeting",
+        "runId": "20260908-001-explore",
+        "path": ".flowkit/artifacts/example-delivery/changes/describe-greeting/proof/20260908-001-explore/inspect.mjs",
+        "bytes": 1488,
+        "sha256": "48a162179b43b8dc4828873e10d2e99ae61f0167435061818c7cb8c1d89e1c3e",
+        "purpose": "actual bounded Explore observation"
+      },
+      {
+        "deliveryId": "example-delivery",
+        "changeId": "describe-greeting",
+        "runId": "20260908-001-explore",
+        "path": ".flowkit/artifacts/example-delivery/changes/describe-greeting/proof/20260908-001-explore/observation.json",
+        "bytes": 498,
+        "sha256": "91a1a625b10af162e0097519f899027311fc9f229e3e1359c31506228da72d83",
+        "purpose": "actual bounded Explore observation"
+      },
+      {
+        "deliveryId": "example-delivery",
+        "changeId": "describe-greeting",
+        "runId": "20260908-001-explore",
+        "path": ".flowkit/artifacts/example-delivery/changes/describe-greeting/proof/20260908-001-explore/stdout.txt",
+        "bytes": 388,
+        "sha256": "8c7a0465aed4e6d6e0c6ebab91d19cd6ea15b2c59709ba086abcd6f94ce3a75f",
+        "purpose": "actual bounded Explore observation"
+      },
+      {
+        "deliveryId": "example-delivery",
+        "changeId": "describe-greeting",
+        "runId": "20260908-001-explore",
+        "path": ".flowkit/artifacts/example-delivery/changes/describe-greeting/proof/20260908-001-explore/stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "purpose": "actual bounded Explore observation"
+      },
+      {
+        "deliveryId": "example-delivery",
+        "changeId": "describe-greeting",
+        "runId": "20260908-001-explore",
+        "path": ".flowkit/artifacts/example-delivery/changes/describe-greeting/proof/20260908-001-explore/conclusion.md",
+        "bytes": 228,
+        "sha256": "f0452256661ba636a9ca7ec5f227e9e3fd92e125f391f9d33a86fb8807a42394",
+        "purpose": "actual bounded Explore observation"
+      }
+    ],
+    "handoff": {
+      "summary": "已实际核实问候函数输入行为；只做 Explore",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-09-08:apply-approved-024:task-5.1-bounded-example",
+          "summary": "本轮允许一个有界真实 Author 示例，不执行后续 Review"
+        }
+      ],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20260908-001-explore",
+          "path": ".flowkit/artifacts/example-delivery/changes/describe-greeting/proof/20260908-001-explore/inspect.mjs"
+        },
+        {
+          "sourceRunId": "20260908-001-explore",
+          "path": ".flowkit/artifacts/example-delivery/changes/describe-greeting/proof/20260908-001-explore/observation.json"
+        },
+        {
+          "sourceRunId": "20260908-001-explore",
+          "path": ".flowkit/artifacts/example-delivery/changes/describe-greeting/proof/20260908-001-explore/stdout.txt"
+        },
+        {
+          "sourceRunId": "20260908-001-explore",
+          "path": ".flowkit/artifacts/example-delivery/changes/describe-greeting/proof/20260908-001-explore/stderr.txt"
+        },
+        {
+          "sourceRunId": "20260908-001-explore",
+          "path": ".flowkit/artifacts/example-delivery/changes/describe-greeting/proof/20260908-001-explore/conclusion.md"
+        }
+      ]
+    }
+  }
+}

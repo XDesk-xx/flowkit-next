@@ -1,0 +1,13 @@
+import fs from 'node:fs';
+import {createHash} from 'node:crypto';
+import {parse} from 'yaml';
+import assert from 'node:assert/strict';
+const d='20260908-05-lightweight-workflow-management',id='a8c1d48a-fb77-4f1d-b535-e828ca86c3f3';
+const p=`.flowkit/artifacts/${d}/full-test/${id}`;
+const m=parse(fs.readFileSync(`openspec/delivery-groups/${d}.yaml`,'utf8'));assert.equal(m.delivery.state,'active');assert.equal(m.delivery.fullTestAttempt,'e7da9bb7-ec51-4d40-a6f5-2ae13cd5436a');assert.equal(m.delivery.fullTestStatus,'failed');assert(m.changes.every(c=>c.state==='completed'));
+fs.mkdirSync(p,{recursive:true});
+const ref=f=>{const b=fs.readFileSync(f);return {path:f,bytes:b.length,sha256:createHash('sha256').update(b).digest('hex')};};
+const start={kind:'independent-bootstrap-full-test-start',canonicalFlowkitRuntimeOperation:false,projectId:'flowkit-next',deliveryId:d,attemptId:id,startedAt:new Date().toISOString(),ownerAuthority:{sourceRef:'owner-input:2026-09-11:authorize-d05-full-test',decision:'authorize-formal-full-test',deliveryId:d,scope:['delivery-full-test']},config:ref('config/verification/full-test.json'),platforms:['linux-x64-glibc-primary','windows-native-supplement'],dockerImage:'sha256:127ee201acf84b60dc929a6d5823f24969d96893b0d790fb0ed6dd800ee57c62',extraConsumedInputFiles:['README.md','docs/onboarding.md'],note:'Independent bootstrap adapter executes all configured checks. No candidate lifecycle/Guidance invocation; no Standard Action Run. Documentation resources consumed by current tests are additionally bound without changing project configuration.'};
+fs.writeFileSync(p+'/start.json',JSON.stringify(start,null,2)+'\n',{flag:'wx'});
+for(const f of ['d05-full-test-start.mjs','d05-full-test-runner.mjs','d05-full-test-linux.mjs'])fs.copyFileSync('.tmp/'+f,p+'/'+f,fs.constants.COPYFILE_EXCL);
+assert.deepEqual(JSON.parse(fs.readFileSync(p+'/start.json')),start);console.log(JSON.stringify({start:ref(p+'/start.json')}));

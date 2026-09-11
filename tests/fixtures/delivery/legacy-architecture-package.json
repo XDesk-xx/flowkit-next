@@ -1,0 +1,26 @@
+{
+  "deliveryId": "test-delivery-finalization",
+  "operationId": "delivery-architecture-finalization",
+  "ownerAuthority": null,
+  "operationFacts": {
+    "verifiedCandidateRef": "candidate:sha256:1111111111111111111111111111111111111111111111111111111111111111",
+    "fullTestExecutionRef": "full-test-execution:sha256:2222222222222222222222222222222222222222222222222222222222222222",
+    "currentArchitectureRef": {
+      "artifact": "architecture/test-delivery-finalization/json/current.architecture.json",
+      "contentSha256": "3333333333333333333333333333333333333333333333333333333333333333"
+    },
+    "plannedArchitectureRef": {
+      "artifact": "architecture/test-delivery-finalization/json/planned.architecture.json",
+      "contentSha256": "4444444444444444444444444444444444444444444444444444444444444444"
+    },
+    "systemViewPrestate": {
+      "workflowSha256": null,
+      "lifecycleSha256": null,
+      "dataFlowSha256": null
+    }
+  },
+  "guidanceRef": {
+    "path": "skills/delivery/architecture-finalization/SKILL.md",
+    "contentSha256": "5555555555555555555555555555555555555555555555555555555555555555"
+  }
+}

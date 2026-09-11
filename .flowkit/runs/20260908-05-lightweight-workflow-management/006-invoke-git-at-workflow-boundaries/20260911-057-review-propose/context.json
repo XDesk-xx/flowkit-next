@@ -1,0 +1,36 @@
+{
+  "kind": "external-orchestrator-review-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "reviewer",
+  "action": "review-propose",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "invoke-git-at-workflow-boundaries",
+  "projectOrdinal": 38,
+  "runId": "20260911-057-review-propose",
+  "previousRunId": "20260911-056-propose",
+  "reviewedRunId": "20260911-056-propose",
+  "startedAt": "2026-09-11T02:50:59.326Z",
+  "ownerInstruction": "根据最新run，review，review 完，简短解释当前方案",
+  "reviewerHow": ".agents/skills/review-propose/SKILL.md",
+  "reviewedResult": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260911-056-propose/result.json",
+    "bytes": 5509,
+    "sha256": "db31c8af4752988b3a464b72ecd0ab5f25e4631df63adc7624159b36d29467f8"
+  },
+  "mutationBaseline": {
+    "files": 4845,
+    "sha256": "bb421f55ee886031b3c95d481e44830d205f17566c4638913f116bff13a84618",
+    "method": "sha256(JSON.stringify(sorted unique git ls-files --cached --others --exclude-standard -z paths mapped to path, bytes, raw SHA256; absent/link explicit; exclude own Run/proof))",
+    "head": "a0edb690d7208a3b81855e30a31dbc175f060a93",
+    "at": "2026-09-11T02:50:59.326Z"
+  },
+  "proofRoot": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-057-review-propose",
+  "scope": "独立审查 056 Proposal 对 054/055 已接受边界的追溯、最小合同完整性、失败语义与 Apply readiness；只写自身 Run/proof。",
+  "ownerDecisionsRelevant": [
+    {
+      "sourceRef": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260909-054-explore/context.json#ownerDecisionsRelevant",
+      "decision": "按 Owner 明确操作/范围调用 Git，不统一 clean/形状门槛，不自动恢复；D05 independent-bootstrap，必要材料留 target artifacts。"
+    }
+  ]
+}

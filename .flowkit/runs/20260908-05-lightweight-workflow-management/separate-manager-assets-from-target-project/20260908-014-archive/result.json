@@ -1,0 +1,49 @@
+{
+  "kind": "external-orchestrator-archive-result",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "author",
+  "action": "archive",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "separate-manager-assets-from-target-project",
+  "runId": "20260908-014-archive",
+  "runNumber": 14,
+  "projectOrdinal": 34,
+  "previousRunId": "20260908-013-review-apply",
+  "status": "terminal",
+  "verdict": "PASS",
+  "verdictMeaning": "真实 Archive/spec sync/completion 已执行并读回；不产生 checkpoint Git 权限或 Delivery 完成。",
+  "summary": "5 个 canonical specs 同步完成（8 modified + 2 added），ordinal 34 的 Change 原字节归档，当前 Change completed；其余四个 Change 保持 planned。",
+  "archiveTarget": "openspec/changes/archive/2026-09-08-034-separate-manager-assets-from-target-project",
+  "reviewSource": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/separate-manager-assets-from-target-project/20260908-013-review-apply/result.json",
+    "bytes": 5914,
+    "sha256": "2ee9bae4f78abd9530d9bad71b9594e59db06ff8b3b7e3000cca05694ea4c6be"
+  },
+  "evidence": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-014-archive/summary.json",
+    "bytes": 32041,
+    "sha256": "87651c08ab5607ebaf6dda411b88d4819cf4fd09e6ac4c955121d248135b2817"
+  },
+  "runArtifacts": {
+    "action": {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/separate-manager-assets-from-target-project/20260908-014-archive/action.md",
+      "bytes": 651,
+      "sha256": "8a8f11c4741efa48b78cc5d416821a64c99382c5c0257d4dcfd85147b0806a06"
+    },
+    "context": {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/separate-manager-assets-from-target-project/20260908-014-archive/context.json",
+      "bytes": 1747,
+      "sha256": "7df7f8dafe7d9b02b2af86755a72fc3e4fef1aff3ffa57ec679751f464f2a62b"
+    }
+  },
+  "nextBoundary": "checkpoint",
+  "reviewerVerdict": null,
+  "archiveExecuted": true,
+  "specSyncExecuted": true,
+  "productionMutation": false,
+  "formalFullTestExecuted": false,
+  "gitMutationExecuted": false,
+  "completedAt": "2026-09-08T08:16:56.900Z",
+  "stop": true
+}

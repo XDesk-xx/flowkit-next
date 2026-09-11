@@ -1,0 +1,53 @@
+TAP version 13
+# Subtest: native win32 process: EOF, kill, write failure and unconsumed completion
+    # Subtest: preparation-eof
+    ok 1 - preparation-eof
+      ---
+      duration_ms: 633.2023
+      type: 'test'
+      ...
+    # Subtest: missing-ready-reason
+    ok 2 - missing-ready-reason
+      ---
+      duration_ms: 671.6395
+      type: 'test'
+      ...
+    # Subtest: execution-eof
+    ok 3 - execution-eof
+      ---
+      duration_ms: 639.0377
+      type: 'test'
+      ...
+    # Subtest: kill
+    ok 4 - kill
+      ---
+      duration_ms: 544.1825
+      type: 'test'
+      ...
+    # Subtest: write-failure
+    ok 5 - write-failure
+      ---
+      duration_ms: 570.1078
+      type: 'test'
+      ...
+    # Subtest: unconsumed-completion
+    ok 6 - unconsumed-completion
+      ---
+      duration_ms: 646.5247
+      type: 'test'
+      ...
+    1..6
+ok 1 - native win32 process: EOF, kill, write failure and unconsumed completion
+  ---
+  duration_ms: 3706.5584
+  type: 'test'
+  ...
+1..1
+# tests 7
+# suites 0
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4063.9395

@@ -1,0 +1,38 @@
+{
+  "program": "docker",
+  "args": [
+    "run",
+    "--rm",
+    "--network",
+    "none",
+    "--mount",
+    "type=bind,source=D:/Projects/flowkit-next,target=/source,readonly",
+    "--mount",
+    "type=bind,source=D:/Projects/flowkit-next/.flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-034-apply,target=/evidence",
+    "--mount",
+    "type=volume,source=flowkit-d05-012-runtime-03,target=/runtime,readonly",
+    "-e",
+    "FLOWKIT_HOME=/runtime",
+    "127ee201acf8",
+    "sh",
+    "/evidence/linux-run.sh"
+  ],
+  "cwd": "D:\\Projects\\flowkit-next",
+  "startedAt": "2026-09-09T03:51:34.062Z",
+  "finishedAt": "2026-09-09T03:52:05.717Z",
+  "exitCode": 1,
+  "signal": null,
+  "error": null,
+  "node": "v22.23.2",
+  "platform": "win32",
+  "stdout": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-034-apply/linux-02/stdout.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stderr": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-034-apply/linux-02/stderr.txt",
+    "bytes": 65536,
+    "sha256": "320380f1ed410fe87aa9727adc60a313aaa9712f975352e3a5ad14718d745349"
+  }
+}

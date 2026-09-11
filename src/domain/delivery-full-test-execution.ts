@@ -1,418 +1,298 @@
-import { createHash } from "node:crypto";
-
+import { deriveDeliveryFullTestExecutionRef } from "../internal/full-test-result.js";
+import { randomUUID } from "node:crypto";
 import {
-  deriveApplicableCheckCandidateRef,
-  isApplicableCheckFact,
-  isApplicableCheckPlanInput,
-  isApplicableCheckPriorFact,
-  isApplicableCheckReuseEligible,
-  resolveApplicableChecksInDeclaredOrder,
-  type ApplicableCheckDeclaration,
-  type ApplicableCheckFact,
-  type ApplicableCheckPriorFact,
-  type ResolvedApplicableCheck,
-} from "./applicable-check-execution.js";
+  loadManagerInstallation,
+  type ManagerInstallation,
+} from "../internal/manager-installation.js";
+import {
+  isPlainRecord,
+  hasExactlyFields,
+} from "../internal/applicable-check-identity.js";
+import {
+  readFullTestInput,
+  FullTestInputError,
+} from "../internal/full-test-input.js";
+import {
+  attemptRoot,
+  ensureFullTestDirectory,
+  saveFullTestJson,
+  readFullTestJson,
+  readFullTestCoordination,
+  publishFullTestAttempt,
+} from "../internal/full-test-storage.js";
+import {
+  executeFullTestCheck,
+  type FullTestCheckResult,
+} from "../internal/full-test-process.js";
+import { readCurrentDeliveryFullTest } from "../internal/full-test-current.js";
+import { isSemanticId, type DeliveryId } from "./identity.js";
 import type { OwnerAuthorityFact } from "./authority.js";
 import {
   formDeliveryOperationPackage,
-  isDeliveryFullTestOperationFacts,
-  isDeliveryOperationPackage,
   isFormalFullTestAuthorityForDelivery,
   readExactDeliveryGuidance,
   resolveDeliveryGuidanceRef,
-  type DeliveryOperationPackage,
   type DeliveryFullTestOperationPackage,
 } from "./delivery-operation-execution.js";
-import { isSemanticId, type DeliveryId } from "./identity.js";
-import { executeExactApplicableCheckProcess } from "../internal/applicable-check-process.js";
 
 export interface DeliveryFullTestPreparationInput {
   readonly deliveryId: DeliveryId;
   readonly ownerAuthority: OwnerAuthorityFact;
-  readonly checks: readonly ApplicableCheckDeclaration[];
 }
-
 export interface DeliveryFullTestExecutionRecord {
+  readonly projectId: string;
+  readonly deliveryId: string;
+  readonly attemptId: string;
   readonly executionRef: string;
-  readonly candidateRef: string;
-  readonly checks: readonly ApplicableCheckFact[];
+  readonly startedAt: string;
+  readonly finishedAt: string;
+  readonly configRef: string;
+  readonly inputRef: string;
+  readonly status: "passed" | "failed";
+  readonly failureReasons: readonly string[];
+  readonly checks: readonly FullTestCheckResult[];
 }
-
-export type DeliveryFullTestInvocationFailureReason =
-  | "package-formation-rejected"
-  | "guidance-drift-rejected"
-  | "prior-facts-rejected";
-
-export interface DeliveryFullTestInvocationFailure {
-  readonly status: "failed";
-  readonly reason: DeliveryFullTestInvocationFailureReason;
-  readonly record: null;
-}
-
-export interface DeliveryFullTestInvocationCandidateDrift {
-  readonly status: "stopped-candidate-drift";
-  readonly operationPackage: DeliveryOperationPackage;
-  readonly record: null;
-}
-
 export interface DeliveryFullTestInvocationTerminal {
   readonly status: "terminal";
-  readonly operationPackage: DeliveryOperationPackage;
+  readonly operationPackage: DeliveryFullTestOperationPackage;
   readonly verdict: "passed" | "failed";
   readonly record: DeliveryFullTestExecutionRecord;
 }
-
+export interface DeliveryFullTestInvocationFailure {
+  readonly status: "failed";
+  readonly reason: string;
+  readonly record: null;
+}
+export type DeliveryFullTestInvocationFailureReason = string;
 export type DeliveryFullTestInvocationOutcome =
-  | DeliveryFullTestInvocationFailure
-  | DeliveryFullTestInvocationCandidateDrift
-  | DeliveryFullTestInvocationTerminal;
-
-function isRecord(value: unknown): value is Record<string, unknown> {
-  if (typeof value !== "object" || value === null || Array.isArray(value)) {
-    return false;
-  }
-  const proto = Object.getPrototypeOf(value);
-  return proto === Object.prototype || proto === null;
-}
-
-function hasExactlyFields(
-  value: Record<string, unknown>,
-  fields: readonly string[],
-): boolean {
-  const keys = Object.keys(value);
-  return (
-    keys.length === fields.length &&
-    fields.every((field) => Object.prototype.hasOwnProperty.call(value, field))
-  );
-}
+  DeliveryFullTestInvocationFailure | DeliveryFullTestInvocationTerminal;
 
 function isPreparationInput(
   value: unknown,
 ): value is DeliveryFullTestPreparationInput {
-  if (
-    !isRecord(value) ||
-    !hasExactlyFields(value, ["deliveryId", "ownerAuthority", "checks"])
-  ) {
-    return false;
-  }
   return (
+    isPlainRecord(value) &&
+    hasExactlyFields(value, ["deliveryId", "ownerAuthority"]) &&
     isSemanticId(value.deliveryId) &&
-    isFormalFullTestAuthorityForDelivery(
-      value.ownerAuthority,
-      value.deliveryId,
-    ) &&
-    isApplicableCheckPlanInput({ checks: value.checks })
+    isFormalFullTestAuthorityForDelivery(value.ownerAuthority, value.deliveryId)
   );
 }
-
-function cloneCheck(check: ResolvedApplicableCheck): ResolvedApplicableCheck {
-  return {
-    checkId: check.checkId,
-    program: check.program,
-    args: [...check.args],
-    configRefs: [...check.configRefs],
-    toolRefs: [...check.toolRefs],
-    environmentRefs: [...check.environmentRefs],
-    checkRef: check.checkRef,
-  };
-}
-
-function packageHashMaterial(
-  operationPackage: DeliveryOperationPackage,
-): unknown {
-  if (
-    !isDeliveryOperationPackage(operationPackage) ||
-    operationPackage.operationId !== "delivery-full-test" ||
-    !isDeliveryFullTestOperationFacts(operationPackage.operationFacts)
-  ) {
-    return null;
-  }
-  return {
-    deliveryId: operationPackage.deliveryId,
-    operationId: operationPackage.operationId,
-    ownerAuthority: operationPackage.ownerAuthority,
-    operationFacts: {
-      candidateRef: operationPackage.operationFacts.candidateRef,
-      orderedChecks:
-        operationPackage.operationFacts.orderedChecks.map(cloneCheck),
-    },
-    guidanceRef: operationPackage.guidanceRef,
-  };
-}
-
-export function deriveDeliveryFullTestExecutionRef(
-  operationPackage: unknown,
-): string | null {
-  if (
-    !isRecord(operationPackage) ||
-    !hasExactlyFields(operationPackage, [
-      "deliveryId",
-      "operationId",
-      "ownerAuthority",
-      "operationFacts",
-      "guidanceRef",
-    ])
-  ) {
-    return null;
-  }
-  const material = packageHashMaterial(
-    operationPackage as unknown as DeliveryOperationPackage,
-  );
-  if (material === null) return null;
-  const digest = createHash("sha256")
-    .update("flowkit-delivery-full-test-execution\0")
-    .update(JSON.stringify(material))
-    .digest("hex");
-  return `full-test-execution:sha256:${digest}`;
-}
-
-export function isTrustedPassedFullTestOutcome(
-  value: unknown,
-  deliveryId: DeliveryId,
-): value is DeliveryFullTestInvocationTerminal {
-  if (
-    !isRecord(value) ||
-    value.status !== "terminal" ||
-    value.verdict !== "passed"
-  ) {
-    return false;
-  }
-  const operationPackage = value.operationPackage;
-  const record = value.record;
-  if (
-    !isDeliveryOperationPackage(operationPackage) ||
-    operationPackage.operationId !== "delivery-full-test" ||
-    operationPackage.deliveryId !== deliveryId ||
-    !isRecord(record) ||
-    !hasExactlyFields(record, ["executionRef", "candidateRef", "checks"]) ||
-    record.executionRef !==
-      deriveDeliveryFullTestExecutionRef(operationPackage) ||
-    record.candidateRef !== operationPackage.operationFacts.candidateRef ||
-    !Array.isArray(record.checks) ||
-    record.checks.length !==
-      operationPackage.operationFacts.orderedChecks.length
-  ) {
-    return false;
-  }
-  return record.checks.every((fact, index) => {
-    if (!isApplicableCheckFact(fact)) return false;
-    const expected = operationPackage.operationFacts.orderedChecks[index];
-    return (
-      fact.checkId === expected.checkId &&
-      fact.checkRef === expected.checkRef &&
-      (fact.status === "passed" || fact.status === "reused-passed")
-    );
-  });
-}
-
-export async function prepareDeliveryFullTestOperationPackage(
+export {
+  deriveDeliveryFullTestExecutionRef,
+  isTrustedPassedFullTestOutcome,
+} from "../internal/full-test-result.js";
+async function prepareFullTestPackage(
   repositoryRoot: unknown,
   input: unknown,
+  installation: ManagerInstallation = loadManagerInstallation(),
 ): Promise<DeliveryFullTestOperationPackage | null> {
   if (
     typeof repositoryRoot !== "string" ||
-    repositoryRoot.length === 0 ||
+    !repositoryRoot ||
     !isPreparationInput(input)
-  ) {
+  )
     return null;
-  }
-
-  const candidateRef = await deriveApplicableCheckCandidateRef(repositoryRoot);
-  const orderedChecks = resolveApplicableChecksInDeclaredOrder({
-    checks: input.checks,
-  });
-  const guidanceRef = await resolveDeliveryGuidanceRef(
-    repositoryRoot,
-    "delivery-full-test",
-  );
-  if (candidateRef === null || orderedChecks === null || guidanceRef === null) {
-    return null;
-  }
-
-  const formed = formDeliveryOperationPackage(
-    input.deliveryId,
-    "delivery-full-test",
-    input.ownerAuthority,
-    { candidateRef, orderedChecks },
-    guidanceRef,
-  );
-  return formed?.operationId === "delivery-full-test" ? formed : null;
-}
-
-function validatePriorFacts(
-  checks: readonly ResolvedApplicableCheck[],
-  priorFacts: readonly unknown[],
-): Map<string, ApplicableCheckPriorFact> | null {
-  const declaredIds = new Set(checks.map((check) => check.checkId));
-  const byId = new Map<string, ApplicableCheckPriorFact>();
-  for (const prior of priorFacts) {
-    if (
-      !isApplicableCheckPriorFact(prior) ||
-      !declaredIds.has(prior.checkId) ||
-      byId.has(prior.checkId)
-    ) {
+  let stage = "project.read:.flowkit/project.json";
+  try {
+    const project = await readFullTestJson(
+      repositoryRoot,
+      ".flowkit/project.json",
+    );
+    if (!isPlainRecord(project) || !isSemanticId(project.projectId))
       return null;
-    }
-    byId.set(prior.checkId, prior);
+    stage = "delivery.coordination";
+    const coordination = await readFullTestCoordination(
+      repositoryRoot,
+      input.deliveryId,
+    );
+    if (coordination.state !== "active") return null;
+    const selected = await readFullTestInput(repositoryRoot);
+    stage = "manager.guidance";
+    const guidance = await resolveDeliveryGuidanceRef(
+      installation,
+      "delivery-full-test",
+    );
+    const formed = formDeliveryOperationPackage(
+      input.deliveryId,
+      "delivery-full-test",
+      input.ownerAuthority,
+      {
+        attemptId: randomUUID(),
+        configRef: selected.configRef,
+        inputRef: selected.inputRef,
+        orderedChecks: selected.orderedChecks,
+      },
+      guidance,
+    );
+    return formed?.operationId === "delivery-full-test" ? formed : null;
+  } catch (error) {
+    if (error instanceof FullTestInputError) throw error;
+    const code = (error as NodeJS.ErrnoException)?.code;
+    throw new Error(
+      stage +
+        ": " +
+        (typeof code === "string" && /^[A-Z_]+$/.test(code)
+          ? code
+          : "invalid-or-unreadable"),
+    );
   }
-  return byId;
 }
-
-async function executeCheck(
-  repositoryRoot: string,
-  check: ResolvedApplicableCheck,
-): Promise<ApplicableCheckFact> {
-  const outcome = await executeExactApplicableCheckProcess(
-    repositoryRoot,
-    check.program,
-    check.args,
-  );
-  return {
-    checkId: check.checkId,
-    checkRef: check.checkRef,
-    status: outcome.status,
-    exitCode: outcome.exitCode,
-    signal: outcome.signal,
-  };
-}
-
-function toPriorFacts(
-  record: DeliveryFullTestExecutionRecord,
-): ApplicableCheckPriorFact[] {
-  return record.checks.map((fact) => ({
-    candidateRef: record.candidateRef,
-    checkId: fact.checkId,
-    checkRef: fact.checkRef,
-    status: fact.status,
-  }));
-}
-
-export function priorFactsFromDeliveryFullTestRecord(
-  record: unknown,
-): readonly ApplicableCheckPriorFact[] | null {
-  if (
-    !isRecord(record) ||
-    !hasExactlyFields(record, ["executionRef", "candidateRef", "checks"]) ||
-    typeof record.executionRef !== "string" ||
-    !/^full-test-execution:sha256:[0-9a-f]{64}$/.test(record.executionRef) ||
-    typeof record.candidateRef !== "string" ||
-    !/^candidate:sha256:[0-9a-f]{64}$/.test(record.candidateRef) ||
-    !Array.isArray(record.checks) ||
-    record.checks.length < 1 ||
-    !record.checks.every(isApplicableCheckFact)
-  ) {
+export async function prepareDeliveryFullTestOperationPackage(
+  repositoryRoot: unknown,
+  input: unknown,
+  installation: ManagerInstallation = loadManagerInstallation(),
+): Promise<DeliveryFullTestOperationPackage | null> {
+  try {
+    return await prepareFullTestPackage(repositoryRoot, input, installation);
+  } catch {
     return null;
   }
-  const candidate = record as unknown as DeliveryFullTestExecutionRecord;
-  const prior = toPriorFacts(candidate);
-  return prior.every(isApplicableCheckPriorFact) ? prior : null;
 }
-
 export async function invokeDeliveryFullTestOperation(
   repositoryRoot: unknown,
   input: unknown,
-  priorFacts: readonly unknown[] = [],
+  installation: ManagerInstallation = loadManagerInstallation(),
 ): Promise<DeliveryFullTestInvocationOutcome> {
-  const operationPackage = await prepareDeliveryFullTestOperationPackage(
-    repositoryRoot,
-    input,
-  );
-  if (
-    operationPackage === null ||
-    typeof repositoryRoot !== "string" ||
-    operationPackage.operationId !== "delivery-full-test" ||
-    !isDeliveryFullTestOperationFacts(operationPackage.operationFacts)
-  ) {
-    return {
-      status: "failed",
-      reason: "package-formation-rejected",
-      record: null,
-    };
+  const fail = (reason: string): DeliveryFullTestInvocationFailure => ({
+    status: "failed",
+    reason,
+    record: null,
+  });
+  let operationPackage;
+  try {
+    operationPackage = await prepareFullTestPackage(
+      repositoryRoot,
+      input,
+      installation,
+    );
+  } catch (error) {
+    return fail(
+      "preparation-rejected: " +
+        (error instanceof Error ? error.message : "invalid-preparation"),
+    );
   }
-
-  const guidanceBytes = await readExactDeliveryGuidance(
-    repositoryRoot,
-    operationPackage.guidanceRef,
-  );
-  if (guidanceBytes === null) {
-    return {
-      status: "failed",
-      reason: "guidance-drift-rejected",
-      record: null,
-    };
-  }
-
-  const priorById = validatePriorFacts(
-    operationPackage.operationFacts.orderedChecks,
-    priorFacts,
-  );
-  if (priorById === null) {
-    return { status: "failed", reason: "prior-facts-rejected", record: null };
-  }
-
-  const facts: ApplicableCheckFact[] = [];
-  for (const check of operationPackage.operationFacts.orderedChecks) {
-    const prior = priorById.get(check.checkId);
+  if (operationPackage === null || typeof repositoryRoot !== "string")
+    return fail("package-formation-rejected");
+  try {
     if (
-      prior !== undefined &&
-      isApplicableCheckReuseEligible(
-        operationPackage.operationFacts.candidateRef,
+      (await readExactDeliveryGuidance(
+        installation,
+        operationPackage.guidanceRef,
+      )) === null
+    )
+      return fail("guidance-drift-rejected");
+    const facts = operationPackage.operationFacts;
+    const initial = await readFullTestCoordination(
+      repositoryRoot,
+      operationPackage.deliveryId,
+    );
+    // The Agent reports current/partial via the reader before explicitly invoking again.
+    // This authorized invocation starts new work, never fills in the previous attempt.
+    const project = await readFullTestJson(
+      repositoryRoot,
+      ".flowkit/project.json",
+    );
+    if (!isPlainRecord(project) || !isSemanticId(project.projectId))
+      return fail("project-identity-invalid");
+    const relative = attemptRoot(operationPackage.deliveryId, facts.attemptId);
+    await ensureFullTestDirectory(repositoryRoot, relative, true);
+    const startedAt = new Date().toISOString();
+    const start = {
+      projectId: project.projectId,
+      deliveryId: operationPackage.deliveryId,
+      attemptId: facts.attemptId,
+      startedAt,
+      ownerAuthority: operationPackage.ownerAuthority,
+      guidanceRef: operationPackage.guidanceRef,
+      configRef: facts.configRef,
+      inputRef: facts.inputRef,
+      orderedChecks: facts.orderedChecks,
+    };
+    await saveFullTestJson(repositoryRoot, relative + "/start.json", start);
+    await publishFullTestAttempt(
+      repositoryRoot,
+      operationPackage.deliveryId,
+      initial.bytes,
+      facts.attemptId,
+      "pending",
+    );
+    const published = await readFullTestCoordination(
+      repositoryRoot,
+      operationPackage.deliveryId,
+    );
+    const checks: FullTestCheckResult[] = [];
+    const failureReasons: string[] = [];
+    let stop = false;
+    for (const check of facts.orderedChecks) {
+      if (!stop) {
+        const current = await readFullTestInput(repositoryRoot);
+        if (current.inputRef !== facts.inputRef) {
+          failureReasons.push("test-input-drift");
+          stop = true;
+        }
+      }
+      if (stop) {
+        checks.push({
+          checkId: check.checkId,
+          checkRef: check.checkRef,
+          status: "not-executed",
+          reason: "attempt-stopped",
+          command: null,
+        });
+        continue;
+      }
+      const result = await executeFullTestCheck(
+        repositoryRoot,
+        relative,
         check,
-        prior,
-      )
-    ) {
-      facts.push({
-        checkId: check.checkId,
-        checkRef: check.checkRef,
-        status: "reused-passed",
-        exitCode: null,
-        signal: null,
-      });
-      continue;
+      );
+      checks.push(result);
+      if (result.status !== "passed")
+        failureReasons.push(check.checkId + ":" + result.status);
     }
-    facts.push(await executeCheck(repositoryRoot, check));
-
-    const candidateRefAfterExecutedCheck =
-      await deriveApplicableCheckCandidateRef(repositoryRoot);
+    if ((await readFullTestInput(repositoryRoot)).inputRef !== facts.inputRef)
+      failureReasons.push("test-input-drift");
+    const record: DeliveryFullTestExecutionRecord = {
+      projectId: project.projectId,
+      deliveryId: operationPackage.deliveryId,
+      attemptId: facts.attemptId,
+      executionRef: deriveDeliveryFullTestExecutionRef(operationPackage)!,
+      startedAt,
+      finishedAt: new Date().toISOString(),
+      configRef: facts.configRef,
+      inputRef: facts.inputRef,
+      status: failureReasons.length ? "failed" : "passed",
+      failureReasons,
+      checks,
+    };
+    await saveFullTestJson(repositoryRoot, relative + "/result.json", record);
+    await publishFullTestAttempt(
+      repositoryRoot,
+      operationPackage.deliveryId,
+      published.bytes,
+      facts.attemptId,
+      record.status,
+    );
     if (
-      candidateRefAfterExecutedCheck !==
-      operationPackage.operationFacts.candidateRef
-    ) {
-      return {
-        status: "stopped-candidate-drift",
-        operationPackage,
-        record: null,
-      };
-    }
-  }
-
-  const currentCandidateRef =
-    await deriveApplicableCheckCandidateRef(repositoryRoot);
-  if (currentCandidateRef !== operationPackage.operationFacts.candidateRef) {
+      record.status === "passed" &&
+      (
+        await readCurrentDeliveryFullTest(
+          repositoryRoot,
+          operationPackage.deliveryId,
+        )
+      ).status !== "passed"
+    )
+      return fail("saved-result-readback-invalid");
     return {
-      status: "stopped-candidate-drift",
+      status: "terminal",
       operationPackage,
-      record: null,
+      verdict: record.status,
+      record,
     };
+  } catch (error) {
+    return fail(
+      "attempt-incomplete: " +
+        (error instanceof Error ? error.message : String(error)),
+    );
   }
-
-  const executionRef = deriveDeliveryFullTestExecutionRef(operationPackage);
-  if (executionRef === null) {
-    return {
-      status: "failed",
-      reason: "package-formation-rejected",
-      record: null,
-    };
-  }
-  const record: DeliveryFullTestExecutionRecord = {
-    executionRef,
-    candidateRef: currentCandidateRef,
-    checks: facts,
-  };
-  const verdict = facts.every(
-    (fact) => fact.status === "passed" || fact.status === "reused-passed",
-  )
-    ? "passed"
-    : "failed";
-  return { status: "terminal", operationPackage, verdict, record };
 }

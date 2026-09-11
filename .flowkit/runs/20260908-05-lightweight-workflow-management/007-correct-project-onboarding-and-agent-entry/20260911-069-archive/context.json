@@ -1,0 +1,53 @@
+{
+  "kind": "external-orchestrator-archive-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "author",
+  "action": "archive",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "correct-project-onboarding-and-agent-entry",
+  "projectOrdinal": 39,
+  "runId": "20260911-069-archive",
+  "previousRunId": "20260911-068-review-apply",
+  "startedAt": "2026-09-11T07:26:09.085Z",
+  "ownerInstruction": "根据最新run，archive",
+  "acceptedReview": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/007-correct-project-onboarding-and-agent-entry/20260911-068-review-apply/result.json",
+    "bytes": 10733,
+    "sha256": "eb7d7d5f81699255089ad1a4734a21fcdb9ce814b831a2ed986bf02c31b25942"
+  },
+  "archivePath": "openspec/changes/archive/2026-09-11-039-correct-project-onboarding-and-agent-entry",
+  "manifestBefore": {
+    "path": "openspec/delivery-groups/20260908-05-lightweight-workflow-management.yaml",
+    "bytes": 12478,
+    "sha256": "8385cffba74eeb16a794ededcb0e4362e7539a6f1aa2721231507fa1e474a519"
+  },
+  "canonicalBefore": {
+    "path": "openspec/specs/foundation-cli-surface/spec.md",
+    "bytes": 20642,
+    "sha256": "1a14bf4a87096b813ba4365628e06cf08aefd820608fb77dd81d2660d8fa2cbc"
+  },
+  "ownerDecisionsRelevant": [
+    {
+      "sourceRef": "owner-input:2026-09-11:bounded-correct-change-and-root-flowkit-documents",
+      "decision": "将接入补齐及三份根 flowkit*.md 清理纳入同一 Change，不重开前六个、不重构内核。"
+    },
+    {
+      "sourceRef": "owner-input:2026-09-11:real-cross-session-not-over-simulated",
+      "decision": "真实新会话不能以重启 CLI/合成 fixture 替代；读取验收不必额外执行 Action、制造 finding 或演完整 Delivery；未执行如实记录。"
+    },
+    {
+      "sourceRef": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260911-062-archive/result.json#ownerDecisionsRelevant",
+      "decision": "D05 独立 bootstrap；必要材料保存在 target artifacts，临时 fixture 放 .tmp；不改历史。"
+    },
+    {
+      "sourceRef": "owner-input:2026-09-11:onboarding-first-ordinal-and-bounded-explore",
+      "decision": "授权示例首次序号及有界 Explore，不执行下一 Review。"
+    },
+    {
+      "sourceRef": "owner-input:2026-09-11:fresh-session-readback-completed-and-continue",
+      "decision": "Owner 确认真实新会话已完成只读入口验收并回传结果，继续完成当前 Apply。"
+    }
+  ],
+  "proofRoot": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-069-archive"
+}

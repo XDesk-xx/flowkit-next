@@ -1,364 +1,243 @@
+import { open } from "node:fs/promises";
+import path from "node:path";
+import { isDeepStrictEqual } from "node:util";
+import {
+  loadManagerInstallation,
+  type ManagerInstallation,
+} from "../internal/manager-installation.js";
+import {
+  hasExactlyFields,
+  isPlainRecord,
+} from "../internal/applicable-check-identity.js";
+import { fullTestPath, fullTestDigest } from "../internal/full-test-input.js";
+import { isSemanticId, type DeliveryId } from "./identity.js";
+import type { OwnerAuthorityFact } from "./authority.js";
 import {
   formDeliveryOperationPackage,
-  hasDeliveryStartCommitAuthority,
   isDeliveryPlanningReference,
   isDeliveryStartAuthorityForDelivery,
-  isDeliveryStartOperationFacts,
   readExactDeliveryGuidance,
   resolveDeliveryGuidanceRef,
   type DeliveryStartOperationPackage,
   type DeliveryPlanningReference,
-  type DeliveryStartOperationFacts,
 } from "./delivery-operation-execution.js";
-import { isSemanticId, type DeliveryId } from "./identity.js";
-import type { OwnerAuthorityFact } from "./authority.js";
 import {
   formDeliveryStartContentCompletion,
-  isDeliveryStartValidatedSurface,
-  type ReadDeliveryStartValidation,
+  readStartFacts,
+  readStartManifest,
+  validStartManifest,
   type DeliveryStartContentCompletion,
-  type DeliveryStartValidatedSurface,
 } from "../internal/delivery-start-content.js";
-import {
-  countGitCommits,
-  isGitIndexAndWorktreeClean,
-  observeGitParents,
-  observeGitHead,
-} from "../internal/delivery-repository-integration-git.js";
-import { deriveApplicableCheckObjectCandidateRef } from "./applicable-check-execution.js";
-
-const GIT_COMMIT_PATTERN = /^[0-9a-f]{40}$/;
+export type { DeliveryStartContentCompletion } from "../internal/delivery-start-content.js";
 
 export interface DeliveryStartPreparationInput {
   readonly deliveryId: DeliveryId;
-  readonly operationFacts: DeliveryStartOperationFacts;
   readonly ownerAuthority: OwnerAuthorityFact;
-}
-
-export interface DeliveryStartObservedState {
-  readonly headCommit: string;
-  readonly workingTreeClean: boolean;
   readonly planningReference: DeliveryPlanningReference;
 }
-
-const OBSERVED_STATE_FIELDS = [
-  "headCommit",
-  "workingTreeClean",
-  "planningReference",
-] as const;
-
-function isRecord(value: unknown): value is Record<string, unknown> {
-  if (typeof value !== "object" || value === null || Array.isArray(value)) {
-    return false;
-  }
-  const proto = Object.getPrototypeOf(value);
-  return proto === Object.prototype || proto === null;
-}
-
-function hasExactlyFields(
-  value: Record<string, unknown>,
-  fields: readonly string[],
-): boolean {
-  const keys = Object.keys(value);
-  return (
-    keys.length === fields.length &&
-    fields.every((field) => Object.prototype.hasOwnProperty.call(value, field))
-  );
-}
-
-export function isDeliveryStartObservedState(
-  value: unknown,
-): value is DeliveryStartObservedState {
-  if (!isRecord(value) || !hasExactlyFields(value, OBSERVED_STATE_FIELDS)) {
-    return false;
-  }
-  return (
-    typeof value.headCommit === "string" &&
-    GIT_COMMIT_PATTERN.test(value.headCommit) &&
-    typeof value.workingTreeClean === "boolean" &&
-    isDeliveryPlanningReference(value.planningReference)
-  );
-}
-
-function samePlanningReference(
-  a: DeliveryPlanningReference,
-  b: DeliveryPlanningReference,
-): boolean {
-  return a.artifact === b.artifact && a.contentSha256 === b.contentSha256;
-}
-
 function isPreparationInput(
   value: unknown,
 ): value is DeliveryStartPreparationInput {
-  if (!isRecord(value)) return false;
-  if (
-    !hasExactlyFields(value, ["deliveryId", "operationFacts", "ownerAuthority"])
-  ) {
-    return false;
-  }
   return (
+    isPlainRecord(value) &&
+    hasExactlyFields(value, [
+      "deliveryId",
+      "ownerAuthority",
+      "planningReference",
+    ]) &&
     isSemanticId(value.deliveryId) &&
-    isDeliveryStartOperationFacts(value.operationFacts) &&
+    isDeliveryPlanningReference(value.planningReference) &&
     isDeliveryStartAuthorityForDelivery(value.ownerAuthority, value.deliveryId)
   );
 }
-
-export type DeliveryStartObservationCallback = () => unknown | Promise<unknown>;
-
 export async function prepareDeliveryStartOperationPackage(
   repositoryRoot: unknown,
   input: unknown,
-  observe: DeliveryStartObservationCallback,
+  installation: ManagerInstallation = loadManagerInstallation(),
 ): Promise<DeliveryStartOperationPackage | null> {
-  if (!isPreparationInput(input)) return null;
-
-  let observed: unknown;
-  try {
-    observed = await observe();
-  } catch {
+  if (typeof repositoryRoot !== "string" || !isPreparationInput(input))
     return null;
-  }
-  if (!isDeliveryStartObservedState(observed)) return null;
-  if (!observed.workingTreeClean) return null;
-  if (observed.headCommit !== input.operationFacts.acceptedBaseCommit) {
-    return null;
-  }
-  if (
-    !samePlanningReference(
-      observed.planningReference,
-      input.operationFacts.planningReference,
-    )
-  ) {
-    return null;
-  }
-
-  const guidanceRef = await resolveDeliveryGuidanceRef(
+  const facts = await readStartFacts(
     repositoryRoot,
+    input.deliveryId,
+    input.planningReference,
+  );
+  const guidanceRef = await resolveDeliveryGuidanceRef(
+    installation,
     "delivery-start",
   );
-  if (guidanceRef === null) return null;
-
+  if (facts === null || guidanceRef === null) return null;
   const formed = formDeliveryOperationPackage(
     input.deliveryId,
     "delivery-start",
     input.ownerAuthority,
-    input.operationFacts,
+    facts,
     guidanceRef,
   );
   return formed?.operationId === "delivery-start" ? formed : null;
 }
-
-export type DeliveryStartSurfaceValidation = DeliveryStartValidatedSurface;
-
-export type DeliveryStartExecutionCallback = (
-  operationPackage: DeliveryStartOperationPackage,
-  guidanceBytes: Buffer,
-) => unknown | Promise<unknown>;
-
-export type DeliveryStartCommitCallback = (
-  operationPackage: DeliveryStartOperationPackage,
-) => unknown | Promise<unknown>;
-
-export type DeliveryStartInvocationFailureReason =
-  | "package-formation-rejected"
-  | "guidance-drift-rejected"
-  | "surface-validation-failed"
-  | "content-completion-rejected"
-  | "commit-callback-missing"
-  | "fixed-point-commit-rejected";
-
+export type DeliveryStartExecutionCallback = (input: {
+  readonly operationPackage: DeliveryStartOperationPackage;
+  readonly guidance: Buffer;
+  /** Only fixed manifest output; host validates scope and performs create-once. */
+  readonly writeManifest: (bytes: Uint8Array) => Promise<void>;
+}) => unknown | Promise<unknown>;
 export interface DeliveryStartInvocationFailure {
   readonly status: "failed";
-  readonly reason: DeliveryStartInvocationFailureReason;
-  readonly fixedPointCommit: null;
+  readonly reason: string;
+  readonly mutationStatus: "not-written" | "written-unconfirmed" | "unknown";
   readonly contentCompletion: null;
 }
-
-export interface DeliveryStartInvocationStopped {
-  readonly status: "terminal";
-  readonly operationPackage: DeliveryStartOperationPackage;
-  readonly fixedPointCommit: null;
-  readonly contentCompletion: DeliveryStartContentCompletion;
-}
-
 export interface DeliveryStartInvocationTerminal {
   readonly status: "terminal";
   readonly operationPackage: DeliveryStartOperationPackage;
-  readonly fixedPointCommit: string;
   readonly contentCompletion: DeliveryStartContentCompletion;
 }
-
 export type DeliveryStartInvocationOutcome =
-  | DeliveryStartInvocationFailure
-  | DeliveryStartInvocationStopped
-  | DeliveryStartInvocationTerminal;
-
-function failure(
-  reason: DeliveryStartInvocationFailureReason,
-): DeliveryStartInvocationFailure {
-  return {
-    status: "failed",
-    reason,
-    fixedPointCommit: null,
-    contentCompletion: null,
-  };
-}
+  DeliveryStartInvocationFailure | DeliveryStartInvocationTerminal;
 
 export async function invokeDeliveryStartOperation(
   repositoryRoot: unknown,
   input: unknown,
-  observe: DeliveryStartObservationCallback,
   executeSurface: DeliveryStartExecutionCallback,
-  readValidation: ReadDeliveryStartValidation,
-  commitFixedPoint?: DeliveryStartCommitCallback,
+  installation: ManagerInstallation = loadManagerInstallation(),
 ): Promise<DeliveryStartInvocationOutcome> {
+  let mutationStatus: DeliveryStartInvocationFailure["mutationStatus"] =
+    "not-written";
+  const failure = (reason: string): DeliveryStartInvocationFailure => ({
+    status: "failed",
+    reason,
+    mutationStatus,
+    contentCompletion: null,
+  });
   const operationPackage = await prepareDeliveryStartOperationPackage(
     repositoryRoot,
     input,
-    observe,
+    installation,
   );
-  if (operationPackage === null) {
+  if (operationPackage === null || typeof repositoryRoot !== "string")
     return failure("package-formation-rejected");
-  }
-
-  const guidanceBytes = await readExactDeliveryGuidance(
-    repositoryRoot,
+  const guidance = await readExactDeliveryGuidance(
+    installation,
     operationPackage.guidanceRef,
   );
-  if (guidanceBytes === null) {
-    return failure("guidance-drift-rejected");
-  }
-
+  if (guidance === null) return failure("guidance-drift-rejected");
   const revalidated = await prepareDeliveryStartOperationPackage(
     repositoryRoot,
     input,
-    observe,
+    installation,
   );
-  if (
-    revalidated === null ||
-    JSON.stringify(revalidated) !== JSON.stringify(operationPackage)
-  ) {
-    return failure("package-formation-rejected");
-  }
-
-  const callbackPackage = formDeliveryOperationPackage(
-    operationPackage.deliveryId,
-    operationPackage.operationId,
-    operationPackage.ownerAuthority,
-    operationPackage.operationFacts,
-    operationPackage.guidanceRef,
-  );
-  if (callbackPackage?.operationId !== "delivery-start") {
-    return failure("package-formation-rejected");
-  }
-
-  let surfaceResult: unknown;
+  if (!isDeepStrictEqual(revalidated, operationPackage))
+    return failure("start-prestate-drift");
+  const facts = operationPackage.operationFacts;
+  let before: Buffer | null;
   try {
-    surfaceResult = await executeSurface(
-      callbackPackage,
-      Buffer.from(guidanceBytes),
+    before = await readStartManifest(
+      repositoryRoot,
+      operationPackage.deliveryId,
     );
   } catch {
-    return failure("surface-validation-failed");
+    return failure("start-prestate-unreadable");
   }
-  if (!isDeliveryStartValidatedSurface(surfaceResult)) {
-    return failure("surface-validation-failed");
+  const expectedPrestate = facts.coordinationPrestate.contentRef;
+  if (
+    before === null
+      ? expectedPrestate !== null
+      : expectedPrestate === null ||
+        before.length !== expectedPrestate.bytes ||
+        fullTestDigest(before) !== expectedPrestate.contentSha256
+  )
+    return failure("start-prestate-drift");
+  let writtenBytes: Buffer | null = null;
+  if (before === null) {
+    if (typeof executeSurface !== "function") return failure("surface-missing");
+    let written = false;
+    try {
+      const callbackPackage = structuredClone(operationPackage);
+      const result = await executeSurface({
+        operationPackage: callbackPackage,
+        guidance: Buffer.from(guidance),
+        writeManifest: async (bytes) => {
+          const output =
+            bytes instanceof Uint8Array ? Buffer.from(bytes) : null;
+          if (
+            written ||
+            output === null ||
+            !validStartManifest(
+              output,
+              facts.projectId,
+              operationPackage.deliveryId,
+              facts.planningReference,
+            )
+          )
+            throw new Error("invalid or repeated manifest output");
+          const current = await prepareDeliveryStartOperationPackage(
+            repositoryRoot,
+            input,
+            installation,
+          );
+          if (!isDeepStrictEqual(current, operationPackage))
+            throw new Error("start-prestate-drift");
+          const parent = await fullTestPath(
+            repositoryRoot,
+            "openspec/delivery-groups",
+          );
+          const handle = await open(
+            path.join(parent, operationPackage.deliveryId + ".yaml"),
+            "wx",
+          );
+          mutationStatus = "written-unconfirmed";
+          written = true;
+          writtenBytes = output;
+          try {
+            await handle.writeFile(output);
+            await handle.sync();
+          } finally {
+            await handle.close();
+          }
+        },
+      });
+      if (
+        !isPlainRecord(result) ||
+        !hasExactlyFields(result, ["status"]) ||
+        result.status !== "ready"
+      ) {
+        throw new Error("surface-result-rejected");
+      }
+    } catch {
+      try {
+        const current = await readStartManifest(
+          repositoryRoot,
+          operationPackage.deliveryId,
+        );
+        if (current !== null) mutationStatus = "written-unconfirmed";
+      } catch {
+        mutationStatus = "unknown";
+      }
+      return failure("surface-execution-failed");
+    }
   }
-  if (typeof repositoryRoot !== "string")
-    return failure("content-completion-rejected");
   const contentCompletion = await formDeliveryStartContentCompletion(
     repositoryRoot,
     operationPackage.deliveryId,
-    operationPackage.operationFacts.acceptedBaseCommit,
-    operationPackage.operationFacts.planningReference,
-    surfaceResult,
-    readValidation,
+    facts,
   );
-  if (contentCompletion === null) return failure("content-completion-rejected");
-
-  if (
-    !hasDeliveryStartCommitAuthority(
-      operationPackage.ownerAuthority,
-      operationPackage.deliveryId,
-    )
-  ) {
-    return {
-      status: "terminal",
-      operationPackage,
-      fixedPointCommit: null,
-      contentCompletion,
-    };
-  }
-
-  if (commitFixedPoint === undefined) {
-    return failure("commit-callback-missing");
-  }
-
-  let preCommitState: unknown;
+  if (contentCompletion === null) return failure("content-validation-failed");
   try {
-    preCommitState = await observe();
-  } catch {
-    return failure("fixed-point-commit-rejected");
-  }
-  if (
-    !isDeliveryStartObservedState(preCommitState) ||
-    preCommitState.headCommit !==
-      operationPackage.operationFacts.acceptedBaseCommit ||
-    !samePlanningReference(
-      preCommitState.planningReference,
-      operationPackage.operationFacts.planningReference,
-    ) ||
-    !hasDeliveryStartCommitAuthority(
-      operationPackage.ownerAuthority,
-      operationPackage.deliveryId,
-    )
-  ) {
-    return failure("fixed-point-commit-rejected");
-  }
-
-  let commit: unknown;
-  try {
-    const commitPackage = formDeliveryOperationPackage(
-      operationPackage.deliveryId,
-      operationPackage.operationId,
-      operationPackage.ownerAuthority,
-      operationPackage.operationFacts,
-      operationPackage.guidanceRef,
-    );
-    if (commitPackage?.operationId !== "delivery-start") {
-      return failure("fixed-point-commit-rejected");
+    const expectedBytes = before ?? writtenBytes;
+    if (
+      expectedBytes === null ||
+      !expectedBytes.equals(
+        (await readStartManifest(
+          repositoryRoot,
+          operationPackage.deliveryId,
+        )) ?? Buffer.alloc(0),
+      )
+    ) {
+      return failure("start-prestate-drift");
     }
-    commit = await commitFixedPoint(commitPackage);
   } catch {
-    return failure("fixed-point-commit-rejected");
+    return failure("start-readback-unavailable");
   }
-  if (typeof commit !== "string" || !GIT_COMMIT_PATTERN.test(commit)) {
-    return failure("fixed-point-commit-rejected");
-  }
-  if (
-    (await observeGitHead(repositoryRoot)) !== commit ||
-    JSON.stringify(await observeGitParents(repositoryRoot, commit)) !==
-      JSON.stringify([operationPackage.operationFacts.acceptedBaseCommit]) ||
-    (await countGitCommits(
-      repositoryRoot,
-      operationPackage.operationFacts.acceptedBaseCommit,
-      commit,
-    )) !== 1 ||
-    !(await isGitIndexAndWorktreeClean(repositoryRoot)) ||
-    (await deriveApplicableCheckObjectCandidateRef(repositoryRoot, commit)) !==
-      contentCompletion.candidateRef
-  )
-    return failure("fixed-point-commit-rejected");
-
-  return {
-    status: "terminal",
-    operationPackage,
-    fixedPointCommit: commit,
-    contentCompletion,
-  };
+  return { status: "terminal", operationPackage, contentCompletion };
 }
-
-export type {
-  DeliveryStartContentCompletion,
-  ReadDeliveryStartValidation,
-} from "../internal/delivery-start-content.js";

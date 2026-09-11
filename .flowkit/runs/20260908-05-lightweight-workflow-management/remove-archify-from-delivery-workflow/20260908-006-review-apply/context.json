@@ -1,0 +1,57 @@
+{
+  "kind": "external-orchestrator-review-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "reviewer",
+  "action": "review-apply",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "remove-archify-from-delivery-workflow",
+  "runId": "20260908-006-review-apply",
+  "runNumber": 6,
+  "projectOrdinal": 33,
+  "previousRunId": "20260908-005-apply",
+  "reviewedRunId": "20260908-005-apply",
+  "ownerInstruction": "根据最新run，review",
+  "targetResolution": "依据当前 active Change、004 approved、005 terminal Author PASS 与 reported review-apply；不是仅取最大目录号。",
+  "authority": "本次 Owner 单次 Review 请求，沿用 D05 independent-bootstrap；不创建下一 Action/Git authority。",
+  "physicalRunPath": ".flowkit/runs/20260908-05-lightweight-workflow-management/remove-archify-from-delivery-workflow/20260908-006-review-apply",
+  "reviewedResult": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/remove-archify-from-delivery-workflow/20260908-005-apply/result.json",
+    "bytes": 8411,
+    "sha256": "ff262d46f5913c85023cd94ba8dbbabc0ea8e17b7f70bc294f0aac8cd1ae54cc"
+  },
+  "approvedProposalReview": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/remove-archify-from-delivery-workflow/20260908-004-review-propose/result.json",
+    "bytes": 5526,
+    "sha256": "b84083459fbb10cc69eca86ad59aa4cd1ba9964b4f11de905e778fa9316fa56b"
+  },
+  "authorVerification": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/remove-archify-from-delivery-workflow/proof/20260908-005-apply/summary.json",
+    "bytes": 39926,
+    "sha256": "530d13964982c7eb4a765226bbc761b77b7059b45baab8e003f3d1bb6a8c37f7"
+  },
+  "sourceHead": "97bcd2f99dcf6946b646fb1759b2e64584007c30",
+  "sourceHeadMeaning": "仅定位审查输入，非新增 SHA/checkpoint 准入门槛。",
+  "sourceScopeSha256": "57845c28259f5d1d06d9189ec71268b8086f3b7d8deb7a7afe521ed4b22f25a2",
+  "reviewerProofRoot": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/remove-archify-from-delivery-workflow/proof/20260908-006-review-apply",
+  "reviewerProofSummary": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/remove-archify-from-delivery-workflow/proof/20260908-006-review-apply/attempt-02/summary.json",
+    "bytes": 5503,
+    "sha256": "6165450010054170bb1d3722740f5387d9672becef97fcbb69dfe8382e2ac1eb"
+  },
+  "skillsUsed": [
+    ".agents/skills/review-apply",
+    "C:/Users/xuser/.agents/skills/debugging-and-error-recovery"
+  ],
+  "candidateUse": "仅源码/隔离 fixture/构建测试对象；没有调用 candidate 同名 Reviewer Guidance 或管理自身。",
+  "protectedBefore": {
+    "files": 1663,
+    "sha256": "b1fdfe7c2fd858cf440854eed6e0970ee313658693ba982af5470800795c52e0",
+    "head": "97bcd2f99dcf6946b646fb1759b2e64584007c30"
+  },
+  "protectedScope": "tracked/nonignored untracked 文件及 tracked 删除标记，排除本次 Reviewer Run/proof；仅写入隔离检查。",
+  "formalFullTestExecuted": false,
+  "linuxSuiteReexecuted": false,
+  "archiveExecuted": false,
+  "gitMutationAllowed": false
+}

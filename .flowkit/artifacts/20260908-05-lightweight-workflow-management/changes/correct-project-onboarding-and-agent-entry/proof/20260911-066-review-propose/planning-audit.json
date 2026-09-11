@@ -1,0 +1,81 @@
+{
+  "kind": "independent-review-propose-planning-audit",
+  "checkedAt": "2026-09-11T06:01:20.580Z",
+  "reviewedResult": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/007-correct-project-onboarding-and-agent-entry/20260911-065-propose/result.json",
+    "bytes": 4681,
+    "sha256": "9a8411def1b98c2ce14f6f8be258542be28332997fc2c61e6a629148d4ffb53e"
+  },
+  "planningArtifacts": [
+    {
+      "path": "openspec/changes/correct-project-onboarding-and-agent-entry/proposal.md",
+      "bytes": 2252,
+      "sha256": "28eff087978850ac081341823f0e77e3664c4ea0e76fc45d25043f543067ffc5"
+    },
+    {
+      "path": "openspec/changes/correct-project-onboarding-and-agent-entry/design.md",
+      "bytes": 9929,
+      "sha256": "0b1177ae6ef4747ae4aaad3f9c0b2b0c8cb361834f9f7392aa63855566c3a86e"
+    },
+    {
+      "path": "openspec/changes/correct-project-onboarding-and-agent-entry/tasks.md",
+      "bytes": 3145,
+      "sha256": "e9673a8d0a15ab20c8bcf2a19c8aa928b6e0c15a46b512f92d24d137fcda4b7d"
+    },
+    {
+      "path": "openspec/changes/correct-project-onboarding-and-agent-entry/specs/foundation-cli-surface/spec.md",
+      "bytes": 6620,
+      "sha256": "3c671ceffa50e5cfbde6966dd0c79917c3661b1ded203327045f78535567f494"
+    }
+  ],
+  "addedRequirements": [
+    "Distribution provides a bounded project onboarding path",
+    "Thin Agent entry resolves requested work through existing query and Guidance ownership",
+    "Onboarding usability is verified without conflating process fixtures and fresh Agent sessions"
+  ],
+  "scenarios": 12,
+  "uncheckedTasks": 12,
+  "checkedTasks": 0,
+  "planningCoverageMatchesOpenSpecStatus": true,
+  "requiredStructuredTextChecks": "UTF-8 decoded; LF and exactly one final newline checked",
+  "commands": [
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-066-review-propose/validate/command.json",
+      "bytes": 1036,
+      "sha256": "e899d774b1a99909fd689d0a7c598b9e197159f93d06766ef159ff1eb2b07117"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-066-review-propose/status/command.json",
+      "bytes": 1046,
+      "sha256": "3a5c50d412175eff23a23e00a138a18fa35e5c4e4aa94c97f688eea379821b67"
+    }
+  ],
+  "acceptedReview": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/007-correct-project-onboarding-and-agent-entry/20260911-064-review-explore/result.json",
+    "bytes": 7977,
+    "sha256": "181feb64c2dd99a0b31c2efec3a21c2f033c3d143a3b8c303b0fc9dca099ccd4"
+  },
+  "ownerHandoffMatchesAcceptedReview": true,
+  "structuralValidationOnly": true,
+  "implementationNotExecuted": true,
+  "actualNewSessionNotExecuted": true,
+  "formalFullTestNotExecuted": true,
+  "inputReferencesVerifiedAtStart": 24,
+  "inputReferencesVerifiedAtEnd": 24,
+  "mutationIsolation": {
+    "before": {
+      "files": 5412,
+      "sha256": "2053b431a5ba0e2075e37995f135573252d53d487cd8074ef979953e571144a5",
+      "head": "7af7d85788503dafc50ee162b14deaaf679f99cb",
+      "method": "Git cached and nonignored files by sorted path/bytes/raw SHA256; excludes only own Run/proof; ignored scratch outside snapshot"
+    },
+    "after": {
+      "files": 5412,
+      "sha256": "2053b431a5ba0e2075e37995f135573252d53d487cd8074ef979953e571144a5",
+      "head": "7af7d85788503dafc50ee162b14deaaf679f99cb",
+      "method": "Git cached and nonignored files by sorted path/bytes/raw SHA256; excludes only own Run/proof; ignored scratch outside snapshot"
+    },
+    "equal": true,
+    "checkedAt": "2026-09-11T06:01:50.572Z"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Flowkit · 交付工作流",
+    "subtitle": "每条连线是后续合法边界，不是自动执行；各 Action 记录后 STOP",
+    "animation": "none",
+    "visual_preset": "signal-flow",
+    "quality_profile": "showcase",
+    "viewBox": [720, 740]
+  },
+  "lanes": [
+    { "id": "coordination", "label": "Owner 授权 · Delivery 协调" },
+    { "id": "author", "label": "Author · OpenSpec 工作" },
+    { "id": "reviewer", "label": "独立 Reviewer" },
+    { "id": "verification", "label": "Verification" },
+    { "id": "repository", "label": "独立 Git 节点" }
+  ],
+  "nodes": [
+    { "id": "start", "lane": "coordination", "col": 0, "type": "external", "label": "Start", "sublabel": "规划与 manifest", "width": 88, "height": 58 },
+    { "id": "author-action", "lane": "author", "col": 2, "type": "backend", "label": "Author Action", "sublabel": "Explore → Propose → Apply", "width": 170, "height": 58 },
+    { "id": "review", "lane": "reviewer", "col": 2, "type": "security", "label": "独立 Review", "sublabel": "每阶段分别审查", "width": 170, "height": 58 },
+    { "id": "archive", "lane": "author", "col": 4, "type": "database", "label": "Archive", "sublabel": "规范同步与归档", "width": 100, "height": 58 },
+    { "id": "full-test", "lane": "verification", "col": 4, "type": "backend", "label": "Full Test", "sublabel": "当前代码输入", "width": 100, "height": 58 },
+    { "id": "final", "lane": "coordination", "col": 5, "type": "backend", "label": "Final", "sublabel": "完成与确认", "width": 100, "height": 58 },
+    { "id": "integration", "lane": "repository", "col": 5, "type": "external", "label": "Integration", "sublabel": "Git · PR · 合并", "width": 100, "height": 58 }
+  ],
+  "mainPath": ["start", "author-action", "review", "archive", "full-test", "final", "integration"],
+  "edges": [
+    { "id": "activate", "from": "start", "to": "author-action", "label": "授权激活", "variant": "emphasis" },
+    { "id": "stage-review", "from": "author-action", "to": "review", "variant": "emphasis" },
+    { "id": "apply-approved", "from": "review", "to": "archive", "label": "Apply 获批", "variant": "emphasis" },
+    { "id": "all-required-complete", "from": "archive", "to": "full-test", "variant": "emphasis" },
+    { "id": "current-pass", "from": "full-test", "to": "final", "variant": "emphasis" },
+    { "id": "confirmed-final", "from": "final", "to": "integration", "variant": "default" }
+  ],
+  "cards": [
+    { "dot": "cyan", "title": "Change 循环（聚合展示）", "items": ["Explore → Review → Propose → Review → Apply → Review → Archive；每步独立调用。", "changes-requested → 同阶段 revise → 独立复审；跨阶段调整由 Owner 明确授权。", "全部 required Change 完成后进入 Full Test；Run 串联真实 Action。"] },
+    { "dot": "amber", "title": "Git 与 Delivery 分离", "items": ["Start 不要求 commit SHA 或 clean；Start 与 Archive 后可另行授权 checkpoint / push。", "Full Test PASS、Archive 和 Final 均不自动授予 Git 权限。", "Integration 消费有效 Final 确认；实际 Git 与远端对象另行读回。"] },
+    { "dot": "emerald", "title": "不属于交付前置条件", "items": ["Archify 可独立生成；不要求 Current / Planned / Actual 或补图。", "Full Test 由项目配置选取代码输入，独立于 .gitignore。", "图描述产品能力；当前 D05 的真实执行仍使用 independent-bootstrap。"] }
+  ]
+}

@@ -73,19 +73,4 @@ test("Author stage HOW carries relevant Owner material boundaries and separates 
     assert.match(body, /Explore experiments?/i);
     assert.match(body, /current implementation (?:acceptance evidence|PASS)/i);
   }
-
-  for (const skillId of [
-    "explore-proof-based",
-    "proposal-convergence",
-    "revise-propose",
-  ]) {
-    const body = await readFile(
-      path.join(REPOSITORY_ROOT, ".agents", "skills", skillId, "SKILL.md"),
-      "utf8",
-    );
-    assert.match(body, /Owner decision/i);
-    assert.match(body, /Explore experiment/i);
-    assert.match(body, /current implementation (?:acceptance evidence|PASS)/i);
-    assert.doesNotMatch(body, /proof (?:registry|database)/i);
-  }
 });

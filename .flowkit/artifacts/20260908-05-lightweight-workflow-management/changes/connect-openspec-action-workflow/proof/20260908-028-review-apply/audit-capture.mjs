@@ -1,0 +1,13 @@
+import { spawnSync } from "node:child_process";
+import { writeFileSync } from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+const proof = path.dirname(fileURLToPath(import.meta.url));
+const [script, label] = process.argv.slice(2);
+if (!["audit.mjs", "audit-v2.mjs"].includes(script) || !/^audit-attempt-0[12]$/.test(label)) throw new Error("bounded own audit only");
+const startedAt = new Date().toISOString();
+const result = spawnSync(process.execPath, [path.join(proof, script)], { cwd: process.cwd(), encoding: null, maxBuffer: 3000000, windowsHide: true });
+for (const stream of ["stdout", "stderr"]) writeFileSync(path.join(proof, label + "." + stream + ".txt"), result[stream] ?? Buffer.alloc(0), { flag: "wx" });
+writeFileSync(path.join(proof, label + ".json"), JSON.stringify({ script, cwd: process.cwd(), startedAt, finishedAt: new Date().toISOString(), exitCode: result.status, error: result.error ? String(result.error) : null }, null, 2) + "\n", { flag: "wx" });
+console.log(JSON.stringify({ label, exitCode: result.status, error: result.error ? String(result.error) : null }));
+process.exitCode = result.status ?? 1;

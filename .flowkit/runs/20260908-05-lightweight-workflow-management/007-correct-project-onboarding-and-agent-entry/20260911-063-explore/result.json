@@ -1,0 +1,136 @@
+{
+  "kind": "external-orchestrator-explore-result",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "author",
+  "action": "explore",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "correct-project-onboarding-and-agent-entry",
+  "projectOrdinal": 39,
+  "runId": "20260911-063-explore",
+  "previousRunId": null,
+  "priorDeliveryRun": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260911-062-archive/result.json",
+    "bytes": 15905,
+    "sha256": "e7c7a0c75f3bc3edd8cac7146c6d9d7fbb254f1856e811d99b6da4e04298c1cb"
+  },
+  "status": "terminal",
+  "authorConclusion": "PASS",
+  "conclusionMeaning": "实际有界 Explore 已完成，首次接入与文档退役边界可交独立 review-explore；不是实现/安装/跨会话/Full Test PASS。",
+  "startedAt": "2026-09-11T05:19:38.446Z",
+  "completedAt": "2026-09-11T05:31:14.290Z",
+  "ownerSourceRef": "owner-input:2026-09-11:create-correct-project-onboarding-and-agent-entry:proof-explore",
+  "ownerDecisionsRelevant": [
+    {
+      "sourceRef": "owner-input:2026-09-11:bounded-correct-change-and-root-flowkit-documents",
+      "decision": "将接入补齐及三份根 flowkit*.md 清理纳入同一 Change，不重开前六个、不重构内核。"
+    },
+    {
+      "sourceRef": "owner-input:2026-09-11:real-cross-session-not-over-simulated",
+      "decision": "真实新会话不能以重启 CLI/合成 fixture 替代；读取验收不必额外执行 Action、制造 finding 或演完整 Delivery；未执行如实记录。"
+    },
+    {
+      "sourceRef": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260911-062-archive/result.json#ownerDecisionsRelevant",
+      "decision": "D05 独立 bootstrap；必要材料保存在 target artifacts，临时 fixture 放 .tmp；不改历史。"
+    }
+  ],
+  "scopeClassification": "Owner-authorized single correct Change: onboarding capability completion and documentation correction; no new core defect established",
+  "artifacts": [
+    {
+      "path": "openspec/changes/correct-project-onboarding-and-agent-entry/.openspec.yaml",
+      "bytes": 40,
+      "sha256": "e6a45440b7b6b8096938fece82a34e09416bcecfda2ceef5ba18c854e4341abf"
+    },
+    {
+      "path": "openspec/changes/correct-project-onboarding-and-agent-entry/explore.md",
+      "bytes": 10541,
+      "sha256": "f1953b0dbaeaa1f5bd3f792d0680933545aea96bdbd81f9829dbea10e31c68e7"
+    },
+    {
+      "path": "openspec/delivery-groups/20260908-05-lightweight-workflow-management.yaml",
+      "bytes": 12274,
+      "sha256": "3c09042bbc28c9bb9245d25bce7066c25b78cafeecf6301ec633152228ee8e9f"
+    }
+  ],
+  "removedPaths": [],
+  "proofRefs": [
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-063-explore/source-audit.json",
+      "bytes": 4749,
+      "sha256": "9342eb55c4f9f0311f8de06ac8ae0ee4505e0cc9816a4183cd8aae94bcb67636"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-063-explore/query-observations.json",
+      "bytes": 6028,
+      "sha256": "1a120d1884986ce62e8af0921383eebf500f3e73631b7fe300580deb1c1b3194"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-063-explore/evidence-index.json",
+      "bytes": 10095,
+      "sha256": "181bb2ebd5483b2359071a782f892c1416bf158743433c21c55032dbfcb1d50d"
+    }
+  ],
+  "commands": [
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-063-explore/current-build/command.json",
+      "bytes": 916,
+      "sha256": "79d0f01dff9c57e3a7802c64e1b4da20c17cbf5554d0f05b81363dedde3d4de3"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-063-explore/package-inventory/command.json",
+      "bytes": 1059,
+      "sha256": "f405a9cbba8a878f01a7f72ddb4d1206c8e3063fd044ef0c7b78875f513a02ec"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-063-explore/query-probe/command.json",
+      "bytes": 1042,
+      "sha256": "0bc4cc24663a89645a0ad9bec908ce68cb794e31a3b24f77146ce353788426c4"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-063-explore/source-audit/command.json",
+      "bytes": 1040,
+      "sha256": "3c516bad9cefa97e7df43f5eed7047725ba76d3b7ec465be6de9a9306c95aeff"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-063-explore/openspec-init/command.json",
+      "bytes": 1070,
+      "sha256": "f645ce14027f081eb82b4bc4848f8de01edb7cfff9a442e503aa9eeedfa0d656"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-063-explore/openspec-status/command.json",
+      "bytes": 1050,
+      "sha256": "fb4c26ef958968b93f1a613d1fafbc4435ea769c466c8c7182da8838611ba330"
+    }
+  ],
+  "observations": {
+    "currentBuild": "passed",
+    "packageDryRunFiles": 91,
+    "queryCases": 4,
+    "syntheticActivation": true,
+    "openspecToolsNoneInit": "observed",
+    "rootPlanningDocumentsRecoverable": 3,
+    "existingManifestBytesPreserved": true
+  },
+  "limitations": {
+    "realActionAcceptance": "not-executed",
+    "actualNewSessionRead": "not-executed",
+    "newPackageInstallation": "not-executed",
+    "formalDeliveryFullTest": "not-executed",
+    "independentReview": "not-executed"
+  },
+  "proposalDirection": [
+    "fixed-package onboarding and purpose-specific project setup",
+    "thin Agent entry using existing query/Role/Guidance ownership",
+    "current README and honestly separated acceptance",
+    "delete exact three obsolete root planning documents in Apply with bounded history/reference handoff"
+  ],
+  "productionMutation": false,
+  "skillMutation": false,
+  "readmeMutation": false,
+  "rootPlanningDocumentDeletion": false,
+  "historicalRunMutation": false,
+  "gitMutation": false,
+  "proposalCreated": false,
+  "nextBoundary": "review-explore",
+  "stop": true
+}

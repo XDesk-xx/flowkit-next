@@ -1,0 +1,23 @@
+{
+  "executable": "docker",
+  "args": [
+    "run",
+    "--rm",
+    "--network",
+    "none",
+    "--mount",
+    "type=bind,source=D:\\Projects\\flowkit-next,target=/source,readonly",
+    "--mount",
+    "type=volume,source=flowkit-d05-012-runtime-03,target=/runtime,readonly",
+    "--tmpfs",
+    "/work:exec",
+    "flowkit-next-dependency-env:latest",
+    "sh",
+    "/source/.flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/linux-acceptance.sh"
+  ],
+  "cwd": "D:\\Projects\\flowkit-next",
+  "completedAt": "2026-09-08T07:18:55.949Z",
+  "exitCode": 1,
+  "signal": null,
+  "error": null
+}

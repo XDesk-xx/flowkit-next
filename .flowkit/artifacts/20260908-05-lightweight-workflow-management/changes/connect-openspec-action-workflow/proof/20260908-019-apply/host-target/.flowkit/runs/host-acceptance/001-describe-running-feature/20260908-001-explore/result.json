@@ -1,0 +1,103 @@
+{
+  "runId": "20260908-001-explore",
+  "actionIdentity": {
+    "deliveryId": "host-acceptance",
+    "changeId": "describe-running-feature",
+    "actionId": "explore"
+  },
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-explore",
+  "facts": {
+    "proofRefs": [
+      {
+        "path": ".flowkit/artifacts/host-acceptance/changes/describe-running-feature/proof/20260908-001-explore/inspect.mjs",
+        "bytes": 1398,
+        "sha256": "f8602b26a49aa025682607d19749869e6cb6b59cf05793484e20dbf822d24908",
+        "deliveryId": "host-acceptance",
+        "changeId": "describe-running-feature",
+        "runId": "20260908-001-explore",
+        "purpose": "Explore observation inspect.mjs"
+      },
+      {
+        "path": ".flowkit/artifacts/host-acceptance/changes/describe-running-feature/proof/20260908-001-explore/inspection.json",
+        "bytes": 1322,
+        "sha256": "41bd69edf80dd460aff9f8a24f4679d40d2716c470ac20ae6bd194ad89028525",
+        "deliveryId": "host-acceptance",
+        "changeId": "describe-running-feature",
+        "runId": "20260908-001-explore",
+        "purpose": "Explore observation inspection.json"
+      },
+      {
+        "path": ".flowkit/artifacts/host-acceptance/changes/describe-running-feature/proof/20260908-001-explore/scaffold.stderr.txt",
+        "bytes": 74,
+        "sha256": "0184e39942f4c03509470f9960c2bf4856eef32b156f5b0a3ec894b342890fa3",
+        "deliveryId": "host-acceptance",
+        "changeId": "describe-running-feature",
+        "runId": "20260908-001-explore",
+        "purpose": "Explore observation scaffold.stderr.txt"
+      },
+      {
+        "path": ".flowkit/artifacts/host-acceptance/changes/describe-running-feature/proof/20260908-001-explore/scaffold.stdout.txt",
+        "bytes": 164,
+        "sha256": "bfc18443ed85a58851328326fc9aff5ba524272eb48d5b469d15b09a6e546520",
+        "deliveryId": "host-acceptance",
+        "changeId": "describe-running-feature",
+        "runId": "20260908-001-explore",
+        "purpose": "Explore observation scaffold.stdout.txt"
+      },
+      {
+        "path": ".flowkit/artifacts/host-acceptance/changes/describe-running-feature/proof/20260908-001-explore/status.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "host-acceptance",
+        "changeId": "describe-running-feature",
+        "runId": "20260908-001-explore",
+        "purpose": "Explore observation status.stderr.txt"
+      },
+      {
+        "path": ".flowkit/artifacts/host-acceptance/changes/describe-running-feature/proof/20260908-001-explore/status.stdout.txt",
+        "bytes": 4037,
+        "sha256": "99eded6458c53b3db3cc3e2e72458d64cbd21156a06160a6530065f88103cbf5",
+        "deliveryId": "host-acceptance",
+        "changeId": "describe-running-feature",
+        "runId": "20260908-001-explore",
+        "purpose": "Explore observation status.stdout.txt"
+      },
+      {
+        "path": ".flowkit/artifacts/host-acceptance/changes/describe-running-feature/proof/20260908-001-explore/version.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "host-acceptance",
+        "changeId": "describe-running-feature",
+        "runId": "20260908-001-explore",
+        "purpose": "Explore observation version.stderr.txt"
+      },
+      {
+        "path": ".flowkit/artifacts/host-acceptance/changes/describe-running-feature/proof/20260908-001-explore/version.stdout.txt",
+        "bytes": 7,
+        "sha256": "4f5ba6a3e380bf810cc968b58d30a8d7163eafe9e2fb1ad19bdc6d9d64a1e549",
+        "deliveryId": "host-acceptance",
+        "changeId": "describe-running-feature",
+        "runId": "20260908-001-explore",
+        "purpose": "Explore observation version.stdout.txt"
+      }
+    ],
+    "handoff": {
+      "summary": "已实际检查空 target、通过 exact OpenSpec 1.10.0 scaffold/status 完成 Explore；固定功能说明程序的最小方向。尚无实现 PASS；fixture activation 不是用户项目权限。",
+      "ownerDecisions": [
+        {
+          "sourceRef": "approved-task-6.1:owner-apply-input",
+          "summary": "隔离宿主验收；必要证据保留项目内，不接管 D05。"
+        }
+      ],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20260908-001-explore",
+          "path": ".flowkit/artifacts/host-acceptance/changes/describe-running-feature/proof/20260908-001-explore/inspection.json"
+        }
+      ]
+    }
+  }
+}

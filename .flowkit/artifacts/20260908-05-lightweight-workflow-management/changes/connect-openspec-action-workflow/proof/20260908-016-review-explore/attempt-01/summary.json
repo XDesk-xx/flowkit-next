@@ -1,0 +1,807 @@
+{
+  "kind": "reviewer-bounded-explore-audit",
+  "completedAt": "2026-09-08T08:44:58.494Z",
+  "method": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-016-review-explore/audit.mjs",
+    "bytes": 9592,
+    "sha256": "2df8416b0aef68640dae3aa579b9d3169f3662faf30988e5f1e2b9e4682b5703"
+  },
+  "reviewedResult": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-015-explore/result.json",
+    "bytes": 2428,
+    "sha256": "2189e3ac993ca0592c534f2382f687dd4a687155f601cb77274e20c79661a33d"
+  },
+  "sourceHead": "697088391374daa67d63c20f8a365fb44ec5c058",
+  "verifiedRefCount": 93,
+  "verifiedRefs": [
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/explore.md",
+      "bytes": 11073,
+      "sha256": "7bea87672d687c1db5cd45ef3e6863af875f60736a21b903c84a5d85cee0a679"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/summary.json",
+      "bytes": 16984,
+      "sha256": "3e6a3b2b3987c6e5cdf12cb78d05f45f8029b7f9b77934250eb5a67af20380f4"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/handoff.json",
+      "bytes": 24396,
+      "sha256": "4470362cd951864889dc68157f84e7509882ba59f603a0cde16436a9f1577396"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-01/baseline-init.command.json",
+      "bytes": 492,
+      "sha256": "0ad5be82dbf061300ef25f40897aa7979944889c92e861f31ff3f5de221b384e"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-01/baseline-init.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-01/baseline-init.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-01/baseline.gitattributes",
+      "bytes": 1525,
+      "sha256": "7c6161f50b1ce7b893b836c556a2347b3e504412752b5a3cadcc662f5a8336d8"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-01/candidate-attributes.txt",
+      "bytes": 208,
+      "sha256": "729d4eed1885129388f33b77905a898b9c02375f191619d83dfe81d255e7dc2d"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-01/fixture-input.bin",
+      "bytes": 29,
+      "sha256": "4e7eaab7c988542448bdd9cac3291328f992caaa01fb748ee7f07162d16aa25a"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/baseline-add.command.json",
+      "bytes": 887,
+      "sha256": "4a30cf02c0b34795fb0f2846104ed1fcdb05c23d241d0917b765f6e223fefb95"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/baseline-add.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/baseline-add.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/baseline-attributes.command.json",
+      "bytes": 835,
+      "sha256": "0337f4ba0d5c1ff2df6bd0e007e9e8677be7d359d2324c85c26da54beb8d76ff"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/baseline-attributes.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/baseline-attributes.stdout.txt",
+      "bytes": 744,
+      "sha256": "4eeffff0d30ecc45fddec120535588c31224b276b578146fc2a19ca7b873e039"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/baseline-blob-0.command.json",
+      "bytes": 546,
+      "sha256": "b7a8034048d57defb393c1af9278a1e3aca7a462f0553c7497c3bdbc13fc1532"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/baseline-blob-0.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/baseline-blob-0.stdout.txt",
+      "bytes": 26,
+      "sha256": "b19fa4bbc3513bc2c88d223ab0242de478384d350ec5ab9b1da8ab6c54d50ffc"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/baseline-blob-1.command.json",
+      "bytes": 552,
+      "sha256": "ee37a493d9bb0844b59ed26988d95310c5fab133231d5f4cb036bf880471433a"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/baseline-blob-1.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/baseline-blob-1.stdout.txt",
+      "bytes": 26,
+      "sha256": "b19fa4bbc3513bc2c88d223ab0242de478384d350ec5ab9b1da8ab6c54d50ffc"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/baseline-blob-2.command.json",
+      "bytes": 531,
+      "sha256": "0f3bf9be5175e5b5a0a4a3716af67624ff9e03e227d20092c0bbae149b2f234f"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/baseline-blob-2.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/baseline-blob-2.stdout.txt",
+      "bytes": 26,
+      "sha256": "b19fa4bbc3513bc2c88d223ab0242de478384d350ec5ab9b1da8ab6c54d50ffc"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/baseline-blob-3.command.json",
+      "bytes": 537,
+      "sha256": "958c20dd536daf7a0a6bb1098a8d16e324f1876653800fd7f836faf2e364b09d"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/baseline-blob-3.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/baseline-blob-3.stdout.txt",
+      "bytes": 26,
+      "sha256": "b19fa4bbc3513bc2c88d223ab0242de478384d350ec5ab9b1da8ab6c54d50ffc"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/baseline-check.command.json",
+      "bytes": 489,
+      "sha256": "1d651b6c4ccb179ff962237f10b75fd5b3a7fa159dda2757b797eeea805a4f2d"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/baseline-check.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/baseline-check.stdout.txt",
+      "bytes": 852,
+      "sha256": "d39ba1c34b468cedc6a41d2040f4ac69e64c2669158c45d18ef8cdbbc144be43"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/baseline-init.command.json",
+      "bytes": 472,
+      "sha256": "4f6a27e5c403f900c0d34fac45675a7ac1eeeef1faad1c9a632f02d91c87a569"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/baseline-init.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/baseline-init.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/baseline.gitattributes",
+      "bytes": 1525,
+      "sha256": "7c6161f50b1ce7b893b836c556a2347b3e504412752b5a3cadcc662f5a8336d8"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/candidate-attributes.txt",
+      "bytes": 208,
+      "sha256": "729d4eed1885129388f33b77905a898b9c02375f191619d83dfe81d255e7dc2d"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/existing-focused-tests.command.json",
+      "bytes": 645,
+      "sha256": "676a48122d5479a66c69cfa70f575ddfdf5ab078ddfa0bd319a28b777dbb032f"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/existing-focused-tests.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/existing-focused-tests.stdout.txt",
+      "bytes": 6531,
+      "sha256": "70ffe6ac8f9f1d78c6da655a3e0eb2852f6339d11fe32d1ddd9eacb0197f75d6"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/fixture-input.bin",
+      "bytes": 29,
+      "sha256": "4e7eaab7c988542448bdd9cac3291328f992caaa01fb748ee7f07162d16aa25a"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/generalized-add.command.json",
+      "bytes": 893,
+      "sha256": "5f18c6f0751d6c095ed3cbfb97bf15b0e2d9eab997d0f668f8a103931b1c6262"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/generalized-add.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/generalized-add.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/generalized-attributes.command.json",
+      "bytes": 841,
+      "sha256": "2e8d29b3604806d009c66730d20a31025099c18805d253792858eeca9b9adeed"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/generalized-attributes.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/generalized-attributes.stdout.txt",
+      "bytes": 724,
+      "sha256": "1b83c1691f351f08963765666dc526f7ed56dbf35dc1d421657022c2b88881e4"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/generalized-blob-0.command.json",
+      "bytes": 552,
+      "sha256": "a734524370cbb0714dd5cbf43751d00fe370188eea435880fee9ea47f4b15dd3"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/generalized-blob-0.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/generalized-blob-0.stdout.txt",
+      "bytes": 29,
+      "sha256": "4e7eaab7c988542448bdd9cac3291328f992caaa01fb748ee7f07162d16aa25a"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/generalized-blob-1.command.json",
+      "bytes": 558,
+      "sha256": "c3375a6c85cd396a8d6f669b62fe81abea62acea4d00c68ca96f203d059acbf7"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/generalized-blob-1.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/generalized-blob-1.stdout.txt",
+      "bytes": 29,
+      "sha256": "4e7eaab7c988542448bdd9cac3291328f992caaa01fb748ee7f07162d16aa25a"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/generalized-blob-2.command.json",
+      "bytes": 537,
+      "sha256": "d363c4b93befa4bbc102002b7913b641173d6acd71a884c9237d98adf63196ff"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/generalized-blob-2.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/generalized-blob-2.stdout.txt",
+      "bytes": 29,
+      "sha256": "4e7eaab7c988542448bdd9cac3291328f992caaa01fb748ee7f07162d16aa25a"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/generalized-blob-3.command.json",
+      "bytes": 543,
+      "sha256": "577dcdadd5dfe786447d3554cb2ccc7a6a1af07eb32f1c1e02e1f05df62d70b1"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/generalized-blob-3.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/generalized-blob-3.stdout.txt",
+      "bytes": 29,
+      "sha256": "4e7eaab7c988542448bdd9cac3291328f992caaa01fb748ee7f07162d16aa25a"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/generalized-check.command.json",
+      "bytes": 495,
+      "sha256": "6fdf86117eccad1d820935b1543f8a419d4d673a7814229b66a3aed35d7e7351"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/generalized-check.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/generalized-check.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/generalized-init.command.json",
+      "bytes": 478,
+      "sha256": "8ea3f9224b8206dd87e5d2f8df78174e8edc5408fb3b7be21b479a5ca1ab5377"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/generalized-init.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/generalized-init.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/generalized-source-add.command.json",
+      "bytes": 500,
+      "sha256": "93224d89c940cf04dd70a4520a12cc820cbd292d86ae43b5b5b5a12ed9d2966e"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/generalized-source-add.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/generalized-source-add.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/generalized-source-check.command.json",
+      "bytes": 502,
+      "sha256": "c109c08ef989668e09e2e9d80e9a16424c28c6b6b52c654f3712e26d46380712"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/generalized-source-check.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/attempt-02/generalized-source-check.stdout.txt",
+      "bytes": 68,
+      "sha256": "cf8cac6c3d902b0d68430b6ce01552b50bc3dd9d84f5898b3a861a5ba5b64e1c"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/continuity-probe.mjs",
+      "bytes": 3556,
+      "sha256": "1275ad6863ff9927fcabc4b830bdd659a12f55ca9b005de1926538c24c041989"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/continuity-summary.json",
+      "bytes": 1220,
+      "sha256": "00e479f5aa79fc042f5a7ff02d5d6992e749bb4e28bab8a487fb620ced3e62d2"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/finish.mjs",
+      "bytes": 5720,
+      "sha256": "2c5ba364b8047e73f9e27d77d7835e7ea3c9eef0de28078a7455841e7ec1e1ad"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/host-probe.mjs",
+      "bytes": 2295,
+      "sha256": "c53dcb4d95d23ab0c9f0b076c503fc098d4932604164f9189e471f9ce1562549"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/host-request.json",
+      "bytes": 428,
+      "sha256": "93f9f15fe0a928ec1fb21e0d488d59f4a18f0cac20332f830484ad14f1595a51"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/host-response.json",
+      "bytes": 220,
+      "sha256": "e08eabfb2617966265359f98e4e3fafedc87e6bd689b9e5e121c596fe2971141"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/host-summary.json",
+      "bytes": 399,
+      "sha256": "ee35be1ac3ac0e81cf966bdfbb5174935844643c0126d4f22938038d86e74478"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/probe.mjs",
+      "bytes": 6084,
+      "sha256": "6a14d2af90aec6fb6af0c6cb9b3242a0a92cfb8de8678370193f250897effbf2"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-015-explore/retained-input.bin",
+      "bytes": 28,
+      "sha256": "baa05d35a66b3029af06b467c1715d2d884d40d91566ec1ad23e3f8d759c3045"
+    },
+    {
+      "path": "openspec/delivery-groups/20260908-05-lightweight-workflow-management.yaml",
+      "bytes": 9180,
+      "sha256": "f35a9d8a0af69ec36f62b1ec5221f8337bc5f7730758bec49876cdcc4d6c049f"
+    },
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/separate-manager-assets-from-target-project/20260908-014-archive/result.json",
+      "bytes": 2323,
+      "sha256": "89fac1e41c575aaa730b6be2bfb53db6b989891622113c82a805a4941eb03fae"
+    },
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-015-explore/action.md",
+      "bytes": 585,
+      "sha256": "954de5f8e7c869cbc39b1f6c8aadf95cd638249aa1918f5c46e1c0d649ad9267"
+    },
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-015-explore/context.json",
+      "bytes": 1933,
+      "sha256": "661540c507e790fbef5b8403c4cc32a40d343834733e0c182a703ed749c40efb"
+    },
+    {
+      "path": "src/cli/request.ts",
+      "bytes": 7288,
+      "sha256": "fbd9c517aeb0286ea0daebb7c08740b3cab72e06d067d5d0c79c6cb78c42e08b"
+    },
+    {
+      "path": "src/cli/foundation-cli.ts",
+      "bytes": 10201,
+      "sha256": "edfd6979d3943655f9a465dedc91b2be28b75ae67fba8f604136c4cfa61982aa"
+    },
+    {
+      "path": "src/cli/trusted-change-coordination.ts",
+      "bytes": 6198,
+      "sha256": "6630657526faa90bd5264206fc8fc6fe4297e2769238825548211e4be7452b15"
+    },
+    {
+      "path": "src/domain/single-action-execution.ts",
+      "bytes": 5134,
+      "sha256": "03afdc19c11aab6bb557a75b27c0c16e92d1443b96dec2504714532e94fd470a"
+    },
+    {
+      "path": "src/domain/run-result-persistence.ts",
+      "bytes": 16971,
+      "sha256": "f502c6f9a1abcb88992f3ff8720f55fd5a5935b3943f4cc1707389c6cf8b77bb"
+    },
+    {
+      "path": "src/domain/action-package-result-admission.ts",
+      "bytes": 7460,
+      "sha256": "a72115811f8ba69fadf8f1be9cf5a1f872c8dc14d54bbc8662960df70b45131a"
+    },
+    {
+      "path": ".gitattributes",
+      "bytes": 1525,
+      "sha256": "7c6161f50b1ce7b893b836c556a2347b3e504412752b5a3cadcc662f5a8336d8"
+    },
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/separate-manager-assets-from-target-project/20260908-013-review-apply/result.json",
+      "bytes": 5914,
+      "sha256": "2ee9bae4f78abd9530d9bad71b9594e59db06ff8b3b7e3000cca05694ea4c6be"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-014-archive/summary.json",
+      "bytes": 32041,
+      "sha256": "87651c08ab5607ebaf6dda411b88d4819cf4fd09e6ac4c955121d248135b2817"
+    },
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/separate-manager-assets-from-target-project/20260908-014-archive/action.md",
+      "bytes": 651,
+      "sha256": "8a8f11c4741efa48b78cc5d416821a64c99382c5c0257d4dcfd85147b0806a06"
+    },
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/separate-manager-assets-from-target-project/20260908-014-archive/context.json",
+      "bytes": 1747,
+      "sha256": "7df7f8dafe7d9b02b2af86755a72fc3e4fef1aff3ffa57ec679751f464f2a62b"
+    }
+  ],
+  "inputs": [
+    {
+      "path": "AGENTS.md",
+      "bytes": 15804,
+      "sha256": "c5cce997a1d319a73e143092ad6bda3cda1804011b240c214ff01ea9c50ea725"
+    },
+    {
+      "path": ".agents/skills/review-explore/SKILL.md",
+      "bytes": 3414,
+      "sha256": "850b4a59581897eebee3a56b875ec000d24ce2e6ad51c96c42c68a96360269bb"
+    },
+    {
+      "path": "config/tools/toolchain.lock.json",
+      "bytes": 555,
+      "sha256": "a0481fc8a3fddfbcdd65a504e0e7a065e6ab74a3a871af3ab8838d201eecd4a2"
+    },
+    {
+      "path": ".flowkit/project.json",
+      "bytes": 149,
+      "sha256": "acd31e7acdd13078e2de6b869e84b9c6dd62f9ad1c76e331ae7bbc62006c3263"
+    },
+    {
+      "path": ".flowkit/memos.json",
+      "bytes": 21126,
+      "sha256": "ecea78153c221f82469431a2de325e486e03a39efcb2715bf40dcc614db20230"
+    },
+    {
+      "path": "flowkit-next-delivery-change-plan.md",
+      "bytes": 30820,
+      "sha256": "3d5b212c1c7effbe8540aa843812b1a22625eeb978fa4ecef196ba674d251fc4"
+    },
+    {
+      "path": "flowkit-next-d05-decoupling-analysis.md",
+      "bytes": 20639,
+      "sha256": "3b68f1a4672e667db7922b3772033d6e9b5cdb7aa9d692ad2e0c11086461e46a"
+    },
+    {
+      "path": "openspec/specs/foundation-cli-surface/spec.md",
+      "bytes": 21478,
+      "sha256": "b2480b09b92a24d91f329a9056a971f10b3417d5922de723ede7134748910674"
+    },
+    {
+      "path": "openspec/specs/single-action-execution-terminal-boundary/spec.md",
+      "bytes": 8215,
+      "sha256": "08f55107fef7825c21be4a034ef172d309655b6dd6e1f12936508c02008c21c1"
+    },
+    {
+      "path": "openspec/specs/run-result-persistence/spec.md",
+      "bytes": 9759,
+      "sha256": "dffd6debb5ae16eb2698c14c98187f9c5e3793c1b2eeba40c46431aaa87c4b1e"
+    },
+    {
+      "path": "openspec/specs/action-package-and-result-admission/spec.md",
+      "bytes": 9080,
+      "sha256": "9aa32703998cf9dcb3da14e3ecf947eb5978cb5f97c670fee5dad6b6f3dce564"
+    },
+    {
+      "path": "src/domain/policy-and-next-boundary.ts",
+      "bytes": 12628,
+      "sha256": "36b4e6ec74fe3f01b3377c15491ed1832b419a7ea275a8eded57507129a0001a"
+    }
+  ],
+  "commands": [
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-016-review-explore/attempt-01/source-head.command.json",
+      "bytes": 864,
+      "sha256": "e82b5bf2244eb23b26bfb5a35c605ba9e41ea66baa8eb36098e786aa7db69bed"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-016-review-explore/attempt-01/baseline-init.command.json",
+      "bytes": 913,
+      "sha256": "63556a6a34e749329bb5618544c15ca15066f654215974363551d324e15aab5c"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-016-review-explore/attempt-01/baseline-add.command.json",
+      "bytes": 1636,
+      "sha256": "b90adbd9feb17cb2e75fdc1c393f0e27571e2de0c09d8f60ffd3bca6ab1d4c99"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-016-review-explore/attempt-01/baseline-check.command.json",
+      "bytes": 935,
+      "sha256": "afd8a2073c4a03afeb478dfdfb5243c9d97c5131f8cfe2d9e12fb66f6800a27a"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-016-review-explore/attempt-01/baseline-blob-0.command.json",
+      "bytes": 989,
+      "sha256": "af37c7408c2e211fdfd974e17be3b3aceb8f9df4c34019c74933d02611d98433"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-016-review-explore/attempt-01/baseline-blob-1.command.json",
+      "bytes": 978,
+      "sha256": "44e658731515f6f45e0fae0dc03b275a6f71d2ec50d79b986ea63d617a09f33d"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-016-review-explore/attempt-01/baseline-blob-2.command.json",
+      "bytes": 989,
+      "sha256": "7140ba784ca74b2a87df578dced5dcdb8768b98aa75d3e42ce88111aabb110e1"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-016-review-explore/attempt-01/baseline-blob-3.command.json",
+      "bytes": 978,
+      "sha256": "445683e2206c230d3caebc5a76c6ad721fce14807d972f583f122b4d5354b9b5"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-016-review-explore/attempt-01/baseline-blob-4.command.json",
+      "bytes": 993,
+      "sha256": "6232cdc5711963ec91070ba8cd624f2170fde671e4b52dc8481828528502edcf"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-016-review-explore/attempt-01/baseline-blob-5.command.json",
+      "bytes": 982,
+      "sha256": "bbc7f6e3a54eb554d9486b4509d959904bb3e0b66c4327d017f80bd0fe50ee4d"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-016-review-explore/attempt-01/baseline-blob-6.command.json",
+      "bytes": 993,
+      "sha256": "6db779d5e2568c9738a7279b4a5627666ae041479d7996d2b5edbf0f6fa21750"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-016-review-explore/attempt-01/baseline-blob-7.command.json",
+      "bytes": 982,
+      "sha256": "9e6ba26e12f66304e478e0f06ec06c528bf3bfa84c2823a98be113aab6245bd2"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-016-review-explore/attempt-01/generalized-init.command.json",
+      "bytes": 925,
+      "sha256": "63b39ae18d9cc8a41c2a4a5d75533a2350cd46095048f0638c35c9babfc19f2c"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-016-review-explore/attempt-01/generalized-add.command.json",
+      "bytes": 1648,
+      "sha256": "c1070a15e8862d2a9972c37bff24b9b6357a434b1a7ebbf1844c61ce3e52b967"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-016-review-explore/attempt-01/generalized-check.command.json",
+      "bytes": 944,
+      "sha256": "378bfb0ac55ea1eeaa827f0618b9fb2ceaa17ab22571a532faaafd0514fce062"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-016-review-explore/attempt-01/generalized-blob-0.command.json",
+      "bytes": 1001,
+      "sha256": "a659fbc90a69fbaad8dcffad9537dfacad96b64f68fd72e406b8e2a52bab65eb"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-016-review-explore/attempt-01/generalized-blob-1.command.json",
+      "bytes": 990,
+      "sha256": "aaf8bfefa0b874537ad0eb81606877b9e8dd1033f7e5626d3d913ced923e3a0c"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-016-review-explore/attempt-01/generalized-blob-2.command.json",
+      "bytes": 1001,
+      "sha256": "de8612a1726c77f705a33cd6ff6a1958d4f6254962ec0854e0f929bec2a38003"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-016-review-explore/attempt-01/generalized-blob-3.command.json",
+      "bytes": 990,
+      "sha256": "c2ea834960acc8a881a599eea0514c6b344be9327607e319d967c12184798b5a"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-016-review-explore/attempt-01/generalized-blob-4.command.json",
+      "bytes": 1005,
+      "sha256": "8902081739d7a993f112c547144026e5d8a1e3093bda6611b12084d65559bb8b"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-016-review-explore/attempt-01/generalized-blob-5.command.json",
+      "bytes": 994,
+      "sha256": "76d7677f8a76e4cd9f34259df82c6feaf56615f183efef206e3a0400f6966fc6"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-016-review-explore/attempt-01/generalized-blob-6.command.json",
+      "bytes": 1005,
+      "sha256": "5183fb182aa7f11a31b0db85c5163f425ec66af1b24a05977fc889b85e6398c6"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-016-review-explore/attempt-01/generalized-blob-7.command.json",
+      "bytes": 994,
+      "sha256": "a2a6e35c3b57aa3c41b8fbdcfaa9cb6f036aa33004e561ed693e389e20500fcc"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-016-review-explore/attempt-01/controls-add.command.json",
+      "bytes": 1049,
+      "sha256": "8aafc3859ad31ddcb0845fe07c17bebd795c1874b43303d4e6c614850421d37e"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-016-review-explore/attempt-01/controls-check.command.json",
+      "bytes": 937,
+      "sha256": "ef8f3e26aa69ee7ec0bc3256173445fc7a09abcce7977addd207b77884f5944c"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-016-review-explore/attempt-01/repository-diff-check.command.json",
+      "bytes": 891,
+      "sha256": "7ab8122632762f1c70f6c96396051fbe5e62471a64cb3e2c51e4106301173e12"
+    }
+  ],
+  "independentRawStreamCases": [
+    {
+      "generalized": false,
+      "path": ".flowkit/artifacts/new-delivery/changes/new-change/proof/session/stdout.txt",
+      "inputSha256": "ec590113478a63a22128811cc719f5aace27f8bf308ffa7a3d091d43183a5700",
+      "indexedSha256": "4f787e3b6ae2359b254235179a2980c8ed225a95d4e6214e06ea7914c1046664",
+      "exact": false
+    },
+    {
+      "generalized": false,
+      "path": ".flowkit/artifacts/new-delivery/full-test/new-attempt/stdout.txt",
+      "inputSha256": "ec590113478a63a22128811cc719f5aace27f8bf308ffa7a3d091d43183a5700",
+      "indexedSha256": "4f787e3b6ae2359b254235179a2980c8ed225a95d4e6214e06ea7914c1046664",
+      "exact": false
+    },
+    {
+      "generalized": false,
+      "path": ".flowkit/artifacts/new-delivery/changes/new-change/proof/session/stderr.txt",
+      "inputSha256": "ec590113478a63a22128811cc719f5aace27f8bf308ffa7a3d091d43183a5700",
+      "indexedSha256": "4f787e3b6ae2359b254235179a2980c8ed225a95d4e6214e06ea7914c1046664",
+      "exact": false
+    },
+    {
+      "generalized": false,
+      "path": ".flowkit/artifacts/new-delivery/full-test/new-attempt/stderr.txt",
+      "inputSha256": "ec590113478a63a22128811cc719f5aace27f8bf308ffa7a3d091d43183a5700",
+      "indexedSha256": "4f787e3b6ae2359b254235179a2980c8ed225a95d4e6214e06ea7914c1046664",
+      "exact": false
+    },
+    {
+      "generalized": false,
+      "path": ".flowkit/artifacts/new-delivery/changes/new-change/proof/session/job.stdout.txt",
+      "inputSha256": "ec590113478a63a22128811cc719f5aace27f8bf308ffa7a3d091d43183a5700",
+      "indexedSha256": "4f787e3b6ae2359b254235179a2980c8ed225a95d4e6214e06ea7914c1046664",
+      "exact": false
+    },
+    {
+      "generalized": false,
+      "path": ".flowkit/artifacts/new-delivery/full-test/new-attempt/job.stdout.txt",
+      "inputSha256": "ec590113478a63a22128811cc719f5aace27f8bf308ffa7a3d091d43183a5700",
+      "indexedSha256": "4f787e3b6ae2359b254235179a2980c8ed225a95d4e6214e06ea7914c1046664",
+      "exact": false
+    },
+    {
+      "generalized": false,
+      "path": ".flowkit/artifacts/new-delivery/changes/new-change/proof/session/job.stderr.txt",
+      "inputSha256": "ec590113478a63a22128811cc719f5aace27f8bf308ffa7a3d091d43183a5700",
+      "indexedSha256": "4f787e3b6ae2359b254235179a2980c8ed225a95d4e6214e06ea7914c1046664",
+      "exact": false
+    },
+    {
+      "generalized": false,
+      "path": ".flowkit/artifacts/new-delivery/full-test/new-attempt/job.stderr.txt",
+      "inputSha256": "ec590113478a63a22128811cc719f5aace27f8bf308ffa7a3d091d43183a5700",
+      "indexedSha256": "4f787e3b6ae2359b254235179a2980c8ed225a95d4e6214e06ea7914c1046664",
+      "exact": false
+    },
+    {
+      "generalized": true,
+      "path": ".flowkit/artifacts/new-delivery/changes/new-change/proof/session/stdout.txt",
+      "inputSha256": "ec590113478a63a22128811cc719f5aace27f8bf308ffa7a3d091d43183a5700",
+      "indexedSha256": "ec590113478a63a22128811cc719f5aace27f8bf308ffa7a3d091d43183a5700",
+      "exact": true
+    },
+    {
+      "generalized": true,
+      "path": ".flowkit/artifacts/new-delivery/full-test/new-attempt/stdout.txt",
+      "inputSha256": "ec590113478a63a22128811cc719f5aace27f8bf308ffa7a3d091d43183a5700",
+      "indexedSha256": "ec590113478a63a22128811cc719f5aace27f8bf308ffa7a3d091d43183a5700",
+      "exact": true
+    },
+    {
+      "generalized": true,
+      "path": ".flowkit/artifacts/new-delivery/changes/new-change/proof/session/stderr.txt",
+      "inputSha256": "ec590113478a63a22128811cc719f5aace27f8bf308ffa7a3d091d43183a5700",
+      "indexedSha256": "ec590113478a63a22128811cc719f5aace27f8bf308ffa7a3d091d43183a5700",
+      "exact": true
+    },
+    {
+      "generalized": true,
+      "path": ".flowkit/artifacts/new-delivery/full-test/new-attempt/stderr.txt",
+      "inputSha256": "ec590113478a63a22128811cc719f5aace27f8bf308ffa7a3d091d43183a5700",
+      "indexedSha256": "ec590113478a63a22128811cc719f5aace27f8bf308ffa7a3d091d43183a5700",
+      "exact": true
+    },
+    {
+      "generalized": true,
+      "path": ".flowkit/artifacts/new-delivery/changes/new-change/proof/session/job.stdout.txt",
+      "inputSha256": "ec590113478a63a22128811cc719f5aace27f8bf308ffa7a3d091d43183a5700",
+      "indexedSha256": "ec590113478a63a22128811cc719f5aace27f8bf308ffa7a3d091d43183a5700",
+      "exact": true
+    },
+    {
+      "generalized": true,
+      "path": ".flowkit/artifacts/new-delivery/full-test/new-attempt/job.stdout.txt",
+      "inputSha256": "ec590113478a63a22128811cc719f5aace27f8bf308ffa7a3d091d43183a5700",
+      "indexedSha256": "ec590113478a63a22128811cc719f5aace27f8bf308ffa7a3d091d43183a5700",
+      "exact": true
+    },
+    {
+      "generalized": true,
+      "path": ".flowkit/artifacts/new-delivery/changes/new-change/proof/session/job.stderr.txt",
+      "inputSha256": "ec590113478a63a22128811cc719f5aace27f8bf308ffa7a3d091d43183a5700",
+      "indexedSha256": "ec590113478a63a22128811cc719f5aace27f8bf308ffa7a3d091d43183a5700",
+      "exact": true
+    },
+    {
+      "generalized": true,
+      "path": ".flowkit/artifacts/new-delivery/full-test/new-attempt/job.stderr.txt",
+      "inputSha256": "ec590113478a63a22128811cc719f5aace27f8bf308ffa7a3d091d43183a5700",
+      "indexedSha256": "ec590113478a63a22128811cc719f5aace27f8bf308ffa7a3d091d43183a5700",
+      "exact": true
+    }
+  ],
+  "structuredTextControlsPreserved": 3,
+  "authorObservedFacts": {
+    "hostTransport": {
+      "requestCount": 1,
+      "responseCount": 1,
+      "nextInvocations": 0
+    },
+    "topologyCounterexamples": 7,
+    "baselineTests": 30
+  },
+  "limitations": [
+    "Independent Git attribute fixture only; no product implementation or Formal Full Test.",
+    "Host transport inputs/outputs/method verified; actual Reviewer live transport is recorded separately.",
+    "Topology model is not a canonical Run resolver; Proposal must define schema/Role/Policy edges and prepare/persistence failure ordering.",
+    "Real repository attributes, index and Author artifacts are not edited."
+  ]
+}

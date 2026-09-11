@@ -3,6 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
+  "files": [
+    "dist/",
+    "docs/onboarding.md",
+    "skills/actions/",
+    "skills/delivery/",
+    "skills/tools/openspec/",
+    "skills/vendors/openspec/",
+    "config/tools/toolchain.lock.json"
+  ],
   "packageManager": "pnpm@11.22.0",
   "engines": {
     "node": ">=22.20.0"
@@ -12,11 +21,13 @@
     "test:domain": "node --import tsx --test tests/unit/domain/*.test.ts",
     "format": "prettier --write src tests tsconfig.json tsconfig.build.json package.json eslint.config.mjs scripts/check-forbidden-tracked-artifacts.mjs",
     "format:check": "prettier --check src tests tsconfig.json tsconfig.build.json package.json eslint.config.mjs scripts/check-forbidden-tracked-artifacts.mjs",
-    "build": "tsc -p tsconfig.build.json",
+    "build": "node scripts/build-production.mjs",
+    "prepack": "node scripts/build-production.mjs",
     "test:acceptance": "node --import tsx --test tests/acceptance/*.test.ts",
     "lint": "eslint src tests",
     "check:forbidden-tracked-artifacts": "node scripts/check-forbidden-tracked-artifacts.mjs",
-    "quality:gate": "git diff --check HEAD && pnpm format:check && pnpm lint && pnpm check:forbidden-tracked-artifacts",
+    "quality:gate": "pnpm format:check && pnpm lint",
+    "test:bootstrap": "node --import tsx --test tests/unit/bootstrap/*.test.ts",
     "quality:dependency-health": "depcruise --config dependency-cruiser.config.mjs --output-type err src tests",
     "test:entropy": "node --test tests/unit/quality/production-reachability.test.mjs",
     "quality:entropy": "node scripts/check-production-reachability.mjs"

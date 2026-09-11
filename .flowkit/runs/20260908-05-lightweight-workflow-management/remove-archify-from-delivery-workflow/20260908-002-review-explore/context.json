@@ -1,0 +1,43 @@
+{
+  "kind": "external-orchestrator-review-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "reviewer",
+  "action": "review-explore",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "remove-archify-from-delivery-workflow",
+  "runId": "20260908-002-review-explore",
+  "runNumber": 2,
+  "projectOrdinal": 33,
+  "previousRunId": "20260908-001-explore",
+  "reviewedRunId": "20260908-001-explore",
+  "physicalRunPath": ".flowkit/runs/20260908-05-lightweight-workflow-management/remove-archify-from-delivery-workflow/20260908-002-review-explore",
+  "ownerInstruction": "根据最新run，review-explore",
+  "supersededRequest": "review-apply; not executed in this turn",
+  "ownerActivationRef": "owner:9fbce3acfd773efa4def5cbc64dd4b703d2b50e4a07407bade9c4d1b05f893d6",
+  "authoritySource": "openspec/delivery-groups/20260908-05-lightweight-workflow-management.yaml#ownerDecisions-and-bootstrap",
+  "authorityLimit": "既有独立 bootstrap 与当前 Owner 的单次 Reviewer 调用；不推导 Author、Git 或后续 Action 权限。",
+  "sourceHead": "97bcd2f99dcf6946b646fb1759b2e64584007c30",
+  "sourceHeadMeaning": "只定位复验输入；不作为本次或后续 Action 的 Git SHA 准入门槛。",
+  "reviewedArtifact": "openspec/changes/remove-archify-from-delivery-workflow/explore.md",
+  "reviewedArtifactSha256": "c8386dcd1aaac8ea72ceb733f1cded3118f24235b86eb6c4f4fb94a9dbb37db9",
+  "reviewedResultPath": ".flowkit/runs/20260908-05-lightweight-workflow-management/remove-archify-from-delivery-workflow/20260908-001-explore/result.json",
+  "reviewedResultSha256": "392322bb1d4d7b1c65cf1f618b0ae229c615371bc784af5bb05faffa45e62a28",
+  "authorProofRoot": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/remove-archify-from-delivery-workflow/proof/20260908-001-explore",
+  "reviewerProofRoot": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/remove-archify-from-delivery-workflow/proof/20260908-002-review-explore",
+  "reviewerProofSummary": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/remove-archify-from-delivery-workflow/proof/20260908-002-review-explore/attempt-01/summary.json",
+  "skillsUsed": [
+    ".agents/skills/review-explore"
+  ],
+  "candidateUse": "只读源码和隔离 fixture 的真实测试对象，不提供本次 lifecycle authority；未读取 candidate review-explore HOW。",
+  "protectedBefore": {
+    "files": 1532,
+    "sha256": "f1185722429573d56d071ff9d695df5a41314e95b69fe8c34e85ed9d300b5be5",
+    "head": "97bcd2f99dcf6946b646fb1759b2e64584007c30"
+  },
+  "protectedSnapshotScope": "全部 tracked 与 nonignored untracked 文件，排除本次自有 Run/proof；仅检查 Reviewer 写入隔离，不是产品合同。",
+  "formalFullTestExecuted": false,
+  "proposalExecuted": false,
+  "applyExecuted": false,
+  "gitMutationAllowed": false
+}

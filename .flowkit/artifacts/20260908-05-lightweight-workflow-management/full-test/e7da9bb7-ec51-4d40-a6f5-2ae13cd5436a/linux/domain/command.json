@@ -1,0 +1,29 @@
+{
+  "checkId": "domain",
+  "program": "/usr/local/bin/node",
+  "args": [
+    "--import",
+    "tsx",
+    "--test",
+    "tests/unit/domain/*.test.ts"
+  ],
+  "cwd": ".",
+  "startedAt": "2026-09-11T08:06:40.447Z",
+  "finishedAt": "2026-09-11T08:07:18.574Z",
+  "exitCode": 1,
+  "signal": null,
+  "error": null,
+  "status": "failed",
+  "streams": [
+    {
+      "path": "domain/stdout.txt",
+      "bytes": 71551,
+      "sha256": "e84b0f0070797cdf952e1c30fa97ca24b8ad1c01852e939b0d3fbd269baf0939"
+    },
+    {
+      "path": "domain/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

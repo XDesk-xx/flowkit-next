@@ -1,0 +1,35 @@
+{
+  "executable": "node",
+  "args": [
+    "node_modules/prettier/bin/prettier.cjs",
+    "--write",
+    "src/cli/entrypoint.ts",
+    "src/cli/request.ts",
+    "src/cli/foundation-cli.ts",
+    "src/cli/current-run-chain.ts",
+    "src/domain/run-result-persistence.ts",
+    "tests/unit/domain/foundation-cli-entrypoint.test.ts",
+    "tests/unit/domain/foundation-cli-surface.test.ts",
+    "tests/unit/domain/current-run-chain.test.ts",
+    "tests/unit/domain/run-partial-preservation.test.ts",
+    "tests/unit/domain/agent-how-fixture.ts",
+    "tests/unit/domain/agent-how-record.test.ts",
+    "tests/unit/domain/agent-how-material.test.ts"
+  ],
+  "cwd": "D:\\Projects\\flowkit-next",
+  "startedAt": "2026-09-08T13:49:18.714Z",
+  "finishedAt": "2026-09-08T13:49:18.719Z",
+  "exitCode": null,
+  "signal": null,
+  "error": "spawnSync node EPERM",
+  "stdout": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-025-apply/format/stdout.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stderr": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-025-apply/format/stderr.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

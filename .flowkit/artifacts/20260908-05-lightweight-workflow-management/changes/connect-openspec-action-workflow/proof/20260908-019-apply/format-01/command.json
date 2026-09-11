@@ -1,0 +1,30 @@
+{
+  "executable": "node",
+  "args": [
+    "node_modules/prettier/bin/prettier.cjs",
+    "--check",
+    "src",
+    "tests",
+    "tsconfig.json",
+    "tsconfig.build.json",
+    "package.json",
+    "eslint.config.mjs",
+    "scripts/check-forbidden-tracked-artifacts.mjs"
+  ],
+  "cwd": "D:\\Projects\\flowkit-next",
+  "startedAt": "2026-09-08T10:42:54.448Z",
+  "finishedAt": "2026-09-08T10:42:54.459Z",
+  "exitCode": null,
+  "signal": null,
+  "error": "spawnSync node EPERM",
+  "stdout": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-019-apply/format-01/stdout.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stderr": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-019-apply/format-01/stderr.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

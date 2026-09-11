@@ -1,0 +1,45 @@
+{
+  "kind": "external-orchestrator-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "author",
+  "action": "explore",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "invoke-git-at-workflow-boundaries",
+  "projectOrdinal": 38,
+  "runId": "20260909-054-explore",
+  "previousRunId": null,
+  "previousDeliveryRun": ".flowkit/runs/20260908-05-lightweight-workflow-management/005-simplify-delivery-coordination/20260909-053-archive/result.json",
+  "startedAt": "2026-09-09 12:53:17 UTC",
+  "ownerInstruction": "owner 授权 激活 最后一个 change ，并且进行 proof explore",
+  "ownerSourceRef": "owner-input:2026-09-09:activate-change:invoke-git-at-workflow-boundaries:proof-explore",
+  "repositoryHead": "a0edb690d7208a3b81855e30a31dbc175f060a93",
+  "preparation": "工作区干净；无活动 OpenSpec Change；目标唯一 planned、依赖 completed；所有已赋 ordinal 有效唯一，max=37，next=38。当前 HEAD 只定位源码，不产生产品 SHA 准入。",
+  "proofRoot": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260909-054-explore",
+  "scope": [
+    "授权 Git 节点的操作与目标范围",
+    "移除无条件固定 parent/count/全仓 clean 耦合",
+    "实际 Git 结果读回、部分成功与有界人工交接"
+  ],
+  "nonGoals": [
+    "Propose/Apply/独立 Review",
+    "当前仓库 commit/push/PR/merge",
+    "实际 D05 Full Test/Final",
+    "通用 Git 平台或自动恢复",
+    "改变只读 CLI 与严格 OpenSpec Action 边界"
+  ],
+  "ownerDecisionsRelevant": [
+    {
+      "sourceRef": "flowkit-next-delivery-change-plan.md#在约定节点调用 Git",
+      "decision": "Git 为既有外部能力；按明确授权操作，不默认固定点/parent/count，不自动重试或回滚。"
+    },
+    {
+      "sourceRef": "AGENTS.md#17. Platform / text / acceptance",
+      "decision": "空白诊断不作为历史 proof/日志的统一 checkpoint blocker；不重写原始 bytes 或逐 Change 修改 attributes。"
+    },
+    {
+      "sourceRef": "openspec/delivery-groups/20260908-05-lightweight-workflow-management.yaml#bootstrap",
+      "decision": "D05 independent-bootstrap；必要 proof 保存在 target artifacts，.tmp 只可丢弃。"
+    }
+  ]
+}

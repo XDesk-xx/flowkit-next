@@ -1,0 +1,82 @@
+TAP version 13
+# Subtest: context selects unique active and distinguishes idle/planned/cancelled
+ok 1 - context selects unique active and distinguishes idle/planned/cancelled
+  ---
+  duration_ms: 779.2005
+  type: 'test'
+  ...
+# Subtest: context reports candidates and explicit selection never fills missing facts
+ok 2 - context reports candidates and explicit selection never fills missing facts
+  ---
+  duration_ms: 417.9479
+  type: 'test'
+  ...
+# Subtest: context rejects root mismatch, orphan, activation/dependency and partial history
+ok 3 - context rejects root mismatch, orphan, activation/dependency and partial history
+  ---
+  duration_ms: 501.8767
+  type: 'test'
+  ...
+# Subtest: chain tip follows Policy links, not sequence or input ordering
+ok 4 - chain tip follows Policy links, not sequence or input ordering
+  ---
+  duration_ms: 2.7575
+  type: 'test'
+  ...
+# Subtest: reject disconnected higher root, fork, missing parent, cycle, duplicate sequence and Role
+ok 5 - reject disconnected higher root, fork, missing parent, cycle, duplicate sequence and Role
+  ---
+  duration_ms: 1.6777
+  type: 'test'
+  ...
+# Subtest: Owner correction uses existing Policy and rejects wrong authority
+ok 6 - Owner correction uses existing Policy and rejects wrong authority
+  ---
+  duration_ms: 1.3108
+  type: 'test'
+  ...
+# Subtest: complete prepared failure retries same Action with a new occurrence
+ok 7 - complete prepared failure retries same Action with a new occurrence
+  ---
+  duration_ms: 0.5751
+  type: 'test'
+  ...
+# Subtest: canonical disk history reads selected group only and keeps partial visible
+ok 8 - canonical disk history reads selected group only and keeps partial visible
+  ---
+  duration_ms: 29.3933
+  type: 'test'
+  ...
+# Subtest: explicit bootstrap history is display-only; mixed and unmarked groups rejected
+ok 9 - explicit bootstrap history is display-only; mixed and unmarked groups rejected
+  ---
+  duration_ms: 19.4746
+  type: 'test'
+  ...
+# Subtest: actual terminal Author FAIL stays current rather than reusing prior PASS
+ok 10 - actual terminal Author FAIL stays current rather than reusing prior PASS
+  ---
+  duration_ms: 0.3832
+  type: 'test'
+  ...
+# Subtest: exact Change group selection ignores overlapping canonical and bootstrap suffixes
+ok 11 - exact Change group selection ignores overlapping canonical and bootstrap suffixes
+  ---
+  duration_ms: 30.1364
+  type: 'test'
+  ...
+# Subtest: exact selected malformed, duplicate and mixed groups are still diagnosed
+ok 12 - exact selected malformed, duplicate and mixed groups are still diagnosed
+  ---
+  duration_ms: 35.0361
+  type: 'test'
+  ...
+1..12
+# tests 12
+# suites 0
+# pass 12
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2109.3775

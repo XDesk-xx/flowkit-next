@@ -1,0 +1,52 @@
+{
+  "kind": "external-orchestrator-review-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "separate-manager-assets-from-target-project",
+  "runId": "20260908-011-review-propose",
+  "runNumber": 11,
+  "projectOrdinal": 34,
+  "role": "reviewer",
+  "action": "review-propose",
+  "previousRunId": "20260908-010-propose",
+  "reviewedRunId": "20260908-010-propose",
+  "ownerInstruction": "根据最新run，review",
+  "targetResolution": "当前 active Change 与 008 → 009 approved → 010 Propose/nextBoundary 匹配；使用 bound context/kind 明确 010 阶段，记录其 action 字段覆盖，不按最大编号或自由推测选择。",
+  "authority": "Owner 单次独立 Review；D05 independent-bootstrap，未使用 candidate lifecycle 或恢复外部 manager。",
+  "reviewedResult": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/separate-manager-assets-from-target-project/20260908-010-propose/result.json",
+    "bytes": 2092,
+    "sha256": "4690f1aa46bafa6227feb91a78424d629d9a42ef2f8b8a5a623034eaad3f197c"
+  },
+  "acceptedExploreReview": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/separate-manager-assets-from-target-project/20260908-009-review-explore/result.json",
+    "bytes": 6621,
+    "sha256": "5e617f15b92df703cfc71ee07b58cd9697d2c6464c5b0f78d01fd22f63ed15a4"
+  },
+  "authorValidation": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-010-propose/attempt-01/summary.json",
+    "bytes": 3425,
+    "sha256": "c0055e85ed0fb55f922d8062a7d036857485fd49ee126bb59e9bda9a44cec454"
+  },
+  "reviewerProofSummary": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-011-review-propose/attempt-01/summary.json",
+    "bytes": 16803,
+    "sha256": "e2162b4737300aebbaeedcf05c31115ef8fce7bff93dab7ac544e6ef4ccd9325"
+  },
+  "proofRoot": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-011-review-propose",
+  "sourceHead": "01d82dba4593ea0c5b85ac67da03e6261dccfba6",
+  "sourceHeadMeaning": "仅定位输入，不是新 SHA/checkpoint 准入条件。",
+  "skillsUsed": [
+    ".agents/skills/review-propose"
+  ],
+  "protectedBefore": {
+    "files": 1783,
+    "sha256": "133348d089074b0b837c593fd94db9725a39043f9c739d23df9b8b3de2998d6f",
+    "head": "01d82dba4593ea0c5b85ac67da03e6261dccfba6"
+  },
+  "protectedScope": "tracked/nonignored untracked 与 tracked 删除标记，排除本次自有 Run/proof；只为 Reviewer 写入隔离。",
+  "applyExecuted": false,
+  "formalFullTestExecuted": false,
+  "gitMutationAllowed": false
+}

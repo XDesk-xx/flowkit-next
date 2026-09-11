@@ -1,0 +1,73 @@
+{
+  "kind": "external-orchestrator-revise-explore-result",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "author",
+  "action": "revise-explore",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "connect-openspec-action-workflow",
+  "projectOrdinal": 35,
+  "runId": "20260908-021-revise-explore",
+  "previousRunId": "20260908-020-revise-explore",
+  "status": "terminal",
+  "verdict": "PASS",
+  "verdictMeaning": "Author有界Explore已收敛；不是实现PASS或独立Review批准",
+  "proposalReady": true,
+  "summary": "撤销CLI托管执行的前提，明确CLI读取/报告、Agent执行/记录的边界；既有canonical Run合同可供Agent遵循，D05 bootstrap历史不自动转换。",
+  "resolvedUnknown": {
+    "sourceRunId": "20260908-020-revise-explore",
+    "id": "action-cli-interaction-model",
+    "resolution": "Owner明确职责分离；不新增长连接或prepare/submit协议，源码证明读取与transport可分离"
+  },
+  "blockingUnknowns": [],
+  "evidence": [
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/explore.md",
+      "bytes": 10968,
+      "sha256": "03c948fea0aab3b787b7d4e86a51f5892ea22b0e7b52a936c7cec38be109cc11"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-021-revise-explore/audit.mjs",
+      "sha256": "fa5e86666da4e786a14852fa39dfc0caf53e3450ed27381259560151561550b1"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-021-revise-explore/attempt-02/summary.json",
+      "sha256": "e590aeba62119489e4e37c70b3a770f2d2cb9fa0f61ca0920cced75277c0b6b1"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-021-revise-explore/attempt-02/source-inspection.json",
+      "sha256": "ebb243d489b483f8a917bb0e0109b881e738712beb3ff05cd78fff614c451654"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-021-revise-explore/attempt-01/summary.json",
+      "sha256": "03fcd57042857a5b1ac6ece07a4be9bd74813bfab184449b67d31fa04c686bb0",
+      "meaning": "sandbox EPERM, commands not executed; preserved failure evidence"
+    }
+  ],
+  "verification": {
+    "readonlyCommands": 4,
+    "exitCodes": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "protectedInputs": 192,
+    "changedProtectedInputs": [
+      "openspec/changes/connect-openspec-action-workflow/explore.md"
+    ],
+    "gitDiffCheckExitCode": 0,
+    "meaning": "source inspection/observation only; no product behavior acceptance"
+  },
+  "priorApplyCompleted": false,
+  "productionMutation": false,
+  "proposalMutation": false,
+  "skillMutation": false,
+  "gitMutation": false,
+  "formalFullTestExecuted": false,
+  "reviewerVerdict": null,
+  "nextBoundary": "review-explore",
+  "afterApprovedReview": "revise-propose; not direct Apply",
+  "completedAt": "2026-09-08T12:53:54.172Z",
+  "stop": true
+}

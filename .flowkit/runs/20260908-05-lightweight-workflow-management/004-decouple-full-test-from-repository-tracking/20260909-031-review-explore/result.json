@@ -1,0 +1,157 @@
+{
+  "kind": "external-orchestrator-review-explore-result",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "reviewer",
+  "action": "review-explore",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "decouple-full-test-from-repository-tracking",
+  "projectOrdinal": 36,
+  "runId": "20260909-031-review-explore",
+  "previousRunId": "20260909-030-explore",
+  "reviewedRunId": "20260909-030-explore",
+  "status": "terminal",
+  "verdict": "approved",
+  "verdictMeaning": "030 的问题证据、最小边界和 Proposal readiness 通过独立审查；不是批准未生成的 Proposal、产品修复完成、Verification 或 Formal Full Test PASS。",
+  "reviewedResult": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/004-decouple-full-test-from-repository-tracking/20260909-030-explore/result.json",
+    "bytes": 10546,
+    "sha256": "4dbec4173f1ab987d224275f9c657ec49e41fae67299923006f1c04228c973ae"
+  },
+  "reviewedExplore": {
+    "path": "openspec/changes/decouple-full-test-from-repository-tracking/explore.md",
+    "bytes": 11392,
+    "sha256": "a536020a032782a9d39c80e06512ead16fe16e361ae557be687d6b2b37a70985"
+  },
+  "coordinationAtReview": {
+    "path": "openspec/delivery-groups/20260908-05-lightweight-workflow-management.yaml",
+    "bytes": 10220,
+    "sha256": "8a9ebbdd2430da92b2bc5cee0cd9139c6b8e6385d71585219265bb27e570e84f"
+  },
+  "summary": "Git 输入选择、过程 artifacts、whitespace 和 Full Test 输出/当前尝试边界由源码及独立反例支持；直接消费者已纳入，未扩大到其他 Action/完整 Delivery/Git 重构。",
+  "findings": [],
+  "blockingUnknowns": [],
+  "nonBlockingObservations": [
+    "配置 exact 字段、范围/链接支持、调用入口及当前尝试发布/保存失败顺序由 Propose 固定；本轮未把 prototype 当实现。",
+    "旧 PASS 对象通过局部 validator 不等于真实 Final 已被绕过；Author 标明了环境限制，本次也未执行 Final。"
+  ],
+  "assessments": {
+    "currentStep": "独立 review-explore：核对 Owner 激活/gate 扩充、030 实验、现行合同/源码及所需消费者，判断是否可进入 Proposal。",
+    "complexityAndMinimality": "单一项目配置、有界文件输入、既有进程/文件能力、create-once attempt 和既有 Delivery 当前关联；无需 Registry/EvidenceStore/新 Run/自动恢复。",
+    "newContentAndScopeDrift": "scope drift: NONE。gate 修正有 Owner 来源；本轮只同步 Full Test 必要消费者，完整 Start/Final 和正式 Git 执行仍属后续 Changes。"
+  },
+  "runArtifacts": {
+    "action": {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/004-decouple-full-test-from-repository-tracking/20260909-031-review-explore/action.md",
+      "bytes": 384,
+      "sha256": "5d6b1a88023b3e21b6782f8a65a1761a348e903848bddd390a0eaa4e0cd6d381"
+    },
+    "context": {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/004-decouple-full-test-from-repository-tracking/20260909-031-review-explore/context.json",
+      "bytes": 1374,
+      "sha256": "c7bfcea7075e544be70e1758ee29c79543d14abb83bbaa4bcf1ec36b16528db3"
+    }
+  },
+  "reviewReport": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-031-review-explore/review.md",
+    "bytes": 3997,
+    "sha256": "2d899289a23dd0be326c3afcdeb6fb2ea768b70839078b5be344114ad79ca2ed"
+  },
+  "reviewEvidence": {
+    "audit": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-031-review-explore/audit.json",
+      "bytes": 21839,
+      "sha256": "4e70f584696b1e67ddc87f61908abe32c1cff6bc263adc6f2f9e9a33b08ae1ae"
+    },
+    "auditMethod": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-031-review-explore/audit.mjs",
+      "bytes": 7462,
+      "sha256": "f90040e92602dd881b62fcef63b985379a9a7c7fc914d07d6ae21e8fb7b26282"
+    },
+    "independentProbe": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-031-review-explore/probe.mjs",
+      "bytes": 7511,
+      "sha256": "e5f861bfe64488744ce939851c6b685c7e769ccba697f202f59ef86c980e181a"
+    },
+    "captureMethod": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-031-review-explore/capture.mjs",
+      "bytes": 2366,
+      "sha256": "50205d2f1e3ec0cc7eba05504c5246d3d2299ee61d264a6f8081ff6df775073d"
+    },
+    "sandboxBlockedAttempt": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-031-review-explore/attempt-01/summary.json",
+      "bytes": 5307,
+      "sha256": "c47faafbeaffe45b47ccfca812b2d8cbab48e2281ccd1da953304a0ba2c26380"
+    },
+    "completedAttempt": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-031-review-explore/attempt-02/summary.json",
+      "bytes": 4945,
+      "sha256": "2ed8033b64279c9e21cdd313a97357ca7d753995dd3f594dbd066bf55978c186"
+    },
+    "observations": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-031-review-explore/attempt-02/observations.json",
+      "bytes": 3543,
+      "sha256": "9ccef99f27233e2fe5857f1c61fef89c5b25742fbf76b7f49311be65b0ff1c74"
+    },
+    "checks": {
+      "verifiedReferences": 74,
+      "authorCommandRecordsVerified": 3,
+      "independentObservationGroups": 7,
+      "completedCommandExitCodes": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "exactOpenSpecVersion": "1.10.0",
+      "openSpecTargetMatches": true,
+      "proposalStillAbsent": true,
+      "manifestOnlyAuthorizedActivationAndOrdinal": true,
+      "sourceTestsSkillsUnchanged": true,
+      "priorArchiveAndApplicableSyncedSpecsVerified": true,
+      "currentRunGroupCorrectionAuthorityCarried": true,
+      "gitDiffCheck": true
+    },
+    "limitations": "Windows 隔离 Explore 实验，未执行 Linux 新实现验收或正式 Full Test。相同输入重复执行用于证明 executionRef 不区分 occurrence；另一显式失败检查用于说明局部 validator 不是当前选择。无实际 Final 绕过声明。首次 sandbox EPERM 保留，获准后相同命令另存 attempt-02。",
+    "candidateReviewerHowConsumed": false,
+    "candidateLifecycleInvokedOnActualRepository": false
+  },
+  "mutationIsolation": {
+    "before": {
+      "files": 2974,
+      "sha256": "240f6274c492110be8da834ef2a84cb749a9e34ba2962f401f9eb0810e1f6b23",
+      "head": "7625ecdef3115db45b062b544728ea2459519a09",
+      "at": "2026-09-08T19:13:27.343Z"
+    },
+    "after": {
+      "files": 2974,
+      "sha256": "240f6274c492110be8da834ef2a84cb749a9e34ba2962f401f9eb0810e1f6b23",
+      "head": "7625ecdef3115db45b062b544728ea2459519a09",
+      "at": "2026-09-08T19:22:17.365Z"
+    },
+    "equal": true,
+    "scope": "tracked/nonignored untracked 与 tracked 删除标记，排除本次 Reviewer Run/proof；只用于审查隔离，不增加产品 SHA 门槛。"
+  },
+  "proposalReady": true,
+  "nextBoundary": "propose",
+  "continuationMeaning": "仅报告 approved review-explore 后的既有 Propose 交接；本轮不生成 Proposal 或执行下一 Action。",
+  "proposalReminders": [
+    "固定项目配置、受支持文件范围及命令实际扫描范围的一致性。",
+    "固定当前 attempt 发布、可靠开始、执行/结果保存/消费和失败语义，不选择任意旧 PASS。",
+    "同步必要 Full Test 消费者；代码质量、相关材料校验和 Git/Owner 权限仍保持。"
+  ],
+  "ownerDecisionsRelevant": [
+    "当前 Change activation/proof Explore 及 gate 范围修复已明确授权。",
+    "当前030分组004的 Owner 纠正已传递，历史分组不改。",
+    "D05 independent-bootstrap；必要 proof 长期保存，.tmp 可丢弃；不恢复外部 manager 或让 candidate 自管理。"
+  ],
+  "authorArtifactMutation": false,
+  "productionMutation": false,
+  "proposalCreated": false,
+  "formalFullTestExecuted": false,
+  "archiveExecuted": false,
+  "repositoryGitMutation": false,
+  "fixtureGitMutation": true,
+  "completedAt": "2026-09-08 19:23:07 UTC",
+  "stop": true
+}

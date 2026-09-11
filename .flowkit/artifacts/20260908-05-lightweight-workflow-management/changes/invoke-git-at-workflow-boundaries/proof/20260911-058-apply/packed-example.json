@@ -1,0 +1,294 @@
+{
+  "status": "passed",
+  "ownerInput": {
+    "sourceRef": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260911-058-apply/context.json#ownerInstruction",
+    "text": "根据最新run，apply"
+  },
+  "handoffs": [
+    {
+      "request": {
+        "targetRoot": "D:\\Projects\\flowkit-next\\.tmp\\d05-058-pack\\example-nBBluI\\target 项目",
+        "node": "delivery-start",
+        "deliveryId": "bounded-example",
+        "changeId": null,
+        "ownerSourceRef": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260911-058-apply/context.json#ownerInstruction",
+        "expectedBranch": "main",
+        "operation": {
+          "kind": "create-new",
+          "paths": [
+            "说明.txt"
+          ],
+          "commitMessage": "first scoped fixture",
+          "commitShape": null
+        }
+      },
+      "sourceRef": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260911-058-apply/context.json#ownerInstruction",
+      "scope": "approved Apply task 5.1 disposable Git example",
+      "syntheticEvaluatorFact": false
+    },
+    {
+      "request": {
+        "targetRoot": "D:\\Projects\\flowkit-next\\.tmp\\d05-058-pack\\example-nBBluI\\target 项目",
+        "node": "change-checkpoint",
+        "deliveryId": "bounded-example",
+        "changeId": "bounded-change",
+        "ownerSourceRef": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260911-058-apply/context.json#ownerInstruction",
+        "expectedBranch": "main",
+        "operation": {
+          "kind": "create-new",
+          "paths": [
+            "说明.txt"
+          ],
+          "commitMessage": "change(bounded-change): scoped fixture",
+          "commitShape": null
+        }
+      },
+      "sourceRef": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260911-058-apply/context.json#ownerInstruction",
+      "scope": "approved Apply task 5.1 disposable Git example",
+      "syntheticEvaluatorFact": true
+    },
+    {
+      "request": {
+        "targetRoot": "D:\\Projects\\flowkit-next\\.tmp\\d05-058-pack\\example-nBBluI\\target 项目",
+        "node": "delivery-start",
+        "deliveryId": "bounded-example",
+        "changeId": null,
+        "ownerSourceRef": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260911-058-apply/context.json#ownerInstruction",
+        "expectedBranch": "main",
+        "operation": {
+          "kind": "push",
+          "localCommit": "bfc9faacd77ede9be349d2432c3dedb2c17ce6d3",
+          "remote": "origin",
+          "targetRef": "refs/heads/main"
+        }
+      },
+      "sourceRef": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260911-058-apply/context.json#ownerInstruction",
+      "scope": "approved Apply task 5.1 disposable Git example",
+      "syntheticEvaluatorFact": false
+    },
+    {
+      "request": {
+        "targetRoot": "D:\\Projects\\flowkit-next\\.tmp\\d05-058-pack\\example-nBBluI\\target 项目",
+        "node": "delivery-start",
+        "deliveryId": "bounded-example",
+        "changeId": null,
+        "ownerSourceRef": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260911-058-apply/context.json#ownerInstruction",
+        "expectedBranch": "main",
+        "operation": {
+          "kind": "reuse-existing",
+          "checkpointCommit": "bfc9faacd77ede9be349d2432c3dedb2c17ce6d3"
+        }
+      },
+      "sourceRef": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260911-058-apply/context.json#ownerInstruction",
+      "scope": "approved Apply task 5.1 disposable Git example",
+      "syntheticEvaluatorFact": false
+    },
+    {
+      "request": {
+        "targetRoot": "D:\\Projects\\flowkit-next\\.tmp\\d05-058-pack\\example-nBBluI\\target 项目",
+        "node": "repository-integration",
+        "deliveryId": "bounded-example",
+        "changeId": null,
+        "ownerSourceRef": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260911-058-apply/context.json#ownerInstruction",
+        "expectedBranch": "main",
+        "operation": {
+          "kind": "reuse-existing",
+          "checkpointCommit": "bfc9faacd77ede9be349d2432c3dedb2c17ce6d3"
+        }
+      },
+      "sourceRef": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260911-058-apply/context.json#ownerInstruction",
+      "scope": "approved Apply task 5.1 disposable Git example",
+      "syntheticEvaluatorFact": false
+    }
+  ],
+  "installation": {
+    "manager": "D:\\Projects\\flowkit-next\\.tmp\\d05-058-pack\\example-nBBluI\\manager relocated",
+    "reference": "skills/delivery/repository-integration/references/git-host.mjs",
+    "archiveSha256": "4256db02382714ca62b8ba374d1f1571de998db16f335ee6f63aa7796b13de06"
+  },
+  "target": "D:\\Projects\\flowkit-next\\.tmp\\d05-058-pack\\example-nBBluI\\target 项目",
+  "first": {
+    "status": "completed",
+    "phase": "readback",
+    "reason": null,
+    "observed": {
+      "checkpointCommit": "6a16bd04c4b8fe159e854eefd3a1d08cd3934de1",
+      "remoteCommit": null
+    },
+    "effect": "confirmed",
+    "remaining": []
+  },
+  "change": {
+    "status": "completed",
+    "phase": "readback",
+    "reason": null,
+    "observed": {
+      "checkpointCommit": "bfc9faacd77ede9be349d2432c3dedb2c17ce6d3",
+      "remoteCommit": null
+    },
+    "effect": "confirmed",
+    "remaining": []
+  },
+  "push": {
+    "status": "completed",
+    "phase": "readback",
+    "reason": null,
+    "observed": {
+      "checkpointCommit": "bfc9faacd77ede9be349d2432c3dedb2c17ce6d3",
+      "remoteCommit": "bfc9faacd77ede9be349d2432c3dedb2c17ce6d3"
+    },
+    "effect": "confirmed",
+    "remaining": []
+  },
+  "reuse": {
+    "status": "completed",
+    "phase": "readback",
+    "reason": null,
+    "observed": {
+      "checkpointCommit": "bfc9faacd77ede9be349d2432c3dedb2c17ce6d3",
+      "remoteCommit": null
+    },
+    "effect": "none",
+    "remaining": []
+  },
+  "pending": {
+    "status": "incomplete",
+    "phase": "acceptance",
+    "reason": "repository-acceptance-rejected",
+    "observed": {
+      "checkpointCommit": "bfc9faacd77ede9be349d2432c3dedb2c17ce6d3",
+      "remoteCommit": null
+    },
+    "effect": "confirmed",
+    "remaining": [
+      "完成并核对真实 repository acceptance"
+    ]
+  },
+  "commands": [
+    {
+      "program": "tar",
+      "args": [
+        "-xf",
+        "D:\\Projects\\flowkit-next\\.tmp\\d05-058-pack\\flowkit-next-0.1.0.tgz",
+        "-C",
+        "D:\\Projects\\flowkit-next\\.tmp\\d05-058-pack\\example-nBBluI\\unpacked"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "exitCode": 0,
+      "signal": null
+    },
+    {
+      "program": "git",
+      "args": [
+        "init",
+        "-b",
+        "main"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-058-pack\\example-nBBluI\\target 项目",
+      "exitCode": 0,
+      "signal": null
+    },
+    {
+      "program": "git",
+      "args": [
+        "config",
+        "user.name",
+        "Flowkit bounded Apply example"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-058-pack\\example-nBBluI\\target 项目",
+      "exitCode": 0,
+      "signal": null
+    },
+    {
+      "program": "git",
+      "args": [
+        "config",
+        "user.email",
+        "fixture@example.invalid"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-058-pack\\example-nBBluI\\target 项目",
+      "exitCode": 0,
+      "signal": null
+    },
+    {
+      "program": "git",
+      "args": [
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-058-pack\\example-nBBluI\\target 项目",
+      "exitCode": 0,
+      "signal": null
+    },
+    {
+      "program": "git",
+      "args": [
+        "init",
+        "--bare"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-058-pack\\example-nBBluI\\remote.git",
+      "exitCode": 0,
+      "signal": null
+    },
+    {
+      "program": "git",
+      "args": [
+        "remote",
+        "add",
+        "origin",
+        "D:\\Projects\\flowkit-next\\.tmp\\d05-058-pack\\example-nBBluI\\remote.git"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-058-pack\\example-nBBluI\\target 项目",
+      "exitCode": 0,
+      "signal": null
+    },
+    {
+      "program": "git",
+      "args": [
+        "rev-parse",
+        "refs/heads/main"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-058-pack\\example-nBBluI\\remote.git",
+      "exitCode": 0,
+      "signal": null
+    },
+    {
+      "program": "git",
+      "args": [
+        "add",
+        "--",
+        "unrelated.txt"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-058-pack\\example-nBBluI\\target 项目",
+      "exitCode": 0,
+      "signal": null
+    },
+    {
+      "program": "git",
+      "args": [
+        "diff",
+        "--cached",
+        "--name-only"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-058-pack\\example-nBBluI\\target 项目",
+      "exitCode": 0,
+      "signal": null
+    },
+    {
+      "program": "git",
+      "args": [
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-058-pack\\example-nBBluI\\target 项目",
+      "exitCode": 0,
+      "signal": null
+    }
+  ],
+  "limits": [
+    "Real current-build host and native Git under approved Apply test scope, not current repository Git authorization",
+    "Evaluator authority/Final/source are explicitly synthetic fixture contracts, not real independent Review or Full Test",
+    "Local bare remote is not public PR acceptance; pending remains incomplete",
+    "Scratch installation, repositories and tarball are disposable .tmp; this report and raw streams are retained target evidence"
+  ]
+}

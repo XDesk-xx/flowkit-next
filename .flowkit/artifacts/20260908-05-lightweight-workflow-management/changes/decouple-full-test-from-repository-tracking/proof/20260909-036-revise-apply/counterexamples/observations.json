@@ -1,0 +1,38 @@
+{
+  "kind": "author-revise-apply-counterexample-recheck",
+  "fixtureOnly": true,
+  "formalD05FullTest": false,
+  "sourceEntry": "src/domain/delivery-full-test-execution.ts",
+  "toolDrift": {
+    "inputRefUnchanged": false,
+    "checkRefUnchanged": false,
+    "readerBefore": "passed",
+    "readerAfterToolChanged": "stale",
+    "oldAttempt": "04beee38-01ec-4f39-90f1-4cd1df2e03b1",
+    "newExecutionStatus": "terminal",
+    "newExecutionVerdict": "failed",
+    "readerAfterNewFailure": "failed"
+  },
+  "diagnostics": [
+    {
+      "case": "missing",
+      "status": "failed",
+      "reason": "preparation-rejected: config.read:config/verification/full-test.json: ENOENT"
+    },
+    {
+      "case": "unknown-field",
+      "status": "failed",
+      "reason": "preparation-rejected: config.parse: invalid Full Test config: unknown-or-missing-fields"
+    },
+    {
+      "case": "missing-input",
+      "status": "failed",
+      "reason": "preparation-rejected: inputs[0]: ENOENT"
+    },
+    {
+      "case": "missing-tool",
+      "status": "failed",
+      "reason": "preparation-rejected: checks[0].executable: executable missing or unsupported"
+    }
+  ]
+}

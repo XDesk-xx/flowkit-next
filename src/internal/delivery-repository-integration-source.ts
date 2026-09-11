@@ -1,6 +1,6 @@
 import type { OwnerAuthorityFact } from "../domain/authority.js";
 import {
-  isDeliveryCheckpointOperation,
+  sameCheckpointOperation,
   type DeliveryCheckpointOperation,
 } from "../domain/delivery-repository-integration-operation.js";
 
@@ -67,20 +67,6 @@ function isSafeSourceRef(value: unknown): value is string {
   return typeof value === "string" && value.length > 0 && !/[\r\n]/.test(value);
 }
 
-function sameOperation(
-  left: DeliveryCheckpointOperation,
-  right: DeliveryCheckpointOperation,
-): boolean {
-  return (
-    isDeliveryCheckpointOperation(left) &&
-    isDeliveryCheckpointOperation(right) &&
-    left.kind === right.kind &&
-    (left.kind === "create-new" ||
-      (right.kind === "reuse-existing" &&
-        left.checkpointCommit === right.checkpointCommit))
-  );
-}
-
 function isSource(value: unknown): value is ReadRepositoryIntegrationSource {
   return (
     typeof value === "object" &&
@@ -114,7 +100,10 @@ export async function validateRepositoryIntegrationAuthorization(
       expected.targetMainPreIntegrationCommit &&
     material.preIntegrationHead === expected.preIntegrationHead &&
     material.acceptedBaseCommit === expected.acceptedBaseCommit &&
-    sameOperation(material.checkpointOperation, expected.checkpointOperation) &&
+    sameCheckpointOperation(
+      material.checkpointOperation,
+      expected.checkpointOperation,
+    ) &&
     (material.checkpointOperation.kind === "reuse-existing"
       ? isSafeSourceRef(material.reuseCheckpointSourceRef)
       : material.reuseCheckpointSourceRef === null)
@@ -139,7 +128,10 @@ export async function validateRepositoryIntegrationAcceptance(
     material.targetMainRef === expected.targetMainRef &&
     material.targetMainPreIntegrationCommit ===
       expected.targetMainPreIntegrationCommit &&
-    sameOperation(material.checkpointOperation, expected.checkpointOperation) &&
+    sameCheckpointOperation(
+      material.checkpointOperation,
+      expected.checkpointOperation,
+    ) &&
     material.finalCommit === expected.finalCommit &&
     material.acceptedMainCommit === expected.acceptedMainCommit
   );

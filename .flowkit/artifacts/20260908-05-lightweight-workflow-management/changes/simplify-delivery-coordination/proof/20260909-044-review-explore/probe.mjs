@@ -1,0 +1,46 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import { createHash } from 'node:crypto';
+import { pathToFileURL, fileURLToPath } from 'node:url';
+const repo=process.cwd(), own=path.dirname(fileURLToPath(import.meta.url)), here=path.resolve(process.argv[2]);
+if(!here.startsWith(own+path.sep))throw Error('own proof only');
+const moduleAt=async p=>import(pathToFileURL(path.join(repo,p)).href);
+const {prepareDeliveryStartOperationPackage}=await moduleAt('src/domain/delivery-start-execution.ts');
+const {loadManagerInstallation}=await moduleAt('src/internal/manager-installation.ts');
+const {readDeliveryFinalCoordinationPrestate,writeDeliveryFinalCoordinationClosure}=await moduleAt('src/internal/delivery-final-coordination.ts');
+const installation=loadManagerInstallation(repo), deliveryId='coordination-proof';
+const planningReference={artifact:'plan.md',contentSha256:'b'.repeat(64)};
+const ownerAuthority={ref:'owner:'+ 'c'.repeat(64),decision:'create-delivery',deliveryId,sourceRef:'fixture-only:no-owner-authority',scope:['delivery-start']};
+const input={deliveryId,operationFacts:{acceptedBaseCommit:'a'.repeat(40),planningReference},ownerAuthority};
+const observed={headCommit:'a'.repeat(40),workingTreeClean:true,planningReference};
+const rows=[];
+for(const [name,change,expected] of [['clean-control',{},true],['unrelated-dirty',{workingTreeClean:false},false],['unborn-head',{headCommit:null},false],['different-head',{headCommit:'d'.repeat(40)},false]]){
+ const result=await prepareDeliveryStartOperationPackage(repo,input,()=>({...observed,...change}),installation);
+ assert.equal(result!==null,expected);rows.push({name,packageFormed:result!==null,level:'controlled observation callback, not real Git repository'});
+}
+const root=path.join(here,'coordination-fixture'), target=path.join(root,'openspec/delivery-groups',deliveryId+'.yaml');
+const original=await fs.readFile(target,'utf8');
+const pre=await readDeliveryFinalCoordinationPrestate(root,deliveryId);assert.ok(pre);
+const pkg={deliveryId,operationFacts:{coordinationPrestateRef:pre.ref,completedRequiredChangeIds:pre.completedRequiredChangeIds,verifiedCandidateRef:'full-test-input:sha256:'+ 'e'.repeat(64),fullTestExecutionRef:'full-test-execution:sha256:'+ 'f'.repeat(64)}};
+await fs.writeFile(target,original+'# concurrent edit\n');
+assert.equal(await writeDeliveryFinalCoordinationClosure(root,pkg),null);
+assert.equal(await fs.readFile(target,'utf8'),original+'# concurrent edit\n');
+rows.push({name:'actual-target-conflict',rejected:true,concurrentBytesPreserved:true});
+await fs.writeFile(target,original);
+const closure=await writeDeliveryFinalCoordinationClosure(root,pkg);assert.ok(closure);
+const after=await fs.readFile(target,'utf8');
+assert.ok(after.includes('state: completed # retain comment'));
+assert.ok(after.includes(original.slice(original.indexOf('unrelated:'))));
+rows.push({name:'bounded-coordination-write',completed:true,nonTargetTailPreserved:true,level:'internal writer only; synthetic package, NOT accepted Final or Full Test'});
+const sourcePaths=['src/domain/delivery-start-execution.ts','src/internal/delivery-start-content.ts','src/domain/delivery-final-execution.ts','src/internal/delivery-required-evidence-source.ts','src/internal/delivery-final-coordination.ts','src/domain/delivery-repository-integration-execution.ts','src/internal/applicable-check-candidate.ts'];
+const sources=[];
+for(const p of sourcePaths){const b=await fs.readFile(path.join(repo,p));sources.push({path:p,bytes:b.length,sha256:createHash('sha256').update(b).digest('hex')});}
+const final=await fs.readFile(path.join(repo,sourcePaths[2]),'utf8');
+const writeAt=final.lastIndexOf('await writeDeliveryFinalCoordinationClosure('), deriveAt=final.lastIndexOf('await deriveApplicableCheckCandidateRef(repositoryRoot)');
+assert.ok(writeAt>0&&deriveAt>writeAt);
+const history=await fs.readFile(path.join(repo,sourcePaths[3]),'utf8');
+assert.ok(history.includes('admitActionResult(')&&history.includes('while (current !== undefined)')&&history.includes('current.context.previousRunId'));
+rows.push({name:'source-order-and-chain',writeBeforeGitProjection:true,replaysAdmissionAndPreviousChain:true,level:'source inspection, not injected post-write failure'});
+await fs.writeFile(path.join(here,'observations.json'),JSON.stringify({executedAt:new Date().toISOString(),node:process.version,platform:process.platform,rows,sources,limits:['No production implementation','No full Final invocation','No real D05 Full Test','Synthetic callback observations do not prove native Git scenarios']},null,2)+'\n',{flag:'wx'});
+console.log(JSON.stringify({checks:rows.length,status:'PASS',meaning:'existing coupling and reusable writer behavior reproduced, not implementation acceptance'},null,2));

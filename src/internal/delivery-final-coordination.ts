@@ -10,6 +10,10 @@ import {
   type DeliveryCoordinationRef,
 } from "../domain/delivery-final-operation.js";
 import { isSemanticId, type DeliveryId } from "../domain/identity.js";
+import {
+  deriveDeliveryFinalizationRef,
+  type DeliveryFinalizationRecord,
+} from "../domain/delivery-finalization.js";
 
 interface DeliveryFinalCoordinationPrestate {
   readonly ref: DeliveryCoordinationRef;
@@ -24,19 +28,17 @@ interface ParsedManifestPrestate {
 const PRE_FINAL_DELIVERY_FIELDS = [
   "state",
   "fullTestStatus",
+  "fullTestAttempt",
   "finalizationStatus",
-] as const;
-const COMPLETED_DELIVERY_FIELDS = [
-  ...PRE_FINAL_DELIVERY_FIELDS,
-  "formalVerificationCandidate",
 ] as const;
 const FINALIZATION_FIELDS = [
   "state",
+  "ownerAuthorityRef",
+  "sourceRef",
+  "fullTestAttempt",
   "verifiedCandidateRef",
   "fullTestExecutionRef",
-  "architectureFinalizationRef",
-  "architectureMaterializedCandidateRef",
-  "gitCheckpoint",
+  "confirmationRef",
 ] as const;
 
 function isRecord(value: unknown): value is Record<string, unknown> {
@@ -125,9 +127,11 @@ function parsePrestate(
     document === null ||
     document.id !== deliveryId ||
     !isRecord(document.delivery) ||
-    !hasExactlyFields(document.delivery, PRE_FINAL_DELIVERY_FIELDS) ||
+    !PRE_FINAL_DELIVERY_FIELDS.every((field) =>
+      Object.hasOwn(document.delivery as object, field),
+    ) ||
     document.delivery.state !== "active" ||
-    document.delivery.fullTestStatus !== "pending" ||
+    document.delivery.fullTestStatus !== "passed" ||
     document.delivery.finalizationStatus !== "pending" ||
     Object.prototype.hasOwnProperty.call(document, "finalization")
   ) {
@@ -141,46 +145,61 @@ function parsePrestate(
     : { document, completedRequiredChangeIds };
 }
 
+function finalRecord(
+  operationPackage: DeliveryFinalOperationPackage,
+): DeliveryFinalizationRecord {
+  const facts = operationPackage.operationFacts;
+  const links = {
+    projectId: facts.projectId,
+    deliveryId: operationPackage.deliveryId,
+    ownerAuthorityRef: operationPackage.ownerAuthority.ref,
+    sourceRef: operationPackage.ownerAuthority.sourceRef,
+    fullTestAttempt: facts.fullTestAttempt,
+    verifiedCandidateRef: facts.verifiedCandidateRef,
+    fullTestExecutionRef: facts.fullTestExecutionRef,
+  };
+  const ref = deriveDeliveryFinalizationRef(links);
+  if (ref === null) throw new Error("invalid finalization links");
+  return { ...links, deliveryFinalizationRef: ref };
+}
+
 function parseCompleted(
   bytes: Buffer,
   operationPackage: DeliveryFinalOperationPackage,
+  confirmationRef: string | null,
 ): Record<string, unknown> | null {
   const document = parseYamlObject(bytes);
+  const record = finalRecord(operationPackage);
   if (
     document === null ||
     document.id !== operationPackage.deliveryId ||
     !isRecord(document.delivery) ||
-    !hasExactlyFields(document.delivery, COMPLETED_DELIVERY_FIELDS) ||
+    !PRE_FINAL_DELIVERY_FIELDS.every((field) =>
+      Object.hasOwn(document.delivery as object, field),
+    ) ||
     document.delivery.state !== "completed" ||
     document.delivery.fullTestStatus !== "passed" ||
     document.delivery.finalizationStatus !== "completed" ||
-    document.delivery.formalVerificationCandidate !==
-      operationPackage.operationFacts.verifiedCandidateRef ||
+    document.delivery.fullTestAttempt !== record.fullTestAttempt ||
     !isRecord(document.finalization) ||
     !hasExactlyFields(document.finalization, FINALIZATION_FIELDS) ||
     document.finalization.state !== "completed" ||
-    document.finalization.verifiedCandidateRef !==
-      operationPackage.operationFacts.verifiedCandidateRef ||
-    document.finalization.fullTestExecutionRef !==
-      operationPackage.operationFacts.fullTestExecutionRef ||
-    document.finalization.architectureFinalizationRef !==
-      operationPackage.operationFacts.architectureFinalizationRef ||
-    document.finalization.architectureMaterializedCandidateRef !==
-      operationPackage.operationFacts.architectureMaterializedCandidateRef ||
-    document.finalization.gitCheckpoint !==
-      "pending-owner-authorized-local-delivery-commit"
-  ) {
+    document.finalization.confirmationRef !== confirmationRef
+  )
     return null;
+  for (const field of [
+    "ownerAuthorityRef",
+    "sourceRef",
+    "fullTestAttempt",
+    "verifiedCandidateRef",
+    "fullTestExecutionRef",
+  ] as const) {
+    if (document.finalization[field] !== record[field]) return null;
   }
-  const completedIds = requiredCompletedChangeIds(document.changes);
-  if (
-    completedIds === null ||
-    JSON.stringify(completedIds) !==
-      JSON.stringify(operationPackage.operationFacts.completedRequiredChangeIds)
-  ) {
-    return null;
-  }
-  return document;
+  return JSON.stringify(requiredCompletedChangeIds(document.changes)) ===
+    JSON.stringify(operationPackage.operationFacts.completedRequiredChangeIds)
+    ? document
+    : null;
 }
 
 function materializeCompletedManifestBytes(
@@ -216,7 +235,6 @@ function materializeCompletedManifestBytes(
 
   const replacements = new Map<string, string>([
     ["state", "completed"],
-    ["fullTestStatus", "passed"],
     ["finalizationStatus", "completed"],
   ]);
   const edits: Array<{
@@ -260,14 +278,14 @@ function materializeCompletedManifestBytes(
   const facts = operationPackage.operationFacts;
   const quoted = (value: string): string => JSON.stringify(value);
   const inserted = [
-    `${deliveryIndent}formalVerificationCandidate: ${quoted(facts.verifiedCandidateRef)}`,
     `${topLevelIndent}finalization:`,
     `${deliveryIndent}state: completed`,
     `${deliveryIndent}verifiedCandidateRef: ${quoted(facts.verifiedCandidateRef)}`,
     `${deliveryIndent}fullTestExecutionRef: ${quoted(facts.fullTestExecutionRef)}`,
-    `${deliveryIndent}architectureFinalizationRef: ${quoted(facts.architectureFinalizationRef)}`,
-    `${deliveryIndent}architectureMaterializedCandidateRef: ${quoted(facts.architectureMaterializedCandidateRef)}`,
-    `${deliveryIndent}gitCheckpoint: pending-owner-authorized-local-delivery-commit`,
+    `${deliveryIndent}ownerAuthorityRef: ${quoted(operationPackage.ownerAuthority.ref)}`,
+    `${deliveryIndent}sourceRef: ${quoted(operationPackage.ownerAuthority.sourceRef)}`,
+    `${deliveryIndent}fullTestAttempt: ${quoted(facts.fullTestAttempt)}`,
+    `${deliveryIndent}confirmationRef: null`,
     "",
   ].join(newline);
   edits.push({
@@ -353,75 +371,145 @@ export async function revalidateDeliveryFinalCoordinationPrestate(
   );
 }
 
+export type DeliveryMutationStatus =
+  "not-written" | "written-unconfirmed" | "unknown";
+export type CoordinationWriteOutcome =
+  | { status: "confirmed"; record: DeliveryFinalizationRecord }
+  | {
+      status: "failed";
+      mutationStatus: DeliveryMutationStatus;
+      reason: string;
+    };
+
+function confirmationBytes(content: Buffer, ref: string): Buffer | null {
+  const source = content.toString("utf8");
+  const doc = parseDocument(source, { keepSourceTokens: true });
+  const value = doc.getIn(["finalization", "confirmationRef"], true);
+  if (
+    doc.errors.length ||
+    !isScalar(value) ||
+    value.value !== null ||
+    !value.range
+  )
+    return null;
+  return Buffer.from(
+    source.slice(0, value.range[0]) +
+      JSON.stringify(ref) +
+      source.slice(value.range[1]),
+  );
+}
+
+/** Atomic confirmation replacement is the success commit point. No business validation follows it. */
 export async function writeDeliveryFinalCoordinationClosure(
   repositoryRoot: string,
   operationPackage: DeliveryFinalOperationPackage,
-): Promise<DeliveryCoordinationRef | null> {
-  if (
-    !isDeliveryCoordinationRef(
-      operationPackage.operationFacts.coordinationPrestateRef,
-    )
-  ) {
-    return null;
-  }
+  revalidateRelated: () => Promise<boolean>,
+): Promise<CoordinationWriteOutcome> {
+  let mutationStatus: DeliveryMutationStatus = "not-written";
+  let reason = "content-validation-failed";
+  const fail = (): CoordinationWriteOutcome => ({
+    status: "failed",
+    mutationStatus,
+    reason,
+  });
   const resolved = await canonicalTarget(
     repositoryRoot,
     operationPackage.deliveryId,
   );
-  if (resolved === null) return null;
+  if (
+    resolved === null ||
+    !isDeliveryCoordinationRef(
+      operationPackage.operationFacts.coordinationPrestateRef,
+    )
+  )
+    return fail();
   const original = await readCanonicalBytes(
     repositoryRoot,
     operationPackage.deliveryId,
   );
-  if (original === null) return null;
-  const parsed = parsePrestate(original, operationPackage.deliveryId);
   if (
-    parsed === null ||
+    original === null ||
+    !parsePrestate(original, operationPackage.deliveryId) ||
     !sameCoordinationRef(
       coordinationRef(operationPackage.deliveryId, original),
       operationPackage.operationFacts.coordinationPrestateRef,
-    ) ||
-    JSON.stringify(parsed.completedRequiredChangeIds) !==
-      JSON.stringify(operationPackage.operationFacts.completedRequiredChangeIds)
-  ) {
-    return null;
-  }
+    )
+  )
+    return fail();
+  const content = materializeCompletedManifestBytes(original, operationPackage);
+  if (
+    content === null ||
+    parseCompleted(content, operationPackage, null) === null
+  )
+    return fail();
+  const record = finalRecord(operationPackage);
+  const confirmed = confirmationBytes(content, record.deliveryFinalizationRef);
+  if (
+    confirmed === null ||
+    parseCompleted(
+      confirmed,
+      operationPackage,
+      record.deliveryFinalizationRef,
+    ) === null
+  )
+    return fail();
 
-  const stagedBytes = materializeCompletedManifestBytes(
-    original,
-    operationPackage,
-  );
-  if (stagedBytes === null) return null;
-  if (parseCompleted(stagedBytes, operationPackage) === null) return null;
-
-  const temporary = path.join(
-    path.dirname(resolved.target),
-    `.${path.basename(resolved.target)}.${randomUUID()}.tmp`,
-  );
-  try {
-    const handle = await fs.open(temporary, "wx");
+  async function replace(
+    expected: Buffer,
+    targetBytes: Buffer,
+    confirming: boolean,
+  ): Promise<boolean> {
+    const temporary = path.join(
+      path.dirname(resolved!.target),
+      "." + path.basename(resolved!.target) + "." + randomUUID() + ".tmp",
+    );
     try {
-      await handle.writeFile(stagedBytes);
-      await handle.sync();
+      const handle = await fs.open(temporary, "wx");
+      try {
+        await handle.writeFile(targetBytes);
+        await handle.sync();
+      } finally {
+        await handle.close();
+      }
+      if (confirming && !(await revalidateRelated())) return false;
+      const before = await readCanonicalBytes(
+        repositoryRoot,
+        operationPackage.deliveryId,
+      );
+      if (before === null || !before.equals(expected)) return false;
+      mutationStatus = "unknown";
+      await fs.rename(temporary, resolved!.target);
+      mutationStatus = "written-unconfirmed";
+      if (confirming) reason = "confirmation-readback-failed";
+      return true;
     } finally {
-      await handle.close();
+      // Only this invocation's exact temporary path; never remove retained evidence.
+      await fs.rm(temporary, { force: true });
     }
-    const beforeReplace = await readCanonicalBytes(
+  }
+  try {
+    if (!(await replace(original, content, false))) return fail();
+    const readback = await readCanonicalBytes(
       repositoryRoot,
       operationPackage.deliveryId,
     );
-    if (beforeReplace === null || !beforeReplace.equals(original)) return null;
-    await fs.rename(temporary, resolved.target);
-    const reread = await readCanonicalBytes(
+    if (
+      readback === null ||
+      !readback.equals(content) ||
+      parseCompleted(readback, operationPackage, null) === null ||
+      !(await revalidateRelated())
+    )
+      return fail();
+    reason = "confirmation-publication-failed";
+    if (!(await replace(content, confirmed, true))) return fail();
+    reason = "confirmation-readback-failed";
+    const acknowledged = await readCanonicalBytes(
       repositoryRoot,
       operationPackage.deliveryId,
     );
-    if (reread === null || !reread.equals(stagedBytes)) return null;
-    if (parseCompleted(reread, operationPackage) === null) return null;
-    return coordinationRef(operationPackage.deliveryId, reread);
+    if (acknowledged === null || !acknowledged.equals(confirmed)) return fail();
+    return { status: "confirmed", record };
   } catch {
-    return null;
-  } finally {
-    await fs.rm(temporary, { force: true });
+    return fail();
   }
 }

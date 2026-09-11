@@ -5,7 +5,6 @@ import {
   type ChangeId,
   type DeliveryId,
 } from "../domain/identity.js";
-import { isRunSequence } from "../domain/run-result-persistence.js";
 
 export type FoundationCliCommand = "status" | "next" | "doctor";
 
@@ -29,18 +28,14 @@ export class FoundationCliInputError extends Error {
 
 interface CommonRunRequest {
   readonly repositoryRoot: string;
-  readonly deliveryId: DeliveryId;
-  readonly changeId: ChangeId;
-  readonly changeStartSequence: number;
+  readonly deliveryId?: DeliveryId;
+  readonly changeId?: ChangeId;
   readonly flowkitHome: string;
 }
 
-export interface StatusRequest extends CommonRunRequest {
-  readonly currentRunId: string;
-}
+export type StatusRequest = CommonRunRequest;
 
 export interface NextRequest extends CommonRunRequest {
-  readonly currentRunId: string | null;
   readonly ownerCorrection?: unknown;
   readonly checkpointAuthority?: unknown;
 }
@@ -59,8 +54,6 @@ const COMMON_FIELDS = new Set([
   "repositoryRoot",
   "deliveryId",
   "changeId",
-  "changeStartSequence",
-  "currentRunId",
   "flowkitHome",
 ]);
 const NEXT_FIELDS = new Set([
@@ -110,26 +103,30 @@ function parseCommon(
   allowed: ReadonlySet<string>,
 ): CommonRunRequest {
   if (!hasOnlyKeys(value, allowed)) {
-    fail("invalid-request", "request contains unsupported fields");
+    fail(
+      "invalid-request",
+      Object.hasOwn(value, "currentRunId") ||
+        Object.hasOwn(value, "changeStartSequence")
+        ? "Remove currentRunId/changeStartSequence; context is resolved from target and optional deliveryId/changeId"
+        : "request contains unsupported fields",
+    );
   }
   const repositoryRoot = requiredNonEmptyString(value, "repositoryRoot");
   const flowkitHome = requiredNonEmptyString(value, "flowkitHome");
-  const deliveryId = asDeliveryId(value.deliveryId);
-  const changeId = asChangeId(value.changeId);
+  const deliveryId =
+    value.deliveryId === undefined ? undefined : asDeliveryId(value.deliveryId);
+  const changeId =
+    value.changeId === undefined ? undefined : asChangeId(value.changeId);
   if (deliveryId === null || changeId === null) {
     fail(
       "invalid-request",
       "deliveryId/changeId must be canonical semantic ids",
     );
   }
-  if (!isRunSequence(value.changeStartSequence)) {
-    fail("invalid-request", "changeStartSequence is invalid");
-  }
   return {
     repositoryRoot,
     deliveryId,
     changeId,
-    changeStartSequence: value.changeStartSequence,
     flowkitHome,
   };
 }
@@ -155,39 +152,15 @@ function parseOwnerCorrection(value: unknown): unknown {
 function parseStatus(value: unknown): StatusRequest {
   if (!isRecord(value))
     fail("invalid-request", "status request must be an object");
-  const common = parseCommon(value, COMMON_FIELDS);
-  if (!Object.hasOwn(value, "currentRunId")) {
-    fail("invalid-request", "currentRunId is required");
-  }
-  if (
-    typeof value.currentRunId !== "string" ||
-    value.currentRunId.length === 0
-  ) {
-    fail("invalid-request", "status currentRunId must be an exact run id");
-  }
-  return { ...common, currentRunId: value.currentRunId };
+  return parseCommon(value, COMMON_FIELDS);
 }
 
 function parseNext(value: unknown): NextRequest {
   if (!isRecord(value))
     fail("invalid-request", "next request must be an object");
   const common = parseCommon(value, NEXT_FIELDS);
-  if (!Object.hasOwn(value, "currentRunId")) {
-    fail("invalid-request", "currentRunId is required");
-  }
-  const currentRunId = value.currentRunId;
-  if (
-    currentRunId !== null &&
-    (typeof currentRunId !== "string" || currentRunId.length === 0)
-  ) {
-    fail(
-      "invalid-request",
-      "next currentRunId must be an exact run id or explicit null",
-    );
-  }
   return {
     ...common,
-    currentRunId,
     ...(Object.hasOwn(value, "ownerCorrection")
       ? { ownerCorrection: parseOwnerCorrection(value.ownerCorrection) }
       : {}),
@@ -245,6 +218,8 @@ export function parseFoundationCliRequest(
 }
 
 export function parseFoundationCliRequestJson(text: string): unknown {
+  if (Buffer.byteLength(text) > 65_536)
+    fail("invalid-request-json", "request exceeds JSON limit");
   try {
     return JSON.parse(text) as unknown;
   } catch (error) {

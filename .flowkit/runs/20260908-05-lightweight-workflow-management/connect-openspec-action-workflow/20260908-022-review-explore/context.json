@@ -1,0 +1,63 @@
+{
+  "kind": "external-orchestrator-review-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "reviewer",
+  "action": "review-explore",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "connect-openspec-action-workflow",
+  "projectOrdinal": 35,
+  "runId": "20260908-022-review-explore",
+  "previousRunId": "20260908-021-revise-explore",
+  "reviewedRunId": "20260908-021-revise-explore",
+  "ownerInstruction": "根据最新run，review",
+  "reviewedResult": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-021-revise-explore/result.json",
+    "bytes": 3170,
+    "sha256": "82c397450564391d100f025ef73af48c3c550431761121a28726096d622afca4"
+  },
+  "reviewedContext": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-021-revise-explore/context.json",
+    "bytes": 2067,
+    "sha256": "cf692fc33eb54c56e22a98c241168d6dd162b3f51018cd7422a662d1349b362a"
+  },
+  "reviewedExplore": {
+    "path": "openspec/changes/connect-openspec-action-workflow/explore.md",
+    "bytes": 10968,
+    "sha256": "03c948fea0aab3b787b7d4e86a51f5892ea22b0e7b52a936c7cec38be109cc11"
+  },
+  "sourceHead": "697088391374daa67d63c20f8a365fb44ec5c058",
+  "sourceHeadMeaning": "仅定位审查输入，不作为 lifecycle SHA 前置或 Git authority。",
+  "sourceBranch": "delivery/20260908-05-lightweight-workflow-management",
+  "independentHow": ".agents/skills/review-explore/SKILL.md",
+  "candidateReviewerHowConsumed": false,
+  "ownerDecisionsRelevant": [
+    {
+      "sourceRef": "owner-input:2026-09-08:revise-explore:local-cli-implementation-and-acceptance-boundary",
+      "recordedIn": "20260908-020-revise-explore/context.json",
+      "decision": "从实际本机源码构建使用重新核定实现与验收，不默认保留本轮实现；停止隔离演练。"
+    },
+    {
+      "sourceRef": "owner-input:2026-09-08:cli-current-flow-next-agent-runs",
+      "recordedIn": "20260908-021-revise-explore/context.json",
+      "quote": "cli 不是 只负责 当前流程就行么？ 比如 next 下一步是什么，agent 只要知道 flowkit 的 runs 怎么用就可以了？",
+      "decision": "CLI 读取/报告，Agent 实际执行/记录；撤销托管执行前提，不选择新的回交协议。"
+    },
+    {
+      "sourceRef": "owner-input:2026-09-08:continue-revise-explore:cli-reads-agent-executes-runs",
+      "recordedIn": "20260908-021-revise-explore/context.json",
+      "decision": "继续有界 revise-explore；必要材料保留规则不变，无历史清理授权。"
+    }
+  ],
+  "chainInterpretation": "018 为旧 Proposal approval；019 仅 action/context，仍中断；020 UNKNOWN 由 021 的新 Owner 方向与 proof 解决。审查 021，不补写/重演 019，不改写 020。",
+  "writeScope": [
+    ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-022-review-explore",
+    ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-022-review-explore"
+  ],
+  "exclusions": [
+    "Author 计划/代码/测试/Skills/manifest/历史材料修改",
+    "candidate 管理实际 D05、恢复外部 manager",
+    "新增实现验收/Full Test/下一 Action/Git mutation"
+  ],
+  "evidenceScope": "核对当前 Explore 和相关历史材料的 28 个引用、5 份直接源码快照及 192 项 Author proof 基线；独立执行 5 项有界检查，合成 fixture 不产生真实 Reviewer 或 Owner authority。"
+}

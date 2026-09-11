@@ -1,0 +1,24 @@
+{
+  "executable": "pwsh",
+  "args": [
+    "-NoProfile",
+    "-Command",
+    "foreach ( in @('explore','propose','apply','archive','revise-explore','revise-propose','revise-apply','review-explore','review-propose','review-apply')) { python -X utf8 C:/Users/xuser/.codex/skills/.system/skill-creator/scripts/quick_validate.py skills/actions/; if ( -ne 0) { exit  } }"
+  ],
+  "cwd": "D:\\Projects\\flowkit-next",
+  "startedAt": "2026-09-08T14:34:14.194Z",
+  "finishedAt": "2026-09-08T14:34:14.592Z",
+  "exitCode": 1,
+  "signal": null,
+  "error": null,
+  "stdout": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/skill-validation/stdout.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stderr": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-027-revise-apply/skill-validation/stderr.txt",
+    "bytes": 217,
+    "sha256": "ed8420594a3ac9bfd25bb763c01fc6b74d874f99436ec1b8b31a101e22e7f38d"
+  }
+}

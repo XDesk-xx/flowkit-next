@@ -1,0 +1,204 @@
+{
+  "kind": "external-orchestrator-review-apply-result",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "reviewer",
+  "action": "review-apply",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "invoke-git-at-workflow-boundaries",
+  "projectOrdinal": 38,
+  "runId": "20260911-061-review-apply",
+  "previousRunId": "20260911-060-revise-apply",
+  "reviewedRunId": "20260911-060-revise-apply",
+  "status": "terminal",
+  "verdict": "approved",
+  "verdictMeaning": "060 最小修正闭合三个既有 finding，当前 Change 实现获独立审查批准；不代表 Formal D05 Full Test、Delivery closure 或 Git 授权。",
+  "startedAt": "2026-09-11T04:11:51.848Z",
+  "completedAt": "2026-09-11T04:23:42.885Z",
+  "reviewedResult": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260911-060-revise-apply/result.json",
+    "bytes": 2820,
+    "sha256": "abd86c4435d149a1b53acf4848c860a0b9e0039f6807c597bf6870429b8a387e"
+  },
+  "previousReview": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260911-059-review-apply/result.json",
+    "bytes": 10946,
+    "sha256": "5208312de3eb689d2c098ea3b26fdbdb8f716ff74a5d56b10c63ae5b98006e0c"
+  },
+  "reviewedPayload": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-060-revise-apply/payload.json",
+    "bytes": 1750,
+    "sha256": "4c4609d264bcc67b63ab247b44bed3c75566fdfb010124acc1adef7c7d84f00f"
+  },
+  "authorRevisionReport": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-060-revise-apply/revision-report.md",
+    "bytes": 3296,
+    "sha256": "65d25faa88055eca9319ec499f7d6020b1ccfc9c92c706b89a3f19fe15caeec9"
+  },
+  "authorVerificationAudit": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-060-revise-apply/verification-audit.json",
+    "bytes": 3154,
+    "sha256": "e46766a60ce2b7134495060950eb71c2198a58462072687c0e366555942533d6"
+  },
+  "authorEvidenceIndex": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-060-revise-apply/evidence-index.json",
+    "bytes": 32211,
+    "sha256": "9b6808d629c67e7bb5a7c1579fb5ad72982655922aaa229318102d306ad30855"
+  },
+  "runArtifacts": [
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260911-061-review-apply/action.md",
+      "bytes": 282,
+      "sha256": "461e6877fb08294798d633e16d49e845acd11d7e3d76567693572f7ee3b08a4e"
+    },
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260911-061-review-apply/context.json",
+      "bytes": 2521,
+      "sha256": "5296dfab1e87da2ab45d5e443c46ec4388ae9cd1aa349037dadf2e3abc2375ac"
+    }
+  ],
+  "reviewReport": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/review.md",
+    "bytes": 4206,
+    "sha256": "6c9681828a4d2c8d8415604ab62658d853a3ef7825a9c5e925fb8fe7feddd22a"
+  },
+  "findings": [],
+  "closedFindings": [
+    {
+      "id": "D05-RA038-001",
+      "status": "closed",
+      "location": {
+        "path": "src/domain/git-workflow-host.ts",
+        "line": 237
+      },
+      "observation": "相同 push.followTags=true 反例仅发布授权 main ref，未带出 tag；回归核对配置不变。"
+    },
+    {
+      "id": "D05-RA038-002",
+      "status": "closed",
+      "location": {
+        "path": "src/internal/git-checkpoint-scope.ts",
+        "line": 100
+      },
+      "observation": "普通 checkpoint 写前及 stage 后检查待续操作；原 pending merge 未推进 HEAD 或移除 MERGE_HEAD；reuse 保持只读。"
+    },
+    {
+      "id": "D05-RA038-003",
+      "status": "closed",
+      "location": {
+        "path": "src/domain/delivery-repository-integration-execution.ts",
+        "line": 480
+      },
+      "observation": "复用核验后、acceptance 前来源失败保留已知 checkpoint，返回 acceptance/incomplete/effect none，provider 未被调用。"
+    }
+  ],
+  "proposalBlocker": false,
+  "requiresNewChange": false,
+  "assessments": {
+    "currentStep": "按 056/057 合同独立复审 060，复验三个 finding 并核对未受影响内容和当前输入证据。",
+    "complexityAndMinimality": "五个源码文件的有界修正与一个新增回归测试文件；一个 push 参数、写前 Git 状态检查和既有失败事实区分，无新平台或自动恢复。",
+    "newContentAndScopeDrift": "NONE；33 个未受影响 ancestor payload 引用保持原 bytes，批准规划除 tasks 完成勾选外不变。"
+  },
+  "reviewEvidence": {
+    "artifacts": [
+      {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/evidence-audit.json",
+        "bytes": 13962,
+        "sha256": "8ab07628e8bf9931d81e256631ffa16badb25ad8b822e4d1a59807c736778d95"
+      },
+      {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/audit-evidence.mjs",
+        "bytes": 4806,
+        "sha256": "87e5547f2560859d99071c9f1c557b1b68f3fef5cd301adfe0746ad9333fcd30"
+      },
+      {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/adversarial-proof.mjs",
+        "bytes": 7131,
+        "sha256": "e8473e5bf9f835dc4f4ef167af6a7fb67859575f6641bfba52ef88050ed4f4fd"
+      },
+      {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/adversarial-observations.json",
+        "bytes": 33961,
+        "sha256": "92cf6d0ac6517df944b1d5abb66f3ce17c801bb4d987117905d0f420c2c42c09"
+      },
+      {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/adversarial/command.json",
+        "bytes": 1065,
+        "sha256": "72530681b22f215ed3f9e824c2968f459a21a76b14364d64ed571f980ef723f2"
+      },
+      {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/focused-tests/command.json",
+        "bytes": 1313,
+        "sha256": "89b33b0c0204f02ece14ab1f563535cfcfebea89121e37724b8371acc409a4ac"
+      },
+      {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/capture.mjs",
+        "bytes": 1658,
+        "sha256": "2e2c9035b4ae24c69a09a724cdbd2b066880c61309c103f207ae5cad0338abaa"
+      }
+    ],
+    "verifiedInputReferences": 117,
+    "preservedAncestorPayloadFiles": 33,
+    "authorCurrentSourceFiles": 182,
+    "authorWindowsAndLinuxChecks": 18,
+    "independentFocused": {
+      "files": 7,
+      "tests": 16,
+      "passed": 16,
+      "failed": 0
+    },
+    "independentDecisiveCases": 3,
+    "fixtureGitCommands": 32,
+    "limitations": [
+      "Reviewer 决定性场景和 focused 回归在原生 Windows 隔离 Git fixtures/local bare 执行；Owner/Final 等测试输入明确合成。",
+      "Linux 与完整 Windows suite 本轮为当前输入和原始流审计，未由 Reviewer 重新执行完整 suite。",
+      "packed 示例不代表真实公共 PR acceptance，全部本轮验证均非 Formal D05 Full Test。"
+    ]
+  },
+  "mutationIsolation": {
+    "before": {
+      "files": 5187,
+      "sha256": "7ea88a6da5ce9563aea6809c5132679a49c1fce836ea15e535e9ea77c753ab0f",
+      "method": "sha256(JSON.stringify(sorted unique git ls-files --cached --others --exclude-standard -z paths mapped to path, bytes, raw SHA256; absent/link explicit; exclude own Run/proof))",
+      "head": "a0edb690d7208a3b81855e30a31dbc175f060a93",
+      "at": "2026-09-11T04:11:51.848Z"
+    },
+    "after": {
+      "files": 5187,
+      "sha256": "7ea88a6da5ce9563aea6809c5132679a49c1fce836ea15e535e9ea77c753ab0f",
+      "method": "sha256(JSON.stringify(sorted unique git ls-files --cached --others --exclude-standard -z paths mapped to path, bytes, raw SHA256; absent/link explicit; exclude own Run/proof))",
+      "head": "a0edb690d7208a3b81855e30a31dbc175f060a93",
+      "at": "2026-09-11T04:22:02.423Z"
+    },
+    "equal": true,
+    "excludes": "仅当前 Reviewer Run/proof；既有 source/tests/Author/HOW/计划/历史与 HEAD 均未变。"
+  },
+  "ownerDecisionsRelevant": [
+    {
+      "sourceRef": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260909-054-explore/context.json#ownerDecisionsRelevant",
+      "decision": "按 Owner 明确操作/范围调用 Git，不恢复全仓 clean/固定形状门槛，不自动恢复；D05 independent-bootstrap，必要材料留 target artifacts。"
+    }
+  ],
+  "nextBoundary": "archive",
+  "continuationMeaning": "沿用既有 review-apply approved → archive 边界；不因 verdict 自动执行下一 Action 或取得 Git 权限。",
+  "reviewerHow": ".agents/skills/review-apply/SKILL.md",
+  "diagnosticSkill": "C:/Users/xuser/.agents/skills/debugging-and-error-recovery/SKILL.md",
+  "diagnosticScope": "仅处理 Reviewer 结果引用收集的语法/输出截断问题，不改变产品或测试证据。",
+  "reviewerExecutionNote": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/reviewer-execution-note.md",
+  "candidateReviewerHowConsumed": false,
+  "authorArtifactMutation": false,
+  "productionMutation": false,
+  "testMutation": false,
+  "skillMutation": false,
+  "mainSpecMutation": false,
+  "manifestMutation": false,
+  "historicalRunMutation": false,
+  "candidateLifecycleInvokedOnActualDelivery": false,
+  "implementationAccepted": true,
+  "formalD05FullTestExecuted": false,
+  "reviseApplyExecuted": false,
+  "archiveExecuted": false,
+  "currentRepositoryGitMutation": false,
+  "fixtureGitOnly": true,
+  "stop": true
+}

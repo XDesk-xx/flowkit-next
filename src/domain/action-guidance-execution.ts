@@ -1,6 +1,7 @@
 import { createHash } from "node:crypto";
 import { lstat, readFile, realpath } from "node:fs/promises";
 import path from "node:path";
+import { isManagerInstallation } from "../internal/manager-installation.js";
 
 import { isStandardActionId, type StandardActionId } from "./identity.js";
 
@@ -71,10 +72,10 @@ export function isActionGuidanceRefForAction(
 }
 
 export async function resolveActionGuidanceRef(
-  repositoryRoot: unknown,
+  installation: unknown,
   actionId: unknown,
 ): Promise<ActionGuidanceRef | null> {
-  if (typeof repositoryRoot !== "string" || repositoryRoot.length === 0) {
+  if (!isManagerInstallation(installation)) {
     return null;
   }
 
@@ -82,7 +83,7 @@ export async function resolveActionGuidanceRef(
   if (relativePath === null) return null;
 
   try {
-    const canonicalRoot = await realpath(repositoryRoot);
+    const canonicalRoot = await realpath(installation.root);
     const expectedPath = path.join(canonicalRoot, ...relativePath.split("/"));
     const entry = await lstat(expectedPath);
     if (!entry.isFile() || entry.isSymbolicLink()) return null;

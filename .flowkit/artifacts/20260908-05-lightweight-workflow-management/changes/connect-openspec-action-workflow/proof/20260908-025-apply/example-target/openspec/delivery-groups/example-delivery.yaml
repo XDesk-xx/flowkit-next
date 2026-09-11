@@ -1,0 +1,12 @@
+id: example-delivery
+changes:
+  - id: describe-greeting
+    state: active
+    dependsOn: []
+ownerDecisions:
+  - ref: owner:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+    decision: activate-change
+    deliveryId: example-delivery
+    changeId: describe-greeting
+    sourceRef: owner-input:2026-09-08:apply-approved-024:task-5.1-bounded-example
+    scope: [explore]

@@ -1,0 +1,83 @@
+TAP version 13
+# Subtest: checkpoint closed operation binds paths, message and nullable ordered shape
+ok 1 - checkpoint closed operation binds paths, message and nullable ordered shape
+  ---
+  duration_ms: 4.4882
+  type: 'test'
+  ...
+# Subtest: Integration local projection golden vector, property ordering and old shape rejection
+ok 2 - Integration local projection golden vector, property ordering and old shape rejection
+  ---
+  duration_ms: 5.1605
+  type: 'test'
+  ...
+# Subtest: native Git NUL scope supports unborn, Chinese/spaces, delete and rename endpoints
+ok 3 - native Git NUL scope supports unborn, Chinese/spaces, delete and rename endpoints
+  ---
+  duration_ms: 2254.4751
+  type: 'test'
+  ...
+# Subtest: null shape admits an explicitly authorized two-object scoped callback, not a global clean gate
+ok 4 - null shape admits an explicitly authorized two-object scoped callback, not a global clean gate
+  ---
+  duration_ms: 2502.014
+  type: 'test'
+  ...
+# Subtest: intermediate out-of-scope commit cannot hide behind a final net diff
+ok 5 - intermediate out-of-scope commit cannot hide behind a final net diff
+  ---
+  duration_ms: 2162.8173
+  type: 'test'
+  ...
+# Subtest: commit response loss preserves known object; failed readback stays unknown
+    # Subtest: false
+    ok 1 - false
+      ---
+      duration_ms: 1608.3114
+      type: 'test'
+      ...
+    # Subtest: true
+    ok 2 - true
+      ---
+      duration_ms: 1518.3641
+      type: 'test'
+      ...
+    1..2
+ok 6 - commit response loss preserves known object; failed readback stays unknown
+  ---
+  duration_ms: 3127.777
+  type: 'test'
+  ...
+# Subtest: manager host with no provider hands off checkpoint; explicit reuse with pending PR creates no extra commit
+ok 7 - manager host with no provider hands off checkpoint; explicit reuse with pending PR creates no extra commit
+  ---
+  duration_ms: 5817.1359
+  type: 'test'
+  ...
+# Subtest: post-stage index drift is incomplete with confirmed stage effect, without commit or unstage
+ok 8 - post-stage index drift is incomplete with confirmed stage effect, without commit or unstage
+  ---
+  duration_ms: 2788.867
+  type: 'test'
+  ...
+# Subtest: Change checkpoint consumes existing evaluator and source, never a Final
+ok 9 - Change checkpoint consumes existing evaluator and source, never a Final
+  ---
+  duration_ms: 4009.3097
+  type: 'test'
+  ...
+# Subtest: ordinary host: source binding, scoped first commit, dirty reuse, independent bare push
+ok 10 - ordinary host: source binding, scoped first commit, dirty reuse, independent bare push
+  ---
+  duration_ms: 7235.6761
+  type: 'test'
+  ...
+1..10
+# tests 12
+# suites 0
+# pass 12
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 14228.9558

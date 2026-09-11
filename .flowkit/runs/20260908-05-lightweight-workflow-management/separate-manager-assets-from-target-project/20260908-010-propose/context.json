@@ -1,0 +1,27 @@
+{
+  "kind": "external-orchestrator-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "separate-manager-assets-from-target-project",
+  "runId": "20260908-010-propose",
+  "runNumber": 10,
+  "previousRunId": "20260908-009-review-explore",
+  "projectOrdinal": 34,
+  "role": "author",
+  "action": "propose",
+  "ownerInstruction": "根据最新run，propose",
+  "ownerActivationRef": "owner:470db16c7d253d2f9a0342b49690106c2556434026b81490b918f08db52a90c9",
+  "sourceHead": "01d82dba4593ea0c5b85ac67da03e6261dccfba6",
+  "sourceHeadMeaning": "计划输入定位，不是产品 SHA gate",
+  "acceptedBasis": ["008-explore", "009-review-explore:approved"],
+  "ownerDecisionsRelevant": [
+    "沿用独立 bootstrap；本轮只 Propose，不使用 candidate 产品 HOW 管理自身",
+    "必要 proof 默认长期保存在项目 .flowkit/artifacts；.tmp 可丢弃，不迁移旧材料",
+    "原始日志保持 exact bytes，不套用源码文本格式 gate，不增加审批节点"
+  ],
+  "skillsUsed": [".agents/skills/proposal-convergence", ".agents/skills/openspec-propose"],
+  "nextBoundary": "review-propose",
+  "applyAllowed": false,
+  "gitMutationAllowed": false
+}

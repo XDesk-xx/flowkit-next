@@ -1,0 +1,11 @@
+import {spawnSync} from 'node:child_process';
+import fs from 'node:fs';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {createHash} from 'node:crypto';
+const here=path.dirname(fileURLToPath(import.meta.url));
+const args=['--import','tsx',path.join(here,'probe.mjs')], startedAt=new Date().toISOString();
+const result=spawnSync(process.execPath,args,{cwd:process.cwd(),windowsHide:true,encoding:null});
+for(const [name,bytes] of [['stdout',result.stdout??Buffer.alloc(0)],['stderr',result.stderr??Buffer.alloc(0)]])fs.writeFileSync(path.join(here,name+'.txt'),bytes,{flag:'wx'});
+fs.writeFileSync(path.join(here,'command.json'),JSON.stringify({program:process.execPath,args,cwd:process.cwd(),startedAt,completedAt:new Date().toISOString(),exitCode:result.status,signal:result.signal,error:result.error?.message,stdoutSha256:createHash('sha256').update(result.stdout??'').digest('hex'),stderrSha256:createHash('sha256').update(result.stderr??'').digest('hex')},null,2)+'\n',{flag:'wx'});
+process.stdout.write(result.stdout??'');process.stderr.write(result.stderr??'');process.exitCode=result.status??1;

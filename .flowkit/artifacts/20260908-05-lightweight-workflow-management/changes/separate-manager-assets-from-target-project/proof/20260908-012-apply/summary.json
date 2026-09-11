@@ -1,0 +1,1291 @@
+{
+  "kind": "current-apply-verification-summary",
+  "runId": "20260908-012-apply",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "separate-manager-assets-from-target-project",
+  "completedAt": "2026-09-08T07:33:50.676Z",
+  "conclusion": "PASS",
+  "meaning": "当前 Author 实现及适用验证完成，不是 Reviewer verdict 或 Delivery Formal Full Test",
+  "reviewerVerdict": null,
+  "reviewSource": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/separate-manager-assets-from-target-project/20260908-011-review-propose/result.json",
+    "bytes": 6717,
+    "sha256": "cf83de7d2c2e7d5a83620429116a3295ce228036eee9f64592f3448ea7c05e7c"
+  },
+  "sourceHead": "01d82dba4593ea0c5b85ac67da03e6261dccfba6",
+  "candidateInventory": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/candidate-files.json",
+    "bytes": 10913,
+    "sha256": "e4f0dd6cb671790eaad7ec573bc51b769bd61f6b73fcf6d674e544af23598fb6"
+  },
+  "handoff": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/handoff.md",
+    "bytes": 4618,
+    "sha256": "58821c03dc52b88d01c80ea53c6da3e175725a1a7b87a8f50ce8151d6c5dc945"
+  },
+  "completedTasks": 12,
+  "maximumSourceLines": {
+    "path": "src/domain/delivery-repository-integration-execution.ts",
+    "lines": 624
+  },
+  "sourceLineGate": 650,
+  "checks": [
+    {
+      "label": "build-02",
+      "executable": "node",
+      "args": [
+        "scripts/build-production.mjs"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "completedAt": "2026-09-08T07:08:17.767Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "result": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/build-02/result.json",
+        "bytes": 215,
+        "sha256": "a80d2ff6e539c2ff0469c4f6e46d5d3c70aaf1edbcbc81292f3d1c8972be3936"
+      },
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/build-02/stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/build-02/stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "typecheck-01",
+      "executable": "node",
+      "args": [
+        "node_modules/typescript/bin/tsc",
+        "--noEmit"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "completedAt": "2026-09-08T07:17:02.920Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "result": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/typecheck-01/result.json",
+        "bytes": 234,
+        "sha256": "a637864c335cc00d8dc466387189166770ad9c45ad690fbd864b27b22a8684f1"
+      },
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/typecheck-01/stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/typecheck-01/stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "format-01",
+      "executable": "node",
+      "args": [
+        "node_modules/prettier/bin/prettier.cjs",
+        "--check",
+        "src",
+        "tests",
+        "tsconfig.json",
+        "tsconfig.build.json",
+        "package.json",
+        "eslint.config.mjs",
+        "scripts/check-forbidden-tracked-artifacts.mjs",
+        "scripts/build-production.mjs"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "completedAt": "2026-09-08T07:17:04.693Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "result": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/format-01/result.json",
+        "bytes": 446,
+        "sha256": "3c345fec216e9d1f8147c974c4aa2af7d341e0d72cc0ca4476f9d6f6d6c72f3f"
+      },
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/format-01/stdout.txt",
+        "bytes": 66,
+        "sha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/format-01/stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "lint-01",
+      "executable": "node",
+      "args": [
+        "node_modules/eslint/bin/eslint.js",
+        "src",
+        "tests"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "completedAt": "2026-09-08T07:17:07.207Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "result": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/lint-01/result.json",
+        "bytes": 244,
+        "sha256": "ac78d8d66dd8769957aca36ac868180ed966364f1ade0a3dfda04b27b542808a"
+      },
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/lint-01/stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/lint-01/stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "dependency-health-01",
+      "executable": "node",
+      "args": [
+        "node_modules/dependency-cruiser/bin/dependency-cruise.mjs",
+        "--config",
+        "dependency-cruiser.config.mjs",
+        "--output-type",
+        "err",
+        "src",
+        "tests"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "completedAt": "2026-09-08T07:17:09.125Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "result": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/dependency-health-01/result.json",
+        "bytes": 353,
+        "sha256": "d34dc30c7abdbe5b42fc39bb5f9ea8c75003298cc6a904b1d58f6927bcbacc29"
+      },
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/dependency-health-01/stdout.txt",
+        "bytes": 79,
+        "sha256": "f725b61576953dff765214f06bf22b255b751ee8a370d312771fafddc183a0e7"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/dependency-health-01/stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "entropy-tests-01",
+      "executable": "node",
+      "args": [
+        "--test",
+        "tests/unit/quality/production-reachability.test.mjs"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "completedAt": "2026-09-08T07:17:10.785Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "result": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/entropy-tests-01/result.json",
+        "bytes": 252,
+        "sha256": "543fda873f1d9b66e5b2e636adf2634a7c19e1fe113334e24cbe4ac8b596ef67"
+      },
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/entropy-tests-01/stdout.txt",
+        "bytes": 1466,
+        "sha256": "7319a6b931fb171771ec9bddb1d27fc2472a088b1ab251f4d0aa3802506a5f34"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/entropy-tests-01/stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "entropy-01",
+      "executable": "node",
+      "args": [
+        "scripts/check-production-reachability.mjs"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "completedAt": "2026-09-08T07:17:12.340Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "result": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/entropy-01/result.json",
+        "bytes": 228,
+        "sha256": "eea5a52a1118586045760c20b9981611cfd2a22f1e72f83896681465c029b226"
+      },
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/entropy-01/stdout.txt",
+        "bytes": 64,
+        "sha256": "0f62a5980dc856ee57bf725f6582aa327bc3cf53146b708df3ec673a96893fb8"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/entropy-01/stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "forbidden-01",
+      "executable": "node",
+      "args": [
+        "scripts/check-forbidden-tracked-artifacts.mjs"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "completedAt": "2026-09-08T07:17:12.583Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "result": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/forbidden-01/result.json",
+        "bytes": 232,
+        "sha256": "40a5a8c92dc2797f1e4013037aaeb1f39169114fc37bba731b9fa61f57e6e50a"
+      },
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/forbidden-01/stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/forbidden-01/stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "domain-03",
+      "executable": "node",
+      "args": [
+        "--import",
+        "tsx",
+        "--test",
+        "tests/unit/domain/*.test.ts"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "completedAt": "2026-09-08T07:17:57.068Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "result": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/domain-03/result.json",
+        "bytes": 255,
+        "sha256": "9566f61eddf1c6ef1d9f861864d6d0a9416ef812e94b3d0d5a5abce00584bd09"
+      },
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/domain-03/stdout.txt",
+        "bytes": 55587,
+        "sha256": "d51d263f8c90e4c189cbb1de4b42e981cbbba59c3ed7491c6230d98f94588900"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/domain-03/stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "pack-01",
+      "executable": "node",
+      "args": [
+        "C:\\nvm4w\\nodejs\\node_modules\\corepack\\dist\\pnpm.js",
+        "pack",
+        "--pack-destination",
+        ".tmp/d05-012-package"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "completedAt": "2026-09-08T07:20:50.838Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "result": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/pack-01/result.json",
+        "bytes": 309,
+        "sha256": "772c406bff2e1dcd3ce94e15c129137dc50f04e361754d6df8dcc0716df2cc2b"
+      },
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/pack-01/stdout.txt",
+        "bytes": 3129,
+        "sha256": "fbee4d82d096dfe5cc907a6bd216373d6e23c6ab9430c52e4931d0c6d2cd1b72"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/pack-01/stderr.txt",
+        "bytes": 36,
+        "sha256": "8f5c6a9c4aade0d032984516a14b38a2d12cb1e6b333ab3568f9dde2ba3e3470"
+      }
+    },
+    {
+      "label": "package-audit-02",
+      "executable": "node",
+      "args": [
+        ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/package-audit.mjs"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "completedAt": "2026-09-08T07:21:26.731Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "result": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/package-audit-02/result.json",
+        "bytes": 344,
+        "sha256": "899c2f2f9fe013ed6c3105b067cb3ca496b0112ca7495e4ecff0d70b04283ca5"
+      },
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/package-audit-02/stdout.txt",
+        "bytes": 3775,
+        "sha256": "cb468f3cdebd3c770d41007219e00e69498d854822ef9c33eaab30f3b7ff6c8d"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/package-audit-02/stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "installed-windows-05",
+      "executable": "node",
+      "args": [
+        "--import",
+        "tsx",
+        "--test",
+        "tests/acceptance/*.test.ts"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "completedAt": "2026-09-08T07:26:21.754Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "result": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/installed-windows-05/result.json",
+        "bytes": 254,
+        "sha256": "710eed13b9c8bcc8e7acb8e46a93463c052f43dc5e58a76be355ac5f780aa1e8"
+      },
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/installed-windows-05/stdout.txt",
+        "bytes": 1459,
+        "sha256": "938de3272d1a555a83ca1d1b53e7ad99460bc1ca90d208131efc5dea306f9f14"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/installed-windows-05/stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "linux-runtime-03",
+      "executable": "docker",
+      "args": [
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--mount",
+        "type=bind,source=D:\\Projects\\flowkit-next,target=/source,readonly",
+        "--mount",
+        "type=volume,source=flowkit-d05-012-runtime-03,target=/runtime",
+        "openspec-runtime-1.10.0:latest",
+        "sh",
+        "/source/.flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/linux-runtime.sh"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "completedAt": "2026-09-08T07:18:38.311Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "result": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/linux-runtime-03/result.json",
+        "bytes": 627,
+        "sha256": "655ba3797f1ca4c63e4c9d11519387df86432c055fcf17e43e6d145b377c56cf"
+      },
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/linux-runtime-03/stdout.txt",
+        "bytes": 7,
+        "sha256": "4f5ba6a3e380bf810cc968b58d30a8d7163eafe9e2fb1ad19bdc6d9d64a1e549"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/linux-runtime-03/stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "linux-cache-01",
+      "executable": "docker",
+      "args": [
+        "run",
+        "--rm",
+        "--mount",
+        "type=bind,source=D:\\Projects\\flowkit-next,target=/source,readonly",
+        "--mount",
+        "type=volume,source=flowkit-d05-012-pnpm-cache,target=/root/.cache/pnpm",
+        "--mount",
+        "type=volume,source=flowkit-d05-012-pnpm-store,target=/root/.local/share/pnpm/store",
+        "--tmpfs",
+        "/work:exec",
+        "flowkit-next-dependency-env:latest",
+        "sh",
+        "/source/.flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/linux-cache.sh"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "completedAt": "2026-09-08T07:19:50.495Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "result": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/linux-cache-01/result.json",
+        "bytes": 747,
+        "sha256": "5c56ac842a2d1846f1f32d2b5abc63bad21f22d85ff4114604d09bcc91337feb"
+      },
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/linux-cache-01/stdout.txt",
+        "bytes": 2583,
+        "sha256": "b8f0a843d66915f2268e32e1f02a693f3d98c53f649235c7113ac949f2f1a71e"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/linux-cache-01/stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "linux-acceptance-05",
+      "executable": "docker",
+      "args": [
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--mount",
+        "type=bind,source=D:\\Projects\\flowkit-next,target=/source,readonly",
+        "--mount",
+        "type=volume,source=flowkit-d05-012-runtime-03,target=/runtime,readonly",
+        "--mount",
+        "type=volume,source=flowkit-d05-012-pnpm-cache,target=/root/.cache/pnpm",
+        "--mount",
+        "type=volume,source=flowkit-d05-012-pnpm-store,target=/root/.local/share/pnpm/store",
+        "--tmpfs",
+        "/work:exec",
+        "flowkit-next-dependency-env:latest",
+        "sh",
+        "/source/.flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/linux-acceptance.sh"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "completedAt": "2026-09-08T07:26:46.398Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "result": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/linux-acceptance-05/result.json",
+        "bytes": 874,
+        "sha256": "e9470a110ecadaf44dc66cb69ca0779527bde84a11c8f4bda56515f17ec465fc"
+      },
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/linux-acceptance-05/stdout.txt",
+        "bytes": 59405,
+        "sha256": "094ebdb83b06441da97b74002968abbb189ef6bfc57ae0aa5a22373ce86ef389"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/linux-acceptance-05/stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "openspec-final-01",
+      "executable": "node",
+      "args": [
+        "C:\\Users\\xuser\\.flowkit\\tools\\openspec\\1.10.0\\bin\\openspec.js",
+        "validate",
+        "separate-manager-assets-from-target-project",
+        "--strict"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "completedAt": "2026-09-08T07:28:00.973Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "result": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/openspec-final-01/result.json",
+        "bytes": 339,
+        "sha256": "99285f5a837de9ef158eaea73d8a0b16486aeffe7e8fdda5eca78b477eecb90f"
+      },
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/openspec-final-01/stdout.txt",
+        "bytes": 62,
+        "sha256": "5060e647125ce0cf92d31f19f36fb3828deca72fb0537da69d94ff3d27e387e6"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/openspec-final-01/stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "diff-check-final-01",
+      "executable": "git",
+      "args": [
+        "diff",
+        "--check",
+        "HEAD"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "completedAt": "2026-09-08T07:28:01.202Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "result": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/diff-check-final-01/result.json",
+        "bytes": 217,
+        "sha256": "fd450ea4147df22118d985b08f6803dea7b4b61acd47f9f593a4c35f81975b06"
+      },
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/diff-check-final-01/stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/diff-check-final-01/stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "platformResults": {
+    "windowsNative": {
+      "domain": 262,
+      "acceptance": 6,
+      "finalAttempt": "installed-windows-05"
+    },
+    "linuxX64Glibc": {
+      "domain": 262,
+      "acceptance": 6,
+      "network": "none",
+      "finalAttempt": "linux-acceptance-05"
+    }
+  },
+  "packageAudit": {
+    "archive": ".tmp/d05-012-package/flowkit-next-0.1.0.tgz",
+    "sha256": "7d5da413b7d4ab9e787e4e24dcd33ab2e39824d8f38f9cb8748a0edc84be968a",
+    "fileCount": 75,
+    "emittedModuleCount": 41,
+    "installedBytesMatchCurrentSource": true,
+    "files": [
+      "skills/vendors/openspec/LICENSE",
+      "dist/domain/action-guidance-execution.js",
+      "dist/domain/action-lifecycle.js",
+      "dist/domain/action-package-result-admission.js",
+      "dist/internal/applicable-check-candidate.js",
+      "dist/domain/applicable-check-execution.js",
+      "dist/internal/applicable-check-facts.js",
+      "dist/internal/applicable-check-identity.js",
+      "dist/internal/applicable-check-material.js",
+      "dist/internal/applicable-check-process.js",
+      "dist/domain/authority.js",
+      "dist/cli/checkpoint-authorization.js",
+      "dist/domain/cross-delivery-memo-persistence.js",
+      "dist/domain/cross-delivery-memo.js",
+      "dist/internal/delivery-final-coordination.js",
+      "dist/domain/delivery-final-execution.js",
+      "dist/domain/delivery-final-operation.js",
+      "dist/domain/delivery-full-test-execution.js",
+      "dist/domain/delivery-operation-execution.js",
+      "dist/domain/delivery-repository-integration-execution.js",
+      "dist/internal/delivery-repository-integration-git.js",
+      "dist/domain/delivery-repository-integration-operation.js",
+      "dist/internal/delivery-repository-integration-ref.js",
+      "dist/internal/delivery-repository-integration-source.js",
+      "dist/internal/delivery-required-evidence-source.js",
+      "dist/internal/delivery-required-evidence.js",
+      "dist/internal/delivery-start-content.js",
+      "dist/domain/delivery-start-execution.js",
+      "dist/cli/entrypoint.js",
+      "dist/cli/foundation-cli.js",
+      "dist/domain/identity.js",
+      "dist/domain/index.js",
+      "dist/domain/managed-tool-resolution.js",
+      "dist/internal/manager-installation.js",
+      "dist/domain/openspec-observation.js",
+      "dist/internal/openspec-process-outcome.js",
+      "dist/domain/policy-and-next-boundary.js",
+      "dist/cli/request.js",
+      "dist/domain/run-result-persistence.js",
+      "dist/domain/single-action-execution.js",
+      "dist/domain/state.js",
+      "dist/cli/trusted-change-coordination.js",
+      "package.json",
+      "config/tools/toolchain.lock.json",
+      "skills/vendors/openspec/UPSTREAM.json",
+      "README.md",
+      "skills/actions/README.md",
+      "skills/vendors/openspec/README.md",
+      "skills/actions/apply/SKILL.md",
+      "skills/actions/archive/SKILL.md",
+      "skills/actions/explore/SKILL.md",
+      "skills/actions/propose/SKILL.md",
+      "skills/actions/review-apply/SKILL.md",
+      "skills/actions/review-explore/SKILL.md",
+      "skills/actions/review-propose/SKILL.md",
+      "skills/actions/revise-apply/SKILL.md",
+      "skills/actions/revise-explore/SKILL.md",
+      "skills/actions/revise-propose/SKILL.md",
+      "skills/delivery/final/SKILL.md",
+      "skills/delivery/full-test/SKILL.md",
+      "skills/delivery/repository-integration/SKILL.md",
+      "skills/delivery/start/SKILL.md",
+      "skills/tools/openspec/SKILL.md",
+      "skills/vendors/openspec/openspec-apply-change/SKILL.md",
+      "skills/vendors/openspec/openspec-archive-change/SKILL.md",
+      "skills/vendors/openspec/openspec-bulk-archive-change/SKILL.md",
+      "skills/vendors/openspec/openspec-continue-change/SKILL.md",
+      "skills/vendors/openspec/openspec-explore/SKILL.md",
+      "skills/vendors/openspec/openspec-ff-change/SKILL.md",
+      "skills/vendors/openspec/openspec-new-change/SKILL.md",
+      "skills/vendors/openspec/openspec-onboard/SKILL.md",
+      "skills/vendors/openspec/openspec-propose/SKILL.md",
+      "skills/vendors/openspec/openspec-sync-specs/SKILL.md",
+      "skills/vendors/openspec/openspec-update-change/SKILL.md",
+      "skills/vendors/openspec/openspec-verify-change/SKILL.md"
+    ]
+  },
+  "skillValidation": {
+    "genericValidatorPassed": [
+      "actions/apply",
+      "actions/archive",
+      "actions/explore",
+      "actions/propose",
+      "tools/openspec"
+    ],
+    "existingDeliveryFormatMismatch": "Start uses summary; other three have no YAML frontmatter. Not changed or introduced here; product tests and static closure apply.",
+    "headers": [
+      {
+        "path": "skills/actions/apply/SKILL.md",
+        "frontmatterUnchanged": true
+      },
+      {
+        "path": "skills/actions/archive/SKILL.md",
+        "frontmatterUnchanged": true
+      },
+      {
+        "path": "skills/actions/explore/SKILL.md",
+        "frontmatterUnchanged": true
+      },
+      {
+        "path": "skills/actions/propose/SKILL.md",
+        "frontmatterUnchanged": true
+      },
+      {
+        "path": "skills/tools/openspec/SKILL.md",
+        "frontmatterUnchanged": true
+      },
+      {
+        "path": "skills/delivery/start/SKILL.md",
+        "frontmatterUnchanged": true
+      },
+      {
+        "path": "skills/delivery/full-test/SKILL.md",
+        "frontmatterUnchanged": true
+      },
+      {
+        "path": "skills/delivery/final/SKILL.md",
+        "frontmatterUnchanged": true
+      },
+      {
+        "path": "skills/delivery/repository-integration/SKILL.md",
+        "frontmatterUnchanged": true
+      }
+    ]
+  },
+  "retainedProofFiles": [
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/build-01/result.json",
+      "bytes": 259,
+      "sha256": "df07f3e106b73319982d909837d293788d72a3a908f951a56db1464a9e834e45"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/build-01/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/build-01/stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/build-02/result.json",
+      "bytes": 215,
+      "sha256": "a80d2ff6e539c2ff0469c4f6e46d5d3c70aaf1edbcbc81292f3d1c8972be3936"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/build-02/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/build-02/stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/capture.mjs",
+      "bytes": 1222,
+      "sha256": "1700fb0f0fc1002430c9e534255026bd6bab6c8c3cdf3ca537b482b77bb26a17"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/close-run.mjs",
+      "bytes": 7485,
+      "sha256": "5c4eb4b6216f03b55ed4040f9befd9563755c3f6fe5a03d6e7210ff1a24bc0c2"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/dependency-health-01/result.json",
+      "bytes": 353,
+      "sha256": "d34dc30c7abdbe5b42fc39bb5f9ea8c75003298cc6a904b1d58f6927bcbacc29"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/dependency-health-01/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/dependency-health-01/stdout.txt",
+      "bytes": 79,
+      "sha256": "f725b61576953dff765214f06bf22b255b751ee8a370d312771fafddc183a0e7"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/diff-check-01/result.json",
+      "bytes": 217,
+      "sha256": "dc0388e8f4c19f8fde93e25fd2946a3c9beb8224d749b559abaa18c4a381bab5"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/diff-check-01/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/diff-check-01/stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/diff-check-final-01/result.json",
+      "bytes": 217,
+      "sha256": "fd450ea4147df22118d985b08f6803dea7b4b61acd47f9f593a4c35f81975b06"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/diff-check-final-01/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/diff-check-final-01/stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/domain-01/result.json",
+      "bytes": 255,
+      "sha256": "68a2bee32c2c16017e9d519b661112a4ebdf9f21c857b00c4924f62c50a24af3"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/domain-01/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/domain-01/stdout.txt",
+      "bytes": 55346,
+      "sha256": "f8f864f35536b0fd13bdc73680280fd8705d36c170446a79c27d6bbe270a7d3a"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/domain-02/result.json",
+      "bytes": 255,
+      "sha256": "e2dc2e4a847f9424daad76b8db62ecebb4f471ce476c0c02839ff4177c9f9567"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/domain-02/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/domain-02/stdout.txt",
+      "bytes": 55600,
+      "sha256": "f497a7bca0342180b6b6b31abaf1d24bee8ecf4a5a8aea969f762dc6a1646a6b"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/domain-03/result.json",
+      "bytes": 255,
+      "sha256": "9566f61eddf1c6ef1d9f861864d6d0a9416ef812e94b3d0d5a5abce00584bd09"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/domain-03/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/domain-03/stdout.txt",
+      "bytes": 55587,
+      "sha256": "d51d263f8c90e4c189cbb1de4b42e981cbbba59c3ed7491c6230d98f94588900"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/entropy-01/result.json",
+      "bytes": 228,
+      "sha256": "eea5a52a1118586045760c20b9981611cfd2a22f1e72f83896681465c029b226"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/entropy-01/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/entropy-01/stdout.txt",
+      "bytes": 64,
+      "sha256": "0f62a5980dc856ee57bf725f6582aa327bc3cf53146b708df3ec673a96893fb8"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/entropy-tests-01/result.json",
+      "bytes": 252,
+      "sha256": "543fda873f1d9b66e5b2e636adf2634a7c19e1fe113334e24cbe4ac8b596ef67"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/entropy-tests-01/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/entropy-tests-01/stdout.txt",
+      "bytes": 1466,
+      "sha256": "7319a6b931fb171771ec9bddb1d27fc2472a088b1ab251f4d0aa3802506a5f34"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/forbidden-01/result.json",
+      "bytes": 232,
+      "sha256": "40a5a8c92dc2797f1e4013037aaeb1f39169114fc37bba731b9fa61f57e6e50a"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/forbidden-01/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/forbidden-01/stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/format-01/result.json",
+      "bytes": 446,
+      "sha256": "3c345fec216e9d1f8147c974c4aa2af7d341e0d72cc0ca4476f9d6f6d6c72f3f"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/format-01/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/format-01/stdout.txt",
+      "bytes": 66,
+      "sha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/handoff.md",
+      "bytes": 4618,
+      "sha256": "58821c03dc52b88d01c80ea53c6da3e175725a1a7b87a8f50ce8151d6c5dc945"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/installed-windows-01/result.json",
+      "bytes": 254,
+      "sha256": "9a142ae43dfe3c16b62a9dabf9ec1ff74cc82915b37c3b5e1d5453c172f11db4"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/installed-windows-01/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/installed-windows-01/stdout.txt",
+      "bytes": 3653,
+      "sha256": "04a7b9c8f82008edc4237a3adae5a27f3c034b9ab3b48eca3bcffaedd282596b"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/installed-windows-02/result.json",
+      "bytes": 254,
+      "sha256": "67984c1315e62ead8ada9f656342e7e80be376f940443c5ea2096188bac89e5e"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/installed-windows-02/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/installed-windows-02/stdout.txt",
+      "bytes": 2126,
+      "sha256": "9fb21ba1c5bccd3ddeda98bc7e4c43891f4dffb55fa65958fbe22dff523830fb"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/installed-windows-03/result.json",
+      "bytes": 254,
+      "sha256": "ef3dddb72c29f67511990ddc53a625205856338aa8928c8424bfbe3436230143"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/installed-windows-03/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/installed-windows-03/stdout.txt",
+      "bytes": 1460,
+      "sha256": "11588f19489689d83c1c1f9afcd233ea4401dd1ab25c4b8199df7e727a9d3f8b"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/installed-windows-04/result.json",
+      "bytes": 254,
+      "sha256": "18853f9080e8e6fc72f4692aa20af21f722d129aa82dab8945aea951f5e820f1"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/installed-windows-04/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/installed-windows-04/stdout.txt",
+      "bytes": 2288,
+      "sha256": "16612c6d506268f61beb83de2a1b04051e217373a762c1da3e252d1cb17a1b48"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/installed-windows-05/result.json",
+      "bytes": 254,
+      "sha256": "710eed13b9c8bcc8e7acb8e46a93463c052f43dc5e58a76be355ac5f780aa1e8"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/installed-windows-05/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/installed-windows-05/stdout.txt",
+      "bytes": 1459,
+      "sha256": "938de3272d1a555a83ca1d1b53e7ad99460bc1ca90d208131efc5dea306f9f14"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/lint-01/result.json",
+      "bytes": 244,
+      "sha256": "ac78d8d66dd8769957aca36ac868180ed966364f1ade0a3dfda04b27b542808a"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/lint-01/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/lint-01/stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/linux-acceptance-01/result.json",
+      "bytes": 676,
+      "sha256": "9567d02bb9c492afa481928c198574bc5284092182b3ef55880ae754c12b41b8"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/linux-acceptance-01/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/linux-acceptance-01/stdout.txt",
+      "bytes": 837,
+      "sha256": "89a0d066ef54fae36739eadb817f9c018393b700d9ae8fdaa2e89bb21c1d6267"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/linux-acceptance-02/result.json",
+      "bytes": 874,
+      "sha256": "a3706280e720a23fcbcf23de91d9fe58ea6c3a72904826cf4b887139f6c25668"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/linux-acceptance-02/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/linux-acceptance-02/stdout.txt",
+      "bytes": 63391,
+      "sha256": "7fa50e3b5d226c49e9bf46e7f96ecef10d33d26df4183838a9e50d6ee63b0c28"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/linux-acceptance-03/result.json",
+      "bytes": 874,
+      "sha256": "42791b8e9a01948ad49db17e89ba70bc5fa1cbe667717725a009f8f9b69950b5"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/linux-acceptance-03/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/linux-acceptance-03/stdout.txt",
+      "bytes": 59418,
+      "sha256": "80278f9d6f788787aafc50b549b45892f88998be19d7187e9ce28ab0ad93784a"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/linux-acceptance-04/result.json",
+      "bytes": 874,
+      "sha256": "95df2b4ffb271b74c7d1ccfaeef21e060452e71f73e85208069e397ec4ce17bd"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/linux-acceptance-04/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/linux-acceptance-04/stdout.txt",
+      "bytes": 60204,
+      "sha256": "ebc9b0b52b3e467bdbb949cfaf4aaa729d306cad4fbe844d53922290dc301c35"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/linux-acceptance-05/result.json",
+      "bytes": 874,
+      "sha256": "e9470a110ecadaf44dc66cb69ca0779527bde84a11c8f4bda56515f17ec465fc"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/linux-acceptance-05/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/linux-acceptance-05/stdout.txt",
+      "bytes": 59405,
+      "sha256": "094ebdb83b06441da97b74002968abbb189ef6bfc57ae0aa5a22373ce86ef389"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/linux-acceptance.sh",
+      "bytes": 1918,
+      "sha256": "68da5f630cd688e4f16d3189b59cac6d7b48212c6eb2886ae869cb0aea845baf"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/linux-cache-01/result.json",
+      "bytes": 747,
+      "sha256": "5c56ac842a2d1846f1f32d2b5abc63bad21f22d85ff4114604d09bcc91337feb"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/linux-cache-01/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/linux-cache-01/stdout.txt",
+      "bytes": 2583,
+      "sha256": "b8f0a843d66915f2268e32e1f02a693f3d98c53f649235c7113ac949f2f1a71e"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/linux-cache.sh",
+      "bytes": 511,
+      "sha256": "f4707e1d0eed4b9e596960e516164b837c2937271dd852ae91329d9e82e2aea0"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/linux-dependencies.mjs",
+      "bytes": 987,
+      "sha256": "f2b5f5b476f43fa2419ba14e933be4fadad891af5b6ce857ce7725cf93cefd7a"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/linux-runtime-01/result.json",
+      "bytes": 624,
+      "sha256": "0da0c7fde55dc6c78805ac03e8c5a6b7a4af6070d037be148da9b7a3a34d66c0"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/linux-runtime-01/stderr.txt",
+      "bytes": 879,
+      "sha256": "6316cd526a5c70c723b8eb3338ab964f34b05fa2024b4355aa1fabd2e4df8fde"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/linux-runtime-01/stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/linux-runtime-02/result.json",
+      "bytes": 627,
+      "sha256": "37d68c1563af3df62b7c8bd1e1918fb53d03c3e06e55c54e9e8c3d852436883d"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/linux-runtime-02/stderr.txt",
+      "bytes": 861,
+      "sha256": "77f19aa25bed3ed50aad5e8967ba0540f2023684a0702d70f45688888a184ef8"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/linux-runtime-02/stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/linux-runtime-03/result.json",
+      "bytes": 627,
+      "sha256": "655ba3797f1ca4c63e4c9d11519387df86432c055fcf17e43e6d145b377c56cf"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/linux-runtime-03/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/linux-runtime-03/stdout.txt",
+      "bytes": 7,
+      "sha256": "4f5ba6a3e380bf810cc968b58d30a8d7163eafe9e2fb1ad19bdc6d9d64a1e549"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/linux-runtime.sh",
+      "bytes": 499,
+      "sha256": "e46781b090890db32eadfa6dede930090d5faa7c77a76633b5bdd11803130163"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/openspec-01/result.json",
+      "bytes": 339,
+      "sha256": "1afa20801321d6731ee6e28afa9d298f88cd19c63576755df5f985d43a1c2837"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/openspec-01/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/openspec-01/stdout.txt",
+      "bytes": 62,
+      "sha256": "5060e647125ce0cf92d31f19f36fb3828deca72fb0537da69d94ff3d27e387e6"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/openspec-final-01/result.json",
+      "bytes": 339,
+      "sha256": "99285f5a837de9ef158eaea73d8a0b16486aeffe7e8fdda5eca78b477eecb90f"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/openspec-final-01/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/openspec-final-01/stdout.txt",
+      "bytes": 62,
+      "sha256": "5060e647125ce0cf92d31f19f36fb3828deca72fb0537da69d94ff3d27e387e6"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/pack-01/result.json",
+      "bytes": 309,
+      "sha256": "772c406bff2e1dcd3ce94e15c129137dc50f04e361754d6df8dcc0716df2cc2b"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/pack-01/stderr.txt",
+      "bytes": 36,
+      "sha256": "8f5c6a9c4aade0d032984516a14b38a2d12cb1e6b333ab3568f9dde2ba3e3470"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/pack-01/stdout.txt",
+      "bytes": 3129,
+      "sha256": "fbee4d82d096dfe5cc907a6bd216373d6e23c6ab9430c52e4931d0c6d2cd1b72"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/package-audit-01/result.json",
+      "bytes": 344,
+      "sha256": "ff62fbf4ee43446dfc5d50effe4e3bc819caec833d18469f5140ddf17962bf4f"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/package-audit-01/stderr.txt",
+      "bytes": 9826,
+      "sha256": "400609202475291fc486dfe4e949beca3924aa63b34f086344f5162a3f6fe6fb"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/package-audit-01/stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/package-audit-02/result.json",
+      "bytes": 344,
+      "sha256": "899c2f2f9fe013ed6c3105b067cb3ca496b0112ca7495e4ecff0d70b04283ca5"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/package-audit-02/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/package-audit-02/stdout.txt",
+      "bytes": 3775,
+      "sha256": "cb468f3cdebd3c770d41007219e00e69498d854822ef9c33eaab30f3b7ff6c8d"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/package-audit.mjs",
+      "bytes": 2616,
+      "sha256": "18cce31f6215690454b6b9998ee308f0fbbdc0491bd978f718430e9a98fbb27a"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/slice-roots-01/result.json",
+      "bytes": 434,
+      "sha256": "4556fc1f770797ef2fb41e9248addd63bb4e99fba86af4e70e8d8b4ab8a2feca"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/slice-roots-01/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/slice-roots-01/stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/slice-roots-02/result.json",
+      "bytes": 390,
+      "sha256": "28f1dacc2a8c9f8db376d5b2e4d8ef0f84c7744e138f97d8a9cef054c7acce0d"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/slice-roots-02/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/slice-roots-02/stdout.txt",
+      "bytes": 4316,
+      "sha256": "2b65fee0fce463b69ac3527c5a73bcba70275a04a65a61526c69c11697df3eb4"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/typecheck-01/result.json",
+      "bytes": 234,
+      "sha256": "a637864c335cc00d8dc466387189166770ad9c45ad690fbd864b27b22a8684f1"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/typecheck-01/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/typecheck-01/stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-012-apply/verify-current.mjs",
+      "bytes": 1516,
+      "sha256": "78be55d4e83997df30a0a731a8233a5f97d3d3a7827ec4f9d4844ebe70212bc8"
+    }
+  ],
+  "nonGoalsPreserved": [
+    "no bootstrap Skill modification",
+    "no historical Run rewrite",
+    "no candidate self-management",
+    "no Formal Full Test",
+    "no Git mutation",
+    "no later D05 scope"
+  ],
+  "nextBoundary": "review-apply",
+  "stop": true
+}

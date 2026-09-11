@@ -1,0 +1,94 @@
+{
+  "kind": "external-orchestrator-propose-result",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "author",
+  "action": "propose",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "connect-openspec-action-workflow",
+  "runId": "20260908-017-propose",
+  "runNumber": 17,
+  "projectOrdinal": 35,
+  "previousRunId": "20260908-016-review-explore",
+  "status": "terminal",
+  "verdict": "PASS",
+  "verdictMeaning": "真实规划与结构/交接核对完成；不是 Reviewer approved 或实现 PASS",
+  "summary": "中文 proposal/design/tasks 与 4 份 delta 已完成；固定当前上下文、单次交互宿主、部分写入可见性与原始流解耦，交独立 review-propose。",
+  "acceptedExploreReview": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-016-review-explore/result.json",
+    "bytes": 7008,
+    "sha256": "d9407f671db93f728a14b3f25b2ada663709cdedf01d4d2bf65521c10896f476"
+  },
+  "planningArtifacts": [
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/proposal.md",
+      "bytes": 3395,
+      "sha256": "ee0e2dcbf8b60c6f930af71ac438161183c822fff4530bbdc39b9a6f28c807c7",
+      "lines": 32
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/design.md",
+      "bytes": 19009,
+      "sha256": "4db230d3e2fe3f0e323fdb0175a3b735b2d169f91ac7b8575d77bc13d9eb13ae",
+      "lines": 132
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/tasks.md",
+      "bytes": 7824,
+      "sha256": "87d548c74e1e2bd744c45e6c2d3e3e9ceae95b9a4fed01f6f73d5516f5fd8671",
+      "lines": 56
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/specs/foundation-cli-surface/spec.md",
+      "bytes": 11123,
+      "sha256": "62bb81b89b3ddd5f4d9d14cfcea4bf3cf4cf7aa98221fba37c03536e6478647f",
+      "lines": 151
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/specs/single-action-execution-terminal-boundary/spec.md",
+      "bytes": 3759,
+      "sha256": "b58e332e33204ff3a0f20ff47736041268643305ff12ac6859720eae219ec737",
+      "lines": 45
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/specs/run-result-persistence/spec.md",
+      "bytes": 3724,
+      "sha256": "7f0547a1077957f0d3e76c6fcdae7a4b903241f3fde18192f603b24e122802a1",
+      "lines": 47
+    },
+    {
+      "path": "openspec/changes/connect-openspec-action-workflow/specs/action-guidance-execution/spec.md",
+      "bytes": 4132,
+      "sha256": "001d6c0673113f51a7403e54f67dc64c04b78aa12a87e2de1f79c3a08e66f26a",
+      "lines": 45
+    }
+  ],
+  "validation": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-017-propose/attempt-01/summary.json",
+    "bytes": 9286,
+    "sha256": "c86e70ded12bbd067524f49c1bfa5432c5011ebc53966647247419f3fd8ca2eb"
+  },
+  "runArtifacts": {
+    "action": {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-017-propose/action.md",
+      "bytes": 684,
+      "sha256": "34cc6754fd43e0316cf214d3ee7a2549618c0ff754d0c4ba481664553d0333b4"
+    },
+    "context": {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-017-propose/context.json",
+      "bytes": 2087,
+      "sha256": "f539a7230163b4e8362b4e1d60c9ec12693f4ed8f911b2d61a6a62e72c3ee8f7"
+    }
+  },
+  "reviewerVerdict": null,
+  "implementationVerificationVerdict": null,
+  "nextBoundary": "review-propose",
+  "applyExecuted": false,
+  "productionMutation": false,
+  "skillMutation": false,
+  "attributesMutation": false,
+  "formalFullTestExecuted": false,
+  "repositoryGitMutation": false,
+  "completedAt": "2026-09-08T09:09:13.562Z",
+  "stop": true
+}

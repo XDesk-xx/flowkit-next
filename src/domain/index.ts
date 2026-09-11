@@ -20,10 +20,10 @@ export * from "./delivery-start-execution.js";
 export * from "./delivery-full-test-execution.js";
 
 export * from "./delivery-final-operation.js";
-export * from "./delivery-architecture-finalization-operation.js";
-export * from "./delivery-architecture-finalization-identity.js";
-export * from "./delivery-architecture-finalization-execution.js";
 export * from "./delivery-final-execution.js";
 
 export * from "./delivery-repository-integration-operation.js";
 export * from "./delivery-repository-integration-execution.js";
+export * from "./git-workflow-host.js";
+export * from "./git-workflow-integration-host.js";
+export { readCurrentDeliveryFullTest } from "../internal/full-test-current.js";

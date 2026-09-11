@@ -1,0 +1,142 @@
+TAP version 13
+# Subtest: canonical Guidance path is deterministic for the closed Standard Action set
+ok 1 - canonical Guidance path is deterministic for the closed Standard Action set
+  ---
+  duration_ms: 1.2738
+  type: 'test'
+  ...
+# Subtest: ActionGuidanceRef is a closed canonical path + lowercase SHA-256 envelope
+ok 2 - ActionGuidanceRef is a closed canonical path + lowercase SHA-256 envelope
+  ---
+  duration_ms: 0.5392
+  type: 'test'
+  ...
+# Subtest: resolver binds exact canonical bytes and content drift changes identity
+ok 3 - resolver binds exact canonical bytes and content drift changes identity
+  ---
+  duration_ms: 21.237
+  type: 'test'
+  ...
+# Subtest: missing canonical product Guidance fails closed and never falls back to .agents
+ok 4 - missing canonical product Guidance fails closed and never falls back to .agents
+  ---
+  duration_ms: 6.6854
+  type: 'test'
+  ...
+# Subtest: non-regular and final-entry symlink Guidance fail closed
+ok 5 - non-regular and final-entry symlink Guidance fail closed
+  ---
+  duration_ms: 12.8359
+  type: 'test'
+  ...
+# Subtest: parent-path redirection through symlink fails closed
+ok 6 - parent-path redirection through symlink fails closed
+  ---
+  duration_ms: 13.1273
+  type: 'test'
+  ...
+# Subtest: unreadable canonical Guidance fails closed when host permissions are enforceable
+ok 7 - unreadable canonical Guidance fails closed when host permissions are enforceable
+  ---
+  duration_ms: 118.7844
+  type: 'test'
+  ...
+# Subtest: accepted fixture root is cleaned when Windows SID setup fails
+ok 8 - accepted fixture root is cleaned when Windows SID setup fails
+  ---
+  duration_ms: 9.2932
+  type: 'test'
+  ...
+# Subtest: resolves exact OpenSpec identity with the closed resolved shape
+ok 9 - resolves exact OpenSpec identity with the closed resolved shape
+  ---
+  duration_ms: 21.4345
+  type: 'test'
+  ...
+# Subtest: rejects unsupported managed tool ids before any fallback
+ok 10 - rejects unsupported managed tool ids before any fallback
+  ---
+  duration_ms: 4.6475
+  type: 'test'
+  ...
+# Subtest: requires explicit FLOWKIT_HOME
+ok 11 - requires explicit FLOWKIT_HOME
+  ---
+  duration_ms: 3.8676
+  type: 'test'
+  ...
+# Subtest: rejects invalid or expanded managed-tool lock authority
+ok 12 - rejects invalid or expanded managed-tool lock authority
+  ---
+  duration_ms: 5.0567
+  type: 'test'
+  ...
+# Subtest: rejects traversing runtime-root material
+ok 13 - rejects traversing runtime-root material
+  ---
+  duration_ms: 3.6911
+  type: 'test'
+  ...
+# Subtest: ignores conflicting PATH executable and returns only managed runtime facts
+ok 14 - ignores conflicting PATH executable and returns only managed runtime facts
+  ---
+  duration_ms: 11.9566
+  type: 'test'
+  ...
+# Subtest: Archify is unsupported before home, lock, or runtime lookup
+ok 15 - Archify is unsupported before home, lock, or runtime lookup
+  ---
+  duration_ms: 8.7772
+  type: 'test'
+  ...
+# Subtest: fails closed when requested managed runtime is absent
+ok 16 - fails closed when requested managed runtime is absent
+  ---
+  duration_ms: 4.3184
+  type: 'test'
+  ...
+# Subtest: rejects exact package name or version mismatch
+ok 17 - rejects exact package name or version mismatch
+  ---
+  duration_ms: 17.3847
+  type: 'test'
+  ...
+# Subtest: rejects missing and escaping entrypoints
+ok 18 - rejects missing and escaping entrypoints
+  ---
+  duration_ms: 18.5959
+  type: 'test'
+  ...
+# Subtest: resolves requested tool on demand without requiring its peer
+ok 19 - resolves requested tool on demand without requiring its peer
+  ---
+  duration_ms: 9.2544
+  type: 'test'
+  ...
+# Subtest: resolution never invokes the managed entrypoint or requires archive provenance
+ok 20 - resolution never invokes the managed entrypoint or requires archive provenance
+  ---
+  duration_ms: 9.7139
+  type: 'test'
+  ...
+# Subtest: installation metadata belongs to the loaded package, not cwd
+ok 21 - installation metadata belongs to the loaded package, not cwd
+  ---
+  duration_ms: 1.1366
+  type: 'test'
+  ...
+# Subtest: trusted installations relocate without depending on target metadata
+ok 22 - trusted installations relocate without depending on target metadata
+  ---
+  duration_ms: 16.7192
+  type: 'test'
+  ...
+1..22
+# tests 22
+# suites 0
+# pass 22
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 687.4526

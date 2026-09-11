@@ -1,0 +1,41 @@
+{
+  "kind": "external-orchestrator-propose-context",
+  "executionMode": "independent-bootstrap",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "action": "propose",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "correct-project-onboarding-and-agent-entry",
+  "projectOrdinal": 39,
+  "runId": "20260911-065-propose",
+  "previousRunId": "20260911-064-review-explore",
+  "startedAt": "2026-09-11T05:46:14.164Z",
+  "ownerInstruction": "根据最新run，propose",
+  "acceptedReview": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/007-correct-project-onboarding-and-agent-entry/20260911-064-review-explore/result.json",
+    "bytes": 7977,
+    "sha256": "181feb64c2dd99a0b31c2efec3a21c2f033c3d143a3b8c303b0fc9dca099ccd4"
+  },
+  "approvedExplore": {
+    "path": "openspec/changes/correct-project-onboarding-and-agent-entry/explore.md",
+    "bytes": 10541,
+    "sha256": "f1953b0dbaeaa1f5bd3f792d0680933545aea96bdbd81f9829dbea10e31c68e7"
+  },
+  "ownerDecisionsRelevant": [
+    {
+      "sourceRef": "owner-input:2026-09-11:bounded-correct-change-and-root-flowkit-documents",
+      "decision": "将接入补齐及三份根 flowkit*.md 清理纳入同一 Change，不重开前六个、不重构内核。"
+    },
+    {
+      "sourceRef": "owner-input:2026-09-11:real-cross-session-not-over-simulated",
+      "decision": "真实新会话不能以重启 CLI/合成 fixture 替代；读取验收不必额外执行 Action、制造 finding 或演完整 Delivery；未执行如实记录。"
+    },
+    {
+      "sourceRef": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260911-062-archive/result.json#ownerDecisionsRelevant",
+      "decision": "D05 独立 bootstrap；必要材料保存在 target artifacts，临时 fixture 放 .tmp；不改历史。"
+    }
+  ],
+  "proofRoot": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-065-propose",
+  "nextBoundary": "review-propose",
+  "scope": "仅最小中文 Proposal/design/tasks 和必要 delta；不改生产/Skill/README，不删除规划文档，不执行 Git。"
+}

@@ -1,0 +1,33 @@
+{
+  "kind": "external-orchestrator-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "author",
+  "action": "explore",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "decouple-full-test-from-repository-tracking",
+  "runId": "20260909-030-explore",
+  "projectOrdinal": 36,
+  "previousRunId": null,
+  "previousDeliveryRun": "connect-openspec-action-workflow/20260908-029-archive",
+  "startedAt": "2026-09-08T19:03:33Z",
+  "ownerInstruction": "owner 授权激活 下一个 change 进行 proof explore",
+  "ownerSourceRef": "owner-input:2026-09-09:activate-change:decouple-full-test-from-repository-tracking:proof-explore",
+  "relatedOwnerDecision": "owner-input:2026-09-09:amend-checkpoint-and-fix-gate-in-next-change",
+  "scope": [
+    "Full Test 独立项目配置与输入范围",
+    "当前尝试、真实结果与必要产物保存/消费",
+    "gate 源码范围与 checkpoint 阻断解耦"
+  ],
+  "nonGoals": [
+    "生产实现",
+    "Propose",
+    "自动 Review",
+    "Git mutation",
+    "重做 Action 接入",
+    "重构全部 Start/Final/Integration"
+  ],
+  "repositoryHead": "7625ecdef3115db45b062b544728ea2459519a09",
+  "preparation": "工作区干净、无 active Change、依赖 completed、ordinal 21..35 唯一有效；exact OpenSpec 1.10.0 list 成功",
+  "proofRoot": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-030-explore"
+}

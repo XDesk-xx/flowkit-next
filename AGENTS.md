@@ -66,6 +66,8 @@ Memo          → future cross-Delivery reconsideration only
 
 ## 4. Stable manager / candidate boundary
 
+D05 当前按 Owner 已授权的 independent-bootstrap 执行。新产品 `status / next / doctor` 在普通测试 target 验收，不接管 D05 自身；不恢复已卸载的外部 manager。以下历史 Stable/checkpoint 模型不构成 D05 的新 SHA 准入门槛，也不改写历史执行事实。
+
 未来 Delivery 的正式关系固定为：
 
 ```text
@@ -120,6 +122,8 @@ orchestrate an automatic Author/Reviewer loop
 
 ## 6. Toolchain 与 runtime
 
+D05 当前产品实现分离 manager 安装根与 target repositoryRoot：系统 Guidance、必要静态引用及 lock 从 manager 自身模块位置定位，package name/version 来自安装自身元数据；绝对安装路径不成为持久身份，不以 target metadata/cwd/previous Delivery SHA 选择安装。GuidanceRef 的相对路径在 manager 下解释，项目事实与所有项目写入仍归 target。FLOWKIT_HOME/tools 只提供 exact executable runtime。target 无需复制 Flowkit Skills、scripts 或 lock；同名 target 文件不得接管或作为缺失回退。此安装定位不是 lifecycle authority；D05 仍沿用 Owner 已授权的独立 bootstrap，不自动恢复外部管理或让 candidate 自我接管。
+
 Managed external-tool exact identity 读取：
 
 ```text
@@ -130,7 +134,6 @@ config/tools/toolchain.lock.json
 
 ```text
 OpenSpec  1.10.0
-Archify   2.15.0
 ```
 
 Host/runtime truth 分离：
@@ -146,8 +149,7 @@ Executable managed runtime 位于外部 `FLOWKIT_HOME`，例如：
 ```text
 FLOWKIT_HOME/
 └─ tools/
-   ├─ openspec/1.10.0/
-   └─ archify/2.15.0/
+   └─ openspec/1.10.0/
 ```
 
 Git repository 不保存：
@@ -161,7 +163,7 @@ temporary unpacked tool distributions
 generated Archify HTML
 ```
 
-Managed OpenSpec/Archify 不得静默使用 PATH/global 其他版本，也不得在正式执行里自动 install/update/download `latest`。
+Managed OpenSpec 不得静默使用 PATH/global 其他版本，也不得在正式执行里自动 install/update/download `latest`。
 
 如果 exact runtime 不匹配或缺失且当前操作依赖它：
 
@@ -284,44 +286,25 @@ delivery/<delivery-id>  → Delivery working branch
 
 OpenSpec 是 formal Change/specification authority。Flowkit 只做 thin integration，不重建 OpenSpec proposal/design/tasks/archive state machine。
 
-当前 candidate 的 OpenSpec integration 是 read-only/observation-oriented thin boundary；不要因为 CLI 能读取 OpenSpec 就扩展成自动 propose/apply/archive。
+当前 candidate 的 OpenSpec observation 仍只读；CLI 不提供 action/prepare/submit 写命令。OpenSpec mutation 由 Agent 依已确定 Action 和上游 mechanics 执行，复用既有 Policy/package/admission 与文件能力记录真实三文件 Run，不调用模型 API、不自动下一 Action。
+
+`flowkit <status|next|doctor> --input <path>` 从 manager 自身定位资产。status/next 从 target、可选 deliveryId/changeId 及唯一有效 Run 链解析上下文，拒绝 caller 手填 currentRunId/changeStartSequence。Agent 准备通过后先保存真实开始，工作后按同一 package/Role 接纳结果、create-once 保存并读回后 STOP；未完成记录不清理、不自动接管。bootstrap-history 只读展示，不转换成 canonical current。普通 Action 不新增 Owner 审批；D05 继续独立 bootstrap。
+
+候选验收以一个有界真实 Author 工作及同一 build 的独立查询读回为实际示例；review/revise 合成 fixtures 不声称独立 Review。不强制第二套安装、两个真人 Change 或制造 finding，仍运行适用平台/安装回归；不是 Formal Full Test。
 
 历史 archived Change 不因后续 guidance convergence 而重写。
 
-## 11. Archify / Architecture boundary
+Delivery 内容操作保持轻量：Start 只核对项目、Owner 选定规划和固定 manifest，不要求 Git SHA/clean，也不内嵌 commit。Final 只消费 required Change 的可信已接纳 archive/直接 review-apply 和当前 Full Test，不重放祖先 admission；先窄写完成内容及 null confirmationRef，经相关复验后再发布确认。跨会话和 Integration 仅消费有效确认，不以 completed 或自签 hash 补造成功；Integration 不重新验证 Final 全仓摘要或历史 proof。Git 实际操作/来源/对象核验仍独立，D05 继续 independent-bootstrap，不用 candidate HOW 自我管理。
 
-Archify 只负责 derived architecture description validation / rendering / visualization。
+## 11. 独立 Archify / Architecture boundary
 
-Durable Delivery architecture assets：
+Archify 仅作为独立的派生架构描述、校验和可视化工具，不属于 Flowkit managed tool 或 Delivery operation。
 
-```text
-architecture/<delivery-id>/json/
-├─ current.architecture.json
-├─ planned.architecture.json
-├─ actual.architecture.json
-├─ current-to-planned.compare.json
-├─ current-to-actual.compare.json
-└─ planned-to-actual.compare.json
-```
+Delivery Start、Full Test、Final 和 repository integration 不要求 Current/Planned/Actual、compare、render、Architecture outcome 或 skip 证明；Previous Actual 不是下一 Delivery Start 的前置条件。
 
-规则：
+历史 `architecture/**`、Delivery manifest、archive 与 Runs 按原始 bytes 保留并可读取，不迁移、不补图、不重新解释为新的执行输入。图与 HTML 不得替代 OpenSpec、Git 或 Verification 事实。
 
-```text
-OpenSpec / repository facts / Verification
-→ Architecture Description JSON
-→ disposable HTML presentation
-```
-
-Compare 必须保持 thin、ref-based；不复制左右 Architecture JSON。HTML 不进 Git，也不是 truth。
-
-正常 continuity：
-
-```text
-Accepted Actual(n)
-→ 下一 Delivery Current(n+1) 的事实输入
-```
-
-但下一 Delivery 的 Current 仍需结合 exact repository revision 与 OpenSpec facts 重新确认，不能把 Actual 自身升级为真相源。
+不删除用户外部 Archify runtime 或独立 Skill。产品 Guidance 不读取 `.agents/skills/**`。
 
 ## 12. Verification ≠ mutation authority
 
@@ -354,7 +337,8 @@ baseline FAIL → candidate PASS       = improvement
 .flowkit/
 ├─ project.json
 ├─ memos.json
-└─ runs/
+├─ runs/
+└─ artifacts/
 ```
 
 含义：
@@ -362,6 +346,9 @@ baseline FAIL → candidate PASS       = improvement
 - `project.json`：project/runtime identity；
 - `memos.json`：cross-Delivery durable memo；
 - `runs/`：真实执行产生的 durable Run/Result/bootstrap-orchestrator history。
+- `artifacts/`：target 自有必要执行材料，默认长期保留；Action proof 使用 `<delivery>/changes/<change>/proof/<run-id>/`，不扩张三文件 Run，也不复制 OpenSpec/Verification authority。
+
+`.tmp` 仅用于可丢弃工作文件。必要材料生成、接纳及相关消费时核对来源、归属、可读性与完整性；只消费当前判断明确需要的引用，不遍历所有历史 proof。保留不等于有效，旧 PASS 不代替当前实现验收。材料处理的 Owner 决定以真实 sourceRef 和简要边界交接，不复制聊天；未收到授权说明不等于未授权。
 
 不得在 `.flowkit/` 中复制 OpenSpec truth、Architecture truth、managed binaries 或构造 generic verification registry。
 
@@ -429,6 +416,8 @@ exact Owner authorization fact
 
 Candidate CLI 不执行 `git add` / `git commit` / push / merge / tag。
 
+普通 Git 节点由已有 Agent/宿主显式调用 manager 自有 `skills/delivery/repository-integration/references/git-host.mjs`（runCheckpoint/runPush/runIntegration）；不新增 CLI 写命令或 Git Run。普通节点不要求 Final，Change checkpoint 保留既有 evaluator；Integration 独立消费已确认 Final/singleton/source。create-new 绑定 exact paths/message/nullable shape，写前核对完整待提交 index，不夹带范围外 staged、不清空用户 index，不要求无关 worktree clean。push/复用不触碰无关 index；部分成功交接已确认对象及剩余步骤，不盲重试或回写 SHA 再 commit。此产品入口不改变 D05 independent-bootstrap authority。
+
 ## 16. Cross-Delivery Memo
 
 Memo：
@@ -477,7 +466,9 @@ no trailing whitespace
 EOF exactly one newline
 ```
 
-Git checkpoint 前执行：
+原始 stdout/stderr 是例外：保留 Buffer bytes，使用 `stdout.txt`、`stderr.txt`、`*.stdout.txt`、`*.stderr.txt`，由 `.flowkit/artifacts/**` 下四条通用 attributes 模式处理，不逐 Change 添加例外。不对全部 artifacts/Run 放宽；脚本、Run JSON、命令元数据、摘要仍是结构化文本，不得改名冒充日志。此规则独立于 `.gitignore` 和 Full Test 选取范围，不自动注入其他 target。
+
+Git checkpoint 的空白诊断（不是统一提交阻断）：
 
 ```text
 git diff --check
@@ -488,6 +479,10 @@ staging 后执行：
 ```text
 git diff --cached --check
 ```
+
+源码 quality:gate 只聚合 bounded formatting 与 lint/既有行数要求；禁止入库内容使用独立 check:forbidden-tracked-artifacts。Git 节点核对授权范围、真实冲突和提交结果，不仅因历史 proof/测试输入/原始日志空白阻断正常 checkpoint，不要求重复豁免，不重写历史、不逐 Change 追加 attributes。原始 bytes 仍须真实保留，不伪造代码 PASS。
+
+Full Test 配置固定为 target config/verification/full-test.json，独立于 .gitignore/index/HEAD；当前结果由 Delivery fullTestAttempt 关联 target artifacts/full-test 材料。新失败/partial 不回用旧 PASS，代码输入与必要材料完整性分开核对。bootstrap/history 自检用 test:bootstrap，不属于代码 Full Test。
 
 ## 18. 代码探索与过度设计
 

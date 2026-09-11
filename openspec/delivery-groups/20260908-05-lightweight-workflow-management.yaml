@@ -1,0 +1,222 @@
+id: "20260908-05-lightweight-workflow-management"
+createdAt: "2026-09-08"
+branch: "delivery/20260908-05-lightweight-workflow-management"
+base: "main"
+
+goal: "将 Flowkit 收敛为严格管理 OpenSpec Change Action、轻量组织 Delivery 的独立流程管理软件：分离管理资产与目标项目，接通真实 Action 和 Full Test，独立配置测试范围，可靠保存必要执行产物，简化交付完成确认，并在授权节点调用 Git。"
+
+delivery:
+  state: completed
+  fullTestStatus: passed
+  fullTestAttempt: "a8c1d48a-fb77-4f1d-b535-e828ca86c3f3"
+  finalizationStatus: completed
+
+finalization:
+  state: completed
+  ownerAuthorityRef: "owner:36ac73fa0fe7b1df9056cecf429c9b7343ae12d11767e51c0bc20f299f85461c"
+  sourceRef: "owner-input:2026-09-11:authorize-d05-delivery-final"
+  fullTestAttempt: "a8c1d48a-fb77-4f1d-b535-e828ca86c3f3"
+  verifiedCandidateRef: "full-test-input:sha256:204cdac444286edc06e3d25c5283430dcda2578ec10993bb65b61521c01e68f3"
+  fullTestExecutionRef: "full-test-execution:sha256:9241e2dc903f5af4989b500229042b362d7734075eb9639760fb3e732f9298b9"
+  confirmationRef: "delivery-finalization:sha256:11899a8c0624793e55aaad109edc740738a9bcc9d49d19ecf8db590a5f409f2c"
+
+reference:
+  kind: "owner-selected-delivery-plan"
+  artifact: "flowkit-next-delivery-change-plan.md"
+  analysisArtifact: "flowkit-next-d05-decoupling-analysis.md"
+
+scope:
+  included:
+    - "按最新版规划登记六个语义 Change，保留其直接依赖；Delivery Start 时全部保持 planned，后续按 Owner 授权单独激活。"
+    - "严格 OpenSpec Action、独立 Reviewer、合法 revise、真实 Run/Result 与一次执行后 STOP。"
+    - "manager 资产、target 项目及 FLOWKIT_HOME/tools 分离，CLI 查询流程事实，Agent 执行并记录一个明确 Action。"
+    - "Full Test 项目配置与 .gitignore、Git index 和 tracked/untracked 独立。"
+    - "必要 proof、Full Test 结果与报告在目标项目 .flowkit/artifacts/ 默认长期保留；.tmp 仅承载可丢弃工作文件。"
+    - "过程事实在生成、接纳与相关消费时校验，不把真实历史材料作为产品扫描输入。"
+    - "Full Test 当前尝试及输入有效性核对，新的失败或未完成不得回落至旧 PASS。"
+    - "轻量 Start/Final 与独立授权 Git 节点；Archify 退役范围按计划登记，本次后续授权仅激活其 proof-based Explore。"
+  excluded:
+    - "本次启动中激活 Change、执行 Explore/Propose/Apply/Review/Archive 或分配 projectOrdinal。"
+    - "本次启动中处理 Archify：不绘图、不校验图、不修改代码/配置/Skill、不卸载工具、不迁移或删除历史图。"
+    - "本次启动中执行 Full Test、Delivery Final、commit、push、PR、merge、tag 或历史改写。"
+    - "恢复已卸载的外部 manager，或让当前 candidate 接管管理自己的 Delivery。"
+    - "EvidenceStore、多后端证据平台、周期清理器、Registry、PASS 缓存平台或自动异常恢复。"
+    - "自动 Author/Reviewer 循环、自动下一 Action、第二份 OpenSpec 合同或额外 Change 编号体系。"
+
+changes:
+  - id: "remove-archify-from-delivery-workflow"
+    group: "delivery-decoupling"
+    goal: "按计划移除活动 Delivery 路径中的 Archify operation、图表前置、专属适配器及必需工具依赖，保留历史与独立用户安装。"
+    required: true
+    dependsOn: []
+    state: completed
+    projectOrdinal: 33
+    outputs:
+      - "Start/Full Test/Final/Integration 不要求图表或 Architecture outcome。"
+      - "活动代码、specs、HOW、doctor 与发行配置的直接消费者一致收敛。"
+      - "无 Archify runtime 的适用路径回归与历史读取验证。"
+
+  - id: "separate-manager-assets-from-target-project"
+    group: "manager-boundary"
+    goal: "分离 manager 安装资产、目标项目事实与外部工具 runtime，目标项目不再复制 Flowkit 开发布局。"
+    required: true
+    dependsOn:
+      - "remove-archify-from-delivery-workflow"
+    state: completed
+    projectOrdinal: 34
+    outputs:
+      - "manager 自有 Guidance/工具约定与 target cwd/数据所有权分离。"
+      - "所需 exact OpenSpec runtime 解析及分根外部项目验收。"
+
+  - id: "connect-openspec-action-workflow"
+    group: "change-execution"
+    goal: "从真实 OpenSpec/coordination/Run 链定位上下文，由 Agent 完成一次 Action、结果接纳与跨会话交接，CLI 只读查询。"
+    required: true
+    dependsOn:
+      - "separate-manager-assets-from-target-project"
+    state: completed
+    projectOrdinal: 35
+    outputs:
+      - "可实际采用的 Agent 执行与 Run 记录 HOW，保留独立 Review、revise 和单次 Action 边界。"
+      - "必要 proof 可靠保存、归属与完整性校验；固定三文件 Runs 不扩张。"
+      - "idle、歧义与缺失事实诊断，不按最大目录号猜 current。"
+      - "Owner 于本次 separate-manager-assets checkpoint 明确纳入下一 Change：修复原始执行证据与源码文本/提交检查的耦合，保护原始 bytes，不以日志空白/CRLF 阻断正常 commit + push，取消每个 Change 手工追加 Git attributes 路径的做法；不与 .gitignore 或 Full Test 范围绑定。"
+
+  - id: "decouple-full-test-from-repository-tracking"
+    group: "delivery-verification"
+    goal: "按独立项目配置执行真实 Full Test，分离 Git 可见性与测试范围，保存并消费当前有效结果。"
+    required: true
+    dependsOn:
+      - "separate-manager-assets-from-target-project"
+    state: completed
+    projectOrdinal: 36
+    outputs:
+      - "测试命令和排除目录与 .gitignore/Git 跟踪状态无联动。"
+      - "当前尝试、真实结果与必要报告的长期保存、接纳及输入有效性校验。"
+      - "失败/中断/必要保存失败不回用旧 PASS；Full Test 不创建 Standard Action Run。"
+      - "Owner 于 2026-09-09 明确要求下一 Change 同时修复 engineering gate 的适用范围与 checkpoint 阻断语义：源码质量检查与历史 proof/测试输入/原始日志分开，不因无关证据空白阻断正常 commit + push；保护证据原始 bytes，不逐 Change 追加 attributes。核对 lightweight-engineering-gate 规范、package.json quality:gate 与 AGENTS/相关 HOW，具体合同及实现经本 Change Explore/Propose/Apply 收敛，不在补提交时直接修改 gate。来源：owner-input:2026-09-09:amend-checkpoint-and-fix-gate-in-next-change。"
+
+  - id: "simplify-delivery-coordination"
+    group: "delivery-coordination"
+    goal: "简化 Start 与 Final：Start 无指定 commit 前置，Final 消费 required Changes 完成事实和当前有效 Full Test 结果。"
+    required: true
+    dependsOn:
+      - "connect-openspec-action-workflow"
+      - "decouple-full-test-from-repository-tracking"
+    state: completed
+    projectOrdinal: 37
+    outputs:
+      - "无首个 commit 或有无关未提交文件时的 Start，保留真实写入冲突检查。"
+      - "消除剩余整仓摘要连锁，窄写完成状态，不复制完整结果或重演全部历史。"
+      - "必要过程事实的相关消费校验，无证据转存或周期清理前置。"
+
+  - id: "invoke-git-at-workflow-boundaries"
+    group: "repository-integration"
+    goal: "在约定节点按明确授权调用既有 Git/远端工具，核对本次对象、范围与实际结果，允许有界人工交接。"
+    required: true
+    dependsOn:
+      - "simplify-delivery-coordination"
+    state: completed
+    projectOrdinal: 38
+    outputs:
+      - "Git 调用不依赖架构资格或遍历 Full Test 日志，不夹带无关文件。"
+      - "实际结果读回与部分成功诊断，无盲目重试、自动回滚或回写 SHA 的提交循环。"
+
+  - id: "correct-project-onboarding-and-agent-entry"
+    group: "project-onboarding"
+    goal: "补齐新项目首次接入与 Agent 薄入口，统一当前使用说明，并清理已被正式合同接管的根目录规划文档；不重构内核。"
+    required: true
+    dependsOn:
+      - "invoke-git-at-workflow-boundaries"
+    state: completed
+    projectOrdinal: 39
+    outputs:
+      - "固定发行包与 exact OpenSpec runtime 的最小接入说明，保留已有项目内容，target 不复制系统 Skills 或长期胶水。"
+      - "Agent 明确 target、Role 和安装来源，查询合法边界后读取对应 Skill，歧义或不合法时停止。"
+      - "README 与短项目入口、三份根目录 flowkit*.md 的清理及引用接管；不改旧 Runs/archives。"
+      - "真实工作、独立查询进程、真实新会话读取分开验收；无真实新会话时不以合成测试补 PASS。"
+
+ownerDecisions:
+  - ref: "owner:172a9ccf0dea297ad8cb3ae29811c58f31f52d0145860a4d3b287f0b5a220348"
+    decision: "create-delivery"
+    deliveryId: "20260908-05-lightweight-workflow-management"
+    sourceRef: "owner-input:2026-09-08:start-d05:independent-bootstrap:branch-and-manifest-only:no-archify-now"
+    scope:
+      - "delivery-start"
+      - "git-create-delivery-branch"
+
+  - ref: "owner:9fbce3acfd773efa4def5cbc64dd4b703d2b50e4a07407bade9c4d1b05f893d6"
+    decision: "activate-change"
+    deliveryId: "20260908-05-lightweight-workflow-management"
+    changeId: "remove-archify-from-delivery-workflow"
+    sourceRef: "owner-input:2026-09-08:activate-change:remove-archify-from-delivery-workflow:proof-explore:durable-artifacts"
+    scope:
+      - "explore"
+
+  - ref: "owner:470db16c7d253d2f9a0342b49690106c2556434026b81490b918f08db52a90c9"
+    decision: "activate-change"
+    deliveryId: "20260908-05-lightweight-workflow-management"
+    changeId: "separate-manager-assets-from-target-project"
+    sourceRef: "owner-input:2026-09-08:activate-change:separate-manager-assets-from-target-project:proof-explore"
+    scope:
+      - "explore"
+
+  - ref: "owner:03920835f3bd9c9278283d95ee0694d362e9fc06d4e9b429d473dd7f8feb00de"
+    decision: "activate-change"
+    deliveryId: "20260908-05-lightweight-workflow-management"
+    changeId: "connect-openspec-action-workflow"
+    sourceRef: "owner-input:2026-09-08:activate-change:connect-openspec-action-workflow:proof-explore:fix-repeated-gitattributes"
+    scope:
+      - "explore"
+
+  - ref: "owner:545a844418df7f7451c97deb898eafc3c963aa4df0fe652e215e55c6bbf8489a"
+    decision: "activate-change"
+    deliveryId: "20260908-05-lightweight-workflow-management"
+    changeId: "decouple-full-test-from-repository-tracking"
+    sourceRef: "owner-input:2026-09-09:activate-change:decouple-full-test-from-repository-tracking:proof-explore"
+    scope:
+      - "explore"
+
+  - ref: "owner:b9ed09c73210416e79af6492354a253ef0bfc802367f7a99abd12c98dde572f4"
+    decision: "activate-change"
+    deliveryId: "20260908-05-lightweight-workflow-management"
+    changeId: "simplify-delivery-coordination"
+    sourceRef: "owner-input:2026-09-09:activate-change:simplify-delivery-coordination:proof-explore"
+    scope:
+      - "explore"
+
+  - ref: "owner:12fef2c5dd7f8622a724723c97b244f30d2c51732319f36247a056597f8dbc16"
+    decision: "activate-change"
+    deliveryId: "20260908-05-lightweight-workflow-management"
+    changeId: "invoke-git-at-workflow-boundaries"
+    sourceRef: "owner-input:2026-09-09:activate-change:invoke-git-at-workflow-boundaries:proof-explore"
+    scope:
+      - "explore"
+
+  - ref: "owner:aa33e6a09124d87ec6c650956fa91cf58e71216719e7ddf7f7681ccfaedb109f"
+    decision: "activate-change"
+    deliveryId: "20260908-05-lightweight-workflow-management"
+    changeId: "correct-project-onboarding-and-agent-entry"
+    sourceRef: "owner-input:2026-09-11:create-correct-project-onboarding-and-agent-entry:proof-explore"
+    scope:
+      - "explore"
+
+  - ref: "owner:36ac73fa0fe7b1df9056cecf429c9b7343ae12d11767e51c0bc20f299f85461c"
+    decision: "finalize-delivery"
+    deliveryId: "20260908-05-lightweight-workflow-management"
+    sourceRef: "owner-input:2026-09-11:authorize-d05-delivery-final"
+    scope:
+      - "delivery-final"
+
+bootstrap:
+  mode: "independent-bootstrap"
+  finalizationNote: "本次按 Owner 的“授权进入 delivery final”执行独立 bootstrap Final，不调用 candidate 生命周期。verifiedCandidateRef 对应当前 Full Test 的 185 文件输入摘要；fullTestExecutionRef 对应 .flowkit/artifacts/20260908-05-lightweight-workflow-management/full-test/a8c1d48a-fb77-4f1d-b535-e828ca86c3f3/result.json 的 SHA-256，不伪装 canonical runtime admission。只核对七个 archive 与直接 review-apply、当前 Full Test 输入和必要结果材料；窄写后复验并发布 confirmationRef，不创建 Action Run、不要求 Archify、不执行 Git。"
+  planningHistoryNote: "reference 保留 Delivery Start 时 Owner 选定的历史规划出处；039 按授权退役旧根文档，Git 恢复出处见其 Apply 材料，当前产品入口见 README.md。"
+  executorRole: "author"
+  instruction: "根据文档开始下一个 delivery，处理 branch 和 manifest；沿用独立 bootstrap，现在不要处理 Archify。"
+  boundary: "Delivery Start 仅创建/切换分支与建立 manifest，当时六个 Change 均未激活；后续 Owner 已授权第一个 Change 的独立 bootstrap Explore，其余保持 planned。"
+  authorityNote: "ownerDecisions 记录本次实际用户指令；ref 是来源标识，不是 candidate runtime 接纳或执行成功证明。"
+  gitBaseNote: "从本次只读核对的 origin/main 创建分支；base 表达 Git 分支来源，不建立 Delivery 的 SHA 准入门槛。"
+  implementationNote: "D05 文档中的新产品合同尚待各 Change 实现；本次 bootstrap 启动不声称 candidate 已完成这些能力。"
+  memoNote: "已读到 open Memo pre-explore-repository-fixed-point-continuity-check；本次不改变其状态、不自动纳入需求或增加 SHA 前置。"
+  stop: "本次 Explore 完成后交接独立 review-explore 并 STOP；不进入 Propose/Apply，不修改产品或执行 Git mutation。必要 proof 按 D05 文档在 .flowkit/artifacts/ 默认长期保存。"

@@ -1,0 +1,24 @@
+import fs from "node:fs";
+import path from "node:path";
+import { spawn } from "node:child_process";
+import { createHash } from "node:crypto";
+import { fileURLToPath } from "node:url";
+const [id, program, ...args] = process.argv.slice(2);
+if (!/^[a-z0-9-]+$/.test(id) || !program) throw Error("capture id/program required");
+const directory = path.join(path.dirname(fileURLToPath(import.meta.url)), id);
+fs.mkdirSync(directory);
+const stdout = fs.openSync(path.join(directory, "stdout.txt"), "wx");
+const stderr = fs.openSync(path.join(directory, "stderr.txt"), "wx");
+const startedAt = new Date().toISOString();
+const actual = program === "node" ? process.execPath : program;
+let error = null;
+const child = spawn(actual, args, { cwd: process.cwd(), windowsHide: true, shell: false, stdio: ["ignore", stdout, stderr] });
+child.on("error", e => { error = e.message; });
+child.on("close", (exitCode, signal) => {
+  fs.closeSync(stdout); fs.closeSync(stderr);
+  const ref = name => { const p = path.join(directory, name); const b = fs.readFileSync(p); return { path: path.relative(process.cwd(), p).replaceAll("\\", "/"), bytes: b.length, sha256: createHash("sha256").update(b).digest("hex") }; };
+  const record = { program: actual, args, cwd: process.cwd(), startedAt, finishedAt: new Date().toISOString(), exitCode, signal, error, node: process.version, platform: process.platform, stdout: ref("stdout.txt"), stderr: ref("stderr.txt") };
+  fs.writeFileSync(path.join(directory, "command.json"), JSON.stringify(record, null, 2) + "\n", { flag: "wx" });
+  console.log(JSON.stringify(record));
+  process.exitCode = exitCode ?? 1;
+});

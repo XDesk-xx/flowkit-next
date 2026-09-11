@@ -123,7 +123,7 @@ function parseManifest(value: unknown): CoordinationManifest {
   });
 }
 
-async function readManifest(
+export async function readCoordinationManifest(
   repositoryRoot: string,
   deliveryId: DeliveryId,
 ): Promise<CoordinationManifest> {
@@ -210,7 +210,10 @@ export interface TrustedChangeCoordinationInput {
 export async function resolveTrustedChangeCoordination(
   input: TrustedChangeCoordinationInput,
 ): Promise<ChangeState> {
-  const manifest = await readManifest(input.repositoryRoot, input.deliveryId);
+  const manifest = await readCoordinationManifest(
+    input.repositoryRoot,
+    input.deliveryId,
+  );
   if (manifest.id !== input.deliveryId) {
     fail(
       "delivery-identity-mismatch",

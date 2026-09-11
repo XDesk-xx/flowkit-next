@@ -1,0 +1,10 @@
+import fs from 'node:fs/promises';
+import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
+const root='/work/project';
+const evidence=process.env.EVIDENCE_DIR;
+const config=JSON.parse(await fs.readFile('/source/config/verification/full-test.json','utf8'));
+await fs.mkdir(root,{recursive:true});
+for(const relative of config.inputs) await fs.cp('/source/'+relative,root+'/'+relative,{recursive:true});
+for(const excluded of ['.git','.flowkit','.agents','openspec','architecture','.tmp']) await assert.rejects(fs.stat(root+'/'+excluded),{code:'ENOENT'});
+await fs.writeFile(evidence+'/linux-source.json',JSON.stringify({kind:'code-only-implementation-fixture',formalD05FullTest:false,node:process.version,inputs:config.inputs,absentHistory:true,lockSha256:createHash('sha256').update(await fs.readFile(root+'/pnpm-lock.yaml')).digest('hex')},null,2)+'\n',{flag:'wx'});

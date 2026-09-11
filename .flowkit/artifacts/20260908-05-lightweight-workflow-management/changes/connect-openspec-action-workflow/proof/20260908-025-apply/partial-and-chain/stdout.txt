@@ -1,0 +1,64 @@
+TAP version 13
+# Subtest: chain tip follows Policy links, not sequence or input ordering
+ok 1 - chain tip follows Policy links, not sequence or input ordering
+  ---
+  duration_ms: 2.7165
+  type: 'test'
+  ...
+# Subtest: reject disconnected higher root, fork, missing parent, cycle, duplicate sequence and Role
+ok 2 - reject disconnected higher root, fork, missing parent, cycle, duplicate sequence and Role
+  ---
+  duration_ms: 0.9375
+  type: 'test'
+  ...
+# Subtest: Owner correction uses existing Policy and rejects wrong authority
+ok 3 - Owner correction uses existing Policy and rejects wrong authority
+  ---
+  duration_ms: 1.4677
+  type: 'test'
+  ...
+# Subtest: complete prepared failure retries same Action with a new occurrence
+ok 4 - complete prepared failure retries same Action with a new occurrence
+  ---
+  duration_ms: 0.4166
+  type: 'test'
+  ...
+# Subtest: canonical disk history reads selected group only and keeps partial visible
+ok 5 - canonical disk history reads selected group only and keeps partial visible
+  ---
+  duration_ms: 27.5681
+  type: 'test'
+  ...
+# Subtest: explicit bootstrap history is display-only; mixed and unmarked groups rejected
+ok 6 - explicit bootstrap history is display-only; mixed and unmarked groups rejected
+  ---
+  duration_ms: 19.1107
+  type: 'test'
+  ...
+# Subtest: actual terminal Author FAIL stays current rather than reusing prior PASS
+ok 7 - actual terminal Author FAIL stays current rather than reusing prior PASS
+  ---
+  duration_ms: 0.3832
+  type: 'test'
+  ...
+# Subtest: writer preserves actual partial files when context.json fails
+ok 8 - writer preserves actual partial files when context.json fails
+  ---
+  duration_ms: 17.0373
+  type: 'test'
+  ...
+# Subtest: writer preserves actual partial files when result.json fails
+ok 9 - writer preserves actual partial files when result.json fails
+  ---
+  duration_ms: 12.7858
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 403.2851

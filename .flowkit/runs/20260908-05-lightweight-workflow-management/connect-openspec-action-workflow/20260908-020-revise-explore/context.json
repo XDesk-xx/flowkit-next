@@ -1,0 +1,37 @@
+{
+  "kind": "external-orchestrator-revise-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "author",
+  "action": "revise-explore",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "connect-openspec-action-workflow",
+  "projectOrdinal": 35,
+  "runId": "20260908-020-revise-explore",
+  "previousRunId": "20260908-019-apply",
+  "ownerInstruction": "Owner 明确授权：当前 Change 回到 revise-explore，重新核定本轮实现与验收边界",
+  "ownerSourceRef": "owner-input:2026-09-08:revise-explore:local-cli-implementation-and-acceptance-boundary",
+  "sourceHead": "697088391374daa67d63c20f8a365fb44ec5c058",
+  "sourceHeadMeaning": "Observation only, not lifecycle prerequisite",
+  "priorApplyObservation": {
+    "files": [
+      "action.md",
+      "context.json"
+    ],
+    "resultMissing": true,
+    "meaning": "Interrupted, not PASS; preserved without backfill. Owner correction authorizes this new bootstrap Action."
+  },
+  "ownerDecisionsRelevant": [
+    "稳定源码构建本机CLI，其他项目调用同一实现",
+    "不默认保留本轮实现，也不只修改验收；按真实职责核查",
+    "停止隔离演练，本轮不执行Apply/Proposal/Git",
+    "原必要材料保留规则不变，无清理授权"
+  ],
+  "skillsUsed": [
+    "revise-explore",
+    "explore-proof-based",
+    "openspec-explore"
+  ],
+  "proofRoot": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-020-revise-explore",
+  "candidateSelfManagement": false
+}

@@ -1,0 +1,91 @@
+{
+  "checkedAt": "2026-09-08T15:00:16.100Z",
+  "verifiedReferences": 209,
+  "candidateArtifacts": 56,
+  "revisionDelta": [
+    "AGENTS.md",
+    "skills/actions/apply/SKILL.md",
+    "skills/actions/archive/SKILL.md",
+    "skills/actions/explore/SKILL.md",
+    "skills/actions/propose/SKILL.md",
+    "skills/actions/review-apply/SKILL.md",
+    "skills/actions/review-explore/SKILL.md",
+    "skills/actions/review-propose/SKILL.md",
+    "skills/actions/revise-apply/SKILL.md",
+    "skills/actions/revise-explore/SKILL.md",
+    "skills/actions/revise-propose/SKILL.md",
+    "src/cli/current-run-chain.ts",
+    "tests/unit/domain/agent-how-fixture.ts",
+    "tests/unit/domain/run-group-selection.test.ts",
+    "tests/unit/domain/agent-how-prepared.test.ts"
+  ],
+  "unchangedCandidateArtifacts": 41,
+  "protectedFilesUnchanged": 67,
+  "approvedPlanUnchangedSince025": true,
+  "sixApprovedPlanBodiesUnchangedSince023": true,
+  "inheritedRemovalsAbsentAndBackupsValid": 10,
+  "sourceMatchOnlyChange": true,
+  "agentsCurrentStaleCommandCorrected": true,
+  "sourceTestGate": {
+    "limit": 650,
+    "files": 22,
+    "maxLines": 595
+  },
+  "authorCurrentCommandsVerified": 13,
+  "authorCurrentTestLogSummaries": {
+    "windowsDomain": 284,
+    "windowsAcceptance": 6,
+    "linuxDomain": 284,
+    "linuxAcceptance": 6,
+    "failures": 0
+  },
+  "independentFocusedTests": {
+    "files": 7,
+    "pass": 23,
+    "fail": 0,
+    "skipped": 0
+  },
+  "independentProbeObservations": [
+    {
+      "case": "other canonical/bootstrap suffixes with exact target absent",
+      "outcome": "explicit empty history"
+    },
+    {
+      "case": "four valid overlapping Change identities",
+      "outcome": "each exact chain selected"
+    },
+    {
+      "case": "malformed selected group",
+      "outcome": "fail closed"
+    },
+    {
+      "case": "zero selected group",
+      "outcome": "fail closed"
+    },
+    {
+      "case": "duplicate selected group",
+      "outcome": "fail closed"
+    },
+    {
+      "case": "mixed selected group",
+      "outcome": "fail closed"
+    },
+    {
+      "case": "partial selected group",
+      "outcome": "fail closed"
+    },
+    {
+      "case": "HOW current establishment controls",
+      "outcome": "exact reuse only; kernel duplicate prepare unchanged; malformed/wrong prepared and same terminal rejected"
+    },
+    {
+      "case": "prepared failure to explicit new execution",
+      "outcome": "new exact package/occurrence terminalizes and is selected; old bytes preserved; duplicate occurrence rejected"
+    }
+  ],
+  "incomplete019StillPreserved": true,
+  "nineNonCurrentStageHowHelperBodiesMatch": true,
+  "auditMethodCorrection": "Original audit incorrectly assumed one exact AGENTS replacement reconstructs the entire unavailable prior text. Corrected audit checks the live full AGENTS/diff and removed stale command, not an unproven one-line byte delta; failure retained. No Author file changed.",
+  "reviewMethodCorrection": "attempt-01 sandbox EPERM; attempt-02 own probe wrongly supplied top-level actionId; original script/output preserved. probe-v2 asserts rejection of the wrong input and accepts exact Policy fields, all checks pass in attempt-03. No product fix or waiver.",
+  "limits": "Author full suite output/identity checked, not independently replayed. Candidate review-apply HOW not read as guidance or executed; whole-HOW tests not invoked. No actual D05 candidate lifecycle, Formal Full Test or Git mutation."
+}

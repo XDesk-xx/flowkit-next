@@ -1,0 +1,26 @@
+id: host-acceptance
+changes:
+  - id: describe-running-feature
+    state: completed
+    dependsOn: []
+    projectOrdinal: 1
+  - id: clarify-feature-output
+    state: active
+    projectOrdinal: 2
+    dependsOn:
+      - describe-running-feature
+ownerDecisions:
+  - ref: owner:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    decision: activate-change
+    deliveryId: host-acceptance
+    changeId: clarify-feature-output
+    sourceRef: acceptance-fixture:approved-task-6.2:owner-apply-input
+    scope:
+      - explore
+  - ref: owner:03920835f3bd9c9278283d95ee0694d362e9fc06d4e9b429d473dd7f8feb00de
+    decision: activate-change
+    deliveryId: host-acceptance
+    changeId: describe-running-feature
+    sourceRef: acceptance-fixture:approved-task-6.1:owner-apply-input
+    scope:
+      - explore

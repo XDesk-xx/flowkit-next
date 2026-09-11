@@ -1,0 +1,33 @@
+import fs from "node:fs/promises";
+import path from "node:path";
+import {fileURLToPath,pathToFileURL}from"node:url";
+import assert from "node:assert/strict";
+const root=process.cwd(),proof=path.dirname(fileURLToPath(import.meta.url)),out=path.resolve(process.argv[2]);
+if(!out.startsWith(proof+path.sep))throw Error("own proof only");
+const {invokeDeliveryFullTestOperation}=await import(pathToFileURL(path.join(root,"src/domain/delivery-full-test-execution.ts")));
+const {readFullTestInput}=await import(pathToFileURL(path.join(root,"src/internal/full-test-input.ts")));
+const {readCurrentDeliveryFullTest}=await import(pathToFileURL(path.join(root,"src/internal/full-test-current.ts")));
+const deliveryId="review-output-fixture";
+const authority={ref:"owner:"+"c".repeat(64),decision:"authorize-formal-full-test",deliveryId,sourceRef:"synthetic:review37:no-real-owner-authority",scope:["delivery-full-test"]};
+const installation={root,name:"flowkit-next",version:"0.1.0"};
+const observations=[];
+for(const preexisting of [false,true]){
+ const target=path.join(out,preexisting?"report-existing":"report-new");await fs.mkdir(target);
+ for(const dir of ["src","config/verification",".tmp",".flowkit","openspec/delivery-groups"])await fs.mkdir(path.join(target,dir),{recursive:true});
+ const write=(p,b)=>fs.writeFile(path.join(target,p),b);
+ await write("src/check.cjs","require('node:fs').writeFileSync(process.argv[2], 'new report');process.stdout.write('check passed');\n");
+ await write(".flowkit/project.json",JSON.stringify({projectId:"review-output-fixture"}));
+ await write("openspec/delivery-groups/"+deliveryId+".yaml","id: "+deliveryId+"\ndelivery:\n  state: active\n  fullTestStatus: pending\n  finalizationStatus: pending\n");
+ const config={inputs:["src"],exclude:[".tmp",".flowkit"],environment:[],checks:[{checkId:"report",program:process.execPath,args:["src/check.cjs",".tmp/report.json"],cwd:"."}]};
+ await write("config/verification/full-test.json",JSON.stringify(config));
+ if(preexisting)await write(".tmp/report.json","old report");
+ const before=await readFullTestInput(target);
+ const result=await invokeDeliveryFullTestOperation(target,{deliveryId,ownerAuthority:authority},installation);
+ assert.equal(result.status,"terminal",JSON.stringify(result));
+ const after=await readFullTestInput(target);
+ const check=result.record.checks[0];
+ const command=JSON.parse(await fs.readFile(path.join(target,check.command.artifact),"utf8"));
+ observations.push({preexisting,selectedFilesBefore:before.files,selectedFilesAfter:after.files,filesUnchanged:JSON.stringify(before.files)===JSON.stringify(after.files),configRefUnchanged:before.configRef===after.configRef,inputRefUnchanged:before.inputRef===after.inputRef,toolRefUnchanged:before.orderedChecks[0].toolRef===after.orderedChecks[0].toolRef,commandExitCode:command.exitCode,checkStatus:check.status,fullTestVerdict:result.verdict,failureReasons:result.record.failureReasons,currentStatus:(await readCurrentDeliveryFullTest(target,deliveryId)).status,report:await fs.readFile(path.join(target,".tmp/report.json"),"utf8")});
+}
+const result={kind:"independent-output-scope-probe",fixtureOnly:true,formalD05FullTest:false,observations};
+await fs.writeFile(path.join(out,"output-observations.json"),JSON.stringify(result,null,2)+"\n",{flag:"wx"});console.log(JSON.stringify(result,null,2));

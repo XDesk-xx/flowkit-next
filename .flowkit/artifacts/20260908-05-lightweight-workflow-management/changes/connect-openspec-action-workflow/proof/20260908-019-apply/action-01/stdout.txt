@@ -1,0 +1,118 @@
+TAP version 13
+# Subtest: one explicit invocation reserves before execute and reads terminal across sessions
+ok 1 - one explicit invocation reserves before execute and reads terminal across sessions
+  ---
+  duration_ms: 499.9039
+  type: 'test'
+  ...
+# Subtest: blocked preparation and wrong Role/Action produce no Run
+ok 2 - blocked preparation and wrong Role/Action produce no Run
+  ---
+  duration_ms: 696.1542
+  type: 'test'
+  ...
+# Subtest: execution EOF preserves prepared failure; next invocation explicitly retries same Action
+ok 3 - execution EOF preserves prepared failure; next invocation explicitly retries same Action
+  ---
+  duration_ms: 802.8126
+  type: 'test'
+  ...
+# Subtest: reject wrong-next without admitting host result
+ok 4 - reject wrong-next without admitting host result
+  ---
+  duration_ms: 370.2138
+  type: 'test'
+  ...
+# Subtest: reject wrong-role without admitting host result
+ok 5 - reject wrong-role without admitting host result
+  ---
+  duration_ms: 392.2567
+  type: 'test'
+  ...
+# Subtest: reject reserved-facts without admitting host result
+ok 6 - reject reserved-facts without admitting host result
+  ---
+  duration_ms: 407.292
+  type: 'test'
+  ...
+# Subtest: reject missing-proof without admitting host result
+ok 7 - reject missing-proof without admitting host result
+  ---
+  duration_ms: 414.9906
+  type: 'test'
+  ...
+# Subtest: real domain FAIL is terminal exit zero and not a transport PASS
+ok 8 - real domain FAIL is terminal exit zero and not a transport PASS
+  ---
+  duration_ms: 226.4463
+  type: 'test'
+  ...
+# Subtest: post-execution write failure preserves partial and emits no terminal
+ok 9 - post-execution write failure preserves partial and emits no terminal
+  ---
+  duration_ms: 327.0897
+  type: 'test'
+  ...
+# Subtest: reservation writes descriptor before dispatch and finishes three files once
+ok 10 - reservation writes descriptor before dispatch and finishes three files once
+  ---
+  duration_ms: 40.0953
+  type: 'test'
+  ...
+# Subtest: write failure at context.json preserves partial and cannot be adopted
+ok 11 - write failure at context.json preserves partial and cannot be adopted
+  ---
+  duration_ms: 20.4286
+  type: 'test'
+  ...
+# Subtest: write failure at result.json preserves partial and cannot be adopted
+ok 12 - write failure at result.json preserves partial and cannot be adopted
+  ---
+  duration_ms: 25.7036
+  type: 'test'
+  ...
+# Subtest: preexisting raw bytes are never overwritten on completion
+ok 13 - preexisting raw bytes are never overwritten on completion
+  ---
+  duration_ms: 22.3481
+  type: 'test'
+  ...
+# Subtest: closed requests resolve current and reject legacy selectors and caller authority overrides
+ok 14 - closed requests resolve current and reject legacy selectors and caller authority overrides
+  ---
+  duration_ms: 1.941
+  type: 'test'
+  ...
+# Subtest: next empty target reaches Explore; unrelated high Run cannot be hidden by caller null
+ok 15 - next empty target reaches Explore; unrelated high Run cannot be hidden by caller null
+  ---
+  duration_ms: 355.0639
+  type: 'test'
+  ...
+# Subtest: status and next consume exact terminal without caller Run number and remain read-only
+ok 16 - status and next consume exact terminal without caller Run number and remain read-only
+  ---
+  duration_ms: 699.431
+  type: 'test'
+  ...
+# Subtest: planned next stays formal blocked; doctor retains bounded tool diagnostics
+ok 17 - planned next stays formal blocked; doctor retains bounded tool diagnostics
+  ---
+  duration_ms: 340.0764
+  type: 'test'
+  ...
+# Subtest: checkpoint authorization is exact, pure, and never inferred
+ok 18 - checkpoint authorization is exact, pure, and never inferred
+  ---
+  duration_ms: 0.4725
+  type: 'test'
+  ...
+1..18
+# tests 18
+# suites 0
+# pass 18
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4611.9773

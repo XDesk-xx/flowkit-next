@@ -1,0 +1,41 @@
+{
+  "synthetic": true,
+  "observations": [
+    {
+      "case": "other canonical/bootstrap suffixes with exact target absent",
+      "outcome": "explicit empty history"
+    },
+    {
+      "case": "four valid overlapping Change identities",
+      "outcome": "each exact chain selected"
+    },
+    {
+      "case": "malformed selected group",
+      "outcome": "fail closed"
+    },
+    {
+      "case": "zero selected group",
+      "outcome": "fail closed"
+    },
+    {
+      "case": "duplicate selected group",
+      "outcome": "fail closed"
+    },
+    {
+      "case": "mixed selected group",
+      "outcome": "fail closed"
+    },
+    {
+      "case": "partial selected group",
+      "outcome": "fail closed"
+    },
+    {
+      "case": "HOW current establishment controls",
+      "outcome": "exact reuse only; kernel duplicate prepare unchanged; malformed/wrong prepared and same terminal rejected"
+    },
+    {
+      "case": "prepared failure to explicit new execution",
+      "outcome": "new exact package/occurrence terminalizes and is selected; old bytes preserved; duplicate occurrence rejected"
+    }
+  ]
+}

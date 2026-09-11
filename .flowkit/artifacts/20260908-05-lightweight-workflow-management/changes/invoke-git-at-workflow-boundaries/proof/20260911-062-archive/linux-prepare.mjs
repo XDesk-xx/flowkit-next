@@ -1,0 +1,15 @@
+import fs from 'node:fs/promises';
+import assert from 'node:assert/strict';
+const root='/work/project';
+const config=JSON.parse(await fs.readFile('/source/config/verification/full-test.json','utf8'));
+await fs.mkdir(root,{recursive:true});
+for(const f of [...config.inputs,'openspec','AGENTS.md','.agents'])await fs.cp('/source/'+f,root+'/'+f,{recursive:true});
+for(const c of ["delivery-operation-execution-and-start-continuity","repository-integration-and-next-base-continuity"])await fs.copyFile('/evidence/converged-specs/'+c+'/spec.md',root+'/openspec/specs/'+c+'/spec.md');
+const from=root+'/openspec/changes/invoke-git-at-workflow-boundaries';
+const to=root+'/openspec/changes/archive/2026-09-11-038-invoke-git-at-workflow-boundaries';
+await assert.rejects(fs.stat(to),{code:'ENOENT'});await fs.rename(from,to);
+const mp=root+'/openspec/delivery-groups/20260908-05-lightweight-workflow-management.yaml';
+const m=await fs.readFile(mp,'utf8');
+const pattern=/(  - id: "invoke-git-at-workflow-boundaries"[\s\S]*?    state: )active/;
+assert(pattern.test(m));await fs.writeFile(mp,m.replace(pattern,'$1completed'));
+console.log('isolated canonical merge, archive move and completion simulated');

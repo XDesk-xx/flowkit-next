@@ -1,0 +1,117 @@
+{
+  "kind": "independent-review-apply-current-checks",
+  "attempt": "attempt-02",
+  "node": "v22.23.2",
+  "platform": "win32",
+  "inputAudit": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-050-review-apply/attempt-02/input-audit.json",
+    "bytes": 79759,
+    "sha256": "d39fc30f35233c9fd4b1218850b43eae72dd2f44009bf27cb72bf9c2074bd3f5"
+  },
+  "verifiedReferences": 126,
+  "verifiedLinuxInputs": 168,
+  "commands": [
+    {
+      "name": "version",
+      "program": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js",
+        "--version"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "startedAt": "2026-09-09T10:33:39.527Z",
+      "completedAt": "2026-09-09T10:33:40.114Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-050-review-apply/attempt-02/version.stdout.txt",
+        "bytes": 7,
+        "sha256": "4f5ba6a3e380bf810cc968b58d30a8d7163eafe9e2fb1ad19bdc6d9d64a1e549"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-050-review-apply/attempt-02/version.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "domain",
+      "program": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "--import",
+        "tsx",
+        "--test",
+        "tests/unit/domain/*.test.ts"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "startedAt": "2026-09-09T10:33:40.117Z",
+      "completedAt": "2026-09-09T10:34:32.198Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-050-review-apply/attempt-02/domain.stdout.txt",
+        "bytes": 64301,
+        "sha256": "09f703d971f1d0b2b4dfe30624d059b8b822451907af12436294262d6c5d4ddf"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-050-review-apply/attempt-02/domain.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "typecheck",
+      "program": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "node_modules/typescript/bin/tsc",
+        "--noEmit"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "startedAt": "2026-09-09T10:34:32.201Z",
+      "completedAt": "2026-09-09T10:34:34.390Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-050-review-apply/attempt-02/typecheck.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-050-review-apply/attempt-02/typecheck.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "openspec-strict",
+      "program": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js",
+        "validate",
+        "simplify-delivery-coordination",
+        "--strict"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "startedAt": "2026-09-09T10:34:34.393Z",
+      "completedAt": "2026-09-09T10:34:35.765Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-050-review-apply/attempt-02/openspec-strict.stdout.txt",
+        "bytes": 49,
+        "sha256": "12fa2f22cdcc62fdc86da02965b984c0eec778dc02d2974b37017bcc25ae431a"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/simplify-delivery-coordination/proof/20260909-050-review-apply/attempt-02/openspec-strict.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "allCommandsSucceeded": true,
+  "formalD05FullTest": false
+}

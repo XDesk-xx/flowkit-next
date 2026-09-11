@@ -1,24 +1,21 @@
 import { createHash } from "node:crypto";
 import { lstat, readFile, realpath } from "node:fs/promises";
 import path from "node:path";
+import { isManagerInstallation } from "../internal/manager-installation.js";
 
 import { isOwnerAuthorityFact, type OwnerAuthorityFact } from "./authority.js";
 import {
-  isResolvedApplicableCheck,
-  type ResolvedApplicableCheck,
-} from "./applicable-check-execution.js";
+  isFullTestCheck,
+  isFullTestRef,
+  type FullTestCheck,
+} from "../internal/full-test-input.js";
+import { isAttemptId } from "../internal/full-test-storage.js";
 import { isSemanticId, type DeliveryId } from "./identity.js";
-import {
-  hasNoDuplicates,
-  isHashRef,
-} from "../internal/applicable-check-identity.js";
-import {
-  cloneArchitectureFinalizationFacts,
-  isArchitectureFinalizationFactsForDelivery,
-  type DeliveryArchitectureFinalizationOperationFacts,
-} from "./delivery-architecture-finalization-operation.js";
+import { hasNoDuplicates } from "../internal/applicable-check-identity.js";
 import {
   cloneDeliveryFinalOperationFacts,
+  isDeliveryCoordinationRef,
+  type DeliveryCoordinationRef,
   isDeliveryFinalAuthorityForDelivery,
   isDeliveryFinalOperationFactsForDelivery,
   type DeliveryFinalOperationFacts,
@@ -33,7 +30,6 @@ import {
 export const DELIVERY_OPERATIONS = [
   "delivery-start",
   "delivery-full-test",
-  "delivery-architecture-finalization",
   "delivery-final",
   "delivery-repository-integration",
 ] as const;
@@ -52,8 +48,6 @@ export function isDeliveryOperationId(
 const DELIVERY_GUIDANCE_PATHS: Readonly<Record<DeliveryOperationId, string>> = {
   "delivery-start": "skills/delivery/start/SKILL.md",
   "delivery-full-test": "skills/delivery/full-test/SKILL.md",
-  "delivery-architecture-finalization":
-    "skills/delivery/architecture-finalization/SKILL.md",
   "delivery-final": "skills/delivery/final/SKILL.md",
   "delivery-repository-integration":
     "skills/delivery/repository-integration/SKILL.md",
@@ -73,7 +67,6 @@ export interface DeliveryGuidanceRef {
 
 const GUIDANCE_REF_FIELDS = ["path", "contentSha256"] as const;
 const SHA256_HEX_PATTERN = /^[0-9a-f]{64}$/;
-const GIT_COMMIT_PATTERN = /^[0-9a-f]{40}$/;
 const ARTIFACT_PATTERN = /^[!-~]{1,512}$/;
 
 function isRecord(value: unknown): value is Record<string, unknown> {
@@ -150,16 +143,16 @@ async function canonicalGuidanceEntry(
 }
 
 export async function resolveDeliveryGuidanceRef(
-  repositoryRoot: unknown,
+  installation: unknown,
   operationId: unknown,
 ): Promise<DeliveryGuidanceRef | null> {
-  if (typeof repositoryRoot !== "string" || repositoryRoot.length === 0) {
+  if (!isManagerInstallation(installation)) {
     return null;
   }
 
   const relativePath = canonicalDeliveryGuidancePath(operationId);
   if (relativePath === null) return null;
-  const entry = await canonicalGuidanceEntry(repositoryRoot, relativePath);
+  const entry = await canonicalGuidanceEntry(installation.root, relativePath);
   if (entry === null) return null;
 
   return {
@@ -169,18 +162,20 @@ export async function resolveDeliveryGuidanceRef(
 }
 
 export async function readExactDeliveryGuidance(
-  repositoryRoot: unknown,
+  installation: unknown,
   guidanceRef: unknown,
 ): Promise<Buffer | null> {
   if (
-    typeof repositoryRoot !== "string" ||
-    repositoryRoot.length === 0 ||
+    !isManagerInstallation(installation) ||
     !isDeliveryGuidanceRef(guidanceRef)
   ) {
     return null;
   }
 
-  const entry = await canonicalGuidanceEntry(repositoryRoot, guidanceRef.path);
+  const entry = await canonicalGuidanceEntry(
+    installation.root,
+    guidanceRef.path,
+  );
   if (entry === null) return null;
   const contentSha256 = createHash("sha256").update(entry.bytes).digest("hex");
   return contentSha256 === guidanceRef.contentSha256 ? entry.bytes : null;
@@ -209,13 +204,18 @@ export function isDeliveryPlanningReference(
 }
 
 export interface DeliveryStartOperationFacts {
-  readonly acceptedBaseCommit: string;
+  readonly projectId: string;
   readonly planningReference: DeliveryPlanningReference;
+  readonly coordinationPrestate: {
+    readonly artifact: string;
+    readonly contentRef: DeliveryCoordinationRef | null;
+  };
 }
 
 const DELIVERY_START_FACT_FIELDS = [
-  "acceptedBaseCommit",
+  "projectId",
   "planningReference",
+  "coordinationPrestate",
 ] as const;
 
 export function isDeliveryStartOperationFacts(
@@ -228,9 +228,18 @@ export function isDeliveryStartOperationFacts(
     return false;
   }
   return (
-    typeof value.acceptedBaseCommit === "string" &&
-    GIT_COMMIT_PATTERN.test(value.acceptedBaseCommit) &&
-    isDeliveryPlanningReference(value.planningReference)
+    isSemanticId(value.projectId) &&
+    isDeliveryPlanningReference(value.planningReference) &&
+    isRecord(value.coordinationPrestate) &&
+    hasExactlyFields(value.coordinationPrestate, ["artifact", "contentRef"]) &&
+    typeof value.coordinationPrestate.artifact === "string" &&
+    /^openspec\/delivery-groups\/[^/]+\.yaml$/.test(
+      value.coordinationPrestate.artifact,
+    ) &&
+    (value.coordinationPrestate.contentRef === null ||
+      (isDeliveryCoordinationRef(value.coordinationPrestate.contentRef) &&
+        value.coordinationPrestate.contentRef.artifact ===
+          value.coordinationPrestate.artifact))
   );
 }
 
@@ -248,23 +257,17 @@ export function isDeliveryStartAuthorityForDelivery(
   );
 }
 
-export function hasDeliveryStartCommitAuthority(
-  value: unknown,
-  deliveryId: unknown,
-): value is OwnerAuthorityFact {
-  return (
-    isDeliveryStartAuthorityForDelivery(value, deliveryId) &&
-    value.scope.includes("single-delivery-start-fixed-point-commit")
-  );
-}
-
 export interface DeliveryFullTestOperationFacts {
-  readonly candidateRef: string;
-  readonly orderedChecks: readonly ResolvedApplicableCheck[];
+  readonly attemptId: string;
+  readonly configRef: string;
+  readonly inputRef: string;
+  readonly orderedChecks: readonly FullTestCheck[];
 }
 
 const DELIVERY_FULL_TEST_FACT_FIELDS = [
-  "candidateRef",
+  "attemptId",
+  "configRef",
+  "inputRef",
   "orderedChecks",
 ] as const;
 
@@ -274,10 +277,12 @@ export function isDeliveryFullTestOperationFacts(
   if (
     !isRecord(value) ||
     !hasExactlyFields(value, DELIVERY_FULL_TEST_FACT_FIELDS) ||
-    !isHashRef(value.candidateRef, "candidate") ||
+    !isAttemptId(value.attemptId) ||
+    !isFullTestRef(value.configRef, "full-test-config") ||
+    !isFullTestRef(value.inputRef, "full-test-input") ||
     !Array.isArray(value.orderedChecks) ||
     value.orderedChecks.length < 1 ||
-    !value.orderedChecks.every(isResolvedApplicableCheck)
+    !value.orderedChecks.every(isFullTestCheck)
   ) {
     return false;
   }
@@ -305,7 +310,6 @@ export function isFormalFullTestAuthorityForDelivery(
 export type DeliveryOperationFacts =
   | DeliveryStartOperationFacts
   | DeliveryFullTestOperationFacts
-  | DeliveryArchitectureFinalizationOperationFacts
   | DeliveryFinalOperationFacts
   | DeliveryRepositoryIntegrationOperationFacts;
 
@@ -325,12 +329,6 @@ export interface DeliveryFullTestOperationPackage extends DeliveryOperationPacka
   readonly operationFacts: DeliveryFullTestOperationFacts;
 }
 
-export interface DeliveryArchitectureFinalizationOperationPackage extends DeliveryOperationPackageBase {
-  readonly operationId: "delivery-architecture-finalization";
-  readonly ownerAuthority: null;
-  readonly operationFacts: DeliveryArchitectureFinalizationOperationFacts;
-}
-
 export interface DeliveryFinalOperationPackage extends DeliveryOperationPackageBase {
   readonly operationId: "delivery-final";
   readonly ownerAuthority: OwnerAuthorityFact;
@@ -346,7 +344,6 @@ export interface DeliveryRepositoryIntegrationOperationPackage extends DeliveryO
 export type DeliveryOperationPackage =
   | DeliveryStartOperationPackage
   | DeliveryFullTestOperationPackage
-  | DeliveryArchitectureFinalizationOperationPackage
   | DeliveryFinalOperationPackage
   | DeliveryRepositoryIntegrationOperationPackage;
 
@@ -380,6 +377,8 @@ export function isDeliveryOperationPackage(
     case "delivery-start":
       return (
         isDeliveryStartOperationFacts(value.operationFacts) &&
+        value.operationFacts.coordinationPrestate.artifact ===
+          `openspec/delivery-groups/${value.deliveryId}.yaml` &&
         isDeliveryStartAuthorityForDelivery(
           value.ownerAuthority,
           value.deliveryId,
@@ -390,14 +389,6 @@ export function isDeliveryOperationPackage(
         isDeliveryFullTestOperationFacts(value.operationFacts) &&
         isFormalFullTestAuthorityForDelivery(
           value.ownerAuthority,
-          value.deliveryId,
-        )
-      );
-    case "delivery-architecture-finalization":
-      return (
-        value.ownerAuthority === null &&
-        isArchitectureFinalizationFactsForDelivery(
-          value.operationFacts,
           value.deliveryId,
         )
       );
@@ -439,20 +430,25 @@ function cloneStartFacts(
   facts: DeliveryStartOperationFacts,
 ): DeliveryStartOperationFacts {
   return {
-    acceptedBaseCommit: facts.acceptedBaseCommit,
+    projectId: facts.projectId,
     planningReference: clonePlanningReference(facts.planningReference),
+    coordinationPrestate: {
+      artifact: facts.coordinationPrestate.artifact,
+      contentRef:
+        facts.coordinationPrestate.contentRef === null
+          ? null
+          : { ...facts.coordinationPrestate.contentRef },
+    },
   };
 }
 
-function cloneResolvedCheck(
-  check: ResolvedApplicableCheck,
-): ResolvedApplicableCheck {
+function cloneResolvedCheck(check: FullTestCheck): FullTestCheck {
   return {
     checkId: check.checkId,
     program: check.program,
     args: [...check.args],
-    configRefs: [...check.configRefs],
-    toolRefs: [...check.toolRefs],
+    cwd: check.cwd,
+    toolRef: check.toolRef,
     environmentRefs: [...check.environmentRefs],
     checkRef: check.checkRef,
   };
@@ -462,7 +458,9 @@ function cloneFullTestFacts(
   facts: DeliveryFullTestOperationFacts,
 ): DeliveryFullTestOperationFacts {
   return {
-    candidateRef: facts.candidateRef,
+    attemptId: facts.attemptId,
+    configRef: facts.configRef,
+    inputRef: facts.inputRef,
     orderedChecks: facts.orderedChecks.map(cloneResolvedCheck),
   };
 }
@@ -523,23 +521,6 @@ export function formDeliveryOperationPackage(
       operationId,
       ownerAuthority: cloneAuthority(ownerAuthority),
       operationFacts: cloneFullTestFacts(operationFacts),
-      guidanceRef: cloneGuidanceRef(guidanceRef),
-    };
-    return isDeliveryOperationPackage(candidate) ? candidate : null;
-  }
-
-  if (operationId === "delivery-architecture-finalization") {
-    if (ownerAuthority !== null) return null;
-    if (
-      !isArchitectureFinalizationFactsForDelivery(operationFacts, deliveryId)
-    ) {
-      return null;
-    }
-    const candidate: DeliveryArchitectureFinalizationOperationPackage = {
-      deliveryId,
-      operationId,
-      ownerAuthority: null,
-      operationFacts: cloneArchitectureFinalizationFacts(operationFacts),
       guidanceRef: cloneGuidanceRef(guidanceRef),
     };
     return isDeliveryOperationPackage(candidate) ? candidate : null;

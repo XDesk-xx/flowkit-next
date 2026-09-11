@@ -1,0 +1,346 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Flowkit · 系统架构",
+    "subtitle": "OpenSpec 定义合同，Flowkit 查询与记录，Agent 显式执行；图仅描述已有实现",
+    "quality_profile": "showcase",
+    "viewBox": [
+      1280,
+      780
+    ],
+    "repository": {
+      "url": "https://github.com/XDesk-xx/flowkit-next",
+      "revision": "16f617a4074785fae950fb1e9fa8732f369ee303"
+    },
+    "animation": "none"
+  },
+  "layout": {
+    "mode": "grid",
+    "origin": [
+      50,
+      65
+    ],
+    "cols": 4,
+    "cellW": 220,
+    "cellH": 90,
+    "gapX": 100,
+    "gapY": 85
+  },
+  "components": [
+    {
+      "id": "human-agent",
+      "type": "external",
+      "label": "用户与 Agent",
+      "sublabel": "Owner / Author / Reviewer",
+      "tag": "角色独立",
+      "row": 1,
+      "col": 0,
+      "sources": [
+        {
+          "path": "docs/onboarding.md"
+        }
+      ],
+      "size": [
+        220,
+        90
+      ]
+    },
+    {
+      "id": "query-cli",
+      "type": "frontend",
+      "label": "只读 CLI",
+      "sublabel": "status / next / doctor",
+      "tag": "manager",
+      "row": 1,
+      "col": 1,
+      "sources": [
+        {
+          "path": "src/cli/foundation-cli.ts"
+        }
+      ],
+      "size": [
+        220,
+        90
+      ]
+    },
+    {
+      "id": "flowkit-core",
+      "type": "backend",
+      "label": "流程内核",
+      "sublabel": "上下文 · Policy · Run",
+      "tag": "无自动调度",
+      "row": 1,
+      "col": 2,
+      "sources": [
+        {
+          "path": "src/cli/action-context.ts"
+        },
+        {
+          "path": "src/domain/policy-and-next-boundary.ts"
+        },
+        {
+          "path": "src/domain/action-package-result-admission.ts"
+        }
+      ],
+      "size": [
+        220,
+        90
+      ]
+    },
+    {
+      "id": "target-facts",
+      "type": "database",
+      "label": "项目事实文件",
+      "sublabel": "OpenSpec · manifest · Runs",
+      "tag": "target 自有",
+      "row": 1,
+      "col": 3,
+      "sources": [
+        {
+          "path": "src/cli/trusted-change-coordination.ts"
+        },
+        {
+          "path": "src/domain/run-result-persistence.ts"
+        },
+        {
+          "path": "src/domain/cross-delivery-memo-persistence.ts"
+        }
+      ],
+      "size": [
+        220,
+        90
+      ]
+    },
+    {
+      "id": "exact-tools",
+      "type": "external",
+      "label": "OpenSpec 1.10.0",
+      "sublabel": "FLOWKIT_HOME/tools",
+      "tag": "external runtime",
+      "row": 0,
+      "col": 1,
+      "sources": [
+        {
+          "path": "config/tools/toolchain.lock.json"
+        },
+        {
+          "path": "src/domain/managed-tool-resolution.ts"
+        }
+      ],
+      "size": [
+        220,
+        90
+      ]
+    },
+    {
+      "id": "canonical-how",
+      "type": "security",
+      "label": "系统 Guidance",
+      "sublabel": "Action / Delivery HOW",
+      "tag": "安装自有 · 内容绑定",
+      "row": 0,
+      "col": 2,
+      "sources": [
+        {
+          "path": "src/domain/action-guidance-execution.ts"
+        },
+        {
+          "path": "src/domain/delivery-operation-execution.ts"
+        }
+      ],
+      "size": [
+        220,
+        90
+      ]
+    },
+    {
+      "id": "explicit-host",
+      "type": "external",
+      "label": "显式 Agent 宿主",
+      "sublabel": "授权后调用模块能力",
+      "tag": "不是 CLI 写命令",
+      "row": 2,
+      "col": 0,
+      "sources": [
+        {
+          "path": "src/domain/git-workflow-host.ts"
+        },
+        {
+          "path": "src/domain/single-action-execution.ts"
+        }
+      ],
+      "size": [
+        220,
+        90
+      ]
+    },
+    {
+      "id": "delivery-content",
+      "type": "backend",
+      "label": "Delivery 协调",
+      "sublabel": "Start / Final / 完成确认",
+      "tag": "manager",
+      "row": 2,
+      "col": 1,
+      "sources": [
+        {
+          "path": "src/domain/delivery-start-execution.ts"
+        },
+        {
+          "path": "src/domain/delivery-final-execution.ts"
+        }
+      ],
+      "size": [
+        220,
+        90
+      ]
+    },
+    {
+      "id": "verification",
+      "type": "backend",
+      "label": "验证执行",
+      "sublabel": "项目 Full Test / checks",
+      "tag": "显式配置",
+      "row": 2,
+      "col": 2,
+      "sources": [
+        {
+          "path": "src/domain/delivery-full-test-execution.ts"
+        },
+        {
+          "path": "src/domain/applicable-check-execution.ts"
+        }
+      ],
+      "size": [
+        220,
+        90
+      ]
+    },
+    {
+      "id": "target-evidence",
+      "type": "database",
+      "label": "必要执行材料",
+      "sublabel": ".flowkit/artifacts",
+      "tag": "target 自有",
+      "row": 2,
+      "col": 3,
+      "sources": [
+        {
+          "path": "src/internal/full-test-storage.ts"
+        }
+      ],
+      "size": [
+        220,
+        90
+      ]
+    },
+    {
+      "id": "git-provider",
+      "type": "external",
+      "label": "Git 与远端",
+      "sublabel": "checkpoint / push / merge",
+      "tag": "独立授权",
+      "row": 3,
+      "col": 0,
+      "sources": [
+        {
+          "path": "src/domain/git-workflow-host.ts"
+        },
+        {
+          "path": "src/domain/git-workflow-integration-host.ts"
+        }
+      ],
+      "size": [
+        220,
+        90
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "request",
+      "from": "human-agent",
+      "to": "query-cli",
+      "variant": "emphasis"
+    },
+    {
+      "id": "resolve",
+      "from": "query-cli",
+      "to": "flowkit-core",
+      "variant": "emphasis"
+    },
+    {
+      "id": "read-target",
+      "from": "flowkit-core",
+      "to": "target-facts",
+      "variant": "emphasis"
+    },
+    {
+      "id": "runtime",
+      "from": "query-cli",
+      "to": "exact-tools"
+    },
+    {
+      "id": "bind-how",
+      "from": "flowkit-core",
+      "to": "canonical-how",
+      "label": "绑定 HOW"
+    },
+    {
+      "id": "explicit-work",
+      "from": "human-agent",
+      "to": "explicit-host"
+    },
+    {
+      "id": "delivery-call",
+      "from": "explicit-host",
+      "to": "delivery-content"
+    },
+    {
+      "id": "consume-test",
+      "from": "delivery-content",
+      "to": "verification",
+      "label": "Final 读结果"
+    },
+    {
+      "id": "test-material",
+      "from": "verification",
+      "to": "target-evidence"
+    },
+    {
+      "id": "git-call",
+      "from": "explicit-host",
+      "to": "git-provider"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "三根分离",
+      "items": [
+        "manager：发行代码、Skills、lock",
+        "target：业务代码、OpenSpec、Run、Memo、证据",
+        "FLOWKIT_HOME：仅 exact executable runtime"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "已实现但不自动执行",
+      "items": [
+        "单次 Action：prepared → 接纳 → terminal → STOP",
+        "Start 不依赖 commit；Final 消费当前 Full Test",
+        "CLI 查询不执行 Action、Full Test 或 Git"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "边界",
+      "items": [
+        "Skills 不决定 WHAT；Reviewer 独立审查",
+        "Archify 是独立派生工具，不是流程组件",
+        "D05 自身采用 independent-bootstrap，不用 candidate 自管理"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "kind": "external-orchestrator-review-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "reviewer",
+  "action": "review-apply",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "connect-openspec-action-workflow",
+  "projectOrdinal": 35,
+  "runId": "20260908-026-review-apply",
+  "previousRunId": "20260908-025-apply",
+  "reviewedRunId": "20260908-025-apply",
+  "ownerInstruction": "根据最新run，review",
+  "sourceHead": "697088391374daa67d63c20f8a365fb44ec5c058",
+  "sourceHeadMeaning": "审查输入观察，不是 SHA 准入或 Git authority。",
+  "independentHow": ".agents/skills/review-apply/SKILL.md",
+  "candidateReviewerHowConsumed": false,
+  "writeScope": [
+    ".flowkit/runs/20260908-05-lightweight-workflow-management/connect-openspec-action-workflow/20260908-026-review-apply",
+    ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/connect-openspec-action-workflow/proof/20260908-026-review-apply"
+  ],
+  "scope": "核对 024 批准的 023 计划与 025 累计候选、实际材料和有界回归。保持 Reviewer mutation-free；不执行 Apply/Archive/Full Test/Git，不改 Author 或历史 bytes。",
+  "startedAt": "2026-09-08T14:16:40Z"
+}

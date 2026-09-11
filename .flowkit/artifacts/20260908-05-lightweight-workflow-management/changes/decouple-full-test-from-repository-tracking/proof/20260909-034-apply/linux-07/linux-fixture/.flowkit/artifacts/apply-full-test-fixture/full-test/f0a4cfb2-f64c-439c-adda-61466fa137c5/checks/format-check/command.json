@@ -1,0 +1,33 @@
+{
+  "checkId": "format-check",
+  "checkRef": "full-test-check:sha256:b5fc7b1b358532afa6e117d8cbfd3eba3f026b91e798b1369481b9e5cde2992d",
+  "program": "/usr/local/bin/node",
+  "args": [
+    "node_modules/prettier/bin/prettier.cjs",
+    "--check",
+    "src",
+    "tests",
+    "tsconfig.json",
+    "tsconfig.build.json",
+    "package.json",
+    "eslint.config.mjs",
+    "scripts/check-forbidden-tracked-artifacts.mjs"
+  ],
+  "cwd": ".",
+  "startedAt": "2026-09-09T04:07:20.485Z",
+  "finishedAt": "2026-09-09T04:07:22.447Z",
+  "exitCode": 0,
+  "signal": null,
+  "processError": null,
+  "saveError": null,
+  "stdout": {
+    "artifact": ".flowkit/artifacts/apply-full-test-fixture/full-test/f0a4cfb2-f64c-439c-adda-61466fa137c5/checks/format-check/stdout.txt",
+    "contentSha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20",
+    "bytes": 66
+  },
+  "stderr": {
+    "artifact": ".flowkit/artifacts/apply-full-test-fixture/full-test/f0a4cfb2-f64c-439c-adda-61466fa137c5/checks/format-check/stderr.txt",
+    "contentSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  }
+}

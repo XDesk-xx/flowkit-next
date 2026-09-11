@@ -1,0 +1,113 @@
+{
+  "projectId": "revise-code-fixture",
+  "deliveryId": "revise-full-test-fixture",
+  "attemptId": "a49feb93-e91f-4ec6-85a4-66aaf5acf254",
+  "executionRef": "full-test-execution:sha256:3a4ebc613ec0514eec9b07d4a502141cd2c3731b111faa9a6c6f07f4b5709e7e",
+  "startedAt": "2026-09-09T05:49:17.178Z",
+  "finishedAt": "2026-09-09T05:50:21.805Z",
+  "configRef": "full-test-config:sha256:90ceeab86da20ffae9d0fb17007eac75e5990115e6c99c9ad4d37d9e9d6c256e",
+  "inputRef": "full-test-input:sha256:048bdf0c98c3758d1681c5dffbedeb9e275baae38f8c48fc4e12393985caf8ca",
+  "status": "passed",
+  "failureReasons": [],
+  "checks": [
+    {
+      "checkId": "format-check",
+      "checkRef": "full-test-check:sha256:9593ac513cf54536527859fdc6d0c20be7b70758b2357073572e8dd844e43f91",
+      "status": "passed",
+      "reason": null,
+      "command": {
+        "artifact": ".flowkit/artifacts/revise-full-test-fixture/full-test/a49feb93-e91f-4ec6-85a4-66aaf5acf254/checks/format-check/command.json",
+        "contentSha256": "a5ae4a3ac04f472681b70d109f8011534b4ceaa330616add10a18d64e08116b7",
+        "bytes": 1130
+      }
+    },
+    {
+      "checkId": "lint",
+      "checkRef": "full-test-check:sha256:e960217cf60ccd4e7e6afa2aa865659b89ecd02d1aa71770553753268d72e29a",
+      "status": "passed",
+      "reason": null,
+      "command": {
+        "artifact": ".flowkit/artifacts/revise-full-test-fixture/full-test/a49feb93-e91f-4ec6-85a4-66aaf5acf254/checks/lint/command.json",
+        "contentSha256": "68199a7e4ba4cd598bd82b5908008b3d7da42cf4b897d1426fc651bc80159a60",
+        "bytes": 939
+      }
+    },
+    {
+      "checkId": "typecheck",
+      "checkRef": "full-test-check:sha256:ab635386fe5cdfd55de4ae867d099f0e77aa04d14b6a87cc2044c4523ef27031",
+      "status": "passed",
+      "reason": null,
+      "command": {
+        "artifact": ".flowkit/artifacts/revise-full-test-fixture/full-test/a49feb93-e91f-4ec6-85a4-66aaf5acf254/checks/typecheck/command.json",
+        "contentSha256": "86d31d2d0d44439ca72045a284349436c17382148b0fd41bd05a81225bca7179",
+        "bytes": 944
+      }
+    },
+    {
+      "checkId": "build",
+      "checkRef": "full-test-check:sha256:7c2b11b279614711ad2996b148685b66c5309f16e76759d4559ecd29981dad73",
+      "status": "passed",
+      "reason": null,
+      "command": {
+        "artifact": ".flowkit/artifacts/revise-full-test-fixture/full-test/a49feb93-e91f-4ec6-85a4-66aaf5acf254/checks/build/command.json",
+        "contentSha256": "e36d9867f406612391fc5697766deed4d260a3acd49966913ceda532f74c6f21",
+        "bytes": 913
+      }
+    },
+    {
+      "checkId": "domain",
+      "checkRef": "full-test-check:sha256:c129e9d09da2dd00d0094f5ef33f3a44dc2f19fe71999104c2f6b3981e2dce71",
+      "status": "passed",
+      "reason": null,
+      "command": {
+        "artifact": ".flowkit/artifacts/revise-full-test-fixture/full-test/a49feb93-e91f-4ec6-85a4-66aaf5acf254/checks/domain/command.json",
+        "contentSha256": "fff2bab98927ff9c28da4a7b0c37ca8e65eea53399a3422c969fe0b41a4ce4c9",
+        "bytes": 960
+      }
+    },
+    {
+      "checkId": "acceptance",
+      "checkRef": "full-test-check:sha256:aa631ff1d680acda5577748c992c658d4508a38673a942fa75a950bb1625cf9d",
+      "status": "passed",
+      "reason": null,
+      "command": {
+        "artifact": ".flowkit/artifacts/revise-full-test-fixture/full-test/a49feb93-e91f-4ec6-85a4-66aaf5acf254/checks/acceptance/command.json",
+        "contentSha256": "f02ac52199c190628ebc930aec34b20d6dac8f7cd31e56e31f5c8383afc99ba7",
+        "bytes": 970
+      }
+    },
+    {
+      "checkId": "dependency-health",
+      "checkRef": "full-test-check:sha256:2a8458168eab8be672949caa2073b4ce1d980bd1c661f2d3324ceb2cd78dff61",
+      "status": "passed",
+      "reason": null,
+      "command": {
+        "artifact": ".flowkit/artifacts/revise-full-test-fixture/full-test/a49feb93-e91f-4ec6-85a4-66aaf5acf254/checks/dependency-health/command.json",
+        "contentSha256": "25a429283b4102ac72854f45d3374b0e78051fc22a32b4eb28fc465ecb0e4b7a",
+        "bytes": 1088
+      }
+    },
+    {
+      "checkId": "entropy-tests",
+      "checkRef": "full-test-check:sha256:6c0b76a981613947aa1778f89ba147dbf2eb9d3c03dbd11c764e69edef685b5c",
+      "status": "passed",
+      "reason": null,
+      "command": {
+        "artifact": ".flowkit/artifacts/revise-full-test-fixture/full-test/a49feb93-e91f-4ec6-85a4-66aaf5acf254/checks/entropy-tests/command.json",
+        "contentSha256": "d7a05efc26d328d21826461efe043a959be7c21f789e8b86185b3e752787fa24",
+        "bytes": 977
+      }
+    },
+    {
+      "checkId": "entropy",
+      "checkRef": "full-test-check:sha256:3fb08994cfbd69bc99119d7fd6aa505d14a5c46a6b40c39db65b90b18170f67b",
+      "status": "passed",
+      "reason": null,
+      "command": {
+        "artifact": ".flowkit/artifacts/revise-full-test-fixture/full-test/a49feb93-e91f-4ec6-85a4-66aaf5acf254/checks/entropy/command.json",
+        "contentSha256": "3e357c3ac60b58c90c56e50d51c4b8f934c926d438223ad4191d4e16fd71621a",
+        "bytes": 933
+      }
+    }
+  ]
+}

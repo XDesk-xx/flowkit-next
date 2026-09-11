@@ -1,0 +1,52 @@
+{
+  "node": "v22.23.2",
+  "platform": "win32",
+  "entries": [
+    ".flowkit",
+    "openspec"
+  ],
+  "commands": [
+    {
+      "label": "version",
+      "executable": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js",
+        "--version"
+      ],
+      "startedAt": "2026-09-08T10:11:32.877Z",
+      "finishedAt": "2026-09-08T10:11:33.407Z",
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "label": "scaffold",
+      "executable": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js",
+        "new",
+        "change",
+        "describe-running-feature"
+      ],
+      "startedAt": "2026-09-08T10:11:33.407Z",
+      "finishedAt": "2026-09-08T10:11:34.729Z",
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "label": "status",
+      "executable": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js",
+        "status",
+        "--change",
+        "describe-running-feature",
+        "--json"
+      ],
+      "startedAt": "2026-09-08T10:11:34.729Z",
+      "finishedAt": "2026-09-08T10:11:36.410Z",
+      "exitCode": 0,
+      "error": null
+    }
+  ],
+  "scope": "isolated host acceptance fixture only"
+}

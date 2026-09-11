@@ -4,7 +4,22 @@ import {
   admitActionResult,
   formActionPackage,
 } from "../../../src/domain/index.js";
-import type { RequiredRunMaterial } from "../../../src/internal/delivery-required-evidence-source.js";
+export interface RequiredRunMaterial {
+  readonly runId: string;
+  readonly artifactRoot: string;
+  readonly actionMarkdown: Uint8Array;
+  readonly contextJson: Uint8Array;
+  readonly resultJson: Uint8Array;
+  readonly admission: {
+    readonly sourceRef: string;
+    readonly contextSha256: string;
+    readonly resultSha256: string;
+    readonly guidanceRef: {
+      readonly path: string;
+      readonly contentSha256: string;
+    };
+  };
+}
 
 type RawRunMaterial = Omit<RequiredRunMaterial, "admission">;
 

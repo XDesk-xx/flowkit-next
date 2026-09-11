@@ -1,0 +1,23 @@
+{
+  "kind": "external-orchestrator-review-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "reviewer",
+  "action": "review-explore",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "decouple-full-test-from-repository-tracking",
+  "projectOrdinal": 36,
+  "runId": "20260909-031-review-explore",
+  "previousRunId": "20260909-030-explore",
+  "reviewedRunId": "20260909-030-explore",
+  "ownerInstruction": "根据最新run，review，review 完，简短解释当前解耦方案",
+  "ownerSourceRef": "owner-input:2026-09-09:review-latest-030-and-explain-decoupling",
+  "startedAt": "2026-09-08T19:13:27.343Z",
+  "proofRoot": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/decouple-full-test-from-repository-tracking/proof/20260909-031-review-explore",
+  "relevantOwnerDecisions": [
+    "当前 Change 激活及 proof Explore；gate 适用范围/checkpoint 阻断修正纳入本 Change。",
+    "已授权当前030分组调整为004，旧历史不改；本次沿用现有分组。",
+    "D05 independent-bootstrap，必要材料留 artifacts；不调用 candidate 管理本 Delivery。"
+  ],
+  "boundary": "只审查实际 Explore 与必要事实；只写本次三文件 Run/Reviewer proof，不修改 Author，不执行 Propose/Apply/Archive/Full Test/Git。"
+}

@@ -1,0 +1,375 @@
+{
+  "kind": "independent-review-explore-probe",
+  "checkedAt": "2026-09-11T05:36:51.509Z",
+  "node": "v22.23.2",
+  "platform": "win32",
+  "fixtureRoot": "D:\\Projects\\flowkit-next\\.tmp\\review-onboarding-064-1Sn3qg",
+  "observations": {
+    "idle": {
+      "kind": "next",
+      "status": "idle",
+      "decision": null,
+      "checkpoint": null
+    },
+    "doctor": {
+      "kind": "doctor",
+      "status": "pass",
+      "diagnostics": [
+        {
+          "id": "openspec-runtime",
+          "status": "pass",
+          "version": "1.10.0"
+        },
+        {
+          "id": "openspec-root",
+          "status": "pass",
+          "activeChangeCount": 0
+        }
+      ]
+    },
+    "planned": {
+      "kind": "next",
+      "decision": {
+        "kind": "blocked",
+        "reason": "change-not-active"
+      },
+      "checkpoint": {
+        "authorized": false,
+        "reason": "policy-not-ready"
+      }
+    },
+    "first": {
+      "kind": "next",
+      "decision": {
+        "kind": "ready-action",
+        "actionId": "explore"
+      },
+      "checkpoint": {
+        "authorized": false,
+        "reason": "policy-not-ready"
+      }
+    },
+    "legacyRunOverride": {
+      "kind": "error",
+      "error": {
+        "kind": "invalid-request",
+        "message": "Remove currentRunId/changeStartSequence; context is resolved from target and optional deliveryId/changeId"
+      }
+    },
+    "missingRuntime": {
+      "kind": "doctor",
+      "status": "fail",
+      "diagnostics": [
+        {
+          "id": "openspec-runtime",
+          "status": "fail",
+          "diagnosticKind": "missing-runtime"
+        },
+        {
+          "id": "openspec-root",
+          "status": "fail",
+          "diagnosticKind": "missing-runtime"
+        }
+      ]
+    },
+    "ambiguous": {
+      "kind": "error",
+      "error": {
+        "kind": "context-ambiguous",
+        "message": "Select one Delivery/Change",
+        "candidates": [
+          {
+            "deliveryId": "example-delivery",
+            "changeId": "example-change"
+          },
+          {
+            "deliveryId": "example-delivery",
+            "changeId": "another-change"
+          }
+        ]
+      }
+    }
+  },
+  "commands": [
+    {
+      "id": "openspec-init",
+      "program": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js",
+        "init",
+        "D:\\Projects\\flowkit-next\\.tmp\\review-onboarding-064-1Sn3qg\\target 项目",
+        "--tools",
+        "none",
+        "--no-animation"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "startedAt": "2026-09-11T05:36:39.329Z",
+      "finishedAt": "2026-09-11T05:36:40.673Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-064-review-explore/openspec-init.stdout.txt",
+        "bytes": 323,
+        "sha256": "26411fceb8b20ad63cf140f9ea3425acddd79a20bd4e482d01da6711e45e8069"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-064-review-explore/openspec-init.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "idle",
+      "program": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "D:\\Projects\\flowkit-next\\dist\\cli\\entrypoint.js",
+        "next",
+        "--input",
+        "D:\\Projects\\flowkit-next\\.tmp\\review-onboarding-064-1Sn3qg\\request.json"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\review-onboarding-064-1Sn3qg\\target 项目",
+      "startedAt": "2026-09-11T05:36:40.674Z",
+      "finishedAt": "2026-09-11T05:36:42.146Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-064-review-explore/idle.stdout.txt",
+        "bytes": 66,
+        "sha256": "ef0fe799e9a9ec547c31b833576d628535e5da3e81bba437282b9421a4921c86"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-064-review-explore/idle.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "doctor",
+      "program": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "D:\\Projects\\flowkit-next\\dist\\cli\\entrypoint.js",
+        "doctor",
+        "--input",
+        "D:\\Projects\\flowkit-next\\.tmp\\review-onboarding-064-1Sn3qg\\request.json"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\review-onboarding-064-1Sn3qg\\target 项目",
+      "startedAt": "2026-09-11T05:36:42.146Z",
+      "finishedAt": "2026-09-11T05:36:44.954Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-064-review-explore/doctor.stdout.txt",
+        "bytes": 172,
+        "sha256": "5c360f7f42aed20a7c178ad539c282d15217ad08d9e4cb6b907e2b37e32c65b7"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-064-review-explore/doctor.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "planned",
+      "program": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "D:\\Projects\\flowkit-next\\dist\\cli\\entrypoint.js",
+        "next",
+        "--input",
+        "D:\\Projects\\flowkit-next\\.tmp\\review-onboarding-064-1Sn3qg\\request.json"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\review-onboarding-064-1Sn3qg\\target 项目",
+      "startedAt": "2026-09-11T05:36:44.955Z",
+      "finishedAt": "2026-09-11T05:36:46.692Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-064-review-explore/planned.stdout.txt",
+        "bytes": 137,
+        "sha256": "ad27a1de4e346410e437e1f41ebeed70f6b9e95bb83cdc9df2ba2573fb3db387"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-064-review-explore/planned.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "first",
+      "program": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "D:\\Projects\\flowkit-next\\dist\\cli\\entrypoint.js",
+        "next",
+        "--input",
+        "D:\\Projects\\flowkit-next\\.tmp\\review-onboarding-064-1Sn3qg\\request.json"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\review-onboarding-064-1Sn3qg\\target 项目",
+      "startedAt": "2026-09-11T05:36:46.693Z",
+      "finishedAt": "2026-09-11T05:36:49.457Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-064-review-explore/first.stdout.txt",
+        "bytes": 134,
+        "sha256": "752b964a51ad28c13d30b986278505eb4c7fb33698d879f03e8ab80c02ee1c21"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-064-review-explore/first.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "old-run-override",
+      "program": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "D:\\Projects\\flowkit-next\\dist\\cli\\entrypoint.js",
+        "next",
+        "--input",
+        "D:\\Projects\\flowkit-next\\.tmp\\review-onboarding-064-1Sn3qg\\request.json"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\review-onboarding-064-1Sn3qg\\target 项目",
+      "startedAt": "2026-09-11T05:36:49.458Z",
+      "finishedAt": "2026-09-11T05:36:49.630Z",
+      "exitCode": 2,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-064-review-explore/old-run-override.stdout.txt",
+        "bytes": 170,
+        "sha256": "2e45d639a444c93cf831b536db1cc2936aa1f84d5e074f00e25a3a22b5512d68"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-064-review-explore/old-run-override.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "missing-runtime",
+      "program": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "D:\\Projects\\flowkit-next\\dist\\cli\\entrypoint.js",
+        "doctor",
+        "--input",
+        "D:\\Projects\\flowkit-next\\.tmp\\review-onboarding-064-1Sn3qg\\request.json"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\review-onboarding-064-1Sn3qg\\target 项目",
+      "startedAt": "2026-09-11T05:36:49.630Z",
+      "finishedAt": "2026-09-11T05:36:49.806Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-064-review-explore/missing-runtime.stdout.txt",
+        "bytes": 201,
+        "sha256": "2d73024b8ed3aa4d4571d6794ab5787aa0a5d6b9d840cec6a472b9df774e3da5"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-064-review-explore/missing-runtime.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "ambiguous",
+      "program": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "D:\\Projects\\flowkit-next\\dist\\cli\\entrypoint.js",
+        "next",
+        "--input",
+        "D:\\Projects\\flowkit-next\\.tmp\\review-onboarding-064-1Sn3qg\\request.json"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\review-onboarding-064-1Sn3qg\\target 项目",
+      "startedAt": "2026-09-11T05:36:49.807Z",
+      "finishedAt": "2026-09-11T05:36:51.281Z",
+      "exitCode": 2,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-064-review-explore/ambiguous.stdout.txt",
+        "bytes": 232,
+        "sha256": "8ca7b9387ccb11eb2da26455110df3e3b2251adde0e873fc655e24d8e18bf75e"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-064-review-explore/ambiguous.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "document-1",
+      "program": "git",
+      "args": [
+        "show",
+        "7af7d85788503dafc50ee162b14deaaf679f99cb:flowkit-next-d04-stable-core-closure-final-reference(1).md"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "startedAt": "2026-09-11T05:36:51.282Z",
+      "finishedAt": "2026-09-11T05:36:51.371Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-064-review-explore/document-1.stdout.txt",
+        "bytes": 27179,
+        "sha256": "b26217a2ae397772aea7fd96140855b0099a1089e2c2f8c9b2614e50809320a9"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-064-review-explore/document-1.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "document-2",
+      "program": "git",
+      "args": [
+        "show",
+        "7af7d85788503dafc50ee162b14deaaf679f99cb:flowkit-next-d05-decoupling-analysis.md"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "startedAt": "2026-09-11T05:36:51.372Z",
+      "finishedAt": "2026-09-11T05:36:51.444Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-064-review-explore/document-2.stdout.txt",
+        "bytes": 20639,
+        "sha256": "3b68f1a4672e667db7922b3772033d6e9b5cdb7aa9d692ad2e0c11086461e46a"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-064-review-explore/document-2.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "document-3",
+      "program": "git",
+      "args": [
+        "show",
+        "7af7d85788503dafc50ee162b14deaaf679f99cb:flowkit-next-delivery-change-plan.md"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "startedAt": "2026-09-11T05:36:51.445Z",
+      "finishedAt": "2026-09-11T05:36:51.509Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-064-review-explore/document-3.stdout.txt",
+        "bytes": 30820,
+        "sha256": "3d5b212c1c7effbe8540aa843812b1a22625eeb978fa4ecef196ba674d251fc4"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-064-review-explore/document-3.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "documentsVerified": 3,
+  "existingTargetBytesPreserved": true,
+  "noActionRunCreated": true,
+  "syntheticActivation": true,
+  "limitations": [
+    "只验证当前机制与 Explore 决策依据，不是新接入实现或发行安装验收。",
+    "实际新 Agent 会话未执行；CLI 子进程不算真实新会话。",
+    "未执行 Action、Formal Full Test 或项目 Git mutation；git show 只读。"
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "node": "v22.23.2",
+  "platform": "win32",
+  "identities": [
+    {
+      "path": "feature.mjs",
+      "bytes": 103,
+      "sha256": "5602896e464c1b41aef1d071d9bba5e957f8bd4b762e4e85f204a94b45818c67"
+    },
+    {
+      "path": "feature.test.mjs",
+      "bytes": 516,
+      "sha256": "997d31b5bd94080199ca4f73c38eb9d56ae66ab700d0b7179db380b22c33a16f"
+    },
+    {
+      "path": "openspec/changes/describe-running-feature/tasks.md",
+      "bytes": 334,
+      "sha256": "5ee4df4591ba09c29a7525140171779b133dcee53f2261beb5c52ca73328e082"
+    }
+  ],
+  "records": [
+    {
+      "label": "execute",
+      "executable": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "feature.mjs"
+      ],
+      "startedAt": "2026-09-08T10:42:27.459Z",
+      "finishedAt": "2026-09-08T10:42:27.732Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "bytes": 18,
+        "sha256": "3ad1eda227a94ad45d7456f923d3b9fb159532dc87229dc6b1e4e931b6aff215"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "test",
+      "executable": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "--test",
+        "feature.test.mjs"
+      ],
+      "startedAt": "2026-09-08T10:42:27.737Z",
+      "finishedAt": "2026-09-08T10:42:28.712Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "bytes": 304,
+        "sha256": "a6c9920c73e952e94b2f626b9156302eca000b7fd9ac6a9e822899527de31ced"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ]
+}

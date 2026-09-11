@@ -1,0 +1,488 @@
+{
+  "kind": "independent-review-explore-proof",
+  "reviewedRunId": "20260908-008-explore",
+  "status": "PASS",
+  "startedAt": "2026-09-08T05:24:30.713Z",
+  "completedAt": "2026-09-08T05:24:33.234Z",
+  "platform": "win32",
+  "node": "v22.23.2",
+  "sourceHead": "01d82dba4593ea0c5b85ac67da03e6261dccfba6",
+  "checkedInputRefs": 54,
+  "inputs": [
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-008-explore/attempt-01/summary.json",
+      "bytes": 4875,
+      "sha256": "ae9d69501daaef7ca72e7a567154e12656f54713d02a70e1b5f2c35ff975a0ff"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-008-explore/handoff.json",
+      "bytes": 8261,
+      "sha256": "a5794cf270349a197a955940db87421dafa6e7e1876f2ed4d0b43db606fa579c"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-008-explore/attempt-01/actual-target-list.command.json",
+      "bytes": 429,
+      "sha256": "48af612d3a600b60610502c0c582f4ce26faedb73328c6be6e929a7ec6ad3fb5"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-008-explore/attempt-01/actual-target-list.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-008-explore/attempt-01/actual-target-list.stdout.txt",
+      "bytes": 272,
+      "sha256": "6d4a2cdba1e60f0a07b87a2e4822263ecd4571f04bb7e718ed0a3019ae706dd7"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-008-explore/attempt-01/actual-version.command.json",
+      "bytes": 420,
+      "sha256": "0ff2e1f6be3c15e3a67ee011c8224958f14fcdfc12dde59d8b361e910e97bc9d"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-008-explore/attempt-01/actual-version.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-008-explore/attempt-01/actual-version.stdout.txt",
+      "bytes": 7,
+      "sha256": "4f5ba6a3e380bf810cc968b58d30a8d7163eafe9e2fb1ad19bdc6d9d64a1e549"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-008-explore/attempt-01/focused-tests.command.json",
+      "bytes": 368,
+      "sha256": "f6b936393a842e005e9dcf44877d3853dc9f473869bc365e98ef9d9ba699992f"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-008-explore/attempt-01/focused-tests.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-008-explore/attempt-01/focused-tests.stdout.txt",
+      "bytes": 5122,
+      "sha256": "41460953d87140c5e1b8e9bbcb6fcd1b933b359607444de669cc54a6fe95f8d5"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-008-explore/attempt-01/manager-a/config/tools/toolchain.lock.json",
+      "bytes": 555,
+      "sha256": "a0481fc8a3fddfbcdd65a504e0e7a065e6ab74a3a871af3ab8838d201eecd4a2"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-008-explore/attempt-01/manager-a/skills/actions/apply/SKILL.md",
+      "bytes": 25,
+      "sha256": "fde5b83d130738c42f1563ee3a7d55c813b9232e6ac7a2f8f353fbc98428de60"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-008-explore/attempt-01/manager-a/skills/delivery/start/SKILL.md",
+      "bytes": 25,
+      "sha256": "695623115f470a8e94b682525451f9ad77ff445cbd2afacd37ab1013b209f383"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-008-explore/attempt-01/manager-b/config/tools/toolchain.lock.json",
+      "bytes": 555,
+      "sha256": "a0481fc8a3fddfbcdd65a504e0e7a065e6ab74a3a871af3ab8838d201eecd4a2"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-008-explore/attempt-01/manager-b/skills/actions/apply/SKILL.md",
+      "bytes": 25,
+      "sha256": "fde5b83d130738c42f1563ee3a7d55c813b9232e6ac7a2f8f353fbc98428de60"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-008-explore/attempt-01/manager-b/skills/delivery/start/SKILL.md",
+      "bytes": 25,
+      "sha256": "695623115f470a8e94b682525451f9ad77ff445cbd2afacd37ab1013b209f383"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-008-explore/attempt-01/target/config/tools/toolchain.lock.json",
+      "bytes": 555,
+      "sha256": "d929dfcdb1c5bf409fff6cb01c5627eef4b8aabe19185d8fbec297fec7d53129"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-008-explore/attempt-01/target/openspec/config.yaml",
+      "bytes": 20,
+      "sha256": "85b53dd24fbe7d19c8b0f0ddccf5e82600c5c372c76b57a2a89dc34dfb0fc5b9"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-008-explore/attempt-01/target/skills/actions/apply/SKILL.md",
+      "bytes": 25,
+      "sha256": "66e05092f1915834c4a6ca791ad8cee50a3909648fcffdf2d04c3e705dacf935"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-008-explore/attempt-01/target/skills/delivery/start/SKILL.md",
+      "bytes": 26,
+      "sha256": "6ed713c7da4b673605d3f80e1d234d3cdfb6d9afd85c6fbd88fa77efef982f04"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-008-explore/finish.mjs",
+      "bytes": 4857,
+      "sha256": "0ae9c3db2409a90e2a88e2d9b9d1697058c144836032970f55f5eba54e304157"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-008-explore/probe.mjs",
+      "bytes": 7657,
+      "sha256": "dc4460901c21ac5d78d7abc30920d41c10711e718d5695fd3c187c1430d845d3"
+    },
+    {
+      "path": "openspec/changes/separate-manager-assets-from-target-project/explore.md",
+      "bytes": 10261,
+      "sha256": "894b1aeac3040a7f936b1e17de1c478e81f377448407ae3658bf0cba791a2289"
+    },
+    {
+      "path": "openspec/delivery-groups/20260908-05-lightweight-workflow-management.yaml",
+      "bytes": 8429,
+      "sha256": "c7fdf5e778e55fa6b27f39565b083509bcf10c56388d5851a729a728263115af"
+    },
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/separate-manager-assets-from-target-project/20260908-008-explore/action.md",
+      "bytes": 388,
+      "sha256": "fba4e96a81585689fad5c20e89756e4ad553c897f520a0ee0adff34834be14fb"
+    },
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/separate-manager-assets-from-target-project/20260908-008-explore/context.json",
+      "bytes": 1661,
+      "sha256": "7c578074981cc9be6558b369479635dba84367294c487ccb806170a9637b82d0"
+    },
+    {
+      "path": "src/domain/managed-tool-resolution.ts",
+      "bytes": 11470,
+      "sha256": "b780344c574c294614dc4d0e56c44dcf5173bdedb327b4e7c41510f96999c0c6"
+    },
+    {
+      "path": "src/domain/action-guidance-execution.ts",
+      "bytes": 3055,
+      "sha256": "00e168ae0bdbbce946add6472f2f1e2ff2591aec9b817e2236100b27a7f65824"
+    },
+    {
+      "path": "src/domain/delivery-operation-execution.ts",
+      "bytes": 16110,
+      "sha256": "9098e7b67ff74d40eea96d6390dcd9f56f2ed348eeb1a1a561468d49ccc87e5a"
+    },
+    {
+      "path": "src/domain/openspec-observation.ts",
+      "bytes": 11423,
+      "sha256": "01051280e26656d24740cfdd7a670a9393fb825d7c0ad31ece1ca5ab01c8a785"
+    },
+    {
+      "path": "src/domain/single-action-execution.ts",
+      "bytes": 5138,
+      "sha256": "6efca921655a904790b04040048e40ee1f6c6536d4e28185da6e24118919b56d"
+    },
+    {
+      "path": "src/cli/foundation-cli.ts",
+      "bytes": 9655,
+      "sha256": "7952ae2811cea83062fff3a39a71bb2a907c1b6e7e86182d04ad6161b7430df5"
+    },
+    {
+      "path": "package.json",
+      "bytes": 1613,
+      "sha256": "c79508605c34371eea6903f7dad39d388531f6b84e04c74d10ecd4938b4a9d76"
+    },
+    {
+      "path": "config/tools/toolchain.lock.json",
+      "bytes": 555,
+      "sha256": "a0481fc8a3fddfbcdd65a504e0e7a065e6ab74a3a871af3ab8838d201eecd4a2"
+    },
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/remove-archify-from-delivery-workflow/20260908-007-archive/action.md",
+      "bytes": 756,
+      "sha256": "eeb682344f15f5e42fadd47381163a7cd0a3930b15e5291c1e45b8a3fda16e12"
+    },
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/remove-archify-from-delivery-workflow/20260908-007-archive/context.json",
+      "bytes": 1749,
+      "sha256": "ff9f0626c45d58ff9a8dca544091e0515f971aa127b53c919875d9abaaf9739b"
+    },
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/remove-archify-from-delivery-workflow/20260908-006-review-apply/result.json",
+      "bytes": 7490,
+      "sha256": "c248ed91492329744bfe25c7e182ced90d15789b3a6109c86c13e1709817b288"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/remove-archify-from-delivery-workflow/proof/20260908-007-archive/summary.json",
+      "bytes": 9529,
+      "sha256": "9d5f111fefa7af498b7642a6dc0c5900a63e715367fe4b88f777697872cff915"
+    },
+    {
+      "path": "openspec/changes/archive/2026-09-08-033-remove-archify-from-delivery-workflow/.openspec.yaml",
+      "bytes": 40,
+      "sha256": "8119cfe5ad04f1801d3027066b1b671140c63203d1b9ea7592d49018a901fa91"
+    },
+    {
+      "path": "openspec/changes/archive/2026-09-08-033-remove-archify-from-delivery-workflow/design.md",
+      "bytes": 10375,
+      "sha256": "a94f6c6c7a8ae8020486d586116e5d349abead5240c90adee9369b3022595e50"
+    },
+    {
+      "path": "openspec/changes/archive/2026-09-08-033-remove-archify-from-delivery-workflow/explore.md",
+      "bytes": 10159,
+      "sha256": "c8386dcd1aaac8ea72ceb733f1cded3118f24235b86eb6c4f4fb94a9dbb37db9"
+    },
+    {
+      "path": "openspec/changes/archive/2026-09-08-033-remove-archify-from-delivery-workflow/proposal.md",
+      "bytes": 3726,
+      "sha256": "702691f6af7539b12a868dfd007f505a1348ccd392a077392617ba0abd87b510"
+    },
+    {
+      "path": "openspec/changes/archive/2026-09-08-033-remove-archify-from-delivery-workflow/specs/architecture-and-canonical-diagram-continuity/spec.md",
+      "bytes": 4548,
+      "sha256": "8b0337cd2c724d6268ac5a7c2eb89402fb19555e2dbc61639b616cd53bdf7c92"
+    },
+    {
+      "path": "openspec/changes/archive/2026-09-08-033-remove-archify-from-delivery-workflow/specs/delivery-finalization/spec.md",
+      "bytes": 9303,
+      "sha256": "a2ae1034824942727381417899437a8b5c56c654e14e4b83fa20f97c9c82f5c1"
+    },
+    {
+      "path": "openspec/changes/archive/2026-09-08-033-remove-archify-from-delivery-workflow/specs/delivery-operation-execution-and-start-continuity/spec.md",
+      "bytes": 7214,
+      "sha256": "7b4fbd5082a54b10c190fd161e1a6c5899f0a3dc786eed8b39d8ca6088acd5cf"
+    },
+    {
+      "path": "openspec/changes/archive/2026-09-08-033-remove-archify-from-delivery-workflow/specs/foundation-cli-surface/spec.md",
+      "bytes": 2733,
+      "sha256": "00fc7e0910d6f7dda3e456bcf466e1f69f2d75918ad92cb3064635657271cbb4"
+    },
+    {
+      "path": "openspec/changes/archive/2026-09-08-033-remove-archify-from-delivery-workflow/specs/managed-toolchain-resolution/spec.md",
+      "bytes": 3780,
+      "sha256": "2ea0319a580f924979413adc32de106440ec88f4b1c20bf7eac858a542fe40d6"
+    },
+    {
+      "path": "openspec/changes/archive/2026-09-08-033-remove-archify-from-delivery-workflow/specs/repository-integration-and-next-base-continuity/spec.md",
+      "bytes": 1497,
+      "sha256": "fe9b170724b138d54225ecf19af216a169987af62013a321a447f70aa64cc951"
+    },
+    {
+      "path": "openspec/changes/archive/2026-09-08-033-remove-archify-from-delivery-workflow/tasks.md",
+      "bytes": 4366,
+      "sha256": "09f55cc64b476d65534dcb189ceeff0fbce22b263150d6b45aaf47db164eb98b"
+    },
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/separate-manager-assets-from-target-project/20260908-008-explore/result.json",
+      "bytes": 2406,
+      "sha256": "01bc2f3f3d92580748afebc026077b37b4ffbe4ac7ea61d55e9f25c5c41099ca"
+    },
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/remove-archify-from-delivery-workflow/20260908-007-archive/result.json",
+      "bytes": 6381,
+      "sha256": "7765f7eab1299b8593a71b845059fdd046caea27299046930fc3348b81a4bdd3"
+    },
+    {
+      "path": "flowkit-next-delivery-change-plan.md",
+      "bytes": 30820,
+      "sha256": "3d5b212c1c7effbe8540aa843812b1a22625eeb978fa4ecef196ba674d251fc4"
+    },
+    {
+      "path": "flowkit-next-d05-decoupling-analysis.md",
+      "bytes": 20639,
+      "sha256": "3b68f1a4672e667db7922b3772033d6e9b5cdb7aa9d692ad2e0c11086461e46a"
+    }
+  ],
+  "outputs": [
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-009-review-explore/attempt-02/actual-target-list.command.json",
+      "bytes": 530,
+      "sha256": "191562b60f99e481e53333e3347ddc91c6276d518165b3a9be67f072ef7e8ee0"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-009-review-explore/attempt-02/actual-target-list.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-009-review-explore/attempt-02/actual-target-list.stdout.txt",
+      "bytes": 288,
+      "sha256": "19f73cebd16f5c217f0a88b160398fdd2ffda32b3b1b3933c525db200ed1862e"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-009-review-explore/attempt-02/actual-version.command.json",
+      "bytes": 521,
+      "sha256": "d139b9dc75697e58c7cea5aece961b0f3e4c0d9512d2cf3d10fe22c564e305e6"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-009-review-explore/attempt-02/actual-version.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-009-review-explore/attempt-02/actual-version.stdout.txt",
+      "bytes": 7,
+      "sha256": "4f5ba6a3e380bf810cc968b58d30a8d7163eafe9e2fb1ad19bdc6d9d64a1e549"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-009-review-explore/attempt-02/fixture/collision/config/tools/toolchain.lock.json",
+      "bytes": 491,
+      "sha256": "48d86d5b2104208a4b8cd8be9229b1dcfc2245d28758c7b5325913242c5cade0"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-009-review-explore/attempt-02/fixture/collision/skills/actions/apply/SKILL.md",
+      "bytes": 30,
+      "sha256": "0ac8a978024f45e0bfb2a1ad8b7dcf90313d96e49361daf2cb00b988eb564856"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-009-review-explore/attempt-02/fixture/collision/skills/delivery/start/SKILL.md",
+      "bytes": 32,
+      "sha256": "2f32d52e53ba2159a1e23a74470d9621485380bcfec536d5b861fe449ded0397"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-009-review-explore/attempt-02/fixture/manager-a/config/tools/toolchain.lock.json",
+      "bytes": 555,
+      "sha256": "a0481fc8a3fddfbcdd65a504e0e7a065e6ab74a3a871af3ab8838d201eecd4a2"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-009-review-explore/attempt-02/fixture/manager-a/skills/actions/apply/SKILL.md",
+      "bytes": 38,
+      "sha256": "4f77537ab6cddecd38264879e855106119ecbc6d1025f4117272764f9db03828"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-009-review-explore/attempt-02/fixture/manager-a/skills/delivery/start/SKILL.md",
+      "bytes": 40,
+      "sha256": "83b0c1d353225d50034456cf5d1a8e21629ced4d803454e8ce8058ad3659eeb4"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-009-review-explore/attempt-02/fixture/manager-b/config/tools/toolchain.lock.json",
+      "bytes": 555,
+      "sha256": "a0481fc8a3fddfbcdd65a504e0e7a065e6ab74a3a871af3ab8838d201eecd4a2"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-009-review-explore/attempt-02/fixture/manager-b/skills/actions/apply/SKILL.md",
+      "bytes": 38,
+      "sha256": "4f77537ab6cddecd38264879e855106119ecbc6d1025f4117272764f9db03828"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-009-review-explore/attempt-02/fixture/manager-b/skills/delivery/start/SKILL.md",
+      "bytes": 40,
+      "sha256": "83b0c1d353225d50034456cf5d1a8e21629ced4d803454e8ce8058ad3659eeb4"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-009-review-explore/attempt-02/fixture/target/openspec/config.yaml",
+      "bytes": 20,
+      "sha256": "85b53dd24fbe7d19c8b0f0ddccf5e82600c5c372c76b57a2a89dc34dfb0fc5b9"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-009-review-explore/attempt-02/git-diff-check.command.json",
+      "bytes": 245,
+      "sha256": "ff4ed46611e948729d40cd7a303a3b7fa453cd3494f1bac76adec8d768cbee92"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-009-review-explore/attempt-02/git-diff-check.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-009-review-explore/attempt-02/git-diff-check.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-009-review-explore/attempt-02/git-diff-names.command.json",
+      "bytes": 249,
+      "sha256": "8733975a1b54d7c6e77412dffb4fd6629a75cc5ff7e9f1bbd65a7125501ee080"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-009-review-explore/attempt-02/git-diff-names.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-009-review-explore/attempt-02/git-diff-names.stdout.txt",
+      "bytes": 74,
+      "sha256": "1db106dd00b18027918fab2a3844027fef7d259b351af5c4feabaf685adc950c"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-009-review-explore/attempt-02/git-head.command.json",
+      "bytes": 247,
+      "sha256": "6f337ad9166ff899e2ebac909a03ae80b2ac4b7225d7082368ac174f228114d7"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-009-review-explore/attempt-02/git-head.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-009-review-explore/attempt-02/git-head.stdout.txt",
+      "bytes": 41,
+      "sha256": "01f2697bea1b5d1a9203c89ef8404e88b66d768bd09406aed8ce4cf6c6dbd6a8"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-009-review-explore/attempt-02/git-index-names.command.json",
+      "bytes": 265,
+      "sha256": "2f8f4c5591260d56eedb6fe64e6ee94129043f201545ff0e289e4c556dbac60f"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-009-review-explore/attempt-02/git-index-names.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-009-review-explore/attempt-02/git-index-names.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-009-review-explore/attempt-02/independent-probe.command.json",
+      "bytes": 4715,
+      "sha256": "23b9ab629184a244a7a931951af46d3eb26d26a297122066ffa6ab5d9690ad89"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-009-review-explore/attempt-02/independent-probe.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/separate-manager-assets-from-target-project/proof/20260908-009-review-explore/attempt-02/independent-probe.stdout.txt",
+      "bytes": 845,
+      "sha256": "3549617632812ca2141415959534df2c69962207aa0989a3eacae1bdcb3f7b7a"
+    }
+  ],
+  "observations": {
+    "tool": {
+      "toolId": "openspec",
+      "version": "1.10.0",
+      "runtimeRoot": "C:\\Users\\xuser\\.flowkit\\tools\\openspec\\1.10.0",
+      "entrypoint": "C:\\Users\\xuser\\.flowkit\\tools\\openspec\\1.10.0\\bin\\openspec.js"
+    },
+    "target": "D:\\Projects\\flowkit-next\\.flowkit\\artifacts\\20260908-05-lightweight-workflow-management\\changes\\separate-manager-assets-from-target-project\\proof\\20260908-009-review-explore\\attempt-02\\fixture\\target",
+    "action": {
+      "path": "skills/actions/apply/SKILL.md",
+      "contentSha256": "4f77537ab6cddecd38264879e855106119ecbc6d1025f4117272764f9db03828"
+    },
+    "delivery": {
+      "path": "skills/delivery/start/SKILL.md",
+      "contentSha256": "83b0c1d353225d50034456cf5d1a8e21629ced4d803454e8ce8058ad3659eeb4"
+    },
+    "checks": {
+      "bareTargetFailure": true,
+      "targetCollision": true,
+      "relocatedAssetIdentity": true,
+      "exactDeliveryReadRootAndContent": true,
+      "missingRuntime": true
+    }
+  },
+  "actualOpenSpec": {
+    "version": "1.10.0",
+    "listing": {
+      "changes": [],
+      "root": {
+        "path": "D:\\Projects\\flowkit-next\\.flowkit\\artifacts\\20260908-05-lightweight-workflow-management\\changes\\separate-manager-assets-from-target-project\\proof\\20260908-009-review-explore\\attempt-02\\fixture\\target",
+        "source": "nearest"
+      }
+    },
+    "rootMatches": true
+  },
+  "authorTestsReadback": {
+    "tests": 26,
+    "pass": 26,
+    "fail": 0,
+    "skipped": 0
+  },
+  "inputsUnchanged": true,
+  "productionMutation": false,
+  "limits": [
+    "Bounded source/asset composition only, not installed CLI acceptance.",
+    "No candidate lifecycle, product Reviewer Guidance, implementation tests or Formal Full Test invoked.",
+    "Windows native proof; no Linux acceptance claim."
+  ]
+}

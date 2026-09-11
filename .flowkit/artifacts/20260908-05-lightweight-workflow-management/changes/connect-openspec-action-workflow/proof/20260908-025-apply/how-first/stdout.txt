@@ -1,0 +1,46 @@
+TAP version 13
+# Subtest: HOW material consumer validates ownership, bytes and regular contained paths
+ok 1 - HOW material consumer validates ownership, bytes and regular contained paths
+  ---
+  duration_ms: 47.3627
+  type: 'test'
+  ...
+# Subtest: published ten HOW assets have executable identical record examples, no transport
+ok 2 - published ten HOW assets have executable identical record examples, no transport
+  ---
+  duration_ms: 23.9808
+  type: 'test'
+  ...
+# Subtest: synthetic HOW sequence preserves start, partial and create-once completion
+ok 3 - synthetic HOW sequence preserves start, partial and create-once completion
+  ---
+  duration_ms: 32.1811
+  type: 'test'
+  ...
+# Subtest: synthetic HOW distinguishes prepared failure, business FAIL and failed partial save
+ok 4 - synthetic HOW distinguishes prepared failure, business FAIL and failed partial save
+  ---
+  duration_ms: 49.5312
+  type: 'test'
+  ...
+# Subtest: entrypoint returns machine error for unknown command
+ok 5 - entrypoint returns machine error for unknown command
+  ---
+  duration_ms: 358.2538
+  type: 'test'
+  ...
+# Subtest: entrypoint distinguishes malformed JSON, obsolete selectors and formal Policy blocked
+ok 6 - entrypoint distinguishes malformed JSON, obsolete selectors and formal Policy blocked
+  ---
+  duration_ms: 1280.2831
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2012.6575

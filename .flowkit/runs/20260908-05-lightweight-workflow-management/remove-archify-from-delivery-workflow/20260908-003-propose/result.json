@@ -1,0 +1,78 @@
+{
+  "kind": "external-orchestrator-propose-result",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "remove-archify-from-delivery-workflow",
+  "runId": "20260908-003-propose",
+  "action": "propose",
+  "role": "author",
+  "status": "terminal",
+  "verdict": "PASS",
+  "verdictMeaning": "计划生成及真实结构核对完成；不是 Reviewer approved 或实现 PASS。",
+  "projectOrdinal": 33,
+  "previousRunId": "20260908-002-review-explore",
+  "previousResultSha256": "6c8c9098e852783c4808352ad72d9d7d5bb18240677e41a13de949515ee4273b",
+  "ownerInstruction": "propose",
+  "summary": "中文 proposal/design/tasks 与六个能力 delta 已完成，16 个任务均未执行；去掉架构直接依赖，保留其余现行边界。",
+  "artifacts": [
+    {
+      "path": "openspec/changes/remove-archify-from-delivery-workflow/proposal.md",
+      "sha256": "702691f6af7539b12a868dfd007f505a1348ccd392a077392617ba0abd87b510",
+      "bytes": 3726
+    },
+    {
+      "path": "openspec/changes/remove-archify-from-delivery-workflow/design.md",
+      "sha256": "a94f6c6c7a8ae8020486d586116e5d349abead5240c90adee9369b3022595e50",
+      "bytes": 10375
+    },
+    {
+      "path": "openspec/changes/remove-archify-from-delivery-workflow/tasks.md",
+      "sha256": "780b7b06bb1b508efdc32125ca5229c94a9d37f937b65ed5359e3442a7651242",
+      "bytes": 4366
+    },
+    {
+      "path": "openspec/changes/remove-archify-from-delivery-workflow/specs/architecture-and-canonical-diagram-continuity/spec.md",
+      "sha256": "8b0337cd2c724d6268ac5a7c2eb89402fb19555e2dbc61639b616cd53bdf7c92",
+      "bytes": 4548
+    },
+    {
+      "path": "openspec/changes/remove-archify-from-delivery-workflow/specs/delivery-finalization/spec.md",
+      "sha256": "a2ae1034824942727381417899437a8b5c56c654e14e4b83fa20f97c9c82f5c1",
+      "bytes": 9303
+    },
+    {
+      "path": "openspec/changes/remove-archify-from-delivery-workflow/specs/delivery-operation-execution-and-start-continuity/spec.md",
+      "sha256": "7b4fbd5082a54b10c190fd161e1a6c5899f0a3dc786eed8b39d8ca6088acd5cf",
+      "bytes": 7214
+    },
+    {
+      "path": "openspec/changes/remove-archify-from-delivery-workflow/specs/foundation-cli-surface/spec.md",
+      "sha256": "00fc7e0910d6f7dda3e456bcf466e1f69f2d75918ad92cb3064635657271cbb4",
+      "bytes": 2733
+    },
+    {
+      "path": "openspec/changes/remove-archify-from-delivery-workflow/specs/managed-toolchain-resolution/spec.md",
+      "sha256": "2ea0319a580f924979413adc32de106440ec88f4b1c20bf7eac858a542fe40d6",
+      "bytes": 3780
+    },
+    {
+      "path": "openspec/changes/remove-archify-from-delivery-workflow/specs/repository-integration-and-next-base-continuity/spec.md",
+      "sha256": "fe9b170724b138d54225ecf19af216a169987af62013a321a447f70aa64cc951",
+      "bytes": 1497
+    }
+  ],
+  "validation": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/remove-archify-from-delivery-workflow/proof/20260908-003-propose/attempt-03/summary.json",
+    "sha256": "e51216ab875f2dc155307281482f525e2d91d4110bb3e08d91f1cf9621263c27"
+  },
+  "retention": "按 D05 文档，必要 proof 与结果默认长期保存在本项目 .flowkit/artifacts；不覆盖旧执行、不只引用 .tmp，不处理 D04 历史材料",
+  "nextBoundary": "review-propose",
+  "reviewerVerdict": null,
+  "applyAllowed": false,
+  "productionMutation": false,
+  "formalFullTestExecuted": false,
+  "gitMutationAllowed": false,
+  "completedAt": "2026-09-08T03:29:04.394Z",
+  "stop": true
+}

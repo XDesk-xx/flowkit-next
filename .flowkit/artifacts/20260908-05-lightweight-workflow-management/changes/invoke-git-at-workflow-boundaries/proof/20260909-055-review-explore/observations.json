@@ -1,0 +1,264 @@
+{
+  "sourceHead": "a0edb690d7208a3b81855e30a31dbc175f060a93",
+  "platform": "win32",
+  "node": "v22.23.2",
+  "fixtureOnly": true,
+  "syntheticFinalAndAuthority": true,
+  "productionImplementationAcceptance": false,
+  "formalD05FullTest": false,
+  "observations": [
+    {
+      "mode": "clean",
+      "fixtureOnly": true,
+      "expectedCurrentBehaviorConfirmed": true,
+      "commits": 1,
+      "providers": 1,
+      "before": "b520b1d7099a59ea4f70ab442308dd1d21bd62b5",
+      "after": "112b2ba08a5dee03d237b771dcd881625382541e",
+      "changed": [
+        ".flowkit/project.json",
+        "openspec/delivery-groups/20260902-04-delivery-continuity-stable-core-closure.yaml",
+        "product.txt",
+        "skills/delivery/repository-integration/SKILL.md"
+      ],
+      "remainingStatus": "",
+      "outcome": {
+        "status": "terminal",
+        "operationPackage": {
+          "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+          "operationId": "delivery-repository-integration",
+          "ownerAuthority": {
+            "ref": "owner:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+            "decision": "authorize-repository-integration",
+            "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+            "sourceRef": "test:repo-integration",
+            "scope": [
+              "delivery-repository-integration"
+            ]
+          },
+          "operationFacts": {
+            "deliveryFinalizationRef": "delivery-finalization:sha256:e88df3499d4d38a0537c07beb4df79efbba14ab11425c9dd5cb2ed5a6b224deb",
+            "preIntegrationHead": "b520b1d7099a59ea4f70ab442308dd1d21bd62b5",
+            "checkpointOperation": {
+              "kind": "create-new"
+            },
+            "deliveryBranch": "delivery/d04",
+            "targetMainRef": "refs/heads/main",
+            "targetMainPreIntegrationCommit": "b520b1d7099a59ea4f70ab442308dd1d21bd62b5",
+            "acceptedBaseCommit": "b520b1d7099a59ea4f70ab442308dd1d21bd62b5"
+          },
+          "guidanceRef": {
+            "path": "skills/delivery/repository-integration/SKILL.md",
+            "contentSha256": "80cf003a034beb4813ea37a44554a54691d1d6d8ae4570a467265d8ad9361cda"
+          }
+        },
+        "record": {
+          "repositoryIntegrationRef": "repository-integration:sha256:ab45711fe327138a4e5d6008fe9b3465b36e5576b8cab9aed8bcc58f672873fe",
+          "deliveryFinalizationRef": "delivery-finalization:sha256:e88df3499d4d38a0537c07beb4df79efbba14ab11425c9dd5cb2ed5a6b224deb",
+          "preIntegrationHead": "b520b1d7099a59ea4f70ab442308dd1d21bd62b5",
+          "checkpointOperation": {
+            "kind": "create-new"
+          },
+          "finalCommit": "112b2ba08a5dee03d237b771dcd881625382541e",
+          "targetMainRef": "refs/heads/main",
+          "targetMainPreIntegrationCommit": "b520b1d7099a59ea4f70ab442308dd1d21bd62b5",
+          "acceptedMainCommit": "112b2ba08a5dee03d237b771dcd881625382541e",
+          "nextDeliveryBase": "112b2ba08a5dee03d237b771dcd881625382541e"
+        }
+      }
+    },
+    {
+      "mode": "unrelated-untracked",
+      "fixtureOnly": true,
+      "expectedCurrentBehaviorConfirmed": true,
+      "commits": 1,
+      "providers": 0,
+      "before": "8dca2c304c08269bd548e7032901e8e9cfddd08d",
+      "after": "da6a2be09bc40eeb8f38f632d85e6ab473d1fe1f",
+      "changed": [
+        ".flowkit/project.json",
+        "openspec/delivery-groups/20260902-04-delivery-continuity-stable-core-closure.yaml",
+        "product.txt",
+        "skills/delivery/repository-integration/SKILL.md"
+      ],
+      "remainingStatus": "?? unrelated.txt",
+      "outcome": {
+        "status": "failed",
+        "reason": "final-commit-rejected",
+        "record": null,
+        "gitEffects": {
+          "observedHead": "da6a2be09bc40eeb8f38f632d85e6ab473d1fe1f",
+          "observedTargetMainCommit": "8dca2c304c08269bd548e7032901e8e9cfddd08d"
+        }
+      }
+    },
+    {
+      "mode": "reuse-dirty",
+      "fixtureOnly": true,
+      "expectedCurrentBehaviorConfirmed": true,
+      "commits": 0,
+      "providers": 0,
+      "before": "726f5ceda3894bde8b72daad5a9958ed2f9efcfc",
+      "after": "726f5ceda3894bde8b72daad5a9958ed2f9efcfc",
+      "changed": [],
+      "remainingStatus": "?? unrelated.txt",
+      "outcome": {
+        "status": "failed",
+        "reason": "final-commit-rejected",
+        "record": null
+      }
+    },
+    {
+      "mode": "two-commits",
+      "fixtureOnly": true,
+      "expectedCurrentBehaviorConfirmed": true,
+      "commits": 1,
+      "providers": 0,
+      "before": "ad3a39c0ec65aff2df6026488d58058fedbcea2c",
+      "after": "8d5b95c41b04b5f5360323f1b592d46bd0af8957",
+      "changed": [
+        ".flowkit/project.json",
+        "openspec/delivery-groups/20260902-04-delivery-continuity-stable-core-closure.yaml",
+        "product.txt",
+        "skills/delivery/repository-integration/SKILL.md"
+      ],
+      "remainingStatus": "",
+      "outcome": {
+        "status": "failed",
+        "reason": "final-commit-rejected",
+        "record": null,
+        "gitEffects": {
+          "observedHead": "8d5b95c41b04b5f5360323f1b592d46bd0af8957",
+          "observedTargetMainCommit": "ad3a39c0ec65aff2df6026488d58058fedbcea2c"
+        }
+      }
+    },
+    {
+      "mode": "out-of-scope-staged",
+      "fixtureOnly": true,
+      "expectedCurrentBehaviorConfirmed": true,
+      "commits": 1,
+      "providers": 1,
+      "before": "897d9438df1bc92946ea1bb8d99629b0164f8a38",
+      "after": "6098a66f1e20ac53a0330af1eb4ed27389ff70c3",
+      "changed": [
+        ".flowkit/project.json",
+        "openspec/delivery-groups/20260902-04-delivery-continuity-stable-core-closure.yaml",
+        "product.txt",
+        "skills/delivery/repository-integration/SKILL.md",
+        "unrelated.txt"
+      ],
+      "remainingStatus": "",
+      "outcome": {
+        "status": "terminal",
+        "operationPackage": {
+          "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+          "operationId": "delivery-repository-integration",
+          "ownerAuthority": {
+            "ref": "owner:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+            "decision": "authorize-repository-integration",
+            "deliveryId": "20260902-04-delivery-continuity-stable-core-closure",
+            "sourceRef": "test:repo-integration",
+            "scope": [
+              "delivery-repository-integration"
+            ]
+          },
+          "operationFacts": {
+            "deliveryFinalizationRef": "delivery-finalization:sha256:e88df3499d4d38a0537c07beb4df79efbba14ab11425c9dd5cb2ed5a6b224deb",
+            "preIntegrationHead": "897d9438df1bc92946ea1bb8d99629b0164f8a38",
+            "checkpointOperation": {
+              "kind": "create-new"
+            },
+            "deliveryBranch": "delivery/d04",
+            "targetMainRef": "refs/heads/main",
+            "targetMainPreIntegrationCommit": "897d9438df1bc92946ea1bb8d99629b0164f8a38",
+            "acceptedBaseCommit": "897d9438df1bc92946ea1bb8d99629b0164f8a38"
+          },
+          "guidanceRef": {
+            "path": "skills/delivery/repository-integration/SKILL.md",
+            "contentSha256": "80cf003a034beb4813ea37a44554a54691d1d6d8ae4570a467265d8ad9361cda"
+          }
+        },
+        "record": {
+          "repositoryIntegrationRef": "repository-integration:sha256:e01898c549eedc044132d8884765c20f71a36af02fea61f16e8b1186586eda61",
+          "deliveryFinalizationRef": "delivery-finalization:sha256:e88df3499d4d38a0537c07beb4df79efbba14ab11425c9dd5cb2ed5a6b224deb",
+          "preIntegrationHead": "897d9438df1bc92946ea1bb8d99629b0164f8a38",
+          "checkpointOperation": {
+            "kind": "create-new"
+          },
+          "finalCommit": "6098a66f1e20ac53a0330af1eb4ed27389ff70c3",
+          "targetMainRef": "refs/heads/main",
+          "targetMainPreIntegrationCommit": "897d9438df1bc92946ea1bb8d99629b0164f8a38",
+          "acceptedMainCommit": "6098a66f1e20ac53a0330af1eb4ed27389ff70c3",
+          "nextDeliveryBase": "6098a66f1e20ac53a0330af1eb4ed27389ff70c3"
+        }
+      }
+    },
+    {
+      "mode": "commit-response-lost",
+      "fixtureOnly": true,
+      "expectedCurrentBehaviorConfirmed": true,
+      "commits": 1,
+      "providers": 0,
+      "before": "1ee64d6308924357379cc8978671e110e4c5a1a8",
+      "after": "e0cabf65f1c2fce702968c8919a5eb673ae55cdc",
+      "changed": [
+        ".flowkit/project.json",
+        "openspec/delivery-groups/20260902-04-delivery-continuity-stable-core-closure.yaml",
+        "product.txt",
+        "skills/delivery/repository-integration/SKILL.md"
+      ],
+      "remainingStatus": "",
+      "outcome": {
+        "status": "failed",
+        "reason": "final-commit-rejected",
+        "record": null,
+        "gitEffects": {
+          "observedHead": "e0cabf65f1c2fce702968c8919a5eb673ae55cdc",
+          "observedTargetMainCommit": "1ee64d6308924357379cc8978671e110e4c5a1a8"
+        }
+      }
+    },
+    {
+      "mode": "provider-pending",
+      "fixtureOnly": true,
+      "expectedCurrentBehaviorConfirmed": true,
+      "commits": 1,
+      "providers": 1,
+      "before": "686df2f0914c3b543e2c248c37cd3d43a80c88f4",
+      "after": "7c1020da3610f6b02d92e6946a7d080512e36132",
+      "changed": [
+        ".flowkit/project.json",
+        "openspec/delivery-groups/20260902-04-delivery-continuity-stable-core-closure.yaml",
+        "product.txt",
+        "skills/delivery/repository-integration/SKILL.md"
+      ],
+      "remainingStatus": "",
+      "outcome": {
+        "status": "failed",
+        "reason": "repository-acceptance-rejected",
+        "record": null,
+        "gitEffects": {
+          "observedHead": "7c1020da3610f6b02d92e6946a7d080512e36132",
+          "observedTargetMainCommit": "686df2f0914c3b543e2c248c37cd3d43a80c88f4"
+        }
+      }
+    },
+    {
+      "mode": "no-authority",
+      "fixtureOnly": true,
+      "expectedCurrentBehaviorConfirmed": true,
+      "commits": 0,
+      "providers": 0,
+      "before": "e7fdac1efb809200b6dc7c048b072d76b17139c6",
+      "after": "e7fdac1efb809200b6dc7c048b072d76b17139c6",
+      "changed": [],
+      "remainingStatus": "M product.txt\n?? .flowkit/project.json\n?? openspec/delivery-groups/20260902-04-delivery-continuity-stable-core-closure.yaml\n?? skills/delivery/repository-integration/SKILL.md",
+      "outcome": {
+        "status": "failed",
+        "reason": "package-formation-rejected",
+        "record": null
+      }
+    }
+  ]
+}

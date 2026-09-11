@@ -102,7 +102,7 @@ function failure(
 }
 
 export async function invokeSingleAction(
-  repositoryRoot: unknown,
+  installation: unknown,
   currentAction: unknown,
   target: unknown,
   currentContext: unknown,
@@ -130,7 +130,7 @@ export async function invokeSingleAction(
   }
 
   const guidanceRef = await resolveActionGuidanceRef(
-    repositoryRoot,
+    installation,
     prepared.identity.actionId,
   );
   if (guidanceRef === null) {

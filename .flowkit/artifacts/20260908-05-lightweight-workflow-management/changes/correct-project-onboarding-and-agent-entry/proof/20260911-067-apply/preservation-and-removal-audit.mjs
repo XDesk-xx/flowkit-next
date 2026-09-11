@@ -1,0 +1,26 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
+import {spawnSync} from 'node:child_process';
+const proof='.flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/correct-project-onboarding-and-agent-entry/proof/20260911-067-apply';
+const target='.tmp/onboarding-039-target',manager='.tmp/onboarding-039-manager/node_modules/flowkit-next';
+const digest=b=>createHash('sha256').update(b).digest('hex');
+const ref=p=>{const b=fs.readFileSync(p);return {path:p,bytes:b.length,sha256:digest(b)};};
+const initial=JSON.parse(fs.readFileSync(proof+'/installation-audit.json'));
+for(const r of initial.preservedInputs.filter(r=>!r.path.endsWith('AGENTS.md')))assert.deepEqual(ref(r.path),r);
+const original=initial.preservedInputs.find(r=>r.path.endsWith('AGENTS.md')),current=fs.readFileSync(original.path);
+assert.equal(digest(current.subarray(0,original.bytes)),original.sha256);
+const doc=fs.readFileSync('docs/onboarding.md','utf8');
+const template=doc.match(/```markdown\n([\s\S]*?)\n```/)[1];
+const expected=template.replace('<本项目绝对路径>',path.resolve(target).replaceAll('\\','/')).replace('<所选安装的 node_modules/flowkit-next 绝对路径>',path.resolve(manager).replaceAll('\\','/')).replace('<外部 exact tools 根目录；不是 manager>','C:/Users/xuser/.flowkit');
+assert(current.toString().includes(expected));
+assert.equal(current.toString().split('<!-- flowkit-entry:start -->').length,2);
+// A second manual onboarding inspection finds the exact block; no write required.
+const preserved={checkedAt:new Date().toISOString(),inputsPreserved:initial.preservedInputs,entry:ref(original.path),templateMatched:true,secondInspection:'existing matching entry: no append',collisionPolicy:'conflicting entry is not overwritten',meaning:'actual byte-preserving merge and read-only repeat inspection; not automated router/session acceptance'};
+if(!fs.existsSync(proof+'/onboarding-preservation.json'))fs.writeFileSync(proof+'/onboarding-preservation.json',JSON.stringify(preserved,null,2)+'\n',{flag:'wx'});
+const removed=['flowkit-next-d04-stable-core-closure-final-reference(1).md','flowkit-next-d05-decoupling-analysis.md','flowkit-next-delivery-change-plan.md'];
+const commit='7af7d85788503dafc50ee162b14deaaf679f99cb';
+const refs=removed.map(p=>{const original=spawnSync('git',['show',commit+':'+p],{maxBuffer:4*1024*1024});assert.equal(original.status,0,original.error?.message);assert(fs.readFileSync(p).equals(original.stdout));return {...ref(p),gitSource:commit+':'+p};});
+fs.writeFileSync(proof+'/removal-sources.json',JSON.stringify({checkedAt:new Date().toISOString(),refs},null,2)+'\n',{flag:'wx'});
+console.log(JSON.stringify({preserved:true,templateMatched:true,gitRecovery:refs}));

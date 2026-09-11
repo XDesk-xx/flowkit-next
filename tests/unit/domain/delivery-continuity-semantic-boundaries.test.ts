@@ -1,13 +1,11 @@
+import { fixtureInstallation } from "./manager-installation-fixture.js";
 import assert from "node:assert/strict";
-import { mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
-import { tmpdir } from "node:os";
+import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import test from "node:test";
 
 import {
-  deriveApplicableCheckCandidateRef,
   invokeDeliveryFinalOperation,
-  invokeDeliveryStartOperation,
   prepareDeliveryRepositoryIntegrationOperationPackage,
   type DeliveryCheckpointOperation,
   type OwnerAuthorityFact,
@@ -21,7 +19,6 @@ import {
   validateRepositoryIntegrationAcceptance,
   type ReadRepositoryIntegrationSource,
 } from "../../../src/internal/delivery-repository-integration-source.js";
-import { isDeliveryStartValidatedSurface } from "../../../src/internal/delivery-start-content.js";
 import {
   acceptedOutcomes,
   cleanup,
@@ -31,11 +28,6 @@ import {
   finalInput,
   git,
 } from "./delivery-final-fixture.js";
-import { createStartValidationFixture } from "./delivery-start-validation-fixture.js";
-
-function reverseFields<T extends object>(value: T): T {
-  return Object.fromEntries(Object.entries(value).reverse()) as T;
-}
 
 async function integrationFixture() {
   const fixture = await createFixture();
@@ -61,18 +53,12 @@ async function integrationFixture() {
     finalInput(fixture, outcomes),
     () => ({ status: "ready" }),
     readRequiredEvidence,
+    fixtureInstallation(fixture.root),
   );
   assert.equal(deliveryFinalOutcome.status, "terminal");
   if (deliveryFinalOutcome.status !== "terminal") {
     throw new Error("expected terminal Delivery Final fixture");
   }
-  const finalizedCandidateRef = await deriveApplicableCheckCandidateRef(
-    fixture.root,
-  );
-  assert.equal(
-    finalizedCandidateRef,
-    deliveryFinalOutcome.record.finalizedCandidateRef,
-  );
   const ownerAuthority: OwnerAuthorityFact = {
     ref: `owner:${"c".repeat(64)}`,
     decision: "authorize-repository-integration",
@@ -83,18 +69,35 @@ async function integrationFixture() {
   const input = {
     deliveryId,
     ownerAuthority,
-    deliveryFinalOutcome,
     deliveryBranch: "delivery/decoupling-probe",
     targetMainRef: "refs/heads/main",
     acceptedBaseCommit,
-    checkpointOperation: { kind: "create-new" as const },
+    checkpointOperation: {
+      kind: "create-new" as const,
+      paths: [
+        ...new Set(
+          (
+            await git(
+              fixture.root,
+              "ls-files",
+              "--cached",
+              "--others",
+              "--exclude-standard",
+              "-z",
+            )
+          )
+            .split("\0")
+            .filter(Boolean),
+        ),
+      ].sort(),
+      commitMessage: "checkpoint",
+      commitShape: null,
+    },
   };
   return {
     fixture,
     input,
     ownerAuthority,
-    readRequiredEvidence,
-    finalizedCandidateRef: finalizedCandidateRef!,
   };
 }
 
@@ -150,13 +153,13 @@ async function integrationSource(
 test("Integration preparation accepts an exact authorized base across unrelated HEAD or target history", async () => {
   const state = await integrationFixture();
   try {
-    const { fixture, input, readRequiredEvidence } = state;
+    const { fixture, input } = state;
     const root = fixture.root;
     const baseline = await prepareDeliveryRepositoryIntegrationOperationPackage(
       root,
       input,
-      readRequiredEvidence,
       await integrationSource(root, input, input.checkpointOperation),
+      fixtureInstallation(root),
     );
     assert.notEqual(baseline, null);
 
@@ -177,8 +180,8 @@ test("Integration preparation accepts an exact authorized base across unrelated 
       await prepareDeliveryRepositoryIntegrationOperationPackage(
         root,
         input,
-        readRequiredEvidence,
         await integrationSource(root, input, input.checkpointOperation),
+        fixtureInstallation(root),
       ),
       null,
     );
@@ -186,7 +189,6 @@ test("Integration preparation accepts an exact authorized base across unrelated 
       await prepareDeliveryRepositoryIntegrationOperationPackage(
         root,
         input,
-        readRequiredEvidence,
         await integrationSource(
           root,
           input,
@@ -194,6 +196,7 @@ test("Integration preparation accepts an exact authorized base across unrelated 
           input.checkpointOperation,
           orphan,
         ),
+        fixtureInstallation(root),
       ),
       null,
     );
@@ -205,16 +208,12 @@ test("Integration preparation accepts an exact authorized base across unrelated 
       input.acceptedBaseCommit,
     );
     await git(root, "update-ref", "HEAD", orphan);
-    assert.equal(
-      await deriveApplicableCheckCandidateRef(root),
-      state.finalizedCandidateRef,
-    );
     assert.notEqual(
       await prepareDeliveryRepositoryIntegrationOperationPackage(
         root,
         input,
-        readRequiredEvidence,
         await integrationSource(root, input, input.checkpointOperation),
+        fixtureInstallation(root),
       ),
       null,
     );
@@ -223,8 +222,8 @@ test("Integration preparation accepts an exact authorized base across unrelated 
       await prepareDeliveryRepositoryIntegrationOperationPackage(
         root,
         { ...input, acceptedBaseCommit: "f".repeat(40) },
-        readRequiredEvidence,
         await integrationSource(root, input, input.checkpointOperation),
+        fixtureInstallation(root),
       ),
       null,
     );
@@ -233,217 +232,10 @@ test("Integration preparation accepts an exact authorized base across unrelated 
   }
 });
 
-test("Start artifact refs compare semantic fields while preserving strict values and array order", async () => {
-  const root = await mkdtemp(path.join(tmpdir(), "flowkit-start-order-"));
-  try {
-    await git(root, "init", "-q");
-    await git(root, "config", "user.name", "Flowkit Test");
-    await git(root, "config", "user.email", "flowkit@example.invalid");
-    await git(root, "config", "core.autocrlf", "false");
-    await mkdir(path.join(root, "skills", "delivery", "start"), {
-      recursive: true,
-    });
-    await writeFile(
-      path.join(root, "skills", "delivery", "start", "SKILL.md"),
-      "# synthetic Start\n",
-    );
-    await mkdir(path.join(root, ".flowkit"), { recursive: true });
-    await writeFile(
-      path.join(root, ".flowkit", "project.json"),
-      '{"projectId":"flowkit-next"}\n',
-    );
-    const artifacts = [
-      `openspec/delivery-groups/${deliveryId}.yaml`,
-      ...[
-        "current.architecture.json",
-        "planned.architecture.json",
-        "current-to-planned.compare.json",
-      ].map((name) => `architecture/${deliveryId}/json/${name}`),
-    ];
-    for (const artifact of artifacts) {
-      const target = path.join(root, ...artifact.split("/"));
-      await mkdir(path.dirname(target), { recursive: true });
-      await writeFile(target, "{}\n");
-    }
-    await git(root, "add", ".");
-    await git(root, "commit", "-qm", "synthetic Start base");
-    const acceptedBaseCommit = await git(root, "rev-parse", "HEAD");
-    const planningReference = {
-      artifact: "plan.md",
-      contentSha256: "b".repeat(64),
-    };
-    const input = {
-      deliveryId,
-      operationFacts: { acceptedBaseCommit, planningReference },
-      ownerAuthority: {
-        ref: `owner:${"c".repeat(64)}`,
-        decision: "create-delivery" as const,
-        deliveryId,
-        sourceRef: "test:owner-start-only",
-        scope: ["delivery-start"],
-      },
-    };
-    const observe = () => ({
-      headCommit: acceptedBaseCommit,
-      workingTreeClean: true,
-      planningReference,
-    });
-    const validation = await createStartValidationFixture(root, {
-      deliveryId,
-      acceptedBaseCommit,
-      planningReference,
-    });
-    const material = validation.read();
-    const surface = validation.surface();
-    const reorderedOutputs = {
-      ...material,
-      outputs: material.outputs.map(reverseFields),
-    };
-    const reorderedSurface = {
-      ...surface,
-      validation: {
-        ...surface.validation,
-        artifacts: surface.validation.artifacts.map(reverseFields),
-      },
-    };
-    assert.equal(isDeliveryStartValidatedSurface(reorderedSurface), true);
-    assert.equal(
-      (
-        await invokeDeliveryStartOperation(
-          root,
-          input,
-          observe,
-          validation.surface,
-          () => reorderedOutputs,
-        )
-      ).status,
-      "terminal",
-    );
-    assert.equal(
-      (
-        await invokeDeliveryStartOperation(
-          root,
-          input,
-          observe,
-          () => reorderedSurface,
-          validation.read,
-        )
-      ).status,
-      "terminal",
-    );
-
-    const changedHash = {
-      ...material,
-      outputs: material.outputs.map((entry, index) =>
-        index === 0 ? { ...entry, contentSha256: "f".repeat(64) } : entry,
-      ),
-    };
-    const unknownField = {
-      ...material,
-      outputs: material.outputs.map((entry, index) =>
-        index === 0 ? { ...entry, unexpected: true } : entry,
-      ),
-    };
-    for (const rejected of [
-      changedHash,
-      unknownField,
-      { ...material, outputs: [...material.outputs].reverse() },
-    ]) {
-      assert.equal(
-        (
-          await invokeDeliveryStartOperation(
-            root,
-            input,
-            observe,
-            validation.surface,
-            () => rejected,
-          )
-        ).status,
-        "failed",
-      );
-    }
-
-    const allOutputHoles = new Array(material.outputs.length);
-    const oneOutputHole = [...material.outputs];
-    delete oneOutputHole[1];
-    const sparseMaterialArtifacts = [...material.artifacts];
-    delete sparseMaterialArtifacts[0];
-    const malformedMaterials = [
-      { ...material, outputs: undefined },
-      { ...material, outputs: null },
-      { ...material, outputs: { length: material.outputs.length } },
-      { ...material, outputs: allOutputHoles },
-      { ...material, outputs: oneOutputHole },
-      { ...material, outputs: material.outputs.map(() => null) },
-      { ...material, artifacts: sparseMaterialArtifacts },
-    ];
-    const commitInput = {
-      ...input,
-      ownerAuthority: {
-        ...input.ownerAuthority,
-        scope: ["delivery-start", "single-delivery-start-fixed-point-commit"],
-      },
-    };
-    let checkpointCalls = 0;
-    for (const malformed of malformedMaterials) {
-      const outcome = await invokeDeliveryStartOperation(
-        root,
-        commitInput,
-        observe,
-        validation.surface,
-        () => malformed as never,
-        () => {
-          checkpointCalls += 1;
-          return "f".repeat(40);
-        },
-      );
-      assert.deepEqual(outcome, {
-        status: "failed",
-        reason: "content-completion-rejected",
-        fixedPointCommit: null,
-        contentCompletion: null,
-      });
-    }
-
-    const sparseSurfaceArtifacts = [...surface.validation.artifacts];
-    delete sparseSurfaceArtifacts[0];
-    const sparseSurface = {
-      ...surface,
-      validation: {
-        ...surface.validation,
-        artifacts: sparseSurfaceArtifacts,
-      },
-    };
-    assert.equal(isDeliveryStartValidatedSurface(sparseSurface), false);
-    assert.deepEqual(
-      await invokeDeliveryStartOperation(
-        root,
-        commitInput,
-        observe,
-        () => sparseSurface as never,
-        validation.read,
-        () => {
-          checkpointCalls += 1;
-          return "f".repeat(40);
-        },
-      ),
-      {
-        status: "failed",
-        reason: "surface-validation-failed",
-        fixedPointCommit: null,
-        contentCompletion: null,
-      },
-    );
-    assert.equal(checkpointCalls, 0);
-  } finally {
-    await rm(root, { recursive: true, force: true });
-  }
-});
-
 test("Integration operation field order is non-semantic across source, ref and record consumers", async () => {
   const state = await integrationFixture();
   try {
-    const { fixture, input, readRequiredEvidence } = state;
+    const { fixture, input } = state;
     await git(fixture.root, "add", ".");
     await git(fixture.root, "commit", "-qm", "synthetic finalized checkpoint");
     const checkpointCommit = await git(fixture.root, "rev-parse", "HEAD");
@@ -461,27 +253,27 @@ test("Integration operation field order is non-semantic across source, ref and r
       await prepareDeliveryRepositoryIntegrationOperationPackage(
         fixture.root,
         { ...input, checkpointOperation: operation },
-        readRequiredEvidence,
         await integrationSource(fixture.root, input, operation),
+        fixtureInstallation(fixture.root),
       );
     const reorderedInput =
       await prepareDeliveryRepositoryIntegrationOperationPackage(
         fixture.root,
         { ...input, checkpointOperation: reorderedOperation },
-        readRequiredEvidence,
         await integrationSource(fixture.root, input, operation),
+        fixtureInstallation(fixture.root),
       );
     const reorderedSource =
       await prepareDeliveryRepositoryIntegrationOperationPackage(
         fixture.root,
         { ...input, checkpointOperation: operation },
-        readRequiredEvidence,
         await integrationSource(
           fixture.root,
           input,
           operation,
           reorderedOperation,
         ),
+        fixtureInstallation(fixture.root),
       );
     assert.notEqual(canonical, null);
     assert.deepEqual(reorderedInput, canonical);
@@ -511,7 +303,6 @@ test("Integration operation field order is non-semantic across source, ref and r
     const record = {
       repositoryIntegrationRef: canonicalRef,
       deliveryFinalizationRef: canonical.operationFacts.deliveryFinalizationRef,
-      finalizedCandidateRef: canonical.operationFacts.finalizedCandidateRef,
       preIntegrationHead: canonical.operationFacts.preIntegrationHead,
       checkpointOperation: reorderedOperation,
       finalCommit: checkpointCommit,

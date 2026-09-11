@@ -1,0 +1,25 @@
+{
+  "kind": "external-orchestrator-revise-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "author",
+  "action": "revise-apply",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "decouple-full-test-from-repository-tracking",
+  "projectOrdinal": 36,
+  "runId": "20260909-036-revise-apply",
+  "previousRunId": "20260909-035-review-apply",
+  "startedAt": "2026-09-09T04:24:44Z",
+  "ownerInstruction": "根据最新run，revise",
+  "findingIds": [
+    "D05-RA035-001",
+    "D05-RA035-002"
+  ],
+  "ownerDecisionsRelevant": [
+    {
+      "sourceRef": ".flowkit/runs/20260908-05-lightweight-workflow-management/004-decouple-full-test-from-repository-tracking/20260909-035-review-apply/result.json#ownerDecisionsRelevant",
+      "decision": "gate与Git空白分离；必要proof留target artifacts；当前004分组、不改历史；D05 independent-bootstrap；无Git/正式FullTest授权"
+    }
+  ],
+  "nextBoundary": "review-apply"
+}
