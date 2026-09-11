@@ -74,10 +74,20 @@ export async function makeFixture() {
     deliveryBranch: "delivery/d04",
     targetMainRef: "refs/heads/main",
     acceptedBaseCommit,
-    checkpointOperation: { kind: "create-new" as const },
+    checkpointOperation: {
+      kind: "create-new" as const,
+      paths: [
+        ".flowkit/project.json",
+        `openspec/delivery-groups/${deliveryId}.yaml`,
+        "product.txt",
+        "skills/delivery/repository-integration/SKILL.md",
+      ],
+      commitMessage: "chore(delivery): final",
+      commitShape: { parents: [acceptedBaseCommit], count: 1 },
+    },
   };
   const integrationSource = (
-    operation: DeliveryCheckpointOperation = { kind: "create-new" },
+    operation: DeliveryCheckpointOperation = input.checkpointOperation,
     acceptedMain?: () => string | Promise<string>,
     acceptedFinal?: () => string | Promise<string>,
   ): ReadRepositoryIntegrationSource => ({

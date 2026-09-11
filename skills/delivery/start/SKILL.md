@@ -15,3 +15,5 @@ description: 在已确定的 Owner Delivery Start 边界建立并读回本项目
 - 失败如实报告 not-written、written-unconfirmed 或 unknown；写后抛错不等于没有副作用，不自动回滚或重试。
 
 额外 Git scope 不在 Start 内执行；没有 commit callback。Git 节点另依明确授权处理。成功或失败后 STOP，不创建 Delivery Run，不使用 candidate HOW 管理当前 independent-bootstrap Delivery。
+
+单独授权 Start 后 Git 时，可使用本安装 [Git 宿主 HOW](../repository-integration/references/host-call.md) 的普通节点；不要求 Final、不把 commit 内嵌 Start。

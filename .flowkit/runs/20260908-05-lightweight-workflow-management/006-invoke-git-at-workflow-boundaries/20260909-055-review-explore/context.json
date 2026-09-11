@@ -1,0 +1,30 @@
+{
+  "kind": "external-orchestrator-review-explore-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "reviewer",
+  "action": "review-explore",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "invoke-git-at-workflow-boundaries",
+  "projectOrdinal": 38,
+  "runId": "20260909-055-review-explore",
+  "previousRunId": "20260909-054-explore",
+  "reviewedRunId": "20260909-054-explore",
+  "startedAt": "2026-09-09T13:21:05.284Z",
+  "ownerInstruction": "根据最新run，review，review 完，简短解释当前方案",
+  "reviewerHow": ".agents/skills/review-explore/SKILL.md",
+  "scope": "独立审查 054 Explore 的事实/proof、Owner 与 D05 计划边界、Proposal readiness；只写 Reviewer 自有 Run/proof。",
+  "mutationBaseline": {
+    "files": 4767,
+    "sha256": "330b14af263c0b40cc073ff97efc6b05356dac62249d72d611b272f5eed9f76d",
+    "head": "a0edb690d7208a3b81855e30a31dbc175f060a93",
+    "at": "2026-09-09T13:21:05.284Z"
+  },
+  "proofRoot": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260909-055-review-explore",
+  "ownerDecisionsRelevant": [
+    {
+      "sourceRef": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260909-054-explore/context.json#ownerDecisionsRelevant",
+      "decision": "最后一项 Git 节点按明确授权和实际范围执行，不默认固定点/parent/count，不自动恢复；D05 independent-bootstrap，必要材料留 target artifacts。"
+    }
+  ]
+}

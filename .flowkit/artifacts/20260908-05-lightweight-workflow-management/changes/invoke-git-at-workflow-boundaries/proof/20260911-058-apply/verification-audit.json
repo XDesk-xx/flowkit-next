@@ -1,0 +1,134 @@
+{
+  "status": "passed",
+  "checks": [
+    {
+      "check": "win-final-format-check",
+      "exitCode": 0
+    },
+    {
+      "check": "win-final-lint",
+      "exitCode": 0
+    },
+    {
+      "check": "win-final-typecheck",
+      "exitCode": 0
+    },
+    {
+      "check": "win-final-build",
+      "exitCode": 0
+    },
+    {
+      "check": "win-final-domain",
+      "exitCode": 0
+    },
+    {
+      "check": "win-final-acceptance",
+      "exitCode": 0
+    },
+    {
+      "check": "win-final-dependency-health",
+      "exitCode": 0
+    },
+    {
+      "check": "win-final-entropy-tests",
+      "exitCode": 0
+    },
+    {
+      "check": "win-final-entropy",
+      "exitCode": 0
+    },
+    {
+      "check": "linux-final-format-check",
+      "exitCode": 0
+    },
+    {
+      "check": "linux-final-lint",
+      "exitCode": 0
+    },
+    {
+      "check": "linux-final-typecheck",
+      "exitCode": 0
+    },
+    {
+      "check": "linux-final-build",
+      "exitCode": 0
+    },
+    {
+      "check": "linux-final-domain",
+      "exitCode": 0
+    },
+    {
+      "check": "linux-final-acceptance",
+      "exitCode": 0
+    },
+    {
+      "check": "linux-final-dependency-health",
+      "exitCode": 0
+    },
+    {
+      "check": "linux-final-entropy-tests",
+      "exitCode": 0
+    },
+    {
+      "check": "linux-final-entropy",
+      "exitCode": 0
+    }
+  ],
+  "linuxSourceFilesMatchCurrent": 181,
+  "lineGate": {
+    "limit": 650,
+    "checked": 127,
+    "largest": [
+      {
+        "path": "tests/unit/domain/delivery-operation-execution.test.ts",
+        "lines": 619
+      },
+      {
+        "path": "src/domain/run-result-persistence.ts",
+        "lines": 595
+      },
+      {
+        "path": "tests/unit/domain/applicable-check-execution.test.ts",
+        "lines": 585
+      },
+      {
+        "path": "src/domain/delivery-repository-integration-execution.ts",
+        "lines": 573
+      },
+      {
+        "path": "src/domain/delivery-operation-execution.ts",
+        "lines": 565
+      },
+      {
+        "path": "src/domain/applicable-check-execution.ts",
+        "lines": 562
+      },
+      {
+        "path": "tests/unit/domain/delivery-final-execution.test.ts",
+        "lines": 533
+      },
+      {
+        "path": "src/internal/delivery-final-coordination.ts",
+        "lines": 515
+      },
+      {
+        "path": "src/internal/applicable-check-candidate.ts",
+        "lines": 491
+      },
+      {
+        "path": "tests/unit/domain/applicable-check-admission.test.ts",
+        "lines": 487
+      }
+    ]
+  },
+  "deltaCoverage": {
+    "modified": 4,
+    "added": 3,
+    "existingScenarioNamesPreserved": true
+  },
+  "limitations": [
+    "Linux /evidence is the bind mount of this target proofRoot; ../../evidence refs in command metadata use container cwd, not external project retention",
+    "First Linux launch failed because daemon was stopped; preserved original failure, unchanged-code retry passed",
+    "Not actual D05 Formal Full Test or independent review-apply"
+  ]
+}

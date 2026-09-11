@@ -416,6 +416,8 @@ exact Owner authorization fact
 
 Candidate CLI 不执行 `git add` / `git commit` / push / merge / tag。
 
+普通 Git 节点由已有 Agent/宿主显式调用 manager 自有 `skills/delivery/repository-integration/references/git-host.mjs`（runCheckpoint/runPush/runIntegration）；不新增 CLI 写命令或 Git Run。普通节点不要求 Final，Change checkpoint 保留既有 evaluator；Integration 独立消费已确认 Final/singleton/source。create-new 绑定 exact paths/message/nullable shape，写前核对完整待提交 index，不夹带范围外 staged、不清空用户 index，不要求无关 worktree clean。push/复用不触碰无关 index；部分成功交接已确认对象及剩余步骤，不盲重试或回写 SHA 再 commit。此产品入口不改变 D05 independent-bootstrap authority。
+
 ## 16. Cross-Delivery Memo
 
 Memo：

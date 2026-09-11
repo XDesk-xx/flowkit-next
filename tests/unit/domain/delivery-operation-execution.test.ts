@@ -583,7 +583,12 @@ test("repository integration package is the fourth exact variant and requires si
   const facts = {
     deliveryFinalizationRef: `delivery-finalization:sha256:${"1".repeat(64)}`,
     preIntegrationHead: "3".repeat(40),
-    checkpointOperation: { kind: "create-new" },
+    checkpointOperation: {
+      kind: "create-new",
+      paths: ["product.txt"],
+      commitMessage: "checkpoint",
+      commitShape: null,
+    },
     deliveryBranch: "delivery/d04",
     targetMainRef: "refs/heads/main",
     targetMainPreIntegrationCommit: "4".repeat(40),

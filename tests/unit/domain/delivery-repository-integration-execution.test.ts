@@ -284,6 +284,10 @@ test("target-main drift during final commit is rejected before repository accept
       reason: "final-commit-rejected",
       record: null,
       gitEffects: {
+        phase: "commit",
+        effect: "confirmed",
+        checkpointCommit: await git(fixture.root, "rev-parse", "HEAD"),
+        remaining: ["核对 checkpoint 已有效果与当前权限"],
         observedHead: await git(fixture.root, "rev-parse", "HEAD"),
         observedTargetMainCommit: await git(
           fixture.root,

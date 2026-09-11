@@ -1,0 +1,160 @@
+{
+  "status": "passed",
+  "checks": [
+    {
+      "label": "before",
+      "exitCode": 1
+    },
+    {
+      "label": "after",
+      "exitCode": 0
+    },
+    {
+      "label": "pack",
+      "exitCode": 0
+    },
+    {
+      "label": "packed-example",
+      "exitCode": 0
+    },
+    {
+      "label": "openspec-strict",
+      "exitCode": 0
+    },
+    {
+      "label": "linux-container",
+      "exitCode": 0
+    },
+    {
+      "label": "win-final-format-check",
+      "exitCode": 0
+    },
+    {
+      "label": "win-final-lint",
+      "exitCode": 0
+    },
+    {
+      "label": "win-final-typecheck",
+      "exitCode": 0
+    },
+    {
+      "label": "win-final-build",
+      "exitCode": 0
+    },
+    {
+      "label": "win-final-domain",
+      "exitCode": 0
+    },
+    {
+      "label": "win-final-acceptance",
+      "exitCode": 0
+    },
+    {
+      "label": "win-final-dependency-health",
+      "exitCode": 0
+    },
+    {
+      "label": "win-final-entropy-tests",
+      "exitCode": 0
+    },
+    {
+      "label": "win-final-entropy",
+      "exitCode": 0
+    },
+    {
+      "label": "linux-final-format-check",
+      "exitCode": 0
+    },
+    {
+      "label": "linux-final-lint",
+      "exitCode": 0
+    },
+    {
+      "label": "linux-final-typecheck",
+      "exitCode": 0
+    },
+    {
+      "label": "linux-final-build",
+      "exitCode": 0
+    },
+    {
+      "label": "linux-final-domain",
+      "exitCode": 0
+    },
+    {
+      "label": "linux-final-acceptance",
+      "exitCode": 0
+    },
+    {
+      "label": "linux-final-dependency-health",
+      "exitCode": 0
+    },
+    {
+      "label": "linux-final-entropy-tests",
+      "exitCode": 0
+    },
+    {
+      "label": "linux-final-entropy",
+      "exitCode": 0
+    }
+  ],
+  "counts": {
+    "win-final": {
+      "domain": 324,
+      "acceptance": 7,
+      "entropy-tests": 7
+    },
+    "linux-final": {
+      "domain": 324,
+      "acceptance": 7,
+      "entropy-tests": 7
+    }
+  },
+  "linuxSourceFilesMatchCurrent": 182,
+  "regression": {
+    "before": {
+      "passed": 0,
+      "failed": 3
+    },
+    "after": {
+      "passed": 3,
+      "failed": 0
+    },
+    "additionalPendingStateAndStageDrift": "included in both current domain suites"
+  },
+  "lineGate": {
+    "limit": 650,
+    "files": 128,
+    "largest": [
+      {
+        "path": "tests/unit/domain/delivery-operation-execution.test.ts",
+        "lines": 619
+      },
+      {
+        "path": "src/domain/run-result-persistence.ts",
+        "lines": 595
+      },
+      {
+        "path": "src/domain/delivery-repository-integration-execution.ts",
+        "lines": 588
+      },
+      {
+        "path": "tests/unit/domain/applicable-check-execution.test.ts",
+        "lines": 585
+      },
+      {
+        "path": "src/domain/delivery-operation-execution.ts",
+        "lines": 565
+      }
+    ]
+  },
+  "changeScopeSince058": [
+    "src/domain/delivery-repository-integration-execution.ts",
+    "src/domain/git-workflow-host.ts",
+    "src/internal/delivery-repository-integration-failure.ts",
+    "src/internal/git-checkpoint-execution.ts",
+    "src/internal/git-checkpoint-scope.ts"
+  ],
+  "proposalAndHistoryUnchanged": true,
+  "formalD05FullTest": false
+}

@@ -28,3 +28,5 @@ Agent 仅返回 defensive package 对应的 ready/correction-required，不指�
 确认前失败留下 null，不得仅因 completed 或自签 ref 宣称成功。确认发布后的读回/响应失败如实报告；新会话只依据实际有效标记识别已提交事实，不补确认或重试。失败区分 not-written/written-unconfirmed/unknown。确认不证明未来代码永远未变。
 
 不写 gitCheckpoint、重复 formalVerificationCandidate、requiredEvidence 或 finalizedCandidateRef；不生成 Git/全仓摘要、额外结果库、事务平台或 Archify 证明。历史不迁移/重签。没有 commit、push、PR、merge、自动下一操作权限；D05 继续独立 bootstrap。
+
+后续独立 Git 授权使用 [Git 宿主 HOW](../repository-integration/references/host-call.md)；Final confirmation 不是 Git 权限，不把其 SHA 读回变成再次提交的资格字段。

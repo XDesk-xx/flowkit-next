@@ -1,0 +1,155 @@
+{
+  "kind": "review-propose-planning-coverage-audit",
+  "checkedAt": "2026-09-11T02:55:07.382Z",
+  "toolVersion": "1.10.0",
+  "structureCommands": 3,
+  "structureOnly": true,
+  "modifiedRequirements": 4,
+  "addedRequirements": 3,
+  "coverage": [
+    {
+      "capability": "repository-integration-and-next-base-continuity",
+      "requirement": "Integration 按明确操作创建或复用 checkpoint",
+      "priorScenarios": 4,
+      "currentScenarios": 5,
+      "priorNamesPreserved": true
+    },
+    {
+      "capability": "repository-integration-and-next-base-continuity",
+      "requirement": "Repository review and merge remain provider-external while terminal Git truth is independently observed",
+      "priorScenarios": 5,
+      "currentScenarios": 6,
+      "priorNamesPreserved": true
+    },
+    {
+      "capability": "repository-integration-and-next-base-continuity",
+      "requirement": "Accepted main becomes next Delivery base and terminal execution stops",
+      "priorScenarios": 2,
+      "currentScenarios": 3,
+      "priorNamesPreserved": true
+    },
+    {
+      "capability": "delivery-operation-execution-and-start-continuity",
+      "requirement": "Repository Integration package binds exact finalized continuity Git prestate and exact Git authority",
+      "priorScenarios": 3,
+      "currentScenarios": 3,
+      "priorNamesPreserved": true
+    }
+  ],
+  "uncheckedTasks": 17,
+  "checkedTasks": 0,
+  "allPlanningArtifactsDone": true,
+  "implementationAcceptance": false,
+  "commandSummary": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-057-review-propose/attempt-01/summary.json",
+    "bytes": 3793,
+    "sha256": "5dc601bf60bf98315fde771a4211695007960784dbe1ccb32a440ff41808b192"
+  },
+  "reviewedResult": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260911-056-propose/result.json",
+    "bytes": 5509,
+    "sha256": "db31c8af4752988b3a464b72ecd0ab5f25e4631df63adc7624159b36d29467f8"
+  },
+  "verifiedInputReferences": [
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260909-055-review-explore/result.json",
+      "bytes": 9139,
+      "sha256": "6c8caaf586d68b217308bd42c8d982f98afb755f1569f403ef57509dd882b69e"
+    },
+    {
+      "path": "openspec/changes/invoke-git-at-workflow-boundaries/explore.md",
+      "bytes": 11268,
+      "sha256": "dfb6de24955d031d30360ac84ea33d05ad198efc19abdd0d951346a1ab5a4e9e"
+    },
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260909-054-explore/result.json",
+      "bytes": 5631,
+      "sha256": "caedba4c908830361391152919d47d9b31a1120df195b62634dffae38b4d651a"
+    },
+    {
+      "path": "openspec/changes/invoke-git-at-workflow-boundaries/proposal.md",
+      "bytes": 2898,
+      "sha256": "939500b585ef6bf41452cf082962c12d8ed50e4a86f6112d969fb6400fe94a22"
+    },
+    {
+      "path": "openspec/changes/invoke-git-at-workflow-boundaries/design.md",
+      "bytes": 13843,
+      "sha256": "8d5d18a353dba8d3fa2aaeeb3e10a230121617421e6f3d0319a8ad62c558cadd"
+    },
+    {
+      "path": "openspec/changes/invoke-git-at-workflow-boundaries/tasks.md",
+      "bytes": 4218,
+      "sha256": "7f882bee014c51959a9f3d63c70e78e72727b9016670c07fb3543548c9740abd"
+    },
+    {
+      "path": "openspec/changes/invoke-git-at-workflow-boundaries/specs/repository-integration-and-next-base-continuity/spec.md",
+      "bytes": 12463,
+      "sha256": "16469d4b6a847cad7546f93987f74099712ef2a1b928e8abc9a1226c7b791ec3"
+    },
+    {
+      "path": "openspec/changes/invoke-git-at-workflow-boundaries/specs/delivery-operation-execution-and-start-continuity/spec.md",
+      "bytes": 2461,
+      "sha256": "5700c611159dbb0a5121ef32e106ebf7521df4d9d88cf5c492461bb77fb44f04"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-056-propose/convergence.md",
+      "bytes": 1208,
+      "sha256": "6044261f4cbe8db8a33ff6aee74155c3e5b16cb46fb5504281a87a2937be1807"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-056-propose/evidence-index.json",
+      "bytes": 2509,
+      "sha256": "5356faa8f8ca944b61b616a13fed294ea317b1f639e78a6e63ad9b1bb464b50f"
+    },
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260911-056-propose/action.md",
+      "bytes": 332,
+      "sha256": "7fd8621d8f678d49ea8b7b8c86add7f55157484f86b77360e779782d3c5a9d25"
+    },
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260911-056-propose/context.json",
+      "bytes": 1655,
+      "sha256": "492d47d79656b829ddca7345bdc3d82d445691164006e8a6bddc5d4820398d89"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-056-propose/capture.mjs",
+      "bytes": 1609,
+      "sha256": "dd5af667984efa35b0b49de02c22ebcbbefe2b13d8c41248507c4735610f981c"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-056-propose/finish.mjs",
+      "bytes": 5109,
+      "sha256": "097ce8bdf6b2aaab85131412a90610bd9885b1d194c46ca3a56b76ff2ddc6a38"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-056-propose/planning-status/command.json",
+      "bytes": 1023,
+      "sha256": "3ab844486f927d77e96a04588db274d830466e403248e6519bdedcbd6712c68c"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-056-propose/planning-status/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-056-propose/planning-status/stdout.txt",
+      "bytes": 3269,
+      "sha256": "e73f82dab075c9c688e98b40b033370fb69d217788943fb002bfbc34de0443b1"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-056-propose/strict-validation/command.json",
+      "bytes": 1013,
+      "sha256": "3d7e3b3da1acd5fd058c2e8b9b8196511aeed7a6589e311db82dcc270aaf4524"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-056-propose/strict-validation/stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-056-propose/strict-validation/stdout.txt",
+      "bytes": 52,
+      "sha256": "50ac72634ab52d4b33c4929b35150b1d26e731716cff62f2e74330a9b5addab3"
+    }
+  ]
+}

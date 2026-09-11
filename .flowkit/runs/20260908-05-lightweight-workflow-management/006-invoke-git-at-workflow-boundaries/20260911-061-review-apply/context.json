@@ -1,0 +1,48 @@
+{
+  "kind": "external-orchestrator-review-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "reviewer",
+  "action": "review-apply",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "invoke-git-at-workflow-boundaries",
+  "projectOrdinal": 38,
+  "runId": "20260911-061-review-apply",
+  "previousRunId": "20260911-060-revise-apply",
+  "reviewedRunId": "20260911-060-revise-apply",
+  "startedAt": "2026-09-11T04:11:51.848Z",
+  "ownerInstruction": "根据最新run，review，review 完，简短解释当前方案",
+  "reviewerHow": ".agents/skills/review-apply/SKILL.md",
+  "reviewedResult": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260911-060-revise-apply/result.json",
+    "bytes": 2820,
+    "sha256": "abd86c4435d149a1b53acf4848c860a0b9e0039f6807c597bf6870429b8a387e"
+  },
+  "mutationBaseline": {
+    "files": 5187,
+    "sha256": "7ea88a6da5ce9563aea6809c5132679a49c1fce836ea15e535e9ea77c753ab0f",
+    "method": "sha256(JSON.stringify(sorted unique git ls-files --cached --others --exclude-standard -z paths mapped to path, bytes, raw SHA256; absent/link explicit; exclude own Run/proof))",
+    "head": "a0edb690d7208a3b81855e30a31dbc175f060a93",
+    "at": "2026-09-11T04:11:51.848Z"
+  },
+  "proofRoot": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply",
+  "preparation": {
+    "verifiedReferences": 117,
+    "preservedAncestorPayloadFiles": 33,
+    "revisionFiles": [
+      "src/domain/delivery-repository-integration-execution.ts",
+      "src/domain/git-workflow-host.ts",
+      "src/internal/delivery-repository-integration-failure.ts",
+      "src/internal/git-checkpoint-execution.ts",
+      "src/internal/git-checkpoint-scope.ts",
+      "tests/unit/domain/git-host-review-regressions.test.ts"
+    ]
+  },
+  "scope": "独立复审 060 对 D05-RA038-001/002/003 的闭合，核对未受影响的批准合同、实现与当前验证；只写自身 Run/proof。",
+  "ownerDecisionsRelevant": [
+    {
+      "sourceRef": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260909-054-explore/context.json#ownerDecisionsRelevant",
+      "decision": "按 Owner 明确操作/范围调用 Git，不恢复全仓 clean/固定形状门槛，不自动恢复；D05 independent-bootstrap，必要材料留 target artifacts。"
+    }
+  ]
+}

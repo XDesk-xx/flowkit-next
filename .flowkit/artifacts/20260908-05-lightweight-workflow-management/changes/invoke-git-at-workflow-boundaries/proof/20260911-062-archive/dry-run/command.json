@@ -1,0 +1,48 @@
+{
+  "program": "docker",
+  "args": [
+    "run",
+    "--rm",
+    "--network",
+    "none",
+    "--platform",
+    "linux/amd64",
+    "--mount",
+    "type=bind,source=D:/Projects/flowkit-next,target=/source,readonly",
+    "--mount",
+    "type=bind,source=D:/Projects/flowkit-next/.flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-062-archive,target=/evidence",
+    "--mount",
+    "type=volume,source=flowkit-d05-012-runtime-03,target=/runtime,readonly",
+    "--mount",
+    "type=volume,source=flowkit-d05-012-pnpm-store,target=/store",
+    "--mount",
+    "type=volume,source=flowkit-d05-012-pnpm-cache,target=/root/.cache/pnpm",
+    "--tmpfs",
+    "/work:exec",
+    "--env",
+    "FLOWKIT_HOME=/runtime",
+    "--env",
+    "EVIDENCE_DIR=/evidence/dry-run",
+    "sha256:127ee201acf84b60dc929a6d5823f24969d96893b0d790fb0ed6dd800ee57c62",
+    "sh",
+    "/evidence/linux-run.sh"
+  ],
+  "cwd": "D:\\Projects\\flowkit-next",
+  "startedAt": "2026-09-11T04:28:08.172Z",
+  "finishedAt": "2026-09-11T04:28:58.954Z",
+  "exitCode": 0,
+  "signal": null,
+  "error": null,
+  "node": "v22.23.2",
+  "platform": "win32",
+  "stdout": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-062-archive/dry-run/stdout.txt",
+    "bytes": 946,
+    "sha256": "79232fbb8d95ac58a8931651711445f470240e3ed238b6c4cdf1ab5867272634"
+  },
+  "stderr": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-062-archive/dry-run/stderr.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

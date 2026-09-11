@@ -106,7 +106,8 @@ changes:
     required: true
     dependsOn:
       - "simplify-delivery-coordination"
-    state: planned
+    state: completed
+    projectOrdinal: 38
     outputs:
       - "Git 调用不依赖架构资格或遍历 Full Test 日志，不夹带无关文件。"
       - "实际结果读回与部分成功诊断，无盲目重试、自动回滚或回写 SHA 的提交循环。"
@@ -157,6 +158,14 @@ ownerDecisions:
     deliveryId: "20260908-05-lightweight-workflow-management"
     changeId: "simplify-delivery-coordination"
     sourceRef: "owner-input:2026-09-09:activate-change:simplify-delivery-coordination:proof-explore"
+    scope:
+      - "explore"
+
+  - ref: "owner:12fef2c5dd7f8622a724723c97b244f30d2c51732319f36247a056597f8dbc16"
+    decision: "activate-change"
+    deliveryId: "20260908-05-lightweight-workflow-management"
+    changeId: "invoke-git-at-workflow-boundaries"
+    sourceRef: "owner-input:2026-09-09:activate-change:invoke-git-at-workflow-boundaries:proof-explore"
     scope:
       - "explore"
 

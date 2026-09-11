@@ -1,0 +1,156 @@
+{
+  "kind": "external-orchestrator-review-propose-result",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "reviewer",
+  "action": "review-propose",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "invoke-git-at-workflow-boundaries",
+  "projectOrdinal": 38,
+  "runId": "20260911-057-review-propose",
+  "previousRunId": "20260911-056-propose",
+  "reviewedRunId": "20260911-056-propose",
+  "status": "terminal",
+  "verdict": "approved",
+  "verdictMeaning": "批准 056 Proposal 可进入 Apply；不是实现验收、Verification PASS 或 Owner/Git authority。",
+  "startedAt": "2026-09-11T02:50:59.326Z",
+  "completedAt": "2026-09-11T02:57:22.402Z",
+  "reviewedResult": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260911-056-propose/result.json",
+    "bytes": 5509,
+    "sha256": "db31c8af4752988b3a464b72ecd0ab5f25e4631df63adc7624159b36d29467f8"
+  },
+  "acceptedExploreReview": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260909-055-review-explore/result.json",
+    "bytes": 9139,
+    "sha256": "6c8caaf586d68b217308bd42c8d982f98afb755f1569f403ef57509dd882b69e"
+  },
+  "reviewedArtifacts": [
+    {
+      "path": "openspec/changes/invoke-git-at-workflow-boundaries/explore.md",
+      "bytes": 11268,
+      "sha256": "dfb6de24955d031d30360ac84ea33d05ad198efc19abdd0d951346a1ab5a4e9e"
+    },
+    {
+      "path": "openspec/changes/invoke-git-at-workflow-boundaries/proposal.md",
+      "bytes": 2898,
+      "sha256": "939500b585ef6bf41452cf082962c12d8ed50e4a86f6112d969fb6400fe94a22"
+    },
+    {
+      "path": "openspec/changes/invoke-git-at-workflow-boundaries/design.md",
+      "bytes": 13843,
+      "sha256": "8d5d18a353dba8d3fa2aaeeb3e10a230121617421e6f3d0319a8ad62c558cadd"
+    },
+    {
+      "path": "openspec/changes/invoke-git-at-workflow-boundaries/tasks.md",
+      "bytes": 4218,
+      "sha256": "7f882bee014c51959a9f3d63c70e78e72727b9016670c07fb3543548c9740abd"
+    },
+    {
+      "path": "openspec/changes/invoke-git-at-workflow-boundaries/specs/repository-integration-and-next-base-continuity/spec.md",
+      "bytes": 12463,
+      "sha256": "16469d4b6a847cad7546f93987f74099712ef2a1b928e8abc9a1226c7b791ec3"
+    },
+    {
+      "path": "openspec/changes/invoke-git-at-workflow-boundaries/specs/delivery-operation-execution-and-start-continuity/spec.md",
+      "bytes": 2461,
+      "sha256": "5700c611159dbb0a5121ef32e106ebf7521df4d9d88cf5c492461bb77fb44f04"
+    }
+  ],
+  "runArtifacts": [
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260911-057-review-propose/action.md",
+      "bytes": 306,
+      "sha256": "d162c28ed5c253b6da6c5725321544982b81e786c754d77dcfbbae394e121757"
+    },
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260911-057-review-propose/context.json",
+      "bytes": 2058,
+      "sha256": "a70f9eee6ed5aab15266a89571374d1b99675bf7692c11313ae5cbf5f5790379"
+    }
+  ],
+  "reviewReport": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-057-review-propose/review.md",
+    "bytes": 4476,
+    "sha256": "db07229700c56a659e647bcc4268a217705371ff58b5bfacc07213e429a0b299"
+  },
+  "findings": [],
+  "blockingUnknowns": [],
+  "applyReady": true,
+  "assessments": {
+    "currentStep": "确认 056 对 054/055 已接受边界的追溯、规范/设计/任务完整性与 Apply readiness。",
+    "complexityAndMinimality": "薄宿主复用既有 Git/source/operation；路径/形状/失败返回与分根验收属于安全执行必需，无 Registry、Git Run 或恢复平台。",
+    "newContentAndScopeDrift": "NONE；三种节点的不同权限和完成边界不扩张 lifecycle/Owner schema/Full Test/Archify。"
+  },
+  "reviewEvidence": {
+    "planningAudit": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-057-review-propose/planning-audit.json",
+      "bytes": 7323,
+      "sha256": "e88192c7ad0f0669e06c60229bc076e7ea95275224b9a52af555589033f60a58"
+    },
+    "verificationMethod": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-057-review-propose/verify-planning.mjs",
+      "bytes": 2666,
+      "sha256": "6fd02624f01687be013dadb1f874b06745f564f7105d8aea4636c23fe180d78d"
+    },
+    "commandSummary": {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-057-review-propose/attempt-01/summary.json",
+      "bytes": 3793,
+      "sha256": "5dc601bf60bf98315fde771a4211695007960784dbe1ccb32a440ff41808b192"
+    },
+    "verifiedInputReferences": 20,
+    "modifiedRequirements": 4,
+    "addedRequirements": 3,
+    "priorScenarioNamesPreserved": true,
+    "uncheckedTasks": 17,
+    "structureCommandExitCodes": [
+      0,
+      0,
+      0
+    ],
+    "scope": "exact OpenSpec 1.10.0 结构验证与人工合同审查；不是当前实现或 Formal Full Test。",
+    "exploreProofRerun": false
+  },
+  "mutationIsolation": {
+    "before": {
+      "files": 4845,
+      "sha256": "bb421f55ee886031b3c95d481e44830d205f17566c4638913f116bff13a84618",
+      "method": "sha256(JSON.stringify(sorted unique git ls-files --cached --others --exclude-standard -z paths mapped to path, bytes, raw SHA256; absent/link explicit; exclude own Run/proof))",
+      "head": "a0edb690d7208a3b81855e30a31dbc175f060a93",
+      "at": "2026-09-11T02:50:59.326Z"
+    },
+    "after": {
+      "files": 4845,
+      "sha256": "bb421f55ee886031b3c95d481e44830d205f17566c4638913f116bff13a84618",
+      "method": "sha256(JSON.stringify(sorted unique git ls-files --cached --others --exclude-standard -z paths mapped to path, bytes, raw SHA256; absent/link explicit; exclude own Run/proof))",
+      "head": "a0edb690d7208a3b81855e30a31dbc175f060a93",
+      "at": "2026-09-11T02:56:39.103Z"
+    },
+    "equal": true,
+    "excludes": "仅本轮 Reviewer Run/proof；原有 Author/source/tests/Skills/main specs/历史 bytes 与 HEAD 均未变。"
+  },
+  "ownerDecisionsRelevant": [
+    {
+      "sourceRef": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260909-054-explore/context.json#ownerDecisionsRelevant",
+      "decision": "按 Owner 明确操作/范围调用 Git，不统一 clean/形状门槛，不自动恢复；D05 independent-bootstrap，必要材料留 target artifacts。"
+    }
+  ],
+  "nextBoundary": "apply",
+  "continuationMeaning": "沿用既有 review-propose approved → apply 边界；实际调用依既有 authority/host boundary，本轮 STOP。",
+  "reviewerHow": ".agents/skills/review-propose/SKILL.md",
+  "candidateReviewerHowConsumed": false,
+  "authorArtifactMutation": false,
+  "productionMutation": false,
+  "testMutation": false,
+  "skillMutation": false,
+  "mainSpecMutation": false,
+  "manifestMutation": false,
+  "historicalRunMutation": false,
+  "candidateLifecycleInvokedOnActualDelivery": false,
+  "implementationAcceptance": false,
+  "formalD05FullTestExecuted": false,
+  "applyExecuted": false,
+  "archiveExecuted": false,
+  "gitMutation": false,
+  "stop": true
+}

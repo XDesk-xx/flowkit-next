@@ -104,6 +104,10 @@ test("content-equivalent history replacement without trusted acceptance is rejec
       reason: "repository-acceptance-rejected",
       record: null,
       gitEffects: {
+        phase: "acceptance",
+        effect: "confirmed",
+        checkpointCommit: await git(fixture.root, "rev-parse", "HEAD"),
+        remaining: ["完成并核对真实 repository acceptance"],
         observedHead: await git(fixture.root, "rev-parse", "HEAD"),
         observedTargetMainCommit: await git(
           fixture.root,
@@ -358,6 +362,10 @@ test("provider-reported accepted-main SHA is not admitted as truth", async () =>
       reason: "repository-acceptance-rejected",
       record: null,
       gitEffects: {
+        phase: "acceptance",
+        effect: "confirmed",
+        checkpointCommit: await git(fixture.root, "rev-parse", "HEAD"),
+        remaining: ["完成并核对真实 repository acceptance"],
         observedHead: await git(fixture.root, "rev-parse", "HEAD"),
         observedTargetMainCommit: await git(
           fixture.root,

@@ -1,0 +1,18 @@
+node:internal/child_process:420
+    throw new ErrnoException(err, 'spawn');
+          ^
+
+Error: spawn EPERM
+    at ChildProcess.spawn (node:internal/child_process:420:11)
+    at spawn (node:child_process:787:9)
+    at execFile (node:child_process:349:17)
+    at execFile (node:child_process:245:21)
+    at git (D:\Projects\flowkit-next\tests\unit\domain\delivery-final-fixture.ts:21:28)
+    at makeFixture (D:\Projects\flowkit-next\tests\unit\domain\delivery-integration-fixture.ts:15:9)
+    at async <anonymous> (D:\Projects\flowkit-next\.flowkit\artifacts\20260908-05-lightweight-workflow-management\changes\invoke-git-at-workflow-boundaries\proof\20260909-054-explore\probe.mjs:15:13) {
+  errno: -4048,
+  code: 'EPERM',
+  syscall: 'spawn'
+}
+
+Node.js v22.23.2

@@ -19,7 +19,15 @@ export interface DeliveryRepositoryIntegrationOperationFacts {
 }
 
 export type DeliveryCheckpointOperation =
-  | { readonly kind: "create-new" }
+  | {
+      readonly kind: "create-new";
+      readonly paths: readonly string[];
+      readonly commitMessage: string;
+      readonly commitShape: {
+        readonly parents: readonly string[];
+        readonly count: number;
+      } | null;
+    }
   | { readonly kind: "reuse-existing"; readonly checkpointCommit: string };
 
 const FACT_FIELDS = [
@@ -55,12 +63,88 @@ export function isDeliveryCheckpointOperation(
   value: unknown,
 ): value is DeliveryCheckpointOperation {
   if (!isRecord(value) || typeof value.kind !== "string") return false;
-  if (value.kind === "create-new") return hasExactlyFields(value, ["kind"]);
+  if (value.kind === "create-new") {
+    const shape = value.commitShape;
+    return (
+      hasExactlyFields(value, [
+        "kind",
+        "paths",
+        "commitMessage",
+        "commitShape",
+      ]) &&
+      Array.isArray(value.paths) &&
+      value.paths.length > 0 &&
+      value.paths.every(
+        (p, i, paths) => isExactGitPath(p) && (i === 0 || paths[i - 1] < p),
+      ) &&
+      typeof value.commitMessage === "string" &&
+      value.commitMessage.trim().length > 0 &&
+      !/[\r\n\0]/.test(value.commitMessage) &&
+      (shape === null ||
+        (isRecord(shape) &&
+          hasExactlyFields(shape, ["parents", "count"]) &&
+          Array.isArray(shape.parents) &&
+          shape.parents.every(
+            (p) => typeof p === "string" && GIT_COMMIT_PATTERN.test(p),
+          ) &&
+          new Set(shape.parents).size === shape.parents.length &&
+          Number.isSafeInteger(shape.count) &&
+          (shape.count as number) > 0))
+    );
+  }
   return (
     value.kind === "reuse-existing" &&
     hasExactlyFields(value, ["kind", "checkpointCommit"]) &&
     typeof value.checkpointCommit === "string" &&
     GIT_COMMIT_PATTERN.test(value.checkpointCommit)
+  );
+}
+
+export function isExactGitPath(value: unknown): value is string {
+  return (
+    typeof value === "string" &&
+    value.length > 0 &&
+    !/[\\:\0\r\n*?[\]]/.test(value) &&
+    value
+      .split("/")
+      .every(
+        (part) =>
+          part !== "" &&
+          part !== "." &&
+          part !== ".." &&
+          part.toLowerCase() !== ".git",
+      )
+  );
+}
+
+export function cloneCheckpointOperation(
+  operation: DeliveryCheckpointOperation,
+): DeliveryCheckpointOperation {
+  return operation.kind === "reuse-existing"
+    ? { kind: "reuse-existing", checkpointCommit: operation.checkpointCommit }
+    : {
+        kind: "create-new",
+        paths: [...operation.paths],
+        commitMessage: operation.commitMessage,
+        commitShape:
+          operation.commitShape === null
+            ? null
+            : {
+                parents: [...operation.commitShape.parents],
+                count: operation.commitShape.count,
+              },
+      };
+}
+
+export function sameCheckpointOperation(
+  left: unknown,
+  right: unknown,
+): boolean {
+  return (
+    isDeliveryCheckpointOperation(left) &&
+    isDeliveryCheckpointOperation(right) &&
+    JSON.stringify(cloneCheckpointOperation(left)) ===
+      JSON.stringify(cloneCheckpointOperation(right))
   );
 }
 
@@ -109,13 +193,7 @@ export function cloneDeliveryRepositoryIntegrationOperationFacts(
 ): DeliveryRepositoryIntegrationOperationFacts {
   return {
     ...facts,
-    checkpointOperation:
-      facts.checkpointOperation.kind === "create-new"
-        ? { kind: "create-new" }
-        : {
-            kind: "reuse-existing",
-            checkpointCommit: facts.checkpointOperation.checkpointCommit,
-          },
+    checkpointOperation: cloneCheckpointOperation(facts.checkpointOperation),
   };
 }
 

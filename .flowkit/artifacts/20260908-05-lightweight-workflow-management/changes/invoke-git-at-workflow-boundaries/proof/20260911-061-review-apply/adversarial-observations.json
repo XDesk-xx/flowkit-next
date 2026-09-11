@@ -1,0 +1,824 @@
+{
+  "kind": "independent-review-apply-adversarial-observations",
+  "node": "v22.23.2",
+  "platform": "win32",
+  "checkedAt": "2026-09-11T04:16:02.777Z",
+  "scratchRoot": "D:\\Projects\\flowkit-next\\.tmp\\d05-061-review-git-WSukOz",
+  "fixtureGitOnly": true,
+  "authoritiesAndFinalAreSynthetic": true,
+  "noNetwork": true,
+  "productionSourceUnmodified": true,
+  "observations": [
+    {
+      "case": "push-follow-tags-expands-ref-scope",
+      "fixtureRoot": "D:\\Projects\\flowkit-next\\.tmp\\d05-061-review-git-WSukOz\\follow-tags",
+      "authorizedOperation": {
+        "kind": "push",
+        "localCommit": "628583186334c1ff480bc59dabc3cb6dd75d17ea",
+        "remote": "origin",
+        "targetRef": "refs/heads/main"
+      },
+      "beforeRefs": "",
+      "afterRefs": [
+        "refs/heads/main"
+      ],
+      "outcome": {
+        "status": "completed",
+        "phase": "readback",
+        "reason": null,
+        "observed": {
+          "checkpointCommit": "628583186334c1ff480bc59dabc3cb6dd75d17ea",
+          "remoteCommit": "628583186334c1ff480bc59dabc3cb6dd75d17ea"
+        },
+        "effect": "confirmed",
+        "remaining": []
+      },
+      "unauthorizedTagPublished": false
+    },
+    {
+      "case": "ordinary-checkpoint-completes-pending-merge",
+      "fixtureRoot": "D:\\Projects\\flowkit-next\\.tmp\\d05-061-review-git-WSukOz\\pending-merge",
+      "authorizedOperation": {
+        "kind": "create-new",
+        "paths": [
+          "a.txt"
+        ],
+        "commitMessage": "ordinary checkpoint only",
+        "commitShape": null
+      },
+      "beforeHead": "bb3f7dd88f843ad5870f59feed510358a0c0ec4b",
+      "mergeHead": "9cbeab4852c883117dbf40920c54d56271bc09ef",
+      "afterHead": "bb3f7dd88f843ad5870f59feed510358a0c0ec4b",
+      "parents": [
+        "3a3d75fec1b2630e477c20924679c3422e2de66a"
+      ],
+      "mergeHeadStillExists": true,
+      "outcome": {
+        "status": "incomplete",
+        "phase": "preflight",
+        "reason": "普通 checkpoint 不接续待完成 Git 操作: MERGE_HEAD",
+        "observed": {
+          "checkpointCommit": null,
+          "remoteCommit": null
+        },
+        "effect": "none",
+        "remaining": [
+          "核对本次权限、范围和目标后显式调用"
+        ]
+      }
+    },
+    {
+      "case": "reused-checkpoint-lost-before-acceptance",
+      "fixtureRoot": "D:\\Projects\\flowkit-next\\.tmp\\d05-061-review-git-WSukOz\\flowkit-integration-iWJuEm",
+      "knownCheckpoint": "9b06d66a14a695c78b36d1502ca5dd00483624c8",
+      "actualHead": "9b06d66a14a695c78b36d1502ca5dd00483624c8",
+      "sourceReads": 3,
+      "acceptanceCalled": false,
+      "outcome": {
+        "status": "incomplete",
+        "phase": "acceptance",
+        "reason": "repository-acceptance-rejected",
+        "observed": {
+          "checkpointCommit": "9b06d66a14a695c78b36d1502ca5dd00483624c8",
+          "remoteCommit": null
+        },
+        "effect": "none",
+        "remaining": [
+          "完成并核对真实 repository acceptance"
+        ]
+      }
+    }
+  ],
+  "commands": [
+    {
+      "program": "git",
+      "args": [
+        "init",
+        "-b",
+        "main"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-061-review-git-WSukOz\\follow-tags",
+      "startedAt": "2026-09-11T04:15:57.278Z",
+      "completedAt": "2026-09-11T04:15:57.377Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-01.stdout.txt",
+        "bytes": 110,
+        "sha256": "c6a1df4361bf96302a236f9966752f86248da27c39d1cdf5c7f40204fcbf7ded"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-01.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "program": "git",
+      "args": [
+        "config",
+        "user.name",
+        "Reviewer Fixture"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-061-review-git-WSukOz\\follow-tags",
+      "startedAt": "2026-09-11T04:15:57.378Z",
+      "completedAt": "2026-09-11T04:15:57.443Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-02.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-02.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "program": "git",
+      "args": [
+        "config",
+        "user.email",
+        "reviewer@example.invalid"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-061-review-git-WSukOz\\follow-tags",
+      "startedAt": "2026-09-11T04:15:57.444Z",
+      "completedAt": "2026-09-11T04:15:57.506Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-03.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-03.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "program": "git",
+      "args": [
+        "add",
+        "--",
+        "a.txt"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-061-review-git-WSukOz\\follow-tags",
+      "startedAt": "2026-09-11T04:15:57.507Z",
+      "completedAt": "2026-09-11T04:15:57.577Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-04.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-04.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "program": "git",
+      "args": [
+        "commit",
+        "-m",
+        "fixture base"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-061-review-git-WSukOz\\follow-tags",
+      "startedAt": "2026-09-11T04:15:57.577Z",
+      "completedAt": "2026-09-11T04:15:57.686Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-05.stdout.txt",
+        "bytes": 100,
+        "sha256": "93b750292acc18a70b6a6d1a740e4c668d454e8878c532eecaf51a6f5ba973da"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-05.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "program": "git",
+      "args": [
+        "init",
+        "--bare"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-061-review-git-WSukOz\\follow-tags.git",
+      "startedAt": "2026-09-11T04:15:57.686Z",
+      "completedAt": "2026-09-11T04:15:57.767Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-06.stdout.txt",
+        "bytes": 109,
+        "sha256": "7ffcf13651e19709f26ed8cd849c3fddd784b59565079dcb3d30910ad29708ac"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-06.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "program": "git",
+      "args": [
+        "remote",
+        "add",
+        "origin",
+        "D:\\Projects\\flowkit-next\\.tmp\\d05-061-review-git-WSukOz\\follow-tags.git"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-061-review-git-WSukOz\\follow-tags",
+      "startedAt": "2026-09-11T04:15:57.767Z",
+      "completedAt": "2026-09-11T04:15:57.832Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-07.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-07.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "program": "git",
+      "args": [
+        "tag",
+        "-a",
+        "not-authorized",
+        "-m",
+        "fixture tag outside requested ref"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-061-review-git-WSukOz\\follow-tags",
+      "startedAt": "2026-09-11T04:15:57.832Z",
+      "completedAt": "2026-09-11T04:15:57.899Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-08.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-08.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "program": "git",
+      "args": [
+        "config",
+        "push.followTags",
+        "true"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-061-review-git-WSukOz\\follow-tags",
+      "startedAt": "2026-09-11T04:15:57.899Z",
+      "completedAt": "2026-09-11T04:15:57.964Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-09.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-09.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "program": "git",
+      "args": [
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-061-review-git-WSukOz\\follow-tags",
+      "startedAt": "2026-09-11T04:15:57.964Z",
+      "completedAt": "2026-09-11T04:15:58.028Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-10.stdout.txt",
+        "bytes": 41,
+        "sha256": "df8bb941de3fa1714df6ce6a9996c8bfe7c482890d0ea286c516050c5419851b"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-10.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "program": "git",
+      "args": [
+        "for-each-ref",
+        "--format=%(refname)"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-061-review-git-WSukOz\\follow-tags.git",
+      "startedAt": "2026-09-11T04:15:58.028Z",
+      "completedAt": "2026-09-11T04:15:58.089Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-11.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-11.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "program": "git",
+      "args": [
+        "for-each-ref",
+        "--format=%(refname)"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-061-review-git-WSukOz\\follow-tags.git",
+      "startedAt": "2026-09-11T04:15:59.724Z",
+      "completedAt": "2026-09-11T04:15:59.788Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-12.stdout.txt",
+        "bytes": 16,
+        "sha256": "599bbcd7b7f94b50d9b83318ba0dd4b8e1ba9e39d1d3ee73d1fbbd70496d0f93"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-12.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "program": "git",
+      "args": [
+        "init",
+        "-b",
+        "main"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-061-review-git-WSukOz\\pending-merge",
+      "startedAt": "2026-09-11T04:15:59.789Z",
+      "completedAt": "2026-09-11T04:15:59.870Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-13.stdout.txt",
+        "bytes": 112,
+        "sha256": "c39012fcbf3e1f33d4399d76498e8ed7d3b24b6c30e172cdd4262937f6a6df45"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-13.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "program": "git",
+      "args": [
+        "config",
+        "user.name",
+        "Reviewer Fixture"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-061-review-git-WSukOz\\pending-merge",
+      "startedAt": "2026-09-11T04:15:59.871Z",
+      "completedAt": "2026-09-11T04:15:59.932Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-14.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-14.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "program": "git",
+      "args": [
+        "config",
+        "user.email",
+        "reviewer@example.invalid"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-061-review-git-WSukOz\\pending-merge",
+      "startedAt": "2026-09-11T04:15:59.932Z",
+      "completedAt": "2026-09-11T04:15:59.997Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-15.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-15.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "program": "git",
+      "args": [
+        "add",
+        "--",
+        "a.txt"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-061-review-git-WSukOz\\pending-merge",
+      "startedAt": "2026-09-11T04:15:59.998Z",
+      "completedAt": "2026-09-11T04:16:00.064Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-16.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-16.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "program": "git",
+      "args": [
+        "commit",
+        "-m",
+        "fixture base"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-061-review-git-WSukOz\\pending-merge",
+      "startedAt": "2026-09-11T04:16:00.064Z",
+      "completedAt": "2026-09-11T04:16:00.172Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-17.stdout.txt",
+        "bytes": 102,
+        "sha256": "f1b6d92c635970a2b2567420a53b22ca9d575768e50e71622ac9f11c1376f69d"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-17.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "program": "git",
+      "args": [
+        "checkout",
+        "-b",
+        "topic"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-061-review-git-WSukOz\\pending-merge",
+      "startedAt": "2026-09-11T04:16:00.173Z",
+      "completedAt": "2026-09-11T04:16:00.251Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-18.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-18.stderr.txt",
+        "bytes": 33,
+        "sha256": "ac71eeb3cc7a60f8cb176f241c72a9d20ea6c26a8d496cfdb4b0d88fc0c01e1f"
+      }
+    },
+    {
+      "program": "git",
+      "args": [
+        "add",
+        "--",
+        "a.txt"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-061-review-git-WSukOz\\pending-merge",
+      "startedAt": "2026-09-11T04:16:00.252Z",
+      "completedAt": "2026-09-11T04:16:00.319Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-19.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-19.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "program": "git",
+      "args": [
+        "commit",
+        "-m",
+        "fixture topic"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-061-review-git-WSukOz\\pending-merge",
+      "startedAt": "2026-09-11T04:16:00.319Z",
+      "completedAt": "2026-09-11T04:16:00.427Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-20.stdout.txt",
+        "bytes": 77,
+        "sha256": "2eb4a832371ea0453af6bdfff314d3594a7d7ab5ec9687c5358aba15b9847724"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-20.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "program": "git",
+      "args": [
+        "checkout",
+        "main"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-061-review-git-WSukOz\\pending-merge",
+      "startedAt": "2026-09-11T04:16:00.428Z",
+      "completedAt": "2026-09-11T04:16:00.504Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-21.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-21.stderr.txt",
+        "bytes": 26,
+        "sha256": "6300963e525f04410f9d2df59c376a7490543a6db6823dd3351451dad11cfcb0"
+      }
+    },
+    {
+      "program": "git",
+      "args": [
+        "add",
+        "--",
+        "a.txt"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-061-review-git-WSukOz\\pending-merge",
+      "startedAt": "2026-09-11T04:16:00.506Z",
+      "completedAt": "2026-09-11T04:16:00.572Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-22.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-22.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "program": "git",
+      "args": [
+        "commit",
+        "-m",
+        "fixture main"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-061-review-git-WSukOz\\pending-merge",
+      "startedAt": "2026-09-11T04:16:00.573Z",
+      "completedAt": "2026-09-11T04:16:00.683Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-23.stdout.txt",
+        "bytes": 75,
+        "sha256": "fce3f89baad4006ac991851bf09fae9899feaa4a0cf1a91b3a0a76ac20fe24ae"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-23.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "program": "git",
+      "args": [
+        "merge",
+        "--no-ff",
+        "--no-commit",
+        "topic"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-061-review-git-WSukOz\\pending-merge",
+      "startedAt": "2026-09-11T04:16:00.684Z",
+      "completedAt": "2026-09-11T04:16:00.799Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-24.stdout.txt",
+        "bytes": 19,
+        "sha256": "aad53baecb34ebba790570daced9f83424bd561734a82f617523bdd219410757"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-24.stderr.txt",
+        "bytes": 66,
+        "sha256": "96bb6a194a796153cbd0c640642866371219451832063763d544b942a8d97c4e"
+      }
+    },
+    {
+      "program": "git",
+      "args": [
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-061-review-git-WSukOz\\pending-merge",
+      "startedAt": "2026-09-11T04:16:00.799Z",
+      "completedAt": "2026-09-11T04:16:00.858Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-25.stdout.txt",
+        "bytes": 41,
+        "sha256": "7cf3961bd30df1ab8da440e41e000feb22eb7e68857ee302d3b7213044452f72"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-25.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "program": "git",
+      "args": [
+        "rev-parse",
+        "MERGE_HEAD"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-061-review-git-WSukOz\\pending-merge",
+      "startedAt": "2026-09-11T04:16:00.859Z",
+      "completedAt": "2026-09-11T04:16:00.921Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-26.stdout.txt",
+        "bytes": 41,
+        "sha256": "69e9c8786deba6044d27f354cb52adb11748057f58dd7f34ed023beffd60c379"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-26.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "program": "git",
+      "args": [
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-061-review-git-WSukOz\\pending-merge",
+      "startedAt": "2026-09-11T04:16:01.262Z",
+      "completedAt": "2026-09-11T04:16:01.324Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-27.stdout.txt",
+        "bytes": 41,
+        "sha256": "7cf3961bd30df1ab8da440e41e000feb22eb7e68857ee302d3b7213044452f72"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-27.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "program": "git",
+      "args": [
+        "show",
+        "-s",
+        "--format=%P",
+        "HEAD"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-061-review-git-WSukOz\\pending-merge",
+      "startedAt": "2026-09-11T04:16:01.324Z",
+      "completedAt": "2026-09-11T04:16:01.388Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-28.stdout.txt",
+        "bytes": 41,
+        "sha256": "5a64cb8758d117f4f5b28ccdeeaef998cfce6a01ada6e0d90ef304aa4cc203fa"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-28.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "program": "git",
+      "args": [
+        "add",
+        "."
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-061-review-git-WSukOz\\flowkit-integration-iWJuEm",
+      "startedAt": "2026-09-11T04:16:01.915Z",
+      "completedAt": "2026-09-11T04:16:01.989Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-29.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-29.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "program": "git",
+      "args": [
+        "commit",
+        "-m",
+        "fixture existing checkpoint"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-061-review-git-WSukOz\\flowkit-integration-iWJuEm",
+      "startedAt": "2026-09-11T04:16:01.989Z",
+      "completedAt": "2026-09-11T04:16:02.111Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-30.stdout.txt",
+        "bytes": 313,
+        "sha256": "35caae6a217ff64eec14d7ad62f7f8a03357f28a71cfcbcc3bfd64a136e2334e"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-30.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "program": "git",
+      "args": [
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-061-review-git-WSukOz\\flowkit-integration-iWJuEm",
+      "startedAt": "2026-09-11T04:16:02.112Z",
+      "completedAt": "2026-09-11T04:16:02.172Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-31.stdout.txt",
+        "bytes": 41,
+        "sha256": "410cba9a6650816b2f1545f4a2c441faeb910fefb17914baa7974d9f4339c444"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-31.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "program": "git",
+      "args": [
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-061-review-git-WSukOz\\flowkit-integration-iWJuEm",
+      "startedAt": "2026-09-11T04:16:02.717Z",
+      "completedAt": "2026-09-11T04:16:02.776Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-32.stdout.txt",
+        "bytes": 41,
+        "sha256": "410cba9a6650816b2f1545f4a2c441faeb910fefb17914baa7974d9f4339c444"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-061-review-apply/native-32.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ]
+}

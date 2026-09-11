@@ -24,4 +24,6 @@ export * from "./delivery-final-execution.js";
 
 export * from "./delivery-repository-integration-operation.js";
 export * from "./delivery-repository-integration-execution.js";
+export * from "./git-workflow-host.js";
+export * from "./git-workflow-integration-host.js";
 export { readCurrentDeliveryFullTest } from "../internal/full-test-current.js";

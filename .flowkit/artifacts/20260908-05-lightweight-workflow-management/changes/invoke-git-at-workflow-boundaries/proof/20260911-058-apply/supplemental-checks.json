@@ -1,0 +1,204 @@
+{
+  "status": "passed",
+  "mismatch": {
+    "status": "incomplete",
+    "phase": "readback",
+    "reason": "Error: 远端本次读回不等于授权对象",
+    "observed": {
+      "checkpointCommit": "30f63fcaf05dda29c7ac45672d3038feaf168df9",
+      "remoteCommit": "b3b0bb7ef1cd1efe0cda43cdb55202eaaf9c7ac5"
+    },
+    "effect": "unknown",
+    "remaining": [
+      "核对远端本次状态及权限；不自动重推或 PR/merge"
+    ]
+  },
+  "refused": {
+    "status": "incomplete",
+    "phase": "publication",
+    "reason": "Error: Command failed: git push --no-force -- origin b3b0bb7ef1cd1efe0cda43cdb55202eaaf9c7ac5:refs/heads/main\nTo D:\\Projects\\flowkit-next\\.tmp\\d05-058-supplement-Ppezr9\\remote.git\n ! [rejected]        b3b0bb7ef1cd1efe0cda43cdb55202eaaf9c7ac5 -> main (non-fast-forward)\nerror: failed to push some refs to 'D:\\Projects\\flowkit-next\\.tmp\\d05-058-supplement-Ppezr9\\remote.git'\nhint: Updates were rejected because the tip of your current branch is behind\nhint: its remote counterpart. If you want to integrate the remote changes,\nhint: use 'git pull' before pushing again.\nhint: See the 'Note about fast-forwards' in 'git push --help' for details.\n",
+    "observed": {
+      "checkpointCommit": "b3b0bb7ef1cd1efe0cda43cdb55202eaaf9c7ac5",
+      "remoteCommit": "30f63fcaf05dda29c7ac45672d3038feaf168df9"
+    },
+    "effect": "unknown",
+    "remaining": [
+      "核对远端本次状态及权限；不自动重推或 PR/merge"
+    ]
+  },
+  "unsafe": {
+    "status": "incomplete",
+    "phase": "preflight",
+    "reason": "无法安全解释目标: directory",
+    "observed": {
+      "checkpointCommit": null,
+      "remoteCommit": null
+    },
+    "effect": "none",
+    "remaining": [
+      "核对本次权限、范围和目标后显式调用"
+    ]
+  },
+  "substituted": {
+    "status": "incomplete",
+    "phase": "preflight",
+    "reason": "分支或 Owner 来源不匹配",
+    "observed": {
+      "checkpointCommit": null,
+      "remoteCommit": null
+    },
+    "effect": "none",
+    "remaining": [
+      "核对本次权限、范围和目标后显式调用"
+    ]
+  },
+  "commands": [
+    {
+      "args": [
+        "init",
+        "-b",
+        "main"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-058-supplement-Ppezr9\\target",
+      "status": 0
+    },
+    {
+      "args": [
+        "config",
+        "user.name",
+        "Supplement fixture"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-058-supplement-Ppezr9\\target",
+      "status": 0
+    },
+    {
+      "args": [
+        "config",
+        "user.email",
+        "fixture@example.invalid"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-058-supplement-Ppezr9\\target",
+      "status": 0
+    },
+    {
+      "args": [
+        "add",
+        "a.txt"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-058-supplement-Ppezr9\\target",
+      "status": 0
+    },
+    {
+      "args": [
+        "commit",
+        "-m",
+        "base"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-058-supplement-Ppezr9\\target",
+      "status": 0
+    },
+    {
+      "args": [
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-058-supplement-Ppezr9\\target",
+      "status": 0
+    },
+    {
+      "args": [
+        "init",
+        "--bare"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-058-supplement-Ppezr9\\remote.git",
+      "status": 0
+    },
+    {
+      "args": [
+        "remote",
+        "add",
+        "origin",
+        "D:\\Projects\\flowkit-next\\.tmp\\d05-058-supplement-Ppezr9\\remote.git"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-058-supplement-Ppezr9\\target",
+      "status": 0
+    },
+    {
+      "args": [
+        "push",
+        "origin",
+        "main"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-058-supplement-Ppezr9\\target",
+      "status": 0
+    },
+    {
+      "args": [
+        "add",
+        "a.txt"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-058-supplement-Ppezr9\\target",
+      "status": 0
+    },
+    {
+      "args": [
+        "commit",
+        "-m",
+        "next"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-058-supplement-Ppezr9\\target",
+      "status": 0
+    },
+    {
+      "args": [
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-058-supplement-Ppezr9\\target",
+      "status": 0
+    },
+    {
+      "args": [
+        "push",
+        "origin",
+        "main"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d05-058-supplement-Ppezr9\\target",
+      "status": 0
+    }
+  ],
+  "acceptedProposalBytesVerified": [
+    {
+      "path": "openspec/changes/invoke-git-at-workflow-boundaries/explore.md",
+      "bytes": 11268,
+      "sha256": "dfb6de24955d031d30360ac84ea33d05ad198efc19abdd0d951346a1ab5a4e9e"
+    },
+    {
+      "path": "openspec/changes/invoke-git-at-workflow-boundaries/proposal.md",
+      "bytes": 2898,
+      "sha256": "939500b585ef6bf41452cf082962c12d8ed50e4a86f6112d969fb6400fe94a22"
+    },
+    {
+      "path": "openspec/changes/invoke-git-at-workflow-boundaries/design.md",
+      "bytes": 13843,
+      "sha256": "8d5d18a353dba8d3fa2aaeeb3e10a230121617421e6f3d0319a8ad62c558cadd"
+    },
+    {
+      "path": "openspec/changes/invoke-git-at-workflow-boundaries/tasks.md",
+      "bytes": 4218,
+      "sha256": "7f882bee014c51959a9f3d63c70e78e72727b9016670c07fb3543548c9740abd"
+    },
+    {
+      "path": "openspec/changes/invoke-git-at-workflow-boundaries/specs/repository-integration-and-next-base-continuity/spec.md",
+      "bytes": 12463,
+      "sha256": "16469d4b6a847cad7546f93987f74099712ef2a1b928e8abc9a1226c7b791ec3"
+    },
+    {
+      "path": "openspec/changes/invoke-git-at-workflow-boundaries/specs/delivery-operation-execution-and-start-continuity/spec.md",
+      "bytes": 2461,
+      "sha256": "5700c611159dbb0a5121ef32e106ebf7521df4d9d88cf5c492461bb77fb44f04"
+    }
+  ],
+  "source": "current build, synthetic bounded fixture permissions",
+  "formalD05FullTest": false
+}

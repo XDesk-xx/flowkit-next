@@ -1,0 +1,32 @@
+{
+  "kind": "external-orchestrator-propose-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "author",
+  "action": "propose",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "invoke-git-at-workflow-boundaries",
+  "projectOrdinal": 38,
+  "runId": "20260911-056-propose",
+  "previousRunId": "20260909-055-review-explore",
+  "startedAt": "2026-09-11 02:39:32 UTC",
+  "ownerInstruction": "根据最新run，propose",
+  "acceptedReview": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260909-055-review-explore/result.json",
+  "repositoryHead": "a0edb690d7208a3b81855e30a31dbc175f060a93",
+  "proofRoot": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-056-propose",
+  "scope": "沿用 054 Explore 与 055 approved，仅生成 proposal/design/tasks 及相关 delta specs，记录真实 Propose 后交接独立 review-propose。",
+  "ownerDecisionsRelevant": [
+    {
+      "sourceRef": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260909-054-explore/context.json#ownerDecisionsRelevant",
+      "decision": "Git 明确授权与范围，非统一 clean/形状 gate；必要材料 target artifacts，.tmp 可丢弃；独立 bootstrap，不恢复外部管理或 candidate 自管。"
+    }
+  ],
+  "nonGoals": [
+    "Apply",
+    "Git mutation",
+    "自动独立审查",
+    "实际 D05 Full Test/Final",
+    "新 CLI 写命令或 Runtime/Policy/Run schema",
+    "修改历史/主规范/现有 Skill"
+  ]
+}

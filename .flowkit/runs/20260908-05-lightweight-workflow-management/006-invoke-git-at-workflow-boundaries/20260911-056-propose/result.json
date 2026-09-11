@@ -1,0 +1,130 @@
+{
+  "kind": "external-orchestrator-propose-result",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "author",
+  "action": "propose",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "invoke-git-at-workflow-boundaries",
+  "projectOrdinal": 38,
+  "runId": "20260911-056-propose",
+  "previousRunId": "20260909-055-review-explore",
+  "status": "terminal",
+  "authorConclusion": "PASS",
+  "meaning": "计划收敛与结构验证通过，待独立 review-propose；不代表实现或 Review approved。",
+  "startedAt": "2026-09-11 02:39:32 UTC",
+  "completedAt": "2026-09-11T02:46:50.980Z",
+  "acceptedReview": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260909-055-review-explore/result.json",
+    "bytes": 9139,
+    "sha256": "6c8caaf586d68b217308bd42c8d982f98afb755f1569f403ef57509dd882b69e"
+  },
+  "acceptedExplore": {
+    "path": "openspec/changes/invoke-git-at-workflow-boundaries/explore.md",
+    "bytes": 11268,
+    "sha256": "dfb6de24955d031d30360ac84ea33d05ad198efc19abdd0d951346a1ab5a4e9e"
+  },
+  "ancestorExplore": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260909-054-explore/result.json",
+    "bytes": 5631,
+    "sha256": "caedba4c908830361391152919d47d9b31a1120df195b62634dffae38b4d651a"
+  },
+  "artifacts": [
+    {
+      "path": "openspec/changes/invoke-git-at-workflow-boundaries/proposal.md",
+      "bytes": 2898,
+      "sha256": "939500b585ef6bf41452cf082962c12d8ed50e4a86f6112d969fb6400fe94a22"
+    },
+    {
+      "path": "openspec/changes/invoke-git-at-workflow-boundaries/design.md",
+      "bytes": 13843,
+      "sha256": "8d5d18a353dba8d3fa2aaeeb3e10a230121617421e6f3d0319a8ad62c558cadd"
+    },
+    {
+      "path": "openspec/changes/invoke-git-at-workflow-boundaries/tasks.md",
+      "bytes": 4218,
+      "sha256": "7f882bee014c51959a9f3d63c70e78e72727b9016670c07fb3543548c9740abd"
+    },
+    {
+      "path": "openspec/changes/invoke-git-at-workflow-boundaries/specs/repository-integration-and-next-base-continuity/spec.md",
+      "bytes": 12463,
+      "sha256": "16469d4b6a847cad7546f93987f74099712ef2a1b928e8abc9a1226c7b791ec3"
+    },
+    {
+      "path": "openspec/changes/invoke-git-at-workflow-boundaries/specs/delivery-operation-execution-and-start-continuity/spec.md",
+      "bytes": 2461,
+      "sha256": "5700c611159dbb0a5121ef32e106ebf7521df4d9d88cf5c492461bb77fb44f04"
+    }
+  ],
+  "ancestorHandoff": [
+    {
+      "source": {
+        "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260909-054-explore/result.json",
+        "bytes": 5631,
+        "sha256": "caedba4c908830361391152919d47d9b31a1120df195b62634dffae38b4d651a"
+      },
+      "scope": "激活 manifest、scaffold、Explore 与必要 proof refs；无删除。"
+    },
+    {
+      "source": {
+        "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260909-055-review-explore/result.json",
+        "bytes": 9139,
+        "sha256": "6c8caaf586d68b217308bd42c8d982f98afb755f1569f403ef57509dd882b69e"
+      },
+      "scope": "独立审查及相关依据、Owner 决定；不重写原材料。"
+    }
+  ],
+  "removedPaths": [],
+  "ownerDecisionsRelevant": [
+    {
+      "sourceRef": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260909-054-explore/context.json#ownerDecisionsRelevant",
+      "decision": "Git 明确授权与范围，非统一 clean/形状 gate；必要材料 target artifacts，.tmp 可丢弃；独立 bootstrap，不恢复外部管理或 candidate 自管。"
+    }
+  ],
+  "verification": {
+    "openspecStrictExitCode": 0,
+    "allPlanningArtifactsDone": true,
+    "modifiedRequirements": 4,
+    "addedRequirements": 3,
+    "priorScenariosPreserved": true,
+    "uncheckedTasks": 17,
+    "implementationAcceptance": false,
+    "formalD05FullTest": false
+  },
+  "proofRefs": [
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-056-propose/convergence.md",
+      "bytes": 1208,
+      "sha256": "6044261f4cbe8db8a33ff6aee74155c3e5b16cb46fb5504281a87a2937be1807"
+    },
+    {
+      "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-056-propose/evidence-index.json",
+      "bytes": 2509,
+      "sha256": "5356faa8f8ca944b61b616a13fed294ea317b1f639e78a6e63ad9b1bb464b50f"
+    }
+  ],
+  "runArtifacts": [
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260911-056-propose/action.md",
+      "bytes": 332,
+      "sha256": "7fd8621d8f678d49ea8b7b8c86add7f55157484f86b77360e779782d3c5a9d25"
+    },
+    {
+      "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260911-056-propose/context.json",
+      "bytes": 1655,
+      "sha256": "492d47d79656b829ddca7345bdc3d82d445691164006e8a6bddc5d4820398d89"
+    }
+  ],
+  "blockingUnknowns": [],
+  "nextBoundary": "review-propose",
+  "reviewerVerdict": null,
+  "productionMutation": false,
+  "testMutation": false,
+  "skillMutation": false,
+  "mainSpecMutation": false,
+  "manifestMutation": false,
+  "historicalRunMutation": false,
+  "gitMutation": false,
+  "applyExecuted": false,
+  "stop": true
+}

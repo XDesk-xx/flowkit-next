@@ -1,0 +1,22 @@
+{"target":"D:\\Projects\\flowkit-next\\.tmp\\d05-058-conflict-OYFoaa","args":["init","-b","main"],"exitCode":0}
+Initialized empty Git repository in D:/Projects/flowkit-next/.tmp/d05-058-conflict-OYFoaa/.git/
+{"target":"D:\\Projects\\flowkit-next\\.tmp\\d05-058-conflict-OYFoaa","args":["config","user.name","Conflict fixture"],"exitCode":0}
+{"target":"D:\\Projects\\flowkit-next\\.tmp\\d05-058-conflict-OYFoaa","args":["config","user.email","fixture@example.invalid"],"exitCode":0}
+{"target":"D:\\Projects\\flowkit-next\\.tmp\\d05-058-conflict-OYFoaa","args":["add","a.txt"],"exitCode":0}
+{"target":"D:\\Projects\\flowkit-next\\.tmp\\d05-058-conflict-OYFoaa","args":["commit","-m","base"],"exitCode":0}
+[main (root-commit) 6472bb2] base
+ 1 file changed, 1 insertion(+)
+ create mode 100644 a.txt
+{"target":"D:\\Projects\\flowkit-next\\.tmp\\d05-058-conflict-OYFoaa","args":["checkout","-b","other"],"exitCode":0}
+{"target":"D:\\Projects\\flowkit-next\\.tmp\\d05-058-conflict-OYFoaa","args":["commit","-am","other"],"exitCode":0}
+[other 048a6b0] other
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+{"target":"D:\\Projects\\flowkit-next\\.tmp\\d05-058-conflict-OYFoaa","args":["checkout","main"],"exitCode":0}
+{"target":"D:\\Projects\\flowkit-next\\.tmp\\d05-058-conflict-OYFoaa","args":["commit","-am","main"],"exitCode":0}
+[main e7cb127] main
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+{"target":"D:\\Projects\\flowkit-next\\.tmp\\d05-058-conflict-OYFoaa","args":["merge","other"],"exitCode":1}
+Auto-merging a.txt
+CONFLICT (content): Merge conflict in a.txt
+Automatic merge failed; fix conflicts and then commit the result.
+{"status":"passed","outcome":{"status":"incomplete","phase":"preflight","reason":"index 存在未合并条目","observed":{"checkpointCommit":null,"remoteCommit":null},"effect":"none","remaining":["核对本次权限、范围和目标后显式调用"]},"preservedIndex":"8dfdebb8a6b5fc0bf0a004656375e220a7a3be1ea837d00d5ca61337bd516cbc","fixtureOnly":true}

@@ -119,7 +119,27 @@ test("without Archify: real Start/checks/Final/local Git integration; OpenSpec a
       sourceRef: "test:integration-owner",
       scope: ["delivery-repository-integration"],
     };
-    const checkpointOperation = { kind: "create-new" as const };
+    const checkpointOperation = {
+      kind: "create-new" as const,
+      paths: [
+        ...new Set(
+          (
+            await git(
+              root,
+              "ls-files",
+              "--cached",
+              "--others",
+              "--exclude-standard",
+              "-z",
+            )
+          )
+            .split("\0")
+            .filter(Boolean),
+        ),
+      ].sort(),
+      commitMessage: "fixture final checkpoint",
+      commitShape: null,
+    };
     const source: ReadRepositoryIntegrationSource = {
       readAuthorization: () => ({
         sourceRef: "test:integration-authorization",

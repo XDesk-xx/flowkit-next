@@ -10,7 +10,12 @@ test("Integration local projection golden vector, property ordering and old shap
   const facts = {
     deliveryFinalizationRef: "delivery-finalization:sha256:" + "1".repeat(64),
     preIntegrationHead: "2".repeat(40),
-    checkpointOperation: { kind: "create-new" },
+    checkpointOperation: {
+      kind: "create-new",
+      paths: ["product.txt"],
+      commitMessage: "checkpoint",
+      commitShape: null,
+    },
     deliveryBranch: "delivery/test",
     targetMainRef: "refs/heads/main",
     targetMainPreIntegrationCommit: "4".repeat(40),
@@ -34,7 +39,7 @@ test("Integration local projection golden vector, property ordering and old shap
   );
   assert.notEqual(formed, null);
   const ref =
-    "repository-integration:sha256:5e3754e0e6df438553481c07bc228b5ae6c256d6f61ce77bf5305a5b2fcbd300";
+    "repository-integration:sha256:ff64ac4b9f4d5f0d9d1cd308141e96418d6cb4abb109cc38eccef03dda3c79f8";
   assert.equal(
     deriveDeliveryRepositoryIntegrationRef(
       formed,
@@ -79,6 +84,44 @@ test("Integration local projection golden vector, property ordering and old shap
     acceptedMainCommit: "5".repeat(40),
     nextDeliveryBase: "5".repeat(40),
   };
+  for (const checkpointOperation of [
+    { ...facts.checkpointOperation, paths: ["other.txt"] },
+    { ...facts.checkpointOperation, commitMessage: "changed" },
+    {
+      ...facts.checkpointOperation,
+      commitShape: { parents: ["2".repeat(40)], count: 1 },
+    },
+  ]) {
+    assert.notEqual(
+      deriveDeliveryRepositoryIntegrationRef(
+        { ...formed, operationFacts: { ...facts, checkpointOperation } },
+        "3".repeat(40),
+        "5".repeat(40),
+      ),
+      ref,
+    );
+    assert.equal(
+      isDeliveryRepositoryIntegrationRecordForPackage(
+        { ...record, checkpointOperation },
+        formed,
+      ),
+      false,
+    );
+  }
+  assert.equal(
+    deriveDeliveryRepositoryIntegrationRef(
+      {
+        ...formed,
+        operationFacts: {
+          ...facts,
+          checkpointOperation: { kind: "create-new" },
+        },
+      },
+      "3".repeat(40),
+      "5".repeat(40),
+    ),
+    null,
+  );
   assert.equal(
     isDeliveryRepositoryIntegrationRecordForPackage(record, formed),
     true,

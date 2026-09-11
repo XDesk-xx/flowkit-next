@@ -1,0 +1,28 @@
+{
+  "kind": "external-orchestrator-archive-context",
+  "executionMode": "independent-bootstrap",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "action": "archive",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "invoke-git-at-workflow-boundaries",
+  "projectOrdinal": 38,
+  "runId": "20260911-062-archive",
+  "previousRunId": "20260911-061-review-apply",
+  "startedAt": "2026-09-11T04:27:27.591Z",
+  "ownerInstruction": "根据最新run，archive",
+  "archivePath": "openspec/changes/archive/2026-09-11-038-invoke-git-at-workflow-boundaries",
+  "proofRoot": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-062-archive",
+  "acceptedReview": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260911-061-review-apply/result.json",
+    "bytes": 10482,
+    "sha256": "381fbcd7039d44ce463792cda4f532c05a7d16fe884479092fc873749a2369ae"
+  },
+  "ownerDecisionsRelevant": [
+    {
+      "sourceRef": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260909-054-explore/context.json#ownerDecisionsRelevant",
+      "decision": "按 Owner 明确操作/范围调用 Git，不恢复全仓 clean/固定形状门槛，不自动恢复；D05 independent-bootstrap，必要材料留 target artifacts。"
+    }
+  ],
+  "scope": "同步两个已批准 delta、移动当前 Change、仅更新其 completed 状态；不改实现，不执行 Git 或 Delivery Final。"
+}

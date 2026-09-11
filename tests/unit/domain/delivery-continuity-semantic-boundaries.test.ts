@@ -72,7 +72,27 @@ async function integrationFixture() {
     deliveryBranch: "delivery/decoupling-probe",
     targetMainRef: "refs/heads/main",
     acceptedBaseCommit,
-    checkpointOperation: { kind: "create-new" as const },
+    checkpointOperation: {
+      kind: "create-new" as const,
+      paths: [
+        ...new Set(
+          (
+            await git(
+              fixture.root,
+              "ls-files",
+              "--cached",
+              "--others",
+              "--exclude-standard",
+              "-z",
+            )
+          )
+            .split("\0")
+            .filter(Boolean),
+        ),
+      ].sort(),
+      commitMessage: "checkpoint",
+      commitShape: null,
+    },
   };
   return {
     fixture,

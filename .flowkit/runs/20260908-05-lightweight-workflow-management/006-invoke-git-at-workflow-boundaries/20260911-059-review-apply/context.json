@@ -1,0 +1,41 @@
+{
+  "kind": "external-orchestrator-review-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "reviewer",
+  "action": "review-apply",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "invoke-git-at-workflow-boundaries",
+  "projectOrdinal": 38,
+  "runId": "20260911-059-review-apply",
+  "previousRunId": "20260911-058-apply",
+  "reviewedRunId": "20260911-058-apply",
+  "startedAt": "2026-09-11T03:40:51.652Z",
+  "ownerInstruction": "根据最新run，review，review 完，简短解释当前方案",
+  "reviewerHow": ".agents/skills/review-apply/SKILL.md",
+  "reviewedResult": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260911-058-apply/result.json",
+    "bytes": 3225,
+    "sha256": "d2883c74c18b4f208abcec715d8bc51a17bce3a40ec26f02a2204f6b79f5af84"
+  },
+  "mutationBaseline": {
+    "files": 4996,
+    "sha256": "3bfc4c55a5afb85c64bab13ec5fcbb816d8ce26c011966ecc8dcc2b0a257e121",
+    "method": "sha256(JSON.stringify(sorted unique git ls-files --cached --others --exclude-standard -z paths mapped to path, bytes, raw SHA256; absent/link explicit; exclude own Run/proof))",
+    "head": "a0edb690d7208a3b81855e30a31dbc175f060a93",
+    "at": "2026-09-11T03:40:51.652Z"
+  },
+  "proofRoot": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-059-review-apply",
+  "preparation": {
+    "verifiedReferences": 158,
+    "payloadFiles": 38,
+    "approvedPlanUnchangedExceptTaskCompletion": true
+  },
+  "scope": "独立审查 058 Apply 对 056/057 已批准合同的实现、权限/范围/实际结果与必要证据；只写自身 Run/proof，Git 实验仅限可丢弃 fixture。",
+  "ownerDecisionsRelevant": [
+    {
+      "sourceRef": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260909-054-explore/context.json#ownerDecisionsRelevant",
+      "decision": "按 Owner 明确操作/范围调用 Git，不统一 clean/形状门槛，不自动恢复；D05 independent-bootstrap，必要材料留 target artifacts。"
+    }
+  ]
+}

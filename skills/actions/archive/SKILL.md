@@ -246,3 +246,5 @@ STOP
 ```
 
 Do not activate another Change, finalize the Delivery, or commit/push/merge unless a separate legal boundary supplies those actions.
+
+独立授权的 Change checkpoint 可使用本安装 [Git 宿主 HOW](../../delivery/repository-integration/references/host-call.md)，消费既有 evaluator 与真实 Owner 来源；不要求 Final/Integration，不把 Git 变成 archive 的一部分。

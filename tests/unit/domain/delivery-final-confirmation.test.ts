@@ -32,7 +32,7 @@ async function freshProcess(root: string, base: string) {
     const ownerAuthority = { ref: "owner:" + "d".repeat(64), decision: "authorize-repository-integration",
       deliveryId, sourceRef: "test:independent-integration-owner", scope: ["delivery-repository-integration"] };
     const input = { deliveryId, ownerAuthority, deliveryBranch: "delivery/test", targetMainRef: "refs/heads/main",
-      acceptedBaseCommit: base, checkpointOperation: { kind: "create-new" } };
+      acceptedBaseCommit: base, checkpointOperation: { kind: "create-new", paths: ["product.txt"], commitMessage: "checkpoint", commitShape: null } };
     // Explicit test host source, not an independent real repository authorization.
     const source = { readAuthorization: () => ({ sourceRef: "test:accepted-owner", ownerAuthorityRef: ownerAuthority.ref,
       ownerAuthoritySourceRef: ownerAuthority.sourceRef, deliveryId, deliveryBranch: input.deliveryBranch,

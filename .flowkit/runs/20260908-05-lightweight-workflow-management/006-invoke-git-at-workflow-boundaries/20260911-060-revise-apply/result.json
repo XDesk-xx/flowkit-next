@@ -1,0 +1,63 @@
+{
+  "kind": "external-orchestrator-revise-apply-result",
+  "executionMode": "independent-bootstrap",
+  "canonicalFlowkitRuntimeRun": false,
+  "role": "author",
+  "action": "revise-apply",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "invoke-git-at-workflow-boundaries",
+  "projectOrdinal": 38,
+  "runId": "20260911-060-revise-apply",
+  "previousRunId": "20260911-059-review-apply",
+  "status": "terminal",
+  "authorConclusion": "completed",
+  "startedAt": "2026-09-11T03:54:10Z",
+  "completedAt": "2026-09-11T04:09:08.203Z",
+  "correctedFindings": [
+    "D05-RA038-001",
+    "D05-RA038-002",
+    "D05-RA038-003"
+  ],
+  "previousReview": {
+    "path": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260911-059-review-apply/result.json",
+    "bytes": 10946,
+    "sha256": "5208312de3eb689d2c098ea3b26fdbdb8f716ff74a5d56b10c63ae5b98006e0c"
+  },
+  "revisionReport": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-060-revise-apply/revision-report.md",
+    "bytes": 3296,
+    "sha256": "65d25faa88055eca9319ec499f7d6020b1ccfc9c92c706b89a3f19fe15caeec9"
+  },
+  "verification": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-060-revise-apply/verification-audit.json",
+    "bytes": 3154,
+    "sha256": "e46766a60ce2b7134495060950eb71c2198a58462072687c0e366555942533d6"
+  },
+  "payload": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-060-revise-apply/payload.json",
+    "bytes": 1750,
+    "sha256": "4c4609d264bcc67b63ab247b44bed3c75566fdfb010124acc1adef7c7d84f00f"
+  },
+  "evidenceIndex": {
+    "path": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-060-revise-apply/evidence-index.json",
+    "bytes": 32211,
+    "sha256": "9b6808d629c67e7bb5a7c1579fb5ad72982655922aaa229318102d306ad30855"
+  },
+  "ownerDecisionsRelevant": [
+    {
+      "sourceRef": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260909-054-explore/context.json#ownerDecisionsRelevant",
+      "decision": "Git 按明确范围执行，必要材料留 target artifacts，.tmp 可丢弃；不恢复全仓 clean/固定形状 gate，不自动恢复；D05 independent-bootstrap。"
+    }
+  ],
+  "blockingUnknowns": [],
+  "removedPaths": [],
+  "boundary": {
+    "independentReviewerVerdict": null,
+    "proposalChanged": false,
+    "historicalRunsChanged": false,
+    "currentRepositoryGitMutation": false,
+    "formalD05FullTest": false
+  },
+  "nextBoundary": "review-apply",
+  "stop": true
+}

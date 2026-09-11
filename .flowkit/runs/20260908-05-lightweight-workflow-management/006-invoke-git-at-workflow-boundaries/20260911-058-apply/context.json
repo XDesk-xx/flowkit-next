@@ -1,0 +1,24 @@
+{
+  "kind": "external-orchestrator-apply-context",
+  "canonicalFlowkitRuntimeRun": false,
+  "executionMode": "independent-bootstrap",
+  "role": "author",
+  "action": "apply",
+  "deliveryId": "20260908-05-lightweight-workflow-management",
+  "changeId": "invoke-git-at-workflow-boundaries",
+  "projectOrdinal": 38,
+  "runId": "20260911-058-apply",
+  "previousRunId": "20260911-057-review-propose",
+  "startedAt": "2026-09-11T03:06:38Z",
+  "ownerInstruction": "根据最新run，apply",
+  "acceptedReview": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260911-057-review-propose/result.json",
+  "repositoryHead": "a0edb690d7208a3b81855e30a31dbc175f060a93",
+  "proofRoot": ".flowkit/artifacts/20260908-05-lightweight-workflow-management/changes/invoke-git-at-workflow-boundaries/proof/20260911-058-apply",
+  "ownerDecisionsRelevant": [{
+    "sourceRef": ".flowkit/runs/20260908-05-lightweight-workflow-management/006-invoke-git-at-workflow-boundaries/20260909-054-explore/context.json#ownerDecisionsRelevant",
+    "decision": "Git 明确授权与范围，非统一 clean/形状 gate；必要材料 target artifacts，临时 fixture .tmp 可丢弃；独立 bootstrap，不恢复外部管理或 candidate 自管。"
+  }],
+  "scope": "已批准的 17 项任务；fixture Git 是当前实现验收，不是当前仓库 checkpoint 或实际 D05 Full Test。",
+  "nextBoundary": "review-apply",
+  "nonGoals": ["当前仓库 Git mutation", "自动 Review/Archive", "实际 D05 Full Test/Final", "历史迁移", "Runtime/Policy/Run schema 变更"]
+}
