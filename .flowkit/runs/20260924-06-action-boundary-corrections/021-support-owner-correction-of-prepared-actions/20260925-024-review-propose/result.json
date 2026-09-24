@@ -1,0 +1,72 @@
+{
+  "runId": "20260925-024-review-propose",
+  "actionIdentity": {
+    "deliveryId": "20260924-06-action-boundary-corrections",
+    "changeId": "support-owner-correction-of-prepared-actions",
+    "actionId": "review-propose"
+  },
+  "authorConclusion": null,
+  "reviewerVerdict": "changes-requested",
+  "verificationVerdict": null,
+  "nextBoundary": "revise-propose",
+  "facts": {
+    "reviewedRunId": "20260925-023-propose",
+    "reviewedProposeResult": {
+      "path": ".flowkit/runs/20260924-06-action-boundary-corrections/021-support-owner-correction-of-prepared-actions/20260925-023-propose/result.json",
+      "sha256": "d8998b33df614976ebdb71a49da3485853cc53c5d6320480824020990825d6aa"
+    },
+    "approvedExploreReviewRunId": "20260925-022-review-explore",
+    "planningFileCount": 7,
+    "planningFileRefs": ".flowkit/runs/20260924-06-action-boundary-corrections/021-support-owner-correction-of-prepared-actions/20260925-023-propose/result.json#facts.planningArtifacts",
+    "proofRefs": [],
+    "summary": "七份规划文件和 approved Explore 一致，方向有界；但 prepared correction 要求的 exact current Run context/result 缺少与现有 terminal-only Policy 输入规范的收敛，需修订后再审。",
+    "findings": [
+      {
+        "id": "RP024-001",
+        "artifact": "openspec/changes/support-owner-correction-of-prepared-actions/specs/policy-and-next-boundary/spec.md",
+        "claim": "Owner correction 要求 active prepared Author Action 已由 exact current RunContext/Result 证明，且缺失或错配时 fail closed。",
+        "observed": "现行主规格的 Policy pure closed input 仅列 terminal 时的 exact current RunContextRecord + RunResultRecord；当前 PolicyFacts 仅有 terminalRunContext/terminalResult。该 delta 未修改输入要求，也未规定 prepared pair 的传入、RunId/ActionIdentity linkage 和缺失/错配的确定诊断。",
+        "impact": "Apply 无法从规范确定如何在纯 Policy seam 验证当前 prepared occurrence；可能只凭 CurrentAction semantic identity 接受旧/错 Run 的 correction，或与既有 terminal-only 输入合同冲突。",
+        "minimumCorrection": "在 policy-and-next-boundary delta 中收敛 Policy 输入要求：明确 prepared correction 所需的 exact current prepared context/result 如何由上游提供、与 CurrentAction/同一 RunId 如何绑定，以及缺失/错配/非 null outcome 的 fail-closed 结果；同步 design/tasks 的验证用例，不扩张状态或 Owner 授权类型。"
+      }
+    ],
+    "reviewerChecks": [
+      {
+        "check": "Seven Author planning artifact SHA/length readback",
+        "outcome": "7/7 match"
+      },
+      {
+        "check": "Approved Explore SHA and Reviewer result",
+        "outcome": "match and approved"
+      },
+      {
+        "command": "managed OpenSpec 1.10.0 strict validate",
+        "exitCode": 0,
+        "outcome": "structural PASS only"
+      },
+      {
+        "check": "baseline Policy input vs prepared delta/source",
+        "outcome": "terminal-only input remains unspecified for prepared pair"
+      }
+    ],
+    "assessments": {
+      "currentStep": "独立审查 exact 023 Proposal 七文件、已批准 Explore、当前 Policy 输入规范和 Apply readiness。",
+      "complexityAndMinimality": "双状态和既有 Policy/lifecycle/Run 链方向有界；补齐现有 Policy 输入契约即可，不需新层。",
+      "newContentAndScopeDrift": "scope drift: NONE；未见 LP 写入、通用取消平台、新 Owner decision 或 Git 权限。"
+    },
+    "limits": [
+      "OpenSpec strict PASS 只证明结构有效，不能证明 prepared Policy 输入语义完整。",
+      "Reviewer 未实现或修改 Proposal；此 verdict 不是 Apply/Verification PASS。"
+    ],
+    "handoff": {
+      "summary": "请在 revise-propose 中最小补齐 prepared exact Run pair 的 Policy 输入与 fail-closed 规范，再独立 review-propose。",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-09-25:activate-support-owner-correction-of-prepared-actions:proof-explore",
+          "summary": "本 Change 只处理 Owner 显式 prepared Author correction；LP 089 保持只读。"
+        }
+      ],
+      "evidenceRefs": []
+    }
+  }
+}

@@ -24,7 +24,8 @@ changes:
     goal: "允许明确 Owner 授权的 prepared Author Action 前向修正到合法 revise Action，并完整保留既有 Run 历史。"
     required: true
     dependsOn: []
-    state: planned
+    state: completed
+    projectOrdinal: 42
   - id: "preserve-managed-evidence-git-bytes"
     group: "evidence-integrity"
     goal: "仅约束今后新产生的 Flowkit Run/proof 在目标 Git 中保持原始字节，不追溯历史。"
@@ -52,6 +53,13 @@ ownerDecisions:
     deliveryId: "20260924-06-action-boundary-corrections"
     changeId: "preserve-managed-evidence-git-bytes"
     sourceRef: "owner-input:2026-09-24:add-preserve-managed-evidence-git-bytes:future-only"
+    scope:
+      - "explore"
+  - ref: "owner:d82bd9be81c149ece77c74128a6b1027946cfce07f724996dd63355e6b96e1d8"
+    decision: "activate-change"
+    deliveryId: "20260924-06-action-boundary-corrections"
+    changeId: "support-owner-correction-of-prepared-actions"
+    sourceRef: "owner-input:2026-09-25:activate-support-owner-correction-of-prepared-actions:proof-explore"
     scope:
       - "explore"
 reference:

@@ -1,6 +1,7 @@
 import { isOwnerAuthorityFact, type OwnerAuthorityFact } from "./authority.js";
 import {
   isCurrentAction,
+  supersedePreparedAction,
   transitionCurrentAction,
   type ActionIdentity,
   type CurrentAction,
@@ -16,6 +17,7 @@ import {
   hasMatchingRunLinkage,
   isRunContextRecord,
   isRunResultRecord,
+  parseRunOccurrenceId,
   type RunContextRecord,
   type RunResultRecord,
 } from "./run-result-persistence.js";
@@ -54,6 +56,9 @@ export interface PolicyFacts {
   readonly currentAction: CurrentAction | null;
   readonly terminalRunContext: RunContextRecord | null;
   readonly terminalResult: RunResultRecord | null;
+  readonly preparedCurrentRunId?: string | null;
+  readonly preparedRunContext?: RunContextRecord | null;
+  readonly preparedResult?: RunResultRecord | null;
   readonly ownerCorrection?: OwnerCorrectionRequest | null;
 }
 
@@ -67,6 +72,9 @@ type NormalBoundary = ActionBoundary | { readonly kind: "checkpoint" };
 
 type ParsedPolicyFacts = Omit<PolicyFacts, "ownerCorrection"> & {
   readonly ownerCorrection: OwnerCorrectionRequest | null;
+  readonly preparedCurrentRunId: string | null;
+  readonly preparedRunContext: RunContextRecord | null;
+  readonly preparedResult: RunResultRecord | null;
 };
 
 const POLICY_FIELDS = new Set([
@@ -76,6 +84,9 @@ const POLICY_FIELDS = new Set([
   "currentAction",
   "terminalRunContext",
   "terminalResult",
+  "preparedCurrentRunId",
+  "preparedRunContext",
+  "preparedResult",
   "ownerCorrection",
 ]);
 const REQUIRED_POLICY_FIELDS = [
@@ -100,6 +111,14 @@ const AUTHOR_ACTIONS = new Set<StandardActionId>([
   "apply",
   "revise-apply",
   "archive",
+]);
+const PREPARED_AUTHOR_ACTIONS = new Set<StandardActionId>([
+  "explore",
+  "revise-explore",
+  "propose",
+  "revise-propose",
+  "apply",
+  "revise-apply",
 ]);
 
 function blocked(reason: PolicyBlockedReason): BlockedDecision {
@@ -176,6 +195,18 @@ function parsePolicyFacts(value: unknown): ParsedPolicyFacts | null {
   ) {
     return null;
   }
+  const preparedCurrentRunId = value.preparedCurrentRunId ?? null;
+  const preparedRunContext = value.preparedRunContext ?? null;
+  const preparedResult = value.preparedResult ?? null;
+  if (
+    (preparedCurrentRunId !== null &&
+      (typeof preparedCurrentRunId !== "string" ||
+        parseRunOccurrenceId(preparedCurrentRunId) === null)) ||
+    (preparedRunContext !== null && !isRunContextRecord(preparedRunContext)) ||
+    (preparedResult !== null && !isRunResultRecord(preparedResult))
+  ) {
+    return null;
+  }
   const ownerCorrection = parseOwnerCorrection(value.ownerCorrection);
   if (ownerCorrection === false) return null;
   return {
@@ -185,6 +216,9 @@ function parsePolicyFacts(value: unknown): ParsedPolicyFacts | null {
     currentAction: value.currentAction,
     terminalRunContext: value.terminalRunContext,
     terminalResult: value.terminalResult,
+    preparedCurrentRunId,
+    preparedRunContext,
+    preparedResult,
     ownerCorrection,
   };
 }
@@ -199,6 +233,29 @@ function terminalFactsMatch(
     result !== null &&
     sameActionIdentity(context.actionIdentity, currentAction.identity) &&
     hasMatchingRunLinkage(context, result)
+  );
+}
+
+function preparedFactsMatch(facts: ParsedPolicyFacts): boolean {
+  const current = facts.currentAction;
+  const context = facts.preparedRunContext;
+  const result = facts.preparedResult;
+  return (
+    current !== null &&
+    current.state === "prepared" &&
+    context !== null &&
+    result !== null &&
+    facts.preparedCurrentRunId !== null &&
+    context.runId === facts.preparedCurrentRunId &&
+    result.runId === facts.preparedCurrentRunId &&
+    context.lifecycleState === "prepared" &&
+    context.role === "author" &&
+    sameActionIdentity(context.actionIdentity, current.identity) &&
+    hasMatchingRunLinkage(context, result) &&
+    result.authorConclusion === null &&
+    result.reviewerVerdict === null &&
+    result.verificationVerdict === null &&
+    result.nextBoundary === null
   );
 }
 
@@ -323,6 +380,7 @@ function correctionAuthorityDecision(
 function isStructurallyEnterable(
   facts: ParsedPolicyFacts,
   actionId: StandardActionId,
+  corrected = false,
 ): boolean {
   const identity: ActionIdentity = {
     deliveryId: facts.deliveryId,
@@ -330,7 +388,15 @@ function isStructurallyEnterable(
     actionId,
   };
   if (facts.currentAction?.state === "prepared") {
-    return sameActionIdentity(facts.currentAction.identity, identity);
+    if (sameActionIdentity(facts.currentAction.identity, identity))
+      return !corrected;
+    return (
+      corrected &&
+      supersedePreparedAction(facts.currentAction, identity, {
+        kind: "ready-action",
+        actionId,
+      }) !== null
+    );
   }
   return (
     transitionCurrentAction(facts.currentAction, {
@@ -343,8 +409,9 @@ function isStructurallyEnterable(
 function readyAction(
   facts: ParsedPolicyFacts,
   actionId: StandardActionId,
+  corrected = false,
 ): PolicyDecision {
-  return isStructurallyEnterable(facts, actionId)
+  return isStructurallyEnterable(facts, actionId, corrected)
     ? { kind: "ready-action", actionId }
     : blocked("action-boundary-not-enterable");
 }
@@ -401,7 +468,21 @@ export function evaluatePolicyAndNextBoundary(input: unknown): PolicyDecision {
       return blocked("invalid-policy-input");
     }
     if (facts.ownerCorrection !== null) {
-      return blocked("unsupported-owner-correction");
+      if (!PREPARED_AUTHOR_ACTIONS.has(current.identity.actionId)) {
+        return blocked("unsupported-owner-correction");
+      }
+      if (!preparedFactsMatch(facts)) return blocked("invalid-policy-input");
+      const requested = facts.ownerCorrection.requestedAction;
+      if (!correctionAllowedForStage(current.identity.actionId, requested)) {
+        return blocked("unsupported-owner-correction");
+      }
+      const authorityFailure = correctionAuthorityDecision(
+        facts,
+        requested,
+        facts.ownerCorrection.authority,
+      );
+      if (authorityFailure !== null) return authorityFailure;
+      return readyAction(facts, requested, true);
     }
     return readyAction(facts, current.identity.actionId);
   }

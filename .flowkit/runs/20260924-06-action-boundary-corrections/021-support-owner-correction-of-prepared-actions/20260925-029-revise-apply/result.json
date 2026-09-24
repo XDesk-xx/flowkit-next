@@ -1,0 +1,136 @@
+{
+  "runId": "20260925-029-revise-apply",
+  "actionIdentity": {
+    "deliveryId": "20260924-06-action-boundary-corrections",
+    "changeId": "support-owner-correction-of-prepared-actions",
+    "actionId": "revise-apply"
+  },
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-apply",
+  "facts": {
+    "projectOrdinal": 42,
+    "changeStartSequence": 21,
+    "reviewedApplyRunId": "20260925-027-apply",
+    "reviewedByRunId": "20260925-028-review-apply",
+    "resolvedFindingIds": [
+      "RA028-001"
+    ],
+    "reviewedReviewResult": {
+      "path": ".flowkit/runs/20260924-06-action-boundary-corrections/021-support-owner-correction-of-prepared-actions/20260925-028-review-apply/result.json",
+      "sha256": "0727cf2ffe338a481d9b06c5b8669e0549aaebea29bbf069fb120764a3a0d131"
+    },
+    "summary": "Prepared Owner correction start now consumes trusted target Change state and fails closed before Run write when coordination is missing, nonactive, contradictory, or drifts during preparation.",
+    "sourceArtifacts": [
+      {
+        "path": "openspec/changes/support-owner-correction-of-prepared-actions/tasks.md",
+        "bytes": 2117,
+        "sha256": "dde6b95e3552decb7fd6ee08fdf98da16d8f2a8ba129664a1fa2dd95286ac099"
+      },
+      {
+        "path": "src/domain/action-lifecycle.ts",
+        "bytes": 5026,
+        "sha256": "58b6ff4f4e347e16d34c648f7bf67b4d80027274e1388bcd34d98246d8cf06e9"
+      },
+      {
+        "path": "src/domain/policy-and-next-boundary.ts",
+        "bytes": 15479,
+        "sha256": "886ea948efe8b4a38b78390cc84389693ae436c1a4c7ea1a4646a5fa42934a2f"
+      },
+      {
+        "path": "src/cli/current-run-chain.ts",
+        "bytes": 9220,
+        "sha256": "c42335fd135cff22cd9de931811047e387b1386f1f4033b398cbc37058417315"
+      },
+      {
+        "path": "src/cli/foundation-cli.ts",
+        "bytes": 6961,
+        "sha256": "da2e82a863cc35289d68bcc692b320337d19fefba2ef162f8969c85659c8f88b"
+      },
+      {
+        "path": "src/cli/prepared-owner-correction-start.ts",
+        "bytes": 4143,
+        "sha256": "bc2302942c33e2a858f31de42ebaafaafc1387080887197eb5608a3debf25f72"
+      },
+      {
+        "path": "tests/unit/domain/action-lifecycle.test.ts",
+        "bytes": 6029,
+        "sha256": "2efc93924c4460a472dd549b2e2cce10e968a2fb4adf0071bbed1fd6467ea486"
+      },
+      {
+        "path": "tests/unit/domain/policy-owner-correction.test.ts",
+        "bytes": 12461,
+        "sha256": "cdf9560efbcc038a3241a91be372d073fbd07f652f1169a9ca11050f8cfd6353"
+      },
+      {
+        "path": "tests/unit/domain/current-run-chain.test.ts",
+        "bytes": 9895,
+        "sha256": "67af8593403727fe071eb4bb582556c0fcf3f2a94a9514091454597d6a9219a0"
+      },
+      {
+        "path": "tests/unit/domain/prepared-owner-correction-start.test.ts",
+        "bytes": 9747,
+        "sha256": "c942dddf1fed0e84dce1e4fe4670707ced739a26ccc6d8fd145e36ec3a84c951"
+      },
+      {
+        "path": "skills/actions/revise-explore/SKILL.md",
+        "bytes": 13170,
+        "sha256": "38f3498b7ee57bf2b8b8ddb2245ac43d8936a1b25e957969f5d44d0506519c26"
+      },
+      {
+        "path": "skills/actions/revise-propose/SKILL.md",
+        "bytes": 13626,
+        "sha256": "cb3de9bd7127180408cf644755d3e7fae49e1e1db9786d2ce451de64dbe4084d"
+      },
+      {
+        "path": "skills/actions/revise-apply/SKILL.md",
+        "bytes": 13970,
+        "sha256": "0a5468c9ed4f7745fb1b433a15345d91a91bca7304dbf4134fc4ba945151c39a"
+      }
+    ],
+    "checks": [
+      {
+        "command": "node --import tsx --test tests/unit/domain/prepared-owner-correction-start.test.ts",
+        "exitCode": 0,
+        "result": "4 passed"
+      },
+      {
+        "command": "pnpm test:domain",
+        "exitCode": 0,
+        "result": "344 passed"
+      },
+      {
+        "command": "pnpm quality:gate",
+        "exitCode": 0,
+        "result": "PASS"
+      },
+      {
+        "command": "pnpm typecheck",
+        "exitCode": 0,
+        "result": "PASS"
+      },
+      {
+        "command": "pnpm build",
+        "exitCode": 0,
+        "result": "PASS"
+      },
+      {
+        "command": "git diff --check",
+        "exitCode": 0,
+        "result": "PASS"
+      }
+    ],
+    "proofRefs": [],
+    "handoff": {
+      "summary": "Independent review-apply should check RA028-001 against the trusted context read, missing/cancelled/contradictory/drift regression cases, and the exact cumulative source refs. No Archive or Git authority claimed.",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-09-25:activate-support-owner-correction-of-prepared-actions:proof-explore",
+          "summary": "Owner activated this Change; LP 089 remains a read-only baseline and this Change covers future prepared Author correction."
+        }
+      ],
+      "evidenceRefs": []
+    }
+  }
+}

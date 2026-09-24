@@ -67,7 +67,7 @@ CLI 仅查询 `status/next/doctor`，结束即退出。Agent 读取本次 manage
 
 以下是可在 Agent Node 文件工具中分段执行的示例，不是新 API、常驻程序或需要放入 target 的 helper。managerRoot 来自本机实际 Flowkit 安装位置，不由 target 请求覆盖；domain 取自该发行的 `dist/domain/index.js`。地址输入来自实际 target/coordination/唯一 Run 链，新 occurrence 必须尚未使用，不能拿 projectOrdinal 代替 changeStartSequence。
 
-先读取既有 `evaluatePolicyAndNextBoundary` 所需真实 facts，确认本次 Action 合法且已明确执行，再完成只读 preparation。输入 preparedContext 使用既有 RunContextRecord 字段：runId、occurrence、actionIdentity、role、lifecycleState:"prepared"、ownerAuthority、previousRunId；保留有意义的 null，不填猜测权限。previousAction 为 null 或不同 terminal 时调用现有 prepare transition；若已是 exact same prepared，则复用它，不 duplicate prepare；不同 prepared target 必须拒绝。下面 currentForExecution 展示这一分支，其 expected GuidanceRef 只供 startRecord 对照；startRecord 调用 manager 自有 start 入口，以当前安装真实 Skill bytes 绑定 package、readiness 与 create-once 写入。纯结构 ref/package 不许可新 Run。再次执行仍使用新 occurrence/previousRunId 与新 package，不覆盖旧失败记录，不接管 partial。不得用自造 terminal JSON 代替这些步骤。
+先读取既有 `evaluatePolicyAndNextBoundary` 所需真实 facts，确认本次 Action 合法且已明确执行，再完成只读 preparation。输入 preparedContext 使用既有 RunContextRecord 字段：runId、occurrence、actionIdentity、role、lifecycleState:"prepared"、ownerAuthority、previousRunId；保留有意义的 null，不填猜测权限。previousAction 为 null 或不同 terminal 时调用现有 prepare transition；若已是 exact same prepared，则复用它，不 duplicate prepare；不同 prepared target 在普通入口必须拒绝；精确 Owner `revise-action` 修正使用下述有界入口。下面 currentForExecution 展示这一分支，其 expected GuidanceRef 只供 startRecord 对照；startRecord 调用 manager 自有 start 入口，以当前安装真实 Skill bytes 绑定 package、readiness 与 create-once 写入。纯结构 ref/package 不许可新 Run。再次执行仍使用新 occurrence/previousRunId 与新 package，不覆盖旧失败记录，不接管 partial。不得用自造 terminal JSON 代替这些步骤。
 
 ```js
 // agent-record-start: preparation 已真实通过后执行；失败则不开始业务修改。
@@ -89,6 +89,8 @@ async function startRecord(domain, installation, input, currentAction, preparedC
   );
 }
 ```
+
+当唯一 current Run 为完整的 prepared Author Action，且 Owner 已明确授权本次 revise target 时，从 manager 安装的 `dist/cli/prepared-owner-correction-start.js` 调用 `startPreparedOwnerCorrectionRun(installation, input, flowkitHome, ownerAuthority, expectedGuidanceRef, prepare)`。该入口重读唯一 current tip、让纯 Policy 核对 prepared Run 三项输入和 exact authority、暂存结构转换，再复用上述 provenance-bearing start；返回的 held context/package 用于本次真实工作与结果接纳。不得将合成 fixture authority 用于真实 target，不得用普通 `currentForExecution` 强行替换 prepared Action。`action.md` 之前的失败保留旧 current；之后的 partial 保留并 STOP。
 
 保留本次 exact 执行上下文（上例返回值）后，用 Agent 工具执行实际工作。不是要求一个 Node 进程一直存活，也不要求跨进程 callback；本次 start 所需的只读 package-bound preparation 函数只在本次调用内运行。不能仅凭遗留目录在另一个会话接管。开始后中断保留 partial，查询应报告 incomplete；action.md 单独存在不是机器 prepared 或 terminal。业务修改前开始文件保存失败即停止。
 

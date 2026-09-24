@@ -1,0 +1,63 @@
+{
+  "runId": "20260925-026-review-propose",
+  "actionIdentity": {
+    "deliveryId": "20260924-06-action-boundary-corrections",
+    "changeId": "support-owner-correction-of-prepared-actions",
+    "actionId": "review-propose"
+  },
+  "authorConclusion": null,
+  "reviewerVerdict": "approved",
+  "verificationVerdict": null,
+  "nextBoundary": "apply",
+  "facts": {
+    "reviewedRunId": "20260925-025-revise-propose",
+    "reviewedReviseResult": {
+      "path": ".flowkit/runs/20260924-06-action-boundary-corrections/021-support-owner-correction-of-prepared-actions/20260925-025-revise-propose/result.json",
+      "sha256": "7dad8381d96a69ae5f5f8803827f40a097c45f0d0b9698300fce6d3eb6578545"
+    },
+    "approvedExploreReviewRunId": "20260925-022-review-explore",
+    "previousReviewRunId": "20260925-024-review-propose",
+    "resolvedFindingIds": [
+      "RP024-001"
+    ],
+    "planningFileCount": 7,
+    "planningFileRefs": ".flowkit/runs/20260924-06-action-boundary-corrections/021-support-owner-correction-of-prepared-actions/20260925-025-revise-propose/result.json#facts.planningArtifacts",
+    "proofRefs": [],
+    "summary": "RP024-001 已收敛：preparedCurrentRunId/context/result 由唯一 current tip 提供，Policy 在 Owner correction 前核对同一 Run、identity、prepared/author 与 null outcome；缺失/错配确定拒绝。7/7 文件匹配，四份未改内容保留。",
+    "findings": [],
+    "reviewerChecks": [
+      {
+        "check": "Seven revised planning artifact SHA/length readback",
+        "outcome": "7/7 match; three files changed"
+      },
+      {
+        "check": "RP024-001 plus approved Explore continuity",
+        "outcome": "resolved; unaffected content preserved"
+      },
+      {
+        "command": "managed OpenSpec 1.10.0 strict validate",
+        "exitCode": 0,
+        "outcome": "structural PASS"
+      }
+    ],
+    "assessments": {
+      "currentStep": "独立复审 exact 025 Revise Proposal 对 RP024-001 的收敛及已批准内容连续性。",
+      "complexityAndMinimality": "仅补 Policy 输入/校验规范及对应 design/tasks；保留双状态和既有四个 capability，无新控制层。",
+      "newContentAndScopeDrift": "scope drift: NONE；没有 LP 写入、历史迁移、新 Owner 权限或 Git authority。"
+    },
+    "limits": [
+      "OpenSpec strict PASS 证明结构合法；Reviewer 批准 Proposal 合同，不是 Apply 或 Formal Full Test PASS。",
+      "Prepared supersession 的实际失败顺序和链读回仍须在 Apply 验证。"
+    ],
+    "handoff": {
+      "summary": "Proposal 可进入 Apply；实现须以唯一 current Run 三项输入核对 prepared correction，保持旧 Run 原字节和 partial fail-closed。",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-09-25:activate-support-owner-correction-of-prepared-actions:proof-explore",
+          "summary": "此 Change 仅处理未来 prepared Author correction；LP 089 是只读基线。"
+        }
+      ],
+      "evidenceRefs": []
+    }
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "runId": "20260925-023-propose",
+  "actionIdentity": {
+    "deliveryId": "20260924-06-action-boundary-corrections",
+    "changeId": "support-owner-correction-of-prepared-actions",
+    "actionId": "propose"
+  },
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-propose",
+  "facts": {
+    "projectOrdinal": 42,
+    "changeStartSequence": 21,
+    "approvedExploreRunId": "20260925-021-explore",
+    "approvingReviewRunId": "20260925-022-review-explore",
+    "summary": "Specified exact Owner correction of a prepared Author Action through bounded supersession, immutable predecessor Run, unique Owner-linked revise child, fail-closed start, and independent Review continuity.",
+    "planningArtifacts": [
+      {
+        "path": "openspec/changes/support-owner-correction-of-prepared-actions/proposal.md",
+        "bytes": 1988,
+        "sha256": "8dc8745c773b4653f1864646992d92f6487200229b8189ef8845861cd8c192af"
+      },
+      {
+        "path": "openspec/changes/support-owner-correction-of-prepared-actions/design.md",
+        "bytes": 4180,
+        "sha256": "8b561413e5749a19f723e513c8b9d75aa26e781dbc652f85f3d8e8091ffe9f73"
+      },
+      {
+        "path": "openspec/changes/support-owner-correction-of-prepared-actions/tasks.md",
+        "bytes": 1943,
+        "sha256": "5775e3f06d1233919e76123ffd6521b4aa4d517343b76807162142a66bfbfd2a"
+      },
+      {
+        "path": "openspec/changes/support-owner-correction-of-prepared-actions/specs/action-lifecycle/spec.md",
+        "bytes": 2800,
+        "sha256": "d2ebc54c313829fce7b4071f48a2ab1bc31441a21eabbad7447f5d5d4ae555a6"
+      },
+      {
+        "path": "openspec/changes/support-owner-correction-of-prepared-actions/specs/policy-and-next-boundary/spec.md",
+        "bytes": 8648,
+        "sha256": "6ca53855da7b771a1f3caf77ffbaec35b1dd62840acc594e7c1deb84c35a2506"
+      },
+      {
+        "path": "openspec/changes/support-owner-correction-of-prepared-actions/specs/run-result-persistence/spec.md",
+        "bytes": 1541,
+        "sha256": "f914d2103ab1f0f07f1fe59f0787f0c0cd77bb10d98a8b2a2ae44c7406cff362"
+      },
+      {
+        "path": "openspec/changes/support-owner-correction-of-prepared-actions/specs/single-action-execution-terminal-boundary/spec.md",
+        "bytes": 4030,
+        "sha256": "6b08f9e30f6fc120f32e07952e5abbc4e72916f6b8cd3d56553eb4f321c19e3f"
+      }
+    ],
+    "checks": [
+      "OpenSpec strict validation PASS",
+      "OpenSpec planning complete",
+      "git diff --check PASS"
+    ],
+    "complexityAndScope": "Four modified existing capabilities; no new lifecycle state, Owner decision type, general recovery platform, LP mutation, or Git authority.",
+    "proofRefs": [],
+    "handoff": {
+      "summary": "Independent review-propose should assess seven planning artifacts against approved Explore and the exact prepared Author correction boundaries; no Apply or Git authority is claimed.",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-09-25:activate-support-owner-correction-of-prepared-actions:proof-explore",
+          "summary": "Owner activated this Change; LP 089 is read-only baseline and this proposal stays within future prepared Author correction."
+        }
+      ],
+      "evidenceRefs": []
+    }
+  }
+}

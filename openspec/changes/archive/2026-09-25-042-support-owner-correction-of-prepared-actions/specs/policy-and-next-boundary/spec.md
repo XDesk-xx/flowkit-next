@@ -1,10 +1,4 @@
-# policy-and-next-boundary Specification
-
-## Purpose
-
-为 Flowkit Foundation 提供 deterministic、fail-closed 且 serialization-safe 的 legal-boundary Policy，使既有 Change、CurrentAction、exact terminal RunContext/RunResult linkage 与显式 Owner correction facts 能收敛为唯一 READY boundary 或 machine-distinguishable BLOCKED diagnosis，而不承担 Action execution、调度或 repository mutation。
-
-## Requirements
+## MODIFIED Requirements
 
 ### Requirement: Policy is a pure closed legality decision seam
 系统 SHALL 仅基于已经由上游 composition seam 验证/解析完成的 canonical Change structural state、zero-or-one CurrentAction、terminal 时对应的 exact current RunContextRecord + RunResultRecord，以及可选的 explicit Owner correction request 计算当前 legal boundary。对 prepared Author correction，上游 SHALL 从已验证的唯一 current Run tip 提供额外的 exact `preparedCurrentRunId`、`preparedRunContext` 与 `preparedResult`；这些输入在无 prepared correction 时可缺省或为 null，不替代既有 terminal pair。Policy SHALL 将输入 `ChangeState` 视为已经完成 exact Delivery + Change coordination/provenance/dependency binding 的 canonical fact；Policy MUST NOT 自行读取/解析 Delivery manifest、hard dependencies、activation OwnerAuthorityFact、OpenSpec filesystem/CLI 或 Git 来决定该 ChangeState。Policy decision SHALL 只允许以下三类 closed result：`READY_ACTION(actionId)`、`READY_CHECKPOINT_EVALUATION`、`BLOCKED(reason)`。Policy SHALL NOT 执行 Standard Action、创建 Run/Result/OwnerAuthorityFact、修改 Change/Action state、读取 OpenSpec filesystem/CLI、执行 Git mutation、调度/poll 下一 Action 或把 READY 解释为 host 已被授权且必须立即 invocation。Policy 继续拥有其 contract 已明确规定的 Policy-specific Owner correction eligibility（例如 `revise-action`），该 eligibility MUST NOT 被 trusted Change coordination resolver 吞并或泛化。
@@ -29,25 +23,6 @@
 - **WHEN** CurrentAction 为 `prepared apply`、没有 Owner correction request，且 caller 未提供 prepared pair
 - **THEN** 既有 normal boundary SHALL 仍为 `READY_ACTION(apply)`；不得为继续原 Action 新增 pair 前置要求
 
-### Requirement: Post-archive completed materialization has highest Change-state precedence
-Policy SHALL 在 generic non-active Change guard 之前识别唯一 post-archive exception：仅当 Change state 为 `completed`、CurrentAction 为 exact `terminal archive`、提供 exact current terminal RunContextRecord 与通过同一 runId + ActionIdentity linkage 的 terminal Result、且 `authorConclusion` 为 exact `PASS` 时，normal boundary SHALL 为 checkpoint-evaluation。识别该 normal boundary 后，Policy SHALL 按统一 reported-boundary consistency 规则校验 Result 的 `nextBoundary`：null 或 exact token `checkpoint` SHALL 通过，其他 non-null value SHALL 返回 `BLOCKED(reported-boundary-conflict)`。其他 `planned`、`completed`、`cancelled` state SHALL 返回 `BLOCKED(change-not-active)`。当 Change 仍为 `active` 且 CurrentAction 为 `terminal archive`、exact-current-run linked Result 的 `authorConclusion` 为 `PASS` 时，Policy SHALL 返回 `BLOCKED(archive-completion-state-mismatch)`，不得提前宣称 checkpoint-evaluation。
-
-#### Scenario: Recognize exact completed Archive materialization
-- **WHEN** Change 为 `completed`、CurrentAction 为 exact `terminal archive`、exact-current-run linked terminal Result 的 `authorConclusion` 为 `PASS` 且 reported `nextBoundary` 为 null 或 `checkpoint`
-- **THEN** Policy SHALL 返回 `READY_CHECKPOINT_EVALUATION`
-
-#### Scenario: Block a conflicting completed Archive handoff
-- **WHEN** Change 为 `completed`、CurrentAction 为 exact `terminal archive`、exact-current-run linked terminal Result 的 `authorConclusion` 为 `PASS`，但 reported `nextBoundary` 为非 null 且不等于 `checkpoint`
-- **THEN** Policy SHALL 返回 `BLOCKED(reported-boundary-conflict)`，且不得由 generic non-active guard 把该 handoff drift 掩盖成 `change-not-active`
-
-#### Scenario: Block non-active Change outside the exact post-archive shape
-- **WHEN** Change 为 `planned`、`cancelled`，或为 `completed` 但不满足 exact completed/archive/PASS materialization shape
-- **THEN** Policy SHALL 返回 `BLOCKED(change-not-active)`
-
-#### Scenario: Do not advertise checkpoint before Archive materialization completes
-- **WHEN** Change 仍为 `active`、CurrentAction 为 exact `terminal archive` 且 exact-current-run linked terminal Result 的 `authorConclusion` 为 `PASS`
-- **THEN** Policy SHALL 返回 `BLOCKED(archive-completion-state-mismatch)`
-
 ### Requirement: Active Change normal Standard Action boundary is deterministic
 对于 `active` Change，Policy SHALL 使用 closed normal matrix 计算 Standard Action boundary。CurrentAction 为空时 normal boundary SHALL 为 `explore`；CurrentAction 为 `prepared A` 时 normal boundary SHALL 仍为 exact A，随后仅可按本 capability 的 explicit Owner correction 规则改变最终 boundary。terminal Author actions SHALL 仅在 exact `authorConclusion == "PASS"` 时映射：`explore|revise-explore → review-explore`、`propose|revise-propose → review-propose`、`apply|revise-apply → review-apply`。terminal Reviewer actions SHALL 仅按 exact `reviewerVerdict` 映射：`review-explore approved → propose`、`review-explore changes-requested → revise-explore`、`review-propose approved → apply`、`review-propose changes-requested → revise-propose`、`review-apply approved → archive`、`review-apply changes-requested → revise-apply`。未知/不成功 Author outcome SHALL fail closed 为 `unrecognized-or-unsuccessful-author-outcome`；未知/null Reviewer verdict SHALL fail closed 为 `unrecognized-reviewer-verdict`。
 
@@ -70,29 +45,6 @@ Policy SHALL 在 generic non-active Change guard 之前识别唯一 post-archive
 #### Scenario: Reject an unsuccessful Author outcome
 - **WHEN** Change 为 `active`、CurrentAction 为 terminal Author Action 且 exact-current-run linked Result 的 `authorConclusion` 不是 exact `PASS`
 - **THEN** Policy SHALL 返回 `BLOCKED(unrecognized-or-unsuccessful-author-outcome)`
-
-### Requirement: Terminal Result is bound to the exact current Run before outcome or correction evaluation
-对于 terminal Standard Action，Policy SHALL 在解释 outcome 或 reported `nextBoundary` 前要求同时提供 exact current terminal `RunContextRecord` 与 terminal `RunResultRecord`。Policy SHALL 复用既有 Run persistence linkage truth：terminal context 的 ActionIdentity SHALL 精确等于 CurrentAction identity，且 context/result SHALL 满足既有 matching Run linkage（包含 `terminalResult.runId == terminalRunContext.runId` 与 exact ActionIdentity linkage）。缺失任一 terminal fact、wrong ActionIdentity、runId mismatch，或将同一 Standard Action 的 prior Run Result 与 current terminal RunContext 混用，均 SHALL 返回 `BLOCKED(terminal-result-missing-or-mismatched)`，不得读取该 Result 的 outcome 或 `nextBoundary`。Policy SHALL 在 exact current Run linkage 通过后从 canonical facts 计算 deterministic normal boundary，再将 Result 的 reported `nextBoundary` 仅作为 opaque consistency fact 校验：null SHALL 不阻止 normal calculation；non-null value SHALL 精确等于 normal boundary 的 reported token（Standard Action 使用其 StandardActionId，checkpoint-evaluation 使用 `checkpoint`），否则 SHALL 返回 `BLOCKED(reported-boundary-conflict)`。Owner correction SHALL 只在该 normal consistency 已通过后评估，且不得覆盖或掩盖 conflict。
-
-#### Scenario: Accept a matching reported normal boundary
-- **WHEN** terminal `explore` 的 matching PASS Result 导出 normal boundary `review-explore`，且 Result reported `nextBoundary` 为 `review-explore`
-- **THEN** reported-boundary consistency SHALL PASS 并允许继续后续 correction/READY evaluation
-
-#### Scenario: Block a conflicting reported boundary before correction
-- **WHEN** terminal `explore` 的 matching PASS Result 导出 normal boundary `review-explore`，但 Result reported `nextBoundary` 为 `propose`，即使同时提供请求 `revise-explore` 的 Owner correction
-- **THEN** Policy SHALL 返回 `BLOCKED(reported-boundary-conflict)`，且不得用 Owner correction 掩盖该 handoff drift
-
-#### Scenario: Accept the fresh Result for the exact current Run occurrence
-- **WHEN** CurrentAction 为 `terminal review-explore`，exact current terminal RunContext 为 `review-explore(R2)`，terminal Result 也属于 `R2` 且 ActionIdentity 精确匹配
-- **THEN** exact current Run linkage SHALL PASS，Policy MAY 继续读取该 R2 Result 的 reviewer outcome 与 reported `nextBoundary`
-
-#### Scenario: Reject a stale Result from a previous occurrence of the same Action
-- **WHEN** CurrentAction 为 `terminal review-explore`，exact current terminal RunContext 为 `review-explore(R2)`，但提供的 terminal Result 来自 prior `review-explore(R1)`，即使 R1/R2 具有相同 semantic ActionIdentity
-- **THEN** Policy SHALL 返回 `BLOCKED(terminal-result-missing-or-mismatched)`，且不得让 stale R1 outcome/nextBoundary 影响 normal boundary 或 Owner correction
-
-#### Scenario: Reject a terminal Result for another Action
-- **WHEN** CurrentAction 为 `terminal review-propose`，exact current terminal RunContext 匹配该 CurrentAction，但 terminal Result 的 ActionIdentity 不精确匹配该 CurrentAction/context
-- **THEN** Policy SHALL 返回 `BLOCKED(terminal-result-missing-or-mismatched)`
 
 ### Requirement: Owner correction is bounded, explicit and revise-only
 Policy MAY 在 active terminal Action 已产生有效 normal boundary 且 reported-boundary consistency PASS 后，或 active prepared Author Action 已由上游所选唯一 current tip 的 exact `preparedRunContext` + `preparedResult` 证明仍为 prepared 且四个 outcome/next 槽均为 null 后，应用一个 explicit Owner correction request。对后者，Policy SHALL 验证 `preparedCurrentRunId` 等于 context/result 的同一 runId，并验证 context 的 `lifecycleState=prepared`、`role=author`、ActionIdentity 精确等于 CurrentAction、context/result 的同一 runId 与 ActionIdentity linkage，并验证 Result 四个 outcome/next 槽均为 null；`terminalRunContext`/`terminalResult` 不得冒充 prepared pair。缺失或不完整的 prepared current Run 三项输入、与 `preparedCurrentRunId` 不一致的 RunId、wrong identity/state/role、或 non-null outcome SHALL 一律返回 `BLOCKED(invalid-policy-input)`，先于 correction eligibility，不得只凭 semantic CurrentAction identity 接受请求。未请求 prepared correction 时不新增该 pair 的前置条件。Correction request SHALL 只包含 requested revise-family Standard Action 与 structural-valid OwnerAuthorityFact。Policy SHALL 仅识别 `decision == "revise-action"`，且 authority 的 `deliveryId` / `changeId` SHALL 精确匹配当前 Delivery/Change，`scope` SHALL 精确为仅包含 requested revise Action 的单元素 array。缺失 authority SHALL 返回 `BLOCKED(owner-authority-required)`；structural-invalid 或 decision/identity/scope 不匹配 SHALL 返回 `BLOCKED(owner-authority-rejected)`。
@@ -153,14 +105,3 @@ Policy SHALL 在 normal boundary 或 Owner-corrected boundary 最终发出 `READ
 #### Scenario: Allow a different structurally enterable revise Action
 - **WHEN** CurrentAction 为 `terminal propose`，Owner correction candidate 为 `revise-explore`，且 existing lifecycle prepare rule 接受该不同 ActionIdentity
 - **THEN** structural-enterability check SHALL PASS 并允许 `READY_ACTION(revise-explore)`
-
-### Requirement: Blocked diagnosis is closed and deterministic
-Policy SHALL 使用 closed、machine-distinguishable blocked reason catalog，至少包含：`invalid-policy-input`、`change-not-active`、`archive-completion-state-mismatch`、`terminal-result-missing-or-mismatched`、`unrecognized-or-unsuccessful-author-outcome`、`unrecognized-reviewer-verdict`、`reported-boundary-conflict`、`owner-authority-required`、`owner-authority-rejected`、`unsupported-owner-correction`、`action-boundary-not-enterable`。同一组 canonical facts SHALL 产生等价 decision；Policy SHALL NOT 以 free-text、动态 registry、历史 Action package 形状或 nondeterministic fallback 代替该 closed diagnosis。
-
-#### Scenario: Produce the same blocked reason for the same facts
-- **WHEN** 相同 canonical Policy facts 被重复评估且包含同一个 reported-boundary conflict
-- **THEN** Policy SHALL 每次产生等价 `BLOCKED(reported-boundary-conflict)` decision
-
-#### Scenario: Do not turn checkpoint evaluation into Git authority
-- **WHEN** Policy 返回 `READY_CHECKPOINT_EVALUATION`
-- **THEN** 系统 SHALL 仅把它解释为 legal governance boundary，且不得据此生成 Git permission、执行 commit 或声明 checkpoint authorization 已满足

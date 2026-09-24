@@ -23,6 +23,11 @@ export interface CurrentAction {
 
 export type CurrentActionSlot = CurrentAction | null;
 
+export interface PreparedSupersessionBoundary {
+  readonly kind: "ready-action";
+  readonly actionId: StandardActionId;
+}
+
 export type ActionLifecycleEvent =
   | { readonly type: "prepare"; readonly identity: ActionIdentity }
   | { readonly type: "terminal"; readonly identity: ActionIdentity };
@@ -30,6 +35,20 @@ export type ActionLifecycleEvent =
 const IDENTITY_FIELDS = ["deliveryId", "changeId", "actionId"] as const;
 const CURRENT_ACTION_FIELDS = ["identity", "state"] as const;
 const EVENT_FIELDS = ["type", "identity"] as const;
+const SUPERSESSION_BOUNDARY_FIELDS = ["kind", "actionId"] as const;
+const PREPARED_AUTHOR_ACTIONS = new Set<StandardActionId>([
+  "explore",
+  "revise-explore",
+  "propose",
+  "revise-propose",
+  "apply",
+  "revise-apply",
+]);
+const REVISE_ACTIONS = new Set<StandardActionId>([
+  "revise-explore",
+  "revise-propose",
+  "revise-apply",
+]);
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
@@ -129,4 +148,33 @@ export function transitionCurrentAction(
   if (!sameActionIdentity(current.identity, event.identity)) return null;
 
   return nextCurrentAction(event.identity, "terminal");
+}
+
+/** Structural candidate only; the caller must independently establish Policy eligibility. */
+export function supersedePreparedAction(
+  current: unknown,
+  target: unknown,
+  boundary: unknown,
+): CurrentAction | null {
+  if (!isCurrentAction(current) || !isActionIdentity(target)) return null;
+  if (
+    !isRecord(boundary) ||
+    !hasExactlyFields(boundary, SUPERSESSION_BOUNDARY_FIELDS) ||
+    boundary.kind !== "ready-action" ||
+    !isStandardActionId(boundary.actionId)
+  ) {
+    return null;
+  }
+  if (
+    current.state !== "prepared" ||
+    !PREPARED_AUTHOR_ACTIONS.has(current.identity.actionId) ||
+    !REVISE_ACTIONS.has(target.actionId) ||
+    current.identity.deliveryId !== target.deliveryId ||
+    current.identity.changeId !== target.changeId ||
+    sameActionIdentity(current.identity, target) ||
+    boundary.actionId !== target.actionId
+  ) {
+    return null;
+  }
+  return nextCurrentAction(target, "prepared");
 }

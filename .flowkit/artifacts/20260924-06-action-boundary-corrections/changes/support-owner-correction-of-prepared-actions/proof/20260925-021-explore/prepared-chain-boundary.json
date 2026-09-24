@@ -1,0 +1,77 @@
+{
+  "copy": {
+    "sourceRunCount": 5,
+    "sourceFileCount": 15,
+    "sourceBytesUnchanged": true,
+    "copiedAncestorRefs": [
+      {
+        "runId": "20260923-085-explore",
+        "name": "action.md",
+        "sha256": "c23d64c58fd6e9823d49cb11d988d8874543821fe38adc13890e8c9127a01db4"
+      },
+      {
+        "runId": "20260923-085-explore",
+        "name": "context.json",
+        "sha256": "3a2b4f3997f627fadb9c25db398ad1ef6e477c5388a253bb1665ea1e140cd709"
+      },
+      {
+        "runId": "20260923-085-explore",
+        "name": "result.json",
+        "sha256": "b91b8bf9b82e6419b6aefcfdf23f7208182ad6076a1dd3f371993a5aa1461e4b"
+      },
+      {
+        "runId": "20260924-086-review-explore",
+        "name": "action.md",
+        "sha256": "6d18b6d1dbfb7e5318b0c71678cec24f99f7f30f6fd9502d20d25aa0fe920f22"
+      },
+      {
+        "runId": "20260924-086-review-explore",
+        "name": "context.json",
+        "sha256": "64f2bb28eaa9967b4e6db96b011aaf571e247cdb2852e8ffad30dbbbc5837667"
+      },
+      {
+        "runId": "20260924-086-review-explore",
+        "name": "result.json",
+        "sha256": "b0961951afe0393379bbc39ec8e28ebcc655f1d1ed489531db3d3931d0370360"
+      },
+      {
+        "runId": "20260924-087-propose",
+        "name": "action.md",
+        "sha256": "85bda44047863673433721b666cdea8db4429ebe43ab28de655a208e9eba7b2a"
+      },
+      {
+        "runId": "20260924-087-propose",
+        "name": "context.json",
+        "sha256": "d71ba1ff61801fb8a047ee2b817969d229a5fba3bf1f5a306e3342d5e5985028"
+      },
+      {
+        "runId": "20260924-087-propose",
+        "name": "result.json",
+        "sha256": "30ee07c4cc794f0cd54abb3568f3c66be81bedc3f8ca7240791d4d32154693cc"
+      },
+      {
+        "runId": "20260924-088-review-propose",
+        "name": "action.md",
+        "sha256": "65c899fefebc7e9a711cd9fa71f13cd9966b791b9330dc865ef476537a4143d7"
+      },
+      {
+        "runId": "20260924-088-review-propose",
+        "name": "context.json",
+        "sha256": "86fd0c17415f24fd53c43a5e235680afbe5bd42d954c26c3373259be53345450"
+      },
+      {
+        "runId": "20260924-088-review-propose",
+        "name": "result.json",
+        "sha256": "e0360508d7e5a81234e70fab9cfb095f0ad51326e9ad1438596d1a76ea831abb"
+      }
+    ]
+  },
+  "observed": {
+    "currentRunId": "20260924-089-apply",
+    "currentLifecycle": "prepared",
+    "syntheticChildRunId": "20260925-090-revise-propose",
+    "syntheticChildPersisted": false,
+    "currentChainDecision": "Illegal Policy edge: prepared apply to Owner-authorized revise-propose"
+  },
+  "implication": "The existing previousRunId and child ownerAuthority fields can carry immutable ancestry and exact Owner provenance; current Policy and prepared transition prohibit this edge. The probe does not establish that a new lifecycle state is required."
+}

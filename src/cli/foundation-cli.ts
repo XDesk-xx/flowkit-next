@@ -62,6 +62,9 @@ async function statusCommand(
   const context = await resolveActionContext(request, installation);
   const selected = context.selected;
   const current = selected?.history.current;
+  const predecessor = selected?.history.records.find(
+    (record) => record.context.runId === current?.context.previousRunId,
+  );
   return {
     kind: "status" as const,
     status: context.status,
@@ -75,6 +78,13 @@ async function statusCommand(
           actionId: current.context.actionIdentity.actionId,
           state: current.context.lifecycleState,
           role: current.context.role,
+          ...(predecessor?.context.lifecycleState === "prepared" &&
+          current.context.ownerAuthority?.decision === "revise-action"
+            ? {
+                supersededPreparedRunId: predecessor.context.runId,
+                ownerAuthorityRef: current.context.ownerAuthority.ref,
+              }
+            : {}),
         }
       : null,
     openSpec: context.openSpec,

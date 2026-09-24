@@ -1,0 +1,62 @@
+{
+  "runId": "20260925-021-explore",
+  "actionIdentity": {
+    "deliveryId": "20260924-06-action-boundary-corrections",
+    "changeId": "support-owner-correction-of-prepared-actions",
+    "actionId": "explore"
+  },
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-explore",
+  "facts": {
+    "projectOrdinal": 42,
+    "changeStartSequence": 21,
+    "summary": "LP 089 is a valid prepared Apply with real implementation facts and null outcomes. Current Policy and lifecycle reject exact Owner prepared-to-revise correction; existing Run ancestry and Owner fields provide a bounded continuity surface.",
+    "exploreArtifact": "openspec/changes/support-owner-correction-of-prepared-actions/explore.md",
+    "exploreSha256": "1f68b66ba0db2a86c4f18648db37d7e9bb6908c8ca51d5fb64d6a8689d9c442a",
+    "proofRefs": [
+      {
+        "path": ".flowkit/artifacts/20260924-06-action-boundary-corrections/changes/support-owner-correction-of-prepared-actions/proof/20260925-021-explore/prepared-correction-baseline.json",
+        "bytes": 1354,
+        "sha256": "8d98ff640f30d94303698a1396e34faa22b12b3294b77f4fd7c536c397f1aa20",
+        "deliveryId": "20260924-06-action-boundary-corrections",
+        "changeId": "support-owner-correction-of-prepared-actions",
+        "runId": "20260925-021-explore",
+        "purpose": "Read-only LP 089 prepared Run and current Policy counterexample"
+      },
+      {
+        "path": ".flowkit/artifacts/20260924-06-action-boundary-corrections/changes/support-owner-correction-of-prepared-actions/proof/20260925-021-explore/prepared-chain-boundary.json",
+        "bytes": 2825,
+        "sha256": "3fb285367e3644d40231f707807d46d7d1a36302a9f061a367829c1b5248be54",
+        "deliveryId": "20260924-06-action-boundary-corrections",
+        "changeId": "support-owner-correction-of-prepared-actions",
+        "runId": "20260925-021-explore",
+        "purpose": "Read-only LP five-Run chain and synthetic Owner-corrected child boundary"
+      }
+    ],
+    "limits": [
+      "LP files were read and copied without mutation; synthetic revise authority is not LP Owner authorization.",
+      "No product implementation, new lifecycle state, Reviewer verdict, or Git authority is claimed."
+    ],
+    "handoff": {
+      "summary": "Independent review-explore should assess the exact prepared Author correction boundary and minimality of preserving old prepared bytes with a new Owner-linked revise Run. Root design Markdown is reference only.",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-09-25:activate-support-owner-correction-of-prepared-actions:proof-explore",
+          "summary": "Owner activated the remaining prepared-action correction Change and requested proof Explore; LP 089 remains read-only."
+        }
+      ],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20260925-021-explore",
+          "path": ".flowkit/artifacts/20260924-06-action-boundary-corrections/changes/support-owner-correction-of-prepared-actions/proof/20260925-021-explore/prepared-correction-baseline.json"
+        },
+        {
+          "sourceRunId": "20260925-021-explore",
+          "path": ".flowkit/artifacts/20260924-06-action-boundary-corrections/changes/support-owner-correction-of-prepared-actions/proof/20260925-021-explore/prepared-chain-boundary.json"
+        }
+      ]
+    }
+  }
+}

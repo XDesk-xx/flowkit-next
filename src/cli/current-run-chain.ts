@@ -55,6 +55,14 @@ export function policyForRecord(
       record?.context.lifecycleState === "terminal" ? record.context : null,
     terminalResult:
       record?.context.lifecycleState === "terminal" ? record.result : null,
+    ...(record?.context.lifecycleState === "prepared" &&
+    input.ownerCorrection !== undefined
+      ? {
+          preparedCurrentRunId: record.context.runId,
+          preparedRunContext: record.context,
+          preparedResult: record.result,
+        }
+      : {}),
   });
 }
 

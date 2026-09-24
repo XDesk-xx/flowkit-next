@@ -1,0 +1,93 @@
+{
+  "runId": "20260925-028-review-apply",
+  "actionIdentity": {
+    "deliveryId": "20260924-06-action-boundary-corrections",
+    "changeId": "support-owner-correction-of-prepared-actions",
+    "actionId": "review-apply"
+  },
+  "authorConclusion": null,
+  "reviewerVerdict": "changes-requested",
+  "verificationVerdict": null,
+  "nextBoundary": "revise-apply",
+  "facts": {
+    "reviewedRunId": "20260925-027-apply",
+    "reviewedApplyResult": {
+      "path": ".flowkit/runs/20260924-06-action-boundary-corrections/021-support-owner-correction-of-prepared-actions/20260925-027-apply/result.json",
+      "sha256": "e95800d183a18677accb44a255e8b5f6ee3cf042fc91bf3d9497d91cf6b33576"
+    },
+    "approvedProposalReviewRunId": "20260925-026-review-propose",
+    "candidateFileCount": 13,
+    "candidateFileRefs": ".flowkit/runs/20260924-06-action-boundary-corrections/021-support-owner-correction-of-prepared-actions/20260925-027-apply/result.json#facts.sourceArtifacts",
+    "proofRefs": [],
+    "summary": "13/13 Apply 文件与记录匹配，已批准 Proposal 的 6 个未改文件连续；prepared correction start 绕过可信 Change state，把 active 写死为 Policy fact，需修正。",
+    "findings": [
+      {
+        "id": "RA028-001",
+        "severity": "blocker",
+        "location": "src/cli/prepared-owner-correction-start.ts:58",
+        "summary": "startPreparedOwnerCorrectionRun 将 changeState 硬编码为 active，仅读取 Run 链；即使 target 缺少 active coordination 或状态已 cancelled，也可能形成 READY 并写新 Action start。",
+        "requiredCorrection": "在写入新 Run 前消费 target 的可信 Change coordination/state，并把解析出的 canonical state 传给 Policy；状态缺失、非 active 或相互矛盾时 fail closed。补覆盖无 coordination 与非 active 状态的 start 回归。",
+        "evidence": [
+          "src/cli/prepared-owner-correction-start.ts:30",
+          "src/cli/prepared-owner-correction-start.ts:58",
+          "src/cli/action-context.ts:129",
+          "tests/unit/domain/prepared-owner-correction-start.test.ts:69"
+        ]
+      }
+    ],
+    "reviewerChecks": [
+      {
+        "check": "Apply source SHA/length readback",
+        "outcome": "13/13 match"
+      },
+      {
+        "check": "Approved Proposal continuity",
+        "outcome": "6 unchanged planning files match; tasks.md changed only to mark completion"
+      },
+      {
+        "check": "LP 089 read-only baseline",
+        "outcome": "3/3 original hashes match"
+      },
+      {
+        "command": "pnpm typecheck",
+        "exitCode": 0,
+        "outcome": "PASS"
+      },
+      {
+        "command": "git diff --check",
+        "exitCode": 0,
+        "outcome": "PASS"
+      },
+      {
+        "command": "pnpm test:domain",
+        "exitCode": 1,
+        "outcome": "First reviewer execution: 341 PASS, 1 FAIL; original terminal output was truncated, failing case unidentified"
+      },
+      {
+        "command": "pnpm test:domain",
+        "exitCode": 0,
+        "outcome": "Second reviewer execution: 342 PASS, 0 FAIL; full output captured in disposable .tmp log"
+      }
+    ],
+    "assessments": {
+      "currentStep": "独立 Review Apply 027，核对 approved Proposal、候选文件、实际 Policy/start/chain 边界与验证证据。",
+      "complexityAndMinimality": "双状态与现有 Run 链复用保持有界；RA028-001 需要复用可信 Change-state 解析，避免另建状态源。",
+      "newContentAndScopeDrift": "未见新增 generic recovery 平台、LP 写入或 Git 操作；start 入口的状态来源越过已批准 authority boundary。"
+    },
+    "limits": [
+      "LP 089 仅只读基线；合成 fixture 不能证明真实 target 的 coordination admission。",
+      "首轮 domain 测试 1 FAIL 的具体用例未能从截断输出恢复；第二轮完整运行 342/342 PASS，未把首轮失败隐去。",
+      "本次 Reviewer 结果不是 Formal Full Test 或 Git/Archive 授权。"
+    ],
+    "handoff": {
+      "summary": "修复 RA028-001 后按 revise-apply 再进入独立 review-apply；本次不 archive 或做 Git 操作。",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-09-25:activate-support-owner-correction-of-prepared-actions:proof-explore",
+          "summary": "此 Change 仅处理未来 prepared Author correction；LP 089 为只读基线。"
+        }
+      ],
+      "evidenceRefs": []
+    }
+  }
+}
