@@ -7,6 +7,7 @@ import test from "node:test";
 import * as domain from "../../../src/domain/index.js";
 import { loadManagerInstallation } from "../../../src/internal/manager-installation.js";
 import { inputs, loadHow } from "./agent-how-fixture.js";
+import { gitBytes } from "../../../src/internal/git-checkpoint-scope.js";
 
 for (const failedFile of ["action.md", "context.json", "result.json"]) {
   test(`HOW injected ${failedFile} save failure retains actual partial and does not repeat work`, async (t) => {
@@ -16,6 +17,11 @@ for (const failedFile of ["action.md", "context.json", "result.json"]) {
     const originalWrite = fs.writeFile;
     let businessWrites = 0;
     try {
+      await gitBytes(root, ["init"]);
+      await fs.writeFile(
+        path.join(root, ".gitattributes"),
+        ".flowkit/runs/** -text\n",
+      );
       const how = await loadHow();
       const f = inputs(root);
       const guidance = (await domain.resolveActionGuidanceRef(

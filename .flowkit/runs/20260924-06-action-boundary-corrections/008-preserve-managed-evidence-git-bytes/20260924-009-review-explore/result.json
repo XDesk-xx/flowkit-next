@@ -1,0 +1,66 @@
+{
+  "runId": "20260924-009-review-explore",
+  "actionIdentity": {
+    "deliveryId": "20260924-06-action-boundary-corrections",
+    "changeId": "preserve-managed-evidence-git-bytes",
+    "actionId": "review-explore"
+  },
+  "authorConclusion": null,
+  "reviewerVerdict": "changes-requested",
+  "verificationVerdict": null,
+  "nextBoundary": "revise-explore",
+  "facts": {
+    "reviewedRunId": "20260924-008-explore",
+    "reviewedExplore": {
+      "path": "openspec/changes/preserve-managed-evidence-git-bytes/explore.md",
+      "sha256": "960a1a80c46f4ddbdad85ed90890ce0694e4eef18478fe73da34d7997a6a2373"
+    },
+    "proofRefs": [
+      {
+        "path": ".flowkit/artifacts/20260924-06-action-boundary-corrections/changes/preserve-managed-evidence-git-bytes/proof/20260924-009-review-explore/git-attributes-probe.json",
+        "bytes": 2988,
+        "sha256": "761e309fd6861997319e610ba9f352ffa1901dbb4261e2b006e8337370e9f524",
+        "deliveryId": "20260924-06-action-boundary-corrections",
+        "changeId": "preserve-managed-evidence-git-bytes",
+        "runId": "20260924-009-review-explore",
+        "purpose": "Reviewer independent Git attributes and structured whitespace comparison"
+      }
+    ],
+    "summary": "真实 Git blob 差异成立；Explore 将 -whitespace 作为结构化 Run/proof 的最小默认策略，会额外关闭既有空白诊断，故需有界修订后再审。",
+    "findings": [
+      {
+        "id": "RE009-001",
+        "artifact": "openspec/changes/preserve-managed-evidence-git-bytes/explore.md",
+        "claim": "必须保持的未来不变量 1 及 Proposal-ready 最小方向将 -text -whitespace 作为新 Run/proof 的最小配置。",
+        "observed": "独立 Git fixture 的 -text 与 -text -whitespace 均使 CRLF 结构化 result.json 的 index blob 等于原始 blob；只有 -text 保留 git diff --cached --check 的 trailing whitespace 诊断（exit 2 对比 0）。现行 action-guidance-execution 主规格与 raw-stream-attributes.test.ts 明确保留结构化文件的文本检查。",
+        "impact": "-whitespace 扩展到全部 .flowkit/runs 与 artifacts 会放宽当前结构化证据检查，超出 Owner 的原始字节保持目标，不能仅凭 LearningPlatform 当前配置推为本项目的最小合同。",
+        "minimumCorrection": "将原始字节保障与空白诊断分开：为新 managed Run/proof 明确 -text 等有效保字节规则，保留结构化证据的现有空白检查及原始流既有例外；若确需更广 -whitespace，先提供独立 Owner scope 与必要论证。相应收窄 Proposal-ready 验收方向。",
+        "evidenceRef": ".flowkit/artifacts/20260924-06-action-boundary-corrections/changes/preserve-managed-evidence-git-bytes/proof/20260924-009-review-explore/git-attributes-probe.json"
+      }
+    ],
+    "assessments": {
+      "currentStep": "独立复核 exact Author Explore、Owner future-only 范围、两个真实仓库 Git blob/attributes、现行主规格及 Git 对照 fixture 的 Proposal 准备度。",
+      "complexityAndMinimality": "复用现有 canonical start 与 scoped checkpoint 校验的方向有界；全证据 -whitespace 是非必要的额外放宽。",
+      "newContentAndScopeDrift": "发现结构化 Run/proof 空白检查放宽；其余未来生效、历史不回写、target Git 配置由项目持有等边界与 Owner 目标一致。"
+    },
+    "limits": [
+      "Git 对照只证明这些 exact fixture 的字节与空白行为；不构成未来 manager 实现验收。",
+      "本 Review 不执行 Proposal、Apply、Full Test 或 Git checkpoint。"
+    ],
+    "handoff": {
+      "summary": "请在 revise-explore 中修正最小 Git attributes 合同，再交独立 review-explore；保留 future-only 与不自动写 target 配置的边界。",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-09-24:add-preserve-managed-evidence-git-bytes:future-only",
+          "summary": "仅为今后新产生的 Flowkit managed Run/proof 保持 Git 原始字节，历史不追溯。"
+        }
+      ],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20260924-009-review-explore",
+          "path": ".flowkit/artifacts/20260924-06-action-boundary-corrections/changes/preserve-managed-evidence-git-bytes/proof/20260924-009-review-explore/git-attributes-probe.json"
+        }
+      ]
+    }
+  }
+}

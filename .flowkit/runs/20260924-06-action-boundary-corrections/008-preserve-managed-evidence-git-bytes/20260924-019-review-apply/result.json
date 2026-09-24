@@ -1,0 +1,73 @@
+{
+  "runId": "20260924-019-review-apply",
+  "actionIdentity": {
+    "deliveryId": "20260924-06-action-boundary-corrections",
+    "changeId": "preserve-managed-evidence-git-bytes",
+    "actionId": "review-apply"
+  },
+  "authorConclusion": null,
+  "reviewerVerdict": "approved",
+  "verificationVerdict": null,
+  "nextBoundary": "archive",
+  "facts": {
+    "reviewedRunId": "20260924-018-revise-apply",
+    "reviewedReviseResult": {
+      "path": ".flowkit/runs/20260924-06-action-boundary-corrections/008-preserve-managed-evidence-git-bytes/20260924-018-revise-apply/result.json",
+      "sha256": "2e93c97a66a8a97a1e9245d91d1a82e817ab800aeff6ad72fdebade63470c04f"
+    },
+    "approvedProposalReviewRunId": "20260924-015-review-propose",
+    "previousReviewRunId": "20260924-017-review-apply",
+    "resolvedFindingIds": [
+      "RA017-001"
+    ],
+    "candidateFileCount": 31,
+    "candidateFileRefs": ".flowkit/runs/20260924-06-action-boundary-corrections/008-preserve-managed-evidence-git-bytes/20260924-018-revise-apply/result.json#facts.artifacts",
+    "proofRefs": [],
+    "summary": "31/31 修订候选文件匹配 Author 记录；相对 Apply 016 仅守卫与测试两处变化。--no-renames 使 R100 新 proof 进入字节及 Result 身份核对；独立聚焦测试 2/2、domain 336/336 PASS。",
+    "findings": [],
+    "reviewerChecks": [
+      {
+        "command": "31 Author artifact SHA/length readback",
+        "outcome": "31/31 match; only 2 changed from Apply 016",
+        "source": "本次会话直接读取"
+      },
+      {
+        "command": "node --test --import tsx tests/unit/domain/managed-evidence-checkpoint.test.ts",
+        "exitCode": 0,
+        "tests": 2,
+        "source": "本次会话直接运行"
+      },
+      {
+        "command": "pnpm test:domain",
+        "exitCode": 0,
+        "tests": 336,
+        "source": "本次会话直接运行"
+      }
+    ],
+    "assessments": {
+      "currentStep": "独立复审 Revise Apply 018 对 RA017-001 的修正、已批准 Proposal 与未改部分的字节连续性。",
+      "complexityAndMinimality": "只在既有新增路径枚举加入 --no-renames 并补 R100 回归；沿用现有守卫和 Git 宿主调用，无新层。",
+      "newContentAndScopeDrift": "scope drift: NONE；没有历史迁移、自动 Git 权限或新 archive 全量扫描。"
+    },
+    "timingAssessment": "Archive 前复核当前确需消费的 proof 和审查后候选漂移；实际 index blob 仍由授权 checkpoint 在暂存后核对。",
+    "limits": [
+      "R100 fixture 证明守卫拒绝缺失声明或 SHA 漂移并保留 index；未执行真实 Owner 授权 checkpoint。",
+      "Domain PASS 与 Reviewer 批准均不是 Formal Full Test 或 Git 授权。"
+    ],
+    "handoff": {
+      "summary": "Revise Apply 修正已获 Reviewer 批准；后续 archive 应按其合法边界复核当前相关 proof 与候选，无新 Git 权限。",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-09-24:add-preserve-managed-evidence-git-bytes:future-only",
+          "summary": "仅保护今后新 managed Run/proof；历史不迁移。"
+        }
+      ],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20260924-017-review-apply",
+          "path": ".flowkit/artifacts/20260924-06-action-boundary-corrections/changes/preserve-managed-evidence-git-bytes/proof/20260924-017-review-apply/rename-enumeration.json"
+        }
+      ]
+    }
+  }
+}

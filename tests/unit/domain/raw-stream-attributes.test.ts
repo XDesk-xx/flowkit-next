@@ -57,6 +57,16 @@ test("generic raw-stream attributes preserve index bytes across Change/Full Test
         2,
       );
     }
+    const structuredPath =
+      ".flowkit/artifacts/delivery-one/changes/change-one/proof/run/command.json";
+    const structuredBytes = Buffer.from('{"command":"run"}\r\n');
+    await writeFile(path.join(root, structuredPath), structuredBytes);
+    assert.equal(git("add", "--", structuredPath).status, 0);
+    assert.deepEqual(git("show", ":" + structuredPath).stdout, structuredBytes);
+    assert.match(
+      git("check-attr", "whitespace", "--", structuredPath).stdout.toString(),
+      /unspecified/,
+    );
   } finally {
     await rm(root, { recursive: true, force: true });
   }

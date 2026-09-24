@@ -1,0 +1,53 @@
+{
+  "runId": "20260924-010-revise-explore",
+  "actionIdentity": {
+    "deliveryId": "20260924-06-action-boundary-corrections",
+    "changeId": "preserve-managed-evidence-git-bytes",
+    "actionId": "revise-explore"
+  },
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-explore",
+  "facts": {
+    "projectOrdinal": 41,
+    "changeStartSequence": 8,
+    "reviewedRunId": "20260924-009-review-explore",
+    "findingsAddressed": [
+      "RE009-001"
+    ],
+    "summary": "Explore now requires -text or equivalent byte preservation for future managed Run/proof while retaining structured whitespace diagnostics; only raw streams keep -whitespace.",
+    "exploreArtifact": "openspec/changes/preserve-managed-evidence-git-bytes/explore.md",
+    "priorExploreSha256": "960a1a80c46f4ddbdad85ed90890ce0694e4eef18478fe73da34d7997a6a2373",
+    "exploreSha256": "f3f6af75da28cc3e5d7e0d510d0c24865af21058b116b721b92091cbf89306f2",
+    "decisiveProof": {
+      "sourceRunId": "20260924-009-review-explore",
+      "path": ".flowkit/artifacts/20260924-06-action-boundary-corrections/changes/preserve-managed-evidence-git-bytes/proof/20260924-009-review-explore/git-attributes-probe.json",
+      "sha256": "761e309fd6861997319e610ba9f352ffa1901dbb4261e2b006e8337370e9f524",
+      "textOnlyWhitespaceCheckExit": 2,
+      "textAndWhitespaceCheckExit": 0
+    },
+    "scope": {
+      "findingsOnly": true,
+      "productionChanged": false,
+      "historicalBytesChanged": false,
+      "additionalProofRequired": false
+    },
+    "proofRefs": [],
+    "handoff": {
+      "summary": "Independent review-explore should assess RE009-001 convergence in the current Explore and the existing Reviewer Git fixture. No Proposal, Apply, Full Test, or Git authority is claimed.",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-09-24:add-preserve-managed-evidence-git-bytes:future-only",
+          "summary": "Only future managed Run/proof; historical bytes remain untouched."
+        }
+      ],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20260924-009-review-explore",
+          "path": ".flowkit/artifacts/20260924-06-action-boundary-corrections/changes/preserve-managed-evidence-git-bytes/proof/20260924-009-review-explore/git-attributes-probe.json"
+        }
+      ]
+    }
+  }
+}

@@ -50,6 +50,7 @@ export interface HowExamples {
       changeId: string;
       runId: string;
     },
+    checkGitBytes: typeof domain.assertManagedEvidenceGitBytes,
   ): Promise<Buffer>;
 }
 

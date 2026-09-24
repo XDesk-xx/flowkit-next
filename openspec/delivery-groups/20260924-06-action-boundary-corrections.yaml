@@ -3,7 +3,7 @@ projectId: "flowkit-next"
 createdAt: "2026-09-24"
 branch: "delivery/20260924-06-action-boundary-corrections"
 base: "main"
-goal: "修复真实使用中暴露的 Action Guidance provenance 与 prepared Owner correction 两个边界问题。"
+goal: "修复 Action Guidance provenance、prepared Owner correction，并保证今后 Flowkit 管理的证据在 Git 中保留原始字节。"
 planningReference:
   artifact: "openspec/delivery-groups/20260924-06-action-boundary-corrections-plan.md"
   contentSha256: "22db59844ab8ec3586190af8932401d7e9d67ddab23e803e7d3b59d4b8dadb81"
@@ -25,6 +25,13 @@ changes:
     required: true
     dependsOn: []
     state: planned
+  - id: "preserve-managed-evidence-git-bytes"
+    group: "evidence-integrity"
+    goal: "仅约束今后新产生的 Flowkit Run/proof 在目标 Git 中保持原始字节，不追溯历史。"
+    required: true
+    dependsOn: []
+    state: completed
+    projectOrdinal: 41
 ownerDecisions:
   - ref: "owner:acee7751529bf1c0b637c3646768b0fb226db6b19b177d3a5e9f9db9e19f190d"
     decision: "create-delivery"
@@ -40,12 +47,20 @@ ownerDecisions:
     sourceRef: "owner-input:2026-09-24:activate-harden-action-guidance-provenance:proof-explore"
     scope:
       - "explore"
+  - ref: "owner:4db32da6a35117e862d466f566f8770cb490f1c5ce6500aebd845b59fb5e9dca"
+    decision: "activate-change"
+    deliveryId: "20260924-06-action-boundary-corrections"
+    changeId: "preserve-managed-evidence-git-bytes"
+    sourceRef: "owner-input:2026-09-24:add-preserve-managed-evidence-git-bytes:future-only"
+    scope:
+      - "explore"
 reference:
   kind: "owner-selected-delivery-plan"
   artifact: "openspec/delivery-groups/20260924-06-action-boundary-corrections-plan.md"
 scope:
   included:
-    - "两个独立必需 Change；各自经 Explore、Proposal、Apply、独立 Review 与实际验证。"
+    - "三个独立必需 Change；各自经 Explore、Proposal、Apply、独立 Review 与实际验证。"
+    - "新证据字节保护仅适用于今后 Flowkit 管理的新 Run/proof，不迁移或重写历史。"
     - "prepared correction 以 LP 089 三文件 Run 的只读副本验证兼容，原始 bytes 不覆盖。"
   excluded:
     - "自动修改 LearningPlatform 089、静默切换 LP D07 manager 或伪造未完成 Action PASS。"

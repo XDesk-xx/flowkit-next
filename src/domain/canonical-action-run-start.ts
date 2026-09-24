@@ -9,6 +9,7 @@ import {
 import path from "node:path";
 import { isDeepStrictEqual } from "node:util";
 
+import { assertManagedEvidenceGitBytes } from "../internal/managed-evidence-git.js";
 import { isCurrentAction, type CurrentAction } from "./action-lifecycle.js";
 import {
   formActionPackage,
@@ -156,6 +157,16 @@ export async function startCanonicalActionRun(
     !isDeepStrictEqual(buildRunAddress(input), preparedAddress)
   ) {
     throw new Error("Prepared package or address changed before Run start");
+  }
+  const runRelative = path
+    .relative(address.repositoryRoot, address.runDirectory)
+    .split(path.sep)
+    .join("/");
+  for (const name of ["action.md", "context.json", "result.json"]) {
+    await assertManagedEvidenceGitBytes(
+      address.repositoryRoot,
+      runRelative + "/" + name,
+    );
   }
   const { root, directory } = await createControlledRunDirectory(
     input,

@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { mkdtemp, readFile, rm } from "node:fs/promises";
+import { mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import test from "node:test";
@@ -7,6 +7,7 @@ import * as domain from "../../../src/domain/index.js";
 import { loadManagerInstallation } from "../../../src/internal/manager-installation.js";
 import { readSelectedRunChain } from "../../../src/cli/current-run-chain.js";
 import { inputs, loadHow } from "./agent-how-fixture.js";
+import { gitBytes } from "../../../src/internal/git-checkpoint-scope.js";
 
 test("all ten HOWs reuse exact prepared identity and reject a different prepared target", async () => {
   for (const actionId of [
@@ -65,6 +66,11 @@ test("all ten HOWs reuse exact prepared identity and reject a different prepared
 test("HOW prepared failure then explicitly selected new execution records a new occurrence without rewriting old bytes", async () => {
   const root = await mkdtemp(path.join(os.tmpdir(), "flowkit-how-prepared-"));
   try {
+    await gitBytes(root, ["init"]);
+    await writeFile(
+      path.join(root, ".gitattributes"),
+      ".flowkit/runs/** -text\n",
+    );
     const how = await loadHow("explore");
     const f = inputs(root);
     const identity = f.context.actionIdentity;

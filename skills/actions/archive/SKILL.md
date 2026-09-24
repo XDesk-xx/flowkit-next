@@ -103,7 +103,7 @@ Keep `projectOrdinal`, `changeStartSequence`, current Run sequence and physical 
 
 必要 proof 在产生时保存到 target 的 `.flowkit/artifacts/<delivery>/changes/<change>/proof/<run-id>/`，默认长期保留；`.tmp` 仅放可丢弃工作文件。没有必要新材料时不创建空 proof 目录。不得覆盖历史材料或把旧 PASS 当成本次实现验收。
 
-原始流按 Buffer bytes 保存，使用 `stdout.txt`、`stderr.txt`、`*.stdout.txt`、`*.stderr.txt`；命令、起止时间、实际退出状态及环境限制另存必要摘要，secret 不收集。不得为通过文本检查格式化原始流，也不得把脚本、Run JSON、摘要改名冒充日志。本仓库四条通用 attributes 规则覆盖这些原始流，不逐 Change 追加例外，不与 `.gitignore` 或 Full Test 范围绑定；其他 target 的 Git 配置仍由该项目控制。
+原始流按 Buffer bytes 保存，使用 `stdout.txt`、`stderr.txt`、`*.stdout.txt`、`*.stderr.txt`；命令、起止时间、实际退出状态及环境限制另存必要摘要，secret 不收集。不得为通过文本检查格式化原始流，也不得把脚本、Run JSON、摘要改名冒充日志。本仓库四条通用 attributes 规则覆盖这些原始流，不逐 Change 追加例外，不与 `.gitignore` 或 Full Test 范围绑定；其他 target 的 Git 配置仍由该项目控制。今后新 Run 的三个 exact 文件路径在开始前检查；新必要 proof 的 exact 路径在接纳前用本次 manager domain.assertManagedEvidenceGitBytes 核对，作为 checkProof 的第四个参数传入。结构化证据保留空白诊断，历史证据不追溯。
 
 交接只携带下一步确需的文件引用与会影响判断的 Owner 决定（真实 sourceRef、简要决定、材料处理授权与保留边界），不复制聊天或默认传递全部祖先 proof。区分 Explore 实验、已接受决策依据、当前实现验收；保留不等于仍有效，hash 不等于真实执行或审查批准。材料路径变化或授权背景未交接时先核对，只有具体合同影响才构成阻断；未收到授权说明不等于未授权。
 
@@ -142,7 +142,7 @@ async function startRecord(domain, installation, input, currentAction, preparedC
 
 ```js
 // agent-check-proof: producer/admission/related consumer，非 status/next。
-async function checkProof(root, ref, identity) {
+async function checkProof(root, ref, identity, checkGitBytes) {
   const fs = await import("node:fs/promises");
   const path = (await import("node:path")).default;
   const assert = (await import("node:assert/strict")).default;
@@ -153,6 +153,8 @@ async function checkProof(root, ref, identity) {
   const prefix = `.flowkit/artifacts/${identity.deliveryId}/changes/${identity.changeId}/proof/${identity.runId}/`;
   assert.ok(ref.path.startsWith(prefix));
   assert.ok(ref.path.split("/").every((part) => part && part !== "." && part !== ".."));
+  assert.equal(typeof checkGitBytes, "function");
+  await checkGitBytes(root, ref.path); // current manager domain.assertManagedEvidenceGitBytes
   const canonicalRoot = await fs.realpath(root);
   let file = canonicalRoot;
   for (const part of ref.path.split("/")) {

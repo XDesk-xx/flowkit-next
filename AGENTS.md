@@ -466,7 +466,7 @@ no trailing whitespace
 EOF exactly one newline
 ```
 
-原始 stdout/stderr 是例外：保留 Buffer bytes，使用 `stdout.txt`、`stderr.txt`、`*.stdout.txt`、`*.stderr.txt`，由 `.flowkit/artifacts/**` 下四条通用 attributes 模式处理，不逐 Change 添加例外。不对全部 artifacts/Run 放宽；脚本、Run JSON、命令元数据、摘要仍是结构化文本，不得改名冒充日志。此规则独立于 `.gitignore` 和 Full Test 选取范围，不自动注入其他 target。
+原始 stdout/stderr 是例外：保留 Buffer bytes，使用 `stdout.txt`、`stderr.txt`、`*.stdout.txt`、`*.stderr.txt`，由 `.flowkit/artifacts/**` 下四条通用 attributes 模式处理，不逐 Change 添加例外。不对全部 artifacts/Run 关闭空白诊断；脚本、Run JSON、命令元数据、摘要仍是结构化文本，不得改名冒充日志。今后新 managed Run/proof 须由 target 有效 Git 属性以 -text 或等效规则保持原始字节；结构化证据继续接受空白诊断，具体 proof 路径在接纳前核对，授权 checkpoint 在提交前核对 index 与已记录身份。历史证据不迁移，Flowkit 不自动写入其他 target 的 Git 配置。此规则独立于 `.gitignore` 和 Full Test 选取范围。
 
 Git checkpoint 的空白诊断（不是统一提交阻断）：
 

@@ -5,10 +5,17 @@ import os from "node:os";
 import path from "node:path";
 import test from "node:test";
 import { loadHow } from "./agent-how-fixture.js";
+import { assertManagedEvidenceGitBytes } from "../../../src/domain/index.js";
+import { gitBytes } from "../../../src/internal/git-checkpoint-scope.js";
 
 test("HOW material consumer validates ownership, bytes and regular contained paths", async () => {
   const root = await mkdtemp(path.join(os.tmpdir(), "flowkit-material-"));
   try {
+    await gitBytes(root, ["init"]);
+    await writeFile(
+      path.join(root, ".gitattributes"),
+      ".flowkit/artifacts/** -text\n",
+    );
     const how = await loadHow();
     const identity = {
       deliveryId: "delivery-one",
@@ -27,7 +34,22 @@ test("HOW material consumer validates ownership, bytes and regular contained pat
       sha256: createHash("sha256").update(bytes).digest("hex"),
       purpose: "synthetic raw byte test",
     };
-    assert.deepEqual(await how.checkProof(root, ref, identity), bytes);
+    assert.deepEqual(
+      await how.checkProof(root, ref, identity, assertManagedEvidenceGitBytes),
+      bytes,
+    );
+    await writeFile(
+      path.join(root, ".gitattributes"),
+      ".flowkit/artifacts/** -text\n.flowkit/artifacts/**/stdout.txt text=auto\n",
+    );
+    await assert.rejects(
+      how.checkProof(root, ref, identity, assertManagedEvidenceGitBytes),
+      /stdout\.txt/,
+    );
+    await writeFile(
+      path.join(root, ".gitattributes"),
+      ".flowkit/artifacts/** -text\n",
+    );
     for (const bad of [
       { ...ref, bytes: 1 },
       { ...ref, sha256: "a".repeat(64) },
@@ -40,10 +62,17 @@ test("HOW material consumer validates ownership, bytes and regular contained pat
       { ...ref, path: `${prefix}/missing.txt` },
       { ...ref, path: path.join(root, prefix, "stdout.txt") },
     ])
-      await assert.rejects(how.checkProof(root, bad, identity));
+      await assert.rejects(
+        how.checkProof(root, bad, identity, assertManagedEvidenceGitBytes),
+      );
     await mkdir(path.join(directory, "folder"));
     await assert.rejects(
-      how.checkProof(root, { ...ref, path: `${prefix}/folder` }, identity),
+      how.checkProof(
+        root,
+        { ...ref, path: `${prefix}/folder` },
+        identity,
+        assertManagedEvidenceGitBytes,
+      ),
       /not regular/,
     );
     const outside = path.join(root, "outside");
@@ -55,6 +84,7 @@ test("HOW material consumer validates ownership, bytes and regular contained pat
         root,
         { ...ref, path: `${prefix}/linked/stdout.txt` },
         identity,
+        assertManagedEvidenceGitBytes,
       ),
       /linked material/,
     );

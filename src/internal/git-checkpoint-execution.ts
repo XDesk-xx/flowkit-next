@@ -2,6 +2,7 @@ import {
   isDeliveryCheckpointOperation,
   type DeliveryCheckpointOperation,
 } from "../domain/delivery-repository-integration-operation.js";
+import { requireNewManagedEvidenceBytes } from "./managed-evidence-checkpoint.js";
 import {
   gitBytes,
   gitText,
@@ -122,6 +123,7 @@ export async function executeScopedCheckpoint(
     await validate();
     // Re-read immediately before commit, including the full pending index.
     await validate();
+    await requireNewManagedEvidenceBytes(root);
     phase = "commit";
     effect = "unknown";
     await gitBytes(root, ["commit", "-m", operation.commitMessage]);

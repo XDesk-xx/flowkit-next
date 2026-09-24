@@ -25,10 +25,16 @@ import {
   type RunContextRecord,
 } from "../../../src/domain/index.js";
 import { fixtureInstallation } from "./manager-installation-fixture.js";
+import { gitBytes } from "../../../src/internal/git-checkpoint-scope.js";
 
 async function fixture() {
   const repositoryRoot = await mkdtemp(
     path.join(os.tmpdir(), "flowkit-start-target-"),
+  );
+  await gitBytes(repositoryRoot, ["init"]);
+  await writeFile(
+    path.join(repositoryRoot, ".gitattributes"),
+    ".flowkit/runs/** -text\n.flowkit/artifacts/** -text\n",
   );
   const managerRoot = await mkdtemp(
     path.join(os.tmpdir(), "flowkit-start-manager-"),
@@ -459,5 +465,37 @@ test("readiness cannot mutate the held package or controlled address before writ
     } finally {
       await f.cleanup();
     }
+  }
+});
+test("exact Run path override blocks before action.md is created", async () => {
+  const f = await fixture();
+  try {
+    await writeFile(
+      path.join(f.repositoryRoot, ".gitattributes"),
+      ".flowkit/runs/** -text\n.flowkit/runs/**/result.json text=auto\n",
+    );
+    const expected = await resolveActionGuidanceRef(
+      fixtureInstallation(f.managerRoot),
+      "apply",
+    );
+    assert.ok(expected);
+    await assert.rejects(
+      startCanonicalActionRun(
+        fixtureInstallation(f.managerRoot),
+        f.input,
+        f.currentAction,
+        f.context,
+        expected,
+        () => "ready",
+      ),
+      /result\.json/,
+    );
+    const address = buildRunAddress(f.input);
+    assert.ok(address);
+    await assert.rejects(
+      readFile(path.join(address.runDirectory, "action.md")),
+    );
+  } finally {
+    await f.cleanup();
   }
 });

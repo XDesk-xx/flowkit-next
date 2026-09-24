@@ -7,6 +7,7 @@ import * as domain from "../../../src/domain/index.js";
 import { loadManagerInstallation } from "../../../src/internal/manager-installation.js";
 import { readSelectedRunChain } from "../../../src/cli/current-run-chain.js";
 import { inputs, loadHow } from "./agent-how-fixture.js";
+import { gitBytes } from "../../../src/internal/git-checkpoint-scope.js";
 
 test("published ten HOW assets have executable identical record examples, no transport", async () => {
   for (const action of [
@@ -65,6 +66,11 @@ test("synthetic HOW sequence preserves start, partial and create-once completion
       /preparation blocked/i,
     );
     assert.deepEqual(await readdir(root), []); // no business work and no empty proof
+    await gitBytes(root, ["init"]);
+    await writeFile(
+      path.join(root, ".gitattributes"),
+      ".flowkit/runs/** -text\n",
+    );
     await assert.rejects(
       how.startRecord(
         domain,
@@ -133,6 +139,11 @@ test("synthetic HOW distinguishes prepared failure, business FAIL and failed par
   for (const mode of ["prepared", "fail", "partial"]) {
     const root = await mkdtemp(path.join(os.tmpdir(), "flowkit-how-"));
     try {
+      await gitBytes(root, ["init"]);
+      await writeFile(
+        path.join(root, ".gitattributes"),
+        ".flowkit/runs/** -text\n",
+      );
       const how = await loadHow();
       const f = inputs(root);
       const guidance = (await domain.resolveActionGuidanceRef(
