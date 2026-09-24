@@ -1,0 +1,47 @@
+id: "20260924-06-action-boundary-corrections"
+projectId: "flowkit-next"
+createdAt: "2026-09-24"
+branch: "delivery/20260924-06-action-boundary-corrections"
+base: "main"
+goal: "修复真实使用中暴露的 Action Guidance provenance 与 prepared Owner correction 两个边界问题。"
+planningReference:
+  artifact: "openspec/delivery-groups/20260924-06-action-boundary-corrections-plan.md"
+  contentSha256: "22db59844ab8ec3586190af8932401d7e9d67ddab23e803e7d3b59d4b8dadb81"
+delivery:
+  state: active
+  fullTestStatus: pending
+  finalizationStatus: pending
+changes:
+  - id: "harden-action-guidance-provenance"
+    group: "action-start"
+    goal: "新 Action 只消费当前 manager installation 对 canonical Skill bytes 解析出的 GuidanceRef。"
+    required: true
+    dependsOn: []
+    state: planned
+  - id: "support-owner-correction-of-prepared-actions"
+    group: "action-lifecycle"
+    goal: "允许明确 Owner 授权的 prepared Author Action 前向修正到合法 revise Action，并完整保留既有 Run 历史。"
+    required: true
+    dependsOn: []
+    state: planned
+ownerDecisions:
+  - ref: "owner:acee7751529bf1c0b637c3646768b0fb226db6b19b177d3a5e9f9db9e19f190d"
+    decision: "create-delivery"
+    deliveryId: "20260924-06-action-boundary-corrections"
+    sourceRef: "owner-input:2026-09-24:start-flowkit-d06-two-action-boundary-corrections"
+    scope:
+      - "delivery-start"
+      - "git-create-delivery-branch"
+reference:
+  kind: "owner-selected-delivery-plan"
+  artifact: "openspec/delivery-groups/20260924-06-action-boundary-corrections-plan.md"
+scope:
+  included:
+    - "两个独立必需 Change；各自经 Explore、Proposal、Apply、独立 Review 与实际验证。"
+    - "prepared correction 以 LP 089 三文件 Run 的只读副本验证兼容，原始 bytes 不覆盖。"
+  excluded:
+    - "自动修改 LearningPlatform 089、静默切换 LP D07 manager 或伪造未完成 Action PASS。"
+    - "本次 Start 中激活 Change、执行 Action、Full Test、Final、Git checkpoint、push 或 merge。"
+bootstrap:
+  mode: "fixed-external-manager"
+  stableSourceCommit: "aa996e6f71867cca09e0aa65b93b65671af0f4c1"
