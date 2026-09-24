@@ -1,0 +1,64 @@
+{
+  "runId": "20260924-004-review-propose",
+  "actionIdentity": {
+    "deliveryId": "20260924-06-action-boundary-corrections",
+    "changeId": "harden-action-guidance-provenance",
+    "actionId": "review-propose"
+  },
+  "authorConclusion": null,
+  "reviewerVerdict": "approved",
+  "verificationVerdict": null,
+  "nextBoundary": "apply",
+  "facts": {
+    "reviewedRunId": "20260924-003-propose",
+    "approvedExploreReviewRunId": "20260924-002-review-explore",
+    "reviewedArtifacts": [
+      {
+        "path": "openspec/changes/harden-action-guidance-provenance/proposal.md",
+        "sha256": "5e06d01fcd5309d8fae006d664357ed29bb26cf9541f1d8f7f3aff4e87a34b1e"
+      },
+      {
+        "path": "openspec/changes/harden-action-guidance-provenance/specs/action-guidance-execution/spec.md",
+        "sha256": "6ced9d4f26826a20ae6ef74c9f31e86903ab38a07b156160c07d04ac52bdce46"
+      },
+      {
+        "path": "openspec/changes/harden-action-guidance-provenance/specs/action-package-and-result-admission/spec.md",
+        "sha256": "068c7465439ccbaac5f603beef704b48cbde6200f037edc1149ebc705ce74499"
+      },
+      {
+        "path": "openspec/changes/harden-action-guidance-provenance/design.md",
+        "sha256": "46340cff1949e4377cd74f0afeb40bbe07308a949c2f0a2df1e1370bd5476ba4"
+      },
+      {
+        "path": "openspec/changes/harden-action-guidance-provenance/tasks.md",
+        "sha256": "76db398c0726db579150c442828afc73e2322caa692294cb462cc00ec15467a4"
+      }
+    ],
+    "summary": "The five Proposal artifacts trace to approved Explore and specify a bounded manager-owned start, before-Run provenance rejection, preserved partial/history behavior, and ten HOW updates with matching regression tasks.",
+    "findings": [],
+    "assessments": {
+      "currentStep": "Independent review of exact Proposal, two delta specs, design, and tasks against the approved Explore and existing capability contracts.",
+      "complexityAndMinimality": "One manager-owned start seam reuses the existing resolver, package, Run address, readiness, and admission boundaries; no registry or extra lifecycle state.",
+      "newContentAndScopeDrift": "None. Owner correction, old Run migration, CLI write commands, and Delivery acceptance remain outside this Change."
+    },
+    "limits": [
+      "Strict OpenSpec validation confirms structure, not semantic correctness or Apply acceptance.",
+      "No implementation or Formal Full Test was reviewed in this Proposal Action."
+    ],
+    "handoff": {
+      "summary": "Proposal is Apply-ready; keep the exact before-action.md refusal and historical-Run compatibility tests.",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-09-24:activate-harden-action-guidance-provenance:proof-explore",
+          "summary": "The Change was activated for proof Explore; subsequent ordinary Actions follow Policy."
+        }
+      ],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20260924-003-propose",
+          "path": "openspec/changes/harden-action-guidance-provenance/proposal.md"
+        }
+      ]
+    }
+  }
+}

@@ -32,6 +32,11 @@ test("published ten HOW assets have executable identical record examples, no tra
       markdown,
       /flowkit action --input|kind:"prepare"|stdin\/stdout JSONL/,
     );
+    assert.match(markdown, /domain\.startCanonicalActionRun\(/);
+    assert.doesNotMatch(
+      markdown,
+      /fs\.writeFile\(path\.join\(directory, "action\.md"\)/,
+    );
     assert.match(markdown, /Reviewer 必须独立/);
     assert.match(markdown, /STOP/);
   }
@@ -48,33 +53,51 @@ test("synthetic HOW sequence preserves start, partial and create-once completion
     ))!;
     assert.ok(guidance);
     await assert.rejects(
-      how.startRecord(domain, f.input, f.current, f.context, guidance, false),
-      /preparation blocked/,
+      how.startRecord(
+        domain,
+        loadManagerInstallation(),
+        f.input,
+        f.current,
+        f.context,
+        guidance,
+        () => "blocked",
+      ),
+      /preparation blocked/i,
     );
     assert.deepEqual(await readdir(root), []); // no business work and no empty proof
     await assert.rejects(
       how.startRecord(
         domain,
+        loadManagerInstallation(),
         f.input,
         f.current,
         { ...f.context, role: "reviewer" },
         guidance,
-        true,
+        () => "ready",
       ),
-      /invalid package/,
+      /Invalid prepared ActionPackage/,
     );
     const held = await how.startRecord(
       domain,
+      loadManagerInstallation(),
       f.input,
       f.current,
       f.context,
       guidance,
-      true,
+      () => "ready",
     );
     assert.deepEqual(await readdir(held.directory), ["action.md"]);
     await assert.rejects(domain.readDurableRun(f.input), /Incomplete Run/);
     await assert.rejects(
-      how.startRecord(domain, f.input, f.current, f.context, guidance, true),
+      how.startRecord(
+        domain,
+        loadManagerInstallation(),
+        f.input,
+        f.current,
+        f.context,
+        guidance,
+        () => "ready",
+      ),
       /sequence already/,
     );
     await assert.rejects(
@@ -118,11 +141,12 @@ test("synthetic HOW distinguishes prepared failure, business FAIL and failed par
       ))!;
       const held = await how.startRecord(
         domain,
+        loadManagerInstallation(),
         f.input,
         f.current,
         f.context,
         guidance,
-        true,
+        () => "ready",
       );
       if (mode === "partial") {
         await writeFile(path.join(held.directory, "context.json"), "{", {

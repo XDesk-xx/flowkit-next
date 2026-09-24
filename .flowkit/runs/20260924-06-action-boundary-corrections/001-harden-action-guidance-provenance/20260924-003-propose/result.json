@@ -1,0 +1,65 @@
+{
+  "runId": "20260924-003-propose",
+  "actionIdentity": {
+    "deliveryId": "20260924-06-action-boundary-corrections",
+    "changeId": "harden-action-guidance-provenance",
+    "actionId": "propose"
+  },
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-propose",
+  "facts": {
+    "projectOrdinal": 40,
+    "approvedExploreRunId": "20260924-001-explore",
+    "approvingReviewRunId": "20260924-002-review-explore",
+    "summary": "Converged a manager-owned new-Run start provenance contract across two existing capabilities; all spec-driven artifacts exist and strict OpenSpec validation passed.",
+    "artifactRefs": [
+      {
+        "path": "openspec/changes/harden-action-guidance-provenance/proposal.md",
+        "bytes": 1878,
+        "sha256": "5e06d01fcd5309d8fae006d664357ed29bb26cf9541f1d8f7f3aff4e87a34b1e"
+      },
+      {
+        "path": "openspec/changes/harden-action-guidance-provenance/specs/action-guidance-execution/spec.md",
+        "bytes": 4688,
+        "sha256": "6ced9d4f26826a20ae6ef74c9f31e86903ab38a07b156160c07d04ac52bdce46"
+      },
+      {
+        "path": "openspec/changes/harden-action-guidance-provenance/specs/action-package-and-result-admission/spec.md",
+        "bytes": 1655,
+        "sha256": "068c7465439ccbaac5f603beef704b48cbde6200f037edc1149ebc705ce74499"
+      },
+      {
+        "path": "openspec/changes/harden-action-guidance-provenance/design.md",
+        "bytes": 4515,
+        "sha256": "46340cff1949e4377cd74f0afeb40bbe07308a949c2f0a2df1e1370bd5476ba4"
+      },
+      {
+        "path": "openspec/changes/harden-action-guidance-provenance/tasks.md",
+        "bytes": 1523,
+        "sha256": "76db398c0726db579150c442828afc73e2322caa692294cb462cc00ec15467a4"
+      }
+    ],
+    "validation": {
+      "command": "node C:\\Users\\xuser\\.flowkit\\tools\\openspec\\1.10.0\\bin\\openspec.js validate harden-action-guidance-provenance --strict",
+      "exitCode": 0
+    },
+    "complexityAndScope": {
+      "growth": "One bounded manager-owned start operation and updates to ten existing product Action HOW entries; no new capability, registry, CLI write command, or historical migration.",
+      "newContentBeyondExplore": "None",
+      "scopeDrift": "None; prepared Owner correction remains in the second Change."
+    },
+    "proofRefs": [],
+    "handoff": {
+      "summary": "Independent review-propose should assess exact artifact refs and before-Run provenance rejection; Explore proof is decision basis, not implementation PASS.",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-09-24:activate-harden-action-guidance-provenance:proof-explore",
+          "summary": "Activate this Change for proof Explore; current propose follows approved review and Policy next."
+        }
+      ],
+      "evidenceRefs": []
+    }
+  }
+}

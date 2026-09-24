@@ -1,0 +1,2014 @@
+$ node --import tsx --test tests/unit/domain/*.test.ts
+TAP version 13
+# Subtest: context selects unique active and distinguishes idle/planned/cancelled
+ok 1 - context selects unique active and distinguishes idle/planned/cancelled
+  ---
+  duration_ms: 1971.5484
+  type: 'test'
+  ...
+# Subtest: context reports candidates and explicit selection never fills missing facts
+ok 2 - context reports candidates and explicit selection never fills missing facts
+  ---
+  duration_ms: 886.6134
+  type: 'test'
+  ...
+# Subtest: context rejects root mismatch, orphan, activation/dependency and partial history
+ok 3 - context rejects root mismatch, orphan, activation/dependency and partial history
+  ---
+  duration_ms: 1274.0726
+  type: 'test'
+  ...
+# Subtest: canonical Guidance path is deterministic for the closed Standard Action set
+ok 4 - canonical Guidance path is deterministic for the closed Standard Action set
+  ---
+  duration_ms: 1.4461
+  type: 'test'
+  ...
+# Subtest: ActionGuidanceRef is a closed canonical path + lowercase SHA-256 envelope
+ok 5 - ActionGuidanceRef is a closed canonical path + lowercase SHA-256 envelope
+  ---
+  duration_ms: 0.5318
+  type: 'test'
+  ...
+# Subtest: resolver binds exact canonical bytes and content drift changes identity
+ok 6 - resolver binds exact canonical bytes and content drift changes identity
+  ---
+  duration_ms: 200.6579
+  type: 'test'
+  ...
+# Subtest: missing canonical product Guidance fails closed and never falls back to .agents
+ok 7 - missing canonical product Guidance fails closed and never falls back to .agents
+  ---
+  duration_ms: 101.8027
+  type: 'test'
+  ...
+# Subtest: non-regular and final-entry symlink Guidance fail closed
+ok 8 - non-regular and final-entry symlink Guidance fail closed
+  ---
+  duration_ms: 137.598
+  type: 'test'
+  ...
+# Subtest: parent-path redirection through symlink fails closed
+ok 9 - parent-path redirection through symlink fails closed
+  ---
+  duration_ms: 69.2981
+  type: 'test'
+  ...
+# Subtest: unreadable canonical Guidance fails closed when host permissions are enforceable
+ok 10 - unreadable canonical Guidance fails closed when host permissions are enforceable
+  ---
+  duration_ms: 348.4131
+  type: 'test'
+  ...
+# Subtest: accepted fixture root is cleaned when Windows SID setup fails
+ok 11 - accepted fixture root is cleaned when Windows SID setup fails
+  ---
+  duration_ms: 17.9799
+  type: 'test'
+  ...
+# Subtest: accepts exactly prepared and terminal lifecycle states
+ok 12 - accepts exactly prepared and terminal lifecycle states
+  ---
+  duration_ms: 2.8429
+  type: 'test'
+  ...
+# Subtest: validates canonical ActionIdentity and CurrentAction without normalization
+ok 13 - validates canonical ActionIdentity and CurrentAction without normalization
+  ---
+  duration_ms: 0.6143
+  type: 'test'
+  ...
+# Subtest: prepares an empty slot and terminalizes the exact prepared Action
+ok 14 - prepares an empty slot and terminalizes the exact prepared Action
+  ---
+  duration_ms: 0.3418
+  type: 'test'
+  ...
+# Subtest: rejects removed resume events and malformed lifecycle inputs
+ok 15 - rejects removed resume events and malformed lifecycle inputs
+  ---
+  duration_ms: 0.2095
+  type: 'test'
+  ...
+# Subtest: rejects duplicate or replacement prepare over a prepared Action
+ok 16 - rejects duplicate or replacement prepare over a prepared Action
+  ---
+  duration_ms: 0.2742
+  type: 'test'
+  ...
+# Subtest: rejects terminal from empty or identity mismatch
+ok 17 - rejects terminal from empty or identity mismatch
+  ---
+  duration_ms: 0.1666
+  type: 'test'
+  ...
+# Subtest: keeps terminal absorbing for same identity
+ok 18 - keeps terminal absorbing for same identity
+  ---
+  duration_ms: 0.2629
+  type: 'test'
+  ...
+# Subtest: allows terminal replacement only for a different canonical identity
+ok 19 - allows terminal replacement only for a different canonical identity
+  ---
+  duration_ms: 0.2509
+  type: 'test'
+  ...
+# Subtest: uses semantic equality and remains pure
+ok 20 - uses semantic equality and remains pure
+  ---
+  duration_ms: 1.1273
+  type: 'test'
+  ...
+# Subtest: encodes structural lifecycle only, not Policy or authority
+ok 21 - encodes structural lifecycle only, not Policy or authority
+  ---
+  duration_ms: 1.1759
+  type: 'test'
+  ...
+# Subtest: maps every Standard Action to one closed execution role
+ok 22 - maps every Standard Action to one closed execution role
+  ---
+  duration_ms: 1.5692
+  type: 'test'
+  ...
+# Subtest: forms a minimal prepared package from exact current facts
+ok 23 - forms a minimal prepared package from exact current facts
+  ---
+  duration_ms: 4.8106
+  type: 'test'
+  ...
+# Subtest: formation rejects terminal, removed resumed, null, identity, state or role mismatch
+ok 24 - formation rejects terminal, removed resumed, null, identity, state or role mismatch
+  ---
+  duration_ms: 0.343
+  type: 'test'
+  ...
+# Subtest: formation rejects missing, malformed, and wrong-Action Guidance identity
+ok 25 - formation rejects missing, malformed, and wrong-Action Guidance identity
+  ---
+  duration_ms: 0.2404
+  type: 'test'
+  ...
+# Subtest: ActionPackage validator accepts only the exact prepared Guidance-bound envelope
+ok 26 - ActionPackage validator accepts only the exact prepared Guidance-bound envelope
+  ---
+  duration_ms: 0.4137
+  type: 'test'
+  ...
+# Subtest: admits exact prepared results and preserves opaque nextBoundary
+ok 27 - admits exact prepared results and preserves opaque nextBoundary
+  ---
+  duration_ms: 0.9135
+  type: 'test'
+  ...
+# Subtest: rejects removed resumed current state at admission
+ok 28 - rejects removed resumed current state at admission
+  ---
+  duration_ms: 0.4584
+  type: 'test'
+  ...
+# Subtest: rejects stale prior occurrence of the same Standard Action
+ok 29 - rejects stale prior occurrence of the same Standard Action
+  ---
+  duration_ms: 0.8337
+  type: 'test'
+  ...
+# Subtest: rejects wrong candidate Run or Action linkage
+ok 30 - rejects wrong candidate Run or Action linkage
+  ---
+  duration_ms: 11.7062
+  type: 'test'
+  ...
+# Subtest: enforces Author and Reviewer outcome-slot ownership
+ok 31 - enforces Author and Reviewer outcome-slot ownership
+  ---
+  duration_ms: 0.9308
+  type: 'test'
+  ...
+# Subtest: rejects formal Verification verdict from every Standard Action
+ok 32 - rejects formal Verification verdict from every Standard Action
+  ---
+  duration_ms: 0.7552
+  type: 'test'
+  ...
+# Subtest: HOW injected action.md save failure retains actual partial and does not repeat work
+ok 33 - HOW injected action.md save failure retains actual partial and does not repeat work
+  ---
+  duration_ms: 120.2573
+  type: 'test'
+  ...
+# Subtest: HOW injected context.json save failure retains actual partial and does not repeat work
+ok 34 - HOW injected context.json save failure retains actual partial and does not repeat work
+  ---
+  duration_ms: 165.8377
+  type: 'test'
+  ...
+# Subtest: HOW injected result.json save failure retains actual partial and does not repeat work
+ok 35 - HOW injected result.json save failure retains actual partial and does not repeat work
+  ---
+  duration_ms: 71.8738
+  type: 'test'
+  ...
+# Subtest: HOW material consumer validates ownership, bytes and regular contained paths
+ok 36 - HOW material consumer validates ownership, bytes and regular contained paths
+  ---
+  duration_ms: 225.3249
+  type: 'test'
+  ...
+# Subtest: all ten HOWs reuse exact prepared identity and reject a different prepared target
+ok 37 - all ten HOWs reuse exact prepared identity and reject a different prepared target
+  ---
+  duration_ms: 34.6645
+  type: 'test'
+  ...
+# Subtest: HOW prepared failure then explicitly selected new execution records a new occurrence without rewriting old bytes
+ok 38 - HOW prepared failure then explicitly selected new execution records a new occurrence without rewriting old bytes
+  ---
+  duration_ms: 189.5205
+  type: 'test'
+  ...
+# Subtest: published ten HOW assets have executable identical record examples, no transport
+ok 39 - published ten HOW assets have executable identical record examples, no transport
+  ---
+  duration_ms: 107.1036
+  type: 'test'
+  ...
+# Subtest: synthetic HOW sequence preserves start, partial and create-once completion
+ok 40 - synthetic HOW sequence preserves start, partial and create-once completion
+  ---
+  duration_ms: 139.8105
+  type: 'test'
+  ...
+# Subtest: synthetic HOW distinguishes prepared failure, business FAIL and failed partial save
+ok 41 - synthetic HOW distinguishes prepared failure, business FAIL and failed partial save
+  ---
+  duration_ms: 258.3429
+  type: 'test'
+  ...
+# Subtest: exact runner records passed, failed, and process-failed facts
+ok 42 - exact runner records passed, failed, and process-failed facts
+  ---
+  duration_ms: 2842.5706
+  type: 'test'
+  ...
+# Subtest: reserved applicable-check facts remain inside existing RunResult facts
+ok 43 - reserved applicable-check facts remain inside existing RunResult facts
+  ---
+  duration_ms: 2215.4081
+  type: 'test'
+  ...
+# Subtest: explicit exact prior success reuses, while failed or stale prior facts execute
+ok 44 - explicit exact prior success reuses, while failed or stale prior facts execute
+  ---
+  duration_ms: 2196.2686
+  type: 'test'
+  ...
+# Subtest: reused-passed prior never recursively reuses and current check really executes
+ok 45 - reused-passed prior never recursively reuses and current check really executes
+  ---
+  duration_ms: 1850.2487
+  type: 'test'
+  ...
+# Subtest: config/tool/environment drift makes prior success ineligible
+ok 46 - config/tool/environment drift makes prior success ineligible
+  ---
+  duration_ms: 3288.0161
+  type: 'test'
+  ...
+# Subtest: admission accepts exact complete facts and rechecks current candidate
+ok 47 - admission accepts exact complete facts and rechecks current candidate
+  ---
+  duration_ms: 3360.0703
+  type: 'test'
+  ...
+# Subtest: admission rejects execution/candidate/fact-set mismatches
+ok 48 - admission rejects execution/candidate/fact-set mismatches
+  ---
+  duration_ms: 5089.4662
+  type: 'test'
+  ...
+# Subtest: reuse never scans Run history and current Result records explicit reused-passed
+ok 49 - reuse never scans Run history and current Result records explicit reused-passed
+  ---
+  duration_ms: 1863.9761
+  type: 'test'
+  ...
+# Subtest: mechanical applicable-check success does not create review/verification/owner/policy authority
+ok 50 - mechanical applicable-check success does not create review/verification/owner/policy authority
+  ---
+  duration_ms: 1857.0248
+  type: 'test'
+  ...
+# Subtest: plan is closed and rejects caller-owned identity/root fields
+ok 51 - plan is closed and rejects caller-owned identity/root fields
+  ---
+  duration_ms: 2.1536
+  type: 'test'
+  ...
+# Subtest: checkRef is stable for canonical ref sets and changes for material identity
+ok 52 - checkRef is stable for canonical ref sets and changes for material identity
+  ---
+  duration_ms: 0.8559
+  type: 'test'
+  ...
+# Subtest: v2 check identity uses UTF-8 byte ordering and preserves ordered argv
+ok 53 - v2 check identity uses UTF-8 byte ordering and preserves ordered argv
+  ---
+  duration_ms: 0.3629
+  type: 'test'
+  ...
+# Subtest: execution input is deterministic for a check set and changes with set/package identity
+ok 54 - execution input is deterministic for a check set and changes with set/package identity
+  ---
+  duration_ms: 4824.1257
+  type: 'test'
+  ...
+# Subtest: Guidance identity naturally changes ActionPackageRef and executionInputRef
+ok 55 - Guidance identity naturally changes ActionPackageRef and executionInputRef
+  ---
+  duration_ms: 2156.7577
+  type: 'test'
+  ...
+# Subtest: candidate ignores ignored untracked and Run-only material but changes on source bytes
+ok 56 - candidate ignores ignored untracked and Run-only material but changes on source bytes
+  ---
+  duration_ms: 3034.4971
+  type: 'test'
+  ...
+# Subtest: exact Memo bytes are isolated while Memo type and other .flowkit material remain visible
+ok 57 - exact Memo bytes are isolated while Memo type and other .flowkit material remain visible
+  ---
+  duration_ms: 3799.3428
+  type: 'test'
+  ...
+# Subtest: same bytes with Git-visible executable mode change changes candidateRef
+ok 58 - same bytes with Git-visible executable mode change changes candidateRef
+  ---
+  duration_ms: 4078.7209
+  type: 'test'
+  ...
+# Subtest: symlink target mutation changes candidateRef when symlinks are supported
+ok 59 - symlink target mutation changes candidateRef when symlinks are supported
+  ---
+  duration_ms: 2766.7654
+  type: 'test'
+  ...
+# Subtest: confirmed deletion emits no record and is stable across unstaged staged and committed states
+ok 60 - confirmed deletion emits no record and is stable across unstaged staged and committed states
+  ---
+  duration_ms: 4043.0419
+  type: 'test'
+  ...
+# Subtest: worktree and exact object share the v2 binary material projection
+ok 61 - worktree and exact object share the v2 binary material projection
+  ---
+  duration_ms: 6428.0257
+  type: 'test'
+  ...
+# Subtest: old-domain successful fact cannot satisfy v2 candidate and check
+ok 62 - old-domain successful fact cannot satisfy v2 candidate and check
+  ---
+  duration_ms: 1526.8453
+  type: 'test'
+  ...
+# Subtest: unsupported Git-visible path kinds fail candidate derivation closed
+ok 63 - unsupported Git-visible path kinds fail candidate derivation closed
+  ---
+  duration_ms: 1646.3755
+  type: 'test'
+  ...
+# Subtest: tracked and visible untracked read denial fail closed on the native host
+    # Subtest: tracked
+    ok 1 - tracked
+      ---
+      duration_ms: 1655.9902
+      type: 'test'
+      ...
+    # Subtest: untracked
+    ok 2 - untracked
+      ---
+      duration_ms: 1687.9893
+      type: 'test'
+      ...
+    1..2
+ok 64 - tracked and visible untracked read denial fail closed on the native host
+  ---
+  duration_ms: 3344.8937
+  type: 'test'
+  ...
+# Subtest: unmerged index and SHA-256 repositories are rejected instead of partially projected
+    # Subtest: unmerged index
+    ok 1 - unmerged index
+      ---
+      duration_ms: 2574.2024
+      type: 'test'
+      ...
+    # Subtest: SHA-256 object format
+    ok 2 - SHA-256 object format
+      ---
+      duration_ms: 1286.1787
+      type: 'test'
+      ...
+    1..2
+ok 65 - unmerged index and SHA-256 repositories are rejected instead of partially projected
+  ---
+  duration_ms: 3861.3723
+  type: 'test'
+  ...
+# Subtest: all seven Author Standard Actions have canonical identity-complete product Guidance
+ok 66 - all seven Author Standard Actions have canonical identity-complete product Guidance
+  ---
+  duration_ms: 22.2454
+  type: 'test'
+  ...
+# Subtest: product Action Guidance top-level identities stay bounded to Standard Actions
+ok 67 - product Action Guidance top-level identities stay bounded to Standard Actions
+  ---
+  duration_ms: 3.6316
+  type: 'test'
+  ...
+# Subtest: canonical Author files carry Action-significant HOW inside the hashed file
+ok 68 - canonical Author files carry Action-significant HOW inside the hashed file
+  ---
+  duration_ms: 6.2158
+  type: 'test'
+  ...
+# Subtest: all seven real Author entries resolve and exact canonical byte drift changes GuidanceRef
+ok 69 - all seven real Author entries resolve and exact canonical byte drift changes GuidanceRef
+  ---
+  duration_ms: 75.4004
+  type: 'test'
+  ...
+# Subtest: project ordinal allocation uses durable assigned facts only and fails closed on ambiguity
+ok 70 - project ordinal allocation uses durable assigned facts only and fails closed on ambiguity
+  ---
+  duration_ms: 0.7659
+  type: 'test'
+  ...
+# Subtest: project ordinal invariants survive legal lifecycle transitions
+ok 71 - project ordinal invariants survive legal lifecycle transitions
+  ---
+  duration_ms: 2.0776
+  type: 'test'
+  ...
+# Subtest: projectOrdinal remains Guidance coordination data rather than a production Core identity
+ok 72 - projectOrdinal remains Guidance coordination data rather than a production Core identity
+  ---
+  duration_ms: 47.6906
+  type: 'test'
+  ...
+# Subtest: artifact-convergence discipline remains free of hard size Gate, Run schema, or Core dependency
+ok 73 - artifact-convergence discipline remains free of hard size Gate, Run schema, or Core dependency
+  ---
+  duration_ms: 55.1854
+  type: 'test'
+  ...
+# Subtest: archive preparation, continuation, and Explore HOW converge without new lifecycle concepts
+ok 74 - archive preparation, continuation, and Explore HOW converge without new lifecycle concepts
+  ---
+  duration_ms: 12.0278
+  type: 'test'
+  ...
+# Subtest: Author Guidance converges canonical artifacts to current truth instead of revision chronology
+ok 75 - Author Guidance converges canonical artifacts to current truth instead of revision chronology
+  ---
+  duration_ms: 17.1184
+  type: 'test'
+  ...
+# Subtest: Author stage HOW carries relevant Owner material boundaries and separates proof classes
+ok 76 - Author stage HOW carries relevant Owner material boundaries and separates proof classes
+  ---
+  duration_ms: 4.0878
+  type: 'test'
+  ...
+# Subtest: separates actor roles, execution roles, and verification authority
+ok 77 - separates actor roles, execution roles, and verification authority
+  ---
+  duration_ms: 1.608
+  type: 'test'
+  ...
+# Subtest: accepts canonical Change-scoped and Delivery-scoped Owner authority facts
+ok 78 - accepts canonical Change-scoped and Delivery-scoped Owner authority facts
+  ---
+  duration_ms: 1.0984
+  type: 'test'
+  ...
+# Subtest: rejects missing required fields, null changeId, extra fields, and malformed refs
+ok 79 - rejects missing required fields, null changeId, extra fields, and malformed refs
+  ---
+  duration_ms: 0.3085
+  type: 'test'
+  ...
+# Subtest: rejects non-canonical sourceRef and scope without repairing them
+ok 80 - rejects non-canonical sourceRef and scope without repairing them
+  ---
+  duration_ms: 0.4346
+  type: 'test'
+  ...
+# Subtest: accepts structurally valid future decision/scope without granting Policy eligibility
+ok 81 - accepts structurally valid future decision/scope without granting Policy eligibility
+  ---
+  duration_ms: 0.1795
+  type: 'test'
+  ...
+# Subtest: Review, Verification, or terminal facts do not implicitly create Owner authority
+ok 82 - Review, Verification, or terminal facts do not implicitly create Owner authority
+  ---
+  duration_ms: 0.3071
+  type: 'test'
+  ...
+# Subtest: validates canonical Owner authority refs through the reusable helper
+ok 83 - validates canonical Owner authority refs through the reusable helper
+  ---
+  duration_ms: 0.2723
+  type: 'test'
+  ...
+# Subtest: trusted start writes current manager Guidance in the held package and action.md
+ok 84 - trusted start writes current manager Guidance in the held package and action.md
+  ---
+  duration_ms: 173.0069
+  type: 'test'
+  ...
+# Subtest: forged and wrong-Action hashes are shape-valid but rejected before target Run creation
+ok 85 - forged and wrong-Action hashes are shape-valid but rejected before target Run creation
+  ---
+  duration_ms: 129.0586
+  type: 'test'
+  ...
+# Subtest: manager replacement and sequential content drift reject before target Run creation
+ok 86 - manager replacement and sequential content drift reject before target Run creation
+  ---
+  duration_ms: 161.3774
+  type: 'test'
+  ...
+# Subtest: missing, non-regular, blocked, and mismatched starts leave no target Run
+ok 87 - missing, non-regular, blocked, and mismatched starts leave no target Run
+  ---
+  duration_ms: 80.2237
+  type: 'test'
+  ...
+# Subtest: historical Run remains readable after manager Skill changes
+ok 88 - historical Run remains readable after manager Skill changes
+  ---
+  duration_ms: 270.7114
+  type: 'test'
+  ...
+# Subtest: readiness cannot mutate the held package or controlled address before writing
+ok 89 - readiness cannot mutate the held package or controlled address before writing
+  ---
+  duration_ms: 188.9395
+  type: 'test'
+  ...
+# Subtest: checkpoint closed operation binds paths, message and nullable ordered shape
+ok 90 - checkpoint closed operation binds paths, message and nullable ordered shape
+  ---
+  duration_ms: 18.0914
+  type: 'test'
+  ...
+# Subtest: code gate retains formatting, lint and exact 650-line rule independently from Git
+ok 91 - code gate retains formatting, lint and exact 650-line rule independently from Git
+  ---
+  duration_ms: 9010.9244
+  type: 'test'
+  ...
+# Subtest: historical raw proof whitespace is a Git diagnostic, not a code verdict
+ok 92 - historical raw proof whitespace is a Git diagnostic, not a code verdict
+  ---
+  duration_ms: 2511.097
+  type: 'test'
+  ...
+# Subtest: missing memos.json reads as empty without creating a file
+ok 93 - missing memos.json reads as empty without creating a file
+  ---
+  duration_ms: 24.9763
+  type: 'test'
+  ...
+# Subtest: create writes one canonical document and sorts by memoId
+ok 94 - create writes one canonical document and sorts by memoId
+  ---
+  duration_ms: 25.5245
+  type: 'test'
+  ...
+# Subtest: listOpen returns only open records in canonical order
+ok 95 - listOpen returns only open records in canonical order
+  ---
+  duration_ms: 63.5561
+  type: 'test'
+  ...
+# Subtest: invalid existing document fails closed and is never repaired
+ok 96 - invalid existing document fails closed and is never repaired
+  ---
+  duration_ms: 26.174
+  type: 'test'
+  ...
+# Subtest: duplicate create and rejected terminal mutation leave bytes unchanged
+ok 97 - duplicate create and rejected terminal mutation leave bytes unchanged
+  ---
+  duration_ms: 46.7873
+  type: 'test'
+  ...
+# Subtest: promotion only records caller target and never creates target artifacts
+ok 98 - promotion only records caller target and never creates target artifacts
+  ---
+  duration_ms: 18.6609
+  type: 'test'
+  ...
+# Subtest: failed target binding leaves canonical Memo document unchanged
+ok 99 - failed target binding leaves canonical Memo document unchanged
+  ---
+  duration_ms: 26.7666
+  type: 'test'
+  ...
+# Subtest: accepts closed Memo records with null, Delivery, Change, and Run provenance
+ok 100 - accepts closed Memo records with null, Delivery, Change, and Run provenance
+  ---
+  duration_ms: 2.4859
+  type: 'test'
+  ...
+# Subtest: rejects incoherent provenance, unknown fields, and malformed run ids
+ok 101 - rejects incoherent provenance, unknown fields, and malformed run ids
+  ---
+  duration_ms: 0.2948
+  type: 'test'
+  ...
+# Subtest: enforces exact state-resolution consistency
+ok 102 - enforces exact state-resolution consistency
+  ---
+  duration_ms: 0.2315
+  type: 'test'
+  ...
+# Subtest: rejects duplicate or non-canonical Memo document ordering
+ok 103 - rejects duplicate or non-canonical Memo document ordering
+  ---
+  duration_ms: 0.4029
+  type: 'test'
+  ...
+# Subtest: creates only with exact create-memo authority and exact single memo scope
+ok 104 - creates only with exact create-memo authority and exact single memo scope
+  ---
+  duration_ms: 1.375
+  type: 'test'
+  ...
+# Subtest: promotes only an open Memo to the exact authority-bound target
+ok 105 - promotes only an open Memo to the exact authority-bound target
+  ---
+  duration_ms: 0.2941
+  type: 'test'
+  ...
+# Subtest: dismisses only open Memo and terminal states cannot transition again
+ok 106 - dismisses only open Memo and terminal states cannot transition again
+  ---
+  duration_ms: 0.418
+  type: 'test'
+  ...
+# Subtest: Memo is not a Policy fact and does not change legal boundary
+ok 107 - Memo is not a Policy fact and does not change legal boundary
+  ---
+  duration_ms: 0.8625
+  type: 'test'
+  ...
+# Subtest: chain tip follows Policy links, not sequence or input ordering
+ok 108 - chain tip follows Policy links, not sequence or input ordering
+  ---
+  duration_ms: 3.9151
+  type: 'test'
+  ...
+# Subtest: reject disconnected higher root, fork, missing parent, cycle, duplicate sequence and Role
+ok 109 - reject disconnected higher root, fork, missing parent, cycle, duplicate sequence and Role
+  ---
+  duration_ms: 2.1032
+  type: 'test'
+  ...
+# Subtest: Owner correction uses existing Policy and rejects wrong authority
+ok 110 - Owner correction uses existing Policy and rejects wrong authority
+  ---
+  duration_ms: 3.5075
+  type: 'test'
+  ...
+# Subtest: complete prepared failure retries same Action with a new occurrence
+ok 111 - complete prepared failure retries same Action with a new occurrence
+  ---
+  duration_ms: 1.0027
+  type: 'test'
+  ...
+# Subtest: canonical disk history reads selected group only and keeps partial visible
+ok 112 - canonical disk history reads selected group only and keeps partial visible
+  ---
+  duration_ms: 85.0493
+  type: 'test'
+  ...
+# Subtest: explicit bootstrap history is display-only; mixed and unmarked groups rejected
+ok 113 - explicit bootstrap history is display-only; mixed and unmarked groups rejected
+  ---
+  duration_ms: 68.7406
+  type: 'test'
+  ...
+# Subtest: actual terminal Author FAIL stays current rather than reusing prior PASS
+ok 114 - actual terminal Author FAIL stays current rather than reusing prior PASS
+  ---
+  duration_ms: 0.7709
+  type: 'test'
+  ...
+# Subtest: Integration preparation accepts an exact authorized base across unrelated HEAD or target history
+ok 115 - Integration preparation accepts an exact authorized base across unrelated HEAD or target history
+  ---
+  duration_ms: 13244.6564
+  type: 'test'
+  ...
+# Subtest: Integration operation field order is non-semantic across source, ref and record consumers
+ok 116 - Integration operation field order is non-semantic across source, ref and record consumers
+  ---
+  duration_ms: 12096.3856
+  type: 'test'
+  ...
+# Subtest: Final confirmation commit point survives fresh sessions without promoting pre-confirmation failures
+    # Subtest: success
+    ok 1 - success
+      ---
+      duration_ms: 11874.6876
+      type: 'test'
+      ...
+    # Subtest: first-readback
+    ok 2 - first-readback
+      ---
+      duration_ms: 8809.5683
+      type: 'test'
+      ...
+    # Subtest: input-drift
+    ok 3 - input-drift
+      ---
+      duration_ms: 7865.2234
+      type: 'test'
+      ...
+    # Subtest: related-run-drift
+    ok 4 - related-run-drift
+      ---
+      duration_ms: 6971.3584
+      type: 'test'
+      ...
+    # Subtest: before-confirmation
+    ok 5 - before-confirmation
+      ---
+      duration_ms: 6156.0978
+      type: 'test'
+      ...
+    # Subtest: pre-publication-input-drift
+    ok 6 - pre-publication-input-drift
+      ---
+      duration_ms: 3722.4723
+      type: 'test'
+      ...
+    # Subtest: publish-failure
+    ok 7 - publish-failure
+      ---
+      duration_ms: 3358.8053
+      type: 'test'
+      ...
+    # Subtest: published-response-loss
+    ok 8 - published-response-loss
+      ---
+      duration_ms: 3286.9578
+      type: 'test'
+      ...
+    # Subtest: before-active
+    ok 9 - before-active
+      ---
+      duration_ms: 2413.2561
+      type: 'test'
+      ...
+    # Subtest: after-active
+    ok 10 - after-active
+      ---
+      duration_ms: 2570.1957
+      type: 'test'
+      ...
+    # Subtest: staged-active
+    ok 11 - staged-active
+      ---
+      duration_ms: 2487.1551
+      type: 'test'
+      ...
+    # Subtest: after-unavailable
+    ok 12 - after-unavailable
+      ---
+      duration_ms: 2216.9584
+      type: 'test'
+      ...
+    # Subtest: staged-unavailable
+    ok 13 - staged-unavailable
+      ---
+      duration_ms: 2394.7546
+      type: 'test'
+      ...
+    # Subtest: published-active
+    ok 14 - published-active
+      ---
+      duration_ms: 3026.0265
+      type: 'test'
+      ...
+    1..14
+ok 117 - Final confirmation commit point survives fresh sessions without promoting pre-confirmation failures
+  ---
+  duration_ms: 67172.5187
+  type: 'test'
+  ...
+# Subtest: Delivery Final prepares complete prerequisites and materializes one bounded closure
+ok 118 - Delivery Final prepares complete prerequisites and materializes one bounded closure
+  ---
+  duration_ms: 11451.7977
+  type: 'test'
+  ...
+# Subtest: Delivery Final writer preserves all non-target manifest bytes and ordering
+ok 119 - Delivery Final writer preserves all non-target manifest bytes and ordering
+  ---
+  duration_ms: 6638.9177
+  type: 'test'
+  ...
+# Subtest: Delivery Final coordination reader rejects missing, mismatched, duplicate, and incomplete manifests
+ok 120 - Delivery Final coordination reader rejects missing, mismatched, duplicate, and incomplete manifests
+  ---
+  duration_ms: 128.0617
+  type: 'test'
+  ...
+# Subtest: Delivery Final coordination writer never returns success on staging, replace, or readback failure
+ok 121 - Delivery Final coordination writer never returns success on staging, replace, or readback failure
+  ---
+  duration_ms: 5885.3865
+  type: 'test'
+  ...
+# Subtest: Delivery Final preparation rejects partial facts, active OpenSpec, output drift, and candidate drift
+ok 122 - Delivery Final preparation rejects partial facts, active OpenSpec, output drift, and candidate drift
+  ---
+  duration_ms: 8281.7158
+  type: 'test'
+  ...
+# Subtest: Delivery Final rejects failed archive anchors and unrelated external outcome bytes
+ok 123 - Delivery Final rejects failed archive anchors and unrelated external outcome bytes
+  ---
+  duration_ms: 5548.1472
+  type: 'test'
+  ...
+# Subtest: Delivery Final callback is defensive and correction or invalid results do not close coordination
+ok 124 - Delivery Final callback is defensive and correction or invalid results do not close coordination
+  ---
+  duration_ms: 4219.8272
+  type: 'test'
+  ...
+# Subtest: Final local ref fixed golden vector rejects old packages and every missing/extra field
+ok 125 - Final local ref fixed golden vector rejects old packages and every missing/extra field
+  ---
+  duration_ms: 5.9706
+  type: 'test'
+  ...
+# Subtest: Final local projection is ordered and closed, without confirmation self-reference
+ok 126 - Final local projection is ordered and closed, without confirmation self-reference
+  ---
+  duration_ms: 2.3446
+  type: 'test'
+  ...
+# Subtest: reader distinguishes unpublished content, valid confirmation and unrelated append without writing
+ok 127 - reader distinguishes unpublished content, valid confirmation and unrelated append without writing
+  ---
+  duration_ms: 610.6282
+  type: 'test'
+  ...
+# Subtest: exact Full Test authority and closed configuration reject caller overrides
+ok 128 - exact Full Test authority and closed configuration reject caller overrides
+  ---
+  duration_ms: 1991.8192
+  type: 'test'
+  ...
+# Subtest: no Git target executes fresh attempts and saves exact raw bytes for cross-session reading
+ok 129 - no Git target executes fresh attempts and saves exact raw bytes for cross-session reading
+  ---
+  duration_ms: 9963.9108
+  type: 'test'
+  ...
+# Subtest: failed current attempt never falls back to a previous pass
+ok 130 - failed current attempt never falls back to a previous pass
+  ---
+  duration_ms: 7621.5486
+  type: 'test'
+  ...
+# Subtest: selected source drift stops later checks and is saved as a real failed attempt
+ok 131 - selected source drift stops later checks and is saved as a real failed attempt
+  ---
+  duration_ms: 5661.4906
+  type: 'test'
+  ...
+# Subtest: saved stream damage and incomplete latest results cannot be consumed as PASS
+ok 132 - saved stream damage and incomplete latest results cannot be consumed as PASS
+  ---
+  duration_ms: 3103.4233
+  type: 'test'
+  ...
+# Subtest: start, stream-open, stream-write, result and status-publication failures never expose old PASS
+ok 133 - start, stream-open, stream-write, result and status-publication failures never expose old PASS
+  ---
+  duration_ms: 22041.2716
+  type: 'test'
+  ...
+# Subtest: checks remain ordered, preserve large stderr and continue after command failure
+ok 134 - checks remain ordered, preserve large stderr and continue after command failure
+  ---
+  duration_ms: 1454.4955
+  type: 'test'
+  ...
+# Subtest: spawn failure and process termination cannot become PASS
+ok 135 - spawn failure and process termination cannot become PASS
+  ---
+  duration_ms: 881.6487
+  type: 'test'
+  ...
+# Subtest: current reader rejects wrong ownership, escaping and non-regular material
+ok 136 - current reader rejects wrong ownership, escaping and non-regular material
+  ---
+  duration_ms: 3184.5013
+  type: 'test'
+  ...
+# Subtest: DeliveryOperationId is a closed exact four-value catalog with deterministic Guidance mapping
+ok 137 - DeliveryOperationId is a closed exact four-value catalog with deterministic Guidance mapping
+  ---
+  duration_ms: 2.4508
+  type: 'test'
+  ...
+# Subtest: canonical Delivery Final Guidance is generic, content-bound, and operation-bounded
+ok 138 - canonical Delivery Final Guidance is generic, content-bound, and operation-bounded
+  ---
+  duration_ms: 29.2525
+  type: 'test'
+  ...
+# Subtest: product Author HOW separates code verdict, Git diagnostics and current Full Test
+ok 139 - product Author HOW separates code verdict, Git diagnostics and current Full Test
+  ---
+  duration_ms: 15.0139
+  type: 'test'
+  ...
+# Subtest: Integration local projection golden vector, property ordering and old shape rejection
+ok 140 - Integration local projection golden vector, property ordering and old shape rejection
+  ---
+  duration_ms: 4.8027
+  type: 'test'
+  ...
+# Subtest: DeliveryGuidanceRef is closed to canonical Delivery paths and lowercase SHA-256
+ok 141 - DeliveryGuidanceRef is closed to canonical Delivery paths and lowercase SHA-256
+  ---
+  duration_ms: 1.7883
+  type: 'test'
+  ...
+# Subtest: resolver binds exact canonical bytes and byte drift changes identity
+ok 142 - resolver binds exact canonical bytes and byte drift changes identity
+  ---
+  duration_ms: 44.056
+  type: 'test'
+  ...
+# Subtest: missing product Guidance never falls back to .agents
+ok 143 - missing product Guidance never falls back to .agents
+  ---
+  duration_ms: 16.8496
+  type: 'test'
+  ...
+# Subtest: non-regular, symlink, and parent-path redirected Guidance fail closed
+ok 144 - non-regular, symlink, and parent-path redirected Guidance fail closed
+  ---
+  duration_ms: 55.0242
+  type: 'test'
+  ...
+# Subtest: unreadable canonical Delivery Guidance fails closed when permissions are enforceable
+ok 145 - unreadable canonical Delivery Guidance fails closed when permissions are enforceable
+  ---
+  duration_ms: 298.8931
+  type: 'test'
+  ...
+# Subtest: Delivery planning reference and Start facts are exact closed values
+ok 146 - Delivery planning reference and Start facts are exact closed values
+  ---
+  duration_ms: 1.0562
+  type: 'test'
+  ...
+# Subtest: Delivery Start authority recognition is exact to create-delivery, Delivery, and bounded scopes
+ok 147 - Delivery Start authority recognition is exact to create-delivery, Delivery, and bounded scopes
+  ---
+  duration_ms: 0.7418
+  type: 'test'
+  ...
+# Subtest: DeliveryOperationPackage forms only the concrete Start variant and rejects mismatches
+ok 148 - DeliveryOperationPackage forms only the concrete Start variant and rejects mismatches
+  ---
+  duration_ms: 1.9954
+  type: 'test'
+  ...
+# Subtest: Delivery Final package is closed to exact facts, Guidance, and singleton authority
+ok 149 - Delivery Final package is closed to exact facts, Guidance, and singleton authority
+  ---
+  duration_ms: 4.4026
+  type: 'test'
+  ...
+# Subtest: repository integration package is the fourth exact variant and requires singleton Owner authority
+ok 150 - repository integration package is the fourth exact variant and requires singleton Owner authority
+  ---
+  duration_ms: 1.6825
+  type: 'test'
+  ...
+# Subtest: trusted acceptance may identify an exact object with different history
+ok 151 - trusted acceptance may identify an exact object with different history
+  ---
+  duration_ms: 4267.4905
+  type: 'test'
+  ...
+# Subtest: content-equivalent history replacement without trusted acceptance is rejected
+ok 152 - content-equivalent history replacement without trusted acceptance is rejected
+  ---
+  duration_ms: 4384.8012
+  type: 'test'
+  ...
+# Subtest: Integration does not reread historical Run evidence outside its operation
+ok 153 - Integration does not reread historical Run evidence outside its operation
+  ---
+  duration_ms: 4528.713
+  type: 'test'
+  ...
+# Subtest: wrong or broad Owner authority fails closed
+ok 154 - wrong or broad Owner authority fails closed
+  ---
+  duration_ms: 1186.7903
+  type: 'test'
+  ...
+# Subtest: zero, multiple, and candidate-changing final commits fail closed
+    # Subtest: zero commit
+    ok 1 - zero commit
+      ---
+      duration_ms: 2692.2443
+      type: 'test'
+      ...
+    # Subtest: multiple commits
+    ok 2 - multiple commits
+      ---
+      duration_ms: 3581.5019
+      type: 'test'
+      ...
+    # Subtest: two-parent commit
+    ok 3 - two-parent commit
+      ---
+      duration_ms: 3774.7118
+      type: 'test'
+      ...
+    # Subtest: candidate-changing commit
+    ok 4 - candidate-changing commit
+      ---
+      duration_ms: 3387.7244
+      type: 'test'
+      ...
+    1..4
+ok 155 - zero, multiple, and candidate-changing final commits fail closed
+  ---
+  duration_ms: 13439.6753
+  type: 'test'
+  ...
+# Subtest: provider-reported accepted-main SHA is not admitted as truth
+ok 156 - provider-reported accepted-main SHA is not admitted as truth
+  ---
+  duration_ms: 3774.1205
+  type: 'test'
+  ...
+# Subtest: confirmation lost during final authorization read rejects before Git callback
+ok 157 - confirmation lost during final authorization read rejects before Git callback
+  ---
+  duration_ms: 2295.6604
+  type: 'test'
+  ...
+# Subtest: trusted preparation binds exact finalized state and pre-integration Git facts
+ok 158 - trusted preparation binds exact finalized state and pre-integration Git facts
+  ---
+  duration_ms: 1282.119
+  type: 'test'
+  ...
+# Subtest: trusted Owner source rejects caller checkpoint-operation substitution
+ok 159 - trusted Owner source rejects caller checkpoint-operation substitution
+  ---
+  duration_ms: 1153.2572
+  type: 'test'
+  ...
+# Subtest: Integration rejects caller old Final packages instead of translating them
+ok 160 - Integration rejects caller old Final packages instead of translating them
+  ---
+  duration_ms: 1181.9158
+  type: 'test'
+  ...
+# Subtest: coordination byte drift invalidates trusted preparation
+ok 161 - coordination byte drift invalidates trusted preparation
+  ---
+  duration_ms: 1084.507
+  type: 'test'
+  ...
+# Subtest: repository integration proves one final commit and derives accepted main as next base
+ok 162 - repository integration proves one final commit and derives accepted main as next base
+  ---
+  duration_ms: 3845.6115
+  type: 'test'
+  ...
+# Subtest: repository integration reuses an explicitly bound existing checkpoint without creating a second commit
+ok 163 - repository integration reuses an explicitly bound existing checkpoint without creating a second commit
+  ---
+  duration_ms: 2819.2715
+  type: 'test'
+  ...
+# Subtest: target-main drift during final commit is rejected before repository acceptance
+ok 164 - target-main drift during final commit is rejected before repository acceptance
+  ---
+  duration_ms: 4245.5001
+  type: 'test'
+  ...
+# Subtest: trusted accepted operation does not reapply Final whole-tree equality
+ok 165 - trusted accepted operation does not reapply Final whole-tree equality
+  ---
+  duration_ms: 3958.6536
+  type: 'test'
+  ...
+# Subtest: bounded accepted endpoints cover both required Changes, not ancestors or Full Test logs
+ok 166 - bounded accepted endpoints cover both required Changes, not ancestors or Full Test logs
+  ---
+  duration_ms: 5040.9604
+  type: 'test'
+  ...
+# Subtest: accepted bytes still require matching Role, verdict, terminal result and direct linkage
+ok 167 - accepted bytes still require matching Role, verdict, terminal result and direct linkage
+  ---
+  duration_ms: 6976.5058
+  type: 'test'
+  ...
+# Subtest: missing source, wrong ownership, ambiguous host selection and missing material do not become completion
+ok 168 - missing source, wrong ownership, ambiguous host selection and missing material do not become completion
+  ---
+  duration_ms: 5925.0608
+  type: 'test'
+  ...
+# Subtest: unborn repository and unrelated dirty bytes complete Start without Git or receipt callbacks
+ok 169 - unborn repository and unrelated dirty bytes complete Start without Git or receipt callbacks
+  ---
+  duration_ms: 956.6236
+  type: 'test'
+  ...
+# Subtest: Start rejects obsolete inputs, wrong scope, missing or changed plan, conflicting and ambiguous target
+ok 170 - Start rejects obsolete inputs, wrong scope, missing or changed plan, conflicting and ambiguous target
+  ---
+  duration_ms: 251.3192
+  type: 'test'
+  ...
+# Subtest: Start rejects wrong project, redirected parent and concurrent target without overwriting
+ok 171 - Start rejects wrong project, redirected parent and concurrent target without overwriting
+  ---
+  duration_ms: 263.3943
+  type: 'test'
+  ...
+# Subtest: Start refuses a different valid manifest after its own write without repairing concurrent bytes
+ok 172 - Start refuses a different valid manifest after its own write without repairing concurrent bytes
+  ---
+  duration_ms: 241.2256
+  type: 'test'
+  ...
+# Subtest: Start rechecks plan before create, refuses validated-only and reports write-then-throw truth
+ok 173 - Start rechecks plan before create, refuses validated-only and reports write-then-throw truth
+  ---
+  duration_ms: 282.8403
+  type: 'test'
+  ...
+# Subtest: without Archify: real Start/checks/Final/local Git integration; OpenSpec and remote are simulated
+ok 174 - without Archify: real Start/checks/Final/local Git integration; OpenSpec and remote are simulated
+  ---
+  duration_ms: 14404.2658
+  type: 'test'
+  ...
+# Subtest: Final rejects a real failed check, incomplete checks and legacy preparation input
+ok 175 - Final rejects a real failed check, incomplete checks and legacy preparation input
+  ---
+  duration_ms: 7203.9633
+  type: 'test'
+  ...
+# Subtest: frozen legacy bytes remain readable without becoming current execution input
+ok 176 - frozen legacy bytes remain readable without becoming current execution input
+  ---
+  duration_ms: 1022.3848
+  type: 'test'
+  ...
+# Subtest: entrypoint returns machine error for unknown command
+ok 177 - entrypoint returns machine error for unknown command
+  ---
+  duration_ms: 501.3333
+  type: 'test'
+  ...
+# Subtest: entrypoint distinguishes malformed JSON, obsolete selectors and formal Policy blocked
+ok 178 - entrypoint distinguishes malformed JSON, obsolete selectors and formal Policy blocked
+  ---
+  duration_ms: 2453.1805
+  type: 'test'
+  ...
+# Subtest: closed requests resolve current and reject legacy selectors and caller authority overrides
+ok 179 - closed requests resolve current and reject legacy selectors and caller authority overrides
+  ---
+  duration_ms: 9.7538
+  type: 'test'
+  ...
+# Subtest: next empty target reaches Explore; unrelated high Run cannot be hidden by caller null
+ok 180 - next empty target reaches Explore; unrelated high Run cannot be hidden by caller null
+  ---
+  duration_ms: 617.8009
+  type: 'test'
+  ...
+# Subtest: status and next read exact terminal without Run selectors or unrelated proof inspection
+ok 181 - status and next read exact terminal without Run selectors or unrelated proof inspection
+  ---
+  duration_ms: 1018.1861
+  type: 'test'
+  ...
+# Subtest: planned next stays formal blocked; doctor retains bounded tool diagnostics
+ok 182 - planned next stays formal blocked; doctor retains bounded tool diagnostics
+  ---
+  duration_ms: 543.3269
+  type: 'test'
+  ...
+# Subtest: checkpoint authorization is exact, pure, and never inferred
+ok 183 - checkpoint authorization is exact, pure, and never inferred
+  ---
+  duration_ms: 1.4582
+  type: 'test'
+  ...
+# Subtest: Full Test inputs use configured files without Git and ignore process artifacts
+ok 184 - Full Test inputs use configured files without Git and ignore process artifacts
+  ---
+  duration_ms: 2398.4225
+  type: 'test'
+  ...
+# Subtest: input parser rejects ambiguous paths and selected links, binds command and declared environment
+ok 185 - input parser rejects ambiguous paths and selected links, binds command and declared environment
+  ---
+  duration_ms: 2647.1521
+  type: 'test'
+  ...
+# Subtest: excluded output argv remains output (script, existing=false)
+ok 186 - excluded output argv remains output (script, existing=false)
+  ---
+  duration_ms: 5837.0716
+  type: 'test'
+  ...
+# Subtest: excluded output argv remains output (separator, existing=false)
+ok 187 - excluded output argv remains output (separator, existing=false)
+  ---
+  duration_ms: 5331.4972
+  type: 'test'
+  ...
+# Subtest: excluded output argv remains output (eval, existing=false)
+ok 188 - excluded output argv remains output (eval, existing=false)
+  ---
+  duration_ms: 5903.4292
+  type: 'test'
+  ...
+# Subtest: excluded output argv remains output (script, existing=true)
+ok 189 - excluded output argv remains output (script, existing=true)
+  ---
+  duration_ms: 3360.2486
+  type: 'test'
+  ...
+# Subtest: excluded output argv remains output (separator, existing=true)
+ok 190 - excluded output argv remains output (separator, existing=true)
+  ---
+  duration_ms: 1759.9284
+  type: 'test'
+  ...
+# Subtest: excluded output argv remains output (eval, existing=true)
+ok 191 - excluded output argv remains output (eval, existing=true)
+  ---
+  duration_ms: 1723.227
+  type: 'test'
+  ...
+# Subtest: Node-launched tool bytes invalidate current PASS without lock drift ()
+ok 192 - Node-launched tool bytes invalidate current PASS without lock drift ()
+  ---
+  duration_ms: 2261.9874
+  type: 'test'
+  ...
+# Subtest: Node-launched tool bytes invalidate current PASS without lock drift (--conditions development)
+ok 193 - Node-launched tool bytes invalidate current PASS without lock drift (--conditions development)
+  ---
+  duration_ms: 2237.2556
+  type: 'test'
+  ...
+# Subtest: Node-launched tool bytes invalidate current PASS without lock drift (--conditions=development)
+ok 194 - Node-launched tool bytes invalidate current PASS without lock drift (--conditions=development)
+  ---
+  duration_ms: 2198.7307
+  type: 'test'
+  ...
+# Subtest: Node-launched tool bytes invalidate current PASS without lock drift (-C development)
+ok 195 - Node-launched tool bytes invalidate current PASS without lock drift (-C development)
+  ---
+  duration_ms: 2184.8969
+  type: 'test'
+  ...
+# Subtest: ambiguous Node options and unresolved entries reject preparation without an attempt
+ok 196 - ambiguous Node options and unresolved entries reject preparation without an attempt
+  ---
+  duration_ms: 89.9944
+  type: 'test'
+  ...
+# Subtest: Node option values are not resources and do not hide later preloads or bind program argv
+ok 197 - Node option values are not resources and do not hide later preloads or bind program argv
+  ---
+  duration_ms: 1269.8443
+  type: 'test'
+  ...
+# Subtest: invocation diagnoses configuration, input and executable preparation errors without publishing an attempt
+ok 198 - invocation diagnoses configuration, input and executable preparation errors without publishing an attempt
+  ---
+  duration_ms: 61.5927
+  type: 'test'
+  ...
+# Subtest: Node preload package implementation bytes are bound without reading unrelated packages
+ok 199 - Node preload package implementation bytes are bound without reading unrelated packages
+  ---
+  duration_ms: 511.1815
+  type: 'test'
+  ...
+# Subtest: attempt publication preserves all non-target YAML bytes and rejects drift
+ok 200 - attempt publication preserves all non-target YAML bytes and rejects drift
+  ---
+  duration_ms: 83.3274
+  type: 'test'
+  ...
+# Subtest: native Git NUL scope supports unborn, Chinese/spaces, delete and rename endpoints
+ok 201 - native Git NUL scope supports unborn, Chinese/spaces, delete and rename endpoints
+  ---
+  duration_ms: 3610.1597
+  type: 'test'
+  ...
+# Subtest: RA038-001: exact branch push does not inherit followTags or mutate configuration
+ok 202 - RA038-001: exact branch push does not inherit followTags or mutate configuration
+  ---
+  duration_ms: 4651.8977
+  type: 'test'
+  ...
+# Subtest: RA038-002: ordinary null-shape checkpoint leaves a pending merge untouched
+ok 203 - RA038-002: ordinary null-shape checkpoint leaves a pending merge untouched
+  ---
+  duration_ms: 2969.4309
+  type: 'test'
+  ...
+# Subtest: RA038-003: verified reuse survives pre-acceptance source loss with no new mutation
+ok 204 - RA038-003: verified reuse survives pre-acceptance source loss with no new mutation
+  ---
+  duration_ms: 2739.6751
+  type: 'test'
+  ...
+# Subtest: pending continuation states are preserved, reuse stays read-only, and stage-time arrival stops commit
+ok 205 - pending continuation states are preserved, reuse stays read-only, and stage-time arrival stops commit
+  ---
+  duration_ms: 10504.4487
+  type: 'test'
+  ...
+# Subtest: null shape admits an explicitly authorized two-object scoped callback, not a global clean gate
+ok 206 - null shape admits an explicitly authorized two-object scoped callback, not a global clean gate
+  ---
+  duration_ms: 3904.5013
+  type: 'test'
+  ...
+# Subtest: intermediate out-of-scope commit cannot hide behind a final net diff
+ok 207 - intermediate out-of-scope commit cannot hide behind a final net diff
+  ---
+  duration_ms: 3433.3637
+  type: 'test'
+  ...
+# Subtest: commit response loss preserves known object; failed readback stays unknown
+    # Subtest: false
+    ok 1 - false
+      ---
+      duration_ms: 2811.1811
+      type: 'test'
+      ...
+    # Subtest: true
+    ok 2 - true
+      ---
+      duration_ms: 2848.056
+      type: 'test'
+      ...
+    1..2
+ok 208 - commit response loss preserves known object; failed readback stays unknown
+  ---
+  duration_ms: 5660.411
+  type: 'test'
+  ...
+# Subtest: manager host with no provider hands off checkpoint; explicit reuse with pending PR creates no extra commit
+ok 209 - manager host with no provider hands off checkpoint; explicit reuse with pending PR creates no extra commit
+  ---
+  duration_ms: 9178.8534
+  type: 'test'
+  ...
+# Subtest: post-stage index drift is incomplete with confirmed stage effect, without commit or unstage
+ok 210 - post-stage index drift is incomplete with confirmed stage effect, without commit or unstage
+  ---
+  duration_ms: 4764.4853
+  type: 'test'
+  ...
+# Subtest: Change checkpoint consumes existing evaluator and source, never a Final
+ok 211 - Change checkpoint consumes existing evaluator and source, never a Final
+  ---
+  duration_ms: 7310.7911
+  type: 'test'
+  ...
+# Subtest: ordinary host: source binding, scoped first commit, dirty reuse, independent bare push
+ok 212 - ordinary host: source binding, scoped first commit, dirty reuse, independent bare push
+  ---
+  duration_ms: 12535.8422
+  type: 'test'
+  ...
+# Subtest: accepts current canonical Delivery and Change semantic ids
+ok 213 - accepts current canonical Delivery and Change semantic ids
+  ---
+  duration_ms: 1.1249
+  type: 'test'
+  ...
+# Subtest: rejects malformed semantic ids without normalization or aliases
+ok 214 - rejects malformed semantic ids without normalization or aliases
+  ---
+  duration_ms: 0.2275
+  type: 'test'
+  ...
+# Subtest: recognizes exactly the ten Standard Action identities
+ok 215 - recognizes exactly the ten Standard Action identities
+  ---
+  duration_ms: 0.197
+  type: 'test'
+  ...
+# Subtest: Change identity lookup depends only on semantic id, not group metadata
+ok 216 - Change identity lookup depends only on semantic id, not group metadata
+  ---
+  duration_ms: 0.9283
+  type: 'test'
+  ...
+# Subtest: resolves exact OpenSpec identity with the closed resolved shape
+ok 217 - resolves exact OpenSpec identity with the closed resolved shape
+  ---
+  duration_ms: 35.8848
+  type: 'test'
+  ...
+# Subtest: rejects unsupported managed tool ids before any fallback
+ok 218 - rejects unsupported managed tool ids before any fallback
+  ---
+  duration_ms: 9.2462
+  type: 'test'
+  ...
+# Subtest: requires explicit FLOWKIT_HOME
+ok 219 - requires explicit FLOWKIT_HOME
+  ---
+  duration_ms: 77.7996
+  type: 'test'
+  ...
+# Subtest: rejects invalid or expanded managed-tool lock authority
+ok 220 - rejects invalid or expanded managed-tool lock authority
+  ---
+  duration_ms: 28.7308
+  type: 'test'
+  ...
+# Subtest: rejects traversing runtime-root material
+ok 221 - rejects traversing runtime-root material
+  ---
+  duration_ms: 32.674
+  type: 'test'
+  ...
+# Subtest: ignores conflicting PATH executable and returns only managed runtime facts
+ok 222 - ignores conflicting PATH executable and returns only managed runtime facts
+  ---
+  duration_ms: 69.2261
+  type: 'test'
+  ...
+# Subtest: Archify is unsupported before home, lock, or runtime lookup
+ok 223 - Archify is unsupported before home, lock, or runtime lookup
+  ---
+  duration_ms: 29.0293
+  type: 'test'
+  ...
+# Subtest: fails closed when requested managed runtime is absent
+ok 224 - fails closed when requested managed runtime is absent
+  ---
+  duration_ms: 7.4291
+  type: 'test'
+  ...
+# Subtest: rejects exact package name or version mismatch
+ok 225 - rejects exact package name or version mismatch
+  ---
+  duration_ms: 64.9708
+  type: 'test'
+  ...
+# Subtest: rejects missing and escaping entrypoints
+ok 226 - rejects missing and escaping entrypoints
+  ---
+  duration_ms: 55.584
+  type: 'test'
+  ...
+# Subtest: resolves requested tool on demand without requiring its peer
+ok 227 - resolves requested tool on demand without requiring its peer
+  ---
+  duration_ms: 35.5988
+  type: 'test'
+  ...
+# Subtest: resolution never invokes the managed entrypoint or requires archive provenance
+ok 228 - resolution never invokes the managed entrypoint or requires archive provenance
+  ---
+  duration_ms: 25.1559
+  type: 'test'
+  ...
+# Subtest: system assets relocate together; target collisions and absent runtime cannot select Guidance
+ok 229 - system assets relocate together; target collisions and absent runtime cannot select Guidance
+  ---
+  duration_ms: 770.5514
+  type: 'test'
+  ...
+# Subtest: installation metadata belongs to the loaded package, not cwd
+ok 230 - installation metadata belongs to the loaded package, not cwd
+  ---
+  duration_ms: 8.0404
+  type: 'test'
+  ...
+# Subtest: trusted installations relocate without depending on target metadata
+ok 231 - trusted installations relocate without depending on target metadata
+  ---
+  duration_ms: 17.2481
+  type: 'test'
+  ...
+# Subtest: valid non-zero OpenSpec status envelope is a formal outcome
+ok 232 - valid non-zero OpenSpec status envelope is a formal outcome
+  ---
+  duration_ms: 202.334
+  type: 'test'
+  ...
+# Subtest: valid non-zero list null-shape is also a formal outcome
+ok 233 - valid non-zero list null-shape is also a formal outcome
+  ---
+  duration_ms: 185.7064
+  type: 'test'
+  ...
+# Subtest: arbitrary object-shaped non-zero JSON fails machine-shape validation
+ok 234 - arbitrary object-shaped non-zero JSON fails machine-shape validation
+  ---
+  duration_ms: 288.1377
+  type: 'test'
+  ...
+# Subtest: malformed machine output remains distinct
+ok 235 - malformed machine output remains distinct
+  ---
+  duration_ms: 152.8765
+  type: 'test'
+  ...
+# Subtest: numeric close with empty required output is malformed machine output
+ok 236 - numeric close with empty required output is malformed machine output
+  ---
+  duration_ms: 187.6938
+  type: 'test'
+  ...
+# Subtest: host-observable missing numeric exit is a process failure
+ok 237 - host-observable missing numeric exit is a process failure
+  ---
+  duration_ms: 0.4679
+  type: 'test'
+  ...
+# Subtest: host-observable signal is a process failure
+ok 238 - host-observable signal is a process failure
+  ---
+  duration_ms: 0.1295
+  type: 'test'
+  ...
+# Subtest: numeric close remains a numeric outcome
+ok 239 - numeric close remains a numeric outcome
+  ---
+  duration_ms: 1.2026
+  type: 'test'
+  ...
+# Subtest: close classifier is not part of the public domain surface
+ok 240 - close classifier is not part of the public domain surface
+  ---
+  duration_ms: 0.4171
+  type: 'test'
+  ...
+# Subtest: successful nearest-root drift is rejected
+ok 241 - successful nearest-root drift is rejected
+  ---
+  duration_ms: 179.7366
+  type: 'test'
+  ...
+# Subtest: missing or malformed success root fails closed
+ok 242 - missing or malformed success root fails closed
+  ---
+  duration_ms: 371.1495
+  type: 'test'
+  ...
+# Subtest: observation is transient and does not require .agents or create .flowkit state
+ok 243 - observation is transient and does not require .agents or create .flowkit state
+  ---
+  duration_ms: 165.0649
+  type: 'test'
+  ...
+# Subtest: status observation preserves OpenSpec readiness rather than inferring from files
+ok 244 - status observation preserves OpenSpec readiness rather than inferring from files
+  ---
+  duration_ms: 183.642
+  type: 'test'
+  ...
+# Subtest: public module source has no bootstrap or lifecycle coupling
+ok 245 - public module source has no bootstrap or lifecycle coupling
+  ---
+  duration_ms: 1.245
+  type: 'test'
+  ...
+# Subtest: active Change observation projects only canonical identifiers
+ok 246 - active Change observation projects only canonical identifiers
+  ---
+  duration_ms: 217.8412
+  type: 'test'
+  ...
+# Subtest: active Change observation rejects invalid Change identifiers
+ok 247 - active Change observation rejects invalid Change identifiers
+  ---
+  duration_ms: 207.4286
+  type: 'test'
+  ...
+# Subtest: exact Change status projects only approved planning/artifact facts
+ok 248 - exact Change status projects only approved planning/artifact facts
+  ---
+  duration_ms: 182.9295
+  type: 'test'
+  ...
+# Subtest: exact Change status rejects identity drift and malformed readiness
+ok 249 - exact Change status rejects identity drift and malformed readiness
+  ---
+  duration_ms: 387.5576
+  type: 'test'
+  ...
+# Subtest: invalid observation input fails before invoking OpenSpec
+ok 250 - invalid observation input fails before invoking OpenSpec
+  ---
+  duration_ms: 19.1406
+  type: 'test'
+  ...
+# Subtest: fake PATH OpenSpec is ignored and managed-resolution failure never falls back
+ok 251 - fake PATH OpenSpec is ignored and managed-resolution failure never falls back
+  ---
+  duration_ms: 217.4493
+  type: 'test'
+  ...
+# Subtest: exports a closed blocked-reason catalog
+ok 252 - exports a closed blocked-reason catalog
+  ---
+  duration_ms: 4.0159
+  type: 'test'
+  ...
+# Subtest: starts active empty Change at explore and reuses exact prepared Action
+ok 253 - starts active empty Change at explore and reuses exact prepared Action
+  ---
+  duration_ms: 1.4401
+  type: 'test'
+  ...
+# Subtest: implements all twelve normal terminal transitions
+ok 254 - implements all twelve normal terminal transitions
+  ---
+  duration_ms: 3.6414
+  type: 'test'
+  ...
+# Subtest: recognizes only completed exact Archive PASS as checkpoint evaluation
+ok 255 - recognizes only completed exact Archive PASS as checkpoint evaluation
+  ---
+  duration_ms: 0.7442
+  type: 'test'
+  ...
+# Subtest: binds terminal outcome to exact current Run occurrence before reading it
+ok 256 - binds terminal outcome to exact current Run occurrence before reading it
+  ---
+  duration_ms: 0.4595
+  type: 'test'
+  ...
+# Subtest: blocks unsuccessful outcomes and reported handoff drift deterministically
+ok 257 - blocks unsuccessful outcomes and reported handoff drift deterministically
+  ---
+  duration_ms: 0.6718
+  type: 'test'
+  ...
+# Subtest: rejects malformed or contradictory raw Policy input without normalization
+ok 258 - rejects malformed or contradictory raw Policy input without normalization
+  ---
+  duration_ms: 0.3836
+  type: 'test'
+  ...
+# Subtest: allows the fifteen reached-stage Owner corrections that lifecycle can enter
+ok 259 - allows the fifteen reached-stage Owner corrections that lifecycle can enter
+  ---
+  duration_ms: 9.8387
+  type: 'test'
+  ...
+# Subtest: requires exact matching revise-action Owner authority
+ok 260 - requires exact matching revise-action Owner authority
+  ---
+  duration_ms: 0.6445
+  type: 'test'
+  ...
+# Subtest: rejects forward skip, prepared switching, archive reopening and completed correction
+ok 261 - rejects forward skip, prepared switching, archive reopening and completed correction
+  ---
+  duration_ms: 0.3263
+  type: 'test'
+  ...
+# Subtest: reported-boundary conflict wins before a valid Owner correction
+ok 262 - reported-boundary conflict wins before a valid Owner correction
+  ---
+  duration_ms: 0.1939
+  type: 'test'
+  ...
+# Subtest: does not treat normal apply/archive readiness as Owner execution authority
+ok 263 - does not treat normal apply/archive readiness as Owner execution authority
+  ---
+  duration_ms: 0.3853
+  type: 'test'
+  ...
+# Subtest: onboarding is an exact distribution asset reachable from README
+ok 264 - onboarding is an exact distribution asset reachable from README
+  ---
+  duration_ms: 16.4066
+  type: 'test'
+  ...
+# Subtest: short entry is extractable without carrying state or Action machinery
+ok 265 - short entry is extractable without carrying state or Action machinery
+  ---
+  duration_ms: 0.5609
+  type: 'test'
+  ...
+# Subtest: installation examples use package-owned bin and disposable query input
+ok 266 - installation examples use package-owned bin and disposable query input
+  ---
+  duration_ms: 0.2372
+  type: 'test'
+  ...
+# Subtest: generic raw-stream attributes preserve index bytes across Change/Full Test paths without hiding structured whitespace
+ok 267 - generic raw-stream attributes preserve index bytes across Change/Full Test paths without hiding structured whitespace
+  ---
+  duration_ms: 6861.1894
+  type: 'test'
+  ...
+# Subtest: all three Reviewer Standard Actions have canonical identity-complete product Guidance
+ok 268 - all three Reviewer Standard Actions have canonical identity-complete product Guidance
+  ---
+  duration_ms: 19.8643
+  type: 'test'
+  ...
+# Subtest: Reviewer product Guidance keeps action-specific review focus and authority separation
+ok 269 - Reviewer product Guidance keeps action-specific review focus and authority separation
+  ---
+  duration_ms: 6.1923
+  type: 'test'
+  ...
+# Subtest: Reviewer Guidance rejects incidental lifecycle literals as durable invariants
+ok 270 - Reviewer Guidance rejects incidental lifecycle literals as durable invariants
+  ---
+  duration_ms: 2.8445
+  type: 'test'
+  ...
+# Subtest: review-propose checks moved material and authority context before concrete blocking
+ok 271 - review-propose checks moved material and authority context before concrete blocking
+  ---
+  duration_ms: 4.4301
+  type: 'test'
+  ...
+# Subtest: exact Change group selection ignores overlapping canonical and bootstrap suffixes
+ok 272 - exact Change group selection ignores overlapping canonical and bootstrap suffixes
+  ---
+  duration_ms: 63.4419
+  type: 'test'
+  ...
+# Subtest: exact selected malformed, duplicate and mixed groups are still diagnosed
+ok 273 - exact selected malformed, duplicate and mixed groups are still diagnosed
+  ---
+  duration_ms: 106.2572
+  type: 'test'
+  ...
+# Subtest: writer preserves actual partial files when context.json fails
+ok 274 - writer preserves actual partial files when context.json fails
+  ---
+  duration_ms: 48.2596
+  type: 'test'
+  ...
+# Subtest: writer preserves actual partial files when result.json fails
+ok 275 - writer preserves actual partial files when result.json fails
+  ---
+  duration_ms: 49.8816
+  type: 'test'
+  ...
+# Subtest: keeps repeated Standard Action executions as distinct Change-scoped occurrences
+ok 276 - keeps repeated Standard Action executions as distinct Change-scoped occurrences
+  ---
+  duration_ms: 3.0338
+  type: 'test'
+  ...
+# Subtest: generates canonical dated direct-child addresses from controlled inputs
+ok 277 - generates canonical dated direct-child addresses from controlled inputs
+  ---
+  duration_ms: 1.0935
+  type: 'test'
+  ...
+# Subtest: rejects invalid controlled address inputs before filesystem use
+ok 278 - rejects invalid controlled address inputs before filesystem use
+  ---
+  duration_ms: 19.4856
+  type: 'test'
+  ...
+# Subtest: validates exact context and preserves explicit or absent Owner authority
+ok 279 - validates exact context and preserves explicit or absent Owner authority
+  ---
+  duration_ms: 89.0492
+  type: 'test'
+  ...
+# Subtest: keeps Author, Reviewer and Verification outcomes separate and preserves next boundary as data
+ok 280 - keeps Author, Reviewer and Verification outcomes separate and preserves next boundary as data
+  ---
+  duration_ms: 32.2089
+  type: 'test'
+  ...
+# Subtest: rejects context/result linkage mismatch and unknown envelope fields
+ok 281 - rejects context/result linkage mismatch and unknown envelope fields
+  ---
+  duration_ms: 3.402
+  type: 'test'
+  ...
+# Subtest: writes the stable three-file surface once and preserves prior bytes on collision
+ok 282 - writes the stable three-file surface once and preserves prior bytes on collision
+  ---
+  duration_ms: 63.473
+  type: 'test'
+  ...
+# Subtest: rejects duplicate controlled sequence even when date or Action differs
+ok 283 - rejects duplicate controlled sequence even when date or Action differs
+  ---
+  duration_ms: 43.1609
+  type: 'test'
+  ...
+# Subtest: fails closed on missing, truncated or malformed machine records
+ok 284 - fails closed on missing, truncated or malformed machine records
+  ---
+  duration_ms: 59.6555
+  type: 'test'
+  ...
+# Subtest: lists Change-local Author → Reviewer → Author history in controlled sequence order without auto-execution
+ok 285 - lists Change-local Author → Reviewer → Author history in controlled sequence order without auto-execution
+  ---
+  duration_ms: 84.5061
+  type: 'test'
+  ...
+# Subtest: internally prepares an empty slot and completes one invocation
+ok 286 - internally prepares an empty slot and completes one invocation
+  ---
+  duration_ms: 31.7327
+  type: 'test'
+  ...
+# Subtest: reuses exact prepared A without duplicate prepare
+ok 287 - reuses exact prepared A without duplicate prepare
+  ---
+  duration_ms: 2.8975
+  type: 'test'
+  ...
+# Subtest: prepares a different target after terminal but rejects a different target over prepared
+ok 288 - prepares a different target after terminal but rejects a different target over prepared
+  ---
+  duration_ms: 6.2458
+  type: 'test'
+  ...
+# Subtest: package formation failure invokes host callback zero times
+ok 289 - package formation failure invokes host callback zero times
+  ---
+  duration_ms: 7.6511
+  type: 'test'
+  ...
+# Subtest: missing canonical Guidance fails package formation before callback
+ok 290 - missing canonical Guidance fails package formation before callback
+  ---
+  duration_ms: 159.4678
+  type: 'test'
+  ...
+# Subtest: callback failure preserves prepared Action and stops
+ok 291 - callback failure preserves prepared Action and stops
+  ---
+  duration_ms: 5.8802
+  type: 'test'
+  ...
+# Subtest: admission failure leaves exact Action prepared and executes callback only once
+ok 292 - admission failure leaves exact Action prepared and executes callback only once
+  ---
+  duration_ms: 20.6688
+  type: 'test'
+  ...
+# Subtest: later invocation reuses same prepared A with a new Run occurrence
+ok 293 - later invocation reuses same prepared A with a new Run occurrence
+  ---
+  duration_ms: 11.5255
+  type: 'test'
+  ...
+# Subtest: package-bound preparation uses the same exact ActionPackage identity as execution
+ok 294 - package-bound preparation uses the same exact ActionPackage identity as execution
+  ---
+  duration_ms: 9.6664
+  type: 'test'
+  ...
+# Subtest: blocked preparation discards a newly staged prepared Action and skips execution
+ok 295 - blocked preparation discards a newly staged prepared Action and skips execution
+  ---
+  duration_ms: 6.4707
+  type: 'test'
+  ...
+# Subtest: preparation failure preserves an already-prepared Action for retry
+ok 296 - preparation failure preserves an already-prepared Action for retry
+  ---
+  duration_ms: 11.5144
+  type: 'test'
+  ...
+# Subtest: pre-preparation package failures do not leak a newly staged prepared Action
+ok 297 - pre-preparation package failures do not leak a newly staged prepared Action
+  ---
+  duration_ms: 45.6207
+  type: 'test'
+  ...
+# Subtest: successful invocation preserves opaque nextBoundary and never executes a second callback
+ok 298 - successful invocation preserves opaque nextBoundary and never executes a second callback
+  ---
+  duration_ms: 10.6563
+  type: 'test'
+  ...
+# Subtest: accepts exactly the closed Delivery structural state literals
+ok 299 - accepts exactly the closed Delivery structural state literals
+  ---
+  duration_ms: 2.4046
+  type: 'test'
+  ...
+# Subtest: accepts exactly the closed Change structural state literals
+ok 300 - accepts exactly the closed Change structural state literals
+  ---
+  duration_ms: 0.6576
+  type: 'test'
+  ...
+# Subtest: state module remains separate from Action lifecycle literals and transitions
+ok 301 - state module remains separate from Action lifecycle literals and transitions
+  ---
+  duration_ms: 0.9436
+  type: 'test'
+  ...
+# Subtest: planned state is reportable without activation provenance or completed dependencies
+ok 302 - planned state is reportable without activation provenance or completed dependencies
+  ---
+  duration_ms: 54.9821
+  type: 'test'
+  ...
+# Subtest: active state requires exact explore activation provenance
+ok 303 - active state requires exact explore activation provenance
+  ---
+  duration_ms: 85.8109
+  type: 'test'
+  ...
+# Subtest: active state requires every direct dependency to resolve exactly once and be completed
+ok 304 - active state requires every direct dependency to resolve exactly once and be completed
+  ---
+  duration_ms: 39.8574
+  type: 'test'
+  ...
+# Subtest: manifest identity and exact Change shape fail closed
+ok 305 - manifest identity and exact Change shape fail closed
+  ---
+  duration_ms: 23.4155
+  type: 'test'
+  ...
+# Subtest: duplicate dependency declarations and malformed coordination fields fail closed
+ok 306 - duplicate dependency declarations and malformed coordination fields fail closed
+  ---
+  duration_ms: 25.8011
+  type: 'test'
+  ...
+# Subtest: D02-style dependent Change becomes lifecycle-enterable only after correction completion and its own activation
+ok 307 - D02-style dependent Change becomes lifecycle-enterable only after correction completion and its own activation
+  ---
+  duration_ms: 39.6731
+  type: 'test'
+  ...
+# Subtest: historical activation provenance never upgrades completed or cancelled durable state
+ok 308 - historical activation provenance never upgrades completed or cancelled durable state
+  ---
+  duration_ms: 29.2475
+  type: 'test'
+  ...
+# Subtest: missing and invalid YAML manifests fail closed
+ok 309 - missing and invalid YAML manifests fail closed
+  ---
+  duration_ms: 96.8245
+  type: 'test'
+  ...
+1..309
+# tests 333
+# suites 0
+# pass 333
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 69560.5497

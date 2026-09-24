@@ -36,11 +36,12 @@ for (const failedFile of ["action.md", "context.json", "result.json"]) {
       await assert.rejects(async () => {
         const held = await how.startRecord(
           domain,
+          loadManagerInstallation(),
           f.input,
           f.current,
           f.context,
           guidance,
-          true,
+          () => "ready",
         );
         businessWrites += 1; // synthetic work counter, not a real Action claim
         await how.finishRecord(domain, held, f.result, true);

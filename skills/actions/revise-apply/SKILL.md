@@ -64,7 +64,7 @@ CLI 仅查询 `status/next/doctor`，结束即退出。Agent 读取本次 manage
 
 以下是可在 Agent Node 文件工具中分段执行的示例，不是新 API、常驻程序或需要放入 target 的 helper。managerRoot 来自本机实际 Flowkit 安装位置，不由 target 请求覆盖；domain 取自该发行的 `dist/domain/index.js`。地址输入来自实际 target/coordination/唯一 Run 链，新 occurrence 必须尚未使用，不能拿 projectOrdinal 代替 changeStartSequence。
 
-先读取既有 `evaluatePolicyAndNextBoundary` 所需真实 facts，确认本次 Action 合法且已明确执行，再完成只读 preparation。输入 preparedContext 使用既有 RunContextRecord 字段：runId、occurrence、actionIdentity、role、lifecycleState:"prepared"、ownerAuthority、previousRunId；保留有意义的 null，不填猜测权限。previousAction 为 null 或不同 terminal 时调用现有 prepare transition；若已是 exact same prepared，则复用它，不 duplicate prepare；不同 prepared target 必须拒绝。下面 currentForExecution 展示这一分支，其结果经 `resolveActionGuidanceRef` 核对 Guidance 后交给 startRecord。再次执行仍使用新 occurrence/previousRunId 与新 package，不覆盖旧失败记录，不接管 partial。不得用自造 terminal JSON 代替这些步骤。
+先读取既有 `evaluatePolicyAndNextBoundary` 所需真实 facts，确认本次 Action 合法且已明确执行，再完成只读 preparation。输入 preparedContext 使用既有 RunContextRecord 字段：runId、occurrence、actionIdentity、role、lifecycleState:"prepared"、ownerAuthority、previousRunId；保留有意义的 null，不填猜测权限。previousAction 为 null 或不同 terminal 时调用现有 prepare transition；若已是 exact same prepared，则复用它，不 duplicate prepare；不同 prepared target 必须拒绝。下面 currentForExecution 展示这一分支，其 expected GuidanceRef 只供 startRecord 对照；startRecord 调用 manager 自有 start 入口，以当前安装真实 Skill bytes 绑定 package、readiness 与 create-once 写入。纯结构 ref/package 不许可新 Run。再次执行仍使用新 occurrence/previousRunId 与新 package，不覆盖旧失败记录，不接管 partial。不得用自造 terminal JSON 代替这些步骤。
 
 ```js
 // agent-record-start: preparation 已真实通过后执行；失败则不开始业务修改。
@@ -77,47 +77,17 @@ function currentForExecution(domain, previousAction, identity) {
   return domain.transitionCurrentAction(previousAction, { type: "prepare", identity });
 }
 
-async function startRecord(domain, input, currentAction, preparedContext, guidanceRef, ready) {
-  const fs = await import("node:fs/promises");
-  const path = (await import("node:path")).default;
+async function startRecord(domain, installation, input, currentAction, preparedContext, guidanceRef, prepare) {
   const assert = (await import("node:assert/strict")).default;
-  assert.equal(ready, true, "preparation blocked");
-  const address = domain.buildRunAddress(input);
-  assert.ok(address, "invalid address");
-  const actionPackage = domain.formActionPackage(currentAction, preparedContext, guidanceRef);
-  assert.ok(actionPackage, "invalid package/Role");
-  assert.equal(address.runId, actionPackage.runId);
-  assert.deepEqual(actionPackage.actionIdentity, {
-    deliveryId: input.deliveryId, changeId: input.changeId, actionId: input.occurrence.actionId,
-  });
-  const root = await fs.realpath(input.repositoryRoot);
-  const relative = path.relative(input.repositoryRoot, address.changeRoot);
-  assert.ok(relative && !relative.startsWith("..") && !path.isAbsolute(relative));
-  let parent = root;
-  for (const segment of relative.split(path.sep)) {
-    parent = path.join(parent, segment);
-    try { await fs.mkdir(parent); } catch (error) { if (error.code !== "EEXIST") throw error; }
-    assert.equal((await fs.lstat(parent)).isSymbolicLink(), false);
-    assert.equal(await fs.realpath(parent), parent, "Run parent escaped");
-  }
-  for (const name of await fs.readdir(parent)) {
-    const occurrence = domain.parseRunOccurrenceId(name);
-    assert.ok(occurrence, "invalid Run entry");
-    assert.notEqual(occurrence.sequence, input.occurrence.sequence, "sequence already exists");
-  }
-  const directory = path.join(parent, address.runId);
-  await fs.mkdir(directory); // existing occurrence 不接管
-  const actionMarkdown = "# Action started\n\n" + JSON.stringify({
-    startedAt: new Date().toISOString(), repositoryRoot: root, actionPackage,
-  }, null, 2) + "\n";
-  await fs.writeFile(path.join(directory, "action.md"), actionMarkdown, { flag: "wx" });
-  assert.equal(await fs.readFile(path.join(directory, "action.md"), "utf8"), actionMarkdown);
-  return { input: { ...input, repositoryRoot: root }, directory, actionMarkdown,
-    currentAction, preparedContext, actionPackage };
+  assert.equal(typeof prepare, "function", "package-bound readiness required");
+  return domain.startCanonicalActionRun(
+    installation, input, currentAction, preparedContext, guidanceRef,
+    async (actionPackage) => prepare(actionPackage),
+  );
 }
 ```
 
-保留本次 exact 执行上下文（上例返回值）后，用 Agent 工具执行实际工作。不是要求一个 Node 进程一直存活，也不要求 callback；不能仅凭遗留目录在另一个会话接管。开始后中断保留 partial，查询应报告 incomplete；action.md 单独存在不是机器 prepared 或 terminal。业务修改前开始文件保存失败即停止。
+保留本次 exact 执行上下文（上例返回值）后，用 Agent 工具执行实际工作。不是要求一个 Node 进程一直存活，也不要求跨进程 callback；本次 start 所需的只读 package-bound preparation 函数只在本次调用内运行。不能仅凭遗留目录在另一个会话接管。开始后中断保留 partial，查询应报告 incomplete；action.md 单独存在不是机器 prepared 或 terminal。业务修改前开始文件保存失败即停止。
 
 材料在产生时保存并核对，接纳前及后续相关消费时复核。facts 示例为 `{proofRefs:[{path,bytes,sha256,deliveryId,changeId,runId,purpose}],handoff:{summary,ownerDecisions:[{sourceRef,summary}],evidenceRefs:[{sourceRunId,path}]}}`；无新必要材料可用空数组，不创建空目录。旧 Run 不追溯强制这些键。只传当前判断需要的本次或同 Change 前序已声明引用；冲突/重复引用先核对，不能把 hash 相同当归属相同。以下只核对已声明单个文件，不扫描历史或创建目录：
 

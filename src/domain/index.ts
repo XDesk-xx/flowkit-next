@@ -2,6 +2,7 @@ export * from "./action-lifecycle.js";
 export * from "./authority.js";
 export * from "./identity.js";
 export * from "./action-guidance-execution.js";
+export * from "./canonical-action-run-start.js";
 export * from "./state.js";
 export * from "./run-result-persistence.js";
 export * from "./action-package-result-admission.js";

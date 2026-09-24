@@ -75,11 +75,12 @@ test("HOW prepared failure then explicitly selected new execution records a new 
     const firstCurrent = how.currentForExecution(domain, null, identity)!;
     const first = await how.startRecord(
       domain,
+      loadManagerInstallation(),
       f.input,
       firstCurrent,
       f.context,
       guidance,
-      true,
+      () => "ready",
     );
     const failure = {
       ...f.result,
@@ -123,11 +124,12 @@ test("HOW prepared failure then explicitly selected new execution records a new 
     const input = { ...f.input, occurrence };
     const second = await how.startRecord(
       domain,
+      loadManagerInstallation(),
       input,
       current,
       context,
       guidance,
-      true,
+      () => "ready",
     );
     assert.notEqual(second.actionPackage.runId, first.actionPackage.runId);
     assert.deepEqual(
@@ -145,7 +147,15 @@ test("HOW prepared failure then explicitly selected new execution records a new 
       context.runId,
     );
     await assert.rejects(
-      how.startRecord(domain, input, current, context, guidance, true),
+      how.startRecord(
+        domain,
+        loadManagerInstallation(),
+        input,
+        current,
+        context,
+        guidance,
+        () => "ready",
+      ),
       /sequence already exists/,
     );
   } finally {

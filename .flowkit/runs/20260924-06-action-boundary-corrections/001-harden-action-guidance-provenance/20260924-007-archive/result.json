@@ -1,0 +1,108 @@
+{
+  "runId": "20260924-007-archive",
+  "actionIdentity": {
+    "deliveryId": "20260924-06-action-boundary-corrections",
+    "changeId": "harden-action-guidance-provenance",
+    "actionId": "archive"
+  },
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": null,
+  "facts": {
+    "projectOrdinal": 40,
+    "changeStartSequence": 1,
+    "reviewedRunId": "20260924-006-review-apply",
+    "archivePath": "openspec/changes/archive/2026-09-24-040-harden-action-guidance-provenance",
+    "openSpec": {
+      "specsUpdated": true,
+      "requirementsAdded": 2,
+      "requirementsModified": 1,
+      "requirementsRemoved": 0,
+      "requirementsRenamed": 0
+    },
+    "canonicalSpecRefs": [
+      {
+        "path": "openspec/specs/action-guidance-execution/spec.md",
+        "bytes": 14707,
+        "sha256": "dc476ab249897e1e5c392549216d50a8ff0bcdad1c14028cb14bec7ad6a415b4"
+      },
+      {
+        "path": "openspec/specs/action-package-and-result-admission/spec.md",
+        "bytes": 10713,
+        "sha256": "183d56f75e0be8688ac0802aff8ca5bc708e97fc5633a93177a1f27efa0178a9"
+      }
+    ],
+    "completion": {
+      "manifestPath": "openspec/delivery-groups/20260924-06-action-boundary-corrections.yaml",
+      "manifestSha256": "d15995bf243370f0cb091c8abf3d9337b80fa4a0a0b96017e9e8abe41e4f3ac6",
+      "changeState": "completed",
+      "nextChangeState": "planned"
+    },
+    "checks": [
+      {
+        "command": "OpenSpec isolated archive dry-run",
+        "result": "PASS"
+      },
+      {
+        "command": "OpenSpec validate --specs --strict on converged snapshot",
+        "result": "PASS",
+        "specs": 22
+      },
+      {
+        "command": "pnpm test:domain on converged snapshot",
+        "result": "PASS",
+        "tests": 333,
+        "proofRef": ".flowkit/artifacts/20260924-06-action-boundary-corrections/changes/harden-action-guidance-provenance/proof/20260924-007-archive/stdout.txt"
+      },
+      {
+        "command": "pnpm typecheck on converged snapshot",
+        "result": "PASS"
+      },
+      {
+        "command": "OpenSpec validate --specs --strict after materialization",
+        "result": "PASS",
+        "specs": 22
+      },
+      {
+        "command": "git diff --check",
+        "result": "PASS"
+      }
+    ],
+    "proofRefs": [
+      {
+        "path": ".flowkit/artifacts/20260924-06-action-boundary-corrections/changes/harden-action-guidance-provenance/proof/20260924-007-archive/stdout.txt",
+        "bytes": 72459,
+        "sha256": "32d2807f2de16d170f3f35b50fdc37f617a320fe2d79d65a9f900e146ff82aba",
+        "deliveryId": "20260924-06-action-boundary-corrections",
+        "changeId": "harden-action-guidance-provenance",
+        "runId": "20260924-007-archive",
+        "purpose": "isolated converged domain TAP report"
+      },
+      {
+        "path": ".flowkit/artifacts/20260924-06-action-boundary-corrections/changes/harden-action-guidance-provenance/proof/20260924-007-archive/command.json",
+        "bytes": 567,
+        "sha256": "5d51ff750962d3accb0a16b13143774ea242793eb1d22ed40f494286920261c5",
+        "deliveryId": "20260924-06-action-boundary-corrections",
+        "changeId": "harden-action-guidance-provenance",
+        "runId": "20260924-007-archive",
+        "purpose": "exact domain command result summary"
+      }
+    ],
+    "handoff": {
+      "summary": "First required Change archived with two canonical specs synced. The second Change remains planned; no Full Test, Delivery Final, or Git authority is claimed.",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-09-24:activate-harden-action-guidance-provenance:proof-explore",
+          "summary": "First Change activated for proof Explore; ordinary subsequent Actions followed Policy."
+        }
+      ],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20260924-007-archive",
+          "path": ".flowkit/artifacts/20260924-06-action-boundary-corrections/changes/harden-action-guidance-provenance/proof/20260924-007-archive/stdout.txt"
+        }
+      ]
+    }
+  }
+}

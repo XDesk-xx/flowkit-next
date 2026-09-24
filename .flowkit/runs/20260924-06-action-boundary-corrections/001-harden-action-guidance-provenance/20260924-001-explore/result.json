@@ -1,0 +1,66 @@
+{
+  "runId": "20260924-001-explore",
+  "actionIdentity": {
+    "deliveryId": "20260924-06-action-boundary-corrections",
+    "changeId": "harden-action-guidance-provenance",
+    "actionId": "explore"
+  },
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-explore",
+  "facts": {
+    "projectOrdinal": 40,
+    "summary": "Fixed manager accepts forged and wrong-Action Skill SHA in ActionPackage; bounded start provenance contract is Proposal-ready.",
+    "exploreArtifact": "openspec/changes/harden-action-guidance-provenance/explore.md",
+    "exploreSha256": "c83e4877849730c02fb4fc35ab8d616aefa94fd321580753ec5adcbcbfaa124f",
+    "proofRefs": [
+      {
+        "path": ".flowkit/artifacts/20260924-06-action-boundary-corrections/changes/harden-action-guidance-provenance/proof/20260924-001-explore/probe-guidance-provenance.mjs",
+        "bytes": 3397,
+        "sha256": "8998f892189b661eaf3d4990deb00e0cac9d626d9ea4bb634a3bddc116f8263e",
+        "deliveryId": "20260924-06-action-boundary-corrections",
+        "changeId": "harden-action-guidance-provenance",
+        "runId": "20260924-001-explore",
+        "purpose": "bounded in-memory counterexample source"
+      },
+      {
+        "path": ".flowkit/artifacts/20260924-06-action-boundary-corrections/changes/harden-action-guidance-provenance/proof/20260924-001-explore/stdout.txt",
+        "bytes": 516,
+        "sha256": "445bdeda7663477e6c701a58b8f74c32feff82710e6dbc834f3ff3d4b66fbae2",
+        "deliveryId": "20260924-06-action-boundary-corrections",
+        "changeId": "harden-action-guidance-provenance",
+        "runId": "20260924-001-explore",
+        "purpose": "raw counterexample result"
+      },
+      {
+        "path": ".flowkit/artifacts/20260924-06-action-boundary-corrections/changes/harden-action-guidance-provenance/proof/20260924-001-explore/stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260924-06-action-boundary-corrections",
+        "changeId": "harden-action-guidance-provenance",
+        "runId": "20260924-001-explore",
+        "purpose": "raw counterexample stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260924-06-action-boundary-corrections/changes/harden-action-guidance-provenance/proof/20260924-001-explore/command.json",
+        "bytes": 500,
+        "sha256": "5f5705a1d7c5827b39652056f9eb49e4a5dda8bebec102ff15e0239a6851e2bb",
+        "deliveryId": "20260924-06-action-boundary-corrections",
+        "changeId": "harden-action-guidance-provenance",
+        "runId": "20260924-001-explore",
+        "purpose": "counterexample command and exit metadata"
+      }
+    ],
+    "handoff": {
+      "summary": "Independent review-explore should assess the proof and smallest manager-owned start boundary; no implementation or Review verdict claimed.",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-09-24:activate-harden-action-guidance-provenance:proof-explore",
+          "summary": "Activate this Change for proof Explore only."
+        }
+      ],
+      "evidenceRefs": []
+    }
+  }
+}

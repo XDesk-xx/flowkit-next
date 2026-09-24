@@ -17,7 +17,8 @@ changes:
     goal: "新 Action 只消费当前 manager installation 对 canonical Skill bytes 解析出的 GuidanceRef。"
     required: true
     dependsOn: []
-    state: planned
+    state: completed
+    projectOrdinal: 40
   - id: "support-owner-correction-of-prepared-actions"
     group: "action-lifecycle"
     goal: "允许明确 Owner 授权的 prepared Author Action 前向修正到合法 revise Action，并完整保留既有 Run 历史。"
@@ -32,6 +33,13 @@ ownerDecisions:
     scope:
       - "delivery-start"
       - "git-create-delivery-branch"
+  - ref: "owner:20ebcbfb61fe89ee2085c40cdca44f66c7d538544d4ec162d38ffa1c304be2e5"
+    decision: "activate-change"
+    deliveryId: "20260924-06-action-boundary-corrections"
+    changeId: "harden-action-guidance-provenance"
+    sourceRef: "owner-input:2026-09-24:activate-harden-action-guidance-provenance:proof-explore"
+    scope:
+      - "explore"
 reference:
   kind: "owner-selected-delivery-plan"
   artifact: "openspec/delivery-groups/20260924-06-action-boundary-corrections-plan.md"

@@ -1,0 +1,24 @@
+{
+  "kind": "direct-node-test-reporter",
+  "executable": "node",
+  "argv": [
+    "--import",
+    "tsx",
+    "--test",
+    "--test-reporter=tap",
+    "--test-reporter-destination=.flowkit/artifacts/20260924-06-action-boundary-corrections/changes/harden-action-guidance-provenance/proof/20260924-005-apply/focused.stdout.txt",
+    "tests/unit/domain/canonical-action-run-start.test.ts",
+    "tests/unit/domain/agent-how-record.test.ts",
+    "tests/unit/domain/agent-how-prepared.test.ts",
+    "tests/unit/domain/agent-how-failure.test.ts"
+  ],
+  "cwd": "D:\\Projects\\flowkit-next",
+  "exitCode": 0,
+  "observedExitSource": "direct exec_command result, exit_code 0",
+  "reporterDestination": "focused.stdout.txt",
+  "report": {
+    "bytes": 3156,
+    "sha256": "c2c83bc26d7e1d7da5d6966096ae3dc925b4ea40a249b621613682745a62475c"
+  },
+  "note": "A prior spawnSync wrapper failed with EPERM; its command.json and empty raw streams are preserved separately."
+}
