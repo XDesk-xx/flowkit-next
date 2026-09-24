@@ -1,0 +1,31 @@
+{
+  "checkId": "dependency-health",
+  "checkRef": "full-test-check:sha256:0f36b170a26a87c304b238d30d2589e4bbbe3aad4fc0babe0f4d19621feb72c2",
+  "program": "C:\\Users\\xuser\\AppData\\Local\\nvm\\v22.23.2\\node.exe",
+  "args": [
+    "node_modules/dependency-cruiser/bin/dependency-cruise.mjs",
+    "--config",
+    "dependency-cruiser.config.mjs",
+    "--output-type",
+    "err",
+    "src",
+    "tests"
+  ],
+  "cwd": ".",
+  "startedAt": "2026-09-24T17:23:56.514Z",
+  "finishedAt": "2026-09-24T17:23:56.515Z",
+  "exitCode": null,
+  "signal": null,
+  "processError": "spawn EPERM",
+  "saveError": null,
+  "stdout": {
+    "artifact": ".flowkit/artifacts/20260924-06-action-boundary-corrections/full-test/780518fd-728e-4c75-a4f7-348aa5a63b97/checks/dependency-health/stdout.txt",
+    "contentSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  "stderr": {
+    "artifact": ".flowkit/artifacts/20260924-06-action-boundary-corrections/full-test/780518fd-728e-4c75-a4f7-348aa5a63b97/checks/dependency-health/stderr.txt",
+    "contentSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  }
+}

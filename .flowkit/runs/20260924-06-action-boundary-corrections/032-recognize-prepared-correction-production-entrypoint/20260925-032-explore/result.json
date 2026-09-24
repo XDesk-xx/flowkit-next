@@ -1,0 +1,63 @@
+{
+  "runId": "20260925-032-explore",
+  "actionIdentity": {
+    "deliveryId": "20260924-06-action-boundary-corrections",
+    "changeId": "recognize-prepared-correction-production-entrypoint",
+    "actionId": "explore"
+  },
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-explore",
+  "facts": {
+    "projectOrdinal": 43,
+    "changeStartSequence": 32,
+    "failedFullTestAttempt": "c5b6c820-5d84-4bfc-a77d-d7493e246adc",
+    "summary": "The exact Skill-invoked prepared correction module is the sole source outside the two canonical entropy roots; one explicit third root makes the current graph 59/59 reachable without changing production behavior.",
+    "exploreArtifact": "openspec/changes/recognize-prepared-correction-production-entrypoint/explore.md",
+    "exploreSha256": "45503a1a3c8cd2616f7391f4716fa01ece79a5db5abb0e62f0494b7ccee77089",
+    "proofRefs": [
+      {
+        "path": ".flowkit/artifacts/20260924-06-action-boundary-corrections/changes/recognize-prepared-correction-production-entrypoint/proof/20260925-032-explore/probe-production-entrypoint.mjs",
+        "bytes": 4352,
+        "sha256": "8b34d0f68e3724a8b7ff89389c693b6d50124b1b4dd7daa28879e3b20e701bb8",
+        "deliveryId": "20260924-06-action-boundary-corrections",
+        "changeId": "recognize-prepared-correction-production-entrypoint",
+        "runId": "20260925-032-explore",
+        "purpose": "Exact read-only dependency graph probe"
+      },
+      {
+        "path": ".flowkit/artifacts/20260924-06-action-boundary-corrections/changes/recognize-prepared-correction-production-entrypoint/proof/20260925-032-explore/production-entrypoint-observation.json",
+        "bytes": 2310,
+        "sha256": "b339a482b117f8119aa2e3d0f0d4f039a053516640ce7ea1e3d03053ad4774a6",
+        "deliveryId": "20260924-06-action-boundary-corrections",
+        "changeId": "recognize-prepared-correction-production-entrypoint",
+        "runId": "20260925-032-explore",
+        "purpose": "Current roots versus one exact direct-entry counterfactual"
+      }
+    ],
+    "limits": [
+      "Third-root result is an Explore counterfactual, not a product edit or Formal Full Test PASS.",
+      "The failed Full Test attempt and prior three Change checkpoints remain unchanged."
+    ],
+    "handoff": {
+      "summary": "Independent review-explore should assess the exact third-root contract boundary against the existing two-root canonical spec and proof; Proposal should remain within repository-entropy-hygiene and exact entrypoint verification.",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-09-25:d06-entropy-correction-change:proof-explore",
+          "summary": "Owner authorized a D06 correction Change and proof Explore for the Full Test production reachability failure."
+        }
+      ],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20260925-032-explore",
+          "path": ".flowkit/artifacts/20260924-06-action-boundary-corrections/changes/recognize-prepared-correction-production-entrypoint/proof/20260925-032-explore/probe-production-entrypoint.mjs"
+        },
+        {
+          "sourceRunId": "20260925-032-explore",
+          "path": ".flowkit/artifacts/20260924-06-action-boundary-corrections/changes/recognize-prepared-correction-production-entrypoint/proof/20260925-032-explore/production-entrypoint-observation.json"
+        }
+      ]
+    }
+  }
+}

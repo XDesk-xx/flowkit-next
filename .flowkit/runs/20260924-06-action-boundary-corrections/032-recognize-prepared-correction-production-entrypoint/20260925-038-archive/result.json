@@ -1,0 +1,113 @@
+{
+  "runId": "20260925-038-archive",
+  "actionIdentity": {
+    "deliveryId": "20260924-06-action-boundary-corrections",
+    "changeId": "recognize-prepared-correction-production-entrypoint",
+    "actionId": "archive"
+  },
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": null,
+  "facts": {
+    "projectOrdinal": 43,
+    "changeStartSequence": 32,
+    "reviewedRunId": "20260925-037-review-apply",
+    "reviewedResultRef": {
+      "path": ".flowkit/runs/20260924-06-action-boundary-corrections/032-recognize-prepared-correction-production-entrypoint/20260925-036-apply/result.json",
+      "sha256": "aad47f96e57ae41876d9a41272810f9f8871cd30ffc3dcd9f5020b47e8a334fb"
+    },
+    "archivePath": "openspec/changes/archive/2026-09-25-043-recognize-prepared-correction-production-entrypoint",
+    "sourceRemoval": "openspec/changes/recognize-prepared-correction-production-entrypoint",
+    "openSpec": {
+      "specsUpdated": true,
+      "requirementsAdded": 0,
+      "requirementsModified": 2,
+      "requirementsRemoved": 0,
+      "requirementsRenamed": 0
+    },
+    "candidateFiles": [
+      {
+        "path": "scripts/check-production-reachability.mjs",
+        "bytes": 5495,
+        "sha256": "3fda79c8084234030a03184e9f490641124e26cb90e8c4d7ac085e7571107294"
+      },
+      {
+        "path": "tests/unit/quality/production-reachability.test.mjs",
+        "bytes": 3638,
+        "sha256": "1ea696ce7575ba5ec9097635683390e34aa38837e54d9b817d67cde16e504ec2"
+      },
+      {
+        "path": "openspec/changes/archive/2026-09-25-043-recognize-prepared-correction-production-entrypoint/tasks.md",
+        "bytes": 887,
+        "sha256": "60befe756c691bbf31becaf5ef68a3c756c0e3d5bd020600483d37f85f3bb7a1"
+      }
+    ],
+    "canonicalSpecRefs": [
+      {
+        "path": "openspec/specs/repository-entropy-hygiene/spec.md",
+        "bytes": 4096,
+        "sha256": "8705b1153ca73a5a417c5a5787fde2f7a9168e7a51a4c88f6d32ac9f82669bfa"
+      }
+    ],
+    "completion": {
+      "manifestPath": "openspec/delivery-groups/20260924-06-action-boundary-corrections.yaml",
+      "manifestSha256": "5efeb74e7bf75f1a1c8a8246bf64c55b8b63a1aa07590a89340d2b1d9b901113",
+      "changeState": "completed"
+    },
+    "checks": [
+      {
+        "command": "OpenSpec isolated archive dry-run",
+        "outcome": "PASS",
+        "detail": "2 modified requirements"
+      },
+      {
+        "command": "OpenSpec validate --all --strict on converged snapshot",
+        "outcome": "PASS",
+        "detail": "1/1"
+      },
+      {
+        "command": "pnpm test:entropy against unchanged reviewed candidate",
+        "outcome": "PASS",
+        "detail": "7/7"
+      },
+      {
+        "command": "pnpm quality:entropy against unchanged reviewed candidate",
+        "outcome": "PASS",
+        "detail": "59/59"
+      },
+      {
+        "command": "pnpm quality:gate against unchanged reviewed candidate",
+        "outcome": "PASS"
+      },
+      {
+        "command": "pnpm quality:dependency-health against unchanged reviewed candidate",
+        "outcome": "PASS"
+      },
+      {
+        "command": "OpenSpec validate --all --strict after materialization",
+        "outcome": "PASS",
+        "detail": "22/22"
+      },
+      {
+        "command": "git diff --check",
+        "outcome": "PASS"
+      }
+    ],
+    "proofRefs": [],
+    "limits": [
+      "Archive does not supply a new Formal Full Test PASS or Git checkpoint authority.",
+      "The prior failed Full Test attempt is preserved; a new attempt requires a separate Owner boundary."
+    ],
+    "handoff": {
+      "summary": "Correction Change archived with exact ordinal 43, canonical entropy spec synchronized, and Delivery Change marked completed; Formal Full Test remains failed.",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-09-25:d06-entropy-correction-change:proof-explore",
+          "summary": "Owner authorized the correction Change and proof Explore for the D06 entropy failure."
+        }
+      ],
+      "evidenceRefs": []
+    }
+  }
+}

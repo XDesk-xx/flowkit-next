@@ -1,0 +1,66 @@
+{
+  "deliveryId": "20260924-06-action-boundary-corrections",
+  "changeId": "recognize-prepared-correction-production-entrypoint",
+  "runId": "20260925-036-apply",
+  "scope": "Apply verification of one exact production root and focused regression",
+  "checks": [
+    {
+      "command": "pnpm quality:entropy",
+      "exitCode": 0,
+      "observation": "59/59 production modules reachable"
+    },
+    {
+      "command": "node --test tests/unit/quality/production-reachability.test.mjs",
+      "exitCode": 0,
+      "observation": "7 tests passed, including all exact roots missing-graph failure and unrelated unreachable modules"
+    },
+    {
+      "command": "pnpm build",
+      "exitCode": 0,
+      "observation": "dist/cli/prepared-owner-correction-start.js exists after build"
+    },
+    {
+      "command": "pnpm quality:gate",
+      "exitCode": 0,
+      "observation": "format:check and lint passed after targeted test-file formatting"
+    },
+    {
+      "command": "pnpm quality:dependency-health",
+      "exitCode": 0,
+      "observation": "149 modules and 835 dependencies cruised without violations"
+    },
+    {
+      "command": "pnpm check:forbidden-tracked-artifacts",
+      "exitCode": 0
+    },
+    {
+      "command": "managed OpenSpec 1.10.0 validate recognize-prepared-correction-production-entrypoint --strict",
+      "exitCode": 0
+    },
+    {
+      "command": "npm pack --dry-run --json",
+      "environment": "workspace sandbox",
+      "exitCode": 1,
+      "observation": "npm cache write EPERM at C:/Users/xuser/AppData/Local/npm-cache/_cacache/tmp"
+    },
+    {
+      "command": "npm pack --dry-run --json",
+      "environment": "approved host execution",
+      "exitCode": 0,
+      "observation": "package file list includes dist/cli/prepared-owner-correction-start.js; no tarball produced by dry-run"
+    }
+  ],
+  "pathChecks": {
+    "skillFiles": [
+      "skills/actions/revise-explore/SKILL.md",
+      "skills/actions/revise-propose/SKILL.md",
+      "skills/actions/revise-apply/SKILL.md"
+    ],
+    "skillImport": "dist/cli/prepared-owner-correction-start.js",
+    "packageFilesRule": "dist/"
+  },
+  "limits": [
+    "These are Apply checks, not a new Formal Delivery Full Test attempt.",
+    "The previous Formal Full Test attempt remains failed pending its separate authorized rerun."
+  ]
+}

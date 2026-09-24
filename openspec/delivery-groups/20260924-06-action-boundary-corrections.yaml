@@ -9,8 +9,9 @@ planningReference:
   contentSha256: "22db59844ab8ec3586190af8932401d7e9d67ddab23e803e7d3b59d4b8dadb81"
 delivery:
   state: active
-  fullTestStatus: pending
+  fullTestStatus: "failed"
   finalizationStatus: pending
+  fullTestAttempt: "c5b6c820-5d84-4bfc-a77d-d7493e246adc"
 changes:
   - id: "harden-action-guidance-provenance"
     group: "action-start"
@@ -33,6 +34,13 @@ changes:
     dependsOn: []
     state: completed
     projectOrdinal: 41
+  - id: "recognize-prepared-correction-production-entrypoint"
+    group: "engineering-quality"
+    goal: "把已批准的 prepared Owner correction Skill 直调模块纳入真实生产入口可达性合同，消除 Full Test entropy 失败。"
+    required: true
+    dependsOn: ["support-owner-correction-of-prepared-actions"]
+    state: completed
+    projectOrdinal: 43
 ownerDecisions:
   - ref: "owner:acee7751529bf1c0b637c3646768b0fb226db6b19b177d3a5e9f9db9e19f190d"
     decision: "create-delivery"
@@ -62,12 +70,19 @@ ownerDecisions:
     sourceRef: "owner-input:2026-09-25:activate-support-owner-correction-of-prepared-actions:proof-explore"
     scope:
       - "explore"
+  - ref: "owner:a0cfd3a0cf4f8b91dfa9628e280286aad7921ece91c45ff53fbea9f5767b14d7"
+    decision: "activate-change"
+    deliveryId: "20260924-06-action-boundary-corrections"
+    changeId: "recognize-prepared-correction-production-entrypoint"
+    sourceRef: "owner-input:2026-09-25:d06-entropy-correction-change:proof-explore"
+    scope:
+      - "explore"
 reference:
   kind: "owner-selected-delivery-plan"
   artifact: "openspec/delivery-groups/20260924-06-action-boundary-corrections-plan.md"
 scope:
   included:
-    - "三个独立必需 Change；各自经 Explore、Proposal、Apply、独立 Review 与实际验证。"
+    - "原三个必需 Change 和本次 Full Test correction Change；各自经 Explore、Proposal、Apply、独立 Review 与实际验证。"
     - "新证据字节保护仅适用于今后 Flowkit 管理的新 Run/proof，不迁移或重写历史。"
     - "prepared correction 以 LP 089 三文件 Run 的只读副本验证兼容，原始 bytes 不覆盖。"
   excluded:

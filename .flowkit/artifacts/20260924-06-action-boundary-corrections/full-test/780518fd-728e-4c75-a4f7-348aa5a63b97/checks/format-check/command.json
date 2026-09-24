@@ -1,0 +1,33 @@
+{
+  "checkId": "format-check",
+  "checkRef": "full-test-check:sha256:fecae9795bd0b25b5c0a69047fc75498364c02a565e197d3b5a1e025e2a3717e",
+  "program": "C:\\Users\\xuser\\AppData\\Local\\nvm\\v22.23.2\\node.exe",
+  "args": [
+    "node_modules/prettier/bin/prettier.cjs",
+    "--check",
+    "src",
+    "tests",
+    "tsconfig.json",
+    "tsconfig.build.json",
+    "package.json",
+    "eslint.config.mjs",
+    "scripts/check-forbidden-tracked-artifacts.mjs"
+  ],
+  "cwd": ".",
+  "startedAt": "2026-09-24T17:23:49.740Z",
+  "finishedAt": "2026-09-24T17:23:49.743Z",
+  "exitCode": null,
+  "signal": null,
+  "processError": "spawn EPERM",
+  "saveError": null,
+  "stdout": {
+    "artifact": ".flowkit/artifacts/20260924-06-action-boundary-corrections/full-test/780518fd-728e-4c75-a4f7-348aa5a63b97/checks/format-check/stdout.txt",
+    "contentSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  "stderr": {
+    "artifact": ".flowkit/artifacts/20260924-06-action-boundary-corrections/full-test/780518fd-728e-4c75-a4f7-348aa5a63b97/checks/format-check/stderr.txt",
+    "contentSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  }
+}

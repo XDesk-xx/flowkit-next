@@ -1,0 +1,59 @@
+{
+  "runId": "20260925-035-review-propose",
+  "actionIdentity": {
+    "deliveryId": "20260924-06-action-boundary-corrections",
+    "changeId": "recognize-prepared-correction-production-entrypoint",
+    "actionId": "review-propose"
+  },
+  "authorConclusion": null,
+  "reviewerVerdict": "approved",
+  "verificationVerdict": null,
+  "nextBoundary": "apply",
+  "facts": {
+    "reviewedRunId": "20260925-034-propose",
+    "reviewedProposalResult": {
+      "path": ".flowkit/runs/20260924-06-action-boundary-corrections/032-recognize-prepared-correction-production-entrypoint/20260925-034-propose/result.json",
+      "sha256": "3aa8db3ee89b4df01fe5d67fe7274e1a5b64168c0772cfb708d8938a83f9badf"
+    },
+    "approvedExploreReviewRunId": "20260925-033-review-explore",
+    "planningFileCount": 4,
+    "planningFileRefs": ".flowkit/runs/20260924-06-action-boundary-corrections/032-recognize-prepared-correction-production-entrypoint/20260925-034-propose/result.json#facts.artifactRefs",
+    "proofRefs": [],
+    "summary": "四份 Proposal 文件与 Author 记录一致；delta spec 将第三个精确 manager 直调入口加入现有 entropy roots，并保留缺失 root、额外不可达模块、test-only 引用的 fail-closed 语义。Design/tasks 提供有界实现与验证路径。",
+    "findings": [],
+    "reviewerChecks": [
+      {
+        "check": "Proposal artifact SHA/length readback",
+        "outcome": "4/4 match"
+      },
+      {
+        "check": "approved Explore and current canonical spec",
+        "outcome": "exact third root and preserved unreachable behavior traceable"
+      },
+      {
+        "command": "managed OpenSpec 1.10.0 validate --strict",
+        "exitCode": 0,
+        "outcome": "structural PASS"
+      }
+    ],
+    "assessments": {
+      "currentStep": "独立审查 exact 034 Proposal 对已批准 Explore 032/033 的可追溯性、测试合同和 Apply 准备度。",
+      "complexityAndMinimality": "现有 capability 的静态 root 列表加一个精确入口；沿用原分析器、聚焦测试与构建检查，无新增机制。",
+      "newContentAndScopeDrift": "scope drift: NONE；不改变 prepared correction 执行、Full Test 事实或通用入口发现边界。"
+    },
+    "limits": [
+      "OpenSpec strict PASS 只证明结构合法；Reviewer 批准 Proposal 合同，不是 Apply 或 Formal Full Test PASS。",
+      "59/59 仍是 Explore 反事实；更新 checker 后的真实图与发行路径须在 Apply 验证。"
+    ],
+    "handoff": {
+      "summary": "Proposal 可进入 Apply；同步第三精确 root、合成图 fixture 与发行路径核对，保持其他不可达源码失败。",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-09-25:d06-entropy-correction-change:proof-explore",
+          "summary": "Owner 授权 D06 entropy 失败的 correction Change 与 proof Explore。"
+        }
+      ],
+      "evidenceRefs": []
+    }
+  }
+}

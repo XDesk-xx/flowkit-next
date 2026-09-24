@@ -1,0 +1,61 @@
+{
+  "runId": "20260925-034-propose",
+  "actionIdentity": {
+    "deliveryId": "20260924-06-action-boundary-corrections",
+    "changeId": "recognize-prepared-correction-production-entrypoint",
+    "actionId": "propose"
+  },
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-propose",
+  "facts": {
+    "projectOrdinal": 43,
+    "changeStartSequence": 32,
+    "summary": "The existing repository-entropy-hygiene capability now has a bounded Proposal for one exact manager-distributed prepared-correction root, focused regression, and package-path verification.",
+    "artifactRefs": [
+      {
+        "path": "openspec/changes/recognize-prepared-correction-production-entrypoint/proposal.md",
+        "bytes": 1281,
+        "sha256": "75dec794d08181f0182232ad0b02c069c9071b62caf32b48a7a4924e4cf11c17"
+      },
+      {
+        "path": "openspec/changes/recognize-prepared-correction-production-entrypoint/specs/repository-entropy-hygiene/spec.md",
+        "bytes": 2696,
+        "sha256": "4be2dedcf9c58ae2c44e5954b2924d988ec48f41279f0bc9818e9354b23daa15"
+      },
+      {
+        "path": "openspec/changes/recognize-prepared-correction-production-entrypoint/design.md",
+        "bytes": 2091,
+        "sha256": "388573e57009423c62b4ac7165ebdeb777605ba4bac87f4e5d35c027161b9fe8"
+      },
+      {
+        "path": "openspec/changes/recognize-prepared-correction-production-entrypoint/tasks.md",
+        "bytes": 887,
+        "sha256": "6004bbed5bbbcf67d88731f97db2a7fd301baeeddb8d79093d7301a9c2ddb6cc"
+      }
+    ],
+    "validation": {
+      "command": "openspec validate recognize-prepared-correction-production-entrypoint --strict",
+      "exitCode": 0,
+      "output": "Change 'recognize-prepared-correction-production-entrypoint' is valid"
+    },
+    "complexity": "One static production root, one existing delta spec, focused test fixture changes; no new runtime abstraction or discovery mechanism.",
+    "newContentBeyondExplore": "None; the contract formalizes the approved exact third-root counterfactual and its Apply verification.",
+    "scopeDrift": "NONE",
+    "limits": [
+      "The 59/59 result remains an Explore counterfactual until Apply updates the checker and runs verification.",
+      "Formal Full Test attempt c5b6c820-5d84-4bfc-a77d-d7493e246adc remains failed."
+    ],
+    "handoff": {
+      "summary": "Independently review four planning artifacts against approved Explore and existing repository-entropy-hygiene spec; no Apply has started.",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-09-25:d06-entropy-correction-change:proof-explore",
+          "summary": "Owner authorized correction Change and proof Explore for D06 entropy failure."
+        }
+      ],
+      "evidenceRefs": []
+    }
+  }
+}

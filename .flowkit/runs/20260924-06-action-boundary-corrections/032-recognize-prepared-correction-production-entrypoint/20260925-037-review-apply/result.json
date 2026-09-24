@@ -1,0 +1,74 @@
+{
+  "runId": "20260925-037-review-apply",
+  "actionIdentity": {
+    "deliveryId": "20260924-06-action-boundary-corrections",
+    "changeId": "recognize-prepared-correction-production-entrypoint",
+    "actionId": "review-apply"
+  },
+  "authorConclusion": null,
+  "reviewerVerdict": "approved",
+  "verificationVerdict": null,
+  "nextBoundary": "archive",
+  "facts": {
+    "reviewedRunId": "20260925-036-apply",
+    "reviewedApplyResult": {
+      "path": ".flowkit/runs/20260924-06-action-boundary-corrections/032-recognize-prepared-correction-production-entrypoint/20260925-036-apply/result.json",
+      "sha256": "aad47f96e57ae41876d9a41272810f9f8871cd30ffc3dcd9f5020b47e8a334fb"
+    },
+    "approvedProposalReviewRunId": "20260925-035-review-propose",
+    "candidateFileCount": 3,
+    "candidateFileRefs": ".flowkit/runs/20260924-06-action-boundary-corrections/032-recognize-prepared-correction-production-entrypoint/20260925-036-apply/result.json#facts.changedRefs",
+    "proofRefs": [],
+    "summary": "Apply 的三个 changedRefs 和验证 proof 哈希匹配；只增加一个精确 root，并补独立入口、全部 root 缺失、死源码及 test-only 回归。独立 59/59、7/7 测试与 npm package dry-run 均通过。",
+    "findings": [],
+    "reviewerChecks": [
+      {
+        "check": "Apply changedRefs and proof SHA/length readback",
+        "outcome": "3/3 changed refs and 1/1 proof match"
+      },
+      {
+        "check": "approved Proposal continuity",
+        "outcome": "3 unchanged planning files match; tasks completion only"
+      },
+      {
+        "command": "pnpm quality:entropy",
+        "exitCode": 0,
+        "outcome": "59/59 production modules reachable"
+      },
+      {
+        "command": "pnpm test:entropy",
+        "exitCode": 0,
+        "outcome": "7/7 passed"
+      },
+      {
+        "command": "npm pack --dry-run --json --cache .tmp/npm-cache",
+        "exitCode": 0,
+        "outcome": "prepack build PASS; dry-run file list contains direct dist entrypoint"
+      },
+      {
+        "command": "git diff --check",
+        "exitCode": 0,
+        "outcome": "PASS"
+      }
+    ],
+    "assessments": {
+      "currentStep": "独立审查 exact 036 Apply 对第三精确 production root Proposal 的实现、负例和发行路径。",
+      "complexityAndMinimality": "仅改静态 roots 列表与聚焦合成测试；复用既有算法和打包规则，无新抽象。",
+      "newContentAndScopeDrift": "scope drift: NONE；无 prepared correction 行为修改、通用入口发现或 Git 操作。"
+    },
+    "limits": [
+      "npm package 结果是 dry-run 包文件列表，不是已发布 tarball 或安装验收。",
+      "先前 Formal Full Test 仍为 failed；本次 Reviewer 结果不是新 Full Test 或 Git 授权。"
+    ],
+    "handoff": {
+      "summary": "Apply 已获 Reviewer 批准；后续按合法边界 archive，仍需独立新的 Formal Full Test attempt。",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-09-25:d06-entropy-correction-change:proof-explore",
+          "summary": "Owner 授权 D06 entropy 失败的 correction Change 与 proof Explore。"
+        }
+      ],
+      "evidenceRefs": []
+    }
+  }
+}
