@@ -8,10 +8,18 @@ planningReference:
   artifact: "openspec/delivery-groups/20260924-06-action-boundary-corrections-plan.md"
   contentSha256: "22db59844ab8ec3586190af8932401d7e9d67ddab23e803e7d3b59d4b8dadb81"
 delivery:
-  state: active
-  fullTestStatus: "failed"
-  finalizationStatus: pending
-  fullTestAttempt: "c5b6c820-5d84-4bfc-a77d-d7493e246adc"
+  state: completed
+  fullTestStatus: "passed"
+  finalizationStatus: completed
+  fullTestAttempt: "c7b2a371-a212-4d04-812b-48bfe289a667"
+finalization:
+  state: completed
+  verifiedCandidateRef: "full-test-input:sha256:4bdca49dc1ad2f3798c4f5cbf80fabd8de04975bdb88e038a9e828568e40507b"
+  fullTestExecutionRef: "full-test-execution:sha256:25af29cb461ac49bfc9f30f28af12d6e294e9aee7ed42b7006a1ae4f3e03de42"
+  ownerAuthorityRef: "owner:0a61187d49ef3c712498be607521155882f6e6491bd121d154953acfc8f7270f"
+  sourceRef: "owner-message:20260925:d06-delivery-final"
+  fullTestAttempt: "c7b2a371-a212-4d04-812b-48bfe289a667"
+  confirmationRef: "delivery-finalization:sha256:87d412306885647dab0254cd84d5ab1a4e06093d5bd9fa3df49a34a8d60a36da"
 changes:
   - id: "harden-action-guidance-provenance"
     group: "action-start"
