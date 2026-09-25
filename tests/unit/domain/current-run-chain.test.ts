@@ -148,6 +148,72 @@ test("complete prepared failure retries same Action with a new occurrence", () =
   );
 });
 
+test("LP 089 shaped prepared Apply accepts one Owner-linked revise tip without changing the predecessor", () => {
+  const explore = record(85, "explore");
+  const reviewExplore = record(86, "review-explore", explore);
+  const propose = record(87, "propose", reviewExplore);
+  const reviewPropose = record(88, "review-propose", propose);
+  const apply = record(89, "apply", reviewPropose);
+  const prepared = {
+    ...apply,
+    context: { ...apply.context, lifecycleState: "prepared" as const },
+    result: {
+      ...apply.result,
+      authorConclusion: null,
+      nextBoundary: null,
+      facts: { implementationPerformed: true, uiCheckpoint: "pending" },
+    },
+  };
+  const before = JSON.stringify(prepared);
+  const history = [explore, reviewExplore, propose, reviewPropose, prepared];
+  for (const target of [
+    "revise-apply",
+    "revise-propose",
+    "revise-explore",
+  ] as const) {
+    const child = record(90, target, prepared);
+    const corrected = {
+      ...child,
+      context: {
+        ...child.context,
+        ownerAuthority: {
+          ref: `owner:${"a".repeat(64)}`,
+          decision: "revise-action" as const,
+          deliveryId: "delivery-one",
+          changeId: "change-one",
+          sourceRef: "fixture-owner-correction",
+          scope: [target],
+        },
+      },
+    };
+    assert.equal(resolveRunChain([...history, corrected]), corrected);
+    assert.equal(JSON.stringify(prepared), before);
+    assert.throws(
+      () => resolveRunChain([...history, child]),
+      ActionContextError,
+    );
+    assert.throws(
+      () =>
+        resolveRunChain([...history, corrected, record(91, target, prepared)]),
+      ActionContextError,
+    );
+    assert.throws(
+      () =>
+        resolveRunChain([
+          ...history,
+          {
+            ...corrected,
+            context: {
+              ...corrected.context,
+              previousRunId: reviewPropose.context.runId,
+            },
+          },
+        ]),
+      ActionContextError,
+    );
+  }
+});
+
 test("canonical disk history reads selected group only and keeps partial visible", async () => {
   const repositoryRoot = await mkdtemp(
     path.join(os.tmpdir(), "flowkit-chain-"),

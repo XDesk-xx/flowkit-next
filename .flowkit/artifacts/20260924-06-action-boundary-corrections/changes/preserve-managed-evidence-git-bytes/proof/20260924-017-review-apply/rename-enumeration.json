@@ -1,0 +1,16 @@
+{
+  "method": "Independent local Git fixture: commit old.txt, git mv to a new managed proof path, inspect staged diff with the exact current --diff-filter=A enumeration and with --no-renames. No target evidence or index was changed.",
+  "fixtureHead": "07223a374538b6ed9ba8d3eb792ac77f70c66c3e",
+  "newManagedProofPath": ".flowkit/artifacts/d/changes/c/proof/20260924-001-apply/proof.txt",
+  "stagedNameStatus": [
+    "R100\told.txt\t.flowkit/artifacts/d/changes/c/proof/20260924-001-apply/proof.txt"
+  ],
+  "currentAddedEnumeration": [],
+  "noRenamesAddedEnumeration": [
+    ".flowkit/artifacts/d/changes/c/proof/20260924-001-apply/proof.txt"
+  ],
+  "rawGitBlob": "c735202fb0d3c35e7fa4675a376d62142f607ef2",
+  "indexGitBlob": "c735202fb0d3c35e7fa4675a376d62142f607ef2",
+  "affectedSource": "src/internal/managed-evidence-checkpoint.ts: requireNewManagedEvidenceBytes uses git diff --cached --diff-filter=A --name-only -z without --no-renames.",
+  "limit": "This fixture proves path enumeration omission under rename detection; it does not execute a real authorized checkpoint or claim a terminal Result."
+}

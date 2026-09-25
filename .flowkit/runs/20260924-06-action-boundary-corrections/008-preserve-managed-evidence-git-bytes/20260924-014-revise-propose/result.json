@@ -1,0 +1,68 @@
+{
+  "runId": "20260924-014-revise-propose",
+  "actionIdentity": {
+    "deliveryId": "20260924-06-action-boundary-corrections",
+    "changeId": "preserve-managed-evidence-git-bytes",
+    "actionId": "revise-propose"
+  },
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-propose",
+  "facts": {
+    "projectOrdinal": 41,
+    "changeStartSequence": 8,
+    "approvedExploreRunId": "20260924-010-revise-explore",
+    "approvingReviewRunId": "20260924-011-review-explore",
+    "summary": "RP013-001 and RP013-002 closed by exact-path Run/proof attribute checks and checkpoint comparison to recorded proofRef SHA/bytes.",
+    "revisedFindingIds": [
+      "RP013-001",
+      "RP013-002"
+    ],
+    "reviewedRunId": "20260924-012-propose",
+    "planningArtifacts": [
+      {
+        "path": "openspec/changes/preserve-managed-evidence-git-bytes/proposal.md",
+        "bytes": 1751,
+        "sha256": "07f90cb1dee1f98b83c3a0c398f9ac08a1eb821486330707dabf0006c55cd7de"
+      },
+      {
+        "path": "openspec/changes/preserve-managed-evidence-git-bytes/design.md",
+        "bytes": 3493,
+        "sha256": "f0ee000174ffba64654f314158f25b0b89b6b7d660afce5c9363fac638b4f84a"
+      },
+      {
+        "path": "openspec/changes/preserve-managed-evidence-git-bytes/tasks.md",
+        "bytes": 1501,
+        "sha256": "885aef076008819ffe4df083d2c08fe67705079dc4e23f5410a0e2028605a81e"
+      },
+      {
+        "path": "openspec/changes/preserve-managed-evidence-git-bytes/specs/action-guidance-execution/spec.md",
+        "bytes": 3740,
+        "sha256": "bc2a395271e46099a8da5415d0859cdaaae9ccb14c966c9963855ce35bf87a81"
+      },
+      {
+        "path": "openspec/changes/preserve-managed-evidence-git-bytes/specs/repository-integration-and-next-base-continuity/spec.md",
+        "bytes": 2173,
+        "sha256": "3af20bd2b8bdcb8a4c0d6a9aba5d2eb540e37d88fcd9131af5626112ffc04c0d"
+      }
+    ],
+    "checks": [
+      "OpenSpec strict validation PASS",
+      "OpenSpec planning complete",
+      "git diff --check PASS"
+    ],
+    "complexityAndScope": "Two prior capability deltas unchanged in number; only exact-path and recorded-proof identity checks added to close findings. No production implementation or new subsystem.",
+    "proofRefs": [],
+    "handoff": {
+      "summary": "Independent review-propose should assess exact five revised planning artifacts against RP013-001/RP013-002; no Apply or Git authority is claimed.",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-09-24:add-preserve-managed-evidence-git-bytes:future-only",
+          "summary": "Only future managed Run/proof; historical evidence and commits remain untouched."
+        }
+      ],
+      "evidenceRefs": []
+    }
+  }
+}

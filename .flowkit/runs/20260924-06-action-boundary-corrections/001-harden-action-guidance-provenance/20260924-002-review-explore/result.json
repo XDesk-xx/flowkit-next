@@ -1,0 +1,50 @@
+{
+  "runId": "20260924-002-review-explore",
+  "actionIdentity": {
+    "deliveryId": "20260924-06-action-boundary-corrections",
+    "changeId": "harden-action-guidance-provenance",
+    "actionId": "review-explore"
+  },
+  "authorConclusion": null,
+  "reviewerVerdict": "approved",
+  "verificationVerdict": null,
+  "nextBoundary": "propose",
+  "facts": {
+    "reviewedRunId": "20260924-001-explore",
+    "reviewedExplore": {
+      "path": "openspec/changes/harden-action-guidance-provenance/explore.md",
+      "sha256": "c83e4877849730c02fb4fc35ab8d616aefa94fd321580753ec5adcbcbfaa124f"
+    },
+    "reviewedProof": {
+      "sourceRunId": "20260924-001-explore",
+      "stdout": ".flowkit/artifacts/20260924-06-action-boundary-corrections/changes/harden-action-guidance-provenance/proof/20260924-001-explore/stdout.txt",
+      "probe": ".flowkit/artifacts/20260924-06-action-boundary-corrections/changes/harden-action-guidance-provenance/proof/20260924-001-explore/probe-guidance-provenance.mjs"
+    },
+    "summary": "Fixed manager proof and source confirm that shape-valid forged and wrong-Action Guidance SHA enter ActionPackage; manager-owned bounded start is a proportionate Proposal direction.",
+    "findings": [],
+    "assessments": {
+      "currentStep": "Independent read-only review of the exact Author Explore, current Delivery scope, manager source, and declared counterexample proof.",
+      "complexityAndMinimality": "Reuse the existing resolver and Run/package boundaries; one bounded manager-owned start path is necessary to keep agent-written action.md from bypassing provenance.",
+      "newContentAndScopeDrift": "None. Historical Runs, Owner correction, lifecycle recovery, registries, and release acceptance remain outside this Change."
+    },
+    "limits": [
+      "The counterexample forms packages in memory; it does not itself demonstrate a partial Run or Apply acceptance.",
+      "This review does not execute the proposed fix, formal Full Test, or Git integration."
+    ],
+    "handoff": {
+      "summary": "Explore is Proposal-ready; preserve the before-action.md rejection and historical-Run nonretroactivity boundaries.",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-09-24:activate-harden-action-guidance-provenance:proof-explore",
+          "summary": "This Change is active for proof Explore."
+        }
+      ],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20260924-001-explore",
+          "path": ".flowkit/artifacts/20260924-06-action-boundary-corrections/changes/harden-action-guidance-provenance/proof/20260924-001-explore/stdout.txt"
+        }
+      ]
+    }
+  }
+}

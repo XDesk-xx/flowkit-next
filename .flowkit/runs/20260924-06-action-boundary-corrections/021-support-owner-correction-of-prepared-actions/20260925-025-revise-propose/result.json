@@ -1,0 +1,77 @@
+{
+  "runId": "20260925-025-revise-propose",
+  "actionIdentity": {
+    "deliveryId": "20260924-06-action-boundary-corrections",
+    "changeId": "support-owner-correction-of-prepared-actions",
+    "actionId": "revise-propose"
+  },
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-propose",
+  "facts": {
+    "projectOrdinal": 42,
+    "changeStartSequence": 21,
+    "approvedExploreRunId": "20260925-021-explore",
+    "approvingReviewRunId": "20260925-022-review-explore",
+    "summary": "RP024-001 closed by specifying prepared current Run ID/context/result inputs, exact linkage and null-slot checks, and deterministic invalid-policy-input diagnosis before Owner correction eligibility.",
+    "revisedFindingIds": [
+      "RP024-001"
+    ],
+    "reviewedRunId": "20260925-023-propose",
+    "planningArtifacts": [
+      {
+        "path": "openspec/changes/support-owner-correction-of-prepared-actions/proposal.md",
+        "bytes": 1988,
+        "sha256": "8dc8745c773b4653f1864646992d92f6487200229b8189ef8845861cd8c192af"
+      },
+      {
+        "path": "openspec/changes/support-owner-correction-of-prepared-actions/design.md",
+        "bytes": 4592,
+        "sha256": "d523c95944d8d6bdf21b7f91f3080294fb1efc9cc87d01cf9961e5fe06ee44d3"
+      },
+      {
+        "path": "openspec/changes/support-owner-correction-of-prepared-actions/tasks.md",
+        "bytes": 2117,
+        "sha256": "6875e3dc1d8157ca1bff67fa8dde61564d24855351ec488e2dba7ce2c7a74278"
+      },
+      {
+        "path": "openspec/changes/support-owner-correction-of-prepared-actions/specs/action-lifecycle/spec.md",
+        "bytes": 2800,
+        "sha256": "d2ebc54c313829fce7b4071f48a2ab1bc31441a21eabbad7447f5d5d4ae555a6"
+      },
+      {
+        "path": "openspec/changes/support-owner-correction-of-prepared-actions/specs/policy-and-next-boundary/spec.md",
+        "bytes": 13842,
+        "sha256": "2969c234e642d3ecc73583dc83a2feb891b92546f3f9e67cd6af6ca2aebc1139"
+      },
+      {
+        "path": "openspec/changes/support-owner-correction-of-prepared-actions/specs/run-result-persistence/spec.md",
+        "bytes": 1541,
+        "sha256": "f914d2103ab1f0f07f1fe59f0787f0c0cd77bb10d98a8b2a2ae44c7406cff362"
+      },
+      {
+        "path": "openspec/changes/support-owner-correction-of-prepared-actions/specs/single-action-execution-terminal-boundary/spec.md",
+        "bytes": 4030,
+        "sha256": "6b08f9e30f6fc120f32e07952e5abbc4e72916f6b8cd3d56553eb4f321c19e3f"
+      }
+    ],
+    "checks": [
+      "OpenSpec strict validation PASS",
+      "OpenSpec planning complete",
+      "git diff --check PASS"
+    ],
+    "complexityAndScope": "Existing four capability deltas retained; only Policy input/linkage contract plus matching design/task verification clarified. No product code or new subsystem.",
+    "proofRefs": [],
+    "handoff": {
+      "summary": "Independent review-propose should assess exact seven planning artifacts against RP024-001 and approved Explore; no Apply or Git authority is claimed.",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-09-25:activate-support-owner-correction-of-prepared-actions:proof-explore",
+          "summary": "Owner activated this Change; LP 089 is read-only baseline and this proposal stays within future prepared Author correction."
+        }
+      ],
+      "evidenceRefs": []
+    }
+  }
+}

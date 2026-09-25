@@ -1,0 +1,27 @@
+{
+  "kind": "direct-node-test-reporter",
+  "executable": "node",
+  "argv": [
+    "--import",
+    "tsx",
+    "--test",
+    "--test-reporter=tap",
+    "--test-reporter-destination=.flowkit/artifacts/20260924-06-action-boundary-corrections/changes/harden-action-guidance-provenance/proof/20260924-005-apply/current.stdout.txt",
+    "tests/unit/domain/canonical-action-run-start.test.ts",
+    "tests/unit/domain/agent-how-record.test.ts",
+    "tests/unit/domain/agent-how-prepared.test.ts",
+    "tests/unit/domain/agent-how-failure.test.ts"
+  ],
+  "cwd": "D:\\Projects\\flowkit-next",
+  "exitCode": 0,
+  "observedExitSource": "direct exec_command result, exit_code 0",
+  "reporterDestination": "current.stdout.txt",
+  "report": {
+    "bytes": 3381,
+    "sha256": "68f6a3dc30635c219f6b6dd52770eedd7e98866c0043f113ef5c9f91f44bcef0"
+  },
+  "priorAttempts": [
+    "command.json",
+    "focused.command.json"
+  ]
+}

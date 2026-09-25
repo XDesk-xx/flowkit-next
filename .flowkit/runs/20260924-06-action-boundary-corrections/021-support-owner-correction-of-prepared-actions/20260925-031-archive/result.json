@@ -1,0 +1,219 @@
+{
+  "runId": "20260925-031-archive",
+  "actionIdentity": {
+    "deliveryId": "20260924-06-action-boundary-corrections",
+    "changeId": "support-owner-correction-of-prepared-actions",
+    "actionId": "archive"
+  },
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": null,
+  "facts": {
+    "projectOrdinal": 42,
+    "changeStartSequence": 21,
+    "reviewedRunId": "20260925-030-review-apply",
+    "reviewedResultRef": {
+      "path": ".flowkit/runs/20260924-06-action-boundary-corrections/021-support-owner-correction-of-prepared-actions/20260925-029-revise-apply/result.json",
+      "sha256": "47998cf5a8af561896e52d84e84bca663a7729bcb00c070096fd585dbcf0206d"
+    },
+    "archivePath": "openspec/changes/archive/2026-09-25-042-support-owner-correction-of-prepared-actions",
+    "openSpec": {
+      "specsUpdated": true,
+      "requirementsAdded": 3,
+      "requirementsModified": 6,
+      "requirementsRemoved": 0,
+      "requirementsRenamed": 0
+    },
+    "candidateFiles": [
+      {
+        "path": "openspec/changes/archive/2026-09-25-042-support-owner-correction-of-prepared-actions/tasks.md",
+        "bytes": 2117,
+        "sha256": "dde6b95e3552decb7fd6ee08fdf98da16d8f2a8ba129664a1fa2dd95286ac099"
+      },
+      {
+        "path": "src/domain/action-lifecycle.ts",
+        "bytes": 5026,
+        "sha256": "58b6ff4f4e347e16d34c648f7bf67b4d80027274e1388bcd34d98246d8cf06e9"
+      },
+      {
+        "path": "src/domain/policy-and-next-boundary.ts",
+        "bytes": 15479,
+        "sha256": "886ea948efe8b4a38b78390cc84389693ae436c1a4c7ea1a4646a5fa42934a2f"
+      },
+      {
+        "path": "src/cli/current-run-chain.ts",
+        "bytes": 9220,
+        "sha256": "c42335fd135cff22cd9de931811047e387b1386f1f4033b398cbc37058417315"
+      },
+      {
+        "path": "src/cli/foundation-cli.ts",
+        "bytes": 6961,
+        "sha256": "da2e82a863cc35289d68bcc692b320337d19fefba2ef162f8969c85659c8f88b"
+      },
+      {
+        "path": "src/cli/prepared-owner-correction-start.ts",
+        "bytes": 4143,
+        "sha256": "bc2302942c33e2a858f31de42ebaafaafc1387080887197eb5608a3debf25f72"
+      },
+      {
+        "path": "tests/unit/domain/action-lifecycle.test.ts",
+        "bytes": 6029,
+        "sha256": "2efc93924c4460a472dd549b2e2cce10e968a2fb4adf0071bbed1fd6467ea486"
+      },
+      {
+        "path": "tests/unit/domain/policy-owner-correction.test.ts",
+        "bytes": 12461,
+        "sha256": "cdf9560efbcc038a3241a91be372d073fbd07f652f1169a9ca11050f8cfd6353"
+      },
+      {
+        "path": "tests/unit/domain/current-run-chain.test.ts",
+        "bytes": 9895,
+        "sha256": "67af8593403727fe071eb4bb582556c0fcf3f2a94a9514091454597d6a9219a0"
+      },
+      {
+        "path": "tests/unit/domain/prepared-owner-correction-start.test.ts",
+        "bytes": 9747,
+        "sha256": "c942dddf1fed0e84dce1e4fe4670707ced739a26ccc6d8fd145e36ec3a84c951"
+      },
+      {
+        "path": "skills/actions/revise-explore/SKILL.md",
+        "bytes": 13170,
+        "sha256": "38f3498b7ee57bf2b8b8ddb2245ac43d8936a1b25e957969f5d44d0506519c26"
+      },
+      {
+        "path": "skills/actions/revise-propose/SKILL.md",
+        "bytes": 13626,
+        "sha256": "cb3de9bd7127180408cf644755d3e7fae49e1e1db9786d2ce451de64dbe4084d"
+      },
+      {
+        "path": "skills/actions/revise-apply/SKILL.md",
+        "bytes": 13970,
+        "sha256": "0a5468c9ed4f7745fb1b433a15345d91a91bca7304dbf4134fc4ba945151c39a"
+      }
+    ],
+    "movedPaths": [
+      {
+        "from": "openspec/changes/support-owner-correction-of-prepared-actions/tasks.md",
+        "to": "openspec/changes/archive/2026-09-25-042-support-owner-correction-of-prepared-actions/tasks.md"
+      }
+    ],
+    "archivedRefs": [
+      {
+        "path": "openspec/changes/archive/2026-09-25-042-support-owner-correction-of-prepared-actions/proposal.md",
+        "bytes": 1988,
+        "sha256": "8dc8745c773b4653f1864646992d92f6487200229b8189ef8845861cd8c192af"
+      },
+      {
+        "path": "openspec/changes/archive/2026-09-25-042-support-owner-correction-of-prepared-actions/design.md",
+        "bytes": 4592,
+        "sha256": "d523c95944d8d6bdf21b7f91f3080294fb1efc9cc87d01cf9961e5fe06ee44d3"
+      },
+      {
+        "path": "openspec/changes/archive/2026-09-25-042-support-owner-correction-of-prepared-actions/tasks.md",
+        "bytes": 2117,
+        "sha256": "dde6b95e3552decb7fd6ee08fdf98da16d8f2a8ba129664a1fa2dd95286ac099"
+      },
+      {
+        "path": "openspec/changes/archive/2026-09-25-042-support-owner-correction-of-prepared-actions/explore.md",
+        "bytes": 4799,
+        "sha256": "1f68b66ba0db2a86c4f18648db37d7e9bb6908c8ca51d5fb64d6a8689d9c442a"
+      },
+      {
+        "path": "openspec/changes/archive/2026-09-25-042-support-owner-correction-of-prepared-actions/specs/action-lifecycle/spec.md",
+        "bytes": 2800,
+        "sha256": "d2ebc54c313829fce7b4071f48a2ab1bc31441a21eabbad7447f5d5d4ae555a6"
+      },
+      {
+        "path": "openspec/changes/archive/2026-09-25-042-support-owner-correction-of-prepared-actions/specs/policy-and-next-boundary/spec.md",
+        "bytes": 13842,
+        "sha256": "2969c234e642d3ecc73583dc83a2feb891b92546f3f9e67cd6af6ca2aebc1139"
+      },
+      {
+        "path": "openspec/changes/archive/2026-09-25-042-support-owner-correction-of-prepared-actions/specs/run-result-persistence/spec.md",
+        "bytes": 1541,
+        "sha256": "f914d2103ab1f0f07f1fe59f0787f0c0cd77bb10d98a8b2a2ae44c7406cff362"
+      },
+      {
+        "path": "openspec/changes/archive/2026-09-25-042-support-owner-correction-of-prepared-actions/specs/single-action-execution-terminal-boundary/spec.md",
+        "bytes": 4030,
+        "sha256": "6b08f9e30f6fc120f32e07952e5abbc4e72916f6b8cd3d56553eb4f321c19e3f"
+      }
+    ],
+    "canonicalSpecRefs": [
+      {
+        "path": "openspec/specs/action-lifecycle/spec.md",
+        "bytes": 9577,
+        "sha256": "b1d6e0dfc72eb489226fa1565cbe9d8c65c3591cc5f316d1d6f6e16ad7826f46"
+      },
+      {
+        "path": "openspec/specs/policy-and-next-boundary/spec.md",
+        "bytes": 21361,
+        "sha256": "24b66d34d7bde60a9ce1763ee2cc552b944501b011581dbc8251059d4c428163"
+      },
+      {
+        "path": "openspec/specs/run-result-persistence/spec.md",
+        "bytes": 14153,
+        "sha256": "deca8d502758f6648a5d66c4e40058225ad0c4ba92e3493ece271741ec1f51d0"
+      },
+      {
+        "path": "openspec/specs/single-action-execution-terminal-boundary/spec.md",
+        "bytes": 14641,
+        "sha256": "c44868419353bd5868e698949297288495dea36df1d70c691ea6e7d1d04eaed2"
+      }
+    ],
+    "completion": {
+      "manifestPath": "openspec/delivery-groups/20260924-06-action-boundary-corrections.yaml",
+      "manifestSha256": "844563d3e9d431a9a682d3b3aa1a09749f0c2d1789f50ba167bd213ef1b86adf",
+      "changeState": "completed"
+    },
+    "checks": [
+      {
+        "command": "OpenSpec isolated archive dry-run",
+        "outcome": "PASS"
+      },
+      {
+        "command": "OpenSpec validate --specs --strict on converged snapshot",
+        "outcome": "PASS",
+        "detail": "22/22"
+      },
+      {
+        "command": "pnpm test:domain on converged snapshot",
+        "outcome": "PASS",
+        "detail": "344/344"
+      },
+      {
+        "command": "pnpm typecheck on converged snapshot",
+        "outcome": "PASS"
+      },
+      {
+        "command": "pnpm quality:gate on converged snapshot",
+        "outcome": "PASS"
+      },
+      {
+        "command": "OpenSpec validate --specs --strict after materialization",
+        "outcome": "PASS",
+        "detail": "22/22"
+      },
+      {
+        "command": "git diff --check",
+        "outcome": "PASS"
+      }
+    ],
+    "proofRefs": [],
+    "limits": [
+      "Archive does not supply Formal Full Test or Git checkpoint authority.",
+      "Three root reference Markdown files remain outside this Change and untouched."
+    ],
+    "handoff": {
+      "summary": "Change archived and four canonical specs synced; all three required D06 Changes are completed. No Delivery Final or Git operation was performed.",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-09-25:activate-support-owner-correction-of-prepared-actions:proof-explore",
+          "summary": "Prepared Author correction applies to future managed projects; LP 089 was a read-only baseline."
+        }
+      ],
+      "evidenceRefs": []
+    }
+  }
+}

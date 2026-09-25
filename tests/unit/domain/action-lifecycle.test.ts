@@ -6,6 +6,7 @@ import {
   isActionIdentity,
   isActionLifecycleState,
   isCurrentAction,
+  supersedePreparedAction,
   transitionCurrentAction,
   type ActionIdentity,
   type CurrentAction,
@@ -109,6 +110,32 @@ test("rejects duplicate or replacement prepare over a prepared Action", () => {
     transitionCurrentAction(preparedA, event("prepare", identityB)),
     null,
   );
+});
+
+test("bounded prepared Author supersession keeps the original slot untouched", () => {
+  const before = current(identityA, "prepared");
+  const target: ActionIdentity = { ...identityA, actionId: "revise-apply" };
+  const boundary = { kind: "ready-action", actionId: "revise-apply" };
+  assert.deepEqual(
+    supersedePreparedAction(before, target, boundary),
+    current(target, "prepared"),
+  );
+  assert.deepEqual(before, current(identityA, "prepared"));
+  assert.equal(transitionCurrentAction(before, event("prepare", target)), null);
+  for (const invalid of [
+    [before, target, null],
+    [before, target, { ...boundary, actionId: "revise-propose" }],
+    [before, target, { ...boundary, extra: true }],
+    [before, { ...target, changeId: "another-change" }, boundary],
+    [before, identityA, { kind: "ready-action", actionId: "apply" }],
+    [current(identityB, "prepared"), target, boundary],
+    [current(identityA, "terminal"), target, boundary],
+  ] as const) {
+    assert.equal(
+      supersedePreparedAction(invalid[0], invalid[1], invalid[2]),
+      null,
+    );
+  }
 });
 
 test("rejects terminal from empty or identity mismatch", () => {

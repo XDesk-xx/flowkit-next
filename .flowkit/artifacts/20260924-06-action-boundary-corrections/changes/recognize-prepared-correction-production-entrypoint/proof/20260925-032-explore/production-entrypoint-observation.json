@@ -1,0 +1,69 @@
+{
+  "kind": "bounded-explore-production-entrypoint-proof",
+  "deliveryId": "20260924-06-action-boundary-corrections",
+  "changeId": "recognize-prepared-correction-production-entrypoint",
+  "runId": "20260925-032-explore",
+  "currentRoots": [
+    "src/cli/entrypoint.ts",
+    "src/domain/index.ts"
+  ],
+  "candidateDirectEntry": "src/cli/prepared-owner-correction-start.ts",
+  "baseline": {
+    "total": 59,
+    "reachable": 58,
+    "unreachable": [
+      "src/cli/prepared-owner-correction-start.ts"
+    ]
+  },
+  "withExactDirectEntry": {
+    "total": 59,
+    "reachable": 59,
+    "unreachable": []
+  },
+  "directConsumers": [
+    "skills/actions/revise-explore/SKILL.md",
+    "skills/actions/revise-propose/SKILL.md",
+    "skills/actions/revise-apply/SKILL.md"
+  ],
+  "sourceRefs": [
+    {
+      "path": "openspec/specs/repository-entropy-hygiene/spec.md",
+      "bytes": 3308,
+      "sha256": "23c0ce3772bbf14d66d869fd83925cb45cefbea3004e3f4ae71d536fd2beb240"
+    },
+    {
+      "path": "scripts/check-production-reachability.mjs",
+      "bytes": 5447,
+      "sha256": "af35327c5fb35fe6c6db7f50fa3c9dbaabff5ff51c757636d2a222a034887ea7"
+    },
+    {
+      "path": "src/cli/prepared-owner-correction-start.ts",
+      "bytes": 4143,
+      "sha256": "bc2302942c33e2a858f31de42ebaafaafc1387080887197eb5608a3debf25f72"
+    },
+    {
+      "path": "skills/actions/revise-explore/SKILL.md",
+      "bytes": 13170,
+      "sha256": "38f3498b7ee57bf2b8b8ddb2245ac43d8936a1b25e957969f5d44d0506519c26"
+    },
+    {
+      "path": "skills/actions/revise-propose/SKILL.md",
+      "bytes": 13626,
+      "sha256": "cb3de9bd7127180408cf644755d3e7fae49e1e1db9786d2ce451de64dbe4084d"
+    },
+    {
+      "path": "skills/actions/revise-apply/SKILL.md",
+      "bytes": 13970,
+      "sha256": "0a5468c9ed4f7745fb1b433a15345d91a91bca7304dbf4134fc4ba945151c39a"
+    },
+    {
+      "path": ".flowkit/artifacts/20260924-06-action-boundary-corrections/full-test/c5b6c820-5d84-4bfc-a77d-d7493e246adc/checks/entropy/stderr.txt",
+      "bytes": 84,
+      "sha256": "7b43c76af139e7731b35da16e621df58fd60d8c192c5e1211b2ba00dcbc7e9f8"
+    }
+  ],
+  "limits": [
+    "The third-root graph is an Explore counterfactual, not a changed product contract or Full Test PASS.",
+    "No production or canonical spec bytes were mutated by this proof."
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "runId": "20260925-030-review-apply",
+  "actionIdentity": {
+    "deliveryId": "20260924-06-action-boundary-corrections",
+    "changeId": "support-owner-correction-of-prepared-actions",
+    "actionId": "review-apply"
+  },
+  "authorConclusion": null,
+  "reviewerVerdict": "approved",
+  "verificationVerdict": null,
+  "nextBoundary": "archive",
+  "facts": {
+    "reviewedRunId": "20260925-029-revise-apply",
+    "reviewedReviseResult": {
+      "path": ".flowkit/runs/20260924-06-action-boundary-corrections/021-support-owner-correction-of-prepared-actions/20260925-029-revise-apply/result.json",
+      "sha256": "47998cf5a8af561896e52d84e84bca663a7729bcb00c070096fd585dbcf0206d"
+    },
+    "approvedProposalReviewRunId": "20260925-026-review-propose",
+    "previousReviewRunId": "20260925-028-review-apply",
+    "resolvedFindingIds": [
+      "RA028-001"
+    ],
+    "candidateFileCount": 13,
+    "candidateFileRefs": ".flowkit/runs/20260924-06-action-boundary-corrections/021-support-owner-correction-of-prepared-actions/20260925-029-revise-apply/result.json#facts.sourceArtifacts",
+    "proofRefs": [],
+    "summary": "13/13 Revise Apply 文件匹配；相对 Apply 027 仅 start、测试及三份 revise Guidance 改动。start 消费可信 active Change state 并在写入前复核；RA028-001 已收敛。",
+    "findings": [],
+    "reviewerChecks": [
+      {
+        "check": "Revise Apply source SHA/length readback",
+        "outcome": "13/13 match; 5 changed paths from Apply 027"
+      },
+      {
+        "check": "RA028-001 and approved Proposal continuity",
+        "outcome": "finding resolved; 6 unchanged planning files match"
+      },
+      {
+        "check": "LP 089 read-only baseline",
+        "outcome": "3/3 original hashes match"
+      },
+      {
+        "command": "pnpm typecheck",
+        "exitCode": 0,
+        "outcome": "PASS"
+      },
+      {
+        "command": "git diff --check",
+        "exitCode": 0,
+        "outcome": "PASS"
+      },
+      {
+        "command": "pnpm test:domain",
+        "exitCode": 0,
+        "outcome": "344 PASS, 0 FAIL; full output captured in disposable .tmp log"
+      }
+    ],
+    "assessments": {
+      "currentStep": "独立复审 Revise Apply 029 对 RA028-001 的修复及已批准 Proposal 连续性。",
+      "complexityAndMinimality": "复用现有 resolveActionContext 取得可信 Change state，并在 package readiness 后复核；未新增第二份状态或 lifecycle 类型。",
+      "newContentAndScopeDrift": "scope drift: NONE；无 LP 写入、历史迁移、generic recovery 平台或 Git 操作。"
+    },
+    "limits": [
+      "LP 089 仅只读基线；合成 fixture 不能证明真实 target 的 coordination admission。",
+      "本次 Reviewer 结果不是 Formal Full Test 或 Git/Archive 授权。"
+    ],
+    "handoff": {
+      "summary": "RA028-001 修复已获 Reviewer 批准；后续按合法边界执行 archive，独立复核当前相关材料。",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-09-25:activate-support-owner-correction-of-prepared-actions:proof-explore",
+          "summary": "此 Change 仅处理未来 prepared Author correction；LP 089 为只读基线。"
+        }
+      ],
+      "evidenceRefs": []
+    }
+  }
+}

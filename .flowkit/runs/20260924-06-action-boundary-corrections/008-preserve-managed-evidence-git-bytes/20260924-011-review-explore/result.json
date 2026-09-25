@@ -1,0 +1,52 @@
+{
+  "runId": "20260924-011-review-explore",
+  "actionIdentity": {
+    "deliveryId": "20260924-06-action-boundary-corrections",
+    "changeId": "preserve-managed-evidence-git-bytes",
+    "actionId": "review-explore"
+  },
+  "authorConclusion": null,
+  "reviewerVerdict": "approved",
+  "verificationVerdict": null,
+  "nextBoundary": "propose",
+  "facts": {
+    "reviewedRunId": "20260924-010-revise-explore",
+    "reviewedExplore": {
+      "path": "openspec/changes/preserve-managed-evidence-git-bytes/explore.md",
+      "sha256": "f3f6af75da28cc3e5d7e0d510d0c24865af21058b116b721b92091cbf89306f2"
+    },
+    "reviewedFinding": "RE009-001",
+    "decisivePriorProof": {
+      "sourceRunId": "20260924-009-review-explore",
+      "path": ".flowkit/artifacts/20260924-06-action-boundary-corrections/changes/preserve-managed-evidence-git-bytes/proof/20260924-009-review-explore/git-attributes-probe.json",
+      "sha256": "761e309fd6861997319e610ba9f352ffa1901dbb4261e2b006e8337370e9f524"
+    },
+    "proofRefs": [],
+    "summary": "修订后的 Explore 以 -text 或等效规则保持今后 managed Run/proof 的 Git 原始字节，同时保留结构化证据的空白诊断；RE009-001 已收敛，可进入 Proposal。",
+    "findings": [],
+    "assessments": {
+      "currentStep": "独立复审 exact 20260924-010-revise-explore、前次 RE009-001、已声明 Git 对照 proof、Owner future-only scope 与现行主规格的 Proposal 准备度。",
+      "complexityAndMinimality": "沿用既有 canonical start、scoped checkpoint 和 Git attributes；将字节保持与空白诊断分离，没有增加新平台或注册表。",
+      "newContentAndScopeDrift": "未发现新增 authority、生命周期、历史迁移或 Git mutation 范围；结构化文件保留空白诊断是对原 finding 的必要收窄。"
+    },
+    "limits": [
+      "既有 Git fixture 证明这两个 exact attributes 配置的局部行为，不证明未来 manager 实现或 checkpoint 验收。",
+      "本 Review 不执行 Proposal、Apply、Full Test 或 Git checkpoint。"
+    ],
+    "handoff": {
+      "summary": "Explore 可进入 Proposal；明确 future-only、-text 保字节、结构化证据空白诊断、raw-stream 既有例外与目标配置归属。",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-09-24:add-preserve-managed-evidence-git-bytes:future-only",
+          "summary": "仅约束今后新产生的 Flowkit managed Run/proof；历史 bytes 不追溯。"
+        }
+      ],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20260924-009-review-explore",
+          "path": ".flowkit/artifacts/20260924-06-action-boundary-corrections/changes/preserve-managed-evidence-git-bytes/proof/20260924-009-review-explore/git-attributes-probe.json"
+        }
+      ]
+    }
+  }
+}

@@ -28,11 +28,12 @@ export interface HowExamples {
   ): domain.CurrentAction | null;
   startRecord(
     kernel: typeof domain,
+    installation: unknown,
     input: domain.RunAddressInput,
     current: domain.CurrentAction,
     context: domain.RunContextRecord,
     guidance: domain.ActionGuidanceRef,
-    ready: boolean,
+    prepare: domain.CanonicalStartReadiness,
   ): Promise<HeldRecord>;
   finishRecord(
     kernel: typeof domain,
@@ -49,6 +50,7 @@ export interface HowExamples {
       changeId: string;
       runId: string;
     },
+    checkGitBytes: typeof domain.assertManagedEvidenceGitBytes,
   ): Promise<Buffer>;
 }
 

@@ -1,0 +1,74 @@
+{
+  "runId": "20260924-015-review-propose",
+  "actionIdentity": {
+    "deliveryId": "20260924-06-action-boundary-corrections",
+    "changeId": "preserve-managed-evidence-git-bytes",
+    "actionId": "review-propose"
+  },
+  "authorConclusion": null,
+  "reviewerVerdict": "approved",
+  "verificationVerdict": null,
+  "nextBoundary": "apply",
+  "facts": {
+    "reviewedRunId": "20260924-014-revise-propose",
+    "approvedExploreReviewRunId": "20260924-011-review-explore",
+    "resolvedFindings": [
+      "RP013-001",
+      "RP013-002"
+    ],
+    "reviewedArtifacts": [
+      {
+        "path": "openspec/changes/preserve-managed-evidence-git-bytes/proposal.md",
+        "sha256": "07f90cb1dee1f98b83c3a0c398f9ac08a1eb821486330707dabf0006c55cd7de"
+      },
+      {
+        "path": "openspec/changes/preserve-managed-evidence-git-bytes/design.md",
+        "sha256": "f0ee000174ffba64654f314158f25b0b89b6b7d660afce5c9363fac638b4f84a"
+      },
+      {
+        "path": "openspec/changes/preserve-managed-evidence-git-bytes/tasks.md",
+        "sha256": "885aef076008819ffe4df083d2c08fe67705079dc4e23f5410a0e2028605a81e"
+      },
+      {
+        "path": "openspec/changes/preserve-managed-evidence-git-bytes/specs/action-guidance-execution/spec.md",
+        "sha256": "bc2a395271e46099a8da5415d0859cdaaae9ccb14c966c9963855ce35bf87a81"
+      },
+      {
+        "path": "openspec/changes/preserve-managed-evidence-git-bytes/specs/repository-integration-and-next-base-continuity/spec.md",
+        "sha256": "3af20bd2b8bdcb8a4c0d6a9aba5d2eb540e37d88fcd9131af5626112ffc04c0d"
+      }
+    ],
+    "decisivePriorProof": {
+      "sourceRunId": "20260924-013-review-propose",
+      "path": ".flowkit/artifacts/20260924-06-action-boundary-corrections/changes/preserve-managed-evidence-git-bytes/proof/20260924-013-review-propose/git-boundary-counterexamples.json",
+      "sha256": "29fef270ee435426bce26cc7d76788dcdb2a43799d7d66e29df0da8b231eff0c"
+    },
+    "proofRefs": [],
+    "summary": "五份修订规划文件已将 Run exact 路径的开始前检查、proof exact 路径的接纳前检查及已声明 proof 的 checkpoint SHA/bytes 绑定写成规范与验收任务；两项 finding 已收敛，可进入 Apply。",
+    "findings": [],
+    "assessments": {
+      "currentStep": "独立复审 exact 20260924-014-revise-propose 五文件、前次两项 finding、相关 Git 对照和 approved Explore/Owner future-only 边界。",
+      "complexityAndMinimality": "只细化已有 canonical start、proof admission 与 scoped checkpoint，不增加新 registry、权限或持久状态。",
+      "newContentAndScopeDrift": "未发现历史迁移、自动 Git mutation、其他项目配置写入或新生命周期语义；新增 exact 路径与记录 hash 校验仅实现既定合同。"
+    },
+    "limits": [
+      "OpenSpec strict validation 证明结构合法；Reviewer 批准的是 Proposal 合同，不是 Apply 或 Full Test PASS。",
+      "前次 Git fixture 只证明对应反例；新 manager 行为仍须在 Apply 验证。"
+    ],
+    "handoff": {
+      "summary": "Proposal 可进入 Apply；实现须覆盖具体 proof 路径覆写、接纳后漂移、结构化空白诊断和 future-only 边界。",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-09-24:add-preserve-managed-evidence-git-bytes:future-only",
+          "summary": "仅保护今后新产生的 managed Run/proof，不改历史或 Git authority。"
+        }
+      ],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20260924-013-review-propose",
+          "path": ".flowkit/artifacts/20260924-06-action-boundary-corrections/changes/preserve-managed-evidence-git-bytes/proof/20260924-013-review-propose/git-boundary-counterexamples.json"
+        }
+      ]
+    }
+  }
+}

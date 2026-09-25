@@ -1,0 +1,73 @@
+{
+  "runId": "20260925-033-review-explore",
+  "actionIdentity": {
+    "deliveryId": "20260924-06-action-boundary-corrections",
+    "changeId": "recognize-prepared-correction-production-entrypoint",
+    "actionId": "review-explore"
+  },
+  "authorConclusion": null,
+  "reviewerVerdict": "approved",
+  "verificationVerdict": null,
+  "nextBoundary": "propose",
+  "facts": {
+    "reviewedRunId": "20260925-032-explore",
+    "reviewedExplore": {
+      "path": "openspec/changes/recognize-prepared-correction-production-entrypoint/explore.md",
+      "sha256": "45503a1a3c8cd2616f7391f4716fa01ece79a5db5abb0e62f0494b7ccee77089"
+    },
+    "reviewedAuthorResult": {
+      "path": ".flowkit/runs/20260924-06-action-boundary-corrections/032-recognize-prepared-correction-production-entrypoint/20260925-032-explore/result.json",
+      "sha256": "8f8cc40e7dee929f588efc93673039b214275bb6f48a8932a5585fc86386d7d2"
+    },
+    "proofRefs": [],
+    "summary": "失败的 Full Test 与当前 quality:entropy 均指向唯一不可达 start 模块；Explore 的 58/59→59/59 第三精确入口实验和 7 个来源引用可复核。Proposal 应在现有 entropy capability 明确该直接发布入口，并保持其余不可达模块阻断。",
+    "findings": [],
+    "reviewerChecks": [
+      {
+        "check": "Explore + 2 proofRefs SHA/length",
+        "outcome": "3/3 match"
+      },
+      {
+        "check": "observation source refs",
+        "outcome": "7/7 SHA/length match"
+      },
+      {
+        "check": "failed Full Test attempt",
+        "outcome": "entropy-tests and entropy failed; no PASS claimed"
+      },
+      {
+        "command": "pnpm quality:entropy",
+        "exitCode": 1,
+        "outcome": "reproduced sole unreachable src/cli/prepared-owner-correction-start.ts"
+      }
+    ],
+    "assessments": {
+      "currentStep": "独立审查 exact 032 Explore 的失败来源、第三精确生产入口证据及 Proposal 准备度。",
+      "complexityAndMinimality": "复用现有 repository entropy 根集合，只增加已由三个 Skill 直调的精确发布模块；不引入通用入口发现或豁免层。",
+      "newContentAndScopeDrift": "scope drift: NONE；只修补现有工程质量合同的实际入口遗漏，不改变 prepared correction 行为或 Full Test 结果。"
+    },
+    "limits": [
+      "59/59 是同一当前源码依赖图的 Explore 反事实；不是已修改产品、打包验收或 Formal Full Test PASS。",
+      "Proposal 应同步更新 canonical spec 的二入口措辞、静态根及合成测试 fixture，并保留其他不可达模块的失败断言。"
+    ],
+    "handoff": {
+      "summary": "可进入 Proposal；仅为现有 entropy capability 增加 exact prepared correction 直调入口，并验证打包路径和其余死代码继续阻断。",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-09-25:d06-entropy-correction-change:proof-explore",
+          "summary": "Owner 授权 D06 Full Test production reachability 失败的 correction Change 与 proof Explore。"
+        }
+      ],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20260925-032-explore",
+          "path": ".flowkit/artifacts/20260924-06-action-boundary-corrections/changes/recognize-prepared-correction-production-entrypoint/proof/20260925-032-explore/probe-production-entrypoint.mjs"
+        },
+        {
+          "sourceRunId": "20260925-032-explore",
+          "path": ".flowkit/artifacts/20260924-06-action-boundary-corrections/changes/recognize-prepared-correction-production-entrypoint/proof/20260925-032-explore/production-entrypoint-observation.json"
+        }
+      ]
+    }
+  }
+}

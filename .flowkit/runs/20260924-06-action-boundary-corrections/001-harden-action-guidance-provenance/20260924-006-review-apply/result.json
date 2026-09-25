@@ -1,0 +1,76 @@
+{
+  "runId": "20260924-006-review-apply",
+  "actionIdentity": {
+    "deliveryId": "20260924-06-action-boundary-corrections",
+    "changeId": "harden-action-guidance-provenance",
+    "actionId": "review-apply"
+  },
+  "authorConclusion": null,
+  "reviewerVerdict": "approved",
+  "verificationVerdict": null,
+  "nextBoundary": "archive",
+  "facts": {
+    "reviewedRunId": "20260924-005-apply",
+    "reviewedResult": {
+      "path": ".flowkit/runs/20260924-06-action-boundary-corrections/001-harden-action-guidance-provenance/20260924-005-apply/result.json",
+      "bytes": 9731,
+      "sha256": "63ff28ef37299c3999d125ca400e1ec63f49986474401f70d017c7598f496701"
+    },
+    "approvedProposalReviewRunId": "20260924-004-review-propose",
+    "candidateFileCount": 18,
+    "candidateFileRefs": ".flowkit/runs/20260924-06-action-boundary-corrections/001-harden-action-guidance-provenance/20260924-005-apply/result.json#facts.candidateFiles",
+    "decisiveEvidence": [
+      ".flowkit/artifacts/20260924-06-action-boundary-corrections/changes/harden-action-guidance-provenance/proof/20260924-005-apply/current.command.json",
+      ".flowkit/artifacts/20260924-06-action-boundary-corrections/changes/harden-action-guidance-provenance/proof/20260924-005-apply/current.stdout.txt"
+    ],
+    "summary": "新 start 在写 Run 前绑定当前 manager Guidance、package 与 readiness，拒绝伪造/漂移并保留 create-once partial 与历史读取；十份 HOW 均使用该入口。",
+    "findings": [],
+    "reviewerChecks": [
+      {
+        "command": "pnpm test:domain",
+        "exitCode": 0,
+        "tests": 333,
+        "source": "本次会话直接运行"
+      },
+      {
+        "command": "pnpm typecheck",
+        "exitCode": 0,
+        "source": "本次会话直接运行"
+      },
+      {
+        "command": "pnpm test:acceptance",
+        "exitCode": 0,
+        "tests": 7,
+        "source": "本次会话直接运行"
+      },
+      {
+        "command": "git diff --check",
+        "exitCode": 0,
+        "source": "本次会话直接运行"
+      }
+    ],
+    "assessments": {
+      "currentStep": "独立核对 exact Apply candidate、批准的 Proposal、现有边界与当前 proof，并复验适用测试。",
+      "complexityAndMinimality": "只新增一个有界 start 模块及导出，复用 resolver、package、Run 地址和接纳逻辑；十份 HOW 与定向测试按合同收敛。",
+      "newContentAndScopeDrift": "scope drift: NONE；未引入新授权、CLI 写命令、历史迁移或第二个 Change 的 prepared correction。"
+    },
+    "limits": [
+      "本次 Reviewer approval 不构成 Formal Full Test、Delivery Verification、Archive 或 Git 权限。"
+    ],
+    "handoff": {
+      "summary": "Apply 审查通过；后续仅由下一独立合法边界执行。",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-09-24:activate-harden-action-guidance-provenance:proof-explore",
+          "summary": "本 Change 已激活，普通后续 Action 由 Policy 决定。"
+        }
+      ],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20260924-005-apply",
+          "path": ".flowkit/artifacts/20260924-06-action-boundary-corrections/changes/harden-action-guidance-provenance/proof/20260924-005-apply/current.stdout.txt"
+        }
+      ]
+    }
+  }
+}

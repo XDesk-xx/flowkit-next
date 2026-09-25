@@ -1,0 +1,236 @@
+{
+  "runId": "20260924-018-revise-apply",
+  "actionIdentity": {
+    "deliveryId": "20260924-06-action-boundary-corrections",
+    "changeId": "preserve-managed-evidence-git-bytes",
+    "actionId": "revise-apply"
+  },
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-apply",
+  "facts": {
+    "projectOrdinal": 41,
+    "changeStartSequence": 8,
+    "reviewedApplyRunId": "20260924-016-apply",
+    "correctingReviewRunId": "20260924-017-review-apply",
+    "correctedFindingIds": [
+      "RA017-001"
+    ],
+    "correction": "Disable rename detection when enumerating newly staged paths, so an R100 destination under managed proof is checked as a new path before commit.",
+    "artifacts": [
+      {
+        "path": ".gitattributes",
+        "bytes": 564,
+        "sha256": "68d237b8533b0930be22196e509bf4e69f3a47cba7e009afb671c544d631b14a"
+      },
+      {
+        "path": "AGENTS.md",
+        "bytes": 20628,
+        "sha256": "f2c6b56153d1cd1818a725fd10f3cf56652ef654223b58d2783c0823cac2fe4a"
+      },
+      {
+        "path": "openspec/delivery-groups/20260924-06-action-boundary-corrections.yaml",
+        "bytes": 3272,
+        "sha256": "2b8bf4365c7f91c4aea570d87e1fd18c26a2b0c68cd0e4de487253f70cffbd6a"
+      },
+      {
+        "path": "openspec/changes/preserve-managed-evidence-git-bytes/proposal.md",
+        "bytes": 1751,
+        "sha256": "07f90cb1dee1f98b83c3a0c398f9ac08a1eb821486330707dabf0006c55cd7de"
+      },
+      {
+        "path": "openspec/changes/preserve-managed-evidence-git-bytes/design.md",
+        "bytes": 3493,
+        "sha256": "f0ee000174ffba64654f314158f25b0b89b6b7d660afce5c9363fac638b4f84a"
+      },
+      {
+        "path": "openspec/changes/preserve-managed-evidence-git-bytes/tasks.md",
+        "bytes": 1501,
+        "sha256": "a6a44b2beee7f0a435f8fdf629cd950593f8b656867a10d0ed4b1a6fdfacc230"
+      },
+      {
+        "path": "openspec/changes/preserve-managed-evidence-git-bytes/specs/action-guidance-execution/spec.md",
+        "bytes": 3740,
+        "sha256": "bc2a395271e46099a8da5415d0859cdaaae9ccb14c966c9963855ce35bf87a81"
+      },
+      {
+        "path": "openspec/changes/preserve-managed-evidence-git-bytes/specs/repository-integration-and-next-base-continuity/spec.md",
+        "bytes": 2173,
+        "sha256": "3af20bd2b8bdcb8a4c0d6a9aba5d2eb540e37d88fcd9131af5626112ffc04c0d"
+      },
+      {
+        "path": "skills/actions/apply/SKILL.md",
+        "bytes": 14063,
+        "sha256": "16c802f14346db41434408687eb0d673764fe54027958bb42db64faf5600b2e1"
+      },
+      {
+        "path": "skills/actions/archive/SKILL.md",
+        "bytes": 17011,
+        "sha256": "a168fc982a2e80f67254b654bfee0d79a52a038249a1e8c2743be2a09aa6d8b7"
+      },
+      {
+        "path": "skills/actions/explore/SKILL.md",
+        "bytes": 16800,
+        "sha256": "6809528efa7c09ff041ded3772a6851feda905084313d4d1efecf5df37eeb13c"
+      },
+      {
+        "path": "skills/actions/propose/SKILL.md",
+        "bytes": 13556,
+        "sha256": "3be6614550bbe9375829dd47521c7a29e84af139cfe77f7ca7285169e4a4ea6a"
+      },
+      {
+        "path": "skills/actions/review-apply/SKILL.md",
+        "bytes": 14753,
+        "sha256": "d75e53f0925b2bf12f264d44a7d00c7046eea5bb5cca7c62016f8ae88597ceb8"
+      },
+      {
+        "path": "skills/actions/review-explore/SKILL.md",
+        "bytes": 14671,
+        "sha256": "052141fe179ec1ea23d796ec2f63557f6cee980f879c0abbd0054237b7f8bf86"
+      },
+      {
+        "path": "skills/actions/review-propose/SKILL.md",
+        "bytes": 15394,
+        "sha256": "505949ae2ae82f4b8c6ab2e91634f5af4cf9700fc32464e5ec8b927ae3807be3"
+      },
+      {
+        "path": "skills/actions/revise-apply/SKILL.md",
+        "bytes": 13140,
+        "sha256": "deb03cc3d4538ab1eea71d332567013496e431a630ffca678c0ee5a2fc8ab7ef"
+      },
+      {
+        "path": "skills/actions/revise-explore/SKILL.md",
+        "bytes": 12340,
+        "sha256": "a6216f7d0f45c236267e218787206ffb93144736f232607b9f7d8e3b09ad9a20"
+      },
+      {
+        "path": "skills/actions/revise-propose/SKILL.md",
+        "bytes": 12796,
+        "sha256": "1be1c36225b42857879cbe1270f031177a200ca047c08280f27116e156631287"
+      },
+      {
+        "path": "src/domain/canonical-action-run-start.ts",
+        "bytes": 6435,
+        "sha256": "8de2ee454d4521858c1615eb2e6d2af6362f4e64d26a1ba37c7502f1fc24597d"
+      },
+      {
+        "path": "src/domain/index.ts",
+        "bytes": 1286,
+        "sha256": "09878b5825730c8ea2f07a0b1516a4b253b8cf52ad0fd5580880e9db7d056f4f"
+      },
+      {
+        "path": "src/internal/git-checkpoint-execution.ts",
+        "bytes": 5187,
+        "sha256": "e9b2101d22ff86f73c6c2e8f3861536c3bfa9d3689f21ad246c658291112faf1"
+      },
+      {
+        "path": "src/internal/managed-evidence-checkpoint.ts",
+        "bytes": 4491,
+        "sha256": "64ea22dcae0304c4e8d4439dfa8b5f163beb649b63cd88624b2948f1b6397b63"
+      },
+      {
+        "path": "src/internal/managed-evidence-git.ts",
+        "bytes": 1824,
+        "sha256": "77b0088c104fca4b0e50270c7babefbd2e2903052a649558c0a057bbb516aba9"
+      },
+      {
+        "path": "tests/unit/domain/agent-how-failure.test.ts",
+        "bytes": 2574,
+        "sha256": "8fb12855ec8c99b5f99129a1e71fa1a2d50f6ed60e15efd414d8ccd0721e3317"
+      },
+      {
+        "path": "tests/unit/domain/agent-how-fixture.ts",
+        "bytes": 3200,
+        "sha256": "d13e959cd6440432331bd5269ea1d679d7a670e26cd4d379a92988ca136ee15d"
+      },
+      {
+        "path": "tests/unit/domain/agent-how-material.test.ts",
+        "bytes": 3309,
+        "sha256": "609ecdf198d82e2aff80f6f645789f6c238dc74b3f0ca1431a392fc19404a19a"
+      },
+      {
+        "path": "tests/unit/domain/agent-how-prepared.test.ts",
+        "bytes": 5721,
+        "sha256": "951a8c8e6005266590f080dd855017045ac86fd3781347b6ddbc545101f14446"
+      },
+      {
+        "path": "tests/unit/domain/agent-how-record.test.ts",
+        "bytes": 6069,
+        "sha256": "f967c5c4613c9df53bab6ee28bece6af225996a4095a5b696a27c45f181b37bc"
+      },
+      {
+        "path": "tests/unit/domain/canonical-action-run-start.test.ts",
+        "bytes": 13873,
+        "sha256": "3b7ebbaad9c7f6b4f142eb663d2367beaaa52a217bc434c91ab828f3feb73ee2"
+      },
+      {
+        "path": "tests/unit/domain/managed-evidence-checkpoint.test.ts",
+        "bytes": 9498,
+        "sha256": "c146e03b1569e3dd6ea77507180f763bc5c170cc45bf6e7ef29d445534591f4c"
+      },
+      {
+        "path": "tests/unit/domain/raw-stream-attributes.test.ts",
+        "bytes": 2949,
+        "sha256": "521548e8211c98fd46580c8566012592b0602bed4053337287dac2a26a20ef5e"
+      }
+    ],
+    "changedPaths": [
+      "src/internal/managed-evidence-checkpoint.ts",
+      "tests/unit/domain/managed-evidence-checkpoint.test.ts"
+    ],
+    "checks": [
+      {
+        "command": "pnpm test:domain",
+        "outcome": "PASS",
+        "detail": "336/336"
+      },
+      {
+        "command": "node --test --import tsx tests/unit/domain/managed-evidence-checkpoint.test.ts",
+        "outcome": "PASS",
+        "detail": "2/2 including R100"
+      },
+      {
+        "command": "pnpm typecheck",
+        "outcome": "PASS"
+      },
+      {
+        "command": "pnpm quality:gate",
+        "outcome": "PASS"
+      },
+      {
+        "command": "pnpm build",
+        "outcome": "PASS"
+      },
+      {
+        "command": "openspec validate preserve-managed-evidence-git-bytes --strict",
+        "outcome": "PASS"
+      },
+      {
+        "command": "git diff --check",
+        "outcome": "PASS"
+      }
+    ],
+    "proofRefs": [],
+    "limits": [
+      "R100 test exercises the exact commit-before guard; the existing host stages a renamed source path before this guard and fails closed on that pathspec. It does not prove successful R100 checkpoint creation.",
+      "Author Revise Apply is not independent review or Formal Full Test.",
+      "Three root reference Markdown files remain outside this Change and untouched."
+    ],
+    "handoff": {
+      "summary": "Review RA017-001 correction against current 31 artifact refs; only the guard source and its test changed since Apply 016. No Git checkpoint is authorized by this Revise Apply.",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-09-24:add-preserve-managed-evidence-git-bytes:future-only",
+          "summary": "Only future managed Run/proof; historical evidence and commits remain untouched."
+        }
+      ],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20260924-017-review-apply",
+          "path": ".flowkit/artifacts/20260924-06-action-boundary-corrections/changes/preserve-managed-evidence-git-bytes/proof/20260924-017-review-apply/rename-enumeration.json"
+        }
+      ]
+    }
+  }
+}

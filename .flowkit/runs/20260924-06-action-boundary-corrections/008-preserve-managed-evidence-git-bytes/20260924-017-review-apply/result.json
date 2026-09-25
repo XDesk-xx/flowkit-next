@@ -1,0 +1,88 @@
+{
+  "runId": "20260924-017-review-apply",
+  "actionIdentity": {
+    "deliveryId": "20260924-06-action-boundary-corrections",
+    "changeId": "preserve-managed-evidence-git-bytes",
+    "actionId": "review-apply"
+  },
+  "authorConclusion": null,
+  "reviewerVerdict": "changes-requested",
+  "verificationVerdict": null,
+  "nextBoundary": "revise-apply",
+  "facts": {
+    "reviewedRunId": "20260924-016-apply",
+    "reviewedApplyResult": {
+      "path": ".flowkit/runs/20260924-06-action-boundary-corrections/008-preserve-managed-evidence-git-bytes/20260924-016-apply/result.json",
+      "sha256": "9335a74c41b788f73dd93b9ff1e7a8b07061f55897ff1d3398a3a06fb3123163"
+    },
+    "approvedProposalReviewRunId": "20260924-015-review-propose",
+    "candidateFileCount": 31,
+    "candidateFileRefs": ".flowkit/runs/20260924-06-action-boundary-corrections/008-preserve-managed-evidence-git-bytes/20260924-016-apply/result.json#facts.artifacts",
+    "proofRefs": [
+      {
+        "path": ".flowkit/artifacts/20260924-06-action-boundary-corrections/changes/preserve-managed-evidence-git-bytes/proof/20260924-017-review-apply/rename-enumeration.json",
+        "bytes": 1123,
+        "sha256": "e081bb1da6571185645fdbd5a3ef4fb9fda5a37455455abbcaf5134f05c3b1c1",
+        "deliveryId": "20260924-06-action-boundary-corrections",
+        "changeId": "preserve-managed-evidence-git-bytes",
+        "runId": "20260924-017-review-apply",
+        "purpose": "Reviewer reproduction of Git rename bypass in new managed evidence enumeration"
+      }
+    ],
+    "summary": "31 份候选文件均匹配 Author Run，独立 domain 测试 335/335 PASS；但 checkpoint 新证据枚举在 Git rename detection 下遗漏新 managed proof 路径，不能批准 Apply。",
+    "findings": [
+      {
+        "id": "RA017-001",
+        "artifact": "src/internal/managed-evidence-checkpoint.ts",
+        "claim": "requireNewManagedEvidenceBytes 用 git diff --cached --diff-filter=A 枚举本次新增 managed evidence。",
+        "observed": "独立 Git fixture 将已跟踪 old.txt 移至新的 managed proof 路径，Git 报 R100；当前枚举返回空路径，而 --no-renames 的新增路径枚举返回该 proof。",
+        "impact": "授权 checkpoint 可跳过该新 proof 的 index/raw/Result proofRef 身份核对，违背批准 Proposal 对本次新增 exact 路径的 fail-closed 要求。",
+        "minimumCorrection": "以关闭 rename detection 的实际新增路径枚举，或等价的 exact index/HEAD 路径差集，覆盖新目标路径；加入 R100 新 managed proof 的测试，验证未声明或字节漂移时 commit 前拒绝并保留 index。",
+        "evidenceRef": ".flowkit/artifacts/20260924-06-action-boundary-corrections/changes/preserve-managed-evidence-git-bytes/proof/20260924-017-review-apply/rename-enumeration.json"
+      }
+    ],
+    "reviewerChecks": [
+      {
+        "command": "pnpm test:domain",
+        "exitCode": 0,
+        "tests": 335,
+        "source": "本次会话直接运行"
+      },
+      {
+        "command": "31 Author artifact SHA/length readback",
+        "outcome": "31/31 match",
+        "source": "本次会话直接读取"
+      },
+      {
+        "command": "Git rename enumeration fixture",
+        "outcome": "R100 omitted; --no-renames includes new proof",
+        "source": ".flowkit/artifacts/20260924-06-action-boundary-corrections/changes/preserve-managed-evidence-git-bytes/proof/20260924-017-review-apply/rename-enumeration.json"
+      }
+    ],
+    "assessments": {
+      "currentStep": "独立审查 exact Apply 候选、已批准 Proposal、实际 Git 枚举和现有 archive/checkpoint 时点。",
+      "complexityAndMinimality": "现有 start、proof HOW 与 scoped checkpoint 的实现方向有界；修正新增路径枚举即可，不需新层或 Registry。",
+      "newContentAndScopeDrift": "scope drift: NONE；未见新增 Owner 权限、生命周期或历史迁移。缺陷是已批准 checkpoint 校验覆盖不全。"
+    },
+    "timingAssessment": "Archive 前应复核当前确需消费的 proof 与 review-apply 后的候选漂移；Git index blob 只能在实际暂存后由 checkpoint 核对。Archive 不产生 Git checkpoint，且本 Change 未批准新增全量 archive gate。",
+    "limits": [
+      "Reviewer fixture 只证明 rename 路径遗漏，未调用真实 Owner 授权 checkpoint。",
+      "Domain PASS 不能覆盖未测试的 rename 反例，也不是 Formal Full Test。"
+    ],
+    "handoff": {
+      "summary": "请在 revise-apply 中最小修正新 managed 路径枚举并回归 R100；archive 前相关 proof 漂移复核与暂存后 index 校验保持分离。",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-09-24:add-preserve-managed-evidence-git-bytes:future-only",
+          "summary": "仅约束今后新产生的 managed Run/proof；无 archive 或 Git 新权限。"
+        }
+      ],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20260924-017-review-apply",
+          "path": ".flowkit/artifacts/20260924-06-action-boundary-corrections/changes/preserve-managed-evidence-git-bytes/proof/20260924-017-review-apply/rename-enumeration.json"
+        }
+      ]
+    }
+  }
+}

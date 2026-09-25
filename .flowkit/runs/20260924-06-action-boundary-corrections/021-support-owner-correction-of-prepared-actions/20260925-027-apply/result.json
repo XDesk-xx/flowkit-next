@@ -1,0 +1,136 @@
+{
+  "runId": "20260925-027-apply",
+  "actionIdentity": {
+    "deliveryId": "20260924-06-action-boundary-corrections",
+    "changeId": "support-owner-correction-of-prepared-actions",
+    "actionId": "apply"
+  },
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-apply",
+  "facts": {
+    "projectOrdinal": 42,
+    "changeStartSequence": 21,
+    "approvedExploreRunId": "20260925-021-explore",
+    "approvingReviewRunId": "20260925-022-review-explore",
+    "approvedProposalReviewRunId": "20260925-026-review-propose",
+    "summary": "Implemented exact prepared Author Owner correction through Policy/run-pair validation, bounded structural supersession, provenance-bearing start, unique Run-chain successor, and revise Guidance.",
+    "sourceArtifacts": [
+      {
+        "path": "openspec/changes/support-owner-correction-of-prepared-actions/tasks.md",
+        "bytes": 2117,
+        "sha256": "dde6b95e3552decb7fd6ee08fdf98da16d8f2a8ba129664a1fa2dd95286ac099"
+      },
+      {
+        "path": "src/domain/action-lifecycle.ts",
+        "bytes": 5026,
+        "sha256": "58b6ff4f4e347e16d34c648f7bf67b4d80027274e1388bcd34d98246d8cf06e9"
+      },
+      {
+        "path": "src/domain/policy-and-next-boundary.ts",
+        "bytes": 15479,
+        "sha256": "886ea948efe8b4a38b78390cc84389693ae436c1a4c7ea1a4646a5fa42934a2f"
+      },
+      {
+        "path": "src/cli/current-run-chain.ts",
+        "bytes": 9220,
+        "sha256": "c42335fd135cff22cd9de931811047e387b1386f1f4033b398cbc37058417315"
+      },
+      {
+        "path": "src/cli/foundation-cli.ts",
+        "bytes": 6961,
+        "sha256": "da2e82a863cc35289d68bcc692b320337d19fefba2ef162f8969c85659c8f88b"
+      },
+      {
+        "path": "src/cli/prepared-owner-correction-start.ts",
+        "bytes": 3455,
+        "sha256": "8d57f702bea5155facc0c9567c040da8fdc65c6b07765bcfe2f857dec67f1e97"
+      },
+      {
+        "path": "tests/unit/domain/action-lifecycle.test.ts",
+        "bytes": 6029,
+        "sha256": "2efc93924c4460a472dd549b2e2cce10e968a2fb4adf0071bbed1fd6467ea486"
+      },
+      {
+        "path": "tests/unit/domain/policy-owner-correction.test.ts",
+        "bytes": 12461,
+        "sha256": "cdf9560efbcc038a3241a91be372d073fbd07f652f1169a9ca11050f8cfd6353"
+      },
+      {
+        "path": "tests/unit/domain/current-run-chain.test.ts",
+        "bytes": 9895,
+        "sha256": "67af8593403727fe071eb4bb582556c0fcf3f2a94a9514091454597d6a9219a0"
+      },
+      {
+        "path": "tests/unit/domain/prepared-owner-correction-start.test.ts",
+        "bytes": 8324,
+        "sha256": "13d87c51ebb9cd246c0ddbfa86f41dc43dbfddc04ed749ca7df938be9e0e391c"
+      },
+      {
+        "path": "skills/actions/revise-explore/SKILL.md",
+        "bytes": 13157,
+        "sha256": "b402b903e01bfd8ac9aa281235195191b720f4aa3208977f76357ac1231e3e0f"
+      },
+      {
+        "path": "skills/actions/revise-propose/SKILL.md",
+        "bytes": 13613,
+        "sha256": "01aa33785e219533241d99db0e115808f9585e6d15897a8513a32459a7032724"
+      },
+      {
+        "path": "skills/actions/revise-apply/SKILL.md",
+        "bytes": 13957,
+        "sha256": "8beaf8b4caddf0267bac9b664a0715e13268c52170134d8913a2f81386eca439"
+      }
+    ],
+    "checks": [
+      {
+        "command": "pnpm test:domain",
+        "exitCode": 0,
+        "result": "342 passed"
+      },
+      {
+        "command": "pnpm quality:gate",
+        "exitCode": 0,
+        "result": "PASS"
+      },
+      {
+        "command": "pnpm typecheck",
+        "exitCode": 0,
+        "result": "PASS"
+      },
+      {
+        "command": "pnpm build",
+        "exitCode": 0,
+        "result": "PASS"
+      },
+      {
+        "command": "managed OpenSpec 1.10.0 validate --strict",
+        "exitCode": 0,
+        "result": "PASS"
+      },
+      {
+        "command": "git diff --check",
+        "exitCode": 0,
+        "result": "PASS"
+      }
+    ],
+    "lp089ReadOnlyBaselineSha256": {
+      "action.md": "5631c25378914d95dae79f09efd97caf6d40b1ea5aca823b165dfbfd56b718a5",
+      "context.json": "ab7d95431e1e2689b092d4b5338432b44a1fa936f0d9f6cc00af720de80e2d07",
+      "result.json": "6b49426063c52e3aba02db550c6881e4a147f1bb17b1a627505fa3dc66d30696"
+    },
+    "complexityAndScope": "Existing four capability deltas; no new lifecycle state, Owner decision type, generic recovery platform, LP mutation, or Git operation. Synthetic fixtures are not formal LP acceptance.",
+    "proofRefs": [],
+    "handoff": {
+      "summary": "Independent review-apply should assess exact source/test/Guidance refs against approved 025 Proposal and 026 review; no Archive, Full Test, or Git authority is claimed.",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-09-25:activate-support-owner-correction-of-prepared-actions:proof-explore",
+          "summary": "Owner activated this Change; LP 089 is read-only baseline and this proposal stays within future prepared Author correction."
+        }
+      ],
+      "evidenceRefs": []
+    }
+  }
+}

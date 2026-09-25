@@ -1,0 +1,50 @@
+{
+  "method": "Independent local Git fixture: git init, write exact .gitattributes and CRLF structured bytes, git add, hash-object --no-filters, rev-parse index blob, diff --cached --check. Existing sample paths were read only.",
+  "fixtures": [
+    {
+      "kind": "text-only",
+      "attributes": ".flowkit/** -text",
+      "path": ".flowkit/runs/d/c/result.json",
+      "inputHex": "7b226b223a317d20200d0a",
+      "rawGitBlob": "2e71adf27ea8f3cd5a4e9a32781e1c3080f690cc",
+      "indexGitBlob": "2e71adf27ea8f3cd5a4e9a32781e1c3080f690cc",
+      "diffCachedCheckExit": 2,
+      "diffCachedCheckOutput": ".flowkit/runs/d/c/result.json:1: trailing whitespace.\n+{\"k\":1}  "
+    },
+    {
+      "kind": "text-and-whitespace",
+      "attributes": ".flowkit/** -text -whitespace",
+      "path": ".flowkit/runs/d/c/result.json",
+      "inputHex": "7b226b223a317d20200d0a",
+      "rawGitBlob": "2e71adf27ea8f3cd5a4e9a32781e1c3080f690cc",
+      "indexGitBlob": "2e71adf27ea8f3cd5a4e9a32781e1c3080f690cc",
+      "diffCachedCheckExit": 0,
+      "diffCachedCheckOutput": ""
+    }
+  ],
+  "samples": [
+    {
+      "repositoryRoot": "D:\\Projects\\flowkit-next",
+      "path": ".flowkit/artifacts/20260924-06-action-boundary-corrections/changes/harden-action-guidance-provenance/proof/20260924-007-archive/command.json",
+      "rawGitBlob": "317fc99027956083a909cb9c23c5efdc99e3258e",
+      "cleanGitBlob": "84b8f23d5f19b80d45f20352f355664ec46d477a",
+      "indexGitBlob": "317fc99027956083a909cb9c23c5efdc99e3258e",
+      "checkAttrOutput": [
+        ".flowkit/artifacts/20260924-06-action-boundary-corrections/changes/harden-action-guidance-provenance/proof/20260924-007-archive/command.json: text: auto",
+        ".flowkit/artifacts/20260924-06-action-boundary-corrections/changes/harden-action-guidance-provenance/proof/20260924-007-archive/command.json: whitespace: unspecified"
+      ]
+    },
+    {
+      "repositoryRoot": "D:\\AI\\src\\LearningPlatform",
+      "path": ".flowkit/artifacts/d07-stable-classroom-product/changes/001-product-integration-and-classroom-stabilization/proof/20260920-007-revise-apply/web-typecheck.command.json",
+      "rawGitBlob": "a8e2ee23cf3193dfdae1f720ce98f90eb0225a08",
+      "cleanGitBlob": "a8e2ee23cf3193dfdae1f720ce98f90eb0225a08",
+      "indexGitBlob": "a8e2ee23cf3193dfdae1f720ce98f90eb0225a08",
+      "checkAttrOutput": [
+        ".flowkit/artifacts/d07-stable-classroom-product/changes/001-product-integration-and-classroom-stabilization/proof/20260920-007-revise-apply/web-typecheck.command.json: text: unset",
+        ".flowkit/artifacts/d07-stable-classroom-product/changes/001-product-integration-and-classroom-stabilization/proof/20260920-007-revise-apply/web-typecheck.command.json: whitespace: unset"
+      ]
+    }
+  ],
+  "limit": "Shows Git byte and whitespace behavior for these exact local attributes and samples; does not validate a future manager implementation or authorize a checkpoint."
+}

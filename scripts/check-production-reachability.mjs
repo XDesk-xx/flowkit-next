@@ -5,6 +5,7 @@ import path from "node:path";
 export const PRODUCTION_ROOTS = [
   "src/cli/entrypoint.ts",
   "src/domain/index.ts",
+  "src/cli/prepared-owner-correction-start.ts",
 ];
 
 const CURRENT_FILE = fileURLToPath(import.meta.url);

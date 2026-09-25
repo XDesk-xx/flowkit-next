@@ -1,0 +1,63 @@
+{
+  "runId": "20260924-012-propose",
+  "actionIdentity": {
+    "deliveryId": "20260924-06-action-boundary-corrections",
+    "changeId": "preserve-managed-evidence-git-bytes",
+    "actionId": "propose"
+  },
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-propose",
+  "facts": {
+    "projectOrdinal": 41,
+    "changeStartSequence": 8,
+    "approvedExploreRunId": "20260924-010-revise-explore",
+    "approvingReviewRunId": "20260924-011-review-explore",
+    "summary": "Future-only target Git byte preflight and scoped create-new checkpoint index comparison are specified; structured whitespace diagnostics and raw stream exceptions remain separate.",
+    "planningArtifacts": [
+      {
+        "path": "openspec/changes/preserve-managed-evidence-git-bytes/proposal.md",
+        "bytes": 1649,
+        "sha256": "6325c65a73fbdb4fb4eeab0f8cf15bf39d2c6b5205f6154c37044875283bbe7b"
+      },
+      {
+        "path": "openspec/changes/preserve-managed-evidence-git-bytes/design.md",
+        "bytes": 2858,
+        "sha256": "b4c74962b11c1d3dd0e16640d0b2720fc1a956258b25433281ecd2e1dd0b47b7"
+      },
+      {
+        "path": "openspec/changes/preserve-managed-evidence-git-bytes/tasks.md",
+        "bytes": 1267,
+        "sha256": "4b27e4c70d5325973f50ccad2599fadd922ec5fc586dc43b3b0f3684aa51e875"
+      },
+      {
+        "path": "openspec/changes/preserve-managed-evidence-git-bytes/specs/action-guidance-execution/spec.md",
+        "bytes": 3154,
+        "sha256": "c400c4c5fd968b361361dcd22e0be5888f8a10f13b419c6e3ecc3328891fedef"
+      },
+      {
+        "path": "openspec/changes/preserve-managed-evidence-git-bytes/specs/repository-integration-and-next-base-continuity/spec.md",
+        "bytes": 1403,
+        "sha256": "de4a47295602466237a0ebb42b98571e2b986e3613fe98e38e7fdc13a364e493"
+      }
+    ],
+    "checks": [
+      "OpenSpec strict validation PASS",
+      "OpenSpec planning complete",
+      "git diff --check PASS"
+    ],
+    "complexityAndScope": "Two modified existing capabilities; no new registry, history migration, Git authority, or implementation in this Action.",
+    "proofRefs": [],
+    "handoff": {
+      "summary": "Independent review-propose should assess exact five planning artifacts against approved Explore and RE009-001; no Apply or Git authority is claimed.",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-09-24:add-preserve-managed-evidence-git-bytes:future-only",
+          "summary": "Only future managed Run/proof; historical evidence and commits remain untouched."
+        }
+      ],
+      "evidenceRefs": []
+    }
+  }
+}

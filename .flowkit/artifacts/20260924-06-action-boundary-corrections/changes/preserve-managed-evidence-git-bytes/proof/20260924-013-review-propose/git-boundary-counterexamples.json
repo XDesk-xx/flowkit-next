@@ -1,0 +1,25 @@
+{
+  "method": "Independent local Git fixture using git init, check-attr, hash-object --no-filters/--path, git add and rev-parse index. The recorded proof digest is a synthetic stand-in for a Result proofRef.",
+  "pathOverride": {
+    "attributes": "* text=auto eol=lf\n.flowkit/** -text\n.flowkit/artifacts/**/command.json text=auto\n",
+    "representativePath": ".flowkit/artifacts/d/changes/c/proof/r/summary.md",
+    "representativeCheckAttr": [
+      ".flowkit/artifacts/d/changes/c/proof/r/summary.md: text: unset"
+    ],
+    "actualPath": ".flowkit/artifacts/d/changes/c/proof/r/command.json",
+    "actualCheckAttr": [
+      ".flowkit/artifacts/d/changes/c/proof/r/command.json: text: auto"
+    ],
+    "rawGitBlob": "904fd168547b011c9618e7aa1f4ac8c6bc5b915a",
+    "cleanGitBlob": "31bc455f9ac760b644a6afae1be19e4392a79094",
+    "indexGitBlob": "31bc455f9ac760b644a6afae1be19e4392a79094"
+  },
+  "postRecordChange": {
+    "path": ".flowkit/artifacts/d/changes/c/proof/r/proof.txt",
+    "recordedSha256": "e7c805861aac6299b8d9368fa3d46ee8a4b276f5b05ef59d30d1d1aecc35b974",
+    "currentSha256": "125b9f76f60299899cad0ab2c8723f1a49736c554d20538b6b19c6c9e21e10d5",
+    "currentRawGitBlob": "91b30fe45a75f2d0e59b8a95a6d6bb3926eb9c03",
+    "indexGitBlob": "91b30fe45a75f2d0e59b8a95a6d6bb3926eb9c03"
+  },
+  "limit": "This is a Git semantics counterexample, not a real admitted Run, an Apply test, or permission to modify target evidence."
+}

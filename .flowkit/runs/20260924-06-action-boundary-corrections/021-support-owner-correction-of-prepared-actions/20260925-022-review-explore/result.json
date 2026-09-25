@@ -1,0 +1,68 @@
+{
+  "runId": "20260925-022-review-explore",
+  "actionIdentity": {
+    "deliveryId": "20260924-06-action-boundary-corrections",
+    "changeId": "support-owner-correction-of-prepared-actions",
+    "actionId": "review-explore"
+  },
+  "authorConclusion": null,
+  "reviewerVerdict": "approved",
+  "verificationVerdict": null,
+  "nextBoundary": "propose",
+  "facts": {
+    "reviewedRunId": "20260925-021-explore",
+    "reviewedExplore": {
+      "path": "openspec/changes/support-owner-correction-of-prepared-actions/explore.md",
+      "sha256": "1f68b66ba0db2a86c4f18648db37d7e9bb6908c8ca51d5fb64d6a8689d9c442a"
+    },
+    "reviewedAuthorResult": {
+      "path": ".flowkit/runs/20260924-06-action-boundary-corrections/021-support-owner-correction-of-prepared-actions/20260925-021-explore/result.json",
+      "sha256": "7842ad2eb31b58671f4c3a7e6277856c21bf3c005181b6337bcebc587992ac8c"
+    },
+    "proofRefs": [],
+    "summary": "Explore 的真实 LP 089 prepared/null 状态、当前 Policy/transition 拒绝路径及五 Run 只读链均经独立复核。最小 Proposal 可在既有 Policy、lifecycle/start、Run 链上定义精确 Owner 授权的前向 supersession，保留旧 Run 原字节。",
+    "findings": [],
+    "reviewerChecks": [
+      {
+        "check": "Explore + 2 proofRefs SHA/length",
+        "outcome": "3/3 match"
+      },
+      {
+        "check": "LP source five-Run 15 files",
+        "outcome": "15/15 SHA match, read-only"
+      },
+      {
+        "check": "stable manager LP prepared correction boundary",
+        "outcome": "apply ready; synthetic revise-propose blocked unsupported-owner-correction; direct prepare null; in-memory child illegal edge"
+      }
+    ],
+    "assessments": {
+      "currentStep": "独立审查 exact 021 Explore 的事实、Owner 激活范围、真实 prepared Run 与 Proposal readiness。",
+      "complexityAndMinimality": "方向仅扩展既有 Owner correction、prepared transition 与 Run-chain edge；不预设新增 lifecycle state 或通用取消平台。",
+      "newContentAndScopeDrift": "scope drift: NONE；LP 089 保持只读，合成授权未冒充真实 Owner 决定，未引入 Git 或自动下一 Action。"
+    },
+    "limits": [
+      "合成 Owner authority 和 child 只验证现有拒绝路径；不是 LP Owner 授权或新能力验收。",
+      "Proposal 须明确同阶段 revise、开始失败/partial、旧 prepared Run 不变和下游 Review 连续性。"
+    ],
+    "handoff": {
+      "summary": "可进入 Proposal；用最小 delta 规定 prepared Author 的精确 Owner 前向 supersession、旧 Run 原字节、唯一新 tip 和失败顺序。",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-09-25:activate-support-owner-correction-of-prepared-actions:proof-explore",
+          "summary": "Owner 激活此 Change 的 proof Explore；LP 089 仅作只读基线。"
+        }
+      ],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20260925-021-explore",
+          "path": ".flowkit/artifacts/20260924-06-action-boundary-corrections/changes/support-owner-correction-of-prepared-actions/proof/20260925-021-explore/prepared-correction-baseline.json"
+        },
+        {
+          "sourceRunId": "20260925-021-explore",
+          "path": ".flowkit/artifacts/20260924-06-action-boundary-corrections/changes/support-owner-correction-of-prepared-actions/proof/20260925-021-explore/prepared-chain-boundary.json"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "runId": "20260924-008-explore",
+  "actionIdentity": {
+    "deliveryId": "20260924-06-action-boundary-corrections",
+    "changeId": "preserve-managed-evidence-git-bytes",
+    "actionId": "explore"
+  },
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-explore",
+  "facts": {
+    "projectOrdinal": 41,
+    "changeStartSequence": 8,
+    "summary": "LearningPlatform preserves all .flowkit Run/proof bytes with -text; this target exempts only raw streams. Future-only managed preflight and checkpoint byte verification are Proposal-ready.",
+    "exploreArtifact": "openspec/changes/preserve-managed-evidence-git-bytes/explore.md",
+    "exploreSha256": "960a1a80c46f4ddbdad85ed90890ce0694e4eef18478fe73da34d7997a6a2373",
+    "proofFacts": {
+      "learningPlatformSample": {
+        "rawGitBlob": "a8e2ee23cf3193dfdae1f720ce98f90eb0225a08",
+        "cleanGitBlob": "a8e2ee23cf3193dfdae1f720ce98f90eb0225a08"
+      },
+      "flowkitNextSample": {
+        "rawGitBlob": "317fc99027956083a909cb9c23c5efdc99e3258e",
+        "cleanGitBlob": "84b8f23d5f19b80d45f20352f355664ec46d477a"
+      }
+    },
+    "proofRefs": [],
+    "handoff": {
+      "summary": "Independent review-explore should assess future-only target Git byte preservation and bounded manager checks. No implementation, historical rewrite, Reviewer verdict, or Git authority is claimed.",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-09-24:add-preserve-managed-evidence-git-bytes:future-only",
+          "summary": "Owner added a future-only evidence-byte Change; past Run/proof and commits are out of scope."
+        }
+      ],
+      "evidenceRefs": []
+    }
+  }
+}

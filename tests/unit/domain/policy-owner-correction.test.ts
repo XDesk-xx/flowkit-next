@@ -130,6 +130,120 @@ function withCorrection(
   };
 }
 
+function preparedCorrection(
+  actionId: StandardActionId,
+  requestedAction: StandardActionId,
+) {
+  const runId = `20260924-089-${actionId}`;
+  const identity = { deliveryId: DELIVERY, changeId: CHANGE, actionId };
+  const context: RunContextRecord = {
+    runId,
+    occurrence: { date: "20260924", sequence: 89, actionId },
+    actionIdentity: identity,
+    role: actionId.startsWith("review-") ? "reviewer" : "author",
+    lifecycleState: "prepared",
+    ownerAuthority: null,
+    previousRunId: "20260924-088-review-propose",
+  };
+  const result: RunResultRecord = {
+    runId,
+    actionIdentity: identity,
+    authorConclusion: null,
+    reviewerVerdict: null,
+    verificationVerdict: null,
+    nextBoundary: null,
+    facts: { implementationPerformed: true, uiCheckpoint: "pending" },
+  };
+  return {
+    deliveryId: DELIVERY,
+    changeId: CHANGE,
+    changeState: "active",
+    currentAction: { identity, state: "prepared" },
+    terminalRunContext: null,
+    terminalResult: null,
+    preparedCurrentRunId: runId,
+    preparedRunContext: context,
+    preparedResult: result,
+    ownerCorrection: {
+      requestedAction,
+      authority: authority(requestedAction),
+    },
+  };
+}
+
+test("prepared Author correction accepts same or earlier stage after exact current pair", () => {
+  for (const target of [
+    "revise-apply",
+    "revise-propose",
+    "revise-explore",
+  ] as const) {
+    assert.deepEqual(
+      evaluatePolicyAndNextBoundary(preparedCorrection("apply", target)),
+      {
+        kind: "ready-action",
+        actionId: target,
+      },
+    );
+  }
+  assert.deepEqual(
+    evaluatePolicyAndNextBoundary({
+      ...preparedCorrection("apply", "revise-propose"),
+      ownerCorrection: null,
+      preparedCurrentRunId: undefined,
+      preparedRunContext: undefined,
+      preparedResult: undefined,
+    }),
+    { kind: "ready-action", actionId: "apply" },
+  );
+});
+
+test("prepared correction rejects missing, stale and contradictory current Run facts", () => {
+  const valid = preparedCorrection("apply", "revise-propose");
+  const invalid = [
+    { preparedCurrentRunId: null },
+    { preparedCurrentRunId: "20260924-088-apply" },
+    { preparedRunContext: null },
+    { preparedResult: null },
+    { preparedRunContext: { ...valid.preparedRunContext, role: "reviewer" } },
+    {
+      preparedRunContext: {
+        ...valid.preparedRunContext,
+        lifecycleState: "terminal",
+      },
+    },
+    {
+      preparedResult: { ...valid.preparedResult, runId: "20260924-088-apply" },
+    },
+    { preparedResult: { ...valid.preparedResult, authorConclusion: "PASS" } },
+    { terminalRunContext: valid.preparedRunContext },
+  ];
+  for (const override of invalid) {
+    assert.deepEqual(evaluatePolicyAndNextBoundary({ ...valid, ...override }), {
+      kind: "blocked",
+      reason: "invalid-policy-input",
+    });
+  }
+  assert.deepEqual(
+    evaluatePolicyAndNextBoundary({
+      ...valid,
+      ownerCorrection: { requestedAction: "revise-propose", authority: null },
+    }),
+    { kind: "blocked", reason: "owner-authority-required" },
+  );
+  assert.deepEqual(
+    evaluatePolicyAndNextBoundary(
+      preparedCorrection("review-apply", "revise-propose"),
+    ),
+    { kind: "blocked", reason: "unsupported-owner-correction" },
+  );
+  assert.deepEqual(
+    evaluatePolicyAndNextBoundary(
+      preparedCorrection("explore", "revise-propose"),
+    ),
+    { kind: "blocked", reason: "unsupported-owner-correction" },
+  );
+});
+
 test("allows the fifteen reached-stage Owner corrections that lifecycle can enter", () => {
   const stages: Array<[StandardActionId[], StandardActionId[]]> = [
     [["explore", "revise-explore", "review-explore"], ["revise-explore"]],
@@ -239,7 +353,7 @@ test("rejects forward skip, prepared switching, archive reopening and completed 
         authority: authority("revise-explore"),
       },
     }),
-    { kind: "blocked", reason: "unsupported-owner-correction" },
+    { kind: "blocked", reason: "invalid-policy-input" },
   );
 
   const archived = terminalFacts("archive", 211);

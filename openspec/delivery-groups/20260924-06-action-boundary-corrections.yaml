@@ -1,0 +1,101 @@
+id: "20260924-06-action-boundary-corrections"
+projectId: "flowkit-next"
+createdAt: "2026-09-24"
+branch: "delivery/20260924-06-action-boundary-corrections"
+base: "main"
+goal: "修复 Action Guidance provenance、prepared Owner correction，并保证今后 Flowkit 管理的证据在 Git 中保留原始字节。"
+planningReference:
+  artifact: "openspec/delivery-groups/20260924-06-action-boundary-corrections-plan.md"
+  contentSha256: "22db59844ab8ec3586190af8932401d7e9d67ddab23e803e7d3b59d4b8dadb81"
+delivery:
+  state: completed
+  fullTestStatus: "passed"
+  finalizationStatus: completed
+  fullTestAttempt: "c7b2a371-a212-4d04-812b-48bfe289a667"
+finalization:
+  state: completed
+  verifiedCandidateRef: "full-test-input:sha256:4bdca49dc1ad2f3798c4f5cbf80fabd8de04975bdb88e038a9e828568e40507b"
+  fullTestExecutionRef: "full-test-execution:sha256:25af29cb461ac49bfc9f30f28af12d6e294e9aee7ed42b7006a1ae4f3e03de42"
+  ownerAuthorityRef: "owner:0a61187d49ef3c712498be607521155882f6e6491bd121d154953acfc8f7270f"
+  sourceRef: "owner-message:20260925:d06-delivery-final"
+  fullTestAttempt: "c7b2a371-a212-4d04-812b-48bfe289a667"
+  confirmationRef: "delivery-finalization:sha256:87d412306885647dab0254cd84d5ab1a4e06093d5bd9fa3df49a34a8d60a36da"
+changes:
+  - id: "harden-action-guidance-provenance"
+    group: "action-start"
+    goal: "新 Action 只消费当前 manager installation 对 canonical Skill bytes 解析出的 GuidanceRef。"
+    required: true
+    dependsOn: []
+    state: completed
+    projectOrdinal: 40
+  - id: "support-owner-correction-of-prepared-actions"
+    group: "action-lifecycle"
+    goal: "允许明确 Owner 授权的 prepared Author Action 前向修正到合法 revise Action，并完整保留既有 Run 历史。"
+    required: true
+    dependsOn: []
+    state: completed
+    projectOrdinal: 42
+  - id: "preserve-managed-evidence-git-bytes"
+    group: "evidence-integrity"
+    goal: "仅约束今后新产生的 Flowkit Run/proof 在目标 Git 中保持原始字节，不追溯历史。"
+    required: true
+    dependsOn: []
+    state: completed
+    projectOrdinal: 41
+  - id: "recognize-prepared-correction-production-entrypoint"
+    group: "engineering-quality"
+    goal: "把已批准的 prepared Owner correction Skill 直调模块纳入真实生产入口可达性合同，消除 Full Test entropy 失败。"
+    required: true
+    dependsOn: ["support-owner-correction-of-prepared-actions"]
+    state: completed
+    projectOrdinal: 43
+ownerDecisions:
+  - ref: "owner:acee7751529bf1c0b637c3646768b0fb226db6b19b177d3a5e9f9db9e19f190d"
+    decision: "create-delivery"
+    deliveryId: "20260924-06-action-boundary-corrections"
+    sourceRef: "owner-input:2026-09-24:start-flowkit-d06-two-action-boundary-corrections"
+    scope:
+      - "delivery-start"
+      - "git-create-delivery-branch"
+  - ref: "owner:20ebcbfb61fe89ee2085c40cdca44f66c7d538544d4ec162d38ffa1c304be2e5"
+    decision: "activate-change"
+    deliveryId: "20260924-06-action-boundary-corrections"
+    changeId: "harden-action-guidance-provenance"
+    sourceRef: "owner-input:2026-09-24:activate-harden-action-guidance-provenance:proof-explore"
+    scope:
+      - "explore"
+  - ref: "owner:4db32da6a35117e862d466f566f8770cb490f1c5ce6500aebd845b59fb5e9dca"
+    decision: "activate-change"
+    deliveryId: "20260924-06-action-boundary-corrections"
+    changeId: "preserve-managed-evidence-git-bytes"
+    sourceRef: "owner-input:2026-09-24:add-preserve-managed-evidence-git-bytes:future-only"
+    scope:
+      - "explore"
+  - ref: "owner:d82bd9be81c149ece77c74128a6b1027946cfce07f724996dd63355e6b96e1d8"
+    decision: "activate-change"
+    deliveryId: "20260924-06-action-boundary-corrections"
+    changeId: "support-owner-correction-of-prepared-actions"
+    sourceRef: "owner-input:2026-09-25:activate-support-owner-correction-of-prepared-actions:proof-explore"
+    scope:
+      - "explore"
+  - ref: "owner:a0cfd3a0cf4f8b91dfa9628e280286aad7921ece91c45ff53fbea9f5767b14d7"
+    decision: "activate-change"
+    deliveryId: "20260924-06-action-boundary-corrections"
+    changeId: "recognize-prepared-correction-production-entrypoint"
+    sourceRef: "owner-input:2026-09-25:d06-entropy-correction-change:proof-explore"
+    scope:
+      - "explore"
+reference:
+  kind: "owner-selected-delivery-plan"
+  artifact: "openspec/delivery-groups/20260924-06-action-boundary-corrections-plan.md"
+scope:
+  included:
+    - "原三个必需 Change 和本次 Full Test correction Change；各自经 Explore、Proposal、Apply、独立 Review 与实际验证。"
+    - "新证据字节保护仅适用于今后 Flowkit 管理的新 Run/proof，不迁移或重写历史。"
+    - "prepared correction 以 LP 089 三文件 Run 的只读副本验证兼容，原始 bytes 不覆盖。"
+  excluded:
+    - "自动修改 LearningPlatform 089、静默切换 LP D07 manager 或伪造未完成 Action PASS。"
+    - "本次 Start 中激活 Change、执行 Action、Full Test、Final、Git checkpoint、push 或 merge。"
+bootstrap:
+  mode: "fixed-external-manager"
+  stableSourceCommit: "aa996e6f71867cca09e0aa65b93b65671af0f4c1"

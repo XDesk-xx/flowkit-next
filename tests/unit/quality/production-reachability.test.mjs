@@ -24,6 +24,10 @@ function graph(extraModules = []) {
         dependency("src/domain/type-live.ts", ["local", "type-only", "import"]),
       ]),
       module("src/domain/type-live.ts"),
+      module("src/cli/prepared-owner-correction-start.ts", [
+        dependency("src/cli/prepared-correction-live.ts"),
+      ]),
+      module("src/cli/prepared-correction-live.ts"),
       ...extraModules,
     ],
   };
@@ -39,9 +43,13 @@ test("accepted repository baseline has every production source reachable", () =>
 test("healthy graph passes and type-only local source edges remain liveness edges", () => {
   const result = analyzeProductionReachability(graph());
 
-  assert.equal(result.total, 4);
+  assert.equal(result.total, 6);
   assert.deepEqual(result.unreachable, []);
   assert.ok(result.reachable.includes("src/domain/type-live.ts"));
+  assert.ok(
+    result.reachable.includes("src/cli/prepared-owner-correction-start.ts"),
+  );
+  assert.ok(result.reachable.includes("src/cli/prepared-correction-live.ts"));
 });
 
 test("isolated unreachable production source is reported", () => {
@@ -73,15 +81,19 @@ test("test-only reference does not create production liveness", () => {
 });
 
 test("missing exact production root fails closed", () => {
-  const missingRootGraph = graph();
-  missingRootGraph.modules = missingRootGraph.modules.filter(
-    ({ source }) => source !== PRODUCTION_ROOTS[1],
-  );
+  for (const root of PRODUCTION_ROOTS) {
+    const missingRootGraph = graph();
+    missingRootGraph.modules = missingRootGraph.modules.filter(
+      ({ source }) => source !== root,
+    );
 
-  assert.throws(
-    () => analyzeProductionReachability(missingRootGraph),
-    /production root missing from dependency graph/,
-  );
+    assert.throws(
+      () => analyzeProductionReachability(missingRootGraph),
+      (error) =>
+        error.message ===
+        `production root missing from dependency graph: ${root}`,
+    );
+  }
 });
 
 test("malformed graph and dangling local src dependencies fail closed", () => {
@@ -96,6 +108,7 @@ test("malformed graph and dangling local src dependencies fail closed", () => {
         modules: [
           module("src/cli/entrypoint.ts", [dependency("src/missing.ts")]),
           module("src/domain/index.ts"),
+          module("src/cli/prepared-owner-correction-start.ts"),
         ],
       }),
     /resolved local src dependency missing from graph: src\/missing\.ts/,

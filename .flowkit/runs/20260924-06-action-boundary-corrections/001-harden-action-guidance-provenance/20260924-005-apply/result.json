@@ -1,0 +1,237 @@
+{
+  "runId": "20260924-005-apply",
+  "actionIdentity": {
+    "deliveryId": "20260924-06-action-boundary-corrections",
+    "changeId": "harden-action-guidance-provenance",
+    "actionId": "apply"
+  },
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-apply",
+  "facts": {
+    "projectOrdinal": 40,
+    "approvedProposalRunId": "20260924-003-propose",
+    "approvingReviewRunId": "20260924-004-review-propose",
+    "summary": "Manager-owned canonical start now re-resolves current Skill bytes, binds package/readiness, rejects mismatch before Run creation, and preserves create-once partial/history behavior; ten product HOW entries use it.",
+    "candidateFiles": [
+      {
+        "path": "src/domain/canonical-action-run-start.ts",
+        "bytes": 6043,
+        "sha256": "8deff91c686f119261df2d49dadc72239e9f4abca524f05e6b272ae5cdbcee3f"
+      },
+      {
+        "path": "src/domain/index.ts",
+        "bytes": 1201,
+        "sha256": "efe4367ad0b920bcccabd597ae497df86b9ecafd318d39727a51020af1dce4b8"
+      },
+      {
+        "path": "tests/unit/domain/canonical-action-run-start.test.ts",
+        "bytes": 12755,
+        "sha256": "fbc179095671537d21ce6f86f597a6ddd57347780eff0d5de5297de916f8ee25"
+      },
+      {
+        "path": "tests/unit/domain/agent-how-fixture.ts",
+        "bytes": 3136,
+        "sha256": "56bfa39e8cda4752e348040ad46b6d7f2343bacf751f780467bc0c848ca1f61c"
+      },
+      {
+        "path": "tests/unit/domain/agent-how-record.test.ts",
+        "bytes": 5707,
+        "sha256": "00740b446e94ed9f5f7456fec46aa2dc3a3cb7079d41d7665e35ad617625dcf9"
+      },
+      {
+        "path": "tests/unit/domain/agent-how-prepared.test.ts",
+        "bytes": 5497,
+        "sha256": "de475e1c40e254a56b7b299e0a4bffb84845ae0168291d776f99008d7798d9ff"
+      },
+      {
+        "path": "tests/unit/domain/agent-how-failure.test.ts",
+        "bytes": 2348,
+        "sha256": "f0ec3fb4908f8924aa3bde5e638b47b102b15bf42ce2c4282d8978212350735b"
+      },
+      {
+        "path": "skills/actions/explore/SKILL.md",
+        "bytes": 16364,
+        "sha256": "775337ccec7dc2273436a42764531b2e9550cb47c4ae077810bb4e16857fdd8a"
+      },
+      {
+        "path": "skills/actions/review-explore/SKILL.md",
+        "bytes": 14235,
+        "sha256": "b4e9283fc58bddbf3ea43e5815422986bdf002bbd0e5f08d586ddc7b22e8850d"
+      },
+      {
+        "path": "skills/actions/revise-explore/SKILL.md",
+        "bytes": 11904,
+        "sha256": "61c3ec8cce784eaa56ba6bbf3ca3072216541f3532b45720646b0f481e9d3304"
+      },
+      {
+        "path": "skills/actions/propose/SKILL.md",
+        "bytes": 13120,
+        "sha256": "7d714437eb08ab46fff2c5e63ea5e7a813e19b0d2ca2b90bc1eeee6fb0f97d7a"
+      },
+      {
+        "path": "skills/actions/review-propose/SKILL.md",
+        "bytes": 14958,
+        "sha256": "3a65bac700cef89f59456bd40722b1a27758b42f4b93a99bff87196296becb5d"
+      },
+      {
+        "path": "skills/actions/revise-propose/SKILL.md",
+        "bytes": 12360,
+        "sha256": "0e7b5cc0c607ee19b1fe73e26dda92f7a9fe43671b1ad25b788a27de1a5197cd"
+      },
+      {
+        "path": "skills/actions/apply/SKILL.md",
+        "bytes": 13627,
+        "sha256": "b37b229e3c4af27af781015c05c43d3d1d4694e1e61da527ce679a69c37b7789"
+      },
+      {
+        "path": "skills/actions/review-apply/SKILL.md",
+        "bytes": 14317,
+        "sha256": "7f3f87aa5d44fa3967aec993d1a7812ddd6ef78249591f6272a7a92ba25f76df"
+      },
+      {
+        "path": "skills/actions/revise-apply/SKILL.md",
+        "bytes": 12704,
+        "sha256": "2d96c2b92dfdb977b46825426d283979ad7591798ff26dddfb0871c0deaa22f7"
+      },
+      {
+        "path": "skills/actions/archive/SKILL.md",
+        "bytes": 16575,
+        "sha256": "69cf39da984e71df377f6cca798d182d270a2ea58080912876c64016840e2d96"
+      },
+      {
+        "path": "openspec/changes/harden-action-guidance-provenance/tasks.md",
+        "bytes": 1523,
+        "sha256": "4c5b8d4b946169e6172e2a6129d01eb0a971ad020d9b81ff15c069c753755220"
+      }
+    ],
+    "checks": [
+      {
+        "command": "pnpm build",
+        "result": "PASS"
+      },
+      {
+        "command": "pnpm test:domain",
+        "result": "PASS",
+        "tests": 333
+      },
+      {
+        "command": "pnpm test:acceptance",
+        "result": "PASS",
+        "tests": 7
+      },
+      {
+        "command": "pnpm typecheck",
+        "result": "PASS"
+      },
+      {
+        "command": "pnpm quality:gate",
+        "result": "PASS"
+      },
+      {
+        "command": "pnpm quality:dependency-health",
+        "result": "PASS"
+      },
+      {
+        "command": "pnpm quality:entropy",
+        "result": "PASS"
+      },
+      {
+        "command": "pnpm check:forbidden-tracked-artifacts",
+        "result": "PASS"
+      },
+      {
+        "command": "openspec validate harden-action-guidance-provenance --strict",
+        "result": "PASS"
+      },
+      {
+        "command": "git diff --check",
+        "result": "PASS"
+      }
+    ],
+    "focusedCheck": {
+      "commandRef": ".flowkit/artifacts/20260924-06-action-boundary-corrections/changes/harden-action-guidance-provenance/proof/20260924-005-apply/current.command.json",
+      "reportRef": ".flowkit/artifacts/20260924-06-action-boundary-corrections/changes/harden-action-guidance-provenance/proof/20260924-005-apply/current.stdout.txt",
+      "tests": 14,
+      "result": "PASS"
+    },
+    "environmentLimit": "An optional spawnSync wrapper failed with EPERM before tests started; its original files remain in this Run proof directory. Direct node --test passed for the current candidate.",
+    "complexityAndScope": {
+      "growth": "One bounded start module, existing domain export, ten HOW updates, and focused tests.",
+      "newCapabilityOrAuthority": "None",
+      "laterChangeContent": "None; prepared Owner correction remains separate."
+    },
+    "proofRefs": [
+      {
+        "path": ".flowkit/artifacts/20260924-06-action-boundary-corrections/changes/harden-action-guidance-provenance/proof/20260924-005-apply/current.stdout.txt",
+        "bytes": 3381,
+        "sha256": "68f6a3dc30635c219f6b6dd52770eedd7e98866c0043f113ef5c9f91f44bcef0",
+        "deliveryId": "20260924-06-action-boundary-corrections",
+        "changeId": "harden-action-guidance-provenance",
+        "runId": "20260924-005-apply",
+        "purpose": "current focused TAP report, 14 passing tests"
+      },
+      {
+        "path": ".flowkit/artifacts/20260924-06-action-boundary-corrections/changes/harden-action-guidance-provenance/proof/20260924-005-apply/current.command.json",
+        "bytes": 905,
+        "sha256": "1d7ae246f4a5d020792ee01235ff2377359205bf3d2ac38f075eead537e8b78c",
+        "deliveryId": "20260924-06-action-boundary-corrections",
+        "changeId": "harden-action-guidance-provenance",
+        "runId": "20260924-005-apply",
+        "purpose": "direct Node command and observed exit metadata"
+      },
+      {
+        "path": ".flowkit/artifacts/20260924-06-action-boundary-corrections/changes/harden-action-guidance-provenance/proof/20260924-005-apply/command.json",
+        "bytes": 858,
+        "sha256": "750913febec7fb628f3378b0f9ec30e50a5eb0085cecd0d860ba86ce7902996b",
+        "deliveryId": "20260924-06-action-boundary-corrections",
+        "changeId": "harden-action-guidance-provenance",
+        "runId": "20260924-005-apply",
+        "purpose": "preserved sandbox-limited wrapper attempt"
+      },
+      {
+        "path": ".flowkit/artifacts/20260924-06-action-boundary-corrections/changes/harden-action-guidance-provenance/proof/20260924-005-apply/verify-canonical-start.mjs",
+        "bytes": 1895,
+        "sha256": "c8eff46586fc98fbb7813339a1a50ca62ca0910ac34d680bfdae4838f00c1700",
+        "deliveryId": "20260924-06-action-boundary-corrections",
+        "changeId": "harden-action-guidance-provenance",
+        "runId": "20260924-005-apply",
+        "purpose": "source of failed wrapper attempt"
+      },
+      {
+        "path": ".flowkit/artifacts/20260924-06-action-boundary-corrections/changes/harden-action-guidance-provenance/proof/20260924-005-apply/stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260924-06-action-boundary-corrections",
+        "changeId": "harden-action-guidance-provenance",
+        "runId": "20260924-005-apply",
+        "purpose": "raw stdout of failed wrapper attempt"
+      },
+      {
+        "path": ".flowkit/artifacts/20260924-06-action-boundary-corrections/changes/harden-action-guidance-provenance/proof/20260924-005-apply/stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260924-06-action-boundary-corrections",
+        "changeId": "harden-action-guidance-provenance",
+        "runId": "20260924-005-apply",
+        "purpose": "raw stderr of failed wrapper attempt"
+      }
+    ],
+    "handoff": {
+      "summary": "Independent review-apply should inspect candidateFiles and current focused proof, plus the exact approved Proposal via prior Runs 003/004. No Reviewer, Formal Full Test, archive, or Git authority is claimed.",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-09-24:activate-harden-action-guidance-provenance:proof-explore",
+          "summary": "This Change was activated for proof Explore; subsequent Actions follow Policy."
+        }
+      ],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20260924-005-apply",
+          "path": ".flowkit/artifacts/20260924-06-action-boundary-corrections/changes/harden-action-guidance-provenance/proof/20260924-005-apply/current.stdout.txt"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "runId": "20260925-036-apply",
+  "actionIdentity": {
+    "deliveryId": "20260924-06-action-boundary-corrections",
+    "changeId": "recognize-prepared-correction-production-entrypoint",
+    "actionId": "apply"
+  },
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-apply",
+  "facts": {
+    "projectOrdinal": 43,
+    "changeStartSequence": 32,
+    "summary": "Added exactly one static production root and focused tests; current graph is 59/59 reachable, seven focused tests and applicable build/quality checks pass, and dry-run package includes the Skill-invoked dist entrypoint.",
+    "approvedProposalRunId": "20260925-034-propose",
+    "approvedReviewRunId": "20260925-035-review-propose",
+    "changedRefs": [
+      {
+        "path": "scripts/check-production-reachability.mjs",
+        "bytes": 5495,
+        "sha256": "3fda79c8084234030a03184e9f490641124e26cb90e8c4d7ac085e7571107294"
+      },
+      {
+        "path": "tests/unit/quality/production-reachability.test.mjs",
+        "bytes": 3638,
+        "sha256": "1ea696ce7575ba5ec9097635683390e34aa38837e54d9b817d67cde16e504ec2"
+      },
+      {
+        "path": "openspec/changes/recognize-prepared-correction-production-entrypoint/tasks.md",
+        "bytes": 887,
+        "sha256": "60befe756c691bbf31becaf5ef68a3c756c0e3d5bd020600483d37f85f3bb7a1"
+      }
+    ],
+    "proofRefs": [
+      {
+        "path": ".flowkit/artifacts/20260924-06-action-boundary-corrections/changes/recognize-prepared-correction-production-entrypoint/proof/20260925-036-apply/verification.json",
+        "bytes": 2315,
+        "sha256": "010e1da10c78445e256286cc66ac6f16b6b18099e4b79f22e94ebd21fd5dbb09",
+        "deliveryId": "20260924-06-action-boundary-corrections",
+        "changeId": "recognize-prepared-correction-production-entrypoint",
+        "runId": "20260925-036-apply",
+        "purpose": "Actual Apply check outcomes and package-path observation"
+      }
+    ],
+    "taskProgress": "4/4 complete",
+    "complexity": "One root-list entry and focused test fixture/assertion updates; no new abstraction, dependency, lifecycle state, authority, CLI surface, or control plane.",
+    "scopeDrift": "NONE",
+    "limits": [
+      "The earlier Formal Full Test remains failed; this Apply does not create a new attempt or claim Delivery verification PASS.",
+      "An initial sandbox npm pack dry-run failed due to npm-cache EPERM; the approved host rerun succeeded."
+    ],
+    "handoff": {
+      "summary": "Review the exact changed files, completed tasks, approved Proposal refs, and verification proof; independently rerun focused checks as needed.",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-09-25:d06-entropy-correction-change:proof-explore",
+          "summary": "Owner authorized correction Change and proof Explore for D06 entropy failure."
+        }
+      ],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20260925-036-apply",
+          "path": ".flowkit/artifacts/20260924-06-action-boundary-corrections/changes/recognize-prepared-correction-production-entrypoint/proof/20260925-036-apply/verification.json"
+        }
+      ]
+    }
+  }
+}
