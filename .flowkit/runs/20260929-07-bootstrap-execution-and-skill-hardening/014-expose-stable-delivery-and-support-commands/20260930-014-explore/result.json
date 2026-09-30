@@ -1,0 +1,122 @@
+{
+  "runId": "20260930-014-explore",
+  "actionIdentity": {
+    "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+    "changeId": "expose-stable-delivery-and-support-commands",
+    "actionId": "explore"
+  },
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-explore",
+  "facts": {
+    "projectOrdinal": 45,
+    "changeStartSequence": 14,
+    "summary": "The current candidate CLI lacks fixed Delivery/support commands; bounded proof maps existing operation owners and Agent-supplied Owner intent to a Proposal-ready B boundary without a desktop chat listener.",
+    "fixedPointCommit": "146cf0d77289c997e2ce6d5ce2b1c68416b0034f",
+    "manifest": {
+      "path": "openspec/delivery-groups/20260929-07-bootstrap-execution-and-skill-hardening.yaml",
+      "sha256": "565fce646eceed2f6ae06206fa29b5de1e869029a5fb78ad33446f4b8018a8b1"
+    },
+    "exploreArtifact": "openspec/changes/expose-stable-delivery-and-support-commands/explore.md",
+    "exploreSha256": "8e1f1b5cda524a158a69fea83acaed5d9861c58a5803124cab747e4611e3fd19",
+    "openSpecMetadata": {
+      "path": "openspec/changes/expose-stable-delivery-and-support-commands/.openspec.yaml",
+      "sha256": "dadfffd827282f22738d1215a8fa326bc6e3bda0a2aae3e3af6d203a1ef4c4aa"
+    },
+    "checks": [
+      {
+        "command": "flowkit --help",
+        "exitCode": 0,
+        "stdoutSha256": "1c03110787d4136c1979d23fdb3b80b1a4abd0ced317850986919e2dda761413",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "command": "flowkit delivery start --input .tmp/d07-b-restart-query.json",
+        "exitCode": 2,
+        "stdoutSha256": "03d6783f1083f33f5db95c2827b2a1528f1812f1cf7fd257ddfd2742e9fa6deb",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ],
+    "proofRefs": [
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-delivery-and-support-commands/proof/20260930-014-explore/help.stdout.txt",
+        "bytes": 234,
+        "sha256": "1c03110787d4136c1979d23fdb3b80b1a4abd0ced317850986919e2dda761413",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "expose-stable-delivery-and-support-commands",
+        "runId": "20260930-014-explore",
+        "purpose": "help raw CLI stdout"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-delivery-and-support-commands/proof/20260930-014-explore/help.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "expose-stable-delivery-and-support-commands",
+        "runId": "20260930-014-explore",
+        "purpose": "help raw CLI stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-delivery-and-support-commands/proof/20260930-014-explore/unsupported.stdout.txt",
+        "bytes": 54,
+        "sha256": "03d6783f1083f33f5db95c2827b2a1528f1812f1cf7fd257ddfd2742e9fa6deb",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "expose-stable-delivery-and-support-commands",
+        "runId": "20260930-014-explore",
+        "purpose": "unsupported raw CLI stdout"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-delivery-and-support-commands/proof/20260930-014-explore/unsupported.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "expose-stable-delivery-and-support-commands",
+        "runId": "20260930-014-explore",
+        "purpose": "unsupported raw CLI stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-delivery-and-support-commands/proof/20260930-014-explore/command.json",
+        "bytes": 2556,
+        "sha256": "4ca864d24398c3777be2177d8cd0a950404698a8647c3f9b797123c9db83d01b",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "expose-stable-delivery-and-support-commands",
+        "runId": "20260930-014-explore",
+        "purpose": "bounded CLI probe metadata and source identities"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-delivery-and-support-commands/proof/20260930-014-explore/source-boundary.json",
+        "bytes": 3728,
+        "sha256": "d96fdf25796dcb865fc94a4e7baa447e5eda502a3d0e33906d28708b34076843",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "expose-stable-delivery-and-support-commands",
+        "runId": "20260930-014-explore",
+        "purpose": "bounded source ownership and mutation-point proof"
+      }
+    ],
+    "limitations": [
+      "The CLI probes establish the current absence of B commands; they do not test future implementation or Formal Full Test.",
+      "Agent attestation of real Owner input is a host responsibility; the CLI cannot independently authenticate chat. Archive execution needs concrete Proposal design and Apply verification.",
+      "No Reviewer verdict, Git checkpoint, Full Test, Final or next Change activation is claimed."
+    ],
+    "handoff": {
+      "summary": "Independent review-explore should check the B/A/C/D/F boundaries, Agent versus CLI authority responsibilities, and each operation's mutation/readback point.",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-09-30:backup-branch-then-restart-b",
+          "summary": "Owner directed preservation of the failed attempt, return to A checkpoint, and fresh B Explore."
+        }
+      ],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20260930-014-explore",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-delivery-and-support-commands/proof/20260930-014-explore/command.json"
+        },
+        {
+          "sourceRunId": "20260930-014-explore",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-delivery-and-support-commands/proof/20260930-014-explore/source-boundary.json"
+        }
+      ]
+    }
+  }
+}

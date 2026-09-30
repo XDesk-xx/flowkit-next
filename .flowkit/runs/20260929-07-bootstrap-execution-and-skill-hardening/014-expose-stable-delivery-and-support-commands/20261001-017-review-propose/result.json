@@ -1,0 +1,61 @@
+{
+  "runId": "20261001-017-review-propose",
+  "actionIdentity": {
+    "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+    "changeId": "expose-stable-delivery-and-support-commands",
+    "actionId": "review-propose"
+  },
+  "authorConclusion": null,
+  "reviewerVerdict": "changes-requested",
+  "verificationVerdict": null,
+  "nextBoundary": "revise-propose",
+  "facts": {
+    "reviewedRunId": "20260930-016-propose",
+    "approvedExploreReviewRunId": "20260930-015-review-explore",
+    "currentStep": "独立审查重启后 016 Proposal 对 014 Explore/015 approval 的可追溯性、封闭命令合同和 Apply 准备度。旧备份分支的 Proposal/Review 不作为当前批准链。",
+    "reviewedArtifactHashes": {
+      "proposal.md": "78eac04bbe5a8fe8c97cb57c4bf9c4529c03f5a3c7d1087b979cce99518f0ba0",
+      "design.md": "51906dfa2289ca1bb9e3f0285b32edb98608aa795fe10102c6a92c60391d09e6",
+      "tasks.md": "e5cb5c9f6c7ae73ed7c5df371ba0e2bb45dcac4220b70183965e1baa75a57cc8",
+      "specs/stable-delivery-support-command-execution/spec.md": "7de123c945991edd9da225c32537415f74a675835d6748e6bab0ef6a5657ff6a",
+      "specs/foundation-cli-surface/spec.md": "4e1993b29c753452c483f67abde3143378cfdf42b4672decb1771107583d98fa",
+      "specs/repository-integration-and-next-base-continuity/spec.md": "82e999af6c69f877f3953546e16e3895c548635745fd10594718028385ae6abb"
+    },
+    "evidence": [
+      "外部 Stable manager status/next 与 canonical chain 确认当前为 016 terminal Author propose，合法边为 review-propose；本 Reviewer 通过安装自有 startCanonicalActionRun、当前 Guidance 与 package-bound readiness 建立 017。",
+      "六份规划文件 SHA-256 均与 016 Result 匹配，regular file/no-link 核对通过；015 approved Explore 的当前 bytes 与已记录 SHA-256 匹配。独立 managed OpenSpec 1.10.0 strict validation exit 0，git diff --check exit 0。",
+      "Agent 负责真实 Owner 输入解释、CLI 负责形状/目标/Policy/当前状态检查的分工符合本轮 Owner 修正与 015；不要求聊天连接、自然语言固定短语或恢复旧 relay。Project-init 不伪造 Delivery authority，Git delta 保留 exact operation、index、对象、远端及独立 Final 边界。",
+      "Change activate 将 scaffold 与 manifest activation 放入有限操作，明确 partial、无 ordinal/Run/自动 Explore；Archive 复用 A 已开始的 Action 并由 Author 单独 finish，不替代 Reviewer 或自动生成 Result。C/D/F/E 仍保持独立范围。",
+      "design.md:30/47 对 Full Test 只接收本次 Owner fact并直接复用现有执行器建立新 attempt，design.md:51 与 support spec:117-121 又要求重复请求只读确认或拒绝、响应丢失不重做。tasks 3.2 未覆盖成功/失败响应丢失后的重复投递与明确新运行的区分。",
+      "src/domain/delivery-full-test-execution.ts:75 的 preparation input 只有 deliveryId/ownerAuthority；:120 每次 prepare 调用 randomUUID()；:161 起每次 invocation 重新 prepare；:190-191 明确每次调用开始新工作；:211-216 保存新 start 并发布新的 current attempt。既有执行器没有可直接继承的相同请求去重语义。"
+    ],
+    "findings": [
+      {
+        "id": "D07-B-RESTART-RP-001",
+        "severity": "P2",
+        "artifact": "specs/stable-delivery-support-command-execution/spec.md:93; design.md:30,47,51; tasks.md:16",
+        "observed": "Full Test 的跨调用身份尚未冻结。Proposal 同时要求固定命令建立新 attempt，以及重复请求/丢失响应只读或拒绝，却只定义 Owner fact 输入并要求复用每次随机分配 attemptId 的既有执行器；未说明如何把同一请求绑定到已持久 attempt，或怎样将明确的新运行与旧请求重投区分。",
+        "impact": "第一次检查和 current 发布成功但响应丢失时，按当前接线说明再次调用会新建 attempt、重复执行检查并替换 current，违反重复请求合同；若实现按相同配置/代码一律拒绝，又会阻止 Owner 在相同输入上明确要求的新正式运行。Apply 必须自行补充可观察的命令语义。",
+        "minimumCorrection": "在当前 Proposal 内选定一个最小、可持久读回的调用身份规则及新运行规则，明确其与 Owner fact、已存 attempt/current 和必要绑定的关系；同次终态成功/失败、pending/partial、响应丢失及明确新运行分别给出确定行为并加入测试任务。可以复用已存在的授权/attempt 身份并明确约束，或采用有限请求字段；不要求特定 UUID 方案、新 Registry、聊天读取或恢复旧 B 设计。"
+      }
+    ],
+    "complexityMinimality": "整体为已有操作上的固定 CLI 接线，范围和职责已收敛。剩余修订只需完成 Full Test 跨调用身份及重试/新运行合同，不需要扩大宿主机制或重新 Explore。",
+    "newContentScopeDrift": "未见新增聊天监听、自动流程或吸收后续 Change 范围；Git 规格修改是已批准 Agent/CLI 分工的直接落地。阻断项来自本轮 Proposal 自身的重复调用承诺及 015 交接要求。",
+    "limitations": "本次为规划语义审查，未运行正式 Full Test、Git 写入或未来 B 命令；strict validation 只证明结构。源码观察证明现有执行器调用语义，不声称未来实现已发生重复执行。",
+    "proofRefs": [],
+    "handoff": {
+      "summary": "仅修订 D07-B-RESTART-RP-001：明确 Full Test 同次调用与新运行的身份/读回规则并补相应测试，再独立 review-propose。保留已接受的 Agent 解释 Owner、CLI 固定机械执行边界。",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-09-30:backup-branch-then-restart-b",
+          "summary": "按 015 已核实的 Owner 决定从 A checkpoint 重启 B；旧尝试仅保留参考。"
+        },
+        {
+          "sourceRef": "codex-chat:01a0f01a-9adc-7180-93b6-594f469ad8d4:01a0f2d1-71fe-7b83-bd80-219c5fab951c",
+          "summary": "015 已独立核实 Owner 指令：Agent 识别真实意图，最终固定命令由 Flowkit 执行。"
+        }
+      ],
+      "evidenceRefs": []
+    }
+  }
+}

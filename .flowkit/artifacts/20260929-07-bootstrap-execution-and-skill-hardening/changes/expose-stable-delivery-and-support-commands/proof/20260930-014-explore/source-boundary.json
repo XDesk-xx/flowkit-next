@@ -1,0 +1,108 @@
+{
+  "runId": "20260930-014-explore",
+  "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+  "changeId": "expose-stable-delivery-and-support-commands",
+  "sourceRefs": [
+    {
+      "path": "src/internal/delivery-start-content.ts",
+      "bytes": 5213,
+      "sha256": "d204ae70be7c6c4834982132967d3f596e10edd53698a7fbbf8cf4a72bd95492",
+      "markers": [
+        ".flowkit/project.json",
+        "validStartManifest",
+        "readStartFacts"
+      ]
+    },
+    {
+      "path": "src/domain/delivery-start-execution.ts",
+      "bytes": 8014,
+      "sha256": "627be7b1d880613046e10092a9cccb80c3b97b2a7466750bc350dac64cada3db",
+      "markers": [
+        "executeSurface: DeliveryStartExecutionCallback",
+        "writeManifest:",
+        "mutationStatus = \"written-unconfirmed\""
+      ]
+    },
+    {
+      "path": "src/domain/delivery-full-test-execution.ts",
+      "bytes": 9451,
+      "sha256": "9022e0c19ea8d47ee2559e6a91c834977569c41f82126f7b14198ef62497eabd",
+      "markers": [
+        "export async function invokeDeliveryFullTestOperation",
+        "await saveFullTestJson",
+        "await publishFullTestAttempt",
+        "await readCurrentDeliveryFullTest"
+      ]
+    },
+    {
+      "path": "src/domain/delivery-final-execution.ts",
+      "bytes": 13221,
+      "sha256": "fe16380ed43675340bb35b478188571174c0495a7f23c6fdd0b331e1066cd64b",
+      "markers": [
+        "execute: DeliveryFinalExecute",
+        "readRequiredEvidence: ReadDeliveryRequiredEvidence",
+        "writeDeliveryFinalCoordinationClosure"
+      ]
+    },
+    {
+      "path": "src/internal/delivery-required-evidence-source.ts",
+      "bytes": 7734,
+      "sha256": "8cf72befd03a83dbaffe967d93c640b43e6d34c9296f156330ba0b9781825259",
+      "markers": [
+        "readChangeClosure",
+        "export function isCompletionSource",
+        "export async function readDeliveryChangeCompletions"
+      ]
+    },
+    {
+      "path": "src/domain/cross-delivery-memo-persistence.ts",
+      "bytes": 4843,
+      "sha256": "d193982cd1f41de6f08fe04f713123eed68635a286b5c074891e1ed38304293a",
+      "markers": [
+        "export async function createMemo",
+        "export async function promoteMemo",
+        "export async function dismissMemo"
+      ]
+    },
+    {
+      "path": "src/domain/git-workflow-host.ts",
+      "bytes": 8427,
+      "sha256": "040468c0f1ca733ee7709289ab781884a93b017435e00d5afe427d8c6ee13632",
+      "markers": [
+        "const material = await read(request.ownerSourceRef)",
+        "export async function runCheckpoint",
+        "export async function runPush"
+      ]
+    },
+    {
+      "path": "src/cli/trusted-change-coordination.ts",
+      "bytes": 6242,
+      "sha256": "d167891ed9e0b9c73e96492d06220203578ea7f79ab2dc3ccdbec7f484dd14f1",
+      "markers": [
+        "function hasExactActivationProvenance",
+        "export async function resolveTrustedChangeCoordination"
+      ]
+    },
+    {
+      "path": "src/cli/action-commands.ts",
+      "bytes": 20094,
+      "sha256": "58569487788ef971bba0534a748150d82b6c1bb3d93574de3d9ae1ac1ae04e7c",
+      "markers": [
+        "export async function executeActionCommand",
+        "input.command === \"action start\"",
+        "input.command === \"action finish\""
+      ]
+    },
+    {
+      "path": "src/cli/action-readiness.ts",
+      "bytes": 19467,
+      "sha256": "ac06d1d8a2f1523f1aaaa19195804425477f5940338b22b613f94393c4842faf",
+      "markers": [
+        "async function archiveReadiness",
+        "await symlink(",
+        "await exec("
+      ]
+    }
+  ],
+  "boundary": "Existing operations have distinct authority and commit points; a new fixed surface must delegate to their owners instead of replacing them with caller callbacks or one generic workflow."
+}

@@ -180,7 +180,9 @@ async function start(request: StartRequest, installation: ManagerInstallation) {
           ? "ready"
           : "blocked";
       },
-      true,
+      request.actionId === "archive"
+        ? { applicableChecks: request.applicableChecks ?? [] }
+        : true,
     );
   } catch (error) {
     if (error instanceof ActionCommandError) throw error;

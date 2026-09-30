@@ -1,0 +1,161 @@
+{
+  "runId": "20261001-021-review-apply",
+  "actionIdentity": {
+    "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+    "changeId": "expose-stable-delivery-and-support-commands",
+    "actionId": "review-apply"
+  },
+  "authorConclusion": null,
+  "reviewerVerdict": "changes-requested",
+  "verificationVerdict": null,
+  "nextBoundary": "revise-apply",
+  "facts": {
+    "reviewedRunId": "20261001-020-apply",
+    "approvedProposalRunId": "20261001-019-review-propose",
+    "reviewedCandidate": {
+      "resultPath": ".flowkit/runs/20260929-07-bootstrap-execution-and-skill-hardening/014-expose-stable-delivery-and-support-commands/20261001-020-apply/result.json",
+      "resultSha256": "1f4ca7bf28a42dac0a7c96df658caeffe37632b156fa2d85e8f3b7813700dfaa",
+      "artifactHashesLocation": ".flowkit/runs/20260929-07-bootstrap-execution-and-skill-hardening/014-expose-stable-delivery-and-support-commands/20261001-020-apply/result.json#facts.artifactHashes",
+      "verifiedFileCount": 36
+    },
+    "currentStep": "独立审查 B Apply 对已批准 Proposal 的实现符合性、真实材料及错误/重复调用边界；当前 Reviewer 未改 Author production/tests/planning。",
+    "evidence": [
+      "外部 Stable manager status/next 及 canonical chain 确认 020 terminal Apply 后的 review-apply；本次通过该安装 startCanonicalActionRun、Guidance 与 package-bound readiness 建立 021。",
+      "36 个候选文件 SHA-256、regular-file/no-link 均匹配 Author Result；批准 Proposal 的非 tasks 文件仍匹配 019。Author 6 个 proofRef 与 command-r2.json 中 11 次执行的 22 个 stdout/stderr bytes/SHA 均核对通过。Author 报告 domain 360/0、acceptance 7/0；这些记录不等于本 Reviewer 全量重跑。",
+      "独立反例 reproduction.json：同一 Delivery/规划下首次 Start 成功，第二请求改 goal 与 planned Change ID 后仍返回 completed，原 manifest bytes 完全未变。",
+      "独立反例 reproduction.json：Change 级 authorize-push/[push] 请求通过固定解析器，但给下游 verifyGitHostAuthority 提供 ready-checkpoint-evaluation 和同一 push authority 后返回 false；support-git 正是将此 authority 放进 checkpointAuthorization，checkpoint evaluator 要求 authorize-checkpoint/[checkpoint]。本反例未执行 Git 写入。",
+      "独立反例 reproduction.json：两个真实隔离 Full Test attempt 均完成后，删除已被取代的第一 attempt 的 checks/count/stdout.txt，再投递第一请求仍返回 completed/readback、attemptStatus=passed、currentStatus=historical；计数保持 2，证明无重跑但必要材料缺失未被拒绝。",
+      "独立 archive-chain-probe.test.ts 复用现有合成 Archive fixture：合法 start 后增加同组 incomplete Run，status 调用拒绝；change archive 却仍返回 completed、移动 Change 并完成 manifest。此反例使用合成 OpenSpec/角色，不声称真实 managed archive 验收。",
+      "独立 bounded node --import tsx --test 共 9/9：8 个现有 support 测试加 1 个确认 Archive 缺陷的反例；checks.json 和原始输出已保存。git diff --check 无输出。"
+    ],
+    "findings": [
+      {
+        "id": "D07-B-RA-001",
+        "severity": "P1",
+        "artifact": "src/cli/support-change-archive.ts:47-59",
+        "observed": "Archive 只验证 caller 指定目录中的 descriptor/action.md 和直接 Review/Author，没有重新解析整个 Change 的唯一当前链。额外 incomplete Run 已使 status 拒绝，归档仍执行并将 manifest 标为 completed。",
+        "impact": "违反必须属于当前合法 exact archive Action 的前置；链已冲突或不可确认时仍发生 OpenSpec/manifest 写入，之后 action finish 也无法正常接纳。",
+        "minimumCorrection": "在任何归档副作用前复用 A 的当前开始记录/唯一链验证，要求所选 runId 为唯一合法 current，拒绝其他 incomplete/fork/successor/身份或 Guidance 冲突；在复验点保持该条件并补反例，不另建链解析器。"
+      },
+      {
+        "id": "D07-B-RA-002",
+        "severity": "P2",
+        "artifact": "src/cli/support-git.ts:95-104",
+        "observed": "git push 使用 authorize-push/[push]，但 change-checkpoint 节点的 readOwner 把同一 fact 传给 checkpointAuthorization；runPush 的 verifyGitHostAuthority 调用 checkpoint evaluator，而 evaluator 仅接纳 authorize-checkpoint/[checkpoint]。即使 Policy ready 也返回 false。",
+        "impact": "有合法独立 push 授权的 Change checkpoint 无法通过新固定入口推送；现有测试只覆盖 delivery-start 节点 push，未覆盖此路径。",
+        "minimumCorrection": "按 push 与 checkpoint 的独立权限合同接线，保留 Change/Policy/真实对象和远端核验，不把 push fact 冒充 checkpoint fact；补合法 Change push 成功和错误 scope/来源拒绝测试。"
+      },
+      {
+        "id": "D07-B-RA-003",
+        "severity": "P2",
+        "artifact": "src/cli/support-delivery-start.ts:174-187",
+        "observed": "入口构造本次 manifest bytes 后调用既有 Start domain；目标 manifest 已存在时，domain 跳过 writeManifest，仅核对 ID/规划引用/通用 planned 形状，入口直接返回 completed，没有将已存内容与本次请求比较。反例的 different-change 请求被报告成功，但磁盘仍为 first-change。",
+        "impact": "有冲突的 Start 请求被误报为同值完成，调用者会继续使用并未物化的规划内容，违反 create-once/同值复用/冲突拒绝合同。",
+        "minimumCorrection": "在复用已有 manifest 时将本次固定结构化请求对应内容与真实已有内容精确对照，冲突则只读拒绝；保留相同内容可读回及无关字节保护，补 goal/Change 集合等冲突用例。"
+      },
+      {
+        "id": "D07-B-RA-004",
+        "severity": "P2",
+        "artifact": "src/cli/support-full-test.ts:128-147",
+        "observed": "非 current attempt 的重投将 current 设为 null，跳过 readCurrentDeliveryFullTest 的完整性路径；仅检查 result 的少数身份/状态字段便报告 completed/readback。删除该历史 attempt 的必要 stdout 后仍报告 passed。",
+        "impact": "违反重复投递须核对记录和必要材料、不可确认则拒绝的批准合同；historical 标签区分了 current，但未证明返回的旧完成事实完整可用。",
+        "minimumCorrection": "为选定 attempt 复用/抽取有限记录与必要材料完整性验证，历史读取不改 current、不重跑，也不遍历无关历史；缺失/损坏/身份冲突报告不可确认并补历史终态反例。"
+      }
+    ],
+    "complexityMinimality": "显式命令复用既有 domain/host，总体未增加 Registry 或自动工作流；Archive checks 绑定和本地日期修正可追溯。四处接缝尚未保留原有当前身份、独立 Git 权限、同值复用或证据完整性，需要在既有实现内窄修。",
+    "newContentScopeDrift": "未发现聊天监听或将 C/D/F/E 引入当前实现；本次 findings 属于批准 B 合同的正确性缺口，无须更改 Owner 执行模型或重新设计 Proposal。",
+    "limitations": "Author synthetic smoke 仅作机械证据。Reviewer 反例使用隔离 fixture，未执行本仓库 Git mutation/Archive/Full Test/Final；未重跑全部 domain/acceptance 或 Formal Full Test。首次 Reviewer 复现脚本读取了错误 fixture 字段而失败，修正 Reviewer 自有脚本后成功复现并保存结果；Author 文件未变。",
+    "proofRefs": [
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-delivery-and-support-commands/proof/20261001-021-review-apply/reproduce.mjs",
+        "bytes": 5609,
+        "sha256": "a39e0dfc9c15605ad2903a06bbc941715b41cc7b9613a5f57476cee71c7a3b0e",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "expose-stable-delivery-and-support-commands",
+        "runId": "20261001-021-review-apply",
+        "purpose": "independent-bounded-review-reproduction"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-delivery-and-support-commands/proof/20261001-021-review-apply/reproduction.json",
+        "bytes": 1588,
+        "sha256": "6a9079c6f00475fb5601066fc2cffb468440adb1c528771c76810a439c899512",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "expose-stable-delivery-and-support-commands",
+        "runId": "20261001-021-review-apply",
+        "purpose": "independent-bounded-review-reproduction"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-delivery-and-support-commands/proof/20261001-021-review-apply/run-checks.mjs",
+        "bytes": 2828,
+        "sha256": "462190bad439f91c2c9769c4849ac33586fcafbf0bac412da9e10ad317496b1b",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "expose-stable-delivery-and-support-commands",
+        "runId": "20261001-021-review-apply",
+        "purpose": "independent-bounded-review-reproduction"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-delivery-and-support-commands/proof/20261001-021-review-apply/archive-chain-probe.test.ts",
+        "bytes": 7212,
+        "sha256": "c774215a195a8b72bc2ad3842ada705b73163bb35461a55f4747f34332c40a6c",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "expose-stable-delivery-and-support-commands",
+        "runId": "20261001-021-review-apply",
+        "purpose": "independent-bounded-review-reproduction"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-delivery-and-support-commands/proof/20261001-021-review-apply/checks.json",
+        "bytes": 1176,
+        "sha256": "f9dc5fc275fd51fd588e6eacd0a38b49bb78c756ea49791125c13ac35122cf3a",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "expose-stable-delivery-and-support-commands",
+        "runId": "20261001-021-review-apply",
+        "purpose": "independent-bounded-review-reproduction"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-delivery-and-support-commands/proof/20261001-021-review-apply/checks.stdout.txt",
+        "bytes": 2034,
+        "sha256": "94c3bcb8666772be0f8478d856642bb0b769077b28e20a35faee3cf61612a9bb",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "expose-stable-delivery-and-support-commands",
+        "runId": "20261001-021-review-apply",
+        "purpose": "independent-bounded-review-reproduction"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-delivery-and-support-commands/proof/20261001-021-review-apply/checks.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "expose-stable-delivery-and-support-commands",
+        "runId": "20261001-021-review-apply",
+        "purpose": "independent-bounded-review-reproduction"
+      }
+    ],
+    "handoff": {
+      "summary": "review-apply changes-requested；按四项 finding 在 revise-apply 窄修并补反例，再独立 review-apply。不得从现有测试通过推断可 Archive 或 Git checkpoint。",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-09-30:backup-branch-then-restart-b",
+          "summary": "Owner restarted B from A checkpoint; prior B attempt is reference only."
+        },
+        {
+          "sourceRef": "codex-chat:01a0f01a-9adc-7180-93b6-594f469ad8d4:01a0f2d1-71fe-7b83-bd80-219c5fab951c",
+          "summary": "Agent identifies real Owner instruction; Flowkit executes fixed mechanical command."
+        }
+      ],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20261001-021-review-apply",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-delivery-and-support-commands/proof/20261001-021-review-apply/reproduction.json"
+        },
+        {
+          "sourceRunId": "20261001-021-review-apply",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-delivery-and-support-commands/proof/20261001-021-review-apply/checks.json"
+        },
+        {
+          "sourceRunId": "20261001-021-review-apply",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-delivery-and-support-commands/proof/20261001-021-review-apply/checks.stdout.txt"
+        }
+      ]
+    }
+  }
+}

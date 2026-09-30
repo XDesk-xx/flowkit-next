@@ -99,7 +99,14 @@ export async function startCanonicalActionRun(
   preparedContext: unknown,
   expectedGuidanceRef: ActionGuidanceRef | null,
   prepare: CanonicalStartReadiness,
-  commandDescriptor = false,
+  commandDescriptor:
+    | boolean
+    | {
+        readonly applicableChecks: readonly {
+          readonly id: string;
+          readonly reason: string;
+        }[];
+      } = false,
 ): Promise<StartedCanonicalActionRun> {
   if (!isCurrentAction(currentAction) || !isRunContextRecord(preparedContext)) {
     throw new Error("Invalid prepared Action or Run context");
@@ -184,6 +191,9 @@ export async function startCanonicalActionRun(
               formatVersion: 1,
               commandOrigin: "flowkit-action-start",
               changeStartSequence: input.changeStartSequence,
+              ...(typeof commandDescriptor === "object"
+                ? { applicableChecks: commandDescriptor.applicableChecks }
+                : {}),
             }
           : {}),
         actionPackage: reboundPackage,

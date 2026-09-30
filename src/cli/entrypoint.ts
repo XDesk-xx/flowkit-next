@@ -1,5 +1,11 @@
 #!/usr/bin/env node
 import { readFile } from "node:fs/promises";
+import { executeSupportCommand } from "./support-commands.js";
+import {
+  parseSupportArguments,
+  parseSupportRequest,
+  SUPPORT_COMMANDS,
+} from "./support-request.js";
 import { executeActionCommand } from "./action-commands.js";
 import { ActionCommandError } from "./action-error.js";
 import {
@@ -63,6 +69,7 @@ async function main(): Promise<number> {
           "action start",
           "action finish",
           "proof inspect",
+          ...SUPPORT_COMMANDS,
         ],
         input: "--input <path|-> (JSON, at most 65536 UTF-8 bytes)",
         actionTargetFlags: [
@@ -91,6 +98,36 @@ async function main(): Promise<number> {
       assertVisibleTarget(visible, parsed.request);
       writeJson(await executeActionCommand(parsed, loadManagerInstallation()));
       return 0;
+    }
+    if (
+      ["project", "delivery", "change", "memo", "git"].includes(argv[0] ?? "")
+    ) {
+      const { command, inputPath, visible } = parseSupportArguments(argv);
+      let requestText: string;
+      try {
+        requestText =
+          inputPath === "-"
+            ? await readStdin()
+            : await readFile(inputPath, "utf8");
+      } catch (error) {
+        throw new FoundationCliInputError(
+          "invalid-arguments",
+          "cannot read --input request file",
+          { cause: error },
+        );
+      }
+      const request = parseSupportRequest(
+        command,
+        parseFoundationCliRequestJson(requestText),
+        visible,
+      );
+      const result = await executeSupportCommand(
+        command,
+        request,
+        loadManagerInstallation(),
+      );
+      writeJson(result);
+      return result.status === "completed" ? 0 : 2;
     }
     const { command, inputPath } = parseFoundationCliArguments(argv);
     let requestText: string;

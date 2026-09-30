@@ -4,6 +4,7 @@ import { mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 import test from "node:test";
 import { packageReadiness } from "../../../src/cli/action-readiness.js";
+import { openSpecArchiveDate } from "../../../src/internal/openspec-archive-date.js";
 import {
   writeDurableRun,
   type DurableRunRecord,
@@ -163,7 +164,7 @@ test("archive machine preparation blocks candidate drift and unsuccessful isolat
     );
     await writeFile(
       runtime,
-      `const fs=require('node:fs'); const path=require('node:path'); const args=process.argv.slice(2); if(args[0]==='archive'){const target=path.join(process.cwd(),'openspec','changes','archive',new Date().toISOString().slice(0,10)+'-'+args[1]); fs.mkdirSync(target,{recursive:true}); fs.writeFileSync(path.join(target,'marker.txt'),'converged');} process.exit(0);\n`,
+      `const fs=require('node:fs'); const path=require('node:path'); const args=process.argv.slice(2); if(args[0]==='archive'){const n=new Date();const date=n.getFullYear()+'-'+String(n.getMonth()+1).padStart(2,'0')+'-'+String(n.getDate()).padStart(2,'0');const target=path.join(process.cwd(),'openspec','changes','archive',date+'-'+args[1]); fs.mkdirSync(target,{recursive:true}); fs.writeFileSync(path.join(target,'marker.txt'),'converged');} process.exit(0);\n`,
     );
     await writeFile(
       path.join(root, "package.json"),
@@ -216,7 +217,7 @@ test("archive machine preparation blocks candidate drift and unsuccessful isolat
       program: "git",
       args: [
         "hash-object",
-        `openspec/changes/archive/${new Date().toISOString().slice(0, 10)}-001-change-one/marker.txt`,
+        `openspec/changes/archive/${openSpecArchiveDate()}-001-change-one/marker.txt`,
       ],
       cwd: ".",
     };

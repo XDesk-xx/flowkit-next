@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { execFile } from "node:child_process";
 import { createHash } from "node:crypto";
-import { mkdir, readFile, readdir, rename, writeFile } from "node:fs/promises";
+import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import test from "node:test";
 import { promisify } from "node:util";
@@ -13,6 +13,7 @@ import {
 } from "../../../src/domain/run-result-persistence.js";
 import { gitBytes } from "../../../src/internal/git-checkpoint-scope.js";
 import { contextFixture } from "./action-context-fixture.js";
+import { openSpecArchiveDate } from "../../../src/internal/openspec-archive-date.js";
 
 const run = promisify(execFile);
 const entry = fileURLToPath(
@@ -48,7 +49,10 @@ test("archive finish reads trusted completed coordination after isolated prepara
     const changeRoot = path.join(root, "openspec/changes/change-one");
     await mkdir(changeRoot, { recursive: true });
     for (const name of ["proposal.md", "design.md", "tasks.md"])
-      await writeFile(path.join(changeRoot, name), `# ${name}\n`);
+      await writeFile(
+        path.join(changeRoot, name),
+        name === "tasks.md" ? "# Tasks\n- [x] synthetic task\n" : `# ${name}\n`,
+      );
     await writeFile(path.join(root, "candidate.txt"), "reviewed candidate\n");
     const sha = createHash("sha256")
       .update(await readFile(path.join(root, "candidate.txt")))
@@ -118,7 +122,7 @@ test("archive finish reads trusted completed coordination after isolated prepara
     const originalTool = await readFile(runtime, "utf8");
     await writeFile(
       runtime,
-      `if(process.argv[2]==='archive'){const fs=require('node:fs'); const path=require('node:path');fs.mkdirSync(path.join(process.cwd(),'openspec','changes','archive',new Date().toISOString().slice(0,10)+'-'+process.argv[3]),{recursive:true});process.exit(0)}\n${originalTool}`,
+      `if(process.argv[2]==='archive'){const fs=require('node:fs'); const path=require('node:path');const root=process.cwd();const n=new Date();const date=n.getFullYear()+'-'+String(n.getMonth()+1).padStart(2,'0')+'-'+String(n.getDate()).padStart(2,'0');const target=path.join(root,'openspec','changes','archive',date+'-'+process.argv[3]);fs.mkdirSync(path.dirname(target),{recursive:true});fs.renameSync(path.join(root,'openspec','changes',process.argv[3]),target);const file=path.join(root,'observation.json');const state=JSON.parse(fs.readFileSync(file));state.changes=[];fs.writeFileSync(file,JSON.stringify(state));process.exit(0)}\n${originalTool}`,
     );
     const base = {
       repositoryRoot: root,
@@ -164,14 +168,23 @@ test("archive finish reads trusted completed coordination after isolated prepara
       ],
     });
     assert.equal(started.effect, "started");
-    const archivePath = `openspec/changes/archive/${new Date().toISOString().slice(0, 10)}-001-change-one`;
-    await mkdir(path.dirname(path.join(root, archivePath)), {
-      recursive: true,
-    });
-    await rename(changeRoot, path.join(root, archivePath));
-    manifestData.changes[0].state = "completed";
-    await writeFile(manifest, JSON.stringify(manifestData));
-    await fixture.observe([]);
+    const archivePath = `openspec/changes/archive/${openSpecArchiveDate()}-001-change-one`;
+    const archived = await call(
+      [
+        "change",
+        "archive",
+        "--repository-root",
+        root,
+        "--delivery-id",
+        "delivery-one",
+        "--change-id",
+        "change-one",
+      ],
+      "archive-request.json",
+      { ...base, runId: started.runId },
+    );
+    assert.equal(archived.status, "completed", JSON.stringify(archived));
+    assert.equal(archived.archivePath, archivePath);
     const runId = started.runId as string;
     const result = {
       runId,

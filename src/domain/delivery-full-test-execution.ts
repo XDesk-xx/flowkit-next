@@ -14,6 +14,7 @@ import {
 } from "../internal/full-test-input.js";
 import {
   attemptRoot,
+  isAttemptId,
   ensureFullTestDirectory,
   saveFullTestJson,
   readFullTestJson,
@@ -38,6 +39,8 @@ import {
 export interface DeliveryFullTestPreparationInput {
   readonly deliveryId: DeliveryId;
   readonly ownerAuthority: OwnerAuthorityFact;
+  readonly attemptId?: string;
+  readonly expectedCurrentAttemptId?: string | null;
 }
 export interface DeliveryFullTestExecutionRecord {
   readonly projectId: string;
@@ -72,7 +75,16 @@ function isPreparationInput(
 ): value is DeliveryFullTestPreparationInput {
   return (
     isPlainRecord(value) &&
-    hasExactlyFields(value, ["deliveryId", "ownerAuthority"]) &&
+    (hasExactlyFields(value, ["deliveryId", "ownerAuthority"]) ||
+      (hasExactlyFields(value, [
+        "deliveryId",
+        "ownerAuthority",
+        "attemptId",
+        "expectedCurrentAttemptId",
+      ]) &&
+        isAttemptId(value.attemptId) &&
+        (value.expectedCurrentAttemptId === null ||
+          isAttemptId(value.expectedCurrentAttemptId)))) &&
     isSemanticId(value.deliveryId) &&
     isFormalFullTestAuthorityForDelivery(value.ownerAuthority, value.deliveryId)
   );
@@ -117,7 +129,7 @@ async function prepareFullTestPackage(
       "delivery-full-test",
       input.ownerAuthority,
       {
-        attemptId: randomUUID(),
+        attemptId: input.attemptId ?? randomUUID(),
         configRef: selected.configRef,
         inputRef: selected.inputRef,
         orderedChecks: selected.orderedChecks,
@@ -186,6 +198,23 @@ export async function invokeDeliveryFullTestOperation(
       repositoryRoot,
       operationPackage.deliveryId,
     );
+    if (input && isPreparationInput(input) && input.attemptId !== undefined) {
+      if ((initial.attemptId ?? null) !== input.expectedCurrentAttemptId)
+        return fail("current-attempt-drift");
+      if (initial.attemptId) {
+        const currentStart = await readFullTestJson(
+          repositoryRoot,
+          attemptRoot(operationPackage.deliveryId, initial.attemptId) +
+            "/start.json",
+        );
+        if (
+          !isPlainRecord(currentStart) ||
+          !isPlainRecord(currentStart.ownerAuthority) ||
+          currentStart.ownerAuthority.ref === input.ownerAuthority.ref
+        )
+          return fail("new-attempt-authority-not-distinct");
+      }
+    }
     // The Agent reports current/partial via the reader before explicitly invoking again.
     // This authorized invocation starts new work, never fills in the previous attempt.
     const project = await readFullTestJson(
@@ -203,6 +232,9 @@ export async function invokeDeliveryFullTestOperation(
       attemptId: facts.attemptId,
       startedAt,
       ownerAuthority: operationPackage.ownerAuthority,
+      ...(input && isPreparationInput(input) && input.attemptId !== undefined
+        ? { expectedCurrentAttemptId: input.expectedCurrentAttemptId }
+        : {}),
       guidanceRef: operationPackage.guidanceRef,
       configRef: facts.configRef,
       inputRef: facts.inputRef,

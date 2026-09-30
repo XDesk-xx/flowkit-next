@@ -21,6 +21,7 @@ import {
   type DurableRunRecord,
 } from "../domain/run-result-persistence.js";
 import type { ManagerInstallation } from "../internal/manager-installation.js";
+import { openSpecArchiveDate } from "../internal/openspec-archive-date.js";
 import {
   fullTestPath,
   fullTestRelative,
@@ -408,7 +409,7 @@ async function configuredArchiveChecks(
   return selected;
 }
 
-async function archiveReadiness(
+export async function archiveReadiness(
   request: StartRequest,
   review: DurableRunRecord,
   installation: ManagerInstallation,
@@ -516,7 +517,7 @@ async function archiveReadiness(
       "archive-completion-unready",
       "Completion transition cannot be materialized",
     );
-  const targetName = `${new Date().toISOString().slice(0, 10)}-${String(exact.projectOrdinal).padStart(3, "0")}-${request.changeId}`;
+  const targetName = `${openSpecArchiveDate()}-${String(exact.projectOrdinal).padStart(3, "0")}-${request.changeId}`;
   try {
     await lstat(
       path.join(
@@ -601,7 +602,7 @@ async function archiveReadiness(
       "openspec",
       "changes",
       "archive",
-      `${new Date().toISOString().slice(0, 10)}-${request.changeId}`,
+      `${openSpecArchiveDate()}-${request.changeId}`,
     );
     const converged = await lstat(defaultTarget).catch((error) => {
       if ((error as NodeJS.ErrnoException).code === "ENOENT") return null;

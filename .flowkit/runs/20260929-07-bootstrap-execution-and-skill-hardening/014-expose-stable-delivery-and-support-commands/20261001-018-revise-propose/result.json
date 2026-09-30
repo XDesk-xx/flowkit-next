@@ -1,0 +1,53 @@
+{
+  "runId": "20261001-018-revise-propose",
+  "actionIdentity": {
+    "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+    "changeId": "expose-stable-delivery-and-support-commands",
+    "actionId": "revise-propose"
+  },
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-propose",
+  "facts": {
+    "reviewedRunId": "20261001-017-review-propose",
+    "findingIds": [
+      "D07-B-RESTART-RP-001"
+    ],
+    "planningRoot": "openspec/changes/expose-stable-delivery-and-support-commands",
+    "revisedArtifactHashes": {
+      "design.md": "12abb893da827e9954bec549223c9683778e3c31db39c3655db2232e86b48b4d",
+      "tasks.md": "8871b3cf14675bedf59470801178977507dfe76e5a2443f038a15159aa546b2a",
+      "specs/stable-delivery-support-command-execution/spec.md": "5edfad492d9679c5ca158799ba04de30ba114752017a835c2bceff6d2668c8d7"
+    },
+    "unchangedArtifactHashes": {
+      "proposal.md": "78eac04bbe5a8fe8c97cb57c4bf9c4529c03f5a3c7d1087b979cce99518f0ba0",
+      "specs/foundation-cli-surface/spec.md": "4e1993b29c753452c483f67abde3143378cfdf42b4672decb1771107583d98fa",
+      "specs/repository-integration-and-next-base-continuity/spec.md": "82e999af6c69f877f3953546e16e3895c548635745fd10594718028385ae6abb"
+    },
+    "correction": "Full Test fixed command now binds one request to UUID v4 attemptId, expected current association and exact Owner fact in a create-once start. Same request is read-only on success/failure/pending/partial; deliberate new run uses fresh identity and authority, with prestate check. Historical start records remain readable.",
+    "complexityMinimality": "Only the reviewed Full Test identity hole was repaired in design, support spec and task 3.2; no new capability, registry, chat listener, production implementation or unrelated planning change.",
+    "newContentBeyondFinding": "none",
+    "validation": {
+      "command": "node C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js validate expose-stable-delivery-and-support-commands --strict",
+      "exitCode": 0,
+      "observedOutput": "Change 'expose-stable-delivery-and-support-commands' is valid",
+      "limit": "OpenSpec structure only; no Apply acceptance or Reviewer verdict"
+    },
+    "proofRefs": [],
+    "handoff": {
+      "summary": "Independent review-propose should verify D07-B-RESTART-RP-001 against the explicit Full Test attempt/request binding, stale association and historical-read rules. Planning only; no implementation or Reviewer verdict claimed.",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-09-30:backup-branch-then-restart-b",
+          "summary": "Owner preserved the failed attempt and restarted B from A checkpoint; backup is reference only."
+        },
+        {
+          "sourceRef": "codex-chat:01a0f01a-9adc-7180-93b6-594f469ad8d4:01a0f2d1-71fe-7b83-bd80-219c5fab951c",
+          "summary": "Owner assigned real instruction recognition to Agent and fixed mechanical command execution to Flowkit."
+        }
+      ],
+      "evidenceRefs": []
+    }
+  }
+}

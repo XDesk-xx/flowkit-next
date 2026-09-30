@@ -10,6 +10,8 @@ manager 拥有发行代码、系统 Skills、工具 HOW/vendor 与 lock；target
 
 CLI 查询入口为 `status / next / doctor --input <request.json>`；单次 Action 的固定记录入口为 `action start`、`action finish` 和 `proof inspect --input <request.json|->`。查询从唯一有效 Run 链解析 current；写入口从当前 Policy、安装 Guidance 与 target 事实生成 Run，不接受 caller 自填 currentRunId/changeStartSequence、ActionPackage 或可执行代码。doctor 成功不意味着已激活 Change。
 
+候选 CLI 还提供固定支持命令：`project init`、`delivery start`、`change activate`、`change archive`、`memo list/get/create/promote/dismiss`、`delivery full-test`、`delivery full-test current`、`delivery final`、`git checkpoint/push/integrate`。命令以 `--input <request.json|->` 接收封闭数据，并用 `--repository-root`、适用的 `--delivery-id`/`--change-id` 对照可见目标；每次调用只执行一项操作。Agent 负责从真实 Owner 输入形成精确 `OwnerAuthorityFact`/`sourceRef`，CLI 校验其结构和当前项目事实，但不连接或认证聊天。`git integrate` 在没有外部仓库接受事实时返回待人工接受；外部接受后可用 exact checkpoint 的 `reuse-existing` 请求，凭目标 main ref 包含该 commit 的真实 Git 事实只读确认。见[接入说明](docs/onboarding.md)。
+
 收到阶段指令后，Agent 核对 target、实际 Role、安装来源和查询边界，再读安装内 `skills/actions/<actionId>/SKILL.md`。歧义、blocked、partial、bootstrap-history、角色或阶段冲突先报告并停止。只问下一步不执行 Action；Author 不自审。
 
 ## 当前能力与事实归属

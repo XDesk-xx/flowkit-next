@@ -19,6 +19,10 @@ interface StartedDescriptor {
   readonly changeStartSequence: number;
   readonly actionPackage: ActionPackage;
   readonly preparedContext: RunContextRecord;
+  readonly applicableChecks?: readonly {
+    readonly id: string;
+    readonly reason: string;
+  }[];
 }
 export async function readDescriptor(
   directory: string,
@@ -52,6 +56,9 @@ export async function readDescriptor(
         "changeStartSequence",
         "actionPackage",
         "preparedContext",
+        ...(Object.hasOwn(object, "applicableChecks")
+          ? ["applicableChecks"]
+          : []),
       ]
         .sort()
         .join(",") ||
@@ -61,7 +68,22 @@ export async function readDescriptor(
     typeof object.repositoryRoot !== "string" ||
     !Number.isSafeInteger(object.changeStartSequence) ||
     !isActionPackage(object.actionPackage) ||
-    !isRunContextRecord(object.preparedContext)
+    !isRunContextRecord(object.preparedContext) ||
+    (Object.hasOwn(object, "applicableChecks") &&
+      (object.actionPackage.actionIdentity.actionId !== "archive" ||
+        !Array.isArray(object.applicableChecks) ||
+        object.applicableChecks.length === 0 ||
+        !object.applicableChecks.every(
+          (check: unknown) =>
+            typeof check === "object" &&
+            check !== null &&
+            !Array.isArray(check) &&
+            Object.keys(check).sort().join() === "id,reason" &&
+            typeof (check as { id?: unknown }).id === "string" &&
+            /^[a-z0-9:-]+$/.test((check as { id: string }).id) &&
+            typeof (check as { reason?: unknown }).reason === "string" &&
+            (check as { reason: string }).reason.trim().length > 0,
+        )))
   )
     blocked("descriptor-invalid", "Unrecognized Action descriptor shape");
   return { markdown, descriptor: object as unknown as StartedDescriptor };

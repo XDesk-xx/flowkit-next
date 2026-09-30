@@ -1,0 +1,71 @@
+{
+  "runId": "20260930-014-explore",
+  "candidateCli": "dist/cli/entrypoint.js",
+  "executableSha256": "54a45eeae3e322d4fa09cda6df702048d155ae3103f9fe432a5d3304a6f531fa",
+  "probes": [
+    {
+      "command": "flowkit --help",
+      "startedAt": "2026-09-30T15:31:34.634Z",
+      "endedAt": "2026-09-30T15:31:35.228Z",
+      "exitCode": 0,
+      "stdoutSha256": "1c03110787d4136c1979d23fdb3b80b1a4abd0ced317850986919e2dda761413",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": "flowkit delivery start --input .tmp/d07-b-restart-query.json",
+      "startedAt": "2026-09-30T15:31:35.228Z",
+      "endedAt": "2026-09-30T15:31:35.812Z",
+      "exitCode": 2,
+      "stdoutSha256": "03d6783f1083f33f5db95c2827b2a1528f1812f1cf7fd257ddfd2742e9fa6deb",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "sourceRefs": [
+    {
+      "path": "package.json",
+      "bytes": 1891,
+      "sha256": "31cd2b51113ce1afd9c8a319c580ce01d0d7eddd1580c0658a5d6bf6207183ea"
+    },
+    {
+      "path": "src/cli/entrypoint.ts",
+      "bytes": 5275,
+      "sha256": "3f7b077e5cf5394aafc7fc08e7929c1209888049fe331155ca1b56af6e20f86e"
+    },
+    {
+      "path": "src/cli/request.ts",
+      "bytes": 8721,
+      "sha256": "85ba3d28c3da4efa744300fe8172c4b22a8836e252e310f4162f009818548490"
+    },
+    {
+      "path": "src/domain/delivery-start-execution.ts",
+      "bytes": 8014,
+      "sha256": "627be7b1d880613046e10092a9cccb80c3b97b2a7466750bc350dac64cada3db"
+    },
+    {
+      "path": "src/domain/delivery-full-test-execution.ts",
+      "bytes": 9451,
+      "sha256": "9022e0c19ea8d47ee2559e6a91c834977569c41f82126f7b14198ef62497eabd"
+    },
+    {
+      "path": "src/domain/delivery-final-execution.ts",
+      "bytes": 13221,
+      "sha256": "fe16380ed43675340bb35b478188571174c0495a7f23c6fdd0b331e1066cd64b"
+    },
+    {
+      "path": "src/domain/cross-delivery-memo-persistence.ts",
+      "bytes": 4843,
+      "sha256": "d193982cd1f41de6f08fe04f713123eed68635a286b5c074891e1ed38304293a"
+    },
+    {
+      "path": "src/domain/git-workflow-host.ts",
+      "bytes": 8427,
+      "sha256": "040468c0f1ca733ee7709289ab781884a93b017435e00d5afe427d8c6ee13632"
+    },
+    {
+      "path": "src/cli/action-commands.ts",
+      "bytes": 20094,
+      "sha256": "58569487788ef971bba0534a748150d82b6c1bb3d93574de3d9ae1ac1ae04e7c"
+    }
+  ],
+  "conclusion": "Candidate A CLI exposes only query and Action/proof commands; delivery start is not a supported fixed command."
+}

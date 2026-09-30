@@ -1,0 +1,66 @@
+{
+  "runId": "20260930-015-review-explore",
+  "actionIdentity": {
+    "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+    "changeId": "expose-stable-delivery-and-support-commands",
+    "actionId": "review-explore"
+  },
+  "authorConclusion": null,
+  "reviewerVerdict": "approved",
+  "verificationVerdict": null,
+  "nextBoundary": "propose",
+  "facts": {
+    "reviewedRunId": "20260930-014-explore",
+    "reviewedExplore": {
+      "path": "openspec/changes/expose-stable-delivery-and-support-commands/explore.md",
+      "sha256": "8e1f1b5cda524a158a69fea83acaed5d9861c58a5803124cab747e4611e3fd19"
+    },
+    "currentStep": "独立审查 Owner 重启后的 B Explore，核对真实执行模型修正、当前 CLI 缺口、源码边界和 Proposal 准备度。旧 B 尝试的 Review/Proposal 不作为当前批准链。",
+    "evidence": [
+      "当前 branch 为 delivery/20260929-07-bootstrap-execution-and-skill-hardening，HEAD 为 A checkpoint 146cf0d77289c997e2ce6d5ce2b1c68416b0034f。外部 Stable manager status/next 指向新 014 terminal Explore 后的 review-explore；doctor 使用其封闭两字段请求读回 pass，OpenSpec runtime 1.10.0。",
+      "实际 read_thread 读取 Author 聊天 01a0f01a-9adc-7180-93b6-594f469ad8d4，确认 Owner 已明确 Agent 识别指令、Flowkit 执行命令的分工，并要求保存当前尝试到分支、回到 A checkpoint 重启 B。当前 codex/d07-b-failed-attempt-snapshot 指向 69320101501c217e9cdd7a90fe937be25b559a15，旧 021 review-propose/result.json 对象在该快照可读。",
+      "新 Explore、OpenSpec metadata 和 manifest SHA-256 与 014 Result 一致；6 个 proofRef 的归属、bytes、SHA-256、regular file/no-link 和当前 managed-evidence Git 属性检查均通过。两个 handoff evidenceRefs 均对应 014 已声明材料。",
+      "command.json 声明的 built CLI SHA-256、9 个 sourceRefs，以及 source-boundary.json 的 10 个源文件身份和 markers 均与当前 bytes 匹配。",
+      "独立运行同一候选 CLI --help 返回 0，列出 status/next/doctor/action start/action finish/proof inspect；delivery start --input .tmp/d07-b-restart-query.json 返回 invalid-arguments，Node 实际退出码由 LASTEXITCODE 确认为 2。该探针证明 B 命令缺口，不是未来实现验收。",
+      "直接核对源码：OwnerAuthorityFact 校验形状/身份/scope，不认证聊天；Git reader 由宿主提供真实 Owner 输入。Start 的 writeManifest create-once/prestate、Full Test attempt/current 发布、Archive 的隔离收敛/检查与可信 reviewed candidate 保持独立职责。Explore 对 Agent 来源责任、CLI 校验责任及失败读回的描述与这些事实一致。",
+      "D07 规划第 7 节覆盖 Project/Start/Change/Memo/Archive/Full Test/Final/Git 固定入口；本 Explore 保留 C/D/F/E 分界，无聊天监听器、自动 Review、自动下一步或通用 workflow。git diff --check exit 0。"
+    ],
+    "findings": [],
+    "complexityMinimality": "以同一发行入口包装已有领域操作，由 Agent 对真实 Owner 指令和来源负责，CLI 校验精确输入、当前状态和机械效果。无需新增聊天传输协议、严格自然语言触发词、Owner Registry、通用宿主插件或第二套生命周期；该方向是 Owner 修正后实现固定命令目标的最小边界。",
+    "newContentScopeDrift": "未发现当前 Explore 超出 Owner 修正和 D07 B 规划。当前序号、路径、CLI 命令表仅为观察事实。旧 B 的 Codex relay/FLOWKIT_OWNER_V1 方案不进入新批准链，也不作为本轮额外验收要求。",
+    "proposalHandoff": [
+      "将 Agent 提供真实 Owner 来源与精确操作决定的责任写清；CLI 的形状/目标/Policy 校验不能被描述为独立认证聊天。无需恢复旧 relay 或固定聊天措辞。",
+      "按各操作冻结封闭请求/结果和已有 domain 的固定接线，尤其区分尚无 Delivery 的 project-init 与 Delivery Owner fact；不让 Agent 再实现生命周期 callback。",
+      "保留 activation 与首个 Explore 的区别、Full Test 新运行与重复调用边界、Archive 实际检查/partial 读回、Final 确认以及 Git 独立 scope/index/object/remote 核验；Proposal 以有界负例和当前实现验收具体化。"
+    ],
+    "limitations": "本次只批准 Explore 的事实和最小 Proposal 方向。真实 B 命令尚未实现；Archive 可执行环境、逐操作请求与失败合同仍须在 Proposal 具体化并在 Apply 验证。本次不是 Formal Full Test、Final、Git 或实现验收。",
+    "proofRefs": [],
+    "handoff": {
+      "summary": "重启后的 B review-explore approved，可进入 propose；按 Agent 识别真实 Owner 意图、Flowkit 校验并执行固定机械操作的分工收敛。",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-09-30:backup-branch-then-restart-b",
+          "summary": "当前 manifest/014 绑定的重启决定：保留旧尝试，返回 A checkpoint 后重做 B Explore；本轮已核对实际聊天与备份分支。"
+        },
+        {
+          "sourceRef": "codex-chat:01a0f01a-9adc-7180-93b6-594f469ad8d4:01a0f2d1-71fe-7b83-bd80-219c5fab951c",
+          "summary": "Owner 明确指令由 Agent 识别、最终命令由 Flowkit 执行，以消除临时 Node/Python 生命周期程序。"
+        },
+        {
+          "sourceRef": "codex-chat:01a0f01a-9adc-7180-93b6-594f469ad8d4:01a0f2e0-f2ae-72c1-ad27-73fb3f988a64",
+          "summary": "Owner 指向保存当前尝试为查看用分支、回到 A checkpoint 重新开始；随后说明 B 正确实现后再删除备份。此引用不授权本 Reviewer 删除分支。"
+        }
+      ],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20260930-014-explore",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-delivery-and-support-commands/proof/20260930-014-explore/command.json"
+        },
+        {
+          "sourceRunId": "20260930-014-explore",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-delivery-and-support-commands/proof/20260930-014-explore/source-boundary.json"
+        }
+      ]
+    }
+  }
+}

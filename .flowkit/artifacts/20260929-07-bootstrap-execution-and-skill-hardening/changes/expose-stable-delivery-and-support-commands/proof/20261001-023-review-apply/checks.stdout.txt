@@ -1,0 +1,94 @@
+TAP version 13
+# Subtest: archive finish reads trusted completed coordination after isolated preparation
+ok 1 - archive finish reads trusted completed coordination after isolated preparation
+  ---
+  duration_ms: 7791.9144
+  type: 'test'
+  ...
+# Subtest: Propose preparation does not require artifacts that this Action must create
+ok 2 - Propose preparation does not require artifacts that this Action must create
+  ---
+  duration_ms: 26.2575
+  type: 'test'
+  ...
+# Subtest: archive machine preparation blocks candidate drift and unsuccessful isolated convergence
+ok 3 - archive machine preparation blocks candidate drift and unsuccessful isolated convergence
+  ---
+  duration_ms: 4660.3778
+  type: 'test'
+  ...
+# Subtest: archive refuses an incomplete competing Run before changing OpenSpec
+ok 4 - archive refuses an incomplete competing Run before changing OpenSpec
+  ---
+  duration_ms: 7501.338
+  type: 'test'
+  ...
+# Subtest: archive date follows the host calendar across a UTC date boundary
+ok 5 - archive date follows the host calendar across a UTC date boundary
+  ---
+  duration_ms: 4.2414
+  type: 'test'
+  ...
+# Subtest: each fixed support command parses its exact visible prefix
+ok 6 - each fixed support command parses its exact visible prefix
+  ---
+  duration_ms: 1.123
+  type: 'test'
+  ...
+# Subtest: support parser rejects target conflict, executable fields, and missing Owner fact
+ok 7 - support parser rejects target conflict, executable fields, and missing Owner fact
+  ---
+  duration_ms: 1.2531
+  type: 'test'
+  ...
+# Subtest: activation patches one state and appends the exact Owner fact
+ok 8 - activation patches one state and appends the exact Owner fact
+  ---
+  duration_ms: 57.909
+  type: 'test'
+  ...
+# Subtest: Memo write checks Owner scope before changing project Memo state
+ok 9 - Memo write checks Owner scope before changing project Memo state
+  ---
+  duration_ms: 18.3688
+  type: 'test'
+  ...
+# Subtest: Delivery Start reuses identical bytes and rejects conflicting plan content
+ok 10 - Delivery Start reuses identical bytes and rejects conflicting plan content
+  ---
+  duration_ms: 197.5531
+  type: 'test'
+  ...
+# Subtest: fixed Full Test request retries are read-only and a new attempt needs distinct Owner fact
+ok 11 - fixed Full Test request retries are read-only and a new attempt needs distinct Owner fact
+  ---
+  duration_ms: 4247.3423
+  type: 'test'
+  ...
+# Subtest: fixed checkpoint requires the matching Owner operation and commits only scoped paths
+ok 12 - fixed checkpoint requires the matching Owner operation and commits only scoped paths
+  ---
+  duration_ms: 7994.6911
+  type: 'test'
+  ...
+# Subtest: Change push accepts its own Owner fact and ready checkpoint policy
+ok 13 - Change push accepts its own Owner fact and ready checkpoint policy
+  ---
+  duration_ms: 2592.9794
+  type: 'test'
+  ...
+# Subtest: fixed Integration preserves pending checkpoint and confirms externally accepted ref
+ok 14 - fixed Integration preserves pending checkpoint and confirms externally accepted ref
+  ---
+  duration_ms: 8840.6029
+  type: 'test'
+  ...
+1..14
+# tests 14
+# suites 0
+# pass 14
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 11210.691
