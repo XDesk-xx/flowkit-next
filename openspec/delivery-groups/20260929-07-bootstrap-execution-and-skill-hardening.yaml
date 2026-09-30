@@ -1,0 +1,72 @@
+id: "20260929-07-bootstrap-execution-and-skill-hardening"
+projectId: "flowkit-next"
+createdAt: "2026-09-30"
+branch: "delivery/20260929-07-bootstrap-execution-and-skill-hardening"
+base: "main"
+goal: "以固定发行入口、Skills 收敛和 Bootstrap 验收修复旧 Flowkit 标准操作，并解决合法 prepared Run proof 的 managed Change checkpoint 兼容缺口。"
+planningReference:
+  artifact: "docs/D07-bootstrap-execution-and-skill-hardening-plan.md"
+  contentSha256: "e4200d1b9681f9e9d24d064f2fe215cd54d92088d2e21908a18c5a74d3ade399"
+delivery:
+  state: active
+  fullTestStatus: pending
+  finalizationStatus: pending
+changes:
+  - id: "expose-stable-action-and-record-commands"
+    group: "action-execution"
+    goal: "提供标准 Action 开始、结束、记录和 prepared Owner correction 的固定受控入口，保留跨进程身份与真实结果接纳。"
+    required: true
+    dependsOn: []
+    state: planned
+  - id: "expose-stable-delivery-and-support-commands"
+    group: "delivery-operations"
+    goal: "为 Project/Delivery/Change/Memo/Archive/Full Test/Final/Git 辅助操作提供固定受控入口，避免标准操作依赖临时生命周期程序。"
+    required: true
+    dependsOn: ["expose-stable-action-and-record-commands"]
+    state: planned
+  - id: "converge-owned-skills-on-supported-commands"
+    group: "agent-guidance"
+    goal: "同步收敛自有 Skills、HOW、示例和接入说明，使发行指令与已支持命令一致并保留角色及证据方法。"
+    required: true
+    dependsOn: ["expose-stable-action-and-record-commands", "expose-stable-delivery-and-support-commands"]
+    state: planned
+  - id: "enforce-typed-evidence-and-bounded-execution"
+    group: "engineering-quality"
+    goal: "约束新增 TypeScript 入口、证据与临时材料用途，并以窄权限方式执行固定命令，不扩大宿主解释器授权。"
+    required: true
+    dependsOn: ["expose-stable-action-and-record-commands", "expose-stable-delivery-and-support-commands", "converge-owned-skills-on-supported-commands"]
+    state: planned
+  - id: "admit-canonical-prepared-proof-at-checkpoint"
+    group: "evidence-checkpoint"
+    goal: "只在完整 canonical Run 链证明合法 supersession 或 continuation 后，接纳 prepared owner 的真实 proof 首次进入 managed Change checkpoint。"
+    required: true
+    dependsOn: ["expose-stable-delivery-and-support-commands"]
+    state: planned
+  - id: "validate-and-freeze-bootstrap-manager"
+    group: "release-acceptance"
+    goal: "验证独立安装、真实新目标与新会话、端到端流程和发行资产一致性，形成可供后续明确选择的 manager 候选。"
+    required: true
+    dependsOn: ["converge-owned-skills-on-supported-commands", "enforce-typed-evidence-and-bounded-execution", "admit-canonical-prepared-proof-at-checkpoint"]
+    state: planned
+ownerDecisions:
+  - ref: "owner:1b8ae722c80b605680a484d63de0f6f2a21d77e5e8755b981a812f873ad3d875"
+    decision: "create-delivery"
+    deliveryId: "20260929-07-bootstrap-execution-and-skill-hardening"
+    sourceRef: "owner-input:2026-09-30:d07-start-two-issues"
+    scope: ["delivery-start", "git-create-delivery-branch"]
+reference:
+  kind: "owner-selected-delivery-plan"
+  artifact: "docs/D07-bootstrap-execution-and-skill-hardening-plan.md"
+scope:
+  included:
+    - "六个 required Change，启动时全部 planned；固定操作入口、Skills/Bootstrap 和 prepared proof checkpoint 兼容修复均须完成。"
+    - "F 保留历史 Run/Proof 原始字节，复用 canonical Run-chain 与 Policy edge，并维持 proof SHA/bytes 和 Git index 校验。"
+  excluded:
+    - "本次 Start 激活 Change、分配 projectOrdinal/Run、执行 Explore/Proposal/Apply/Review、Full Test 或 Final。"
+    - "本次 Start 提交、推送、合并、部署或将候选安装切换为管理本 Delivery 的 Stable manager。"
+    - "重写 LearningPlatform 的真实 Run/Proof、降低 prepared tip/fork/非法 edge 拒绝规则，或扩大全局 Node/Python 授权。"
+bootstrap:
+  mode: "fixed-external-manager"
+  stableSourceCommit: "ff00e08456a7c8d6019555130255204b566988d2"
+  managerPackageSha256: "256d47d63fc733d97d9fe8fb629c6cb14382a45f225d1c5e565153c0178d06b4"
+  note: "本次使用 D06 exact Final 安装执行 Start；当前候选源码和构建产物不接管 D07。"
