@@ -1,0 +1,43 @@
+{
+  "runId": "20260930-002-review-explore",
+  "actionIdentity": {
+    "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+    "changeId": "expose-stable-action-and-record-commands",
+    "actionId": "review-explore"
+  },
+  "authorConclusion": null,
+  "reviewerVerdict": "approved",
+  "verificationVerdict": null,
+  "nextBoundary": "propose",
+  "facts": {
+    "reviewedRunId": "20260930-001-explore",
+    "reviewedArtifact": "openspec/changes/expose-stable-action-and-record-commands/explore.md",
+    "reviewedSha256": "18f251071259e8be3e084846293b3341d06a9d0e30745a06259c36dcd274e2c3",
+    "currentStep": "Independently reviewed the exact proof Explore for truth, bounded evidence, and Proposal readiness.",
+    "decisiveFacts": [
+      "Stable manager status/next selected terminal Explore and review-explore; installed Review Guidance was read.",
+      "Explore hash and all six declared proof byte counts and SHA-256 values matched; the recorded partial probe returned run-chain-invalid.",
+      "Current CLI supports status/next/doctor only; source confirms manager-bound start, three-file read, Result admission, and prepared correction seams.",
+      "D07 Change A scope requires cross-process start/finish and proof handling; Explore keeps B/C/F and release acceptance in later Changes."
+    ],
+    "findings": [],
+    "complexityMinimality": "Approved. Reuses current manager Run, Policy, Guidance, and admission seams; proposed descriptor and partial handling are bounded, with no new registry or lifecycle state.",
+    "newContentScopeDrift": "None. Descriptor format, failure order, and duplicate finish behavior are required details of Change A; Explore does not claim they have been implemented or accepted.",
+    "limitations": "Read-only partial probe and source inspection establish the present gap; they do not prove a completed two-process CLI workflow or Apply acceptance.",
+    "handoff": {
+      "summary": "Proposal must fix the descriptor format, trusted cross-process reconstruction, partial and duplicate finish outcomes, and exact A/B/C/F boundaries.",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-09-30:activate-first-change:proof-explore",
+          "summary": "First D07 Change activated for proof Explore."
+        }
+      ],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20260930-001-explore",
+          "path": "openspec/changes/expose-stable-action-and-record-commands/explore.md"
+        }
+      ]
+    }
+  }
+}

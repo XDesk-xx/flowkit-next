@@ -1,0 +1,142 @@
+{
+  "runId": "20260930-011-revise-apply",
+  "actionIdentity": {
+    "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+    "changeId": "expose-stable-action-and-record-commands",
+    "actionId": "revise-apply"
+  },
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-apply",
+  "facts": {
+    "reviewedRunId": "20260930-010-review-apply",
+    "ancestorApplyRunId": "20260930-009-apply",
+    "addressedFindings": [
+      {
+        "id": "D07-A-RA-001",
+        "resolution": "Archive preparation selects nonempty Agent-declared applicable checks from the target's existing package scripts or exact configured verification commands, runs them after isolated convergence, and rejects missing, ambiguous, changed or failed definitions. No test:domain requirement or fixed script allowlist remains. A target without package.json or node_modules uses a configured Git check against the converged archive marker."
+      }
+    ],
+    "summary": "Removed Flowkit-specific archive check selection and runner assumptions; selected target-configured applicable checks now execute after isolated convergence and fail closed on missing, ambiguous, changed or failed definitions.",
+    "artifactHashes": {
+      "README.md": "0ac00d934b4e01496ae71587cff6e564ae3d32ef3716b2a18e774398234f29a6",
+      "docs/onboarding.md": "4216145343492e31412bb561c47ca317e2e6427ade887357896f1e022ae49608",
+      "openspec/changes/expose-stable-action-and-record-commands/tasks.md": "e8b27da2fdb6d1dcdde926ca7777907818130ce22078de0cd4916bfc656c7173",
+      "skills/actions/apply/SKILL.md": "7af0a2b3d2e88cf55c0ae39085f1516ed64b0b8c051adea716cf5241abade4d5",
+      "skills/actions/archive/SKILL.md": "3b21459ae3fcec7ed4a7e2747120471fe66e6a555288b021ba9d1f94002fcf9d",
+      "skills/actions/explore/SKILL.md": "f93b36b384d2f5e331e801fbd5a11c01677ecb7adc8ceb897f19d4266779f0b1",
+      "skills/actions/propose/SKILL.md": "6b7d55a14e15588783fbfe78035d336db85167be2a4a03a1ac359a59c1c74a20",
+      "skills/actions/review-apply/SKILL.md": "547fc0fb9fb940fb44f7a47679f024951b1a1540755b81be78bfe5e6b6d9a5a1",
+      "skills/actions/review-explore/SKILL.md": "60fb87365ca04b5b1a77c714d65d3015f4cb9f7444d148dfb4a26e2db27bdc2a",
+      "skills/actions/review-propose/SKILL.md": "8c7bccdcb8025e3c0f2c9e7cbada0c10562044952d478d5784274722962d3e95",
+      "skills/actions/revise-apply/SKILL.md": "98b802577da8a33d80a40a4564cbc27141355ebc9971c1566d0720921e784788",
+      "skills/actions/revise-explore/SKILL.md": "51481ca4749fa444e571370d56fb4971e68508e90a37c0b71dc8d08f71738447",
+      "skills/actions/revise-propose/SKILL.md": "c2589bf03172a0e1ca426dc253d8840099faa0f2ea97ba014c95997ba2f09501",
+      "src/cli/action-commands.ts": "58569487788ef971bba0534a748150d82b6c1bb3d93574de3d9ae1ac1ae04e7c",
+      "src/cli/action-descriptor.ts": "8e519227383c6f80b61e87f2c8d73d0bd0fb334da215a81dc15eed4a4dee9bbe",
+      "src/cli/action-error.ts": "ebb9e855bb715774f2a36a0f99ecd4ad9397697ca9fe231155e4931bd4fec4a2",
+      "src/cli/action-proof.ts": "97353520f5e241efadbbc900cbed640be6097a264857b4013e73ac94273fa977",
+      "src/cli/action-readiness.ts": "ac06d1d8a2f1523f1aaaa19195804425477f5940338b22b613f94393c4842faf",
+      "src/cli/action-request.ts": "3c2f7489813f7a384ae9cde2f699de22c98fca853606f5fe5da1a93346b396cf",
+      "src/cli/entrypoint.ts": "3f7b077e5cf5394aafc7fc08e7929c1209888049fe331155ca1b56af6e20f86e",
+      "src/cli/request.ts": "85ba3d28c3da4efa744300fe8172c4b22a8836e252e310f4162f009818548490",
+      "src/domain/canonical-action-run-start.ts": "cad544e49f54e921c7f1c7a128745fd5e768af1f9fea29162a8380a5729a67a5",
+      "tests/fixtures/legacy-agent-how.md": "2ed10aa011c899d451a787a2da1ae3e50a7db7d720a6af648bd2379e5b45c58d",
+      "tests/unit/domain/action-archive-cli.test.ts": "c090f038878d8b576770da94e1e2b5dbd07c148cc3c7555b8688a29c42d5b8d8",
+      "tests/unit/domain/action-archive-readiness.test.ts": "24141d3349a24bc0be82bce0a376ea2551d81e97fbdd730987cee8a27b1efcbc",
+      "tests/unit/domain/action-command-cli.test.ts": "2c95ed13d62f8bf4214ea116acdc26a95e18516a489a053e8cacb5cb4a50650f",
+      "tests/unit/domain/action-command-request.test.ts": "ac99a8b958a36b5f5c7e1391d09473af3a7117604ae428b299126c132ae1e6c2",
+      "tests/unit/domain/agent-how-fixture.ts": "bc4edf3082fa1897b7e6b0022bc1f4409e7750d11b6ae9a6115a4ead9eb71ffa",
+      "tests/unit/domain/agent-how-record.test.ts": "8faf1fe3dd8c4c6e174e5ed52ae026f1afa6d01f9a66241feeec443c4854d976",
+      "tests/unit/domain/author-action-guidance.test.ts": "6abfeb737883d0fa635b03f35938e859a7ccb915b89115c958c18853eef69ded"
+    },
+    "revisedArtifactHashes": {
+      "docs/onboarding.md": "4216145343492e31412bb561c47ca317e2e6427ade887357896f1e022ae49608",
+      "skills/actions/archive/SKILL.md": "3b21459ae3fcec7ed4a7e2747120471fe66e6a555288b021ba9d1f94002fcf9d",
+      "src/cli/action-readiness.ts": "ac06d1d8a2f1523f1aaaa19195804425477f5940338b22b613f94393c4842faf",
+      "tests/unit/domain/action-archive-cli.test.ts": "c090f038878d8b576770da94e1e2b5dbd07c148cc3c7555b8688a29c42d5b8d8",
+      "tests/unit/domain/action-archive-readiness.test.ts": "24141d3349a24bc0be82bce0a376ea2551d81e97fbdd730987cee8a27b1efcbc"
+    },
+    "checks": [
+      {
+        "command": "node --import tsx --test tests/unit/domain/action-archive-readiness.test.ts tests/unit/domain/action-archive-cli.test.ts",
+        "exitCode": 0,
+        "result": "3 passed; non-Node configured check, other configured script, missing/failed check, and no-Run-on-rejection covered"
+      },
+      {
+        "command": "pnpm test:domain",
+        "exitCode": 0,
+        "result": "352 passed, 0 failed"
+      },
+      {
+        "command": "pnpm test:acceptance",
+        "exitCode": 0,
+        "result": "7 passed, 0 failed"
+      },
+      {
+        "command": "pnpm typecheck",
+        "exitCode": 0
+      },
+      {
+        "command": "pnpm quality:gate",
+        "exitCode": 0
+      },
+      {
+        "command": "pnpm quality:dependency-health",
+        "exitCode": 0,
+        "result": "159 modules, 923 dependencies"
+      },
+      {
+        "command": "pnpm quality:entropy",
+        "exitCode": 0,
+        "result": "65/65 production modules reachable"
+      },
+      {
+        "command": "pnpm check:forbidden-tracked-artifacts",
+        "exitCode": 0
+      },
+      {
+        "command": "pnpm build",
+        "exitCode": 0
+      },
+      {
+        "command": "npm pack --dry-run --json",
+        "exitCode": 0,
+        "result": "skills/actions/archive/SKILL.md included"
+      },
+      {
+        "command": "node C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js validate expose-stable-action-and-record-commands --strict",
+        "exitCode": 0,
+        "result": "Change is valid"
+      },
+      {
+        "command": "git diff --check",
+        "exitCode": 0
+      }
+    ],
+    "limitations": "This is current Author revision evidence, not an independent Reviewer verdict or Formal Full Test. Review010 recorded one earlier 351/1 domain run followed by 352/0; that earlier intermittent failure was not reproduced or root-caused here, so no stability claim is made. No Git operation or Stable manager replacement was performed.",
+    "complexityMinimality": "Changed only the archive readiness seam, its two direct tests, Archive HOW and onboarding text; no new registry, workflow state, or B/C/F scope.",
+    "proofRefs": [
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-action-and-record-commands/proof/20260930-011-revise-apply/revision-evidence.json",
+        "bytes": 2505,
+        "sha256": "3a77f4354ea4f6f144401236053347994d45d7b441ff1b476d5374712b0a6206",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "expose-stable-action-and-record-commands",
+        "runId": "20260930-011-revise-apply",
+        "purpose": "revise-apply-finding-correction"
+      }
+    ],
+    "handoff": {
+      "summary": "Independent review-apply should recheck D07-A-RA-001 against approved design, the five-path delta and cumulative 30-path candidate; prior Apply/Review Runs remain immutable.",
+      "ownerDecisions": [],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20260930-011-revise-apply",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-action-and-record-commands/proof/20260930-011-revise-apply/revision-evidence.json"
+        }
+      ]
+    }
+  }
+}

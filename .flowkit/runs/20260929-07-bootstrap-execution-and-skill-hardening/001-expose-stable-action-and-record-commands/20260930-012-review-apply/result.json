@@ -1,0 +1,39 @@
+{
+  "runId": "20260930-012-review-apply",
+  "actionIdentity": {
+    "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+    "changeId": "expose-stable-action-and-record-commands",
+    "actionId": "review-apply"
+  },
+  "authorConclusion": null,
+  "reviewerVerdict": "approved",
+  "verificationVerdict": null,
+  "nextBoundary": "archive",
+  "facts": {
+    "reviewedRunId": "20260930-011-revise-apply",
+    "approvedProposalRunId": "20260930-008-review-propose",
+    "currentStep": "独立复审 011 对 010 的 D07-A-RA-001 修订，核对已批准合同、五路径修订、累计候选身份、实际测试与范围。",
+    "evidence": [
+      "011 声明的 30 个累计候选路径 SHA-256 均与当前 bytes 一致；相对 009 的修订限于 docs/onboarding.md、skills/actions/archive/SKILL.md、src/cli/action-readiness.ts 与两个直接归档测试。",
+      "approved design.md:33-35 要求 archive 在隔离 canonical convergence 后运行目标实际适用且已配置的检查；当前 action-readiness.ts:320-409 从目标 package.json script 或 config/verification/full-test.json check 解析 Agent 声明，拒绝未配置、歧义与配置漂移，不再强制 test:domain 或固定 pnpm 白名单。",
+      "action-readiness.ts:619-643 在隔离收敛后执行所选检查并对失败写前阻断；直接测试覆盖其他已配置脚本、无 package.json/node_modules 的 Git 检查、缺失及失败检查。",
+      "011 修订 proof revision-evidence.json 2505 bytes，SHA-256 3a77f4354ea4f6f144401236053347994d45d7b441ff1b476d5374712b0a6206 与声明相符；git diff --check exit 0。",
+      "Reviewer 独立运行 pnpm typecheck exit 0；pnpm test:domain exit 0，352 passed、0 failed。"
+    ],
+    "findings": [],
+    "complexityMinimality": "修订复用现有目标配置、隔离 scratch、managed OpenSpec 与 Full Test 路径/程序解析器；五路径变更直接对应既有 finding，未引入新 registry、lifecycle state 或通用执行平台。",
+    "newContentScopeDrift": "未见超出已批准 A 合同的 B/C/F 功能扩张；归档检查入口从固定 Flowkit 脚本收敛到目标配置和本次 Agent 适用性声明。",
+    "limitations": "本次独立测试通过；010 曾有一次 351/1 后复跑 352/0 的间歇失败，其原因尚未定位，因此不宣称完整稳定性或 Formal Full Test。Reviewer 未修改 Author production artifacts/tests，也未执行 Git checkpoint。",
+    "proofRefs": [],
+    "handoff": {
+      "summary": "D07-A-RA-001 已修复，本次 review-apply approved；后续合法边界由 Stable manager 独立读回，archive 仍须单独按其 Action 执行。",
+      "ownerDecisions": [],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20260930-011-revise-apply",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-action-and-record-commands/proof/20260930-011-revise-apply/revision-evidence.json"
+        }
+      ]
+    }
+  }
+}

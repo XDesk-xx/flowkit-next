@@ -8,7 +8,7 @@ Flowkit 是面向 Agent 的轻量流程管理软件：OpenSpec 管理 Change 与
 
 manager 拥有发行代码、系统 Skills、工具 HOW/vendor 与 lock；target 拥有业务代码、OpenSpec、Run、必要证据和测试配置；FLOWKIT_HOME/tools 单独提供 executable runtime。target 不复制 Flowkit 开发依赖、Skills 或长期胶水。安装路径不是生命周期身份。
 
-CLI 仅提供 `status / next / doctor --input <request.json>`。请求包含 repositoryRoot、flowkitHome，可选 deliveryId/changeId；当前记录来自唯一有效 Run 链，不接受 currentRunId/changeStartSequence。doctor 成功不意味着已激活 Change。
+CLI 查询入口为 `status / next / doctor --input <request.json>`；单次 Action 的固定记录入口为 `action start`、`action finish` 和 `proof inspect --input <request.json|->`。查询从唯一有效 Run 链解析 current；写入口从当前 Policy、安装 Guidance 与 target 事实生成 Run，不接受 caller 自填 currentRunId/changeStartSequence、ActionPackage 或可执行代码。doctor 成功不意味着已激活 Change。
 
 收到阶段指令后，Agent 核对 target、实际 Role、安装来源和查询边界，再读安装内 `skills/actions/<actionId>/SKILL.md`。歧义、blocked、partial、bootstrap-history、角色或阶段冲突先报告并停止。只问下一步不执行 Action；Author 不自审。
 
@@ -21,7 +21,7 @@ CLI 仅提供 `status / next / doctor --input <request.json>`。请求包含 rep
 - Git：版本、分支、提交和历史；在独立授权节点调用，PASS 或 Final 不自动授权 commit/push/merge。
 - Skills：改善已确定操作的 HOW；Memo：仅保留未来重议事项，不自动成为需求。
 
-不提供 Registry、模型平台、自动 Author/Reviewer 循环或证据平台。D05 自身按 Owner 授权的 independent-bootstrap 开发，不让 candidate 安装接管管理自己。
+不提供 Registry、模型平台、自动 Author/Reviewer 循环或证据平台。D07 候选的 Action 写入口仅在独立 target 验收；当前 Delivery 仍由此前 Owner 授权的 exact Stable manager 管理，候选不接管自身。
 
 ## 测试与执行材料
 

@@ -1,0 +1,95 @@
+{
+  "runId": "20260930-013-archive",
+  "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+  "changeId": "expose-stable-action-and-record-commands",
+  "projectOrdinal": 44,
+  "archivePath": "openspec/changes/archive/2026-09-30-044-expose-stable-action-and-record-commands",
+  "sourceRemoval": "openspec/changes/expose-stable-action-and-record-commands",
+  "reviewedRunId": "20260930-012-review-apply",
+  "authorRunId": "20260930-011-revise-apply",
+  "openSpec": {
+    "change": "expose-stable-action-and-record-commands",
+    "archivedAs": "2026-09-30-expose-stable-action-and-record-commands",
+    "path": "D:\\Projects\\flowkit-next\\openspec\\changes\\archive\\2026-09-30-expose-stable-action-and-record-commands",
+    "specsUpdated": true,
+    "totals": {
+      "added": 7,
+      "modified": 5,
+      "removed": 0,
+      "renamed": 0
+    }
+  },
+  "preflight": {
+    "checks": [
+      {
+        "command": "pnpm run build",
+        "exitCode": 0,
+        "stdoutBytes": 0,
+        "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrBytes": 36,
+        "stderrSha256": "8f5c6a9c4aade0d032984516a14b38a2d12cb1e6b333ab3568f9dde2ba3e3470"
+      },
+      {
+        "command": "pnpm run test:domain",
+        "exitCode": 0,
+        "stdoutBytes": 74612,
+        "stdoutSha256": "02cd747d585d6446da2e09c72d7cdb577b2a426d83fef1b1aa5e8ab46959d1e0",
+        "stderrBytes": 55,
+        "stderrSha256": "aae00296a00317fb5d8157cc46c908dd4c7bfd3ac1d52b647091d4c256ef13c6"
+      },
+      {
+        "command": "pnpm run test:acceptance",
+        "exitCode": 0,
+        "stdoutBytes": 1708,
+        "stdoutSha256": "b9451c852d040867e4243d14289ec69a4f6aaf0e1df17c06ab182860aedc5dad",
+        "stderrBytes": 54,
+        "stderrSha256": "03a28f841eea36c0ec13f6dea3ea69c782e389ad940fcfaf6d419d0e4fff319b"
+      },
+      {
+        "command": "pnpm run typecheck",
+        "exitCode": 0,
+        "stdoutBytes": 0,
+        "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrBytes": 15,
+        "stderrSha256": "8366207267355d3e3d5bf3bf6e8c94c5f93f6078c34f08973fa2b38cdda6cc92"
+      },
+      {
+        "command": "pnpm run quality:gate",
+        "exitCode": 0,
+        "stdoutBytes": 66,
+        "stdoutSha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20",
+        "stderrBytes": 192,
+        "stderrSha256": "9ccaf1b94533f97d77e53271cbcbe105b2181b73bdcdc804c213feb0145b94f3"
+      },
+      {
+        "command": "pnpm run quality:dependency-health",
+        "exitCode": 0,
+        "stdoutBytes": 80,
+        "stdoutSha256": "a0007d87daffd8d8a6830d168d78cd93f52a6dc7ffd1696780470c28c24d8d87",
+        "stderrBytes": 79,
+        "stderrSha256": "fa9ba6bb542e83e254b5bae92765b5ba9e0505c12e1e49f6c11dbf41c51f8775"
+      },
+      {
+        "command": "pnpm run quality:entropy",
+        "exitCode": 0,
+        "stdoutBytes": 64,
+        "stdoutSha256": "398712749b3b36df0e31fd5e18ea1244c4390092414c812fb6dd3f0eb444b2ee",
+        "stderrBytes": 49,
+        "stderrSha256": "7db8734f9a79ab0e050617ecdfb19b5819eb70b528b921de90840d1c8efe0973"
+      }
+    ],
+    "specHashes": {
+      "action-guidance-execution": "1366f3825ae1fb74c0833a102eedc8a3a650c2af991d1d2ab2a2703d96a190ef",
+      "foundation-cli-surface": "9cec0d9fecd855436bd7da3d54680dee30abe9abedbd0d29b9a71bbae8c1966a",
+      "run-result-persistence": "a35e1006412e360eb07bc7b555f66614941e6efc53938bef7781dbfa8e76b94c",
+      "stable-action-command-execution": "d31ada3c4194c339e5114a4c711f6b437630135c268ade65b2e32ca9317cba7c"
+    },
+    "completedManifestSha256": "393742d77eead8f5f9aad8fb7014c8b88cda268e84ebc09e3fbfbf36a3e6b949"
+  },
+  "postArchiveValidation": {
+    "command": "openspec validate --all --strict",
+    "exitCode": 0,
+    "stdoutSha256": "39bccce852f029a7d236468be892c13cc6cad76d81854843b50d6059bf470fe7",
+    "stderrSha256": "5bc31df123a2e521acdd2c0d9477b367feec506471a91065d0a6b32c09089ed5"
+  }
+}

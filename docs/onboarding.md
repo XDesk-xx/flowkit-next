@@ -60,7 +60,20 @@ node $cli next --input $requestFile
 
 已有 project/manifest/Run 先核对再复用，不复制开发仓库 D05 manifest、ordinal 或 Owner ref。首次 ordinal 无已赋值基线时，按既有 HOW 取得明确初始化决定；不从空目录、数组位置或测试样例推断没有历史。Start 不要求首个 commit/clean worktree，不内嵌 commit。正在用于 Start 的规划仍须可读，不能套用历史退役规则。
 
-接入、doctor PASS 均不产生 activation、Role、Review 或 Git 权限。CLI 只有 status/next/doctor，没有 `flowkit init/apply/review` 写命令。Action 分段文件操作由 canonical HOW 负责，这里不复制第二套 package/admission 实现。D05 软件自身仍用 independent-bootstrap，不借本入口自我接管。
+接入、doctor PASS 均不产生 activation、Role、Review 或 Git 权限。CLI 提供查询 `status/next/doctor` 与机械记录 `action start/finish`、`proof inspect`；没有执行 OpenSpec、编码、Review 或下一 Action 的命令。当前 Delivery 由已选定的外部 Stable manager 管理，候选包仅在独立 target 验收。
+
+固定 Action 记录使用同一个已选定安装的 `bin.flowkit`。在 `next` 确认 exact Action 后，Agent 先读取安装内 `skills/actions/<actionId>/SKILL.md`，再提交含 `repositoryRoot`、`flowkitHome`、`deliveryId`、`changeId`、exact `actionId`、实际 `role` 的 JSON：
+
+```powershell
+node $cli action start --input $startRequestFile
+# 仅 effect=started 时完成本次实际角色工作；runId 来自开始响应。
+node $cli proof inspect --input $proofRequestFile
+node $cli action finish --input $finishRequestFile
+node $cli status --input $queryRequestFile
+node $cli next --input $queryRequestFile
+```
+
+`proof inspect` 请求另含 `runId` 与受控 proof `path`；只有实际必要材料才调用。finish 请求含 `runId`、`role`、`terminal` 与真实 `RunResultRecord`。仅返回 `effect=confirmed` 才表示三文件和 canonical chain 已读回；这不代表业务 PASS。prepared Owner correction 仅由收到真实 Owner 指令的受信宿主在 start 请求中加入现有 `OwnerAuthorityFact`，finish 不再重填。archive start 另需非空 `applicableChecks: [{id,reason}]`，由 Agent 声明实际适用且已在 target `package.json` scripts 或 `config/verification/full-test.json` checks 中配置的检查；隔离 convergence 后执行，未配置或失败则阻断。Reviewer `rejected` 是可报告的真实判断，但当前固定 finish 会在 machine 文件写前拒绝其持久化并保持 incomplete；不得改写成 `changes-requested`。普通 Action 不需要新增 Owner fact，Review、Full Test 与 Git 边界仍独立。
 
 ## 4. 合并项目短入口
 

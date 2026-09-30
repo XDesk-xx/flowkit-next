@@ -1,0 +1,84 @@
+{
+  "runId": "20260930-001-explore",
+  "actionIdentity": {
+    "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+    "changeId": "expose-stable-action-and-record-commands",
+    "actionId": "explore"
+  },
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-explore",
+  "facts": {
+    "projectOrdinal": 44,
+    "summary": "Bounded proof isolates the cross-process Action start/finish gap: current start persists package fields, while read-only CLI rejects the partial Run and has no finish command.",
+    "exploreArtifact": "openspec/changes/expose-stable-action-and-record-commands/explore.md",
+    "exploreSha256": "18f251071259e8be3e084846293b3341d06a9d0e30745a06259c36dcd274e2c3",
+    "proofRefs": [
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-action-and-record-commands/proof/20260930-001-explore/status.stdout.txt",
+        "bytes": 126,
+        "sha256": "ba9cccc50fc374ed349c24440ed575234afe3cc57dacecdb78c6d2ba45c28457",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "expose-stable-action-and-record-commands",
+        "runId": "20260930-001-explore",
+        "purpose": "raw status diagnostic"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-action-and-record-commands/proof/20260930-001-explore/status.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "expose-stable-action-and-record-commands",
+        "runId": "20260930-001-explore",
+        "purpose": "raw status stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-action-and-record-commands/proof/20260930-001-explore/next.stdout.txt",
+        "bytes": 126,
+        "sha256": "ba9cccc50fc374ed349c24440ed575234afe3cc57dacecdb78c6d2ba45c28457",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "expose-stable-action-and-record-commands",
+        "runId": "20260930-001-explore",
+        "purpose": "raw next diagnostic"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-action-and-record-commands/proof/20260930-001-explore/next.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "expose-stable-action-and-record-commands",
+        "runId": "20260930-001-explore",
+        "purpose": "raw next stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-action-and-record-commands/proof/20260930-001-explore/command.json",
+        "bytes": 1224,
+        "sha256": "08d61fc6d72de739ffde378d1ae08604a8619c864d1e0858ff80aa4489d893bc",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "expose-stable-action-and-record-commands",
+        "runId": "20260930-001-explore",
+        "purpose": "exact read-only probe commands and exits"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-action-and-record-commands/proof/20260930-001-explore/request.json",
+        "bytes": 211,
+        "sha256": "39179c97e7671ad680c5354f119bbffd8887bdb3880c7d08324cc18714f733a7",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "expose-stable-action-and-record-commands",
+        "runId": "20260930-001-explore",
+        "purpose": "exact target request used by the probe"
+      }
+    ],
+    "handoff": {
+      "summary": "Independent review-explore should challenge the start descriptor, authority/readback, partial failure order, and A/B/C scope split; no implementation or Reviewer verdict claimed.",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-09-30:activate-first-change:proof-explore",
+          "summary": "Activate the first D07 Change and perform only Author proof Explore."
+        }
+      ],
+      "evidenceRefs": []
+    }
+  }
+}

@@ -221,8 +221,82 @@ export function parseFoundationCliRequestJson(text: string): unknown {
   if (Buffer.byteLength(text) > 65_536)
     fail("invalid-request-json", "request exceeds JSON limit");
   try {
+    assertNoDuplicateJsonKeys(text);
     return JSON.parse(text) as unknown;
   } catch (error) {
     fail("invalid-request-json", "request file is not valid JSON", error);
   }
+}
+
+function assertNoDuplicateJsonKeys(text: string): void {
+  let offset = 0;
+  const skip = () => {
+    while (/\s/.test(text[offset] ?? "") && offset < text.length) offset += 1;
+  };
+  const string = (): string => {
+    if (text[offset] !== '"') throw new Error("expected JSON string");
+    const start = offset++;
+    while (offset < text.length) {
+      if (text[offset] === "\\") {
+        offset += 2;
+        continue;
+      }
+      if (text[offset++] === '"')
+        return JSON.parse(text.slice(start, offset)) as string;
+    }
+    throw new Error("unterminated JSON string");
+  };
+  const value = (depth: number): void => {
+    if (depth > 32) throw new Error("JSON depth exceeded");
+    skip();
+    const first = text[offset];
+    if (first === "{") {
+      offset += 1;
+      skip();
+      const keys = new Set<string>();
+      if (text[offset] === "}") {
+        offset += 1;
+        return;
+      }
+      for (;;) {
+        const key = string();
+        if (keys.has(key)) throw new Error("duplicate JSON key");
+        keys.add(key);
+        skip();
+        if (text[offset++] !== ":") throw new Error("expected colon");
+        value(depth + 1);
+        skip();
+        const separator = text[offset++];
+        if (separator === "}") return;
+        if (separator !== ",") throw new Error("expected object separator");
+        skip();
+      }
+    }
+    if (first === "[") {
+      offset += 1;
+      skip();
+      if (text[offset] === "]") {
+        offset += 1;
+        return;
+      }
+      for (;;) {
+        value(depth + 1);
+        skip();
+        const separator = text[offset++];
+        if (separator === "]") return;
+        if (separator !== ",") throw new Error("expected array separator");
+      }
+    }
+    if (first === '"') {
+      string();
+      return;
+    }
+    const start = offset;
+    while (offset < text.length && !/[\s,}\]]/.test(text[offset])) offset += 1;
+    if (start === offset) throw new Error("expected JSON value");
+    JSON.parse(text.slice(start, offset));
+  };
+  value(0);
+  skip();
+  if (offset !== text.length) throw new Error("trailing JSON data");
 }

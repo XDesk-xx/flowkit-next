@@ -1,0 +1,492 @@
+{
+  "runId": "20260930-013-archive",
+  "actionIdentity": {
+    "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+    "changeId": "expose-stable-action-and-record-commands",
+    "actionId": "archive"
+  },
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": null,
+  "facts": {
+    "projectOrdinal": 44,
+    "changeStartSequence": 1,
+    "reviewedRunId": "20260930-012-review-apply",
+    "reviewedAuthorRunId": "20260930-011-revise-apply",
+    "archivePath": "openspec/changes/archive/2026-09-30-044-expose-stable-action-and-record-commands",
+    "sourceRemoval": "openspec/changes/expose-stable-action-and-record-commands",
+    "openSpec": {
+      "specsUpdated": true,
+      "added": 7,
+      "modified": 5,
+      "removed": 0,
+      "renamed": 0
+    },
+    "candidateFiles": [
+      {
+        "path": "README.md",
+        "bytes": 5076,
+        "sha256": "0ac00d934b4e01496ae71587cff6e564ae3d32ef3716b2a18e774398234f29a6"
+      },
+      {
+        "path": "docs/onboarding.md",
+        "bytes": 10745,
+        "sha256": "4216145343492e31412bb561c47ca317e2e6427ade887357896f1e022ae49608"
+      },
+      {
+        "path": "openspec/changes/archive/2026-09-30-044-expose-stable-action-and-record-commands/tasks.md",
+        "bytes": 3926,
+        "sha256": "e8b27da2fdb6d1dcdde926ca7777907818130ce22078de0cd4916bfc656c7173"
+      },
+      {
+        "path": "skills/actions/apply/SKILL.md",
+        "bytes": 8366,
+        "sha256": "7af0a2b3d2e88cf55c0ae39085f1516ed64b0b8c051adea716cf5241abade4d5"
+      },
+      {
+        "path": "skills/actions/archive/SKILL.md",
+        "bytes": 11503,
+        "sha256": "3b21459ae3fcec7ed4a7e2747120471fe66e6a555288b021ba9d1f94002fcf9d"
+      },
+      {
+        "path": "skills/actions/explore/SKILL.md",
+        "bytes": 11103,
+        "sha256": "f93b36b384d2f5e331e801fbd5a11c01677ecb7adc8ceb897f19d4266779f0b1"
+      },
+      {
+        "path": "skills/actions/propose/SKILL.md",
+        "bytes": 7859,
+        "sha256": "6b7d55a14e15588783fbfe78035d336db85167be2a4a03a1ac359a59c1c74a20"
+      },
+      {
+        "path": "skills/actions/review-apply/SKILL.md",
+        "bytes": 9056,
+        "sha256": "547fc0fb9fb940fb44f7a47679f024951b1a1540755b81be78bfe5e6b6d9a5a1"
+      },
+      {
+        "path": "skills/actions/review-explore/SKILL.md",
+        "bytes": 8974,
+        "sha256": "60fb87365ca04b5b1a77c714d65d3015f4cb9f7444d148dfb4a26e2db27bdc2a"
+      },
+      {
+        "path": "skills/actions/review-propose/SKILL.md",
+        "bytes": 9697,
+        "sha256": "8c7bccdcb8025e3c0f2c9e7cbada0c10562044952d478d5784274722962d3e95"
+      },
+      {
+        "path": "skills/actions/revise-apply/SKILL.md",
+        "bytes": 7443,
+        "sha256": "98b802577da8a33d80a40a4564cbc27141355ebc9971c1566d0720921e784788"
+      },
+      {
+        "path": "skills/actions/revise-explore/SKILL.md",
+        "bytes": 6643,
+        "sha256": "51481ca4749fa444e571370d56fb4971e68508e90a37c0b71dc8d08f71738447"
+      },
+      {
+        "path": "skills/actions/revise-propose/SKILL.md",
+        "bytes": 7099,
+        "sha256": "c2589bf03172a0e1ca426dc253d8840099faa0f2ea97ba014c95997ba2f09501"
+      },
+      {
+        "path": "src/cli/action-commands.ts",
+        "bytes": 20094,
+        "sha256": "58569487788ef971bba0534a748150d82b6c1bb3d93574de3d9ae1ac1ae04e7c"
+      },
+      {
+        "path": "src/cli/action-descriptor.ts",
+        "bytes": 2372,
+        "sha256": "8e519227383c6f80b61e87f2c8d73d0bd0fb334da215a81dc15eed4a4dee9bbe"
+      },
+      {
+        "path": "src/cli/action-error.ts",
+        "bytes": 415,
+        "sha256": "ebb9e855bb715774f2a36a0f99ecd4ad9397697ca9fe231155e4931bd4fec4a2"
+      },
+      {
+        "path": "src/cli/action-proof.ts",
+        "bytes": 3567,
+        "sha256": "97353520f5e241efadbbc900cbed640be6097a264857b4013e73ac94273fa977"
+      },
+      {
+        "path": "src/cli/action-readiness.ts",
+        "bytes": 19467,
+        "sha256": "ac06d1d8a2f1523f1aaaa19195804425477f5940338b22b613f94393c4842faf"
+      },
+      {
+        "path": "src/cli/action-request.ts",
+        "bytes": 7061,
+        "sha256": "3c2f7489813f7a384ae9cde2f699de22c98fca853606f5fe5da1a93346b396cf"
+      },
+      {
+        "path": "src/cli/entrypoint.ts",
+        "bytes": 5275,
+        "sha256": "3f7b077e5cf5394aafc7fc08e7929c1209888049fe331155ca1b56af6e20f86e"
+      },
+      {
+        "path": "src/cli/request.ts",
+        "bytes": 8721,
+        "sha256": "85ba3d28c3da4efa744300fe8172c4b22a8836e252e310f4162f009818548490"
+      },
+      {
+        "path": "src/domain/canonical-action-run-start.ts",
+        "bytes": 6745,
+        "sha256": "cad544e49f54e921c7f1c7a128745fd5e768af1f9fea29162a8380a5729a67a5"
+      },
+      {
+        "path": "tests/fixtures/legacy-agent-how.md",
+        "bytes": 4533,
+        "sha256": "2ed10aa011c899d451a787a2da1ae3e50a7db7d720a6af648bd2379e5b45c58d"
+      },
+      {
+        "path": "tests/unit/domain/action-archive-cli.test.ts",
+        "bytes": 6990,
+        "sha256": "c090f038878d8b576770da94e1e2b5dbd07c148cc3c7555b8688a29c42d5b8d8"
+      },
+      {
+        "path": "tests/unit/domain/action-archive-readiness.test.ts",
+        "bytes": 8303,
+        "sha256": "24141d3349a24bc0be82bce0a376ea2551d81e97fbdd730987cee8a27b1efcbc"
+      },
+      {
+        "path": "tests/unit/domain/action-command-cli.test.ts",
+        "bytes": 14701,
+        "sha256": "2c95ed13d62f8bf4214ea116acdc26a95e18516a489a053e8cacb5cb4a50650f"
+      },
+      {
+        "path": "tests/unit/domain/action-command-request.test.ts",
+        "bytes": 2445,
+        "sha256": "ac99a8b958a36b5f5c7e1391d09473af3a7117604ae428b299126c132ae1e6c2"
+      },
+      {
+        "path": "tests/unit/domain/agent-how-fixture.ts",
+        "bytes": 3261,
+        "sha256": "bc4edf3082fa1897b7e6b0022bc1f4409e7750d11b6ae9a6115a4ead9eb71ffa"
+      },
+      {
+        "path": "tests/unit/domain/agent-how-record.test.ts",
+        "bytes": 6243,
+        "sha256": "8faf1fe3dd8c4c6e174e5ed52ae026f1afa6d01f9a66241feeec443c4854d976"
+      },
+      {
+        "path": "tests/unit/domain/author-action-guidance.test.ts",
+        "bytes": 12066,
+        "sha256": "6abfeb737883d0fa635b03f35938e859a7ccb915b89115c958c18853eef69ded"
+      }
+    ],
+    "canonicalSpecRefs": [
+      {
+        "path": "openspec/specs/action-guidance-execution/spec.md",
+        "bytes": 17833,
+        "sha256": "1366f3825ae1fb74c0833a102eedc8a3a650c2af991d1d2ab2a2703d96a190ef"
+      },
+      {
+        "path": "openspec/specs/foundation-cli-surface/spec.md",
+        "bytes": 28434,
+        "sha256": "9cec0d9fecd855436bd7da3d54680dee30abe9abedbd0d29b9a71bbae8c1966a"
+      },
+      {
+        "path": "openspec/specs/run-result-persistence/spec.md",
+        "bytes": 14876,
+        "sha256": "a35e1006412e360eb07bc7b555f66614941e6efc53938bef7781dbfa8e76b94c"
+      },
+      {
+        "path": "openspec/specs/stable-action-command-execution/spec.md",
+        "bytes": 13729,
+        "sha256": "d31ada3c4194c339e5114a4c711f6b437630135c268ade65b2e32ca9317cba7c"
+      }
+    ],
+    "completion": {
+      "manifestPath": "openspec/delivery-groups/20260929-07-bootstrap-execution-and-skill-hardening.yaml",
+      "manifestSha256": "393742d77eead8f5f9aad8fb7014c8b88cda268e84ebc09e3fbfbf36a3e6b949",
+      "changeState": "completed"
+    },
+    "checks": [
+      {
+        "command": "managed OpenSpec isolated archive dry-run",
+        "outcome": "PASS",
+        "detail": "7 added and 5 modified requirements; four canonical spec hashes match materialization"
+      },
+      {
+        "command": "pnpm run build",
+        "outcome": "PASS",
+        "exitCode": 0,
+        "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrSha256": "8f5c6a9c4aade0d032984516a14b38a2d12cb1e6b333ab3568f9dde2ba3e3470"
+      },
+      {
+        "command": "pnpm run test:domain",
+        "outcome": "PASS",
+        "exitCode": 0,
+        "stdoutSha256": "02cd747d585d6446da2e09c72d7cdb577b2a426d83fef1b1aa5e8ab46959d1e0",
+        "stderrSha256": "aae00296a00317fb5d8157cc46c908dd4c7bfd3ac1d52b647091d4c256ef13c6"
+      },
+      {
+        "command": "pnpm run test:acceptance",
+        "outcome": "PASS",
+        "exitCode": 0,
+        "stdoutSha256": "b9451c852d040867e4243d14289ec69a4f6aaf0e1df17c06ab182860aedc5dad",
+        "stderrSha256": "03a28f841eea36c0ec13f6dea3ea69c782e389ad940fcfaf6d419d0e4fff319b"
+      },
+      {
+        "command": "pnpm run typecheck",
+        "outcome": "PASS",
+        "exitCode": 0,
+        "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrSha256": "8366207267355d3e3d5bf3bf6e8c94c5f93f6078c34f08973fa2b38cdda6cc92"
+      },
+      {
+        "command": "pnpm run quality:gate",
+        "outcome": "PASS",
+        "exitCode": 0,
+        "stdoutSha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20",
+        "stderrSha256": "9ccaf1b94533f97d77e53271cbcbe105b2181b73bdcdc804c213feb0145b94f3"
+      },
+      {
+        "command": "pnpm run quality:dependency-health",
+        "outcome": "PASS",
+        "exitCode": 0,
+        "stdoutSha256": "a0007d87daffd8d8a6830d168d78cd93f52a6dc7ffd1696780470c28c24d8d87",
+        "stderrSha256": "fa9ba6bb542e83e254b5bae92765b5ba9e0505c12e1e49f6c11dbf41c51f8775"
+      },
+      {
+        "command": "pnpm run quality:entropy",
+        "outcome": "PASS",
+        "exitCode": 0,
+        "stdoutSha256": "398712749b3b36df0e31fd5e18ea1244c4390092414c812fb6dd3f0eb444b2ee",
+        "stderrSha256": "7db8734f9a79ab0e050617ecdfb19b5819eb70b528b921de90840d1c8efe0973"
+      },
+      {
+        "command": "managed OpenSpec validate --all --strict",
+        "outcome": "PASS",
+        "exitCode": 0,
+        "stdoutSha256": "39bccce852f029a7d236468be892c13cc6cad76d81854843b50d6059bf470fe7",
+        "stderrSha256": "5bc31df123a2e521acdd2c0d9477b367feec506471a91065d0a6b32c09089ed5"
+      }
+    ],
+    "proofRefs": [
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-action-and-record-commands/proof/20260930-013-archive/preflight-pnpm-install.stdout.txt",
+        "bytes": 1399,
+        "sha256": "3c61e37b213eb89c890f4bc71a8303853ea59acd45e15bb9d559f7cefac86bb2",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "expose-stable-action-and-record-commands",
+        "runId": "20260930-013-archive",
+        "purpose": "isolated-archive-pnpm-install-stdout"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-action-and-record-commands/proof/20260930-013-archive/preflight-pnpm-install.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "expose-stable-action-and-record-commands",
+        "runId": "20260930-013-archive",
+        "purpose": "isolated-archive-pnpm-install-stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-action-and-record-commands/proof/20260930-013-archive/preflight-archive-command.stdout.txt",
+        "bytes": 550,
+        "sha256": "3b321dea848beef124fa99f41240ded13523304e55d5bd82f457ae2192cca5b7",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "expose-stable-action-and-record-commands",
+        "runId": "20260930-013-archive",
+        "purpose": "isolated-archive-archive-command-stdout"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-action-and-record-commands/proof/20260930-013-archive/preflight-archive-command.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "expose-stable-action-and-record-commands",
+        "runId": "20260930-013-archive",
+        "purpose": "isolated-archive-archive-command-stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-action-and-record-commands/proof/20260930-013-archive/preflight-build.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "expose-stable-action-and-record-commands",
+        "runId": "20260930-013-archive",
+        "purpose": "isolated-archive-build-stdout"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-action-and-record-commands/proof/20260930-013-archive/preflight-build.stderr.txt",
+        "bytes": 36,
+        "sha256": "8f5c6a9c4aade0d032984516a14b38a2d12cb1e6b333ab3568f9dde2ba3e3470",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "expose-stable-action-and-record-commands",
+        "runId": "20260930-013-archive",
+        "purpose": "isolated-archive-build-stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-action-and-record-commands/proof/20260930-013-archive/preflight-test-domain.stdout.txt",
+        "bytes": 74612,
+        "sha256": "02cd747d585d6446da2e09c72d7cdb577b2a426d83fef1b1aa5e8ab46959d1e0",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "expose-stable-action-and-record-commands",
+        "runId": "20260930-013-archive",
+        "purpose": "isolated-archive-test-domain-stdout"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-action-and-record-commands/proof/20260930-013-archive/preflight-test-domain.stderr.txt",
+        "bytes": 55,
+        "sha256": "aae00296a00317fb5d8157cc46c908dd4c7bfd3ac1d52b647091d4c256ef13c6",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "expose-stable-action-and-record-commands",
+        "runId": "20260930-013-archive",
+        "purpose": "isolated-archive-test-domain-stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-action-and-record-commands/proof/20260930-013-archive/preflight-test-acceptance.stdout.txt",
+        "bytes": 1708,
+        "sha256": "b9451c852d040867e4243d14289ec69a4f6aaf0e1df17c06ab182860aedc5dad",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "expose-stable-action-and-record-commands",
+        "runId": "20260930-013-archive",
+        "purpose": "isolated-archive-test-acceptance-stdout"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-action-and-record-commands/proof/20260930-013-archive/preflight-test-acceptance.stderr.txt",
+        "bytes": 54,
+        "sha256": "03a28f841eea36c0ec13f6dea3ea69c782e389ad940fcfaf6d419d0e4fff319b",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "expose-stable-action-and-record-commands",
+        "runId": "20260930-013-archive",
+        "purpose": "isolated-archive-test-acceptance-stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-action-and-record-commands/proof/20260930-013-archive/preflight-typecheck.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "expose-stable-action-and-record-commands",
+        "runId": "20260930-013-archive",
+        "purpose": "isolated-archive-typecheck-stdout"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-action-and-record-commands/proof/20260930-013-archive/preflight-typecheck.stderr.txt",
+        "bytes": 15,
+        "sha256": "8366207267355d3e3d5bf3bf6e8c94c5f93f6078c34f08973fa2b38cdda6cc92",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "expose-stable-action-and-record-commands",
+        "runId": "20260930-013-archive",
+        "purpose": "isolated-archive-typecheck-stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-action-and-record-commands/proof/20260930-013-archive/preflight-quality-gate.stdout.txt",
+        "bytes": 66,
+        "sha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "expose-stable-action-and-record-commands",
+        "runId": "20260930-013-archive",
+        "purpose": "isolated-archive-quality-gate-stdout"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-action-and-record-commands/proof/20260930-013-archive/preflight-quality-gate.stderr.txt",
+        "bytes": 192,
+        "sha256": "9ccaf1b94533f97d77e53271cbcbe105b2181b73bdcdc804c213feb0145b94f3",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "expose-stable-action-and-record-commands",
+        "runId": "20260930-013-archive",
+        "purpose": "isolated-archive-quality-gate-stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-action-and-record-commands/proof/20260930-013-archive/preflight-quality-dependency-health.stdout.txt",
+        "bytes": 80,
+        "sha256": "a0007d87daffd8d8a6830d168d78cd93f52a6dc7ffd1696780470c28c24d8d87",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "expose-stable-action-and-record-commands",
+        "runId": "20260930-013-archive",
+        "purpose": "isolated-archive-quality-dependency-health-stdout"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-action-and-record-commands/proof/20260930-013-archive/preflight-quality-dependency-health.stderr.txt",
+        "bytes": 79,
+        "sha256": "fa9ba6bb542e83e254b5bae92765b5ba9e0505c12e1e49f6c11dbf41c51f8775",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "expose-stable-action-and-record-commands",
+        "runId": "20260930-013-archive",
+        "purpose": "isolated-archive-quality-dependency-health-stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-action-and-record-commands/proof/20260930-013-archive/preflight-quality-entropy.stdout.txt",
+        "bytes": 64,
+        "sha256": "398712749b3b36df0e31fd5e18ea1244c4390092414c812fb6dd3f0eb444b2ee",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "expose-stable-action-and-record-commands",
+        "runId": "20260930-013-archive",
+        "purpose": "isolated-archive-quality-entropy-stdout"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-action-and-record-commands/proof/20260930-013-archive/preflight-quality-entropy.stderr.txt",
+        "bytes": 49,
+        "sha256": "7db8734f9a79ab0e050617ecdfb19b5819eb70b528b921de90840d1c8efe0973",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "expose-stable-action-and-record-commands",
+        "runId": "20260930-013-archive",
+        "purpose": "isolated-archive-quality-entropy-stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-action-and-record-commands/proof/20260930-013-archive/archive.stdout.txt",
+        "bytes": 486,
+        "sha256": "6f1f6625516756310060c39997dcd3ab8497915c65f35a5a574aef28f3c676af",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "expose-stable-action-and-record-commands",
+        "runId": "20260930-013-archive",
+        "purpose": "actual-archive-stdout"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-action-and-record-commands/proof/20260930-013-archive/archive.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "expose-stable-action-and-record-commands",
+        "runId": "20260930-013-archive",
+        "purpose": "actual-archive-stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-action-and-record-commands/proof/20260930-013-archive/validate.stdout.txt",
+        "bytes": 946,
+        "sha256": "39bccce852f029a7d236468be892c13cc6cad76d81854843b50d6059bf470fe7",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "expose-stable-action-and-record-commands",
+        "runId": "20260930-013-archive",
+        "purpose": "post-archive-validation-stdout"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-action-and-record-commands/proof/20260930-013-archive/validate.stderr.txt",
+        "bytes": 16,
+        "sha256": "5bc31df123a2e521acdd2c0d9477b367feec506471a91065d0a6b32c09089ed5",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "expose-stable-action-and-record-commands",
+        "runId": "20260930-013-archive",
+        "purpose": "post-archive-validation-stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-action-and-record-commands/proof/20260930-013-archive/archive-evidence.json",
+        "bytes": 3985,
+        "sha256": "45e53c3b4e765be3ab3ee65393c43be2001f0cef74aeb5bf504d510c17dfb48b",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "expose-stable-action-and-record-commands",
+        "runId": "20260930-013-archive",
+        "purpose": "archive-convergence-summary"
+      }
+    ],
+    "limitations": [
+      "This Archive does not constitute Formal Full Test or Git checkpoint authority.",
+      "Prior review observed one intermittent domain-test failure before a passing rerun; cause remains unknown."
+    ],
+    "handoff": {
+      "summary": "D07 first Change archived at persisted project ordinal 44; four canonical specs synchronized, reviewed candidate preserved, manifest completed. Next Delivery Change is not activated.",
+      "ownerDecisions": [],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20260930-013-archive",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-action-and-record-commands/proof/20260930-013-archive/archive-evidence.json"
+        }
+      ]
+    }
+  }
+}

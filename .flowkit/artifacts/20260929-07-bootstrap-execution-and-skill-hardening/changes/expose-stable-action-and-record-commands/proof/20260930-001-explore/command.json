@@ -1,0 +1,34 @@
+{
+  "proofKind": "real-partial-run-readonly-cli-probe",
+  "runId": "20260930-001-explore",
+  "actionPath": ".flowkit/runs/20260929-07-bootstrap-execution-and-skill-hardening/001-expose-stable-action-and-record-commands/20260930-001-explore/action.md",
+  "commands": [
+    {
+      "program": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "D:\\tools\\flowkit-manager\\node_modules\\flowkit-next\\dist\\cli\\entrypoint.js",
+        "status",
+        "--input",
+        "D:\\Projects\\flowkit-next\\.tmp\\d07-first-change-query.json"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "startedAt": "2026-09-30T02:39:05.526Z",
+      "endedAt": "2026-09-30T02:39:07.241Z",
+      "exitCode": 2
+    },
+    {
+      "program": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "D:\\tools\\flowkit-manager\\node_modules\\flowkit-next\\dist\\cli\\entrypoint.js",
+        "next",
+        "--input",
+        "D:\\Projects\\flowkit-next\\.tmp\\d07-first-change-query.json"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "startedAt": "2026-09-30T02:39:07.245Z",
+      "endedAt": "2026-09-30T02:39:09.272Z",
+      "exitCode": 2
+    }
+  ],
+  "scope": "status and next only; no result or production mutation"
+}

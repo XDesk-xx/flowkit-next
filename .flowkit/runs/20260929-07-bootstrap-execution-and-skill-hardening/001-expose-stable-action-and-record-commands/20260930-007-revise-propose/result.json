@@ -1,0 +1,49 @@
+{
+  "runId": "20260930-007-revise-propose",
+  "actionIdentity": {
+    "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+    "changeId": "expose-stable-action-and-record-commands",
+    "actionId": "revise-propose"
+  },
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-propose",
+  "facts": {
+    "summary": "Bounded revision makes Reviewer rejected a pre-write unsupported outcome for the new finish until Policy and canonical Run-chain have a separate accepted contract.",
+    "reviewedRunId": "20260930-006-review-propose",
+    "addressedFindings": [
+      {
+        "id": "D07-A-RP-004",
+        "resolution": "The fixed finish rejects rejected before context/result writes, preserves the exact incomplete start and true Reviewer judgment, and does not relabel or claim terminal completion. Review HOW and acceptance tasks expose this limit."
+      }
+    ],
+    "planningRoot": "openspec/changes/expose-stable-action-and-record-commands",
+    "artifactHashes": {
+      "proposal.md": "fa1d294a1cb6749c7b6b2d872ff9827172ac60ff4747f8e6cf249b7be89f9c06",
+      "design.md": "01c1e4c297e72b95f930e988c0c3bf9d01e585ca51b8d07dddf446965fb1f42c",
+      "tasks.md": "5a3b848947be2e8ce6395ca9b6a05d7b1d06863b93bc0024cd0e07cee8b7dfaf",
+      "specs/stable-action-command-execution/spec.md": "81ae9c7dbbda8608f4a28162a94e7ff461e98b87a3984760c7ff7f43be644a69",
+      "specs/foundation-cli-surface/spec.md": "1be3158b7a73ae33f6208ff40581d2dbdbf4da3c3babca8d3466044dfa6b8f21",
+      "specs/action-guidance-execution/spec.md": "9369874fa5841a8a424f9d051a9a9b545c8815616478fb9c6100b012922ec863",
+      "specs/run-result-persistence/spec.md": "5b068d79caaca0e9ce8277d12c0d5e9ab96476083d3be9ae2f041c6f1a0f9ab1"
+    },
+    "structuralValidation": {
+      "command": "node C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js validate expose-stable-action-and-record-commands --strict",
+      "exitCode": 0,
+      "observedOutput": "Change 'expose-stable-action-and-record-commands' is valid",
+      "limit": "OpenSpec structure only; no Apply acceptance or independent Reviewer verdict"
+    },
+    "proofRefs": [],
+    "handoff": {
+      "summary": "Independent review-propose should check D07-A-RP-004 closure and consistency with Policy/Run-chain; no implementation or Reviewer verdict claimed.",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-09-30:activate-first-change:proof-explore",
+          "summary": "Activated the first D07 Change; current Owner requested revision at the legal revise-propose boundary."
+        }
+      ],
+      "evidenceRefs": []
+    }
+  }
+}

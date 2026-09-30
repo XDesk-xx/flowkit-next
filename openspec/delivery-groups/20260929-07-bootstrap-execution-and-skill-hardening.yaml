@@ -17,7 +17,8 @@ changes:
     goal: "提供标准 Action 开始、结束、记录和 prepared Owner correction 的固定受控入口，保留跨进程身份与真实结果接纳。"
     required: true
     dependsOn: []
-    state: planned
+    state: completed
+    projectOrdinal: 44
   - id: "expose-stable-delivery-and-support-commands"
     group: "delivery-operations"
     goal: "为 Project/Delivery/Change/Memo/Archive/Full Test/Final/Git 辅助操作提供固定受控入口，避免标准操作依赖临时生命周期程序。"
@@ -54,6 +55,12 @@ ownerDecisions:
     deliveryId: "20260929-07-bootstrap-execution-and-skill-hardening"
     sourceRef: "owner-input:2026-09-30:d07-start-two-issues"
     scope: ["delivery-start", "git-create-delivery-branch"]
+  - ref: "owner:5080a37c36609e1bf0e39e26b0a5b47931a230583692e55d0be3ceed952110c2"
+    decision: "activate-change"
+    deliveryId: "20260929-07-bootstrap-execution-and-skill-hardening"
+    changeId: "expose-stable-action-and-record-commands"
+    sourceRef: "owner-input:2026-09-30:activate-first-change:proof-explore"
+    scope: ["explore"]
 reference:
   kind: "owner-selected-delivery-plan"
   artifact: "docs/D07-bootstrap-execution-and-skill-hardening-plan.md"
