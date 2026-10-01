@@ -1,0 +1,29 @@
+{
+  "runId": "20260930-011-revise-apply",
+  "reviewedRunId": "20260930-010-review-apply",
+  "priorApplyRunId": "20260930-009-apply",
+  "findingId": "D07-A-RA-001",
+  "changedCandidatePaths": [
+    "docs/onboarding.md",
+    "skills/actions/archive/SKILL.md",
+    "src/cli/action-readiness.ts",
+    "tests/unit/domain/action-archive-cli.test.ts",
+    "tests/unit/domain/action-archive-readiness.test.ts"
+  ],
+  "correction": "Archive preparation selects nonempty Agent-declared applicable checks from the target's existing package scripts or exact configured verification commands, runs them after isolated convergence, and rejects missing, ambiguous, changed or failed definitions. No test:domain requirement or fixed script allowlist remains. A target without package.json or node_modules uses a configured Git check against the converged archive marker.",
+  "checks": [
+    { "command": "node --import tsx --test tests/unit/domain/action-archive-readiness.test.ts tests/unit/domain/action-archive-cli.test.ts", "exitCode": 0, "result": "3 passed; non-Node configured check, other configured script, missing/failed check, and no-Run-on-rejection covered" },
+    { "command": "pnpm test:domain", "exitCode": 0, "result": "352 passed, 0 failed" },
+    { "command": "pnpm test:acceptance", "exitCode": 0, "result": "7 passed, 0 failed" },
+    { "command": "pnpm typecheck", "exitCode": 0 },
+    { "command": "pnpm quality:gate", "exitCode": 0 },
+    { "command": "pnpm quality:dependency-health", "exitCode": 0, "result": "159 modules, 923 dependencies" },
+    { "command": "pnpm quality:entropy", "exitCode": 0, "result": "65/65 production modules reachable" },
+    { "command": "pnpm check:forbidden-tracked-artifacts", "exitCode": 0 },
+    { "command": "pnpm build", "exitCode": 0 },
+    { "command": "npm pack --dry-run --json", "exitCode": 0, "result": "skills/actions/archive/SKILL.md included" },
+    { "command": "node C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js validate expose-stable-action-and-record-commands --strict", "exitCode": 0, "result": "Change is valid" },
+    { "command": "git diff --check", "exitCode": 0 }
+  ],
+  "limitations": "This is current Author revision evidence, not an independent Reviewer verdict or Formal Full Test. Review010 recorded one earlier 351/1 domain run followed by 352/0; that earlier intermittent failure was not reproduced or root-caused here, so no stability claim is made. No Git operation or Stable manager replacement was performed."
+}

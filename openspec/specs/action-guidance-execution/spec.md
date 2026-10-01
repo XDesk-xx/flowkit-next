@@ -66,12 +66,12 @@
 
 ### Requirement: Agent HOW explains canonical Run recording without a host transport
 
-产品 Action HOW SHALL 在明确 Action/Role 后说明如何调用 manager 自有的可信 start 入口，消费由该入口绑定的 canonical Guidance/package、受控 Run 地址与三文件字段，记录真实开始、完成或未完成，并核对结果和读回；SHALL 提供与已发行校验器相符的有界使用示例，不把 caller 自填 GuidanceRef 或纯结构 package 当作写入许可。示例 SHALL 不要求目标项目维护 callback/glue 工程、存活 CLI、prepare/submit 协议或新 schema。产品 HOW 与 bootstrap HOW SHALL 独立，D05 bootstrap 不因产品示例存在而转换成 canonical 自管理。
+产品 Action HOW SHALL 在明确 Action/Role 与合法边界后说明如何调用选定 manager 发行包的固定 `action start/finish` 与必要 `proof inspect`，消费 manager 绑定的 canonical Guidance/package、受控 Run 地址与三文件字段，记录真实开始、完成或未完成，并核对结果和读回；SHALL 提供与已发行命令合同相符的有界使用示例，不把 caller 自填 GuidanceRef、纯结构 package 或 handle 当作写入许可。正常路径 SHALL 不要求 Agent 创建临时 Node/Python 生命周期程序、目标项目 callback/glue 工程、存活 CLI 或新的 durable Run 文件。产品 HOW 与 bootstrap HOW SHALL 独立，历史 bootstrap 不因新命令存在而转换成 canonical 自管理。
 
 #### Scenario: Agent follows the recording instructions
 
-- **WHEN** Agent 已有合法 Action 和真实工作结果
-- **THEN** HOW SHALL 使其能定位本机 manager 的既有资产、调用可信 start、形成 matching context/result、使用 create-once 操作并核对三文件，而不需要等待 CLI 进程回交
+- **WHEN** Agent 已有合法 Action 并实际完成该角色工作
+- **THEN** HOW SHALL 使其能定位本机选定 manager 的固定入口、执行受控 start、提交 matching 真实结果、核对三文件，而不等待同一 CLI 进程回交
 
 #### Scenario: Recording is interrupted
 
@@ -81,7 +81,17 @@
 #### Scenario: HOW cannot substitute a shape-valid GuidanceRef
 
 - **WHEN** Agent 按产品 Action HOW 开始新 Run，且持有一个 canonical path 与 64 位 hex SHA 均结构合法的普通 GuidanceRef
-- **THEN** HOW SHALL 仍调用 manager 自有 start 入口作当前安装的内容身份核对，不直接以该对象写 `action.md`
+- **THEN** HOW SHALL 仍调用选定 manager 固定 start，使当前安装重新核对内容身份，不直接以该对象写 `action.md`
+
+#### Scenario: Candidate guidance cannot replace current Stable manager
+
+- **WHEN** 当前 Delivery 中的 candidate Skills 或 build 已更新
+- **THEN** 本 Delivery 的正式 HOW SHALL 继续来自已选 Stable manager，直到独立的后续 Delivery authority 边界
+
+#### Scenario: Reviewer judgment is rejected while fixed finish lacks a readable terminal form
+
+- **WHEN** Reviewer 的真实判断为 `rejected`，而当前 Policy/Run-chain 不接受该 terminal verdict
+- **THEN** 产品 Review HOW SHALL 要求保留真实判断、报告固定 finish 写前拒绝与 exact incomplete Run，不得把 verdict 改写为 `changes-requested` 或称其已形成正式 terminal；后续处理服从独立合法边界
 
 ### Requirement: Necessary Action proof is retained with bounded ownership and integrity checks
 
@@ -196,3 +206,31 @@ Agent SHALL 将本次必要 proof 输入、方法/命令、实际输出及限制
 
 - **WHEN** 读取已有 Run 或只执行 status/next
 - **THEN** SHALL 不追溯扫描或改写历史 proof，也不以新证据前置检查阻断只读查询
+
+### Requirement: Current owned Action guidance follows the issued fixed commands
+
+发行包的十个当前自有 `skills/actions/<actionId>/SKILL.md` SHALL 各自保留该 Action 的实质方法、角色边界和 STOP，同时把正常的 canonical Run 开始、proof 检查与结果结束说明映射到同一选定 manager 安装的 `action start`、`proof inspect`、`action finish` 封闭数据命令。有效 HOW/示例 SHALL 与实际命令、请求字段、可见目标、返回效果和读回条件一致；SHALL NOT 把直接导入内部 `dist` 模块、临时 Node/Python 生命周期程序、callback 或手写三文件作为正常路径。Skill SHALL NOT 依据帮助输出、`effect=confirmed`、Review approved 或历史 PASS 创造新的 Owner、Reviewer、Verification 或 Git 权限。当前 Delivery SHALL 继续由已选外部 Stable manager 管理，候选 Skill 不接管其正式 Run。
+
+#### Scenario: Independent role follows an issued Action entry
+- **WHEN** Policy 已确定一个合法 Standard Action，实际角色读取所选 manager 中相应自有 Skill
+- **THEN** Skill SHALL 引导该角色以固定数据命令开始和结束一个真实 Run，核对三文件与合法下一边界后 STOP，并保留该角色的实质判断标准
+
+#### Scenario: Candidate Action Skill changes during its Delivery
+- **WHEN** 当前 Delivery 的候选 Action Skill 或 build 已更新
+- **THEN** 当前正式操作 SHALL 继续采用已选 Stable manager 的 Guidance，候选字节 SHALL 仅作为该 Delivery 的开发与验收对象
+
+### Requirement: Producer guidance declares every file in its own formal proof directory
+
+Agent 在本 Run 正式 proof 目录 `.flowkit/artifacts/<delivery>/changes/<change>/proof/<run-id>/` 产生材料时，SHALL 在结束该 Run 前将该目录内每个文件以 exact 归属、路径、bytes、SHA-256 和用途纳入该 Run Result 的 `proofRefs`；无必要新文件时 SHALL 不建立空目录并使用空 `proofRefs`。生产者 SHALL 核对每个声明与实际原始字节，并在不能完整声明、文件不可读或身份冲突时停止完成声明，不以 `.tmp` 副本、备份分支、后补摘要或仅列出一个被选择的文件代替完整集合。后续 Action 的 handoff SHALL 仅携带当前判断需要的已声明引用；该按需交接 SHALL NOT 缩减生产 Run 的 `proofRefs`。本要求约束自有 HOW 的材料生产与交接；目录闭合集的代码强制检查由独立后续 Change 负责，不因此扫描所有历史 proof。
+
+#### Scenario: A Run creates three proof files but lists only one
+- **WHEN** 生产者准备结束本 Run，正式 proof 目录存在三个文件，而候选 `proofRefs` 只包含其中一个
+- **THEN** 自有 HOW SHALL 要求先核对并完整声明该 Run 的三个真实文件，不能将不完整 Result 称作可 checkpoint 的证据
+
+#### Scenario: Later review needs one prior proof
+- **WHEN** 独立 Reviewer 的当前判断只需先前 Run 中三个已声明文件的一个
+- **THEN** handoff SHALL 可只引用该相关文件，且先前 Result 的完整 `proofRefs` SHALL 保持原样
+
+#### Scenario: No new material is needed
+- **WHEN** 一个 Action 未产生需要保留的新 proof 文件
+- **THEN** HOW SHALL 使用空 `proofRefs` 且不创建空 proof 目录，不为满足形式要求制造材料

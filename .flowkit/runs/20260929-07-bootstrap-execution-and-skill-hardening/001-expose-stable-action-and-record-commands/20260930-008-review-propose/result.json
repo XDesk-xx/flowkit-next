@@ -1,0 +1,42 @@
+{
+  "runId": "20260930-008-review-propose",
+  "actionIdentity": {
+    "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+    "changeId": "expose-stable-action-and-record-commands",
+    "actionId": "review-propose"
+  },
+  "authorConclusion": null,
+  "reviewerVerdict": "approved",
+  "verificationVerdict": null,
+  "nextBoundary": "apply",
+  "facts": {
+    "reviewedRunId": "20260930-007-revise-propose",
+    "reviewedRoot": "openspec/changes/expose-stable-action-and-record-commands",
+    "currentStep": "独立复审 D07-A-RP-004 的 Proposal 修订，核对七份规划产物、已批准 Explore、当前 Policy/Run-chain 与 Review HOW 的一致性和 Apply readiness。",
+    "evidence": [
+      "七份规划产物 SHA-256 两次核对均与 007 Author Result 相符；managed OpenSpec 1.10.0 strict validation exit 0，仅证明结构。",
+      "design.md:49、stable-action-command-execution spec:53,67-69、action-guidance-execution spec:27-30 与 tasks.md:12,19 明确 Reviewer rejected 写前拒绝、保留真实判断和 incomplete，不再宣称 canonical terminal。",
+      "已安装 manager Policy 对 rejected 返回 unrecognized-reviewer-verdict，Run-chain 对 blocked terminal 仅允许 Author FAIL/null；修订与当前事实相符，D07-A-RP-004 已关闭。",
+      "既有 D07-A-RP-001/002/003 修订维持受信 Owner fact、写前 Policy/写后 canonical chain 与各 Action 的有界机器 readiness；本轮未发现新增阻断。"
+    ],
+    "findings": [],
+    "complexityMinimality": "继续复用现有 Policy、Run-chain、Guidance、三文件 Run 和 start/admission seam；rejected 限制未引入新状态、registry 或自动纠正。",
+    "newContentScopeDrift": "本轮修改限于 D07-A-RP-004 及直接消费者一致性；不预支后续 B/C/F、Verification、Git 或 candidate 自管理。",
+    "limitations": "Reviewer rejected 仍是可表达的真实判断，但本 Change 的固定 finish 不能持久化为 terminal；实际发生时须报告 incomplete 并等待独立合法边界。结构校验与本次 Review 均不等于 Apply 或 Full Test PASS。",
+    "handoff": {
+      "summary": "Proposal 已通过独立 review-propose；后续仅按 manager 决定的 apply 边界执行，保留本次 approved Reviewer Run 与现有 rejected 限制。",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-09-30:activate-first-change:proof-explore",
+          "summary": "D07 首个 Change 已激活；本次 Review 不创建 Owner/Git 权限。"
+        }
+      ],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20260930-007-revise-propose",
+          "path": "openspec/changes/expose-stable-action-and-record-commands/specs/stable-action-command-execution/spec.md"
+        }
+      ]
+    }
+  }
+}

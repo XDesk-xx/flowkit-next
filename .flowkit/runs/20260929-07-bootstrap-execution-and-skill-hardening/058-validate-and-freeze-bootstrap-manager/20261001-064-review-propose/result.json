@@ -1,0 +1,124 @@
+{
+  "runId": "20261001-064-review-propose",
+  "actionIdentity": {
+    "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+    "changeId": "validate-and-freeze-bootstrap-manager",
+    "actionId": "review-propose"
+  },
+  "authorConclusion": null,
+  "reviewerVerdict": "approved",
+  "verificationVerdict": null,
+  "nextBoundary": "apply",
+  "facts": {
+    "projectOrdinal": 49,
+    "changeStartSequence": 58,
+    "reviewedRunId": "20261001-063-revise-propose",
+    "reviewedResultSha256": "bbe12af10b40812ab438a5e871df219b7e258ce95b7da7dd2cc74173c4866f77",
+    "artifacts": {
+      "openspec/changes/validate-and-freeze-bootstrap-manager/proposal.md": "24c666bb972b92dfa8e53769626091b7b886c963f7e6ade993f48208752927d1",
+      "openspec/changes/validate-and-freeze-bootstrap-manager/design.md": "9709b9067a1160e7445ec8f4756023cf40c88cbb38586b884df66a7eda5c5ba8",
+      "openspec/changes/validate-and-freeze-bootstrap-manager/tasks.md": "e30046a53272dc15b19ad3443888ae3e9e950d2b7700834307ce742f02164df5",
+      "openspec/changes/validate-and-freeze-bootstrap-manager/.openspec.yaml": "e152460583bf1528b48ceacd730d1c2b2db93d624c8b45d2579e34f43fcf2c41",
+      "openspec/changes/validate-and-freeze-bootstrap-manager/explore.md": "33de9eafb861962404936ce0e1fa40ceef4266f5488a382214fd410ea7ebb12c",
+      "AGENTS.md": "f30b0196357c71df8a0fcbf461372669e0a007b26ac603cc80bcb24d1b2648f9",
+      "openspec/delivery-groups/20260929-07-bootstrap-execution-and-skill-hardening.yaml": "d56a2e1cb6e9421bce32aa1d0a07d30805cf78c9a541f3a69f1d18b05aa9c6c5",
+      "docs/D07-bootstrap-execution-and-skill-hardening-plan.md": "e4200d1b9681f9e9d24d064f2fe215cd54d92088d2e21908a18c5a74d3ade399",
+      ".flowkit/runs/20260929-07-bootstrap-execution-and-skill-hardening/058-validate-and-freeze-bootstrap-manager/20261001-061-review-propose/result.json": "ee6ea0fa83470aeb487cb0c8374aae8a56ea1744ef6ee87d98896e1a5a0166f6",
+      ".flowkit/runs/20260929-07-bootstrap-execution-and-skill-hardening/058-validate-and-freeze-bootstrap-manager/20261001-062-apply/context.json": "5f92e0e37e2c3508b0903bdf722107e23871e944af3cfe562811ffb849dea91c",
+      ".flowkit/runs/20260929-07-bootstrap-execution-and-skill-hardening/058-validate-and-freeze-bootstrap-manager/20261001-062-apply/result.json": "940bb04c5c75d0ee6058de21523fe2d59e47f10284235f2e9ee9af2335744f59",
+      ".flowkit/runs/20260929-07-bootstrap-execution-and-skill-hardening/058-validate-and-freeze-bootstrap-manager/20261001-063-revise-propose/context.json": "8832d565f302679a924bfd19075beb29859d858a5562a762d67397b55992c0c2"
+    },
+    "checkedPriorProofRefs": [
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-062-apply/acceptance-checks-report.json",
+        "bytes": 14012,
+        "sha256": "b5c4b6ceb3f4e927c9db25d393658490a92654c1016ab6c57fea93a13612e521",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-062-apply",
+        "purpose": "actual check commands and exit states"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-062-apply/test-domain.stdout.txt",
+        "bytes": 80880,
+        "sha256": "37f071d90e1719704bb8b77338f6374923e72110936747564742addefd9ac449",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-062-apply",
+        "purpose": "unaltered check stdout or stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-062-apply/check-forbidden-tracked-artifacts.stderr.txt",
+        "bytes": 73,
+        "sha256": "8cb6c810e8fe6fe41f7a0d4193359a0f4a15ea0f6b7e77a3741ddca4050b54aa",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-062-apply",
+        "purpose": "unaltered check stdout or stderr"
+      }
+    ],
+    "currentStepExplanation": "独立复审 Owner correction 后的 E Proposal/Design/tasks，核对真实 Owner 来源、062 prepared 到 063 修订链、当前验收出口及既有失败的保留。",
+    "complexityMinimality": "九项任务限定为当前候选检查、实际 tgz/隔离安装、既有固定命令/平台检查与包外发行记录；允许有证据的窄范围检查脚本或 fixture 修复，不新增产品能力、状态或控制平台。",
+    "scopeDrift": {
+      "verdict": "OWNER_AUTHORIZED_SCOPE_CORRECTION",
+      "reason": "相对 059/061 的原合同确有收窄，但 Owner 明确移除真实目标、实际 Reviewer 修改往返与新 Agent 会话作为本 Delivery 必需验收，并明确授权 prepared Apply 后 revise-propose；未发现超出该决定的新增能力。"
+    },
+    "ownerSourceVerification": {
+      "threadId": "01a0f01a-9adc-7180-93b6-594f469ad8d4",
+      "scopeDecision": {
+        "sourceRef": "owner-input:2026-10-01:revise-e-acceptance-scope",
+        "userMessageId": "01a0f6d6-f350-7162-ad08-6692a48845c2",
+        "summary": "已直接读回 Owner 对收窄 E 验收范围的明确肯定答复。"
+      },
+      "correctionAuthorization": {
+        "sourceRef": "owner-input:2026-10-01:revise-e-propose-after-prepared-apply",
+        "userMessageId": "01a0f6dc-2ef3-7423-a350-579b06ef085d",
+        "summary": "已直接读回 Owner 明确授权 revise propose；与 063 package/context 的 exact revise-action fact 一致。"
+      }
+    },
+    "decisiveObservations": [
+      "当前三个规划文件 SHA 与 063 Result 一致；Explore、OpenSpec metadata、原选定计划和 manifest 保持既有身份。Proposal 明确引用新 Owner 决定并保留历史原范围，不把未执行真实用例改写为 PASS。",
+      "外部 Stable manager 已确认 063 为合法当前 terminal，且保留 supersededPreparedRunId=20261001-062-apply；062 context 仍为 prepared，四个 outcome/next 槽为 null。",
+      "三个直接交接的 062 proof 引用均对应原 Result 声明，已核对归属、唯一引用、常规文件/无链接、bytes/SHA 和 managed Git bytes。检查报告记录 test:domain 与 check:forbidden-tracked-artifacts exit 1；domain 原始流为 376 pass/1 fail，forbidden stderr 为 git ls-files failed。",
+      "Design 决策 3 和 tasks 1.2 要求聚焦复现、确认基线关系及修复层级，保留原失败并产生新材料；已报告 ENOBUFS 原因仍须依任务独立诊断，本次未将该归因当成已修复事实。",
+      "tasks 1.3、2.1-2.4、3.1-3.2 保留适用检查、精确构建来源、tgz/成员/依赖/Skills、实际安装内入口、必要拒绝行为、Linux 主验收与证据读回。发行输入变化要求重新打包并复验受影响事实，任何必需项未满足不能冻结。",
+      "同会话 fixture 明确仅证明机制；真实独立项目、角色质量、修改往返、新会话和宿主审批均列入未验证范围。正式 Full Test/Final/Git 仍为独立 Delivery 节点，E 记录不提供这些权限。",
+      "现有检查脚本、managed-evidence-checkpoint fixture 与固定命令/平台测试提供可对应的诊断和验证入口；本次规划审查未运行 Apply 测试或修改 Author 文件。"
+    ],
+    "literalDiscipline": "Run 序号、当前两项失败、376/1 计数和 Git 基线为当前观察；任务要求依据实际输入和状态复验，不把这些数量固化为产品不变量。平台要求来自现有合同，包摘要与工具/Skills 组合按实际候选记录。",
+    "findings": [],
+    "proofRefs": [],
+    "limitations": [
+      "这是修订规划的 approved，不是 Apply PASS、两项失败解决或发行冻结。",
+      "未重新运行构建、测试、安装或 Linux 验收；063 的 strict validation 是 Author 结构检查记录，不替代独立语义审查或后续验证。",
+      "真实项目与新 Agent 会话未获验证，此限制必须保留到发行交接；以后是否采用由 Owner 决定。"
+    ],
+    "handoff": {
+      "summary": "可按修订 Proposal 进入新的 apply；保留 062 原始失败和全部历史材料，先诊断两项失败，再以当前实际包完成固定命令/平台验收。不得恢复已撤销的真实用例完成门槛或把其写成已验证。",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-10-01:revise-e-acceptance-scope",
+          "summary": "Owner 将 E 收窄为发行包与现有固定命令验收，真实目标/Reviewer 修改往返/新会话不再是本 Delivery 必需项。"
+        },
+        {
+          "sourceRef": "owner-input:2026-10-01:revise-e-propose-after-prepared-apply",
+          "summary": "Owner 明确授权由 prepared Apply 返回一次 revise-propose；本次 review-propose 依据当前 canonical 边界完成。"
+        }
+      ],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20261001-062-apply",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-062-apply/acceptance-checks-report.json"
+        },
+        {
+          "sourceRunId": "20261001-062-apply",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-062-apply/test-domain.stdout.txt"
+        },
+        {
+          "sourceRunId": "20261001-062-apply",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-062-apply/check-forbidden-tracked-artifacts.stderr.txt"
+        }
+      ]
+    }
+  }
+}

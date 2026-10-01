@@ -1,0 +1,90 @@
+{
+  "kind": "d07-e-installed-fixed-action-fixture",
+  "target": "D:\\Projects\\flowkit-next\\.tmp\\d07-e-065-isolated\\action-fixture\\target",
+  "manager": "D:\\Projects\\flowkit-next\\.tmp\\d07-e-065-isolated\\installation\\node_modules\\flowkit-next",
+  "packageSha256": "1b2c88c9263d5892946d3d9aacba79a6392eb3d8b3b37fa3c87aebcc1550cba0",
+  "before": {
+    "kind": "next",
+    "decision": {
+      "kind": "ready-action",
+      "actionId": "explore"
+    },
+    "checkpoint": {
+      "authorized": false,
+      "reason": "policy-not-ready"
+    }
+  },
+  "conflict": {
+    "kind": "error",
+    "error": {
+      "kind": "invalid-request",
+      "message": "visible repositoryRoot conflicts with JSON target"
+    }
+  },
+  "started": {
+    "kind": "action-start",
+    "effect": "started",
+    "runId": "20261001-001-explore",
+    "directory": "D:\\Projects\\flowkit-next\\.tmp\\d07-e-065-isolated\\action-fixture\\target\\.flowkit\\runs\\delivery-one\\001-change-one\\20261001-001-explore",
+    "actionId": "explore",
+    "role": "author"
+  },
+  "partial": {
+    "kind": "error",
+    "error": {
+      "kind": "run-chain-invalid",
+      "message": "Incomplete Run record: 20261001-001-explore",
+      "candidates": []
+    }
+  },
+  "missing": {
+    "kind": "error",
+    "effect": "blocked",
+    "runId": "20261001-001-explore",
+    "error": {
+      "kind": "proof-invalid",
+      "message": "Own-Run proof directory and proofRefs differ"
+    }
+  },
+  "finished": {
+    "kind": "action-finish",
+    "effect": "confirmed",
+    "runId": "20261001-001-explore",
+    "state": "terminal",
+    "duplicate": false
+  },
+  "after": {
+    "kind": "next",
+    "decision": {
+      "kind": "blocked",
+      "reason": "unrecognized-or-unsuccessful-author-outcome"
+    },
+    "checkpoint": {
+      "authorized": false,
+      "reason": "policy-not-ready"
+    }
+  },
+  "checks": [
+    {
+      "id": "action-after-next",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "D:\\Projects\\flowkit-next\\.tmp\\d07-e-065-isolated\\installation\\node_modules\\flowkit-next\\dist\\cli\\entrypoint.js",
+        "next",
+        "--input",
+        "D:\\Projects\\flowkit-next\\.tmp\\d07-e-065-isolated\\action-fixture\\action-query.json"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d07-e-065-isolated\\action-fixture\\target",
+      "start": "2026-10-01T10:16:24.191Z",
+      "end": "2026-10-01T10:16:28.668Z",
+      "code": 0,
+      "signal": null,
+      "error": null,
+      "stdoutBytes": 163,
+      "stdoutSha256": "3c289380e83b761ad32f422f8676c44c30e2894f33a3492f05b84795608c2d77",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "limitation": "Synthetic fixture only. A terminal FAIL tests persistence; it is not a real business verdict or independent review."
+}

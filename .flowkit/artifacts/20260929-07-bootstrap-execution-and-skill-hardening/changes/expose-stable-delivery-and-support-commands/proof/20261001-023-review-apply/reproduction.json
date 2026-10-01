@@ -1,0 +1,45 @@
+{
+  "startedAt": "2026-09-30T23:23:31.574Z",
+  "finishedAt": "2026-09-30T23:23:32.994Z",
+  "fixtureRoot": "D:\\Projects\\flowkit-next\\.tmp\\ra023-fixture-OVvV2j",
+  "synthetic": true,
+  "sourceHashes": {
+    "src/cli/support-delivery-start.ts": "9c78f7e5ea6009f42c4904a02b50d092e0e525106fcb258370d154a9d0e8ec6b",
+    "src/cli/support-full-test.ts": "7970e781b10ae1935709c52dd2589f21f59fa26a739410c36e0da6a33e05edc7",
+    "src/cli/support-git.ts": "8a3800f90b1b98eca295f9a1d12ac7dad4f9b633f0bd6f039249078ee22df722",
+    "src/domain/git-workflow-host.ts": "3ec6b14ae0e252f5c8f1e9d68d805e4709ce001d61f7c840425c22c6d0bcb97a",
+    "src/cli/checkpoint-authorization.ts": "5c9779900ba8fc508171979a428f821b246c040404cfa50d9b23ec3ab560e6f8"
+  },
+  "deliveryStart": {
+    "initial": "completed",
+    "conflicting": "incomplete",
+    "unchangedBytes": true,
+    "storedChanges": "first-change",
+    "requestedChanges": "different-change"
+  },
+  "historicalFullTest": {
+    "deletedLog": "D:\\Projects\\flowkit-next\\.tmp\\ra023-fixture-OVvV2j\\.flowkit\\artifacts\\review-fixture\\full-test\\11111111-1111-4111-8111-111111111111\\checks\\count\\stdout.txt",
+    "replay": {
+      "status": "incomplete",
+      "effect": "partial",
+      "attemptId": "11111111-1111-4111-8111-111111111111",
+      "isCurrent": false,
+      "reason": "attempt-material-unconfirmed"
+    },
+    "corruptedReplay": {
+      "status": "incomplete",
+      "effect": "partial",
+      "attemptId": "11111111-1111-4111-8111-111111111111",
+      "isCurrent": false,
+      "reason": "attempt-material-unconfirmed"
+    },
+    "currentAssociationUnchanged": true,
+    "count": "2"
+  },
+  "changePush": {
+    "parserAccepted": "authorize-push",
+    "policy": "ready-checkpoint-evaluation",
+    "downstreamAuthorityAccepted": true,
+    "gitMutationPerformed": false
+  }
+}

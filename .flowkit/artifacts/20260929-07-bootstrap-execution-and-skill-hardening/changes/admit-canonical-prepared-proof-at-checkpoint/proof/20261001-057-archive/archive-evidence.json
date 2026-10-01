@@ -1,0 +1,251 @@
+{
+  "runId": "20261001-057-archive",
+  "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+  "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+  "projectOrdinal": 48,
+  "archivePath": "openspec/changes/archive/2026-10-01-048-admit-canonical-prepared-proof-at-checkpoint",
+  "sourceRemoval": "openspec/changes/admit-canonical-prepared-proof-at-checkpoint",
+  "reviewedRunId": "20261001-056-review-apply",
+  "authorRunId": "20261001-055-revise-apply",
+  "openSpec": {
+    "change": "admit-canonical-prepared-proof-at-checkpoint",
+    "archivedAs": "2026-10-01-admit-canonical-prepared-proof-at-checkpoint",
+    "path": "D:\\Projects\\flowkit-next\\openspec\\changes\\archive\\2026-10-01-admit-canonical-prepared-proof-at-checkpoint",
+    "specsUpdated": true,
+    "totals": {
+      "added": 0,
+      "modified": 1,
+      "removed": 0,
+      "renamed": 0
+    }
+  },
+  "preflight": {
+    "specHashes": {
+      "repository-integration-and-next-base-continuity": "80853b22ab65410a9469979e7757f3287e6e310c085ed93fcc9f95a2803729e4"
+    },
+    "completedManifestHash": "2f1f7f3f5b62ca18fd8275e44e6e844cda1d5167d9406c9e3b4ec0b0786ce5cf",
+    "commands": [
+      {
+        "id": "install",
+        "command": [
+          "C:\\nvm4w\\nodejs\\node.exe",
+          "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+          "install",
+          "--frozen-lockfile"
+        ],
+        "startedAt": "2026-10-01T08:55:54.230Z",
+        "finishedAt": "2026-10-01T08:55:56.493Z",
+        "exitCode": 0,
+        "signal": null,
+        "processError": null,
+        "stdoutBytes": 827,
+        "stdoutSha256": "d18da16a762fdfa8e3cf7b0f388684eac16693c04cfa649eec1b7af52a641e3e",
+        "stderrBytes": 0,
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "id": "archive-dry-run",
+        "command": [
+          "C:\\nvm4w\\nodejs\\node.exe",
+          "C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js",
+          "archive",
+          "admit-canonical-prepared-proof-at-checkpoint",
+          "--yes",
+          "--json"
+        ],
+        "startedAt": "2026-10-01T08:55:56.493Z",
+        "finishedAt": "2026-10-01T08:55:57.982Z",
+        "exitCode": 0,
+        "signal": null,
+        "processError": null,
+        "stdoutBytes": 562,
+        "stdoutSha256": "3ff6230178735771426b3128471760703b1ef4c6eaaa1a7b99268e19739e9e81",
+        "stderrBytes": 0,
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "id": "build",
+        "command": [
+          "C:\\nvm4w\\nodejs\\node.exe",
+          "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+          "run",
+          "build"
+        ],
+        "startedAt": "2026-10-01T08:55:57.985Z",
+        "finishedAt": "2026-10-01T08:56:01.370Z",
+        "exitCode": 0,
+        "signal": null,
+        "processError": null,
+        "stdoutBytes": 0,
+        "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrBytes": 36,
+        "stderrSha256": "8f5c6a9c4aade0d032984516a14b38a2d12cb1e6b333ab3568f9dde2ba3e3470"
+      },
+      {
+        "id": "test-domain",
+        "command": [
+          "C:\\nvm4w\\nodejs\\node.exe",
+          "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+          "run",
+          "test:domain"
+        ],
+        "startedAt": "2026-10-01T08:56:01.370Z",
+        "finishedAt": "2026-10-01T08:58:07.910Z",
+        "exitCode": 0,
+        "signal": null,
+        "processError": null,
+        "stdoutBytes": 80043,
+        "stdoutSha256": "17917eaeff749007bd7c49239b03e1634e8d1bef52307c167b441b88ab38a0eb",
+        "stderrBytes": 55,
+        "stderrSha256": "aae00296a00317fb5d8157cc46c908dd4c7bfd3ac1d52b647091d4c256ef13c6"
+      },
+      {
+        "id": "test-acceptance",
+        "command": [
+          "C:\\nvm4w\\nodejs\\node.exe",
+          "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+          "run",
+          "test:acceptance"
+        ],
+        "startedAt": "2026-10-01T08:58:07.910Z",
+        "finishedAt": "2026-10-01T08:58:30.213Z",
+        "exitCode": 0,
+        "signal": null,
+        "processError": null,
+        "stdoutBytes": 1708,
+        "stdoutSha256": "54333a9262e337c046e25d93233d1f294e0bdfb41ba9fe3855e08697260c45f3",
+        "stderrBytes": 54,
+        "stderrSha256": "03a28f841eea36c0ec13f6dea3ea69c782e389ad940fcfaf6d419d0e4fff319b"
+      },
+      {
+        "id": "typecheck",
+        "command": [
+          "C:\\nvm4w\\nodejs\\node.exe",
+          "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+          "run",
+          "typecheck"
+        ],
+        "startedAt": "2026-10-01T08:58:30.213Z",
+        "finishedAt": "2026-10-01T08:58:33.492Z",
+        "exitCode": 0,
+        "signal": null,
+        "processError": null,
+        "stdoutBytes": 0,
+        "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrBytes": 15,
+        "stderrSha256": "8366207267355d3e3d5bf3bf6e8c94c5f93f6078c34f08973fa2b38cdda6cc92"
+      },
+      {
+        "id": "quality-gate",
+        "command": [
+          "C:\\nvm4w\\nodejs\\node.exe",
+          "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+          "run",
+          "quality:gate"
+        ],
+        "startedAt": "2026-10-01T08:58:33.493Z",
+        "finishedAt": "2026-10-01T08:58:41.580Z",
+        "exitCode": 0,
+        "signal": null,
+        "processError": null,
+        "stdoutBytes": 66,
+        "stdoutSha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20",
+        "stderrBytes": 192,
+        "stderrSha256": "9ccaf1b94533f97d77e53271cbcbe105b2181b73bdcdc804c213feb0145b94f3"
+      },
+      {
+        "id": "quality-dependency-health",
+        "command": [
+          "C:\\nvm4w\\nodejs\\node.exe",
+          "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+          "run",
+          "quality:dependency-health"
+        ],
+        "startedAt": "2026-10-01T08:58:41.580Z",
+        "finishedAt": "2026-10-01T08:58:44.992Z",
+        "exitCode": 0,
+        "signal": null,
+        "processError": null,
+        "stdoutBytes": 81,
+        "stdoutSha256": "5276498e7920ab1799ff8c4785c45b47ffe95623b3ba525bf42a2143e0adda84",
+        "stderrBytes": 79,
+        "stderrSha256": "fa9ba6bb542e83e254b5bae92765b5ba9e0505c12e1e49f6c11dbf41c51f8775"
+      },
+      {
+        "id": "quality-entropy",
+        "command": [
+          "C:\\nvm4w\\nodejs\\node.exe",
+          "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+          "run",
+          "quality:entropy"
+        ],
+        "startedAt": "2026-10-01T08:58:44.992Z",
+        "finishedAt": "2026-10-01T08:58:47.573Z",
+        "exitCode": 0,
+        "signal": null,
+        "processError": null,
+        "stdoutBytes": 64,
+        "stdoutSha256": "d78add4f5d8913a85deae02832c5d1751753b91ff1778c38e98d5e656a1fa917",
+        "stderrBytes": 49,
+        "stderrSha256": "7db8734f9a79ab0e050617ecdfb19b5819eb70b528b921de90840d1c8efe0973"
+      },
+      {
+        "id": "quality-owned-source",
+        "command": [
+          "C:\\nvm4w\\nodejs\\node.exe",
+          "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+          "run",
+          "quality:owned-source"
+        ],
+        "startedAt": "2026-10-01T08:58:47.573Z",
+        "finishedAt": "2026-10-01T08:58:48.713Z",
+        "exitCode": 0,
+        "signal": null,
+        "processError": null,
+        "stdoutBytes": 537,
+        "stdoutSha256": "663ed436ca376a3d766b56d1d40065e1a8bb64c217ba2a78a56f10b101035add",
+        "stderrBytes": 74,
+        "stderrSha256": "c86bfec8a0746ef3782ec82faa475c30584c496a247471de3d7d31663d09f15f"
+      }
+    ]
+  },
+  "actual": {
+    "archive": {
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js",
+        "archive",
+        "admit-canonical-prepared-proof-at-checkpoint",
+        "--yes",
+        "--json"
+      ],
+      "startedAt": "2026-10-01T08:59:14.295Z",
+      "finishedAt": "2026-10-01T08:59:16.383Z",
+      "exitCode": 0,
+      "signal": null,
+      "processError": null,
+      "stdoutBytes": 498,
+      "stdoutSha256": "92acf669e0c354deb57a554049b3e5e39df9ca6501b35133665d9aa2e70c055e",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "validation": {
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js",
+        "validate",
+        "--all",
+        "--strict"
+      ],
+      "startedAt": "2026-10-01T08:59:16.388Z",
+      "finishedAt": "2026-10-01T08:59:19.134Z",
+      "exitCode": 0,
+      "signal": null,
+      "processError": null,
+      "stdoutBytes": 997,
+      "stdoutSha256": "d19d84f62f985cb545abe2e705fb40279ef05360f2fcfee2c965e12c6bb7091f",
+      "stderrBytes": 16,
+      "stderrSha256": "5bc31df123a2e521acdd2c0d9477b367feec506471a91065d0a6b32c09089ed5"
+    }
+  }
+}

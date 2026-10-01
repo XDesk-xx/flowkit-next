@@ -1,0 +1,343 @@
+{
+  "runId": "20261001-033-apply",
+  "actionIdentity": {
+    "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+    "changeId": "converge-owned-skills-on-supported-commands",
+    "actionId": "apply"
+  },
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-apply",
+  "facts": {
+    "approvedProposalRunId": "20261001-032-review-propose",
+    "planningRoot": "openspec/changes/converge-owned-skills-on-supported-commands",
+    "artifactHashes": {
+      "AGENTS.md": "f30b0196357c71df8a0fcbf461372669e0a007b26ac603cc80bcb24d1b2648f9",
+      "README.md": "da6c85d0fc9213f3863c34973363601849dcafc5ee00bcd91682cd823d80e2a8",
+      "docs/onboarding.md": "b5b10aeaf364b8ad86e2df2479ff57cd395158c91e668987f94cebb2d6868bd7",
+      "openspec/changes/converge-owned-skills-on-supported-commands/design.md": "b441da5a382c1e7b58515061e10346495e8cfb6de60071a5475b61002d438ca9",
+      "openspec/changes/converge-owned-skills-on-supported-commands/explore.md": "cac9f90f73faf1f5dc7668c965031ed596a2c02ff33e41bc12ca0e0cade91a88",
+      "openspec/changes/converge-owned-skills-on-supported-commands/proposal.md": "15ace563176679cdf1a72d38fdf8e7e0aef741687863b69fe021c6825e9dc4fe",
+      "openspec/changes/converge-owned-skills-on-supported-commands/specs/action-guidance-execution/spec.md": "8bf25ba7b8dd35c7e0c4723cb8d82f7dc6181377cf2fadef06769b2f00ed0099",
+      "openspec/changes/converge-owned-skills-on-supported-commands/specs/stable-delivery-support-command-execution/spec.md": "422a19054437e476e50d6f87a6d3381771a92a1c76f86c1de6dce1298c65ef54",
+      "openspec/changes/converge-owned-skills-on-supported-commands/tasks.md": "8b6377fa70c704def7378fdb6dedab6abbde0180baa41db9da726c88b3dfa2d1",
+      "openspec/delivery-groups/20260929-07-bootstrap-execution-and-skill-hardening.yaml": "d4c5ae056a285db2c655cbe61aab8b8887038ddd43e52c321b3b43837facdfcb",
+      "skills/actions/apply/SKILL.md": "fcf2270ecf674f7b8e8ad3956e2fc0e085441ab98868ffa6c39a23554df94ac0",
+      "skills/actions/archive/SKILL.md": "4d3cc2451535e55fe8d90f9e7b537baaabec97e95cee531510b0564ecefa0019",
+      "skills/actions/explore/SKILL.md": "3ad1408c7d4040d81365299cb3bff352d661f30f72744a9c960fa414a41d6db8",
+      "skills/actions/propose/SKILL.md": "c6f7628492711fbfa6b3a1d849ff218c9006945383df9608c555e10b89e3d15c",
+      "skills/actions/review-apply/SKILL.md": "88172d24a477580f3fe4dd54b6e23deb8783c63deee22154ab4429277fb3b3ef",
+      "skills/actions/review-explore/SKILL.md": "a7347be21e21a68c7c27b2dd1b8464a044110c74333db2867e1f9fd39bca93f5",
+      "skills/actions/review-propose/SKILL.md": "1bc519739e2d03a91f9b6723a620a2f06577c8b8ac9caf59c2c02a8f6ce71153",
+      "skills/actions/revise-apply/SKILL.md": "6a10b3dfaea348bc3fa6a0ed438c7a60d65cc18c46d56ed445f8e5ff72cb9c9a",
+      "skills/actions/revise-explore/SKILL.md": "540fcd8f45ed4e5d48fe0cd9341529561ad515c727432e48a7e780af8b4e2a8f",
+      "skills/actions/revise-propose/SKILL.md": "472581df025518b2c4e312add15315086a8313024a246cb718dc0ead2ff23eda",
+      "skills/delivery/final/SKILL.md": "ffaf514fde21a1a406190600af87658c18eb6ffe9204ebdd5ab78c11a9c37a9e",
+      "skills/delivery/full-test/SKILL.md": "01cdc0765a4f597826c70cd8aef2c02c7e83e995d8ab9d742f742d9e531e9d14",
+      "skills/delivery/repository-integration/SKILL.md": "63ea10df87e5d9843d5acd07213e73fd996e325729f73d005e81614b7b8fe31b",
+      "skills/delivery/repository-integration/references/host-call.md": "7df7a10f37c3acbe0bcac2b813ee71433c062f35d18c4705e40dd4499cbfbc89",
+      "skills/delivery/start/SKILL.md": "c7cfd1ea10154cfde683c7236b892e1b5c50ad728af0d1a10d5867295c45d93b",
+      "skills/tools/openspec/SKILL.md": "aa7944721e3d3bd98e0adf41c67c2a3fd150be3c9dcb2d637a54dbec1652759a",
+      "src/README.md": "2ed75a875c418d77082a265be5d625d618e3d531917e5927048201e21fcf49b1"
+    },
+    "implementation": "Current owned Action, Delivery, Git, OpenSpec, onboarding and repository guidance now directs agents to the shipped fixed commands. Producer proofRefs must declare all files in its own proof directory; successor handoff may select declared refs. Historical and vendor assets remain unchanged.",
+    "verification": {
+      "domainPassed": 363,
+      "acceptancePassed": 7,
+      "capturedCommands": 12,
+      "allExitZero": true,
+      "packagedInstallation": true,
+      "formalDeliveryFullTest": false
+    },
+    "scope": "No production TypeScript core changes, no B historical proof repair, no current D07 candidate self-management, no independent Reviewer or Git action.",
+    "proofRefs": [
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-033-apply/acceptance.stderr.txt",
+        "bytes": 54,
+        "sha256": "03a28f841eea36c0ec13f6dea3ea69c782e389ad940fcfaf6d419d0e4fff319b",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "converge-owned-skills-on-supported-commands",
+        "runId": "20261001-033-apply",
+        "purpose": "raw-verification-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-033-apply/acceptance.stdout.txt",
+        "bytes": 1708,
+        "sha256": "db8996ce8d132a22b74b13cd119c87a0139701018b997439361c5d97df984b4f",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "converge-owned-skills-on-supported-commands",
+        "runId": "20261001-033-apply",
+        "purpose": "raw-verification-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-033-apply/asset-audit.json",
+        "bytes": 9320,
+        "sha256": "ead64781c7c707f6cc6d8c13771c432cd1ead6354f06279406828493bce61517",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "converge-owned-skills-on-supported-commands",
+        "runId": "20261001-033-apply",
+        "purpose": "current-asset-command-audit"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-033-apply/build.stderr.txt",
+        "bytes": 36,
+        "sha256": "8f5c6a9c4aade0d032984516a14b38a2d12cb1e6b333ab3568f9dde2ba3e3470",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "converge-owned-skills-on-supported-commands",
+        "runId": "20261001-033-apply",
+        "purpose": "raw-verification-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-033-apply/build.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "converge-owned-skills-on-supported-commands",
+        "runId": "20261001-033-apply",
+        "purpose": "raw-verification-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-033-apply/diff-check.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "converge-owned-skills-on-supported-commands",
+        "runId": "20261001-033-apply",
+        "purpose": "raw-verification-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-033-apply/diff-check.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "converge-owned-skills-on-supported-commands",
+        "runId": "20261001-033-apply",
+        "purpose": "raw-verification-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-033-apply/domain.stderr.txt",
+        "bytes": 55,
+        "sha256": "aae00296a00317fb5d8157cc46c908dd4c7bfd3ac1d52b647091d4c256ef13c6",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "converge-owned-skills-on-supported-commands",
+        "runId": "20261001-033-apply",
+        "purpose": "raw-verification-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-033-apply/domain.stdout.txt",
+        "bytes": 77002,
+        "sha256": "b814f7b87bb1642820422714eebcf098378a170837ec91e3c378054e23074a8a",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "converge-owned-skills-on-supported-commands",
+        "runId": "20261001-033-apply",
+        "purpose": "raw-verification-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-033-apply/extra-verification.json",
+        "bytes": 1585,
+        "sha256": "cf392f96568cb21d0b104d840d27c6c2106dedc092830671cd8121af3c25ce31",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "converge-owned-skills-on-supported-commands",
+        "runId": "20261001-033-apply",
+        "purpose": "apply-verification-index"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-033-apply/help.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "converge-owned-skills-on-supported-commands",
+        "runId": "20261001-033-apply",
+        "purpose": "raw-verification-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-033-apply/help.stdout.txt",
+        "bytes": 479,
+        "sha256": "8e9d6bd3d9823a841fe383dbf7d5809d34da5d86d0e1bc0186a09d0c7c3d1290",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "converge-owned-skills-on-supported-commands",
+        "runId": "20261001-033-apply",
+        "purpose": "raw-verification-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-033-apply/install.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "converge-owned-skills-on-supported-commands",
+        "runId": "20261001-033-apply",
+        "purpose": "raw-verification-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-033-apply/install.stdout.txt",
+        "bytes": 24,
+        "sha256": "0084a2467ddcb7209a9d3143448e657c43875f2b05b5c0c5e89ed25ab6b9a3dd",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "converge-owned-skills-on-supported-commands",
+        "runId": "20261001-033-apply",
+        "purpose": "raw-verification-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-033-apply/installed-help.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "converge-owned-skills-on-supported-commands",
+        "runId": "20261001-033-apply",
+        "purpose": "raw-verification-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-033-apply/installed-help.stdout.txt",
+        "bytes": 479,
+        "sha256": "8e9d6bd3d9823a841fe383dbf7d5809d34da5d86d0e1bc0186a09d0c7c3d1290",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "converge-owned-skills-on-supported-commands",
+        "runId": "20261001-033-apply",
+        "purpose": "raw-verification-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-033-apply/openspec.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "converge-owned-skills-on-supported-commands",
+        "runId": "20261001-033-apply",
+        "purpose": "raw-verification-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-033-apply/openspec.stdout.txt",
+        "bytes": 62,
+        "sha256": "adaf9777d5c57295abd939862f6e3bf4b932442aa3ba4fc6457f295aebbb0680",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "converge-owned-skills-on-supported-commands",
+        "runId": "20261001-033-apply",
+        "purpose": "raw-verification-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-033-apply/pack.stderr.txt",
+        "bytes": 36,
+        "sha256": "8f5c6a9c4aade0d032984516a14b38a2d12cb1e6b333ab3568f9dde2ba3e3470",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "converge-owned-skills-on-supported-commands",
+        "runId": "20261001-033-apply",
+        "purpose": "raw-verification-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-033-apply/pack.stdout.txt",
+        "bytes": 4580,
+        "sha256": "bfec49103dac2a750bda9b5f71f14456823c1a55588f286428fcb3b0dae613dd",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "converge-owned-skills-on-supported-commands",
+        "runId": "20261001-033-apply",
+        "purpose": "raw-verification-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-033-apply/package-list.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "converge-owned-skills-on-supported-commands",
+        "runId": "20261001-033-apply",
+        "purpose": "raw-verification-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-033-apply/package-list.stdout.txt",
+        "bytes": 5499,
+        "sha256": "98fc380b44026ac27b3a7c2a0be8bb3bf059a87f8de1584b56180b15960e91a4",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "converge-owned-skills-on-supported-commands",
+        "runId": "20261001-033-apply",
+        "purpose": "raw-verification-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-033-apply/package-smoke.json",
+        "bytes": 1490,
+        "sha256": "12c9e5485942c186f3df9085e1f38f20062c55effb44773b847e8f9ccbda0cfc",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "converge-owned-skills-on-supported-commands",
+        "runId": "20261001-033-apply",
+        "purpose": "apply-verification-index"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-033-apply/quality.stderr.txt",
+        "bytes": 192,
+        "sha256": "9ccaf1b94533f97d77e53271cbcbe105b2181b73bdcdc804c213feb0145b94f3",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "converge-owned-skills-on-supported-commands",
+        "runId": "20261001-033-apply",
+        "purpose": "raw-verification-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-033-apply/quality.stdout.txt",
+        "bytes": 66,
+        "sha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "converge-owned-skills-on-supported-commands",
+        "runId": "20261001-033-apply",
+        "purpose": "raw-verification-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-033-apply/typecheck.stderr.txt",
+        "bytes": 15,
+        "sha256": "8366207267355d3e3d5bf3bf6e8c94c5f93f6078c34f08973fa2b38cdda6cc92",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "converge-owned-skills-on-supported-commands",
+        "runId": "20261001-033-apply",
+        "purpose": "raw-verification-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-033-apply/typecheck.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "converge-owned-skills-on-supported-commands",
+        "runId": "20261001-033-apply",
+        "purpose": "raw-verification-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-033-apply/verification.json",
+        "bytes": 3631,
+        "sha256": "9546d922f19c4841f683e3190e8c0d73be681b2cbd1876a6ebe38fc8bf626838",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "converge-owned-skills-on-supported-commands",
+        "runId": "20261001-033-apply",
+        "purpose": "apply-verification-index"
+      }
+    ],
+    "handoff": {
+      "summary": "Independent review-apply should inspect exact current asset hashes, the 24-item audit, installed package/readback, proofRefs closure and current command/role wording. Apply stops here.",
+      "ownerDecisions": [],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20261001-033-apply",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-033-apply/asset-audit.json"
+        },
+        {
+          "sourceRunId": "20261001-033-apply",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-033-apply/verification.json"
+        },
+        {
+          "sourceRunId": "20261001-033-apply",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-033-apply/extra-verification.json"
+        },
+        {
+          "sourceRunId": "20261001-033-apply",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-033-apply/package-smoke.json"
+        },
+        {
+          "sourceRunId": "20261001-033-apply",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-033-apply/domain.stdout.txt"
+        },
+        {
+          "sourceRunId": "20261001-033-apply",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-033-apply/acceptance.stdout.txt"
+        },
+        {
+          "sourceRunId": "20261001-033-apply",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-033-apply/installed-help.stdout.txt"
+        }
+      ]
+    }
+  }
+}

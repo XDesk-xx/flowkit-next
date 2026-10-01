@@ -1,0 +1,36 @@
+{
+  "runId": "20260930-009-apply",
+  "role": "author",
+  "candidate": {
+    "repositoryHead": "45a80c68233b069e969c66f81320c6bac6234424",
+    "builtCli": "dist/cli/entrypoint.js",
+    "builtCliSha256": "54a45eeae3e322d4fa09cda6df702048d155ae3103f9fe432a5d3304a6f531fa"
+  },
+  "checks": [
+    { "command": "pnpm test:domain", "exitCode": 0, "result": "352 passed, 0 failed" },
+    { "command": "pnpm test:acceptance", "exitCode": 0, "result": "7 passed, 0 failed; rerun after build completed" },
+    { "command": "pnpm test:bootstrap", "exitCode": 0, "result": "9 passed, 0 failed" },
+    { "command": "pnpm typecheck", "exitCode": 0 },
+    { "command": "pnpm quality:gate", "exitCode": 0 },
+    { "command": "pnpm quality:dependency-health", "exitCode": 0, "result": "159 modules, 922 dependencies" },
+    { "command": "pnpm quality:entropy", "exitCode": 0, "result": "65/65 production modules reachable" },
+    { "command": "pnpm check:forbidden-tracked-artifacts", "exitCode": 0 },
+    { "command": "pnpm build", "exitCode": 0 },
+    { "command": "npm pack --dry-run --json", "exitCode": 0, "result": "102 package entries; fixed CLI modules, README, onboarding, and ten Action Skills included" },
+    { "command": "node C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js validate expose-stable-action-and-record-commands --strict", "exitCode": 0, "result": "Change is valid" },
+    { "command": "git diff --check", "exitCode": 0 },
+    { "command": "git check-attr text eol -- <this proof>", "exitCode": 0, "result": "text unset; eol lf" }
+  ],
+  "independentTarget": {
+    "path": ".tmp/d07-a-independent-target",
+    "scope": "test fixture activation and one real Author Explore document",
+    "startRunId": "20260930-001-explore",
+    "betweenProcessStatus": "run-chain-invalid while the started Run was partial",
+    "finish": "confirmed terminal in a separate process",
+    "thirdProcessStatus": "current terminal",
+    "thirdProcessNext": "review-explore",
+    "exactRetry": "confirmed duplicate",
+    "limit": "Fixture activation is test setup; no independent Reviewer verdict or Formal Full Test is claimed."
+  },
+  "scope": "D07 first Change A only; B/C/F, Formal Full Test, Git checkpoint, and Stable manager replacement were not performed."
+}

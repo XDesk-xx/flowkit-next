@@ -1,0 +1,186 @@
+{
+  "runId": "20261001-068-explore",
+  "actionIdentity": {
+    "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+    "changeId": "pin-bootstrap-manager-version-1-0-0",
+    "actionId": "explore"
+  },
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-explore",
+  "facts": {
+    "projectOrdinal": 50,
+    "changeStartSequence": 68,
+    "summary": "An isolated 1.0.0 package and production install pass with unchanged frozen lock. The current Formal Full Test input excludes packaged onboarding documentation; one exact input addition detects its drift. Real source and final package remain unchanged.",
+    "sourceHead": "f826f44587b25130a9f47d2426391cbba52520b1",
+    "manifest": {
+      "path": "openspec/delivery-groups/20260929-07-bootstrap-execution-and-skill-hardening.yaml",
+      "sha256": "77c43f4eb79135871af277996c9db8449b8e8b98649a70e3a0f760ec7eb403f1"
+    },
+    "exploreArtifact": "openspec/changes/pin-bootstrap-manager-version-1-0-0/explore.md",
+    "exploreSha256": "27a46be9d30887d8fc21e8063ccdd7701f14b1216af778f5969eeaaa4ef95ed1",
+    "openSpecMetadata": {
+      "path": "openspec/changes/pin-bootstrap-manager-version-1-0-0/.openspec.yaml",
+      "sha256": "1c480a9cda868e985f1f0048d5991a349d5e9918b59d1ca8c21211d618f6c4ba"
+    },
+    "versionProbe": {
+      "sourceVersion": "0.1.0",
+      "targetVersion": "1.0.0",
+      "exploratoryPackageSha256": "3d9c3a7a330be4a349ac0afc5ddaddf0a202f8af883722921721ba0a0bcb5eff",
+      "bytes": 160015,
+      "checks": [
+        {
+          "id": "frozen-install",
+          "exitCode": 0,
+          "stdoutSha256": "d8adcacf51af83285fcab2d8fa84764acc939857e9644d57caacd7b5515d3b15",
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "id": "pack",
+          "exitCode": 0,
+          "stdoutSha256": "54ebaf965623bd835728d4898e37a1357b8c129378ac57dd5b2c38ddbd886543",
+          "stderrSha256": "8f5c6a9c4aade0d032984516a14b38a2d12cb1e6b333ab3568f9dde2ba3e3470"
+        },
+        {
+          "id": "production-install",
+          "exitCode": 0,
+          "stdoutSha256": "bf14b7a2bc076990244fa3239536925868dfe5ad05089c7d459b5fa482abfc72",
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    },
+    "fullTestInputProbe": {
+      "currentIgnoresOnboardingDrift": true,
+      "selectedDetectsOnboardingDrift": true
+    },
+    "proofRefs": [
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-068-explore/flowkit-next-1.0.0-probe.tgz",
+        "bytes": 160015,
+        "sha256": "3d9c3a7a330be4a349ac0afc5ddaddf0a202f8af883722921721ba0a0bcb5eff",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-068-explore",
+        "purpose": "exploratory-versioned-package-bytes"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-068-explore/frozen-install.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-068-explore",
+        "purpose": "raw-explore-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-068-explore/frozen-install.stdout.txt",
+        "bytes": 888,
+        "sha256": "d8adcacf51af83285fcab2d8fa84764acc939857e9644d57caacd7b5515d3b15",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-068-explore",
+        "purpose": "raw-explore-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-068-explore/full-test-input-probe.mjs",
+        "bytes": 2902,
+        "sha256": "a9dd02faa5ec2f1960d4c0c31f72401fd65fc349882ba69e0313737ef15af60c",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-068-explore",
+        "purpose": "bounded-explore-probe-source"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-068-explore/full-test-input-report.json",
+        "bytes": 630,
+        "sha256": "c196ca584ef878581cbc5afb1247a5c46e13f5c8aa9d29fa0af66907ec7f4dfa",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-068-explore",
+        "purpose": "bounded-explore-proof-report"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-068-explore/pack.stderr.txt",
+        "bytes": 36,
+        "sha256": "8f5c6a9c4aade0d032984516a14b38a2d12cb1e6b333ab3568f9dde2ba3e3470",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-068-explore",
+        "purpose": "raw-explore-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-068-explore/pack.stdout.txt",
+        "bytes": 4576,
+        "sha256": "54ebaf965623bd835728d4898e37a1357b8c129378ac57dd5b2c38ddbd886543",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-068-explore",
+        "purpose": "raw-explore-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-068-explore/production-install.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-068-explore",
+        "purpose": "raw-explore-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-068-explore/production-install.stdout.txt",
+        "bytes": 24,
+        "sha256": "bf14b7a2bc076990244fa3239536925868dfe5ad05089c7d459b5fa482abfc72",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-068-explore",
+        "purpose": "raw-explore-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-068-explore/version-probe-report.json",
+        "bytes": 3557,
+        "sha256": "4170356323e8f1a62039eb0d1c41066cb7bc75f2ae3d9a9d49ef606a6f8c11de",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-068-explore",
+        "purpose": "bounded-explore-proof-report"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-068-explore/version-probe.mjs",
+        "bytes": 5981,
+        "sha256": "069f6765cbd2c380b56db0cb94c85fbf13b3cc16a96adf34f0ae45f400f2c5f1",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-068-explore",
+        "purpose": "bounded-explore-probe-source"
+      }
+    ],
+    "limitations": [
+      "The 1.0.0 package is from an isolated exploratory copy and is not the final release candidate.",
+      "No production source mutation, Linux detached acceptance, Formal Full Test, Final, Git checkpoint, package publication or Stable manager selection occurred in this Explore."
+    ],
+    "handoff": {
+      "summary": "Review the narrow version 1.0.0 boundary: package metadata and onboarding example, exact onboarding Full Test input, then fresh pack/install proof during Apply. Preserve E 0.1.0 proof and keep later Delivery/Git boundaries separate.",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-10-01:create-version-1-0-0-change",
+          "summary": "Owner created a D07 Change to pin the package version at 1.0.0 before Formal Full Test."
+        },
+        {
+          "sourceRef": "owner-input:2026-10-01:activate-version-1-0-0-proof-explore",
+          "summary": "Owner separately authorized activation and proof Explore."
+        }
+      ],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20261001-068-explore",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-068-explore/version-probe-report.json"
+        },
+        {
+          "sourceRunId": "20261001-068-explore",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-068-explore/full-test-input-report.json"
+        }
+      ]
+    }
+  }
+}

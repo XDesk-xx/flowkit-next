@@ -1,0 +1,101 @@
+{
+  "runId": "20261001-047-review-apply",
+  "actionIdentity": {
+    "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+    "changeId": "enforce-typed-evidence-and-bounded-execution",
+    "actionId": "review-apply"
+  },
+  "authorConclusion": null,
+  "reviewerVerdict": "approved",
+  "verificationVerdict": null,
+  "nextBoundary": "archive",
+  "facts": {
+    "reviewedRunId": "20261001-046-revise-apply",
+    "previousReviewRunId": "20261001-045-review-apply",
+    "approvedProposalReviewRunId": "20261001-043-review-propose",
+    "reviewedResultSha256": "3bd404c311eae3c2cbf9849bb6086e4fc885db590939923f5114470428015366",
+    "reviewedArtifactHashes": {
+      "README.md": "022bafb0f34c1b1617e43f60cfeddde7051a9f584924d796314753a66d72193c",
+      "docs/onboarding.md": "8a49fb10e5c5f94a611183965056a83f327d3f25c77227936484671c63b1a24b",
+      "openspec/changes/enforce-typed-evidence-and-bounded-execution/design.md": "1f963108328f28538142ff1894c72400aba65d3eef3a77fb5de6da7e30a95d90",
+      "openspec/changes/enforce-typed-evidence-and-bounded-execution/proposal.md": "e2db76517a7a44ca21b8acc8bee5a408bfa93f4ff6d315d1424088daadbbdf9f",
+      "openspec/changes/enforce-typed-evidence-and-bounded-execution/specs/lightweight-engineering-gate/spec.md": "34b1660f50e9cdfd4a89a54e2e75c53a33641428a7a46c86d8ec9332623cc20f",
+      "openspec/changes/enforce-typed-evidence-and-bounded-execution/specs/stable-action-command-execution/spec.md": "7e250bc1a7ee26ec0f4f44d5d17b128e72befca8fbeac90dd9bdd049326193b5",
+      "openspec/changes/enforce-typed-evidence-and-bounded-execution/specs/stable-delivery-support-command-execution/spec.md": "a87e07c84e5dc3e242e0dcd19f02e542b82163a294109d2369502ca0c5c490d1",
+      "openspec/changes/enforce-typed-evidence-and-bounded-execution/tasks.md": "f39d30d5c55935d68ce77c00b528b5fe5d64cc13696ce83686cf0c123eb99bc9",
+      "openspec/delivery-groups/20260929-07-bootstrap-execution-and-skill-hardening.yaml": "736d530ac595d09ee83d05c6d2d103f458371243e1706b30b5d841cda2c43820",
+      "package.json": "ae5b266740db006ef10271bb011837467629fdcafba50a46688c0de5792185a9",
+      "src/cli/action-commands.ts": "dfeff8a30f4e38e99b95232d07480b3f015da877daeea9c775e010cd2c88117b",
+      "src/cli/action-proof.ts": "1e22c790197c2e4658af66564594165ef0691654873decd4bf2a79feb3f7a6ce",
+      "src/internal/git-checkpoint-execution.ts": "f76aa06f1168443c16ca2f070fdb0ea7ae00018b11e6e826d928b01dd4bfddf1",
+      "src/internal/git-checkpoint-scope.ts": "7d3d208d5c6520dfc1e25d24c2c025df9250d093d1cf00ce76df8df053e4ce6f",
+      "tests/unit/domain/action-command-cli.test.ts": "3c58c5f41805e34dfd4c7998b15ab097db886922a8fb4e0d8e1f5728eacbfa4f",
+      "tests/unit/domain/action-proof-closure.test.ts": "2e20c780f76c2ae2cb2a4b2d174ae37bc4b66c061a3c13ee76c7e416a45f90a4",
+      "tests/unit/domain/git-workflow-effects.test.ts": "e71e8ea92724fcf45813261ec27016a88db1a47d62301138b0f529b1933bbe5a",
+      "tests/unit/domain/git-workflow-host.test.ts": "3b57bf6a60250b8a2f2a3050bebee7846f8d4f27f0b104c3f50bb233c720f26f",
+      "tests/unit/quality/owned-source-policy.test.ts": "f265756a16266e3b8d7a2ded3b6f5f0a459d4194c012664c88f1799b371f5c31"
+    },
+    "currentStep": "独立复审 D07-D-RA-001 的两文件修订，核对 stdin 错误、子进程完成与失败读回的顺序，以及已审查其余实现和批准规划的保留。",
+    "complexityMinimality": "通过局部保存 stdinError 并在既有 execFile callback 统一结束 Promise 修复；stdin 缺失或同步 end 失败时终止子进程并仍等待完成回调。沿用现有单次暂存及失败读回，无新依赖或抽象层。",
+    "newContentScopeDrift": "scope drift: NONE。修订仅对应既有 finding；没有新 capability、lifecycle 或 authority。其余 17 项已审产物字节及批准 Proposal 保持。",
+    "findings": [],
+    "resolvedFindings": [
+      {
+        "id": "D07-D-RA-001",
+        "resolution": "stdin error 不再提前 reject。Promise 仅在 execFile 完成回调结束，调用方随后核对 index/HEAD；新增注入回归断言 childCompleteAtReturn=true、返回时 index 已含 a.txt、后续 index 不变、只有一次 add、incomplete/stage/confirmed 且 checkpointCommit=null。独立重跑通过。"
+      }
+    ],
+    "evidence": [
+      "外部 Stable manager status/next 确认 046 terminal 后合法 review-apply，doctor PASS / OpenSpec 1.10.0；047 由该 manager canonical start 建立，Guidance SHA d75e53f0925b2bf12f264d44a7d00c7046eea5bb5cca7c62016f8ae88597ceb8。",
+      "19 项当前 artifactHashes 全匹配；与 045 比较仅 git-checkpoint-scope.ts 和 git-workflow-effects.test.ts 两项变化。将 stdin 修订及新增测试/必需 imports 在内存反向还原，两份文件分别恢复 045 已审 SHA，排除文件内附带改动。",
+      "043 六份批准规划匹配；tasks 仅完成勾选，反向恢复后匹配批准 SHA。046 全部 15 份 proof 的唯一性、归属、regular-file/no-link、bytes/SHA/Git 字节规则和完整目录集合均复核；七条命令摘要与原始 stdout/stderr 身份、实际 exit 0 一致。",
+      "独立执行四个 Git 测试文件，14 PASS / 0 FAIL / 0 skipped，实际 exit 0。覆盖 stdin 错误先于子进程完成、单次 add 后的可靠读回、stage/commit 失败、对象形状拒绝、长路径集合、范围与权限保留。原始输出和命令身份存于本 Run 三份 proof。",
+      "源码继续由既有 executeScopedCheckpoint catch 读回，不重试、不清空 index、不把 stage 当 checkpoint；literal NUL 输入、排序唯一校验和现有安全边界保留。"
+    ],
+    "verification": {
+      "independentTargetedTests": 14,
+      "exitCode": 0,
+      "formalDeliveryFullTest": false
+    },
+    "limitations": "本次为当前修订的独立 Review 和有界 Git 回归，不是 Formal Full Test。stdin 时序由故障注入构造，不声称原生 Git 常态复现；宿主交互规则仍未验证。未重新运行 044 全量套件或包安装，历史 PASS 未当作本次重跑。Reviewer 未修改 Author 产物或执行主仓库 Git mutation。",
+    "proofRefs": [
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-047-review-apply/checks.json",
+        "bytes": 1112,
+        "sha256": "d8c3343c27d1f38cc5f57079e476a59bbe1233d5e03ea44a70ba45e80bb6713b",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "enforce-typed-evidence-and-bounded-execution",
+        "runId": "20261001-047-review-apply",
+        "purpose": "Independent review of D07-D-RA-001 correction and targeted Git regression"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-047-review-apply/git-domain.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "enforce-typed-evidence-and-bounded-execution",
+        "runId": "20261001-047-review-apply",
+        "purpose": "Independent review of D07-D-RA-001 correction and targeted Git regression"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-047-review-apply/git-domain.stdout.txt",
+        "bytes": 3398,
+        "sha256": "c0bb66af6cff992403621aa3b76516aec43485ea3d469aed9efa8f37dd60e4b4",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "enforce-typed-evidence-and-bounded-execution",
+        "runId": "20261001-047-review-apply",
+        "purpose": "Independent review of D07-D-RA-001 correction and targeted Git regression"
+      }
+    ],
+    "handoff": {
+      "summary": "review-apply approved，D07-D-RA-001 已关闭；当前实现符合已批准 Proposal，合法后续边界为 archive。Reviewer STOP。",
+      "ownerDecisions": [],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20261001-047-review-apply",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-047-review-apply/checks.json"
+        }
+      ]
+    }
+  }
+}

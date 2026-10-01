@@ -1,0 +1,13 @@
+{
+  "artifact": "src/domain/git-workflow-host.ts",
+  "priorReviewedSha256": "040468c0f1ca733ee7709289ab781884a93b017435e00d5afe427d8c6ee13632",
+  "currentReviewedSha256": "3ec6b14ae0e252f5c8f1e9d68d805e4709ce001d61f7c840425c22c6d0bcb97a",
+  "authorResult": ".flowkit/runs/20260929-07-bootstrap-execution-and-skill-hardening/014-expose-stable-delivery-and-support-commands/20261001-022-revise-apply/result.json",
+  "authorResultSha256": "d0bb49fbb2c6391505be8afa7aecb020382e4a97a385ad3df3653e20913afff3",
+  "authorDeclaresFile": false,
+  "consumers": [
+    "src/cli/action-readiness.ts:455",
+    "src/cli/support-change-archive.ts:161"
+  ],
+  "observation": "Both archive preflight and archive effect read author.result.facts.artifactHashes and iterate only declared entries. The changed Git push authority implementation is absent from that map. Reviewer hashes do not repair the Author candidate consumed by these paths."
+}

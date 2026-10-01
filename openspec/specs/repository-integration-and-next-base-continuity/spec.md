@@ -152,21 +152,27 @@ Integration SHALL 在 preparation、执行重验和 terminal 一致消费经有�
 
 ### Requirement: Git workflow nodes use an explicit supported host without owning Action lifecycle
 
-系统 SHALL 提供可实际执行并验收的最小 Node 宿主参考入口，供已有 Agent 在独立 Owner 授权下使用 Git/远端工具。入口 SHALL 明确 target repository、具体操作、branch、适用的 remote/ref、提交路径或复用对象及权限来源；不得从 dirty 集合、Review/PASS/Final 或 caller 自签声明推断权限。普通 Start 后 commit、Change checkpoint 和 push SHALL 不要求 Final、Integration package 或 PR/merge；仅 Delivery Integration 消费已确认 Final。
+系统 SHALL 在发行 `flowkit` 中提供固定 `git checkpoint`、`git push`、`git integrate` 命令，复用既有受控 Git host 能力。Agent/宿主 SHALL 在调用前依据真实 Owner 指令确定 exact target、操作、branch、remote/ref、提交路径或复用对象及 `sourceRef`；CLI 不读取聊天，也不以请求 JSON 的存在、Review/PASS/Final、dirty 集合或自签 hash 推断授权。固定命令 SHALL 按操作校验 Agent 提交的 Owner authority 与 Git request 完全一致，在 Git 写前重验当前 Policy/Final、index、对象和目标等既有前置，并保留现有精确范围与部分效果规则。CLI 对 Owner 来源的结构/一致性校验 SHALL NOT 被描述为独立认证聊天；执行者对真实 Owner 输入的 attestation 仍是宿主责任。普通 Start 后 commit、Change checkpoint 和 push SHALL 不要求 Final、Integration package 或 PR/merge；仅 Delivery Integration 消费已确认 Final。
 
-已有 CLI 与 checkpoint evaluator SHALL 保持只读，既有 Policy 只计算边界；宿主不创建新 Standard Action、Git Run、Owner decision 或自动执行循环。PR/merge SHALL 使用既有工具或人工交接，不要求全 provider 原生实现。
+Change checkpoint SHALL 使用现有 `authorize-checkpoint`、exact Change、`scope=["checkpoint"]` 与 Policy evaluator；普通 Start checkpoint SHALL 使用同 decision/scope、exact Delivery、无 changeId 且绑定本次完整 Git operation；push SHALL 使用 `authorize-push`、`scope=["push"]` 与 exact Delivery/可选 Change、commit 和 remote/ref；Integration SHALL 使用现有 `authorize-repository-integration` singleton 与 exact checkpointOperation。一个命令的 fact SHALL NOT 自动授权另一命令，同一 Owner 消息即使明确授权多个 Git 步骤也必须分别绑定并执行。CLI SHALL 对 operation 中的完整路径、commit message/shape 或复用 SHA 做 exact 对照，而不只检查 fact 的外形。
+
+`status`/`next` 与 checkpoint authorization evaluator SHALL 保持只读，Policy 只计算边界；只有独立调用的 exact `git` 写命令可执行相应 Git 操作。该命令 SHALL NOT 创建新 Standard Action、Git Run、Owner decision 或自动执行循环。PR/merge SHALL 使用既有工具或人工交接，不要求全 provider 原生实现。
 
 #### Scenario: Ordinary checkpoint and push do not require Final
-- **WHEN** 普通 Git 节点的现有合法边界、明确权限、target 与操作范围成立
-- **THEN** 宿主 SHALL 可只完成请求的 commit 或 push，不读取 Final/Full Test/Archify，不自动接着 PR/merge
+- **WHEN** 普通 Git 节点的现有合法边界、Agent 已观察的明确 Owner 权限、target 与操作范围成立
+- **THEN** 固定命令 SHALL 可只完成请求的 commit 或 push，不读取 Final/Full Test/Archify，不自动接着 PR/merge
 
 #### Scenario: No authority means no Git write
-- **WHEN** 权限缺失、操作/target 不符或可信授权来源不可取得
-- **THEN** 宿主 SHALL 在 Git 写入前停止；仅有授权外形或自签 hash 不放行
+- **WHEN** Agent 未提交本次真实 Owner 决定，或 authority/操作/target/sourceRef/当前前置不符
+- **THEN** 固定命令 SHALL 在 Git 写入前停止；CLI 不从结构外形、Review/PASS 或聊天关键字补造权限
 
 #### Scenario: Manager and target are separate
-- **WHEN** Agent 使用安装根自有宿主模块访问无 Flowkit scripts/Skills 的 target
+- **WHEN** Agent 使用安装根自有固定命令访问无 Flowkit scripts/Skills 的 target
 - **THEN** 实际 Git cwd/读写 SHALL 属于 target，资产来自 manager，不复制或回退到 target 同名模块
+
+#### Scenario: Chat source is outside CLI visibility
+- **WHEN** Agent 基于真实 Owner 指令提交匹配的 `sourceRef` 与 operation，但 CLI 本身没有聊天读取能力
+- **THEN** CLI SHALL 按本次宿主 attestation 与现有 Git 前置处理，不建立 Codex 桌面监听器，也不声称独立证明消息真实性
 
 ### Requirement: Commit scope is checked against the real index without a global clean gate
 
@@ -212,24 +218,60 @@ host SHALL 将本次已确认效果、失败/待人工步骤、尚不可确认�
 
 ### Requirement: Create-new checkpoint preserves new managed evidence bytes
 
-在已有 Owner 授权、scope 与完整 index 检查成立后，create-new checkpoint 宿主 SHALL 在提交前对本次新增的 managed Run/proof exact 路径核对 index blob 与当前原始文件 bytes 一致。对已有 terminal Result proofRef 声明的本次 proof，SHALL 进一步核对 index 与当前文件均匹配已记录 SHA/bytes；缺失、无法对应或不一致时 SHALL 停止提交，报告 exact 路径和实际已发生的暂存效果，不自动清空或改写 index。新增的 Run 三文件 SHALL 以本次真实 create-once 文件为原始来源核对 index；新增 managed proof 若不能对应本次已接纳 Result 的 proofRef，SHALL 拒绝作为已接纳 proof 提交。不得以当前文件与 index 一致替代已声明 proof 的记录身份。此检查 SHALL 不重扫历史证据，不给 push、复用或其他 Git 节点增加 index 写入，也不创建新的 Git authority。
+在已有 Owner 授权、scope 与完整 index 检查成立后，create-new checkpoint 宿主 SHALL 在提交前对本次新增的 managed Run/proof exact 路径核对 index blob 与当前原始文件 bytes 一致。新增 Run 三文件 SHALL 以本次真实 create-once 文件为原始来源核对 index。新增 managed proof SHALL 有所属 Run Result 中唯一且身份匹配的 `proofRef`，其 path、bytes、SHA-256 SHALL 与 index 和当前文件一致；缺失、重复、无法对应或不一致时 SHALL 停止提交，报告 exact 路径和实际已发生的暂存效果，不自动清空或改写 index。不得以当前文件与 index 一致替代已声明 proof 的记录身份。
+
+对 `terminal` owner，宿主 SHALL 保留已有准入和原始字节行为。对 `prepared` owner，只有所属 Run 的三文件完整、context/result 身份一致、author/reviewer/verification/next 四个结果槽均为 null，并且该 owner 在本次 checkpoint 候选 Git 树的完整 canonical Run 链中有唯一合法直接后继且不是 tip，宿主才 SHALL 接纳其新增 proof。该链 SHALL 按既有 Run 链和 Policy 规则验证唯一根、同目标、唯一 identity/sequence、完整记录、无 fork/断链及合法 successor edge；Owner correction SHALL 有匹配的已保存 authority，同 Action continuation SHALL 满足既有 Policy。证明此链所需的 Run 文件与 proof owner Result SHALL 来自提交前 HEAD 加待提交 index 构成的候选树；只存在于未提交工作区的后继或与候选树冲突的文件 SHALL NOT 提供准入。partial Run、当前 prepared tip、伪 verdict、非法 edge 或不可验证链 SHALL 拒绝。
+
+此检查 SHALL 只消费本次新增 proof 明确需要的所属 Change Run 链，不追溯扫描无关历史证据；不得给 push、复用或其他 Git 节点增加 index 写入，不创建 Git、Owner 或 Reviewer authority，也不补写或改写历史 Run/Proof。
 
 #### Scenario: New evidence is staged without transformation
-
-- **WHEN** Owner 已授权 create-new checkpoint，且本次新增 Run 的 index blob 与 create-once 文件一致、本次声明 proof 的 index/当前文件与 Result 记录一致
+- **WHEN** Owner 已授权 create-new checkpoint，新增 terminal Run 的 index blob 与 create-once 文件一致，新增 proof 的 index/当前文件与 Result 中唯一 `proofRef` 的身份、path、bytes、SHA-256 一致
 - **THEN** 宿主 SHALL 可继续既有 scope、空白诊断与 commit 核验流程
 
-#### Scenario: Attributes drift before commit
+#### Scenario: Prepared proof with Owner correction is in a closed candidate chain
+- **WHEN** 完整 prepared Author Run 的新增 proof 满足唯一声明及原始字节检查，且候选树中的完整 canonical 链以合法 Owner-linked revise Run 为其唯一直接后继
+- **THEN** 宿主 SHALL 允许该 proof 继续既有 checkpoint 流程，不修改 prepared Run 的原始状态或证据
 
+#### Scenario: Prepared proof with same-Action continuation is in a closed candidate chain
+- **WHEN** 完整 prepared Author Run 的新增 proof 满足唯一声明及原始字节检查，且候选树中的完整 canonical 链以合法同 Action 新 occurrence 为其唯一直接后继
+- **THEN** 宿主 SHALL 允许该 proof 继续既有 checkpoint 流程，不把前驱伪装成 terminal
+
+#### Scenario: Prepared successor exists only in worktree
+- **WHEN** proof owner 是 prepared，合法后继只在未提交工作区存在，而 HEAD 与待提交 index 组成的候选树中没有其完整 Run
+- **THEN** 宿主 SHALL 在 commit 前拒绝该 proof，保留本次已发生的 stage 并报告原因
+
+#### Scenario: Candidate chain is incomplete or invalid
+- **WHEN** prepared owner 是当前 tip，或候选树包含 partial Run、缺文件、断链、fork、重复 identity/sequence、非法 successor edge、错误 Owner correction、伪 verdict 或互相冲突的 Run bytes
+- **THEN** 宿主 SHALL 在 commit 前拒绝本次新增 prepared proof，不用工作区或未来可能的 continuation 补足链
+
+#### Scenario: Attributes drift before commit
 - **WHEN** 本次新 Run/proof 的 index blob 因 Git clean 转换或属性漂移而不同于原始字节
 - **THEN** 宿主 SHALL 在 commit 前停止并报告差异及已发生的 stage，保留 index 而不自行修复或继续 push
 
 #### Scenario: Proof changes after Result admission
-
-- **WHEN** 已声明 proof 在 Result 接纳后被改动且暂存，index blob 与当前文件一致但与 proofRef SHA/bytes 不一致
+- **WHEN** 已声明 proof 在 Result 接纳后被改动且暂存，index blob 与当前文件一致但与唯一 `proofRef` 的身份、SHA-256 或 bytes 不一致
 - **THEN** 宿主 SHALL 在 commit 前停止，报告 exact proof 路径与记录身份不匹配，保留 index
 
-#### Scenario: Existing history is outside the forward-only check
+#### Scenario: Missing or ambiguous declaration
+- **WHEN** 新增 proof 在所属 Result 中缺少唯一匹配声明、存在重复声明或指向其他 Run/Change
+- **THEN** 宿主 SHALL 在 commit 前拒绝，不能以路径存在或摘要碰巧相同替代所属 Result 的声明
 
+#### Scenario: Existing history is outside the forward-only check
 - **WHEN** 本次 checkpoint 不含新产生的 managed Run/proof，或仅执行复用/push
 - **THEN** SHALL 不遍历旧 Run/proof 作追溯迁移或无关 index 检查
+
+### Requirement: Fixed Git commands preserve exact object and remote readback
+
+`git checkpoint` SHALL 复用完整 index、授权 exact paths、managed evidence 原始 bytes、commit shape/message 与实际 Git 对象核验；`git push` SHALL 仅推送已确认的 exact local commit 到指定 remote/ref 并读回远端 exact ref；`git integrate` SHALL 先消费有效 Final confirmation 与既有 Integration singleton/checkout/object 前置，按已授权 create-new/reuse-existing 操作执行并确认真实接受。三个命令 SHALL 分别调用和 STOP，不从本地 commit 推断 push/merge，也不在部分成功后自动重试、reset、清空 index、回滚或补写 SHA。
+
+#### Scenario: Scoped checkpoint contains unrelated staged file
+- **WHEN** Owner 只授权 exact paths A，完整 index 还包含范围外 B
+- **THEN** `git checkpoint` SHALL 在 commit 前报告 B 和任何已发生的暂存效果，不扩大提交或清空 index
+
+#### Scenario: Local commit is confirmed but remote push fails
+- **WHEN** checkpoint commit 已由 Git 读回，而 `git push` 未获远端 exact ref 接受
+- **THEN** 两个命令的结果 SHALL 分别保留本地 commit 与未确认远端状态，不声称已发布或自动重试
+
+#### Scenario: Integration lacks confirmed Final
+- **WHEN** manifest completed 但有效 Final confirmationRef 缺失或不匹配
+- **THEN** `git integrate` SHALL 在 Git 写入前拒绝，不从 completed 字段或 caller 摘要补造 Final

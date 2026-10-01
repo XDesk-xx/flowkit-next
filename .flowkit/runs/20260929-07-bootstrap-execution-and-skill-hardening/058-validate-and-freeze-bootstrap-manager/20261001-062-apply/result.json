@@ -1,0 +1,224 @@
+{
+  "runId": "20261001-062-apply",
+  "actionIdentity": {
+    "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+    "changeId": "validate-and-freeze-bootstrap-manager",
+    "actionId": "apply"
+  },
+  "authorConclusion": null,
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": null,
+  "facts": {
+    "summary": "Apply did not complete. Owner explicitly changed E acceptance scope after Action start. No release freeze, real target, independent new session or Reviewer cycle was claimed.",
+    "reason": "owner-authorized-proposal-scope-correction",
+    "observedCheckExits": {
+      "typecheck": 0,
+      "test:domain": 1,
+      "test:acceptance": 0,
+      "test:bootstrap": 0,
+      "quality:gate": 0,
+      "quality:dependency-health": 0,
+      "quality:entropy": 0,
+      "quality:owned-source": 0,
+      "check:forbidden-tracked-artifacts": 1
+    },
+    "failureFacts": [
+      "test:domain: 376 pass, 1 fail; managed-evidence-checkpoint fixture reported index bytes differ after its attribute reset. Cause not yet resolved.",
+      "check:forbidden-tracked-artifacts: spawnSync git ls-files -z returned ENOBUFS at default output buffer on this repository; script reported git ls-files failed."
+    ],
+    "incompleteTasks": "No Apply task marked complete; package was not rebuilt or frozen, and actual target work was not started.",
+    "proofRefs": [
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-062-apply/acceptance-checks-report.json",
+        "bytes": 14012,
+        "sha256": "b5c4b6ceb3f4e927c9db25d393658490a92654c1016ab6c57fea93a13612e521",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-062-apply",
+        "purpose": "actual check commands and exit states"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-062-apply/acceptance-checks.mjs",
+        "bytes": 3523,
+        "sha256": "a6d56cafc22955c6962c9f217cc3f03f396f11d1f7f63f0b0082b04f4cb1572a",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-062-apply",
+        "purpose": "exact verification harness source"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-062-apply/check-forbidden-tracked-artifacts.stderr.txt",
+        "bytes": 73,
+        "sha256": "8cb6c810e8fe6fe41f7a0d4193359a0f4a15ea0f6b7e77a3741ddca4050b54aa",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-062-apply",
+        "purpose": "unaltered check stdout or stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-062-apply/check-forbidden-tracked-artifacts.stdout.txt",
+        "bytes": 46,
+        "sha256": "70691ee46df8bffd84dd117eb9297af7108f7fc0b6be5f63d6cb30aef0d605b5",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-062-apply",
+        "purpose": "unaltered check stdout or stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-062-apply/quality-dependency-health.stderr.txt",
+        "bytes": 79,
+        "sha256": "fa9ba6bb542e83e254b5bae92765b5ba9e0505c12e1e49f6c11dbf41c51f8775",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-062-apply",
+        "purpose": "unaltered check stdout or stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-062-apply/quality-dependency-health.stdout.txt",
+        "bytes": 81,
+        "sha256": "5276498e7920ab1799ff8c4785c45b47ffe95623b3ba525bf42a2143e0adda84",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-062-apply",
+        "purpose": "unaltered check stdout or stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-062-apply/quality-entropy.stderr.txt",
+        "bytes": 49,
+        "sha256": "7db8734f9a79ab0e050617ecdfb19b5819eb70b528b921de90840d1c8efe0973",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-062-apply",
+        "purpose": "unaltered check stdout or stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-062-apply/quality-entropy.stdout.txt",
+        "bytes": 64,
+        "sha256": "d78add4f5d8913a85deae02832c5d1751753b91ff1778c38e98d5e656a1fa917",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-062-apply",
+        "purpose": "unaltered check stdout or stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-062-apply/quality-gate.stderr.txt",
+        "bytes": 192,
+        "sha256": "9ccaf1b94533f97d77e53271cbcbe105b2181b73bdcdc804c213feb0145b94f3",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-062-apply",
+        "purpose": "unaltered check stdout or stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-062-apply/quality-gate.stdout.txt",
+        "bytes": 66,
+        "sha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-062-apply",
+        "purpose": "unaltered check stdout or stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-062-apply/quality-owned-source.stderr.txt",
+        "bytes": 74,
+        "sha256": "c86bfec8a0746ef3782ec82faa475c30584c496a247471de3d7d31663d09f15f",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-062-apply",
+        "purpose": "unaltered check stdout or stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-062-apply/quality-owned-source.stdout.txt",
+        "bytes": 537,
+        "sha256": "078505b75a9414ae4998caedb6cf2a0e1073859f0f2f9db4708683984a5e5512",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-062-apply",
+        "purpose": "unaltered check stdout or stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-062-apply/test-acceptance.stderr.txt",
+        "bytes": 54,
+        "sha256": "03a28f841eea36c0ec13f6dea3ea69c782e389ad940fcfaf6d419d0e4fff319b",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-062-apply",
+        "purpose": "unaltered check stdout or stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-062-apply/test-acceptance.stdout.txt",
+        "bytes": 1708,
+        "sha256": "38fdd4e7792c0f06a4b526565392e6cc8f7fde8692ecec38bc5bbb002b78e39b",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-062-apply",
+        "purpose": "unaltered check stdout or stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-062-apply/test-bootstrap.stderr.txt",
+        "bytes": 58,
+        "sha256": "085b188afd57be38ecdcb1b79ecbdba3762ba2d5b7db1ca01081952a776f3a04",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-062-apply",
+        "purpose": "unaltered check stdout or stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-062-apply/test-bootstrap.stdout.txt",
+        "bytes": 2152,
+        "sha256": "2fdb0970dc1b30b24523007fd6cc7b5b9c8b20de1c4807f41b8e07c0685ef0d0",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-062-apply",
+        "purpose": "unaltered check stdout or stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-062-apply/test-domain.stderr.txt",
+        "bytes": 55,
+        "sha256": "aae00296a00317fb5d8157cc46c908dd4c7bfd3ac1d52b647091d4c256ef13c6",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-062-apply",
+        "purpose": "unaltered check stdout or stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-062-apply/test-domain.stdout.txt",
+        "bytes": 80880,
+        "sha256": "37f071d90e1719704bb8b77338f6374923e72110936747564742addefd9ac449",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-062-apply",
+        "purpose": "unaltered check stdout or stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-062-apply/typecheck.stderr.txt",
+        "bytes": 15,
+        "sha256": "8366207267355d3e3d5bf3bf6e8c94c5f93f6078c34f08973fa2b38cdda6cc92",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-062-apply",
+        "purpose": "unaltered check stdout or stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-062-apply/typecheck.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-062-apply",
+        "purpose": "unaltered check stdout or stderr"
+      }
+    ],
+    "handoff": {
+      "summary": "Owner chose a narrower E contract. Return to revise-propose through the explicit prepared-Action correction path, then obtain independent review-propose before any new Apply. Preserve failed check evidence and investigate both failures within the revised scope.",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-10-01:revise-e-acceptance-scope",
+          "summary": "Owner chose to remove independent real target, real Reviewer correction loop and new Agent session as D07 E mandatory acceptance, and requested E Proposal scope revision."
+        }
+      ],
+      "evidenceRefs": []
+    }
+  }
+}

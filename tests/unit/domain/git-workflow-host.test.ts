@@ -99,3 +99,46 @@ test("ordinary host: source binding, scoped first commit, dirty reuse, independe
     await rm(remote, { recursive: true, force: true });
   }
 });
+
+test("ordinary checkpoint commits a Windows-argv-sized exact path set through bounded stdin", async () => {
+  const root = await mkdtemp(path.join(tmpdir(), "flowkit-many-paths-"));
+  try {
+    await gitBytes(root, ["init", "-b", "main"]);
+    await gitBytes(root, ["config", "user.name", "Test"]);
+    await gitBytes(root, ["config", "user.email", "test@example.invalid"]);
+    const paths = Array.from(
+      { length: 202 },
+      (_, index) =>
+        `f-${String(index).padStart(3, "0")}-${"x".repeat(170)}.txt`,
+    );
+    assert.ok(paths.join(" ").length > 32_767);
+    for (const file of paths) await writeFile(path.join(root, file), file);
+    const request: GitHostRequest = {
+      targetRoot: root,
+      node: "delivery-start",
+      deliveryId: "test-delivery",
+      changeId: null,
+      ownerSourceRef: "test:synthetic-owner-many-paths",
+      expectedBranch: "main",
+      operation: {
+        kind: "create-new",
+        paths,
+        commitMessage: "many exact paths",
+        commitShape: null,
+      },
+    };
+    const result = await runCheckpoint(request, async () => ({ request }));
+    assert.equal(result.status, "completed", JSON.stringify(result));
+    assert.equal(result.effect, "confirmed");
+    const committedPaths = (
+      await gitBytes(root, ["ls-tree", "-r", "--name-only", "-z", "HEAD"])
+    )
+      .toString("utf8")
+      .split("\0")
+      .filter(Boolean);
+    assert.deepEqual(committedPaths, paths);
+    assert.equal(await gitText(root, ["status", "--porcelain"]), "");
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});

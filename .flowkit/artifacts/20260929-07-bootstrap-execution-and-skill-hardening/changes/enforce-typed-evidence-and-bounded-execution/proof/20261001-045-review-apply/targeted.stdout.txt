@@ -1,0 +1,82 @@
+TAP version 13
+# Subtest: fixed CLI starts and finishes one Author Run across processes, then confirms exact retry
+ok 1 - fixed CLI starts and finishes one Author Run across processes, then confirms exact retry
+  ---
+  duration_ms: 10902.5311
+  type: 'test'
+  ...
+# Subtest: prepared Owner correction binds conversation source across CLI processes without changing predecessor
+ok 2 - prepared Owner correction binds conversation source across CLI processes without changing predecessor
+  ---
+  duration_ms: 5782.5786
+  type: 'test'
+  ...
+# Subtest: terminal Author FAIL with null boundary is readable and does not advance Policy
+ok 3 - terminal Author FAIL with null boundary is readable and does not advance Policy
+  ---
+  duration_ms: 3019.7614
+  type: 'test'
+  ...
+# Subtest: new Run proof closure rejects every undeclared or unsafe entry
+ok 4 - new Run proof closure rejects every undeclared or unsafe entry
+  ---
+  duration_ms: 3012.7408
+  type: 'test'
+  ...
+# Subtest: post-stage index drift is incomplete with confirmed stage effect, without commit or unstage
+ok 5 - post-stage index drift is incomplete with confirmed stage effect, without commit or unstage
+  ---
+  duration_ms: 3762.1543
+  type: 'test'
+  ...
+# Subtest: failed exact staging reports unknown effect without retrying or clearing index
+ok 6 - failed exact staging reports unknown effect without retrying or clearing index
+  ---
+  duration_ms: 2641.2421
+  type: 'test'
+  ...
+# Subtest: commit failure preserves confirmed staged paths and does not claim a checkpoint
+ok 7 - commit failure preserves confirmed staged paths and does not claim a checkpoint
+  ---
+  duration_ms: 4102.6172
+  type: 'test'
+  ...
+# Subtest: nonzero commit response reads back the exact created object without retry
+ok 8 - nonzero commit response reads back the exact created object without retry
+  ---
+  duration_ms: 4820.9632
+  type: 'test'
+  ...
+# Subtest: readback rejects a committed object with the wrong authorized shape
+ok 9 - readback rejects a committed object with the wrong authorized shape
+  ---
+  duration_ms: 4895.8009
+  type: 'test'
+  ...
+# Subtest: Change checkpoint consumes existing evaluator and source, never a Final
+ok 10 - Change checkpoint consumes existing evaluator and source, never a Final
+  ---
+  duration_ms: 4064.3204
+  type: 'test'
+  ...
+# Subtest: current owned executable sources are checked TS or exact legacy bytes
+ok 11 - current owned executable sources are checked TS or exact legacy bytes
+  ---
+  duration_ms: 682.9995
+  type: 'test'
+  ...
+# Subtest: untracked helpers in old blind spots and changed legacy JS are rejected
+ok 12 - untracked helpers in old blind spots and changed legacy JS are rejected
+  ---
+  duration_ms: 25.6296
+  type: 'test'
+  ...
+1..12
+# tests 12
+# suites 0
+# pass 12
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 24785.1975

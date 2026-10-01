@@ -1,0 +1,102 @@
+{
+  "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+  "changeId": "enforce-typed-evidence-and-bounded-execution",
+  "runId": "20261001-038-explore",
+  "sourceCommit": "50f483b1c36284d325882d831e6e7b65dc1c825e",
+  "sourceRefs": [
+    {
+      "path": "docs/D07-bootstrap-execution-and-skill-hardening-plan.md",
+      "bytes": 42556,
+      "sha256": "e4200d1b9681f9e9d24d064f2fe215cd54d92088d2e21908a18c5a74d3ade399"
+    },
+    {
+      "path": "openspec/specs/action-guidance-execution/spec.md",
+      "bytes": 21178,
+      "sha256": "fcc8e4dbcfbd3eea2f167bcc494060877a98ef2ff21e8c05226f784aa016aa16"
+    },
+    {
+      "path": "openspec/specs/stable-delivery-support-command-execution/spec.md",
+      "bytes": 16108,
+      "sha256": "07cb714ff248600d33eab35d1acfc04f771d62476938d7c2564dc6085c89f6e4"
+    },
+    {
+      "path": "src/cli/action-proof.ts",
+      "bytes": 3567,
+      "sha256": "97353520f5e241efadbbc900cbed640be6097a264857b4013e73ac94273fa977"
+    },
+    {
+      "path": "src/cli/action-commands.ts",
+      "bytes": 20198,
+      "sha256": "8eab28e03946b448238d2a9d75c6646a7a5aecabf6cbb9a99cade4f441e92e3c"
+    },
+    {
+      "path": "src/internal/git-checkpoint-execution.ts",
+      "bytes": 5187,
+      "sha256": "e9b2101d22ff86f73c6c2e8f3861536c3bfa9d3689f21ad246c658291112faf1"
+    },
+    {
+      "path": "src/internal/git-checkpoint-scope.ts",
+      "bytes": 6442,
+      "sha256": "90ce545e85b619bf5dd1e7844691208863e0d7b044433ae8239d10766f69f7e3"
+    },
+    {
+      "path": "src/internal/managed-evidence-checkpoint.ts",
+      "bytes": 4491,
+      "sha256": "64ea22dcae0304c4e8d4439dfa8b5f163beb649b63cd88624b2948f1b6397b63"
+    },
+    {
+      "path": "package.json",
+      "bytes": 1891,
+      "sha256": "31cd2b51113ce1afd9c8a319c580ce01d0d7eddd1580c0658a5d6bf6207183ea"
+    },
+    {
+      "path": "tsconfig.json",
+      "bytes": 327,
+      "sha256": "23dc32943d41310efc0bf7a1c2fd572a4f2fc4eaa9ed9d69d27e6cd47a36a3ff"
+    },
+    {
+      "path": "tsconfig.build.json",
+      "bytes": 239,
+      "sha256": "f7409e7831a908dde7393ab47744f0dc1dfa8bace136a6b495b517621580139c"
+    },
+    {
+      "path": "eslint.config.mjs",
+      "bytes": 874,
+      "sha256": "03d491ab3aa03396a4780763cfb99bfdfb0edac71e22239964423f30047ccadd"
+    },
+    {
+      "path": "config/verification/full-test.json",
+      "bytes": 2286,
+      "sha256": "32b03e4f1fa154586a2e29ca6cda849f630af29f75ff578b86b1bb90dc186686"
+    },
+    {
+      "path": "scripts/check-forbidden-tracked-artifacts.mjs",
+      "bytes": 1196,
+      "sha256": "0b821d01dc5f1b7494d7b95410f21b7b2e76eaf6d8b6fcdedfcab317e8d2c968"
+    },
+    {
+      "path": ".gitattributes",
+      "bytes": 564,
+      "sha256": "68d237b8533b0930be22196e509bf4e69f3a47cba7e009afb671c544d631b14a"
+    }
+  ],
+  "observations": {
+    "candidateProofCheck": "The current candidate validates submitted refs only; the bounded probe accepted [] and one ref while the prior C archive proof directory contained 23 files.",
+    "gitHostStage": "Current candidate executeScopedCheckpoint builds one git add argv with every literal path. The isolated 202-path fixture reproduced ENAMETOOLONG; NUL pathspec staging handled all 202.",
+    "typedCodeCoverage": "tsconfig.json includes src/**/*.ts and tests/**/*.ts; scripts is outside TypeScript compilation, while Full Test tracks scripts as input and invokes existing JavaScript scripts.",
+    "authorityLimit": "The isolated Git fixture carries no Owner authority and does not claim a real checkpoint; this session has no interactive host approval test."
+  },
+  "boundedCorrectionDirection": [
+    "Check exact own-Run proof directory closure at finish before terminal materialization; preserve later selective handoff and historical material.",
+    "Use bounded pathspec input or equivalent for exact Git host staging while retaining index scope, byte verification, Owner revalidation and commit-object readback.",
+    "Define narrow new-TypeScript/fixture exceptions and test effective check coverage; keep runtime JS build outputs valid.",
+    "Provide optional exact installed-entry permission examples and negative target/command cases without editing user-wide rules."
+  ],
+  "excluded": [
+    "F prepared proof checkpoint compatibility",
+    "historical Run/Proof rewrite",
+    "global interpreter allow rule",
+    "generic evidence registry or workflow engine",
+    "formal Full Test"
+  ]
+}

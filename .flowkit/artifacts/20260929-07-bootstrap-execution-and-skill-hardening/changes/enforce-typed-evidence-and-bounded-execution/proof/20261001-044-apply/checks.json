@@ -1,0 +1,282 @@
+{
+  "runId": "20261001-044-apply",
+  "scope": "current candidate checks; no Formal Full Test",
+  "checks": [
+    {
+      "id": "typecheck",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit"
+      ],
+      "startedAt": "2026-10-01T04:34:50.376Z",
+      "endedAt": "2026-10-01T04:34:52.920Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": "typecheck.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "typecheck.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "format",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "node_modules/prettier/bin/prettier.cjs",
+        "--check",
+        "src",
+        "tests",
+        "tsconfig.json",
+        "tsconfig.build.json",
+        "package.json",
+        "eslint.config.mjs",
+        "scripts/check-forbidden-tracked-artifacts.mjs"
+      ],
+      "startedAt": "2026-10-01T04:34:52.921Z",
+      "endedAt": "2026-10-01T04:34:55.476Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": "format.stdout.txt",
+        "bytes": 66,
+        "sha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20"
+      },
+      "stderr": {
+        "path": "format.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "lint",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "node_modules/eslint/bin/eslint.js",
+        "src",
+        "tests"
+      ],
+      "startedAt": "2026-10-01T04:34:55.476Z",
+      "endedAt": "2026-10-01T04:34:58.503Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": "lint.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "lint.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "owned-source",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "--import",
+        "tsx",
+        "--test",
+        "tests/unit/quality/owned-source-policy.test.ts"
+      ],
+      "startedAt": "2026-10-01T04:34:58.503Z",
+      "endedAt": "2026-10-01T04:34:58.896Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": "owned-source.stdout.txt",
+        "bytes": 537,
+        "sha256": "782416fde38d9f7363c066a26a4f0882dbe4ada0f361f17bc097d1c77ae3973f"
+      },
+      "stderr": {
+        "path": "owned-source.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "domain",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "--import",
+        "tsx",
+        "--test",
+        "tests/unit/domain/action-archive-cli.test.ts",
+        "tests/unit/domain/action-archive-readiness.test.ts",
+        "tests/unit/domain/action-command-cli.test.ts",
+        "tests/unit/domain/action-command-request.test.ts",
+        "tests/unit/domain/action-context.test.ts",
+        "tests/unit/domain/action-guidance-execution.test.ts",
+        "tests/unit/domain/action-lifecycle.test.ts",
+        "tests/unit/domain/action-package-result-admission.test.ts",
+        "tests/unit/domain/action-proof-closure.test.ts",
+        "tests/unit/domain/agent-how-failure.test.ts",
+        "tests/unit/domain/agent-how-material.test.ts",
+        "tests/unit/domain/agent-how-prepared.test.ts",
+        "tests/unit/domain/agent-how-record.test.ts",
+        "tests/unit/domain/applicable-check-admission.test.ts",
+        "tests/unit/domain/applicable-check-execution.test.ts",
+        "tests/unit/domain/author-action-guidance.test.ts",
+        "tests/unit/domain/author-stage-guidance.test.ts",
+        "tests/unit/domain/authority.test.ts",
+        "tests/unit/domain/canonical-action-run-start.test.ts",
+        "tests/unit/domain/checkpoint-operation.test.ts",
+        "tests/unit/domain/code-gate-boundary.test.ts",
+        "tests/unit/domain/cross-delivery-memo-persistence.test.ts",
+        "tests/unit/domain/cross-delivery-memo.test.ts",
+        "tests/unit/domain/current-run-chain.test.ts",
+        "tests/unit/domain/delivery-continuity-semantic-boundaries.test.ts",
+        "tests/unit/domain/delivery-final-confirmation.test.ts",
+        "tests/unit/domain/delivery-final-execution.test.ts",
+        "tests/unit/domain/delivery-final-projection.test.ts",
+        "tests/unit/domain/delivery-finalization-reader.test.ts",
+        "tests/unit/domain/delivery-full-test-execution.test.ts",
+        "tests/unit/domain/delivery-guidance-contract.test.ts",
+        "tests/unit/domain/delivery-integration-projection.test.ts",
+        "tests/unit/domain/delivery-operation-execution.test.ts",
+        "tests/unit/domain/delivery-repository-integration-accepted-object.test.ts",
+        "tests/unit/domain/delivery-repository-integration-execution.test.ts",
+        "tests/unit/domain/delivery-required-evidence-source.test.ts",
+        "tests/unit/domain/delivery-start-execution.test.ts",
+        "tests/unit/domain/delivery-without-archify.test.ts",
+        "tests/unit/domain/foundation-cli-entrypoint.test.ts",
+        "tests/unit/domain/foundation-cli-surface.test.ts",
+        "tests/unit/domain/full-test-input.test.ts",
+        "tests/unit/domain/full-test-revision.test.ts",
+        "tests/unit/domain/full-test-storage.test.ts",
+        "tests/unit/domain/git-checkpoint-scope.test.ts",
+        "tests/unit/domain/git-host-review-regressions.test.ts",
+        "tests/unit/domain/git-integration-effects.test.ts",
+        "tests/unit/domain/git-workflow-effects.test.ts",
+        "tests/unit/domain/git-workflow-host.test.ts",
+        "tests/unit/domain/identity.test.ts",
+        "tests/unit/domain/managed-evidence-checkpoint.test.ts",
+        "tests/unit/domain/managed-tool-resolution.test.ts",
+        "tests/unit/domain/manager-assets-boundary.test.ts",
+        "tests/unit/domain/manager-installation.test.ts",
+        "tests/unit/domain/openspec-observation-boundary.test.ts",
+        "tests/unit/domain/openspec-observation.test.ts",
+        "tests/unit/domain/policy-and-next-boundary.test.ts",
+        "tests/unit/domain/policy-owner-correction.test.ts",
+        "tests/unit/domain/prepared-owner-correction-start.test.ts",
+        "tests/unit/domain/project-onboarding.test.ts",
+        "tests/unit/domain/raw-stream-attributes.test.ts",
+        "tests/unit/domain/reviewer-action-guidance.test.ts",
+        "tests/unit/domain/run-group-selection.test.ts",
+        "tests/unit/domain/run-partial-preservation.test.ts",
+        "tests/unit/domain/run-result-persistence.test.ts",
+        "tests/unit/domain/single-action-execution.test.ts",
+        "tests/unit/domain/state.test.ts",
+        "tests/unit/domain/support-archive-chain.test.ts",
+        "tests/unit/domain/support-command-boundaries.test.ts",
+        "tests/unit/domain/support-full-test.test.ts",
+        "tests/unit/domain/support-git-checkpoint.test.ts",
+        "tests/unit/domain/support-git-integration.test.ts",
+        "tests/unit/domain/trusted-change-coordination.test.ts"
+      ],
+      "startedAt": "2026-10-01T04:34:58.897Z",
+      "endedAt": "2026-10-01T04:37:07.084Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": "domain.stdout.txt",
+        "bytes": 78342,
+        "sha256": "a7d84d0815146964e7001803fa279b06a558b1063c27ad89c5cfd974bc68791e"
+      },
+      "stderr": {
+        "path": "domain.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "acceptance",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "--import",
+        "tsx",
+        "--test",
+        "tests/acceptance/foundation-manager.acceptance.test.ts",
+        "tests/acceptance/git-host.acceptance.test.ts"
+      ],
+      "startedAt": "2026-10-01T04:37:07.084Z",
+      "endedAt": "2026-10-01T04:37:28.712Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": "acceptance.stdout.txt",
+        "bytes": 1706,
+        "sha256": "b1fb001664979ca066a866ee509ffc8ebb06a75dc0a13c3f51204ddd9de0cf59"
+      },
+      "stderr": {
+        "path": "acceptance.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "build",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "scripts/build-production.mjs"
+      ],
+      "startedAt": "2026-10-01T04:37:28.712Z",
+      "endedAt": "2026-10-01T04:37:30.878Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": "build.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "build.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "openspec",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js",
+        "validate",
+        "enforce-typed-evidence-and-bounded-execution",
+        "--strict"
+      ],
+      "startedAt": "2026-10-01T04:37:30.878Z",
+      "endedAt": "2026-10-01T04:37:32.176Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": "openspec.stdout.txt",
+        "bytes": 63,
+        "sha256": "485ed9da833fbaf46e126246ac1ec6770cccb862270a904063948db950ab50c6"
+      },
+      "stderr": {
+        "path": "openspec.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "priorObserved": {
+    "checkpointLongPath": "202 exact paths; full git-workflow-host test passed during test:domain",
+    "package": "pnpm pack to .tmp/d07-d-pack, isolated npm install, installed --help passed",
+    "hostPermissionRules": "interactive host rule matching unavailable; unverified"
+  }
+}

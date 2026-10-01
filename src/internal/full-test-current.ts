@@ -15,6 +15,7 @@ import {
 } from "./full-test-input.js";
 import {
   attemptRoot,
+  isAttemptId,
   fullTestArtifact,
   readFullTestJson,
   readFullTestCoordination,
@@ -48,17 +49,34 @@ export async function readCurrentDeliveryFullTest(
     const start = await readFullTestJson(root, base + "/start.json");
     if (
       !isPlainRecord(start) ||
-      !hasExactlyFields(start, [
-        "projectId",
-        "deliveryId",
-        "attemptId",
-        "startedAt",
-        "ownerAuthority",
-        "guidanceRef",
-        "configRef",
-        "inputRef",
-        "orderedChecks",
-      ]) ||
+      !(
+        hasExactlyFields(start, [
+          "projectId",
+          "deliveryId",
+          "attemptId",
+          "startedAt",
+          "ownerAuthority",
+          "guidanceRef",
+          "configRef",
+          "inputRef",
+          "orderedChecks",
+        ]) ||
+        hasExactlyFields(start, [
+          "projectId",
+          "deliveryId",
+          "attemptId",
+          "startedAt",
+          "ownerAuthority",
+          "guidanceRef",
+          "configRef",
+          "inputRef",
+          "orderedChecks",
+          "expectedCurrentAttemptId",
+        ])
+      ) ||
+      (Object.hasOwn(start, "expectedCurrentAttemptId") &&
+        start.expectedCurrentAttemptId !== null &&
+        !isAttemptId(start.expectedCurrentAttemptId)) ||
       start.deliveryId !== deliveryId ||
       start.attemptId !== current.attemptId
     )

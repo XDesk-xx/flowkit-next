@@ -1,69 +1,44 @@
-# 在已有 Agent Node/终端宿主中显式调用
+# 固定 Git 命令的数据调用
 
-这是一次已授权节点的 HOW，不是 stdin CLI、权限文件或自动流程。manager 安装必须已 build/pack；从安装位置导入，不从 target 同名文件导入。
+这份 HOW 只用于已经确定且有独立 Owner 授权的 Git 节点。`$cli` 是本次选定 manager 的 `package.json#bin.flowkit`，`$target` 是实际 target Git 根，`$toolHome` 是实际 `FLOWKIT_HOME`。Agent 从真实 Owner 输入形成 `$ownerFact`；请求文件仅承载该事实，CLI 不监听或认证聊天。一次命令完成或返回未确认后即 STOP。
 
-```js
-const { pathToFileURL } = await import("node:url");
-const path = await import("node:path");
-const host = await import(pathToFileURL(path.join(managerRoot,
-  "skills/delivery/repository-integration/references/git-host.mjs")).href);
+## 普通 checkpoint
 
-// readOwner 是 Agent 的实际 Owner 输入能力，不是 JSON.approved 或恒 true callback。
-// 本次来源在授权工具/独立输入中已存在；缺失返回 null，不自造授权。
-const material = await readOwner(ownerSourceRef);
-if (!material) throw Error("Owner 来源不可读");
-const result = await host.runCheckpoint(material.request, readOwner);
-console.log(JSON.stringify(result)); // 读回 outcome，然后 STOP，不自动 push。
-```
+以下 PowerShell 数据例使用已经核对的 `$ownerFact`、`$deliveryId`、`$expectedBranch`、`$paths`、`$commitMessage`。这些变量须来自本次真实授权和 Git 事实；不要将示例值当成授权。普通 Delivery Start 后的节点使用 `node="delivery-start"`、`changeId=null`。Change checkpoint 改用 `node="change-checkpoint"`、exact `changeId`，并在命令行附匹配的 `--change-id`；CLI 同时核对当前 Policy/evaluator。
 
-`material.request` 的精确形状（实际值由上述来源取得，不以例值执行）：
-
-```js
-{
-  targetRoot: targetGitRoot,
-  node: "delivery-start", // 或 change-checkpoint / repository-integration
-  deliveryId,
-  changeId: null, // change-checkpoint 才有 exact ChangeId
-  ownerSourceRef,
-  expectedBranch,
-  operation: {
-    kind: "create-new",
-    paths: ["docs/决定.md", "src/main.ts"], // exact、排序、唯一；不是目录/glob
-    commitMessage: "change(example-change): implement scoped update",
-    commitShape: null // 或 {parents: [actualParent], count: 1}
+```powershell
+$gitRequest = @{
+  targetRoot = $target
+  node = 'delivery-start'
+  deliveryId = $deliveryId
+  changeId = $null
+  ownerSourceRef = $ownerFact.sourceRef
+  expectedBranch = $expectedBranch
+  operation = @{
+    kind = 'create-new'
+    paths = $paths
+    commitMessage = $commitMessage
+    commitShape = $null
   }
 }
+$request = @{
+  repositoryRoot = $target
+  flowkitHome = $toolHome
+  deliveryId = $deliveryId
+  ownerAuthority = $ownerFact
+  gitRequest = $gitRequest
+}
+$requestFile = Join-Path (Join-Path $target '.tmp') ('flowkit-git-' + [guid]::NewGuid().ToString('N') + '.json')
+[IO.File]::WriteAllText($requestFile, ($request | ConvertTo-Json -Depth 12), [Text.UTF8Encoding]::new($false))
+node $cli git checkpoint --repository-root $target --delivery-id $deliveryId --input $requestFile
 ```
 
-删除文件允许不存在，rename 要含源/目标。普通首个 commit 允许 unborn HEAD。目录、submodule、重定向 Git 环境或无法安全解释目标交人工核对；不扩张范围。
+`$paths` 是 exact、排序、唯一的路径集合，不是目录或 glob；rename 包含两端。`commitShape` 可为 Owner 选定的 `{parents,count}`。删除文件可已不存在。create-new 写前核对整个 index，不夹带范围外 staged，也不清空用户 index。失败读取 JSON `status/effect/outcome` 的已确认 commit、phase、reason 和 remaining；`written-unconfirmed` 不等于无副作用。不自动 push、rebase、force 或重试。`reuse-existing` 只在本次明确授权且现有对象可核对时使用。
 
-Change checkpoint 的 reader 还返回 `checkpointAuthorization`：既有 evaluator 输入 `{policyDecision, ownerAuthority, deliveryId, changeId}`。从当前事实取得 readiness，Owner fact 的 sourceRef 与本次来源一致；不要编造 Policy/权限。Start 后 Git 不需要这个 Change 输入。无关 dirty/staged 不阻断 reuse/push，但 create-new 不夹带范围外 staged。
+## Push 与 Integration
 
-独立 push 调用使用另一次明确授权的 request：
+`git push` 是另一次独立授权：顶层字段仍为 `repositoryRoot`、`flowkitHome`、`deliveryId`、适用的 `changeId`、本次 `ownerAuthority`、`gitRequest`；后者的 `operation` 固定为 `{kind:"push",localCommit,remote,targetRef}`，`ownerSourceRef` 与本次 Owner fact 一致。调用 `flowkit git push --repository-root <target> --delivery-id <deliveryId> [--change-id <changeId>] --input <request.json>`，核对本次 remote/ref 读回，不能以 exit 0、本地 ref 或 PR id 代替远端确认。特殊多 push URL 或 provider 接受由已有工具人工处理，交接未完成效果。
 
-```js
-const publication = await readOwner(pushOwnerSourceRef);
-if (!publication) throw Error("push Owner 来源不可读");
-// operation 为 {kind:"push", localCommit: exactSha, remote:"origin", targetRef:"refs/heads/main"}
-const pushed = await host.runPush(publication.request, readOwner);
-console.log(JSON.stringify(pushed)); // STOP。不是 PR/merge accepted。
-```
+`git integrate` 使用独立 `decision=authorize-repository-integration` 的 Owner fact、有效 Final confirmation 与真实外部接受来源。请求顶层为 `repositoryRoot`、`flowkitHome`、`deliveryId`、`ownerAuthority`、`gitRequest`、`integrationInput`；`gitRequest` 的 `node="repository-integration"`、`changeId=null`、`operation=<checkpointOperation>` 与 `integrationInput.checkpointOperation` 完全一致。`integrationInput` 恰含 `acceptedBaseCommit`、`checkpointOperation`、`targetMainRef`。调用 `flowkit git integrate --repository-root <target> --delivery-id <deliveryId> --input <request.json>`。当 PR/merge 尚待外部接受时，命令交接已确认 checkpoint 和剩余步骤；外部完成后以 exact `reuse-existing` 请求和 target main ref 的真实 Git 关系只读确认，不从 callback 或 PR id 生成接受事实。
 
-当前薄宿主支持已配置的单一同读写 remote、refs/heads 目标与非强制推送；特殊多 push URL 由已有工具人工处理，不声称本入口已完成。失败先读回已有效果，不自动 retry/force/delete/rebase。
-
-Integration 仍使用现有可信 preparation/source 输入及外部 acceptance：
-
-```js
-const integration = await readOwner(integrationOwnerSourceRef);
-if (!integration) throw Error("Integration Owner 来源不可读");
-const outcome = await host.runIntegration(integration.request, {
-  input: integrationPreparationInput,
-  readOwner,
-  readIntegrationSource,
-  // 可省略。省略或 PR pending 返回 incomplete，并携带已确认 checkpoint。
-  performAcceptance: existingAuthorizedAcceptanceTool
-});
-console.log(JSON.stringify(outcome)); // STOP
-```
-
-`readIntegrationSource` 是已有 trusted source capability；不能用 callback status/PR id 生成 acceptance truth。远端接受时，宿主的真实来源须包含本次 remote 查询与 canonical ref 的一致核对，再返回既有 acceptance material。没有原生 provider 时人工交接，不重验 Full Test 日志或历史 proof。后续要复用时由当前权限明确选择 `{kind:"reuse-existing",checkpointCommit:actualSha}`，不要从头再 commit。
+上述命令都要求可见目标与 JSON 匹配，输入中不放任意程序、模块路径、callback 或自签 `approved`。每次读取退出码与 JSON：`status="completed"` 只确认本次节点，`incomplete` 或部分效果须报告已确认对象和未知部分。Final、Review、测试 PASS 均不自动形成 Git 授权；不建立 Git Run，也不回写 SHA 制造下一次 commit。

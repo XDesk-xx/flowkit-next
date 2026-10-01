@@ -1,0 +1,102 @@
+{
+  "formatVersion": 1,
+  "role": "Author acceptance operator for an isolated ordinary target",
+  "target": "D:\\Projects\\flowkit-next\\.tmp\\d07-c-role-target-035",
+  "installation": "D:\\Projects\\flowkit-next\\.tmp\\d07-c-revise-install\\node_modules\\flowkit-next",
+  "installedBin": "dist/cli/entrypoint.js",
+  "guidance": [
+    {
+      "path": "docs/onboarding.md",
+      "sha256": "b5b10aeaf364b8ad86e2df2479ff57cd395158c91e668987f94cebb2d6868bd7"
+    },
+    {
+      "path": "skills/delivery/start/SKILL.md",
+      "sha256": "c7cfd1ea10154cfde683c7236b892e1b5c50ad728af0d1a10d5867295c45d93b"
+    }
+  ],
+  "legalBoundary": "No current Delivery or Action (status/next idle); selected isolated project-init onboarding step. No D07 authority claimed.",
+  "sourceRefKind": "Synthetic test target identity, supported by the user-requested revise acceptance; no real Owner decision or Reviewer verdict is claimed.",
+  "operation": {
+    "command": "project init",
+    "requestSha256": "55049cc57587f260fb7ecba169ee22a75ed0999214dc4d252c75837700f17fc3",
+    "result": {
+      "command": "project init",
+      "target": {
+        "repositoryRoot": "D:\\Projects\\flowkit-next\\.tmp\\d07-c-role-target-035"
+      },
+      "status": "completed",
+      "effect": "created",
+      "project": {
+        "formatVersion": 1,
+        "projectId": "d07-c-role-target-035",
+        "repository": "local:test-target",
+        "runtimeFamily": "new",
+        "state": "initialized"
+      }
+    },
+    "projectBytes": 154,
+    "projectSha256": "8b50f18e895aff5d92d04b335e3b1f1a4c7e141197ba5a055d6087197698acb9"
+  },
+  "postOperationQueries": [
+    {
+      "command": "doctor",
+      "exitCode": 0,
+      "stdoutBytes": 172,
+      "stdoutSha256": "5c360f7f42aed20a7c178ad539c282d15217ad08d9e4cb6b907e2b37e32c65b7",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "response": {
+        "kind": "doctor",
+        "status": "pass",
+        "diagnostics": [
+          {
+            "id": "openspec-runtime",
+            "status": "pass",
+            "version": "1.10.0"
+          },
+          {
+            "id": "openspec-root",
+            "status": "pass",
+            "activeChangeCount": 0
+          }
+        ]
+      }
+    },
+    {
+      "command": "status",
+      "exitCode": 0,
+      "stdoutBytes": 233,
+      "stdoutSha256": "f10eea6893ab6e8841b6c1aa894cdd424e8b0387270036e67e8732c6802c291d",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "response": {
+        "kind": "status",
+        "status": "idle",
+        "repositoryRoot": "D:\\Projects\\flowkit-next\\.tmp\\d07-c-role-target-035",
+        "deliveryId": null,
+        "changeId": null,
+        "changeState": null,
+        "currentRun": null,
+        "openSpec": {
+          "activeChangeIds": [],
+          "exactChange": null
+        }
+      }
+    },
+    {
+      "command": "next",
+      "exitCode": 0,
+      "stdoutBytes": 66,
+      "stdoutSha256": "ef0fe799e9a9ec547c31b833576d628535e5da3e81bba437282b9421a4921c86",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "response": {
+        "kind": "next",
+        "status": "idle",
+        "decision": null,
+        "checkpoint": null
+      }
+    }
+  ],
+  "stop": "After the one project-init write, no delivery start, change activation, Action, Review, Git mutation or next operation was executed on the isolated target."
+}

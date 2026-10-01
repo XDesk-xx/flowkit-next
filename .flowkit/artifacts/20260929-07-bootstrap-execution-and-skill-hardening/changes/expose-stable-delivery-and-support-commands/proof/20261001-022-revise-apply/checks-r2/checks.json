@@ -1,0 +1,172 @@
+{
+  "results": [
+    {
+      "id": "typecheck",
+      "command": "pnpm typecheck",
+      "startedAt": "2026-09-30T23:13:38.977Z",
+      "finishedAt": "2026-09-30T23:13:42.968Z",
+      "exitCode": 0,
+      "signal": null,
+      "processError": null,
+      "streams": [
+        {
+          "path": "typecheck.stdout.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "typecheck.stderr.txt",
+          "bytes": 15,
+          "sha256": "8366207267355d3e3d5bf3bf6e8c94c5f93f6078c34f08973fa2b38cdda6cc92"
+        }
+      ]
+    },
+    {
+      "id": "quality-gate",
+      "command": "pnpm quality:gate",
+      "startedAt": "2026-09-30T23:13:42.969Z",
+      "finishedAt": "2026-09-30T23:13:50.841Z",
+      "exitCode": 0,
+      "signal": null,
+      "processError": null,
+      "streams": [
+        {
+          "path": "quality-gate.stdout.txt",
+          "bytes": 66,
+          "sha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20"
+        },
+        {
+          "path": "quality-gate.stderr.txt",
+          "bytes": 192,
+          "sha256": "9ccaf1b94533f97d77e53271cbcbe105b2181b73bdcdc804c213feb0145b94f3"
+        }
+      ]
+    },
+    {
+      "id": "domain",
+      "command": "pnpm test:domain",
+      "startedAt": "2026-09-30T23:13:50.842Z",
+      "finishedAt": "2026-09-30T23:15:07.999Z",
+      "exitCode": 0,
+      "signal": null,
+      "processError": null,
+      "streams": [
+        {
+          "path": "domain.stdout.txt",
+          "bytes": 76968,
+          "sha256": "1d6f6a9122401f2c17f623ed4a1a0b2742fad81f9757701aababf88205605c92"
+        },
+        {
+          "path": "domain.stderr.txt",
+          "bytes": 55,
+          "sha256": "aae00296a00317fb5d8157cc46c908dd4c7bfd3ac1d52b647091d4c256ef13c6"
+        }
+      ]
+    },
+    {
+      "id": "acceptance",
+      "command": "pnpm test:acceptance",
+      "startedAt": "2026-09-30T23:15:07.999Z",
+      "finishedAt": "2026-09-30T23:15:30.403Z",
+      "exitCode": 0,
+      "signal": null,
+      "processError": null,
+      "streams": [
+        {
+          "path": "acceptance.stdout.txt",
+          "bytes": 1708,
+          "sha256": "55f0bc3024f5f52d2873142f4f2d2cb0d9079cc48d8b69c2a6f1e18150c73737"
+        },
+        {
+          "path": "acceptance.stderr.txt",
+          "bytes": 54,
+          "sha256": "03a28f841eea36c0ec13f6dea3ea69c782e389ad940fcfaf6d419d0e4fff319b"
+        }
+      ]
+    },
+    {
+      "id": "build",
+      "command": "pnpm build",
+      "startedAt": "2026-09-30T23:15:30.403Z",
+      "finishedAt": "2026-09-30T23:15:33.940Z",
+      "exitCode": 0,
+      "signal": null,
+      "processError": null,
+      "streams": [
+        {
+          "path": "build.stdout.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "build.stderr.txt",
+          "bytes": 36,
+          "sha256": "8f5c6a9c4aade0d032984516a14b38a2d12cb1e6b333ab3568f9dde2ba3e3470"
+        }
+      ]
+    },
+    {
+      "id": "openspec",
+      "command": "node C:\\Users\\xuser\\.flowkit\\tools\\openspec\\1.10.0\\bin\\openspec.js validate expose-stable-delivery-and-support-commands --strict",
+      "startedAt": "2026-09-30T23:15:33.940Z",
+      "finishedAt": "2026-09-30T23:15:35.913Z",
+      "exitCode": 0,
+      "signal": null,
+      "processError": null,
+      "streams": [
+        {
+          "path": "openspec.stdout.txt",
+          "bytes": 62,
+          "sha256": "f131f1eb67e0262d12ba3a49ffc0733bb1be48d1c775b4452006d6be1b4a85ea"
+        },
+        {
+          "path": "openspec.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    },
+    {
+      "id": "forbidden",
+      "command": "pnpm check:forbidden-tracked-artifacts",
+      "startedAt": "2026-09-30T23:15:35.913Z",
+      "finishedAt": "2026-09-30T23:15:37.675Z",
+      "exitCode": 0,
+      "signal": null,
+      "processError": null,
+      "streams": [
+        {
+          "path": "forbidden.stdout.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "forbidden.stderr.txt",
+          "bytes": 53,
+          "sha256": "5d361c2702ae313e9248029597afce8514cec6d36f887d6bb891fa93419b46d0"
+        }
+      ]
+    },
+    {
+      "id": "diff-check",
+      "command": "git diff --check",
+      "startedAt": "2026-09-30T23:15:37.675Z",
+      "finishedAt": "2026-09-30T23:15:38.510Z",
+      "exitCode": 0,
+      "signal": null,
+      "processError": null,
+      "streams": [
+        {
+          "path": "diff-check.stdout.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "diff-check.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    }
+  ]
+}

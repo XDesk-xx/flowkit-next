@@ -33,6 +33,61 @@ export async function gitText(
   return (await gitBytes(root, args)).toString("utf8").trim();
 }
 
+/** The operation owns the exact path set; only the bounded Git stdin varies. */
+export async function gitAddExactPaths(
+  root: string,
+  paths: readonly string[],
+): Promise<void> {
+  if (
+    paths.length === 0 ||
+    !paths.every(
+      (file, index) =>
+        isExactGitPath(file) && (index === 0 || paths[index - 1] < file),
+    )
+  )
+    throw Error("Invalid exact checkpoint path set");
+  const payload = Buffer.from(`${paths.join("\0")}\0`, "utf8");
+  if (payload.toString("utf8") !== `${paths.join("\0")}\0`)
+    throw Error("Checkpoint path encoding is not UTF-8 roundtrippable");
+  await new Promise<void>((resolve, reject) => {
+    let stdinError: Error | null = null;
+    const child = execFile(
+      "git",
+      [
+        "--literal-pathspecs",
+        "add",
+        "--pathspec-from-file=-",
+        "--pathspec-file-nul",
+      ],
+      {
+        cwd: root,
+        encoding: "buffer",
+        windowsHide: true,
+        maxBuffer: 16 * 1024 * 1024,
+      },
+      (error) => {
+        const failure = stdinError ?? error;
+        if (failure) reject(failure);
+        else resolve();
+      },
+    );
+    if (child.stdin === null) {
+      stdinError = Error("Git stdin is unavailable");
+      child.kill();
+      return;
+    }
+    child.stdin.on("error", (error) => {
+      stdinError ??= error;
+    });
+    try {
+      child.stdin.end(payload);
+    } catch (error) {
+      stdinError ??= error instanceof Error ? error : Error(String(error));
+      child.kill();
+    }
+  });
+}
+
 function pathsFromNul(bytes: Buffer): string[] {
   const value = bytes.toString("utf8");
   if (

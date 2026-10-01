@@ -1,0 +1,74 @@
+{
+  "startedAt": "2026-10-01T00:38:23.677Z",
+  "finishedAt": "2026-10-01T00:38:24.055Z",
+  "sourceRefsVerified": 13,
+  "stableCheckpointSourceVerified": true,
+  "actionSkills": [
+    {
+      "path": "skills/actions/apply/SKILL.md",
+      "sha256": "7af0a2b3d2e88cf55c0ae39085f1516ed64b0b8c051adea716cf5241abade4d5"
+    },
+    {
+      "path": "skills/actions/archive/SKILL.md",
+      "sha256": "3b21459ae3fcec7ed4a7e2747120471fe66e6a555288b021ba9d1f94002fcf9d"
+    },
+    {
+      "path": "skills/actions/explore/SKILL.md",
+      "sha256": "f93b36b384d2f5e331e801fbd5a11c01677ecb7adc8ceb897f19d4266779f0b1"
+    },
+    {
+      "path": "skills/actions/propose/SKILL.md",
+      "sha256": "6b7d55a14e15588783fbfe78035d336db85167be2a4a03a1ac359a59c1c74a20"
+    },
+    {
+      "path": "skills/actions/review-apply/SKILL.md",
+      "sha256": "547fc0fb9fb940fb44f7a47679f024951b1a1540755b81be78bfe5e6b6d9a5a1"
+    },
+    {
+      "path": "skills/actions/review-explore/SKILL.md",
+      "sha256": "60fb87365ca04b5b1a77c714d65d3015f4cb9f7444d148dfb4a26e2db27bdc2a"
+    },
+    {
+      "path": "skills/actions/review-propose/SKILL.md",
+      "sha256": "8c7bccdcb8025e3c0f2c9e7cbada0c10562044952d478d5784274722962d3e95"
+    },
+    {
+      "path": "skills/actions/revise-apply/SKILL.md",
+      "sha256": "98b802577da8a33d80a40a4564cbc27141355ebc9971c1566d0720921e784788"
+    },
+    {
+      "path": "skills/actions/revise-explore/SKILL.md",
+      "sha256": "51481ca4749fa444e571370d56fb4971e68508e90a37c0b71dc8d08f71738447"
+    },
+    {
+      "path": "skills/actions/revise-propose/SKILL.md",
+      "sha256": "c2589bf03172a0e1ca426dc253d8840099faa0f2ea97ba014c95997ba2f09501"
+    }
+  ],
+  "authorProofFiles": 3,
+  "authorProofDeclarations": 3,
+  "proofClosureProbe": {
+    "method": "checkDeclaredProofs(current C target, 20261001-027-explore, [])",
+    "actualProofFiles": 3,
+    "emptyRefsAccepted": true,
+    "mutation": false,
+    "meaning": "validator iterates supplied refs; absence of a directory-wide closure check is independently reproduced"
+  },
+  "help": {
+    "program": "C:\\nvm4w\\nodejs\\node.exe",
+    "args": [
+      "dist/cli/entrypoint.js",
+      "--help"
+    ],
+    "exitCode": 0,
+    "stdoutSha256": "8e9d6bd3d9823a841fe383dbf7d5809d34da5d86d0e1bc0186a09d0c7c3d1290",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "matchesAuthor": true
+  },
+  "backup": {
+    "commit": "8e0c9758e47885f71aa30a2851f52cb7adb2179e",
+    "fileCount": 54,
+    "allPathsBelongToB": true
+  },
+  "limitations": "Read-only source/CLI observations; no functional acceptance, no lifecycle execution by candidate, no historical evidence rewrite."
+}

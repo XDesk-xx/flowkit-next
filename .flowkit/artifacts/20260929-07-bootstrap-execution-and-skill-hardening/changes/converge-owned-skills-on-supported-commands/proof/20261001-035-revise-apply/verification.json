@@ -1,0 +1,134 @@
+{
+  "formatVersion": 1,
+  "records": [
+    {
+      "id": "targeted-tests",
+      "command": [
+        "node",
+        "--import",
+        "tsx",
+        "--test",
+        "tests/unit/domain/action-archive-cli.test.ts",
+        "tests/unit/domain/support-command-boundaries.test.ts"
+      ],
+      "startedAt": "2026-10-01T01:49:01.631Z",
+      "endedAt": "2026-10-01T01:49:07.788Z",
+      "exitCode": 0,
+      "stdoutBytes": 1566,
+      "stdoutSha256": "5d40b2d1265af083f5c6f2a2ad28333b887fb18b20ecc70e34e4929b31ca4137",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "openspec",
+      "command": [
+        "node",
+        "C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js",
+        "validate",
+        "converge-owned-skills-on-supported-commands",
+        "--strict"
+      ],
+      "startedAt": "2026-10-01T01:49:07.792Z",
+      "endedAt": "2026-10-01T01:49:09.222Z",
+      "exitCode": 0,
+      "stdoutBytes": 62,
+      "stdoutSha256": "adaf9777d5c57295abd939862f6e3bf4b932442aa3ba4fc6457f295aebbb0680",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "diff-check",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "startedAt": "2026-10-01T01:49:09.227Z",
+      "endedAt": "2026-10-01T01:49:09.406Z",
+      "exitCode": 0,
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "pack",
+      "command": [
+        "pnpm",
+        "pack",
+        "--pack-destination",
+        "D:\\Projects\\flowkit-next\\.tmp\\d07-c-revise-pack"
+      ],
+      "startedAt": "2026-10-01T01:49:09.408Z",
+      "endedAt": "2026-10-01T01:49:12.605Z",
+      "exitCode": 0,
+      "stdoutBytes": 4587,
+      "stdoutSha256": "9b7261db639ccb18978bd06dab03891b7e4d8ff83033c65db2e33810a9bbdcda",
+      "stderrBytes": 36,
+      "stderrSha256": "8f5c6a9c4aade0d032984516a14b38a2d12cb1e6b333ab3568f9dde2ba3e3470"
+    },
+    {
+      "id": "install",
+      "command": [
+        "npm",
+        "install",
+        "--prefix",
+        "D:\\Projects\\flowkit-next\\.tmp\\d07-c-revise-install",
+        "--no-audit",
+        "--no-fund",
+        "--ignore-scripts",
+        "D:\\Projects\\flowkit-next\\.tmp\\d07-c-revise-pack\\flowkit-next-0.1.0.tgz"
+      ],
+      "startedAt": "2026-10-01T01:49:12.609Z",
+      "endedAt": "2026-10-01T01:49:16.391Z",
+      "exitCode": 0,
+      "stdoutBytes": 24,
+      "stdoutSha256": "bf14b7a2bc076990244fa3239536925868dfe5ad05089c7d459b5fa482abfc72",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "installed-help",
+      "command": [
+        "node",
+        "D:\\Projects\\flowkit-next\\.tmp\\d07-c-revise-install\\node_modules\\flowkit-next\\dist\\cli\\entrypoint.js",
+        "--help"
+      ],
+      "startedAt": "2026-10-01T01:49:16.394Z",
+      "endedAt": "2026-10-01T01:49:16.635Z",
+      "exitCode": 0,
+      "stdoutBytes": 479,
+      "stdoutSha256": "8e9d6bd3d9823a841fe383dbf7d5809d34da5d86d0e1bc0186a09d0c7c3d1290",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "allExitZero": true,
+  "package": {
+    "path": ".tmp/d07-c-revise-pack/flowkit-next-0.1.0.tgz",
+    "bytes": 156663,
+    "sha256": "06bea332c55a6669fd56c551c4eb14243405ee7103488835102476513babac62"
+  },
+  "installedRoot": ".tmp/d07-c-revise-install/node_modules/flowkit-next",
+  "installedAssetsEqualSource": [
+    "skills/actions/explore/SKILL.md",
+    "skills/actions/review-explore/SKILL.md",
+    "skills/actions/revise-explore/SKILL.md",
+    "skills/actions/propose/SKILL.md",
+    "skills/actions/review-propose/SKILL.md",
+    "skills/actions/revise-propose/SKILL.md",
+    "skills/actions/apply/SKILL.md",
+    "skills/actions/review-apply/SKILL.md",
+    "skills/actions/revise-apply/SKILL.md",
+    "skills/actions/archive/SKILL.md",
+    "skills/delivery/final/SKILL.md",
+    "skills/delivery/full-test/SKILL.md",
+    "skills/tools/openspec/SKILL.md",
+    "docs/onboarding.md"
+  ],
+  "reusedPriorChecks": {
+    "runId": "20261001-033-apply",
+    "reason": "No production TS, package dependencies, or domain test changes; prior 363 domain and 7 acceptance remain historical facts, not rerun verdicts."
+  },
+  "formalFullTest": false
+}

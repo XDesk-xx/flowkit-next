@@ -1,0 +1,49 @@
+{
+  "runId": "20260930-006-review-propose",
+  "actionIdentity": {
+    "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+    "changeId": "expose-stable-action-and-record-commands",
+    "actionId": "review-propose"
+  },
+  "authorConclusion": null,
+  "reviewerVerdict": "changes-requested",
+  "verificationVerdict": null,
+  "nextBoundary": "revise-propose",
+  "facts": {
+    "reviewedRunId": "20260930-005-revise-propose",
+    "reviewedRoot": "openspec/changes/expose-stable-action-and-record-commands",
+    "currentStep": "对上轮三项 finding 的修订 Proposal 进行独立复审，并核对新条款与既有 Policy/Run-chain 合同能否同时成立。",
+    "evidence": [
+      "七份规划产物 SHA-256 与 005 Author Result 相符；managed OpenSpec 1.10.0 strict validation exit 0，仅证明结构。",
+      "D07-A-RP-001 已以受信宿主提交既有 OwnerAuthorityFact、开始记录绑定和 finish 复核收敛，不再要求 CLI 重读 conversation。",
+      "D07-A-RP-002 的写前 Policy 预检及写后唯一 canonical chain 读回已写入 Spec/Design/Tasks；D07-A-RP-003 的十个 Action 机器 readiness 与角色判断边界已列明。",
+      "当前 stable Policy 对 Reviewer rejected 返回 unrecognized-reviewer-verdict；当前 Run-chain reader 只允许 blocked terminal Author FAIL，故 rejected Reviewer terminal 无法通过 canonical 读回。"
+    ],
+    "findings": [
+      {
+        "id": "D07-A-RP-004",
+        "artifact": "design.md:49; specs/stable-action-command-execution/spec.md:53; tasks.md:12",
+        "observed": "修订合同把 Reviewer rejected + nextBoundary=null 视为可持久化的 terminal blocked 结果，但现有 Policy 不识别 rejected，已安装 manager 的 current-run-chain 对 blocked terminal 仅放行 Author FAIL。该候选在写前特许后会写成三文件，写后唯一链仍判 Invalid terminal outcome。",
+        "impact": "finish 既无法按合同确认该结果，也会留下使 status/next 失效的完整 Run；与“写前拒绝可检测错误、写后 canonical 读回才 confirmed”的修订保证冲突。",
+        "minimumCorrection": "明确 rejected 的合法边界：若本 Change 要持久化该 Reviewer verdict，给现有 Policy/Run-chain 一个仅针对 rejected 且 nextBoundary=null 的有界合同修正、对应 delta spec 与负例，保持其他未知 token 拒绝；若不纳入本 Change，则在写前拒绝并与 Reviewer Guidance 的 verdict 约定及验收限制一致。"
+      }
+    ],
+    "complexityMinimality": "三项原 finding 的修订仍复用既有三文件、Policy、Guidance 和 start/admission seam；新增 rejected 分支须先与 canonical reader 收敛，不需要新 registry 或状态。",
+    "newContentScopeDrift": "Owner fact、Policy preflight 和 readiness 表均服务已批准的 Change A；rejected terminal blocked 是本轮新增的结果语义，当前合同未给出可读链支撑。",
+    "handoff": {
+      "summary": "仅修正 D07-A-RP-004 与相关 Spec/Design/Task 一致性，再复审；不改已批准 Explore、历史 Run 或其他 Change。",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-09-30:activate-first-change:proof-explore",
+          "summary": "D07 首个 Change 已激活；Reviewer 不创建 Owner/Git 权限。"
+        }
+      ],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20260930-005-revise-propose",
+          "path": "openspec/changes/expose-stable-action-and-record-commands/specs/stable-action-command-execution/spec.md"
+        }
+      ]
+    }
+  }
+}

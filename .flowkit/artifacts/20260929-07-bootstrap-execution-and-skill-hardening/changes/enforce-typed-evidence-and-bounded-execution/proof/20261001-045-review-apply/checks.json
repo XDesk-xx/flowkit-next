@@ -1,0 +1,79 @@
+{
+  "records": [
+    {
+      "id": "pipe-probe",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "--import",
+        "tsx",
+        ".tmp/reviewer045-pipe-probe.mjs"
+      ],
+      "startedAt": "2026-10-01T04:44:27.684Z",
+      "endedAt": "2026-10-01T04:44:30.602Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "bytes": 607,
+        "sha256": "6c474e47cb62b6a5ee4601e243e3d5180a58caa8aebdb686d4031dbceb151755"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "targeted",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "--import",
+        "tsx",
+        "--test",
+        "tests/unit/domain/action-proof-closure.test.ts",
+        "tests/unit/domain/action-command-cli.test.ts",
+        "tests/unit/domain/git-workflow-effects.test.ts",
+        "tests/unit/quality/owned-source-policy.test.ts"
+      ],
+      "startedAt": "2026-10-01T04:44:30.606Z",
+      "endedAt": "2026-10-01T04:44:55.503Z",
+      "exitCode": 0,
+      "error": null,
+      "stdout": {
+        "bytes": 2845,
+        "sha256": "6a0c89a27c051fb5c55264d03b2c1e8b319c5e2316594b0bbf93d223eef9f0d7"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "probe": {
+    "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-045-review-apply/pipe-probe.mjs",
+    "sha256": "efac906cca0e5b82e18620184a31ca1cedad88acaab0d0ce856b65d935a2d6e3"
+  },
+  "observation": {
+    "scope": "Injected process ordering with one real delayed Git add in an isolated fixture; not a claim that native Git normally closes stdin early.",
+    "root": "D:\\Projects\\flowkit-next\\.tmp\\reviewer045-pipe-ToMt03",
+    "outcome": {
+      "status": "incomplete",
+      "phase": "stage",
+      "reason": "injected stdin EPIPE before child exit",
+      "observed": {
+        "checkpointCommit": null,
+        "remoteCommit": null
+      },
+      "effect": "unknown",
+      "remaining": [
+        "保留现有 index/对象，核对已有副作用后明确复用或人工处理"
+      ]
+    },
+    "childCompleteAtReturn": false,
+    "indexAtReturn": [],
+    "indexAfterChildComplete": [
+      "a.txt"
+    ],
+    "childComplete": true,
+    "addCalls": 1
+  },
+  "limits": "Bounded independent checks. Existing tests are not proof of missing process-order fault safety; fixture sources are not Owner authority."
+}

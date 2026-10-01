@@ -1,0 +1,55 @@
+{
+  "runId": "20261001-054-review-apply",
+  "records": [
+    {
+      "id": "probe",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "--import",
+        "tsx",
+        ".tmp/reviewer054-probe.mjs"
+      ],
+      "startedAt": "2026-10-01T07:21:06.723Z",
+      "endedAt": "2026-10-01T07:21:12.154Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "bytes": 589,
+        "sha256": "b45bf9d301bafcfbbe4a52c0adad7df2c3eaa996340a7e8c1b3f121ffc3f935d"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "targeted",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "--import",
+        "tsx",
+        "--test",
+        "tests/unit/domain/prepared-proof-checkpoint.test.ts",
+        "tests/unit/domain/current-run-chain.test.ts",
+        "tests/unit/domain/managed-evidence-checkpoint.test.ts",
+        "tests/unit/domain/git-checkpoint-scope.test.ts",
+        "tests/unit/domain/support-git-checkpoint.test.ts"
+      ],
+      "startedAt": "2026-10-01T07:21:12.158Z",
+      "endedAt": "2026-10-01T07:21:41.667Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "bytes": 4018,
+        "sha256": "a7604ce0ff0a03c541d57429a5b0643a13f7aef0958b456a4437e137f8c60824"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "scope": "Independent targeted tests and isolated Git owner lifecycle drift counterexample; no main-repository Git mutation."
+}

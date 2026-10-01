@@ -1,0 +1,64 @@
+TAP version 13
+# Subtest: reviewer probe: archive writes despite invalid Run chain
+ok 1 - reviewer probe: archive writes despite invalid Run chain
+  ---
+  duration_ms: 6872.796
+  type: 'test'
+  ...
+# Subtest: archive date follows the host calendar across a UTC date boundary
+ok 2 - archive date follows the host calendar across a UTC date boundary
+  ---
+  duration_ms: 2.4277
+  type: 'test'
+  ...
+# Subtest: each fixed support command parses its exact visible prefix
+ok 3 - each fixed support command parses its exact visible prefix
+  ---
+  duration_ms: 1.0005
+  type: 'test'
+  ...
+# Subtest: support parser rejects target conflict, executable fields, and missing Owner fact
+ok 4 - support parser rejects target conflict, executable fields, and missing Owner fact
+  ---
+  duration_ms: 1.1197
+  type: 'test'
+  ...
+# Subtest: activation patches one state and appends the exact Owner fact
+ok 5 - activation patches one state and appends the exact Owner fact
+  ---
+  duration_ms: 49.3601
+  type: 'test'
+  ...
+# Subtest: Memo write checks Owner scope before changing project Memo state
+ok 6 - Memo write checks Owner scope before changing project Memo state
+  ---
+  duration_ms: 15.0235
+  type: 'test'
+  ...
+# Subtest: fixed Full Test request retries are read-only and a new attempt needs distinct Owner fact
+ok 7 - fixed Full Test request retries are read-only and a new attempt needs distinct Owner fact
+  ---
+  duration_ms: 3008.7592
+  type: 'test'
+  ...
+# Subtest: fixed checkpoint requires the matching Owner operation and commits only scoped paths
+ok 8 - fixed checkpoint requires the matching Owner operation and commits only scoped paths
+  ---
+  duration_ms: 7825.1103
+  type: 'test'
+  ...
+# Subtest: fixed Integration preserves pending checkpoint and confirms externally accepted ref
+ok 9 - fixed Integration preserves pending checkpoint and confirms externally accepted ref
+  ---
+  duration_ms: 8874.9971
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 9562.6001

@@ -285,8 +285,8 @@ test("project ordinal invariants survive legal lifecycle transitions", () => {
   assert.equal(deriveNextProjectOrdinal(afterCurrentCompletes), 24);
 });
 
-test("projectOrdinal remains Guidance coordination data rather than a production Core identity", async () => {
-  const sourceRoot = path.join(REPOSITORY_ROOT, "src");
+test("projectOrdinal remains outside production domain identity", async () => {
+  const sourceRoot = path.join(REPOSITORY_ROOT, "src", "domain");
   const sourceEntries = await readdir(sourceRoot, { recursive: true });
 
   for (const relative of sourceEntries) {

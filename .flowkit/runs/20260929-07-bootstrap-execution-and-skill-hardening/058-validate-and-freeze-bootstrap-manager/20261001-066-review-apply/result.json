@@ -1,0 +1,153 @@
+{
+  "runId": "20261001-066-review-apply",
+  "actionIdentity": {
+    "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+    "changeId": "validate-and-freeze-bootstrap-manager",
+    "actionId": "review-apply"
+  },
+  "authorConclusion": null,
+  "reviewerVerdict": "approved",
+  "verificationVerdict": null,
+  "nextBoundary": "archive",
+  "facts": {
+    "projectOrdinal": 49,
+    "changeStartSequence": 58,
+    "reviewedRunId": "20261001-065-apply",
+    "reviewedResultSha256": "3a6579eef9c8ade1d74484f37e124cb8ea9120ac0e76446022b7b4e85973827b",
+    "artifacts": {
+      "openspec/changes/validate-and-freeze-bootstrap-manager/proposal.md": "24c666bb972b92dfa8e53769626091b7b886c963f7e6ade993f48208752927d1",
+      "openspec/changes/validate-and-freeze-bootstrap-manager/design.md": "9709b9067a1160e7445ec8f4756023cf40c88cbb38586b884df66a7eda5c5ba8",
+      "openspec/changes/validate-and-freeze-bootstrap-manager/.openspec.yaml": "e152460583bf1528b48ceacd730d1c2b2db93d624c8b45d2579e34f43fcf2c41",
+      "openspec/changes/validate-and-freeze-bootstrap-manager/explore.md": "33de9eafb861962404936ce0e1fa40ceef4266f5488a382214fd410ea7ebb12c",
+      "openspec/changes/validate-and-freeze-bootstrap-manager/tasks.md": "fec3c665194fe13edb03c4fbccee15ce5889be1efde074785cfef528772b8fc3",
+      "package.json": "ae5b266740db006ef10271bb011837467629fdcafba50a46688c0de5792185a9",
+      "pnpm-lock.yaml": "bf5ef071f2b4b8140f05493ebd53098660250f2cd5a834fe321ce8685bdb65e5",
+      "config/tools/toolchain.lock.json": "a0481fc8a3fddfbcdd65a504e0e7a065e6ab74a3a871af3ab8838d201eecd4a2",
+      "scripts/check-forbidden-tracked-artifacts.mjs": "e374240c147051b9abef1e8f16ca9bf9ea28976929f5a8cf866ffc5c935d1e16",
+      "tests/unit/quality/owned-source-policy.test.ts": "461ba174f2c194d28e3ef6e2bacde68306fe52927d236085f7f7f16048a362e4",
+      "openspec/delivery-groups/20260929-07-bootstrap-execution-and-skill-hardening.yaml": "d56a2e1cb6e9421bce32aa1d0a07d30805cf78c9a541f3a69f1d18b05aa9c6c5",
+      "AGENTS.md": "f30b0196357c71df8a0fcbf461372669e0a007b26ac603cc80bcb24d1b2648f9",
+      ".flowkit/runs/20260929-07-bootstrap-execution-and-skill-hardening/058-validate-and-freeze-bootstrap-manager/20261001-064-review-propose/result.json": "c0e7363b7179bcc018fca8110119e6bee75430797b9349bc255a27e65197408c"
+    },
+    "checkedProofCount": 16,
+    "packageSha256": "1b2c88c9263d5892946d3d9aacba79a6392eb3d8b3b37fa3c87aebcc1550cba0",
+    "currentStepExplanation": "审查 065 Apply 是否满足 064 批准的收窄 E 合同：实际发行包、隔离安装、固定命令、平台和适用检查；核对窄范围源码修改及前序失败保留。",
+    "complexityMinimality": "唯一工程逻辑修改为禁止入库检查从默认有界 spawnSync 捕获改为异步流收集，保留原路径判定与失败关闭逻辑；同步更新既有 legacy source exact hash。两项均可追溯至 tasks 1.2，无产品能力或依赖扩张。",
+    "scopeDrift": {
+      "verdict": "NONE",
+      "reason": "按 Owner 已收窄范围执行；fixture 未冒充真实独立项目、Reviewer 修改往返或新 Agent 会话。未发生 D07 Stable manager 切换。"
+    },
+    "decisiveObservations": [
+      "Proposal/Design/metadata/Explore 与 064 批准身份一致，tasks 仅九项勾选变化；release-candidate 所列当前来源哈希均匹配，实际工作区改动与记录范围相符。",
+      "16 个直接 proof 全部核对归属、唯一引用、常规文件/无链接、bytes/SHA 和 managed Git bytes；proof-raw.tar 的 120 个成员全部与 manifest 逐项匹配。打包保留了原始脚本、失败及成功流，旧 062 失败未被替换。",
+      "独立解包实际 tgz，117 个成员分别与 Windows 和 Linux 安装逐字节匹配；非 package.json 文件与当前仓库发行资产相同。package.json 仅省略 packageManager/scripts.prepack，其余字段深度相同。包 SHA 与 Explore 相同可由发行内容未变解释，065 有真实重新 pack 记录。",
+      "独立重现 git ls-files 默认 spawnSync 捕获触发 ENOBUFS，捕获 1056768 字节；当前流式检查脚本真实退出 0。相关 managed-evidence-checkpoint 与 owned-source-policy 聚焦测试 4/4 通过；安装内 doctor.status=pass，OpenSpec 1.10.0。",
+      "已核对 11 项当前适用检查报告与原始流身份，全部退出 0；原始 TAP 显示 domain 377/377、源码 acceptance 7/7、安装 acceptance 7/7，均无 skip。",
+      "固定 Action 安装探针保留冲突输入拒绝、partial 查询拒绝、缺 proof 闭合集拒绝及真实 finish 机械读回；合成 Author FAIL 仅用于机制测试。支持命令 memo list 正例与目标冲突反例来自实际安装内 CLI。",
+      "Linux 第二次探针原始流确认 Linux x86_64/glibc 2.36/Node 22.23.2/OpenSpec 1.10.0、同 SHA tgz 的生产依赖安装、查询及独立 harness 6/6 验收通过；首次断言把缺 root 拒绝码限定为 Windows 观察而失败，其输出单独保留。",
+      "包外候选记录明确未验证真实项目、角色质量、新会话和宿主审批，且未把当前检查声明为 Formal Full Test、Final、Stable 选择或 Git 权限。"
+    ],
+    "literalDiscipline": "117/120/16 及测试数量、路径、当前结果均是本候选观察，不成为产品永久常量；包 SHA 绑定实际 bytes。既有 legacy hash 更新针对明确审查的脚本变化，仍拒绝任意未登记脚本漂移。",
+    "findings": [],
+    "nonBlockingObservations": [
+      "062 的 index fixture 失败在 Author 完整复验及本次聚焦复验中均未重现；fixture/产品相关代码未修改。现有证据证明当前复跑通过，不能证明已确定或消除原间歇失败的根因；后续正式验证如再失败仍应按真实当前结果处理。"
+    ],
+    "limitations": [
+      "Linux 已审读原始执行证据并核对安装 bytes，本次未重新运行 Docker 或完整测试套件。",
+      "独立检查只覆盖当前收窄的发行合同，不证明真实独立项目、Reviewer 修改往返、新 Agent 会话或宿主审批。",
+      "review-apply approved 不是 Formal Full Test PASS、archive 完成、Final 或 Git 授权。"
+    ],
+    "proofRefs": [
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-066-review-apply/checks.json",
+        "bytes": 23423,
+        "sha256": "bffd1ea073282c1050b4a7d2052b2ec4446fc0821b27591ae859331a722b3bb4",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-066-review-apply",
+        "purpose": "Independent current candidate identity and bounded reviewer checks"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-066-review-apply/focused-tests.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-066-review-apply",
+        "purpose": "Independent current candidate identity and bounded reviewer checks"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-066-review-apply/focused-tests.stdout.txt",
+        "bytes": 926,
+        "sha256": "b7bc1e4e4c248b9ea79151eafdcd003e262f583699911f34654753288171e240",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-066-review-apply",
+        "purpose": "Independent current candidate identity and bounded reviewer checks"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-066-review-apply/forbidden-check.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-066-review-apply",
+        "purpose": "Independent current candidate identity and bounded reviewer checks"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-066-review-apply/forbidden-check.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-066-review-apply",
+        "purpose": "Independent current candidate identity and bounded reviewer checks"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-066-review-apply/installed-doctor.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-066-review-apply",
+        "purpose": "Independent current candidate identity and bounded reviewer checks"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-066-review-apply/installed-doctor.stdout.txt",
+        "bytes": 172,
+        "sha256": "5c360f7f42aed20a7c178ad539c282d15217ad08d9e4cb6b907e2b37e32c65b7",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-066-review-apply",
+        "purpose": "Independent current candidate identity and bounded reviewer checks"
+      }
+    ],
+    "handoff": {
+      "summary": "当前收窄 E Apply 可进入 archive；保留 062 失败、065 原始 bundle、候选包与未验证范围。正式 Full Test/Final/Git 和后续 manager 选择仍分别按合法边界执行。",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-10-01:revise-e-acceptance-scope",
+          "summary": "Owner 已取消真实独立目标、Reviewer 修改往返和新 Agent 会话作为 E 必需验收；由 064 审查直接核对原始 Owner 输入。"
+        }
+      ],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20261001-065-apply",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-065-apply/release-candidate.json"
+        },
+        {
+          "sourceRunId": "20261001-065-apply",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-065-apply/proof-bundle-manifest.json"
+        },
+        {
+          "sourceRunId": "20261001-065-apply",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-065-apply/proof-raw.tar"
+        },
+        {
+          "sourceRunId": "20261001-066-review-apply",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-066-review-apply/checks.json"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,166 @@
+{
+  "runId": "20261001-020-apply",
+  "actionIdentity": {
+    "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+    "changeId": "expose-stable-delivery-and-support-commands",
+    "actionId": "apply"
+  },
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-apply",
+  "facts": {
+    "approvedProposalRunId": "20261001-019-review-propose",
+    "planningRoot": "openspec/changes/expose-stable-delivery-and-support-commands",
+    "artifactHashes": {
+      "README.md": "246ee2b43e50fe7bf9b27e967ddf450a52e34c03c5b043fdfdf0388b4ea6db2c",
+      "docs/onboarding.md": "0cbb4f4d39a4e25b1a146f7f384704c251be9cb2b3e54bdfa3099c36accc5602",
+      "openspec/changes/expose-stable-delivery-and-support-commands/design.md": "12abb893da827e9954bec549223c9683778e3c31db39c3655db2232e86b48b4d",
+      "openspec/changes/expose-stable-delivery-and-support-commands/explore.md": "8e1f1b5cda524a158a69fea83acaed5d9861c58a5803124cab747e4611e3fd19",
+      "openspec/changes/expose-stable-delivery-and-support-commands/proposal.md": "78eac04bbe5a8fe8c97cb57c4bf9c4529c03f5a3c7d1087b979cce99518f0ba0",
+      "openspec/changes/expose-stable-delivery-and-support-commands/specs/foundation-cli-surface/spec.md": "4e1993b29c753452c483f67abde3143378cfdf42b4672decb1771107583d98fa",
+      "openspec/changes/expose-stable-delivery-and-support-commands/specs/repository-integration-and-next-base-continuity/spec.md": "82e999af6c69f877f3953546e16e3895c548635745fd10594718028385ae6abb",
+      "openspec/changes/expose-stable-delivery-and-support-commands/specs/stable-delivery-support-command-execution/spec.md": "5edfad492d9679c5ca158799ba04de30ba114752017a835c2bceff6d2668c8d7",
+      "openspec/changes/expose-stable-delivery-and-support-commands/tasks.md": "0ad74bd2fb92067454660dd77b4bc45d13a0e1f5651319af97a1829d2504490d",
+      "openspec/delivery-groups/20260929-07-bootstrap-execution-and-skill-hardening.yaml": "565fce646eceed2f6ae06206fa29b5de1e869029a5fb78ad33446f4b8018a8b1",
+      "src/cli/action-commands.ts": "8eab28e03946b448238d2a9d75c6646a7a5aecabf6cbb9a99cade4f441e92e3c",
+      "src/cli/action-descriptor.ts": "22672fe66540ee3b48584a631000614cb02666c476da41204b6860650119e1ff",
+      "src/cli/action-readiness.ts": "603d04111c1d7c6bb56731ca552ed49338815932ac01c351c63e82dbe1d0fe5d",
+      "src/cli/entrypoint.ts": "b9185c9670a1df543bb5a886dba8a01331f2e15695509f571201f12298f7218d",
+      "src/cli/support-change-activate.ts": "0e835800141b25bd003907bc5b0a3bc1dcdc07d93e1242e5baae4de7a0c0a5e5",
+      "src/cli/support-change-archive.ts": "e3a1c86855f1eccacadb8288c7a85cf2ce29267d77120d88348e4e815ab42677",
+      "src/cli/support-commands.ts": "287db3801b090a403133a9a30b388cef225a498570a912d37867532c5a3d4d12",
+      "src/cli/support-delivery-final.ts": "61fcb88439f7c79192fbc73d2a13cf8109dfbec8f0fefb926d0e28b898d368fd",
+      "src/cli/support-delivery-start.ts": "fd72a41ab30fc783b2c22e61adea3f90e29a0bdfe98cc561902ca516c53bb0a5",
+      "src/cli/support-full-test.ts": "44cf93c1e305d885a0e771f4ba5023b948a0c2233d506f24aeee58033e357d41",
+      "src/cli/support-git-integrate.ts": "011e81961037ae8cc012c87b99cb2761913d8f42f86d86e04d06b223670eea91",
+      "src/cli/support-git.ts": "1cb30e4ef312f585f6b2357327b944fa3fe3a688ec5d3181ac9fc1ca9d54ef31",
+      "src/cli/support-memo.ts": "331bbf29b0de46ff428527a600a6054bb0437ecffaed1175dc1c06134d1e70f2",
+      "src/cli/support-project.ts": "0824becaa7dc1c9c82a3f618ce7bf23dc2368b232f42aab0089b7f313a40c460",
+      "src/cli/support-request.ts": "bf34e388316be32e288d544bee9afe3f45dd19567073ba1cb04aec2647b5692a",
+      "src/domain/canonical-action-run-start.ts": "0d69bbc6f08e944a4e9c2cb91c7417947d3d56a0efedf201a85ad67cce14cf66",
+      "src/domain/delivery-full-test-execution.ts": "fe551507a850a9b76002bb433c9f1d11e122c4dc0706d8d92a95618d85f4f334",
+      "src/internal/change-coordination-write.ts": "13b44350776ea9d296da31f5946aff9e77d2ee028cc463a28bc488741a1f48e3",
+      "src/internal/full-test-current.ts": "1d20070c6c9adc1082a25fa0c1284255b73c0fa3888fee88079157e532a1b1f5",
+      "src/internal/openspec-archive-date.ts": "c013938df27c10727f24b6e33ecdb591d3389c2e3bf230f19557f06760188543",
+      "tests/unit/domain/action-archive-cli.test.ts": "5829340d4432c9b14581f11e1c951dbc83da9775992e365d3df93d2302d47c9d",
+      "tests/unit/domain/action-archive-readiness.test.ts": "2c6f9776ea3267ab5c974d3019e42083b78d602fd428022a5a6b7cb3cb252d16",
+      "tests/unit/domain/support-command-boundaries.test.ts": "82e5835ac17a378a7ff7ff0d9338ab3720801055f009fbca9960e62d74b1b216",
+      "tests/unit/domain/support-full-test.test.ts": "465d6d00d89ca59222ed4a3f1080cfbfc9e1b4585749cbacf9a5212c74c0b6cb",
+      "tests/unit/domain/support-git-checkpoint.test.ts": "19ca6d1ca339a6c190915dc5654468ec8ac46b977e60337a9d578abd831a1176",
+      "tests/unit/domain/support-git-integration.test.ts": "2a89d23249c3e2df8d524d8682a8a482f9714fa03ec0db4baba1517ac65b44bc"
+    },
+    "implementation": "Closed candidate CLI commands for Project, Delivery, Change, Memo, Full Test, Final and Git; Agent attests Owner source while Flowkit validates target/state and performs fixed mechanics. Archive uses started Action checks; Full Test binds idempotent attempt identity; Integration recognizes externally accepted Git ref.",
+    "testEvidence": {
+      "domain": {
+        "passed": 360,
+        "failed": 0
+      },
+      "acceptance": {
+        "passed": 7,
+        "failed": 0
+      },
+      "capturedCommands": 11,
+      "allExitZero": true,
+      "syntheticSmoke": true,
+      "formalDeliveryFullTest": false
+    },
+    "limitations": "Synthetic smoke Owner/Reviewer facts prove mechanics only; they are not independent Review or formal D07 Full Test. Initial proof capture failed format check and is retained; r2 passed after correction. Candidate never managed current D07 and no real-repo Git checkpoint/push/integration occurred.",
+    "complexityMinimality": "Fixed explicit commands reuse existing domain and OpenSpec/Git host mechanics; no chat listener, arbitrary command callback, registry, automatic Review or next Action.",
+    "proofRefs": [
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-delivery-and-support-commands/proof/20261001-020-apply/command-r2.json",
+        "bytes": 6350,
+        "sha256": "88b792923df99885f9375053b5a1bc2f05750b1ccd30b854a730758953cc81b9",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "expose-stable-delivery-and-support-commands",
+        "runId": "20261001-020-apply",
+        "purpose": "apply-verification-index"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-delivery-and-support-commands/proof/20261001-020-apply/r2-domain.stdout.txt",
+        "bytes": 76351,
+        "sha256": "4a3dad0f54fd942a950a01929d789153aea053d88986cd2546076ea8fb1e49fa",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "expose-stable-delivery-and-support-commands",
+        "runId": "20261001-020-apply",
+        "purpose": "apply-verification-output"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-delivery-and-support-commands/proof/20261001-020-apply/r2-acceptance.stdout.txt",
+        "bytes": 1708,
+        "sha256": "685e651960a0d1d950fb8ec778a2c65afd5fc3d2de180aeba55f6010fa512274",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "expose-stable-delivery-and-support-commands",
+        "runId": "20261001-020-apply",
+        "purpose": "apply-verification-output"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-delivery-and-support-commands/proof/20261001-020-apply/r2-openspec.stdout.txt",
+        "bytes": 62,
+        "sha256": "f131f1eb67e0262d12ba3a49ffc0733bb1be48d1c775b4452006d6be1b4a85ea",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "expose-stable-delivery-and-support-commands",
+        "runId": "20261001-020-apply",
+        "purpose": "apply-verification-output"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-delivery-and-support-commands/proof/20261001-020-apply/r2-smoke-start.stdout.txt",
+        "bytes": 228,
+        "sha256": "2d7d3b406e013debb7780bbb8e31ed5dbb74a9966e84da9da1936a6026b60015",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "expose-stable-delivery-and-support-commands",
+        "runId": "20261001-020-apply",
+        "purpose": "synthetic-mechanical-smoke"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-delivery-and-support-commands/proof/20261001-020-apply/r2-smoke-complete.stdout.txt",
+        "bytes": 279,
+        "sha256": "ac04b4802cc7a8f016d79153493176c9eee30c900ef5918bf6e58597dd2f2bec",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "expose-stable-delivery-and-support-commands",
+        "runId": "20261001-020-apply",
+        "purpose": "synthetic-mechanical-smoke"
+      }
+    ],
+    "handoff": {
+      "summary": "Independent review-apply should inspect the exact current candidate hashes, r2 proof, Full Test retry/current semantics, archive date and started-check binding, and Git pending/accepted readback. Apply stops here.",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-09-30:backup-branch-then-restart-b",
+          "summary": "Owner restarted B from A checkpoint; prior B attempt is reference only."
+        },
+        {
+          "sourceRef": "codex-chat:01a0f01a-9adc-7180-93b6-594f469ad8d4:01a0f2d1-71fe-7b83-bd80-219c5fab951c",
+          "summary": "Agent identifies real Owner instruction; Flowkit executes fixed mechanical command."
+        }
+      ],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20261001-020-apply",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-delivery-and-support-commands/proof/20261001-020-apply/command-r2.json"
+        },
+        {
+          "sourceRunId": "20261001-020-apply",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-delivery-and-support-commands/proof/20261001-020-apply/r2-domain.stdout.txt"
+        },
+        {
+          "sourceRunId": "20261001-020-apply",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-delivery-and-support-commands/proof/20261001-020-apply/r2-acceptance.stdout.txt"
+        },
+        {
+          "sourceRunId": "20261001-020-apply",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-delivery-and-support-commands/proof/20261001-020-apply/r2-openspec.stdout.txt"
+        },
+        {
+          "sourceRunId": "20261001-020-apply",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-delivery-and-support-commands/proof/20261001-020-apply/r2-smoke-start.stdout.txt"
+        },
+        {
+          "sourceRunId": "20261001-020-apply",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-delivery-and-support-commands/proof/20261001-020-apply/r2-smoke-complete.stdout.txt"
+        }
+      ]
+    }
+  }
+}

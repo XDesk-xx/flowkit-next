@@ -1,0 +1,458 @@
+{
+  "runId": "20261001-072-apply",
+  "actionIdentity": {
+    "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+    "changeId": "pin-bootstrap-manager-version-1-0-0",
+    "actionId": "apply"
+  },
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-apply",
+  "facts": {
+    "summary": "Pinned actual package and onboarding at 1.0.0, selected onboarding in Full Test inputs, passed applicable checks, and verified actual package against E and a fresh production install.",
+    "sourceHead": "f826f44587b25130a9f47d2426391cbba52520b1",
+    "changedHashes": {
+      "package.json": "ed04d275345b7bce5a7eac020c72cdf3dde87574bb5d2840cab1ee7cd1d66d3d",
+      "docs/onboarding.md": "9faa2413c41801e0d3faa5d53d9e21a07256b2102d6b71b9ce473cbfa661ef89",
+      "config/verification/full-test.json": "1d474533653779a110edaa4d974d544e8f075bf3016b36dd018fc21018beff73",
+      "openspec/changes/pin-bootstrap-manager-version-1-0-0/tasks.md": "c0e681e0c59251e0d1f494c4e8a0da53080733fb2aa2482c858eb8a6f62aab04"
+    },
+    "package": {
+      "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-072-apply/flowkit-next-1.0.0.tgz",
+      "bytes": 160015,
+      "sha256": "3d9c3a7a330be4a349ac0afc5ddaddf0a202f8af883722921721ba0a0bcb5eff",
+      "memberCount": 117,
+      "differencesFromE": [
+        "package/docs/onboarding.md",
+        "package/package.json"
+      ],
+      "installedVersion": "1.0.0"
+    },
+    "checks": {
+      "initialFrozenInstall": "failed only because noninteractive pnpm requested modules purge confirmation",
+      "ciFrozenInstall": "PASS",
+      "subsequentPassedCount": 11,
+      "inputSelectionChangedOnDocDrift": true,
+      "structuralValidation": "OpenSpec strict validation exited 0",
+      "gitDiffCheck": "exit 0"
+    },
+    "mechanicalPreflight": {
+      "tasksComplete": 5,
+      "tasksTotal": 5,
+      "packageMemberDifferenceBounded": true,
+      "lockUnchanged": true,
+      "productionInstall": true,
+      "installedCliHelp": true
+    },
+    "complexityGrowth": "No new product capability, authority, lifecycle state, release subsystem or control plane.",
+    "scopeDrift": "none observed; only approved three product files and Change tasks changed",
+    "limitations": [
+      "Formal Full Test, Delivery Final, Git checkpoint, registry publication and Stable manager selection were not executed.",
+      "One no-TTY frozen install attempt failed and remains recorded; CI=true retry and all subsequent applicable checks passed."
+    ],
+    "proofRefs": [
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-072-apply/acceptance.stderr.txt",
+        "bytes": 54,
+        "sha256": "03a28f841eea36c0ec13f6dea3ea69c782e389ad940fcfaf6d419d0e4fff319b",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-072-apply",
+        "purpose": "raw-apply-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-072-apply/acceptance.stdout.txt",
+        "bytes": 1703,
+        "sha256": "677f47d7685449e23d5ef5cd0649d33b750df98184fe36396cf7a2cfd103c865",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-072-apply",
+        "purpose": "raw-apply-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-072-apply/bootstrap.stderr.txt",
+        "bytes": 58,
+        "sha256": "085b188afd57be38ecdcb1b79ecbdba3762ba2d5b7db1ca01081952a776f3a04",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-072-apply",
+        "purpose": "raw-apply-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-072-apply/bootstrap.stdout.txt",
+        "bytes": 2155,
+        "sha256": "e80a6511c5aa71f982a0cca450254f5f71c681a2bd18ba28a7e6b8145e3ba3d5",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-072-apply",
+        "purpose": "raw-apply-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-072-apply/build.stderr.txt",
+        "bytes": 36,
+        "sha256": "8f5c6a9c4aade0d032984516a14b38a2d12cb1e6b333ab3568f9dde2ba3e3470",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-072-apply",
+        "purpose": "raw-apply-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-072-apply/build.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-072-apply",
+        "purpose": "raw-apply-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-072-apply/checks-report.json",
+        "bytes": 8552,
+        "sha256": "14f7d9b1f70b1f9acca874cb0599db622bb6a364f041bc2e50d7640da3ead423",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-072-apply",
+        "purpose": "apply-check-or-package-report"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-072-apply/dependency-health.stderr.txt",
+        "bytes": 79,
+        "sha256": "fa9ba6bb542e83e254b5bae92765b5ba9e0505c12e1e49f6c11dbf41c51f8775",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-072-apply",
+        "purpose": "raw-apply-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-072-apply/dependency-health.stdout.txt",
+        "bytes": 81,
+        "sha256": "5276498e7920ab1799ff8c4785c45b47ffe95623b3ba525bf42a2143e0adda84",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-072-apply",
+        "purpose": "raw-apply-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-072-apply/domain.stderr.txt",
+        "bytes": 55,
+        "sha256": "aae00296a00317fb5d8157cc46c908dd4c7bfd3ac1d52b647091d4c256ef13c6",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-072-apply",
+        "purpose": "raw-apply-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-072-apply/domain.stdout.txt",
+        "bytes": 80065,
+        "sha256": "7b72e14a28ada62ecce52cd0dd93e963da70cc1c791cb7a5566207d1773c8f5e",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-072-apply",
+        "purpose": "raw-apply-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-072-apply/entropy-tests.stderr.txt",
+        "bytes": 66,
+        "sha256": "5eaf6181ee45630d54945f911de790ba816935ea68f2eb6d123a586e0854ca21",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-072-apply",
+        "purpose": "raw-apply-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-072-apply/entropy-tests.stdout.txt",
+        "bytes": 1465,
+        "sha256": "0b4f5e14ade4365186ce86fd051bf340110033f3a77e44a8604beac7449b186a",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-072-apply",
+        "purpose": "raw-apply-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-072-apply/entropy.stderr.txt",
+        "bytes": 49,
+        "sha256": "7db8734f9a79ab0e050617ecdfb19b5819eb70b528b921de90840d1c8efe0973",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-072-apply",
+        "purpose": "raw-apply-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-072-apply/entropy.stdout.txt",
+        "bytes": 64,
+        "sha256": "d78add4f5d8913a85deae02832c5d1751753b91ff1778c38e98d5e656a1fa917",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-072-apply",
+        "purpose": "raw-apply-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-072-apply/extract-new.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-072-apply",
+        "purpose": "raw-apply-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-072-apply/extract-new.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-072-apply",
+        "purpose": "raw-apply-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-072-apply/extract-old.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-072-apply",
+        "purpose": "raw-apply-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-072-apply/extract-old.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-072-apply",
+        "purpose": "raw-apply-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-072-apply/flowkit-next-1.0.0.tgz",
+        "bytes": 160015,
+        "sha256": "3d9c3a7a330be4a349ac0afc5ddaddf0a202f8af883722921721ba0a0bcb5eff",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-072-apply",
+        "purpose": "actual-versioned-package-bytes"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-072-apply/forbidden-tracked.stderr.txt",
+        "bytes": 53,
+        "sha256": "5d361c2702ae313e9248029597afce8514cec6d36f887d6bb891fa93419b46d0",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-072-apply",
+        "purpose": "raw-apply-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-072-apply/forbidden-tracked.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-072-apply",
+        "purpose": "raw-apply-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-072-apply/frozen-install-ci.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-072-apply",
+        "purpose": "raw-apply-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-072-apply/frozen-install-ci.stdout.txt",
+        "bytes": 676,
+        "sha256": "0b3963bc80b2735d355e949837e070d5ec38fd45f4b83f042cdcc1505e48ffc2",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-072-apply",
+        "purpose": "raw-apply-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-072-apply/frozen-install.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-072-apply",
+        "purpose": "raw-apply-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-072-apply/frozen-install.stdout.txt",
+        "bytes": 212,
+        "sha256": "9ebb390d0d4b21763b7f5f4b7618f9d8195d7d4188d483895e784faa39b52fc5",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-072-apply",
+        "purpose": "raw-apply-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-072-apply/input-selection-probe.mjs",
+        "bytes": 2536,
+        "sha256": "802b40d09e6b1f8738c050f2f15038bae47484f8dfac2a24d28041e908f37f79",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-072-apply",
+        "purpose": "apply-proof-procedure"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-072-apply/input-selection-report.json",
+        "bytes": 625,
+        "sha256": "8473892d4cdde052466ba5fa5f794b16d82f51454eefd18e3c0b8966ec0caa08",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-072-apply",
+        "purpose": "apply-check-or-package-report"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-072-apply/installed-cli-help.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-072-apply",
+        "purpose": "raw-apply-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-072-apply/installed-cli-help.stdout.txt",
+        "bytes": 479,
+        "sha256": "8e9d6bd3d9823a841fe383dbf7d5809d34da5d86d0e1bc0186a09d0c7c3d1290",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-072-apply",
+        "purpose": "raw-apply-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-072-apply/owned-source.stderr.txt",
+        "bytes": 74,
+        "sha256": "c86bfec8a0746ef3782ec82faa475c30584c496a247471de3d7d31663d09f15f",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-072-apply",
+        "purpose": "raw-apply-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-072-apply/owned-source.stdout.txt",
+        "bytes": 537,
+        "sha256": "a47cde2cddcd163d4cfd44695ddf638a81b7317e572a4b75bba7ccdf507402b3",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-072-apply",
+        "purpose": "raw-apply-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-072-apply/pack.stderr.txt",
+        "bytes": 36,
+        "sha256": "8f5c6a9c4aade0d032984516a14b38a2d12cb1e6b333ab3568f9dde2ba3e3470",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-072-apply",
+        "purpose": "raw-apply-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-072-apply/pack.stdout.txt",
+        "bytes": 4741,
+        "sha256": "a079501ff6d016b6a3ee5ec07a21ab410fa1ff8437e7ccc34e39c8f22d27f79e",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-072-apply",
+        "purpose": "raw-apply-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-072-apply/package-acceptance.mjs",
+        "bytes": 7515,
+        "sha256": "562ebe993049c1512eabc9ecd482f27600144d541e14b8d013786e502290ecb9",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-072-apply",
+        "purpose": "apply-proof-procedure"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-072-apply/package-report.json",
+        "bytes": 6348,
+        "sha256": "f3acd3161c892418735a83a97c5962e217aefe425e38681cdd66fe7dff34e421",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-072-apply",
+        "purpose": "apply-check-or-package-report"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-072-apply/production-install.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-072-apply",
+        "purpose": "raw-apply-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-072-apply/production-install.stdout.txt",
+        "bytes": 24,
+        "sha256": "bf14b7a2bc076990244fa3239536925868dfe5ad05089c7d459b5fa482abfc72",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-072-apply",
+        "purpose": "raw-apply-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-072-apply/quality-gate.stderr.txt",
+        "bytes": 192,
+        "sha256": "9ccaf1b94533f97d77e53271cbcbe105b2181b73bdcdc804c213feb0145b94f3",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-072-apply",
+        "purpose": "raw-apply-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-072-apply/quality-gate.stdout.txt",
+        "bytes": 66,
+        "sha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-072-apply",
+        "purpose": "raw-apply-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-072-apply/run-checks.mjs",
+        "bytes": 3261,
+        "sha256": "861f47ae94adfd78c05d76d803f1cd5d53be2dec67fd75cc519584446d014f54",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-072-apply",
+        "purpose": "apply-proof-procedure"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-072-apply/typecheck.stderr.txt",
+        "bytes": 15,
+        "sha256": "8366207267355d3e3d5bf3bf6e8c94c5f93f6078c34f08973fa2b38cdda6cc92",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-072-apply",
+        "purpose": "raw-apply-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-072-apply/typecheck.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-072-apply",
+        "purpose": "raw-apply-command-stream"
+      }
+    ],
+    "handoff": {
+      "summary": "Independent review-apply should inspect the three product file changes, five completed tasks, 43 declared proof files, the no-TTY retry, exact two-member difference versus E, and fresh 1.0.0 install.",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-10-01:create-version-1-0-0-change",
+          "summary": "Owner chose 1.0.0 before Formal Full Test."
+        },
+        {
+          "sourceRef": "owner-input:2026-10-01:activate-version-1-0-0-proof-explore",
+          "summary": "Owner activated the version Change; current apply request executed this Action."
+        }
+      ],
+      "evidenceRefs": []
+    }
+  }
+}

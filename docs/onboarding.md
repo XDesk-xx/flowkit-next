@@ -9,7 +9,7 @@ Owner/宿主先选定实际 tgz 和安装目录。当前包为 private，不假�
 PowerShell 示例的机器路径须替换为实际值。使用 Node >=22.20.0；仓库确定性 fixture 为 Node 22.23.2 / pnpm 11.22.0。使用新安装目录，已有安装先确认更新范围，不直接覆盖。
 
 ```powershell
-$packageFile = 'D:\releases\flowkit-next-0.1.0.tgz'
+$packageFile = 'D:\releases\flowkit-next-1.0.0.tgz'
 $installDir = 'D:\tools\flowkit-manager'
 New-Item -ItemType Directory -Path $installDir -ErrorAction Stop
 npm install --prefix $installDir --omit=dev --no-audit --no-fund $packageFile
@@ -53,14 +53,62 @@ node $cli next --input $requestFile
 | 用途 | 项目事实及既有入口 |
 | --- | --- |
 | 只读查询 | 实际 target、OpenSpec root、runtime 与请求；没有 active 可以返回 idle |
-| 首次项目 / Delivery Start | Owner 确认项目身份、真实规划、Delivery 和范围；读取 manager 的 `skills/delivery/start/SKILL.md` 及其模块示例，准备 `.flowkit/project.json` 和固定 `openspec/delivery-groups/<deliveryId>.yaml` |
-| 激活 / 首次 Explore | Owner 明确 activation，OpenSpec 创建 Change，manifest 保存真实决定和来源；首次 Explore 按对应 HOW 一次分配 projectOrdinal |
+| 首次项目 / Delivery Start | Owner 确认项目身份、真实规划、Delivery 和范围；读取 manager 的 `skills/delivery/start/SKILL.md`，按各自边界调用 `project init` 与 `delivery start` 固定命令并读回 |
+| 激活 / 首次 Explore | Owner 明确 activation；调用 `change activate` 建立 Change scaffold 与 manifest 决定，首次 Explore 按对应 HOW 一次分配 projectOrdinal |
 | 单次 Action | 查询合法边界后读对应 Action Skill，真实开始、工作、接纳、固定三文件保存读回，然后 STOP |
 | Full Test | 进入该授权节点才准备 target 自有 `config/verification/full-test.json`，读取 manager 的 `skills/delivery/full-test/SKILL.md` |
 
 已有 project/manifest/Run 先核对再复用，不复制开发仓库 D05 manifest、ordinal 或 Owner ref。首次 ordinal 无已赋值基线时，按既有 HOW 取得明确初始化决定；不从空目录、数组位置或测试样例推断没有历史。Start 不要求首个 commit/clean worktree，不内嵌 commit。正在用于 Start 的规划仍须可读，不能套用历史退役规则。
 
-接入、doctor PASS 均不产生 activation、Role、Review 或 Git 权限。CLI 只有 status/next/doctor，没有 `flowkit init/apply/review` 写命令。Action 分段文件操作由 canonical HOW 负责，这里不复制第二套 package/admission 实现。D05 软件自身仍用 independent-bootstrap，不借本入口自我接管。
+接入、doctor PASS 均不产生 activation、Role、Review 或 Git 权限。CLI 提供查询 `status/next/doctor`、机械记录 `action start/finish`、`proof inspect` 和下述固定支持命令；CLI 不编码、不做独立 Review、不自动执行下一 Action。当前 Delivery 由已选定的外部 Stable manager 管理，候选包仅在独立 target 验收。
+
+固定 Action 记录使用同一个已选定安装的 `bin.flowkit`。在 `next` 确认 exact Action 后，Agent 先读取安装内 `skills/actions/<actionId>/SKILL.md`，再提交含 `repositoryRoot`、`flowkitHome`、`deliveryId`、`changeId`、exact `actionId`、实际 `role` 的 JSON：
+
+```powershell
+node $cli action start --input $startRequestFile
+# 仅 effect=started 时完成本次实际角色工作；runId 来自开始响应。
+node $cli proof inspect --input $proofRequestFile
+node $cli action finish --input $finishRequestFile
+node $cli status --input $queryRequestFile
+node $cli next --input $queryRequestFile
+```
+
+`proof inspect` 请求另含 `runId` 与受控 proof `path`；只有实际必要材料才调用。生产者在 finish 前须将本 Run 正式 proof 目录的**全部文件**逐一纳入本 Run 显式 `proofRefs`，每条含归属、路径、用途、bytes 与 SHA。固定 finish 会枚举本 Run 目录并双向核对；若目录有三个文件而只列一个、目录为空、引用重复或文件无效，会在 terminal 机器文件写入前拒绝并保留开始记录和材料。无新材料时不建空目录，显式使用 `proofRefs: []`。后续 Action 的 handoff 可只交接本次判断需要的已声明引用，不删减原 Run Result 或重扫旧目录。`.tmp` 仅承载可丢弃请求、诊断和隔离实验；需要长期复现的实验脚本按原始字节作为本 Run proof 声明具体用途，不作为标准生命周期入口。finish 请求含 `runId`、`role`、`terminal` 与真实 `RunResultRecord`。仅返回 `effect=confirmed` 才表示三文件和 canonical chain 已读回；这不代表业务 PASS。prepared Owner correction 仅由收到真实 Owner 指令的受信宿主在 start 请求中加入现有 `OwnerAuthorityFact`，finish 不再重填。archive start 另需非空 `applicableChecks: [{id,reason}]`，由 Agent 声明实际适用且已在 target `package.json` scripts 或 `config/verification/full-test.json` checks 中配置的检查；隔离 convergence 后执行，未配置或失败则阻断。Reviewer `rejected` 是可报告的真实判断，但当前固定 finish 会在 machine 文件写前拒绝其持久化并保持 incomplete；不得改写成 `changes-requested`。普通 Action 不需要新增 Owner fact，Review、Full Test 与 Git 边界仍独立。
+
+### 可选宿主权限示例
+
+先由 Owner 选择实际安装目录、target 和所需命令，再在宿主自己的权限机制中逐项审核。宿主可见的是 `node` 可执行文件、选定安装的 exact `$cli` 绝对路径、子命令和明示 argv；`--input` 文件名或 stdin 的内容不构成宿主可见的 target 授权。下表中的 `$target`、`$deliveryId`、`$changeId` 均须替换为已选定值；不同类别不继承权限。
+
+| 类别 | 可供宿主逐项审核的固定调用 | 边界 |
+| --- | --- | --- |
+| 只读材料 | `node $cli proof inspect --repository-root $target --delivery-id $deliveryId --change-id $changeId --input $proofRequestFile` | 固定入口仍核对 JSON 目标与具体 proof；仅按需读取 |
+| 只读 Delivery 检查 | `node $cli delivery full-test current --repository-root $target --delivery-id $deliveryId --input $currentRequestFile` | 只读当前状态；不授权运行 Full Test |
+| 受控记录 | `node $cli action start --repository-root $target --delivery-id $deliveryId --change-id $changeId --input $startRequestFile`；`node $cli action finish --repository-root $target --delivery-id $deliveryId --change-id $changeId --input $finishRequestFile` | 两个子命令分别审核；Policy、Role、Run 和 Result admission 仍由 CLI 核对 |
+| 项目检查 | 在选定 target 明确调用其 `pnpm quality:gate`、`pnpm typecheck` 等具体脚本 | 项目脚本权限与 Flowkit CLI 权限分开，结果不产生 Owner/Review 权限 |
+| Git/网络 | `git checkpoint`、`git push`、`git integrate` 各自为独立审批节点 | 不能继承只读或记录命令的权限；仍需 exact Owner 与 Git 事实 |
+
+Foundation `status`、`next`、`doctor` 当前仅支持 `--input`，没有 `--repository-root` 目标 argv，不能给它们配置声称“按 target 前缀匹配”的自动放行。任何示例都不放行裸 `node`/`python`、所有 Flowkit 子命令、其他安装或其他 target。宿主前缀匹配不解析 JSON；即使宿主匹配，CLI 仍须拒绝 JSON 与可见目标冲突。可测试的宿主应分别试选定调用及不同安装、子命令、target、冲突 JSON 的反例。当前发行没有交互式宿主规则测试结果，此项保持**未验证**，不承诺零提示，也不自动安装或修改用户全局规则。
+
+候选 CLI 的支持命令为 `project init`、`delivery start`、`change activate`、`change archive`、`memo list/get/create/promote/dismiss`、`delivery full-test`、`delivery full-test current`、`delivery final` 和 `git checkpoint/push/integrate`。每个 JSON 请求都含 `repositoryRoot`、`flowkitHome`；Delivery/Change 命令另含各自 ID，并与可见参数一致。例如：
+
+```powershell
+node $cli project init --repository-root $target --input $projectRequestFile
+node $cli delivery full-test current --repository-root $target --delivery-id $deliveryId --input $currentRequestFile
+node $cli change archive --repository-root $target --delivery-id $deliveryId --change-id $changeId --input $archiveRequestFile
+```
+
+例如在已存在的 Delivery 上只读查询当前 Full Test，沿用第 2 节的 `$target`、`$toolHome`、`$cli`，以同一目标生成封闭请求：
+
+```powershell
+$deliveryId = (node $cli status --input $requestFile | ConvertFrom-Json).deliveryId
+if (-not $deliveryId) { throw 'No current Delivery; select an exact Delivery before this query' }
+$currentRequestFile = Join-Path $scratch ('flowkit-full-test-current-' + [guid]::NewGuid().ToString('N') + '.json')
+$currentRequest = @{ repositoryRoot = $target; flowkitHome = $toolHome; deliveryId = $deliveryId }
+[IO.File]::WriteAllText($currentRequestFile, ($currentRequest | ConvertTo-Json), [Text.UTF8Encoding]::new($false))
+node $cli delivery full-test current --repository-root $target --delivery-id $deliveryId --input $currentRequestFile
+```
+
+写命令的 `OwnerAuthorityFact`/`sourceRef` 由 Agent 根据真实 Owner 指令声明；CLI 核对结构、目标和当前正式前置，不监听或认证聊天。`project init` 在尚无 Delivery 时仅需明确项目接入 `sourceRef`。Full Test run 请求另含预先固定的 UUID v4 `attemptId` 和从 `delivery full-test current` 读取的 nullable `expectedCurrentAttemptId`；同次重投沿用两者并只读返回，明确新运行使用新 ID 和不同 Owner fact。`change archive` 先由 `action start` 建立合法 archive Action，命令只做 OpenSpec/协调内容；Author 随后用 `action finish` 保存真实 Result。`git integrate` 在 PR/merge 尚未由外部接受时交接待办，不把 checkpoint 视为接受完成。外部接受后用 exact checkpoint 的 `reuse-existing` 请求核对目标 main ref；只有 main 已离开授权 base 且包含该 commit，固定命令才只读确认接受。
 
 ## 4. 合并项目短入口
 

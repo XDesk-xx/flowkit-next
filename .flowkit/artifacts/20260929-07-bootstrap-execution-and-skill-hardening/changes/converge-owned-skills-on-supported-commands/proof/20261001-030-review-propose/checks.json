@@ -1,0 +1,44 @@
+{
+  "candidateHost": {
+    "path": "skills/delivery/repository-integration/references/git-host.mjs",
+    "bytes": 273,
+    "sha256": "cd57ff06916b35d8b68ea92734b4e6c3c46ba9cf492ece101f1574713434313b",
+    "exports": {
+      "runCheckpoint": "function",
+      "runIntegration": "function",
+      "runPush": "function"
+    },
+    "observation": "Module statically re-exports runIntegration and dynamic import confirms a callable function. No Git host function was invoked."
+  },
+  "commands": [
+    {
+      "id": "openspec",
+      "program": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js",
+        "validate",
+        "converge-owned-skills-on-supported-commands",
+        "--strict"
+      ],
+      "startedAt": "2026-10-01T00:50:37.408Z",
+      "finishedAt": "2026-10-01T00:50:38.732Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null
+    },
+    {
+      "id": "diff-check",
+      "program": "git",
+      "args": [
+        "diff",
+        "--check"
+      ],
+      "startedAt": "2026-10-01T00:50:38.732Z",
+      "finishedAt": "2026-10-01T00:50:38.866Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null
+    }
+  ],
+  "formalFullTest": false
+}

@@ -12,4 +12,4 @@ src/internal/ → bounded non-public implementation leaves such as candidate/che
 
 The D02 engineering-quality slice keeps repository mechanical checks mostly in repository tooling/scripts rather than turning them into a new Flowkit control plane. The production applicable-check seam executes only checks already required by formal input and records exact candidate/check-bound Result facts; it does not select checks, scan Run history automatically, or create a Verification Planner/Registry/cache platform.
 
-The CLI remains intentionally thin. It does not become a second lifecycle implementation, does not execute Git checkpoint mutations, does not auto-run Policy's next Action, and does not execute `.agents/skills/**` in production.
+The CLI remains intentionally thin. Its fixed `action start/finish`, support, and authorized `git checkpoint/push/integrate` commands execute one bounded mechanical operation per call. It does not become a second lifecycle authority, auto-run Policy's next Action, accept executable callbacks, or execute `.agents/skills/**` in production. The current Delivery still uses its separately selected external Stable manager.

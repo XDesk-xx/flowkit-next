@@ -8,7 +8,9 @@ Flowkit 是面向 Agent 的轻量流程管理软件：OpenSpec 管理 Change 与
 
 manager 拥有发行代码、系统 Skills、工具 HOW/vendor 与 lock；target 拥有业务代码、OpenSpec、Run、必要证据和测试配置；FLOWKIT_HOME/tools 单独提供 executable runtime。target 不复制 Flowkit 开发依赖、Skills 或长期胶水。安装路径不是生命周期身份。
 
-CLI 仅提供 `status / next / doctor --input <request.json>`。请求包含 repositoryRoot、flowkitHome，可选 deliveryId/changeId；当前记录来自唯一有效 Run 链，不接受 currentRunId/changeStartSequence。doctor 成功不意味着已激活 Change。
+CLI 查询入口为 `status / next / doctor --input <request.json>`；单次 Action 的固定记录入口为 `action start`、`action finish` 和 `proof inspect --input <request.json|->`。查询从唯一有效 Run 链解析 current；写入口从当前 Policy、安装 Guidance 与 target 事实生成 Run，不接受 caller 自填 currentRunId/changeStartSequence、ActionPackage 或可执行代码。doctor 成功不意味着已激活 Change。
+
+候选 CLI 还提供固定支持命令：`project init`、`delivery start`、`change activate`、`change archive`、`memo list/get/create/promote/dismiss`、`delivery full-test`、`delivery full-test current`、`delivery final`、`git checkpoint/push/integrate`。命令以 `--input <request.json|->` 接收封闭数据，并用 `--repository-root`、适用的 `--delivery-id`/`--change-id` 对照可见目标；每次调用只执行一项操作。Agent 负责从真实 Owner 输入形成精确 `OwnerAuthorityFact`/`sourceRef`，CLI 校验其结构和当前项目事实，但不连接或认证聊天。`git integrate` 在没有外部仓库接受事实时返回待人工接受；外部接受后可用 exact checkpoint 的 `reuse-existing` 请求，凭目标 main ref 包含该 commit 的真实 Git 事实只读确认。见[接入说明](docs/onboarding.md)。
 
 收到阶段指令后，Agent 核对 target、实际 Role、安装来源和查询边界，再读安装内 `skills/actions/<actionId>/SKILL.md`。歧义、blocked、partial、bootstrap-history、角色或阶段冲突先报告并停止。只问下一步不执行 Action；Author 不自审。
 
@@ -21,15 +23,15 @@ CLI 仅提供 `status / next / doctor --input <request.json>`。请求包含 rep
 - Git：版本、分支、提交和历史；在独立授权节点调用，PASS 或 Final 不自动授权 commit/push/merge。
 - Skills：改善已确定操作的 HOW；Memo：仅保留未来重议事项，不自动成为需求。
 
-不提供 Registry、模型平台、自动 Author/Reviewer 循环或证据平台。D05 自身按 Owner 授权的 independent-bootstrap 开发，不让 candidate 安装接管管理自己。
+不提供 Registry、模型平台、自动 Author/Reviewer 循环或证据平台。D07 候选的 Action 写入口仅在独立 target 验收；当前 Delivery 仍由此前 Owner 授权的 exact Stable manager 管理，候选不接管自身。
 
 ## 测试与执行材料
 
 项目 Full Test 由 `config/verification/full-test.json` 的 inputs/exclude/environment/checks 配置，与 .gitignore、Git index、HEAD 独立。每次真实执行形成新 attempt，由 Delivery fullTestAttempt 关联 target 的 `.flowkit/artifacts/<delivery>/full-test/`；新失败或 partial 不回用旧 PASS。不是所有项目固定共用六项测试。
 
-Action 必要 proof 在 target `.flowkit/artifacts/<delivery>/changes/<change>/proof/<run-id>/`，按需交接引用；.tmp 仅承载可丢弃材料。旧证据不代替当前实现验收，原始 stdout/stderr 保留 bytes。
+Action 必要 proof 在 target `.flowkit/artifacts/<delivery>/changes/<change>/proof/<run-id>/`；生产 Run 的 `proofRefs` 须完整声明该目录的全部文件及 bytes/SHA，后继 Action 才按当前判断需要选择已声明引用交接。`.tmp` 仅承载可丢弃材料。旧证据不代替当前实现验收，原始 stdout/stderr 保留 bytes。
 
-本仓库开发检查见 package.json：typecheck、build、test:domain、test:acceptance；quality:gate 聚合 bounded 格式、lint 与既有 650 行要求。历史/bootstrap 自检单独用 test:bootstrap，不属于代码 Full Test。禁止入库内容检查与 Git 空白诊断独立，不把非代码历史日志空白当作代码失败。
+本仓库开发检查见 package.json：typecheck、build、test:domain、test:acceptance；quality:gate 聚合 bounded 格式、lint 与既有 650 行要求。`quality:owned-source` 单独扫描当前工作树的自有可执行源码，验证受检 TS 位置及七项 exact 内容身份的遗留 JS 例外；它不依赖 Git 基线，也不改变轻量 gate。历史/bootstrap 自检单独用 test:bootstrap，不属于代码 Full Test。禁止入库内容检查与 Git 空白诊断独立，不把非代码历史日志空白当作代码失败。
 
 主要 detached 验收平台为 Linux x64 glibc；Windows compatibility simulation 不自动代表 native Windows 全面 PASS，报告以实际执行范围为准。Windows/Linux node_modules 不共用。
 

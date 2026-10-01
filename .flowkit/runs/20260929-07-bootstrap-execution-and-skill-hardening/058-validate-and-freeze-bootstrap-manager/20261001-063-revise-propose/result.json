@@ -1,0 +1,85 @@
+{
+  "runId": "20261001-063-revise-propose",
+  "actionIdentity": {
+    "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+    "changeId": "validate-and-freeze-bootstrap-manager",
+    "actionId": "revise-propose"
+  },
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-propose",
+  "facts": {
+    "summary": "Revised E from real-target lifecycle acceptance to package and fixed-command release acceptance under explicit Owner correction; original selected plan and Explore remain historical facts.",
+    "ownerCorrection": {
+      "sourceRef": "owner-input:2026-10-01:revise-e-propose-after-prepared-apply",
+      "decision": "revise-action",
+      "scope": [
+        "revise-propose"
+      ]
+    },
+    "planningRoot": "openspec/changes/validate-and-freeze-bootstrap-manager",
+    "artifactHashes": {
+      "proposal.md": "24c666bb972b92dfa8e53769626091b7b886c963f7e6ade993f48208752927d1",
+      "design.md": "9709b9067a1160e7445ec8f4756023cf40c88cbb38586b884df66a7eda5c5ba8",
+      "tasks.md": "e30046a53272dc15b19ad3443888ae3e9e950d2b7700834307ce742f02164df5"
+    },
+    "unchanged": {
+      ".openspec.yaml": "e152460583bf1528b48ceacd730d1c2b2db93d624c8b45d2579e34f43fcf2c41",
+      "explore.md": "33de9eafb861962404936ce0e1fa40ceef4266f5488a382214fd410ea7ebb12c",
+      "selectedDeliveryManifestSha256": "d56a2e1cb6e9421bce32aa1d0a07d30805cf78c9a541f3a69f1d18b05aa9c6c5"
+    },
+    "structuralValidation": {
+      "command": "node C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js validate validate-and-freeze-bootstrap-manager --strict",
+      "exitCode": 0,
+      "observedOutput": "Change 'validate-and-freeze-bootstrap-manager' is valid",
+      "limit": "OpenSpec structure only; no revised Apply acceptance or Reviewer verdict"
+    },
+    "convergence": {
+      "removedMandatoryUseCases": [
+        "independent real target",
+        "real Reviewer correction loop",
+        "new Agent session",
+        "real target Formal Full Test/Final/Git"
+      ],
+      "retained": [
+        "actual package identity and isolated installation",
+        "installed fixed commands",
+        "applicable check results",
+        "Linux x64 glibc detached acceptance",
+        "explicit unverified real-use limits",
+        "separate Formal Full Test/Final/Git authority"
+      ],
+      "newProductCapability": false,
+      "newlyObservedChecks": "062 had test:domain and check:forbidden-tracked-artifacts failures; revised tasks require bounded diagnosis and true rerun, not PASS reuse."
+    },
+    "proofRefs": [],
+    "handoff": {
+      "summary": "Independent review-propose should verify exact Owner scope supersession against unchanged selected plan/Explore, nine-task coherence, package-only claim limits and preservation of 062 failed checks.",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-10-01:revise-e-acceptance-scope",
+          "summary": "Owner removed independent real target, real Reviewer correction loop and new Agent session as E completion prerequisites."
+        },
+        {
+          "sourceRef": "owner-input:2026-10-01:revise-e-propose-after-prepared-apply",
+          "summary": "Owner explicitly authorized revise-propose from the prepared Apply Run for this exact Delivery and Change."
+        }
+      ],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20261001-062-apply",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-062-apply/acceptance-checks-report.json"
+        },
+        {
+          "sourceRunId": "20261001-062-apply",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-062-apply/test-domain.stdout.txt"
+        },
+        {
+          "sourceRunId": "20261001-062-apply",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-062-apply/check-forbidden-tracked-artifacts.stderr.txt"
+        }
+      ]
+    }
+  }
+}

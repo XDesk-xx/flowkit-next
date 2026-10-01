@@ -1,0 +1,53 @@
+{
+  "formatVersion": 1,
+  "records": [
+    {
+      "id": "domain",
+      "command": [
+        "pnpm",
+        "test:domain"
+      ],
+      "startedAt": "2026-10-01T01:14:57.374Z",
+      "endedAt": "2026-10-01T01:16:26.696Z",
+      "exitCode": 0,
+      "stdoutBytes": 77002,
+      "stdoutSha256": "b814f7b87bb1642820422714eebcf098378a170837ec91e3c378054e23074a8a",
+      "stderrBytes": 55,
+      "stderrSha256": "aae00296a00317fb5d8157cc46c908dd4c7bfd3ac1d52b647091d4c256ef13c6"
+    },
+    {
+      "id": "openspec",
+      "command": [
+        "node",
+        "C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js",
+        "validate",
+        "converge-owned-skills-on-supported-commands",
+        "--strict"
+      ],
+      "startedAt": "2026-10-01T01:16:26.700Z",
+      "endedAt": "2026-10-01T01:16:28.990Z",
+      "exitCode": 0,
+      "stdoutBytes": 62,
+      "stdoutSha256": "adaf9777d5c57295abd939862f6e3bf4b932442aa3ba4fc6457f295aebbb0680",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "diff-check",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "startedAt": "2026-10-01T01:16:28.993Z",
+      "endedAt": "2026-10-01T01:16:29.186Z",
+      "exitCode": 0,
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "allExitZero": true,
+  "formalFullTest": false
+}

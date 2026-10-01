@@ -1,0 +1,59 @@
+{
+  "kind": "d07-e-final-checks",
+  "checks": [
+    {
+      "id": "final-openspec-validate",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js",
+        "validate",
+        "validate-and-freeze-bootstrap-manager",
+        "--strict"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "start": "2026-10-01T10:35:42.695Z",
+      "end": "2026-10-01T10:35:44.292Z",
+      "code": 0,
+      "stdoutBytes": 56,
+      "stdoutSha256": "839f167ba8a79574987aa10eb2f3af4d35467d1759e6e6a2bf1fd74d225540c0",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "final-git-diff-check",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "start": "2026-10-01T10:35:44.292Z",
+      "end": "2026-10-01T10:35:44.506Z",
+      "code": 0,
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "final-git-status",
+      "command": [
+        "git",
+        "status",
+        "--short"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "start": "2026-10-01T10:35:44.506Z",
+      "end": "2026-10-01T10:35:44.760Z",
+      "code": 0,
+      "stdoutBytes": 476,
+      "stdoutSha256": "9311de82e54c6202ad8c226340f2e150327a124c3d2629eb3b2265054c27957a",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "completeTasks": 9,
+  "installedByteMatchedFiles": 115,
+  "packageSha256": "1b2c88c9263d5892946d3d9aacba79a6392eb3d8b3b37fa3c87aebcc1550cba0",
+  "boundary": "Author Apply evidence only; independent review is next."
+}

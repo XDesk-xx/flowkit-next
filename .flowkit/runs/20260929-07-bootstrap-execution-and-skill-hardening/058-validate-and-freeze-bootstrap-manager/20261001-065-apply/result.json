@@ -1,0 +1,196 @@
+{
+  "runId": "20261001-065-apply",
+  "actionIdentity": {
+    "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+    "changeId": "validate-and-freeze-bootstrap-manager",
+    "actionId": "apply"
+  },
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-apply",
+  "facts": {
+    "summary": "Revised E Apply completed: actual package, isolated production install, fixed commands, Windows compatibility and Linux x64 glibc detached acceptance verified. Real independent use remains unverified.",
+    "sourceHead": "2bab78b41750d1cff665a20b37dfca09ca1ca511",
+    "sourceBranch": "delivery/20260929-07-bootstrap-execution-and-skill-hardening",
+    "packageName": "flowkit-next",
+    "packageVersion": "0.1.0",
+    "packageSha256": "1b2c88c9263d5892946d3d9aacba79a6392eb3d8b3b37fa3c87aebcc1550cba0",
+    "completedTasks": 9,
+    "previousFailureRunId": "20261001-062-apply",
+    "resolvedFailures": [
+      "test:domain managed-evidence-index fixture: focused and full suite rerun passed; prior failure remains in 062 evidence.",
+      "check:forbidden-tracked-artifacts ENOBUFS: replaced default bounded spawnSync capture with streamed spawn capture; rerun passed."
+    ],
+    "limits": "No real independent target, actual Reviewer correction, new Agent session or host approval result is claimed. Formal Full Test, Delivery Final, Stable selection and Git remain separate.",
+    "proofRefs": [
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-065-apply/acceptance-checks-report.json",
+        "bytes": 20300,
+        "sha256": "d4fc94e6a9b248814767d7f3fb488a36be7a8360cad40f502e60f4650b59863a",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-065-apply",
+        "purpose": "structured verification or candidate record"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-065-apply/final-checks-report.json",
+        "bytes": 1917,
+        "sha256": "6a1a568af3e1ed858a3c181a65e92d90addca528d437bd057eca12abf24e9b57",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-065-apply",
+        "purpose": "structured verification or candidate record"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-065-apply/flowkit-next-0.1.0.tgz",
+        "bytes": 160020,
+        "sha256": "1b2c88c9263d5892946d3d9aacba79a6392eb3d8b3b37fa3c87aebcc1550cba0",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-065-apply",
+        "purpose": "actual release package bytes"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-065-apply/installed-acceptance-report.json",
+        "bytes": 887,
+        "sha256": "48e76b28ccfa4ff75b5f976b36298faf3fa008b241ca94e6c5a3c8feda45dedd",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-065-apply",
+        "purpose": "structured verification or candidate record"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-065-apply/installed-actions-report.json",
+        "bytes": 2841,
+        "sha256": "875e5936e7d10c9bb8eb26668b7ae2bcd9f89bedf1fd1c2616fc595eb84a56f6",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-065-apply",
+        "purpose": "structured verification or candidate record"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-065-apply/installed-byte-audit-report.json",
+        "bytes": 20183,
+        "sha256": "7fd7e7819fca848bb30fee106df36f2af089ecaff721462499f5cd672471606f",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-065-apply",
+        "purpose": "structured verification or candidate record"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-065-apply/installed-support-report.json",
+        "bytes": 2541,
+        "sha256": "0cba463f24ed4c1cee2922b2e6148974ef0077e852a261029b95b54eaa8f34a8",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-065-apply",
+        "purpose": "structured verification or candidate record"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-065-apply/isolated-install-report.json",
+        "bytes": 6787,
+        "sha256": "1826fbf4d919364bb2bdaa734765c78e382b3455e2dacc567fdf0286021b5c8d",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-065-apply",
+        "purpose": "structured verification or candidate record"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-065-apply/linux-acceptance-02-report.json",
+        "bytes": 1392,
+        "sha256": "cb00e3bb781567758e9a8cad17caa909997df6b6682032295edaea566867e810",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-065-apply",
+        "purpose": "structured verification or candidate record"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-065-apply/linux-acceptance-report.json",
+        "bytes": 1383,
+        "sha256": "24c0164c82f12b7892d4e8f7f2711cc1c78f389c9f5970aea5d9b8b9cac2e2e0",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-065-apply",
+        "purpose": "structured verification or candidate record"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-065-apply/proof-bundle-builder.mjs",
+        "bytes": 3367,
+        "sha256": "ed44b9128f2063a0deb7dc441aef0217a32a64837aa65793ab30f6e8b395cc91",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-065-apply",
+        "purpose": "exact verification harness source"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-065-apply/proof-bundle-manifest.json",
+        "bytes": 19801,
+        "sha256": "71cfc05f41156694146f405d44d44dde2d6d4edbe33546cf8e1a90ca6fc8a111",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-065-apply",
+        "purpose": "structured verification or candidate record"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-065-apply/proof-raw.tar",
+        "bytes": 372736,
+        "sha256": "4f4fd34cf6aae810b9574b21d32cdb2417747022450dc38816650ad6b9c3be50",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-065-apply",
+        "purpose": "exact verified raw proof bundle"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-065-apply/release-candidate.json",
+        "bytes": 4802,
+        "sha256": "ca58d26622f3059e28bfa7a4cb1105ecfdb356d4ada391e2ada24c5ba7b1234b",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-065-apply",
+        "purpose": "structured verification or candidate record"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-065-apply/release-package-report.json",
+        "bytes": 2111,
+        "sha256": "4d0b17874c3c2a8e8659fd01e94c3c3ff9cb41a1206e28a9fc448a2e73e7d78d",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-065-apply",
+        "purpose": "structured verification or candidate record"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-065-apply/verified-checks-report.json",
+        "bytes": 24805,
+        "sha256": "614074df2c42b15a8cb6611831a3eb2601de4393382c75d70bd5cc08b2d4b7b3",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-065-apply",
+        "purpose": "structured verification or candidate record"
+      }
+    ],
+    "handoff": {
+      "summary": "Independent Reviewer should inspect exact package SHA, installed-byte audit, fixed Action/support fixture results, Linux detached acceptance, original 062 failures and the narrow checker fix. All 16 direct proof files are declared here; the exact raw bundle holds 120 verified original files.",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-10-01:revise-e-acceptance-scope",
+          "summary": "Owner removed real independent target, actual Reviewer correction loop and new Agent session from E mandatory acceptance; original plan remains historical."
+        }
+      ],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20261001-065-apply",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-065-apply/release-candidate.json"
+        },
+        {
+          "sourceRunId": "20261001-065-apply",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-065-apply/verified-checks-report.json"
+        },
+        {
+          "sourceRunId": "20261001-065-apply",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-065-apply/linux-acceptance-02-report.json"
+        }
+      ]
+    }
+  }
+}

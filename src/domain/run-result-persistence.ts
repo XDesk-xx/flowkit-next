@@ -506,25 +506,14 @@ function parseJson(text: string, label: string): unknown {
   }
 }
 
-export async function readDurableRun(
+export function parseDurableRunTexts(
   input: RunAddressInput,
-): Promise<DurableRunRecord> {
+  actionMarkdown: string,
+  contextText: string,
+  resultText: string,
+): DurableRunRecord {
   const address = buildRunAddress(input);
   if (address === null) throw new Error("Invalid controlled Run address input");
-
-  let actionMarkdown: string;
-  let contextText: string;
-  let resultText: string;
-  try {
-    [actionMarkdown, contextText, resultText] = await Promise.all([
-      readFile(path.join(address.runDirectory, "action.md"), "utf8"),
-      readFile(path.join(address.runDirectory, "context.json"), "utf8"),
-      readFile(path.join(address.runDirectory, "result.json"), "utf8"),
-    ]);
-  } catch {
-    throw new Error(`Incomplete Run record: ${address.runId}`);
-  }
-
   if (!isActionMarkdown(actionMarkdown)) {
     throw new Error("Invalid action.md content");
   }
@@ -546,6 +535,26 @@ export async function readDurableRun(
     context: contextValue,
     result: resultValue,
   };
+}
+
+export async function readDurableRun(
+  input: RunAddressInput,
+): Promise<DurableRunRecord> {
+  const address = buildRunAddress(input);
+  if (address === null) throw new Error("Invalid controlled Run address input");
+  let actionMarkdown: string;
+  let contextText: string;
+  let resultText: string;
+  try {
+    [actionMarkdown, contextText, resultText] = await Promise.all([
+      readFile(path.join(address.runDirectory, "action.md"), "utf8"),
+      readFile(path.join(address.runDirectory, "context.json"), "utf8"),
+      readFile(path.join(address.runDirectory, "result.json"), "utf8"),
+    ]);
+  } catch {
+    throw new Error(`Incomplete Run record: ${address.runId}`);
+  }
+  return parseDurableRunTexts(input, actionMarkdown, contextText, resultText);
 }
 
 export async function listChangeRunHistory(input: {

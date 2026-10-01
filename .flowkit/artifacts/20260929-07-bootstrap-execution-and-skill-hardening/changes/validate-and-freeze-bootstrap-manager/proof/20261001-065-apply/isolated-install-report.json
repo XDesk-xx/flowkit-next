@@ -1,0 +1,195 @@
+{
+  "kind": "d07-e-065-isolated-install",
+  "scratch": "D:\\Projects\\flowkit-next\\.tmp\\d07-e-065-isolated",
+  "install": "D:\\Projects\\flowkit-next\\.tmp\\d07-e-065-isolated\\installation",
+  "manager": "D:\\Projects\\flowkit-next\\.tmp\\d07-e-065-isolated\\installation\\node_modules\\flowkit-next",
+  "target": "D:\\Projects\\flowkit-next\\.tmp\\d07-e-065-isolated\\target",
+  "cli": "D:\\Projects\\flowkit-next\\.tmp\\d07-e-065-isolated\\installation\\node_modules\\flowkit-next\\dist\\cli\\entrypoint.js",
+  "packageSha256": "1b2c88c9263d5892946d3d9aacba79a6392eb3d8b3b37fa3c87aebcc1550cba0",
+  "installedTopLevel": [
+    ".bin",
+    ".package-lock.json",
+    "flowkit-next",
+    "yaml"
+  ],
+  "freshStatus": {
+    "kind": "error",
+    "error": {
+      "kind": "openspec-root-mismatch"
+    }
+  },
+  "freshDoctor": {
+    "kind": "doctor",
+    "status": "fail",
+    "diagnostics": [
+      {
+        "id": "openspec-runtime",
+        "status": "pass",
+        "version": "1.10.0"
+      },
+      {
+        "id": "openspec-root",
+        "status": "fail",
+        "diagnosticKind": "openspec-root-mismatch"
+      }
+    ]
+  },
+  "doctor": {
+    "kind": "doctor",
+    "status": "pass",
+    "diagnostics": [
+      {
+        "id": "openspec-runtime",
+        "status": "pass",
+        "version": "1.10.0"
+      },
+      {
+        "id": "openspec-root",
+        "status": "pass",
+        "activeChangeCount": 0
+      }
+    ]
+  },
+  "status": {
+    "kind": "status",
+    "status": "idle",
+    "repositoryRoot": "D:\\Projects\\flowkit-next\\.tmp\\d07-e-065-isolated\\target",
+    "deliveryId": null,
+    "changeId": null,
+    "changeState": null,
+    "currentRun": null,
+    "openSpec": {
+      "activeChangeIds": [],
+      "exactChange": null
+    }
+  },
+  "next": {
+    "kind": "next",
+    "status": "idle",
+    "decision": null,
+    "checkpoint": null
+  },
+  "checks": [
+    {
+      "id": "fresh-status-reprobe",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "D:\\Projects\\flowkit-next\\.tmp\\d07-e-065-isolated\\installation\\node_modules\\flowkit-next\\dist\\cli\\entrypoint.js",
+        "status",
+        "--input",
+        "D:\\Projects\\flowkit-next\\.tmp\\d07-e-065-isolated\\query.json"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d07-e-065-isolated\\target",
+      "start": "2026-10-01T10:14:41.987Z",
+      "end": "2026-10-01T10:14:44.553Z",
+      "exitCode": 2,
+      "signal": null,
+      "processError": null,
+      "stdoutBytes": 59,
+      "stdoutSha256": "e795d71c4192acf791287162b3c5c90f96f4a1eb357e0d1ee2a3389caf1e2ad6",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "fresh-doctor",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "D:\\Projects\\flowkit-next\\.tmp\\d07-e-065-isolated\\installation\\node_modules\\flowkit-next\\dist\\cli\\entrypoint.js",
+        "doctor",
+        "--input",
+        "D:\\Projects\\flowkit-next\\.tmp\\d07-e-065-isolated\\query.json"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d07-e-065-isolated\\target",
+      "start": "2026-10-01T10:14:44.553Z",
+      "end": "2026-10-01T10:14:46.332Z",
+      "exitCode": 0,
+      "signal": null,
+      "processError": null,
+      "stdoutBytes": 192,
+      "stdoutSha256": "b149fa076e8a4e4f21248bbaf26c97106a1839863215b3e15d3467778d2f4e06",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "openspec-init",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "C:\\Users\\xuser\\.flowkit\\tools\\openspec\\1.10.0\\bin\\openspec.js",
+        "init",
+        "--tools",
+        "none"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d07-e-065-isolated\\target",
+      "start": "2026-10-01T10:14:46.333Z",
+      "end": "2026-10-01T10:14:48.009Z",
+      "exitCode": 0,
+      "signal": null,
+      "processError": null,
+      "stdoutBytes": 323,
+      "stdoutSha256": "26411fceb8b20ad63cf140f9ea3425acddd79a20bd4e482d01da6711e45e8069",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "initialized-doctor",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "D:\\Projects\\flowkit-next\\.tmp\\d07-e-065-isolated\\installation\\node_modules\\flowkit-next\\dist\\cli\\entrypoint.js",
+        "doctor",
+        "--input",
+        "D:\\Projects\\flowkit-next\\.tmp\\d07-e-065-isolated\\query.json"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d07-e-065-isolated\\target",
+      "start": "2026-10-01T10:14:48.009Z",
+      "end": "2026-10-01T10:14:50.674Z",
+      "exitCode": 0,
+      "signal": null,
+      "processError": null,
+      "stdoutBytes": 172,
+      "stdoutSha256": "5c360f7f42aed20a7c178ad539c282d15217ad08d9e4cb6b907e2b37e32c65b7",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "initialized-status",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "D:\\Projects\\flowkit-next\\.tmp\\d07-e-065-isolated\\installation\\node_modules\\flowkit-next\\dist\\cli\\entrypoint.js",
+        "status",
+        "--input",
+        "D:\\Projects\\flowkit-next\\.tmp\\d07-e-065-isolated\\query.json"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d07-e-065-isolated\\target",
+      "start": "2026-10-01T10:14:50.674Z",
+      "end": "2026-10-01T10:14:53.748Z",
+      "exitCode": 0,
+      "signal": null,
+      "processError": null,
+      "stdoutBytes": 238,
+      "stdoutSha256": "e59028f5f00419963fce86f25f9ca440e480a597100b6a3f18d1982a774e63eb",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "initialized-next",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "D:\\Projects\\flowkit-next\\.tmp\\d07-e-065-isolated\\installation\\node_modules\\flowkit-next\\dist\\cli\\entrypoint.js",
+        "next",
+        "--input",
+        "D:\\Projects\\flowkit-next\\.tmp\\d07-e-065-isolated\\query.json"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d07-e-065-isolated\\target",
+      "start": "2026-10-01T10:14:53.748Z",
+      "end": "2026-10-01T10:14:56.530Z",
+      "exitCode": 0,
+      "signal": null,
+      "processError": null,
+      "stdoutBytes": 66,
+      "stdoutSha256": "ef0fe799e9a9ec547c31b833576d628535e5da3e81bba437282b9421a4921c86",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "limitation": "Same-session isolated fixture on Windows; no real independent target, reviewer cycle, or new Agent session."
+}

@@ -1,0 +1,81 @@
+{
+  "formatVersion": 1,
+  "records": [
+    {
+      "id": "r2-pack",
+      "command": [
+        "pnpm",
+        "pack",
+        "--pack-destination",
+        "D:\\Projects\\flowkit-next\\.tmp\\d07-c-revise-pack-r2"
+      ],
+      "startedAt": "2026-10-01T01:53:42.213Z",
+      "endedAt": "2026-10-01T01:53:45.160Z",
+      "exitCode": 0,
+      "stdoutBytes": 4590,
+      "stdoutSha256": "e30862e9995b5bd91af822f51d573bc0ae244740b16c39d40a301ddbfafd1c24",
+      "stderrBytes": 36,
+      "stderrSha256": "8f5c6a9c4aade0d032984516a14b38a2d12cb1e6b333ab3568f9dde2ba3e3470"
+    },
+    {
+      "id": "r2-install",
+      "command": [
+        "npm",
+        "install",
+        "--prefix",
+        "D:\\Projects\\flowkit-next\\.tmp\\d07-c-revise-install-r2",
+        "--no-audit",
+        "--no-fund",
+        "--ignore-scripts",
+        "D:\\Projects\\flowkit-next\\.tmp\\d07-c-revise-pack-r2\\flowkit-next-0.1.0.tgz"
+      ],
+      "startedAt": "2026-10-01T01:53:45.163Z",
+      "endedAt": "2026-10-01T01:53:47.413Z",
+      "exitCode": 0,
+      "stdoutBytes": 24,
+      "stdoutSha256": "65c731cd02e19c79f6f5a3e84a4dd64a49acd6c47d2ee551d7cc9da191e8c96c",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "r2-help",
+      "command": [
+        "node",
+        "D:\\Projects\\flowkit-next\\.tmp\\d07-c-revise-install-r2\\node_modules\\flowkit-next\\dist\\cli\\entrypoint.js",
+        "--help"
+      ],
+      "startedAt": "2026-10-01T01:53:47.417Z",
+      "endedAt": "2026-10-01T01:53:47.642Z",
+      "exitCode": 0,
+      "stdoutBytes": 479,
+      "stdoutSha256": "8e9d6bd3d9823a841fe383dbf7d5809d34da5d86d0e1bc0186a09d0c7c3d1290",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "allExitZero": true,
+  "package": {
+    "path": ".tmp/d07-c-revise-pack-r2/flowkit-next-0.1.0.tgz",
+    "bytes": 156663,
+    "sha256": "eb150a8ba685ae4a2fc205c6c06de1ceee1d77c3776f3e292db2e9f750a210fd"
+  },
+  "installedRoot": ".tmp/d07-c-revise-install-r2/node_modules/flowkit-next",
+  "assetsIdentical": [
+    "skills/actions/explore/SKILL.md",
+    "skills/actions/review-explore/SKILL.md",
+    "skills/actions/revise-explore/SKILL.md",
+    "skills/actions/propose/SKILL.md",
+    "skills/actions/review-propose/SKILL.md",
+    "skills/actions/revise-propose/SKILL.md",
+    "skills/actions/apply/SKILL.md",
+    "skills/actions/review-apply/SKILL.md",
+    "skills/actions/revise-apply/SKILL.md",
+    "skills/actions/archive/SKILL.md",
+    "skills/delivery/final/SKILL.md",
+    "skills/delivery/full-test/SKILL.md",
+    "skills/tools/openspec/SKILL.md",
+    "docs/onboarding.md"
+  ],
+  "supersedesPackageIn": "verification.json",
+  "reason": "One archive HOW wording correction after first package acceptance; both package attempts and outputs preserved."
+}

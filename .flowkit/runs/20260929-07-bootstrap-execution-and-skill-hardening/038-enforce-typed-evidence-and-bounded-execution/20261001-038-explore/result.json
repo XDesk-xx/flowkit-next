@@ -1,0 +1,107 @@
+{
+  "runId": "20261001-038-explore",
+  "actionIdentity": {
+    "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+    "changeId": "enforce-typed-evidence-and-bounded-execution",
+    "actionId": "explore"
+  },
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-explore",
+  "facts": {
+    "projectOrdinal": 47,
+    "changeStartSequence": 38,
+    "summary": "D scope bounded to own-Run proof closure, exact many-path Git staging, new typed executable coverage, and optional narrow host permissions. C 202-path checkpoint failure is reproduced; F prepared-proof compatibility remains separate.",
+    "fixedPointCommit": "50f483b1c36284d325882d831e6e7b65dc1c825e",
+    "manifest": {
+      "path": "openspec/delivery-groups/20260929-07-bootstrap-execution-and-skill-hardening.yaml",
+      "sha256": "736d530ac595d09ee83d05c6d2d103f458371243e1706b30b5d841cda2c43820"
+    },
+    "exploreArtifact": "openspec/changes/enforce-typed-evidence-and-bounded-execution/explore.md",
+    "exploreSha256": "9a36c89a76c2f51a22b1818e001631d9000d69903c71b655f1d0a7dd437c438e",
+    "openSpecMetadata": {
+      "path": "openspec/changes/enforce-typed-evidence-and-bounded-execution/.openspec.yaml",
+      "sha256": "c51317fdb09f4c0096f955c8beeb5f19a56ba49530c79732bb429ad0f423004d"
+    },
+    "checks": [
+      {
+        "command": "node --import tsx .tmp/d07-d-bounded-probe.mjs",
+        "exitCode": 0,
+        "stdoutSha256": "d6b9836067473d40b307f69ff801c1e28d65f9b99b447157f1386129728b1a43",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ],
+    "proofRefs": [
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-038-explore/bounded-probe-report.json",
+        "bytes": 1188,
+        "sha256": "7cdaa68991a0911f3ddeb54f79d23e2320665a09bb350dcf397ab106acfa6234",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "enforce-typed-evidence-and-bounded-execution",
+        "runId": "20261001-038-explore",
+        "purpose": "bounded-reproduction-command-and-exit-metadata"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-038-explore/bounded-probe.mjs",
+        "bytes": 2752,
+        "sha256": "8c418bfd463338a76067ddfb1929614e1fd115d6673afdf6500b6b7967a37dc8",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "enforce-typed-evidence-and-bounded-execution",
+        "runId": "20261001-038-explore",
+        "purpose": "exact-bounded-reproduction-source"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-038-explore/bounded-probe.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "enforce-typed-evidence-and-bounded-execution",
+        "runId": "20261001-038-explore",
+        "purpose": "raw-bounded-reproduction-stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-038-explore/bounded-probe.stdout.txt",
+        "bytes": 297,
+        "sha256": "d6b9836067473d40b307f69ff801c1e28d65f9b99b447157f1386129728b1a43",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "enforce-typed-evidence-and-bounded-execution",
+        "runId": "20261001-038-explore",
+        "purpose": "raw-bounded-reproduction-stdout"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-038-explore/source-boundary.json",
+        "bytes": 4399,
+        "sha256": "d62d036cd956be3466995a8d9146931668ae40a5351cc5ec83d46d55c64f42e2",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "enforce-typed-evidence-and-bounded-execution",
+        "runId": "20261001-038-explore",
+        "purpose": "bounded-source-identities-and-decision-impact"
+      }
+    ],
+    "limitations": [
+      "The isolated Git fixture proves exact staging input behavior but carries no Owner authority or real checkpoint.",
+      "Host interactive rule approval was unavailable in this session; no zero-prompt or rule-installation claim is made.",
+      "Explore proof is not current D implementation acceptance, Reviewer verdict, Formal Full Test or Git authority."
+    ],
+    "handoff": {
+      "summary": "Independent review-explore should assess the direct 23-proof/202-path counterexamples, D ownership of narrow correction, typed-source boundary, host permission limits and F separation.",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-10-01:activate-next-change-effective-correction-proof-explore",
+          "summary": "Owner authorized activation of the next Change, effective correction and proof Explore."
+        }
+      ],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20261001-038-explore",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-038-explore/source-boundary.json"
+        },
+        {
+          "sourceRunId": "20261001-038-explore",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-038-explore/bounded-probe.stdout.txt"
+        }
+      ]
+    }
+  }
+}

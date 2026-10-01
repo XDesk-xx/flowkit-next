@@ -1,0 +1,139 @@
+{
+  "formatVersion": 1,
+  "reviewerRunId": "20261001-034-review-apply",
+  "findings": [
+    {
+      "id": "D07-C-RA-001",
+      "correction": "Ten Action Skills use fixed proof inspect/finish; Final attributes internal package work to fixed delivery final.",
+      "evidence": [
+        "skills/actions/explore/SKILL.md",
+        "skills/actions/review-explore/SKILL.md",
+        "skills/actions/revise-explore/SKILL.md",
+        "skills/actions/propose/SKILL.md",
+        "skills/actions/review-propose/SKILL.md",
+        "skills/actions/revise-propose/SKILL.md",
+        "skills/actions/apply/SKILL.md",
+        "skills/actions/review-apply/SKILL.md",
+        "skills/actions/revise-apply/SKILL.md",
+        "skills/actions/archive/SKILL.md",
+        "skills/delivery/final/SKILL.md"
+      ]
+    },
+    {
+      "id": "D07-C-RA-002",
+      "correction": "Archive HOW binds fixed change archive between action start and finish; command owns OpenSpec movement and coordination.",
+      "evidence": [
+        "skills/actions/archive/SKILL.md",
+        "skills/tools/openspec/SKILL.md"
+      ]
+    },
+    {
+      "id": "D07-C-RA-003",
+      "correction": "Installed r2 package used on isolated ordinary target for one project-init write, readback, query and STOP; synthetic identity is explicitly limited.",
+      "evidence": [
+        "package-r2.json",
+        "r2-role-call.json",
+        "r2-role-walkthrough.json"
+      ]
+    }
+  ],
+  "additionalObservation": "Full Test HOW now says each new attempt runs checks; same-request retry is read-only.",
+  "staleClassification": [
+    {
+      "pattern": "callback/internal helper",
+      "currentNormalHow": "forbidden or negative mention only",
+      "retained": "compatibility git-host.mjs exports; not linked as default HOW"
+    },
+    {
+      "pattern": "ready/correction-required",
+      "currentNormalHow": "explicitly rejected as old callback shape in Final Skill"
+    },
+    {
+      "pattern": "manual archive move",
+      "currentNormalHow": "explicitly forbidden before fixed change archive command"
+    },
+    {
+      "pattern": "CLI read-only",
+      "currentNormalHow": "historical D05 context only; current product guidance lists fixed writes"
+    }
+  ],
+  "changedSinceReview": [
+    {
+      "path": "openspec/changes/converge-owned-skills-on-supported-commands/tasks.md",
+      "beforeSha256": "8b6377fa70c704def7378fdb6dedab6abbde0180baa41db9da726c88b3dfa2d1",
+      "afterSha256": "6d05d8e522abb566f8834a4ceeaffaba470f754ef00591ea76b16f704e93260f"
+    },
+    {
+      "path": "skills/actions/apply/SKILL.md",
+      "beforeSha256": "fcf2270ecf674f7b8e8ad3956e2fc0e085441ab98868ffa6c39a23554df94ac0",
+      "afterSha256": "4f74198d40e316a16440ba25db13761a2abee8d9643abf1dd71e93a821055949"
+    },
+    {
+      "path": "skills/actions/archive/SKILL.md",
+      "beforeSha256": "4d3cc2451535e55fe8d90f9e7b537baaabec97e95cee531510b0564ecefa0019",
+      "afterSha256": "a44610f6d0005b2e5d0bea0d57b88dc9a3d9de7564d119ab205f60e27bf91da9"
+    },
+    {
+      "path": "skills/actions/explore/SKILL.md",
+      "beforeSha256": "3ad1408c7d4040d81365299cb3bff352d661f30f72744a9c960fa414a41d6db8",
+      "afterSha256": "79504e4f23eb22052f75d6d350f315db599bd985e2a7f82d9208d4f3b6d9135d"
+    },
+    {
+      "path": "skills/actions/propose/SKILL.md",
+      "beforeSha256": "c6f7628492711fbfa6b3a1d849ff218c9006945383df9608c555e10b89e3d15c",
+      "afterSha256": "72e852d1aac50620e1cf95f5926a58012efd3afb17fd1970762749bd481df5aa"
+    },
+    {
+      "path": "skills/actions/review-apply/SKILL.md",
+      "beforeSha256": "88172d24a477580f3fe4dd54b6e23deb8783c63deee22154ab4429277fb3b3ef",
+      "afterSha256": "74e330b6ef5a5f4d81d52b7e95a3904c72a4d12442f47a79752c844153b24464"
+    },
+    {
+      "path": "skills/actions/review-explore/SKILL.md",
+      "beforeSha256": "a7347be21e21a68c7c27b2dd1b8464a044110c74333db2867e1f9fd39bca93f5",
+      "afterSha256": "9eec79f62456c0962ca0836b27c661846e29baaf08212f647b147817a3c59b36"
+    },
+    {
+      "path": "skills/actions/review-propose/SKILL.md",
+      "beforeSha256": "1bc519739e2d03a91f9b6723a620a2f06577c8b8ac9caf59c2c02a8f6ce71153",
+      "afterSha256": "7e7336ca943c05ab79bbb4eae9d90e6261ffb487b59cfb4108f2c9ffdf59ae70"
+    },
+    {
+      "path": "skills/actions/revise-apply/SKILL.md",
+      "beforeSha256": "6a10b3dfaea348bc3fa6a0ed438c7a60d65cc18c46d56ed445f8e5ff72cb9c9a",
+      "afterSha256": "044c1d0caf7c1f1b45becf63f9f0fc5b357431fa79c5ef7589f248d13b53e451"
+    },
+    {
+      "path": "skills/actions/revise-explore/SKILL.md",
+      "beforeSha256": "540fcd8f45ed4e5d48fe0cd9341529561ad515c727432e48a7e780af8b4e2a8f",
+      "afterSha256": "689546d501fc2631696deb802dba0e66684d7c4010c6d02e16dbaae86b19cfba"
+    },
+    {
+      "path": "skills/actions/revise-propose/SKILL.md",
+      "beforeSha256": "472581df025518b2c4e312add15315086a8313024a246cb718dc0ead2ff23eda",
+      "afterSha256": "f9ecc18bb1b4381560a05c6184b8cb372a3ff1e1a8f3ce5512a50407a7eadcaf"
+    },
+    {
+      "path": "skills/delivery/final/SKILL.md",
+      "beforeSha256": "ffaf514fde21a1a406190600af87658c18eb6ffe9204ebdd5ab78c11a9c37a9e",
+      "afterSha256": "6ed4f705a2d2a70e9e0f8a363d9492251157a5785b9b21d95e09b4e9ee788be5"
+    },
+    {
+      "path": "skills/delivery/full-test/SKILL.md",
+      "beforeSha256": "01cdc0765a4f597826c70cd8aef2c02c7e83e995d8ab9d742f742d9e531e9d14",
+      "afterSha256": "2ed4de590b8d942dae19d031deb082b9565bfca2c65f7261dde530b5903eb90a"
+    },
+    {
+      "path": "skills/tools/openspec/SKILL.md",
+      "beforeSha256": "aa7944721e3d3bd98e0adf41c67c2a3fd150be3c9dcb2d637a54dbec1652759a",
+      "afterSha256": "3c6b9ff241d29384a0a081578630a794ec61b19bf0a49024252781593fbd19dc"
+    }
+  ],
+  "preserved": "All other 034-reviewed artifact hashes unchanged; no production TS, dependency, vendor, bootstrap or historical Run/proof mutation.",
+  "packageIdentity": {
+    "path": ".tmp/d07-c-revise-pack-r2/flowkit-next-0.1.0.tgz",
+    "bytes": 156663,
+    "sha256": "eb150a8ba685ae4a2fc205c6c06de1ceee1d77c3776f3e292db2e9f750a210fd"
+  },
+  "roleLimitation": "Synthetic isolated target proves shipped command mechanics and onboarding path, not genuine Owner authority or independent Reviewer verdict; candidate never manages formal D07."
+}

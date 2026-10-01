@@ -1,0 +1,183 @@
+{
+  "commands": [
+    {
+      "id": "final-extract-old",
+      "program": "tar",
+      "args": [
+        "-xzf",
+        "D:\\Projects\\flowkit-next\\.flowkit\\artifacts\\20260929-07-bootstrap-execution-and-skill-hardening\\changes\\validate-and-freeze-bootstrap-manager\\proof\\20261001-065-apply\\flowkit-next-0.1.0.tgz",
+        "-C",
+        "D:\\Projects\\flowkit-next\\.tmp\\reviewer073-expZv7\\old"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "start": "2026-10-01T14:53:11.782Z",
+      "end": "2026-10-01T14:53:11.919Z",
+      "exitCode": 0,
+      "signal": null,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "final-extract-new",
+      "program": "tar",
+      "args": [
+        "-xzf",
+        "D:\\Projects\\flowkit-next\\.flowkit\\artifacts\\20260929-07-bootstrap-execution-and-skill-hardening\\changes\\pin-bootstrap-manager-version-1-0-0\\proof\\20261001-072-apply\\flowkit-next-1.0.0.tgz",
+        "-C",
+        "D:\\Projects\\flowkit-next\\.tmp\\reviewer073-expZv7\\new"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "start": "2026-10-01T14:53:11.920Z",
+      "end": "2026-10-01T14:53:12.050Z",
+      "exitCode": 0,
+      "signal": null,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "production-install",
+      "program": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "C:/nvm4w/nodejs/node_modules/npm/bin/npm-cli.js",
+        "install",
+        "--prefix",
+        "D:\\Projects\\flowkit-next\\.tmp\\reviewer073-expZv7\\install",
+        "--omit=dev",
+        "--no-audit",
+        "--no-fund",
+        "D:\\Projects\\flowkit-next\\.flowkit\\artifacts\\20260929-07-bootstrap-execution-and-skill-hardening\\changes\\pin-bootstrap-manager-version-1-0-0\\proof\\20261001-072-apply\\flowkit-next-1.0.0.tgz"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "start": "2026-10-01T14:53:12.141Z",
+      "end": "2026-10-01T14:53:15.633Z",
+      "exitCode": 0,
+      "signal": null,
+      "stdoutSha256": "bf14b7a2bc076990244fa3239536925868dfe5ad05089c7d459b5fa482abfc72",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "installed-help",
+      "program": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "D:\\Projects\\flowkit-next\\.tmp\\reviewer073-expZv7\\install\\node_modules\\flowkit-next\\dist\\cli\\entrypoint.js",
+        "--help"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "start": "2026-10-01T14:53:15.669Z",
+      "end": "2026-10-01T14:53:15.888Z",
+      "exitCode": 0,
+      "signal": null,
+      "stdoutSha256": "8e9d6bd3d9823a841fe383dbf7d5809d34da5d86d0e1bc0186a09d0c7c3d1290",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "authorCommands": [
+    {
+      "id": "frozen-install",
+      "exitCode": 1
+    },
+    {
+      "id": "frozen-install-ci",
+      "exitCode": 0
+    },
+    {
+      "id": "quality-gate",
+      "exitCode": 0
+    },
+    {
+      "id": "typecheck",
+      "exitCode": 0
+    },
+    {
+      "id": "domain",
+      "exitCode": 0
+    },
+    {
+      "id": "acceptance",
+      "exitCode": 0
+    },
+    {
+      "id": "dependency-health",
+      "exitCode": 0
+    },
+    {
+      "id": "entropy-tests",
+      "exitCode": 0
+    },
+    {
+      "id": "entropy",
+      "exitCode": 0
+    },
+    {
+      "id": "owned-source",
+      "exitCode": 0
+    },
+    {
+      "id": "bootstrap",
+      "exitCode": 0
+    },
+    {
+      "id": "forbidden-tracked",
+      "exitCode": 0
+    },
+    {
+      "id": "build",
+      "exitCode": 0
+    },
+    {
+      "id": "pack",
+      "exitCode": 0
+    },
+    {
+      "id": "extract-old",
+      "exitCode": 0
+    },
+    {
+      "id": "extract-new",
+      "exitCode": 0
+    },
+    {
+      "id": "production-install",
+      "exitCode": 0
+    },
+    {
+      "id": "installed-cli-help",
+      "exitCode": 0
+    }
+  ],
+  "observations": {
+    "frozenInstallFailure": "[ERR_PNPM_ABORTED_REMOVE_MODULES_DIR_NO_TTY] Aborted removal of modules directory due to no TTY\n\nIf you are running pnpm in CI, set the CI environment variable to \"true\", or set \"confirmModulesPurge\" to \"false\".",
+    "packageSha256": "3d9c3a7a330be4a349ac0afc5ddaddf0a202f8af883722921721ba0a0bcb5eff",
+    "package": {
+      "memberCount": 117,
+      "changed": [
+        "docs/onboarding.md",
+        "package.json"
+      ],
+      "nonMetadataMembersByteMatchSource": true,
+      "metadataMatchesSourceAfterExactPackOmissions": [
+        "packageManager",
+        "scripts.prepack"
+      ],
+      "allInstalledMembersMatchPackage": true,
+      "version": "1.0.0",
+      "helpKind": "help"
+    },
+    "inputSelection": {
+      "actualConfigSha256": "1d474533653779a110edaa4d974d544e8f075bf3016b36dd018fc21018beff73",
+      "baselineInputRef": "full-test-input:sha256:ee028754b4ed4ea269c38d73e7acef13a3837f3ee0550e91d0f27b9bdd631708",
+      "driftInputRef": "full-test-input:sha256:0ba1db2f023db31659cc64298658842a0b8af3a62dff2473f4d50d1937ba0979",
+      "restoredInputRef": "full-test-input:sha256:ee028754b4ed4ea269c38d73e7acef13a3837f3ee0550e91d0f27b9bdd631708",
+      "checksExecuted": false
+    }
+  },
+  "initialAttempt": {
+    "exitCode": 1,
+    "stage": "package/source: package.json",
+    "reason": "Reviewer initially assumed byte-identical source and packed package.json. Actual pack omits packageManager and scripts.prepack and reorders keys; the E package comparison already preserved the same transformation. Corrected to compare all metadata after these exact omissions. Initial extract-old/extract-new raw streams retained."
+  },
+  "limitations": [
+    "Windows isolated production installation and input-selection reproduction; no Formal Full Test or Linux acceptance rerun.",
+    "Author broad check results inspected and stream identities verified; not independently rerun."
+  ]
+}

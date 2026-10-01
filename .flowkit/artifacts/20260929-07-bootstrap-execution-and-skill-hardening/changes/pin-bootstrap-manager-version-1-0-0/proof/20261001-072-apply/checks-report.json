@@ -1,0 +1,255 @@
+{
+  "kind": "d07-version-apply-checks",
+  "sourceRoot": "D:\\Projects\\flowkit-next",
+  "commands": [
+    {
+      "id": "frozen-install",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+        "install",
+        "--frozen-lockfile"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "start": "2026-10-01T14:41:25.316Z",
+      "end": "2026-10-01T14:41:26.081Z",
+      "exitCode": 1,
+      "signal": null,
+      "error": null,
+      "stdoutBytes": 212,
+      "stdoutSha256": "9ebb390d0d4b21763b7f5f4b7618f9d8195d7d4188d483895e784faa39b52fc5",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "frozen-install-ci",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+        "install",
+        "--frozen-lockfile"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "start": "2026-10-01T14:41:57.050Z",
+      "end": "2026-10-01T14:42:01.284Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdoutBytes": 676,
+      "stdoutSha256": "0b3963bc80b2735d355e949837e070d5ec38fd45f4b83f042cdcc1505e48ffc2",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "quality-gate",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+        "quality:gate"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "start": "2026-10-01T14:42:01.286Z",
+      "end": "2026-10-01T14:42:10.958Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdoutBytes": 66,
+      "stdoutSha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20",
+      "stderrBytes": 192,
+      "stderrSha256": "9ccaf1b94533f97d77e53271cbcbe105b2181b73bdcdc804c213feb0145b94f3"
+    },
+    {
+      "id": "typecheck",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+        "typecheck"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "start": "2026-10-01T14:42:10.958Z",
+      "end": "2026-10-01T14:42:14.577Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrBytes": 15,
+      "stderrSha256": "8366207267355d3e3d5bf3bf6e8c94c5f93f6078c34f08973fa2b38cdda6cc92"
+    },
+    {
+      "id": "domain",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+        "test:domain"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "start": "2026-10-01T14:42:14.577Z",
+      "end": "2026-10-01T14:44:24.896Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdoutBytes": 80065,
+      "stdoutSha256": "7b72e14a28ada62ecce52cd0dd93e963da70cc1c791cb7a5566207d1773c8f5e",
+      "stderrBytes": 55,
+      "stderrSha256": "aae00296a00317fb5d8157cc46c908dd4c7bfd3ac1d52b647091d4c256ef13c6"
+    },
+    {
+      "id": "acceptance",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+        "test:acceptance"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "start": "2026-10-01T14:44:24.896Z",
+      "end": "2026-10-01T14:44:38.440Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdoutBytes": 1703,
+      "stdoutSha256": "677f47d7685449e23d5ef5cd0649d33b750df98184fe36396cf7a2cfd103c865",
+      "stderrBytes": 54,
+      "stderrSha256": "03a28f841eea36c0ec13f6dea3ea69c782e389ad940fcfaf6d419d0e4fff319b"
+    },
+    {
+      "id": "dependency-health",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+        "quality:dependency-health"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "start": "2026-10-01T14:44:38.440Z",
+      "end": "2026-10-01T14:44:42.310Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdoutBytes": 81,
+      "stdoutSha256": "5276498e7920ab1799ff8c4785c45b47ffe95623b3ba525bf42a2143e0adda84",
+      "stderrBytes": 79,
+      "stderrSha256": "fa9ba6bb542e83e254b5bae92765b5ba9e0505c12e1e49f6c11dbf41c51f8775"
+    },
+    {
+      "id": "entropy-tests",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+        "test:entropy"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "start": "2026-10-01T14:44:42.311Z",
+      "end": "2026-10-01T14:44:46.046Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdoutBytes": 1465,
+      "stdoutSha256": "0b4f5e14ade4365186ce86fd051bf340110033f3a77e44a8604beac7449b186a",
+      "stderrBytes": 66,
+      "stderrSha256": "5eaf6181ee45630d54945f911de790ba816935ea68f2eb6d123a586e0854ca21"
+    },
+    {
+      "id": "entropy",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+        "quality:entropy"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "start": "2026-10-01T14:44:46.047Z",
+      "end": "2026-10-01T14:44:49.098Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdoutBytes": 64,
+      "stdoutSha256": "d78add4f5d8913a85deae02832c5d1751753b91ff1778c38e98d5e656a1fa917",
+      "stderrBytes": 49,
+      "stderrSha256": "7db8734f9a79ab0e050617ecdfb19b5819eb70b528b921de90840d1c8efe0973"
+    },
+    {
+      "id": "owned-source",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+        "quality:owned-source"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "start": "2026-10-01T14:44:49.099Z",
+      "end": "2026-10-01T14:44:50.204Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdoutBytes": 537,
+      "stdoutSha256": "a47cde2cddcd163d4cfd44695ddf638a81b7317e572a4b75bba7ccdf507402b3",
+      "stderrBytes": 74,
+      "stderrSha256": "c86bfec8a0746ef3782ec82faa475c30584c496a247471de3d7d31663d09f15f"
+    },
+    {
+      "id": "bootstrap",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+        "test:bootstrap"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "start": "2026-10-01T14:44:50.205Z",
+      "end": "2026-10-01T14:44:51.637Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdoutBytes": 2155,
+      "stdoutSha256": "e80a6511c5aa71f982a0cca450254f5f71c681a2bd18ba28a7e6b8145e3ba3d5",
+      "stderrBytes": 58,
+      "stderrSha256": "085b188afd57be38ecdcb1b79ecbdba3762ba2d5b7db1ca01081952a776f3a04"
+    },
+    {
+      "id": "forbidden-tracked",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+        "check:forbidden-tracked-artifacts"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "start": "2026-10-01T14:44:51.638Z",
+      "end": "2026-10-01T14:44:52.565Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrBytes": 53,
+      "stderrSha256": "5d361c2702ae313e9248029597afce8514cec6d36f887d6bb891fa93419b46d0"
+    },
+    {
+      "id": "build",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+        "build"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "start": "2026-10-01T14:44:52.565Z",
+      "end": "2026-10-01T14:44:56.184Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrBytes": 36,
+      "stderrSha256": "8f5c6a9c4aade0d032984516a14b38a2d12cb1e6b333ab3568f9dde2ba3e3470"
+    }
+  ],
+  "packageVersion": "1.0.0",
+  "packagePrivate": true,
+  "packageBin": {
+    "flowkit": "dist/cli/entrypoint.js"
+  },
+  "packageDependencies": {
+    "yaml": "^2.9.0"
+  },
+  "lockSha256": "bf5ef071f2b4b8140f05493ebd53098660250f2cd5a834fe321ce8685bdb65e5",
+  "toolLockSha256": "a0481fc8a3fddfbcdd65a504e0e7a065e6ab74a3a871af3ab8838d201eecd4a2",
+  "retryEnvironment": {
+    "CI": "true"
+  }
+}

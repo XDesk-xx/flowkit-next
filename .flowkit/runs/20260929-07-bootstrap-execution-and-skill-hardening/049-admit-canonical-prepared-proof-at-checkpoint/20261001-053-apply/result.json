@@ -1,0 +1,235 @@
+{
+  "runId": "20261001-053-apply",
+  "actionIdentity": {
+    "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+    "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+    "actionId": "apply"
+  },
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-apply",
+  "facts": {
+    "approvedProposalRunId": "20261001-052-review-propose",
+    "planningRoot": "openspec/changes/admit-canonical-prepared-proof-at-checkpoint",
+    "artifactHashes": {
+      "openspec/changes/admit-canonical-prepared-proof-at-checkpoint/.openspec.yaml": "c51317fdb09f4c0096f955c8beeb5f19a56ba49530c79732bb429ad0f423004d",
+      "openspec/changes/admit-canonical-prepared-proof-at-checkpoint/design.md": "26584794b4c8e70ec7d3144ed2a237e529c4e59e8da5b3414adf86145ea4c253",
+      "openspec/changes/admit-canonical-prepared-proof-at-checkpoint/explore.md": "12d0637693663610bf56579c396f36f3a69a3a01adc201b46c7ae1a71d3f37d8",
+      "openspec/changes/admit-canonical-prepared-proof-at-checkpoint/proposal.md": "1cf02dd8ea36d3d737d6d085fd916455b5c2a3972908096da4fa23aeed667e54",
+      "openspec/changes/admit-canonical-prepared-proof-at-checkpoint/specs/repository-integration-and-next-base-continuity/spec.md": "1750ba96108231c986b49cef3a8fb29feecbf8409c620386ba89823e5e500bd2",
+      "openspec/changes/admit-canonical-prepared-proof-at-checkpoint/tasks.md": "eae3f5336671aaefc588dc425feefa7c4cf26b747c5330bdefb38d630338ecf5",
+      "openspec/delivery-groups/20260929-07-bootstrap-execution-and-skill-hardening.yaml": "3bc6c6f477c850b864810e780be9a845c6da5acb6b1270b8b11807af5736960c",
+      "src/domain/run-result-persistence.ts": "ec0bd47457eed0d656b552bcf1e8cc5e3f3d4ca0243cf3ff3784a5d8d6163f20",
+      "src/internal/git-index-run-chain.ts": "80656deedcdf87215f26b158819904464bbf45f4d3ca5c3442b56ce399e2cc9f",
+      "src/internal/managed-evidence-checkpoint.ts": "750f9000292b3d3e565862c57583411f237a149b17540ab6248cfa8e62dd27cd",
+      "tests/unit/domain/prepared-proof-checkpoint.test.ts": "9e02f01b3cdb3ba2cfc3b37736ba5cf8d5ec5ac53bccd25fb813fb40b8a9a717"
+    },
+    "implementation": "A bounded candidate-index Run reader reuses three-file validation and resolveRunChain/Policy. Newly added prepared proof needs an indexed legal successor and exact owner/Result/proof bytes; terminal admission is retained.",
+    "verification": {
+      "focusedTestsPassed": 18,
+      "capturedChecks": 9,
+      "allExitZero": true,
+      "openspecStrictAfterTasks": true,
+      "formalDeliveryFullTest": false,
+      "realLearningPlatformHistory": "not exercised"
+    },
+    "scope": "External Stable manager retains D07 authority. No Reviewer verdict, Formal Full Test, Git checkpoint, push, historical Run rewrite or E acceptance is claimed.",
+    "proofRefs": [
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-053-apply/build.stderr.txt",
+        "bytes": 36,
+        "sha256": "8f5c6a9c4aade0d032984516a14b38a2d12cb1e6b333ab3568f9dde2ba3e3470",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-053-apply",
+        "purpose": "Raw build check stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-053-apply/build.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-053-apply",
+        "purpose": "Raw build check stdout"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-053-apply/checks.json",
+        "bytes": 4776,
+        "sha256": "771c009da35b21d0ef91bc456399829cb42879c840d53462f32e866cd44cb3fe",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-053-apply",
+        "purpose": "Current Apply command, exit and raw byte index"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-053-apply/dependency-health.stderr.txt",
+        "bytes": 79,
+        "sha256": "fa9ba6bb542e83e254b5bae92765b5ba9e0505c12e1e49f6c11dbf41c51f8775",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-053-apply",
+        "purpose": "Raw dependency-health check stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-053-apply/dependency-health.stdout.txt",
+        "bytes": 81,
+        "sha256": "300d04f71c3c57f7659e8823019049ec75c04d87997e73a40ab8b81dfade7bc1",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-053-apply",
+        "purpose": "Raw dependency-health check stdout"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-053-apply/entropy.stderr.txt",
+        "bytes": 49,
+        "sha256": "7db8734f9a79ab0e050617ecdfb19b5819eb70b528b921de90840d1c8efe0973",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-053-apply",
+        "purpose": "Raw entropy check stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-053-apply/entropy.stdout.txt",
+        "bytes": 64,
+        "sha256": "d78add4f5d8913a85deae02832c5d1751753b91ff1778c38e98d5e656a1fa917",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-053-apply",
+        "purpose": "Raw entropy check stdout"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-053-apply/focused-tests.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-053-apply",
+        "purpose": "Raw focused-tests check stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-053-apply/focused-tests.stdout.txt",
+        "bytes": 4020,
+        "sha256": "ab8b900fdfbc2f542d5a86f929e07c9dbd5911196d9299c92a955656cf6fcd9f",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-053-apply",
+        "purpose": "Raw focused-tests check stdout"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-053-apply/forbidden-artifacts.stderr.txt",
+        "bytes": 53,
+        "sha256": "5d361c2702ae313e9248029597afce8514cec6d36f887d6bb891fa93419b46d0",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-053-apply",
+        "purpose": "Raw forbidden-artifacts check stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-053-apply/forbidden-artifacts.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-053-apply",
+        "purpose": "Raw forbidden-artifacts check stdout"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-053-apply/openspec.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-053-apply",
+        "purpose": "Raw openspec check stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-053-apply/openspec.stdout.txt",
+        "bytes": 63,
+        "sha256": "029c1dd69d2fe89d55d39009056c9cb5d86bc1f91bd60d4952a6cb29863108a1",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-053-apply",
+        "purpose": "Raw openspec check stdout"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-053-apply/owned-source.stderr.txt",
+        "bytes": 74,
+        "sha256": "c86bfec8a0746ef3782ec82faa475c30584c496a247471de3d7d31663d09f15f",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-053-apply",
+        "purpose": "Raw owned-source check stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-053-apply/owned-source.stdout.txt",
+        "bytes": 537,
+        "sha256": "3cd884dd8986908f00f3f08ddbb9964a0ef2c264f94026bf3276e92e6e0ffd9c",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-053-apply",
+        "purpose": "Raw owned-source check stdout"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-053-apply/quality-gate.stderr.txt",
+        "bytes": 192,
+        "sha256": "9ccaf1b94533f97d77e53271cbcbe105b2181b73bdcdc804c213feb0145b94f3",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-053-apply",
+        "purpose": "Raw quality-gate check stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-053-apply/quality-gate.stdout.txt",
+        "bytes": 66,
+        "sha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-053-apply",
+        "purpose": "Raw quality-gate check stdout"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-053-apply/typecheck.stderr.txt",
+        "bytes": 15,
+        "sha256": "8366207267355d3e3d5bf3bf6e8c94c5f93f6078c34f08973fa2b38cdda6cc92",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-053-apply",
+        "purpose": "Raw typecheck check stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-053-apply/typecheck.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-053-apply",
+        "purpose": "Raw typecheck check stdout"
+      }
+    ],
+    "handoff": {
+      "summary": "Independent review-apply should compare candidate-index reader, shared Run parser and prepared proof branch against approved F spec; inspect 18 focused test outcomes, all 19 declared proof files, terminal preservation and candidate-tree closure. Apply stops here.",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-10-01:activate-next-change-proof-explore",
+          "summary": "Owner activated F for proof Explore; subsequent propose and apply instructions invoked those separate Actions."
+        }
+      ],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20261001-053-apply",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-053-apply/checks.json"
+        },
+        {
+          "sourceRunId": "20261001-053-apply",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-053-apply/focused-tests.stdout.txt"
+        },
+        {
+          "sourceRunId": "20261001-053-apply",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-053-apply/quality-gate.stdout.txt"
+        }
+      ]
+    }
+  }
+}

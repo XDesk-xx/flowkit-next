@@ -54,12 +54,10 @@ export interface HowExamples {
   ): Promise<Buffer>;
 }
 
-// Execute only repository-owned illustrative code, never user/target Markdown.
+// Exercise the former low-level seam as a test fixture; product HOW uses fixed commands.
 export async function loadHow(actionId = "explore"): Promise<HowExamples> {
-  const markdown = await readFile(
-    `skills/actions/${actionId}/SKILL.md`,
-    "utf8",
-  );
+  await readFile(`skills/actions/${actionId}/SKILL.md`, "utf8");
+  const markdown = await readFile("tests/fixtures/legacy-agent-how.md", "utf8");
   const examples = [
     ...markdown.matchAll(/```js\r?\n(\/\/ agent-[\s\S]*?)```/g),
   ].map((match) => match[1]);

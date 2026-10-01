@@ -1,0 +1,59 @@
+{
+  "runId": "20260930-004-review-propose",
+  "actionIdentity": {
+    "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+    "changeId": "expose-stable-action-and-record-commands",
+    "actionId": "review-propose"
+  },
+  "authorConclusion": null,
+  "reviewerVerdict": "changes-requested",
+  "verificationVerdict": null,
+  "nextBoundary": "revise-propose",
+  "facts": {
+    "reviewedRunId": "20260930-003-propose",
+    "reviewedRoot": "openspec/changes/expose-stable-action-and-record-commands",
+    "reviewedArtifacts": "proposal.md, design.md, tasks.md, and four delta specs; all seven SHA-256 values match the Author Result",
+    "currentStep": "独立审查 Change A Proposal 对已批准 Explore 的追踪、最小且可测试的合同完整性与 Apply 就绪性。",
+    "validation": "managed OpenSpec 1.10.0 validate --strict 返回 exit 0；仅证明结构。",
+    "findings": [
+      {
+        "id": "D07-A-RP-001",
+        "artifact": "design.md:15,27,29; specs/stable-action-command-execution/spec.md:81-88",
+        "observed": "新命令拒绝 caller 提交 OwnerAuthorityFact，并要求 start/finish 重新读取既有 Owner 来源，但没有定义该来源的定位、格式、准入或跨进程读取方式。既有 startPreparedOwnerCorrectionRun 直接接收 exact OwnerAuthorityFact；真实 089→090 correction 的 sourceRef 是 conversation，授权未在 Delivery manifest 中。",
+        "impact": "已批准范围内的 prepared Owner correction 无法按此合同可靠接续；实现者只能自选新的授权存储前提或退回信任 caller 结构事实。",
+        "minimumCorrection": "在 Proposal/Design/Spec 冻结一个有界的 Owner 输入来源与 start/finish 绑定及复核规则，说明 conversation 来源如何经受信宿主进入命令并持久关联，或明确规定已授权的现有项目记录及其形成边界；证明不改变 Owner authority，也不新增 registry。"
+      },
+      {
+        "id": "D07-A-RP-002",
+        "artifact": "design.md:35; specs/stable-action-command-execution/spec.md:45-53; tasks.md:12",
+        "observed": "finish 写前仅明确调用既有 admitActionResult 和 lifecycle transition。现有 admission 只验 schema、Role 与 Run linkage，不验 reviewerVerdict/authorConclusion 与 nextBoundary 的 Policy 一致性；一般 readDurableRun 也只验三文件结构。",
+        "impact": "例如 review-propose 的 approved 加 nextBoundary=archive 可被结构 admission 接受并写成完整三文件，随后 canonical chain/status/next 才判 invalid，违反可独立查询的 confirmed 结果合同。",
+        "minimumCorrection": "在首次写 context/result 前用既有 Policy 对拟保存的 terminal/prepared 结果执行一致性预检，拒绝可检测的非法 outcome/boundary；保存后读回完整 canonical chain，并覆盖错 boundary/未识别 verdict 的负例。"
+      },
+      {
+        "id": "D07-A-RP-003",
+        "artifact": "design.md:21,45; specs/stable-action-command-execution/spec.md:21-29; tasks.md:5",
+        "observed": "计划把每个 Action 的“现行只读准备条件”收为 manager 固定检查，但没有界定哪些是可机器判断的 package-bound 条件、哪些仍属 Agent/Reviewer 实质判断，也未冻结各 Action 的最小检查来源。",
+        "impact": "Apply 可合法外观地遗漏如 archive completion-transition readiness，或把独立审查判断错误移入 CLI；现有“不是恒定 ready”的测试目标不足以判定合同等价。",
+        "minimumCorrection": "在 Design/Spec 以有界表或精确 canonical 引用列出每个 Standard Action 的机器 readiness 与 Agent 保留职责，尤其 archive 与 Review；为实际阻断条件给出可验证案例，不建新 registry。"
+      }
+    ],
+    "complexityMinimality": "现有三文件、Policy、Guidance 与 start/admission 接缝保持最小方向；上述缺口使固定命令的最小安全合同尚未收敛，暂不能进入 Apply。",
+    "newContentScopeDrift": "未见 B 的 Delivery/Memo/Final/Git 入口、C 的全目录 Skills 收敛或 F 的 checkpoint 兼容修复被实质拉入 A；三项发现均在 A 已批准边界内。",
+    "handoff": {
+      "summary": "仅修正三项合同缺口后重审同一 Proposal；保留七份规划产物和历史 Run 原字节。",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-09-30:activate-first-change:proof-explore",
+          "summary": "激活 D07 首个 Change 的 Explore；本次 Review 不创造新 Owner 或 Git 权限。"
+        }
+      ],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20260930-003-propose",
+          "path": "openspec/changes/expose-stable-action-and-record-commands/proposal.md"
+        }
+      ]
+    }
+  }
+}

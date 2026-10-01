@@ -1,0 +1,46 @@
+{
+  "runId": "20260930-010-review-apply",
+  "actionIdentity": {
+    "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+    "changeId": "expose-stable-action-and-record-commands",
+    "actionId": "review-apply"
+  },
+  "authorConclusion": null,
+  "reviewerVerdict": "changes-requested",
+  "verificationVerdict": null,
+  "nextBoundary": "revise-apply",
+  "facts": {
+    "reviewedRunId": "20260930-009-apply",
+    "approvedProposalRunId": "20260930-008-review-propose",
+    "currentStep": "独立审查 A 的固定 Action 命令候选，比较已批准的 Proposal/Design/Spec/Tasks 与实际源码、HOW、测试和当前 Apply 证据。",
+    "evidence": [
+      "Author Result 所列 30 个候选文件 SHA-256 全部与当前 bytes 相符；apply-evidence.json 为 2267 bytes 且 SHA-256 与 009 引用相符；built CLI hash 54a45eeae3e322d4fa09cda6df702048d155ae3103f9fe432a5d3304a6f531fa 与证据相符。",
+      "已批准 design.md:33-35 规定 archive 准备执行按目标实际适用且已配置的检查；旧 archive Guidance 同样使用 when materially applicable，未固定 test:domain。",
+      "src/cli/action-readiness.ts:287 无条件要求 applicableChecks 包含 test:domain；:404-418 只接受五个固定脚本并读取 target package.json，:487-489 固定执行 pnpm run。当前 package.json 的 test:acceptance、test:bootstrap、check:forbidden-tracked-artifacts 已配置但会被拒绝；无 Node/pnpm 脚本的 target 也无法通过。",
+      "独立 pnpm typecheck exit 0、git diff --check exit 0。首次 pnpm test:domain 为 351 pass/1 fail，完整重跑为 352 pass/0 fail；首次失败原因未定位，不能据重跑宣称稳定性已证明。"
+    ],
+    "findings": [
+      {
+        "id": "D07-A-RA-001",
+        "severity": "P1",
+        "artifact": "src/cli/action-readiness.ts:287,404-418,487-489; skills/actions/archive/SKILL.md:114; docs/onboarding.md:76",
+        "observed": "archive start 把 Flowkit 开发仓库的 test:domain 与五个 pnpm script 名称硬编码为所有 target 的准入和执行方式；即使某项检查在 target package.json 中已配置，只要不在 allowlist 中就被标为 archive-check-unconfigured。",
+        "impact": "合法的非 Node target 或需运行其他已配置适用检查的 Change 无法完成 archive 准备；固定 test:domain 还会要求不适用的检查，违背 approved Design 的 materially applicable 判断与 manager/target 分根边界。现有 archive 测试只用含 test:domain 的 Node fixture，未覆盖这一反例。",
+        "minimumCorrection": "按已批准合同以 target 的真实已配置检查和本次 Agent 明确的适用性声明运行有界 post-convergence 验证；不强制 test:domain 或固定 Flowkit 专属 script allowlist/pnpm。补充非 Node 或其他已配置适用检查的负例及成功例，保持未配置/失败检查写前阻断。"
+      }
+    ],
+    "complexityMinimality": "新命令整体复用现有 Run/Policy/Guidance seams；archiveReadiness 的固定脚本表与 pnpm 执行路径增加了不必要的 target 技术栈耦合。",
+    "newContentScopeDrift": "固定 test:domain 是已批准 Proposal 未要求的通用 archive 前置，且使 target 检查域收窄；其余已审 A 代码未见明确 B/C/F 扩张。",
+    "proofRefs": [],
+    "handoff": {
+      "summary": "仅修正 D07-A-RA-001 的 archive 适用检查选择/执行与直接 HOW/测试；保持已批准 A 范围及 009 候选其他已验证行为，完成后独立复审。",
+      "ownerDecisions": [],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20260930-009-apply",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/expose-stable-action-and-record-commands/proof/20260930-009-apply/apply-evidence.json"
+        }
+      ]
+    }
+  }
+}

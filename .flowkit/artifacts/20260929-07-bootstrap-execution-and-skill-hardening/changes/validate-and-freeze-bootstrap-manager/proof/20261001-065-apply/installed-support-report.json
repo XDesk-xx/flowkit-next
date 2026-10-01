@@ -1,0 +1,64 @@
+{
+  "kind": "d07-e-installed-fixed-support",
+  "packageSha256": "1b2c88c9263d5892946d3d9aacba79a6392eb3d8b3b37fa3c87aebcc1550cba0",
+  "target": "D:\\Projects\\flowkit-next\\.tmp\\d07-e-065-isolated\\action-fixture\\target",
+  "legal": {
+    "id": "support-memo-list",
+    "command": [
+      "C:\\nvm4w\\nodejs\\node.exe",
+      "D:\\Projects\\flowkit-next\\.tmp\\d07-e-065-isolated\\installation\\node_modules\\flowkit-next\\dist\\cli\\entrypoint.js",
+      "memo",
+      "list",
+      "--repository-root",
+      "D:\\Projects\\flowkit-next\\.tmp\\d07-e-065-isolated\\action-fixture\\target",
+      "--input",
+      "D:\\Projects\\flowkit-next\\.tmp\\d07-e-065-isolated\\support-checked-input.json"
+    ],
+    "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d07-e-065-isolated\\action-fixture\\target",
+    "start": "2026-10-01T10:17:16.746Z",
+    "end": "2026-10-01T10:17:17.112Z",
+    "code": 0,
+    "stdoutBytes": 179,
+    "stdoutSha256": "3870516977691fbe451ad0c8ae1f4bb45d85089f03d1b088ee3671bf868647f5",
+    "stderrBytes": 0,
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "result": {
+      "command": "memo list",
+      "target": {
+        "repositoryRoot": "D:\\Projects\\flowkit-next\\.tmp\\d07-e-065-isolated\\action-fixture\\target"
+      },
+      "status": "completed",
+      "effect": "none",
+      "memos": []
+    }
+  },
+  "conflict": {
+    "id": "support-conflict",
+    "command": [
+      "C:\\nvm4w\\nodejs\\node.exe",
+      "D:\\Projects\\flowkit-next\\.tmp\\d07-e-065-isolated\\installation\\node_modules\\flowkit-next\\dist\\cli\\entrypoint.js",
+      "memo",
+      "list",
+      "--repository-root",
+      "D:\\Projects\\flowkit-next\\.tmp\\d07-e-065-isolated\\action-fixture\\target",
+      "--input",
+      "D:\\Projects\\flowkit-next\\.tmp\\d07-e-065-isolated\\support-conflict-input.json"
+    ],
+    "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d07-e-065-isolated\\action-fixture\\target",
+    "start": "2026-10-01T10:17:17.113Z",
+    "end": "2026-10-01T10:17:17.418Z",
+    "code": 2,
+    "stdoutBytes": 110,
+    "stdoutSha256": "d69e4247fd05fca5e0ee313a3664a3c3a9eb69af785e0d773bbce02ff5c9bb17",
+    "stderrBytes": 0,
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "result": {
+      "kind": "error",
+      "error": {
+        "kind": "invalid-request",
+        "message": "visible repositoryRoot conflicts with request"
+      }
+    }
+  },
+  "limitation": "Synthetic isolated fixture; no Owner authorization for mutation is inferred."
+}

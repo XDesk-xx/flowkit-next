@@ -2,6 +2,7 @@ import {
   evaluateCheckpointAuthorization,
   type CheckpointAuthorizationInput,
 } from "../cli/checkpoint-authorization.js";
+import type { PolicyDecision } from "./policy-and-next-boundary.js";
 import { isSemanticId } from "./identity.js";
 import {
   cloneCheckpointOperation,
@@ -41,6 +42,7 @@ export interface GitHostRequest {
 export type ReadGitHostAuthority = (sourceRef: string) => Promise<{
   readonly request: GitHostRequest;
   readonly checkpointAuthorization?: CheckpointAuthorizationInput;
+  readonly changePolicyDecision?: PolicyDecision;
 } | null>;
 
 function isPush(value: GitHostRequest["operation"]): value is GitPushOperation {
@@ -107,6 +109,10 @@ export async function verifyGitHostAuthority(
     )
       return false;
     if (request.node !== "change-checkpoint") return true;
+    if (isPush(request.operation))
+      return (
+        material.changePolicyDecision?.kind === "ready-checkpoint-evaluation"
+      );
     const checkpoint = material.checkpointAuthorization;
     return (
       checkpoint !== undefined &&

@@ -1,0 +1,113 @@
+{
+  "runId": "20261001-050-review-explore",
+  "actionIdentity": {
+    "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+    "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+    "actionId": "review-explore"
+  },
+  "authorConclusion": null,
+  "reviewerVerdict": "approved",
+  "verificationVerdict": null,
+  "nextBoundary": "propose",
+  "facts": {
+    "reviewedRunId": "20261001-049-explore",
+    "reviewedResultSha256": "adc57b36c90d02804ac93c2ac44e00ea0ca042339e5465485ae99ca18afff03f",
+    "reviewedArtifactHashes": {
+      "openspec/changes/admit-canonical-prepared-proof-at-checkpoint/explore.md": "12d0637693663610bf56579c396f36f3a69a3a01adc201b46c7ae1a71d3f37d8",
+      "openspec/delivery-groups/20260929-07-bootstrap-execution-and-skill-hardening.yaml": "3bc6c6f477c850b864810e780be9a845c6da5acb6b1270b8b11807af5736960c",
+      "openspec/changes/admit-canonical-prepared-proof-at-checkpoint/.openspec.yaml": "c51317fdb09f4c0096f955c8beeb5f19a56ba49530c79732bb429ad0f423004d"
+    },
+    "reviewedSourceHashes": {
+      "src/internal/managed-evidence-checkpoint.ts": "64ea22dcae0304c4e8d4439dfa8b5f163beb649b63cd88624b2948f1b6397b63",
+      "src/cli/current-run-chain.ts": "c42335fd135cff22cd9de931811047e387b1386f1f4033b398cbc37058417315",
+      "src/domain/policy-and-next-boundary.ts": "886ea948efe8b4a38b78390cc84389693ae436c1a4c7ea1a4646a5fa42934a2f",
+      "docs/D07-bootstrap-execution-and-skill-hardening-plan.md": "e4200d1b9681f9e9d24d064f2fe215cd54d92088d2e21908a18c5a74d3ade399"
+    },
+    "currentStep": "独立审查 F Explore 对 prepared proof 首次进入 managed checkpoint 的问题定位、canonical 后继合法性来源、候选 Git 树闭包及 Proposal-ready 最小边界。",
+    "complexityMinimality": "方向复用既有 Run 读取/身份校验、resolveRunChain 和 Policy edge；只在 prepared owner 路径增加必要准入，terminal 分支与 proof/index 字节规则保持。Git 候选树读取的最小接入位置留给 Proposal，未要求第二套状态机、Registry、历史迁移或自动修复。",
+    "newContentScopeDrift": "scope drift: NONE。候选树内必要 Run/Result 可核对是 checkpoint 保存合法链的必要细化，符合已选 D07 F。E 仍依赖 C/D/F，状态 planned；没有增加 E 的验收要求或提前执行它。",
+    "findings": [],
+    "evidence": [
+      "外部 Stable manager status/next 确认 049-explore terminal 后合法 review-explore，doctor PASS / exact OpenSpec 1.10.0。050 canonical start 绑定当前 Guidance SHA 052141fe179ec1ea23d796ec2f63557f6cee980f879c0abbd0054237b7f8bf86。",
+      "Explore、manifest 和 OpenSpec metadata 三项 SHA 与 049 声明一致；四份 Author proof 的唯一性、归属、regular-file/no-link、bytes/SHA/Git 字节规则及完整目录集合核对通过。命令报告的源码/原始输出 SHA 与 proof 实体一致。",
+      "HEAD b2db17c7e54627bd281f73767098c72e053c7ed1 与 049 fixedPointCommit 一致。当前 tracked diff 仅 F activation/projectOrdinal/Owner 决定；代码未修改。选定 D07 规划 SHA 与 manifest 一致，F 的目标、负例与保留边界相符。",
+      "通读 managed-evidence-checkpoint：declaredProof 直接拒绝非 terminal，且从 worktree 读取 owner Result/context；requireNewManagedEvidenceBytes 只对新增 managed paths 检查 index/worktree 字节并对 proof 校验声明。因此未来 prepared 路径不能仅依赖工作区合法后继，必须确保候选树保存了用于准入的链事实。",
+      "核对 current-run-chain/Policy 与 readDurableRun：完整三文件/身份校验、Role、prepared 四个 null outcome、唯一 Explore 根、无 fork/断链/重复、Owner correction 与同 Action continuation 已有规则可复用。Explore 未把单一 prepared 标记当成准入条件。",
+      "独立按原始 bytes 复制并执行 049 probe，exit 0，stdout SHA 与 049 完全相同：terminalAccepted、合法 prepared supersession/continuation、非法 edge/fork/伪 verdict 拒绝，以及现有 prepared checkpoint 拒绝得到复现。fixture 的 canonical 链判断与 checkpoint terminal-only 拒绝是两项独立事实，不冒充修复后端到端验收。",
+      "独立运行 managed-evidence-checkpoint.test.ts，2 PASS / 0 FAIL / 0 skipped，exit 0；确认当前 terminal proof 摘要/index 字节保护、缺声明拒绝、历史 proof 不回扫及 R100 新目的路径校验基线。"
+    ],
+    "literalClassification": "prepared/terminal、四个 outcome null、三文件 Run、唯一合法后继和 bytes/SHA 是语义合同；089/090/092/093、projectOrdinal 48、Run sequence 49、当前 HEAD 与 fixture 日期/编号是本次历史或环境观察，不应固化为永久测试不变量。",
+    "proposalHandoff": "Proposal 应明确候选树内必要 Run 文件的最小读取方式，并复用原有 record/chain 验证；覆盖只在 worktree 的后继、候选树缺文件或冲突、prepared tip/partial/fork/非法 edge/伪 verdict、重复或缺 proof 声明及 bytes/SHA mismatch，同时保留 terminal 行为。无需预先修订 E。",
+    "limitations": "本次批准 Explore 的问题与范围，不批准实现或 Git checkpoint。隔离 fixture 不等于 LearningPlatform 真实历史独立审查，未读取或修改该项目记录；候选树闭包是源代码与 checkpoint 语义推导，具体机制由 Proposal 确定，Apply 再提供修复后的正反例。不是 Formal Full Test。",
+    "proofRefs": [
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-050-review-explore/baseline.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-050-review-explore",
+        "purpose": "Independent Explore baseline reproduction and existing evidence checkpoint checks"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-050-review-explore/baseline.stdout.txt",
+        "bytes": 504,
+        "sha256": "a0b46b07c8bab174eb23c8362eb85dd480fd4280d5f8ae7737afd4c3037e262d",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-050-review-explore",
+        "purpose": "Independent Explore baseline reproduction and existing evidence checkpoint checks"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-050-review-explore/checks.json",
+        "bytes": 1996,
+        "sha256": "693b4e34d2898f2664aad0c7b98c7921ebb1e287f21a1cf44bb3026e7bd43ed7",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-050-review-explore",
+        "purpose": "Independent Explore baseline reproduction and existing evidence checkpoint checks"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-050-review-explore/probe.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-050-review-explore",
+        "purpose": "Independent Explore baseline reproduction and existing evidence checkpoint checks"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-050-review-explore/probe.stdout.txt",
+        "bytes": 353,
+        "sha256": "c11d92117613814657dfa60db5c79df5f75b5f6816205cc079c0e053e4e766b2",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-050-review-explore",
+        "purpose": "Independent Explore baseline reproduction and existing evidence checkpoint checks"
+      }
+    ],
+    "handoff": {
+      "summary": "review-explore approved，无阻断 finding；F 可进入 propose。保持候选树闭包、canonical 规则复用、历史原字节、terminal 回归和 E 依赖边界。Reviewer STOP。",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-10-01:activate-next-change-proof-explore",
+          "summary": "Owner authorized activation of the next Change and proof Explore."
+        }
+      ],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20261001-049-explore",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-049-explore/bounded-probe-report.json"
+        },
+        {
+          "sourceRunId": "20261001-049-explore",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-049-explore/bounded-probe.stdout.txt"
+        },
+        {
+          "sourceRunId": "20261001-050-review-explore",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-050-review-explore/checks.json"
+        }
+      ]
+    }
+  }
+}

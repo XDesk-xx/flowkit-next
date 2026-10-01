@@ -1,0 +1,166 @@
+{
+  "kind": "d07-version-1-0-0-package-acceptance",
+  "sourceRoot": "D:\\Projects\\flowkit-next",
+  "sourceHead": "f826f44587b25130a9f47d2426391cbba52520b1",
+  "sourceHashes": {
+    "package.json": "ed04d275345b7bce5a7eac020c72cdf3dde87574bb5d2840cab1ee7cd1d66d3d",
+    "docs/onboarding.md": "9faa2413c41801e0d3faa5d53d9e21a07256b2102d6b71b9ce473cbfa661ef89",
+    "config/verification/full-test.json": "1d474533653779a110edaa4d974d544e8f075bf3016b36dd018fc21018beff73",
+    "pnpm-lock.yaml": "bf5ef071f2b4b8140f05493ebd53098660250f2cd5a834fe321ce8685bdb65e5",
+    "config/tools/toolchain.lock.json": "a0481fc8a3fddfbcdd65a504e0e7a065e6ab74a3a871af3ab8838d201eecd4a2"
+  },
+  "commands": [
+    {
+      "id": "pack",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+        "pack",
+        "--pack-destination",
+        "D:\\Projects\\flowkit-next\\.flowkit\\artifacts\\20260929-07-bootstrap-execution-and-skill-hardening\\changes\\pin-bootstrap-manager-version-1-0-0\\proof\\20261001-072-apply"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "start": "2026-10-01T14:45:01.970Z",
+      "end": "2026-10-01T14:45:05.187Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdoutBytes": 4741,
+      "stdoutSha256": "a079501ff6d016b6a3ee5ec07a21ab410fa1ff8437e7ccc34e39c8f22d27f79e",
+      "stderrBytes": 36,
+      "stderrSha256": "8f5c6a9c4aade0d032984516a14b38a2d12cb1e6b333ab3568f9dde2ba3e3470"
+    },
+    {
+      "id": "extract-old",
+      "command": [
+        "tar",
+        "-xzf",
+        "D:\\Projects\\flowkit-next\\.flowkit\\artifacts\\20260929-07-bootstrap-execution-and-skill-hardening\\changes\\validate-and-freeze-bootstrap-manager\\proof\\20261001-065-apply\\flowkit-next-0.1.0.tgz",
+        "-C",
+        "D:\\Projects\\flowkit-next\\.tmp\\d07-version-072-package-acceptance\\old"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "start": "2026-10-01T14:45:05.189Z",
+      "end": "2026-10-01T14:45:05.312Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "extract-new",
+      "command": [
+        "tar",
+        "-xzf",
+        "D:\\Projects\\flowkit-next\\.flowkit\\artifacts\\20260929-07-bootstrap-execution-and-skill-hardening\\changes\\pin-bootstrap-manager-version-1-0-0\\proof\\20261001-072-apply\\flowkit-next-1.0.0.tgz",
+        "-C",
+        "D:\\Projects\\flowkit-next\\.tmp\\d07-version-072-package-acceptance\\new"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "start": "2026-10-01T14:45:05.313Z",
+      "end": "2026-10-01T14:45:05.425Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "production-install",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "C:/nvm4w/nodejs/node_modules/npm/bin/npm-cli.js",
+        "install",
+        "--prefix",
+        "D:\\Projects\\flowkit-next\\.tmp\\d07-version-072-package-acceptance\\installation",
+        "--omit=dev",
+        "--no-audit",
+        "--no-fund",
+        "D:\\Projects\\flowkit-next\\.flowkit\\artifacts\\20260929-07-bootstrap-execution-and-skill-hardening\\changes\\pin-bootstrap-manager-version-1-0-0\\proof\\20261001-072-apply\\flowkit-next-1.0.0.tgz"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "start": "2026-10-01T14:45:05.483Z",
+      "end": "2026-10-01T14:45:08.778Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdoutBytes": 24,
+      "stdoutSha256": "bf14b7a2bc076990244fa3239536925868dfe5ad05089c7d459b5fa482abfc72",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "installed-cli-help",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "D:\\Projects\\flowkit-next\\.tmp\\d07-version-072-package-acceptance\\installation\\node_modules\\flowkit-next\\dist\\cli\\entrypoint.js",
+        "--help"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "start": "2026-10-01T14:45:08.780Z",
+      "end": "2026-10-01T14:45:09.022Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdoutBytes": 479,
+      "stdoutSha256": "8e9d6bd3d9823a841fe383dbf7d5809d34da5d86d0e1bc0186a09d0c7c3d1290",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "package": {
+    "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-072-apply/flowkit-next-1.0.0.tgz",
+    "bytes": 160015,
+    "sha256": "3d9c3a7a330be4a349ac0afc5ddaddf0a202f8af883722921721ba0a0bcb5eff"
+  },
+  "comparison": {
+    "oldMemberCount": 117,
+    "newMemberCount": 117,
+    "added": [],
+    "removed": [],
+    "changed": [
+      "package/docs/onboarding.md",
+      "package/package.json"
+    ],
+    "expectedChanged": [
+      "package/docs/onboarding.md",
+      "package/package.json"
+    ],
+    "onlyExpectedChanges": true
+  },
+  "packagedMetadata": {
+    "name": "flowkit-next",
+    "version": "1.0.0",
+    "private": true,
+    "bin": {
+      "flowkit": "dist/cli/entrypoint.js"
+    },
+    "dependencies": {
+      "yaml": "^2.9.0"
+    },
+    "onboardingMatchesSource": true,
+    "toolLockMatchesSource": true,
+    "entrypointPresent": true,
+    "applySkillPresent": true
+  },
+  "install": {
+    "path": "D:\\Projects\\flowkit-next\\.tmp\\d07-version-072-package-acceptance\\installation\\node_modules\\flowkit-next",
+    "version": "1.0.0",
+    "bin": {
+      "flowkit": "dist/cli/entrypoint.js"
+    },
+    "dependencies": {
+      "yaml": "^2.9.0"
+    },
+    "onboardingMatchesSource": true,
+    "helpKind": "help"
+  },
+  "limitations": [
+    "Isolated Windows production installation and entrypoint help only; no Formal Full Test, registry publication, Git or Stable manager switch."
+  ]
+}

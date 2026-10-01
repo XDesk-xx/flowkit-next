@@ -9,7 +9,7 @@ import { readSelectedRunChain } from "../../../src/cli/current-run-chain.js";
 import { inputs, loadHow } from "./agent-how-fixture.js";
 import { gitBytes } from "../../../src/internal/git-checkpoint-scope.js";
 
-test("published ten HOW assets have executable identical record examples, no transport", async () => {
+test("published ten HOW assets use the fixed single-Action command path", async () => {
   for (const action of [
     "explore",
     "propose",
@@ -33,7 +33,10 @@ test("published ten HOW assets have executable identical record examples, no tra
       markdown,
       /flowkit action --input|kind:"prepare"|stdin\/stdout JSONL/,
     );
-    assert.match(markdown, /domain\.startCanonicalActionRun\(/);
+    assert.match(markdown, /flowkit action start --input/);
+    assert.match(markdown, /flowkit action finish --input/);
+    assert.match(markdown, /flowkit proof inspect --input/);
+    assert.doesNotMatch(markdown, /domain\.startCanonicalActionRun\(/);
     assert.doesNotMatch(
       markdown,
       /fs\.writeFile\(path\.join\(directory, "action\.md"\)/,

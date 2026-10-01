@@ -1,0 +1,45 @@
+{
+  "runId": "20261001-051-propose",
+  "actionIdentity": {
+    "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+    "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+    "actionId": "propose"
+  },
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-propose",
+  "facts": {
+    "summary": "Converged approved F Explore into one modified checkpoint capability with candidate-index Run-chain closure, existing Policy reuse, terminal compatibility and exact proof bytes.",
+    "planningRoot": "openspec/changes/admit-canonical-prepared-proof-at-checkpoint",
+    "artifactHashes": {
+      "proposal.md": "1cf02dd8ea36d3d737d6d085fd916455b5c2a3972908096da4fa23aeed667e54",
+      "design.md": "26584794b4c8e70ec7d3144ed2a237e529c4e59e8da5b3414adf86145ea4c253",
+      "tasks.md": "4306d02bb85510d15941fc5cdc5d9f7b815b696bc41b6a0baf5e519368e3d802",
+      "specs/repository-integration-and-next-base-continuity/spec.md": "1750ba96108231c986b49cef3a8fb29feecbf8409c620386ba89823e5e500bd2"
+    },
+    "structuralValidation": {
+      "command": "node C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js validate admit-canonical-prepared-proof-at-checkpoint --strict",
+      "exitCode": 0,
+      "observedOutput": "Change 'admit-canonical-prepared-proof-at-checkpoint' is valid",
+      "limit": "OpenSpec structure only; no Apply acceptance or independent Reviewer verdict"
+    },
+    "convergence": {
+      "requirementSource": "20261001-049-explore and approved 20261001-050-review-explore",
+      "complexityGrowth": "One modified existing capability and a narrow index-record reader; no new lifecycle, registry, workflow or authority.",
+      "newContentBeyondExplore": "No new capability; design selects the pending index as the exact candidate-tree source and shared Run parsing as the narrow implementation mechanism.",
+      "scopeDrift": "none observed; E stays dependent and planned"
+    },
+    "proofRefs": [],
+    "handoff": {
+      "summary": "Independent review-propose should verify candidate-tree closure, exact full replacement of the existing requirement, terminal preservation, shared canonical Policy/record validation, bounded negative scenarios and E separation.",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-10-01:activate-next-change-proof-explore",
+          "summary": "Owner activated F for proof Explore; later propose instruction invoked this planning Action."
+        }
+      ],
+      "evidenceRefs": []
+    }
+  }
+}

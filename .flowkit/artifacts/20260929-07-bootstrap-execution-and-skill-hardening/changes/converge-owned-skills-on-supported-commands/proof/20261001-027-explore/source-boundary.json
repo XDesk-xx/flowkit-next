@@ -1,0 +1,120 @@
+{
+  "kind": "d07-c-source-boundary",
+  "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+  "changeId": "converge-owned-skills-on-supported-commands",
+  "runId": "20261001-027-explore",
+  "observedAt": "2026-10-01T00:33:23.868Z",
+  "candidateCli": {
+    "command": "node dist/cli/entrypoint.js --help",
+    "exitCode": 0,
+    "stdoutPath": "help.stdout.txt",
+    "stdoutBytes": 479,
+    "stdoutSha256": "8e9d6bd3d9823a841fe383dbf7d5809d34da5d86d0e1bc0186a09d0c7c3d1290",
+    "stderrPath": "help.stderr.txt",
+    "stderrBytes": 0,
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "sourceRefs": [
+    {
+      "path": "src/cli/entrypoint.ts",
+      "bytes": 6362,
+      "sha256": "b9185c9670a1df543bb5a886dba8a01331f2e15695509f571201f12298f7218d",
+      "marker": "action start",
+      "line": 69
+    },
+    {
+      "path": "src/cli/action-proof.ts",
+      "bytes": 3567,
+      "sha256": "97353520f5e241efadbbc900cbed640be6097a264857b4013e73ac94273fa977",
+      "marker": "checkDeclaredProofs",
+      "line": 72
+    },
+    {
+      "path": "src/cli/action-commands.ts",
+      "bytes": 20198,
+      "sha256": "8eab28e03946b448238d2a9d75c6646a7a5aecabf6cbb9a99cade4f441e92e3c",
+      "marker": "checkDeclaredProofs",
+      "line": 34
+    },
+    {
+      "path": "skills/actions/explore/SKILL.md",
+      "bytes": 11103,
+      "sha256": "f93b36b384d2f5e331e801fbd5a11c01677ecb7adc8ceb897f19d4266779f0b1",
+      "marker": "flowkit action start",
+      "line": 113
+    },
+    {
+      "path": "skills/delivery/start/SKILL.md",
+      "bytes": 1901,
+      "sha256": "f21c9083c77704ab7088b504afb8dc8d2f35a5bb404c3f6ccfb27d6760b259d9",
+      "marker": "writeManifest",
+      "line": 12
+    },
+    {
+      "path": "skills/delivery/full-test/SKILL.md",
+      "bytes": 2295,
+      "sha256": "87cefd02307b01a7f2ed4824df9b179a999d816c045f4a75feb9ca63a417915d",
+      "marker": "invokeDeliveryFullTestOperation",
+      "line": 7
+    },
+    {
+      "path": "skills/delivery/repository-integration/SKILL.md",
+      "bytes": 3990,
+      "sha256": "4fe28a572af1a0517485f2a2e96c6586f973abf2fc267b83f343c487d4999174",
+      "marker": "git-host.mjs",
+      "line": 23
+    },
+    {
+      "path": "skills/delivery/repository-integration/references/host-call.md",
+      "bytes": 3847,
+      "sha256": "7c20b6e3646a695b16818a973954e835e50532165d28e32b53fc6f62a607dc90",
+      "marker": "runCheckpoint",
+      "line": 15
+    },
+    {
+      "path": "skills/delivery/repository-integration/references/git-host.mjs",
+      "bytes": 273,
+      "sha256": "cd57ff06916b35d8b68ea92734b4e6c3c46ba9cf492ece101f1574713434313b",
+      "marker": "runCheckpoint",
+      "line": 2
+    },
+    {
+      "path": "README.md",
+      "bytes": 5937,
+      "sha256": "246ee2b43e50fe7bf9b27e967ddf450a52e34c03c5b043fdfdf0388b4ea6db2c",
+      "marker": "action start",
+      "line": 11
+    },
+    {
+      "path": "docs/onboarding.md",
+      "bytes": 12434,
+      "sha256": "0cbb4f4d39a4e25b1a146f7f384704c251be9cb2b3e54bdfa3099c36accc5602",
+      "marker": "action start",
+      "line": 63
+    },
+    {
+      "path": "AGENTS.md",
+      "bytes": 20628,
+      "sha256": "f2c6b56153d1cd1818a725fd10f3cf56652ef654223b58d2783c0823cac2fe4a",
+      "marker": "runCheckpoint",
+      "line": 419
+    },
+    {
+      "path": "docs/D07-bootstrap-execution-and-skill-hardening-plan.md",
+      "bytes": 42556,
+      "sha256": "e4200d1b9681f9e9d24d064f2fe215cd54d92088d2e21908a18c5a74d3ade399",
+      "marker": "Change C",
+      "line": 238
+    }
+  ],
+  "stableCheckpointRef": {
+    "path": "D:/tools/flowkit-manager/node_modules/flowkit-next/dist/internal/managed-evidence-checkpoint.js",
+    "bytes": 4368,
+    "sha256": "f298f51bfa194cfe56f7f95ac0164ec6321913ab2078959c5217aacf7e67bbca",
+    "observedMarker": "Managed proof declaration missing or ambiguous"
+  },
+  "limitations": [
+    "Static source markers and CLI help establish current instructions and command availability, not full command semantics.",
+    "This proof does not verify the future C implementation or D machine enforcement."
+  ]
+}

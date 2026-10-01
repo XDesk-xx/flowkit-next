@@ -1,0 +1,60 @@
+{
+  "runId": "20261001-019-review-propose",
+  "actionIdentity": {
+    "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+    "changeId": "expose-stable-delivery-and-support-commands",
+    "actionId": "review-propose"
+  },
+  "authorConclusion": null,
+  "reviewerVerdict": "approved",
+  "verificationVerdict": null,
+  "nextBoundary": "apply",
+  "facts": {
+    "reviewedRunId": "20261001-018-revise-propose",
+    "previousReviewRunId": "20261001-017-review-propose",
+    "approvedExploreReviewRunId": "20260930-015-review-explore",
+    "currentStep": "独立复审 018 对 D07-B-RESTART-RP-001 的规划修订，核对 Full Test 请求身份、重复投递、新运行、历史消费及文档一致性。",
+    "reviewedArtifactHashes": {
+      "design.md": "12abb893da827e9954bec549223c9683778e3c31db39c3655db2232e86b48b4d",
+      "tasks.md": "8871b3cf14675bedf59470801178977507dfe76e5a2443f038a15159aa546b2a",
+      "specs/stable-delivery-support-command-execution/spec.md": "5edfad492d9679c5ca158799ba04de30ba114752017a835c2bceff6d2668c8d7",
+      "proposal.md": "78eac04bbe5a8fe8c97cb57c4bf9c4529c03f5a3c7d1087b979cce99518f0ba0",
+      "specs/foundation-cli-surface/spec.md": "4e1993b29c753452c483f67abde3143378cfdf42b4672decb1771107583d98fa",
+      "specs/repository-integration-and-next-base-continuity/spec.md": "82e999af6c69f877f3953546e16e3895c548635745fd10594718028385ae6abb"
+    },
+    "evidence": [
+      "外部 Stable manager status/next 和 canonical chain 确认 018 terminal Author revise-propose 后的合法边为 review-propose；019 使用同一安装 Guidance 与 startCanonicalActionRun 建立 package-bound 真实开始。",
+      "六份规划文件的 regular file/no-link 与 SHA-256 核对通过；三个声明未改文件与 017 reviewed hashes 相同；015 approved Explore 的当前 bytes 仍匹配。",
+      "design/spec/task 3.2 一致规定：首次投递前固定 UUID v4 attemptId 与 nullable expectedCurrentAttemptId，开始记录绑定 exact Delivery、Owner fact、预期关联及实读配置/输入身份。固定入口明确适配原执行器每次随机分配 attempt 的行为。",
+      "同次请求先按 attemptId 读取，terminal passed/failed、pending、开始未发布与其他 partial 均只读报告；已有目录但开始缺失/损坏不会补写或继续检查，身份冲突或不可确认拒绝。重投不重新发布 current，也不把历史 PASS 当当前 PASS。",
+      "明确的新运行要求新 attemptId、针对本次决定的 distinct Owner fact ref 及匹配的当前关联；发布采用既有写前 prestate/CAS 并读回后才执行检查。配置/代码未变化仍重新执行；关联漂移拒绝。",
+      "现有 full-test-current.ts 使用 start 字段 allowlist，failed/incomplete 结果不携带 attemptId；修订明确要求新开始字段、failed/incomplete 的 current 身份返回和旧格式只读兼容，task 3.2 已包含相应实现/回归，未将现有 reader 误称为无需适配。",
+      "独立 managed OpenSpec 1.10.0 validate expose-stable-delivery-and-support-commands --strict exit 0；git diff --check exit 0。"
+    ],
+    "resolvedFindings": [
+      {
+        "id": "D07-B-RESTART-RP-001",
+        "resolution": "已明确持久调用身份、expected current 关联、同次只读重投与新授权/新 ID 运行的区别，覆盖终态响应丢失、pending/partial、目录残留、身份冲突和关联漂移，并补充历史格式消费与相应任务。"
+      }
+    ],
+    "findings": [],
+    "complexityMinimality": "使用既有 attempt 目录、start 与 current 关联承载有限请求身份和前态，不增加 Registry、独立存储或通用恢复器。改动限定在 Full Test design/spec/task 的必要细化。",
+    "newContentScopeDrift": "无新增能力或后续 Change 范围。Agent 负责真实 Owner 指令解释、CLI 验证并执行固定机械操作的分工保持；未恢复旧聊天 relay。新增字段与历史读取要求直接服务于 017 finding。",
+    "limitations": "批准的是 Proposal 合同。新入口、Full Test reader/执行器适配以及 task 3.2 的失败和重投场景仍须在 Apply 实现并验证；本次不是实现验收或 D07 Formal Full Test。",
+    "proofRefs": [],
+    "handoff": {
+      "summary": "review-propose approved；唯一 finding 已关闭，可进入 Apply。保持已批准的精确命令/权限边界，落实同次只读、新次实跑、历史兼容及 current 身份回传的回归。",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-09-30:backup-branch-then-restart-b",
+          "summary": "015 已核实从 A checkpoint 重启 B，旧尝试仅为参考。"
+        },
+        {
+          "sourceRef": "codex-chat:01a0f01a-9adc-7180-93b6-594f469ad8d4:01a0f2d1-71fe-7b83-bd80-219c5fab951c",
+          "summary": "015 已独立核实：Agent 识别真实指令，Flowkit 执行固定机械命令。"
+        }
+      ],
+      "evidenceRefs": []
+    }
+  }
+}
