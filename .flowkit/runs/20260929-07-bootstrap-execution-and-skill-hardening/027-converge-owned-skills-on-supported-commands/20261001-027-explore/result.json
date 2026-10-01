@@ -1,0 +1,89 @@
+{
+  "runId": "20261001-027-explore",
+  "actionIdentity": {
+    "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+    "changeId": "converge-owned-skills-on-supported-commands",
+    "actionId": "explore"
+  },
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-explore",
+  "facts": {
+    "projectOrdinal": 46,
+    "changeStartSequence": 27,
+    "summary": "A/B already expose fixed commands and most Action Skills use them; C must converge remaining Delivery/HOW/docs contradictions and specify complete own-Run proofRefs while D owns machine enforcement.",
+    "fixedPointCommit": "73d300d57946c0d95a349e7f2f086979e185b157",
+    "manifest": {
+      "path": "openspec/delivery-groups/20260929-07-bootstrap-execution-and-skill-hardening.yaml",
+      "sha256": "d4c5ae056a285db2c655cbe61aab8b8887038ddd43e52c321b3b43837facdfcb"
+    },
+    "exploreArtifact": "openspec/changes/converge-owned-skills-on-supported-commands/explore.md",
+    "exploreSha256": "cac9f90f73faf1f5dc7668c965031ed596a2c02ff33e41bc12ca0e0cade91a88",
+    "openSpecMetadata": {
+      "path": "openspec/changes/converge-owned-skills-on-supported-commands/.openspec.yaml",
+      "sha256": "c51317fdb09f4c0096f955c8beeb5f19a56ba49530c79732bb429ad0f423004d"
+    },
+    "checks": [
+      {
+        "command": "node dist/cli/entrypoint.js --help",
+        "exitCode": 0,
+        "stdoutSha256": "8e9d6bd3d9823a841fe383dbf7d5809d34da5d86d0e1bc0186a09d0c7c3d1290",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ],
+    "proofRefs": [
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-027-explore/help.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "converge-owned-skills-on-supported-commands",
+        "runId": "20261001-027-explore",
+        "purpose": "candidate CLI help raw help.stderr.txt"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-027-explore/help.stdout.txt",
+        "bytes": 479,
+        "sha256": "8e9d6bd3d9823a841fe383dbf7d5809d34da5d86d0e1bc0186a09d0c7c3d1290",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "converge-owned-skills-on-supported-commands",
+        "runId": "20261001-027-explore",
+        "purpose": "candidate CLI help raw help.stdout.txt"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-027-explore/source-boundary.json",
+        "bytes": 4095,
+        "sha256": "84071fe264231a2259d957ce1538fb720999c6743cef3d58cdd17ea72950a80d",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "converge-owned-skills-on-supported-commands",
+        "runId": "20261001-027-explore",
+        "purpose": "bounded source and command metadata"
+      }
+    ],
+    "limitations": [
+      "CLI help and source observations are bounded Explore evidence, not full command behavior or later Apply acceptance.",
+      "C guidance can state proofRefs closure; D must implement bounded machine enforcement.",
+      "No Reviewer verdict, Formal Full Test, Git checkpoint or subsequent Change activation is claimed."
+    ],
+    "handoff": {
+      "summary": "Independent review-explore should assess the actual remaining Skill/HOW contradictions, complete own-Run proof declaration rule, C/D split and preservation of external Stable manager and historical evidence.",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-10-01:backup-commit-activate-c-proof-explore",
+          "summary": "Owner requested a separate local backup commit for B's 54 undeclared proof files, then activated C for proof Explore."
+        }
+      ],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20261001-027-explore",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-027-explore/source-boundary.json"
+        },
+        {
+          "sourceRunId": "20261001-027-explore",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-027-explore/help.stdout.txt"
+        }
+      ]
+    }
+  }
+}

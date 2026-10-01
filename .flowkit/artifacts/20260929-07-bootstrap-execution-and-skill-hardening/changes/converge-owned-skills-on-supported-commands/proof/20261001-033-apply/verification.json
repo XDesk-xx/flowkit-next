@@ -1,0 +1,116 @@
+{
+  "formatVersion": 1,
+  "runId": "20261001-033-apply",
+  "candidatePackage": {
+    "path": ".tmp/d07-c-pack/flowkit-next-0.1.0.tgz",
+    "bytes": 156145,
+    "sha256": "c0de898205c3e47a25cdae113310456c0d5f39c781208dcfea7d3f0b4483ab70"
+  },
+  "packageMemberCount": 116,
+  "records": [
+    {
+      "id": "build",
+      "command": [
+        "pnpm",
+        "build"
+      ],
+      "startedAt": "2026-10-01T01:13:41.952Z",
+      "endedAt": "2026-10-01T01:13:45.313Z",
+      "exitCode": 0,
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrBytes": 36,
+      "stderrSha256": "8f5c6a9c4aade0d032984516a14b38a2d12cb1e6b333ab3568f9dde2ba3e3470"
+    },
+    {
+      "id": "acceptance",
+      "command": [
+        "pnpm",
+        "test:acceptance"
+      ],
+      "startedAt": "2026-10-01T01:13:45.314Z",
+      "endedAt": "2026-10-01T01:14:10.285Z",
+      "exitCode": 0,
+      "stdoutBytes": 1708,
+      "stdoutSha256": "db8996ce8d132a22b74b13cd119c87a0139701018b997439361c5d97df984b4f",
+      "stderrBytes": 54,
+      "stderrSha256": "03a28f841eea36c0ec13f6dea3ea69c782e389ad940fcfaf6d419d0e4fff319b"
+    },
+    {
+      "id": "typecheck",
+      "command": [
+        "pnpm",
+        "typecheck"
+      ],
+      "startedAt": "2026-10-01T01:14:10.285Z",
+      "endedAt": "2026-10-01T01:14:13.737Z",
+      "exitCode": 0,
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrBytes": 15,
+      "stderrSha256": "8366207267355d3e3d5bf3bf6e8c94c5f93f6078c34f08973fa2b38cdda6cc92"
+    },
+    {
+      "id": "quality",
+      "command": [
+        "pnpm",
+        "quality:gate"
+      ],
+      "startedAt": "2026-10-01T01:14:13.737Z",
+      "endedAt": "2026-10-01T01:14:23.240Z",
+      "exitCode": 0,
+      "stdoutBytes": 66,
+      "stdoutSha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20",
+      "stderrBytes": 192,
+      "stderrSha256": "9ccaf1b94533f97d77e53271cbcbe105b2181b73bdcdc804c213feb0145b94f3"
+    },
+    {
+      "id": "pack",
+      "command": [
+        "pnpm",
+        "pack",
+        "--pack-destination",
+        "D:\\Projects\\flowkit-next\\.tmp\\d07-c-pack"
+      ],
+      "startedAt": "2026-10-01T01:14:23.240Z",
+      "endedAt": "2026-10-01T01:14:26.248Z",
+      "exitCode": 0,
+      "stdoutBytes": 4580,
+      "stdoutSha256": "bfec49103dac2a750bda9b5f71f14456823c1a55588f286428fcb3b0dae613dd",
+      "stderrBytes": 36,
+      "stderrSha256": "8f5c6a9c4aade0d032984516a14b38a2d12cb1e6b333ab3568f9dde2ba3e3470"
+    },
+    {
+      "id": "package-list",
+      "command": [
+        "tar",
+        "-tf",
+        "D:\\Projects\\flowkit-next\\.tmp\\d07-c-pack\\flowkit-next-0.1.0.tgz"
+      ],
+      "startedAt": "2026-10-01T01:14:26.249Z",
+      "endedAt": "2026-10-01T01:14:26.440Z",
+      "exitCode": 0,
+      "stdoutBytes": 5499,
+      "stdoutSha256": "98fc380b44026ac27b3a7c2a0be8bb3bf059a87f8de1584b56180b15960e91a4",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "help",
+      "command": [
+        "node",
+        "dist/cli/entrypoint.js",
+        "--help"
+      ],
+      "startedAt": "2026-10-01T01:14:26.440Z",
+      "endedAt": "2026-10-01T01:14:26.687Z",
+      "exitCode": 0,
+      "stdoutBytes": 479,
+      "stdoutSha256": "8e9d6bd3d9823a841fe383dbf7d5809d34da5d86d0e1bc0186a09d0c7c3d1290",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "allExitZero": true,
+  "formalFullTest": false
+}

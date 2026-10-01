@@ -1,0 +1,48 @@
+{
+  "formatVersion": 1,
+  "records": [
+    {
+      "id": "install",
+      "command": [
+        "npm",
+        "install",
+        "--prefix",
+        "D:\\Projects\\flowkit-next\\.tmp\\d07-c-install",
+        "--no-audit",
+        "--no-fund",
+        "--ignore-scripts",
+        "D:\\Projects\\flowkit-next\\.tmp\\d07-c-pack\\flowkit-next-0.1.0.tgz"
+      ],
+      "startedAt": "2026-10-01T01:17:23.321Z",
+      "endedAt": "2026-10-01T01:17:27.465Z",
+      "exitCode": 0,
+      "stdoutBytes": 24,
+      "stdoutSha256": "0084a2467ddcb7209a9d3143448e657c43875f2b05b5c0c5e89ed25ab6b9a3dd",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "installed-help",
+      "command": [
+        "node",
+        "D:\\Projects\\flowkit-next\\.tmp\\d07-c-install\\node_modules\\flowkit-next\\dist\\cli\\entrypoint.js",
+        "--help"
+      ],
+      "startedAt": "2026-10-01T01:17:27.470Z",
+      "endedAt": "2026-10-01T01:17:27.710Z",
+      "exitCode": 0,
+      "stdoutBytes": 479,
+      "stdoutSha256": "8e9d6bd3d9823a841fe383dbf7d5809d34da5d86d0e1bc0186a09d0c7c3d1290",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "allExitZero": true,
+  "installedPackage": {
+    "name": "flowkit-next",
+    "version": "0.1.0",
+    "bin": "dist/cli/entrypoint.js"
+  },
+  "comparedAssets": 4,
+  "targetRepositoryManagedByInstalledCandidate": false
+}

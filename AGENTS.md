@@ -19,7 +19,7 @@ Policy legal-boundary calculation
 cross-Delivery Memo persistence
 toolchain exact managed-runtime resolution
 thin OpenSpec observation
-minimal flowkit CLI: status / next / doctor
+Foundation 查询 CLI: status / next / doctor；D07 candidate 另有固定 Action 与支持命令
 checkpoint authorization evaluation only
 trusted Delivery-Change coordination-state binding
 lightweight incremental engineering gate
@@ -286,9 +286,9 @@ delivery/<delivery-id>  → Delivery working branch
 
 OpenSpec 是 formal Change/specification authority。Flowkit 只做 thin integration，不重建 OpenSpec proposal/design/tasks/archive state machine。
 
-当前 candidate 的 OpenSpec observation 仍只读；CLI 不提供 action/prepare/submit 写命令。OpenSpec mutation 由 Agent 依已确定 Action 和上游 mechanics 执行，复用既有 Policy/package/admission 与文件能力记录真实三文件 Run，不调用模型 API、不自动下一 Action。
+当前 candidate 的 OpenSpec observation 仍只读；CLI 提供固定 `action start/finish` 与 `proof inspect` 记录入口，不提供通用 `action/prepare/submit` 执行器。OpenSpec mutation 由 Agent 依已确定 Action 和上游 mechanics 执行；固定记录入口复用既有 Policy/package/admission 并保存真实三文件 Run，不调用模型 API、不自动下一 Action。
 
-`flowkit <status|next|doctor> --input <path>` 从 manager 自身定位资产。status/next 从 target、可选 deliveryId/changeId 及唯一有效 Run 链解析上下文，拒绝 caller 手填 currentRunId/changeStartSequence。Agent 准备通过后先保存真实开始，工作后按同一 package/Role 接纳结果、create-once 保存并读回后 STOP；未完成记录不清理、不自动接管。bootstrap-history 只读展示，不转换成 canonical current。普通 Action 不新增 Owner 审批；D05 继续独立 bootstrap。
+`flowkit <status|next|doctor> --input <path>` 从 manager 自身定位资产。status/next 从 target、可选 deliveryId/changeId 及唯一有效 Run 链解析上下文，拒绝 caller 手填 currentRunId/changeStartSequence。Agent 核对合法 Action/Role 后调用本安装的 `action start`，完成真实工作后用同一 Run 的 `action finish` 接纳结果、create-once 保存并读回后 STOP；必要材料可用 `proof inspect` 核对。未完成记录不清理、不自动接管。bootstrap-history 只读展示，不转换成 canonical current。普通 Action 不新增 Owner 审批；当前 D07 仍由外部 Stable manager 管理。
 
 候选验收以一个有界真实 Author 工作及同一 build 的独立查询读回为实际示例；review/revise 合成 fixtures 不声称独立 Review。不强制第二套安装、两个真人 Change 或制造 finding，仍运行适用平台/安装回归；不是 Formal Full Test。
 
@@ -414,9 +414,9 @@ exact Owner authorization fact
 → checkpoint authorized / not authorized
 ```
 
-Candidate CLI 不执行 `git add` / `git commit` / push / merge / tag。
+Candidate CLI 的 `git checkpoint/push/integrate` 仅在独立明确 Owner 授权和当前事实核对后执行对应固定节点；`integrate` 不代替外部 PR/merge 接受。Policy readiness、Review、Full Test 或 Final 均不自动提供 Git 权限。
 
-普通 Git 节点由已有 Agent/宿主显式调用 manager 自有 `skills/delivery/repository-integration/references/git-host.mjs`（runCheckpoint/runPush/runIntegration）；不新增 CLI 写命令或 Git Run。普通节点不要求 Final，Change checkpoint 保留既有 evaluator；Integration 独立消费已确认 Final/singleton/source。create-new 绑定 exact paths/message/nullable shape，写前核对完整待提交 index，不夹带范围外 staged、不清空用户 index，不要求无关 worktree clean。push/复用不触碰无关 index；部分成功交接已确认对象及剩余步骤，不盲重试或回写 SHA 再 commit。此产品入口不改变 D05 independent-bootstrap authority。
+普通 Git 节点由 Agent 根据真实 Owner 输入调用本安装的 `flowkit git checkpoint` / `git push`；`git integrate` 独立消费已确认 Final/singleton/source。普通节点不要求 Final，Change checkpoint 保留既有 evaluator；固定请求只接受封闭数据，不要求动态导入 `git-host.mjs` 或提供 callback。create-new 绑定 exact paths/message/nullable shape，写前核对完整待提交 index，不夹带范围外 staged、不清空用户 index，不要求无关 worktree clean。push/复用不触碰无关 index；部分成功交接已确认对象及剩余步骤，不盲重试或回写 SHA 再 commit。不新建 Git Run；此产品入口不改变当前 Delivery 外部 Stable manager authority。
 
 ## 16. Cross-Delivery Memo
 

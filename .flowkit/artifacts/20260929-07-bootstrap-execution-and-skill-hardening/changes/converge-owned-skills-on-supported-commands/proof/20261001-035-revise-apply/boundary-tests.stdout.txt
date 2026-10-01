@@ -1,0 +1,40 @@
+TAP version 13
+# Subtest: fixed CLI starts and finishes one Author Run across processes, then confirms exact retry
+ok 1 - fixed CLI starts and finishes one Author Run across processes, then confirms exact retry
+  ---
+  duration_ms: 7148.9959
+  type: 'test'
+  ...
+# Subtest: prepared Owner correction binds conversation source across CLI processes without changing predecessor
+ok 2 - prepared Owner correction binds conversation source across CLI processes without changing predecessor
+  ---
+  duration_ms: 4479.0227
+  type: 'test'
+  ...
+# Subtest: terminal Author FAIL with null boundary is readable and does not advance Policy
+ok 3 - terminal Author FAIL with null boundary is readable and does not advance Policy
+  ---
+  duration_ms: 2574.1792
+  type: 'test'
+  ...
+# Subtest: fixed Full Test request retries are read-only and a new attempt needs distinct Owner fact
+ok 4 - fixed Full Test request retries are read-only and a new attempt needs distinct Owner fact
+  ---
+  duration_ms: 2025.3497
+  type: 'test'
+  ...
+# Subtest: fixed Integration preserves pending checkpoint and confirms externally accepted ref
+ok 5 - fixed Integration preserves pending checkpoint and confirms externally accepted ref
+  ---
+  duration_ms: 7670.6243
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 14454.538

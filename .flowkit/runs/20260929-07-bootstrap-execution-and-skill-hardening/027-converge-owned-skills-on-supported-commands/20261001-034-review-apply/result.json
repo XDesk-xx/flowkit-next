@@ -1,0 +1,137 @@
+{
+  "runId": "20261001-034-review-apply",
+  "actionIdentity": {
+    "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+    "changeId": "converge-owned-skills-on-supported-commands",
+    "actionId": "review-apply"
+  },
+  "authorConclusion": null,
+  "reviewerVerdict": "changes-requested",
+  "verificationVerdict": null,
+  "nextBoundary": "revise-apply",
+  "facts": {
+    "reviewedRunId": "20261001-033-apply",
+    "approvedProposalRunId": "20261001-032-review-propose",
+    "reviewedResultSha256": "623e82ba15fc3a7b8476eb6e0d72fe9c08e6f5f1bbcba57e0279e6e88aaa4f6e",
+    "reviewedArtifactHashes": {
+      "AGENTS.md": "f30b0196357c71df8a0fcbf461372669e0a007b26ac603cc80bcb24d1b2648f9",
+      "README.md": "da6c85d0fc9213f3863c34973363601849dcafc5ee00bcd91682cd823d80e2a8",
+      "docs/onboarding.md": "b5b10aeaf364b8ad86e2df2479ff57cd395158c91e668987f94cebb2d6868bd7",
+      "openspec/changes/converge-owned-skills-on-supported-commands/design.md": "b441da5a382c1e7b58515061e10346495e8cfb6de60071a5475b61002d438ca9",
+      "openspec/changes/converge-owned-skills-on-supported-commands/explore.md": "cac9f90f73faf1f5dc7668c965031ed596a2c02ff33e41bc12ca0e0cade91a88",
+      "openspec/changes/converge-owned-skills-on-supported-commands/proposal.md": "15ace563176679cdf1a72d38fdf8e7e0aef741687863b69fe021c6825e9dc4fe",
+      "openspec/changes/converge-owned-skills-on-supported-commands/specs/action-guidance-execution/spec.md": "8bf25ba7b8dd35c7e0c4723cb8d82f7dc6181377cf2fadef06769b2f00ed0099",
+      "openspec/changes/converge-owned-skills-on-supported-commands/specs/stable-delivery-support-command-execution/spec.md": "422a19054437e476e50d6f87a6d3381771a92a1c76f86c1de6dce1298c65ef54",
+      "openspec/changes/converge-owned-skills-on-supported-commands/tasks.md": "8b6377fa70c704def7378fdb6dedab6abbde0180baa41db9da726c88b3dfa2d1",
+      "openspec/delivery-groups/20260929-07-bootstrap-execution-and-skill-hardening.yaml": "d4c5ae056a285db2c655cbe61aab8b8887038ddd43e52c321b3b43837facdfcb",
+      "skills/actions/apply/SKILL.md": "fcf2270ecf674f7b8e8ad3956e2fc0e085441ab98868ffa6c39a23554df94ac0",
+      "skills/actions/archive/SKILL.md": "4d3cc2451535e55fe8d90f9e7b537baaabec97e95cee531510b0564ecefa0019",
+      "skills/actions/explore/SKILL.md": "3ad1408c7d4040d81365299cb3bff352d661f30f72744a9c960fa414a41d6db8",
+      "skills/actions/propose/SKILL.md": "c6f7628492711fbfa6b3a1d849ff218c9006945383df9608c555e10b89e3d15c",
+      "skills/actions/review-apply/SKILL.md": "88172d24a477580f3fe4dd54b6e23deb8783c63deee22154ab4429277fb3b3ef",
+      "skills/actions/review-explore/SKILL.md": "a7347be21e21a68c7c27b2dd1b8464a044110c74333db2867e1f9fd39bca93f5",
+      "skills/actions/review-propose/SKILL.md": "1bc519739e2d03a91f9b6723a620a2f06577c8b8ac9caf59c2c02a8f6ce71153",
+      "skills/actions/revise-apply/SKILL.md": "6a10b3dfaea348bc3fa6a0ed438c7a60d65cc18c46d56ed445f8e5ff72cb9c9a",
+      "skills/actions/revise-explore/SKILL.md": "540fcd8f45ed4e5d48fe0cd9341529561ad515c727432e48a7e780af8b4e2a8f",
+      "skills/actions/revise-propose/SKILL.md": "472581df025518b2c4e312add15315086a8313024a246cb718dc0ead2ff23eda",
+      "skills/delivery/final/SKILL.md": "ffaf514fde21a1a406190600af87658c18eb6ffe9204ebdd5ab78c11a9c37a9e",
+      "skills/delivery/full-test/SKILL.md": "01cdc0765a4f597826c70cd8aef2c02c7e83e995d8ab9d742f742d9e531e9d14",
+      "skills/delivery/repository-integration/SKILL.md": "63ea10df87e5d9843d5acd07213e73fd996e325729f73d005e81614b7b8fe31b",
+      "skills/delivery/repository-integration/references/host-call.md": "7df7a10f37c3acbe0bcac2b813ee71433c062f35d18c4705e40dd4499cbfbc89",
+      "skills/delivery/start/SKILL.md": "c7cfd1ea10154cfde683c7236b892e1b5c50ad728af0d1a10d5867295c45d93b",
+      "skills/tools/openspec/SKILL.md": "aa7944721e3d3bd98e0adf41c67c2a3fd150be3c9dcb2d637a54dbec1652759a",
+      "src/README.md": "2ed75a875c418d77082a265be5d625d618e3d531917e5927048201e21fcf49b1"
+    },
+    "currentStep": "独立审查 C 的 exact Apply，核对已批准的自有 HOW 固定命令收敛、proof 生产规则、发行资产与角色验收；不执行 Author 修订。",
+    "complexityMinimality": "变更集中于自有 Skill/README/onboarding/AGENTS 和任务勾选；没有 production TS、依赖、新机制或 D 的机器 proof 扫描。范围保持最小，但存在批准范围内未完成事项。",
+    "newContentScopeDrift": "scope drift: NONE。保留外部 Stable manager 权威、C/D 分工及历史/vendor/bootstrap；未发现超范围产品能力。",
+    "evidence": [
+      "外部 Stable manager 的 canonical start 建立 034；Guidance SHA-256 d75e53f0925b2bf12f264d44a7d00c7046eea5bb5cca7c62016f8ae88597ceb8。",
+      "独立核对 Author Result 27 项 artifactHashes、全部 28 项 proof 唯一声明/目录闭合集/归属/regular-file/no-link/Git bytes/SHA；结果一致。",
+      "复核全部 12 条命令元数据与原始 stdout/stderr 身份和退出码，均为 0；已读 363 domain、7 acceptance 的 Author 日志。这不是本次重新执行这些测试，也不是 Formal Full Test。",
+      "独立核对当前 tgz exact bytes/SHA，19 个发行安装内相关文档/Skill 与当前资产 SHA 一致；十个 stale internal proof 指令与 archive 缺失调用均随包发布。",
+      "检查支持命令 parser 和 archive 实现：change archive request 需要 deliveryId/changeId/runId，固定实现执行 OpenSpec 归档与 coordination，先行手动移动不符合其前置。",
+      "acceptance fixture 的 reviewer approved 是 synthetic-kernel；没有以此声称独立 Review 或本次角色验收完成。"
+    ],
+    "findings": [
+      {
+        "id": "D07-C-RA-001",
+        "priority": 2,
+        "title": "当前 HOW 仍要求内部 proof helper 与旧回调返回",
+        "locations": [
+          {
+            "path": "skills/actions/review-apply/SKILL.md",
+            "line": 68
+          },
+          {
+            "path": "skills/delivery/final/SKILL.md",
+            "line": 22
+          }
+        ],
+        "observed": "十个 Action Skill 仍要求调用 domain.assertManagedEvidenceGitBytes 并作为 checkProof 第四参，但当前 Skill 已无 checkProof 定义；Final 仍指示 Agent 返回 defensive package 的 ready/correction-required。发行包逐字保留这些指令，asset-audit.staleScan 却声明已消除正常内部调用。",
+        "impact": "违反批准 task 2.1/3.1/4.1 与两个 delta spec 的固定数据命令合同。按 Skill 执行会要求 Agent 重建内部导入/helper 或旧 callback，不能从已有封闭请求完整执行。",
+        "minimumCorrection": "在全部十个 Action Skill 将字节核验映射至已有 proof inspect/固定 start/finish，保留原始字节要求；Final 明确由固定命令执行既有内部步骤，删除要求 Agent 返回回调形状的正常指令。重新做语义 stale scan 并记录真实分类，不修改产品 TS。"
+      },
+      {
+        "id": "D07-C-RA-002",
+        "priority": 2,
+        "title": "archive HOW 未接入固定 change archive 操作",
+        "locations": [
+          {
+            "path": "skills/actions/archive/SKILL.md",
+            "line": 78
+          },
+          {
+            "path": "skills/tools/openspec/SKILL.md",
+            "line": 16
+          }
+        ],
+        "observed": "archive Skill 完全没有 change archive 调用；Canonical convergence 要求 Agent 使用 OpenSpec 移动 Change，再自行更新完成事实。Tool Skill 又把 change archive 描述为协调步骤。实际 src/cli/support-change-archive.ts 同时执行 OpenSpec archive、ordinal rename 和协调写入，且执行前核对 active Change 与原候选文件哈希。",
+        "impact": "按说明先移动 Change 再调用支持命令会因源文件/active prestate 消失而 incomplete；跳过该命令则绕过 C 批准的固定机械路径。onboarding 一处概述不能消除被要求完整遵守的 archive Skill 中相反顺序。",
+        "minimumCorrection": "在合法 action start 之后、action finish 之前明确调用 change archive，列出 repositoryRoot/flowkitHome/deliveryId/changeId/runId 与可见参数，说明它执行 OpenSpec 及协调步骤；按实际 completed/incomplete/effect 交接已确认或未知效果，保留 ordinal、适用检查、STOP 和工具 authority。"
+      },
+      {
+        "id": "D07-C-RA-003",
+        "priority": 2,
+        "title": "任务 4.2 的独立角色验收缺少真实执行证据",
+        "locations": [
+          {
+            "path": "openspec/changes/converge-owned-skills-on-supported-commands/tasks.md",
+            "line": 20
+          }
+        ],
+        "observed": "任务 4.2 已勾选。完整 28 文件包含 12 条命令记录；发行安装只执行 install 和 --help。未记录独立角色从 onboarding 定位安装/边界/Skill 并执行单个操作的实际过程。已读 acceptance fixture 通过函数直接构造 approved，明确标注 synthetic-kernel；不能替代这一验收。",
+        "impact": "构建、363 domain 与 7 acceptance 的 PASS 证明各自测试，无法证明本次改写 HOW 可由独立角色执行，前两项语义缺陷因此没有被现有验收覆盖。批准 Proposal 指定的角色验收仍未完成。",
+        "minimumCorrection": "先保留此项为未完成；修订后在隔离普通 target 使用同一候选包，真实记录独立角色从 onboarding 找到安装、合法边界和 Skill、一次操作与 STOP，并绑定准确请求、结果和必要 proof。复用真实 blocked/partial/confirmed 测试证据时指明对应案例与限制；不要把合成 Reviewer 当成独立判断，也无需扩展为完整 Delivery 或让候选管理 D07。"
+      }
+    ],
+    "additionalObservation": {
+      "priority": 3,
+      "path": "skills/delivery/full-test/SKILL.md",
+      "line": 12,
+      "observation": "每次调用执行全部检查与第 6 条同请求只读重投冲突；建议收敛为每个明确新 attempt 执行全部检查，保留相同请求幂等返回。"
+    },
+    "limitations": "未重新执行全套测试；本次是 exact artifact/证据与语义审查。没有实际完成 task 4.2 的候选包独立角色操作，不能补 PASS。Reviewer 只写自己的 Run/proof，未修改 Author 内容或执行 Git mutation。",
+    "proofRefs": [
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-034-review-apply/checks.json",
+        "bytes": 15727,
+        "sha256": "58399c90b14c2a7bd70dec91eae9cf7badfdd768ba5a820f0675f3b988d19154",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "converge-owned-skills-on-supported-commands",
+        "runId": "20261001-034-review-apply",
+        "purpose": "Independent exact-candidate semantic review and Author evidence integrity audit"
+      }
+    ],
+    "handoff": {
+      "summary": "changes-requested：Author 按 D07-C-RA-001/002/003 最小 revise-apply，保留已正确 proof 完整声明、角色与 authority 边界；修订后再独立 review-apply。Reviewer STOP。",
+      "ownerDecisions": [],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20261001-034-review-apply",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-034-review-apply/checks.json"
+        }
+      ]
+    }
+  }
+}

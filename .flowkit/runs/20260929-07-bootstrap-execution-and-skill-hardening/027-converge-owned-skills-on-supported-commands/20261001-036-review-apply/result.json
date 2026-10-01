@@ -1,0 +1,254 @@
+{
+  "runId": "20261001-036-review-apply",
+  "actionIdentity": {
+    "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+    "changeId": "converge-owned-skills-on-supported-commands",
+    "actionId": "review-apply"
+  },
+  "authorConclusion": null,
+  "reviewerVerdict": "approved",
+  "verificationVerdict": null,
+  "nextBoundary": "archive",
+  "facts": {
+    "reviewedRunId": "20261001-035-revise-apply",
+    "previousReviewRunId": "20261001-034-review-apply",
+    "approvedProposalRunId": "20261001-032-review-propose",
+    "reviewedResultSha256": "9f365e9219d854956aaefbac1c99fe27b1a7f55f850c8eea0d00a43657908e1f",
+    "reviewedArtifactHashes": {
+      "AGENTS.md": "f30b0196357c71df8a0fcbf461372669e0a007b26ac603cc80bcb24d1b2648f9",
+      "README.md": "da6c85d0fc9213f3863c34973363601849dcafc5ee00bcd91682cd823d80e2a8",
+      "docs/onboarding.md": "b5b10aeaf364b8ad86e2df2479ff57cd395158c91e668987f94cebb2d6868bd7",
+      "openspec/changes/converge-owned-skills-on-supported-commands/design.md": "b441da5a382c1e7b58515061e10346495e8cfb6de60071a5475b61002d438ca9",
+      "openspec/changes/converge-owned-skills-on-supported-commands/explore.md": "cac9f90f73faf1f5dc7668c965031ed596a2c02ff33e41bc12ca0e0cade91a88",
+      "openspec/changes/converge-owned-skills-on-supported-commands/proposal.md": "15ace563176679cdf1a72d38fdf8e7e0aef741687863b69fe021c6825e9dc4fe",
+      "openspec/changes/converge-owned-skills-on-supported-commands/specs/action-guidance-execution/spec.md": "8bf25ba7b8dd35c7e0c4723cb8d82f7dc6181377cf2fadef06769b2f00ed0099",
+      "openspec/changes/converge-owned-skills-on-supported-commands/specs/stable-delivery-support-command-execution/spec.md": "422a19054437e476e50d6f87a6d3381771a92a1c76f86c1de6dce1298c65ef54",
+      "openspec/changes/converge-owned-skills-on-supported-commands/tasks.md": "8b6377fa70c704def7378fdb6dedab6abbde0180baa41db9da726c88b3dfa2d1",
+      "openspec/delivery-groups/20260929-07-bootstrap-execution-and-skill-hardening.yaml": "d4c5ae056a285db2c655cbe61aab8b8887038ddd43e52c321b3b43837facdfcb",
+      "skills/actions/apply/SKILL.md": "4f74198d40e316a16440ba25db13761a2abee8d9643abf1dd71e93a821055949",
+      "skills/actions/archive/SKILL.md": "a44610f6d0005b2e5d0bea0d57b88dc9a3d9de7564d119ab205f60e27bf91da9",
+      "skills/actions/explore/SKILL.md": "79504e4f23eb22052f75d6d350f315db599bd985e2a7f82d9208d4f3b6d9135d",
+      "skills/actions/propose/SKILL.md": "72e852d1aac50620e1cf95f5926a58012efd3afb17fd1970762749bd481df5aa",
+      "skills/actions/review-apply/SKILL.md": "74e330b6ef5a5f4d81d52b7e95a3904c72a4d12442f47a79752c844153b24464",
+      "skills/actions/review-explore/SKILL.md": "9eec79f62456c0962ca0836b27c661846e29baaf08212f647b147817a3c59b36",
+      "skills/actions/review-propose/SKILL.md": "7e7336ca943c05ab79bbb4eae9d90e6261ffb487b59cfb4108f2c9ffdf59ae70",
+      "skills/actions/revise-apply/SKILL.md": "044c1d0caf7c1f1b45becf63f9f0fc5b357431fa79c5ef7589f248d13b53e451",
+      "skills/actions/revise-explore/SKILL.md": "689546d501fc2631696deb802dba0e66684d7c4010c6d02e16dbaae86b19cfba",
+      "skills/actions/revise-propose/SKILL.md": "f9ecc18bb1b4381560a05c6184b8cb372a3ff1e1a8f3ce5512a50407a7eadcaf",
+      "skills/delivery/final/SKILL.md": "6ed4f705a2d2a70e9e0f8a363d9492251157a5785b9b21d95e09b4e9ee788be5",
+      "skills/delivery/full-test/SKILL.md": "2ed4de590b8d942dae19d031deb082b9565bfca2c65f7261dde530b5903eb90a",
+      "skills/delivery/repository-integration/SKILL.md": "63ea10df87e5d9843d5acd07213e73fd996e325729f73d005e81614b7b8fe31b",
+      "skills/delivery/repository-integration/references/host-call.md": "7df7a10f37c3acbe0bcac2b813ee71433c062f35d18c4705e40dd4499cbfbc89",
+      "skills/delivery/start/SKILL.md": "c7cfd1ea10154cfde683c7236b892e1b5c50ad728af0d1a10d5867295c45d93b",
+      "skills/tools/openspec/SKILL.md": "3c6b9ff241d29384a0a081578630a794ec61b19bf0a49024252781593fbd19dc",
+      "src/README.md": "2ed75a875c418d77082a265be5d625d618e3d531917e5927048201e21fcf49b1"
+    },
+    "currentStep": "独立复审 035 对三条 finding 的修订，核对 exact 发行 HOW、真实材料与最小范围，并由本 Reviewer 在隔离普通 target 补充同一候选包的一次实际 HOW 验收。",
+    "complexityMinimality": "实际 13 个文件相对 034 改变：十个 Action Skill、Final、Full Test、OpenSpec Tool Skill；其余 14 项已审文件哈希保持，包括 tasks。实现保持文档范围，无 production TS、依赖、机器 proof 扫描或新体系。",
+    "newContentScopeDrift": "scope drift: NONE。C/D 分工、外部 Stable manager、vendor/bootstrap/历史材料保持；本次隔离验收只测试一个已发行操作。",
+    "resolvedFindings": [
+      {
+        "id": "D07-C-RA-001",
+        "resolution": "十个 Action Skill 已删除 domain.assertManagedEvidenceGitBytes/checkProof 调用义务，明确通过固定 start/proof inspect/finish 核对；Final 把 defensive package 处理归固定命令内部，不要求 Agent 返回 callback 形状。真实方法、proof 完整声明、权限和 STOP 保持。"
+      },
+      {
+        "id": "D07-C-RA-002",
+        "resolution": "archive 明确在 action start 之后、finish 之前调用 change archive；列出五个封闭字段和可见 target，说明 OpenSpec movement/ordinal/coordination 均由命令执行，并按真实 completed/incomplete/effect 处理。Tool Skill 同步取消先手工移动的歧义。"
+      },
+      {
+        "id": "D07-C-RA-003",
+        "resolution": "035 提供 r2 实际安装、请求、project-init 原始流/读回、查询及有界测试；本次独立 Reviewer 又读取同一安装 onboarding/Start Skill，在新隔离 target 经 exact OpenSpec 初始化和 doctor/status/next 查询后，执行一次 project init 并核对 project.json 与 completed/created 响应一致，后续仅只读 status/next 并 STOP。结合已核验的 blocked/partial/confirmed 边界测试，满足 C task 4.2 的有界操作验收；没有用合成 Reviewer verdict 抵扣独立角色执行。"
+      }
+    ],
+    "findings": [],
+    "evidence": [
+      "外部 Stable manager status/next 确认 035 terminal 与 review-apply 边界；doctor pass，OpenSpec 1.10.0。036 由未变化的外部 review-apply Guidance canonical start 建立。",
+      "27 个当前 artifactHashes 全匹配；035 全部 55 个 proof 已核对唯一声明、完整文件集合、归属、no-link/regular-file、bytes/SHA 与 Git 原始字节规则。",
+      "r2 candidate-package.tgz SHA-256 eb150a8ba685ae4a2fc205c6c06de1ceee1d77c3776f3e292db2e9f750a210fd、bytes 156663 匹配；18 项安装内当前发行资产哈希与候选一致。",
+      "读取并校验 Author targeted tests 7 PASS、boundary tests 5 PASS 的必要元数据和原始流；支持请求、archive、跨进程 Action、Full Test readonly retry 和 Integration partial/外部接受测试各按实际用途消费。没有声称重跑旧 363 domain / 7 acceptance。",
+      "独立逐资产 stale scan 未再发现 checkProof/assertManagedEvidenceGitBytes 正常调用义务；archive 请求及返回效果与支持 parser/source 一致；Full Test 明确新 attempt 与同请求重投。",
+      "本 Reviewer 实际执行的安装包操作及前后查询均记录命令、时间、退出码、原始 stdout/stderr；新 proof 共 18 文件全部声明。目标仅有初始化 project.json，无 Delivery/Change/Action/Review/Git 操作。"
+    ],
+    "nonBlockingObservations": [
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-035-revise-apply/correction-audit.json",
+        "observation": "changedSinceReview 中 tasks 的 afterSha256 是中间状态，scope 的 14 文件计数据此产生；当前 tasks 已回到 034 原字节，035 Result 正确绑定当前哈希。因此实际 changed=13、unchanged=14。以本次独立读回为准，无须重写旧 proof。"
+      }
+    ],
+    "limitations": "独立复现只证明 C 的发行 HOW 和固定命令在隔离 fixture 的有界操作；sourceRef 明确为验证 fixture，不创造真实业务 Owner 权限，不是独立产品 Reviewer verdict、真实新会话接受或完整 Delivery 验收。没有执行 Formal Full Test；审核批准不授予 Git。",
+    "proofRefs": [
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-036-review-apply/after-next.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "converge-owned-skills-on-supported-commands",
+        "runId": "20261001-036-review-apply",
+        "purpose": "Independent revision review and bounded installed-package HOW acceptance"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-036-review-apply/after-next.stdout.txt",
+        "bytes": 66,
+        "sha256": "ef0fe799e9a9ec547c31b833576d628535e5da3e81bba437282b9421a4921c86",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "converge-owned-skills-on-supported-commands",
+        "runId": "20261001-036-review-apply",
+        "purpose": "Independent revision review and bounded installed-package HOW acceptance"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-036-review-apply/after-status.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "converge-owned-skills-on-supported-commands",
+        "runId": "20261001-036-review-apply",
+        "purpose": "Independent revision review and bounded installed-package HOW acceptance"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-036-review-apply/after-status.stdout.txt",
+        "bytes": 237,
+        "sha256": "0ca085c8a7e02d97e41c238d3ba43e1f77032ae872b2e44b6e02a0bd68817a00",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "converge-owned-skills-on-supported-commands",
+        "runId": "20261001-036-review-apply",
+        "purpose": "Independent revision review and bounded installed-package HOW acceptance"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-036-review-apply/before-doctor.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "converge-owned-skills-on-supported-commands",
+        "runId": "20261001-036-review-apply",
+        "purpose": "Independent revision review and bounded installed-package HOW acceptance"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-036-review-apply/before-doctor.stdout.txt",
+        "bytes": 172,
+        "sha256": "5c360f7f42aed20a7c178ad539c282d15217ad08d9e4cb6b907e2b37e32c65b7",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "converge-owned-skills-on-supported-commands",
+        "runId": "20261001-036-review-apply",
+        "purpose": "Independent revision review and bounded installed-package HOW acceptance"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-036-review-apply/before-next.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "converge-owned-skills-on-supported-commands",
+        "runId": "20261001-036-review-apply",
+        "purpose": "Independent revision review and bounded installed-package HOW acceptance"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-036-review-apply/before-next.stdout.txt",
+        "bytes": 66,
+        "sha256": "ef0fe799e9a9ec547c31b833576d628535e5da3e81bba437282b9421a4921c86",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "converge-owned-skills-on-supported-commands",
+        "runId": "20261001-036-review-apply",
+        "purpose": "Independent revision review and bounded installed-package HOW acceptance"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-036-review-apply/before-status.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "converge-owned-skills-on-supported-commands",
+        "runId": "20261001-036-review-apply",
+        "purpose": "Independent revision review and bounded installed-package HOW acceptance"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-036-review-apply/before-status.stdout.txt",
+        "bytes": 237,
+        "sha256": "0ca085c8a7e02d97e41c238d3ba43e1f77032ae872b2e44b6e02a0bd68817a00",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "converge-owned-skills-on-supported-commands",
+        "runId": "20261001-036-review-apply",
+        "purpose": "Independent revision review and bounded installed-package HOW acceptance"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-036-review-apply/checks.json",
+        "bytes": 11218,
+        "sha256": "06f4709264e961c3e2924b71f7b9b2357b81bf8da36f0c3edb0378f883faf0d7",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "converge-owned-skills-on-supported-commands",
+        "runId": "20261001-036-review-apply",
+        "purpose": "Independent revision review and bounded installed-package HOW acceptance"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-036-review-apply/openspec-init.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "converge-owned-skills-on-supported-commands",
+        "runId": "20261001-036-review-apply",
+        "purpose": "Independent revision review and bounded installed-package HOW acceptance"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-036-review-apply/openspec-init.stdout.txt",
+        "bytes": 323,
+        "sha256": "26411fceb8b20ad63cf140f9ea3425acddd79a20bd4e482d01da6711e45e8069",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "converge-owned-skills-on-supported-commands",
+        "runId": "20261001-036-review-apply",
+        "purpose": "Independent revision review and bounded installed-package HOW acceptance"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-036-review-apply/project-init.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "converge-owned-skills-on-supported-commands",
+        "runId": "20261001-036-review-apply",
+        "purpose": "Independent revision review and bounded installed-package HOW acceptance"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-036-review-apply/project-init.stdout.txt",
+        "bytes": 322,
+        "sha256": "96da826d2062154a55fa600c7a76b04734c7b0ae092a0b6c30226b5c98ea09e4",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "converge-owned-skills-on-supported-commands",
+        "runId": "20261001-036-review-apply",
+        "purpose": "Independent revision review and bounded installed-package HOW acceptance"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-036-review-apply/project.json",
+        "bytes": 176,
+        "sha256": "2f3996772df80b113532216a8f9422d0d705e84ba2c1dce4310e1ad767eec2d7",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "converge-owned-skills-on-supported-commands",
+        "runId": "20261001-036-review-apply",
+        "purpose": "Independent revision review and bounded installed-package HOW acceptance"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-036-review-apply/query.json",
+        "bytes": 130,
+        "sha256": "880df0ea01a4ee3b34aa1e562347280e8ca3f7fae56be39239dfd5d3becac691",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "converge-owned-skills-on-supported-commands",
+        "runId": "20261001-036-review-apply",
+        "purpose": "Independent revision review and bounded installed-package HOW acceptance"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-036-review-apply/request.json",
+        "bytes": 338,
+        "sha256": "75a0ce09a9c87a9eb01e5fdfa507295cd353f3635236925debcb4fd06611b3ee",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "converge-owned-skills-on-supported-commands",
+        "runId": "20261001-036-review-apply",
+        "purpose": "Independent revision review and bounded installed-package HOW acceptance"
+      }
+    ],
+    "handoff": {
+      "summary": "三条 finding 与 Full Test 表述观察均已收敛；review-apply approved。后续合法边界交由外部 Stable manager 查询，本 Reviewer 在 036 terminal 后 STOP。",
+      "ownerDecisions": [],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20261001-036-review-apply",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-036-review-apply/checks.json"
+        }
+      ]
+    }
+  }
+}

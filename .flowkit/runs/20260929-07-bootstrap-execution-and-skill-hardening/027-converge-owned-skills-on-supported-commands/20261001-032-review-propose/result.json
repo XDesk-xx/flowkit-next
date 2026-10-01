@@ -1,0 +1,89 @@
+{
+  "runId": "20261001-032-review-propose",
+  "actionIdentity": {
+    "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+    "changeId": "converge-owned-skills-on-supported-commands",
+    "actionId": "review-propose"
+  },
+  "authorConclusion": null,
+  "reviewerVerdict": "approved",
+  "verificationVerdict": null,
+  "nextBoundary": "apply",
+  "facts": {
+    "reviewedRunId": "20261001-031-revise-propose",
+    "previousReviewRunId": "20261001-030-review-propose",
+    "approvedExploreReviewRunId": "20261001-028-review-explore",
+    "reviewedResultSha256": "768124ed7bed3aa6b71de0097cdc7cd89dc86c4ade16fd875d71980076502d6d",
+    "planningRoot": "openspec/changes/converge-owned-skills-on-supported-commands",
+    "reviewedArtifactHashes": {
+      "design.md": "b441da5a382c1e7b58515061e10346495e8cfb6de60071a5475b61002d438ca9",
+      "tasks.md": "2f0171fd311b4d8246c9296c7bef46032f27e6b970c09135689fb66748262ad9",
+      "proposal.md": "15ace563176679cdf1a72d38fdf8e7e0aef741687863b69fe021c6825e9dc4fe",
+      "specs/action-guidance-execution/spec.md": "8bf25ba7b8dd35c7e0c4723cb8d82f7dc6181377cf2fadef06769b2f00ed0099",
+      "specs/stable-delivery-support-command-execution/spec.md": "422a19054437e476e50d6f87a6d3381771a92a1c76f86c1de6dce1298c65ef54"
+    },
+    "currentStep": "独立复审 031 对 D07-C-RP-001 的最小规划修订，核对真实导出、任务验收依据、已审合同保持和 Apply 准备程度。",
+    "evidence": [
+      "外部 Stable manager status/next 确认 031 terminal revise-propose 后合法 review-propose；doctor pass、exact OpenSpec 1.10.0。032 以本安装未变化的 review-propose Guidance 和 canonical start 建立。",
+      "五份规划文件 regular-file/no-link 与 SHA-256 匹配 031 的 revised/unchanged 身份；已批准 Explore 内容未变。proposal 与两个 delta spec 均匹配 030 已审哈希。",
+      "将当前 design:40 和 tasks:14 各自替换为上一轮所读原句后，整文件 SHA-256 恢复为 030 的旧身份，确认只有两处目标行变更，其余内容保持。",
+      "当前 git-host.mjs SHA-256 仍为 cd57ff06916b35d8b68ea92734b4e6c3c46ba9cf492ece101f1574713434313b；独立加载确认 runCheckpoint/runPush/runIntegration 均为 function，没有调用任何 Git 函数。",
+      "修订 design 准确陈述三个导出；task 3.2 聚焦默认 HOW 迁移、真实消费者核对与无有效消费者才退役，消除了将正确导出视为缺失的错误完成标准。",
+      "独立 managed OpenSpec validate --strict exit 0。原始 stdout/stderr 和命令/修订核验摘要共三个 proof 文件均完整声明；这证明结构校验，不替代后续 Apply 实现验收。"
+    ],
+    "resolvedFindings": [
+      {
+        "id": "D07-C-RP-001",
+        "resolution": "导出事实已更正且与真实模块一致；任务不再以删除正确 runIntegration 说明为目标，仅在默认 HOW 迁移中按真实消费者决定是否退役旧 reference。"
+      }
+    ],
+    "findings": [],
+    "complexityMinimality": "仅改 design 的对应资产行和 task 3.2；无产品接口、能力、依赖、状态或新子系统。保持上一轮完整审查通过的范围与验证路径。",
+    "newContentScopeDrift": "scope drift: NONE。C 的自有 HOW/proof 生产规则与 D 的机器检查分工、外部 Stable manager、vendor/历史/bootstrap 不变；未引入新的 Owner 或 Git 权限。",
+    "limitations": "本次批准 Proposal，未执行 Apply 或 Formal Full Test；后续仍须实现逐资产处置、真实数据例及发行/角色验收。未修改 Author 产物或执行 Git mutation。",
+    "proofRefs": [
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-032-review-propose/validate.stdout.txt",
+        "bytes": 62,
+        "sha256": "adaf9777d5c57295abd939862f6e3bf4b932442aa3ba4fc6457f295aebbb0680",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "converge-owned-skills-on-supported-commands",
+        "runId": "20261001-032-review-propose",
+        "purpose": "independent-proposal-revision-verification"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-032-review-propose/validate.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "converge-owned-skills-on-supported-commands",
+        "runId": "20261001-032-review-propose",
+        "purpose": "independent-proposal-revision-verification"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-032-review-propose/checks.json",
+        "bytes": 727,
+        "sha256": "e8df4fc4d32a2039b68b2caa2979f4106a60d98d33debc29d5978003c14b3627",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "converge-owned-skills-on-supported-commands",
+        "runId": "20261001-032-review-propose",
+        "purpose": "independent-proposal-revision-verification"
+      }
+    ],
+    "handoff": {
+      "summary": "review-propose approved；D07-C-RP-001 已关闭。可按本次 exact Proposal 进入 Apply，保留最小范围与 C/D 分工；Reviewer 到此 STOP。",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-10-01:backup-commit-activate-c-proof-explore",
+          "summary": "Owner requested a separate local backup for B's undeclared proof and activated C for proof Explore; B backup remains reference only."
+        }
+      ],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20261001-032-review-propose",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/converge-owned-skills-on-supported-commands/proof/20261001-032-review-propose/checks.json"
+        }
+      ]
+    }
+  }
+}

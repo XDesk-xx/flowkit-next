@@ -1,0 +1,279 @@
+{
+  "reviewedRunId": "20261001-033-apply",
+  "checkedAt": "2026-10-01T01:33:03.220Z",
+  "checks": [
+    {
+      "id": "archive-fixed-command-absent",
+      "observed": true,
+      "source": "skills/actions/archive/SKILL.md:76-86",
+      "impact": "Archive HOW directs OpenSpec movement and coordination updates but omits the fixed command that performs both. Running OpenSpec first conflicts with archiveChange prechecks."
+    },
+    {
+      "id": "final-agent-callback-instruction-remains",
+      "observed": true,
+      "source": "skills/delivery/final/SKILL.md:22"
+    },
+    {
+      "id": "full-test-invocation-versus-attempt-wording",
+      "observed": true,
+      "source": "skills/delivery/full-test/SKILL.md:12-14",
+      "classification": "additional clarification needed: every new attempt, not every invocation"
+    },
+    {
+      "id": "role-acceptance-evidence-gap",
+      "observed": true,
+      "source": "openspec/changes/converge-owned-skills-on-supported-commands/tasks.md:20",
+      "evidence": "12 captured commands are build, acceptance, typecheck, quality, pack, package-list, help, domain, openspec, diff-check, install, installed-help; no recorded independent role following onboarding to execute one operation. Existing test suite output is automated fixture evidence.",
+      "fixtureSource": "tests/acceptance/foundation-manager-fixture.ts:214-241 directly constructs reviewer approved with acceptance=synthetic-kernel; this is not independent role execution."
+    }
+  ],
+  "staleInternalCalls": [
+    {
+      "path": "skills/actions/explore/SKILL.md",
+      "line": 106,
+      "excerpt": "原始流按 Buffer bytes 保存，使用 `stdout.txt`、`stderr.txt`、`*.stdout.txt`、`*.stderr.txt`；命令、起止时间、实际退出状态及环境限制另存必要摘要，secret 不收集。不得为通过文本检查格式化原始流，也不得把脚本、Run JSON、摘要改名冒充日志。本仓库四条通用 attributes 规则覆盖这些原始流，不逐 Change 追加例外，不与 `.gitignore` 或 Full Test 范围绑定；其他 target 的 Git 配置仍由该项目控制。今后新 Run 的三个 exact 文件路径在开始前检查；新必要 proof 的 exact 路径在接纳前用本次 manager domain.assertManagedEvidenceGitBytes 核对，作为 checkProof 的第四个参数传入。结构化证据保留空白诊断，历史证据不追溯。"
+    },
+    {
+      "path": "skills/actions/review-explore/SKILL.md",
+      "line": 84,
+      "excerpt": "原始流按 Buffer bytes 保存，使用 `stdout.txt`、`stderr.txt`、`*.stdout.txt`、`*.stderr.txt`；命令、起止时间、实际退出状态及环境限制另存必要摘要，secret 不收集。不得为通过文本检查格式化原始流，也不得把脚本、Run JSON、摘要改名冒充日志。本仓库四条通用 attributes 规则覆盖这些原始流，不逐 Change 追加例外，不与 `.gitignore` 或 Full Test 范围绑定；其他 target 的 Git 配置仍由该项目控制。今后新 Run 的三个 exact 文件路径在开始前检查；新必要 proof 的 exact 路径在接纳前用本次 manager domain.assertManagedEvidenceGitBytes 核对，作为 checkProof 的第四个参数传入。结构化证据保留空白诊断，历史证据不追溯。"
+    },
+    {
+      "path": "skills/actions/revise-explore/SKILL.md",
+      "line": 62,
+      "excerpt": "原始流按 Buffer bytes 保存，使用 `stdout.txt`、`stderr.txt`、`*.stdout.txt`、`*.stderr.txt`；命令、起止时间、实际退出状态及环境限制另存必要摘要，secret 不收集。不得为通过文本检查格式化原始流，也不得把脚本、Run JSON、摘要改名冒充日志。本仓库四条通用 attributes 规则覆盖这些原始流，不逐 Change 追加例外，不与 `.gitignore` 或 Full Test 范围绑定；其他 target 的 Git 配置仍由该项目控制。今后新 Run 的三个 exact 文件路径在开始前检查；新必要 proof 的 exact 路径在接纳前用本次 manager domain.assertManagedEvidenceGitBytes 核对，作为 checkProof 的第四个参数传入。结构化证据保留空白诊断，历史证据不追溯。"
+    },
+    {
+      "path": "skills/actions/propose/SKILL.md",
+      "line": 63,
+      "excerpt": "原始流按 Buffer bytes 保存，使用 `stdout.txt`、`stderr.txt`、`*.stdout.txt`、`*.stderr.txt`；命令、起止时间、实际退出状态及环境限制另存必要摘要，secret 不收集。不得为通过文本检查格式化原始流，也不得把脚本、Run JSON、摘要改名冒充日志。本仓库四条通用 attributes 规则覆盖这些原始流，不逐 Change 追加例外，不与 `.gitignore` 或 Full Test 范围绑定；其他 target 的 Git 配置仍由该项目控制。今后新 Run 的三个 exact 文件路径在开始前检查；新必要 proof 的 exact 路径在接纳前用本次 manager domain.assertManagedEvidenceGitBytes 核对，作为 checkProof 的第四个参数传入。结构化证据保留空白诊断，历史证据不追溯。"
+    },
+    {
+      "path": "skills/actions/review-propose/SKILL.md",
+      "line": 70,
+      "excerpt": "原始流按 Buffer bytes 保存，使用 `stdout.txt`、`stderr.txt`、`*.stdout.txt`、`*.stderr.txt`；命令、起止时间、实际退出状态及环境限制另存必要摘要，secret 不收集。不得为通过文本检查格式化原始流，也不得把脚本、Run JSON、摘要改名冒充日志。本仓库四条通用 attributes 规则覆盖这些原始流，不逐 Change 追加例外，不与 `.gitignore` 或 Full Test 范围绑定；其他 target 的 Git 配置仍由该项目控制。今后新 Run 的三个 exact 文件路径在开始前检查；新必要 proof 的 exact 路径在接纳前用本次 manager domain.assertManagedEvidenceGitBytes 核对，作为 checkProof 的第四个参数传入。结构化证据保留空白诊断，历史证据不追溯。"
+    },
+    {
+      "path": "skills/actions/revise-propose/SKILL.md",
+      "line": 46,
+      "excerpt": "原始流按 Buffer bytes 保存，使用 `stdout.txt`、`stderr.txt`、`*.stdout.txt`、`*.stderr.txt`；命令、起止时间、实际退出状态及环境限制另存必要摘要，secret 不收集。不得为通过文本检查格式化原始流，也不得把脚本、Run JSON、摘要改名冒充日志。本仓库四条通用 attributes 规则覆盖这些原始流，不逐 Change 追加例外，不与 `.gitignore` 或 Full Test 范围绑定；其他 target 的 Git 配置仍由该项目控制。今后新 Run 的三个 exact 文件路径在开始前检查；新必要 proof 的 exact 路径在接纳前用本次 manager domain.assertManagedEvidenceGitBytes 核对，作为 checkProof 的第四个参数传入。结构化证据保留空白诊断，历史证据不追溯。"
+    },
+    {
+      "path": "skills/actions/apply/SKILL.md",
+      "line": 65,
+      "excerpt": "原始流按 Buffer bytes 保存，使用 `stdout.txt`、`stderr.txt`、`*.stdout.txt`、`*.stderr.txt`；命令、起止时间、实际退出状态及环境限制另存必要摘要，secret 不收集。不得为通过文本检查格式化原始流，也不得把脚本、Run JSON、摘要改名冒充日志。本仓库四条通用 attributes 规则覆盖这些原始流，不逐 Change 追加例外，不与 `.gitignore` 或 Full Test 范围绑定；其他 target 的 Git 配置仍由该项目控制。今后新 Run 的三个 exact 文件路径在开始前检查；新必要 proof 的 exact 路径在接纳前用本次 manager domain.assertManagedEvidenceGitBytes 核对，作为 checkProof 的第四个参数传入。结构化证据保留空白诊断，历史证据不追溯。"
+    },
+    {
+      "path": "skills/actions/review-apply/SKILL.md",
+      "line": 68,
+      "excerpt": "原始流按 Buffer bytes 保存，使用 `stdout.txt`、`stderr.txt`、`*.stdout.txt`、`*.stderr.txt`；命令、起止时间、实际退出状态及环境限制另存必要摘要，secret 不收集。不得为通过文本检查格式化原始流，也不得把脚本、Run JSON、摘要改名冒充日志。本仓库四条通用 attributes 规则覆盖这些原始流，不逐 Change 追加例外，不与 `.gitignore` 或 Full Test 范围绑定；其他 target 的 Git 配置仍由该项目控制。今后新 Run 的三个 exact 文件路径在开始前检查；新必要 proof 的 exact 路径在接纳前用本次 manager domain.assertManagedEvidenceGitBytes 核对，作为 checkProof 的第四个参数传入。结构化证据保留空白诊断，历史证据不追溯。"
+    },
+    {
+      "path": "skills/actions/revise-apply/SKILL.md",
+      "line": 59,
+      "excerpt": "原始流按 Buffer bytes 保存，使用 `stdout.txt`、`stderr.txt`、`*.stdout.txt`、`*.stderr.txt`；命令、起止时间、实际退出状态及环境限制另存必要摘要，secret 不收集。不得为通过文本检查格式化原始流，也不得把脚本、Run JSON、摘要改名冒充日志。本仓库四条通用 attributes 规则覆盖这些原始流，不逐 Change 追加例外，不与 `.gitignore` 或 Full Test 范围绑定；其他 target 的 Git 配置仍由该项目控制。今后新 Run 的三个 exact 文件路径在开始前检查；新必要 proof 的 exact 路径在接纳前用本次 manager domain.assertManagedEvidenceGitBytes 核对，作为 checkProof 的第四个参数传入。结构化证据保留空白诊断，历史证据不追溯。"
+    },
+    {
+      "path": "skills/actions/archive/SKILL.md",
+      "line": 108,
+      "excerpt": "原始流按 Buffer bytes 保存，使用 `stdout.txt`、`stderr.txt`、`*.stdout.txt`、`*.stderr.txt`；命令、起止时间、实际退出状态及环境限制另存必要摘要，secret 不收集。不得为通过文本检查格式化原始流，也不得把脚本、Run JSON、摘要改名冒充日志。本仓库四条通用 attributes 规则覆盖这些原始流，不逐 Change 追加例外，不与 `.gitignore` 或 Full Test 范围绑定；其他 target 的 Git 配置仍由该项目控制。今后新 Run 的三个 exact 文件路径在开始前检查；新必要 proof 的 exact 路径在接纳前用本次 manager domain.assertManagedEvidenceGitBytes 核对，作为 checkProof 的第四个参数传入。结构化证据保留空白诊断，历史证据不追溯。"
+    }
+  ],
+  "installedAssetMatches": [
+    {
+      "path": "skills/actions/explore/SKILL.md",
+      "sha256": "3ad1408c7d4040d81365299cb3bff352d661f30f72744a9c960fa414a41d6db8"
+    },
+    {
+      "path": "skills/actions/review-explore/SKILL.md",
+      "sha256": "a7347be21e21a68c7c27b2dd1b8464a044110c74333db2867e1f9fd39bca93f5"
+    },
+    {
+      "path": "skills/actions/revise-explore/SKILL.md",
+      "sha256": "540fcd8f45ed4e5d48fe0cd9341529561ad515c727432e48a7e780af8b4e2a8f"
+    },
+    {
+      "path": "skills/actions/propose/SKILL.md",
+      "sha256": "c6f7628492711fbfa6b3a1d849ff218c9006945383df9608c555e10b89e3d15c"
+    },
+    {
+      "path": "skills/actions/review-propose/SKILL.md",
+      "sha256": "1bc519739e2d03a91f9b6723a620a2f06577c8b8ac9caf59c2c02a8f6ce71153"
+    },
+    {
+      "path": "skills/actions/revise-propose/SKILL.md",
+      "sha256": "472581df025518b2c4e312add15315086a8313024a246cb718dc0ead2ff23eda"
+    },
+    {
+      "path": "skills/actions/apply/SKILL.md",
+      "sha256": "fcf2270ecf674f7b8e8ad3956e2fc0e085441ab98868ffa6c39a23554df94ac0"
+    },
+    {
+      "path": "skills/actions/review-apply/SKILL.md",
+      "sha256": "88172d24a477580f3fe4dd54b6e23deb8783c63deee22154ab4429277fb3b3ef"
+    },
+    {
+      "path": "skills/actions/revise-apply/SKILL.md",
+      "sha256": "6a10b3dfaea348bc3fa6a0ed438c7a60d65cc18c46d56ed445f8e5ff72cb9c9a"
+    },
+    {
+      "path": "skills/actions/archive/SKILL.md",
+      "sha256": "4d3cc2451535e55fe8d90f9e7b537baaabec97e95cee531510b0564ecefa0019"
+    },
+    {
+      "path": "skills/delivery/start/SKILL.md",
+      "sha256": "c7cfd1ea10154cfde683c7236b892e1b5c50ad728af0d1a10d5867295c45d93b"
+    },
+    {
+      "path": "skills/delivery/full-test/SKILL.md",
+      "sha256": "01cdc0765a4f597826c70cd8aef2c02c7e83e995d8ab9d742f742d9e531e9d14"
+    },
+    {
+      "path": "skills/delivery/final/SKILL.md",
+      "sha256": "ffaf514fde21a1a406190600af87658c18eb6ffe9204ebdd5ab78c11a9c37a9e"
+    },
+    {
+      "path": "skills/delivery/repository-integration/SKILL.md",
+      "sha256": "63ea10df87e5d9843d5acd07213e73fd996e325729f73d005e81614b7b8fe31b"
+    },
+    {
+      "path": "skills/delivery/repository-integration/references/host-call.md",
+      "sha256": "7df7a10f37c3acbe0bcac2b813ee71433c062f35d18c4705e40dd4499cbfbc89"
+    },
+    {
+      "path": "skills/delivery/repository-integration/references/git-host.mjs",
+      "sha256": "cd57ff06916b35d8b68ea92734b4e6c3c46ba9cf492ece101f1574713434313b"
+    },
+    {
+      "path": "skills/tools/openspec/SKILL.md",
+      "sha256": "aa7944721e3d3bd98e0adf41c67c2a3fd150be3c9dcb2d637a54dbec1652759a"
+    },
+    {
+      "path": "README.md",
+      "sha256": "da6c85d0fc9213f3863c34973363601849dcafc5ee00bcd91682cd823d80e2a8"
+    },
+    {
+      "path": "docs/onboarding.md",
+      "sha256": "b5b10aeaf364b8ad86e2df2479ff57cd395158c91e668987f94cebb2d6868bd7"
+    }
+  ],
+  "commandRecords": [
+    {
+      "id": "build",
+      "command": [
+        "pnpm",
+        "build"
+      ],
+      "exitCode": 0
+    },
+    {
+      "id": "acceptance",
+      "command": [
+        "pnpm",
+        "test:acceptance"
+      ],
+      "exitCode": 0
+    },
+    {
+      "id": "typecheck",
+      "command": [
+        "pnpm",
+        "typecheck"
+      ],
+      "exitCode": 0
+    },
+    {
+      "id": "quality",
+      "command": [
+        "pnpm",
+        "quality:gate"
+      ],
+      "exitCode": 0
+    },
+    {
+      "id": "pack",
+      "command": [
+        "pnpm",
+        "pack",
+        "--pack-destination",
+        "D:\\Projects\\flowkit-next\\.tmp\\d07-c-pack"
+      ],
+      "exitCode": 0
+    },
+    {
+      "id": "package-list",
+      "command": [
+        "tar",
+        "-tf",
+        "D:\\Projects\\flowkit-next\\.tmp\\d07-c-pack\\flowkit-next-0.1.0.tgz"
+      ],
+      "exitCode": 0
+    },
+    {
+      "id": "help",
+      "command": [
+        "node",
+        "dist/cli/entrypoint.js",
+        "--help"
+      ],
+      "exitCode": 0
+    },
+    {
+      "id": "domain",
+      "command": [
+        "pnpm",
+        "test:domain"
+      ],
+      "exitCode": 0
+    },
+    {
+      "id": "openspec",
+      "command": [
+        "node",
+        "C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js",
+        "validate",
+        "converge-owned-skills-on-supported-commands",
+        "--strict"
+      ],
+      "exitCode": 0
+    },
+    {
+      "id": "diff-check",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exitCode": 0
+    },
+    {
+      "id": "install",
+      "command": [
+        "npm",
+        "install",
+        "--prefix",
+        "D:\\Projects\\flowkit-next\\.tmp\\d07-c-install",
+        "--no-audit",
+        "--no-fund",
+        "--ignore-scripts",
+        "D:\\Projects\\flowkit-next\\.tmp\\d07-c-pack\\flowkit-next-0.1.0.tgz"
+      ],
+      "exitCode": 0
+    },
+    {
+      "id": "installed-help",
+      "command": [
+        "node",
+        "D:\\Projects\\flowkit-next\\.tmp\\d07-c-install\\node_modules\\flowkit-next\\dist\\cli\\entrypoint.js",
+        "--help"
+      ],
+      "exitCode": 0
+    }
+  ],
+  "limits": "Read-only semantic and integrity review; no candidate operation on D07, no synthetic independent-role acceptance, no Formal Full Test.",
+  "candidatePackage": {
+    "path": ".tmp/d07-c-pack/flowkit-next-0.1.0.tgz",
+    "bytes": 156145,
+    "sha256": "c0de898205c3e47a25cdae113310456c0d5f39c781208dcfea7d3f0b4483ab70"
+  }
+}

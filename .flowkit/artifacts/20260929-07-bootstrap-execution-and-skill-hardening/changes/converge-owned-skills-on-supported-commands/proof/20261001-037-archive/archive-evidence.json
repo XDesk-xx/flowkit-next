@@ -1,0 +1,242 @@
+{
+  "runId": "20261001-037-archive",
+  "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+  "changeId": "converge-owned-skills-on-supported-commands",
+  "projectOrdinal": 46,
+  "archivePath": "openspec/changes/archive/2026-10-01-046-converge-owned-skills-on-supported-commands",
+  "sourceRemoval": "openspec/changes/converge-owned-skills-on-supported-commands",
+  "reviewedRunId": "20261001-036-review-apply",
+  "authorRunId": "20261001-035-revise-apply",
+  "openSpec": {
+    "change": "converge-owned-skills-on-supported-commands",
+    "archivedAs": "2026-10-01-converge-owned-skills-on-supported-commands",
+    "path": "D:\\Projects\\flowkit-next\\openspec\\changes\\archive\\2026-10-01-converge-owned-skills-on-supported-commands",
+    "specsUpdated": true,
+    "totals": {
+      "added": 3,
+      "modified": 0,
+      "removed": 0,
+      "renamed": 0
+    }
+  },
+  "preflight": {
+    "specHashes": {
+      "action-guidance-execution": "fcc8e4dbcfbd3eea2f167bcc494060877a98ef2ff21e8c05226f784aa016aa16",
+      "stable-delivery-support-command-execution": "07cb714ff248600d33eab35d1acfc04f771d62476938d7c2564dc6085c89f6e4"
+    },
+    "completedManifestHash": "78df4e4b0d553e0dbd685b731fc9bd0f8dff56c433c4380c868899bb5424e05e",
+    "commands": [
+      {
+        "id": "install",
+        "program": "powershell.exe",
+        "args": [
+          "-NoProfile",
+          "-NonInteractive",
+          "-Command",
+          "pnpm install --frozen-lockfile"
+        ],
+        "startedAt": "2026-10-01T02:12:17.052Z",
+        "finishedAt": "2026-10-01T02:12:20.176Z",
+        "exitCode": 0,
+        "signal": null,
+        "processError": null,
+        "stdoutBytes": 830,
+        "stdoutSha256": "48377e2f140790aaa9fbbb56a5c7aaf792f0226a3efe8e4a1fbb404ea46e688d",
+        "stderrBytes": 0,
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "id": "archive-dry-run",
+        "program": "C:\\nvm4w\\nodejs\\node.exe",
+        "args": [
+          "C:\\Users\\xuser\\.flowkit\\tools\\openspec\\1.10.0\\bin\\openspec.js",
+          "archive",
+          "converge-owned-skills-on-supported-commands",
+          "--yes",
+          "--json"
+        ],
+        "startedAt": "2026-10-01T02:12:20.177Z",
+        "finishedAt": "2026-10-01T02:12:21.558Z",
+        "exitCode": 0,
+        "signal": null,
+        "processError": null,
+        "stdoutBytes": 559,
+        "stdoutSha256": "94cab20e0e209c7d1640c9135a0ff6bda9e2f21ff26799d68597ceca9d604669",
+        "stderrBytes": 0,
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "id": "build",
+        "program": "powershell.exe",
+        "args": [
+          "-NoProfile",
+          "-NonInteractive",
+          "-Command",
+          "pnpm run build"
+        ],
+        "startedAt": "2026-10-01T02:12:21.560Z",
+        "finishedAt": "2026-10-01T02:12:25.266Z",
+        "exitCode": 0,
+        "signal": null,
+        "processError": null,
+        "stdoutBytes": 0,
+        "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrBytes": 36,
+        "stderrSha256": "8f5c6a9c4aade0d032984516a14b38a2d12cb1e6b333ab3568f9dde2ba3e3470"
+      },
+      {
+        "id": "test-domain",
+        "program": "powershell.exe",
+        "args": [
+          "-NoProfile",
+          "-NonInteractive",
+          "-Command",
+          "pnpm run test:domain"
+        ],
+        "startedAt": "2026-10-01T02:12:25.266Z",
+        "finishedAt": "2026-10-01T02:14:01.136Z",
+        "exitCode": 0,
+        "signal": null,
+        "processError": null,
+        "stdoutBytes": 77003,
+        "stdoutSha256": "34294e6263fe12dfa2766d361d64ecefe33c0dc82167463735447b31f7dd48b6",
+        "stderrBytes": 55,
+        "stderrSha256": "aae00296a00317fb5d8157cc46c908dd4c7bfd3ac1d52b647091d4c256ef13c6"
+      },
+      {
+        "id": "test-acceptance",
+        "program": "powershell.exe",
+        "args": [
+          "-NoProfile",
+          "-NonInteractive",
+          "-Command",
+          "pnpm run test:acceptance"
+        ],
+        "startedAt": "2026-10-01T02:14:01.136Z",
+        "finishedAt": "2026-10-01T02:14:25.884Z",
+        "exitCode": 0,
+        "signal": null,
+        "processError": null,
+        "stdoutBytes": 1707,
+        "stdoutSha256": "c3d23d83778779d08ddb713c70b935c90e2179935222bdd8b47d1eb59154f8bd",
+        "stderrBytes": 54,
+        "stderrSha256": "03a28f841eea36c0ec13f6dea3ea69c782e389ad940fcfaf6d419d0e4fff319b"
+      },
+      {
+        "id": "typecheck",
+        "program": "powershell.exe",
+        "args": [
+          "-NoProfile",
+          "-NonInteractive",
+          "-Command",
+          "pnpm run typecheck"
+        ],
+        "startedAt": "2026-10-01T02:14:25.884Z",
+        "finishedAt": "2026-10-01T02:14:30.147Z",
+        "exitCode": 0,
+        "signal": null,
+        "processError": null,
+        "stdoutBytes": 0,
+        "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrBytes": 15,
+        "stderrSha256": "8366207267355d3e3d5bf3bf6e8c94c5f93f6078c34f08973fa2b38cdda6cc92"
+      },
+      {
+        "id": "quality-gate",
+        "program": "powershell.exe",
+        "args": [
+          "-NoProfile",
+          "-NonInteractive",
+          "-Command",
+          "pnpm run quality:gate"
+        ],
+        "startedAt": "2026-10-01T02:14:30.147Z",
+        "finishedAt": "2026-10-01T02:14:39.360Z",
+        "exitCode": 0,
+        "signal": null,
+        "processError": null,
+        "stdoutBytes": 66,
+        "stdoutSha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20",
+        "stderrBytes": 192,
+        "stderrSha256": "9ccaf1b94533f97d77e53271cbcbe105b2181b73bdcdc804c213feb0145b94f3"
+      },
+      {
+        "id": "quality-dependency-health",
+        "program": "powershell.exe",
+        "args": [
+          "-NoProfile",
+          "-NonInteractive",
+          "-Command",
+          "pnpm run quality:dependency-health"
+        ],
+        "startedAt": "2026-10-01T02:14:39.360Z",
+        "finishedAt": "2026-10-01T02:14:43.741Z",
+        "exitCode": 0,
+        "signal": null,
+        "processError": null,
+        "stdoutBytes": 81,
+        "stdoutSha256": "12408321fb2f17ab8c2594d0de01dcab8ad7c98da1c4ad34b17729000d1f568b",
+        "stderrBytes": 79,
+        "stderrSha256": "fa9ba6bb542e83e254b5bae92765b5ba9e0505c12e1e49f6c11dbf41c51f8775"
+      },
+      {
+        "id": "quality-entropy",
+        "program": "powershell.exe",
+        "args": [
+          "-NoProfile",
+          "-NonInteractive",
+          "-Command",
+          "pnpm run quality:entropy"
+        ],
+        "startedAt": "2026-10-01T02:14:43.741Z",
+        "finishedAt": "2026-10-01T02:14:47.268Z",
+        "exitCode": 0,
+        "signal": null,
+        "processError": null,
+        "stdoutBytes": 64,
+        "stdoutSha256": "d319dfdba3772c44a7690ac3174c8f4378d95147254adcdbfae29558574fa252",
+        "stderrBytes": 49,
+        "stderrSha256": "7db8734f9a79ab0e050617ecdfb19b5819eb70b528b921de90840d1c8efe0973"
+      }
+    ]
+  },
+  "actual": {
+    "archive": {
+      "command": [
+        "node",
+        "C:\\Users\\xuser\\.flowkit\\tools\\openspec\\1.10.0\\bin\\openspec.js",
+        "archive",
+        "converge-owned-skills-on-supported-commands",
+        "--yes",
+        "--json"
+      ],
+      "startedAt": "2026-10-01T02:15:07.574Z",
+      "finishedAt": "2026-10-01T02:15:09.363Z",
+      "exitCode": 0,
+      "signal": null,
+      "processError": null,
+      "stdoutBytes": 495,
+      "stdoutSha256": "5c06b3949cff252527aea1c0090ebfdf0c17811e372bd33ffb876566e9cfd710",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "validation": {
+      "command": [
+        "node",
+        "C:\\Users\\xuser\\.flowkit\\tools\\openspec\\1.10.0\\bin\\openspec.js",
+        "validate",
+        "--all",
+        "--strict"
+      ],
+      "startedAt": "2026-10-01T02:15:09.372Z",
+      "finishedAt": "2026-10-01T02:15:11.881Z",
+      "exitCode": 0,
+      "signal": null,
+      "processError": null,
+      "stdoutBytes": 997,
+      "stdoutSha256": "d19d84f62f985cb545abe2e705fb40279ef05360f2fcfee2c965e12c6bb7091f",
+      "stderrBytes": 16,
+      "stderrSha256": "5bc31df123a2e521acdd2c0d9477b367feec506471a91065d0a6b32c09089ed5"
+    }
+  }
+}

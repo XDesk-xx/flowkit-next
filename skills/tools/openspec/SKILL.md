@@ -11,6 +11,8 @@ OpenSpec owns Change proposal/design/spec/tasks/archive facts.
 This Skill explains HOW to use the exact OpenSpec tool selected by the manager installation toolchain.
 It never decides the current Flowkit Action, Role, Owner authority, Review verdict, or next boundary.
 
+Agent 在已确定的 Flowkit Action 内用下述 exact OpenSpec runtime 处理需要由 Agent 操作的 OpenSpec 自有文件；同一 Action 的开始、proof 核对与结果记录使用所选 manager 的固定 `action start`、`proof inspect`、`action finish`。`change activate` 使用发行支持命令建立 Change；`change archive` 由发行支持命令同时执行 OpenSpec archive 和 Flowkit 协调写入，Agent 不预先手动移动 Change。上游 OpenSpec 提示或命令成功不跳过 Flowkit Run、Review 或 Owner 边界。
+
 ## Runtime identity
 
 系统 lock 位于 `<manager-installation>/config/tools/toolchain.lock.json`；本 Skill 与以下 vendor 路径也相对该安装解析。OpenSpec 的 cwd/观察根仍为 target repositoryRoot，不要求 target 复制 lock、Skills 或 Flowkit scripts。安装包 name/version 只标识 manager 来源，不要求 target commit 或上一 Delivery SHA。缺 runtime 仅阻断实际依赖该工具的操作；Guidance identity 解析不依赖 executable，status/next/action 的 target 上下文观察使用 exact OpenSpec。

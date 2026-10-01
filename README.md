@@ -29,7 +29,7 @@ CLI 查询入口为 `status / next / doctor --input <request.json>`；单次 Act
 
 项目 Full Test 由 `config/verification/full-test.json` 的 inputs/exclude/environment/checks 配置，与 .gitignore、Git index、HEAD 独立。每次真实执行形成新 attempt，由 Delivery fullTestAttempt 关联 target 的 `.flowkit/artifacts/<delivery>/full-test/`；新失败或 partial 不回用旧 PASS。不是所有项目固定共用六项测试。
 
-Action 必要 proof 在 target `.flowkit/artifacts/<delivery>/changes/<change>/proof/<run-id>/`，按需交接引用；.tmp 仅承载可丢弃材料。旧证据不代替当前实现验收，原始 stdout/stderr 保留 bytes。
+Action 必要 proof 在 target `.flowkit/artifacts/<delivery>/changes/<change>/proof/<run-id>/`；生产 Run 的 `proofRefs` 须完整声明该目录的全部文件及 bytes/SHA，后继 Action 才按当前判断需要选择已声明引用交接。`.tmp` 仅承载可丢弃材料。旧证据不代替当前实现验收，原始 stdout/stderr 保留 bytes。
 
 本仓库开发检查见 package.json：typecheck、build、test:domain、test:acceptance；quality:gate 聚合 bounded 格式、lint 与既有 650 行要求。历史/bootstrap 自检单独用 test:bootstrap，不属于代码 Full Test。禁止入库内容检查与 Git 空白诊断独立，不把非代码历史日志空白当作代码失败。
 

@@ -53,8 +53,8 @@ node $cli next --input $requestFile
 | 用途 | 项目事实及既有入口 |
 | --- | --- |
 | 只读查询 | 实际 target、OpenSpec root、runtime 与请求；没有 active 可以返回 idle |
-| 首次项目 / Delivery Start | Owner 确认项目身份、真实规划、Delivery 和范围；读取 manager 的 `skills/delivery/start/SKILL.md` 及其模块示例，准备 `.flowkit/project.json` 和固定 `openspec/delivery-groups/<deliveryId>.yaml` |
-| 激活 / 首次 Explore | Owner 明确 activation，OpenSpec 创建 Change，manifest 保存真实决定和来源；首次 Explore 按对应 HOW 一次分配 projectOrdinal |
+| 首次项目 / Delivery Start | Owner 确认项目身份、真实规划、Delivery 和范围；读取 manager 的 `skills/delivery/start/SKILL.md`，按各自边界调用 `project init` 与 `delivery start` 固定命令并读回 |
+| 激活 / 首次 Explore | Owner 明确 activation；调用 `change activate` 建立 Change scaffold 与 manifest 决定，首次 Explore 按对应 HOW 一次分配 projectOrdinal |
 | 单次 Action | 查询合法边界后读对应 Action Skill，真实开始、工作、接纳、固定三文件保存读回，然后 STOP |
 | Full Test | 进入该授权节点才准备 target 自有 `config/verification/full-test.json`，读取 manager 的 `skills/delivery/full-test/SKILL.md` |
 
@@ -73,7 +73,7 @@ node $cli status --input $queryRequestFile
 node $cli next --input $queryRequestFile
 ```
 
-`proof inspect` 请求另含 `runId` 与受控 proof `path`；只有实际必要材料才调用。finish 请求含 `runId`、`role`、`terminal` 与真实 `RunResultRecord`。仅返回 `effect=confirmed` 才表示三文件和 canonical chain 已读回；这不代表业务 PASS。prepared Owner correction 仅由收到真实 Owner 指令的受信宿主在 start 请求中加入现有 `OwnerAuthorityFact`，finish 不再重填。archive start 另需非空 `applicableChecks: [{id,reason}]`，由 Agent 声明实际适用且已在 target `package.json` scripts 或 `config/verification/full-test.json` checks 中配置的检查；隔离 convergence 后执行，未配置或失败则阻断。Reviewer `rejected` 是可报告的真实判断，但当前固定 finish 会在 machine 文件写前拒绝其持久化并保持 incomplete；不得改写成 `changes-requested`。普通 Action 不需要新增 Owner fact，Review、Full Test 与 Git 边界仍独立。
+`proof inspect` 请求另含 `runId` 与受控 proof `path`；只有实际必要材料才调用。生产者在 finish 前须将本 Run 正式 proof 目录的**全部文件**逐一纳入本 Run `proofRefs`，每条含归属、路径、用途、bytes 与 SHA；若目录有三个文件而只列一个，应保持未完成并补齐真实声明。无新材料时不建空目录，使用空 `proofRefs`。后续 Action 的 handoff 可只交接本次判断需要的已声明引用，不删减原 Run Result。finish 请求含 `runId`、`role`、`terminal` 与真实 `RunResultRecord`。仅返回 `effect=confirmed` 才表示三文件和 canonical chain 已读回；这不代表业务 PASS。prepared Owner correction 仅由收到真实 Owner 指令的受信宿主在 start 请求中加入现有 `OwnerAuthorityFact`，finish 不再重填。archive start 另需非空 `applicableChecks: [{id,reason}]`，由 Agent 声明实际适用且已在 target `package.json` scripts 或 `config/verification/full-test.json` checks 中配置的检查；隔离 convergence 后执行，未配置或失败则阻断。Reviewer `rejected` 是可报告的真实判断，但当前固定 finish 会在 machine 文件写前拒绝其持久化并保持 incomplete；不得改写成 `changes-requested`。普通 Action 不需要新增 Owner fact，Review、Full Test 与 Git 边界仍独立。
 
 候选 CLI 的支持命令为 `project init`、`delivery start`、`change activate`、`change archive`、`memo list/get/create/promote/dismiss`、`delivery full-test`、`delivery full-test current`、`delivery final` 和 `git checkpoint/push/integrate`。每个 JSON 请求都含 `repositoryRoot`、`flowkitHome`；Delivery/Change 命令另含各自 ID，并与可见参数一致。例如：
 
@@ -81,6 +81,17 @@ node $cli next --input $queryRequestFile
 node $cli project init --repository-root $target --input $projectRequestFile
 node $cli delivery full-test current --repository-root $target --delivery-id $deliveryId --input $currentRequestFile
 node $cli change archive --repository-root $target --delivery-id $deliveryId --change-id $changeId --input $archiveRequestFile
+```
+
+例如在已存在的 Delivery 上只读查询当前 Full Test，沿用第 2 节的 `$target`、`$toolHome`、`$cli`，以同一目标生成封闭请求：
+
+```powershell
+$deliveryId = (node $cli status --input $requestFile | ConvertFrom-Json).deliveryId
+if (-not $deliveryId) { throw 'No current Delivery; select an exact Delivery before this query' }
+$currentRequestFile = Join-Path $scratch ('flowkit-full-test-current-' + [guid]::NewGuid().ToString('N') + '.json')
+$currentRequest = @{ repositoryRoot = $target; flowkitHome = $toolHome; deliveryId = $deliveryId }
+[IO.File]::WriteAllText($currentRequestFile, ($currentRequest | ConvertTo-Json), [Text.UTF8Encoding]::new($false))
+node $cli delivery full-test current --repository-root $target --delivery-id $deliveryId --input $currentRequestFile
 ```
 
 写命令的 `OwnerAuthorityFact`/`sourceRef` 由 Agent 根据真实 Owner 指令声明；CLI 核对结构、目标和当前正式前置，不监听或认证聊天。`project init` 在尚无 Delivery 时仅需明确项目接入 `sourceRef`。Full Test run 请求另含预先固定的 UUID v4 `attemptId` 和从 `delivery full-test current` 读取的 nullable `expectedCurrentAttemptId`；同次重投沿用两者并只读返回，明确新运行使用新 ID 和不同 Owner fact。`change archive` 先由 `action start` 建立合法 archive Action，命令只做 OpenSpec/协调内容；Author 随后用 `action finish` 保存真实 Result。`git integrate` 在 PR/merge 尚未由外部接受时交接待办，不把 checkpoint 视为接受完成。外部接受后用 exact checkpoint 的 `reuse-existing` 请求核对目标 main ref；只有 main 已离开授权 base 且包含该 commit，固定命令才只读确认接受。

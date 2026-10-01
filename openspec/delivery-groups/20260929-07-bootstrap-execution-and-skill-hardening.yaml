@@ -31,7 +31,8 @@ changes:
     goal: "同步收敛自有 Skills、HOW、示例和接入说明，使发行指令与已支持命令一致并保留角色及证据方法。"
     required: true
     dependsOn: ["expose-stable-action-and-record-commands", "expose-stable-delivery-and-support-commands"]
-    state: planned
+    state: completed
+    projectOrdinal: 46
   - id: "enforce-typed-evidence-and-bounded-execution"
     group: "engineering-quality"
     goal: "约束新增 TypeScript 入口、证据与临时材料用途，并以窄权限方式执行固定命令，不扩大宿主解释器授权。"
@@ -68,6 +69,13 @@ ownerDecisions:
     changeId: "expose-stable-delivery-and-support-commands"
     sourceRef: "owner-input:2026-09-30:backup-branch-then-restart-b"
     scope: ["explore"]
+  - ref: "owner:28f771588c9423c709081e2f14c1e14dd5567e321dc2a70d759604f4297a34e8"
+    decision: "activate-change"
+    deliveryId: "20260929-07-bootstrap-execution-and-skill-hardening"
+    changeId: "converge-owned-skills-on-supported-commands"
+    sourceRef: "owner-input:2026-10-01:backup-commit-activate-c-proof-explore"
+    scope:
+      - "explore"
 reference:
   kind: "owner-selected-delivery-plan"
   artifact: "docs/D07-bootstrap-execution-and-skill-hardening-plan.md"

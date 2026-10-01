@@ -1,0 +1,297 @@
+{
+  "runId": "20261001-036-review-apply",
+  "reviewedRunId": "20261001-035-revise-apply",
+  "changedSince034": [
+    "skills/actions/apply/SKILL.md",
+    "skills/actions/archive/SKILL.md",
+    "skills/actions/explore/SKILL.md",
+    "skills/actions/propose/SKILL.md",
+    "skills/actions/review-apply/SKILL.md",
+    "skills/actions/review-explore/SKILL.md",
+    "skills/actions/review-propose/SKILL.md",
+    "skills/actions/revise-apply/SKILL.md",
+    "skills/actions/revise-explore/SKILL.md",
+    "skills/actions/revise-propose/SKILL.md",
+    "skills/delivery/final/SKILL.md",
+    "skills/delivery/full-test/SKILL.md",
+    "skills/tools/openspec/SKILL.md"
+  ],
+  "unchangedReviewedAssets": 14,
+  "auditDifferences": [
+    {
+      "path": "openspec/changes/converge-owned-skills-on-supported-commands/tasks.md",
+      "auditAfter": "6d05d8e522abb566f8834a4ceeaffaba470f754ef00591ea76b16f704e93260f",
+      "actual": "8b6377fa70c704def7378fdb6dedab6abbde0180baa41db9da726c88b3dfa2d1"
+    }
+  ],
+  "auditDifferenceAssessment": "Author correction-audit has stale intermediate tasks hash and count; tasks bytes match previous reviewed tasks and current Result artifactHashes. This does not invalidate the bound candidate. No historical proof was edited.",
+  "packageIdentity": {
+    "path": ".tmp/d07-c-revise-pack-r2/flowkit-next-0.1.0.tgz",
+    "bytes": 156663,
+    "sha256": "eb150a8ba685ae4a2fc205c6c06de1ceee1d77c3776f3e292db2e9f750a210fd"
+  },
+  "installedAssetCount": 18,
+  "authorMetadataChecked": [
+    "targeted-tests",
+    "openspec",
+    "diff-check",
+    "pack",
+    "install",
+    "installed-help",
+    "r2-pack",
+    "r2-install",
+    "r2-help",
+    "final-openspec",
+    "final-diff-check"
+  ],
+  "authorBoundaryTests": {
+    "exitCode": 0,
+    "passed": 5
+  },
+  "resolvedSemantics": [
+    "All ten internal proof-helper obligations replaced by fixed commands",
+    "Archive fixed command owns OpenSpec movement and coordination; exact request and partial effects match source",
+    "Final removes Agent callback return obligation",
+    "Full Test distinguishes new attempt from repeated request"
+  ],
+  "independentRoleAcceptance": {
+    "operator": "Current independent Reviewer, not the Author of 035",
+    "target": "D:\\Projects\\flowkit-next\\.tmp\\reviewer036-target-FuBMaf",
+    "installation": "D:\\Projects\\flowkit-next\\.tmp\\d07-c-revise-install-r2\\node_modules\\flowkit-next",
+    "packageBin": "dist/cli/entrypoint.js",
+    "guidance": [
+      {
+        "path": "docs/onboarding.md",
+        "sha256": "b5b10aeaf364b8ad86e2df2479ff57cd395158c91e668987f94cebb2d6868bd7"
+      },
+      {
+        "path": "skills/delivery/start/SKILL.md",
+        "sha256": "c7cfd1ea10154cfde683c7236b892e1b5c50ad728af0d1a10d5867295c45d93b"
+      }
+    ],
+    "before": {
+      "doctor": {
+        "kind": "doctor",
+        "status": "pass",
+        "diagnostics": [
+          {
+            "id": "openspec-runtime",
+            "status": "pass",
+            "version": "1.10.0"
+          },
+          {
+            "id": "openspec-root",
+            "status": "pass",
+            "activeChangeCount": 0
+          }
+        ]
+      },
+      "status": {
+        "kind": "status",
+        "status": "idle",
+        "repositoryRoot": "D:\\Projects\\flowkit-next\\.tmp\\reviewer036-target-FuBMaf",
+        "deliveryId": null,
+        "changeId": null,
+        "changeState": null,
+        "currentRun": null,
+        "openSpec": {
+          "activeChangeIds": [],
+          "exactChange": null
+        }
+      },
+      "next": {
+        "kind": "next",
+        "status": "idle",
+        "decision": null,
+        "checkpoint": null
+      }
+    },
+    "operation": {
+      "request": {
+        "repositoryRoot": "D:\\Projects\\flowkit-next\\.tmp\\reviewer036-target-FuBMaf",
+        "flowkitHome": "C:/Users/xuser/.flowkit",
+        "projectId": "reviewer036-guidance-acceptance",
+        "repository": "local:isolated-review-fixture",
+        "runtimeFamily": "new",
+        "sourceRef": "reviewer-verification:20261001-036:isolated-project-init-fixture"
+      },
+      "result": {
+        "command": "project init",
+        "target": {
+          "repositoryRoot": "D:\\Projects\\flowkit-next\\.tmp\\reviewer036-target-FuBMaf"
+        },
+        "status": "completed",
+        "effect": "created",
+        "project": {
+          "formatVersion": 1,
+          "projectId": "reviewer036-guidance-acceptance",
+          "repository": "local:isolated-review-fixture",
+          "runtimeFamily": "new",
+          "state": "initialized"
+        }
+      },
+      "projectSha256": "2f3996772df80b113532216a8f9422d0d705e84ba2c1dce4310e1ad767eec2d7"
+    },
+    "after": {
+      "status": {
+        "kind": "status",
+        "status": "idle",
+        "repositoryRoot": "D:\\Projects\\flowkit-next\\.tmp\\reviewer036-target-FuBMaf",
+        "deliveryId": null,
+        "changeId": null,
+        "changeState": null,
+        "currentRun": null,
+        "openSpec": {
+          "activeChangeIds": [],
+          "exactChange": null
+        }
+      },
+      "next": {
+        "kind": "next",
+        "status": "idle",
+        "decision": null,
+        "checkpoint": null
+      }
+    },
+    "stop": "One project init operation, followed only by readonly status/next. No Delivery/Change/Action/Review/Git operation on this test target.",
+    "limits": "Synthetic isolated fixture identity only. This is an independent Reviewer execution of C bounded HOW acceptance; not genuine project Owner authority, independent product Reviewer verdict, fresh-session acceptance or full Delivery acceptance."
+  },
+  "commands": [
+    {
+      "id": "openspec-init",
+      "program": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js",
+        "init",
+        "--tools",
+        "none"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\reviewer036-target-FuBMaf",
+      "startedAt": "2026-10-01T02:03:31.015Z",
+      "endedAt": "2026-10-01T02:03:33.344Z",
+      "exitCode": 0,
+      "error": null,
+      "stdoutBytes": 323,
+      "stdoutSha256": "26411fceb8b20ad63cf140f9ea3425acddd79a20bd4e482d01da6711e45e8069",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "before-doctor",
+      "program": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "D:\\Projects\\flowkit-next\\.tmp\\d07-c-revise-install-r2\\node_modules\\flowkit-next\\dist\\cli\\entrypoint.js",
+        "doctor",
+        "--input",
+        "D:\\Projects\\flowkit-next\\.tmp\\reviewer036-target-FuBMaf\\reviewer-query.json"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\reviewer036-target-FuBMaf",
+      "startedAt": "2026-10-01T02:03:33.346Z",
+      "endedAt": "2026-10-01T02:03:34.957Z",
+      "exitCode": 0,
+      "error": null,
+      "stdoutBytes": 172,
+      "stdoutSha256": "5c360f7f42aed20a7c178ad539c282d15217ad08d9e4cb6b907e2b37e32c65b7",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "before-status",
+      "program": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "D:\\Projects\\flowkit-next\\.tmp\\d07-c-revise-install-r2\\node_modules\\flowkit-next\\dist\\cli\\entrypoint.js",
+        "status",
+        "--input",
+        "D:\\Projects\\flowkit-next\\.tmp\\reviewer036-target-FuBMaf\\reviewer-query.json"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\reviewer036-target-FuBMaf",
+      "startedAt": "2026-10-01T02:03:34.957Z",
+      "endedAt": "2026-10-01T02:03:37.466Z",
+      "exitCode": 0,
+      "error": null,
+      "stdoutBytes": 237,
+      "stdoutSha256": "0ca085c8a7e02d97e41c238d3ba43e1f77032ae872b2e44b6e02a0bd68817a00",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "before-next",
+      "program": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "D:\\Projects\\flowkit-next\\.tmp\\d07-c-revise-install-r2\\node_modules\\flowkit-next\\dist\\cli\\entrypoint.js",
+        "next",
+        "--input",
+        "D:\\Projects\\flowkit-next\\.tmp\\reviewer036-target-FuBMaf\\reviewer-query.json"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\reviewer036-target-FuBMaf",
+      "startedAt": "2026-10-01T02:03:37.466Z",
+      "endedAt": "2026-10-01T02:03:39.756Z",
+      "exitCode": 0,
+      "error": null,
+      "stdoutBytes": 66,
+      "stdoutSha256": "ef0fe799e9a9ec547c31b833576d628535e5da3e81bba437282b9421a4921c86",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "project-init",
+      "program": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "D:\\Projects\\flowkit-next\\.tmp\\d07-c-revise-install-r2\\node_modules\\flowkit-next\\dist\\cli\\entrypoint.js",
+        "project",
+        "init",
+        "--repository-root",
+        "D:\\Projects\\flowkit-next\\.tmp\\reviewer036-target-FuBMaf",
+        "--input",
+        "D:\\Projects\\flowkit-next\\.tmp\\reviewer036-target-FuBMaf\\reviewer-init.json"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\reviewer036-target-FuBMaf",
+      "startedAt": "2026-10-01T02:03:39.757Z",
+      "endedAt": "2026-10-01T02:03:42.047Z",
+      "exitCode": 0,
+      "error": null,
+      "stdoutBytes": 322,
+      "stdoutSha256": "96da826d2062154a55fa600c7a76b04734c7b0ae092a0b6c30226b5c98ea09e4",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "after-status",
+      "program": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "D:\\Projects\\flowkit-next\\.tmp\\d07-c-revise-install-r2\\node_modules\\flowkit-next\\dist\\cli\\entrypoint.js",
+        "status",
+        "--input",
+        "D:\\Projects\\flowkit-next\\.tmp\\reviewer036-target-FuBMaf\\reviewer-query.json"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\reviewer036-target-FuBMaf",
+      "startedAt": "2026-10-01T02:03:42.048Z",
+      "endedAt": "2026-10-01T02:03:44.585Z",
+      "exitCode": 0,
+      "error": null,
+      "stdoutBytes": 237,
+      "stdoutSha256": "0ca085c8a7e02d97e41c238d3ba43e1f77032ae872b2e44b6e02a0bd68817a00",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "after-next",
+      "program": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "D:\\Projects\\flowkit-next\\.tmp\\d07-c-revise-install-r2\\node_modules\\flowkit-next\\dist\\cli\\entrypoint.js",
+        "next",
+        "--input",
+        "D:\\Projects\\flowkit-next\\.tmp\\reviewer036-target-FuBMaf\\reviewer-query.json"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\reviewer036-target-FuBMaf",
+      "startedAt": "2026-10-01T02:03:44.585Z",
+      "endedAt": "2026-10-01T02:03:47.093Z",
+      "exitCode": 0,
+      "error": null,
+      "stdoutBytes": 66,
+      "stdoutSha256": "ef0fe799e9a9ec547c31b833576d628535e5da3e81bba437282b9421a4921c86",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

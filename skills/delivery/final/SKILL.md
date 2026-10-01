@@ -7,6 +7,8 @@ description: 在已授权 Final 边界消费相关完成终点与当前 Full Tes
 
 只执行已确定的 `delivery-final`。精确 singleton finalize-delivery/delivery-final Owner authority 与同一 manager 的 content-bound Guidance 保持；不回退到 target 同名系统材料或 `.agents/skills/**`。
 
+在本次独立 Owner 授权和下列真实前置均满足后，调用选定 manager 的 `flowkit delivery final --repository-root <target> --delivery-id <deliveryId> --input <request.json>`；封闭请求只含 `repositoryRoot`、`flowkitHome`、`deliveryId`、真实 `ownerAuthority`。读取退出码、JSON `status`/`effect` 和确认引用，再核对已持久化的 Final；不以 caller 布尔值、临时程序或回调替代来源。
+
 ## 有限前置
 
 - 从 canonical manifest 取得全部 required Changes；它们 completed，managed OpenSpec active set 为空。不可由 caller 缩小集合。
@@ -17,7 +19,7 @@ description: 在已授权 Final 边界消费相关完成终点与当前 Full Tes
 
 ## 窄写与确认
 
-Agent 仅返回 defensive package 对应的 ready/correction-required，不指定任意路径或获得 Git capability。
+固定 `delivery final` 命令在本安装内部形成并核对既有 defensive package；Agent 只提交封闭请求、读取命令结果与持久确认，不返回旧 `ready/correction-required` 回调形状，不指定任意路径或获得 Git capability。
 
 1. host 写前重验本次 prerequisites、Guidance 和固定 manifest prestate。
 2. 第一笔仅将 delivery state/finalizationStatus 完成，保留 passed/fullTestAttempt 和非目标 bytes；finalization 保存 state、ownerAuthorityRef、sourceRef、fullTestAttempt、verifiedCandidateRef、fullTestExecutionRef、confirmationRef=null。
@@ -29,4 +31,4 @@ Agent 仅返回 defensive package 对应的 ready/correction-required，不指�
 
 不写 gitCheckpoint、重复 formalVerificationCandidate、requiredEvidence 或 finalizedCandidateRef；不生成 Git/全仓摘要、额外结果库、事务平台或 Archify 证明。历史不迁移/重签。没有 commit、push、PR、merge、自动下一操作权限；D05 继续独立 bootstrap。
 
-后续独立 Git 授权使用 [Git 宿主 HOW](../repository-integration/references/host-call.md)；Final confirmation 不是 Git 权限，不把其 SHA 读回变成再次提交的资格字段。
+后续独立 Git 授权使用 [固定 Git 命令 HOW](../repository-integration/references/host-call.md)；Final confirmation 不是 Git 权限，不把其 SHA 读回变成再次提交的资格字段。
