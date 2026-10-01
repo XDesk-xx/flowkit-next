@@ -1,0 +1,93 @@
+{
+  "kind": "d07-version-1-0-0-explore-probe",
+  "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+  "changeId": "pin-bootstrap-manager-version-1-0-0",
+  "runId": "20261001-068-explore",
+  "sourceHead": "f826f44587b25130a9f47d2426391cbba52520b1",
+  "scratch": "D:\\Projects\\flowkit-next\\.tmp\\d07-version-068-GkVRgY",
+  "sourceVersion": "0.1.0",
+  "targetVersion": "1.0.0",
+  "sourcePackageSha256": "ae5b266740db006ef10271bb011837467629fdcafba50a46688c0de5792185a9",
+  "sourceDocsSha256": "8a49fb10e5c5f94a611183965056a83f327d3f25c77227936484671c63b1a24b",
+  "lockSha256": "bf5ef071f2b4b8140f05493ebd53098660250f2cd5a834fe321ce8685bdb65e5",
+  "package": {
+    "name": "flowkit-next",
+    "version": "1.0.0",
+    "file": "flowkit-next-1.0.0-probe.tgz",
+    "bytes": 160015,
+    "sha256": "3d9c3a7a330be4a349ac0afc5ddaddf0a202f8af883722921721ba0a0bcb5eff",
+    "bin": {
+      "flowkit": "dist/cli/entrypoint.js"
+    },
+    "dependencies": {
+      "yaml": "^2.9.0"
+    }
+  },
+  "installedDocsExample": "flowkit-next-1.0.0.tgz",
+  "commands": [
+    {
+      "id": "frozen-install",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+        "install",
+        "--frozen-lockfile"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d07-version-068-GkVRgY",
+      "startedAt": "2026-10-01T14:05:10.024Z",
+      "finishedAt": "2026-10-01T14:05:13.478Z",
+      "exitCode": 0,
+      "signal": null,
+      "processError": null,
+      "stdoutBytes": 888,
+      "stdoutSha256": "d8adcacf51af83285fcab2d8fa84764acc939857e9644d57caacd7b5515d3b15",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "pack",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+        "pack",
+        "--pack-destination",
+        "D:\\Projects\\flowkit-next\\.tmp\\d07-version-068-GkVRgY"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d07-version-068-GkVRgY",
+      "startedAt": "2026-10-01T14:05:13.479Z",
+      "finishedAt": "2026-10-01T14:05:17.093Z",
+      "exitCode": 0,
+      "signal": null,
+      "processError": null,
+      "stdoutBytes": 4576,
+      "stdoutSha256": "54ebaf965623bd835728d4898e37a1357b8c129378ac57dd5b2c38ddbd886543",
+      "stderrBytes": 36,
+      "stderrSha256": "8f5c6a9c4aade0d032984516a14b38a2d12cb1e6b333ab3568f9dde2ba3e3470"
+    },
+    {
+      "id": "production-install",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "C:/nvm4w/nodejs/node_modules/npm/bin/npm-cli.js",
+        "install",
+        "--prefix",
+        "D:\\Projects\\flowkit-next\\.tmp\\d07-version-068-GkVRgY\\installation",
+        "--omit=dev",
+        "--no-audit",
+        "--no-fund",
+        "D:\\Projects\\flowkit-next\\.tmp\\d07-version-068-GkVRgY\\flowkit-next-1.0.0.tgz"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d07-version-068-GkVRgY",
+      "startedAt": "2026-10-01T14:05:17.095Z",
+      "finishedAt": "2026-10-01T14:05:20.056Z",
+      "exitCode": 0,
+      "signal": null,
+      "processError": null,
+      "stdoutBytes": 24,
+      "stdoutSha256": "bf14b7a2bc076990244fa3239536925868dfe5ad05089c7d459b5fa482abfc72",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "limitation": "Isolated exploratory copy only; actual source version, final package, Formal Full Test and publication remain unverified."
+}

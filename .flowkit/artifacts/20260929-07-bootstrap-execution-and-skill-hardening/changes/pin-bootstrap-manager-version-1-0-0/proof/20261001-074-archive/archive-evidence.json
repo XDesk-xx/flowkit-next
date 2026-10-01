@@ -1,0 +1,276 @@
+{
+  "runId": "20261001-074-archive",
+  "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+  "changeId": "pin-bootstrap-manager-version-1-0-0",
+  "projectOrdinal": 50,
+  "archivePath": "openspec/changes/archive/2026-10-01-050-pin-bootstrap-manager-version-1-0-0",
+  "sourceRemoval": "openspec/changes/pin-bootstrap-manager-version-1-0-0",
+  "reviewedRunId": "20261001-073-review-apply",
+  "specSync": "none (skip_specs)",
+  "openSpec": {
+    "change": "pin-bootstrap-manager-version-1-0-0",
+    "archivedAs": "2026-10-01-pin-bootstrap-manager-version-1-0-0",
+    "path": "D:\\Projects\\flowkit-next\\openspec\\changes\\archive\\2026-10-01-pin-bootstrap-manager-version-1-0-0",
+    "specsUpdated": false
+  },
+  "preflight": {
+    "completedManifestSha256": "01f6e6629ed747b424f8097f5ebacba95b75134dd93889893ff0ea97466abbb9",
+    "specHashes": {
+      "openspec/specs/action-guidance-execution/spec.md": "fcc8e4dbcfbd3eea2f167bcc494060877a98ef2ff21e8c05226f784aa016aa16",
+      "openspec/specs/action-lifecycle/spec.md": "b1d6e0dfc72eb489226fa1565cbe9d8c65c3591cc5f316d1d6f6e16ad7826f46",
+      "openspec/specs/action-package-and-result-admission/spec.md": "183d56f75e0be8688ac0802aff8ca5bc708e97fc5633a93177a1f27efa0178a9",
+      "openspec/specs/applicable-check-execution/spec.md": "e17e6abcc2e12f8d22b3838438782502a2b467a09d0b0d4c4fe3a9488a5c1142",
+      "openspec/specs/architecture-and-canonical-diagram-continuity/spec.md": "64f3878e133b3e04d073cd53a75b18b49496580f8d2a5cff7245a1fa0556dc57",
+      "openspec/specs/author-action-guidance/spec.md": "5bfdcd680bd03946479b0db6a608c9a11e81dc1a4c47dc494d0d76f1193da08a",
+      "openspec/specs/cross-delivery-memo/spec.md": "459243c17ced1aa20ea3823980b53b2b1a4fd046ccc2ae2c160e11fca60967e9",
+      "openspec/specs/delivery-finalization/spec.md": "5085577c51ca0607a1f41b941df053b9e0a12906c7963c067472398faf0739b6",
+      "openspec/specs/delivery-operation-execution-and-start-continuity/spec.md": "7404248b4f8ec60b955feb9247dcc4c8792e0958a04a6360bcebfc71891130c4",
+      "openspec/specs/formal-full-test-execution-and-correction/spec.md": "fbd4a4e9072219b6da9d9d1fc58130227c389b16cee3ac61a28ce5ddf8cec2b9",
+      "openspec/specs/foundation-cli-surface/spec.md": "c5aa87964706086e2b0d884f2317010d89d429e9598d5805ca87aa8889638c8c",
+      "openspec/specs/lifecycle-authority-and-identity/spec.md": "e8acf0973421f040cd3431183209c6675a08e422a2e33daf7554c8141333b9f3",
+      "openspec/specs/lightweight-engineering-gate/spec.md": "c6e8df45db5bed02888dfac9c9848bed80d8dadd6a6e16aa1ae23d42f6f74312",
+      "openspec/specs/managed-toolchain-resolution/spec.md": "a5e6fde020fb82aca8e37b89822bbf365b22ae7fc5c77ad19ca6219f861c7bc1",
+      "openspec/specs/openspec-thin-integration/spec.md": "599616b0f468f13128693c32c7c9ffe61a2712d689c27e54504247ed8f1ed516",
+      "openspec/specs/policy-and-next-boundary/spec.md": "24b66d34d7bde60a9ce1763ee2cc552b944501b011581dbc8251059d4c428163",
+      "openspec/specs/repository-entropy-hygiene/spec.md": "8705b1153ca73a5a417c5a5787fde2f7a9168e7a51a4c88f6d32ac9f82669bfa",
+      "openspec/specs/repository-integration-and-next-base-continuity/spec.md": "80853b22ab65410a9469979e7757f3287e6e310c085ed93fcc9f95a2803729e4",
+      "openspec/specs/reviewer-action-guidance/spec.md": "b8283001d8a9b5db1226e5c6ed3da76857984f8c6915fb641b1c1f9d720471b8",
+      "openspec/specs/run-result-persistence/spec.md": "a35e1006412e360eb07bc7b555f66614941e6efc53938bef7781dbfa8e76b94c",
+      "openspec/specs/single-action-execution-terminal-boundary/spec.md": "c44868419353bd5868e698949297288495dea36df1d70c691ea6e7d1d04eaed2",
+      "openspec/specs/stable-action-command-execution/spec.md": "76f6f7504bbfb6c66fa0882d57fd9436d286d3e6949fbc6424307e9370c0212e",
+      "openspec/specs/stable-delivery-support-command-execution/spec.md": "84113bbd5cee987884cb61c4da6f42d057aef8cfe68ea80cb247908cff086449",
+      "openspec/specs/structural-dependency-health/spec.md": "1b02b4cffd0bf50533f712a00e39ba92868f22786720db12cd434476299c8091"
+    },
+    "commands": [
+      {
+        "id": "install",
+        "command": [
+          "C:\\nvm4w\\nodejs\\node.exe",
+          "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+          "install",
+          "--frozen-lockfile"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d07-version-archive-074-5foYe0",
+        "start": "2026-10-01T15:04:50.154Z",
+        "end": "2026-10-01T15:04:53.103Z",
+        "exitCode": 0,
+        "signal": null,
+        "error": null,
+        "stdoutBytes": 828,
+        "stdoutSha256": "c4efb492e68d8fac07a4a6e235eabea81a45e61300cd3147404e8d6364ebfc1a",
+        "stderrBytes": 0,
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "id": "archive-dry-run",
+        "command": [
+          "C:\\nvm4w\\nodejs\\node.exe",
+          "C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js",
+          "archive",
+          "pin-bootstrap-manager-version-1-0-0",
+          "--yes",
+          "--json"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d07-version-archive-074-5foYe0",
+        "start": "2026-10-01T15:04:53.103Z",
+        "end": "2026-10-01T15:04:55.533Z",
+        "exitCode": 0,
+        "signal": null,
+        "error": null,
+        "stdoutBytes": 447,
+        "stdoutSha256": "1579112efb940f6d29074632b450bb64326116dfb0140f3b2ae57935bc43b361",
+        "stderrBytes": 0,
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "id": "validate",
+        "command": [
+          "C:\\nvm4w\\nodejs\\node.exe",
+          "C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js",
+          "validate",
+          "--all",
+          "--strict"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d07-version-archive-074-5foYe0",
+        "start": "2026-10-01T15:04:55.536Z",
+        "end": "2026-10-01T15:04:57.156Z",
+        "exitCode": 0,
+        "signal": null,
+        "error": null,
+        "stdoutBytes": 997,
+        "stdoutSha256": "d19d84f62f985cb545abe2e705fb40279ef05360f2fcfee2c965e12c6bb7091f",
+        "stderrBytes": 16,
+        "stderrSha256": "5bc31df123a2e521acdd2c0d9477b367feec506471a91065d0a6b32c09089ed5"
+      },
+      {
+        "id": "build",
+        "command": [
+          "C:\\nvm4w\\nodejs\\node.exe",
+          "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+          "build"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d07-version-archive-074-5foYe0",
+        "start": "2026-10-01T15:04:57.156Z",
+        "end": "2026-10-01T15:05:00.125Z",
+        "exitCode": 0,
+        "signal": null,
+        "error": null,
+        "stdoutBytes": 0,
+        "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrBytes": 36,
+        "stderrSha256": "8f5c6a9c4aade0d032984516a14b38a2d12cb1e6b333ab3568f9dde2ba3e3470"
+      },
+      {
+        "id": "domain",
+        "command": [
+          "C:\\nvm4w\\nodejs\\node.exe",
+          "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+          "test:domain"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d07-version-archive-074-5foYe0",
+        "start": "2026-10-01T15:05:00.125Z",
+        "end": "2026-10-01T15:07:23.262Z",
+        "exitCode": 0,
+        "signal": null,
+        "error": null,
+        "stdoutBytes": 80073,
+        "stdoutSha256": "a93f02312c3355444e60b42d4c91d3a94f61382b40026a9f2c6defb62e148cd4",
+        "stderrBytes": 55,
+        "stderrSha256": "aae00296a00317fb5d8157cc46c908dd4c7bfd3ac1d52b647091d4c256ef13c6"
+      },
+      {
+        "id": "acceptance",
+        "command": [
+          "C:\\nvm4w\\nodejs\\node.exe",
+          "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+          "test:acceptance"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d07-version-archive-074-5foYe0",
+        "start": "2026-10-01T15:07:23.263Z",
+        "end": "2026-10-01T15:07:36.924Z",
+        "exitCode": 0,
+        "signal": null,
+        "error": null,
+        "stdoutBytes": 1704,
+        "stdoutSha256": "b48b5d958ad4850ab439fc0bae6a169d7d6406dce4ee6ba85348c5716565023a",
+        "stderrBytes": 54,
+        "stderrSha256": "03a28f841eea36c0ec13f6dea3ea69c782e389ad940fcfaf6d419d0e4fff319b"
+      },
+      {
+        "id": "typecheck",
+        "command": [
+          "C:\\nvm4w\\nodejs\\node.exe",
+          "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+          "typecheck"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d07-version-archive-074-5foYe0",
+        "start": "2026-10-01T15:07:36.924Z",
+        "end": "2026-10-01T15:07:40.296Z",
+        "exitCode": 0,
+        "signal": null,
+        "error": null,
+        "stdoutBytes": 0,
+        "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrBytes": 15,
+        "stderrSha256": "8366207267355d3e3d5bf3bf6e8c94c5f93f6078c34f08973fa2b38cdda6cc92"
+      },
+      {
+        "id": "quality-gate",
+        "command": [
+          "C:\\nvm4w\\nodejs\\node.exe",
+          "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+          "quality:gate"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d07-version-archive-074-5foYe0",
+        "start": "2026-10-01T15:07:40.297Z",
+        "end": "2026-10-01T15:07:48.730Z",
+        "exitCode": 0,
+        "signal": null,
+        "error": null,
+        "stdoutBytes": 66,
+        "stdoutSha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20",
+        "stderrBytes": 192,
+        "stderrSha256": "9ccaf1b94533f97d77e53271cbcbe105b2181b73bdcdc804c213feb0145b94f3"
+      },
+      {
+        "id": "dependency-health",
+        "command": [
+          "C:\\nvm4w\\nodejs\\node.exe",
+          "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+          "quality:dependency-health"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d07-version-archive-074-5foYe0",
+        "start": "2026-10-01T15:07:48.731Z",
+        "end": "2026-10-01T15:07:52.625Z",
+        "exitCode": 0,
+        "signal": null,
+        "error": null,
+        "stdoutBytes": 81,
+        "stdoutSha256": "5276498e7920ab1799ff8c4785c45b47ffe95623b3ba525bf42a2143e0adda84",
+        "stderrBytes": 79,
+        "stderrSha256": "fa9ba6bb542e83e254b5bae92765b5ba9e0505c12e1e49f6c11dbf41c51f8775"
+      },
+      {
+        "id": "entropy",
+        "command": [
+          "C:\\nvm4w\\nodejs\\node.exe",
+          "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+          "quality:entropy"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d07-version-archive-074-5foYe0",
+        "start": "2026-10-01T15:07:52.626Z",
+        "end": "2026-10-01T15:07:55.381Z",
+        "exitCode": 0,
+        "signal": null,
+        "error": null,
+        "stdoutBytes": 64,
+        "stdoutSha256": "d78add4f5d8913a85deae02832c5d1751753b91ff1778c38e98d5e656a1fa917",
+        "stderrBytes": 49,
+        "stderrSha256": "7db8734f9a79ab0e050617ecdfb19b5819eb70b528b921de90840d1c8efe0973"
+      }
+    ]
+  },
+  "actual": {
+    "archive": {
+      "id": "archive",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js",
+        "archive",
+        "pin-bootstrap-manager-version-1-0-0",
+        "--yes",
+        "--json"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "start": "2026-10-01T15:08:10.420Z",
+      "end": "2026-10-01T15:08:13.232Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdoutBytes": 371,
+      "stdoutSha256": "b8e634c69ec7438124665fcebe7909da8449b34480dc4cfa50c750e234ce52f2",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "validation": {
+      "id": "validate",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js",
+        "validate",
+        "--all",
+        "--strict"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "start": "2026-10-01T15:08:13.247Z",
+      "end": "2026-10-01T15:08:16.361Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdoutBytes": 997,
+      "stdoutSha256": "d19d84f62f985cb545abe2e705fb40279ef05360f2fcfee2c965e12c6bb7091f",
+      "stderrBytes": 16,
+      "stderrSha256": "5bc31df123a2e521acdd2c0d9477b367feec506471a91065d0a6b32c09089ed5"
+    }
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "runId": "20261001-069-review-explore",
+  "actionIdentity": {
+    "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+    "changeId": "pin-bootstrap-manager-version-1-0-0",
+    "actionId": "review-explore"
+  },
+  "authorConclusion": null,
+  "reviewerVerdict": "approved",
+  "verificationVerdict": null,
+  "nextBoundary": "propose",
+  "facts": {
+    "projectOrdinal": 50,
+    "changeStartSequence": 68,
+    "reviewedRunId": "20261001-068-explore",
+    "reviewedResultSha256": "8ad1396d6522486a094bf35f824d14b3466fedddc4abbe0af974e171f7ea42f2",
+    "artifacts": {
+      "openspec/changes/pin-bootstrap-manager-version-1-0-0/explore.md": "27a46be9d30887d8fc21e8063ccdd7701f14b1216af778f5969eeaaa4ef95ed1",
+      "openspec/delivery-groups/20260929-07-bootstrap-execution-and-skill-hardening.yaml": "77c43f4eb79135871af277996c9db8449b8e8b98649a70e3a0f760ec7eb403f1",
+      "openspec/changes/pin-bootstrap-manager-version-1-0-0/.openspec.yaml": "1c480a9cda868e985f1f0048d5991a349d5e9918b59d1ca8c21211d618f6c4ba",
+      "AGENTS.md": "f30b0196357c71df8a0fcbf461372669e0a007b26ac603cc80bcb24d1b2648f9",
+      "package.json": "ae5b266740db006ef10271bb011837467629fdcafba50a46688c0de5792185a9",
+      "pnpm-lock.yaml": "bf5ef071f2b4b8140f05493ebd53098660250f2cd5a834fe321ce8685bdb65e5",
+      "docs/onboarding.md": "8a49fb10e5c5f94a611183965056a83f327d3f25c77227936484671c63b1a24b",
+      "config/verification/full-test.json": "32b03e4f1fa154586a2e29ca6cda849f630af29f75ff578b86b1bb90dc186686",
+      "src/internal/full-test-input.ts": "ae4fccc6db6ff2624801e82808331a28f8e70d32a57a41a75fc847c85f17bc96"
+    },
+    "checkedProofCount": 11,
+    "currentStepExplanation": "审查 1.0.0 定版 Explore 的范围、隔离版本/安装证据和 packaged onboarding 纳入 Full Test 输入的反例，判断是否足以进入 Proposal。",
+    "complexityMinimality": "收敛为 package version、单处 tgz 示例与既有 Full Test 配置中的一个明确文件输入；复用现有构建、包安装和输入身份机制，无新 release CLI、Registry 或生命周期能力。",
+    "scopeDrift": {
+      "verdict": "NONE",
+      "reason": "版本及接入示例对应 manifest 中 Owner 定版目标；将该同包文档加入既有输入清单是保证新版本发行输入可核对的最小修正，不扩展正式操作权限。"
+    },
+    "decisiveObservations": [
+      "外部 Stable manager 的无 Change 过滤查询确定当前为 pin-bootstrap-manager-version-1-0-0/068-explore；E 已归档，旧 E 查询文件不能作为本次目标。当前 HEAD 为 f826f44587b25130a9f47d2426391cbba52520b1。",
+      "核对当前 Explore/manifest/metadata 与 068 Result SHA，11 项 proof 的归属、唯一引用、常规文件/无链接、bytes/SHA 与 managed Git bytes 均一致。3 条 frozen install/pack/production install 命令的实际原始流与报告一致。",
+      "独立解包 1.0.0 探针 tgz，117 个成员与隔离安装逐字节一致；与保留的 E 0.1.0 包相比只改变 package.json 的 version 和 docs/onboarding.md 的 tgz 示例。依赖、bin、private 等其余元数据一致，副本与当前 pnpm-lock.yaml 摘要相同。",
+      "当前生产范围搜索仅 package.json 和 docs/onboarding.md 存在显式 0.1.0 引用，未见生产代码以该版本选择安装。",
+      "当前 Full Test 配置选中 package.json/skills/config 等，未选 packaged onboarding；readFullTestInput 依显式清单计算文件摘要。独立新隔离副本使用相同 inputs/excludes/environment 和固定 no-op Node 检查定义，复现文档漂移被忽略、加入该文件后 inputRef 改变。未运行任何 Full Test 检查或 attempt。",
+      "Explore 明确真实仓库仍为 0.1.0，探针包不是最终候选；Proposal/Apply 必须对正式改动后的包重新检查并与 E 已验收包核对差异，保留历史证据和当前 Stable manager。"
+    ],
+    "literalDiscipline": "1.0.0 是本次 Owner 选定发行值，不是永久版本不变量；117、ordinal、路径与探针 SHA 是当前观察。稳定要求是实际 package/version/example 一致、选定文档字节变化进入 Full Test 输入身份、最终包由实际构建证据识别。",
+    "findings": [],
+    "proofRefs": [
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-069-review-explore/checks.json",
+        "bytes": 1071,
+        "sha256": "828744c70d08e42c9e850a2294d65dfeb0183ffb48e95663771d55c65adc40fe",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-069-review-explore",
+        "purpose": "Independent package comparison and bounded Full Test input-selection counterexample"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-069-review-explore/independent-check.mjs",
+        "bytes": 5135,
+        "sha256": "af9d417bf6a4ccad03ed8e1ab5ff2a1b35a0db0a916548d59c6b5e236bd56339",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "pin-bootstrap-manager-version-1-0-0",
+        "runId": "20261001-069-review-explore",
+        "purpose": "Independent package comparison and bounded Full Test input-selection counterexample"
+      }
+    ],
+    "limitations": [
+      "独立输入反例将生产 checks 替换为固定 no-op 定义以隔离文件选择行为，不表示真实生产检查或 Formal Full Test 已执行。",
+      "本次没有重装依赖、运行 Linux 验收、定版产品、发布包、Final、Git 或选择新 Stable manager；这些不属于本次 Review。"
+    ],
+    "handoff": {
+      "summary": "可进入 propose：限定版本/示例及 docs/onboarding.md 的明确 Full Test 输入；保留 E 旧包与证据，Apply 对实际新包重新验证，不复用探针 SHA 为最终身份。",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-10-01:create-version-1-0-0-change",
+          "summary": "manifest 记录 Owner 创建 D07 1.0.0 定版 Change。"
+        },
+        {
+          "sourceRef": "owner-input:2026-10-01:activate-version-1-0-0-proof-explore",
+          "summary": "manifest 记录 Owner 单独激活并授权 proof Explore。"
+        }
+      ],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20261001-068-explore",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-068-explore/version-probe-report.json"
+        },
+        {
+          "sourceRunId": "20261001-068-explore",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-068-explore/full-test-input-report.json"
+        },
+        {
+          "sourceRunId": "20261001-069-review-explore",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/pin-bootstrap-manager-version-1-0-0/proof/20261001-069-review-explore/checks.json"
+        }
+      ]
+    }
+  }
+}

@@ -9,7 +9,7 @@ Owner/宿主先选定实际 tgz 和安装目录。当前包为 private，不假�
 PowerShell 示例的机器路径须替换为实际值。使用 Node >=22.20.0；仓库确定性 fixture 为 Node 22.23.2 / pnpm 11.22.0。使用新安装目录，已有安装先确认更新范围，不直接覆盖。
 
 ```powershell
-$packageFile = 'D:\releases\flowkit-next-0.1.0.tgz'
+$packageFile = 'D:\releases\flowkit-next-1.0.0.tgz'
 $installDir = 'D:\tools\flowkit-manager'
 New-Item -ItemType Directory -Path $installDir -ErrorAction Stop
 npm install --prefix $installDir --omit=dev --no-audit --no-fund $packageFile
