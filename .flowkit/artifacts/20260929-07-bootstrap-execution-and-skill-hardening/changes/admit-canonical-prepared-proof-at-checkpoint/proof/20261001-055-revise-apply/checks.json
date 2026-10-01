@@ -1,0 +1,133 @@
+{
+  "runner": "cmd.exe /d /s /c",
+  "results": [
+    {
+      "name": "focused-tests",
+      "command": "node --import tsx --test tests/unit/domain/prepared-proof-checkpoint.test.ts tests/unit/domain/current-run-chain.test.ts tests/unit/domain/managed-evidence-checkpoint.test.ts tests/unit/domain/git-checkpoint-scope.test.ts tests/unit/domain/support-git-checkpoint.test.ts",
+      "startedAt": "2026-10-01T07:26:57.140Z",
+      "endedAt": "2026-10-01T07:27:31.718Z",
+      "exitCode": 0,
+      "signal": null,
+      "stdout": {
+        "bytes": 4434,
+        "sha256": "fc202c52eeb0dd74ab4633f730109aac0bc1fffb8c1c6cea0751c6e8fa5186c5"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "typecheck",
+      "command": "pnpm typecheck",
+      "startedAt": "2026-10-01T07:27:31.719Z",
+      "endedAt": "2026-10-01T07:27:34.967Z",
+      "exitCode": 0,
+      "signal": null,
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "bytes": 15,
+        "sha256": "8366207267355d3e3d5bf3bf6e8c94c5f93f6078c34f08973fa2b38cdda6cc92"
+      }
+    },
+    {
+      "name": "quality-gate",
+      "command": "pnpm quality:gate",
+      "startedAt": "2026-10-01T07:27:34.967Z",
+      "endedAt": "2026-10-01T07:27:42.409Z",
+      "exitCode": 0,
+      "signal": null,
+      "stdout": {
+        "bytes": 66,
+        "sha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20"
+      },
+      "stderr": {
+        "bytes": 192,
+        "sha256": "9ccaf1b94533f97d77e53271cbcbe105b2181b73bdcdc804c213feb0145b94f3"
+      }
+    },
+    {
+      "name": "dependency-health",
+      "command": "pnpm quality:dependency-health",
+      "startedAt": "2026-10-01T07:27:42.409Z",
+      "endedAt": "2026-10-01T07:27:45.693Z",
+      "exitCode": 0,
+      "signal": null,
+      "stdout": {
+        "bytes": 81,
+        "sha256": "5276498e7920ab1799ff8c4785c45b47ffe95623b3ba525bf42a2143e0adda84"
+      },
+      "stderr": {
+        "bytes": 79,
+        "sha256": "fa9ba6bb542e83e254b5bae92765b5ba9e0505c12e1e49f6c11dbf41c51f8775"
+      }
+    },
+    {
+      "name": "entropy",
+      "command": "pnpm quality:entropy",
+      "startedAt": "2026-10-01T07:27:45.693Z",
+      "endedAt": "2026-10-01T07:27:48.369Z",
+      "exitCode": 0,
+      "signal": null,
+      "stdout": {
+        "bytes": 64,
+        "sha256": "d78add4f5d8913a85deae02832c5d1751753b91ff1778c38e98d5e656a1fa917"
+      },
+      "stderr": {
+        "bytes": 49,
+        "sha256": "7db8734f9a79ab0e050617ecdfb19b5819eb70b528b921de90840d1c8efe0973"
+      }
+    },
+    {
+      "name": "owned-source",
+      "command": "pnpm quality:owned-source",
+      "startedAt": "2026-10-01T07:27:48.370Z",
+      "endedAt": "2026-10-01T07:27:49.463Z",
+      "exitCode": 0,
+      "signal": null,
+      "stdout": {
+        "bytes": 537,
+        "sha256": "e36e860764be9bd7ca2b4c1cbb236b644a20bd7e43d4d8edb1fc51ffe1a692da"
+      },
+      "stderr": {
+        "bytes": 74,
+        "sha256": "c86bfec8a0746ef3782ec82faa475c30584c496a247471de3d7d31663d09f15f"
+      }
+    },
+    {
+      "name": "build",
+      "command": "pnpm build",
+      "startedAt": "2026-10-01T07:27:49.464Z",
+      "endedAt": "2026-10-01T07:27:52.394Z",
+      "exitCode": 0,
+      "signal": null,
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "bytes": 36,
+        "sha256": "8f5c6a9c4aade0d032984516a14b38a2d12cb1e6b333ab3568f9dde2ba3e3470"
+      }
+    },
+    {
+      "name": "openspec",
+      "command": "node C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js validate admit-canonical-prepared-proof-at-checkpoint --strict",
+      "startedAt": "2026-10-01T07:27:52.394Z",
+      "endedAt": "2026-10-01T07:27:53.788Z",
+      "exitCode": 0,
+      "signal": null,
+      "stdout": {
+        "bytes": 63,
+        "sha256": "029c1dd69d2fe89d55d39009056c9cb5d86bc1f91bd60d4952a6cb29863108a1"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ]
+}

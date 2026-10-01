@@ -8,6 +8,9 @@ import {
   isRunResultRecord,
 } from "../domain/run-result-persistence.js";
 import { gitBytes } from "./git-checkpoint-scope.js";
+import { readCandidateRunChain } from "./git-index-run-chain.js";
+
+type CandidateChain = Awaited<ReturnType<typeof readCandidateRunChain>>;
 
 function addedPaths(bytes: Buffer): string[] {
   const value = bytes.toString("utf8");
@@ -22,6 +25,7 @@ function addedPaths(bytes: Buffer): string[] {
 async function declaredProof(
   root: string,
   relativePath: string,
+  candidates: Map<string, CandidateChain>,
 ): Promise<{ bytes: number; sha256: string }> {
   const match =
     /^\.flowkit\/artifacts\/([^/]+)\/changes\/([^/]+)\/proof\/([^/]+)\/.+$/u.exec(
@@ -42,23 +46,45 @@ async function declaredProof(
     runId,
     "result.json",
   );
+  const contextPath = path.join(path.dirname(resultPath), "context.json");
+  const relativeResult = path.relative(root, resultPath).replaceAll("\\", "/");
+  const relativeContext = path
+    .relative(root, contextPath)
+    .replaceAll("\\", "/");
+  let indexedResult: Buffer;
+  let indexedContext: Buffer;
+  let worktreeResult: Buffer;
+  let worktreeContext: Buffer;
+  try {
+    [indexedResult, indexedContext, worktreeResult, worktreeContext] =
+      await Promise.all([
+        gitBytes(root, ["show", `:${relativeResult}`]),
+        gitBytes(root, ["show", `:${relativeContext}`]),
+        readFile(resultPath),
+        readFile(contextPath),
+      ]);
+  } catch {
+    throw Error("Managed proof owner Run unavailable: " + relativePath);
+  }
+  if (
+    !indexedResult.equals(worktreeResult) ||
+    !indexedContext.equals(worktreeContext)
+  ) {
+    throw Error(`Managed proof owner index bytes differ: ${relativePath}`);
+  }
   let result: unknown;
   let context: unknown;
   try {
-    result = JSON.parse(await readFile(resultPath, "utf8")) as unknown;
-    context = JSON.parse(
-      await readFile(
-        path.join(path.dirname(resultPath), "context.json"),
-        "utf8",
-      ),
-    ) as unknown;
+    result = JSON.parse(indexedResult.toString("utf8")) as unknown;
+    context = JSON.parse(indexedContext.toString("utf8")) as unknown;
   } catch {
-    throw Error("Managed proof terminal Run unavailable: " + relativePath);
+    throw Error("Managed proof owner Run invalid: " + relativePath);
   }
   if (
     !isRunResultRecord(result) ||
     !isRunContextRecord(context) ||
-    context.lifecycleState !== "terminal" ||
+    (context.lifecycleState !== "terminal" &&
+      context.lifecycleState !== "prepared") ||
     context.runId !== runId ||
     context.actionIdentity.deliveryId !== deliveryId ||
     context.actionIdentity.changeId !== changeId ||
@@ -67,6 +93,36 @@ async function declaredProof(
     result.actionIdentity.changeId !== changeId
   ) {
     throw Error(`Managed proof Result invalid: ${relativePath}`);
+  }
+  if (context.lifecycleState === "prepared") {
+    const key = `${deliveryId}/${changeId}`;
+    let candidate = candidates.get(key);
+    if (candidate === undefined) {
+      candidate = await readCandidateRunChain(root, deliveryId!, changeId!);
+      candidates.set(key, candidate);
+    }
+    const owner = candidate.records.find(
+      (record) => record.context.runId === runId,
+    );
+    const children = candidate.records.filter(
+      (record) => record.context.previousRunId === runId,
+    );
+    if (
+      owner?.context.lifecycleState !== "prepared" ||
+      candidate.tip.context.runId === runId ||
+      children.length !== 1 ||
+      relativeResult !== `${candidate.runRoot}/${runId}/result.json`
+    )
+      throw Error(`Managed proof prepared chain invalid: ${relativePath}`);
+    for (const name of ["action.md", "context.json", "result.json"]) {
+      const indexedPath = `${candidate.runRoot}/${runId}/${name}`;
+      const indexed = candidate.bytesByPath.get(indexedPath);
+      if (
+        indexed === undefined ||
+        !indexed.equals(await readFile(path.join(root, indexedPath)))
+      )
+        throw Error(`Managed proof owner index bytes differ: ${indexedPath}`);
+    }
   }
   const refs = result.facts.proofRefs;
   if (!Array.isArray(refs)) {
@@ -104,6 +160,7 @@ async function declaredProof(
 export async function requireNewManagedEvidenceBytes(
   root: string,
 ): Promise<void> {
+  const candidates = new Map<string, CandidateChain>();
   const paths = addedPaths(
     await gitBytes(root, [
       "diff",
@@ -132,7 +189,7 @@ export async function requireNewManagedEvidenceBytes(
     ) {
       continue;
     }
-    const ref = await declaredProof(root, relativePath);
+    const ref = await declaredProof(root, relativePath, candidates);
     if (
       indexed.length !== ref.bytes ||
       createHash("sha256").update(indexed).digest("hex") !== ref.sha256

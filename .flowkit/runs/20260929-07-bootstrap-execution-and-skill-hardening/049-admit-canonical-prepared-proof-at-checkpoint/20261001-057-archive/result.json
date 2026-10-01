@@ -1,0 +1,448 @@
+{
+  "runId": "20261001-057-archive",
+  "actionIdentity": {
+    "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+    "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+    "actionId": "archive"
+  },
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": null,
+  "facts": {
+    "projectOrdinal": 48,
+    "changeStartSequence": 49,
+    "reviewedRunId": "20261001-056-review-apply",
+    "reviewedAuthorRunId": "20261001-055-revise-apply",
+    "archivePath": "openspec/changes/archive/2026-10-01-048-admit-canonical-prepared-proof-at-checkpoint",
+    "sourceRemoval": "openspec/changes/admit-canonical-prepared-proof-at-checkpoint",
+    "openSpec": {
+      "specsUpdated": true,
+      "added": 0,
+      "modified": 1,
+      "removed": 0,
+      "renamed": 0
+    },
+    "candidateFiles": [
+      {
+        "sourcePath": "openspec/changes/admit-canonical-prepared-proof-at-checkpoint/.openspec.yaml",
+        "path": "openspec/changes/archive/2026-10-01-048-admit-canonical-prepared-proof-at-checkpoint/.openspec.yaml",
+        "bytes": 40,
+        "sourceSha256": "c51317fdb09f4c0096f955c8beeb5f19a56ba49530c79732bb429ad0f423004d",
+        "sha256": "c51317fdb09f4c0096f955c8beeb5f19a56ba49530c79732bb429ad0f423004d"
+      },
+      {
+        "sourcePath": "openspec/changes/admit-canonical-prepared-proof-at-checkpoint/design.md",
+        "path": "openspec/changes/archive/2026-10-01-048-admit-canonical-prepared-proof-at-checkpoint/design.md",
+        "bytes": 4634,
+        "sourceSha256": "26584794b4c8e70ec7d3144ed2a237e529c4e59e8da5b3414adf86145ea4c253",
+        "sha256": "26584794b4c8e70ec7d3144ed2a237e529c4e59e8da5b3414adf86145ea4c253"
+      },
+      {
+        "sourcePath": "openspec/changes/admit-canonical-prepared-proof-at-checkpoint/explore.md",
+        "path": "openspec/changes/archive/2026-10-01-048-admit-canonical-prepared-proof-at-checkpoint/explore.md",
+        "bytes": 4541,
+        "sourceSha256": "12d0637693663610bf56579c396f36f3a69a3a01adc201b46c7ae1a71d3f37d8",
+        "sha256": "12d0637693663610bf56579c396f36f3a69a3a01adc201b46c7ae1a71d3f37d8"
+      },
+      {
+        "sourcePath": "openspec/changes/admit-canonical-prepared-proof-at-checkpoint/proposal.md",
+        "path": "openspec/changes/archive/2026-10-01-048-admit-canonical-prepared-proof-at-checkpoint/proposal.md",
+        "bytes": 1635,
+        "sourceSha256": "1cf02dd8ea36d3d737d6d085fd916455b5c2a3972908096da4fa23aeed667e54",
+        "sha256": "1cf02dd8ea36d3d737d6d085fd916455b5c2a3972908096da4fa23aeed667e54"
+      },
+      {
+        "sourcePath": "openspec/changes/admit-canonical-prepared-proof-at-checkpoint/specs/repository-integration-and-next-base-continuity/spec.md",
+        "path": "openspec/changes/archive/2026-10-01-048-admit-canonical-prepared-proof-at-checkpoint/specs/repository-integration-and-next-base-continuity/spec.md",
+        "bytes": 5068,
+        "sourceSha256": "1750ba96108231c986b49cef3a8fb29feecbf8409c620386ba89823e5e500bd2",
+        "sha256": "1750ba96108231c986b49cef3a8fb29feecbf8409c620386ba89823e5e500bd2"
+      },
+      {
+        "sourcePath": "openspec/changes/admit-canonical-prepared-proof-at-checkpoint/tasks.md",
+        "path": "openspec/changes/archive/2026-10-01-048-admit-canonical-prepared-proof-at-checkpoint/tasks.md",
+        "bytes": 1522,
+        "sourceSha256": "eae3f5336671aaefc588dc425feefa7c4cf26b747c5330bdefb38d630338ecf5",
+        "sha256": "eae3f5336671aaefc588dc425feefa7c4cf26b747c5330bdefb38d630338ecf5"
+      },
+      {
+        "sourcePath": "openspec/delivery-groups/20260929-07-bootstrap-execution-and-skill-hardening.yaml",
+        "path": "openspec/delivery-groups/20260929-07-bootstrap-execution-and-skill-hardening.yaml",
+        "bytes": 6219,
+        "sourceSha256": "3bc6c6f477c850b864810e780be9a845c6da5acb6b1270b8b11807af5736960c",
+        "sha256": "2f1f7f3f5b62ca18fd8275e44e6e844cda1d5167d9406c9e3b4ec0b0786ce5cf"
+      },
+      {
+        "sourcePath": "src/domain/run-result-persistence.ts",
+        "path": "src/domain/run-result-persistence.ts",
+        "bytes": 17253,
+        "sourceSha256": "ec0bd47457eed0d656b552bcf1e8cc5e3f3d4ca0243cf3ff3784a5d8d6163f20",
+        "sha256": "ec0bd47457eed0d656b552bcf1e8cc5e3f3d4ca0243cf3ff3784a5d8d6163f20"
+      },
+      {
+        "sourcePath": "src/internal/git-index-run-chain.ts",
+        "path": "src/internal/git-index-run-chain.ts",
+        "bytes": 3633,
+        "sourceSha256": "80656deedcdf87215f26b158819904464bbf45f4d3ca5c3442b56ce399e2cc9f",
+        "sha256": "80656deedcdf87215f26b158819904464bbf45f4d3ca5c3442b56ce399e2cc9f"
+      },
+      {
+        "sourcePath": "src/internal/managed-evidence-checkpoint.ts",
+        "path": "src/internal/managed-evidence-checkpoint.ts",
+        "bytes": 6828,
+        "sourceSha256": "65c8e14ca3c5793ba315346db678f625aa9d4680385c938037ffc7e91808ddcf",
+        "sha256": "65c8e14ca3c5793ba315346db678f625aa9d4680385c938037ffc7e91808ddcf"
+      },
+      {
+        "sourcePath": "tests/unit/domain/prepared-proof-checkpoint.test.ts",
+        "path": "tests/unit/domain/prepared-proof-checkpoint.test.ts",
+        "bytes": 17632,
+        "sourceSha256": "d96bf028aed0292d77b61350af2c95b2c514517d69cce376ee1bd503deb38a5d",
+        "sha256": "d96bf028aed0292d77b61350af2c95b2c514517d69cce376ee1bd503deb38a5d"
+      }
+    ],
+    "canonicalSpecRefs": [
+      {
+        "path": "openspec/specs/repository-integration-and-next-base-continuity/spec.md",
+        "bytes": 27136,
+        "sha256": "80853b22ab65410a9469979e7757f3287e6e310c085ed93fcc9f95a2803729e4"
+      }
+    ],
+    "completion": {
+      "manifestPath": "openspec/delivery-groups/20260929-07-bootstrap-execution-and-skill-hardening.yaml",
+      "manifestSha256": "2f1f7f3f5b62ca18fd8275e44e6e844cda1d5167d9406c9e3b4ec0b0786ce5cf",
+      "changeState": "completed"
+    },
+    "checks": [
+      {
+        "command": "managed OpenSpec isolated archive dry-run",
+        "outcome": "PASS",
+        "detail": "three canonical spec hashes match actual materialization"
+      },
+      {
+        "command": "C:\\nvm4w\\nodejs\\node.exe C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js install --frozen-lockfile",
+        "outcome": "PASS",
+        "exitCode": 0,
+        "stdoutSha256": "d18da16a762fdfa8e3cf7b0f388684eac16693c04cfa649eec1b7af52a641e3e",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "command": "C:\\nvm4w\\nodejs\\node.exe C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js archive admit-canonical-prepared-proof-at-checkpoint --yes --json",
+        "outcome": "PASS",
+        "exitCode": 0,
+        "stdoutSha256": "3ff6230178735771426b3128471760703b1ef4c6eaaa1a7b99268e19739e9e81",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "command": "C:\\nvm4w\\nodejs\\node.exe C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js run build",
+        "outcome": "PASS",
+        "exitCode": 0,
+        "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrSha256": "8f5c6a9c4aade0d032984516a14b38a2d12cb1e6b333ab3568f9dde2ba3e3470"
+      },
+      {
+        "command": "C:\\nvm4w\\nodejs\\node.exe C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js run test:domain",
+        "outcome": "PASS",
+        "exitCode": 0,
+        "stdoutSha256": "17917eaeff749007bd7c49239b03e1634e8d1bef52307c167b441b88ab38a0eb",
+        "stderrSha256": "aae00296a00317fb5d8157cc46c908dd4c7bfd3ac1d52b647091d4c256ef13c6"
+      },
+      {
+        "command": "C:\\nvm4w\\nodejs\\node.exe C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js run test:acceptance",
+        "outcome": "PASS",
+        "exitCode": 0,
+        "stdoutSha256": "54333a9262e337c046e25d93233d1f294e0bdfb41ba9fe3855e08697260c45f3",
+        "stderrSha256": "03a28f841eea36c0ec13f6dea3ea69c782e389ad940fcfaf6d419d0e4fff319b"
+      },
+      {
+        "command": "C:\\nvm4w\\nodejs\\node.exe C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js run typecheck",
+        "outcome": "PASS",
+        "exitCode": 0,
+        "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrSha256": "8366207267355d3e3d5bf3bf6e8c94c5f93f6078c34f08973fa2b38cdda6cc92"
+      },
+      {
+        "command": "C:\\nvm4w\\nodejs\\node.exe C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js run quality:gate",
+        "outcome": "PASS",
+        "exitCode": 0,
+        "stdoutSha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20",
+        "stderrSha256": "9ccaf1b94533f97d77e53271cbcbe105b2181b73bdcdc804c213feb0145b94f3"
+      },
+      {
+        "command": "C:\\nvm4w\\nodejs\\node.exe C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js run quality:dependency-health",
+        "outcome": "PASS",
+        "exitCode": 0,
+        "stdoutSha256": "5276498e7920ab1799ff8c4785c45b47ffe95623b3ba525bf42a2143e0adda84",
+        "stderrSha256": "fa9ba6bb542e83e254b5bae92765b5ba9e0505c12e1e49f6c11dbf41c51f8775"
+      },
+      {
+        "command": "C:\\nvm4w\\nodejs\\node.exe C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js run quality:entropy",
+        "outcome": "PASS",
+        "exitCode": 0,
+        "stdoutSha256": "d78add4f5d8913a85deae02832c5d1751753b91ff1778c38e98d5e656a1fa917",
+        "stderrSha256": "7db8734f9a79ab0e050617ecdfb19b5819eb70b528b921de90840d1c8efe0973"
+      },
+      {
+        "command": "C:\\nvm4w\\nodejs\\node.exe C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js run quality:owned-source",
+        "outcome": "PASS",
+        "exitCode": 0,
+        "stdoutSha256": "663ed436ca376a3d766b56d1d40065e1a8bb64c217ba2a78a56f10b101035add",
+        "stderrSha256": "c86bfec8a0746ef3782ec82faa475c30584c496a247471de3d7d31663d09f15f"
+      },
+      {
+        "command": "managed OpenSpec validate --all --strict",
+        "outcome": "PASS",
+        "exitCode": 0,
+        "stdoutSha256": "d19d84f62f985cb545abe2e705fb40279ef05360f2fcfee2c965e12c6bb7091f",
+        "stderrSha256": "5bc31df123a2e521acdd2c0d9477b367feec506471a91065d0a6b32c09089ed5"
+      }
+    ],
+    "proofRefs": [
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-057-archive/preflight-install.stdout.txt",
+        "bytes": 827,
+        "sha256": "d18da16a762fdfa8e3cf7b0f388684eac16693c04cfa649eec1b7af52a641e3e",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-057-archive",
+        "purpose": "isolated-install-stdout"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-057-archive/preflight-install.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-057-archive",
+        "purpose": "isolated-install-stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-057-archive/preflight-archive-dry-run.stdout.txt",
+        "bytes": 562,
+        "sha256": "3ff6230178735771426b3128471760703b1ef4c6eaaa1a7b99268e19739e9e81",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-057-archive",
+        "purpose": "isolated-archive-dry-run-stdout"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-057-archive/preflight-archive-dry-run.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-057-archive",
+        "purpose": "isolated-archive-dry-run-stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-057-archive/preflight-build.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-057-archive",
+        "purpose": "isolated-build-stdout"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-057-archive/preflight-build.stderr.txt",
+        "bytes": 36,
+        "sha256": "8f5c6a9c4aade0d032984516a14b38a2d12cb1e6b333ab3568f9dde2ba3e3470",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-057-archive",
+        "purpose": "isolated-build-stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-057-archive/preflight-test-domain.stdout.txt",
+        "bytes": 80043,
+        "sha256": "17917eaeff749007bd7c49239b03e1634e8d1bef52307c167b441b88ab38a0eb",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-057-archive",
+        "purpose": "isolated-test-domain-stdout"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-057-archive/preflight-test-domain.stderr.txt",
+        "bytes": 55,
+        "sha256": "aae00296a00317fb5d8157cc46c908dd4c7bfd3ac1d52b647091d4c256ef13c6",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-057-archive",
+        "purpose": "isolated-test-domain-stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-057-archive/preflight-test-acceptance.stdout.txt",
+        "bytes": 1708,
+        "sha256": "54333a9262e337c046e25d93233d1f294e0bdfb41ba9fe3855e08697260c45f3",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-057-archive",
+        "purpose": "isolated-test-acceptance-stdout"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-057-archive/preflight-test-acceptance.stderr.txt",
+        "bytes": 54,
+        "sha256": "03a28f841eea36c0ec13f6dea3ea69c782e389ad940fcfaf6d419d0e4fff319b",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-057-archive",
+        "purpose": "isolated-test-acceptance-stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-057-archive/preflight-typecheck.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-057-archive",
+        "purpose": "isolated-typecheck-stdout"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-057-archive/preflight-typecheck.stderr.txt",
+        "bytes": 15,
+        "sha256": "8366207267355d3e3d5bf3bf6e8c94c5f93f6078c34f08973fa2b38cdda6cc92",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-057-archive",
+        "purpose": "isolated-typecheck-stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-057-archive/preflight-quality-gate.stdout.txt",
+        "bytes": 66,
+        "sha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-057-archive",
+        "purpose": "isolated-quality-gate-stdout"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-057-archive/preflight-quality-gate.stderr.txt",
+        "bytes": 192,
+        "sha256": "9ccaf1b94533f97d77e53271cbcbe105b2181b73bdcdc804c213feb0145b94f3",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-057-archive",
+        "purpose": "isolated-quality-gate-stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-057-archive/preflight-quality-dependency-health.stdout.txt",
+        "bytes": 81,
+        "sha256": "5276498e7920ab1799ff8c4785c45b47ffe95623b3ba525bf42a2143e0adda84",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-057-archive",
+        "purpose": "isolated-quality-dependency-health-stdout"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-057-archive/preflight-quality-dependency-health.stderr.txt",
+        "bytes": 79,
+        "sha256": "fa9ba6bb542e83e254b5bae92765b5ba9e0505c12e1e49f6c11dbf41c51f8775",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-057-archive",
+        "purpose": "isolated-quality-dependency-health-stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-057-archive/preflight-quality-entropy.stdout.txt",
+        "bytes": 64,
+        "sha256": "d78add4f5d8913a85deae02832c5d1751753b91ff1778c38e98d5e656a1fa917",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-057-archive",
+        "purpose": "isolated-quality-entropy-stdout"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-057-archive/preflight-quality-entropy.stderr.txt",
+        "bytes": 49,
+        "sha256": "7db8734f9a79ab0e050617ecdfb19b5819eb70b528b921de90840d1c8efe0973",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-057-archive",
+        "purpose": "isolated-quality-entropy-stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-057-archive/preflight-quality-owned-source.stdout.txt",
+        "bytes": 537,
+        "sha256": "663ed436ca376a3d766b56d1d40065e1a8bb64c217ba2a78a56f10b101035add",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-057-archive",
+        "purpose": "isolated-quality-owned-source-stdout"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-057-archive/preflight-quality-owned-source.stderr.txt",
+        "bytes": 74,
+        "sha256": "c86bfec8a0746ef3782ec82faa475c30584c496a247471de3d7d31663d09f15f",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-057-archive",
+        "purpose": "isolated-quality-owned-source-stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-057-archive/archive.stdout.txt",
+        "bytes": 498,
+        "sha256": "92acf669e0c354deb57a554049b3e5e39df9ca6501b35133665d9aa2e70c055e",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-057-archive",
+        "purpose": "actual-archive-stdout"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-057-archive/archive.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-057-archive",
+        "purpose": "actual-archive-stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-057-archive/validate.stdout.txt",
+        "bytes": 997,
+        "sha256": "d19d84f62f985cb545abe2e705fb40279ef05360f2fcfee2c965e12c6bb7091f",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-057-archive",
+        "purpose": "actual-validate-stdout"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-057-archive/validate.stderr.txt",
+        "bytes": 16,
+        "sha256": "5bc31df123a2e521acdd2c0d9477b367feec506471a91065d0a6b32c09089ed5",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-057-archive",
+        "purpose": "actual-validate-stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-057-archive/archive-evidence.json",
+        "bytes": 9009,
+        "sha256": "466ab9b28760c01cf40aec97de82b58eb5b7f361cbc8ec126886fa1048c553df",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-057-archive",
+        "purpose": "archive-convergence-summary"
+      }
+    ],
+    "limitations": [
+      "Archive is not Formal Delivery Full Test or Git checkpoint authority.",
+      "Isolated checks use a copied repository and do not claim independent Reviewer or Owner facts."
+    ],
+    "handoff": {
+      "summary": "D07 Change F archived at persisted project ordinal 48; canonical repository-integration spec synchronized; reviewed candidate retained at exact archive path and manifest completed. No next Change activation or Git action occurred.",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-10-01:activate-next-change-proof-explore",
+          "summary": "Owner authorized activation of Change F for proof Explore."
+        }
+      ],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20261001-057-archive",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-057-archive/archive-evidence.json"
+        }
+      ]
+    }
+  }
+}

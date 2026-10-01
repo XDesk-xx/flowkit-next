@@ -1,0 +1,62 @@
+{
+  "runId": "20261001-050-review-explore",
+  "probeSourceRef": {
+    "sourceRunId": "20261001-049-explore",
+    "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-049-explore/bounded-probe.mjs",
+    "sha256": "818e46f54a581c68418f9c0f19cf5371d1c60d0ca9e059606156f25a2a971172"
+  },
+  "records": [
+    {
+      "id": "probe",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "--import",
+        "tsx",
+        ".tmp/reviewer050-probe.mjs"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "startedAt": "2026-10-01T06:44:26.063Z",
+      "endedAt": "2026-10-01T06:44:27.325Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": "probe.stdout.txt",
+        "bytes": 353,
+        "sha256": "c11d92117613814657dfa60db5c79df5f75b5f6816205cc079c0e053e4e766b2"
+      },
+      "stderr": {
+        "path": "probe.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "baseline",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "--import",
+        "tsx",
+        "--test",
+        "tests/unit/domain/managed-evidence-checkpoint.test.ts"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "startedAt": "2026-10-01T06:44:27.328Z",
+      "endedAt": "2026-10-01T06:44:34.764Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": "baseline.stdout.txt",
+        "bytes": 504,
+        "sha256": "a0b46b07c8bab174eb23c8362eb85dd480fd4280d5f8ae7737afd4c3037e262d"
+      },
+      "stderr": {
+        "path": "baseline.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "scope": "Explore baseline reproduction only. Candidate prepared admission is not implemented or accepted by this check."
+}

@@ -1,0 +1,98 @@
+{
+  "runId": "20261001-049-explore",
+  "actionIdentity": {
+    "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+    "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+    "actionId": "explore"
+  },
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-explore",
+  "facts": {
+    "projectOrdinal": 48,
+    "changeStartSequence": 49,
+    "summary": "F scope remains the prepared proof checkpoint gap. Existing terminal gate rejects canonical prepared predecessors; Proposal must require a complete legal successor in the candidate Git tree and retain exact proof/index checks. E remains dependent and planned.",
+    "fixedPointCommit": "b2db17c7e54627bd281f73767098c72e053c7ed1",
+    "manifest": {
+      "path": "openspec/delivery-groups/20260929-07-bootstrap-execution-and-skill-hardening.yaml",
+      "sha256": "3bc6c6f477c850b864810e780be9a845c6da5acb6b1270b8b11807af5736960c"
+    },
+    "exploreArtifact": "openspec/changes/admit-canonical-prepared-proof-at-checkpoint/explore.md",
+    "exploreSha256": "12d0637693663610bf56579c396f36f3a69a3a01adc201b46c7ae1a71d3f37d8",
+    "openSpecMetadata": {
+      "path": "openspec/changes/admit-canonical-prepared-proof-at-checkpoint/.openspec.yaml",
+      "sha256": "c51317fdb09f4c0096f955c8beeb5f19a56ba49530c79732bb429ad0f423004d"
+    },
+    "checks": [
+      {
+        "command": "node --import tsx .tmp/d07-f-proof-probe.mjs",
+        "exitCode": 0,
+        "stdoutSha256": "c11d92117613814657dfa60db5c79df5f75b5f6816205cc079c0e053e4e766b2",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ],
+    "proofRefs": [
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-049-explore/bounded-probe-report.json",
+        "bytes": 472,
+        "sha256": "102409dc6b87473246110d7872e007e003d1962d9f1336dbd8e83b196ce8748d",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-049-explore",
+        "purpose": "bounded-command-exit-and-byte-digests"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-049-explore/bounded-probe.mjs",
+        "bytes": 5165,
+        "sha256": "818e46f54a581c68418f9c0f19cf5371d1c60d0ca9e059606156f25a2a971172",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-049-explore",
+        "purpose": "exact-bounded-reproduction-source"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-049-explore/bounded-probe.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-049-explore",
+        "purpose": "raw-bounded-reproduction-stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-049-explore/bounded-probe.stdout.txt",
+        "bytes": 353,
+        "sha256": "c11d92117613814657dfa60db5c79df5f75b5f6816205cc079c0e053e4e766b2",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-049-explore",
+        "purpose": "raw-bounded-reproduction-stdout"
+      }
+    ],
+    "limitations": [
+      "The isolated Git fixture demonstrates current behavior and canonical Policy edges, not repaired implementation acceptance or a real Owner checkpoint.",
+      "The candidate Git tree closure requirement follows from checkpoint semantics and source inspection; Proposal must define its minimal exact read mechanism.",
+      "Explore does not independently review or alter LearningPlatform historical Run/Proof bytes."
+    ],
+    "handoff": {
+      "summary": "Independent review-explore should verify the current terminal-only rejection, canonical supersession/continuation proof, candidate-tree closure, preserved terminal/exact-byte behavior, and unchanged E dependency.",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-10-01:activate-next-change-proof-explore",
+          "summary": "Owner authorized activation of the next Change and proof Explore."
+        }
+      ],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20261001-049-explore",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-049-explore/bounded-probe-report.json"
+        },
+        {
+          "sourceRunId": "20261001-049-explore",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-049-explore/bounded-probe.stdout.txt"
+        }
+      ]
+    }
+  }
+}

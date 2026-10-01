@@ -1,0 +1,98 @@
+{
+  "runId": "20261001-056-review-apply",
+  "actionIdentity": {
+    "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+    "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+    "actionId": "review-apply"
+  },
+  "authorConclusion": null,
+  "reviewerVerdict": "approved",
+  "verificationVerdict": null,
+  "nextBoundary": "archive",
+  "facts": {
+    "reviewedRunId": "20261001-055-revise-apply",
+    "previousReviewRunId": "20261001-054-review-apply",
+    "approvedProposalReviewRunId": "20261001-052-review-propose",
+    "reviewedResultSha256": "6b14c72cf82446d8a694ecbc522ca83e060f449aaf007bbc441ef7d71a265d77",
+    "reviewedArtifactHashes": {
+      "openspec/changes/admit-canonical-prepared-proof-at-checkpoint/.openspec.yaml": "c51317fdb09f4c0096f955c8beeb5f19a56ba49530c79732bb429ad0f423004d",
+      "openspec/changes/admit-canonical-prepared-proof-at-checkpoint/design.md": "26584794b4c8e70ec7d3144ed2a237e529c4e59e8da5b3414adf86145ea4c253",
+      "openspec/changes/admit-canonical-prepared-proof-at-checkpoint/explore.md": "12d0637693663610bf56579c396f36f3a69a3a01adc201b46c7ae1a71d3f37d8",
+      "openspec/changes/admit-canonical-prepared-proof-at-checkpoint/proposal.md": "1cf02dd8ea36d3d737d6d085fd916455b5c2a3972908096da4fa23aeed667e54",
+      "openspec/changes/admit-canonical-prepared-proof-at-checkpoint/specs/repository-integration-and-next-base-continuity/spec.md": "1750ba96108231c986b49cef3a8fb29feecbf8409c620386ba89823e5e500bd2",
+      "openspec/changes/admit-canonical-prepared-proof-at-checkpoint/tasks.md": "eae3f5336671aaefc588dc425feefa7c4cf26b747c5330bdefb38d630338ecf5",
+      "openspec/delivery-groups/20260929-07-bootstrap-execution-and-skill-hardening.yaml": "3bc6c6f477c850b864810e780be9a845c6da5acb6b1270b8b11807af5736960c",
+      "src/domain/run-result-persistence.ts": "ec0bd47457eed0d656b552bcf1e8cc5e3f3d4ca0243cf3ff3784a5d8d6163f20",
+      "src/internal/git-index-run-chain.ts": "80656deedcdf87215f26b158819904464bbf45f4d3ca5c3442b56ce399e2cc9f",
+      "src/internal/managed-evidence-checkpoint.ts": "65c8e14ca3c5793ba315346db678f625aa9d4680385c938037ffc7e91808ddcf",
+      "tests/unit/domain/prepared-proof-checkpoint.test.ts": "d96bf028aed0292d77b61350af2c95b2c514517d69cce376ee1bd503deb38a5d"
+    },
+    "currentStep": "独立复审 D07-F-RA-001：候选 index owner 状态/Result 是否在 terminal/prepared 分支之前核对，并验证 committed prepared owner 的工作区漂移拒绝及真实 terminal 兼容。",
+    "complexityMinimality": "在既有 declaredProof 内读取 index owner context/result、先核对工作区 bytes、再解析及选择 lifecycle 分支。既有 canonical reader/Policy 复用保持，terminal 无新增整链门槛。修订限于一份生产文件及两项直接回归，无新依赖或子系统。",
+    "newContentScopeDrift": "scope drift: NONE。两文件修订实现 054 finding 和已批准候选树合同；其余九项产物保持，包括共享 parser、index reader、规划与 manifest。没有扩展 E、历史迁移、Owner 权限或 Git 节点。",
+    "findings": [],
+    "resolvedFindings": [
+      {
+        "id": "D07-F-RA-001",
+        "resolution": "owner context/result 现在取自 index，并在任何 terminal 快路径之前与工作区原始 bytes 比较。候选 prepared 不能被工作区 terminal/PASS 豁免；新增真实隔离 Git 回归确认 checker 拒绝、executeScopedCheckpoint 返回 incomplete、HEAD 不变且 proof 仍 staged。committed terminal owner 的 proof-only 正例继续通过。"
+      }
+    ],
+    "evidence": [
+      "外部 Stable manager status/next 确认 055 terminal 后合法 review-apply，doctor PASS / exact OpenSpec 1.10.0。056 通过该 manager canonical start 建立；Guidance SHA d75e53f0925b2bf12f264d44a7d00c7046eea5bb5cca7c62016f8ae88597ceb8。",
+      "11 项 artifactHashes 全匹配；与 054 已审身份比较只有 managed-evidence-checkpoint.ts 和 prepared-proof-checkpoint.test.ts 变化。052 批准规划保持，tasks 仅完成勾选。055 全部 17 项 proof 的归属/唯一性、无链接常规文件、bytes/SHA/Git 字节规则及完整目录集合核对通过；八条命令记录与原始流匹配且 exit 0。",
+      "通读修订后的 declaredProof：以 index 解析出的 context.lifecycleState 选择分支，context/result 原始字节冲突在分支前拒绝；prepared 仍核对完整候选链、非 tip 唯一直接 child 和 owner 三文件；terminal 沿用单 proof 身份/声明/摘要准入而不读取整链。",
+      "独立执行五份相关测试文件，20 PASS / 0 FAIL / 0 skipped，实际 exit 0。包含与 054 反例同形的已提交 prepared owner + 仅 proof 暂存 + 未暂存 terminal/PASS 漂移，验证 commit 前拒绝及原 HEAD/index 保留；真实 terminal proof-only 正例、两类 prepared 合法后继、非法链与声明/原始字节基线均通过。",
+      "本 Run 保存独立命令摘要和原始 stdout/stderr 共三份 proof；没有复用 Author 的 PASS 作为独立执行结果。"
+    ],
+    "verification": {
+      "independentTargetedTests": 20,
+      "exitCode": 0,
+      "formalDeliveryFullTest": false
+    },
+    "limitations": "本次为修订的独立 review-apply 与有界回归，不是 Formal Full Test。未执行 LearningPlatform 真实历史、全套发行安装或 E 验收；Git 写入仅由隔离测试 fixture 发生，未修改主仓库 Git 或 Author artifacts。",
+    "proofRefs": [
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-056-review-apply/checks.json",
+        "bytes": 970,
+        "sha256": "74ba14147a9c260639828c6eaa286714212c94fe7644e340d1412f2c409134a3",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-056-review-apply",
+        "purpose": "Independent D07-F-RA-001 correction and terminal compatibility regression"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-056-review-apply/targeted.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-056-review-apply",
+        "purpose": "Independent D07-F-RA-001 correction and terminal compatibility regression"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-056-review-apply/targeted.stdout.txt",
+        "bytes": 4435,
+        "sha256": "89424f8d8953afed59210c9df4b10934dc07260889967e600f6cd70dde1aaeea",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "admit-canonical-prepared-proof-at-checkpoint",
+        "runId": "20261001-056-review-apply",
+        "purpose": "Independent D07-F-RA-001 correction and terminal compatibility regression"
+      }
+    ],
+    "handoff": {
+      "summary": "review-apply approved，D07-F-RA-001 已关闭，无新增 findings；当前实现符合批准 Proposal，可按 Policy 进入 archive。Reviewer STOP。",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-10-01:activate-next-change-proof-explore",
+          "summary": "Owner activated F; subsequent propose, apply and revise instructions invoked separate Actions."
+        }
+      ],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20261001-056-review-apply",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/admit-canonical-prepared-proof-at-checkpoint/proof/20261001-056-review-apply/checks.json"
+        }
+      ]
+    }
+  }
+}

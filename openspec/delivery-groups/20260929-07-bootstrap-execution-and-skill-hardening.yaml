@@ -45,7 +45,8 @@ changes:
     goal: "只在完整 canonical Run 链证明合法 supersession 或 continuation 后，接纳 prepared owner 的真实 proof 首次进入 managed Change checkpoint。"
     required: true
     dependsOn: ["expose-stable-delivery-and-support-commands"]
-    state: planned
+    state: completed
+    projectOrdinal: 48
   - id: "validate-and-freeze-bootstrap-manager"
     group: "release-acceptance"
     goal: "验证独立安装、真实新目标与新会话、端到端流程和发行资产一致性，形成可供后续明确选择的 manager 候选。"
@@ -82,6 +83,13 @@ ownerDecisions:
     deliveryId: "20260929-07-bootstrap-execution-and-skill-hardening"
     changeId: "enforce-typed-evidence-and-bounded-execution"
     sourceRef: "owner-input:2026-10-01:activate-next-change-effective-correction-proof-explore"
+    scope:
+      - "explore"
+  - ref: "owner:2d74d54316f11fc3a5376429a47e119efb3d92312e8deb3d47052f33b12b5e7b"
+    decision: "activate-change"
+    deliveryId: "20260929-07-bootstrap-execution-and-skill-hardening"
+    changeId: "admit-canonical-prepared-proof-at-checkpoint"
+    sourceRef: "owner-input:2026-10-01:activate-next-change-proof-explore"
     scope:
       - "explore"
 reference:

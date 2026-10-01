@@ -1,0 +1,30 @@
+{
+  "runId": "20261001-056-review-apply",
+  "record": {
+    "command": [
+      "C:\\nvm4w\\nodejs\\node.exe",
+      "--import",
+      "tsx",
+      "--test",
+      "tests/unit/domain/prepared-proof-checkpoint.test.ts",
+      "tests/unit/domain/current-run-chain.test.ts",
+      "tests/unit/domain/managed-evidence-checkpoint.test.ts",
+      "tests/unit/domain/git-checkpoint-scope.test.ts",
+      "tests/unit/domain/support-git-checkpoint.test.ts"
+    ],
+    "startedAt": "2026-10-01T08:47:05.533Z",
+    "endedAt": "2026-10-01T08:47:40.319Z",
+    "exitCode": 0,
+    "signal": null,
+    "error": null,
+    "stdout": {
+      "bytes": 4435,
+      "sha256": "89424f8d8953afed59210c9df4b10934dc07260889967e600f6cd70dde1aaeea"
+    },
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "scope": "Independent current revision targeted Git regression; isolated fixtures only, not Formal Full Test."
+}
