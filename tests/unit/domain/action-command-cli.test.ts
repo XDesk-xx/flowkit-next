@@ -146,7 +146,7 @@ test("fixed CLI starts and finishes one Author Run across processes, then confir
         reviewerVerdict: verdict,
         verificationVerdict: null,
         nextBoundary: boundary,
-        facts: {},
+        facts: { proofRefs: [] },
       };
       const file = path.join(
         fixture.repositoryRoot,
@@ -197,6 +197,64 @@ test("fixed CLI starts and finishes one Author Run across processes, then confir
         .update(Buffer.from([0, 13, 10, 255]))
         .digest("hex"),
     );
+    const extraPaths = ["extra-a.txt", "extra-b.txt"].map((name) =>
+      proofPath.replace("stdout.txt", name),
+    );
+    for (const [index, relative] of extraPaths.entries())
+      await writeFile(
+        path.join(fixture.repositoryRoot, relative),
+        `extra ${index}\n`,
+      );
+    const currentRefs = await Promise.all(
+      [proofPath, ...extraPaths].map(async (relative) => {
+        const bytes = await readFile(
+          path.join(fixture.repositoryRoot, relative),
+        );
+        return {
+          path: relative,
+          bytes: bytes.length,
+          sha256: createHash("sha256").update(bytes).digest("hex"),
+          deliveryId: "delivery-one",
+          changeId: "change-one",
+          runId: reviewId,
+          purpose: "bounded fixture",
+        };
+      }),
+    );
+    const reviewResult = {
+      runId: reviewId,
+      actionIdentity: { ...result.actionIdentity, actionId: "review-explore" },
+      authorConclusion: null,
+      reviewerVerdict: "changes-requested",
+      verificationVerdict: null,
+      nextBoundary: "revise-explore",
+      facts: { proofRefs: currentRefs },
+    };
+    for (const [name, refs] of [
+      ["empty", []],
+      ["one", currentRefs.slice(0, 1)],
+    ] as const) {
+      const file = path.join(fixture.repositoryRoot, `incomplete-${name}.json`);
+      await writeFile(
+        file,
+        JSON.stringify({
+          ...base,
+          runId: reviewId,
+          role: "reviewer",
+          terminal: true,
+          result: { ...reviewResult, facts: { proofRefs: refs } },
+        }),
+      );
+      await assert.rejects(
+        cli(["action", "finish", "--input", file]),
+        (error: unknown) =>
+          JSON.parse((error as { stdout?: string }).stdout ?? "{}").error
+            ?.kind === "proof-invalid",
+      );
+      assert.deepEqual(await readdir(review.directory as string), [
+        "action.md",
+      ]);
+    }
     const badProof = path.join(fixture.repositoryRoot, "bad-proof-finish.json");
     await writeFile(
       badProof,
@@ -238,6 +296,25 @@ test("fixed CLI starts and finishes one Author Run across processes, then confir
           ?.kind === "proof-invalid",
     );
     assert.deepEqual(await readdir(review.directory as string), ["action.md"]);
+    const complete = path.join(
+      fixture.repositoryRoot,
+      "complete-proof-finish.json",
+    );
+    await writeFile(
+      complete,
+      JSON.stringify({
+        ...base,
+        runId: reviewId,
+        role: "reviewer",
+        terminal: true,
+        result: reviewResult,
+      }),
+    );
+    assert.equal(
+      (await cli(["action", "finish", "--input", complete])).effect,
+      "confirmed",
+    );
+    assert.equal((await readdir(review.directory as string)).length, 3);
   } finally {
     await fixture.cleanup();
   }
@@ -301,7 +378,7 @@ test("prepared Owner correction binds conversation source across CLI processes w
       reviewerVerdict: null,
       verificationVerdict: null,
       nextBoundary: null,
-      facts: {},
+      facts: { proofRefs: [] },
     };
     await cli([
       "action",
@@ -353,7 +430,7 @@ test("prepared Owner correction binds conversation source across CLI processes w
       reviewerVerdict: null,
       verificationVerdict: null,
       nextBoundary: "review-explore",
-      facts: {},
+      facts: { proofRefs: [] },
     };
     const finished = await cli([
       "action",
@@ -437,7 +514,7 @@ test("terminal Author FAIL with null boundary is readable and does not advance P
       reviewerVerdict: null,
       verificationVerdict: null,
       nextBoundary: null,
-      facts: { reason: "bounded probe did not establish proof" },
+      facts: { reason: "bounded probe did not establish proof", proofRefs: [] },
     };
     const finished = await call("action finish", {
       ...base,

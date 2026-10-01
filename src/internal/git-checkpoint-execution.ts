@@ -4,6 +4,7 @@ import {
 } from "../domain/delivery-repository-integration-operation.js";
 import { requireNewManagedEvidenceBytes } from "./managed-evidence-checkpoint.js";
 import {
+  gitAddExactPaths,
   gitBytes,
   gitText,
   readGitPosition,
@@ -63,6 +64,7 @@ export async function executeScopedCheckpoint(
   let effect: GitHostOutcome["effect"] = "none";
   let before: string | null = null;
   let checkpoint: string | null = null;
+  let preStageIndex: string | null = null;
   try {
     if (!isDeliveryCheckpointOperation(operation))
       throw Error("checkpointOperation 无效");
@@ -113,11 +115,8 @@ export async function executeScopedCheckpoint(
     await validate();
     phase = "stage";
     effect = "unknown";
-    await gitBytes(root, [
-      "add",
-      "--",
-      ...operation.paths.map((p) => `:(literal)${p}`),
-    ]);
+    preStageIndex = index;
+    await gitAddExactPaths(root, operation.paths);
     effect = "confirmed";
     index = await readIndexFingerprint(root);
     await validate();
@@ -129,13 +128,13 @@ export async function executeScopedCheckpoint(
     await gitBytes(root, ["commit", "-m", operation.commitMessage]);
     phase = "readback";
     const after = await readGitPosition(root);
-    checkpoint = after.head;
     if (
-      checkpoint === null ||
+      after.head === null ||
       after.branch !== expectedBranch ||
-      !(await verifyCheckpointObjects(root, before, checkpoint, operation))
+      !(await verifyCheckpointObjects(root, before, after.head, operation))
     )
       throw Error("实际提交对象、范围或指定形状不符");
+    checkpoint = after.head;
     return gitHostOutcome(
       "completed",
       "readback",
@@ -148,10 +147,24 @@ export async function executeScopedCheckpoint(
     if (effect !== "none") {
       try {
         const observed = await readGitPosition(root);
-        if (observed.head !== before) checkpoint = observed.head;
-        await readIndexFingerprint(root);
+        const observedIndex = await readIndexFingerprint(root);
+        if (
+          observed.head !== before &&
+          observed.head !== null &&
+          operation.kind === "create-new" &&
+          (await verifyCheckpointObjects(
+            root,
+            before,
+            observed.head,
+            operation,
+          ))
+        )
+          checkpoint = observed.head;
         effect =
-          checkpoint !== null || phase === "stage" ? "confirmed" : "unknown";
+          checkpoint !== null ||
+          (preStageIndex !== null && observedIndex !== preStageIndex)
+            ? "confirmed"
+            : "unknown";
       } catch {
         effect = "unknown";
       }

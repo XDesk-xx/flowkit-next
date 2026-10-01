@@ -1,0 +1,96 @@
+{
+  "runId": "20261001-043-review-propose",
+  "actionIdentity": {
+    "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+    "changeId": "enforce-typed-evidence-and-bounded-execution",
+    "actionId": "review-propose"
+  },
+  "authorConclusion": null,
+  "reviewerVerdict": "approved",
+  "verificationVerdict": null,
+  "nextBoundary": "apply",
+  "facts": {
+    "reviewedRunId": "20261001-042-revise-propose",
+    "previousReviewRunId": "20261001-041-review-propose",
+    "approvedExploreReviewRunId": "20261001-039-review-explore",
+    "reviewedResultSha256": "42e0e7e0a94aad2c2c5bebb7bfbd0c52f817e3868eeab22794c4cca7e7c109ea",
+    "reviewedArtifactHashes": {
+      "openspec/changes/enforce-typed-evidence-and-bounded-execution/proposal.md": "e2db76517a7a44ca21b8acc8bee5a408bfa93f4ff6d315d1424088daadbbdf9f",
+      "openspec/changes/enforce-typed-evidence-and-bounded-execution/design.md": "1f963108328f28538142ff1894c72400aba65d3eef3a77fb5de6da7e30a95d90",
+      "openspec/changes/enforce-typed-evidence-and-bounded-execution/tasks.md": "73f99f85b5dfbf26a276874473f138189ff2a45270716bae3035c3bafc84acce",
+      "openspec/changes/enforce-typed-evidence-and-bounded-execution/specs/stable-action-command-execution/spec.md": "7e250bc1a7ee26ec0f4f44d5d17b128e72befca8fbeac90dd9bdd049326193b5",
+      "openspec/changes/enforce-typed-evidence-and-bounded-execution/specs/stable-delivery-support-command-execution/spec.md": "a87e07c84e5dc3e242e0dcd19f02e542b82163a294109d2369502ca0c5c490d1",
+      "openspec/changes/enforce-typed-evidence-and-bounded-execution/specs/lightweight-engineering-gate/spec.md": "34b1660f50e9cdfd4a89a54e2e75c53a33641428a7a46c86d8ec9332623cc20f"
+    },
+    "currentStep": "独立复审 D07-D-RP-001 的规划收敛，核对源码发现边界、精确遗留文件分类、内容身份、验收案例及权限示例的实际接口限制。",
+    "complexityMinimality": "复用既有源码根、类型/质量/运行命令；新增的是有界发现和精确遗留内容规则，未引入 Registry 或通用语言平台。现存文件无需批量迁移，改变内容才进入受检 TS 或逐文件工具评估，符合最小修订。",
+    "newContentScopeDrift": "scope drift: NONE。工作树发现、有限后缀、精确排除根和七项遗留内容身份具体化已批准 Explore 与 041 finding；proof/有界 Git/F 分工保持，未增加 CLI 查询接口、宿主自动授权或历史扫描。",
+    "resolvedFindings": [
+      {
+        "id": "D07-D-RP-001",
+        "resolution": "设计已冻结工作树递归发现范围与明确排除面，包含未跟踪/新目录；默认受检 TS 根与七项 exact path+SHA 遗留内容例外均已列明原因和对应检查。新文件/内容变化不继承例外，不依赖 Git 基线；实际 node:test 套件明确不作为 fixture。spec 与 task 3.1 已对应这些规则及跨目录新 helper、遗留内容变化的正反例。"
+      }
+    ],
+    "findings": [],
+    "resolvedObservations": [
+      {
+        "topic": "Foundation query visible target",
+        "resolution": "proposal/design/spec/tasks 明确 status/next/doctor 仅 --input，没有目标 argv；按 target 收窄的宿主示例只用于实际支持可见目标与 JSON 一致性校验的命令，不暗加新查询能力。"
+      }
+    ],
+    "evidence": [
+      "外部 Stable manager status/next 确认 042 terminal 后合法 review-propose，doctor pass / exact OpenSpec 1.10.0。review-propose Guidance SHA-256 505949ae2ae82f4b8c6ab2e91634f5af4cf9700fc32464e5ec8b927ae3807be3 保持不变；043 通过 canonical start 建立。",
+      "六份规划 SHA 与 042 完全一致；039 已批准的 Explore/manifest/metadata 身份仍保持。042 无新 proof 且无空目录，未把结构校验当作实现验收。",
+      "独立按设计排除根和后缀扫描当前工作树，发现 171 个相关源码文件：164 个在 src/tests 受检 TS 根，其余恰为设计列出的七项；未发现扫描路径链接。七项原始 SHA 全匹配，命令映射和实际 node:test 分类可核对。",
+      "stable-action-command-execution delta 与 041 已审字节完全相同。将支持命令 delta 的权限段落和 WHEN 原句在内存反向替换后，整文件 SHA 恢复 041 身份，证实 checkpoint 合同及其他内容未变。",
+      "通读 proposal/design/tasks 与两个修订 delta：改动围绕源码政策和已有权限观察；proof 闭合集、单次 NUL pathspec、失败时保留 index、原始证据、外部 Stable manager 与 F prepared checkpoint 边界保持。",
+      "独立 managed OpenSpec validate --strict exit 0。原始 stdout/stderr 与源码发现/身份检查摘要共三份新 proof 完整声明；这证明当前规划结构和基线事实，不替代 Apply 的实际策略执行验证。"
+    ],
+    "literalClassification": "七项路径和 SHA 是本 Proposal 明确批准的遗留内容例外身份，后续改变须重新评估；不是永久“仓库只能有七个文件”的数量不变量。171/164 为本次扫描观察值，测试应验证发现、覆盖与例外语义，不固化这些数量。",
+    "limitations": "本次批准 Proposal。源码检查、proof 闭合集、NUL stdin 暂存和故障分支仍需 Apply 实现及实际验收；宿主交互规则效果仍未验证。没有 Author 产物修改、正式 Full Test 或 Git mutation。",
+    "proofRefs": [
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-043-review-propose/checks.json",
+        "bytes": 3871,
+        "sha256": "dd7fd1633fb891052da34e7cf90836889894aac1e0b68434df53ce21116becd2",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "enforce-typed-evidence-and-bounded-execution",
+        "runId": "20261001-043-review-propose",
+        "purpose": "Independent revised Proposal identity, source-boundary inventory and structural verification"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-043-review-propose/validate.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "enforce-typed-evidence-and-bounded-execution",
+        "runId": "20261001-043-review-propose",
+        "purpose": "Independent revised Proposal identity, source-boundary inventory and structural verification"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-043-review-propose/validate.stdout.txt",
+        "bytes": 63,
+        "sha256": "485ed9da833fbaf46e126246ac1ec6770cccb862270a904063948db950ab50c6",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "enforce-typed-evidence-and-bounded-execution",
+        "runId": "20261001-043-review-propose",
+        "purpose": "Independent revised Proposal identity, source-boundary inventory and structural verification"
+      }
+    ],
+    "handoff": {
+      "summary": "review-propose approved，D07-D-RP-001 已关闭；可按 042 exact Proposal 进入 Apply，保持遗留例外、负例、权限能力与 D/F 边界。Reviewer STOP。",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-10-01:activate-next-change-effective-correction-proof-explore",
+          "summary": "沿用 D 的有效修正与已批准 Explore 范围；本次批准不产生新的 Git 或宿主权限。"
+        }
+      ],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20261001-043-review-propose",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-043-review-propose/checks.json"
+        }
+      ]
+    }
+  }
+}

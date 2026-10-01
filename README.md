@@ -31,7 +31,7 @@ CLI 查询入口为 `status / next / doctor --input <request.json>`；单次 Act
 
 Action 必要 proof 在 target `.flowkit/artifacts/<delivery>/changes/<change>/proof/<run-id>/`；生产 Run 的 `proofRefs` 须完整声明该目录的全部文件及 bytes/SHA，后继 Action 才按当前判断需要选择已声明引用交接。`.tmp` 仅承载可丢弃材料。旧证据不代替当前实现验收，原始 stdout/stderr 保留 bytes。
 
-本仓库开发检查见 package.json：typecheck、build、test:domain、test:acceptance；quality:gate 聚合 bounded 格式、lint 与既有 650 行要求。历史/bootstrap 自检单独用 test:bootstrap，不属于代码 Full Test。禁止入库内容检查与 Git 空白诊断独立，不把非代码历史日志空白当作代码失败。
+本仓库开发检查见 package.json：typecheck、build、test:domain、test:acceptance；quality:gate 聚合 bounded 格式、lint 与既有 650 行要求。`quality:owned-source` 单独扫描当前工作树的自有可执行源码，验证受检 TS 位置及七项 exact 内容身份的遗留 JS 例外；它不依赖 Git 基线，也不改变轻量 gate。历史/bootstrap 自检单独用 test:bootstrap，不属于代码 Full Test。禁止入库内容检查与 Git 空白诊断独立，不把非代码历史日志空白当作代码失败。
 
 主要 detached 验收平台为 Linux x64 glibc；Windows compatibility simulation 不自动代表 native Windows 全面 PASS，报告以实际执行范围为准。Windows/Linux node_modules 不共用。
 

@@ -109,3 +109,48 @@ export async function checkDeclaredProofs(
       throw new Error("Proof bytes changed");
   }
 }
+
+/** Finish checks the new producer's whole directory; later consumers remain selective. */
+export async function checkOwnRunProofClosure(
+  target: ActionTarget,
+  runId: string,
+  refs: unknown,
+): Promise<void> {
+  if (!Array.isArray(refs))
+    throw new Error("proofRefs must be an explicit array");
+  const relativeRoot = `.flowkit/artifacts/${target.deliveryId}/changes/${target.changeId}/proof/${runId}`;
+  const root = await realpath(target.repositoryRoot);
+  let directory = root;
+  let missing = false;
+  for (const segment of relativeRoot.split("/")) {
+    directory = path.join(directory, segment);
+    const entry = await lstat(directory).catch(
+      (error: NodeJS.ErrnoException) => {
+        if (error.code === "ENOENT") return null;
+        throw error;
+      },
+    );
+    if (entry === null) {
+      missing = true;
+      break;
+    }
+    if (entry.isSymbolicLink() || !entry.isDirectory())
+      throw new Error("Linked or non-directory proof path");
+  }
+  if (missing) {
+    if (refs.length !== 0) throw new Error("Proof directory is absent");
+    return;
+  }
+  const prefix = `${relativeRoot}/`;
+  const actual = new Set<string>();
+  for (const entry of await readdir(directory, { withFileTypes: true })) {
+    if (!entry.isFile() || entry.isSymbolicLink())
+      throw new Error(`Unsupported proof entry: ${entry.name}`);
+    actual.add(`${prefix}${entry.name}`);
+  }
+  if (actual.size === 0)
+    throw new Error("Empty proof directory is not allowed");
+  await checkDeclaredProofs(target, runId, refs);
+  if (actual.size !== refs.length || refs.some((ref) => !actual.has(ref.path)))
+    throw new Error("Own-Run proof directory and proofRefs differ");
+}

@@ -38,7 +38,8 @@ changes:
     goal: "约束新增 TypeScript 入口、证据与临时材料用途，并以窄权限方式执行固定命令，不扩大宿主解释器授权。"
     required: true
     dependsOn: ["expose-stable-action-and-record-commands", "expose-stable-delivery-and-support-commands", "converge-owned-skills-on-supported-commands"]
-    state: planned
+    state: completed
+    projectOrdinal: 47
   - id: "admit-canonical-prepared-proof-at-checkpoint"
     group: "evidence-checkpoint"
     goal: "只在完整 canonical Run 链证明合法 supersession 或 continuation 后，接纳 prepared owner 的真实 proof 首次进入 managed Change checkpoint。"
@@ -74,6 +75,13 @@ ownerDecisions:
     deliveryId: "20260929-07-bootstrap-execution-and-skill-hardening"
     changeId: "converge-owned-skills-on-supported-commands"
     sourceRef: "owner-input:2026-10-01:backup-commit-activate-c-proof-explore"
+    scope:
+      - "explore"
+  - ref: "owner:bc7d4c6ff4b4036ef655673348873c2a4c352bc72d5a54d056b5d2b49cea7d0a"
+    decision: "activate-change"
+    deliveryId: "20260929-07-bootstrap-execution-and-skill-hardening"
+    changeId: "enforce-typed-evidence-and-bounded-execution"
+    sourceRef: "owner-input:2026-10-01:activate-next-change-effective-correction-proof-explore"
     scope:
       - "explore"
 reference:

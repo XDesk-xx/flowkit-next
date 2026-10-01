@@ -1,0 +1,94 @@
+TAP version 13
+# Subtest: native Git NUL scope supports unborn, Chinese/spaces, delete and rename endpoints
+ok 1 - native Git NUL scope supports unborn, Chinese/spaces, delete and rename endpoints
+  ---
+  duration_ms: 2757.3464
+  type: 'test'
+  ...
+# Subtest: RA038-001: exact branch push does not inherit followTags or mutate configuration
+ok 2 - RA038-001: exact branch push does not inherit followTags or mutate configuration
+  ---
+  duration_ms: 3823.7528
+  type: 'test'
+  ...
+# Subtest: RA038-002: ordinary null-shape checkpoint leaves a pending merge untouched
+ok 3 - RA038-002: ordinary null-shape checkpoint leaves a pending merge untouched
+  ---
+  duration_ms: 2058.5948
+  type: 'test'
+  ...
+# Subtest: RA038-003: verified reuse survives pre-acceptance source loss with no new mutation
+ok 4 - RA038-003: verified reuse survives pre-acceptance source loss with no new mutation
+  ---
+  duration_ms: 1753.0527
+  type: 'test'
+  ...
+# Subtest: pending continuation states are preserved, reuse stays read-only, and stage-time arrival stops commit
+ok 5 - pending continuation states are preserved, reuse stays read-only, and stage-time arrival stops commit
+  ---
+  duration_ms: 7296.1451
+  type: 'test'
+  ...
+# Subtest: post-stage index drift is incomplete with confirmed stage effect, without commit or unstage
+ok 6 - post-stage index drift is incomplete with confirmed stage effect, without commit or unstage
+  ---
+  duration_ms: 3801.0105
+  type: 'test'
+  ...
+# Subtest: failed exact staging reports unknown effect without retrying or clearing index
+ok 7 - failed exact staging reports unknown effect without retrying or clearing index
+  ---
+  duration_ms: 2561.2243
+  type: 'test'
+  ...
+# Subtest: stdin error waits for the single stage child to finish before authoritative readback
+ok 8 - stdin error waits for the single stage child to finish before authoritative readback
+  ---
+  duration_ms: 2396.9361
+  type: 'test'
+  ...
+# Subtest: commit failure preserves confirmed staged paths and does not claim a checkpoint
+ok 9 - commit failure preserves confirmed staged paths and does not claim a checkpoint
+  ---
+  duration_ms: 4053.6714
+  type: 'test'
+  ...
+# Subtest: nonzero commit response reads back the exact created object without retry
+ok 10 - nonzero commit response reads back the exact created object without retry
+  ---
+  duration_ms: 4060.9451
+  type: 'test'
+  ...
+# Subtest: readback rejects a committed object with the wrong authorized shape
+ok 11 - readback rejects a committed object with the wrong authorized shape
+  ---
+  duration_ms: 4103.8287
+  type: 'test'
+  ...
+# Subtest: Change checkpoint consumes existing evaluator and source, never a Final
+ok 12 - Change checkpoint consumes existing evaluator and source, never a Final
+  ---
+  duration_ms: 4375.7268
+  type: 'test'
+  ...
+# Subtest: ordinary host: source binding, scoped first commit, dirty reuse, independent bare push
+ok 13 - ordinary host: source binding, scoped first commit, dirty reuse, independent bare push
+  ---
+  duration_ms: 9159.6227
+  type: 'test'
+  ...
+# Subtest: ordinary checkpoint commits a Windows-argv-sized exact path set through bounded stdin
+ok 14 - ordinary checkpoint commits a Windows-argv-sized exact path set through bounded stdin
+  ---
+  duration_ms: 61979.8643
+  type: 'test'
+  ...
+1..14
+# tests 14
+# suites 0
+# pass 14
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 71528.48

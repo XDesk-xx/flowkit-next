@@ -73,7 +73,21 @@ node $cli status --input $queryRequestFile
 node $cli next --input $queryRequestFile
 ```
 
-`proof inspect` 请求另含 `runId` 与受控 proof `path`；只有实际必要材料才调用。生产者在 finish 前须将本 Run 正式 proof 目录的**全部文件**逐一纳入本 Run `proofRefs`，每条含归属、路径、用途、bytes 与 SHA；若目录有三个文件而只列一个，应保持未完成并补齐真实声明。无新材料时不建空目录，使用空 `proofRefs`。后续 Action 的 handoff 可只交接本次判断需要的已声明引用，不删减原 Run Result。finish 请求含 `runId`、`role`、`terminal` 与真实 `RunResultRecord`。仅返回 `effect=confirmed` 才表示三文件和 canonical chain 已读回；这不代表业务 PASS。prepared Owner correction 仅由收到真实 Owner 指令的受信宿主在 start 请求中加入现有 `OwnerAuthorityFact`，finish 不再重填。archive start 另需非空 `applicableChecks: [{id,reason}]`，由 Agent 声明实际适用且已在 target `package.json` scripts 或 `config/verification/full-test.json` checks 中配置的检查；隔离 convergence 后执行，未配置或失败则阻断。Reviewer `rejected` 是可报告的真实判断，但当前固定 finish 会在 machine 文件写前拒绝其持久化并保持 incomplete；不得改写成 `changes-requested`。普通 Action 不需要新增 Owner fact，Review、Full Test 与 Git 边界仍独立。
+`proof inspect` 请求另含 `runId` 与受控 proof `path`；只有实际必要材料才调用。生产者在 finish 前须将本 Run 正式 proof 目录的**全部文件**逐一纳入本 Run 显式 `proofRefs`，每条含归属、路径、用途、bytes 与 SHA。固定 finish 会枚举本 Run 目录并双向核对；若目录有三个文件而只列一个、目录为空、引用重复或文件无效，会在 terminal 机器文件写入前拒绝并保留开始记录和材料。无新材料时不建空目录，显式使用 `proofRefs: []`。后续 Action 的 handoff 可只交接本次判断需要的已声明引用，不删减原 Run Result 或重扫旧目录。`.tmp` 仅承载可丢弃请求、诊断和隔离实验；需要长期复现的实验脚本按原始字节作为本 Run proof 声明具体用途，不作为标准生命周期入口。finish 请求含 `runId`、`role`、`terminal` 与真实 `RunResultRecord`。仅返回 `effect=confirmed` 才表示三文件和 canonical chain 已读回；这不代表业务 PASS。prepared Owner correction 仅由收到真实 Owner 指令的受信宿主在 start 请求中加入现有 `OwnerAuthorityFact`，finish 不再重填。archive start 另需非空 `applicableChecks: [{id,reason}]`，由 Agent 声明实际适用且已在 target `package.json` scripts 或 `config/verification/full-test.json` checks 中配置的检查；隔离 convergence 后执行，未配置或失败则阻断。Reviewer `rejected` 是可报告的真实判断，但当前固定 finish 会在 machine 文件写前拒绝其持久化并保持 incomplete；不得改写成 `changes-requested`。普通 Action 不需要新增 Owner fact，Review、Full Test 与 Git 边界仍独立。
+
+### 可选宿主权限示例
+
+先由 Owner 选择实际安装目录、target 和所需命令，再在宿主自己的权限机制中逐项审核。宿主可见的是 `node` 可执行文件、选定安装的 exact `$cli` 绝对路径、子命令和明示 argv；`--input` 文件名或 stdin 的内容不构成宿主可见的 target 授权。下表中的 `$target`、`$deliveryId`、`$changeId` 均须替换为已选定值；不同类别不继承权限。
+
+| 类别 | 可供宿主逐项审核的固定调用 | 边界 |
+| --- | --- | --- |
+| 只读材料 | `node $cli proof inspect --repository-root $target --delivery-id $deliveryId --change-id $changeId --input $proofRequestFile` | 固定入口仍核对 JSON 目标与具体 proof；仅按需读取 |
+| 只读 Delivery 检查 | `node $cli delivery full-test current --repository-root $target --delivery-id $deliveryId --input $currentRequestFile` | 只读当前状态；不授权运行 Full Test |
+| 受控记录 | `node $cli action start --repository-root $target --delivery-id $deliveryId --change-id $changeId --input $startRequestFile`；`node $cli action finish --repository-root $target --delivery-id $deliveryId --change-id $changeId --input $finishRequestFile` | 两个子命令分别审核；Policy、Role、Run 和 Result admission 仍由 CLI 核对 |
+| 项目检查 | 在选定 target 明确调用其 `pnpm quality:gate`、`pnpm typecheck` 等具体脚本 | 项目脚本权限与 Flowkit CLI 权限分开，结果不产生 Owner/Review 权限 |
+| Git/网络 | `git checkpoint`、`git push`、`git integrate` 各自为独立审批节点 | 不能继承只读或记录命令的权限；仍需 exact Owner 与 Git 事实 |
+
+Foundation `status`、`next`、`doctor` 当前仅支持 `--input`，没有 `--repository-root` 目标 argv，不能给它们配置声称“按 target 前缀匹配”的自动放行。任何示例都不放行裸 `node`/`python`、所有 Flowkit 子命令、其他安装或其他 target。宿主前缀匹配不解析 JSON；即使宿主匹配，CLI 仍须拒绝 JSON 与可见目标冲突。可测试的宿主应分别试选定调用及不同安装、子命令、target、冲突 JSON 的反例。当前发行没有交互式宿主规则测试结果，此项保持**未验证**，不承诺零提示，也不自动安装或修改用户全局规则。
 
 候选 CLI 的支持命令为 `project init`、`delivery start`、`change activate`、`change archive`、`memo list/get/create/promote/dismiss`、`delivery full-test`、`delivery full-test current`、`delivery final` 和 `git checkpoint/push/integrate`。每个 JSON 请求都含 `repositoryRoot`、`flowkitHome`；Delivery/Change 命令另含各自 ID，并与可见参数一致。例如：
 

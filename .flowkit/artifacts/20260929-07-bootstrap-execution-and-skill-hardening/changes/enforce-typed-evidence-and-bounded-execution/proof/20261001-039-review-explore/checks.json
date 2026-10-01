@@ -1,0 +1,41 @@
+{
+  "runId": "20261001-039-review-explore",
+  "reviewedRunId": "20261001-038-explore",
+  "command": [
+    "C:\\nvm4w\\nodejs\\node.exe",
+    "--import",
+    "tsx",
+    "D:\\Projects\\flowkit-next\\.tmp\\reviewer039-probe.mjs"
+  ],
+  "cwd": "D:\\Projects\\flowkit-next",
+  "startedAt": "2026-10-01T02:52:50.538Z",
+  "finishedAt": "2026-10-01T02:52:51.505Z",
+  "exitCode": 0,
+  "signal": null,
+  "source": {
+    "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-038-explore/bounded-probe.mjs",
+    "bytes": 2752,
+    "sha256": "8c418bfd463338a76067ddfb1929614e1fd115d6673afdf6500b6b7967a37dc8"
+  },
+  "sourceArchiveResult": {
+    "path": ".flowkit/runs/20260929-07-bootstrap-execution-and-skill-hardening/027-converge-owned-skills-on-supported-commands/20261001-037-archive/result.json",
+    "sha256": "c143aeb5b442fcc60b3eba3fc4a7ccee89f69f7a934f6556bb05117f98cc0e1b"
+  },
+  "observed": {
+    "sourceCommit": "50f483b1c36284d325882d831e6e7b65dc1c825e",
+    "proofRunId": "20261001-037-archive",
+    "actualProofFiles": 23,
+    "emptyProofRefsAccepted": true,
+    "oneOf23ProofRefsAccepted": true,
+    "pathCount": 202,
+    "longArgsError": "ENAMETOOLONG",
+    "nulPathspecStaged": 202,
+    "fixtureScope": ".tmp isolated Git repository"
+  },
+  "classification": {
+    "counts": "23 proof files and 202 paths are current observed fixture values; future tests must exercise completeness and bounded argv semantics, not permanently require these counts.",
+    "gitScope": "Only new isolated .tmp Git fixture is staged. No project index/commit/remote mutation.",
+    "proofScope": "Current candidate checker is only read against existing C archive proof; no historical file mutation.",
+    "limits": "Reproduction proves the current gap and proposed staging transport feasibility only; no corrected implementation acceptance or formal checkpoint."
+  }
+}

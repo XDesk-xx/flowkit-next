@@ -1,0 +1,100 @@
+{
+  "reviewedRunId": "20261001-042-revise-propose",
+  "legacyRows": [
+    {
+      "path": "dependency-cruiser.config.mjs",
+      "sha256": "b2faff94dd1bb58d59f645ebdde50788c976da9ff638ba3c5ce16500e256b833",
+      "classificationAndCheck": "工具配置，现存 JS 模块 | `pnpm quality:dependency-health` |"
+    },
+    {
+      "path": "eslint.config.mjs",
+      "sha256": "03d491ab3aa03396a4780763cfb99bfdfb0edac71e22239964423f30047ccadd",
+      "classificationAndCheck": "ESLint 配置，现存 JS 模块 | `pnpm lint` |"
+    },
+    {
+      "path": "scripts/build-production.mjs",
+      "sha256": "6984d2ea55d874885731d2b6217bf9d10b8c77788648eebcc744862f1ca5df2b",
+      "classificationAndCheck": "现存构建入口 | `pnpm build` |"
+    },
+    {
+      "path": "scripts/check-forbidden-tracked-artifacts.mjs",
+      "sha256": "0b821d01dc5f1b7494d7b95410f21b7b2e76eaf6d8b6fcdedfcab317e8d2c968",
+      "classificationAndCheck": "现存仓库卫生检查入口 | `pnpm check:forbidden-tracked-artifacts` |"
+    },
+    {
+      "path": "scripts/check-production-reachability.mjs",
+      "sha256": "3fda79c8084234030a03184e9f490641124e26cb90e8c4d7ac085e7571107294",
+      "classificationAndCheck": "现存生产可达性检查入口 | `pnpm quality:entropy` 与 `pnpm test:entropy` |"
+    },
+    {
+      "path": "skills/delivery/repository-integration/references/git-host.mjs",
+      "sha256": "cd57ff06916b35d8b68ea92734b4e6c3c46ba9cf492ece101f1574713434313b",
+      "classificationAndCheck": "发行 Skill 对构建产物的现存 ESM 薄导出 | Git 宿主 acceptance 测试及打包后导入 |"
+    },
+    {
+      "path": "tests/unit/quality/production-reachability.test.mjs",
+      "sha256": "1ea696ce7575ba5ec9097635683390e34aa38837e54d9b817d67cde16e504ec2",
+      "classificationAndCheck": "可执行 `node:test` 测试套件，**不是 fixture** | `pnpm test:entropy` |"
+    }
+  ],
+  "discovery": {
+    "excluded": [
+      ".git",
+      "node_modules",
+      "dist",
+      "coverage",
+      ".tmp",
+      ".flowkit",
+      "openspec",
+      "architecture",
+      "skills/vendors/openspec"
+    ],
+    "extensions": [
+      ".ts",
+      ".mts",
+      ".cts",
+      ".tsx",
+      ".js",
+      ".mjs",
+      ".cjs",
+      ".jsx",
+      ".py",
+      ".ps1",
+      ".sh",
+      ".cmd",
+      ".bat"
+    ],
+    "sourceFileCount": 171,
+    "allowedTsCount": 164,
+    "otherExecutableFiles": [
+      "dependency-cruiser.config.mjs",
+      "eslint.config.mjs",
+      "scripts/build-production.mjs",
+      "scripts/check-forbidden-tracked-artifacts.mjs",
+      "scripts/check-production-reachability.mjs",
+      "skills/delivery/repository-integration/references/git-host.mjs",
+      "tests/unit/quality/production-reachability.test.mjs"
+    ],
+    "links": []
+  },
+  "contractChecks": {
+    "proofDeltaByteIdenticalTo041": true,
+    "checkpointDeltaByteIdenticalAfterReversingOnlyPermissionWording": true,
+    "sourcePolicy": "All worktree files, including untracked and new directories; explicit discovery/exclusions; only inspected TS roots or exact legacy bytes accepted; changed/new JS requires explicit review, no Git baseline.",
+    "testClassification": "production-reachability.test.mjs correctly classified as executable test suite, not fixture",
+    "permissions": "Foundation status/next/doctor explicitly excluded from target-bound prefix examples; no new query API required",
+    "limits": "Enumeration and source-hash validation prove the proposed baseline facts only, not implementation enforcement."
+  },
+  "validation": {
+    "command": [
+      "C:\\nvm4w\\nodejs\\node.exe",
+      "C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js",
+      "validate",
+      "enforce-typed-evidence-and-bounded-execution",
+      "--strict"
+    ],
+    "startedAt": "2026-10-01T04:12:07.203Z",
+    "finishedAt": "2026-10-01T04:12:08.574Z",
+    "exitCode": 0
+  }
+}

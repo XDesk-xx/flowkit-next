@@ -1,0 +1,138 @@
+{
+  "runId": "20261001-041-review-propose",
+  "actionIdentity": {
+    "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+    "changeId": "enforce-typed-evidence-and-bounded-execution",
+    "actionId": "review-propose"
+  },
+  "authorConclusion": null,
+  "reviewerVerdict": "changes-requested",
+  "verificationVerdict": null,
+  "nextBoundary": "revise-propose",
+  "facts": {
+    "reviewedRunId": "20261001-040-propose",
+    "approvedExploreReviewRunId": "20261001-039-review-explore",
+    "reviewedResultSha256": "2f891e04aa428164d6a6a0d9aeb8207597ef2c3ea276bb46237dcff997bda28b",
+    "approvedExploreResultSha256": "69749d144934184ed0e5236083d5da1611b3fdf17df24aec311e34299fa5dce2",
+    "reviewedArtifactHashes": {
+      "openspec/changes/enforce-typed-evidence-and-bounded-execution/proposal.md": "82101cc8ef9e74d0d5792fbfc3dce3534b582a3046408c8b47bf4073d47d0bd0",
+      "openspec/changes/enforce-typed-evidence-and-bounded-execution/design.md": "04123398806f23ec82cd0abb14455d5e749c2df4896b3d897ff1f0c0c88c0f10",
+      "openspec/changes/enforce-typed-evidence-and-bounded-execution/tasks.md": "2eb4cf150a86cae1225a404e767bbcc1d8e1f9bbdb545c523d31fb123f3538eb",
+      "openspec/changes/enforce-typed-evidence-and-bounded-execution/specs/stable-action-command-execution/spec.md": "7e250bc1a7ee26ec0f4f44d5d17b128e72befca8fbeac90dd9bdd049326193b5",
+      "openspec/changes/enforce-typed-evidence-and-bounded-execution/specs/stable-delivery-support-command-execution/spec.md": "8b9980183b93ba010015281725549e50a5278c007cf598436f7c6371a2af1ba2",
+      "openspec/changes/enforce-typed-evidence-and-bounded-execution/specs/lightweight-engineering-gate/spec.md": "893b9dd78e4c5174d2d93b8ae034c7ab0af05e35b44f79c8ab8aaf0792d301a6"
+    },
+    "currentStep": "审查 D Proposal 是否将已批准 Explore 收敛为最小、完整且可执行验收的合同，重点核对 proof 集合、Git 输入、源码范围和宿主权限边界。",
+    "complexityMinimality": "proof 检查与单次 stdin NUL pathspec 均复用现有接点，无新生命周期、Registry、平台或自动流程。源码检查拟为小型有界检查，但其枚举范围与精确例外尚未冻结，现阶段不足以判断完整覆盖或最小迁移范围。",
+    "newContentScopeDrift": "未发现已确定的超范围能力；F prepared checkpoint 仍排除。具体源码政策边界留白会把范围选择推迟至 Apply，需在当前 Proposal 内收敛，不要求重新开放 Explore。",
+    "findings": [
+      {
+        "id": "D07-D-RP-001",
+        "priority": 2,
+        "title": "在 Proposal 冻结源码检查范围与精确例外",
+        "locations": [
+          {
+            "path": "openspec/changes/enforce-typed-evidence-and-bounded-execution/design.md",
+            "line": 27
+          },
+          {
+            "path": "openspec/changes/enforce-typed-evidence-and-bounded-execution/tasks.md",
+            "line": 15
+          }
+        ],
+        "observed": "设计只列三个 scripts/*.mjs 和泛称“测试中的必要 .mjs fixture”，要求新增一个受控源码范围检查，却没有定义该检查枚举哪些自有路径、排除哪些数据/历史面、如何在不依赖 Git 基线时识别“新增或实质修改”，也没有当前 exact-file 分类/原因/对应检查表。task 3.1 将这些政策决定继续留到 Apply。现有 tests/unit/quality/production-reachability.test.mjs 是可执行 node:test 测试套件，不是单纯的原始 fixture，不能凭 .mjs 分类。",
+        "impact": "已批准 Explore 明确要求在 Proposal 冻结源码范围和 exact-file 例外。当前合同可被实现成只检查 src/tests、因而遗漏其他目录新 helper，也可扩大到历史 proof/.tmp 引发被禁止的历史清洗；新 helper 负例的适用域与既有 JS 例外验收没有确定依据，不能确认 Apply 的范围和完成标准。",
+        "minimumCorrection": "在现有设计/spec/tasks 内补一份小型明确边界：自有源码枚举根及受控发现范围、历史/vendor/dist/.tmp/proof 的分类与检查方式、精确既有工具/未触达遗留/真正 fixture 的路径分类及原因和检查，以及无需特定 Git 历史的新增/例外判断依据。将 task 3.1 改为实现这份已决定政策及其正反例。允许未触达遗留保持原样；不要求批量迁移、通用分类器或证据 Registry。"
+      }
+    ],
+    "nonBlockingObservations": [
+      {
+        "topic": "read-only visible-target capability",
+        "observed": "当前 parseFoundationCliArguments 只接受 status/next/doctor --input <path|->。独立 probe 确认三个查询均拒绝 --repository-root；相同 argv 的 JSON 可解析为不同 target，不能把请求文件路径或 stdin 称作宿主前缀的项目绑定。",
+        "handoff": "可选窄权限示例限于实际支持可见 target 和数据一致性校验的固定命令（如 proof inspect/适用 support 查询），并明确上述 Foundation 查询没有这种绑定；无需因此新增查询 API。若另行决定添加接口，须在 Proposal 明确而不能在文档验收时暗加产品语义。",
+        "proof": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-041-review-propose/parser-probe.stdout.txt"
+      }
+    ],
+    "evidence": [
+      "外部 Stable manager status/next 确认 040 terminal 后为 review-propose，doctor pass / OpenSpec 1.10.0；041 使用该安装 Guidance 505949ae2ae82f4b8c6ab2e91634f5af4cf9700fc32464e5ec8b927ae3807be3 通过 canonical start 建立。",
+      "六份 Proposal/Design/tasks/delta spec 哈希与 040 完全一致；039 已批准的 Explore、manifest 与 metadata 仍匹配其已审身份。040 无新 proof 且无空 proof 目录。",
+      "逐条读取三个 delta spec：本 Run 闭合集及缺失/重复/链接/摘要错误/无材料/按需历史交接均有规范；检查发生在机器文件首次写入前，仍复用当前 proof-invalid 与 admission。",
+      "Git 方向保留既有精确 operation 路径校验、Owner/HEAD/index/工作树/managed evidence/提交对象核对及未知效果交接。NUL stdin 是 Explore 已证有界 pathspec 的实现细节，未扩大为通用执行器。",
+      "读取当前 tsconfig、package scripts、build helper、reachability helper 与实际 node:test .mjs 套件，确认源码与测试存在需要明确分类的现存文件；不以扩展名自动判 fixture 或要求历史改写。",
+      "独立 managed OpenSpec validate --strict exit 0；证明结构合法，不代替本次合同完整性判断。",
+      "独立只读 parser probe 真实验证 Foundation 查询可见 target 限制；未调用候选管理 D07、未安装宿主规则或执行 Git mutation。"
+    ],
+    "limitations": "本次为规划审查，未实现政策/修正或运行 Formal Full Test；宿主交互式规则匹配仍未验证。未修改 Author planning/production 文件。",
+    "proofRefs": [
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-041-review-propose/checks.json",
+        "bytes": 3949,
+        "sha256": "331887f244f9b8fb7023b8ca9b277eeabafb38b0052e87d89ecde75b525f9615",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "enforce-typed-evidence-and-bounded-execution",
+        "runId": "20261001-041-review-propose",
+        "purpose": "Independent Proposal structural validation and visible-target contract counterexample"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-041-review-propose/parser-probe.mjs",
+        "bytes": 1080,
+        "sha256": "9018d80a4bf15f5d8ad95c711fce502e28a215a0abc67f1f13286a630e08e6bf",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "enforce-typed-evidence-and-bounded-execution",
+        "runId": "20261001-041-review-propose",
+        "purpose": "Independent Proposal structural validation and visible-target contract counterexample"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-041-review-propose/parser-probe.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "enforce-typed-evidence-and-bounded-execution",
+        "runId": "20261001-041-review-propose",
+        "purpose": "Independent Proposal structural validation and visible-target contract counterexample"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-041-review-propose/parser-probe.stdout.txt",
+        "bytes": 985,
+        "sha256": "06cebe3509d7c2cf54ebe703fab6a96e8178c6b73d86c8e444c556b89b1b1b4b",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "enforce-typed-evidence-and-bounded-execution",
+        "runId": "20261001-041-review-propose",
+        "purpose": "Independent Proposal structural validation and visible-target contract counterexample"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-041-review-propose/validate.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "enforce-typed-evidence-and-bounded-execution",
+        "runId": "20261001-041-review-propose",
+        "purpose": "Independent Proposal structural validation and visible-target contract counterexample"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-041-review-propose/validate.stdout.txt",
+        "bytes": 63,
+        "sha256": "485ed9da833fbaf46e126246ac1ec6770cccb862270a904063948db950ab50c6",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "enforce-typed-evidence-and-bounded-execution",
+        "runId": "20261001-041-review-propose",
+        "purpose": "Independent Proposal structural validation and visible-target contract counterexample"
+      }
+    ],
+    "handoff": {
+      "summary": "changes-requested：仅收敛 D07-D-RP-001 的源码检查政策边界，保留已正确 proof/Git/D-F 分工；权限文档按实测接口能力给出窄示例。后续 revise-propose，Reviewer STOP。",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-10-01:activate-next-change-effective-correction-proof-explore",
+          "summary": "Owner 选定 D 有效修正与 proof Explore；当前审查不新增 Owner 或 Git authority。"
+        }
+      ],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20261001-041-review-propose",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-041-review-propose/checks.json"
+        }
+      ]
+    }
+  }
+}

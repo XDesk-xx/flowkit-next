@@ -1,0 +1,47 @@
+{
+  "runId": "20261001-040-propose",
+  "actionIdentity": {
+    "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+    "changeId": "enforce-typed-evidence-and-bounded-execution",
+    "actionId": "propose"
+  },
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-propose",
+  "facts": {
+    "summary": "Converged approved D Explore into six planning artifacts across three existing capabilities: own-Run proof closure, bounded exact Git checkpoint staging, typed owned source and optional narrow host permission guidance.",
+    "planningRoot": "openspec/changes/enforce-typed-evidence-and-bounded-execution",
+    "artifactHashes": {
+      "proposal.md": "82101cc8ef9e74d0d5792fbfc3dce3534b582a3046408c8b47bf4073d47d0bd0",
+      "design.md": "04123398806f23ec82cd0abb14455d5e749c2df4896b3d897ff1f0c0c88c0f10",
+      "tasks.md": "2eb4cf150a86cae1225a404e767bbcc1d8e1f9bbdb545c523d31fb123f3538eb",
+      "specs/stable-action-command-execution/spec.md": "7e250bc1a7ee26ec0f4f44d5d17b128e72befca8fbeac90dd9bdd049326193b5",
+      "specs/stable-delivery-support-command-execution/spec.md": "8b9980183b93ba010015281725549e50a5278c007cf598436f7c6371a2af1ba2",
+      "specs/lightweight-engineering-gate/spec.md": "893b9dd78e4c5174d2d93b8ae034c7ab0af05e35b44f79c8ab8aaf0792d301a6"
+    },
+    "structuralValidation": {
+      "command": "node C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js validate enforce-typed-evidence-and-bounded-execution --strict",
+      "exitCode": 0,
+      "observedOutput": "Change 'enforce-typed-evidence-and-bounded-execution' is valid",
+      "limit": "OpenSpec structure only; no Apply acceptance or independent Reviewer verdict"
+    },
+    "convergence": {
+      "requirementSource": "20261001-038-explore and approved 20261001-039-review-explore",
+      "complexityGrowth": "Three additive deltas to existing capabilities; no new lifecycle state, general executor, evidence registry or candidate self-management.",
+      "newContentBeyondExplore": "Fixed single-call NUL pathspec transport and exact new-source/legacy exception boundary make approved Explore testable.",
+      "scopeDrift": "none observed; F retains prepared checkpoint admission"
+    },
+    "proofRefs": [],
+    "handoff": {
+      "summary": "Independent review-propose should verify each delta and task against approved D Explore, current finish/checkpoint implementation, exact source exception scope and D/F boundary. Planning only; host interactive permission behavior remains unverified.",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-10-01:activate-next-change-effective-correction-proof-explore",
+          "summary": "Owner activated Change D and requested effective correction and proof Explore; subsequent propose invocation authorized this planning Action."
+        }
+      ],
+      "evidenceRefs": []
+    }
+  }
+}

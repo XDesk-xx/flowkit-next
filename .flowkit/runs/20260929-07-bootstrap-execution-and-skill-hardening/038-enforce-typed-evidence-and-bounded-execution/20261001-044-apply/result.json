@@ -1,0 +1,289 @@
+{
+  "runId": "20261001-044-apply",
+  "actionIdentity": {
+    "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+    "changeId": "enforce-typed-evidence-and-bounded-execution",
+    "actionId": "apply"
+  },
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-apply",
+  "facts": {
+    "approvedProposalRunId": "20261001-043-review-propose",
+    "planningRoot": "openspec/changes/enforce-typed-evidence-and-bounded-execution",
+    "artifactHashes": {
+      "README.md": "022bafb0f34c1b1617e43f60cfeddde7051a9f584924d796314753a66d72193c",
+      "docs/onboarding.md": "8a49fb10e5c5f94a611183965056a83f327d3f25c77227936484671c63b1a24b",
+      "openspec/changes/enforce-typed-evidence-and-bounded-execution/design.md": "1f963108328f28538142ff1894c72400aba65d3eef3a77fb5de6da7e30a95d90",
+      "openspec/changes/enforce-typed-evidence-and-bounded-execution/proposal.md": "e2db76517a7a44ca21b8acc8bee5a408bfa93f4ff6d315d1424088daadbbdf9f",
+      "openspec/changes/enforce-typed-evidence-and-bounded-execution/specs/lightweight-engineering-gate/spec.md": "34b1660f50e9cdfd4a89a54e2e75c53a33641428a7a46c86d8ec9332623cc20f",
+      "openspec/changes/enforce-typed-evidence-and-bounded-execution/specs/stable-action-command-execution/spec.md": "7e250bc1a7ee26ec0f4f44d5d17b128e72befca8fbeac90dd9bdd049326193b5",
+      "openspec/changes/enforce-typed-evidence-and-bounded-execution/specs/stable-delivery-support-command-execution/spec.md": "a87e07c84e5dc3e242e0dcd19f02e542b82163a294109d2369502ca0c5c490d1",
+      "openspec/changes/enforce-typed-evidence-and-bounded-execution/tasks.md": "f39d30d5c55935d68ce77c00b528b5fe5d64cc13696ce83686cf0c123eb99bc9",
+      "openspec/delivery-groups/20260929-07-bootstrap-execution-and-skill-hardening.yaml": "736d530ac595d09ee83d05c6d2d103f458371243e1706b30b5d841cda2c43820",
+      "package.json": "ae5b266740db006ef10271bb011837467629fdcafba50a46688c0de5792185a9",
+      "src/cli/action-commands.ts": "dfeff8a30f4e38e99b95232d07480b3f015da877daeea9c775e010cd2c88117b",
+      "src/cli/action-proof.ts": "1e22c790197c2e4658af66564594165ef0691654873decd4bf2a79feb3f7a6ce",
+      "src/internal/git-checkpoint-execution.ts": "f76aa06f1168443c16ca2f070fdb0ea7ae00018b11e6e826d928b01dd4bfddf1",
+      "src/internal/git-checkpoint-scope.ts": "d40f02458ddf3f8174e7e9d8476b46782cd8fc6f5bf8b318b6f3bf18e1d734bc",
+      "tests/unit/domain/action-command-cli.test.ts": "3c58c5f41805e34dfd4c7998b15ab097db886922a8fb4e0d8e1f5728eacbfa4f",
+      "tests/unit/domain/action-proof-closure.test.ts": "2e20c780f76c2ae2cb2a4b2d174ae37bc4b66c061a3c13ee76c7e416a45f90a4",
+      "tests/unit/domain/git-workflow-effects.test.ts": "79c5b360d1cf0179f179c8071fe862ec0e6aa9a197e281fd2ac11c1208be20f2",
+      "tests/unit/domain/git-workflow-host.test.ts": "3b57bf6a60250b8a2f2a3050bebee7846f8d4f27f0b104c3f50bb233c720f26f",
+      "tests/unit/quality/owned-source-policy.test.ts": "f265756a16266e3b8d7a2ded3b6f5f0a459d4194c012664c88f1799b371f5c31"
+    },
+    "implementation": "The candidate action finish closes its own proof directory against explicit proofRefs before terminal files; ordinary checkpoints stage one exact NUL stdin path set; owned executable sources follow the current-worktree typed policy with seven content-pinned legacy exceptions; onboarding documents optional narrow host permissions.",
+    "verification": {
+      "domainPassed": 369,
+      "acceptancePassed": 7,
+      "capturedChecks": 11,
+      "allExitZero": true,
+      "packagedInstallation": true,
+      "openspecStrictAfterTasks": true,
+      "formalDeliveryFullTest": false,
+      "interactiveHostPermissionRules": "unverified"
+    },
+    "scope": "External Stable manager retains D07 authority. No independent Reviewer verdict, Formal Full Test, Git checkpoint, push, or automatic host permission rule is claimed.",
+    "proofRefs": [
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-044-apply/acceptance.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "enforce-typed-evidence-and-bounded-execution",
+        "runId": "20261001-044-apply",
+        "purpose": "Raw acceptance verification stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-044-apply/acceptance.stdout.txt",
+        "bytes": 1706,
+        "sha256": "b1fb001664979ca066a866ee509ffc8ebb06a75dc0a13c3f51204ddd9de0cf59",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "enforce-typed-evidence-and-bounded-execution",
+        "runId": "20261001-044-apply",
+        "purpose": "Raw acceptance verification stdout"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-044-apply/build.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "enforce-typed-evidence-and-bounded-execution",
+        "runId": "20261001-044-apply",
+        "purpose": "Raw build verification stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-044-apply/build.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "enforce-typed-evidence-and-bounded-execution",
+        "runId": "20261001-044-apply",
+        "purpose": "Raw build verification stdout"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-044-apply/checks.json",
+        "bytes": 10549,
+        "sha256": "88b2bdbb7240221ad1f9589fcc7d45a94daa6622262643372c9f9496f5fbc2a8",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "enforce-typed-evidence-and-bounded-execution",
+        "runId": "20261001-044-apply",
+        "purpose": "Current candidate verification command and byte index"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-044-apply/domain.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "enforce-typed-evidence-and-bounded-execution",
+        "runId": "20261001-044-apply",
+        "purpose": "Raw domain verification stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-044-apply/domain.stdout.txt",
+        "bytes": 78342,
+        "sha256": "a7d84d0815146964e7001803fa279b06a558b1063c27ad89c5cfd974bc68791e",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "enforce-typed-evidence-and-bounded-execution",
+        "runId": "20261001-044-apply",
+        "purpose": "Raw domain verification stdout"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-044-apply/format.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "enforce-typed-evidence-and-bounded-execution",
+        "runId": "20261001-044-apply",
+        "purpose": "Raw format verification stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-044-apply/format.stdout.txt",
+        "bytes": 66,
+        "sha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "enforce-typed-evidence-and-bounded-execution",
+        "runId": "20261001-044-apply",
+        "purpose": "Raw format verification stdout"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-044-apply/lint.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "enforce-typed-evidence-and-bounded-execution",
+        "runId": "20261001-044-apply",
+        "purpose": "Raw lint verification stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-044-apply/lint.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "enforce-typed-evidence-and-bounded-execution",
+        "runId": "20261001-044-apply",
+        "purpose": "Raw lint verification stdout"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-044-apply/openspec.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "enforce-typed-evidence-and-bounded-execution",
+        "runId": "20261001-044-apply",
+        "purpose": "Raw openspec verification stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-044-apply/openspec.stdout.txt",
+        "bytes": 63,
+        "sha256": "485ed9da833fbaf46e126246ac1ec6770cccb862270a904063948db950ab50c6",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "enforce-typed-evidence-and-bounded-execution",
+        "runId": "20261001-044-apply",
+        "purpose": "Raw openspec verification stdout"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-044-apply/owned-source.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "enforce-typed-evidence-and-bounded-execution",
+        "runId": "20261001-044-apply",
+        "purpose": "Raw owned-source verification stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-044-apply/owned-source.stdout.txt",
+        "bytes": 537,
+        "sha256": "782416fde38d9f7363c066a26a4f0882dbe4ada0f361f17bc097d1c77ae3973f",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "enforce-typed-evidence-and-bounded-execution",
+        "runId": "20261001-044-apply",
+        "purpose": "Raw owned-source verification stdout"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-044-apply/package-install.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "enforce-typed-evidence-and-bounded-execution",
+        "runId": "20261001-044-apply",
+        "purpose": "Raw package-install verification stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-044-apply/package-install.stdout.txt",
+        "bytes": 24,
+        "sha256": "bf14b7a2bc076990244fa3239536925868dfe5ad05089c7d459b5fa482abfc72",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "enforce-typed-evidence-and-bounded-execution",
+        "runId": "20261001-044-apply",
+        "purpose": "Raw package-install verification stdout"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-044-apply/package-installed-help.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "enforce-typed-evidence-and-bounded-execution",
+        "runId": "20261001-044-apply",
+        "purpose": "Raw package-installed-help verification stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-044-apply/package-installed-help.stdout.txt",
+        "bytes": 479,
+        "sha256": "8e9d6bd3d9823a841fe383dbf7d5809d34da5d86d0e1bc0186a09d0c7c3d1290",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "enforce-typed-evidence-and-bounded-execution",
+        "runId": "20261001-044-apply",
+        "purpose": "Raw package-installed-help verification stdout"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-044-apply/package-pack.stderr.txt",
+        "bytes": 36,
+        "sha256": "8f5c6a9c4aade0d032984516a14b38a2d12cb1e6b333ab3568f9dde2ba3e3470",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "enforce-typed-evidence-and-bounded-execution",
+        "runId": "20261001-044-apply",
+        "purpose": "Raw package-pack verification stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-044-apply/package-pack.stdout.txt",
+        "bytes": 4586,
+        "sha256": "d4f1656bebf4203cd829f86c47c9f4891e7d184b982b8163aae48a1ed3a8ab04",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "enforce-typed-evidence-and-bounded-execution",
+        "runId": "20261001-044-apply",
+        "purpose": "Raw package-pack verification stdout"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-044-apply/package-smoke.json",
+        "bytes": 2805,
+        "sha256": "838634af5b030ac71ffbbb1f8e497e54102fe95439ad48b922be4d11615aa46c",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "enforce-typed-evidence-and-bounded-execution",
+        "runId": "20261001-044-apply",
+        "purpose": "Current candidate package/install command and byte index"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-044-apply/typecheck.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "enforce-typed-evidence-and-bounded-execution",
+        "runId": "20261001-044-apply",
+        "purpose": "Raw typecheck verification stderr"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-044-apply/typecheck.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "enforce-typed-evidence-and-bounded-execution",
+        "runId": "20261001-044-apply",
+        "purpose": "Raw typecheck verification stdout"
+      }
+    ],
+    "handoff": {
+      "summary": "Independent review-apply should compare implementation with approved D Proposal, inspect proof closure and long exact Git path tests, own-source negatives, all 24 declared proof files, package smoke, and the documented interactive host-rule limitation. Apply stops here.",
+      "ownerDecisions": [],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20261001-044-apply",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-044-apply/checks.json"
+        },
+        {
+          "sourceRunId": "20261001-044-apply",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-044-apply/domain.stdout.txt"
+        },
+        {
+          "sourceRunId": "20261001-044-apply",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-044-apply/acceptance.stdout.txt"
+        },
+        {
+          "sourceRunId": "20261001-044-apply",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-044-apply/package-smoke.json"
+        }
+      ]
+    }
+  }
+}

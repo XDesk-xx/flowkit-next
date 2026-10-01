@@ -1,0 +1,136 @@
+{
+  "runId": "20261001-045-review-apply",
+  "actionIdentity": {
+    "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+    "changeId": "enforce-typed-evidence-and-bounded-execution",
+    "actionId": "review-apply"
+  },
+  "authorConclusion": null,
+  "reviewerVerdict": "changes-requested",
+  "verificationVerdict": null,
+  "nextBoundary": "revise-apply",
+  "facts": {
+    "reviewedRunId": "20261001-044-apply",
+    "approvedProposalReviewRunId": "20261001-043-review-propose",
+    "reviewedResultSha256": "772af63f5914704044fabe787094290229113ef669ae709994066e3df8cd6ee7",
+    "reviewedArtifactHashes": {
+      "README.md": "022bafb0f34c1b1617e43f60cfeddde7051a9f584924d796314753a66d72193c",
+      "docs/onboarding.md": "8a49fb10e5c5f94a611183965056a83f327d3f25c77227936484671c63b1a24b",
+      "openspec/changes/enforce-typed-evidence-and-bounded-execution/design.md": "1f963108328f28538142ff1894c72400aba65d3eef3a77fb5de6da7e30a95d90",
+      "openspec/changes/enforce-typed-evidence-and-bounded-execution/proposal.md": "e2db76517a7a44ca21b8acc8bee5a408bfa93f4ff6d315d1424088daadbbdf9f",
+      "openspec/changes/enforce-typed-evidence-and-bounded-execution/specs/lightweight-engineering-gate/spec.md": "34b1660f50e9cdfd4a89a54e2e75c53a33641428a7a46c86d8ec9332623cc20f",
+      "openspec/changes/enforce-typed-evidence-and-bounded-execution/specs/stable-action-command-execution/spec.md": "7e250bc1a7ee26ec0f4f44d5d17b128e72befca8fbeac90dd9bdd049326193b5",
+      "openspec/changes/enforce-typed-evidence-and-bounded-execution/specs/stable-delivery-support-command-execution/spec.md": "a87e07c84e5dc3e242e0dcd19f02e542b82163a294109d2369502ca0c5c490d1",
+      "openspec/changes/enforce-typed-evidence-and-bounded-execution/tasks.md": "f39d30d5c55935d68ce77c00b528b5fe5d64cc13696ce83686cf0c123eb99bc9",
+      "openspec/delivery-groups/20260929-07-bootstrap-execution-and-skill-hardening.yaml": "736d530ac595d09ee83d05c6d2d103f458371243e1706b30b5d841cda2c43820",
+      "package.json": "ae5b266740db006ef10271bb011837467629fdcafba50a46688c0de5792185a9",
+      "src/cli/action-commands.ts": "dfeff8a30f4e38e99b95232d07480b3f015da877daeea9c775e010cd2c88117b",
+      "src/cli/action-proof.ts": "1e22c790197c2e4658af66564594165ef0691654873decd4bf2a79feb3f7a6ce",
+      "src/internal/git-checkpoint-execution.ts": "f76aa06f1168443c16ca2f070fdb0ea7ae00018b11e6e826d928b01dd4bfddf1",
+      "src/internal/git-checkpoint-scope.ts": "d40f02458ddf3f8174e7e9d8476b46782cd8fc6f5bf8b318b6f3bf18e1d734bc",
+      "tests/unit/domain/action-command-cli.test.ts": "3c58c5f41805e34dfd4c7998b15ab097db886922a8fb4e0d8e1f5728eacbfa4f",
+      "tests/unit/domain/action-proof-closure.test.ts": "2e20c780f76c2ae2cb2a4b2d174ae37bc4b66c061a3c13ee76c7e416a45f90a4",
+      "tests/unit/domain/git-workflow-effects.test.ts": "79c5b360d1cf0179f179c8071fe862ec0e6aa9a197e281fd2ac11c1208be20f2",
+      "tests/unit/domain/git-workflow-host.test.ts": "3b57bf6a60250b8a2f2a3050bebee7846f8d4f27f0b104c3f50bb233c720f26f",
+      "tests/unit/quality/owned-source-policy.test.ts": "f265756a16266e3b8d7a2ded3b6f5f0a459d4194c012664c88f1799b371f5c31"
+    },
+    "currentStep": "独立审查 D Apply 的 proof 闭合集、单次 NUL stdin 暂存和失败效果读回、工作树源码政策及发行权限示例。",
+    "complexityMinimality": "实现复用既有 finish 校验、Git 宿主与测试工具，未新增 Registry 或工作流平台。所需修订仅为 stdin 失败时等待子进程结束后再读回，并补充这一时序的故障测试。",
+    "newContentScopeDrift": "scope drift: NONE。当前改动对应已批准 D Proposal；F prepared proof checkpoint admission、历史证据及权限边界保持。",
+    "findings": [
+      {
+        "id": "D07-D-RA-001",
+        "priority": "P2",
+        "title": "stdin 报错后须等待 Git 子进程结束再读回和返回",
+        "file": "src/internal/git-checkpoint-scope.ts",
+        "startLine": 69,
+        "endLine": 74,
+        "description": "child.stdin 的 error 直接 reject 外层 Promise，execFile 的完成 callback 此时可能尚未触发。executeScopedCheckpoint 随即进入 catch 读取 HEAD/index 并返回 incomplete，而该次 stage 子进程仍可能继续产生副作用。当前响应既不等待该进程退出，也不交接仍在执行的状态；用户按返回结果核对或处理 index 时可能与尚未结束的原操作竞争。effect=unknown 并不能让读回成为操作结束后的事实。",
+        "requirement": "stable-delivery-support-command-execution: Ordinary checkpoint stages a bounded exact path set / Stage or commit response is uncertain；失败后读回已确认效果并保留 index、停止写操作。",
+        "evidence": "独立故障注入仅替换该次 execFile 的 stdin/完成时序，其余使用真实代码和隔离 Git fixture：stdin 先发 EPIPE，800ms 后一次真实 Git add 完成，再发非零完成 callback。调用返回时 childCompleteAtReturn=false、indexAtReturn=[]；随后 indexAfterChildComplete=[a.txt]，addCalls=1。证据证明实现没有进程完成屏障；不声称原生 Git 通常产生这一时序。",
+        "requestedChange": "保存 stdin 错误并在 execFile 完成后统一结束 Promise，或明确终止并等待该子进程退出，再执行权威读回。保留单次暂存与不自动重试语义；增加 stdin-error-before-child-completion 的回归测试，断言返回后的该进程不再修改 index。",
+        "proofPath": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-045-review-apply/pipe-probe.stdout.txt"
+      }
+    ],
+    "evidence": [
+      "外部 Stable manager status/next 将 044-apply 解析为 review-apply；doctor PASS，exact OpenSpec 1.10.0。045 通过外部 manager canonical start 建立。",
+      "044 的 19 项 artifactHashes、24 项 proof 的 ownership/bytes/SHA、无链接及 Git 原始字节属性均验证；当前 proof 目录与声明集合完全一致。043 六份批准规划保持，tasks 仅完成勾选，反向恢复勾选后匹配批准 SHA。",
+      "源码及测试核对覆盖 proof 显式数组、空目录/遗漏/多余/重复/链接/嵌套拒绝与 selective historical handoff；NUL literal 单次 add、提交对象核验；当前工作树含未跟踪文件的源码扫描、TS 根与七项 exact legacy 内容例外。",
+      "独立执行四个有界测试文件，12 tests PASS，exit 0：action-proof-closure、action-command-cli、git-workflow-effects、owned-source-policy。原始 stdout/stderr 与命令记录保存于 045 proof。",
+      "独立 stdin 错误先于进程完成的故障注入确认 D07-D-RA-001；fixture 内只执行一次实际 add，无 commit；主仓库未执行 Git mutation。",
+      "Author 包装/安装 smoke 材料及命令记录已审，当前 tgz SHA 独立核对为 98c3fa1c60baa527b29b202d500d2503080fe4a9731c0d45f4fbbded298a6692。包 smoke 不替代独立功能验收。",
+      "权限文档按已支持的可见 target argv 界定固定入口，明确 status/next/doctor 的 --input 无目标绑定；未声称宿主交互规则已验证。"
+    ],
+    "limitations": "不是 Formal Full Test；未重新运行 Author 全量测试或安装。故障注入证明代码对给定 I/O 时序的行为，不是原生 Git EPIPE 发生率或常态复现。宿主交互规则匹配仍未验证。未修改 Author production artifacts/tests/planning，未进行主仓库 Git mutation。",
+    "proofRefs": [
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-045-review-apply/checks.json",
+        "bytes": 2611,
+        "sha256": "679b0aadcec28cc0c6f7b5b799be4fde5c43d76e5818cbe231ebe6e6ae65636f",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "enforce-typed-evidence-and-bounded-execution",
+        "runId": "20261001-045-review-apply",
+        "purpose": "Independent Apply review, targeted regression and stdin fault-order counterexample"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-045-review-apply/pipe-probe.mjs",
+        "bytes": 2366,
+        "sha256": "efac906cca0e5b82e18620184a31ca1cedad88acaab0d0ce856b65d935a2d6e3",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "enforce-typed-evidence-and-bounded-execution",
+        "runId": "20261001-045-review-apply",
+        "purpose": "Independent Apply review, targeted regression and stdin fault-order counterexample"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-045-review-apply/pipe-probe.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "enforce-typed-evidence-and-bounded-execution",
+        "runId": "20261001-045-review-apply",
+        "purpose": "Independent Apply review, targeted regression and stdin fault-order counterexample"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-045-review-apply/pipe-probe.stdout.txt",
+        "bytes": 607,
+        "sha256": "6c474e47cb62b6a5ee4601e243e3d5180a58caa8aebdb686d4031dbceb151755",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "enforce-typed-evidence-and-bounded-execution",
+        "runId": "20261001-045-review-apply",
+        "purpose": "Independent Apply review, targeted regression and stdin fault-order counterexample"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-045-review-apply/targeted.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "enforce-typed-evidence-and-bounded-execution",
+        "runId": "20261001-045-review-apply",
+        "purpose": "Independent Apply review, targeted regression and stdin fault-order counterexample"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-045-review-apply/targeted.stdout.txt",
+        "bytes": 2845,
+        "sha256": "6a0c89a27c051fb5c55264d03b2c1e8b319c5e2316594b0bbf93d223eef9f0d7",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "enforce-typed-evidence-and-bounded-execution",
+        "runId": "20261001-045-review-apply",
+        "purpose": "Independent Apply review, targeted regression and stdin fault-order counterexample"
+      }
+    ],
+    "handoff": {
+      "summary": "review-apply changes-requested：D07-D-RA-001 须在 revise-apply 最小修正。Reviewer Run terminal 后 STOP。",
+      "ownerDecisions": [],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20261001-045-review-apply",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-045-review-apply/checks.json"
+        },
+        {
+          "sourceRunId": "20261001-045-review-apply",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-045-review-apply/pipe-probe.stdout.txt"
+        }
+      ]
+    }
+  }
+}

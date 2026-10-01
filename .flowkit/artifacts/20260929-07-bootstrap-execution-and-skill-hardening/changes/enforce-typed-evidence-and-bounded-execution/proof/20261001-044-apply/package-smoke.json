@@ -1,0 +1,88 @@
+{
+  "runId": "20261001-044-apply",
+  "checks": [
+    {
+      "id": "pack",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+        "pack",
+        "--pack-destination",
+        "D:\\Projects\\flowkit-next\\.tmp\\d07-d-pack-final"
+      ],
+      "startedAt": "2026-10-01T04:38:52.973Z",
+      "endedAt": "2026-10-01T04:38:56.321Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": "package-pack.stdout.txt",
+        "bytes": 4586,
+        "sha256": "d4f1656bebf4203cd829f86c47c9f4891e7d184b982b8163aae48a1ed3a8ab04"
+      },
+      "stderr": {
+        "path": "package-pack.stderr.txt",
+        "bytes": 36,
+        "sha256": "8f5c6a9c4aade0d032984516a14b38a2d12cb1e6b333ab3568f9dde2ba3e3470"
+      }
+    },
+    {
+      "id": "install",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "C:/nvm4w/nodejs/node_modules/npm/bin/npm-cli.js",
+        "install",
+        "--prefix",
+        "D:\\Projects\\flowkit-next\\.tmp\\d07-d-install-final",
+        "--omit=dev",
+        "--no-audit",
+        "--no-fund",
+        "D:\\Projects\\flowkit-next\\.tmp\\d07-d-pack-final\\flowkit-next-0.1.0.tgz"
+      ],
+      "startedAt": "2026-10-01T04:38:56.322Z",
+      "endedAt": "2026-10-01T04:38:59.584Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": "package-install.stdout.txt",
+        "bytes": 24,
+        "sha256": "bf14b7a2bc076990244fa3239536925868dfe5ad05089c7d459b5fa482abfc72"
+      },
+      "stderr": {
+        "path": "package-install.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "installed-help",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "D:\\Projects\\flowkit-next\\.tmp\\d07-d-install-final\\node_modules\\flowkit-next\\dist\\cli\\entrypoint.js",
+        "--help"
+      ],
+      "startedAt": "2026-10-01T04:38:59.584Z",
+      "endedAt": "2026-10-01T04:38:59.787Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": "package-installed-help.stdout.txt",
+        "bytes": 479,
+        "sha256": "8e9d6bd3d9823a841fe383dbf7d5809d34da5d86d0e1bc0186a09d0c7c3d1290"
+      },
+      "stderr": {
+        "path": "package-installed-help.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "archive": {
+    "path": ".tmp/d07-d-pack-final/flowkit-next-0.1.0.tgz",
+    "bytes": 158508,
+    "sha256": "98c3fa1c60baa527b29b202d500d2503080fe4a9731c0d45f4fbbded298a6692"
+  },
+  "scope": "Current candidate package/install/installed-help smoke; no Formal Full Test"
+}

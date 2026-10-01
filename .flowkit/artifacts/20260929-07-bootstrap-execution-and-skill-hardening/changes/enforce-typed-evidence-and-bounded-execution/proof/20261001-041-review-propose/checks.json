@@ -1,0 +1,110 @@
+{
+  "reviewedRunId": "20261001-040-propose",
+  "records": [
+    {
+      "id": "parser-probe",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "--import",
+        "tsx",
+        ".tmp/reviewer041-probe.mjs"
+      ],
+      "startedAt": "2026-10-01T03:39:03.096Z",
+      "finishedAt": "2026-10-01T03:39:03.286Z",
+      "exitCode": 0,
+      "stdout": {
+        "bytes": 985,
+        "sha256": "06cebe3509d7c2cf54ebe703fab6a96e8178c6b73d86c8e444c556b89b1b1b4b"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "validate",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js",
+        "validate",
+        "enforce-typed-evidence-and-bounded-execution",
+        "--strict"
+      ],
+      "startedAt": "2026-10-01T03:39:03.289Z",
+      "finishedAt": "2026-10-01T03:39:04.615Z",
+      "exitCode": 0,
+      "stdout": {
+        "bytes": 63,
+        "sha256": "485ed9da833fbaf46e126246ac1ec6770cccb862270a904063948db950ab50c6"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "source": {
+    "path": "src/cli/request.ts",
+    "sha256": "85ba3d28c3da4efa744300fe8172c4b22a8836e252e310f4162f009818548490"
+  },
+  "probe": {
+    "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/enforce-typed-evidence-and-bounded-execution/proof/20261001-041-review-propose/parser-probe.mjs",
+    "sha256": "9018d80a4bf15f5d8ad95c711fce502e28a215a0abc67f1f13286a630e08e6bf"
+  },
+  "observed": {
+    "observations": [
+      {
+        "command": "status",
+        "acceptedArguments": {
+          "command": "status",
+          "inputPath": "-"
+        },
+        "visibleTargetRejected": {
+          "kind": "invalid-arguments",
+          "message": "expected: <status|next|doctor> --input <path>"
+        },
+        "sameArgvAcceptsJsonTargets": [
+          "D:/isolated-target-a",
+          "D:/isolated-target-b"
+        ]
+      },
+      {
+        "command": "next",
+        "acceptedArguments": {
+          "command": "next",
+          "inputPath": "-"
+        },
+        "visibleTargetRejected": {
+          "kind": "invalid-arguments",
+          "message": "expected: <status|next|doctor> --input <path>"
+        },
+        "sameArgvAcceptsJsonTargets": [
+          "D:/isolated-target-a",
+          "D:/isolated-target-b"
+        ]
+      },
+      {
+        "command": "doctor",
+        "acceptedArguments": {
+          "command": "doctor",
+          "inputPath": "-"
+        },
+        "visibleTargetRejected": {
+          "kind": "invalid-arguments",
+          "message": "expected: <status|next|doctor> --input <path>"
+        },
+        "sameArgvAcceptsJsonTargets": [
+          "D:/isolated-target-a",
+          "D:/isolated-target-b"
+        ]
+      }
+    ],
+    "limit": "Pure current request-parser probe, no project queries or mutations; demonstrates missing visible-target binding for status/next/doctor, not host rule evaluation."
+  },
+  "sourceCoverageContractGap": {
+    "design": "design.md:27 names three scripts, but defers exact exception classification and new-source policy boundary to implementation.",
+    "concreteExample": "tests/unit/quality/production-reachability.test.mjs is an executable node:test suite importing scripts/check-production-reachability.mjs; it is not merely raw fixture input.",
+    "requiredDecision": "Define candidate-owned enumeration roots/exclusions, exact untouched legacy/tool/fixture classifications and checks, and how to recognize newly introduced helpers without relying on an unavailable Git baseline."
+  },
+  "limits": "Structure validation and a current-parser counterexample only; no candidate implementation, host rule installation or broad correctness test."
+}

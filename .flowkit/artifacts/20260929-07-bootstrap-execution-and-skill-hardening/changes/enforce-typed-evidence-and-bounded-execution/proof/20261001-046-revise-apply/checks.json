@@ -1,0 +1,184 @@
+{
+  "runId": "20261001-046-revise-apply",
+  "finding": "D07-D-RA-001",
+  "scope": "finding-relevant Mechanical Preflight; no Formal Full Test",
+  "checks": [
+    {
+      "id": "typecheck",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit"
+      ],
+      "startedAt": "2026-10-01T04:54:34.419Z",
+      "endedAt": "2026-10-01T04:54:36.992Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": "typecheck.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "typecheck.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "format",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "node_modules/prettier/bin/prettier.cjs",
+        "--check",
+        "src",
+        "tests",
+        "tsconfig.json",
+        "tsconfig.build.json",
+        "package.json",
+        "eslint.config.mjs",
+        "scripts/check-forbidden-tracked-artifacts.mjs"
+      ],
+      "startedAt": "2026-10-01T04:54:36.993Z",
+      "endedAt": "2026-10-01T04:54:39.385Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": "format.stdout.txt",
+        "bytes": 66,
+        "sha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20"
+      },
+      "stderr": {
+        "path": "format.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "lint",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "node_modules/eslint/bin/eslint.js",
+        "src",
+        "tests"
+      ],
+      "startedAt": "2026-10-01T04:54:39.385Z",
+      "endedAt": "2026-10-01T04:54:42.803Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": "lint.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "lint.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "owned-source",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "--import",
+        "tsx",
+        "--test",
+        "tests/unit/quality/owned-source-policy.test.ts"
+      ],
+      "startedAt": "2026-10-01T04:54:42.803Z",
+      "endedAt": "2026-10-01T04:54:43.241Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": "owned-source.stdout.txt",
+        "bytes": 538,
+        "sha256": "1e7d90de8b5648e734427347f2ed04a17dea24b8ee8a5136e21becf8ddce7e27"
+      },
+      "stderr": {
+        "path": "owned-source.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "git-domain",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "--import",
+        "tsx",
+        "--test",
+        "tests/unit/domain/git-workflow-effects.test.ts",
+        "tests/unit/domain/git-workflow-host.test.ts",
+        "tests/unit/domain/git-checkpoint-scope.test.ts",
+        "tests/unit/domain/git-host-review-regressions.test.ts"
+      ],
+      "startedAt": "2026-10-01T04:54:43.241Z",
+      "endedAt": "2026-10-01T04:55:50.201Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": "git-domain.stdout.txt",
+        "bytes": 3399,
+        "sha256": "14599ca0568cae62b4a53068e8f3e559bdd18c7dcc6e035802cbfdc2fb5154e5"
+      },
+      "stderr": {
+        "path": "git-domain.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "build",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "scripts/build-production.mjs"
+      ],
+      "startedAt": "2026-10-01T04:55:50.201Z",
+      "endedAt": "2026-10-01T04:55:52.507Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": "build.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "build.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "openspec",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js",
+        "validate",
+        "enforce-typed-evidence-and-bounded-execution",
+        "--strict"
+      ],
+      "startedAt": "2026-10-01T04:55:52.507Z",
+      "endedAt": "2026-10-01T04:55:54.732Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": "openspec.stdout.txt",
+        "bytes": 63,
+        "sha256": "485ed9da833fbaf46e126246ac1ec6770cccb862270a904063948db950ab50c6"
+      },
+      "stderr": {
+        "path": "openspec.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ]
+}

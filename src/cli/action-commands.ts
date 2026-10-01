@@ -31,7 +31,7 @@ import {
 } from "../domain/run-result-persistence.js";
 import type { ManagerInstallation } from "../internal/manager-installation.js";
 import { resolveActionContext } from "./action-context.js";
-import { checkDeclaredProofs, inspectActionProof } from "./action-proof.js";
+import { checkOwnRunProofClosure, inspectActionProof } from "./action-proof.js";
 import type {
   ActionCommandRequest,
   FinishRequest,
@@ -481,10 +481,10 @@ async function finish(
       request.runId,
     );
   try {
-    await checkDeclaredProofs(
+    await checkOwnRunProofClosure(
       request,
       request.runId,
-      request.result.facts.proofRefs ?? [],
+      request.result.facts.proofRefs,
     );
   } catch (error) {
     blocked(
