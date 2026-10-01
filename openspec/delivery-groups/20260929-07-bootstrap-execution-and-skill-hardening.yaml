@@ -8,9 +8,18 @@ planningReference:
   artifact: "docs/D07-bootstrap-execution-and-skill-hardening-plan.md"
   contentSha256: "e4200d1b9681f9e9d24d064f2fe215cd54d92088d2e21908a18c5a74d3ade399"
 delivery:
-  state: active
-  fullTestStatus: pending
-  finalizationStatus: pending
+  state: completed
+  fullTestStatus: "passed"
+  finalizationStatus: completed
+  fullTestAttempt: "da6a95af-b5db-452a-937b-4277692614e8"
+finalization:
+  state: completed
+  verifiedCandidateRef: "full-test-input:sha256:bdf29e0805d3274735d4f01204e013f5dda45e02b2a3e090ceb3586a51aedf66"
+  fullTestExecutionRef: "full-test-execution:sha256:9377186788929c5e3ce985509d86070eeaca88d9475ee0452ddbc989a5c54fcf"
+  ownerAuthorityRef: "owner:6e8b9ed5a5f059d37010ccbd28cb5d0217adcf0969b7df66f16fcdda8da3607c"
+  sourceRef: "owner-input:2026-10-01:d07-delivery-final"
+  fullTestAttempt: "da6a95af-b5db-452a-937b-4277692614e8"
+  confirmationRef: "delivery-finalization:sha256:df70704269829bd166dac23578018ca81257c94129fb03f31498a071e5a392b9"
 changes:
   - id: "expose-stable-action-and-record-commands"
     group: "action-execution"
