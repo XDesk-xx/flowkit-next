@@ -1,0 +1,32 @@
+{
+  "kind": "d07-e-linux-x64-glibc-detached-acceptance",
+  "image": "node:22.23.2-bookworm-slim",
+  "command": [
+    "docker",
+    "run",
+    "--rm",
+    "--mount",
+    "type=bind,source=D:\\Projects\\flowkit-next\\.flowkit\\artifacts\\20260929-07-bootstrap-execution-and-skill-hardening\\changes\\validate-and-freeze-bootstrap-manager\\proof\\20261001-065-apply,target=/release,readonly",
+    "--mount",
+    "type=bind,source=D:\\Projects\\flowkit-next,target=/source,readonly",
+    "--mount",
+    "type=bind,source=C:/Users/xuser/.flowkit,target=/flowkit-home,readonly",
+    "--mount",
+    "type=bind,source=D:\\Projects\\flowkit-next\\.tmp\\d07-e-065-linux,target=/work",
+    "node:22.23.2-bookworm-slim",
+    "sh",
+    "/release/linux-acceptance.sh"
+  ],
+  "start": "2026-10-01T10:24:21.668Z",
+  "end": "2026-10-01T10:25:35.995Z",
+  "code": 1,
+  "signal": null,
+  "error": null,
+  "packageSha256": "1b2c88c9263d5892946d3d9aacba79a6392eb3d8b3b37fa3c87aebcc1550cba0",
+  "scratch": "D:\\Projects\\flowkit-next\\.tmp\\d07-e-065-linux",
+  "stdoutBytes": 7697,
+  "stdoutSha256": "57fcd1648e7f0fdee526dc606c268ab060edb5e963a3438f71cb7bb9edf1da8f",
+  "stderrBytes": 282,
+  "stderrSha256": "b2674534f7c346ec98ec6e0ba8f65772d92414f40ce240a9000522d18ce2cf3c",
+  "scope": "Installed package and exact managed OpenSpec on Linux x64 glibc; TS acceptance harness copied separately with tsx."
+}

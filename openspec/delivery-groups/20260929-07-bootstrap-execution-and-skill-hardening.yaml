@@ -52,7 +52,8 @@ changes:
     goal: "验证独立安装、真实新目标与新会话、端到端流程和发行资产一致性，形成可供后续明确选择的 manager 候选。"
     required: true
     dependsOn: ["converge-owned-skills-on-supported-commands", "enforce-typed-evidence-and-bounded-execution", "admit-canonical-prepared-proof-at-checkpoint"]
-    state: planned
+    state: completed
+    projectOrdinal: 49
 ownerDecisions:
   - ref: "owner:1b8ae722c80b605680a484d63de0f6f2a21d77e5e8755b981a812f873ad3d875"
     decision: "create-delivery"
@@ -90,6 +91,13 @@ ownerDecisions:
     deliveryId: "20260929-07-bootstrap-execution-and-skill-hardening"
     changeId: "admit-canonical-prepared-proof-at-checkpoint"
     sourceRef: "owner-input:2026-10-01:activate-next-change-proof-explore"
+    scope:
+      - "explore"
+  - ref: "owner:e4b9c8075e7bc55061457eafa23f279cc82009b4ff57f28674c876b372859134"
+    decision: "activate-change"
+    deliveryId: "20260929-07-bootstrap-execution-and-skill-hardening"
+    changeId: "validate-and-freeze-bootstrap-manager"
+    sourceRef: "owner-input:2026-10-01:activate-next-change-and-proof-explore"
     scope:
       - "explore"
 reference:

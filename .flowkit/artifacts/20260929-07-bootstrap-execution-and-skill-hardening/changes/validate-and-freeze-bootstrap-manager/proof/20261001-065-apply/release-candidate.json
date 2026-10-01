@@ -1,0 +1,67 @@
+{
+  "kind": "d07-e-release-candidate",
+  "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+  "changeId": "validate-and-freeze-bootstrap-manager",
+  "applyRunId": "20261001-065-apply",
+  "source": {
+    "branch": "delivery/20260929-07-bootstrap-execution-and-skill-hardening",
+    "head": "2bab78b41750d1cff665a20b37dfca09ca1ca511",
+    "sourceHashes": {
+      "package.json": "ae5b266740db006ef10271bb011837467629fdcafba50a46688c0de5792185a9",
+      "pnpm-lock.yaml": "bf5ef071f2b4b8140f05493ebd53098660250f2cd5a834fe321ce8685bdb65e5",
+      "config/tools/toolchain.lock.json": "a0481fc8a3fddfbcdd65a504e0e7a065e6ab74a3a871af3ab8838d201eecd4a2",
+      "scripts/check-forbidden-tracked-artifacts.mjs": "e374240c147051b9abef1e8f16ca9bf9ea28976929f5a8cf866ffc5c935d1e16",
+      "tests/unit/quality/owned-source-policy.test.ts": "461ba174f2c194d28e3ef6e2bacde68306fe52927d236085f7f7f16048a362e4",
+      "openspec/delivery-groups/20260929-07-bootstrap-execution-and-skill-hardening.yaml": "d56a2e1cb6e9421bce32aa1d0a07d30805cf78c9a541f3a69f1d18b05aa9c6c5",
+      "openspec/changes/validate-and-freeze-bootstrap-manager/proposal.md": "24c666bb972b92dfa8e53769626091b7b886c963f7e6ade993f48208752927d1",
+      "openspec/changes/validate-and-freeze-bootstrap-manager/design.md": "9709b9067a1160e7445ec8f4756023cf40c88cbb38586b884df66a7eda5c5ba8"
+    },
+    "uncommittedInputs": [
+      "scripts/check-forbidden-tracked-artifacts.mjs",
+      "tests/unit/quality/owned-source-policy.test.ts",
+      "openspec/delivery-groups/20260929-07-bootstrap-execution-and-skill-hardening.yaml",
+      "openspec/changes/validate-and-freeze-bootstrap-manager/"
+    ],
+    "priorFailedApplyRunId": "20261001-062-apply"
+  },
+  "package": {
+    "name": "flowkit-next",
+    "version": "0.1.0",
+    "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-065-apply/flowkit-next-0.1.0.tgz",
+    "bytes": 160020,
+    "sha256": "1b2c88c9263d5892946d3d9aacba79a6392eb3d8b3b37fa3c87aebcc1550cba0",
+    "bin": {
+      "flowkit": "dist/cli/entrypoint.js"
+    },
+    "dependencies": {
+      "yaml": "^2.9.0"
+    },
+    "memberCount": 117
+  },
+  "toolAndSkills": {
+    "exactOpenSpec": "@fission-ai/openspec@1.10.0",
+    "toolLockSha256": "a0481fc8a3fddfbcdd65a504e0e7a065e6ab74a3a871af3ab8838d201eecd4a2",
+    "packagedSkillFiles": 33,
+    "installedByteMatchedFiles": 115
+  },
+  "installs": {
+    "windows": "D:\\Projects\\flowkit-next\\.tmp\\d07-e-065-isolated\\installation\\node_modules\\flowkit-next",
+    "linux": "D:\\Projects\\flowkit-next\\.tmp\\d07-e-065-linux-02/install/node_modules/flowkit-next"
+  },
+  "evidence": {
+    "checks": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-065-apply/verified-checks-report.json",
+    "package": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-065-apply/release-package-report.json",
+    "windowsInstall": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-065-apply/isolated-install-report.json",
+    "installedActions": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-065-apply/installed-actions-report.json",
+    "installedSupport": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-065-apply/installed-support-report.json",
+    "installedByteAudit": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-065-apply/installed-byte-audit-report.json",
+    "windowsAcceptance": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-065-apply/installed-acceptance-report.json",
+    "linuxAcceptance": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-065-apply/linux-acceptance-02-report.json"
+  },
+  "scope": {
+    "ownerSourceRef": "owner-input:2026-10-01:revise-e-acceptance-scope",
+    "verified": "Actual tgz, isolated production installs, fixed command fixtures, Windows compatibility simulation, Linux x64 glibc detached acceptance.",
+    "unverified": "Real independent project use, actual Author/Reviewer correction, new Agent session, host permission prompts.",
+    "authority": "Candidate record only. Owner Stable selection, Formal Full Test, Delivery Final and Git checkpoint/push/merge remain separate."
+  }
+}

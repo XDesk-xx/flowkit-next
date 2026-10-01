@@ -1,0 +1,114 @@
+{
+  "kind": "isolated-first-query-after-exact-openspec-init",
+  "target": "D:\\Projects\\flowkit-next\\.tmp\\d07-e-package-probe-9jIpCD\\fresh-target",
+  "packageSha256": "1b2c88c9263d5892946d3d9aacba79a6392eb3d8b3b37fa3c87aebcc1550cba0",
+  "outputs": {
+    "init": {
+      "exitCode": 0,
+      "signal": null,
+      "processError": null,
+      "output": "- Creating OpenSpec structure...\n▌ OpenSpec structure created\n\nOpenSpec Setup Complete\n\nConfig: openspec/config.yaml (schema: spec-driven)\n\nGetting started:\n  Start your first change: /opsx:propose \"your idea\"\n\nLearn more: https://github.com/Fission-AI/OpenSpec\nFeedback:   https://github.com/Fission-AI/OpenSpec/issues"
+    },
+    "doctor": {
+      "exitCode": 0,
+      "signal": null,
+      "processError": null,
+      "output": "{\"kind\":\"doctor\",\"status\":\"pass\",\"diagnostics\":[{\"id\":\"openspec-runtime\",\"status\":\"pass\",\"version\":\"1.10.0\"},{\"id\":\"openspec-root\",\"status\":\"pass\",\"activeChangeCount\":0}]}"
+    },
+    "status": {
+      "exitCode": 0,
+      "signal": null,
+      "processError": null,
+      "output": "{\"kind\":\"status\",\"status\":\"idle\",\"repositoryRoot\":\"D:\\\\Projects\\\\flowkit-next\\\\.tmp\\\\d07-e-package-probe-9jIpCD\\\\fresh-target\",\"deliveryId\":null,\"changeId\":null,\"changeState\":null,\"currentRun\":null,\"openSpec\":{\"activeChangeIds\":[],\"exactChange\":null}}"
+    },
+    "next": {
+      "exitCode": 0,
+      "signal": null,
+      "processError": null,
+      "output": "{\"kind\":\"next\",\"status\":\"idle\",\"decision\":null,\"checkpoint\":null}"
+    }
+  },
+  "checks": [
+    {
+      "id": "openspec-init",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js",
+        "init",
+        "--tools",
+        "none"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d07-e-package-probe-9jIpCD\\fresh-target",
+      "startedAt": "2026-10-01T09:10:23.053Z",
+      "finishedAt": "2026-10-01T09:10:24.392Z",
+      "exitCode": 0,
+      "signal": null,
+      "processError": null,
+      "stdoutBytes": 323,
+      "stdoutSha256": "26411fceb8b20ad63cf140f9ea3425acddd79a20bd4e482d01da6711e45e8069",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "initialized-doctor",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "D:\\Projects\\flowkit-next\\.tmp\\d07-e-package-probe-9jIpCD\\installation\\node_modules\\flowkit-next\\dist\\cli\\entrypoint.js",
+        "doctor",
+        "--input",
+        "D:\\Projects\\flowkit-next\\.tmp\\d07-e-package-probe-9jIpCD\\fresh-target-query.json"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d07-e-package-probe-9jIpCD\\fresh-target",
+      "startedAt": "2026-10-01T09:10:24.392Z",
+      "finishedAt": "2026-10-01T09:10:25.898Z",
+      "exitCode": 0,
+      "signal": null,
+      "processError": null,
+      "stdoutBytes": 172,
+      "stdoutSha256": "5c360f7f42aed20a7c178ad539c282d15217ad08d9e4cb6b907e2b37e32c65b7",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "initialized-status",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "D:\\Projects\\flowkit-next\\.tmp\\d07-e-package-probe-9jIpCD\\installation\\node_modules\\flowkit-next\\dist\\cli\\entrypoint.js",
+        "status",
+        "--input",
+        "D:\\Projects\\flowkit-next\\.tmp\\d07-e-package-probe-9jIpCD\\fresh-target-query.json"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d07-e-package-probe-9jIpCD\\fresh-target",
+      "startedAt": "2026-10-01T09:10:25.898Z",
+      "finishedAt": "2026-10-01T09:10:27.389Z",
+      "exitCode": 0,
+      "signal": null,
+      "processError": null,
+      "stdoutBytes": 252,
+      "stdoutSha256": "55f5cd231c90a0ec72e312036d41aba0dff2c13489cbaad37124dbd8b09e4785",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "initialized-next",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "D:\\Projects\\flowkit-next\\.tmp\\d07-e-package-probe-9jIpCD\\installation\\node_modules\\flowkit-next\\dist\\cli\\entrypoint.js",
+        "next",
+        "--input",
+        "D:\\Projects\\flowkit-next\\.tmp\\d07-e-package-probe-9jIpCD\\fresh-target-query.json"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d07-e-package-probe-9jIpCD\\fresh-target",
+      "startedAt": "2026-10-01T09:10:27.389Z",
+      "finishedAt": "2026-10-01T09:10:28.950Z",
+      "exitCode": 0,
+      "signal": null,
+      "processError": null,
+      "stdoutBytes": 66,
+      "stdoutSha256": "ef0fe799e9a9ec547c31b833576d628535e5da3e81bba437282b9421a4921c86",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "limitation": "Same Agent session and empty isolated target; this does not prove a real new target workflow or independent new Agent session."
+}

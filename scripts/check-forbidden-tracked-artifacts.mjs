@@ -1,4 +1,4 @@
-import { spawnSync } from "node:child_process";
+import { spawn } from "node:child_process";
 
 const FORBIDDEN_SEGMENTS = new Set([
   "node_modules",
@@ -21,17 +21,26 @@ function isForbiddenTrackedPath(filePath) {
   return FORBIDDEN_ARCHIVE_SUFFIXES.some((suffix) => fileName.endsWith(suffix));
 }
 
-const git = spawnSync("git", ["ls-files", "-z"], {
-  encoding: "utf8",
+const git = spawn("git", ["ls-files", "-z"], {
   stdio: ["ignore", "pipe", "pipe"],
 });
-
-if (git.status !== 0) {
-  process.stderr.write(git.stderr || "git ls-files failed\n");
-  process.exit(git.status ?? 1);
+const stdout = [];
+const stderr = [];
+git.stdout.on("data", (chunk) => stdout.push(chunk));
+git.stderr.on("data", (chunk) => stderr.push(chunk));
+const status = await new Promise((resolve, reject) => {
+  git.on("error", reject);
+  git.on("close", resolve);
+});
+if (status !== 0) {
+  process.stderr.write(
+    Buffer.concat(stderr).toString("utf8") || "git ls-files failed\n",
+  );
+  process.exit(status ?? 1);
 }
 
-const violations = git.stdout
+const violations = Buffer.concat(stdout)
+  .toString("utf8")
   .split("\0")
   .filter(Boolean)
   .filter(isForbiddenTrackedPath)

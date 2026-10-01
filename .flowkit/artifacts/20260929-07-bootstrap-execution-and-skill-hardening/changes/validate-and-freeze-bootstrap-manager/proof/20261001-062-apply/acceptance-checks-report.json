@@ -1,0 +1,228 @@
+{
+  "kind": "d07-e-apply-source-and-applicable-checks",
+  "source": {
+    "branch": "delivery/20260929-07-bootstrap-execution-and-skill-hardening",
+    "head": "2bab78b41750d1cff665a20b37dfca09ca1ca511",
+    "trackedDiffNames": [
+      "openspec/delivery-groups/20260929-07-bootstrap-execution-and-skill-hardening.yaml"
+    ],
+    "untrackedNames": [
+      ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-058-explore/bootstrap-probe-report.json",
+      ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-058-explore/bootstrap-probe.mjs",
+      ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-058-explore/candidate-package.tgz",
+      ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-058-explore/fresh-doctor.stderr.txt",
+      ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-058-explore/fresh-doctor.stdout.txt",
+      ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-058-explore/fresh-status.stderr.txt",
+      ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-058-explore/fresh-status.stdout.txt",
+      ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-058-explore/initialized-doctor.stderr.txt",
+      ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-058-explore/initialized-doctor.stdout.txt",
+      ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-058-explore/initialized-next.stderr.txt",
+      ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-058-explore/initialized-next.stdout.txt",
+      ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-058-explore/initialized-status.stderr.txt",
+      ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-058-explore/initialized-status.stdout.txt",
+      ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-058-explore/install.stderr.txt",
+      ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-058-explore/install.stdout.txt",
+      ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-058-explore/openspec-init.stderr.txt",
+      ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-058-explore/openspec-init.stdout.txt",
+      ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-058-explore/pack.stderr.txt",
+      ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-058-explore/pack.stdout.txt",
+      ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-058-explore/package-probe-report.json",
+      ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-058-explore/package-probe.mjs",
+      ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-059-review-explore/checks.json",
+      ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-059-review-explore/doctor.stderr.txt",
+      ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-059-review-explore/doctor.stdout.txt",
+      ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-059-review-explore/next.stderr.txt",
+      ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-059-review-explore/next.stdout.txt",
+      ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-059-review-explore/status.stderr.txt",
+      ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-059-review-explore/status.stdout.txt",
+      ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-062-apply/acceptance-checks.mjs",
+      ".flowkit/runs/20260929-07-bootstrap-execution-and-skill-hardening/058-validate-and-freeze-bootstrap-manager/20261001-058-explore/action.md",
+      ".flowkit/runs/20260929-07-bootstrap-execution-and-skill-hardening/058-validate-and-freeze-bootstrap-manager/20261001-058-explore/context.json",
+      ".flowkit/runs/20260929-07-bootstrap-execution-and-skill-hardening/058-validate-and-freeze-bootstrap-manager/20261001-058-explore/result.json",
+      ".flowkit/runs/20260929-07-bootstrap-execution-and-skill-hardening/058-validate-and-freeze-bootstrap-manager/20261001-059-review-explore/action.md",
+      ".flowkit/runs/20260929-07-bootstrap-execution-and-skill-hardening/058-validate-and-freeze-bootstrap-manager/20261001-059-review-explore/context.json",
+      ".flowkit/runs/20260929-07-bootstrap-execution-and-skill-hardening/058-validate-and-freeze-bootstrap-manager/20261001-059-review-explore/result.json",
+      ".flowkit/runs/20260929-07-bootstrap-execution-and-skill-hardening/058-validate-and-freeze-bootstrap-manager/20261001-060-propose/action.md",
+      ".flowkit/runs/20260929-07-bootstrap-execution-and-skill-hardening/058-validate-and-freeze-bootstrap-manager/20261001-060-propose/context.json",
+      ".flowkit/runs/20260929-07-bootstrap-execution-and-skill-hardening/058-validate-and-freeze-bootstrap-manager/20261001-060-propose/result.json",
+      ".flowkit/runs/20260929-07-bootstrap-execution-and-skill-hardening/058-validate-and-freeze-bootstrap-manager/20261001-061-review-propose/action.md",
+      ".flowkit/runs/20260929-07-bootstrap-execution-and-skill-hardening/058-validate-and-freeze-bootstrap-manager/20261001-061-review-propose/context.json",
+      ".flowkit/runs/20260929-07-bootstrap-execution-and-skill-hardening/058-validate-and-freeze-bootstrap-manager/20261001-061-review-propose/result.json",
+      ".flowkit/runs/20260929-07-bootstrap-execution-and-skill-hardening/058-validate-and-freeze-bootstrap-manager/20261001-062-apply/action.md",
+      "openspec/changes/validate-and-freeze-bootstrap-manager/.openspec.yaml",
+      "openspec/changes/validate-and-freeze-bootstrap-manager/design.md",
+      "openspec/changes/validate-and-freeze-bootstrap-manager/explore.md",
+      "openspec/changes/validate-and-freeze-bootstrap-manager/proposal.md",
+      "openspec/changes/validate-and-freeze-bootstrap-manager/tasks.md"
+    ],
+    "packageJsonSha256": "ae5b266740db006ef10271bb011837467629fdcafba50a46688c0de5792185a9",
+    "lockSha256": "bf5ef071f2b4b8140f05493ebd53098660250f2cd5a834fe321ce8685bdb65e5",
+    "nodeVersion": "v22.23.2",
+    "pnpmVersion": "11.22.0"
+  },
+  "checks": [
+    {
+      "name": "typecheck",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+        "typecheck"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "startedAt": "2026-10-01T09:38:55.525Z",
+      "finishedAt": "2026-10-01T09:38:59.166Z",
+      "exitCode": 0,
+      "signal": null,
+      "processError": null,
+      "stdoutBytes": 0,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrBytes": 15,
+      "stderrSha256": "8366207267355d3e3d5bf3bf6e8c94c5f93f6078c34f08973fa2b38cdda6cc92"
+    },
+    {
+      "name": "test:domain",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+        "test:domain"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "startedAt": "2026-10-01T09:38:59.167Z",
+      "finishedAt": "2026-10-01T09:41:09.559Z",
+      "exitCode": 1,
+      "signal": null,
+      "processError": null,
+      "stdoutBytes": 80880,
+      "stdoutSha256": "37f071d90e1719704bb8b77338f6374923e72110936747564742addefd9ac449",
+      "stderrBytes": 55,
+      "stderrSha256": "aae00296a00317fb5d8157cc46c908dd4c7bfd3ac1d52b647091d4c256ef13c6"
+    },
+    {
+      "name": "test:acceptance",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+        "test:acceptance"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "startedAt": "2026-10-01T09:41:09.559Z",
+      "finishedAt": "2026-10-01T09:41:33.670Z",
+      "exitCode": 0,
+      "signal": null,
+      "processError": null,
+      "stdoutBytes": 1708,
+      "stdoutSha256": "38fdd4e7792c0f06a4b526565392e6cc8f7fde8692ecec38bc5bbb002b78e39b",
+      "stderrBytes": 54,
+      "stderrSha256": "03a28f841eea36c0ec13f6dea3ea69c782e389ad940fcfaf6d419d0e4fff319b"
+    },
+    {
+      "name": "test:bootstrap",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+        "test:bootstrap"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "startedAt": "2026-10-01T09:41:33.670Z",
+      "finishedAt": "2026-10-01T09:41:34.993Z",
+      "exitCode": 0,
+      "signal": null,
+      "processError": null,
+      "stdoutBytes": 2152,
+      "stdoutSha256": "2fdb0970dc1b30b24523007fd6cc7b5b9c8b20de1c4807f41b8e07c0685ef0d0",
+      "stderrBytes": 58,
+      "stderrSha256": "085b188afd57be38ecdcb1b79ecbdba3762ba2d5b7db1ca01081952a776f3a04"
+    },
+    {
+      "name": "quality:gate",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+        "quality:gate"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "startedAt": "2026-10-01T09:41:34.993Z",
+      "finishedAt": "2026-10-01T09:41:43.045Z",
+      "exitCode": 0,
+      "signal": null,
+      "processError": null,
+      "stdoutBytes": 66,
+      "stdoutSha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20",
+      "stderrBytes": 192,
+      "stderrSha256": "9ccaf1b94533f97d77e53271cbcbe105b2181b73bdcdc804c213feb0145b94f3"
+    },
+    {
+      "name": "quality:dependency-health",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+        "quality:dependency-health"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "startedAt": "2026-10-01T09:41:43.045Z",
+      "finishedAt": "2026-10-01T09:41:47.500Z",
+      "exitCode": 0,
+      "signal": null,
+      "processError": null,
+      "stdoutBytes": 81,
+      "stdoutSha256": "5276498e7920ab1799ff8c4785c45b47ffe95623b3ba525bf42a2143e0adda84",
+      "stderrBytes": 79,
+      "stderrSha256": "fa9ba6bb542e83e254b5bae92765b5ba9e0505c12e1e49f6c11dbf41c51f8775"
+    },
+    {
+      "name": "quality:entropy",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+        "quality:entropy"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "startedAt": "2026-10-01T09:41:47.500Z",
+      "finishedAt": "2026-10-01T09:41:50.431Z",
+      "exitCode": 0,
+      "signal": null,
+      "processError": null,
+      "stdoutBytes": 64,
+      "stdoutSha256": "d78add4f5d8913a85deae02832c5d1751753b91ff1778c38e98d5e656a1fa917",
+      "stderrBytes": 49,
+      "stderrSha256": "7db8734f9a79ab0e050617ecdfb19b5819eb70b528b921de90840d1c8efe0973"
+    },
+    {
+      "name": "quality:owned-source",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+        "quality:owned-source"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "startedAt": "2026-10-01T09:41:50.431Z",
+      "finishedAt": "2026-10-01T09:41:51.505Z",
+      "exitCode": 0,
+      "signal": null,
+      "processError": null,
+      "stdoutBytes": 537,
+      "stdoutSha256": "078505b75a9414ae4998caedb6cf2a0e1073859f0f2f9db4708683984a5e5512",
+      "stderrBytes": 74,
+      "stderrSha256": "c86bfec8a0746ef3782ec82faa475c30584c496a247471de3d7d31663d09f15f"
+    },
+    {
+      "name": "check:forbidden-tracked-artifacts",
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+        "check:forbidden-tracked-artifacts"
+      ],
+      "cwd": "D:\\Projects\\flowkit-next",
+      "startedAt": "2026-10-01T09:41:51.505Z",
+      "finishedAt": "2026-10-01T09:41:52.419Z",
+      "exitCode": 1,
+      "signal": null,
+      "processError": null,
+      "stdoutBytes": 46,
+      "stdoutSha256": "70691ee46df8bffd84dd117eb9297af7108f7fc0b6be5f63d6cb30aef0d605b5",
+      "stderrBytes": 73,
+      "stderrSha256": "8cb6c810e8fe6fe41f7a0d4193359a0f4a15ea0f6b7e77a3741ddca4050b54aa"
+    }
+  ],
+  "scope": "Candidate source checks; not Formal Full Test, real target acceptance, or Reviewer verdict."
+}

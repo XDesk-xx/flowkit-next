@@ -42,7 +42,7 @@ const legacy = new Map([
   ],
   [
     "scripts/check-forbidden-tracked-artifacts.mjs",
-    "0b821d01dc5f1b7494d7b95410f21b7b2e76eaf6d8b6fcdedfcab317e8d2c968",
+    "e374240c147051b9abef1e8f16ca9bf9ea28976929f5a8cf866ffc5c935d1e16",
   ],
   [
     "scripts/check-production-reachability.mjs",

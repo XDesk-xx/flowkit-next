@@ -1,0 +1,416 @@
+{
+  "runId": "20261001-058-explore",
+  "actionIdentity": {
+    "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+    "changeId": "validate-and-freeze-bootstrap-manager",
+    "actionId": "explore"
+  },
+  "authorConclusion": "PASS",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": "review-explore",
+  "facts": {
+    "projectOrdinal": 49,
+    "changeStartSequence": 58,
+    "summary": "Installed-package probe proves exact tgz, production-only dependency install and query after OpenSpec initialization. Real target, new Agent session, independent Reviewer and full workflow remain Apply acceptance obligations; no manager selection is claimed.",
+    "fixedPointCommit": "2bab78b41750d1cff665a20b37dfca09ca1ca511",
+    "manifest": {
+      "path": "openspec/delivery-groups/20260929-07-bootstrap-execution-and-skill-hardening.yaml",
+      "sha256": "d56a2e1cb6e9421bce32aa1d0a07d30805cf78c9a541f3a69f1d18b05aa9c6c5"
+    },
+    "exploreArtifact": "openspec/changes/validate-and-freeze-bootstrap-manager/explore.md",
+    "exploreSha256": "33de9eafb861962404936ce0e1fa40ceef4266f5488a382214fd410ea7ebb12c",
+    "openSpecMetadata": {
+      "path": "openspec/changes/validate-and-freeze-bootstrap-manager/.openspec.yaml",
+      "sha256": "c51317fdb09f4c0096f955c8beeb5f19a56ba49530c79732bb429ad0f423004d"
+    },
+    "packageProbe": {
+      "sha256": "1b2c88c9263d5892946d3d9aacba79a6392eb3d8b3b37fa3c87aebcc1550cba0",
+      "bytes": 160020,
+      "memberCount": 117,
+      "installedRoot": "D:\\Projects\\flowkit-next\\.tmp\\d07-e-package-probe-9jIpCD\\installation\\node_modules\\flowkit-next"
+    },
+    "checks": [
+      {
+        "id": "pack",
+        "command": [
+          "C:\\nvm4w\\nodejs\\node.exe",
+          "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+          "pack",
+          "--pack-destination",
+          "D:\\Projects\\flowkit-next\\.tmp\\d07-e-package-probe-9jIpCD",
+          "--json"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-01T09:09:29.646Z",
+        "finishedAt": "2026-10-01T09:09:32.840Z",
+        "exitCode": 0,
+        "signal": null,
+        "processError": null,
+        "stdoutBytes": 8055,
+        "stdoutSha256": "b68a73799b19e8c517a6612b5ea5fa233e7e166b33dcc66170ff258c76639cdb",
+        "stderrBytes": 36,
+        "stderrSha256": "8f5c6a9c4aade0d032984516a14b38a2d12cb1e6b333ab3568f9dde2ba3e3470"
+      },
+      {
+        "id": "install",
+        "command": [
+          "C:\\nvm4w\\nodejs\\node.exe",
+          "C:/nvm4w/nodejs/node_modules/npm/bin/npm-cli.js",
+          "install",
+          "--prefix",
+          "D:\\Projects\\flowkit-next\\.tmp\\d07-e-package-probe-9jIpCD\\installation",
+          "--omit=dev",
+          "--no-audit",
+          "--no-fund",
+          "D:\\Projects\\flowkit-next\\.tmp\\d07-e-package-probe-9jIpCD\\flowkit-next-0.1.0.tgz"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d07-e-package-probe-9jIpCD",
+        "startedAt": "2026-10-01T09:09:32.841Z",
+        "finishedAt": "2026-10-01T09:09:35.765Z",
+        "exitCode": 0,
+        "signal": null,
+        "processError": null,
+        "stdoutBytes": 24,
+        "stdoutSha256": "bf14b7a2bc076990244fa3239536925868dfe5ad05089c7d459b5fa482abfc72",
+        "stderrBytes": 0,
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "id": "fresh-status",
+        "command": [
+          "C:\\nvm4w\\nodejs\\node.exe",
+          "D:\\Projects\\flowkit-next\\.tmp\\d07-e-package-probe-9jIpCD\\installation\\node_modules\\flowkit-next\\dist\\cli\\entrypoint.js",
+          "status",
+          "--input",
+          "D:\\Projects\\flowkit-next\\.tmp\\d07-e-package-probe-9jIpCD\\fresh-target-query.json"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d07-e-package-probe-9jIpCD\\fresh-target",
+        "startedAt": "2026-10-01T09:09:35.770Z",
+        "finishedAt": "2026-10-01T09:09:37.258Z",
+        "exitCode": 2,
+        "signal": null,
+        "processError": null,
+        "stdoutBytes": 59,
+        "stdoutSha256": "e795d71c4192acf791287162b3c5c90f96f4a1eb357e0d1ee2a3389caf1e2ad6",
+        "stderrBytes": 0,
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "id": "fresh-doctor",
+        "command": [
+          "C:\\nvm4w\\nodejs\\node.exe",
+          "D:\\Projects\\flowkit-next\\.tmp\\d07-e-package-probe-9jIpCD\\installation\\node_modules\\flowkit-next\\dist\\cli\\entrypoint.js",
+          "doctor",
+          "--input",
+          "D:\\Projects\\flowkit-next\\.tmp\\d07-e-package-probe-9jIpCD\\fresh-target-query.json"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d07-e-package-probe-9jIpCD\\fresh-target",
+        "startedAt": "2026-10-01T09:09:37.258Z",
+        "finishedAt": "2026-10-01T09:09:38.781Z",
+        "exitCode": 0,
+        "signal": null,
+        "processError": null,
+        "stdoutBytes": 192,
+        "stdoutSha256": "b149fa076e8a4e4f21248bbaf26c97106a1839863215b3e15d3467778d2f4e06",
+        "stderrBytes": 0,
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "id": "openspec-init",
+        "command": [
+          "C:\\nvm4w\\nodejs\\node.exe",
+          "C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js",
+          "init",
+          "--tools",
+          "none"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d07-e-package-probe-9jIpCD\\fresh-target",
+        "startedAt": "2026-10-01T09:10:23.053Z",
+        "finishedAt": "2026-10-01T09:10:24.392Z",
+        "exitCode": 0,
+        "signal": null,
+        "processError": null,
+        "stdoutBytes": 323,
+        "stdoutSha256": "26411fceb8b20ad63cf140f9ea3425acddd79a20bd4e482d01da6711e45e8069",
+        "stderrBytes": 0,
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "id": "initialized-doctor",
+        "command": [
+          "C:\\nvm4w\\nodejs\\node.exe",
+          "D:\\Projects\\flowkit-next\\.tmp\\d07-e-package-probe-9jIpCD\\installation\\node_modules\\flowkit-next\\dist\\cli\\entrypoint.js",
+          "doctor",
+          "--input",
+          "D:\\Projects\\flowkit-next\\.tmp\\d07-e-package-probe-9jIpCD\\fresh-target-query.json"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d07-e-package-probe-9jIpCD\\fresh-target",
+        "startedAt": "2026-10-01T09:10:24.392Z",
+        "finishedAt": "2026-10-01T09:10:25.898Z",
+        "exitCode": 0,
+        "signal": null,
+        "processError": null,
+        "stdoutBytes": 172,
+        "stdoutSha256": "5c360f7f42aed20a7c178ad539c282d15217ad08d9e4cb6b907e2b37e32c65b7",
+        "stderrBytes": 0,
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "id": "initialized-status",
+        "command": [
+          "C:\\nvm4w\\nodejs\\node.exe",
+          "D:\\Projects\\flowkit-next\\.tmp\\d07-e-package-probe-9jIpCD\\installation\\node_modules\\flowkit-next\\dist\\cli\\entrypoint.js",
+          "status",
+          "--input",
+          "D:\\Projects\\flowkit-next\\.tmp\\d07-e-package-probe-9jIpCD\\fresh-target-query.json"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d07-e-package-probe-9jIpCD\\fresh-target",
+        "startedAt": "2026-10-01T09:10:25.898Z",
+        "finishedAt": "2026-10-01T09:10:27.389Z",
+        "exitCode": 0,
+        "signal": null,
+        "processError": null,
+        "stdoutBytes": 252,
+        "stdoutSha256": "55f5cd231c90a0ec72e312036d41aba0dff2c13489cbaad37124dbd8b09e4785",
+        "stderrBytes": 0,
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "id": "initialized-next",
+        "command": [
+          "C:\\nvm4w\\nodejs\\node.exe",
+          "D:\\Projects\\flowkit-next\\.tmp\\d07-e-package-probe-9jIpCD\\installation\\node_modules\\flowkit-next\\dist\\cli\\entrypoint.js",
+          "next",
+          "--input",
+          "D:\\Projects\\flowkit-next\\.tmp\\d07-e-package-probe-9jIpCD\\fresh-target-query.json"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next\\.tmp\\d07-e-package-probe-9jIpCD\\fresh-target",
+        "startedAt": "2026-10-01T09:10:27.389Z",
+        "finishedAt": "2026-10-01T09:10:28.950Z",
+        "exitCode": 0,
+        "signal": null,
+        "processError": null,
+        "stdoutBytes": 66,
+        "stdoutSha256": "ef0fe799e9a9ec547c31b833576d628535e5da3e81bba437282b9421a4921c86",
+        "stderrBytes": 0,
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ],
+    "proofRefs": [
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-058-explore/bootstrap-probe-report.json",
+        "bytes": 5104,
+        "sha256": "8dac5ec3720ced917ae45c237a4b528d741e348440487812d449cca0278a71c4",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-058-explore",
+        "purpose": "bounded-explore-command-and-identity-report"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-058-explore/bootstrap-probe.mjs",
+        "bytes": 3106,
+        "sha256": "3e6af5ad046f3d738125b05a9ada596436aa614c64e0fad598aba0e4671c0735",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-058-explore",
+        "purpose": "bounded-explore-probe-source"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-058-explore/candidate-package.tgz",
+        "bytes": 160020,
+        "sha256": "1b2c88c9263d5892946d3d9aacba79a6392eb3d8b3b37fa3c87aebcc1550cba0",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-058-explore",
+        "purpose": "original-exploratory-candidate-package"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-058-explore/fresh-doctor.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-058-explore",
+        "purpose": "raw-explore-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-058-explore/fresh-doctor.stdout.txt",
+        "bytes": 192,
+        "sha256": "b149fa076e8a4e4f21248bbaf26c97106a1839863215b3e15d3467778d2f4e06",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-058-explore",
+        "purpose": "raw-explore-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-058-explore/fresh-status.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-058-explore",
+        "purpose": "raw-explore-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-058-explore/fresh-status.stdout.txt",
+        "bytes": 59,
+        "sha256": "e795d71c4192acf791287162b3c5c90f96f4a1eb357e0d1ee2a3389caf1e2ad6",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-058-explore",
+        "purpose": "raw-explore-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-058-explore/initialized-doctor.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-058-explore",
+        "purpose": "raw-explore-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-058-explore/initialized-doctor.stdout.txt",
+        "bytes": 172,
+        "sha256": "5c360f7f42aed20a7c178ad539c282d15217ad08d9e4cb6b907e2b37e32c65b7",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-058-explore",
+        "purpose": "raw-explore-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-058-explore/initialized-next.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-058-explore",
+        "purpose": "raw-explore-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-058-explore/initialized-next.stdout.txt",
+        "bytes": 66,
+        "sha256": "ef0fe799e9a9ec547c31b833576d628535e5da3e81bba437282b9421a4921c86",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-058-explore",
+        "purpose": "raw-explore-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-058-explore/initialized-status.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-058-explore",
+        "purpose": "raw-explore-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-058-explore/initialized-status.stdout.txt",
+        "bytes": 252,
+        "sha256": "55f5cd231c90a0ec72e312036d41aba0dff2c13489cbaad37124dbd8b09e4785",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-058-explore",
+        "purpose": "raw-explore-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-058-explore/install.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-058-explore",
+        "purpose": "raw-explore-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-058-explore/install.stdout.txt",
+        "bytes": 24,
+        "sha256": "bf14b7a2bc076990244fa3239536925868dfe5ad05089c7d459b5fa482abfc72",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-058-explore",
+        "purpose": "raw-explore-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-058-explore/openspec-init.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-058-explore",
+        "purpose": "raw-explore-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-058-explore/openspec-init.stdout.txt",
+        "bytes": 323,
+        "sha256": "26411fceb8b20ad63cf140f9ea3425acddd79a20bd4e482d01da6711e45e8069",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-058-explore",
+        "purpose": "raw-explore-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-058-explore/pack.stderr.txt",
+        "bytes": 36,
+        "sha256": "8f5c6a9c4aade0d032984516a14b38a2d12cb1e6b333ab3568f9dde2ba3e3470",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-058-explore",
+        "purpose": "raw-explore-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-058-explore/pack.stdout.txt",
+        "bytes": 8055,
+        "sha256": "b68a73799b19e8c517a6612b5ea5fa233e7e166b33dcc66170ff258c76639cdb",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-058-explore",
+        "purpose": "raw-explore-command-stream"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-058-explore/package-probe-report.json",
+        "bytes": 13446,
+        "sha256": "7bdf22b2efeeb99697150a8945af9a1c8fb9b0cc1208e4241f499dde3a596fe0",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-058-explore",
+        "purpose": "bounded-explore-command-and-identity-report"
+      },
+      {
+        "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-058-explore/package-probe.mjs",
+        "bytes": 5241,
+        "sha256": "b4e2c9798b3dd49ad5fa11cca80cf22ed1291d1b0e3a272e74be8751bd95cfce",
+        "deliveryId": "20260929-07-bootstrap-execution-and-skill-hardening",
+        "changeId": "validate-and-freeze-bootstrap-manager",
+        "runId": "20261001-058-explore",
+        "purpose": "bounded-explore-probe-source"
+      }
+    ],
+    "limitations": [
+      "Same-session isolated package probe is not a real new Agent session or complete target lifecycle.",
+      "The probe tgz is exploratory and cannot serve as the post-Apply frozen manager identity.",
+      "No independent Reviewer, actual changes-requested round trip, Linux detached acceptance, Formal Full Test, Delivery Final, Git integration or future manager selection was executed here."
+    ],
+    "handoff": {
+      "summary": "Review E Explore against real package/install evidence, OpenSpec-root bootstrap precondition, final artifact identity and unmet real target/session/Reviewer acceptance requirements; do not treat fixture proof as release selection.",
+      "ownerDecisions": [
+        {
+          "sourceRef": "owner-input:2026-10-01:activate-next-change-and-proof-explore",
+          "summary": "Owner authorized activation of the remaining Change and one proof Explore."
+        }
+      ],
+      "evidenceRefs": [
+        {
+          "sourceRunId": "20261001-058-explore",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-058-explore/package-probe-report.json"
+        },
+        {
+          "sourceRunId": "20261001-058-explore",
+          "path": ".flowkit/artifacts/20260929-07-bootstrap-execution-and-skill-hardening/changes/validate-and-freeze-bootstrap-manager/proof/20261001-058-explore/bootstrap-probe-report.json"
+        }
+      ]
+    }
+  }
+}
