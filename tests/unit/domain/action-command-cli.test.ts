@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { execFile } from "node:child_process";
 import { createHash } from "node:crypto";
-import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
+import { mkdir, readFile, readdir, symlink, writeFile } from "node:fs/promises";
 import path from "node:path";
 import test from "node:test";
 import { promisify } from "node:util";
@@ -456,6 +456,37 @@ test("Propose finish rejects wrong planning hashes before writing and Review rea
       nextBoundary: "review-propose",
       facts: { artifactHashes: hashes, proofRefs },
     };
+    await fixture.observe(["change-one"], root, false);
+    await assert.rejects(
+      cli("finish", {
+        ...base,
+        runId: proposal.runId,
+        role: "author",
+        terminal: true,
+        result: proposalResult,
+      }),
+    );
+    assert.deepEqual(await readdir(proposal.directory as string), [
+      "action.md",
+    ]);
+    await fixture.observe(["change-one"]);
+    const missingRequired = { ...hashes };
+    delete missingRequired["openspec/changes/change-one/design.md"];
+    await assert.rejects(
+      cli("finish", {
+        ...base,
+        runId: proposal.runId,
+        role: "author",
+        terminal: true,
+        result: {
+          ...proposalResult,
+          facts: { artifactHashes: missingRequired, proofRefs },
+        },
+      }),
+    );
+    assert.deepEqual(await readdir(proposal.directory as string), [
+      "action.md",
+    ]);
     await assert.rejects(
       cli("finish", {
         ...base,
@@ -489,11 +520,106 @@ test("Propose finish rejects wrong planning hashes before writing and Review rea
       ).effect,
       "confirmed",
     );
+    const proposalFile = path.join(changeRoot, "proposal.md");
+    const originalProposal = await readFile(proposalFile);
+    await writeFile(proposalFile, "changed after finish\n");
+    await assert.rejects(
+      cli("start", { ...base, actionId: "review-propose", role: "reviewer" }),
+    );
+    await writeFile(proposalFile, originalProposal);
+    const reviewProposal = await cli("start", {
+      ...base,
+      actionId: "review-propose",
+      role: "reviewer",
+    });
+    assert.equal(reviewProposal.effect, "started");
+    assert.equal(
+      (
+        await cli("finish", {
+          ...base,
+          runId: reviewProposal.runId,
+          role: "reviewer",
+          terminal: true,
+          result: {
+            runId: reviewProposal.runId,
+            actionIdentity: identity("review-propose"),
+            authorConclusion: null,
+            reviewerVerdict: "approved",
+            verificationVerdict: null,
+            nextBoundary: "apply",
+            facts: { reviewedRunId: proposal.runId, proofRefs: [] },
+          },
+        })
+      ).effect,
+      "confirmed",
+    );
+    const apply = await cli("start", {
+      ...base,
+      actionId: "apply",
+      role: "author",
+    });
+    assert.equal(apply.effect, "started");
+    const candidate = path.join(root, "candidate.txt");
+    await writeFile(candidate, "candidate bytes\n");
+    const candidateBytes = await readFile(candidate);
+    const candidateHash = createHash("sha256")
+      .update(candidateBytes)
+      .digest("hex");
+    const linked = path.join(root, "candidate-link.txt");
+    await symlink(candidate, linked, "file");
+    const applyResult = {
+      runId: apply.runId,
+      actionIdentity: identity("apply"),
+      authorConclusion: "PASS",
+      reviewerVerdict: null,
+      verificationVerdict: null,
+      nextBoundary: "review-apply",
+      facts: {
+        artifactHashes: { "candidate.txt": candidateHash },
+        proofRefs: [],
+      },
+    };
+    const finishApply = (artifactHashes?: unknown) =>
+      cli("finish", {
+        ...base,
+        runId: apply.runId,
+        role: "author",
+        terminal: true,
+        result: {
+          ...applyResult,
+          facts: { artifactHashes, proofRefs: [] },
+        },
+      });
+    for (const invalid of [
+      undefined,
+      {},
+      { "candidate.txt": "0".repeat(64) },
+      { "candidate.txt": "invalid" },
+      { "missing.txt": candidateHash },
+      { "candidate-link.txt": candidateHash },
+    ]) {
+      await assert.rejects(finishApply(invalid));
+      assert.deepEqual(await readdir(apply.directory as string), ["action.md"]);
+      assert.deepEqual(await readFile(candidate), candidateBytes);
+    }
+    assert.equal(
+      (await finishApply(applyResult.facts.artifactHashes)).effect,
+      "confirmed",
+    );
+    assert.equal(
+      (await finishApply(applyResult.facts.artifactHashes)).duplicate,
+      true,
+    );
+    await writeFile(candidate, "changed after finish\n");
+    await assert.rejects(
+      cli("start", { ...base, actionId: "review-apply", role: "reviewer" }),
+    );
+    await writeFile(candidate, candidateBytes);
     assert.equal(
       (
         await cli("start", {
           ...base,
-          actionId: "review-propose",
+          actionId: "review-apply",
           role: "reviewer",
         })
       ).effect,

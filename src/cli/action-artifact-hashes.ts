@@ -1,10 +1,12 @@
 import { createHash } from "node:crypto";
 import { lstat, readFile, realpath } from "node:fs/promises";
 import path from "node:path";
+import { observeOpenSpecChangeStatus } from "../domain/openspec-observation.js";
 import type {
   DurableRunRecord,
   JsonObject,
 } from "../domain/run-result-persistence.js";
+import type { ManagerInstallation } from "../internal/manager-installation.js";
 import type { ActionTarget, FinishRequest } from "./action-request.js";
 import { blocked } from "./action-error.js";
 
@@ -167,12 +169,32 @@ export async function checkResultArtifactsOnFinish(
     authorConclusion: string | null;
     facts: JsonObject;
   },
+  installation: ManagerInstallation,
 ): Promise<void> {
   await checkExploreResultOnFinish(request, actionId, result);
-  if (
-    request.terminal &&
-    (actionId === "propose" || actionId === "revise-propose") &&
-    result.authorConclusion === "PASS"
-  )
-    await checkPlanningArtifactHashes(request, result.facts.artifactHashes);
+  if (!request.terminal || result.authorConclusion !== "PASS") return;
+  const hashes = result.facts.artifactHashes;
+  if (actionId === "propose" || actionId === "revise-propose") {
+    const status = await observeOpenSpecChangeStatus({
+      repositoryRoot: request.repositoryRoot,
+      flowkitHome: request.flowkitHome,
+      changeId: request.changeId,
+      installation,
+    });
+    if (!status.isPlanningComplete)
+      blocked("planning-incomplete", "OpenSpec planning is incomplete");
+    if (typeof hashes !== "object" || hashes === null || Array.isArray(hashes))
+      blocked("artifact-hashes-missing", "Exact planning hashes required");
+    for (const name of ["proposal.md", "design.md", "tasks.md"])
+      if (
+        !Object.hasOwn(hashes, `openspec/changes/${request.changeId}/${name}`)
+      )
+        blocked(
+          "artifact-hashes-missing",
+          `Required planning hash missing: ${name}`,
+        );
+    await checkPlanningArtifactHashes(request, hashes);
+  }
+  if (actionId === "apply" || actionId === "revise-apply")
+    await checkArtifactHashes(request.repositoryRoot, hashes);
 }

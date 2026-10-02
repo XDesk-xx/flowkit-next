@@ -3,8 +3,12 @@ import { createHash } from "node:crypto";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import test from "node:test";
-import { checkPlanningArtifactHashes } from "../../../src/cli/action-artifact-hashes.js";
+import {
+  checkPlanningArtifactHashes,
+  checkResultArtifactsOnFinish,
+} from "../../../src/cli/action-artifact-hashes.js";
 import { packageReadiness } from "../../../src/cli/action-readiness.js";
+import type { FinishRequest } from "../../../src/cli/action-request.js";
 import type { DurableRunRecord } from "../../../src/domain/run-result-persistence.js";
 import { contextFixture } from "./action-context-fixture.js";
 
@@ -83,6 +87,28 @@ test("Propose hashes use project-root paths at producer and Reviewer boundaries"
       ),
       "ready",
     );
+    const legacyPredecessor: DurableRunRecord = {
+      ...predecessor,
+      result: {
+        ...predecessor.result,
+        facts: {
+          artifactHashes: {
+            "openspec/changes/change-one/proposal.md":
+              hashes["openspec/changes/change-one/proposal.md"],
+          },
+          proofRefs: [],
+        },
+      },
+    };
+    assert.equal(
+      await packageReadiness(
+        { ...target, actionId: "review-propose", role: "reviewer" },
+        "20261002-004-review-propose",
+        legacyPredecessor,
+        fixture.installation,
+      ),
+      "ready",
+    );
     await writeFile(path.join(changeRoot, "proposal.md"), "changed\n");
     await assert.rejects(
       packageReadiness(
@@ -127,6 +153,119 @@ test("Propose hashes use project-root paths at producer and Reviewer boundaries"
       ),
       "ready",
     );
+  } finally {
+    await fixture.cleanup();
+  }
+});
+
+test("revise candidates use success-only checks without changing FAIL or nonterminal results", async () => {
+  const fixture = await contextFixture();
+  try {
+    const target = {
+      repositoryRoot: fixture.repositoryRoot,
+      flowkitHome: fixture.flowkitHome,
+      deliveryId: "delivery-one",
+      changeId: "change-one",
+    };
+    const changeRoot = path.join(
+      target.repositoryRoot,
+      "openspec/changes/change-one",
+    );
+    await mkdir(changeRoot, { recursive: true });
+    const hashes: Record<string, string> = {};
+    for (const name of ["proposal.md", "design.md", "tasks.md"]) {
+      const file = path.join(changeRoot, name);
+      await writeFile(file, `${name}\n`);
+      hashes[`openspec/changes/change-one/${name}`] = createHash("sha256")
+        .update(await readFile(file))
+        .digest("hex");
+    }
+    const candidate = path.join(target.repositoryRoot, "candidate.txt");
+    await writeFile(candidate, "candidate\n");
+    const candidateHash = createHash("sha256")
+      .update(await readFile(candidate))
+      .digest("hex");
+    const result = {
+      runId: "20261002-003-revise-propose",
+      actionIdentity: {
+        deliveryId: target.deliveryId,
+        changeId: target.changeId,
+        actionId: "revise-propose" as const,
+      },
+      authorConclusion: "PASS" as const,
+      reviewerVerdict: null,
+      verificationVerdict: null,
+      nextBoundary: "review-propose" as const,
+      facts: { artifactHashes: hashes, proofRefs: [] },
+    };
+    const request: FinishRequest = {
+      ...target,
+      runId: result.runId,
+      role: "author",
+      terminal: true,
+      result,
+    };
+    await checkResultArtifactsOnFinish(
+      request,
+      "revise-propose",
+      result,
+      fixture.installation,
+    );
+    await assert.rejects(
+      checkResultArtifactsOnFinish(
+        request,
+        "revise-propose",
+        {
+          ...result,
+          facts: {
+            artifactHashes: {
+              "openspec/changes/change-one/proposal.md":
+                hashes["openspec/changes/change-one/proposal.md"],
+            },
+          },
+        },
+        fixture.installation,
+      ),
+      { kind: "artifact-hashes-missing" },
+    );
+    const applyFacts = {
+      artifactHashes: { "candidate.txt": candidateHash },
+      proofRefs: [],
+    };
+    await checkResultArtifactsOnFinish(
+      request,
+      "revise-apply",
+      { ...result, facts: applyFacts },
+      fixture.installation,
+    );
+    await assert.rejects(
+      checkResultArtifactsOnFinish(
+        request,
+        "revise-apply",
+        { ...result, facts: { artifactHashes: {}, proofRefs: [] } },
+        fixture.installation,
+      ),
+      { kind: "artifact-hashes-missing" },
+    );
+    for (const actionId of [
+      "propose",
+      "revise-propose",
+      "apply",
+      "revise-apply",
+    ]) {
+      await checkResultArtifactsOnFinish(
+        request,
+        actionId,
+        { authorConclusion: "FAIL", facts: { proofRefs: [] } },
+        fixture.installation,
+      );
+      await checkResultArtifactsOnFinish(
+        { ...request, terminal: false },
+        actionId,
+        { authorConclusion: null, facts: { proofRefs: [] } },
+        fixture.installation,
+      );
+    }
   } finally {
     await fixture.cleanup();
   }

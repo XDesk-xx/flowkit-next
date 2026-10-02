@@ -24,14 +24,19 @@ const args = process.argv.slice(2);
 console.log(JSON.stringify(args[0] === 'list' ? {
   root: { path: state.root }, changes: state.changes.map(name => ({ name }))
 } : { root: { path: state.root }, changeName: args[2], schemaName: 'spec-driven',
-  changeRoot: path.join(state.root, 'openspec/changes', args[2]), isPlanningComplete: true,
+  changeRoot: path.join(state.root, 'openspec/changes', args[2]),
+  isPlanningComplete: state.planningComplete !== false,
   isComplete: false, artifacts: [] }));
 `,
   );
-  async function observe(changes: string[], reportedRoot = repositoryRoot) {
+  async function observe(
+    changes: string[],
+    reportedRoot = repositoryRoot,
+    planningComplete = true,
+  ) {
     await writeFile(
       path.join(repositoryRoot, "observation.json"),
-      JSON.stringify({ changes, root: reportedRoot }),
+      JSON.stringify({ changes, root: reportedRoot, planningComplete }),
     );
   }
   async function manifest(

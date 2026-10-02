@@ -31,7 +31,7 @@ import {
 } from "../domain/run-result-persistence.js";
 import type { ManagerInstallation } from "../internal/manager-installation.js";
 import { resolveActionContext } from "./action-context.js";
-import { checkResultArtifactsOnFinish } from "./action-artifact-hashes.js";
+import { checkResultArtifactsOnFinish as checkArtifacts } from "./action-artifact-hashes.js";
 import { checkOwnRunProofClosure, inspectActionProof } from "./action-proof.js";
 import type {
   ActionCommandRequest,
@@ -481,7 +481,7 @@ async function finish(
       "Result admission rejected",
       request.runId,
     );
-  await checkResultArtifactsOnFinish(request, occurrence.actionId, admitted);
+  await checkArtifacts(request, occurrence.actionId, admitted, installation);
   try {
     await checkOwnRunProofClosure(
       request,
