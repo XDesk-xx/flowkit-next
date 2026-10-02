@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { readFile, readdir } from "node:fs/promises";
+import { readFile } from "node:fs/promises";
 import path from "node:path";
 
 import { isExactGitPath } from "../domain/delivery-repository-integration-operation.js";
@@ -9,16 +9,21 @@ import {
 } from "../domain/run-result-persistence.js";
 import { gitBytes } from "./git-checkpoint-scope.js";
 import { readCandidateRunChain } from "./git-index-run-chain.js";
+import {
+  proofDirectoryCandidates,
+  proofOwnerFromSegment,
+  selectProofDirectory,
+} from "./proof-path-owner.js";
 
 type CandidateChain = Awaited<ReturnType<typeof readCandidateRunChain>>;
 
-function addedPaths(bytes: Buffer): string[] {
+function exactGitPaths(bytes: Buffer): string[] {
   const value = bytes.toString("utf8");
   if (!Buffer.from(value).equals(bytes) || (value && !value.endsWith("\0"))) {
-    throw Error("无法解释新增证据路径");
+    throw Error("无法解释候选证据路径");
   }
   const paths = value ? value.slice(0, -1).split("\0") : [];
-  if (!paths.every(isExactGitPath)) throw Error("新增证据路径无效");
+  if (!paths.every(isExactGitPath)) throw Error("候选证据路径无效");
   return paths;
 }
 
@@ -26,26 +31,44 @@ async function declaredProof(
   root: string,
   relativePath: string,
   candidates: Map<string, CandidateChain>,
+  indexedPaths: readonly string[],
+  indexedRunPaths: readonly string[],
 ): Promise<{ bytes: number; sha256: string }> {
   const match =
     /^\.flowkit\/artifacts\/([^/]+)\/changes\/([^/]+)\/proof\/([^/]+)\/.+$/u.exec(
       relativePath,
     );
   if (!match) throw Error(`Managed proof path invalid: ${relativePath}`);
-  const [, deliveryId, changeId, runId] = match;
+  const [, deliveryId, proofGroup, runId] = match;
   const deliveryRuns = path.join(root, ".flowkit", "runs", deliveryId);
-  const changeRoots = (await readdir(deliveryRuns)).filter(
-    (name) => /^\d{3,}-.+$/u.test(name) && name.endsWith(`-${changeId}`),
-  );
-  if (changeRoots.length !== 1) {
+  let runGroup: string;
+  let changeId: string;
+  try {
+    const runPrefix = `.flowkit/runs/${deliveryId}/`;
+    const runGroups = [
+      ...new Set(
+        indexedRunPaths
+          .filter((indexed) => indexed.startsWith(runPrefix))
+          .map((indexed) => indexed.slice(runPrefix.length).split("/")[0]!),
+      ),
+    ];
+    ({ runGroup, changeId } = proofOwnerFromSegment(runGroups, proofGroup));
+    const directories = proofDirectoryCandidates(
+      deliveryId,
+      changeId,
+      runGroup,
+      runId,
+    );
+    const selected = selectProofDirectory(directories, [
+      indexedPaths.some((indexed) => indexed.startsWith(`${directories[0]}/`)),
+      indexedPaths.some((indexed) => indexed.startsWith(`${directories[1]}/`)),
+    ]);
+    if (selected === null || !relativePath.startsWith(`${selected}/`))
+      throw Error("Proof path is outside exact Run ownership");
+  } catch {
     throw Error(`Managed proof Run owner unavailable: ${relativePath}`);
   }
-  const resultPath = path.join(
-    deliveryRuns,
-    changeRoots[0]!,
-    runId,
-    "result.json",
-  );
+  const resultPath = path.join(deliveryRuns, runGroup, runId, "result.json");
   const contextPath = path.join(path.dirname(resultPath), "context.json");
   const relativeResult = path.relative(root, resultPath).replaceAll("\\", "/");
   const relativeContext = path
@@ -161,7 +184,25 @@ export async function requireNewManagedEvidenceBytes(
   root: string,
 ): Promise<void> {
   const candidates = new Map<string, CandidateChain>();
-  const paths = addedPaths(
+  const indexedPaths = exactGitPaths(
+    await gitBytes(root, [
+      "ls-files",
+      "--cached",
+      "-z",
+      "--",
+      ".flowkit/artifacts/",
+    ]),
+  );
+  const indexedRunPaths = exactGitPaths(
+    await gitBytes(root, [
+      "ls-files",
+      "--cached",
+      "-z",
+      "--",
+      ".flowkit/runs/",
+    ]),
+  );
+  const paths = exactGitPaths(
     await gitBytes(root, [
       "diff",
       "--cached",
@@ -177,19 +218,24 @@ export async function requireNewManagedEvidenceBytes(
       name.startsWith(".flowkit/artifacts/"),
   );
   for (const relativePath of paths) {
+    const ref =
+      /^\.flowkit\/artifacts\/[^/]+\/changes\/[^/]+\/proof\/[^/]+\//u.test(
+        relativePath,
+      )
+        ? await declaredProof(
+            root,
+            relativePath,
+            candidates,
+            indexedPaths,
+            indexedRunPaths,
+          )
+        : null;
     const worktree = await readFile(path.join(root, relativePath));
     const indexed = await gitBytes(root, ["show", `:${relativePath}`]);
     if (!indexed.equals(worktree)) {
       throw Error(`Managed evidence index bytes differ: ${relativePath}`);
     }
-    if (
-      !/^\.flowkit\/artifacts\/[^/]+\/changes\/[^/]+\/proof\/[^/]+\//u.test(
-        relativePath,
-      )
-    ) {
-      continue;
-    }
-    const ref = await declaredProof(root, relativePath, candidates);
+    if (ref === null) continue;
     if (
       indexed.length !== ref.bytes ||
       createHash("sha256").update(indexed).digest("hex") !== ref.sha256

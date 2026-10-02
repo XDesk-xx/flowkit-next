@@ -147,7 +147,9 @@ revise 同样与查询给出的具体 Action 匹配，不新增自然语言代�
 
 ## 6. 材料与验收
 
-真实 Action 保存固定三文件 Run；必要 proof 留 target `.flowkit/artifacts/<delivery>/changes/<change>/proof/<run-id>/`，按当前需要交接引用。`.tmp` 放可丢弃包/探针/请求，不作唯一必要证据。旧 proof 不是当前实现 PASS；材料处理授权简要交接，不复制聊天。
+真实 Action 保存固定三文件 Run；新必要 proof 留 target `.flowkit/artifacts/<delivery>/changes/<run-group>/proof/<run-id>/`，其中 `<run-group>` 是 `action start` 返回的编号 Run 分组（如 `001-<change-id>`），`proofRefs.changeId` 仍是语义 ID。既有语义分组 proof 按原路径读取；同一 Run 两种目录并存时停止。按当前需要交接引用，`.tmp` 放可丢弃包/探针/请求，不作唯一必要证据。旧 proof 不是当前实现 PASS；材料处理授权简要交接，不复制聊天。
+
+若 Run 只有已写的 `action.md`，它仍绑定原 `repositoryRoot` 和开始时的 Guidance SHA；`status/next` 对不完整三文件可能报告 `run-chain-invalid`。恢复应在原项目根使用保持绑定 Skill bytes 的兼容 manager 核对并 finish exact Run；复制 descriptor 到另一个目录、直接替换 Skill 或补造 `context.json/result.json` 都不能完成恢复。实际 Author/Reviewer 结论仍由对应角色作出。
 
 Full Test 的 inputs/exclude/environment/checks 来自 target 配置，独立于 `.gitignore`、index、HEAD；当前 attempt 材料在 `.flowkit/artifacts/<delivery>/full-test/`，新失败/partial 不回用旧 PASS。Archify 不是测试或 Delivery 前置。Git 只在独立授权节点执行，测试成功不替代权限。
 

@@ -7,12 +7,14 @@ import test from "node:test";
 import { promisify } from "node:util";
 import { fileURLToPath } from "node:url";
 import { contextFixture } from "./action-context-fixture.js";
+import { inspectActionProof } from "../../../src/cli/action-proof.js";
 import { gitBytes } from "../../../src/internal/git-checkpoint-scope.js";
 
 const run = promisify(execFile);
 const entry = fileURLToPath(
   new URL("../../../src/cli/entrypoint.ts", import.meta.url),
 );
+const cliEntryArgs = (...args: string[]) => ["--import", "tsx", entry, ...args];
 
 test("fixed CLI starts and finishes one Author Run across processes, then confirms exact retry", async () => {
   const fixture = await contextFixture();
@@ -45,11 +47,10 @@ test("fixed CLI starts and finishes one Author Run across processes, then confir
       JSON.stringify({ ...base, actionId: "explore", role: "author" }),
     );
     const cli = async (args: string[]) => {
-      const result = await run(
-        process.execPath,
-        ["--import", "tsx", entry, ...args],
-        { cwd: path.dirname(entry), timeout: 30_000 },
-      );
+      const result = await run(process.execPath, cliEntryArgs(...args), {
+        cwd: path.dirname(entry),
+        timeout: 30_000,
+      });
       return JSON.parse(result.stdout) as Record<string, unknown>;
     };
     const started = await cli(["action", "start", "--input", request]);
@@ -175,7 +176,7 @@ test("fixed CLI starts and finishes one Author Run across processes, then confir
     await failedFinish("approved", "archive");
     await failedFinish("rejected", null);
     assert.deepEqual(await readdir(review.directory as string), ["action.md"]);
-    const proofPath = `.flowkit/artifacts/delivery-one/changes/change-one/proof/${reviewId}/stdout.txt`;
+    const proofPath = `.flowkit/artifacts/delivery-one/changes/001-change-one/proof/${reviewId}/stdout.txt`;
     await mkdir(path.dirname(path.join(fixture.repositoryRoot, proofPath)), {
       recursive: true,
     });
@@ -197,14 +198,20 @@ test("fixed CLI starts and finishes one Author Run across processes, then confir
         .update(Buffer.from([0, 13, 10, 255]))
         .digest("hex"),
     );
-    const extraPaths = ["extra-a.txt", "extra-b.txt"].map((name) =>
-      proofPath.replace("stdout.txt", name),
+    const extraPaths = Array.from({ length: 39 }, (_, index) =>
+      proofPath.replace("stdout.txt", `extra-${index}.txt`),
     );
     for (const [index, relative] of extraPaths.entries())
       await writeFile(
         path.join(fixture.repositoryRoot, relative),
         `extra ${index}\n`,
       );
+    const inspected = await Promise.all(
+      [proofPath, ...extraPaths].map((relative) =>
+        inspectActionProof(base, reviewId, relative),
+      ),
+    );
+    assert.equal(inspected.length, 40);
     const currentRefs = await Promise.all(
       [proofPath, ...extraPaths].map(async (relative) => {
         const bytes = await readFile(
@@ -320,6 +327,183 @@ test("fixed CLI starts and finishes one Author Run across processes, then confir
   }
 });
 
+test("Propose finish rejects wrong planning hashes before writing and Review reads project-root paths", async () => {
+  const fixture = await contextFixture();
+  try {
+    const root = fixture.repositoryRoot;
+    await gitBytes(root, ["init"]);
+    await writeFile(
+      path.join(root, ".gitattributes"),
+      ".flowkit/runs/** -text\n.flowkit/artifacts/** -text\n",
+    );
+    const manifest = path.join(
+      root,
+      "openspec/delivery-groups/delivery-one.yaml",
+    );
+    const data = JSON.parse(await readFile(manifest, "utf8")) as {
+      changes: Record<string, unknown>[];
+    };
+    data.changes[0].projectOrdinal = 1;
+    await writeFile(manifest, JSON.stringify(data));
+    const base = {
+      repositoryRoot: root,
+      flowkitHome: fixture.flowkitHome,
+      deliveryId: "delivery-one",
+      changeId: "change-one",
+    };
+    const cli = async (command: string, value: unknown) => {
+      const request = path.join(root, `request-${command}.json`);
+      await writeFile(request, JSON.stringify(value));
+      const result = await run(
+        process.execPath,
+        cliEntryArgs("action", command, "--input", request),
+        { cwd: path.dirname(entry), timeout: 30_000 },
+      );
+      return JSON.parse(result.stdout) as Record<string, unknown>;
+    };
+    const identity = (actionId: string) => ({
+      deliveryId: "delivery-one",
+      changeId: "change-one",
+      actionId,
+    });
+    const changeRoot = path.join(root, "openspec/changes/change-one");
+    await mkdir(changeRoot, { recursive: true });
+    const exploreFile = path.join(changeRoot, "explore.md");
+    await writeFile(exploreFile, "# fixture Explore\n");
+    const explore = await cli("start", {
+      ...base,
+      actionId: "explore",
+      role: "author",
+    });
+    await cli("finish", {
+      ...base,
+      runId: explore.runId,
+      role: "author",
+      terminal: true,
+      result: {
+        runId: explore.runId,
+        actionIdentity: identity("explore"),
+        authorConclusion: "PASS",
+        reviewerVerdict: null,
+        verificationVerdict: null,
+        nextBoundary: "review-explore",
+        facts: {
+          projectOrdinal: 1,
+          exploreArtifact: "openspec/changes/change-one/explore.md",
+          exploreSha256: createHash("sha256")
+            .update(await readFile(exploreFile))
+            .digest("hex"),
+          proofRefs: [],
+        },
+      },
+    });
+    const review = await cli("start", {
+      ...base,
+      actionId: "review-explore",
+      role: "reviewer",
+    });
+    await cli("finish", {
+      ...base,
+      runId: review.runId,
+      role: "reviewer",
+      terminal: true,
+      result: {
+        runId: review.runId,
+        actionIdentity: identity("review-explore"),
+        authorConclusion: null,
+        reviewerVerdict: "approved",
+        verificationVerdict: null,
+        nextBoundary: "propose",
+        facts: { proofRefs: [] },
+      },
+    });
+    const proposal = await cli("start", {
+      ...base,
+      actionId: "propose",
+      role: "author",
+    });
+    const hashes: Record<string, string> = {};
+    for (const name of ["proposal.md", "design.md", "tasks.md"]) {
+      const file = path.join(changeRoot, name);
+      await writeFile(file, `# ${name}\n`);
+      hashes[`openspec/changes/change-one/${name}`] = createHash("sha256")
+        .update(await readFile(file))
+        .digest("hex");
+    }
+    const semanticProof = `.flowkit/artifacts/delivery-one/changes/change-one/proof/${proposal.runId}/note.txt`;
+    await mkdir(path.dirname(path.join(root, semanticProof)), {
+      recursive: true,
+    });
+    await writeFile(path.join(root, semanticProof), "legacy layout\n");
+    const proofBytes = await readFile(path.join(root, semanticProof));
+    const proofRefs = [
+      {
+        path: semanticProof,
+        bytes: proofBytes.length,
+        sha256: createHash("sha256").update(proofBytes).digest("hex"),
+        deliveryId: "delivery-one",
+        changeId: "change-one",
+        runId: proposal.runId,
+        purpose: "semantic compatibility fixture",
+      },
+    ];
+    const proposalResult = {
+      runId: proposal.runId,
+      actionIdentity: identity("propose"),
+      authorConclusion: "PASS",
+      reviewerVerdict: null,
+      verificationVerdict: null,
+      nextBoundary: "review-propose",
+      facts: { artifactHashes: hashes, proofRefs },
+    };
+    await assert.rejects(
+      cli("finish", {
+        ...base,
+        runId: proposal.runId,
+        role: "author",
+        terminal: true,
+        result: {
+          ...proposalResult,
+          facts: {
+            artifactHashes: {
+              ...hashes,
+              "openspec/changes/other/proposal.md": "0".repeat(64),
+            },
+            proofRefs,
+          },
+        },
+      }),
+    );
+    assert.deepEqual(await readdir(proposal.directory as string), [
+      "action.md",
+    ]);
+    assert.equal(
+      (
+        await cli("finish", {
+          ...base,
+          runId: proposal.runId,
+          role: "author",
+          terminal: true,
+          result: proposalResult,
+        })
+      ).effect,
+      "confirmed",
+    );
+    assert.equal(
+      (
+        await cli("start", {
+          ...base,
+          actionId: "review-propose",
+          role: "reviewer",
+        })
+      ).effect,
+      "started",
+    );
+  } finally {
+    await fixture.cleanup();
+  }
+});
+
 test("prepared Owner correction binds conversation source across CLI processes without changing predecessor", async () => {
   const fixture = await contextFixture();
   try {
@@ -344,11 +528,10 @@ test("prepared Owner correction binds conversation source across CLI processes w
       changeId: "change-one",
     };
     const cli = async (args: string[]) => {
-      const output = await run(
-        process.execPath,
-        ["--import", "tsx", entry, ...args],
-        { cwd: path.dirname(entry), timeout: 30_000 },
-      );
+      const output = await run(process.execPath, cliEntryArgs(...args), {
+        cwd: path.dirname(entry),
+        timeout: 30_000,
+      });
       return JSON.parse(output.stdout) as Record<string, unknown>;
     };
     const file = async (name: string, value: unknown) => {
@@ -492,7 +675,7 @@ test("terminal Author FAIL with null boundary is readable and does not advance P
       await writeFile(file, JSON.stringify(request));
       const output = await run(
         process.execPath,
-        ["--import", "tsx", entry, ...kind.split(" "), "--input", file],
+        cliEntryArgs(...kind.split(" "), "--input", file),
         { cwd: path.dirname(entry), timeout: 30_000 },
       );
       return JSON.parse(output.stdout) as Record<string, unknown>;

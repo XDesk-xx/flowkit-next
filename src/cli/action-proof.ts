@@ -2,6 +2,11 @@ import { createHash } from "node:crypto";
 import { lstat, readFile, readdir, realpath } from "node:fs/promises";
 import path from "node:path";
 import { assertManagedEvidenceGitBytes } from "../internal/managed-evidence-git.js";
+import {
+  proofDirectoryCandidates,
+  selectedProofDirectory,
+  uniqueRunGroup,
+} from "../internal/proof-path-owner.js";
 import { parseRunOccurrenceId } from "../domain/run-result-persistence.js";
 import type { ActionTarget } from "./action-request.js";
 
@@ -15,36 +20,46 @@ export interface ProofFacts {
   readonly purpose: string;
 }
 
+async function ownProofDirectory(
+  target: ActionTarget,
+  runId: string,
+): Promise<{ root: string; relative: string | null }> {
+  if (parseRunOccurrenceId(runId) === null)
+    throw new Error("Invalid proof Run locator");
+  const root = await realpath(target.repositoryRoot);
+  const runRoot = path.join(root, ".flowkit", "runs", target.deliveryId);
+  const group = uniqueRunGroup(await readdir(runRoot), target.changeId);
+  if (!(await lstat(path.join(runRoot, group, runId))).isDirectory())
+    throw new Error("Proof Run is not uniquely present");
+  return {
+    root,
+    relative: await selectedProofDirectory(
+      root,
+      proofDirectoryCandidates(
+        target.deliveryId,
+        target.changeId,
+        group,
+        runId,
+      ),
+    ),
+  };
+}
+
 export async function inspectActionProof(
   target: ActionTarget,
   runId: string,
   relative: string,
 ): Promise<ProofFacts> {
-  if (parseRunOccurrenceId(runId) === null)
-    throw new Error("Invalid proof Run locator");
-  const runGroup = path.join(
-    target.repositoryRoot,
-    ".flowkit",
-    "runs",
-    target.deliveryId,
-  );
-  const groups = (await readdir(runGroup)).filter(
-    (name) => /^\d{3,}-/.test(name) && name.endsWith(`-${target.changeId}`),
-  );
+  const { root, relative: selected } = await ownProofDirectory(target, runId);
+  const prefix = `${selected}/`;
   if (
-    groups.length !== 1 ||
-    !(await lstat(path.join(runGroup, groups[0], runId))).isDirectory()
-  )
-    throw new Error("Proof Run is not uniquely present");
-  const prefix = `.flowkit/artifacts/${target.deliveryId}/changes/${target.changeId}/proof/${runId}/`;
-  if (
+    selected === null ||
     !relative.startsWith(prefix) ||
     relative.includes("\\") ||
     relative.split("/").some((part) => !part || part === "." || part === "..")
   ) {
     throw new Error("Proof path is outside exact Run ownership");
   }
-  const root = await realpath(target.repositoryRoot);
   let absolute = root;
   for (const segment of relative.split("/")) {
     absolute = path.join(absolute, segment);
@@ -118,29 +133,15 @@ export async function checkOwnRunProofClosure(
 ): Promise<void> {
   if (!Array.isArray(refs))
     throw new Error("proofRefs must be an explicit array");
-  const relativeRoot = `.flowkit/artifacts/${target.deliveryId}/changes/${target.changeId}/proof/${runId}`;
-  const root = await realpath(target.repositoryRoot);
-  let directory = root;
-  let missing = false;
-  for (const segment of relativeRoot.split("/")) {
-    directory = path.join(directory, segment);
-    const entry = await lstat(directory).catch(
-      (error: NodeJS.ErrnoException) => {
-        if (error.code === "ENOENT") return null;
-        throw error;
-      },
-    );
-    if (entry === null) {
-      missing = true;
-      break;
-    }
-    if (entry.isSymbolicLink() || !entry.isDirectory())
-      throw new Error("Linked or non-directory proof path");
-  }
-  if (missing) {
+  const { root, relative: relativeRoot } = await ownProofDirectory(
+    target,
+    runId,
+  );
+  if (relativeRoot === null) {
     if (refs.length !== 0) throw new Error("Proof directory is absent");
     return;
   }
+  const directory = path.join(root, ...relativeRoot.split("/"));
   const prefix = `${relativeRoot}/`;
   const actual = new Set<string>();
   for (const entry of await readdir(directory, { withFileTypes: true })) {

@@ -28,6 +28,10 @@ import {
   resolveFullTestProgram,
 } from "../internal/full-test-input.js";
 import { resolveActionContext } from "./action-context.js";
+import {
+  checkArtifactHashes,
+  checkPlanningArtifactHashes,
+} from "./action-artifact-hashes.js";
 import { checkDeclaredProofs } from "./action-proof.js";
 import type { ActionTarget, StartRequest } from "./action-request.js";
 import { blocked } from "./action-error.js";
@@ -68,53 +72,6 @@ async function readableFiles(
         `Invalid planning artifact: ${name}`,
       );
     await readFile(path.join(root, name));
-  }
-}
-async function checkArtifactHashes(
-  root: string,
-  hashes: unknown,
-): Promise<void> {
-  if (
-    typeof hashes !== "object" ||
-    hashes === null ||
-    Array.isArray(hashes) ||
-    Object.keys(hashes).length === 0
-  )
-    blocked(
-      "artifact-hashes-missing",
-      "Exact candidate artifact hashes required",
-    );
-  for (const [relative, expected] of Object.entries(hashes)) {
-    if (
-      !relative ||
-      relative.includes("\\") ||
-      relative
-        .split("/")
-        .some((part) => !part || part === "." || part === "..") ||
-      typeof expected !== "string" ||
-      !/^[0-9a-f]{64}$/.test(expected)
-    )
-      blocked("artifact-hash-invalid", "Invalid candidate artifact identity");
-    let file = await realpath(root);
-    for (const segment of relative.split("/")) {
-      file = path.join(file, segment);
-      if ((await lstat(file)).isSymbolicLink())
-        blocked(
-          "artifact-hash-invalid",
-          `Candidate artifact is linked: ${relative}`,
-        );
-    }
-    if (!(await lstat(file)).isFile())
-      blocked(
-        "artifact-hash-invalid",
-        `Candidate artifact is not regular: ${relative}`,
-      );
-    if (
-      createHash("sha256")
-        .update(await readFile(file))
-        .digest("hex") !== expected
-    )
-      blocked("artifact-drift", `Candidate artifact changed: ${relative}`);
   }
 }
 export async function readProjectOrdinal(
@@ -253,7 +210,10 @@ export async function packageReadiness(
       );
   }
   if (action === "review-propose" && predecessor !== null) {
-    await checkArtifactHashes(root, predecessor.result.facts.artifactHashes);
+    await checkPlanningArtifactHashes(
+      request,
+      predecessor.result.facts.artifactHashes,
+    );
   }
   if (action === "review-apply" && predecessor !== null) {
     await checkArtifactHashes(

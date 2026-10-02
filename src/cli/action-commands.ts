@@ -31,6 +31,7 @@ import {
 } from "../domain/run-result-persistence.js";
 import type { ManagerInstallation } from "../internal/manager-installation.js";
 import { resolveActionContext } from "./action-context.js";
+import { checkPlanningResultOnFinish } from "./action-artifact-hashes.js";
 import { checkOwnRunProofClosure, inspectActionProof } from "./action-proof.js";
 import type {
   ActionCommandRequest,
@@ -480,6 +481,7 @@ async function finish(
       "Result admission rejected",
       request.runId,
     );
+  await checkPlanningResultOnFinish(request, occurrence.actionId, admitted);
   try {
     await checkOwnRunProofClosure(
       request,
