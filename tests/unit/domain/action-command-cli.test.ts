@@ -606,6 +606,13 @@ test("prepared Owner correction binds conversation source across CLI processes w
     );
     assert.match(descriptor, /conversation:explicit-owner-correction/);
     const revisedId = revised.runId as string;
+    const exploreArtifact = "openspec/changes/change-one/explore.md";
+    const exploreFile = path.join(fixture.repositoryRoot, exploreArtifact);
+    await mkdir(path.dirname(exploreFile), { recursive: true });
+    await writeFile(exploreFile, "# Revised Explore\n");
+    const exploreSha256 = createHash("sha256")
+      .update(await readFile(exploreFile))
+      .digest("hex");
     const result = {
       runId: revisedId,
       actionIdentity: { ...empty.actionIdentity, actionId: "revise-explore" },
@@ -613,7 +620,7 @@ test("prepared Owner correction binds conversation source across CLI processes w
       reviewerVerdict: null,
       verificationVerdict: null,
       nextBoundary: "review-explore",
-      facts: { proofRefs: [] },
+      facts: { exploreArtifact, exploreSha256, proofRefs: [] },
     };
     const finished = await cli([
       "action",

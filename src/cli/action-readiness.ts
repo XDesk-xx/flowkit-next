@@ -30,6 +30,7 @@ import {
 import { resolveActionContext } from "./action-context.js";
 import {
   checkArtifactHashes,
+  checkExplorePredecessorForReview,
   checkPlanningArtifactHashes,
 } from "./action-artifact-hashes.js";
 import { checkDeclaredProofs } from "./action-proof.js";
@@ -174,15 +175,7 @@ export async function packageReadiness(
       );
   }
   if (action === "review-explore" && predecessor !== null) {
-    const artifact = predecessor.result.facts.exploreArtifact;
-    const hash = predecessor.result.facts.exploreSha256;
-    if (typeof artifact !== "string" || typeof hash !== "string")
-      blocked(
-        "explore-artifact-missing",
-        "Exact Explore artifact identity required",
-        packageRunId,
-      );
-    await checkArtifactHashes(request.repositoryRoot, { [artifact]: hash });
+    await checkExplorePredecessorForReview(request, predecessor);
     await checkDeclaredProofs(
       request,
       predecessor.context.runId,
