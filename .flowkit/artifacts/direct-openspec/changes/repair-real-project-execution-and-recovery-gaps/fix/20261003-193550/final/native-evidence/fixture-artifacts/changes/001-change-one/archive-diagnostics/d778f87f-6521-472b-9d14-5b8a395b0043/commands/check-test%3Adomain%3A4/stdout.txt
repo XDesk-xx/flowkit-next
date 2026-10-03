@@ -1,0 +1,1085 @@
+TAP version 13
+# Subtest: fixed Action request rejects duplicate keys and caller authority fields
+ok 1 - fixed Action request rejects duplicate keys and caller authority fields
+  ---
+  duration_ms: 1.6575
+  type: 'test'
+  ...
+# domain-file "action-command-request.test.ts"
+# Subtest: fixed finish only accepts an exact role Result envelope
+ok 2 - fixed finish only accepts an exact role Result envelope
+  ---
+  duration_ms: 0.8303
+  type: 'test'
+  ...
+# domain-file "action-command-request.test.ts"
+# Subtest: future successful Explore requires the exact dedicated file identity
+ok 3 - future successful Explore requires the exact dedicated file identity
+  ---
+  duration_ms: 29.4254
+  type: 'test'
+  ...
+# domain-file "action-explore-artifact.test.ts"
+# Subtest: Review accepts only one matching legacy Explore hash and rejects conflicts
+ok 4 - Review accepts only one matching legacy Explore hash and rejects conflicts
+  ---
+  duration_ms: 21.2567
+  type: 'test'
+  ...
+# domain-file "action-explore-artifact.test.ts"
+# Subtest: maps every Standard Action to one closed execution role
+ok 5 - maps every Standard Action to one closed execution role
+  ---
+  duration_ms: 1.3667
+  type: 'test'
+  ...
+# domain-file "action-package-result-admission.test.ts"
+# Subtest: forms a minimal prepared package from exact current facts
+ok 6 - forms a minimal prepared package from exact current facts
+  ---
+  duration_ms: 3.1194
+  type: 'test'
+  ...
+# domain-file "action-package-result-admission.test.ts"
+# Subtest: formation rejects terminal, removed resumed, null, identity, state or role mismatch
+ok 7 - formation rejects terminal, removed resumed, null, identity, state or role mismatch
+  ---
+  duration_ms: 0.3283
+  type: 'test'
+  ...
+# domain-file "action-package-result-admission.test.ts"
+# Subtest: formation rejects missing, malformed, and wrong-Action Guidance identity
+ok 8 - formation rejects missing, malformed, and wrong-Action Guidance identity
+  ---
+  duration_ms: 0.36
+  type: 'test'
+  ...
+# domain-file "action-package-result-admission.test.ts"
+# Subtest: ActionPackage validator accepts only the exact prepared Guidance-bound envelope
+ok 9 - ActionPackage validator accepts only the exact prepared Guidance-bound envelope
+  ---
+  duration_ms: 0.392
+  type: 'test'
+  ...
+# domain-file "action-package-result-admission.test.ts"
+# Subtest: admits exact prepared results and preserves opaque nextBoundary
+ok 10 - admits exact prepared results and preserves opaque nextBoundary
+  ---
+  duration_ms: 0.6239
+  type: 'test'
+  ...
+# domain-file "action-package-result-admission.test.ts"
+# Subtest: rejects removed resumed current state at admission
+ok 11 - rejects removed resumed current state at admission
+  ---
+  duration_ms: 0.2154
+  type: 'test'
+  ...
+# domain-file "action-package-result-admission.test.ts"
+# Subtest: rejects stale prior occurrence of the same Standard Action
+ok 12 - rejects stale prior occurrence of the same Standard Action
+  ---
+  duration_ms: 0.2314
+  type: 'test'
+  ...
+# domain-file "action-package-result-admission.test.ts"
+# Subtest: rejects wrong candidate Run or Action linkage
+ok 13 - rejects wrong candidate Run or Action linkage
+  ---
+  duration_ms: 0.4375
+  type: 'test'
+  ...
+# domain-file "action-package-result-admission.test.ts"
+# Subtest: enforces Author and Reviewer outcome-slot ownership
+ok 14 - enforces Author and Reviewer outcome-slot ownership
+  ---
+  duration_ms: 0.7935
+  type: 'test'
+  ...
+# domain-file "action-package-result-admission.test.ts"
+# Subtest: rejects formal Verification verdict from every Standard Action
+ok 15 - rejects formal Verification verdict from every Standard Action
+  ---
+  duration_ms: 0.6208
+  type: 'test'
+  ...
+# domain-file "action-package-result-admission.test.ts"
+# Subtest: HOW material consumer validates ownership, bytes and regular contained paths
+ok 16 - HOW material consumer validates ownership, bytes and regular contained paths
+  ---
+  duration_ms: 3204.2952
+  type: 'test'
+  ...
+# domain-file "agent-how-material.test.ts"
+# Subtest: plan is closed and rejects caller-owned identity/root fields
+ok 17 - plan is closed and rejects caller-owned identity/root fields
+  ---
+  duration_ms: 1.5858
+  type: 'test'
+  ...
+# domain-file "applicable-check-execution.test.ts"
+# Subtest: checkRef is stable for canonical ref sets and changes for material identity
+ok 18 - checkRef is stable for canonical ref sets and changes for material identity
+  ---
+  duration_ms: 0.5214
+  type: 'test'
+  ...
+# domain-file "applicable-check-execution.test.ts"
+# Subtest: v2 check identity uses UTF-8 byte ordering and preserves ordered argv
+ok 19 - v2 check identity uses UTF-8 byte ordering and preserves ordered argv
+  ---
+  duration_ms: 0.3432
+  type: 'test'
+  ...
+# domain-file "applicable-check-execution.test.ts"
+# Subtest: execution input is deterministic for a check set and changes with set/package identity
+ok 20 - execution input is deterministic for a check set and changes with set/package identity
+  ---
+  duration_ms: 3860.307
+  type: 'test'
+  ...
+# domain-file "applicable-check-execution.test.ts"
+# Subtest: Guidance identity naturally changes ActionPackageRef and executionInputRef
+ok 21 - Guidance identity naturally changes ActionPackageRef and executionInputRef
+  ---
+  duration_ms: 2282.0037
+  type: 'test'
+  ...
+# domain-file "applicable-check-execution.test.ts"
+# Subtest: candidate ignores ignored untracked and Run-only material but changes on source bytes
+ok 22 - candidate ignores ignored untracked and Run-only material but changes on source bytes
+  ---
+  duration_ms: 3304.0198
+  type: 'test'
+  ...
+# domain-file "applicable-check-execution.test.ts"
+# Subtest: exact Memo bytes are isolated while Memo type and other .flowkit material remain visible
+ok 23 - exact Memo bytes are isolated while Memo type and other .flowkit material remain visible
+  ---
+  duration_ms: 3828.2952
+  type: 'test'
+  ...
+# domain-file "applicable-check-execution.test.ts"
+# Subtest: same bytes with Git-visible executable mode change changes candidateRef
+ok 24 - same bytes with Git-visible executable mode change changes candidateRef
+  ---
+  duration_ms: 4242.3865
+  type: 'test'
+  ...
+# domain-file "applicable-check-execution.test.ts"
+# Subtest: symlink target mutation changes candidateRef when symlinks are supported
+ok 25 - symlink target mutation changes candidateRef when symlinks are supported
+  ---
+  duration_ms: 2589.2828
+  type: 'test'
+  ...
+# domain-file "applicable-check-execution.test.ts"
+# Subtest: confirmed deletion emits no record and is stable across unstaged staged and committed states
+ok 26 - confirmed deletion emits no record and is stable across unstaged staged and committed states
+  ---
+  duration_ms: 4426.1817
+  type: 'test'
+  ...
+# domain-file "applicable-check-execution.test.ts"
+# Subtest: worktree and exact object share the v2 binary material projection
+ok 27 - worktree and exact object share the v2 binary material projection
+  ---
+  duration_ms: 6414.5105
+  type: 'test'
+  ...
+# domain-file "applicable-check-execution.test.ts"
+# Subtest: old-domain successful fact cannot satisfy v2 candidate and check
+ok 28 - old-domain successful fact cannot satisfy v2 candidate and check
+  ---
+  duration_ms: 1559.4415
+  type: 'test'
+  ...
+# domain-file "applicable-check-execution.test.ts"
+# Subtest: unsupported Git-visible path kinds fail candidate derivation closed
+ok 29 - unsupported Git-visible path kinds fail candidate derivation closed
+  ---
+  duration_ms: 1713.1698
+  type: 'test'
+  ...
+# domain-file "applicable-check-execution.test.ts"
+# Subtest: tracked and visible untracked read denial fail closed on the native host
+    # Subtest: tracked
+    ok 1 - tracked
+      ---
+      duration_ms: 1641.0442
+      type: 'test'
+      ...
+# domain-file "applicable-check-execution.test.ts"
+    # Subtest: untracked
+    ok 2 - untracked
+      ---
+      duration_ms: 1472.8436
+      type: 'test'
+      ...
+# domain-file "applicable-check-execution.test.ts"
+    1..2
+ok 30 - tracked and visible untracked read denial fail closed on the native host
+  ---
+  duration_ms: 3114.8286
+  type: 'test'
+  ...
+# domain-file "applicable-check-execution.test.ts"
+# Subtest: unmerged index and SHA-256 repositories are rejected instead of partially projected
+    # Subtest: unmerged index
+    ok 1 - unmerged index
+      ---
+      duration_ms: 2376.7905
+      type: 'test'
+      ...
+# domain-file "applicable-check-execution.test.ts"
+    # Subtest: SHA-256 object format
+    ok 2 - SHA-256 object format
+      ---
+      duration_ms: 1144.9319
+      type: 'test'
+      ...
+# domain-file "applicable-check-execution.test.ts"
+    1..2
+ok 31 - unmerged index and SHA-256 repositories are rejected instead of partially projected
+  ---
+  duration_ms: 3522.5344
+  type: 'test'
+  ...
+# domain-file "applicable-check-execution.test.ts"
+# Subtest: separates actor roles, execution roles, and verification authority
+ok 32 - separates actor roles, execution roles, and verification authority
+  ---
+  duration_ms: 1.1059
+  type: 'test'
+  ...
+# domain-file "authority.test.ts"
+# Subtest: accepts canonical Change-scoped and Delivery-scoped Owner authority facts
+ok 33 - accepts canonical Change-scoped and Delivery-scoped Owner authority facts
+  ---
+  duration_ms: 0.9606
+  type: 'test'
+  ...
+# domain-file "authority.test.ts"
+# Subtest: rejects missing required fields, null changeId, extra fields, and malformed refs
+ok 34 - rejects missing required fields, null changeId, extra fields, and malformed refs
+  ---
+  duration_ms: 0.2337
+  type: 'test'
+  ...
+# domain-file "authority.test.ts"
+# Subtest: rejects non-canonical sourceRef and scope without repairing them
+ok 35 - rejects non-canonical sourceRef and scope without repairing them
+  ---
+  duration_ms: 0.257
+  type: 'test'
+  ...
+# domain-file "authority.test.ts"
+# Subtest: accepts structurally valid future decision/scope without granting Policy eligibility
+ok 36 - accepts structurally valid future decision/scope without granting Policy eligibility
+  ---
+  duration_ms: 0.1896
+  type: 'test'
+  ...
+# domain-file "authority.test.ts"
+# Subtest: Review, Verification, or terminal facts do not implicitly create Owner authority
+ok 37 - Review, Verification, or terminal facts do not implicitly create Owner authority
+  ---
+  duration_ms: 0.1779
+  type: 'test'
+  ...
+# domain-file "authority.test.ts"
+# Subtest: validates canonical Owner authority refs through the reusable helper
+ok 38 - validates canonical Owner authority refs through the reusable helper
+  ---
+  duration_ms: 0.1404
+  type: 'test'
+  ...
+# domain-file "authority.test.ts"
+# Subtest: missing memos.json reads as empty without creating a file
+ok 39 - missing memos.json reads as empty without creating a file
+  ---
+  duration_ms: 10.6809
+  type: 'test'
+  ...
+# domain-file "cross-delivery-memo-persistence.test.ts"
+# Subtest: create writes one canonical document and sorts by memoId
+ok 40 - create writes one canonical document and sorts by memoId
+  ---
+  duration_ms: 10.4676
+  type: 'test'
+  ...
+# domain-file "cross-delivery-memo-persistence.test.ts"
+# Subtest: listOpen returns only open records in canonical order
+ok 41 - listOpen returns only open records in canonical order
+  ---
+  duration_ms: 15.2576
+  type: 'test'
+  ...
+# domain-file "cross-delivery-memo-persistence.test.ts"
+# Subtest: invalid existing document fails closed and is never repaired
+ok 42 - invalid existing document fails closed and is never repaired
+  ---
+  duration_ms: 3.5878
+  type: 'test'
+  ...
+# domain-file "cross-delivery-memo-persistence.test.ts"
+# Subtest: duplicate create and rejected terminal mutation leave bytes unchanged
+ok 43 - duplicate create and rejected terminal mutation leave bytes unchanged
+  ---
+  duration_ms: 6.9832
+  type: 'test'
+  ...
+# domain-file "cross-delivery-memo-persistence.test.ts"
+# Subtest: promotion only records caller target and never creates target artifacts
+ok 44 - promotion only records caller target and never creates target artifacts
+  ---
+  duration_ms: 5.9092
+  type: 'test'
+  ...
+# domain-file "cross-delivery-memo-persistence.test.ts"
+# Subtest: failed target binding leaves canonical Memo document unchanged
+ok 45 - failed target binding leaves canonical Memo document unchanged
+  ---
+  duration_ms: 3.8472
+  type: 'test'
+  ...
+# domain-file "cross-delivery-memo-persistence.test.ts"
+# Subtest: Final confirmation commit point survives fresh sessions without promoting pre-confirmation failures
+    # Subtest: success
+    ok 1 - success
+      ---
+      duration_ms: 5565.1231
+      type: 'test'
+      ...
+# domain-file "delivery-final-confirmation.test.ts"
+    # Subtest: first-readback
+    ok 2 - first-readback
+      ---
+      duration_ms: 3700.6963
+      type: 'test'
+      ...
+# domain-file "delivery-final-confirmation.test.ts"
+    # Subtest: input-drift
+    ok 3 - input-drift
+      ---
+      duration_ms: 3995.508
+      type: 'test'
+      ...
+# domain-file "delivery-final-confirmation.test.ts"
+    # Subtest: related-run-drift
+    ok 4 - related-run-drift
+      ---
+      duration_ms: 3784.2521
+      type: 'test'
+      ...
+# domain-file "delivery-final-confirmation.test.ts"
+    # Subtest: before-confirmation
+    ok 5 - before-confirmation
+      ---
+      duration_ms: 4012.2417
+      type: 'test'
+      ...
+# domain-file "delivery-final-confirmation.test.ts"
+    # Subtest: pre-publication-input-drift
+    ok 6 - pre-publication-input-drift
+      ---
+      duration_ms: 4190.0261
+      type: 'test'
+      ...
+# domain-file "delivery-final-confirmation.test.ts"
+    # Subtest: publish-failure
+    ok 7 - publish-failure
+      ---
+      duration_ms: 3963.4774
+      type: 'test'
+      ...
+# domain-file "delivery-final-confirmation.test.ts"
+    # Subtest: published-response-loss
+    ok 8 - published-response-loss
+      ---
+      duration_ms: 4099.7185
+      type: 'test'
+      ...
+# domain-file "delivery-final-confirmation.test.ts"
+    # Subtest: before-active
+    ok 9 - before-active
+      ---
+      duration_ms: 2886.8478
+      type: 'test'
+      ...
+# domain-file "delivery-final-confirmation.test.ts"
+    # Subtest: after-active
+    ok 10 - after-active
+      ---
+      duration_ms: 3158.8151
+      type: 'test'
+      ...
+# domain-file "delivery-final-confirmation.test.ts"
+    # Subtest: staged-active
+    ok 11 - staged-active
+      ---
+      duration_ms: 3453.1243
+      type: 'test'
+      ...
+# domain-file "delivery-final-confirmation.test.ts"
+    # Subtest: after-unavailable
+    ok 12 - after-unavailable
+      ---
+      duration_ms: 3320.8969
+      type: 'test'
+      ...
+# domain-file "delivery-final-confirmation.test.ts"
+    # Subtest: staged-unavailable
+    ok 13 - staged-unavailable
+      ---
+      duration_ms: 3494.1403
+      type: 'test'
+      ...
+# domain-file "delivery-final-confirmation.test.ts"
+    # Subtest: published-active
+    ok 14 - published-active
+      ---
+      duration_ms: 4521.9507
+      type: 'test'
+      ...
+# domain-file "delivery-final-confirmation.test.ts"
+    1..14
+ok 46 - Final confirmation commit point survives fresh sessions without promoting pre-confirmation failures
+  ---
+  duration_ms: 54163.5361
+  type: 'test'
+  ...
+# domain-file "delivery-final-confirmation.test.ts"
+# Subtest: exact Full Test authority and closed configuration reject caller overrides
+ok 47 - exact Full Test authority and closed configuration reject caller overrides
+  ---
+  duration_ms: 359.6681
+  type: 'test'
+  ...
+# domain-file "delivery-full-test-execution.test.ts"
+# Subtest: no Git target executes fresh attempts and saves exact raw bytes for cross-session reading
+ok 48 - no Git target executes fresh attempts and saves exact raw bytes for cross-session reading
+  ---
+  duration_ms: 2653.2781
+  type: 'test'
+  ...
+# domain-file "delivery-full-test-execution.test.ts"
+# Subtest: failed current attempt never falls back to a previous pass
+ok 49 - failed current attempt never falls back to a previous pass
+  ---
+  duration_ms: 1820.6765
+  type: 'test'
+  ...
+# domain-file "delivery-full-test-execution.test.ts"
+# Subtest: selected source drift stops later checks and is saved as a real failed attempt
+ok 50 - selected source drift stops later checks and is saved as a real failed attempt
+  ---
+  duration_ms: 1476.5572
+  type: 'test'
+  ...
+# domain-file "delivery-full-test-execution.test.ts"
+# Subtest: saved stream damage and incomplete latest results cannot be consumed as PASS
+ok 51 - saved stream damage and incomplete latest results cannot be consumed as PASS
+  ---
+  duration_ms: 1044.6299
+  type: 'test'
+  ...
+# domain-file "delivery-full-test-execution.test.ts"
+# Subtest: start, stream-open, stream-write, result and status-publication failures never expose old PASS
+ok 52 - start, stream-open, stream-write, result and status-publication failures never expose old PASS
+  ---
+  duration_ms: 14986.8047
+  type: 'test'
+  ...
+# domain-file "delivery-full-test-execution.test.ts"
+# Subtest: checks remain ordered, preserve large stderr and continue after command failure
+ok 53 - checks remain ordered, preserve large stderr and continue after command failure
+  ---
+  duration_ms: 1719.0218
+  type: 'test'
+  ...
+# domain-file "delivery-full-test-execution.test.ts"
+# Subtest: spawn failure and process termination cannot become PASS
+ok 54 - spawn failure and process termination cannot become PASS
+  ---
+  duration_ms: 1169.4109
+  type: 'test'
+  ...
+# domain-file "delivery-full-test-execution.test.ts"
+# Subtest: current reader rejects wrong ownership, escaping and non-regular material
+ok 55 - current reader rejects wrong ownership, escaping and non-regular material
+  ---
+  duration_ms: 3371.6201
+  type: 'test'
+  ...
+# domain-file "delivery-full-test-execution.test.ts"
+# Subtest: Delivery allocation refuses unknown occupancy without choosing a new identity
+ok 56 - Delivery allocation refuses unknown occupancy without choosing a new identity
+  ---
+  duration_ms: 251.8856
+  type: 'test'
+  ...
+# domain-file "delivery-occupancy-failures.test.ts"
+# Subtest: Delivery allocation refuses bootstrap occupancy without choosing a new identity
+ok 57 - Delivery allocation refuses bootstrap occupancy without choosing a new identity
+  ---
+  duration_ms: 190.2848
+  type: 'test'
+  ...
+# domain-file "delivery-occupancy-failures.test.ts"
+# Subtest: Delivery allocation refuses exhaustion occupancy without choosing a new identity
+ok 58 - Delivery allocation refuses exhaustion occupancy without choosing a new identity
+  ---
+  duration_ms: 198.6241
+  type: 'test'
+  ...
+# domain-file "delivery-occupancy-failures.test.ts"
+# Subtest: Delivery allocation refuses gap occupancy without choosing a new identity
+ok 59 - Delivery allocation refuses gap occupancy without choosing a new identity
+  ---
+  duration_ms: 201.5482
+  type: 'test'
+  ...
+# domain-file "delivery-occupancy-failures.test.ts"
+# Subtest: Delivery allocation refuses duplicate occupancy without choosing a new identity
+ok 60 - Delivery allocation refuses duplicate occupancy without choosing a new identity
+  ---
+  duration_ms: 191.5088
+  type: 'test'
+  ...
+# domain-file "delivery-occupancy-failures.test.ts"
+# Subtest: valid partial descriptor contributes occupancy but blocks an unrelated new Change
+ok 61 - valid partial descriptor contributes occupancy but blocks an unrelated new Change
+  ---
+  duration_ms: 2603.1413
+  type: 'test'
+  ...
+# domain-file "delivery-occupancy-failures.test.ts"
+# Subtest: bounded accepted endpoints cover both required Changes, not ancestors or Full Test logs
+ok 62 - bounded accepted endpoints cover both required Changes, not ancestors or Full Test logs
+  ---
+  duration_ms: 2259.9354
+  type: 'test'
+  ...
+# domain-file "delivery-required-evidence-source.test.ts"
+# Subtest: accepted bytes still require matching Role, verdict, terminal result and direct linkage
+ok 63 - accepted bytes still require matching Role, verdict, terminal result and direct linkage
+  ---
+  duration_ms: 2163.8703
+  type: 'test'
+  ...
+# domain-file "delivery-required-evidence-source.test.ts"
+# Subtest: missing source, wrong ownership, ambiguous host selection and missing material do not become completion
+ok 64 - missing source, wrong ownership, ambiguous host selection and missing material do not become completion
+  ---
+  duration_ms: 2167.3893
+  type: 'test'
+  ...
+# domain-file "delivery-required-evidence-source.test.ts"
+# Subtest: native domain coverage accepts new test files and detects omitted shards from actual reporter output
+ok 65 - native domain coverage accepts new test files and detects omitted shards from actual reporter output
+  ---
+  duration_ms: 2910.2419
+  type: 'test'
+  ...
+# domain-file "domain-file-reporter.test.ts"
+# Subtest: excluded output argv remains output (script, existing=false)
+ok 66 - excluded output argv remains output (script, existing=false)
+  ---
+  duration_ms: 1987.7996
+  type: 'test'
+  ...
+# domain-file "full-test-revision.test.ts"
+# Subtest: excluded output argv remains output (separator, existing=false)
+ok 67 - excluded output argv remains output (separator, existing=false)
+  ---
+  duration_ms: 1811.0053
+  type: 'test'
+  ...
+# domain-file "full-test-revision.test.ts"
+# Subtest: excluded output argv remains output (eval, existing=false)
+ok 68 - excluded output argv remains output (eval, existing=false)
+  ---
+  duration_ms: 1756.5862
+  type: 'test'
+  ...
+# domain-file "full-test-revision.test.ts"
+# Subtest: excluded output argv remains output (script, existing=true)
+ok 69 - excluded output argv remains output (script, existing=true)
+  ---
+  duration_ms: 1640.0167
+  type: 'test'
+  ...
+# domain-file "full-test-revision.test.ts"
+# Subtest: excluded output argv remains output (separator, existing=true)
+ok 70 - excluded output argv remains output (separator, existing=true)
+  ---
+  duration_ms: 1563.0348
+  type: 'test'
+  ...
+# domain-file "full-test-revision.test.ts"
+# Subtest: excluded output argv remains output (eval, existing=true)
+ok 71 - excluded output argv remains output (eval, existing=true)
+  ---
+  duration_ms: 1551.2163
+  type: 'test'
+  ...
+# domain-file "full-test-revision.test.ts"
+# Subtest: Node-launched tool bytes invalidate current PASS without lock drift ()
+ok 72 - Node-launched tool bytes invalidate current PASS without lock drift ()
+  ---
+  duration_ms: 2216.4442
+  type: 'test'
+  ...
+# domain-file "full-test-revision.test.ts"
+# Subtest: Node-launched tool bytes invalidate current PASS without lock drift (--conditions development)
+ok 73 - Node-launched tool bytes invalidate current PASS without lock drift (--conditions development)
+  ---
+  duration_ms: 2452.8342
+  type: 'test'
+  ...
+# domain-file "full-test-revision.test.ts"
+# Subtest: Node-launched tool bytes invalidate current PASS without lock drift (--conditions=development)
+ok 74 - Node-launched tool bytes invalidate current PASS without lock drift (--conditions=development)
+  ---
+  duration_ms: 2331.35
+  type: 'test'
+  ...
+# domain-file "full-test-revision.test.ts"
+# Subtest: Node-launched tool bytes invalidate current PASS without lock drift (-C development)
+ok 75 - Node-launched tool bytes invalidate current PASS without lock drift (-C development)
+  ---
+  duration_ms: 2015.3771
+  type: 'test'
+  ...
+# domain-file "full-test-revision.test.ts"
+# Subtest: ambiguous Node options and unresolved entries reject preparation without an attempt
+ok 76 - ambiguous Node options and unresolved entries reject preparation without an attempt
+  ---
+  duration_ms: 88.3065
+  type: 'test'
+  ...
+# domain-file "full-test-revision.test.ts"
+# Subtest: Node option values are not resources and do not hide later preloads or bind program argv
+ok 77 - Node option values are not resources and do not hide later preloads or bind program argv
+  ---
+  duration_ms: 1429.3672
+  type: 'test'
+  ...
+# domain-file "full-test-revision.test.ts"
+# Subtest: invocation diagnoses configuration, input and executable preparation errors without publishing an attempt
+ok 78 - invocation diagnoses configuration, input and executable preparation errors without publishing an attempt
+  ---
+  duration_ms: 69.514
+  type: 'test'
+  ...
+# domain-file "full-test-revision.test.ts"
+# Subtest: Node preload package implementation bytes are bound without reading unrelated packages
+ok 79 - Node preload package implementation bytes are bound without reading unrelated packages
+  ---
+  duration_ms: 511.1698
+  type: 'test'
+  ...
+# domain-file "full-test-revision.test.ts"
+# Subtest: null shape admits an explicitly authorized two-object scoped callback, not a global clean gate
+ok 80 - null shape admits an explicitly authorized two-object scoped callback, not a global clean gate
+  ---
+  duration_ms: 3879.4725
+  type: 'test'
+  ...
+# domain-file "git-integration-effects.test.ts"
+# Subtest: intermediate out-of-scope commit cannot hide behind a final net diff
+ok 81 - intermediate out-of-scope commit cannot hide behind a final net diff
+  ---
+  duration_ms: 3472.4066
+  type: 'test'
+  ...
+# domain-file "git-integration-effects.test.ts"
+# Subtest: commit response loss preserves known object; failed readback stays unknown
+    # Subtest: false
+    ok 1 - false
+      ---
+      duration_ms: 2833.7515
+      type: 'test'
+      ...
+# domain-file "git-integration-effects.test.ts"
+    # Subtest: true
+    ok 2 - true
+      ---
+      duration_ms: 2888.0337
+      type: 'test'
+      ...
+# domain-file "git-integration-effects.test.ts"
+    1..2
+ok 82 - commit response loss preserves known object; failed readback stays unknown
+  ---
+  duration_ms: 5722.7341
+  type: 'test'
+  ...
+# domain-file "git-integration-effects.test.ts"
+# Subtest: manager host with no provider hands off checkpoint; explicit reuse with pending PR creates no extra commit
+ok 83 - manager host with no provider hands off checkpoint; explicit reuse with pending PR creates no extra commit
+  ---
+  duration_ms: 14329.9408
+  type: 'test'
+  ...
+# domain-file "git-integration-effects.test.ts"
+# Subtest: proof group resolves only a unique matching Run
+ok 84 - proof group resolves only a unique matching Run
+  ---
+  duration_ms: 1.9181
+  type: 'test'
+  ...
+# domain-file "managed-evidence-checkpoint.test.ts"
+# Subtest: new change-one proof index bytes remain bound to terminal Result
+ok 85 - new change-one proof index bytes remain bound to terminal Result
+  ---
+  duration_ms: 18998.1289
+  type: 'test'
+  ...
+# domain-file "managed-evidence-checkpoint.test.ts"
+# Subtest: new 001-change-one proof index bytes remain bound to terminal Result
+ok 86 - new 001-change-one proof index bytes remain bound to terminal Result
+  ---
+  duration_ms: 16269.1634
+  type: 'test'
+  ...
+# domain-file "managed-evidence-checkpoint.test.ts"
+# Subtest: checkpoint rejects an indexed legacy proof directory absent from worktree
+ok 87 - checkpoint rejects an indexed legacy proof directory absent from worktree
+  ---
+  duration_ms: 1081.2876
+  type: 'test'
+  ...
+# domain-file "managed-evidence-checkpoint.test.ts"
+# Subtest: R100 destination is checked as a new managed proof before commit
+ok 88 - R100 destination is checked as a new managed proof before commit
+  ---
+  duration_ms: 2555.1892
+  type: 'test'
+  ...
+# domain-file "managed-evidence-checkpoint.test.ts"
+# Subtest: valid non-zero OpenSpec status envelope is a formal outcome
+ok 89 - valid non-zero OpenSpec status envelope is a formal outcome
+  ---
+  duration_ms: 210.0804
+  type: 'test'
+  ...
+# domain-file "openspec-observation-boundary.test.ts"
+# Subtest: valid non-zero list null-shape is also a formal outcome
+ok 90 - valid non-zero list null-shape is also a formal outcome
+  ---
+  duration_ms: 127.5815
+  type: 'test'
+  ...
+# domain-file "openspec-observation-boundary.test.ts"
+# Subtest: arbitrary object-shaped non-zero JSON fails machine-shape validation
+ok 91 - arbitrary object-shaped non-zero JSON fails machine-shape validation
+  ---
+  duration_ms: 269.2653
+  type: 'test'
+  ...
+# domain-file "openspec-observation-boundary.test.ts"
+# Subtest: malformed machine output remains distinct
+ok 92 - malformed machine output remains distinct
+  ---
+  duration_ms: 145.9877
+  type: 'test'
+  ...
+# domain-file "openspec-observation-boundary.test.ts"
+# Subtest: numeric close with empty required output is malformed machine output
+ok 93 - numeric close with empty required output is malformed machine output
+  ---
+  duration_ms: 115.8612
+  type: 'test'
+  ...
+# domain-file "openspec-observation-boundary.test.ts"
+# Subtest: host-observable missing numeric exit is a process failure
+ok 94 - host-observable missing numeric exit is a process failure
+  ---
+  duration_ms: 0.4983
+  type: 'test'
+  ...
+# domain-file "openspec-observation-boundary.test.ts"
+# Subtest: host-observable signal is a process failure
+ok 95 - host-observable signal is a process failure
+  ---
+  duration_ms: 0.2382
+  type: 'test'
+  ...
+# domain-file "openspec-observation-boundary.test.ts"
+# Subtest: numeric close remains a numeric outcome
+ok 96 - numeric close remains a numeric outcome
+  ---
+  duration_ms: 0.9243
+  type: 'test'
+  ...
+# domain-file "openspec-observation-boundary.test.ts"
+# Subtest: close classifier is not part of the public domain surface
+ok 97 - close classifier is not part of the public domain surface
+  ---
+  duration_ms: 0.3618
+  type: 'test'
+  ...
+# domain-file "openspec-observation-boundary.test.ts"
+# Subtest: successful nearest-root drift is rejected
+ok 98 - successful nearest-root drift is rejected
+  ---
+  duration_ms: 131.7697
+  type: 'test'
+  ...
+# domain-file "openspec-observation-boundary.test.ts"
+# Subtest: missing or malformed success root fails closed
+ok 99 - missing or malformed success root fails closed
+  ---
+  duration_ms: 282.7146
+  type: 'test'
+  ...
+# domain-file "openspec-observation-boundary.test.ts"
+# Subtest: observation is transient and does not require .agents or create .flowkit state
+ok 100 - observation is transient and does not require .agents or create .flowkit state
+  ---
+  duration_ms: 128.5795
+  type: 'test'
+  ...
+# domain-file "openspec-observation-boundary.test.ts"
+# Subtest: status observation preserves OpenSpec readiness rather than inferring from files
+ok 101 - status observation preserves OpenSpec readiness rather than inferring from files
+  ---
+  duration_ms: 175.3143
+  type: 'test'
+  ...
+# domain-file "openspec-observation-boundary.test.ts"
+# Subtest: public module source has no bootstrap or lifecycle coupling
+ok 102 - public module source has no bootstrap or lifecycle coupling
+  ---
+  duration_ms: 2.1774
+  type: 'test'
+  ...
+# domain-file "openspec-observation-boundary.test.ts"
+# Subtest: Owner corrected start rejects bad authority/readiness before writing and preserves old bytes
+ok 103 - Owner corrected start rejects bad authority/readiness before writing and preserves old bytes
+  ---
+  duration_ms: 831.8695
+  type: 'test'
+  ...
+# domain-file "prepared-owner-correction-start.test.ts"
+# Subtest: Owner corrected start requires active trusted coordination before writing
+ok 104 - Owner corrected start requires active trusted coordination before writing
+  ---
+  duration_ms: 1150.7032
+  type: 'test'
+  ...
+# domain-file "prepared-owner-correction-start.test.ts"
+# Subtest: Owner corrected start rechecks coordination immediately before writing
+ok 105 - Owner corrected start rechecks coordination immediately before writing
+  ---
+  duration_ms: 868.2755
+  type: 'test'
+  ...
+# domain-file "prepared-owner-correction-start.test.ts"
+# Subtest: Owner corrected start creates one linked partial then completed revise reaches Review
+ok 106 - Owner corrected start creates one linked partial then completed revise reaches Review
+  ---
+  duration_ms: 1886.2382
+  type: 'test'
+  ...
+# domain-file "prepared-owner-correction-start.test.ts"
+# Subtest: explore Review rejected/null persists across processes and exact Owner revise preserves verdict
+ok 107 - explore Review rejected/null persists across processes and exact Owner revise preserves verdict
+  ---
+  duration_ms: 11258.5555
+  type: 'test'
+  ...
+# domain-file "rejected-review-recovery.test.ts"
+# Subtest: propose Review rejected/null persists across processes and exact Owner revise preserves verdict
+ok 108 - propose Review rejected/null persists across processes and exact Owner revise preserves verdict
+  ---
+  duration_ms: 10469.2312
+  type: 'test'
+  ...
+# domain-file "rejected-review-recovery.test.ts"
+# Subtest: apply Review rejected/null persists across processes and exact Owner revise preserves verdict
+ok 109 - apply Review rejected/null persists across processes and exact Owner revise preserves verdict
+  ---
+  duration_ms: 11097.8523
+  type: 'test'
+  ...
+# domain-file "rejected-review-recovery.test.ts"
+# Subtest: keeps repeated Standard Action executions as distinct Change-scoped occurrences
+ok 110 - keeps repeated Standard Action executions as distinct Change-scoped occurrences
+  ---
+  duration_ms: 2.2604
+  type: 'test'
+  ...
+# domain-file "run-result-persistence.test.ts"
+# Subtest: generates canonical dated direct-child addresses from controlled inputs
+ok 111 - generates canonical dated direct-child addresses from controlled inputs
+  ---
+  duration_ms: 0.7725
+  type: 'test'
+  ...
+# domain-file "run-result-persistence.test.ts"
+# Subtest: rejects invalid controlled address inputs before filesystem use
+ok 112 - rejects invalid controlled address inputs before filesystem use
+  ---
+  duration_ms: 15.0554
+  type: 'test'
+  ...
+# domain-file "run-result-persistence.test.ts"
+# Subtest: validates exact context and preserves explicit or absent Owner authority
+ok 113 - validates exact context and preserves explicit or absent Owner authority
+  ---
+  duration_ms: 24.2884
+  type: 'test'
+  ...
+# domain-file "run-result-persistence.test.ts"
+# Subtest: keeps Author, Reviewer and Verification outcomes separate and preserves next boundary as data
+ok 114 - keeps Author, Reviewer and Verification outcomes separate and preserves next boundary as data
+  ---
+  duration_ms: 13.8779
+  type: 'test'
+  ...
+# domain-file "run-result-persistence.test.ts"
+# Subtest: rejects context/result linkage mismatch and unknown envelope fields
+ok 115 - rejects context/result linkage mismatch and unknown envelope fields
+  ---
+  duration_ms: 1.827
+  type: 'test'
+  ...
+# domain-file "run-result-persistence.test.ts"
+# Subtest: writes the stable three-file surface once and preserves prior bytes on collision
+ok 116 - writes the stable three-file surface once and preserves prior bytes on collision
+  ---
+  duration_ms: 17.4857
+  type: 'test'
+  ...
+# domain-file "run-result-persistence.test.ts"
+# Subtest: rejects duplicate controlled sequence even when date or Action differs
+ok 117 - rejects duplicate controlled sequence even when date or Action differs
+  ---
+  duration_ms: 13.1485
+  type: 'test'
+  ...
+# domain-file "run-result-persistence.test.ts"
+# Subtest: fails closed on missing, truncated or malformed machine records
+ok 118 - fails closed on missing, truncated or malformed machine records
+  ---
+  duration_ms: 19.4516
+  type: 'test'
+  ...
+# domain-file "run-result-persistence.test.ts"
+# Subtest: lists Change-local Author → Reviewer → Author history in controlled sequence order without auto-execution
+ok 119 - lists Change-local Author → Reviewer → Author history in controlled sequence order without auto-execution
+  ---
+  duration_ms: 39.7803
+  type: 'test'
+  ...
+# domain-file "run-result-persistence.test.ts"
+# Subtest: archive date follows the host calendar across a UTC date boundary
+ok 120 - archive date follows the host calendar across a UTC date boundary
+  ---
+  duration_ms: 3.5311
+  type: 'test'
+  ...
+# domain-file "support-command-boundaries.test.ts"
+# Subtest: each fixed support command parses its exact visible prefix
+ok 121 - each fixed support command parses its exact visible prefix
+  ---
+  duration_ms: 0.8806
+  type: 'test'
+  ...
+# domain-file "support-command-boundaries.test.ts"
+# Subtest: support parser rejects target conflict, executable fields, and missing Owner fact
+ok 122 - support parser rejects target conflict, executable fields, and missing Owner fact
+  ---
+  duration_ms: 0.8345
+  type: 'test'
+  ...
+# domain-file "support-command-boundaries.test.ts"
+# Subtest: activation patches one state and appends the exact Owner fact
+ok 123 - activation patches one state and appends the exact Owner fact
+  ---
+  duration_ms: 38.2594
+  type: 'test'
+  ...
+# domain-file "support-command-boundaries.test.ts"
+# Subtest: Memo write checks Owner scope before changing project Memo state
+ok 124 - Memo write checks Owner scope before changing project Memo state
+  ---
+  duration_ms: 7.8981
+  type: 'test'
+  ...
+# domain-file "support-command-boundaries.test.ts"
+# Subtest: Delivery Start reuses identical bytes and rejects conflicting plan content
+ok 125 - Delivery Start reuses identical bytes and rejects conflicting plan content
+  ---
+  duration_ms: 101.2009
+  type: 'test'
+  ...
+# domain-file "support-command-boundaries.test.ts"
+# Subtest: planned state is reportable without activation provenance or completed dependencies
+ok 126 - planned state is reportable without activation provenance or completed dependencies
+  ---
+  duration_ms: 30.8771
+  type: 'test'
+  ...
+# domain-file "trusted-change-coordination.test.ts"
+# Subtest: active state requires exact explore activation provenance
+ok 127 - active state requires exact explore activation provenance
+  ---
+  duration_ms: 20.2759
+  type: 'test'
+  ...
+# domain-file "trusted-change-coordination.test.ts"
+# Subtest: active state requires every direct dependency to resolve exactly once and be completed
+ok 128 - active state requires every direct dependency to resolve exactly once and be completed
+  ---
+  duration_ms: 16.1783
+  type: 'test'
+  ...
+# domain-file "trusted-change-coordination.test.ts"
+# Subtest: manifest identity and exact Change shape fail closed
+ok 129 - manifest identity and exact Change shape fail closed
+  ---
+  duration_ms: 16.4351
+  type: 'test'
+  ...
+# domain-file "trusted-change-coordination.test.ts"
+# Subtest: duplicate dependency declarations and malformed coordination fields fail closed
+ok 130 - duplicate dependency declarations and malformed coordination fields fail closed
+  ---
+  duration_ms: 16.6967
+  type: 'test'
+  ...
+# domain-file "trusted-change-coordination.test.ts"
+# Subtest: D02-style dependent Change becomes lifecycle-enterable only after correction completion and its own activation
+ok 131 - D02-style dependent Change becomes lifecycle-enterable only after correction completion and its own activation
+  ---
+  duration_ms: 18.8547
+  type: 'test'
+  ...
+# domain-file "trusted-change-coordination.test.ts"
+# Subtest: historical activation provenance never upgrades completed or cancelled durable state
+ok 132 - historical activation provenance never upgrades completed or cancelled durable state
+  ---
+  duration_ms: 11.1377
+  type: 'test'
+  ...
+# domain-file "trusted-change-coordination.test.ts"
+# Subtest: missing and invalid YAML manifests fail closed
+ok 133 - missing and invalid YAML manifests fail closed
+  ---
+  duration_ms: 8.9305
+  type: 'test'
+  ...
+# domain-file "trusted-change-coordination.test.ts"
+1..133
+# tests 153
+# suites 0
+# pass 153
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 82639.4397

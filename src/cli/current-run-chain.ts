@@ -6,9 +6,12 @@ import { evaluatePolicyAndNextBoundary } from "../domain/policy-and-next-boundar
 import {
   isRunSequence,
   listChangeRunHistory,
+  parseRunOccurrenceId,
   type DurableRunRecord,
 } from "../domain/run-result-persistence.js";
 import type { ChangeId, DeliveryId } from "../domain/identity.js";
+import { readCoordinationManifest } from "./trusted-change-coordination.js";
+import { readDescriptor } from "./action-descriptor.js";
 
 export class ActionContextError extends Error {
   constructor(
@@ -22,6 +25,13 @@ export class ActionContextError extends Error {
       deliveryId: string;
       changeId: string;
     }[] = [],
+    readonly inspectLocator: {
+      command: "action inspect";
+      repositoryRoot: string;
+      deliveryId: string;
+      changeId: string;
+      runId: string;
+    } | null = null,
   ) {
     super(message);
     this.name = "ActionContextError";
@@ -129,6 +139,12 @@ export function resolveRunChain(
           context.role === "author" &&
           result.authorConclusion === "FAIL" &&
           result.nextBoundary === null
+        ) &&
+        !(
+          context.role === "reviewer" &&
+          result.reviewerVerdict === "rejected" &&
+          result.nextBoundary === null &&
+          own.reason === "review-rejected"
         )
       )
         invalid(`Invalid terminal outcome: ${context.runId}`);
@@ -138,6 +154,8 @@ export function resolveRunChain(
     const parent = byId.get(parentId);
     if (!parent || children.has(parentId))
       invalid(`Missing parent or fork: ${context.runId}`);
+    if (context.occurrence.sequence !== parent.context.occurrence.sequence + 1)
+      invalid(`Nonconsecutive Change sequence: ${context.runId}`);
     if (
       parent.context.actionIdentity.deliveryId !==
         context.actionIdentity.deliveryId ||
@@ -278,13 +296,146 @@ export async function readSelectedRunChain(input: {
       changeStartSequence: sequence,
     });
   } catch (error) {
-    invalid(error instanceof Error ? error.message : "Run history read failed");
+    const message =
+      error instanceof Error ? error.message : "Run history read failed";
+    const runId = /^Incomplete Run record: (.+)$/.exec(message)?.[1];
+    throw new ActionContextError(
+      "run-chain-invalid",
+      message,
+      [],
+      runId && parseRunOccurrenceId(runId) !== null
+        ? { command: "action inspect", ...input, runId }
+        : null,
+    );
   }
   if (records.length === 0) invalid("Empty canonical Run group");
+  if (
+    Math.min(...records.map((record) => record.context.occurrence.sequence)) !==
+    sequence
+  )
+    invalid(`Run group start mismatch: ${group.name}`);
   return {
     kind: "canonical" as const,
     changeStartSequence: sequence,
     records,
     current: resolveRunChain(records),
   };
+}
+
+export async function deliveryRunOccupancy(input: {
+  repositoryRoot: string;
+  deliveryId: DeliveryId;
+  changeId: ChangeId;
+}) {
+  const manifest = await readCoordinationManifest(
+    input.repositoryRoot,
+    input.deliveryId,
+  );
+  if (manifest.id !== input.deliveryId) invalid("Delivery identity mismatch");
+  const known = new Set(manifest.changes.map((change) => change.id));
+  if (known.size !== manifest.changes.length || !known.has(input.changeId))
+    invalid("Delivery Change identities are ambiguous");
+
+  const root = path.join(
+    input.repositoryRoot,
+    ".flowkit",
+    "runs",
+    input.deliveryId,
+  );
+  let entries: Dirent[];
+  try {
+    entries = await readdir(root, { withFileTypes: true });
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code !== "ENOENT") throw error;
+    entries = [];
+  }
+  const sequences: number[] = [];
+  const groups = new Set<string>();
+  for (const entry of entries) {
+    const changeId = known.has(entry.name)
+      ? entry.name
+      : /^\d+-(.+)$/.exec(entry.name)?.[1];
+    if (!entry.isDirectory() || !changeId || !known.has(changeId))
+      invalid(`Unknown Delivery Run group: ${entry.name}`);
+    if (groups.has(changeId))
+      invalid(`Multiple Delivery Run groups: ${changeId}`);
+    groups.add(changeId);
+    if (changeId === input.changeId) continue;
+    // An incomplete occurrence is occupied, but cannot authorize another start.
+    const directory = path.join(root, entry.name);
+    const occurrences = await readdir(directory, { withFileTypes: true });
+    for (const item of occurrences) {
+      const occurrence = parseRunOccurrenceId(item.name);
+      if (!item.isDirectory() || occurrence === null)
+        invalid(`Unknown Delivery Run occurrence: ${entry.name}/${item.name}`);
+      const runDirectory = path.join(directory, item.name);
+      const files = (await readdir(runDirectory)).sort().join(",");
+      if (files !== "action.md,context.json,result.json") {
+        const { descriptor } = await readDescriptor(runDirectory);
+        if (
+          descriptor.preparedContext.runId !== item.name ||
+          descriptor.preparedContext.actionIdentity.deliveryId !==
+            input.deliveryId ||
+          descriptor.preparedContext.actionIdentity.changeId !== changeId ||
+          descriptor.repositoryRoot !== input.repositoryRoot
+        )
+          invalid(`Invalid partial occupancy: ${entry.name}/${item.name}`);
+        invalid(
+          `Unresolved partial occupancy (${occurrence.sequence}): ${entry.name}/${item.name}`,
+        );
+      }
+    }
+    const history = await readSelectedRunChain({ ...input, changeId });
+    if (history.kind !== "canonical")
+      invalid(`Noncanonical Delivery Run group: ${entry.name}`);
+    const own = history.records.map(
+      (record) => record.context.occurrence.sequence,
+    );
+    if (own.length === 0 || Math.min(...own) !== history.changeStartSequence)
+      invalid(
+        `Run group start differs from its canonical sequence: ${entry.name}`,
+      );
+    sequences.push(...own);
+  }
+  sequences.sort((a, b) => a - b);
+  const warnings: string[] = [];
+  for (let index = 1; index < sequences.length; index += 1) {
+    if (sequences[index] !== sequences[index - 1] + 1)
+      if (warnings.length === 0)
+        warnings.push(
+          "Historical cross-Change sequence overlap or gap; bytes preserved",
+        );
+  }
+  return { sequences, warnings };
+}
+
+export async function nextDeliveryRunSequence(input: {
+  repositoryRoot: string;
+  deliveryId: DeliveryId;
+  changeId: ChangeId;
+}): Promise<number> {
+  const { sequences } = await deliveryRunOccupancy(input);
+  const next = (sequences.at(-1) ?? 0) + 1;
+  if (!isRunSequence(next)) invalid("Delivery Run sequence exhausted");
+  return next;
+}
+
+export async function nextActionRunSequence(
+  input: { repositoryRoot: string; deliveryId: DeliveryId; changeId: ChangeId },
+  previous: DurableRunRecord | null,
+): Promise<number> {
+  if (previous === null) return nextDeliveryRunSequence(input);
+  const next = previous.context.occurrence.sequence + 1;
+  await assertDeliverySequenceAvailable(input, next);
+  return next;
+}
+
+export async function assertDeliverySequenceAvailable(
+  input: { repositoryRoot: string; deliveryId: DeliveryId; changeId: ChangeId },
+  sequence: number,
+) {
+  if (!isRunSequence(sequence)) invalid("Delivery Run sequence exhausted");
+  const { sequences } = await deliveryRunOccupancy(input);
+  if (sequences.includes(sequence))
+    invalid(`Delivery Run sequence occupied by another Change: ${sequence}`);
 }

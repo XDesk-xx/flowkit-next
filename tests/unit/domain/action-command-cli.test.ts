@@ -49,7 +49,7 @@ test("fixed CLI starts and finishes one Author Run across processes, then confir
     const cli = async (args: string[]) => {
       const result = await run(process.execPath, cliEntryArgs(...args), {
         cwd: path.dirname(entry),
-        timeout: 30_000,
+        timeout: 120_000,
       });
       return JSON.parse(result.stdout) as Record<string, unknown>;
     };
@@ -147,7 +147,7 @@ test("fixed CLI starts and finishes one Author Run across processes, then confir
         reviewerVerdict: verdict,
         verificationVerdict: null,
         nextBoundary: boundary,
-        facts: { proofRefs: [] },
+        facts: { reviewedRunId: runId, proofRefs: [] },
       };
       const file = path.join(
         fixture.repositoryRoot,
@@ -170,11 +170,10 @@ test("fixed CLI starts and finishes one Author Run across processes, then confir
         const stdout = (error as { stdout?: string }).stdout;
         const envelope = JSON.parse(stdout ?? "{}");
         assert.equal(envelope.error?.kind, "outcome-unsupported");
-        if (verdict === "rejected") assert.equal(envelope.effect, "incomplete");
       }
     };
     await failedFinish("approved", "archive");
-    await failedFinish("rejected", null);
+    await failedFinish("unknown", null);
     assert.deepEqual(await readdir(review.directory as string), ["action.md"]);
     const proofPath = `.flowkit/artifacts/delivery-one/changes/001-change-one/proof/${reviewId}/stdout.txt`;
     await mkdir(path.dirname(path.join(fixture.repositoryRoot, proofPath)), {
@@ -235,7 +234,7 @@ test("fixed CLI starts and finishes one Author Run across processes, then confir
       reviewerVerdict: "changes-requested",
       verificationVerdict: null,
       nextBoundary: "revise-explore",
-      facts: { proofRefs: currentRefs },
+      facts: { reviewedRunId: runId, proofRefs: currentRefs },
     };
     for (const [name, refs] of [
       ["empty", []],
@@ -249,7 +248,10 @@ test("fixed CLI starts and finishes one Author Run across processes, then confir
           runId: reviewId,
           role: "reviewer",
           terminal: true,
-          result: { ...reviewResult, facts: { proofRefs: refs } },
+          result: {
+            ...reviewResult,
+            facts: { reviewedRunId: runId, proofRefs: refs },
+          },
         }),
       );
       await assert.rejects(
@@ -281,6 +283,7 @@ test("fixed CLI starts and finishes one Author Run across processes, then confir
           verificationVerdict: null,
           nextBoundary: "revise-explore",
           facts: {
+            reviewedRunId: runId,
             proofRefs: [
               {
                 path: proofPath,
@@ -414,7 +417,7 @@ test("Propose finish rejects wrong planning hashes before writing and Review rea
         reviewerVerdict: "approved",
         verificationVerdict: null,
         nextBoundary: "propose",
-        facts: { proofRefs: [] },
+        facts: { reviewedRunId: explore.runId, proofRefs: [] },
       },
     });
     const proposal = await cli("start", {

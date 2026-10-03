@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { mkdir, readFile, rm, writeFile } from "node:fs/promises";
+import { mkdir, readFile, rm, symlink, writeFile } from "node:fs/promises";
 import path from "node:path";
 import test from "node:test";
 import { packageReadiness } from "../../../src/cli/action-readiness.js";
@@ -10,6 +10,7 @@ import {
   type DurableRunRecord,
 } from "../../../src/domain/run-result-persistence.js";
 import { contextFixture } from "./action-context-fixture.js";
+import { gitBytes } from "../../../src/internal/git-checkpoint-scope.js";
 
 test("Propose preparation does not require artifacts that this Action must create", async () => {
   const fixture = await contextFixture();
@@ -40,6 +41,11 @@ test("archive machine preparation blocks candidate drift and unsuccessful isolat
   const fixture = await contextFixture();
   try {
     const root = fixture.repositoryRoot;
+    await gitBytes(root, ["init"]);
+    await writeFile(
+      path.join(root, ".gitattributes"),
+      ".flowkit/runs/** -text\n.flowkit/artifacts/** -text\n",
+    );
     const manifest = path.join(
       root,
       "openspec/delivery-groups/delivery-one.yaml",
@@ -53,6 +59,7 @@ test("archive machine preparation blocks candidate drift and unsuccessful isolat
     await mkdir(changeRoot, { recursive: true });
     for (const name of ["proposal.md", "design.md", "tasks.md"])
       await writeFile(path.join(changeRoot, name), `# ${name}\n`);
+    await writeFile(path.join(changeRoot, "marker.txt"), "converged");
     await writeFile(path.join(root, "candidate.txt"), "candidate A\n");
     await writeFile(
       path.join(root, "package.json"),
@@ -138,6 +145,14 @@ test("archive machine preparation blocks candidate drift and unsuccessful isolat
         { id: "test:acceptance", reason: "affected acceptance verification" },
       ],
     };
+    await writeDurableRun(
+      {
+        ...target,
+        changeStartSequence: 1,
+        occurrence: review.context.occurrence,
+      },
+      review,
+    );
     await writeFile(path.join(root, "candidate.txt"), "drifted\n");
     await assert.rejects(
       packageReadiness(
@@ -146,7 +161,7 @@ test("archive machine preparation blocks candidate drift and unsuccessful isolat
         review,
         fixture.installation,
       ),
-      /Reviewed candidate changed/,
+      /Candidate artifact changed/,
     );
     await writeFile(path.join(root, "candidate.txt"), "candidate A\n");
     await assert.rejects(
@@ -164,7 +179,7 @@ test("archive machine preparation blocks candidate drift and unsuccessful isolat
     );
     await writeFile(
       runtime,
-      `const fs=require('node:fs'); const path=require('node:path'); const args=process.argv.slice(2); if(args[0]==='archive'){const n=new Date();const date=n.getFullYear()+'-'+String(n.getMonth()+1).padStart(2,'0')+'-'+String(n.getDate()).padStart(2,'0');const target=path.join(process.cwd(),'openspec','changes','archive',date+'-'+args[1]); fs.mkdirSync(target,{recursive:true}); fs.writeFileSync(path.join(target,'marker.txt'),'converged');} process.exit(0);\n`,
+      `const fs=require('node:fs'); const path=require('node:path'); const args=process.argv.slice(2); if(args[0]==='archive'){const n=new Date();const date=n.getFullYear()+'-'+String(n.getMonth()+1).padStart(2,'0')+'-'+String(n.getDate()).padStart(2,'0');const target=path.join(process.cwd(),'openspec','changes','archive',date+'-'+args[1]); fs.mkdirSync(path.dirname(target),{recursive:true}); fs.renameSync(path.join(process.cwd(),'openspec','changes',args[1]),target);} process.exit(0);\n`,
     );
     await writeFile(
       path.join(root, "package.json"),
@@ -181,10 +196,24 @@ test("archive machine preparation blocks candidate drift and unsuccessful isolat
       ),
       /Post-convergence check failed/,
     );
+    const dependency = path.join(root, "node_modules/store-pkg");
+    const workspaceModules = path.join(root, "packages/app/node_modules");
+    await mkdir(dependency);
+    await mkdir(workspaceModules, { recursive: true });
+    await writeFile(path.join(dependency, "value.txt"), "source dependency\n");
+    await symlink(
+      dependency,
+      path.join(workspaceModules, "pkg"),
+      process.platform === "win32" ? "junction" : "dir",
+    );
+    await writeFile(
+      path.join(root, "workspace-check.cjs"),
+      `const fs=require('node:fs');const path=require('node:path');const assert=require('node:assert/strict');const pkg=fs.realpathSync('packages/app/node_modules/pkg');assert.ok(pkg.startsWith(process.cwd()+path.sep));fs.writeFileSync(path.join(pkg,'value.txt'),'scratch write');\n`,
+    );
     await writeFile(
       path.join(root, "package.json"),
       JSON.stringify({
-        scripts: { "test:acceptance": 'node -e "process.exit(0)"' },
+        scripts: { "test:acceptance": "node workspace-check.cjs" },
       }),
     );
     assert.equal(
@@ -195,6 +224,10 @@ test("archive machine preparation blocks candidate drift and unsuccessful isolat
         fixture.installation,
       ),
       "ready",
+    );
+    assert.equal(
+      await readFile(path.join(dependency, "value.txt"), "utf8"),
+      "source dependency\n",
     );
     await assert.rejects(
       packageReadiness(
@@ -210,6 +243,8 @@ test("archive machine preparation blocks candidate drift and unsuccessful isolat
     );
     await rm(path.join(root, "package.json"));
     await rm(path.join(root, "node_modules"), { recursive: true });
+    await rm(path.join(root, "packages"), { recursive: true });
+    await rm(path.join(root, "workspace-check.cjs"));
     await mkdir(path.join(root, "config/verification"), { recursive: true });
     const checkConfig = path.join(root, "config/verification/full-test.json");
     const command = {

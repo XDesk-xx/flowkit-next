@@ -5,3 +5,15 @@ export function openSpecArchiveDate(now = new Date()): string {
   const day = String(now.getDate()).padStart(2, "0");
   return `${year}-${month}-${day}`;
 }
+
+/** Replaying OpenSpec requires the immutable prestate's dated destination. */
+export function assertOpenSpecArchiveDate(
+  defaultPath: string,
+  changeId: string,
+) {
+  if (
+    defaultPath !==
+    `openspec/changes/archive/${openSpecArchiveDate()}-${changeId}`
+  )
+    throw Error("archive-date-drift");
+}

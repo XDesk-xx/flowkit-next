@@ -1,0 +1,35 @@
+{
+  "formatVersion": 1,
+  "deliveryId": "delivery-one",
+  "changeId": "change-one",
+  "runId": "20261003-007-archive",
+  "descriptorSha256": "7e3bd7664016db1be6a5e080d35ef2343e79bc1e3d3bf14fb44bc0001bf622a8",
+  "authorRunId": "20260930-005-apply",
+  "reviewRunId": "20260930-006-review-apply",
+  "sourcePath": "openspec/changes/change-one",
+  "defaultPath": "openspec/changes/archive/2026-10-03-change-one",
+  "archivePath": "openspec/changes/archive/2026-10-03-9999-change-one",
+  "sourceFiles": {
+    ".openspec.yaml": "85b53dd24fbe7d19c8b0f0ddccf5e82600c5c372c76b57a2a89dc34dfb0fc5b9",
+    "design.md": "40cbc53f13ca034ff1a1254afbf84ec55c06db5834c7211499e59c4b8df3a49f",
+    "explore.md": "2ca50c051f9252abeb5f11c21b4d34b247f738e4990366f230c20b02e2ee0327",
+    "proposal.md": "84d14289ce0c3e3b795929db9d8acbda5b700cb86791e521436e27dbebeb733a",
+    "specs/native-probe/spec.md": "ac7a133badab652181911eea019250e89998bc032cd2994d2e5f2566a595f98b",
+    "tasks.md": "345cac4e483112a367de6041aa96311e05fcc3065c8869ab286c632b9eba9a4c"
+  },
+  "candidate": {
+    "candidate.txt": "1e81270f1a47dce22a2e4985250c74b2e3374443734f1492b03ea2cd2af4ec48"
+  },
+  "specsBefore": {
+    "openspec/specs/native-probe/spec.md": null
+  },
+  "specsAfter": {
+    "openspec/specs/native-probe/spec.md": "e3923ff0819d519ea6748ef37db2728f9feefe533a254ec47bd49fd39badfdce"
+  },
+  "coordination": {
+    "path": "openspec/delivery-groups/delivery-one.yaml",
+    "beforeText": "{\"id\":\"delivery-one\",\"changes\":[{\"id\":\"change-one\",\"state\":\"active\",\"dependsOn\":[],\"projectOrdinal\":9999}],\"ownerDecisions\":[{\"ref\":\"owner:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"decision\":\"activate-change\",\"deliveryId\":\"delivery-one\",\"changeId\":\"change-one\",\"sourceRef\":\"synthetic-native-fixture-activation\",\"scope\":[\"explore\"]}]}\n",
+    "beforeSha256": "4614876d66d93de9799066c31e2d1c6296d3187df230c6c7cf04872ff81a1824",
+    "afterSha256": "0a2226a11e14eb857f436e1c6cbc6c62d2068f4caed42f1f5d7b7837a1cae9ca"
+  }
+}

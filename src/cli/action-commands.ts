@@ -1,10 +1,4 @@
-import {
-  lstat,
-  readFile,
-  readdir,
-  realpath,
-  writeFile,
-} from "node:fs/promises";
+import { readFile, readdir, realpath, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { isDeepStrictEqual } from "node:util";
 import { isOwnerAuthorityFact } from "../domain/authority.js";
@@ -19,7 +13,6 @@ import {
 } from "../domain/action-package-result-admission.js";
 import { resolveActionGuidanceRef } from "../domain/action-guidance-execution.js";
 import { startCanonicalActionRun } from "../domain/canonical-action-run-start.js";
-import { observeOpenSpecActiveChanges } from "../domain/openspec-observation.js";
 import {
   buildRunAddress,
   formatRunOccurrenceId,
@@ -43,11 +36,19 @@ import { readDescriptor } from "./action-descriptor.js";
 import { packageReadiness, readProjectOrdinal } from "./action-readiness.js";
 import {
   ActionContextError,
+  assertDeliverySequenceAvailable,
+  deliveryRunOccupancy,
+  nextActionRunSequence,
   policyForRecord,
   readSelectedRunChain,
   resolveRunChain,
 } from "./current-run-chain.js";
 import { resolveTrustedChangeCoordination } from "./trusted-change-coordination.js";
+import { checkReviewCandidate } from "./review-candidate.js";
+import { correctAction } from "./action-correct.js";
+import { effectiveRecord } from "./run-effective-facts.js";
+import { inspectAction } from "./action-inspect.js";
+import { checkArchiveFinish } from "./archive-finish.js";
 
 function address(input: RunAddressInput): string {
   const built = buildRunAddress(input);
@@ -78,12 +79,13 @@ async function start(request: StartRequest, installation: ManagerInstallation) {
   if (
     request.ownerAuthority !== undefined &&
     (!isOwnerAuthorityFact(request.ownerAuthority) ||
-      previous?.context.lifecycleState !== "prepared" ||
-      previous.context.role !== "author")
+      previous === null ||
+      (previous.context.lifecycleState === "prepared" &&
+        previous.context.role !== "author"))
   )
     blocked(
       "owner-correction-invalid",
-      "Prepared Author Owner correction required",
+      "Exact legal prepared Author or terminal Owner correction required",
     );
   const policy = policyForRecord(previous, {
     deliveryId: request.deliveryId,
@@ -101,7 +103,7 @@ async function start(request: StartRequest, installation: ManagerInstallation) {
       "prepared-run-current",
       "An existing prepared Run cannot be started again",
     );
-  const nextSequence = (previous?.context.occurrence.sequence ?? 0) + 1;
+  const nextSequence = await nextActionRunSequence(request, previous);
   const date = new Date().toISOString().slice(0, 10).replaceAll("-", "");
   const occurrence = {
     date,
@@ -124,7 +126,7 @@ async function start(request: StartRequest, installation: ManagerInstallation) {
           state: previous.context.lifecycleState,
         };
   const current =
-    correction === undefined
+    correction === undefined || previousAction?.state !== "prepared"
       ? transitionCurrentAction(previousAction, { type: "prepare", identity })
       : supersedePreparedAction(previousAction, identity, policy);
   if (current === null)
@@ -144,7 +146,7 @@ async function start(request: StartRequest, installation: ManagerInstallation) {
     repositoryRoot: selection.repositoryRoot,
     deliveryId: request.deliveryId,
     changeId: request.changeId,
-    changeStartSequence: history.changeStartSequence,
+    changeStartSequence: previous ? history.changeStartSequence : nextSequence,
     occurrence,
   };
   const guidance = await resolveActionGuidanceRef(
@@ -206,6 +208,7 @@ async function start(request: StartRequest, installation: ManagerInstallation) {
     directory: held.directory,
     actionId: request.actionId,
     role: request.role,
+    warnings: (await deliveryRunOccupancy(request)).warnings,
   };
 }
 async function finish(
@@ -339,10 +342,14 @@ async function finish(
     );
   }
   const previous = resolveRunChain(priorRecords);
+  const expectedSequence =
+    previous === null
+      ? descriptor.changeStartSequence
+      : previous.context.occurrence.sequence + 1;
+  await assertDeliverySequenceAvailable(request, prepared.occurrence.sequence);
   if (
     prepared.previousRunId !== (previous?.context.runId ?? null) ||
-    prepared.occurrence.sequence !==
-      (previous?.context.occurrence.sequence ?? 0) + 1
+    prepared.occurrence.sequence !== expectedSequence
   )
     blocked(
       "predecessor-drift",
@@ -367,54 +374,14 @@ async function finish(
       "Explore did not materialize the exact project ordinal",
       request.runId,
     );
-  if (occurrence.actionId === "archive") {
-    const archivePath = request.result.facts.archivePath;
-    const ordinal = request.result.facts.projectOrdinal;
-    if (
-      typeof archivePath !== "string" ||
-      typeof ordinal !== "number" ||
-      !Number.isSafeInteger(ordinal) ||
-      ordinal < 1 ||
-      !new RegExp(
-        `^openspec/changes/archive/\\d{4}-\\d{2}-\\d{2}-${String(ordinal).padStart(3, "0")}-${request.changeId}$`,
-      ).test(archivePath) ||
-      !(
-        await lstat(path.join(repositoryRoot, ...archivePath.split("/")))
-      ).isDirectory()
-    )
-      blocked(
-        "archive-materialization-invalid",
-        "Exact archive materialization is missing",
-        request.runId,
-      );
-    if (ordinal !== (await readProjectOrdinal(request)))
-      blocked(
-        "archive-ordinal-drift",
-        "Archive ordinal differs from coordination",
-        request.runId,
-      );
-    let component = repositoryRoot;
-    for (const segment of archivePath.split("/")) {
-      component = path.join(component, segment);
-      if ((await lstat(component)).isSymbolicLink())
-        blocked(
-          "archive-materialization-invalid",
-          "Archive target is linked",
-          request.runId,
-        );
-    }
-    const active = await observeOpenSpecActiveChanges({
-      repositoryRoot,
-      flowkitHome: request.flowkitHome,
+  if (occurrence.actionId === "archive")
+    await checkArchiveFinish(
+      request,
       installation,
-    });
-    if (active.changeIds.includes(request.changeId))
-      blocked(
-        "archive-materialization-invalid",
-        "OpenSpec Change remains active",
-        request.runId,
-      );
-  }
+      previous,
+      matching[0],
+      markdown,
+    );
   const correction =
     prepared.ownerAuthority === null
       ? undefined
@@ -442,7 +409,7 @@ async function finish(
           state: previous.context.lifecycleState,
         };
   const current =
-    correction === undefined
+    correction === undefined || previousAction?.state !== "prepared"
       ? transitionCurrentAction(previousAction, {
           type: "prepare",
           identity: prepared.actionIdentity,
@@ -482,6 +449,12 @@ async function finish(
       request.runId,
     );
   await checkArtifacts(request, occurrence.actionId, admitted, installation);
+  if (request.terminal && request.role === "reviewer")
+    await checkReviewCandidate(
+      request,
+      previous === null ? null : await effectiveRecord(request, previous),
+      admitted.facts,
+    );
   try {
     await checkOwnRunProofClosure(
       request,
@@ -519,7 +492,14 @@ async function finish(
     request.role === "author" &&
     admitted.authorConclusion === "FAIL" &&
     admitted.nextBoundary === null;
-  if (own.kind === "blocked" && !authorFail) {
+  const rejected =
+    request.terminal &&
+    request.role === "reviewer" &&
+    admitted.reviewerVerdict === "rejected" &&
+    admitted.nextBoundary === null &&
+    own.kind === "blocked" &&
+    own.reason === "review-rejected";
+  if (own.kind === "blocked" && !authorFail && !rejected) {
     if (own.reason === "unrecognized-reviewer-verdict")
       throw new ActionCommandError(
         "outcome-unsupported",
@@ -623,6 +603,10 @@ export async function executeActionCommand(
       return await start(input.request, installation);
     if (input.command === "action finish")
       return await finish(input.request, installation);
+    if (input.command === "action correct")
+      return await correctAction(input.request, installation);
+    if (input.command === "action inspect")
+      return await inspectAction(input.request, installation);
     const facts = await inspectActionProof(
       input.request,
       input.request.runId,
@@ -637,6 +621,12 @@ export async function executeActionCommand(
         "incomplete",
         input.command === "action start" ? null : input.request.runId,
         error.message,
+      );
+    if (input.command === "action correct")
+      blocked(
+        "correction-invalid",
+        error instanceof Error ? error.message : "Correction failed",
+        input.request.runId,
       );
     if (input.command !== "proof inspect") throw error;
     blocked(

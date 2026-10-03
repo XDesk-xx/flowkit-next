@@ -1,0 +1,4 @@
+$ pnpm format:check && pnpm lint
+$ prettier --check src tests tsconfig.json tsconfig.build.json package.json eslint.config.mjs scripts/check-forbidden-tracked-artifacts.mjs
+[warn] tests/unit/domain/action-correction.test.ts
+[warn] Code style issues found in the above file. Run Prettier with --write to fix.

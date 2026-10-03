@@ -1,0 +1,11 @@
+$ node --import tsx tests/native-full-checks.ts
+$ tsc --noEmit
+$ pnpm format:check && pnpm lint
+$ prettier --check src tests tsconfig.json tsconfig.build.json package.json eslint.config.mjs scripts/check-forbidden-tracked-artifacts.mjs
+$ eslint src tests
+$ node scripts/build-production.mjs
+$ depcruise --config dependency-cruiser.config.mjs --output-type err src tests
+$ node scripts/check-production-reachability.mjs
+$ node --import tsx --test tests/unit/quality/owned-source-policy.test.ts
+(node:45268) Warning: node:test run() is being called recursively within a test file. skipping running files.
+(Use `node --trace-warnings ...` to show where the warning was created)

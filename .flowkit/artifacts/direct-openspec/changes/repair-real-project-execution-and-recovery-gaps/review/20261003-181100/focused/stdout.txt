@@ -1,0 +1,88 @@
+TAP version 13
+# Subtest: Propose preparation does not require artifacts that this Action must create
+ok 1 - Propose preparation does not require artifacts that this Action must create
+  ---
+  duration_ms: 38.783
+  type: 'test'
+  ...
+# Subtest: archive machine preparation blocks candidate drift and unsuccessful isolated convergence
+ok 2 - archive machine preparation blocks candidate drift and unsuccessful isolated convergence
+  ---
+  duration_ms: 17720.0161
+  type: 'test'
+  ...
+# Subtest: corrected Author remains readable through Review start/finish without admitting partial records or forks
+ok 3 - corrected Author remains readable through Review start/finish without admitting partial records or forks
+  ---
+  duration_ms: 12585.7122
+  type: 'test'
+  ...
+# Subtest: Reviewer correction appends once, replays read-only, rejects conflicts and preserves all original bytes
+ok 4 - Reviewer correction appends once, replays read-only, rejects conflicts and preserves all original bytes
+  ---
+  duration_ms: 3256.7848
+  type: 'test'
+  ...
+# Subtest: Author correction requires original manifest and a consistent direct Review, never current worktree alone
+ok 5 - Author correction requires original manifest and a consistent direct Review, never current worktree alone
+  ---
+  duration_ms: 3786.0907
+  type: 'test'
+  ...
+# Subtest: correction closed parser and current Role/hash reject misuse before any append
+ok 6 - correction closed parser and current Role/hash reject misuse before any append
+  ---
+  duration_ms: 1370.9473
+  type: 'test'
+  ...
+# Subtest: Author correction checkpoint requires original Run, manifest and supplement in the candidate tree
+ok 7 - Author correction checkpoint requires original Run, manifest and supplement in the candidate tree
+  ---
+  duration_ms: 5053.521
+  type: 'test'
+  ...
+# Subtest: Author correction cannot inherit a conflicting direct Reviewer candidate
+ok 8 - Author correction cannot inherit a conflicting direct Reviewer candidate
+  ---
+  duration_ms: 808.447
+  type: 'test'
+  ...
+# Subtest: workspace dependency roots relocate internal links and shims without exposing source writes
+ok 9 - workspace dependency roots relocate internal links and shims without exposing source writes
+  ---
+  duration_ms: 132.0515
+  type: 'test'
+  ...
+# Subtest: dependency copies isolate hardlinks, relocate internal aliases/shims and reject escaping links
+ok 10 - dependency copies isolate hardlinks, relocate internal aliases/shims and reject escaping links
+  ---
+  duration_ms: 64.0286
+  type: 'test'
+  ...
+# Subtest: archive subprocess diagnostics preserve raw failure bytes, overflow prefix, missing command and timeout
+ok 11 - archive subprocess diagnostics preserve raw failure bytes, overflow prefix, missing command and timeout
+  ---
+  duration_ms: 8073.2482
+  type: 'test'
+  ...
+# Subtest: candidate guard refuses CRLF/filter failure without normalizing and accepts explicit -text
+ok 12 - candidate guard refuses CRLF/filter failure without normalizing and accepts explicit -text
+  ---
+  duration_ms: 1018.0486
+  type: 'test'
+  ...
+# Subtest: native domain coverage accepts new test files and detects omitted shards from actual reporter output
+ok 13 - native domain coverage accepts new test files and detects omitted shards from actual reporter output
+  ---
+  duration_ms: 2232.1231
+  type: 'test'
+  ...
+1..13
+# tests 13
+# suites 0
+# pass 13
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 18149.1336

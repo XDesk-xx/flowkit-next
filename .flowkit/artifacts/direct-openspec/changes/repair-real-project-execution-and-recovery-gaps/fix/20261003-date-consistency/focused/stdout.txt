@@ -1,0 +1,42 @@
+TAP version 13
+# Subtest: archive finish reads trusted completed coordination after isolated preparation
+ok 1 - archive finish reads trusted completed coordination after isolated preparation
+  ---
+  duration_ms: 96131.2303
+  type: 'test'
+  ...
+# Subtest: Propose preparation does not require artifacts that this Action must create
+ok 2 - Propose preparation does not require artifacts that this Action must create
+  ---
+  duration_ms: 38.3874
+  type: 'test'
+  ...
+# Subtest: archive machine preparation blocks candidate drift and unsuccessful isolated convergence
+ok 3 - archive machine preparation blocks candidate drift and unsuccessful isolated convergence
+  ---
+  duration_ms: 23625.4856
+  type: 'test'
+  ...
+# (node:22860) ExperimentalWarning: The MockTimers API is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: Archive inspection agrees with execution across midnight without blocking completed OpenSpec effects
+ok 4 - Archive inspection agrees with execution across midnight without blocking completed OpenSpec effects
+  ---
+  duration_ms: 26419.9771
+  type: 'test'
+  ...
+# Subtest: archive refuses an incomplete competing Run before changing OpenSpec
+ok 5 - archive refuses an incomplete competing Run before changing OpenSpec
+  ---
+  duration_ms: 24520.2863
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 96647.127

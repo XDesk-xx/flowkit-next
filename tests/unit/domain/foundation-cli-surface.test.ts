@@ -87,10 +87,10 @@ test("status and next read exact terminal without Run selectors or unrelated pro
   try {
     const occurrence = {
       date: "20260908",
-      sequence: 1,
+      sequence: 9,
       actionId: "explore" as const,
     };
-    const runId = "20260908-001-explore";
+    const runId = "20260908-009-explore";
     const actionIdentity = {
       deliveryId: DELIVERY,
       changeId: CHANGE,

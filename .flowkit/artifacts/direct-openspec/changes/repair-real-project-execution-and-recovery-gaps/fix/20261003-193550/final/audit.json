@@ -1,0 +1,381 @@
+{
+  "formalRun": false,
+  "deliveryFullTest": false,
+  "ownerSourceRef": "Owner direct instruction: 直接修复这两个问题",
+  "records": [
+    {
+      "id": "domain",
+      "commandSha256": "0764fc71eb4df89942302bdc42bdc10ef944f212e15ab488f837f9a873423c85",
+      "exitCode": 0,
+      "inputCount": 255
+    },
+    {
+      "id": "acceptance",
+      "commandSha256": "9836a5b2b0bec7c05fc039ef0f1ef20c575435b3e6f8f69258c34efa83b4d34b",
+      "exitCode": 0,
+      "inputCount": 255
+    },
+    {
+      "id": "native",
+      "commandSha256": "5fd700c7b3b7785de540e434f7aa2fff0a8348406e9262de12192099aa46611a",
+      "exitCode": 0,
+      "inputCount": 255
+    },
+    {
+      "id": "typecheck",
+      "commandSha256": "60b4f2477b7708516486b2d25275d638a320f5b57f19cf8d205ee7f97f5376af",
+      "exitCode": 0,
+      "inputCount": 255
+    },
+    {
+      "id": "gate-r2",
+      "commandSha256": "b06308824d169794591dff73402c46c26bb31d04a5e75879f9fedbda79d0da7f",
+      "exitCode": 0,
+      "inputCount": 255
+    },
+    {
+      "id": "build",
+      "commandSha256": "03a31cbd633e369fb5142b678fb4bd25fc357d113b6e7e26f312f042e41d3de1",
+      "exitCode": 0,
+      "inputCount": 255
+    },
+    {
+      "id": "dependencies",
+      "commandSha256": "0c9657e157cb8cca815576fa1ad3fae454953e07f85342d533ddeed21dc55013",
+      "exitCode": 0,
+      "inputCount": 255
+    },
+    {
+      "id": "entropy",
+      "commandSha256": "3ced249e1ffc2798a4523897dcb4d4cdda6e19693a88284bb29d5242a9557726",
+      "exitCode": 0,
+      "inputCount": 255
+    },
+    {
+      "id": "ownership",
+      "commandSha256": "a9f61bc42cafe1eb0899cc8ec9d70cefc4e56679af8cb78e595fb04dd9954733",
+      "exitCode": 0,
+      "inputCount": 255
+    },
+    {
+      "id": "probe",
+      "commandSha256": "e361d392bace3ea7638b946a6994070664a798abbae5cb48ab2422aa3177d1d4",
+      "exitCode": 0,
+      "inputCount": 255
+    },
+    {
+      "id": "openspec",
+      "commandSha256": "290182a21b22a2f533501c02e37a4188763f66f9d3d08b0e2d6944492b91b55d",
+      "exitCode": 0,
+      "inputCount": 255
+    }
+  ],
+  "linuxRecords": [
+    {
+      "id": "dependency-install",
+      "commandSha256": "d1bf74c455a434fe3b6de438acb6370a75cedbb387f8f96b6459917a4ca11c72",
+      "exitCode": 0
+    },
+    {
+      "id": "typecheck",
+      "commandSha256": "9fe73dc415770689a64c4c25e28d2bfb1992922dd2820dc957ea479452fde516",
+      "exitCode": 0
+    },
+    {
+      "id": "quality-gate",
+      "commandSha256": "fdb91da72d7d865558af34bde001461064059e05f55f99ad8153d19911a9c5cb",
+      "exitCode": 0
+    },
+    {
+      "id": "build",
+      "commandSha256": "48662a5401f56fd55e73148b81c4ba8561cc237539ce8fc431a73b8fd4b3fc2f",
+      "exitCode": 0
+    },
+    {
+      "id": "test-domain",
+      "commandSha256": "539aaeb330d37b9059b5d546c330b858578955d300b837d12f08050203fa7c52",
+      "exitCode": 0
+    },
+    {
+      "id": "test-acceptance",
+      "commandSha256": "67b446cab01dc09aba1ace592630505daf700c77a70aa70a8453521fea102c7d",
+      "exitCode": 0
+    },
+    {
+      "id": "quality-dependency-health",
+      "commandSha256": "629edf7951badcdb380f2d85623030aa585bc3db64ce4810cbbdbad0f1d4e111",
+      "exitCode": 0
+    },
+    {
+      "id": "quality-entropy",
+      "commandSha256": "f81b201fa924dea0904f54ae151df1d963767f468c024589457b99b5cf2b1aa7",
+      "exitCode": 0
+    },
+    {
+      "id": "quality-owned-source",
+      "commandSha256": "7ac4d2bfe20a4d41ccc5399bc502ece4cbf2308ef44e36eea998cf5fbfbc0064",
+      "exitCode": 0
+    }
+  ],
+  "linuxWindowsInputDrift": [],
+  "changedSinceReview": [
+    "src/cli/action-correct.ts",
+    "src/cli/run-effective-facts.ts",
+    "tests/unit/domain/action-correction-continuation.test.ts",
+    "tests/unit/domain/action-correction.test.ts",
+    "tests/unit/domain/managed-evidence-checkpoint.test.ts",
+    "openspec/changes/repair-real-project-execution-and-recovery-gaps/verification.md"
+  ],
+  "previousReviewEvidenceUnchanged": true,
+  "probeCases": [
+    {
+      "verdict": "approved",
+      "declaredMap": false,
+      "terminalRead": "passed",
+      "originalUnchanged": true
+    },
+    {
+      "verdict": "approved",
+      "declaredMap": true,
+      "terminalRead": "passed",
+      "originalUnchanged": true
+    },
+    {
+      "verdict": "changes-requested",
+      "declaredMap": false,
+      "terminalRead": "passed",
+      "originalUnchanged": true
+    },
+    {
+      "verdict": "changes-requested",
+      "declaredMap": true,
+      "terminalRead": "passed",
+      "originalUnchanged": true
+    },
+    {
+      "verdict": "rejected",
+      "declaredMap": false,
+      "terminalRead": "passed",
+      "originalUnchanged": true
+    },
+    {
+      "verdict": "rejected",
+      "declaredMap": true,
+      "terminalRead": "passed",
+      "originalUnchanged": true
+    }
+  ],
+  "nativeActualDomainCounts": [
+    412,
+    412
+  ],
+  "nativeCommands": [
+    {
+      "path": "native-evidence/all-attempts/09954a31-8a85-46a9-967d-8b620d1241ae/commands/openspec-archive/command.json",
+      "exitCode": 0,
+      "program": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "C:\\Users\\xuser\\.flowkit\\tools\\openspec\\1.10.0\\bin\\openspec.js",
+        "archive",
+        "change-one",
+        "--yes",
+        "--json"
+      ]
+    },
+    {
+      "path": "native-evidence/all-attempts/8ef0203b-4ea8-44a6-aed8-a09cdcfe1f61/commands/check-full-checks/command.json",
+      "exitCode": 1,
+      "program": "pnpm",
+      "args": [
+        "run",
+        "full-checks"
+      ]
+    },
+    {
+      "path": "native-evidence/all-attempts/8ef0203b-4ea8-44a6-aed8-a09cdcfe1f61/commands/openspec-convergence/command.json",
+      "exitCode": 0,
+      "program": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "C:\\Users\\xuser\\.flowkit\\tools\\openspec\\1.10.0\\bin\\openspec.js",
+        "archive",
+        "change-one",
+        "--yes",
+        "--json"
+      ]
+    },
+    {
+      "path": "native-evidence/all-attempts/8ef0203b-4ea8-44a6-aed8-a09cdcfe1f61/commands/source-dependencies/command.json",
+      "exitCode": 0,
+      "program": "pnpm",
+      "args": [
+        "--config.verify-deps-before-run=error",
+        "exec",
+        "--",
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "--version"
+      ]
+    },
+    {
+      "path": "native-evidence/all-attempts/8ef0203b-4ea8-44a6-aed8-a09cdcfe1f61/commands/source-pnpm-version/command.json",
+      "exitCode": 0,
+      "program": "pnpm",
+      "args": [
+        "--version"
+      ]
+    },
+    {
+      "path": "native-evidence/all-attempts/cc6d5521-428f-4bb4-90f3-d1a37b027d1c/commands/check-full-checks/command.json",
+      "exitCode": 0,
+      "program": "pnpm",
+      "args": [
+        "run",
+        "full-checks"
+      ]
+    },
+    {
+      "path": "native-evidence/all-attempts/cc6d5521-428f-4bb4-90f3-d1a37b027d1c/commands/check-test%3Adomain%3A1/command.json",
+      "exitCode": 0,
+      "program": "pnpm",
+      "args": [
+        "run",
+        "test:domain:1"
+      ]
+    },
+    {
+      "path": "native-evidence/all-attempts/cc6d5521-428f-4bb4-90f3-d1a37b027d1c/commands/check-test%3Adomain%3A2/command.json",
+      "exitCode": 0,
+      "program": "pnpm",
+      "args": [
+        "run",
+        "test:domain:2"
+      ]
+    },
+    {
+      "path": "native-evidence/all-attempts/cc6d5521-428f-4bb4-90f3-d1a37b027d1c/commands/check-test%3Adomain%3A3/command.json",
+      "exitCode": 0,
+      "program": "pnpm",
+      "args": [
+        "run",
+        "test:domain:3"
+      ]
+    },
+    {
+      "path": "native-evidence/all-attempts/cc6d5521-428f-4bb4-90f3-d1a37b027d1c/commands/check-test%3Adomain%3A4/command.json",
+      "exitCode": 0,
+      "program": "pnpm",
+      "args": [
+        "run",
+        "test:domain:4"
+      ]
+    },
+    {
+      "path": "native-evidence/all-attempts/cc6d5521-428f-4bb4-90f3-d1a37b027d1c/commands/openspec-convergence/command.json",
+      "exitCode": 0,
+      "program": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "C:\\Users\\xuser\\.flowkit\\tools\\openspec\\1.10.0\\bin\\openspec.js",
+        "archive",
+        "change-one",
+        "--yes",
+        "--json"
+      ]
+    },
+    {
+      "path": "native-evidence/all-attempts/cc6d5521-428f-4bb4-90f3-d1a37b027d1c/commands/source-dependencies/command.json",
+      "exitCode": 0,
+      "program": "pnpm",
+      "args": [
+        "--config.verify-deps-before-run=error",
+        "exec",
+        "--",
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "--version"
+      ]
+    },
+    {
+      "path": "native-evidence/all-attempts/cc6d5521-428f-4bb4-90f3-d1a37b027d1c/commands/source-pnpm-version/command.json",
+      "exitCode": 0,
+      "program": "pnpm",
+      "args": [
+        "--version"
+      ]
+    },
+    {
+      "path": "native-evidence/all-attempts/d778f87f-6521-472b-9d14-5b8a395b0043/commands/check-full-checks/command.json",
+      "exitCode": 0,
+      "program": "pnpm",
+      "args": [
+        "run",
+        "full-checks"
+      ]
+    },
+    {
+      "path": "native-evidence/all-attempts/d778f87f-6521-472b-9d14-5b8a395b0043/commands/check-test%3Adomain%3A1/command.json",
+      "exitCode": 0,
+      "program": "pnpm",
+      "args": [
+        "run",
+        "test:domain:1"
+      ]
+    },
+    {
+      "path": "native-evidence/all-attempts/d778f87f-6521-472b-9d14-5b8a395b0043/commands/check-test%3Adomain%3A2/command.json",
+      "exitCode": 0,
+      "program": "pnpm",
+      "args": [
+        "run",
+        "test:domain:2"
+      ]
+    },
+    {
+      "path": "native-evidence/all-attempts/d778f87f-6521-472b-9d14-5b8a395b0043/commands/check-test%3Adomain%3A3/command.json",
+      "exitCode": 0,
+      "program": "pnpm",
+      "args": [
+        "run",
+        "test:domain:3"
+      ]
+    },
+    {
+      "path": "native-evidence/all-attempts/d778f87f-6521-472b-9d14-5b8a395b0043/commands/check-test%3Adomain%3A4/command.json",
+      "exitCode": 0,
+      "program": "pnpm",
+      "args": [
+        "run",
+        "test:domain:4"
+      ]
+    },
+    {
+      "path": "native-evidence/all-attempts/d778f87f-6521-472b-9d14-5b8a395b0043/commands/openspec-convergence/command.json",
+      "exitCode": 0,
+      "program": "C:\\nvm4w\\nodejs\\node.exe",
+      "args": [
+        "C:\\Users\\xuser\\.flowkit\\tools\\openspec\\1.10.0\\bin\\openspec.js",
+        "archive",
+        "change-one",
+        "--yes",
+        "--json"
+      ]
+    },
+    {
+      "path": "native-evidence/all-attempts/d778f87f-6521-472b-9d14-5b8a395b0043/commands/source-dependencies/command.json",
+      "exitCode": 0,
+      "program": "pnpm",
+      "args": [
+        "--config.verify-deps-before-run=error",
+        "exec",
+        "--",
+        "C:\\nvm4w\\nodejs\\node.exe",
+        "--version"
+      ]
+    },
+    {
+      "path": "native-evidence/all-attempts/d778f87f-6521-472b-9d14-5b8a395b0043/commands/source-pnpm-version/command.json",
+      "exitCode": 0,
+      "program": "pnpm",
+      "args": [
+        "--version"
+      ]
+    }
+  ]
+}

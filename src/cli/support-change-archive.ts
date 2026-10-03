@@ -1,300 +1,290 @@
-import { execFile } from "node:child_process";
-import { createHash } from "node:crypto";
-import { lstat, readFile, readdir, rename, realpath } from "node:fs/promises";
+import { readFile, rename } from "node:fs/promises";
 import path from "node:path";
-import { isDeepStrictEqual, promisify } from "node:util";
-import {
-  parseRunOccurrenceId,
-  readDurableRun,
-} from "../domain/run-result-persistence.js";
+import { isDeepStrictEqual } from "node:util";
 import { resolveManagedTool } from "../domain/managed-tool-resolution.js";
-import { resolveActionGuidanceRef } from "../domain/action-guidance-execution.js";
 import { observeOpenSpecChangeStatus } from "../domain/openspec-observation.js";
-import { readDescriptor } from "./action-descriptor.js";
-import { policyForRecord, resolveRunChain } from "./current-run-chain.js";
-import { archiveReadiness, readProjectOrdinal } from "./action-readiness.js";
-import { readCoordinationManifest } from "./trusted-change-coordination.js";
 import { writeChangeState } from "../internal/change-coordination-write.js";
 import type { ManagerInstallation } from "../internal/manager-installation.js";
-import { openSpecArchiveDate } from "../internal/openspec-archive-date.js";
-
-const run = promisify(execFile);
-const digest = (bytes: Buffer) =>
-  createHash("sha256").update(bytes).digest("hex");
+import {
+  assertOpenSpecArchiveDate,
+  openSpecArchiveDate,
+} from "../internal/openspec-archive-date.js";
+import {
+  archiveCoordinationAfter,
+  archiveEffectsRoot,
+  archiveMaterialRefs,
+  observeArchiveEffects,
+  readArchivePrestate,
+  saveArchiveObservation,
+} from "../internal/archive-effects.js";
+import {
+  archiveDiagnosticAttempt,
+  runArchiveProcess,
+} from "../internal/archive-process.js";
+import { inspectStartedAction } from "./action-inspect.js";
+import { archiveReadiness, readProjectOrdinal } from "./action-readiness.js";
+import { effectiveRecord, sha256 } from "./run-effective-facts.js";
+import { checkReviewCandidate } from "./review-candidate.js";
+import type { InspectRequest } from "./action-request.js";
 
 export async function archiveChange(
   request: Record<string, unknown>,
   installation: ManagerInstallation,
 ): Promise<Record<string, unknown>> {
-  const root = request.repositoryRoot as string;
-  const deliveryId = request.deliveryId as string;
-  const changeId = request.changeId as string;
-  const runId = request.runId as string;
-  let effect:
-    "none" | "openspec-unknown" | "archived" | "coordination-unknown" = "none";
+  const target = request as unknown as InspectRequest;
+  let effect: string = "none";
   let archivePath: string | null = null;
   try {
-    const occurrence = parseRunOccurrenceId(runId);
-    if (occurrence?.actionId !== "archive")
-      throw new Error("archive-run-invalid");
-    const group = path.join(root, ".flowkit", "runs", deliveryId);
-    const matches = (await readdir(group)).filter((name) =>
-      name.endsWith("-" + changeId),
-    );
-    if (matches.length !== 1) throw new Error("archive-run-group-ambiguous");
-    const sequence = Number(matches[0].slice(0, -(changeId.length + 1)));
-    if (!Number.isSafeInteger(sequence) || sequence < 1)
-      throw new Error("archive-run-group-invalid");
-    const directory = path.join(group, matches[0], runId);
-    const { descriptor } = await readDescriptor(directory);
+    const started = await inspectStartedAction(target, installation);
+    const { descriptor, group } = started;
     if (
-      (await readdir(directory)).sort().join() !== "action.md" ||
-      descriptor.repositoryRoot !== root ||
-      descriptor.changeStartSequence !== sequence ||
-      descriptor.preparedContext.runId !== runId ||
+      started.names.length !== 1 ||
+      descriptor.preparedContext.actionIdentity.actionId !== "archive" ||
       descriptor.preparedContext.role !== "author" ||
-      descriptor.preparedContext.actionIdentity.deliveryId !== deliveryId ||
-      descriptor.preparedContext.actionIdentity.changeId !== changeId ||
-      descriptor.preparedContext.actionIdentity.actionId !== "archive"
+      !descriptor.applicableChecks?.length
     )
-      throw new Error("archive-start-invalid");
-    const reviewId = descriptor.preparedContext.previousRunId;
-    const assertCurrentArchive = async () => {
-      const groups = (await readdir(group)).filter((name) =>
-        name.endsWith("-" + changeId),
-      );
-      if (groups.length !== 1 || groups[0] !== matches[0])
-        throw new Error("archive-run-group-ambiguous");
-      const reread = await readDescriptor(directory);
-      if (!isDeepStrictEqual(reread.descriptor, descriptor))
-        throw new Error("archive-start-drift");
-      const entries = await readdir(path.join(group, matches[0]));
-      if (entries.filter((entry) => entry === runId).length !== 1)
-        throw new Error("archive-current-invalid");
-      const records = [];
-      for (const entry of entries) {
-        const parsed = parseRunOccurrenceId(entry);
-        if (parsed === null) throw new Error("archive-run-chain-invalid");
-        if (entry === runId) continue;
-        records.push(
-          await readDurableRun({
-            repositoryRoot: root,
-            deliveryId,
-            changeId,
-            changeStartSequence: sequence,
-            occurrence: parsed,
-          }),
-        );
-      }
-      const current = resolveRunChain(records);
-      const guidance = await resolveActionGuidanceRef(installation, "archive");
+      throw Error("archive-start-invalid");
+    const reviewOriginal = started.previous;
+    if (
+      reviewOriginal?.context.actionIdentity.actionId !== "review-apply" ||
+      reviewOriginal.result.reviewerVerdict !== "approved"
+    )
+      throw Error("archive-review-invalid");
+    const review = await effectiveRecord(target, reviewOriginal);
+    const authorOriginal = started.records.find(
+      (record) => record.context.runId === review.context.previousRunId,
+    );
+    if (authorOriginal === undefined) throw Error("archive-candidate-unbound");
+    const author = await effectiveRecord(target, authorOriginal);
+    const ordinal = await readProjectOrdinal(target);
+    const relative = archiveEffectsRoot(target, group, target.runId);
+    let pre = await readArchivePrestate(target, group, target.runId);
+    const existingPrestate = pre !== null;
+    const assertCurrent = async () => {
+      const latest = await inspectStartedAction(target, installation);
       if (
-        current?.context.runId !== reviewId ||
-        descriptor.actionPackage.runId !== runId ||
-        descriptor.actionPackage.previousRunId !== reviewId ||
-        descriptor.actionPackage.role !== "author" ||
-        !isDeepStrictEqual(descriptor.actionPackage.actionIdentity, {
-          deliveryId,
-          changeId,
-          actionId: "archive",
-        }) ||
-        !isDeepStrictEqual(descriptor.actionPackage.guidanceRef, guidance) ||
-        !isDeepStrictEqual(
-          policyForRecord(current, {
-            deliveryId,
-            changeId,
-            changeState: "active",
-          }),
-          { kind: "ready-action", actionId: "archive" },
-        ) ||
-        (await readdir(directory)).sort().join() !== "action.md"
+        !isDeepStrictEqual(latest.descriptor, descriptor) ||
+        latest.names.length !== 1 ||
+        latest.previous?.context.runId !== review.context.runId
       )
-        throw new Error("archive-current-invalid");
-      return current;
+        throw Error("archive-current-drift");
     };
-    await assertCurrentArchive();
-    const reviewOccurrence = parseRunOccurrenceId(reviewId);
-    if (reviewOccurrence?.actionId !== "review-apply")
-      throw new Error("archive-review-invalid");
-    const review = await readDurableRun({
-      repositoryRoot: root,
-      deliveryId,
-      changeId,
-      changeStartSequence: sequence,
-      occurrence: reviewOccurrence,
-    });
-    if (
-      review.context.role !== "reviewer" ||
-      review.context.lifecycleState !== "terminal" ||
-      review.result.reviewerVerdict !== "approved"
-    )
-      throw new Error("archive-review-invalid");
-    const authorId = review.result.facts.reviewedRunId;
-    const authorOccurrence = parseRunOccurrenceId(authorId);
-    if (authorOccurrence === null) throw new Error("archive-candidate-unbound");
-    const author = await readDurableRun({
-      repositoryRoot: root,
-      deliveryId,
-      changeId,
-      changeStartSequence: sequence,
-      occurrence: authorOccurrence,
-    });
-    if (
-      author.context.role !== "author" ||
-      author.result.authorConclusion !== "PASS" ||
-      author.context.runId !== review.context.previousRunId
-    )
-      throw new Error("archive-candidate-unbound");
-    const hashes = author.result.facts.artifactHashes;
-    if (
-      typeof hashes !== "object" ||
-      hashes === null ||
-      Array.isArray(hashes) ||
-      !Object.keys(hashes).length
-    )
-      throw new Error("archive-candidate-unbound");
-    for (const [relative, hash] of Object.entries(hashes)) {
-      if (
-        !relative ||
-        relative.includes("\\") ||
-        relative
-          .split("/")
-          .some((part) => !part || part === "." || part === "..") ||
-        typeof hash !== "string" ||
-        !/^[0-9a-f]{64}$/.test(hash)
-      )
-        throw new Error("archive-candidate-invalid");
-      let candidate = await realpath(root);
-      for (const segment of relative.split("/")) {
-        candidate = path.join(candidate, segment);
-        if ((await lstat(candidate)).isSymbolicLink())
-          throw new Error("archive-candidate-linked");
-      }
-      if (
-        !(await lstat(candidate)).isFile() ||
-        digest(await readFile(candidate)) !== hash
-      )
-        throw new Error("archive-candidate-drift");
-    }
-    const manifest = await readCoordinationManifest(root, deliveryId);
-    if (
-      manifest.id !== deliveryId ||
-      manifest.changes.filter(
-        (change) => change.id === changeId && change.state === "active",
-      ).length !== 1
-    )
-      throw new Error("archive-coordination-invalid");
-    const ordinal = await readProjectOrdinal({
-      repositoryRoot: root,
-      deliveryId,
-      changeId,
-      flowkitHome: request.flowkitHome as string,
-    });
-    if (!Number.isSafeInteger(ordinal) || !ordinal || ordinal < 1)
-      throw new Error("archive-ordinal-invalid");
-    if (!descriptor.applicableChecks?.length)
-      throw new Error("archive-applicable-checks-unbound");
-    await archiveReadiness(
-      {
-        repositoryRoot: root,
-        flowkitHome: request.flowkitHome as string,
-        deliveryId,
-        changeId,
-        actionId: "archive",
-        role: "author",
-        applicableChecks: descriptor.applicableChecks,
-      },
-      review,
-      installation,
-    );
-    const openSpec = await observeOpenSpecChangeStatus({
-      repositoryRoot: root,
-      flowkitHome: request.flowkitHome as string,
-      changeId,
-      installation,
-    });
-    if (!openSpec.isPlanningComplete)
-      throw new Error("archive-planning-incomplete");
-    const tasks = await readFile(
-      path.join(root, "openspec", "changes", changeId, "tasks.md"),
-      "utf8",
-    );
-    if (!tasks.includes("- [x]") || /^- \[ \]/m.test(tasks))
-      throw new Error("archive-tasks-incomplete");
-    const tool = await resolveManagedTool({
-      flowkitHome: request.flowkitHome as string,
-      installation,
-      toolId: "openspec",
-    });
-    await run(
-      process.execPath,
-      [tool.entrypoint, "validate", changeId, "--strict"],
-      { cwd: root, timeout: 120_000, windowsHide: true },
-    );
-    const date = openSpecArchiveDate();
-    const archiveRoot = path.join(root, "openspec", "changes", "archive");
-    const defaultTarget = path.join(archiveRoot, `${date}-${changeId}`);
-    const exactName = `${date}-${String(ordinal).padStart(3, "0")}-${changeId}`;
-    const exactTarget = path.join(archiveRoot, exactName);
-    for (const target of [defaultTarget, exactTarget]) {
-      const exists = await lstat(target).catch((error) => {
-        if ((error as NodeJS.ErrnoException).code === "ENOENT") return null;
-        throw error;
+    if (pre === null) {
+      await checkReviewCandidate(target, author, review.result.facts);
+      const observed = await observeOpenSpecChangeStatus({
+        ...target,
+        installation,
       });
-      if (exists) throw new Error("archive-target-collision");
+      const tasks = await readFile(
+        path.join(
+          target.repositoryRoot,
+          "openspec/changes",
+          target.changeId,
+          "tasks.md",
+        ),
+        "utf8",
+      );
+      if (
+        !observed.isPlanningComplete ||
+        !tasks.includes("- [x]") ||
+        /^- \[ \]/m.test(tasks)
+      )
+        throw Error("archive-planning-incomplete");
+      const converged = await archiveReadiness(
+        {
+          ...target,
+          actionId: "archive",
+          role: "author",
+          applicableChecks: descriptor.applicableChecks,
+        },
+        review,
+        installation,
+        { trigger: "archive", runId: target.runId },
+      );
+      const date = openSpecArchiveDate();
+      const coordinationPath = `openspec/delivery-groups/${target.deliveryId}.yaml`;
+      const coordination = await readFile(
+        path.join(target.repositoryRoot, coordinationPath),
+      );
+      pre = {
+        formatVersion: 1,
+        deliveryId: target.deliveryId,
+        changeId: target.changeId,
+        runId: target.runId,
+        descriptorSha256: sha256(Buffer.from(started.markdown)),
+        authorRunId: author.context.runId,
+        reviewRunId: review.context.runId,
+        sourcePath: `openspec/changes/${target.changeId}`,
+        defaultPath: `openspec/changes/archive/${date}-${target.changeId}`,
+        archivePath: `openspec/changes/archive/${date}-${String(ordinal).padStart(3, "0")}-${target.changeId}`,
+        sourceFiles: converged.sourceFiles,
+        candidate: author.result.facts.artifactHashes as Record<string, string>,
+        specsBefore: converged.specsBefore,
+        specsAfter: converged.specsAfter,
+        coordination: {
+          path: coordinationPath,
+          beforeText: coordination.toString("utf8"),
+          beforeSha256: sha256(coordination),
+          afterSha256: sha256(
+            archiveCoordinationAfter(
+              coordination,
+              target.deliveryId,
+              target.changeId,
+            ),
+          ),
+        },
+      };
+      await assertCurrent();
+      if ((await observeArchiveEffects(target, pre)).effect !== "none")
+        throw Error("archive-prestate-drift");
+      await saveArchiveObservation(target, relative, "prestate", pre);
     }
-    await assertCurrentArchive();
-    effect = "openspec-unknown";
-    await run(
-      process.execPath,
-      [tool.entrypoint, "archive", changeId, "--yes", "--json"],
-      {
-        cwd: root,
-        timeout: 120_000,
-        maxBuffer: 8 * 1024 * 1024,
-        windowsHide: true,
-      },
+    archivePath = pre.archivePath;
+    const archiveDate = pre.defaultPath.slice(
+      "openspec/changes/archive/".length,
+      "openspec/changes/archive/".length + 10,
     );
-    if (!(await lstat(defaultTarget)).isDirectory())
-      throw new Error("archive-materialization-unconfirmed");
-    const sourceAfter = await lstat(
-      path.join(root, "openspec", "changes", changeId),
-    ).catch((error) => {
-      if ((error as NodeJS.ErrnoException).code === "ENOENT") return null;
-      throw error;
-    });
     if (
-      sourceAfter !== null ||
-      !(await lstat(path.join(defaultTarget, "tasks.md"))).isFile()
+      pre.descriptorSha256 !== sha256(Buffer.from(started.markdown)) ||
+      pre.authorRunId !== author.context.runId ||
+      pre.reviewRunId !== review.context.runId ||
+      pre.archivePath !==
+        `openspec/changes/archive/${archiveDate}-${String(ordinal).padStart(3, "0")}-${target.changeId}` ||
+      !isDeepStrictEqual(pre.candidate, author.result.facts.artifactHashes) ||
+      review.result.facts.reviewedRunId !== author.context.runId
     )
-      throw new Error("archive-source-not-moved");
-    await rename(defaultTarget, exactTarget);
-    effect = "archived";
-    archivePath = `openspec/changes/archive/${exactName}`;
-    if (!(await lstat(exactTarget)).isDirectory())
-      throw new Error("archive-materialization-unconfirmed");
-    effect = "coordination-unknown";
-    await writeChangeState(root, deliveryId, changeId, "active", "completed");
-    const completed = await readCoordinationManifest(root, deliveryId);
-    if (
-      completed.changes.filter(
-        (change) => change.id === changeId && change.state === "completed",
-      ).length !== 1
-    )
-      throw new Error("archive-coordination-unconfirmed");
-    return {
-      status: "completed",
-      effect: "archive-and-coordination",
-      archivePath,
-      projectOrdinal: ordinal,
-      runId,
-    };
+      throw Error("archive-prestate-binding-invalid");
+    let observed = await observeArchiveEffects(target, pre);
+    effect = observed.effect;
+    if (effect === "unknown") throw Error("archive-effects-unknown");
+    if (effect === "none") {
+      assertOpenSpecArchiveDate(pre.defaultPath, target.changeId);
+      if (existingPrestate) {
+        const converged = await archiveReadiness(
+          {
+            ...target,
+            actionId: "archive",
+            role: "author",
+            applicableChecks: descriptor.applicableChecks,
+          },
+          review,
+          installation,
+          { trigger: "archive", runId: target.runId },
+        );
+        if (
+          !isDeepStrictEqual(converged.sourceFiles, pre.sourceFiles) ||
+          !isDeepStrictEqual(converged.specsBefore, pre.specsBefore) ||
+          !isDeepStrictEqual(converged.specsAfter, pre.specsAfter)
+        )
+          throw Error("archive-convergence-prestate-drift");
+      }
+      await assertCurrent();
+      await saveArchiveObservation(target, relative, "openspec-intent", {
+        runId: target.runId,
+        descriptorSha256: pre.descriptorSha256,
+      });
+      const attempt = await archiveDiagnosticAttempt(
+        target.repositoryRoot,
+        target.deliveryId,
+        group,
+        { ...target, trigger: "archive", candidate: pre.candidate },
+      );
+      const tool = await resolveManagedTool({
+        flowkitHome: target.flowkitHome,
+        installation,
+        toolId: "openspec",
+      });
+      effect = "openspec-unknown";
+      await runArchiveProcess(
+        target.repositoryRoot,
+        attempt,
+        "openspec-archive",
+        process.execPath,
+        [tool.entrypoint, "archive", target.changeId, "--yes", "--json"],
+        target.repositoryRoot,
+        { timeout: 120_000 },
+      );
+      observed = await observeArchiveEffects(target, pre);
+      if (observed.effect !== "openspec")
+        throw Error("archive-materialization-unconfirmed");
+      effect = "openspec";
+    }
+    if (effect === "openspec") {
+      await assertCurrent();
+      await saveArchiveObservation(target, relative, "openspec-observed", {
+        runId: target.runId,
+        defaultPath: pre.defaultPath,
+        sourceFiles: pre.sourceFiles,
+        specsAfter: pre.specsAfter,
+      });
+      await rename(
+        path.join(target.repositoryRoot, pre.defaultPath),
+        path.join(target.repositoryRoot, pre.archivePath),
+      );
+      observed = await observeArchiveEffects(target, pre);
+      if (observed.effect !== "archived")
+        throw Error("archive-rename-unconfirmed");
+      effect = "archived";
+    }
+    if (effect === "archived") {
+      await assertCurrent();
+      await saveArchiveObservation(target, relative, "rename-observed", {
+        runId: target.runId,
+        archivePath: pre.archivePath,
+        sourceFiles: pre.sourceFiles,
+      });
+      effect = "coordination-unknown";
+      await writeChangeState(
+        target.repositoryRoot,
+        target.deliveryId,
+        target.changeId,
+        "active",
+        "completed",
+      );
+      observed = await observeArchiveEffects(target, pre);
+      if (observed.effect !== "completed")
+        throw Error("archive-coordination-unconfirmed");
+      effect = "completed";
+    }
+    if (effect === "completed") {
+      await assertCurrent();
+      await saveArchiveObservation(target, relative, "openspec-intent", {
+        runId: target.runId,
+        descriptorSha256: pre.descriptorSha256,
+      });
+      await saveArchiveObservation(target, relative, "openspec-observed", {
+        runId: target.runId,
+        defaultPath: pre.defaultPath,
+        sourceFiles: pre.sourceFiles,
+        specsAfter: pre.specsAfter,
+      });
+      await saveArchiveObservation(target, relative, "rename-observed", {
+        runId: target.runId,
+        archivePath: pre.archivePath,
+        sourceFiles: pre.sourceFiles,
+      });
+      await saveArchiveObservation(target, relative, "coordination-observed", {
+        runId: target.runId,
+        path: pre.coordination.path,
+        beforeSha256: pre.coordination.beforeSha256,
+        afterSha256: pre.coordination.afterSha256,
+      });
+      return {
+        status: "completed",
+        effect: "archive-and-coordination",
+        archivePath,
+        projectOrdinal: ordinal,
+        runId: target.runId,
+        archiveMaterialRefs: await archiveMaterialRefs(target, relative),
+      };
+    }
+    throw Error("archive-effects-unknown");
   } catch (error) {
     return {
       status: "incomplete",
       effect,
       archivePath,
-      runId,
+      runId: target.runId,
       reason: error instanceof Error ? error.message : "archive-failed",
     };
   }

@@ -91,6 +91,7 @@ test("exports a closed blocked-reason catalog", () => {
     "terminal-result-missing-or-mismatched",
     "unrecognized-or-unsuccessful-author-outcome",
     "unrecognized-reviewer-verdict",
+    "review-rejected",
     "reported-boundary-conflict",
     "owner-authority-required",
     "owner-authority-rejected",

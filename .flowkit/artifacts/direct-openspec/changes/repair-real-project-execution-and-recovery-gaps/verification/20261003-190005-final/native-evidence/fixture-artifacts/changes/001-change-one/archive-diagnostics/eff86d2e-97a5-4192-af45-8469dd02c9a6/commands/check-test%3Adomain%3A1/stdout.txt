@@ -1,0 +1,467 @@
+TAP version 13
+# Subtest: archive finish reads trusted completed coordination after isolated preparation
+ok 1 - archive finish reads trusted completed coordination after isolated preparation
+  ---
+  duration_ms: 95786.9333
+  type: 'test'
+  ...
+# Subtest: context selects unique active and distinguishes idle/planned/cancelled
+ok 2 - context selects unique active and distinguishes idle/planned/cancelled
+  ---
+  duration_ms: 1260.6809
+  type: 'test'
+  ...
+# Subtest: context reports candidates and explicit selection never fills missing facts
+ok 3 - context reports candidates and explicit selection never fills missing facts
+  ---
+  duration_ms: 603.7455
+  type: 'test'
+  ...
+# Subtest: context rejects root mismatch, orphan, activation/dependency and partial history
+ok 4 - context rejects root mismatch, orphan, activation/dependency and partial history
+  ---
+  duration_ms: 833.56
+  type: 'test'
+  ...
+# Subtest: canonical Guidance path is deterministic for the closed Standard Action set
+ok 5 - canonical Guidance path is deterministic for the closed Standard Action set
+  ---
+  duration_ms: 1.2534
+  type: 'test'
+  ...
+# Subtest: ActionGuidanceRef is a closed canonical path + lowercase SHA-256 envelope
+ok 6 - ActionGuidanceRef is a closed canonical path + lowercase SHA-256 envelope
+  ---
+  duration_ms: 0.58
+  type: 'test'
+  ...
+# Subtest: resolver binds exact canonical bytes and content drift changes identity
+ok 7 - resolver binds exact canonical bytes and content drift changes identity
+  ---
+  duration_ms: 36.4174
+  type: 'test'
+  ...
+# Subtest: missing canonical product Guidance fails closed and never falls back to .agents
+ok 8 - missing canonical product Guidance fails closed and never falls back to .agents
+  ---
+  duration_ms: 7.5858
+  type: 'test'
+  ...
+# Subtest: non-regular and final-entry symlink Guidance fail closed
+ok 9 - non-regular and final-entry symlink Guidance fail closed
+  ---
+  duration_ms: 14.2358
+  type: 'test'
+  ...
+# Subtest: parent-path redirection through symlink fails closed
+ok 10 - parent-path redirection through symlink fails closed
+  ---
+  duration_ms: 12.5708
+  type: 'test'
+  ...
+# Subtest: unreadable canonical Guidance fails closed when host permissions are enforceable
+ok 11 - unreadable canonical Guidance fails closed when host permissions are enforceable
+  ---
+  duration_ms: 214.5737
+  type: 'test'
+  ...
+# Subtest: accepted fixture root is cleaned when Windows SID setup fails
+ok 12 - accepted fixture root is cleaned when Windows SID setup fails
+  ---
+  duration_ms: 12.6288
+  type: 'test'
+  ...
+# Subtest: Run proof closure checks change-one without omission
+ok 13 - Run proof closure checks change-one without omission
+  ---
+  duration_ms: 3614.4015
+  type: 'test'
+  ...
+# Subtest: Run proof closure checks 001-change-one without omission
+ok 14 - Run proof closure checks 001-change-one without omission
+  ---
+  duration_ms: 3437.2154
+  type: 'test'
+  ...
+# Subtest: published ten HOW assets use the fixed single-Action command path
+ok 15 - published ten HOW assets use the fixed single-Action command path
+  ---
+  duration_ms: 29.9579
+  type: 'test'
+  ...
+# Subtest: synthetic HOW sequence preserves start, partial and create-once completion
+ok 16 - synthetic HOW sequence preserves start, partial and create-once completion
+  ---
+  duration_ms: 2645.9839
+  type: 'test'
+  ...
+# Subtest: synthetic HOW distinguishes prepared failure, business FAIL and failed partial save
+ok 17 - synthetic HOW distinguishes prepared failure, business FAIL and failed partial save
+  ---
+  duration_ms: 3969.2627
+  type: 'test'
+  ...
+# Subtest: all seven Author Standard Actions have canonical identity-complete product Guidance
+ok 18 - all seven Author Standard Actions have canonical identity-complete product Guidance
+  ---
+  duration_ms: 16.9938
+  type: 'test'
+  ...
+# Subtest: product Action Guidance top-level identities stay bounded to Standard Actions
+ok 19 - product Action Guidance top-level identities stay bounded to Standard Actions
+  ---
+  duration_ms: 3.7695
+  type: 'test'
+  ...
+# Subtest: canonical Author files carry Action-significant HOW inside the hashed file
+ok 20 - canonical Author files carry Action-significant HOW inside the hashed file
+  ---
+  duration_ms: 3.7988
+  type: 'test'
+  ...
+# Subtest: all seven real Author entries resolve and exact canonical byte drift changes GuidanceRef
+ok 21 - all seven real Author entries resolve and exact canonical byte drift changes GuidanceRef
+  ---
+  duration_ms: 18.6664
+  type: 'test'
+  ...
+# Subtest: project ordinal allocation uses durable assigned facts only and fails closed on ambiguity
+ok 22 - project ordinal allocation uses durable assigned facts only and fails closed on ambiguity
+  ---
+  duration_ms: 0.67
+  type: 'test'
+  ...
+# Subtest: project ordinal invariants survive legal lifecycle transitions
+ok 23 - project ordinal invariants survive legal lifecycle transitions
+  ---
+  duration_ms: 1.1152
+  type: 'test'
+  ...
+# Subtest: projectOrdinal remains outside production domain identity
+ok 24 - projectOrdinal remains outside production domain identity
+  ---
+  duration_ms: 12.3928
+  type: 'test'
+  ...
+# Subtest: artifact-convergence discipline remains free of hard size Gate, Run schema, or Core dependency
+ok 25 - artifact-convergence discipline remains free of hard size Gate, Run schema, or Core dependency
+  ---
+  duration_ms: 38.8583
+  type: 'test'
+  ...
+# Subtest: archive preparation, continuation, and Explore HOW converge without new lifecycle concepts
+ok 26 - archive preparation, continuation, and Explore HOW converge without new lifecycle concepts
+  ---
+  duration_ms: 3.0224
+  type: 'test'
+  ...
+# Subtest: checkpoint closed operation binds paths, message and nullable ordered shape
+ok 27 - checkpoint closed operation binds paths, message and nullable ordered shape
+  ---
+  duration_ms: 2.207
+  type: 'test'
+  ...
+# Subtest: chain tip follows Policy links, not sequence or input ordering
+ok 28 - chain tip follows Policy links, not sequence or input ordering
+  ---
+  duration_ms: 4.2342
+  type: 'test'
+  ...
+# Subtest: reject disconnected higher root, fork, missing parent, cycle, duplicate sequence and Role
+ok 29 - reject disconnected higher root, fork, missing parent, cycle, duplicate sequence and Role
+  ---
+  duration_ms: 1.3547
+  type: 'test'
+  ...
+# Subtest: Owner correction uses existing Policy and rejects wrong authority
+ok 30 - Owner correction uses existing Policy and rejects wrong authority
+  ---
+  duration_ms: 1.2328
+  type: 'test'
+  ...
+# Subtest: complete prepared failure retries same Action with a new occurrence
+ok 31 - complete prepared failure retries same Action with a new occurrence
+  ---
+  duration_ms: 0.4336
+  type: 'test'
+  ...
+# Subtest: LP 089 shaped prepared Apply accepts one Owner-linked revise tip without changing the predecessor
+ok 32 - LP 089 shaped prepared Apply accepts one Owner-linked revise tip without changing the predecessor
+  ---
+  duration_ms: 4.9858
+  type: 'test'
+  ...
+# Subtest: canonical disk history reads selected group only and keeps partial visible
+ok 33 - canonical disk history reads selected group only and keeps partial visible
+  ---
+  duration_ms: 39.451
+  type: 'test'
+  ...
+# Subtest: explicit bootstrap history is display-only; mixed and unmarked groups rejected
+ok 34 - explicit bootstrap history is display-only; mixed and unmarked groups rejected
+  ---
+  duration_ms: 30.5839
+  type: 'test'
+  ...
+# Subtest: actual terminal Author FAIL stays current rather than reusing prior PASS
+ok 35 - actual terminal Author FAIL stays current rather than reusing prior PASS
+  ---
+  duration_ms: 0.5611
+  type: 'test'
+  ...
+# Subtest: Final local ref fixed golden vector rejects old packages and every missing/extra field
+ok 36 - Final local ref fixed golden vector rejects old packages and every missing/extra field
+  ---
+  duration_ms: 4.3408
+  type: 'test'
+  ...
+# Subtest: Integration local projection golden vector, property ordering and old shape rejection
+ok 37 - Integration local projection golden vector, property ordering and old shape rejection
+  ---
+  duration_ms: 3.9993
+  type: 'test'
+  ...
+# Subtest: trusted acceptance may identify an exact object with different history
+ok 38 - trusted acceptance may identify an exact object with different history
+  ---
+  duration_ms: 3317.7447
+  type: 'test'
+  ...
+# Subtest: content-equivalent history replacement without trusted acceptance is rejected
+ok 39 - content-equivalent history replacement without trusted acceptance is rejected
+  ---
+  duration_ms: 3867.7746
+  type: 'test'
+  ...
+# Subtest: Integration does not reread historical Run evidence outside its operation
+ok 40 - Integration does not reread historical Run evidence outside its operation
+  ---
+  duration_ms: 3563.9601
+  type: 'test'
+  ...
+# Subtest: wrong or broad Owner authority fails closed
+ok 41 - wrong or broad Owner authority fails closed
+  ---
+  duration_ms: 871.4008
+  type: 'test'
+  ...
+# Subtest: zero, multiple, and candidate-changing final commits fail closed
+    # Subtest: zero commit
+    ok 1 - zero commit
+      ---
+      duration_ms: 2337.9852
+      type: 'test'
+      ...
+    # Subtest: multiple commits
+    ok 2 - multiple commits
+      ---
+      duration_ms: 3129.4621
+      type: 'test'
+      ...
+    # Subtest: two-parent commit
+    ok 3 - two-parent commit
+      ---
+      duration_ms: 3574.2512
+      type: 'test'
+      ...
+    # Subtest: candidate-changing commit
+    ok 4 - candidate-changing commit
+      ---
+      duration_ms: 3301.1888
+      type: 'test'
+      ...
+    1..4
+ok 42 - zero, multiple, and candidate-changing final commits fail closed
+  ---
+  duration_ms: 12345.215
+  type: 'test'
+  ...
+# Subtest: provider-reported accepted-main SHA is not admitted as truth
+ok 43 - provider-reported accepted-main SHA is not admitted as truth
+  ---
+  duration_ms: 3543.2406
+  type: 'test'
+  ...
+# Subtest: unborn repository and unrelated dirty bytes complete Start without Git or receipt callbacks
+ok 44 - unborn repository and unrelated dirty bytes complete Start without Git or receipt callbacks
+  ---
+  duration_ms: 746.498
+  type: 'test'
+  ...
+# Subtest: Start rejects obsolete inputs, wrong scope, missing or changed plan, conflicting and ambiguous target
+ok 45 - Start rejects obsolete inputs, wrong scope, missing or changed plan, conflicting and ambiguous target
+  ---
+  duration_ms: 163.2374
+  type: 'test'
+  ...
+# Subtest: Start rejects wrong project, redirected parent and concurrent target without overwriting
+ok 46 - Start rejects wrong project, redirected parent and concurrent target without overwriting
+  ---
+  duration_ms: 231.0534
+  type: 'test'
+  ...
+# Subtest: Start refuses a different valid manifest after its own write without repairing concurrent bytes
+ok 47 - Start refuses a different valid manifest after its own write without repairing concurrent bytes
+  ---
+  duration_ms: 191.1962
+  type: 'test'
+  ...
+# Subtest: Start rechecks plan before create, refuses validated-only and reports write-then-throw truth
+ok 48 - Start rechecks plan before create, refuses validated-only and reports write-then-throw truth
+  ---
+  duration_ms: 183.5987
+  type: 'test'
+  ...
+# Subtest: Full Test inputs use configured files without Git and ignore process artifacts
+ok 49 - Full Test inputs use configured files without Git and ignore process artifacts
+  ---
+  duration_ms: 472.1949
+  type: 'test'
+  ...
+# Subtest: input parser rejects ambiguous paths and selected links, binds command and declared environment
+ok 50 - input parser rejects ambiguous paths and selected links, binds command and declared environment
+  ---
+  duration_ms: 481.8118
+  type: 'test'
+  ...
+# Subtest: RA038-001: exact branch push does not inherit followTags or mutate configuration
+ok 51 - RA038-001: exact branch push does not inherit followTags or mutate configuration
+  ---
+  duration_ms: 4111.5766
+  type: 'test'
+  ...
+# Subtest: RA038-002: ordinary null-shape checkpoint leaves a pending merge untouched
+ok 52 - RA038-002: ordinary null-shape checkpoint leaves a pending merge untouched
+  ---
+  duration_ms: 2569.4928
+  type: 'test'
+  ...
+# Subtest: RA038-003: verified reuse survives pre-acceptance source loss with no new mutation
+ok 53 - RA038-003: verified reuse survives pre-acceptance source loss with no new mutation
+  ---
+  duration_ms: 2466.5978
+  type: 'test'
+  ...
+# Subtest: pending continuation states are preserved, reuse stays read-only, and stage-time arrival stops commit
+ok 54 - pending continuation states are preserved, reuse stays read-only, and stage-time arrival stops commit
+  ---
+  duration_ms: 11693.2183
+  type: 'test'
+  ...
+# Subtest: accepts current canonical Delivery and Change semantic ids
+ok 55 - accepts current canonical Delivery and Change semantic ids
+  ---
+  duration_ms: 1.1095
+  type: 'test'
+  ...
+# Subtest: rejects malformed semantic ids without normalization or aliases
+ok 56 - rejects malformed semantic ids without normalization or aliases
+  ---
+  duration_ms: 0.3379
+  type: 'test'
+  ...
+# Subtest: recognizes exactly the ten Standard Action identities
+ok 57 - recognizes exactly the ten Standard Action identities
+  ---
+  duration_ms: 0.2039
+  type: 'test'
+  ...
+# Subtest: Change identity lookup depends only on semantic id, not group metadata
+ok 58 - Change identity lookup depends only on semantic id, not group metadata
+  ---
+  duration_ms: 2.45
+  type: 'test'
+  ...
+# Subtest: installation metadata belongs to the loaded package, not cwd
+ok 59 - installation metadata belongs to the loaded package, not cwd
+  ---
+  duration_ms: 7.2685
+  type: 'test'
+  ...
+# Subtest: trusted installations relocate without depending on target metadata
+ok 60 - trusted installations relocate without depending on target metadata
+  ---
+  duration_ms: 11.9076
+  type: 'test'
+  ...
+# Subtest: prepared Author correction accepts same or earlier stage after exact current pair
+ok 61 - prepared Author correction accepts same or earlier stage after exact current pair
+  ---
+  duration_ms: 3.2459
+  type: 'test'
+  ...
+# Subtest: prepared correction rejects missing, stale and contradictory current Run facts
+ok 62 - prepared correction rejects missing, stale and contradictory current Run facts
+  ---
+  duration_ms: 0.7714
+  type: 'test'
+  ...
+# Subtest: allows the fifteen reached-stage Owner corrections that lifecycle can enter
+ok 63 - allows the fifteen reached-stage Owner corrections that lifecycle can enter
+  ---
+  duration_ms: 1.4829
+  type: 'test'
+  ...
+# Subtest: requires exact matching revise-action Owner authority
+ok 64 - requires exact matching revise-action Owner authority
+  ---
+  duration_ms: 0.3405
+  type: 'test'
+  ...
+# Subtest: rejects forward skip, prepared switching, archive reopening and completed correction
+ok 65 - rejects forward skip, prepared switching, archive reopening and completed correction
+  ---
+  duration_ms: 0.2152
+  type: 'test'
+  ...
+# Subtest: reported-boundary conflict wins before a valid Owner correction
+ok 66 - reported-boundary conflict wins before a valid Owner correction
+  ---
+  duration_ms: 0.1614
+  type: 'test'
+  ...
+# Subtest: does not treat normal apply/archive readiness as Owner execution authority
+ok 67 - does not treat normal apply/archive readiness as Owner execution authority
+  ---
+  duration_ms: 0.3142
+  type: 'test'
+  ...
+# Subtest: generic raw-stream attributes preserve index bytes across Change/Full Test paths without hiding structured whitespace
+ok 68 - generic raw-stream attributes preserve index bytes across Change/Full Test paths without hiding structured whitespace
+  ---
+  duration_ms: 7467.7331
+  type: 'test'
+  ...
+# Subtest: writer preserves actual partial files when context.json fails
+ok 69 - writer preserves actual partial files when context.json fails
+  ---
+  duration_ms: 21.2823
+  type: 'test'
+  ...
+# Subtest: writer preserves actual partial files when result.json fails
+ok 70 - writer preserves actual partial files when result.json fails
+  ---
+  duration_ms: 14.4781
+  type: 'test'
+  ...
+# Subtest: archive refuses an incomplete competing Run before changing OpenSpec
+ok 71 - archive refuses an incomplete competing Run before changing OpenSpec
+  ---
+  duration_ms: 21280.0005
+  type: 'test'
+  ...
+# Subtest: fixed Integration preserves pending checkpoint and confirms externally accepted ref
+ok 72 - fixed Integration preserves pending checkpoint and confirms externally accepted ref
+  ---
+  duration_ms: 12491.9166
+  type: 'test'
+  ...
+1..72
+# tests 76
+# suites 0
+# pass 76
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 96448.8702

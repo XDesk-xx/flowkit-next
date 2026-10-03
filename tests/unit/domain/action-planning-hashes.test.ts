@@ -9,12 +9,17 @@ import {
 } from "../../../src/cli/action-artifact-hashes.js";
 import { packageReadiness } from "../../../src/cli/action-readiness.js";
 import type { FinishRequest } from "../../../src/cli/action-request.js";
-import type { DurableRunRecord } from "../../../src/domain/run-result-persistence.js";
+import {
+  writeDurableRun,
+  type DurableRunRecord,
+} from "../../../src/domain/run-result-persistence.js";
+import { gitBytes } from "../../../src/internal/git-checkpoint-scope.js";
 import { contextFixture } from "./action-context-fixture.js";
 
 test("Propose hashes use project-root paths at producer and Reviewer boundaries", async () => {
   const fixture = await contextFixture();
   try {
+    await gitBytes(fixture.repositoryRoot, ["init"]);
     const target = {
       repositoryRoot: fixture.repositoryRoot,
       flowkitHome: fixture.flowkitHome,
@@ -78,6 +83,46 @@ test("Propose hashes use project-root paths at producer and Reviewer boundaries"
         facts: { artifactHashes: hashes, proofRefs: [] },
       },
     };
+    for (const [sequence, actionId, parent] of [
+      [1, "explore", null],
+      [2, "review-explore", "20261002-001-explore"],
+    ] as const) {
+      const runId = `20261002-${String(sequence).padStart(3, "0")}-${actionId}`;
+      const identity = { ...actionIdentity, actionId };
+      const occurrence = { date: "20261002", sequence, actionId };
+      const reviewer = actionId === "review-explore";
+      await writeDurableRun(
+        { ...target, changeStartSequence: 1, occurrence },
+        {
+          actionMarkdown: "# Synthetic prior chain\n",
+          context: {
+            ...predecessor.context,
+            runId,
+            occurrence,
+            actionIdentity: identity,
+            role: reviewer ? "reviewer" : "author",
+            previousRunId: parent,
+          },
+          result: {
+            ...predecessor.result,
+            runId,
+            actionIdentity: identity,
+            authorConclusion: reviewer ? null : "PASS",
+            reviewerVerdict: reviewer ? "approved" : null,
+            nextBoundary: reviewer ? "propose" : "review-explore",
+            facts: {},
+          },
+        },
+      );
+    }
+    await writeDurableRun(
+      {
+        ...target,
+        changeStartSequence: 1,
+        occurrence: predecessor.context.occurrence,
+      },
+      predecessor,
+    );
     assert.equal(
       await packageReadiness(
         { ...target, actionId: "review-propose", role: "reviewer" },
@@ -100,14 +145,9 @@ test("Propose hashes use project-root paths at producer and Reviewer boundaries"
         },
       },
     };
-    assert.equal(
-      await packageReadiness(
-        { ...target, actionId: "review-propose", role: "reviewer" },
-        "20261002-004-review-propose",
-        legacyPredecessor,
-        fixture.installation,
-      ),
-      "ready",
+    await checkPlanningArtifactHashes(
+      target,
+      legacyPredecessor.result.facts.artifactHashes,
     );
     await writeFile(path.join(changeRoot, "proposal.md"), "changed\n");
     await assert.rejects(
@@ -123,32 +163,42 @@ test("Propose hashes use project-root paths at producer and Reviewer boundaries"
     await writeFile(source, "source artifact\n");
     const applyId = "20261002-005-apply";
     const applyIdentity = { ...actionIdentity, actionId: "apply" as const };
+    const apply: DurableRunRecord = {
+      ...predecessor,
+      context: {
+        ...predecessor.context,
+        runId: applyId,
+        actionIdentity: applyIdentity,
+        occurrence: { date: "20261002", sequence: 5, actionId: "apply" },
+      },
+      result: {
+        ...predecessor.result,
+        runId: applyId,
+        actionIdentity: applyIdentity,
+        nextBoundary: "review-apply",
+        facts: {
+          artifactHashes: {
+            "candidate.txt": createHash("sha256")
+              .update(await readFile(source))
+              .digest("hex"),
+          },
+          proofRefs: [],
+        },
+      },
+    };
+    await writeDurableRun(
+      {
+        ...target,
+        changeStartSequence: 1,
+        occurrence: apply.context.occurrence,
+      },
+      apply,
+    );
     assert.equal(
       await packageReadiness(
         { ...target, actionId: "review-apply", role: "reviewer" },
         "20261002-006-review-apply",
-        {
-          ...predecessor,
-          context: {
-            ...predecessor.context,
-            runId: applyId,
-            actionIdentity: applyIdentity,
-          },
-          result: {
-            ...predecessor.result,
-            runId: applyId,
-            actionIdentity: applyIdentity,
-            nextBoundary: "review-apply",
-            facts: {
-              artifactHashes: {
-                "candidate.txt": createHash("sha256")
-                  .update(await readFile(source))
-                  .digest("hex"),
-              },
-              proofRefs: [],
-            },
-          },
-        },
+        apply,
         fixture.installation,
       ),
       "ready",
@@ -161,6 +211,7 @@ test("Propose hashes use project-root paths at producer and Reviewer boundaries"
 test("revise candidates use success-only checks without changing FAIL or nonterminal results", async () => {
   const fixture = await contextFixture();
   try {
+    await gitBytes(fixture.repositoryRoot, ["init"]);
     const target = {
       repositoryRoot: fixture.repositoryRoot,
       flowkitHome: fixture.flowkitHome,

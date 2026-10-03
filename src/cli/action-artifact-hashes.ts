@@ -9,6 +9,7 @@ import type {
 import type { ManagerInstallation } from "../internal/manager-installation.js";
 import type { ActionTarget, FinishRequest } from "./action-request.js";
 import { blocked } from "./action-error.js";
+import { assertCandidateGitBytes } from "../internal/candidate-git-bytes.js";
 
 export async function checkArtifactHashes(
   root: string,
@@ -195,6 +196,9 @@ export async function checkResultArtifactsOnFinish(
         );
     await checkPlanningArtifactHashes(request, hashes);
   }
-  if (actionId === "apply" || actionId === "revise-apply")
+  if (actionId === "apply" || actionId === "revise-apply") {
     await checkArtifactHashes(request.repositoryRoot, hashes);
+    for (const relative of Object.keys(hashes as JsonObject))
+      await assertCandidateGitBytes(request.repositoryRoot, relative);
+  }
 }

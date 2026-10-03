@@ -6,6 +6,7 @@ import {
   type DurableRunRecord,
 } from "../domain/run-result-persistence.js";
 import { gitBytes } from "./git-checkpoint-scope.js";
+import type { CheckpointCandidateTree } from "./checkpoint-candidate-tree.js";
 
 function utf8(bytes: Buffer): string {
   const value = bytes.toString("utf8");
@@ -17,6 +18,7 @@ export async function readCandidateRunChain(
   root: string,
   deliveryId: string,
   changeId: string,
+  tree?: CheckpointCandidateTree,
 ): Promise<{
   records: DurableRunRecord[];
   tip: DurableRunRecord;
@@ -25,14 +27,29 @@ export async function readCandidateRunChain(
 }> {
   const deliveryRoot = `.flowkit/runs/${deliveryId}`;
   const listing = utf8(
-    await gitBytes(root, [
-      "ls-files",
-      "--stage",
-      "-z",
-      "--",
-      `:(glob)${deliveryRoot}/*-${changeId}/**`,
-      `:(literal)${deliveryRoot}/${changeId}`,
-    ]),
+    tree === undefined
+      ? await gitBytes(root, [
+          "ls-files",
+          "--stage",
+          "-z",
+          "--",
+          `:(glob)${deliveryRoot}/*-${changeId}/**`,
+          `:(literal)${deliveryRoot}/${changeId}`,
+        ])
+      : Buffer.from(
+          [...tree.entries]
+            .filter(
+              ([name]) =>
+                name.startsWith(deliveryRoot + "/") &&
+                (name.split("/")[3] === changeId ||
+                  name.split("/")[3].endsWith(`-${changeId}`)),
+            )
+            .map(
+              ([name, entry]) =>
+                `${entry.mode} ${entry.objectId === "projected-raw" ? "0".repeat(40) : entry.objectId} 0\t${name}\0`,
+            )
+            .join(""),
+        ),
   );
   if (listing && !listing.endsWith("\0"))
     throw Error("Invalid Run index listing");
@@ -90,7 +107,11 @@ export async function readCandidateRunChain(
     for (const file of ["action.md", "context.json", "result.json"]) {
       const name = `${runRoot}/${runId}/${file}`;
       if (!selected.has(name)) throw Error(`Incomplete candidate Run: ${name}`);
-      const bytes = await gitBytes(root, ["show", `:${name}`]);
+      const bytes =
+        tree === undefined
+          ? await gitBytes(root, ["show", `:${name}`])
+          : await tree.read(name);
+      if (bytes === null) throw Error(`Incomplete candidate Run: ${name}`);
       bytesByPath.set(name, bytes);
       texts.push(utf8(bytes));
     }
@@ -98,5 +119,10 @@ export async function readCandidateRunChain(
   }
   const tip = resolveRunChain(records);
   if (tip === null) throw Error(`Empty canonical Run chain: ${changeId}`);
+  if (
+    Math.min(...records.map((record) => record.context.occurrence.sequence)) !==
+    sequence
+  )
+    throw Error(`Candidate group/start sequence mismatch: ${group}`);
   return { records, tip, runRoot, bytesByPath };
 }

@@ -3,6 +3,14 @@ import {
   type DeliveryCheckpointOperation,
 } from "../domain/delivery-repository-integration-operation.js";
 import { requireNewManagedEvidenceBytes } from "./managed-evidence-checkpoint.js";
+import { assertCandidateGitBytes } from "./candidate-git-bytes.js";
+import { checkpointCandidateTree } from "./checkpoint-candidate-tree.js";
+import {
+  reviewedCheckpointCandidate,
+  verifyExpectedCandidateTree,
+  type ReviewedCheckpointTarget,
+} from "./reviewed-checkpoint-candidate.js";
+import { sha256 } from "../cli/run-effective-facts.js";
 import {
   gitAddExactPaths,
   gitBytes,
@@ -59,6 +67,7 @@ export async function executeScopedCheckpoint(
   expectedBranch: string,
   operation: DeliveryCheckpointOperation,
   revalidate: () => Promise<boolean>,
+  reviewedTarget: ReviewedCheckpointTarget | null = null,
 ): Promise<GitHostOutcome> {
   let phase: GitHostOutcome["phase"] = "preflight";
   let effect: GitHostOutcome["effect"] = "none";
@@ -94,6 +103,25 @@ export async function executeScopedCheckpoint(
     await requireNoPendingGitOperation(root);
     await requireIndexScope(root, operation.paths);
     const worktree = await scopeWorktreeFingerprint(root, operation.paths);
+    const projected = await checkpointCandidateTree(root, operation.paths);
+    for (const relative of operation.paths)
+      if (projected.entries.has(relative))
+        await assertCandidateGitBytes(root, relative);
+    const expected = await reviewedCheckpointCandidate(
+      root,
+      projected,
+      reviewedTarget,
+      operation.paths,
+    );
+    for (const relative of operation.paths) {
+      const bytes = await projected.read(relative);
+      const hash = bytes === null ? null : sha256(bytes);
+      if (expected.has(relative) && expected.get(relative) !== hash)
+        throw Error(
+          `Authorized path differs from reviewed candidate: ${relative}`,
+        );
+      expected.set(relative, hash);
+    }
     let index = await readIndexFingerprint(root);
     const validate = async () => {
       await requireGitRoot(root);
@@ -120,6 +148,10 @@ export async function executeScopedCheckpoint(
     effect = "confirmed";
     index = await readIndexFingerprint(root);
     await validate();
+    await verifyExpectedCandidateTree(
+      await checkpointCandidateTree(root),
+      expected,
+    );
     // Re-read immediately before commit, including the full pending index.
     await validate();
     await requireNewManagedEvidenceBytes(root);
@@ -135,6 +167,10 @@ export async function executeScopedCheckpoint(
     )
       throw Error("实际提交对象、范围或指定形状不符");
     checkpoint = after.head;
+    await verifyExpectedCandidateTree(
+      await checkpointCandidateTree(root, [], checkpoint),
+      expected,
+    );
     return gitHostOutcome(
       "completed",
       "readback",

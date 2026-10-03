@@ -1,0 +1,15 @@
+{
+  "verdict": "changes-requested",
+  "provider": "ocr-delegate-host-review",
+  "externalModelReview": false,
+  "comments": [
+    {
+      "path": "src/cli/action-inspect.ts",
+      "start_line": 244,
+      "end_line": 246,
+      "severity": "medium",
+      "category": "bug",
+      "content": "Archive在业务效果前失败并跨日后，inspect返回canContinue=true，但同Run执行被archive-date-drift确定拒绝。应与执行端共享日期前置条件，给出false和明确原因，并增加已保存prestate的跨日回归。"
+    }
+  ]
+}

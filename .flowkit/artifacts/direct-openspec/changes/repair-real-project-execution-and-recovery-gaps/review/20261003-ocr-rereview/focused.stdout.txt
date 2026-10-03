@@ -1,0 +1,124 @@
+TAP version 13
+# Subtest: corrected Author consumes approved Review without an optional map and preserves continuation guards
+ok 1 - corrected Author consumes approved Review without an optional map and preserves continuation guards
+  ---
+  duration_ms: 22324.2658
+  type: 'test'
+  ...
+# Subtest: corrected Author consumes changes-requested Review without an optional map and preserves continuation guards
+ok 2 - corrected Author consumes changes-requested Review without an optional map and preserves continuation guards
+  ---
+  duration_ms: 14722.0951
+  type: 'test'
+  ...
+# Subtest: corrected Author consumes rejected Review without an optional map and preserves continuation guards
+ok 3 - corrected Author consumes rejected Review without an optional map and preserves continuation guards
+  ---
+  duration_ms: 15491.8382
+  type: 'test'
+  ...
+# Subtest: Reviewer correction appends once, replays read-only, rejects conflicts and preserves all original bytes
+ok 4 - Reviewer correction appends once, replays read-only, rejects conflicts and preserves all original bytes
+  ---
+  duration_ms: 3680.7755
+  type: 'test'
+  ...
+# Subtest: Author correction requires original manifest and a consistent direct Review, never current worktree alone
+ok 5 - Author correction requires original manifest and a consistent direct Review, never current worktree alone
+  ---
+  duration_ms: 3725.8778
+  type: 'test'
+  ...
+# Subtest: correction closed parser and current Role/hash reject misuse before any append
+ok 6 - correction closed parser and current Role/hash reject misuse before any append
+  ---
+  duration_ms: 1288.8489
+  type: 'test'
+  ...
+# Subtest: Author correction checkpoint requires original Run, manifest and supplement in the candidate tree
+ok 7 - Author correction checkpoint requires original Run, manifest and supplement in the candidate tree
+  ---
+  duration_ms: 5299.37
+  type: 'test'
+  ...
+# Subtest: Author correction cannot inherit a conflicting direct Reviewer candidate
+ok 8 - Author correction cannot inherit a conflicting direct Reviewer candidate
+  ---
+  duration_ms: 873.112
+  type: 'test'
+  ...
+# Subtest: Author correction cannot inherit a omitted direct Reviewer candidate
+ok 9 - Author correction cannot inherit a omitted direct Reviewer candidate
+  ---
+  duration_ms: 969.3519
+  type: 'test'
+  ...
+# Subtest: workspace dependency roots relocate internal links and shims without exposing source writes
+ok 10 - workspace dependency roots relocate internal links and shims without exposing source writes
+  ---
+  duration_ms: 126.7999
+  type: 'test'
+  ...
+# Subtest: dependency copies isolate hardlinks, relocate internal aliases/shims and reject escaping links
+ok 11 - dependency copies isolate hardlinks, relocate internal aliases/shims and reject escaping links
+  ---
+  duration_ms: 74.2616
+  type: 'test'
+  ...
+# Subtest: archive subprocess diagnostics preserve raw failure bytes, overflow prefix, missing command and timeout
+ok 12 - archive subprocess diagnostics preserve raw failure bytes, overflow prefix, missing command and timeout
+  ---
+  duration_ms: 9023.1398
+  type: 'test'
+  ...
+# Subtest: candidate guard refuses CRLF/filter failure without normalizing and accepts explicit -text
+ok 13 - candidate guard refuses CRLF/filter failure without normalizing and accepts explicit -text
+  ---
+  duration_ms: 1058.0187
+  type: 'test'
+  ...
+# Subtest: native domain coverage accepts new test files and detects omitted shards from actual reporter output
+ok 14 - native domain coverage accepts new test files and detects omitted shards from actual reporter output
+  ---
+  duration_ms: 2709.4519
+  type: 'test'
+  ...
+# Subtest: proof group resolves only a unique matching Run
+ok 15 - proof group resolves only a unique matching Run
+  ---
+  duration_ms: 2.1643
+  type: 'test'
+  ...
+# Subtest: new change-one proof index bytes remain bound to terminal Result
+ok 16 - new change-one proof index bytes remain bound to terminal Result
+  ---
+  duration_ms: 17089.7257
+  type: 'test'
+  ...
+# Subtest: new 001-change-one proof index bytes remain bound to terminal Result
+ok 17 - new 001-change-one proof index bytes remain bound to terminal Result
+  ---
+  duration_ms: 14421.1485
+  type: 'test'
+  ...
+# Subtest: checkpoint rejects an indexed legacy proof directory absent from worktree
+ok 18 - checkpoint rejects an indexed legacy proof directory absent from worktree
+  ---
+  duration_ms: 1029.4733
+  type: 'test'
+  ...
+# Subtest: R100 destination is checked as a new managed proof before commit
+ok 19 - R100 destination is checked as a new managed proof before commit
+  ---
+  duration_ms: 2492.353
+  type: 'test'
+  ...
+1..19
+# tests 19
+# suites 0
+# pass 19
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 52962.9399

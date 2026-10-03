@@ -139,6 +139,9 @@ export async function runCheckpoint(
       request.expectedBranch,
       request.operation,
       () => verifyGitHostAuthority(request, read),
+      request.changeId === null
+        ? null
+        : { deliveryId: request.deliveryId, changeId: request.changeId },
     );
   } catch (error) {
     return gitHostOutcome(

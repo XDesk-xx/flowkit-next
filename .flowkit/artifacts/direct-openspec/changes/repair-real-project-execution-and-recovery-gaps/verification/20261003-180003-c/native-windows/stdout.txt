@@ -1,0 +1,41 @@
+TAP version 13
+# Subtest: native Windows pnpm11 Archive runs real domain/full checks in independent scratch and preserves source
+not ok 1 - native Windows pnpm11 Archive runs real domain/full checks in independent scratch and preserves source
+  ---
+  duration_ms: 18180.469
+  type: 'test'
+  location: 'D:\\Projects\\flowkit-next\\tests\\acceptance\\native-windows-archive.test.ts:1:676'
+  failureType: 'testCodeFailure'
+  error: |-
+    The input did not match the regular expression /Post-convergence check failed/. Input:
+    
+    'Error: Archive failed: .flowkit/artifacts/delivery-one/changes/001-change-one/archive-diagnostics/e5dc2c7a-78a2-459f-be9d-bd9ff0cad088/commands/source-dependencies/command.json'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+  error: 'Archive failed: .flowkit/artifacts/delivery-one/changes/001-change-one/archive-diagnostics/e5dc2c7a-78a2-459f-be9d-bd9ff0cad088/commands/source-dependencies/command.json'
+  stack: |-
+    runArchiveProcess (D:\Projects\flowkit-next\src\internal\archive-process.ts:199:11)
+    async archiveReadiness (D:\Projects\flowkit-next\src\cli\action-readiness.ts:410:7)
+    async waitForActual (node:assert:644:5)
+    async Function.rejects (node:assert:767:25)
+    async TestContext.<anonymous> (D:\Projects\flowkit-next\tests\acceptance\native-windows-archive.test.ts:134:7)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  operator: 'rejects'
+  stack: |-
+    async TestContext.<anonymous> (D:\Projects\flowkit-next\tests\acceptance\native-windows-archive.test.ts:134:7)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 0
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 18488.8615

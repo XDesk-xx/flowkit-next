@@ -1,0 +1,217 @@
+TAP version 13
+# Subtest: plan is closed and rejects caller-owned identity/root fields
+ok 1 - plan is closed and rejects caller-owned identity/root fields
+  ---
+  duration_ms: 1.661025
+  type: 'test'
+  ...
+# Subtest: checkRef is stable for canonical ref sets and changes for material identity
+ok 2 - checkRef is stable for canonical ref sets and changes for material identity
+  ---
+  duration_ms: 0.555102
+  type: 'test'
+  ...
+# Subtest: v2 check identity uses UTF-8 byte ordering and preserves ordered argv
+ok 3 - v2 check identity uses UTF-8 byte ordering and preserves ordered argv
+  ---
+  duration_ms: 0.347316
+  type: 'test'
+  ...
+# Subtest: execution input is deterministic for a check set and changes with set/package identity
+ok 4 - execution input is deterministic for a check set and changes with set/package identity
+  ---
+  duration_ms: 180.928945
+  type: 'test'
+  ...
+# Subtest: Guidance identity naturally changes ActionPackageRef and executionInputRef
+ok 5 - Guidance identity naturally changes ActionPackageRef and executionInputRef
+  ---
+  duration_ms: 100.17828
+  type: 'test'
+  ...
+# Subtest: candidate ignores ignored untracked and Run-only material but changes on source bytes
+ok 6 - candidate ignores ignored untracked and Run-only material but changes on source bytes
+  ---
+  duration_ms: 136.123771
+  type: 'test'
+  ...
+# Subtest: exact Memo bytes are isolated while Memo type and other .flowkit material remain visible
+ok 7 - exact Memo bytes are isolated while Memo type and other .flowkit material remain visible
+  ---
+  duration_ms: 142.022097
+  type: 'test'
+  ...
+# Subtest: same bytes with Git-visible executable mode change changes candidateRef
+ok 8 - same bytes with Git-visible executable mode change changes candidateRef
+  ---
+  duration_ms: 145.893249
+  type: 'test'
+  ...
+# Subtest: symlink target mutation changes candidateRef when symlinks are supported
+ok 9 - symlink target mutation changes candidateRef when symlinks are supported
+  ---
+  duration_ms: 104.017019
+  type: 'test'
+  ...
+# Subtest: confirmed deletion emits no record and is stable across unstaged staged and committed states
+ok 10 - confirmed deletion emits no record and is stable across unstaged staged and committed states
+  ---
+  duration_ms: 154.547613
+  type: 'test'
+  ...
+# Subtest: worktree and exact object share the v2 binary material projection
+ok 11 - worktree and exact object share the v2 binary material projection
+  ---
+  duration_ms: 198.974675
+  type: 'test'
+  ...
+# Subtest: old-domain successful fact cannot satisfy v2 candidate and check
+ok 12 - old-domain successful fact cannot satisfy v2 candidate and check
+  ---
+  duration_ms: 63.246773
+  type: 'test'
+  ...
+# Subtest: unsupported Git-visible path kinds fail candidate derivation closed
+ok 13 - unsupported Git-visible path kinds fail candidate derivation closed
+  ---
+  duration_ms: 56.342171
+  type: 'test'
+  ...
+# Subtest: tracked and visible untracked read denial fail closed on the native host
+    # Subtest: tracked
+    ok 1 - tracked
+      ---
+      duration_ms: 58.076844
+      type: 'test'
+      ...
+    # Subtest: untracked
+    ok 2 - untracked
+      ---
+      duration_ms: 57.318495
+      type: 'test'
+      ...
+    1..2
+ok 14 - tracked and visible untracked read denial fail closed on the native host
+  ---
+  duration_ms: 116.036416
+  type: 'test'
+  ...
+# Subtest: unmerged index and SHA-256 repositories are rejected instead of partially projected
+    # Subtest: unmerged index
+    ok 1 - unmerged index
+      ---
+      duration_ms: 93.94172
+      type: 'test'
+      ...
+    # Subtest: SHA-256 object format
+    ok 2 - SHA-256 object format
+      ---
+      duration_ms: 44.38534
+      type: 'test'
+      ...
+    1..2
+ok 15 - unmerged index and SHA-256 repositories are rejected instead of partially projected
+  ---
+  duration_ms: 138.833878
+  type: 'test'
+  ...
+# Subtest: post-stage index drift is incomplete with confirmed stage effect, without commit or unstage
+ok 16 - post-stage index drift is incomplete with confirmed stage effect, without commit or unstage
+  ---
+  duration_ms: 178.521341
+  type: 'test'
+  ...
+# Subtest: failed exact staging reports unknown effect without retrying or clearing index
+ok 17 - failed exact staging reports unknown effect without retrying or clearing index
+  ---
+  duration_ms: 104.42609
+  type: 'test'
+  ...
+# Subtest: stdin error waits for the single stage child to finish before authoritative readback
+ok 18 - stdin error waits for the single stage child to finish before authoritative readback
+  ---
+  duration_ms: 206.406555
+  type: 'test'
+  ...
+# Subtest: commit failure preserves confirmed staged paths and does not claim a checkpoint
+ok 19 - commit failure preserves confirmed staged paths and does not claim a checkpoint
+  ---
+  duration_ms: 207.711765
+  type: 'test'
+  ...
+# Subtest: nonzero commit response reads back the exact created object without retry
+not ok 20 - nonzero commit response reads back the exact created object without retry
+  ---
+  duration_ms: 172.15607
+  type: 'test'
+  location: '/baseline/tests/unit/domain/git-workflow-effects.test.ts:1:5093'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'completed'
+    - 'incomplete'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'incomplete'
+  actual: 'completed'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/baseline/tests/unit/domain/git-workflow-effects.test.ts:208:12)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: readback rejects a committed object with the wrong authorized shape
+ok 21 - readback rejects a committed object with the wrong authorized shape
+  ---
+  duration_ms: 197.032247
+  type: 'test'
+  ...
+# Subtest: Change checkpoint consumes existing evaluator and source, never a Final
+ok 22 - Change checkpoint consumes existing evaluator and source, never a Final
+  ---
+  duration_ms: 196.427803
+  type: 'test'
+  ...
+# Subtest: proof group resolves only a unique matching Run
+ok 23 - proof group resolves only a unique matching Run
+  ---
+  duration_ms: 2.208507
+  type: 'test'
+  ...
+# Subtest: new change-one proof index bytes remain bound to terminal Result
+ok 24 - new change-one proof index bytes remain bound to terminal Result
+  ---
+  duration_ms: 607.291536
+  type: 'test'
+  ...
+# Subtest: new 001-change-one proof index bytes remain bound to terminal Result
+ok 25 - new 001-change-one proof index bytes remain bound to terminal Result
+  ---
+  duration_ms: 529.354405
+  type: 'test'
+  ...
+# Subtest: checkpoint rejects an indexed legacy proof directory absent from worktree
+ok 26 - checkpoint rejects an indexed legacy proof directory absent from worktree
+  ---
+  duration_ms: 73.083735
+  type: 'test'
+  ...
+# Subtest: R100 destination is checked as a new managed proof before commit
+ok 27 - R100 destination is checked as a new managed proof before commit
+  ---
+  duration_ms: 105.327096
+  type: 'test'
+  ...
+1..27
+# tests 31
+# suites 0
+# pass 30
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2100.013224

@@ -1,0 +1,556 @@
+TAP version 13
+# Subtest: fixed CLI starts and finishes one Author Run across processes, then confirms exact retry
+ok 1 - fixed CLI starts and finishes one Author Run across processes, then confirms exact retry
+  ---
+  duration_ms: 33296.7727
+  type: 'test'
+  ...
+# domain-file "action-command-cli.test.ts"
+# Subtest: Propose finish rejects wrong planning hashes before writing and Review reads project-root paths
+ok 2 - Propose finish rejects wrong planning hashes before writing and Review reads project-root paths
+  ---
+  duration_ms: 27665.454
+  type: 'test'
+  ...
+# domain-file "action-command-cli.test.ts"
+# Subtest: prepared Owner correction binds conversation source across CLI processes without changing predecessor
+ok 3 - prepared Owner correction binds conversation source across CLI processes without changing predecessor
+  ---
+  duration_ms: 5725.8421
+  type: 'test'
+  ...
+# domain-file "action-command-cli.test.ts"
+# Subtest: terminal Author FAIL with null boundary is readable and does not advance Policy
+ok 4 - terminal Author FAIL with null boundary is readable and does not advance Policy
+  ---
+  duration_ms: 3008.2267
+  type: 'test'
+  ...
+# domain-file "action-command-cli.test.ts"
+# Subtest: Reviewer correction appends once, replays read-only, rejects conflicts and preserves all original bytes
+ok 5 - Reviewer correction appends once, replays read-only, rejects conflicts and preserves all original bytes
+  ---
+  duration_ms: 3540.5808
+  type: 'test'
+  ...
+# domain-file "action-correction.test.ts"
+# Subtest: Author correction requires original manifest and a consistent direct Review, never current worktree alone
+ok 6 - Author correction requires original manifest and a consistent direct Review, never current worktree alone
+  ---
+  duration_ms: 4409.6741
+  type: 'test'
+  ...
+# domain-file "action-correction.test.ts"
+# Subtest: correction closed parser and current Role/hash reject misuse before any append
+ok 7 - correction closed parser and current Role/hash reject misuse before any append
+  ---
+  duration_ms: 1483.1816
+  type: 'test'
+  ...
+# domain-file "action-correction.test.ts"
+# Subtest: Author correction checkpoint requires original Run, manifest and supplement in the candidate tree
+ok 8 - Author correction checkpoint requires original Run, manifest and supplement in the candidate tree
+  ---
+  duration_ms: 7525.5304
+  type: 'test'
+  ...
+# domain-file "action-correction.test.ts"
+# Subtest: Author correction cannot inherit a conflicting direct Reviewer candidate
+ok 9 - Author correction cannot inherit a conflicting direct Reviewer candidate
+  ---
+  duration_ms: 1108.8842
+  type: 'test'
+  ...
+# domain-file "action-correction.test.ts"
+# Subtest: Author correction cannot inherit a omitted direct Reviewer candidate
+ok 10 - Author correction cannot inherit a omitted direct Reviewer candidate
+  ---
+  duration_ms: 1082.8188
+  type: 'test'
+  ...
+# domain-file "action-correction.test.ts"
+# Subtest: accepts exactly prepared and terminal lifecycle states
+ok 11 - accepts exactly prepared and terminal lifecycle states
+  ---
+  duration_ms: 1.8597
+  type: 'test'
+  ...
+# domain-file "action-lifecycle.test.ts"
+# Subtest: validates canonical ActionIdentity and CurrentAction without normalization
+ok 12 - validates canonical ActionIdentity and CurrentAction without normalization
+  ---
+  duration_ms: 0.3297
+  type: 'test'
+  ...
+# domain-file "action-lifecycle.test.ts"
+# Subtest: prepares an empty slot and terminalizes the exact prepared Action
+ok 13 - prepares an empty slot and terminalizes the exact prepared Action
+  ---
+  duration_ms: 0.2658
+  type: 'test'
+  ...
+# domain-file "action-lifecycle.test.ts"
+# Subtest: rejects removed resume events and malformed lifecycle inputs
+ok 14 - rejects removed resume events and malformed lifecycle inputs
+  ---
+  duration_ms: 0.1171
+  type: 'test'
+  ...
+# domain-file "action-lifecycle.test.ts"
+# Subtest: rejects duplicate or replacement prepare over a prepared Action
+ok 15 - rejects duplicate or replacement prepare over a prepared Action
+  ---
+  duration_ms: 0.1433
+  type: 'test'
+  ...
+# domain-file "action-lifecycle.test.ts"
+# Subtest: bounded prepared Author supersession keeps the original slot untouched
+ok 16 - bounded prepared Author supersession keeps the original slot untouched
+  ---
+  duration_ms: 0.3966
+  type: 'test'
+  ...
+# domain-file "action-lifecycle.test.ts"
+# Subtest: rejects terminal from empty or identity mismatch
+ok 17 - rejects terminal from empty or identity mismatch
+  ---
+  duration_ms: 0.1691
+  type: 'test'
+  ...
+# domain-file "action-lifecycle.test.ts"
+# Subtest: keeps terminal absorbing for same identity
+ok 18 - keeps terminal absorbing for same identity
+  ---
+  duration_ms: 0.1026
+  type: 'test'
+  ...
+# domain-file "action-lifecycle.test.ts"
+# Subtest: allows terminal replacement only for a different canonical identity
+ok 19 - allows terminal replacement only for a different canonical identity
+  ---
+  duration_ms: 0.3692
+  type: 'test'
+  ...
+# domain-file "action-lifecycle.test.ts"
+# Subtest: uses semantic equality and remains pure
+ok 20 - uses semantic equality and remains pure
+  ---
+  duration_ms: 0.5889
+  type: 'test'
+  ...
+# domain-file "action-lifecycle.test.ts"
+# Subtest: encodes structural lifecycle only, not Policy or authority
+ok 21 - encodes structural lifecycle only, not Policy or authority
+  ---
+  duration_ms: 0.7367
+  type: 'test'
+  ...
+# domain-file "action-lifecycle.test.ts"
+# Subtest: HOW injected action.md save failure retains actual partial and does not repeat work
+ok 22 - HOW injected action.md save failure retains actual partial and does not repeat work
+  ---
+  duration_ms: 1459.4598
+  type: 'test'
+  ...
+# domain-file "agent-how-failure.test.ts"
+# Subtest: HOW injected context.json save failure retains actual partial and does not repeat work
+ok 23 - HOW injected context.json save failure retains actual partial and does not repeat work
+  ---
+  duration_ms: 1461.6493
+  type: 'test'
+  ...
+# domain-file "agent-how-failure.test.ts"
+# Subtest: HOW injected result.json save failure retains actual partial and does not repeat work
+ok 24 - HOW injected result.json save failure retains actual partial and does not repeat work
+  ---
+  duration_ms: 1345.0817
+  type: 'test'
+  ...
+# domain-file "agent-how-failure.test.ts"
+# Subtest: exact runner records passed, failed, and process-failed facts
+ok 25 - exact runner records passed, failed, and process-failed facts
+  ---
+  duration_ms: 1915.0898
+  type: 'test'
+  ...
+# domain-file "applicable-check-admission.test.ts"
+# Subtest: reserved applicable-check facts remain inside existing RunResult facts
+ok 26 - reserved applicable-check facts remain inside existing RunResult facts
+  ---
+  duration_ms: 1560.3787
+  type: 'test'
+  ...
+# domain-file "applicable-check-admission.test.ts"
+# Subtest: explicit exact prior success reuses, while failed or stale prior facts execute
+ok 27 - explicit exact prior success reuses, while failed or stale prior facts execute
+  ---
+  duration_ms: 2019.0109
+  type: 'test'
+  ...
+# domain-file "applicable-check-admission.test.ts"
+# Subtest: reused-passed prior never recursively reuses and current check really executes
+ok 28 - reused-passed prior never recursively reuses and current check really executes
+  ---
+  duration_ms: 1671.8701
+  type: 'test'
+  ...
+# domain-file "applicable-check-admission.test.ts"
+# Subtest: config/tool/environment drift makes prior success ineligible
+ok 29 - config/tool/environment drift makes prior success ineligible
+  ---
+  duration_ms: 4299.2985
+  type: 'test'
+  ...
+# domain-file "applicable-check-admission.test.ts"
+# Subtest: admission accepts exact complete facts and rechecks current candidate
+ok 30 - admission accepts exact complete facts and rechecks current candidate
+  ---
+  duration_ms: 3029.3123
+  type: 'test'
+  ...
+# domain-file "applicable-check-admission.test.ts"
+# Subtest: admission rejects execution/candidate/fact-set mismatches
+ok 31 - admission rejects execution/candidate/fact-set mismatches
+  ---
+  duration_ms: 4511.8563
+  type: 'test'
+  ...
+# domain-file "applicable-check-admission.test.ts"
+# Subtest: reuse never scans Run history and current Result records explicit reused-passed
+ok 32 - reuse never scans Run history and current Result records explicit reused-passed
+  ---
+  duration_ms: 1626.267
+  type: 'test'
+  ...
+# domain-file "applicable-check-admission.test.ts"
+# Subtest: mechanical applicable-check success does not create review/verification/owner/policy authority
+ok 33 - mechanical applicable-check success does not create review/verification/owner/policy authority
+  ---
+  duration_ms: 1767.4945
+  type: 'test'
+  ...
+# domain-file "applicable-check-admission.test.ts"
+# Subtest: Author Guidance converges canonical artifacts to current truth instead of revision chronology
+ok 34 - Author Guidance converges canonical artifacts to current truth instead of revision chronology
+  ---
+  duration_ms: 9.606
+  type: 'test'
+  ...
+# domain-file "author-stage-guidance.test.ts"
+# Subtest: Author stage HOW carries relevant Owner material boundaries and separates proof classes
+ok 35 - Author stage HOW carries relevant Owner material boundaries and separates proof classes
+  ---
+  duration_ms: 2.3482
+  type: 'test'
+  ...
+# domain-file "author-stage-guidance.test.ts"
+# Subtest: code gate retains formatting, lint and exact 650-line rule independently from Git
+ok 36 - code gate retains formatting, lint and exact 650-line rule independently from Git
+  ---
+  duration_ms: 9066.736
+  type: 'test'
+  ...
+# domain-file "code-gate-boundary.test.ts"
+# Subtest: historical raw proof whitespace is a Git diagnostic, not a code verdict
+ok 37 - historical raw proof whitespace is a Git diagnostic, not a code verdict
+  ---
+  duration_ms: 1909.3276
+  type: 'test'
+  ...
+# domain-file "code-gate-boundary.test.ts"
+# Subtest: Integration preparation accepts an exact authorized base across unrelated HEAD or target history
+ok 38 - Integration preparation accepts an exact authorized base across unrelated HEAD or target history
+  ---
+  duration_ms: 6626.3609
+  type: 'test'
+  ...
+# domain-file "delivery-continuity-semantic-boundaries.test.ts"
+# Subtest: Integration operation field order is non-semantic across source, ref and record consumers
+ok 39 - Integration operation field order is non-semantic across source, ref and record consumers
+  ---
+  duration_ms: 5693.5884
+  type: 'test'
+  ...
+# domain-file "delivery-continuity-semantic-boundaries.test.ts"
+# Subtest: Final local projection is ordered and closed, without confirmation self-reference
+ok 40 - Final local projection is ordered and closed, without confirmation self-reference
+  ---
+  duration_ms: 1.6426
+  type: 'test'
+  ...
+# domain-file "delivery-finalization-reader.test.ts"
+# Subtest: reader distinguishes unpublished content, valid confirmation and unrelated append without writing
+ok 41 - reader distinguishes unpublished content, valid confirmation and unrelated append without writing
+  ---
+  duration_ms: 69.2523
+  type: 'test'
+  ...
+# domain-file "delivery-finalization-reader.test.ts"
+# Subtest: legacy cross-Change overlap is readable, allocates 23 and leaves every original byte unchanged
+ok 42 - legacy cross-Change overlap is readable, allocates 23 and leaves every original byte unchanged
+  ---
+  duration_ms: 8519.6085
+  type: 'test'
+  ...
+# domain-file "delivery-occupancy-compatibility.test.ts"
+# Subtest: confirmation lost during final authorization read rejects before Git callback
+ok 43 - confirmation lost during final authorization read rejects before Git callback
+  ---
+  duration_ms: 1797.0243
+  type: 'test'
+  ...
+# domain-file "delivery-repository-integration-execution.test.ts"
+# Subtest: trusted preparation binds exact finalized state and pre-integration Git facts
+ok 44 - trusted preparation binds exact finalized state and pre-integration Git facts
+  ---
+  duration_ms: 1086.5054
+  type: 'test'
+  ...
+# domain-file "delivery-repository-integration-execution.test.ts"
+# Subtest: trusted Owner source rejects caller checkpoint-operation substitution
+ok 45 - trusted Owner source rejects caller checkpoint-operation substitution
+  ---
+  duration_ms: 1304.6386
+  type: 'test'
+  ...
+# domain-file "delivery-repository-integration-execution.test.ts"
+# Subtest: Integration rejects caller old Final packages instead of translating them
+ok 46 - Integration rejects caller old Final packages instead of translating them
+  ---
+  duration_ms: 994.8
+  type: 'test'
+  ...
+# domain-file "delivery-repository-integration-execution.test.ts"
+# Subtest: coordination byte drift invalidates trusted preparation
+ok 47 - coordination byte drift invalidates trusted preparation
+  ---
+  duration_ms: 878.94
+  type: 'test'
+  ...
+# domain-file "delivery-repository-integration-execution.test.ts"
+# Subtest: repository integration proves one final commit and derives accepted main as next base
+ok 48 - repository integration proves one final commit and derives accepted main as next base
+  ---
+  duration_ms: 3330.4887
+  type: 'test'
+  ...
+# domain-file "delivery-repository-integration-execution.test.ts"
+# Subtest: repository integration reuses an explicitly bound existing checkpoint without creating a second commit
+ok 49 - repository integration reuses an explicitly bound existing checkpoint without creating a second commit
+  ---
+  duration_ms: 2291.5555
+  type: 'test'
+  ...
+# domain-file "delivery-repository-integration-execution.test.ts"
+# Subtest: target-main drift during final commit is rejected before repository acceptance
+ok 50 - target-main drift during final commit is rejected before repository acceptance
+  ---
+  duration_ms: 3982.4225
+  type: 'test'
+  ...
+# domain-file "delivery-repository-integration-execution.test.ts"
+# Subtest: trusted accepted operation does not reapply Final whole-tree equality
+ok 51 - trusted accepted operation does not reapply Final whole-tree equality
+  ---
+  duration_ms: 3487.3832
+  type: 'test'
+  ...
+# domain-file "delivery-repository-integration-execution.test.ts"
+# Subtest: without Archify: real Start/checks/Final/local Git integration; OpenSpec and remote are simulated
+ok 52 - without Archify: real Start/checks/Final/local Git integration; OpenSpec and remote are simulated
+  ---
+  duration_ms: 6358.8979
+  type: 'test'
+  ...
+# domain-file "delivery-without-archify.test.ts"
+# Subtest: Final rejects a real failed check, incomplete checks and legacy preparation input
+ok 53 - Final rejects a real failed check, incomplete checks and legacy preparation input
+  ---
+  duration_ms: 2693.3251
+  type: 'test'
+  ...
+# domain-file "delivery-without-archify.test.ts"
+# Subtest: frozen legacy bytes remain readable without becoming current execution input
+ok 54 - frozen legacy bytes remain readable without becoming current execution input
+  ---
+  duration_ms: 814.2717
+  type: 'test'
+  ...
+# domain-file "delivery-without-archify.test.ts"
+# Subtest: Full Test inputs use configured files without Git and ignore process artifacts
+ok 55 - Full Test inputs use configured files without Git and ignore process artifacts
+  ---
+  duration_ms: 454.6361
+  type: 'test'
+  ...
+# domain-file "full-test-input.test.ts"
+# Subtest: input parser rejects ambiguous paths and selected links, binds command and declared environment
+ok 56 - input parser rejects ambiguous paths and selected links, binds command and declared environment
+  ---
+  duration_ms: 467.4623
+  type: 'test'
+  ...
+# domain-file "full-test-input.test.ts"
+# Subtest: RA038-001: exact branch push does not inherit followTags or mutate configuration
+ok 57 - RA038-001: exact branch push does not inherit followTags or mutate configuration
+  ---
+  duration_ms: 4425.1641
+  type: 'test'
+  ...
+# domain-file "git-host-review-regressions.test.ts"
+# Subtest: RA038-002: ordinary null-shape checkpoint leaves a pending merge untouched
+ok 58 - RA038-002: ordinary null-shape checkpoint leaves a pending merge untouched
+  ---
+  duration_ms: 2881.384
+  type: 'test'
+  ...
+# domain-file "git-host-review-regressions.test.ts"
+# Subtest: RA038-003: verified reuse survives pre-acceptance source loss with no new mutation
+ok 59 - RA038-003: verified reuse survives pre-acceptance source loss with no new mutation
+  ---
+  duration_ms: 2468.6564
+  type: 'test'
+  ...
+# domain-file "git-host-review-regressions.test.ts"
+# Subtest: pending continuation states are preserved, reuse stays read-only, and stage-time arrival stops commit
+ok 60 - pending continuation states are preserved, reuse stays read-only, and stage-time arrival stops commit
+  ---
+  duration_ms: 12328.9626
+  type: 'test'
+  ...
+# domain-file "git-host-review-regressions.test.ts"
+# Subtest: accepts current canonical Delivery and Change semantic ids
+ok 61 - accepts current canonical Delivery and Change semantic ids
+  ---
+  duration_ms: 1.1947
+  type: 'test'
+  ...
+# domain-file "identity.test.ts"
+# Subtest: rejects malformed semantic ids without normalization or aliases
+ok 62 - rejects malformed semantic ids without normalization or aliases
+  ---
+  duration_ms: 0.1911
+  type: 'test'
+  ...
+# domain-file "identity.test.ts"
+# Subtest: recognizes exactly the ten Standard Action identities
+ok 63 - recognizes exactly the ten Standard Action identities
+  ---
+  duration_ms: 0.1982
+  type: 'test'
+  ...
+# domain-file "identity.test.ts"
+# Subtest: Change identity lookup depends only on semantic id, not group metadata
+ok 64 - Change identity lookup depends only on semantic id, not group metadata
+  ---
+  duration_ms: 0.7738
+  type: 'test'
+  ...
+# domain-file "identity.test.ts"
+# Subtest: installation metadata belongs to the loaded package, not cwd
+ok 65 - installation metadata belongs to the loaded package, not cwd
+  ---
+  duration_ms: 6.5114
+  type: 'test'
+  ...
+# domain-file "manager-installation.test.ts"
+# Subtest: trusted installations relocate without depending on target metadata
+ok 66 - trusted installations relocate without depending on target metadata
+  ---
+  duration_ms: 12.2149
+  type: 'test'
+  ...
+# domain-file "manager-installation.test.ts"
+# Subtest: prepared Author correction accepts same or earlier stage after exact current pair
+ok 67 - prepared Author correction accepts same or earlier stage after exact current pair
+  ---
+  duration_ms: 5.0045
+  type: 'test'
+  ...
+# domain-file "policy-owner-correction.test.ts"
+# Subtest: prepared correction rejects missing, stale and contradictory current Run facts
+ok 68 - prepared correction rejects missing, stale and contradictory current Run facts
+  ---
+  duration_ms: 0.9329
+  type: 'test'
+  ...
+# domain-file "policy-owner-correction.test.ts"
+# Subtest: allows the fifteen reached-stage Owner corrections that lifecycle can enter
+ok 69 - allows the fifteen reached-stage Owner corrections that lifecycle can enter
+  ---
+  duration_ms: 1.5067
+  type: 'test'
+  ...
+# domain-file "policy-owner-correction.test.ts"
+# Subtest: requires exact matching revise-action Owner authority
+ok 70 - requires exact matching revise-action Owner authority
+  ---
+  duration_ms: 0.4575
+  type: 'test'
+  ...
+# domain-file "policy-owner-correction.test.ts"
+# Subtest: rejects forward skip, prepared switching, archive reopening and completed correction
+ok 71 - rejects forward skip, prepared switching, archive reopening and completed correction
+  ---
+  duration_ms: 0.3264
+  type: 'test'
+  ...
+# domain-file "policy-owner-correction.test.ts"
+# Subtest: reported-boundary conflict wins before a valid Owner correction
+ok 72 - reported-boundary conflict wins before a valid Owner correction
+  ---
+  duration_ms: 0.138
+  type: 'test'
+  ...
+# domain-file "policy-owner-correction.test.ts"
+# Subtest: does not treat normal apply/archive readiness as Owner execution authority
+ok 73 - does not treat normal apply/archive readiness as Owner execution authority
+  ---
+  duration_ms: 0.2417
+  type: 'test'
+  ...
+# domain-file "policy-owner-correction.test.ts"
+# Subtest: generic raw-stream attributes preserve index bytes across Change/Full Test paths without hiding structured whitespace
+ok 74 - generic raw-stream attributes preserve index bytes across Change/Full Test paths without hiding structured whitespace
+  ---
+  duration_ms: 8043.1401
+  type: 'test'
+  ...
+# domain-file "raw-stream-attributes.test.ts"
+# Subtest: writer preserves actual partial files when context.json fails
+ok 75 - writer preserves actual partial files when context.json fails
+  ---
+  duration_ms: 22.2881
+  type: 'test'
+  ...
+# domain-file "run-partial-preservation.test.ts"
+# Subtest: writer preserves actual partial files when result.json fails
+ok 76 - writer preserves actual partial files when result.json fails
+  ---
+  duration_ms: 12.8229
+  type: 'test'
+  ...
+# domain-file "run-partial-preservation.test.ts"
+# Subtest: archive refuses an incomplete competing Run before changing OpenSpec
+ok 77 - archive refuses an incomplete competing Run before changing OpenSpec
+  ---
+  duration_ms: 22160.8657
+  type: 'test'
+  ...
+# domain-file "support-archive-chain.test.ts"
+# Subtest: fixed Integration preserves pending checkpoint and confirms externally accepted ref
+ok 78 - fixed Integration preserves pending checkpoint and confirms externally accepted ref
+  ---
+  duration_ms: 14617.1033
+  type: 'test'
+  ...
+# domain-file "support-git-integration.test.ts"
+1..78
+# tests 78
+# suites 0
+# pass 78
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 70251.0338

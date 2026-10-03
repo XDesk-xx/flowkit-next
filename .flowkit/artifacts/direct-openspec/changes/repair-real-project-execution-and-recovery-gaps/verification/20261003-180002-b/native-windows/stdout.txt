@@ -1,0 +1,27 @@
+TAP version 13
+# Subtest: native Windows pnpm11 Archive runs real domain/full checks in independent scratch and preserves source
+not ok 1 - native Windows pnpm11 Archive runs real domain/full checks in independent scratch and preserves source
+  ---
+  duration_ms: 11309.9436
+  type: 'test'
+  location: 'D:\\Projects\\flowkit-next\\tests\\acceptance\\native-windows-archive.test.ts:1:676'
+  failureType: 'testCodeFailure'
+  error: 'External absolute dependency shim reference: node_modules\\.bin\\depcruise'
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    relocate (D:\Projects\flowkit-next\src\internal\archive-dependency-snapshot.ts:162:19)
+    async relocate (D:\Projects\flowkit-next\src\internal\archive-dependency-snapshot.ts:123:39)
+    async copyArchiveDependencies (D:\Projects\flowkit-next\src\internal\archive-dependency-snapshot.ts:184:3)
+    async TestContext.<anonymous> (D:\Projects\flowkit-next\tests\acceptance\native-windows-archive.test.ts:53:7)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 0
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 11791.1787

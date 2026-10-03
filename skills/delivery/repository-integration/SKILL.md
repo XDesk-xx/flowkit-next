@@ -20,6 +20,8 @@ description: 在独立 Owner Git 授权下消费已确认 Final，并核验明�
 
 ## 固定命令调用
 
+create-new 对授权 regular paths 核对 raw/filter，stage 前核对 index 加授权路径的拟写入树，stage 后与 commit 后分别核对 index/blob。关联已审 Change 时，Author effective 身份、correction 及必要原件/proof 必须在候选树中；Archive 机械迁移/spec 收敛/当前 coordination state 更新仅消费已接纳 terminal Archive 和 exact 材料的允许后态，额外漂移阻断。不得为了通过检查补造 Reviewer receipt、改原 Run、扩张 paths 或 reset 用户 index。correction 使用独立 managed 准入，不修改 parent proofRefs。
+
 普通 Start 后 commit / Change checkpoint / push 不需要 Final 或 Integration package。在本安装 `flowkit git checkpoint`、`flowkit git push`、`flowkit git integrate` 中按已授权的 exact 节点选一个，提交封闭 JSON 请求并核对结果后 STOP。`git integrate` 只在真实外部接受关系可核对时确认；PR/merge 的实际接受仍由外部有界 mechanics 完成。具体可见参数、请求字段及部分成功交接见 [固定命令 HOW](references/host-call.md)。targetRoot 是实际 target Git 根，发行命令来自 manager；target 无需复制 Flowkit 资产。
 
 Agent 从宿主真实 Owner 输入形成本次 `OwnerAuthorityFact` 与 `sourceRef`，提交的 `gitRequest.ownerSourceRef` 必须匹配；CLI 核对目标、结构、当前事实和适用 evaluator，不独立监听或认证聊天。Change checkpoint 另消费既有 evaluator；Integration 另消费 singleton/source/有效 Final。fixture 的合成来源不能声称真实 Owner/独立 Review。

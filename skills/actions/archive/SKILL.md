@@ -54,6 +54,10 @@ Do not stack another date prefix.
 
 ## Package-bound archive preparation
 
+Archive 必须共同消费同一 effective Author/Review binding。依赖以独立 scratch snapshot materialize，不将 source node_modules junction 暴露给检查；pnpm11 源 preflight 固定 error/no-install，scratch 局部 no-sync，未知外部 link/shim 拒绝。各实际命令的 raw 流、退出与分类保存在 `archive-diagnostics`，超限或保存失败均不代表 PASS。
+
+丢失响应时先调用 `action inspect` 的 closed target/runId 请求，只读核对真实 effect、必要 diagnostic refs 和剩余步骤；普通 status/next 的 incomplete 不被绕过。明确同 Run `change archive` 只继续已证明的剩余 rename/coordination，已完成只读确认；mixed/unknown/machine partial 阻断，不重复 OpenSpec、不另造 Run。finish 的 `facts.archiveMaterialRefs` 必须逐项等于业务命令返回的 exact 材料引用，不能只凭 status completed。准备/观测材料仍在 artifacts，Run 仍只有三个文件。
+
 Archive readiness is real self-check HOW, not a new Action or lifecycle state. It runs inside the already-decided `archive` invocation only after the exact canonical Guidance identity is frozen into the exact ActionPackage and before archive mutation begins.
 
 Check at minimum, when materially applicable:
@@ -117,11 +121,11 @@ Keep `projectOrdinal`, `changeStartSequence`, current Run sequence and physical 
 
 读取本次 manager 安装的 exact Guidance，并以当前稳定 manager 的 `status` / `next` 确认单个合法 Action 和 Role。当前发行的固定记录入口只处理一次机械开始或结束，不执行 OpenSpec、编码、Review、测试、下一 Action 或 Git。
 
-1. 准备 JSON 输入：`repositoryRoot`、`flowkitHome`、`deliveryId`、`changeId`、exact `actionId`、实际 `role`。仅当当前 prepared Author Run 经 Owner 明确 correction 时附 `ownerAuthority`，其中 `sourceRef` 对应真实 Owner 输入；普通 Action 不附该字段。`archive` 另附非空 `applicableChecks: [{id,reason}]`；Agent 按本次实际影响声明适用性，`id` 必须对应 target 已配置的 `package.json` script 或 `config/verification/full-test.json` check。固定命令先做隔离 convergence，再执行所选检查；未配置、歧义或失败均不开始 archive。
+1. 准备 JSON 输入：`repositoryRoot`、`flowkitHome`、`deliveryId`、`changeId`、exact `actionId`、实际 `role`。仅当 Policy 已确认当前 prepared/terminal 对应阶段且收到明确 Owner revise 指令时附 `ownerAuthority`，其中 `sourceRef` 对应真实 Owner 输入；普通 Action 不附该字段。`archive` 另附非空 `applicableChecks: [{id,reason}]`；Agent 按本次实际影响声明适用性，`id` 必须对应 target 已配置的 `package.json` script 或 `config/verification/full-test.json` check。固定命令先做隔离 convergence，再执行所选检查；未配置、歧义或失败均不开始 archive。
 2. 调用 `flowkit action start --input <request.json>`。只有返回 `effect: "started"` 且 exact `runId`、目录可读回后，才开始本次实际工作。任何 `blocked`、`not-written`、`written-unconfirmed` 均停止并保留真实 bytes。新开始 descriptor 已绑定当前 Guidance、package、prepared context、前序和 Owner fact；不得自填 Run 编号、GuidanceRef、ActionPackage 或回调。
 3. 按“Canonical convergence”节调用一次固定 `change archive` 并核对其效果，再完成本 Action 的结果整理。必要材料在产生时保存到受控 proof 目录；可调用 `flowkit proof inspect --input <request.json>` 取得当前文件 bytes/SHA-256/Git 原始字节事实。该结果不证明内容真实、测试 PASS 或 Reviewer verdict。无必要新材料时使用空 `proofRefs`，不建空目录。
 4. 形成真实 `RunResultRecord`，以 `flowkit action finish --input <request.json>` 提交 `repositoryRoot`、`flowkitHome`、`deliveryId`、`changeId`、开始返回的 `runId`、实际 `role`、`terminal` 与 `result`。finish 从已存 descriptor 和当前可信事实重建，不接收另一份 Owner fact 或内部 package。Author 只填 Author outcome，Reviewer 必须独立执行并只填本人真实 verdict；Verification、Owner 与 Git 权限均不由 finish 创建。
-5. 仅 `effect: "confirmed"` 表示本次三文件和 canonical chain 已读回，不表示业务 PASS。partial、冲突或未确认写入均保持原样，不覆盖或自动重做工作。Reviewer 若实际判断为 `rejected`，当前固定 finish 会在 machine 文件写前返回 unsupported/incomplete；如实报告该判断与未完成记录，不能改写为 `changes-requested` 或声称 terminal。
+5. 仅 `effect: "confirmed"` 表示本次三文件和 canonical chain 已读回，不表示业务 PASS。partial、冲突或未确认写入均保持原样，不覆盖或自动重做工作。Reviewer 的真实 `rejected` 使用 `nextBoundary: null`，可保存为 terminal；新进程查询得到 `blocked(review-rejected)` 后 STOP。仅收到同阶段明确 Owner `revise-action` 指令才允许新的对应 revise Run，不改写旧 verdict。
 6. 独立调用 `flowkit status` / `flowkit next --input <query.json>` 读回本次结果与后续合法边界，然后 STOP；不得自动执行下一 Action。
 
 请求 JSON 使用 `--input -` 时从 stdin 读取，最多 65,536 UTF-8 bytes。命令行显式 `--repository-root`、`--delivery-id`、`--change-id` 如提供，必须与 JSON target 一致。命令拒绝重复 JSON key、未知字段、caller 自填 lifecycle/sequence 与可执行输入。历史完整 Run 保持原字节；旧未知 partial 不由此入口接管。

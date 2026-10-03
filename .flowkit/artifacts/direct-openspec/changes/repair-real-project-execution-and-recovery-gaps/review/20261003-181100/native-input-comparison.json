@@ -1,0 +1,58 @@
+{
+  "oldEvidence": ".flowkit/artifacts/direct-openspec/changes/repair-real-project-execution-and-recovery-gaps/verification/20261003-190005-final/native-windows/command.json",
+  "oldEvidenceSha256": "c3e81e0d4400d3d237e4370dcdb861c4a502f087ec3691a04c60083fd830dac6",
+  "oldExitCode": 0,
+  "oldStartedAt": "2026-10-03T08:56:54.556Z",
+  "oldFinishedAt": "2026-10-03T09:14:19.176Z",
+  "drift": [
+    {
+      "file": "src/cli/action-readiness.ts",
+      "previous": "8aaa865b0e762682f3b7df68767510799a73f9d93ffd6d60f1e2e721713c02b2",
+      "current": "3959ac8a5b136dad418efbe15652b9720a1e507f4b955369036b61caf642d261"
+    },
+    {
+      "file": "src/cli/run-effective-facts.ts",
+      "previous": "ec117d8ae04d61c66807cef63d8922450126492721a93c95e553daef2b8e3be8",
+      "current": "1f251111945ba6f46eb8af41d0fc6f8f863669d878fcce3df61009afcd0083d3"
+    },
+    {
+      "file": "src/internal/archive-dependency-snapshot.ts",
+      "previous": "7074384f74bea4e23ac506268ac4a3d9089f71db7a44eb20cc04057dca6116cf",
+      "current": "b4b6fc3db6156a2862e780a3c06bbda281e8bc542639f5101f3094713e8a41c9"
+    },
+    {
+      "file": "tests/acceptance/native-windows-archive.test.ts",
+      "previous": "b3b09add0a27e8e4eaff9a69b0418512c54b353e99c3b6215b3987b6c8ab941d",
+      "current": "551c4644d2fc47c413002b53c906f78916dcf23b51ada4970524f748ed5723a9"
+    },
+    {
+      "file": "tests/unit/domain/action-archive-readiness.test.ts",
+      "previous": "e9dd391ca12cda84e499ee195da4f953658cc1572bc2fe9aaf224bdf10cee7a2",
+      "current": "e80ef493a6c4f295efe9225a235147e616c995b659ac781cc0e505577e2a3d95"
+    },
+    {
+      "file": "tests/unit/domain/archive-isolation-diagnostics.test.ts",
+      "previous": "cec64acc52ab11938822e16f40eb6d002bb9c02f8bee13e994d02f0433edef35",
+      "current": "7d9d8acfe6b6fe05f1a85e742eae858b0d627d8e77b6c3382a0db4159e566123"
+    }
+  ],
+  "added": [
+    "tests/acceptance/domain-file-reporter.ts",
+    "tests/unit/domain/action-correction-continuation.test.ts",
+    "tests/unit/domain/domain-file-reporter.test.ts",
+    "openspec/changes/repair-real-project-execution-and-recovery-gaps/.openspec.yaml",
+    "openspec/changes/repair-real-project-execution-and-recovery-gaps/design.md",
+    "openspec/changes/repair-real-project-execution-and-recovery-gaps/explore.md",
+    "openspec/changes/repair-real-project-execution-and-recovery-gaps/proposal.md",
+    "openspec/changes/repair-real-project-execution-and-recovery-gaps/specs/author-action-guidance/spec.md",
+    "openspec/changes/repair-real-project-execution-and-recovery-gaps/specs/policy-and-next-boundary/spec.md",
+    "openspec/changes/repair-real-project-execution-and-recovery-gaps/specs/repository-integration-and-next-base-continuity/spec.md",
+    "openspec/changes/repair-real-project-execution-and-recovery-gaps/specs/reviewer-action-guidance/spec.md",
+    "openspec/changes/repair-real-project-execution-and-recovery-gaps/specs/run-result-persistence/spec.md",
+    "openspec/changes/repair-real-project-execution-and-recovery-gaps/specs/stable-action-command-execution/spec.md",
+    "openspec/changes/repair-real-project-execution-and-recovery-gaps/specs/stable-delivery-support-command-execution/spec.md",
+    "openspec/changes/repair-real-project-execution-and-recovery-gaps/tasks.md",
+    "openspec/changes/repair-real-project-execution-and-recovery-gaps/verification.md",
+    "AGENTS.md"
+  ]
+}

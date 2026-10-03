@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import childProcess from "node:child_process";
 import { EventEmitter } from "node:events";
-import { mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
+import { chmod, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { syncBuiltinESMExports } from "node:module";
 import { tmpdir } from "node:os";
 import path from "node:path";
@@ -204,6 +204,7 @@ test("nonzero commit response reads back the exact created object without retry"
       path.join(root, ".git", "hooks", "pre-commit"),
       "#!/bin/sh\ngit -c core.hooksPath=/dev/null commit -m first >/dev/null 2>&1\nexit 23\n",
     );
+    await chmod(path.join(root, ".git", "hooks", "pre-commit"), 0o755);
     const outcome = await runCheckpoint(request, async () => ({ request }));
     assert.equal(outcome.status, "incomplete");
     assert.equal(outcome.phase, "commit");

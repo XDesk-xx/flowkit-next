@@ -32,7 +32,7 @@ test("archive refuses an incomplete competing Run before changing OpenSpec", asy
     await gitBytes(root, ["init"]);
     await writeFile(
       path.join(root, ".gitattributes"),
-      ".flowkit/runs/** -text\n",
+      ".flowkit/runs/** -text\n.flowkit/artifacts/** -text\n",
     );
     await mkdir(path.join(root, "node_modules"));
     await writeFile(

@@ -7,6 +7,7 @@ import {
   isRunResultRecord,
   parseRunOccurrenceId,
   type RunResultRecord,
+  type JsonObject,
 } from "../domain/run-result-persistence.js";
 import {
   asChangeId,
@@ -18,6 +19,10 @@ import {
 } from "../domain/identity.js";
 import { FoundationCliInputError } from "./request.js";
 import path from "node:path";
+import {
+  validateCorrectionShape,
+  type RunHashes,
+} from "./run-effective-facts.js";
 
 export interface ActionTarget {
   readonly repositoryRoot: string;
@@ -44,9 +49,21 @@ export interface ProofRequest extends ActionTarget {
   readonly runId: string;
   readonly path: string;
 }
+export interface InspectRequest extends ActionTarget {
+  readonly runId: string;
+}
+export interface CorrectRequest extends InspectRequest {
+  readonly role: ActionExecutionRole;
+  readonly ownerAuthority: OwnerAuthorityFact;
+  readonly expectedRunHashes: RunHashes;
+  readonly additions: JsonObject;
+  readonly candidateEvidenceRef: string | null;
+}
 export type ActionCommandRequest =
   | { readonly command: "action start"; readonly request: StartRequest }
   | { readonly command: "action finish"; readonly request: FinishRequest }
+  | { readonly command: "action inspect"; readonly request: InspectRequest }
+  | { readonly command: "action correct"; readonly request: CorrectRequest }
   | { readonly command: "proof inspect"; readonly request: ProofRequest };
 
 export function parseActionArguments(argv: readonly string[]): {
@@ -138,6 +155,60 @@ export function parseActionCommandRequest(
   raw: unknown,
 ): ActionCommandRequest {
   const value = record(raw);
+  if (command === "action inspect") {
+    only(value, [
+      "repositoryRoot",
+      "flowkitHome",
+      "deliveryId",
+      "changeId",
+      "runId",
+    ]);
+    return { command, request: { ...target(value), runId: runId(value) } };
+  }
+  if (command === "action correct") {
+    only(value, [
+      "repositoryRoot",
+      "flowkitHome",
+      "deliveryId",
+      "changeId",
+      "runId",
+      "role",
+      "ownerAuthority",
+      "expectedRunHashes",
+      "additions",
+      "candidateEvidenceRef",
+    ]);
+    const t = target(value);
+    let c;
+    try {
+      c = validateCorrectionShape({
+        formatVersion: 1,
+        deliveryId: t.deliveryId,
+        changeId: t.changeId,
+        runId: runId(value),
+        role: role(value.role),
+        ownerAuthority: value.ownerAuthority,
+        originalHashes: value.expectedRunHashes,
+        additions: value.additions,
+        candidateEvidenceRef: value.candidateEvidenceRef,
+        createdAt: new Date().toISOString(),
+      });
+    } catch (error) {
+      fail(error instanceof Error ? error.message : "invalid correction");
+    }
+    return {
+      command,
+      request: {
+        ...t,
+        runId: c.runId,
+        role: c.role,
+        ownerAuthority: c.ownerAuthority,
+        expectedRunHashes: c.originalHashes,
+        additions: c.additions,
+        candidateEvidenceRef: c.candidateEvidenceRef,
+      },
+    };
+  }
   if (command === "action start") {
     only(value, [
       "repositoryRoot",

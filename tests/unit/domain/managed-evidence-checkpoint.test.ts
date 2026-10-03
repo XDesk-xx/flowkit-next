@@ -227,7 +227,8 @@ for (const proofGroup of ["change-one", "001-change-one"])
         path.join(root, ".gitattributes"),
         "* text=auto eol=lf\n.flowkit/runs/** -text\n.flowkit/artifacts/** -text\n",
       );
-      await gitBytes(root, ["add", "--", proofPath]);
+      // Restored attributes must reapply conversion even when Git reuses unchanged file stat data.
+      await gitBytes(root, ["add", "--renormalize", "--", proofPath]);
       assert.deepEqual(
         await gitBytes(root, ["show", `:${proofPath}`]),
         original,

@@ -1,0 +1,564 @@
+TAP version 13
+# Subtest: Propose preparation does not require artifacts that this Action must create
+ok 1 - Propose preparation does not require artifacts that this Action must create
+  ---
+  duration_ms: 18.021
+  type: 'test'
+  ...
+# domain-file "action-archive-readiness.test.ts"
+# Subtest: archive machine preparation blocks candidate drift and unsuccessful isolated convergence
+ok 2 - archive machine preparation blocks candidate drift and unsuccessful isolated convergence
+  ---
+  duration_ms: 18544.3375
+  type: 'test'
+  ...
+# domain-file "action-archive-readiness.test.ts"
+# Subtest: corrected Author consumes approved Review without an optional map and preserves continuation guards
+ok 3 - corrected Author consumes approved Review without an optional map and preserves continuation guards
+  ---
+  duration_ms: 22230.4797
+  type: 'test'
+  ...
+# domain-file "action-correction-continuation.test.ts"
+# Subtest: corrected Author consumes changes-requested Review without an optional map and preserves continuation guards
+ok 4 - corrected Author consumes changes-requested Review without an optional map and preserves continuation guards
+  ---
+  duration_ms: 16123.1626
+  type: 'test'
+  ...
+# domain-file "action-correction-continuation.test.ts"
+# Subtest: corrected Author consumes rejected Review without an optional map and preserves continuation guards
+ok 5 - corrected Author consumes rejected Review without an optional map and preserves continuation guards
+  ---
+  duration_ms: 15955.7941
+  type: 'test'
+  ...
+# domain-file "action-correction-continuation.test.ts"
+# Subtest: canonical Guidance path is deterministic for the closed Standard Action set
+ok 6 - canonical Guidance path is deterministic for the closed Standard Action set
+  ---
+  duration_ms: 1.1426
+  type: 'test'
+  ...
+# domain-file "action-guidance-execution.test.ts"
+# Subtest: ActionGuidanceRef is a closed canonical path + lowercase SHA-256 envelope
+ok 7 - ActionGuidanceRef is a closed canonical path + lowercase SHA-256 envelope
+  ---
+  duration_ms: 0.482
+  type: 'test'
+  ...
+# domain-file "action-guidance-execution.test.ts"
+# Subtest: resolver binds exact canonical bytes and content drift changes identity
+ok 8 - resolver binds exact canonical bytes and content drift changes identity
+  ---
+  duration_ms: 20.6123
+  type: 'test'
+  ...
+# domain-file "action-guidance-execution.test.ts"
+# Subtest: missing canonical product Guidance fails closed and never falls back to .agents
+ok 9 - missing canonical product Guidance fails closed and never falls back to .agents
+  ---
+  duration_ms: 9.4324
+  type: 'test'
+  ...
+# domain-file "action-guidance-execution.test.ts"
+# Subtest: non-regular and final-entry symlink Guidance fail closed
+ok 10 - non-regular and final-entry symlink Guidance fail closed
+  ---
+  duration_ms: 15.2897
+  type: 'test'
+  ...
+# domain-file "action-guidance-execution.test.ts"
+# Subtest: parent-path redirection through symlink fails closed
+ok 11 - parent-path redirection through symlink fails closed
+  ---
+  duration_ms: 16.8932
+  type: 'test'
+  ...
+# domain-file "action-guidance-execution.test.ts"
+# Subtest: unreadable canonical Guidance fails closed when host permissions are enforceable
+ok 12 - unreadable canonical Guidance fails closed when host permissions are enforceable
+  ---
+  duration_ms: 230.4635
+  type: 'test'
+  ...
+# domain-file "action-guidance-execution.test.ts"
+# Subtest: accepted fixture root is cleaned when Windows SID setup fails
+ok 13 - accepted fixture root is cleaned when Windows SID setup fails
+  ---
+  duration_ms: 10.0334
+  type: 'test'
+  ...
+# domain-file "action-guidance-execution.test.ts"
+# Subtest: Run proof closure checks change-one without omission
+ok 14 - Run proof closure checks change-one without omission
+  ---
+  duration_ms: 3016.9539
+  type: 'test'
+  ...
+# domain-file "action-proof-closure.test.ts"
+# Subtest: Run proof closure checks 001-change-one without omission
+ok 15 - Run proof closure checks 001-change-one without omission
+  ---
+  duration_ms: 3002.2195
+  type: 'test'
+  ...
+# domain-file "action-proof-closure.test.ts"
+# Subtest: published ten HOW assets use the fixed single-Action command path
+ok 16 - published ten HOW assets use the fixed single-Action command path
+  ---
+  duration_ms: 25.2684
+  type: 'test'
+  ...
+# domain-file "agent-how-record.test.ts"
+# Subtest: synthetic HOW sequence preserves start, partial and create-once completion
+ok 17 - synthetic HOW sequence preserves start, partial and create-once completion
+  ---
+  duration_ms: 2159.4357
+  type: 'test'
+  ...
+# domain-file "agent-how-record.test.ts"
+# Subtest: synthetic HOW distinguishes prepared failure, business FAIL and failed partial save
+ok 18 - synthetic HOW distinguishes prepared failure, business FAIL and failed partial save
+  ---
+  duration_ms: 3652.8019
+  type: 'test'
+  ...
+# domain-file "agent-how-record.test.ts"
+# Subtest: all seven Author Standard Actions have canonical identity-complete product Guidance
+ok 19 - all seven Author Standard Actions have canonical identity-complete product Guidance
+  ---
+  duration_ms: 11.1043
+  type: 'test'
+  ...
+# domain-file "author-action-guidance.test.ts"
+# Subtest: product Action Guidance top-level identities stay bounded to Standard Actions
+ok 20 - product Action Guidance top-level identities stay bounded to Standard Actions
+  ---
+  duration_ms: 2.1154
+  type: 'test'
+  ...
+# domain-file "author-action-guidance.test.ts"
+# Subtest: canonical Author files carry Action-significant HOW inside the hashed file
+ok 21 - canonical Author files carry Action-significant HOW inside the hashed file
+  ---
+  duration_ms: 3.296
+  type: 'test'
+  ...
+# domain-file "author-action-guidance.test.ts"
+# Subtest: all seven real Author entries resolve and exact canonical byte drift changes GuidanceRef
+ok 22 - all seven real Author entries resolve and exact canonical byte drift changes GuidanceRef
+  ---
+  duration_ms: 16.917
+  type: 'test'
+  ...
+# domain-file "author-action-guidance.test.ts"
+# Subtest: project ordinal allocation uses durable assigned facts only and fails closed on ambiguity
+ok 23 - project ordinal allocation uses durable assigned facts only and fails closed on ambiguity
+  ---
+  duration_ms: 0.3496
+  type: 'test'
+  ...
+# domain-file "author-action-guidance.test.ts"
+# Subtest: project ordinal invariants survive legal lifecycle transitions
+ok 24 - project ordinal invariants survive legal lifecycle transitions
+  ---
+  duration_ms: 0.6914
+  type: 'test'
+  ...
+# domain-file "author-action-guidance.test.ts"
+# Subtest: projectOrdinal remains outside production domain identity
+ok 25 - projectOrdinal remains outside production domain identity
+  ---
+  duration_ms: 10.6401
+  type: 'test'
+  ...
+# domain-file "author-action-guidance.test.ts"
+# Subtest: artifact-convergence discipline remains free of hard size Gate, Run schema, or Core dependency
+ok 26 - artifact-convergence discipline remains free of hard size Gate, Run schema, or Core dependency
+  ---
+  duration_ms: 34.7638
+  type: 'test'
+  ...
+# domain-file "author-action-guidance.test.ts"
+# Subtest: archive preparation, continuation, and Explore HOW converge without new lifecycle concepts
+ok 27 - archive preparation, continuation, and Explore HOW converge without new lifecycle concepts
+  ---
+  duration_ms: 2.3469
+  type: 'test'
+  ...
+# domain-file "author-action-guidance.test.ts"
+# Subtest: checkpoint closed operation binds paths, message and nullable ordered shape
+ok 28 - checkpoint closed operation binds paths, message and nullable ordered shape
+  ---
+  duration_ms: 2.0893
+  type: 'test'
+  ...
+# domain-file "checkpoint-operation.test.ts"
+# Subtest: chain tip follows Policy links, not sequence or input ordering
+ok 29 - chain tip follows Policy links, not sequence or input ordering
+  ---
+  duration_ms: 2.8713
+  type: 'test'
+  ...
+# domain-file "current-run-chain.test.ts"
+# Subtest: reject disconnected higher root, fork, missing parent, cycle, duplicate sequence and Role
+ok 30 - reject disconnected higher root, fork, missing parent, cycle, duplicate sequence and Role
+  ---
+  duration_ms: 0.9936
+  type: 'test'
+  ...
+# domain-file "current-run-chain.test.ts"
+# Subtest: Owner correction uses existing Policy and rejects wrong authority
+ok 31 - Owner correction uses existing Policy and rejects wrong authority
+  ---
+  duration_ms: 0.9436
+  type: 'test'
+  ...
+# domain-file "current-run-chain.test.ts"
+# Subtest: complete prepared failure retries same Action with a new occurrence
+ok 32 - complete prepared failure retries same Action with a new occurrence
+  ---
+  duration_ms: 0.3162
+  type: 'test'
+  ...
+# domain-file "current-run-chain.test.ts"
+# Subtest: LP 089 shaped prepared Apply accepts one Owner-linked revise tip without changing the predecessor
+ok 33 - LP 089 shaped prepared Apply accepts one Owner-linked revise tip without changing the predecessor
+  ---
+  duration_ms: 3.5257
+  type: 'test'
+  ...
+# domain-file "current-run-chain.test.ts"
+# Subtest: canonical disk history reads selected group only and keeps partial visible
+ok 34 - canonical disk history reads selected group only and keeps partial visible
+  ---
+  duration_ms: 31.7698
+  type: 'test'
+  ...
+# domain-file "current-run-chain.test.ts"
+# Subtest: explicit bootstrap history is display-only; mixed and unmarked groups rejected
+ok 35 - explicit bootstrap history is display-only; mixed and unmarked groups rejected
+  ---
+  duration_ms: 20.5625
+  type: 'test'
+  ...
+# domain-file "current-run-chain.test.ts"
+# Subtest: actual terminal Author FAIL stays current rather than reusing prior PASS
+ok 36 - actual terminal Author FAIL stays current rather than reusing prior PASS
+  ---
+  duration_ms: 0.4293
+  type: 'test'
+  ...
+# domain-file "current-run-chain.test.ts"
+# Subtest: Final local ref fixed golden vector rejects old packages and every missing/extra field
+ok 37 - Final local ref fixed golden vector rejects old packages and every missing/extra field
+  ---
+  duration_ms: 4.4869
+  type: 'test'
+  ...
+# domain-file "delivery-final-projection.test.ts"
+# Subtest: Integration local projection golden vector, property ordering and old shape rejection
+ok 38 - Integration local projection golden vector, property ordering and old shape rejection
+  ---
+  duration_ms: 3.2103
+  type: 'test'
+  ...
+# domain-file "delivery-integration-projection.test.ts"
+# Subtest: trusted acceptance may identify an exact object with different history
+ok 39 - trusted acceptance may identify an exact object with different history
+  ---
+  duration_ms: 3252.5403
+  type: 'test'
+  ...
+# domain-file "delivery-repository-integration-accepted-object.test.ts"
+# Subtest: content-equivalent history replacement without trusted acceptance is rejected
+ok 40 - content-equivalent history replacement without trusted acceptance is rejected
+  ---
+  duration_ms: 3725.7347
+  type: 'test'
+  ...
+# domain-file "delivery-repository-integration-accepted-object.test.ts"
+# Subtest: Integration does not reread historical Run evidence outside its operation
+ok 41 - Integration does not reread historical Run evidence outside its operation
+  ---
+  duration_ms: 3542.6288
+  type: 'test'
+  ...
+# domain-file "delivery-repository-integration-accepted-object.test.ts"
+# Subtest: wrong or broad Owner authority fails closed
+ok 42 - wrong or broad Owner authority fails closed
+  ---
+  duration_ms: 1056.9215
+  type: 'test'
+  ...
+# domain-file "delivery-repository-integration-accepted-object.test.ts"
+# Subtest: zero, multiple, and candidate-changing final commits fail closed
+    # Subtest: zero commit
+    ok 1 - zero commit
+      ---
+      duration_ms: 2157.4679
+      type: 'test'
+      ...
+# domain-file "delivery-repository-integration-accepted-object.test.ts"
+    # Subtest: multiple commits
+    ok 2 - multiple commits
+      ---
+      duration_ms: 2670.9937
+      type: 'test'
+      ...
+# domain-file "delivery-repository-integration-accepted-object.test.ts"
+    # Subtest: two-parent commit
+    ok 3 - two-parent commit
+      ---
+      duration_ms: 2912.8764
+      type: 'test'
+      ...
+# domain-file "delivery-repository-integration-accepted-object.test.ts"
+    # Subtest: candidate-changing commit
+    ok 4 - candidate-changing commit
+      ---
+      duration_ms: 3184.8942
+      type: 'test'
+      ...
+# domain-file "delivery-repository-integration-accepted-object.test.ts"
+    1..4
+ok 43 - zero, multiple, and candidate-changing final commits fail closed
+  ---
+  duration_ms: 10927.5767
+  type: 'test'
+  ...
+# domain-file "delivery-repository-integration-accepted-object.test.ts"
+# Subtest: provider-reported accepted-main SHA is not admitted as truth
+ok 44 - provider-reported accepted-main SHA is not admitted as truth
+  ---
+  duration_ms: 3544.5064
+  type: 'test'
+  ...
+# domain-file "delivery-repository-integration-accepted-object.test.ts"
+# Subtest: unborn repository and unrelated dirty bytes complete Start without Git or receipt callbacks
+ok 45 - unborn repository and unrelated dirty bytes complete Start without Git or receipt callbacks
+  ---
+  duration_ms: 754.9267
+  type: 'test'
+  ...
+# domain-file "delivery-start-execution.test.ts"
+# Subtest: Start rejects obsolete inputs, wrong scope, missing or changed plan, conflicting and ambiguous target
+ok 46 - Start rejects obsolete inputs, wrong scope, missing or changed plan, conflicting and ambiguous target
+  ---
+  duration_ms: 163.7077
+  type: 'test'
+  ...
+# domain-file "delivery-start-execution.test.ts"
+# Subtest: Start rejects wrong project, redirected parent and concurrent target without overwriting
+ok 47 - Start rejects wrong project, redirected parent and concurrent target without overwriting
+  ---
+  duration_ms: 188.5658
+  type: 'test'
+  ...
+# domain-file "delivery-start-execution.test.ts"
+# Subtest: Start refuses a different valid manifest after its own write without repairing concurrent bytes
+ok 48 - Start refuses a different valid manifest after its own write without repairing concurrent bytes
+  ---
+  duration_ms: 154.2444
+  type: 'test'
+  ...
+# domain-file "delivery-start-execution.test.ts"
+# Subtest: Start rechecks plan before create, refuses validated-only and reports write-then-throw truth
+ok 49 - Start rechecks plan before create, refuses validated-only and reports write-then-throw truth
+  ---
+  duration_ms: 148.3003
+  type: 'test'
+  ...
+# domain-file "delivery-start-execution.test.ts"
+# Subtest: closed requests resolve current and reject legacy selectors and caller authority overrides
+ok 50 - closed requests resolve current and reject legacy selectors and caller authority overrides
+  ---
+  duration_ms: 2.1873
+  type: 'test'
+  ...
+# domain-file "foundation-cli-surface.test.ts"
+# Subtest: next empty target reaches Explore; unrelated high Run cannot be hidden by caller null
+ok 51 - next empty target reaches Explore; unrelated high Run cannot be hidden by caller null
+  ---
+  duration_ms: 423.3456
+  type: 'test'
+  ...
+# domain-file "foundation-cli-surface.test.ts"
+# Subtest: status and next read exact terminal without Run selectors or unrelated proof inspection
+ok 52 - status and next read exact terminal without Run selectors or unrelated proof inspection
+  ---
+  duration_ms: 672.8421
+  type: 'test'
+  ...
+# domain-file "foundation-cli-surface.test.ts"
+# Subtest: planned next stays formal blocked; doctor retains bounded tool diagnostics
+ok 53 - planned next stays formal blocked; doctor retains bounded tool diagnostics
+  ---
+  duration_ms: 307.2978
+  type: 'test'
+  ...
+# domain-file "foundation-cli-surface.test.ts"
+# Subtest: checkpoint authorization is exact, pure, and never inferred
+ok 54 - checkpoint authorization is exact, pure, and never inferred
+  ---
+  duration_ms: 0.3804
+  type: 'test'
+  ...
+# domain-file "foundation-cli-surface.test.ts"
+# Subtest: native Git NUL scope supports unborn, Chinese/spaces, delete and rename endpoints
+ok 55 - native Git NUL scope supports unborn, Chinese/spaces, delete and rename endpoints
+  ---
+  duration_ms: 3027.139
+  type: 'test'
+  ...
+# domain-file "git-checkpoint-scope.test.ts"
+# Subtest: ordinary host: source binding, scoped first commit, dirty reuse, independent bare push
+ok 56 - ordinary host: source binding, scoped first commit, dirty reuse, independent bare push
+  ---
+  duration_ms: 11723.0975
+  type: 'test'
+  ...
+# domain-file "git-workflow-host.test.ts"
+# Subtest: ordinary checkpoint commits a Windows-argv-sized exact path set through bounded stdin
+ok 57 - ordinary checkpoint commits a Windows-argv-sized exact path set through bounded stdin
+  ---
+  duration_ms: 142136.4946
+  type: 'test'
+  ...
+# domain-file "git-workflow-host.test.ts"
+# Subtest: system assets relocate together; target collisions and absent runtime cannot select Guidance
+ok 58 - system assets relocate together; target collisions and absent runtime cannot select Guidance
+  ---
+  duration_ms: 364.2951
+  type: 'test'
+  ...
+# domain-file "manager-assets-boundary.test.ts"
+# Subtest: exports a closed blocked-reason catalog
+ok 59 - exports a closed blocked-reason catalog
+  ---
+  duration_ms: 1.2002
+  type: 'test'
+  ...
+# domain-file "policy-and-next-boundary.test.ts"
+# Subtest: starts active empty Change at explore and reuses exact prepared Action
+ok 60 - starts active empty Change at explore and reuses exact prepared Action
+  ---
+  duration_ms: 0.9628
+  type: 'test'
+  ...
+# domain-file "policy-and-next-boundary.test.ts"
+# Subtest: implements all twelve normal terminal transitions
+ok 61 - implements all twelve normal terminal transitions
+  ---
+  duration_ms: 1.8072
+  type: 'test'
+  ...
+# domain-file "policy-and-next-boundary.test.ts"
+# Subtest: recognizes only completed exact Archive PASS as checkpoint evaluation
+ok 62 - recognizes only completed exact Archive PASS as checkpoint evaluation
+  ---
+  duration_ms: 0.2365
+  type: 'test'
+  ...
+# domain-file "policy-and-next-boundary.test.ts"
+# Subtest: binds terminal outcome to exact current Run occurrence before reading it
+ok 63 - binds terminal outcome to exact current Run occurrence before reading it
+  ---
+  duration_ms: 0.2528
+  type: 'test'
+  ...
+# domain-file "policy-and-next-boundary.test.ts"
+# Subtest: blocks unsuccessful outcomes and reported handoff drift deterministically
+ok 64 - blocks unsuccessful outcomes and reported handoff drift deterministically
+  ---
+  duration_ms: 0.1953
+  type: 'test'
+  ...
+# domain-file "policy-and-next-boundary.test.ts"
+# Subtest: rejects malformed or contradictory raw Policy input without normalization
+ok 65 - rejects malformed or contradictory raw Policy input without normalization
+  ---
+  duration_ms: 0.2088
+  type: 'test'
+  ...
+# domain-file "policy-and-next-boundary.test.ts"
+# Subtest: onboarding is an exact distribution asset reachable from README
+ok 66 - onboarding is an exact distribution asset reachable from README
+  ---
+  duration_ms: 3.7128
+  type: 'test'
+  ...
+# domain-file "project-onboarding.test.ts"
+# Subtest: short entry is extractable without carrying state or Action machinery
+ok 67 - short entry is extractable without carrying state or Action machinery
+  ---
+  duration_ms: 0.3214
+  type: 'test'
+  ...
+# domain-file "project-onboarding.test.ts"
+# Subtest: installation examples use package-owned bin and disposable query input
+ok 68 - installation examples use package-owned bin and disposable query input
+  ---
+  duration_ms: 0.2303
+  type: 'test'
+  ...
+# domain-file "project-onboarding.test.ts"
+# Subtest: exact Change group selection ignores overlapping canonical and bootstrap suffixes
+ok 69 - exact Change group selection ignores overlapping canonical and bootstrap suffixes
+  ---
+  duration_ms: 29.3598
+  type: 'test'
+  ...
+# domain-file "run-group-selection.test.ts"
+# Subtest: exact selected malformed, duplicate and mixed groups are still diagnosed
+ok 70 - exact selected malformed, duplicate and mixed groups are still diagnosed
+  ---
+  duration_ms: 26.427
+  type: 'test'
+  ...
+# domain-file "run-group-selection.test.ts"
+# Subtest: accepts exactly the closed Delivery structural state literals
+ok 71 - accepts exactly the closed Delivery structural state literals
+  ---
+  duration_ms: 1.2186
+  type: 'test'
+  ...
+# domain-file "state.test.ts"
+# Subtest: accepts exactly the closed Change structural state literals
+ok 72 - accepts exactly the closed Change structural state literals
+  ---
+  duration_ms: 0.2752
+  type: 'test'
+  ...
+# domain-file "state.test.ts"
+# Subtest: state module remains separate from Action lifecycle literals and transitions
+ok 73 - state module remains separate from Action lifecycle literals and transitions
+  ---
+  duration_ms: 0.5725
+  type: 'test'
+  ...
+# domain-file "state.test.ts"
+# Subtest: fixed checkpoint requires the matching Owner operation and commits only scoped paths
+ok 74 - fixed checkpoint requires the matching Owner operation and commits only scoped paths
+  ---
+  duration_ms: 9910.3985
+  type: 'test'
+  ...
+# domain-file "support-git-checkpoint.test.ts"
+# Subtest: Change push accepts its own Owner fact and ready checkpoint policy
+ok 75 - Change push accepts its own Owner fact and ready checkpoint policy
+  ---
+  duration_ms: 4216.4961
+  type: 'test'
+  ...
+# domain-file "support-git-checkpoint.test.ts"
+1..75
+# tests 79
+# suites 0
+# pass 79
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 169862.3178

@@ -1,4 +1,3 @@
-import { createHash } from "node:crypto";
 import { execFile } from "node:child_process";
 import {
   cp,
@@ -6,10 +5,8 @@ import {
   mkdtemp,
   readFile,
   readdir,
-  realpath,
   rename,
   rm,
-  symlink,
 } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
@@ -24,7 +21,6 @@ import type { ManagerInstallation } from "../internal/manager-installation.js";
 import { openSpecArchiveDate } from "../internal/openspec-archive-date.js";
 import {
   fullTestPath,
-  fullTestRelative,
   resolveFullTestProgram,
 } from "../internal/full-test-input.js";
 import { resolveActionContext } from "./action-context.js";
@@ -37,6 +33,32 @@ import { checkDeclaredProofs } from "./action-proof.js";
 import type { ActionTarget, StartRequest } from "./action-request.js";
 import { blocked } from "./action-error.js";
 import { readCoordinationManifest } from "./trusted-change-coordination.js";
+import {
+  assertReviewBinding,
+  checkReviewCandidate,
+} from "./review-candidate.js";
+import { effectiveRecord, runMaterialLocation } from "./run-effective-facts.js";
+import { uniqueRunGroup } from "../internal/proof-path-owner.js";
+import {
+  archiveDiagnosticAttempt,
+  recordArchiveDependencySnapshot,
+  runArchiveProcess,
+} from "../internal/archive-process.js";
+import {
+  archiveChildEnvironment,
+  assertArchiveSourceFiles,
+  copyArchiveDependencies,
+  dependencyInputHashes,
+} from "../internal/archive-dependency-snapshot.js";
+import {
+  affectedSpecHashes,
+  directoryHashes,
+} from "../internal/archive-file-identities.js";
+import { resolveActionGuidanceRef } from "../domain/action-guidance-execution.js";
+import {
+  configuredArchiveChecks,
+  optionalTargetJson,
+} from "./archive-check-selection.js";
 
 const exec = promisify(execFile);
 async function strictValidate(
@@ -138,6 +160,28 @@ export async function packageReadiness(
   );
   const action = request.actionId;
   if (
+    request.ownerAuthority !== undefined &&
+    predecessor?.result.reviewerVerdict === "rejected"
+  ) {
+    const review = await effectiveRecord(request, predecessor);
+    if (review.context.previousRunId === null)
+      blocked(
+        "review-candidate-unbound",
+        "Rejected Review has no direct Author",
+      );
+    const author = await effectiveRecord(
+      request,
+      (await runMaterialLocation(request, review.context.previousRunId!))
+        .record,
+    );
+    assertReviewBinding(author, review.result.facts);
+  }
+  if (
+    predecessor !== null &&
+    (action.startsWith("review-") || action === "archive")
+  )
+    predecessor = await effectiveRecord(request, predecessor);
+  if (
     action === "explore" ||
     action === "revise-explore" ||
     action === "archive"
@@ -209,6 +253,9 @@ export async function packageReadiness(
     );
   }
   if (action === "review-apply" && predecessor !== null) {
+    await checkReviewCandidate(request, predecessor, {
+      reviewedRunId: predecessor.context.runId,
+    });
     await checkArtifactHashes(
       request.repositoryRoot,
       predecessor.result.facts.artifactHashes,
@@ -234,139 +281,13 @@ export async function packageReadiness(
   return "ready";
 }
 
-type ArchiveCheck =
-  | { readonly kind: "script"; readonly id: string; readonly runner: string }
-  | {
-      readonly kind: "configured-command";
-      readonly id: string;
-      readonly program: string;
-      readonly args: readonly string[];
-      readonly cwd: string;
-    };
-
-async function optionalTargetJson(
-  root: string,
-  relative: string,
-): Promise<unknown> {
-  const file = path.join(root, ...relative.split("/"));
-  const stat = await lstat(file).catch((error) => {
-    if ((error as NodeJS.ErrnoException).code === "ENOENT") return null;
-    throw error;
-  });
-  if (stat === null) return null;
-  if (!stat.isFile() || stat.isSymbolicLink())
-    blocked(
-      "archive-check-unconfigured",
-      `Invalid target check config: ${relative}`,
-    );
-  try {
-    return JSON.parse(
-      await readFile(await fullTestPath(root, relative), "utf8"),
-    );
-  } catch {
-    blocked(
-      "archive-check-unconfigured",
-      `Unreadable target check config: ${relative}`,
-    );
-  }
-}
-
-async function configuredArchiveChecks(
-  request: StartRequest,
-): Promise<ArchiveCheck[]> {
-  const packageValue = await optionalTargetJson(
-    request.repositoryRoot,
-    "package.json",
-  );
-  const scripts =
-    typeof packageValue === "object" &&
-    packageValue !== null &&
-    "scripts" in packageValue &&
-    typeof packageValue.scripts === "object" &&
-    packageValue.scripts !== null &&
-    !Array.isArray(packageValue.scripts)
-      ? (packageValue.scripts as Record<string, unknown>)
-      : {};
-  const managerValue =
-    typeof packageValue === "object" &&
-    packageValue !== null &&
-    "packageManager" in packageValue &&
-    typeof packageValue.packageManager === "string"
-      ? packageValue.packageManager
-      : undefined;
-  const declaredManager =
-    managerValue === undefined
-      ? undefined
-      : /^([a-z][a-z0-9-]*)@[^\s]+$/.exec(managerValue)?.[1];
-  if (managerValue !== undefined && declaredManager === undefined)
-    blocked("archive-check-unconfigured", "Invalid target packageManager");
-  const runner = declaredManager ?? "npm";
-  const fullTestValue = await optionalTargetJson(
-    request.repositoryRoot,
-    "config/verification/full-test.json",
-  );
-  const configured =
-    typeof fullTestValue === "object" &&
-    fullTestValue !== null &&
-    "checks" in fullTestValue &&
-    Array.isArray(fullTestValue.checks)
-      ? (fullTestValue.checks as unknown[])
-      : [];
-  const selected: ArchiveCheck[] = [];
-  for (const declared of request.applicableChecks ?? []) {
-    const script = scripts[declared.id];
-    const matches = configured.filter(
-      (entry) =>
-        typeof entry === "object" &&
-        entry !== null &&
-        "checkId" in entry &&
-        entry.checkId === declared.id,
-    );
-    if (matches.length > 1 || (typeof script === "string" && matches.length))
-      blocked(
-        "archive-check-unconfigured",
-        `Ambiguous archive check: ${declared.id}`,
-      );
-    if (typeof script === "string" && script.trim()) {
-      selected.push({ kind: "script", id: declared.id, runner });
-      continue;
-    }
-    const match = matches[0];
-    if (
-      typeof match !== "object" ||
-      match === null ||
-      !("program" in match) ||
-      typeof match.program !== "string" ||
-      !match.program ||
-      [...match.program].some((char) => char.charCodeAt(0) < 32) ||
-      !("args" in match) ||
-      !Array.isArray(match.args) ||
-      !match.args.every(
-        (arg) => typeof arg === "string" && !arg.includes("\0"),
-      ) ||
-      !("cwd" in match) ||
-      !fullTestRelative(match.cwd, true)
-    )
-      blocked(
-        "archive-check-unconfigured",
-        `Unconfigured archive check: ${declared.id}`,
-      );
-    selected.push({
-      kind: "configured-command",
-      id: declared.id,
-      program: match.program,
-      args: match.args as string[],
-      cwd: match.cwd,
-    });
-  }
-  return selected;
-}
-
+export { configuredArchiveChecks } from "./archive-check-selection.js";
 export async function archiveReadiness(
   request: StartRequest,
   review: DurableRunRecord,
   installation: ManagerInstallation,
-): Promise<void> {
+  diagnostic?: { trigger: "start" | "archive"; runId: string | null },
+) {
   const priorId = review.context.previousRunId;
   const priorOccurrence = parseRunOccurrenceId(priorId);
   if (priorOccurrence === null || !request.applicableChecks?.length)
@@ -388,63 +309,18 @@ export async function archiveReadiness(
   const changeStartSequence = Number(
     names[0].slice(0, -(request.changeId.length + 1)),
   );
-  const author = await readDurableRun({
-    repositoryRoot: request.repositoryRoot,
-    deliveryId: request.deliveryId,
-    changeId: request.changeId,
-    changeStartSequence,
-    occurrence: priorOccurrence,
-  });
-  if (
-    author.context.role !== "author" ||
-    author.context.lifecycleState !== "terminal" ||
-    author.result.authorConclusion !== "PASS" ||
-    review.result.facts.reviewedRunId !== author.context.runId
-  )
-    blocked(
-      "archive-candidate-unbound",
-      "Review is not bound to exact Author candidate",
-    );
+  const author = await effectiveRecord(
+    request,
+    await readDurableRun({
+      repositoryRoot: request.repositoryRoot,
+      deliveryId: request.deliveryId,
+      changeId: request.changeId,
+      changeStartSequence,
+      occurrence: priorOccurrence,
+    }),
+  );
+  await checkReviewCandidate(request, author, review.result.facts);
   const hashes = author.result.facts.artifactHashes;
-  if (
-    typeof hashes !== "object" ||
-    hashes === null ||
-    Array.isArray(hashes) ||
-    Object.keys(hashes).length === 0
-  )
-    blocked(
-      "archive-candidate-unbound",
-      "Author candidate has no exact artifact hashes",
-    );
-  for (const [relative, hash] of Object.entries(hashes)) {
-    if (
-      !relative ||
-      relative.includes("\\") ||
-      relative
-        .split("/")
-        .some((part) => !part || part === "." || part === "..") ||
-      typeof hash !== "string" ||
-      !/^[0-9a-f]{64}$/.test(hash)
-    )
-      blocked("archive-candidate-invalid", "Invalid candidate file identity");
-    let file = await realpath(request.repositoryRoot);
-    for (const segment of relative.split("/")) {
-      file = path.join(file, segment);
-      if ((await lstat(file)).isSymbolicLink())
-        blocked("archive-candidate-invalid", "Candidate path is linked");
-    }
-    if (!(await lstat(file)).isFile())
-      blocked("archive-candidate-invalid", "Candidate file missing");
-    if (
-      createHash("sha256")
-        .update(await readFile(file))
-        .digest("hex") !== hash
-    )
-      blocked(
-        "archive-candidate-drift",
-        `Reviewed candidate changed: ${relative}`,
-      );
-  }
   const manifestText = await readFile(
     path.join(
       request.repositoryRoot,
@@ -486,6 +362,32 @@ export async function archiveReadiness(
     if ((error as NodeJS.ErrnoException).code !== "ENOENT") throw error;
   }
   const checks = await configuredArchiveChecks(request);
+  const sourcePath = `openspec/changes/${request.changeId}`;
+  const sourceFiles = await directoryHashes(request.repositoryRoot, sourcePath);
+  if (sourceFiles === null)
+    blocked("archive-source-missing", "Archive source missing");
+  const specsBefore = await affectedSpecHashes(
+    request.repositoryRoot,
+    sourceFiles,
+  );
+  const inputsBefore = await dependencyInputHashes(request.repositoryRoot);
+  const runGroup = uniqueRunGroup(await readdir(group), request.changeId);
+  const attempt = await archiveDiagnosticAttempt(
+    request.repositoryRoot,
+    request.deliveryId,
+    runGroup,
+    {
+      repositoryRoot: request.repositoryRoot,
+      deliveryId: request.deliveryId,
+      changeId: request.changeId,
+      trigger: diagnostic?.trigger ?? "start",
+      runId: diagnostic?.runId ?? null,
+      candidate: hashes,
+      package: { name: installation.name, version: installation.version },
+      reviewRunId: review.context.runId,
+      guidanceRef: await resolveActionGuidanceRef(installation, "archive"),
+    },
+  );
   const scratch = await mkdtemp(path.join(tmpdir(), "flowkit-archive-"));
   if (
     path.dirname(scratch) !== tmpdir() ||
@@ -493,6 +395,59 @@ export async function archiveReadiness(
   )
     blocked("archive-scratch-invalid", "Unsafe archive scratch directory");
   try {
+    const packageValue = (await optionalTargetJson(
+      request.repositoryRoot,
+      "package.json",
+    )) as { packageManager?: string } | null;
+    if (packageValue?.packageManager?.startsWith("pnpm@11.")) {
+      const version = await runArchiveProcess(
+        request.repositoryRoot,
+        attempt,
+        "source-pnpm-version",
+        "pnpm",
+        ["--version"],
+        request.repositoryRoot,
+        {
+          timeout: 120_000,
+          shell: process.platform === "win32",
+          env: archiveChildEnvironment(false),
+        },
+      );
+      const actual = (
+        await readFile(
+          path.join(request.repositoryRoot, version.command.stdout),
+          "utf8",
+        )
+      ).trim();
+      if (
+        actual !==
+        packageValue.packageManager.slice("pnpm@".length).split("+")[0]
+      )
+        blocked(
+          "archive-package-manager-mismatch",
+          `Expected ${packageValue.packageManager}, actual pnpm@${actual}; ${version.path}`,
+        );
+      await runArchiveProcess(
+        request.repositoryRoot,
+        attempt,
+        "source-dependencies",
+        "pnpm",
+        [
+          "--config.verify-deps-before-run=error",
+          "exec",
+          "--",
+          process.execPath,
+          "--version",
+        ],
+        request.repositoryRoot,
+        {
+          timeout: 120_000,
+          shell: process.platform === "win32",
+          env: archiveChildEnvironment(false),
+        },
+      );
+    }
+    const workspaceModules: string[] = [];
     for (const name of await readdir(request.repositoryRoot)) {
       if (
         [
@@ -505,24 +460,46 @@ export async function archiveReadiness(
         ].includes(name)
       )
         continue;
+      workspaceModules.push(
+        ...(
+          await assertArchiveSourceFiles(
+            path.join(request.repositoryRoot, name),
+          )
+        ).map((directory) => path.relative(request.repositoryRoot, directory)),
+      );
       await cp(
         path.join(request.repositoryRoot, name),
         path.join(scratch, name),
-        { recursive: true, force: false },
+        {
+          recursive: true,
+          force: false,
+          filter: (file) => path.basename(file) !== "node_modules",
+        },
       );
     }
-    const modules = await lstat(
-      path.join(request.repositoryRoot, "node_modules"),
-    ).catch((error) => {
-      if ((error as NodeJS.ErrnoException).code === "ENOENT") return null;
-      throw error;
-    });
-    if (modules?.isDirectory())
-      await symlink(
-        path.join(request.repositoryRoot, "node_modules"),
-        path.join(scratch, "node_modules"),
-        "junction",
+    const mappings = await copyArchiveDependencies(
+      request.repositoryRoot,
+      scratch,
+      workspaceModules,
+    );
+    if (
+      !isDeepStrictEqual(
+        inputsBefore,
+        await dependencyInputHashes(request.repositoryRoot),
+      )
+    )
+      blocked(
+        "archive-dependency-drift",
+        "Source dependency inputs changed during snapshot",
       );
+    await recordArchiveDependencySnapshot(request.repositoryRoot, attempt, {
+      sourceInputsBefore: inputsBefore,
+      sourceInputsAfterCopy: await dependencyInputHashes(
+        request.repositoryRoot,
+      ),
+      scratchInputs: await dependencyInputHashes(scratch),
+      mappings,
+    });
     if (
       !isDeepStrictEqual(
         await configuredArchiveChecks({ ...request, repositoryRoot: scratch }),
@@ -539,15 +516,19 @@ export async function archiveReadiness(
       toolId: "openspec",
     });
     try {
-      await exec(
+      await runArchiveProcess(
+        request.repositoryRoot,
+        attempt,
+        "openspec-convergence",
         process.execPath,
         [tool.entrypoint, "archive", request.changeId, "--yes", "--json"],
-        { cwd: scratch, timeout: 120_000 },
+        scratch,
+        { timeout: 120_000, env: archiveChildEnvironment(true) },
       );
-    } catch {
+    } catch (error) {
       blocked(
         "archive-convergence-failed",
-        "Isolated OpenSpec canonical convergence failed",
+        `Isolated OpenSpec canonical convergence failed: ${String(error)}`,
       );
     }
     const defaultTarget = path.join(
@@ -582,19 +563,76 @@ export async function archiveReadiness(
             : check.runner;
         const args =
           check.kind === "configured-command" ? check.args : ["run", check.id];
-        await exec(program, args, {
+        await runArchiveProcess(
+          request.repositoryRoot,
+          attempt,
+          `check-${check.id}`,
+          program,
+          args,
           cwd,
-          shell: check.kind === "script" && process.platform === "win32",
-          timeout: 300_000,
-          maxBuffer: 16 * 1024 * 1024,
-        });
-      } catch {
+          {
+            shell: check.kind === "script" && process.platform === "win32",
+            timeout: 300_000,
+            env: archiveChildEnvironment(true),
+          },
+        );
+      } catch (error) {
         blocked(
           "archive-check-failed",
-          `Post-convergence check failed: ${check.id}`,
+          `Post-convergence check failed: ${check.id}: ${String(error)}`,
         );
       }
     }
+    if (
+      !isDeepStrictEqual(
+        inputsBefore,
+        await dependencyInputHashes(request.repositoryRoot),
+      )
+    )
+      blocked(
+        "archive-dependency-drift",
+        "Source dependency inputs changed during checks",
+      );
+    await checkReviewCandidate(request, author, review.result.facts);
+    await checkDeclaredProofs(
+      request,
+      review.context.runId,
+      review.result.facts.proofRefs ?? [],
+    );
+    if (
+      !isDeepStrictEqual(
+        sourceFiles,
+        await directoryHashes(request.repositoryRoot, sourcePath),
+      ) ||
+      !isDeepStrictEqual(
+        specsBefore,
+        await affectedSpecHashes(request.repositoryRoot, sourceFiles),
+      )
+    )
+      blocked(
+        "archive-source-drift",
+        "Source Change/spec input changed during checks",
+      );
+    if (
+      !isDeepStrictEqual(
+        sourceFiles,
+        await directoryHashes(
+          scratch,
+          `openspec/changes/archive/${targetName}`,
+        ),
+      )
+    )
+      blocked(
+        "archive-convergence-drift",
+        "Archive changed source content or file set",
+      );
+    return {
+      sourceFiles,
+      specsBefore,
+      specsAfter: await affectedSpecHashes(scratch, sourceFiles),
+      diagnosticRef: attempt,
+      dependencyMappings: mappings,
+    };
   } finally {
     await rm(scratch, { recursive: true, force: true });
   }

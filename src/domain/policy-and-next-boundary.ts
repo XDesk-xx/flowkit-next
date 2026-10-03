@@ -30,6 +30,7 @@ export const POLICY_BLOCKED_REASONS = [
   "terminal-result-missing-or-mismatched",
   "unrecognized-or-unsuccessful-author-outcome",
   "unrecognized-reviewer-verdict",
+  "review-rejected",
   "reported-boundary-conflict",
   "owner-authority-required",
   "owner-authority-rejected",
@@ -495,6 +496,32 @@ export function evaluatePolicyAndNextBoundary(input: unknown): PolicyDecision {
   const result = facts.terminalResult;
   if (result === null) return blocked("terminal-result-missing-or-mismatched");
   const normal = normalBoundaryForTerminal(current, result);
+  if (
+    result.reviewerVerdict === "rejected" &&
+    ["review-explore", "review-propose", "review-apply"].includes(
+      current.identity.actionId,
+    )
+  ) {
+    if (
+      facts.terminalRunContext?.role !== "reviewer" ||
+      facts.terminalRunContext.lifecycleState !== "terminal" ||
+      result.authorConclusion !== null ||
+      result.verificationVerdict !== null
+    )
+      return blocked("invalid-policy-input");
+    if (result.nextBoundary !== null)
+      return blocked("reported-boundary-conflict");
+    if (facts.ownerCorrection === null) return blocked("review-rejected");
+    const requested = facts.ownerCorrection.requestedAction;
+    if (requested !== current.identity.actionId.replace("review-", "revise-"))
+      return blocked("unsupported-owner-correction");
+    const failure = correctionAuthorityDecision(
+      facts,
+      requested,
+      facts.ownerCorrection.authority,
+    );
+    return failure ?? readyAction(facts, requested);
+  }
   if (normal.kind === "blocked") return normal;
   if (hasReportedConflict(result, normal)) {
     return blocked("reported-boundary-conflict");

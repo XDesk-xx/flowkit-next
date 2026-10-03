@@ -68,6 +68,8 @@ async function main(): Promise<number> {
           "doctor",
           "action start",
           "action finish",
+          "action inspect",
+          "action correct",
           "proof inspect",
           ...SUPPORT_COMMANDS,
         ],
@@ -77,11 +79,33 @@ async function main(): Promise<number> {
           "--delivery-id",
           "--change-id",
         ],
+        inspectFields: [
+          "repositoryRoot",
+          "flowkitHome",
+          "deliveryId",
+          "changeId",
+          "runId",
+        ],
+        correctFields: [
+          "repositoryRoot",
+          "flowkitHome",
+          "deliveryId",
+          "changeId",
+          "runId",
+          "role",
+          "ownerAuthority",
+          "expectedRunHashes",
+          "additions",
+          "candidateEvidenceRef",
+        ],
+        stoppedReview:
+          "rejected/null -> blocked(review-rejected); exact Owner revise-action only",
       });
       return 0;
     }
     if (
-      (argv[0] === "action" && (argv[1] === "start" || argv[1] === "finish")) ||
+      (argv[0] === "action" &&
+        ["start", "finish", "inspect", "correct"].includes(argv[1])) ||
       (argv[0] === "proof" && argv[1] === "inspect")
     ) {
       const { inputPath, visible } = parseActionArguments(argv.slice(2));
@@ -90,7 +114,11 @@ async function main(): Promise<number> {
           ? await readStdin()
           : await readFile(inputPath, "utf8");
       const command = `${argv[0]} ${argv[1]}` as
-        "action start" | "action finish" | "proof inspect";
+        | "action start"
+        | "action finish"
+        | "action inspect"
+        | "action correct"
+        | "proof inspect";
       const parsed = parseActionCommandRequest(
         command,
         parseFoundationCliRequestJson(inputText),
@@ -175,6 +203,7 @@ async function main(): Promise<number> {
                   kind: error.kind,
                   message: error.message,
                   candidates: error.candidates,
+                  inspect: error.inspectLocator,
                 },
               }
             : error instanceof FoundationCliInputError &&

@@ -53,8 +53,8 @@ function record(
 
 test("chain tip follows Policy links, not sequence or input ordering", () => {
   const first = record(9, "explore");
-  const review = record(4, "review-explore", first);
-  const proposal = record(2, "propose", review);
+  const review = record(10, "review-explore", first);
+  const proposal = record(11, "propose", review);
   assert.equal(resolveRunChain([proposal, first, review]), proposal);
   assert.equal(resolveRunChain([]), null);
 });
@@ -225,8 +225,8 @@ test("canonical disk history reads selected group only and keeps partial visible
   };
   try {
     assert.equal((await readSelectedRunChain(input)).current, null);
-    const first = record(1, "explore");
-    const review = record(2, "review-explore", first);
+    const first = record(7, "explore");
+    const review = record(8, "review-explore", first);
     for (const item of [first, review])
       await writeDurableRun(
         {
