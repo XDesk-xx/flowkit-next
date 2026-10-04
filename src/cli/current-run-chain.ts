@@ -12,6 +12,111 @@ import {
 import type { ChangeId, DeliveryId } from "../domain/identity.js";
 import { readCoordinationManifest } from "./trusted-change-coordination.js";
 import { readDescriptor } from "./action-descriptor.js";
+import { isSafeArchiveFailure } from "../domain/archive-outcome.js";
+
+export function recordChangeState(
+  record: DurableRunRecord,
+): "active" | "completed" {
+  return record.context.actionIdentity.actionId === "archive" &&
+    record.result.authorConclusion === "PASS"
+    ? "completed"
+    : "active";
+}
+
+/** Resolve only the selected immutable parent chain, never a directory-time guess. */
+export function archiveReviewSource(
+  records: readonly DurableRunRecord[],
+  predecessor: DurableRunRecord,
+) {
+  const byId = new Map(records.map((record) => [record.context.runId, record]));
+  if (byId.size !== records.length)
+    invalid("Duplicate Archive source identity");
+  const visited = new Set<string>();
+  let review = predecessor;
+  while (review.context.actionIdentity.actionId === "archive") {
+    if (
+      visited.has(review.context.runId) ||
+      review.context.lifecycleState !== "terminal" ||
+      review.context.role !== "author" ||
+      !isSafeArchiveFailure(review.result)
+    )
+      invalid("Unsafe or ambiguous Archive source chain");
+    visited.add(review.context.runId);
+    const parentId = review.context.previousRunId;
+    const parent = parentId === null ? undefined : byId.get(parentId);
+    if (
+      !parent ||
+      review.context.occurrence.sequence !==
+        parent.context.occurrence.sequence + 1 ||
+      parent.context.actionIdentity.deliveryId !==
+        review.context.actionIdentity.deliveryId ||
+      parent.context.actionIdentity.changeId !==
+        review.context.actionIdentity.changeId ||
+      records.filter((record) => record.context.previousRunId === parentId)
+        .length !== 1
+    )
+      invalid("Missing parent, fork, or wrong Archive source target");
+    review = parent;
+  }
+  if (
+    review.context.actionIdentity.actionId !== "review-apply" ||
+    review.context.lifecycleState !== "terminal" ||
+    review.context.role !== "reviewer" ||
+    review.result.reviewerVerdict !== "approved"
+  )
+    invalid("Approved Archive Review source missing");
+  const author =
+    review.context.previousRunId === null
+      ? undefined
+      : byId.get(review.context.previousRunId);
+  if (
+    !author ||
+    author.context.lifecycleState !== "terminal" ||
+    author.context.role !== "author" ||
+    !["apply", "revise-apply"].includes(
+      author.context.actionIdentity.actionId,
+    ) ||
+    author.result.authorConclusion !== "PASS" ||
+    (review.result.facts.reviewedRunId !== undefined &&
+      review.result.facts.reviewedRunId !== author.context.runId) ||
+    author.context.actionIdentity.deliveryId !==
+      review.context.actionIdentity.deliveryId ||
+    author.context.actionIdentity.changeId !==
+      review.context.actionIdentity.changeId ||
+    review.context.occurrence.sequence !==
+      author.context.occurrence.sequence + 1
+  )
+    invalid("Archive direct Author source missing or mismatched");
+  return { review, author };
+}
+
+/** A completion consumer must validate the final PASS edge as well as failed ancestors. */
+export function archiveCompletionSource(
+  records: readonly DurableRunRecord[],
+  archive: DurableRunRecord,
+) {
+  const parent = records.find(
+    (record) => record.context.runId === archive.context.previousRunId,
+  );
+  if (
+    archive.context.actionIdentity.actionId !== "archive" ||
+    archive.context.lifecycleState !== "terminal" ||
+    archive.context.role !== "author" ||
+    archive.result.authorConclusion !== "PASS" ||
+    !parent ||
+    archive.context.occurrence.sequence !==
+      parent.context.occurrence.sequence + 1 ||
+    archive.context.actionIdentity.deliveryId !==
+      parent.context.actionIdentity.deliveryId ||
+    archive.context.actionIdentity.changeId !==
+      parent.context.actionIdentity.changeId ||
+    records.filter(
+      (record) => record.context.previousRunId === parent.context.runId,
+    ).length !== 1
+  )
+    invalid("Invalid or forked current Archive completion edge");
+  return archiveReviewSource(records, parent);
+}
 
 export class ActionContextError extends Error {
   constructor(
@@ -43,10 +148,17 @@ export function policyForRecord(
   input: {
     deliveryId: DeliveryId;
     changeId: ChangeId;
-    changeState: string;
+    changeState: string | null;
     ownerCorrection?: unknown;
   },
 ) {
+  if (
+    record?.context.lifecycleState === "terminal" &&
+    record.context.actionIdentity.actionId === "archive" &&
+    (record.result.facts.archiveOutcome as { kind?: string } | undefined)
+      ?.kind === "partial"
+  )
+    return { kind: "blocked", reason: "archive-recovery-required" } as const;
   return evaluatePolicyAndNextBoundary({
     deliveryId: input.deliveryId,
     changeId: input.changeId,
@@ -128,10 +240,7 @@ export function resolveRunChain(
     } else {
       const own = policyForRecord(record, {
         ...context.actionIdentity,
-        changeState:
-          context.actionIdentity.actionId === "archive"
-            ? "completed"
-            : "active",
+        changeState: recordChangeState(record),
       });
       if (
         own.kind === "blocked" &&
@@ -164,10 +273,7 @@ export function resolveRunChain(
       invalid(`Cross-target parent: ${context.runId}`);
     const input = {
       ...context.actionIdentity,
-      changeState:
-        parent.context.actionIdentity.actionId === "archive"
-          ? "completed"
-          : "active",
+      changeState: recordChangeState(parent),
     };
     let boundary = policyForRecord(parent, input);
     if (

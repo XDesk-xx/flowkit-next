@@ -3,7 +3,6 @@ import {
   type DeliveryCheckpointOperation,
 } from "../domain/delivery-repository-integration-operation.js";
 import { requireNewManagedEvidenceBytes } from "./managed-evidence-checkpoint.js";
-import { assertCandidateGitBytes } from "./candidate-git-bytes.js";
 import { checkpointCandidateTree } from "./checkpoint-candidate-tree.js";
 import {
   reviewedCheckpointCandidate,
@@ -104,9 +103,6 @@ export async function executeScopedCheckpoint(
     await requireIndexScope(root, operation.paths);
     const worktree = await scopeWorktreeFingerprint(root, operation.paths);
     const projected = await checkpointCandidateTree(root, operation.paths);
-    for (const relative of operation.paths)
-      if (projected.entries.has(relative))
-        await assertCandidateGitBytes(root, relative);
     const expected = await reviewedCheckpointCandidate(
       root,
       projected,
@@ -141,6 +137,7 @@ export async function executeScopedCheckpoint(
         throw Error("相关目标或 index 漂移");
     };
     await validate();
+    await projected.validateRules();
     phase = "stage";
     effect = "unknown";
     preStageIndex = index;
@@ -148,12 +145,15 @@ export async function executeScopedCheckpoint(
     effect = "confirmed";
     index = await readIndexFingerprint(root);
     await validate();
+    await projected.validateRules(true);
     await verifyExpectedCandidateTree(
       await checkpointCandidateTree(root),
       expected,
+      projected.entries,
     );
     // Re-read immediately before commit, including the full pending index.
     await validate();
+    await projected.validateRules(true);
     await requireNewManagedEvidenceBytes(root);
     phase = "commit";
     effect = "unknown";
@@ -170,6 +170,7 @@ export async function executeScopedCheckpoint(
     await verifyExpectedCandidateTree(
       await checkpointCandidateTree(root, [], checkpoint),
       expected,
+      projected.entries,
     );
     return gitHostOutcome(
       "completed",

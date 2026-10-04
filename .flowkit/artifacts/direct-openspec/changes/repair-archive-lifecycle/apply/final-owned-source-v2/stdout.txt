@@ -1,0 +1,37 @@
+✓ Lockfile passes supply-chain policies (verified 4d ago)
+Lockfile is up to date, resolution step is skipped
+Packages: -1
+-
+
+Done in 1.9s using pnpm v11.22.0
+
+   ╭──────────────────────────────────────────────╮
+   │                                              │
+   │     Update available! 11.22.0 → 12.9.1.      │
+   │     Changelog: https://pnpm.io/v/12.9.1      │
+   │   To update, run: corepack use pnpm@12.9.1   │
+   │                                              │
+   ╰──────────────────────────────────────────────╯
+
+TAP version 13
+# Subtest: current owned executable sources are checked TS or exact legacy bytes
+ok 1 - current owned executable sources are checked TS or exact legacy bytes
+  ---
+  duration_ms: 483.1479
+  type: 'test'
+  ...
+# Subtest: untracked helpers in old blind spots and changed legacy JS are rejected
+ok 2 - untracked helpers in old blind spots and changed legacy JS are rejected
+  ---
+  duration_ms: 126.3796
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1132.1062

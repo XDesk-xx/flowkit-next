@@ -12,6 +12,8 @@ CLI 查询入口为 `status / next / doctor --input <request.json>`；单次 Act
 
 候选 CLI 还提供固定支持命令：`project init`、`delivery start`、`change activate`、`change archive`、`memo list/get/create/promote/dismiss`、`delivery full-test`、`delivery full-test current`、`delivery final`、`git checkpoint/push/integrate`。命令以 `--input <request.json|->` 接收封闭数据，并用 `--repository-root`、适用的 `--delivery-id`/`--change-id` 对照可见目标；每次调用只执行一项操作。Agent 负责从真实 Owner 输入形成精确 `OwnerAuthorityFact`/`sourceRef`，CLI 校验其结构和当前项目事实，但不连接或认证聊天。`git integrate` 在没有外部仓库接受事实时返回待人工接受；外部接受后可用 exact checkpoint 的 `reuse-existing` 请求，凭目标 main ref 包含该 commit 的真实 Git 事实只读确认。见[接入说明](docs/onboarding.md)。
 
+Archive version 2 的 start 只做 Flowkit admission，每个 started Run 至多执行一次真实受控 OpenSpec；completed、可重试安全 failed 和需要显式恢复的 partial 分别如实 terminal。新 Author 成功候选由 manager 保存 index-aware candidateGit，raw 证据保持原字节，checkpoint 独立验证真实 Git blob。属性-only/stat-cache 歧义在 staging 前 unsupported，不通过 touch/renormalize 规避。
+
 收到阶段指令后，Agent 核对 target、实际 Role、安装来源和查询边界，再读安装内 `skills/actions/<actionId>/SKILL.md`。歧义、blocked、partial、bootstrap-history、角色或阶段冲突先报告并停止。只问下一步不执行 Action；Author 不自审。
 
 ## 当前能力与事实归属

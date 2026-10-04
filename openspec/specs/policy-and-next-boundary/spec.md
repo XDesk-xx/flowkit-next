@@ -30,52 +30,54 @@
 - **THEN** 既有 normal boundary SHALL 仍为 `READY_ACTION(apply)`；不得为继续原 Action 新增 pair 前置要求
 
 ### Requirement: Post-archive completed materialization has highest Change-state precedence
-Policy SHALL 在 generic non-active Change guard 之前识别唯一 post-archive exception：仅当 Change state 为 `completed`、CurrentAction 为 exact `terminal archive`、提供 exact current terminal RunContextRecord 与通过同一 runId + ActionIdentity linkage 的 terminal Result、且 `authorConclusion` 为 exact `PASS` 时，normal boundary SHALL 为 checkpoint-evaluation。识别该 normal boundary 后，Policy SHALL 按统一 reported-boundary consistency 规则校验 Result 的 `nextBoundary`：null 或 exact token `checkpoint` SHALL 通过，其他 non-null value SHALL 返回 `BLOCKED(reported-boundary-conflict)`。其他 `planned`、`completed`、`cancelled` state SHALL 返回 `BLOCKED(change-not-active)`。当 Change 仍为 `active` 且 CurrentAction 为 `terminal archive`、exact-current-run linked Result 的 `authorConclusion` 为 `PASS` 时，Policy SHALL 返回 `BLOCKED(archive-completion-state-mismatch)`，不得提前宣称 checkpoint-evaluation。
+Policy SHALL 在 generic non-active Change guard 之前识别唯一成功 post-archive exception：仅当 Change state 为 `completed`、CurrentAction 为 exact `terminal archive`、提供 exact current terminal RunContextRecord 与通过同一 runId + ActionIdentity linkage 的 terminal Result、且 authorConclusion 为 PASS 时，normal boundary SHALL 为 checkpoint-evaluation。新 Archive outcome 存在时 SHALL 同时为合法 completed；旧无该字段的已接纳 PASS 保持原兼容规则。Result 的 nextBoundary 为 null 或 checkpoint SHALL 通过，其他 non-null value SHALL 返回 BLOCKED(reported-boundary-conflict)。其他 planned、completed、cancelled state SHALL 返回 BLOCKED(change-not-active)。active + terminal Archive PASS SHALL 返回 BLOCKED(archive-completion-state-mismatch)，不得提前 checkpoint。
+
+已识别 terminal Archive partial SHALL 按本 capability 的 recovery-required 规则保持 blocked，不因 coordination 已部分写成 completed 而成为成功 exception；已接纳业务 partial 与不可验证的 ChangeState 不得互相伪造。
 
 #### Scenario: Recognize exact completed Archive materialization
-- **WHEN** Change 为 `completed`、CurrentAction 为 exact `terminal archive`、exact-current-run linked terminal Result 的 `authorConclusion` 为 `PASS` 且 reported `nextBoundary` 为 null 或 `checkpoint`
-- **THEN** Policy SHALL 返回 `READY_CHECKPOINT_EVALUATION`
+- **WHEN** Change 为 completed、CurrentAction 为 exact terminal archive、matching PASS Result 的 outcome 为 completed或合法旧无字段形式，且 nextBoundary 为 null/checkpoint
+- **THEN** Policy SHALL 返回 READY_CHECKPOINT_EVALUATION
 
 #### Scenario: Block a conflicting completed Archive handoff
-- **WHEN** Change 为 `completed`、CurrentAction 为 exact `terminal archive`、exact-current-run linked terminal Result 的 `authorConclusion` 为 `PASS`，但 reported `nextBoundary` 为非 null 且不等于 `checkpoint`
-- **THEN** Policy SHALL 返回 `BLOCKED(reported-boundary-conflict)`，且不得由 generic non-active guard 把该 handoff drift 掩盖成 `change-not-active`
+- **WHEN** exact completed/archive/PASS 的 reported nextBoundary 非 null 且不等于 checkpoint
+- **THEN** Policy SHALL 返回 BLOCKED(reported-boundary-conflict)，不以 generic non-active guard 掩盖
 
 #### Scenario: Block non-active Change outside the exact post-archive shape
-- **WHEN** Change 为 `planned`、`cancelled`，或为 `completed` 但不满足 exact completed/archive/PASS materialization shape
-- **THEN** Policy SHALL 返回 `BLOCKED(change-not-active)`
+- **WHEN** Change 为 planned、cancelled，或 completed 但不满足成功形态且不是已识别 partial
+- **THEN** Policy SHALL 返回 BLOCKED(change-not-active)
 
 #### Scenario: Do not advertise checkpoint before Archive materialization completes
-- **WHEN** Change 仍为 `active`、CurrentAction 为 exact `terminal archive` 且 exact-current-run linked terminal Result 的 `authorConclusion` 为 `PASS`
-- **THEN** Policy SHALL 返回 `BLOCKED(archive-completion-state-mismatch)`
+- **WHEN** Change 仍为 active 且 matching terminal Archive Result 为 PASS
+- **THEN** Policy SHALL 返回 BLOCKED(archive-completion-state-mismatch)
 
 ### Requirement: Active Change normal Standard Action boundary is deterministic
-对于 `active` Change，Policy SHALL 使用 closed normal matrix 计算 Standard Action boundary。CurrentAction 为空时 normal boundary SHALL 为 `explore`；CurrentAction 为 `prepared A` 时 normal boundary SHALL 仍为 exact A，随后仅可按本 capability 的 explicit Owner correction 规则改变最终 boundary。terminal Author actions SHALL 仅在 exact `authorConclusion == "PASS"` 时映射：`explore|revise-explore → review-explore`、`propose|revise-propose → review-propose`、`apply|revise-apply → review-apply`。terminal Reviewer actions SHALL 仅按 exact `reviewerVerdict` 映射：`review-explore approved → propose`、`review-explore changes-requested → revise-explore`、`review-propose approved → apply`、`review-propose changes-requested → revise-propose`、`review-apply approved → archive`、`review-apply changes-requested → revise-apply`。未知/不成功 Author outcome SHALL fail closed 为 `unrecognized-or-unsuccessful-author-outcome`；除已识别 rejected之外的未知/null Reviewer verdict SHALL fail closed 为 `unrecognized-reviewer-verdict`。
+对于 active Change，Policy SHALL 使用 closed normal matrix。CurrentAction 为空时为 explore；prepared A 时仍为 exact A，随后仅可按 explicit Owner correction 改变 boundary。terminal Author PASS 映射保持：explore/revise-explore→review-explore、propose/revise-propose→review-propose、apply/revise-apply→review-apply。terminal Reviewer 映射保持：review-explore approved→propose、changes-requested→revise-explore；review-propose approved→apply、changes-requested→revise-propose；review-apply approved→archive、changes-requested→revise-apply。
 
-terminal Reviewer rejected SHALL 以nextBoundary=null返回BLOCKED(review-rejected)，无普通normal Action后继；非null reported token SHALL 为reported-boundary-conflict。known rejection仅可按专门exact Owner同阶段revise规则改变blocked decision，不能自动映射changes-requested。
+唯一新增 Author FAIL normal 例外为 exact terminal Archive 的已验证安全 failed outcome：nextBoundary 必须为 null，normal 为 archive，最终仍需专用 structural enterability。partial 为 BLOCKED(archive-recovery-required)。其他未知/不成功 Author outcome SHALL 为 unrecognized-or-unsuccessful-author-outcome。未知/null Reviewer verdict SHALL 为 unrecognized-reviewer-verdict；known rejected 的 null boundary SHALL 返回 review-rejected，非 null 为 reported-boundary-conflict，仅专门 Owner 规则允许其对应 revise，不自动重标 changes-requested。
 
 #### Scenario: Start an active Change with Explore
-- **WHEN** Change 为 `active` 且 CurrentAction slot 为空
-- **THEN** normal boundary SHALL 为 `explore`
+- **WHEN** Change 为 active 且 CurrentAction 为空
+- **THEN** normal boundary SHALL 为 explore
 
 #### Scenario: Keep a prepared Action as the only legal Action
-- **WHEN** Change 为 `active` 且 CurrentAction 为 `prepared propose`
-- **THEN** normal boundary SHALL 为 exact `propose`，不得正常切换到 review/next-stage Action；只有满足本 capability 的显式 Owner correction 才可选择合法 revise
+- **WHEN** active Change 的 CurrentAction 为 prepared propose
+- **THEN** normal SHALL 为 propose；只有满足显式 Owner correction 才可选择合法 revise
 
 #### Scenario: Advance an approved Proposal review to Apply
-- **WHEN** Change 为 `active`、CurrentAction 为 `terminal review-propose`、exact-current-run linked Result 的 `reviewerVerdict` 为 `approved`
-- **THEN** normal boundary SHALL 为 `apply`
+- **WHEN** active 的 terminal review-propose matching verdict 为 approved
+- **THEN** normal SHALL 为 apply
 
 #### Scenario: Route a requested Apply revision back to revise-apply
-- **WHEN** Change 为 `active`、CurrentAction 为 `terminal review-apply`、exact-current-run linked Result 的 `reviewerVerdict` 为 `changes-requested`
-- **THEN** normal boundary SHALL 为 `revise-apply`
+- **WHEN** active 的 terminal review-apply matching verdict 为 changes-requested
+- **THEN** normal SHALL 为 revise-apply
 
 #### Scenario: Reject an unsuccessful Author outcome
-- **WHEN** Change 为 `active`、CurrentAction 为 terminal Author Action 且 exact-current-run linked Result 的 `authorConclusion` 不是 exact `PASS`
-- **THEN** Policy SHALL 返回 `BLOCKED(unrecognized-or-unsuccessful-author-outcome)`
+- **WHEN** terminal Author outcome 不是 PASS，且不满足专门的安全 Archive failure或partial合同
+- **THEN** Policy SHALL 返回 BLOCKED(unrecognized-or-unsuccessful-author-outcome)
 
 #### Scenario: Recognized rejection remains stopped
-- **WHEN** active exact terminal Review的verdict为rejected且nextBoundary=null
-- **THEN** Policy SHALL 返回BLOCKED(review-rejected)而不是unrecognized-reviewer-verdict或自动revise
+- **WHEN** active exact terminal Review 为 rejected 且 nextBoundary=null
+- **THEN** Policy SHALL 返回 BLOCKED(review-rejected)，不自动 revise
 
 ### Requirement: Terminal Result is bound to the exact current Run before outcome or correction evaluation
 对于 terminal Standard Action，Policy SHALL 在解释 outcome 或 reported `nextBoundary` 前要求同时提供 exact current terminal `RunContextRecord` 与 terminal `RunResultRecord`。Policy SHALL 复用既有 Run persistence linkage truth：terminal context 的 ActionIdentity SHALL 精确等于 CurrentAction identity，且 context/result SHALL 满足既有 matching Run linkage（包含 `terminalResult.runId == terminalRunContext.runId` 与 exact ActionIdentity linkage）。缺失任一 terminal fact、wrong ActionIdentity、runId mismatch，或将同一 Standard Action 的 prior Run Result 与 current terminal RunContext 混用，均 SHALL 返回 `BLOCKED(terminal-result-missing-or-mismatched)`，不得读取该 Result 的 outcome 或 `nextBoundary`。Policy SHALL 在 exact current Run linkage 通过后从 canonical facts 计算 deterministic normal boundary，再将 Result 的 reported `nextBoundary` 仅作为 opaque consistency fact 校验：null SHALL 不阻止 normal calculation；non-null value SHALL 精确等于 normal boundary 的 reported token（Standard Action 使用其 StandardActionId，checkpoint-evaluation 使用 `checkpoint`），否则 SHALL 返回 `BLOCKED(reported-boundary-conflict)`。Owner correction SHALL 只在该 normal consistency 已通过后评估，且不得覆盖或掩盖 conflict。
@@ -107,81 +109,91 @@ known rejected SHALL 在同一exact linkage验证后单独验证reported nextBou
 - **THEN** Policy SHALL 先返回对应linkage或reported-boundary-conflict阻断，不允许Owner correction掩盖
 
 ### Requirement: Owner correction is bounded, explicit and revise-only
-Policy MAY 在 active terminal Action 已产生有效 normal boundary 且 reported-boundary consistency PASS 后，或 active prepared Author Action 已由上游所选唯一 current tip 的 exact `preparedRunContext` + `preparedResult` 证明仍为 prepared 且四个 outcome/next 槽均为 null 后，应用一个 explicit Owner correction request。对后者，Policy SHALL 验证 `preparedCurrentRunId` 等于 context/result 的同一 runId，并验证 context 的 `lifecycleState=prepared`、`role=author`、ActionIdentity 精确等于 CurrentAction、context/result 的同一 runId 与 ActionIdentity linkage，并验证 Result 四个 outcome/next 槽均为 null；`terminalRunContext`/`terminalResult` 不得冒充 prepared pair。缺失或不完整的 prepared current Run 三项输入、与 `preparedCurrentRunId` 不一致的 RunId、wrong identity/state/role、或 non-null outcome SHALL 一律返回 `BLOCKED(invalid-policy-input)`，先于 correction eligibility，不得只凭 semantic CurrentAction identity 接受请求。未请求 prepared correction 时不新增该 pair 的前置条件。Correction request SHALL 只包含 requested revise-family Standard Action 与 structural-valid OwnerAuthorityFact。Policy SHALL 仅识别 `decision == "revise-action"`，且 authority 的 `deliveryId` / `changeId` SHALL 精确匹配当前 Delivery/Change，`scope` SHALL 精确为仅包含 requested revise Action 的单元素 array。缺失 authority SHALL 返回 `BLOCKED(owner-authority-required)`；structural-invalid 或 decision/identity/scope 不匹配 SHALL 返回 `BLOCKED(owner-authority-rejected)`。
+Policy SHALL 仅在 active terminal Action 有效 normal/reported consistency 已通过，或 active prepared Author 的 exact current pair 已证明 prepared 且四个 outcome/next 槽均为 null 后，评估 explicit Owner correction。preparedCurrentRunId SHALL 等于 context/result 同一 runId，context SHALL 为 prepared/author 且 ActionIdentity 匹配 CurrentAction，context/result linkage SHALL 有效；terminal pair 不得冒充 prepared pair。prepared correction 输入缺失、wrong identity/state/role、non-null outcome SHALL 返回 invalid-policy-input；未请求 correction 时不新增该 pair 前置条件。
 
-允许的 correction SHALL 仅按 current Author/Reviewer Action 所属 reached stage 向当前或更早阶段回退：explore stage (`explore|revise-explore|review-explore`) 只允许 `revise-explore`；propose stage (`propose|revise-propose|review-propose`) 允许 `revise-propose|revise-explore`；apply stage (`apply|revise-apply|review-apply`) 允许 `revise-apply|revise-propose|revise-explore`。prepared Author Action 允许同阶段 revise；prepared Reviewer Action、archive/completed reopening、其他 target 或 forward skip SHALL 返回 `BLOCKED(unsupported-owner-correction)`。Owner correction SHALL NOT 作为 normal apply/archive invocation authority，也 SHALL NOT 自动执行 requested Action。
+Correction SHALL 只接受 requested revise-family Action 与 structural-valid OwnerAuthorityFact，decision 必须为 revise-action，deliveryId/changeId 为 exact current，scope 为仅包含 requested Action 的单元素数组。缺 authority 返回 owner-authority-required；结构、decision、identity、scope 不符返回 owner-authority-rejected。
 
-唯一额外terminal eligibility SHALL 为exact-linked known rejected且reported nextBoundary=null；它只允许对应review阶段的同阶段revise，并复用本Requirement的Owner identity/decision/single scope及structural-enterability检查。不放宽unknown outcome、Author FAIL、reported conflict或completed guard。
+Reached-stage 规则保持：explore stage 只允许 revise-explore；propose stage 允许 revise-propose/revise-explore；apply stage 允许 revise-apply/revise-propose/revise-explore。prepared Author 可同阶段 revise；prepared Reviewer、其他 target、forward skip 与 completed reopening 均为 unsupported-owner-correction。known rejected terminal/null 仅允许对应 review 阶段同阶段 revise。
+
+另一个窄例外为 active、exact-linked、已接纳安全 failed Archive/null boundary：Owner 明确授权时 SHALL 允许 revise-propose 或 revise-apply，以修正不能直接重试的候选。该例外不涵盖 partial、unknown、旧无 outcome Author FAIL 或 completed Archive；不得要求修订中的候选继续等于旧 Review，但原失败证据、唯一链与安全 active 必须可证。Owner correction SHALL NOT 自动执行业务，不作为普通 archive 的额外审批。
 
 #### Scenario: Allow proactive Explore revision with matching Owner authority
-- **WHEN** terminal `explore` 的 normal/reported boundary 均为 `review-explore`，Owner correction 请求 `revise-explore`，且 authority 为 matching `decision=revise-action`、current Delivery/Change、`scope=["revise-explore"]`
-- **THEN** correction candidate SHALL 为 `revise-explore`，随后进入统一 structural-enterability check
+- **WHEN** terminal explore 的 normal/reported 为 review-explore，Owner 的 revise-explore 请求具有 exact decision/target/scope
+- **THEN** correction candidate SHALL 为 revise-explore，并继续 structural-enterability 核对
 
 #### Scenario: Allow an Apply-stage correction to an earlier Proposal revision
-- **WHEN** current terminal Action 属于 apply stage、normal/reported consistency PASS，Owner correction 请求 `revise-propose` 且 matching authority 有效
-- **THEN** correction candidate SHALL 为 `revise-propose`，随后进入统一 structural-enterability check
+- **WHEN** apply-stage terminal 的 normal/reported 通过，Owner 明确授权 revise-propose
+- **THEN** correction SHALL 选择 revise-propose 并核对结构可进入性
 
 #### Scenario: Allow same-stage prepared Author correction
-- **WHEN** exact current Run 为 `prepared apply`、outcome/next 均为 null，Owner correction 请求 `revise-apply` 且 exact matching authority 有效
-- **THEN** correction candidate SHALL 为 `revise-apply`，随后进入统一 structural-enterability check；原 `prepared apply` 的 outcome 不得被解释为 PASS
+- **WHEN** exact prepared apply 的四槽为 null 且 Owner 的 revise-apply authority匹配
+- **THEN** correction SHALL 选择 revise-apply；原 prepared 不解释为 PASS
 
 #### Scenario: Allow prepared Author return to earlier stage
-- **WHEN** exact current Run 为 `prepared apply`，Owner correction 请求 `revise-propose` 或 `revise-explore` 且 exact matching authority 有效
-- **THEN** correction candidate SHALL 为所请求 revise Action，随后进入统一 structural-enterability check
+- **WHEN** prepared apply 与 matching Owner revise-propose/revise-explore 请求有效
+- **THEN** correction SHALL 选择所请求合法 revise，并进行结构核对
 
 #### Scenario: Reject a forward Owner skip
-- **WHEN** current terminal 或 prepared Author Action 仍属于 explore stage，而 Owner correction 请求 `revise-propose`、`apply` 或其他非允许 revise target
-- **THEN** Policy SHALL 返回 `BLOCKED(unsupported-owner-correction)`
+- **WHEN** 当前仍在 explore stage 而请求 revise-propose、apply 或其他 forward Action
+- **THEN** Policy SHALL 返回 unsupported-owner-correction
 
 #### Scenario: Reject prepared Reviewer or unproven current Run
-- **WHEN** Owner correction 请求替换 prepared Reviewer Action
-- **THEN** Policy SHALL 返回 `BLOCKED(unsupported-owner-correction)`，且不得产生 correction READY
+- **WHEN** Owner correction 请求替换 prepared Reviewer
+- **THEN** Policy SHALL 返回 unsupported-owner-correction，不产生 READY
 
 #### Scenario: Reject missing or mismatched prepared current Run
-- **WHEN** prepared Author correction 的 `preparedCurrentRunId`、`preparedRunContext`、`preparedResult` 任一缺失，三者 runId 不同，context/result ActionIdentity 与 CurrentAction 不同，或同时给出非 null terminal pair 冒充当前 prepared Run
-- **THEN** Policy SHALL 返回 `BLOCKED(invalid-policy-input)`，且不得仅凭 CurrentAction semantic identity 接受 correction
+- **WHEN** preparedCurrentRunId/context/result 缺失、不一致、错 ActionIdentity，或以 terminal pair 冒充
+- **THEN** Policy SHALL 返回 invalid-policy-input，不凭 semantic identity 接受
 
 #### Scenario: Reject non-prepared or outcome-bearing pair
-- **WHEN** prepared Author correction 的 context state/role 不为 `prepared/author`，或 Result 的 `authorConclusion`、`reviewerVerdict`、`verificationVerdict`、`nextBoundary` 任一非 null
-- **THEN** Policy SHALL 返回 `BLOCKED(invalid-policy-input)`，且不得把该 Result 解释为 terminal outcome
+- **WHEN** prepared correction 的 state/role 不是 prepared/author 或四个 outcome/next 槽任一非 null
+- **THEN** Policy SHALL 返回 invalid-policy-input
 
 #### Scenario: Require explicit matching correction authority
-- **WHEN** Owner correction request 存在但缺失 authority，或 authority 的 decision/current identity/scope 与 requested revise Action 不匹配
-- **THEN** Policy SHALL 分别返回 `BLOCKED(owner-authority-required)` 或 `BLOCKED(owner-authority-rejected)`
+- **WHEN** authority 缺失或 decision/current identity/scope 不匹配
+- **THEN** Policy SHALL 分别返回 owner-authority-required 或 owner-authority-rejected
 
 #### Scenario: Recognized rejected Review accepts an exact Owner revision request
-- **WHEN** active review-apply terminal rejected/null boundary已验证且Owner明确授权revise-apply
-- **THEN** Policy SHALL 将它作为known rejection专门eligibility核对后选择revise-apply，不重标原verdict
+- **WHEN** active review-apply rejected/null 已验证且 Owner 授权 revise-apply
+- **THEN** Policy SHALL 按 known rejection 例外选择对应 revise，不改 verdict
+
+#### Scenario: Correct candidate after a safe Archive failure
+- **WHEN** active Archive 安全失败/null 已验证，Owner 明确授权 revise-propose 或 revise-apply
+- **THEN** Policy SHALL 允许该 revise 新 Run 接原失败 Run，后续必须经过普通独立 Review；不能直接继承旧 candidate approval
 
 ### Requirement: Every READY Action must be structurally enterable through the existing lifecycle seam
-Policy SHALL 在 normal boundary 或 Owner-corrected boundary 最终发出 `READY_ACTION(target)` 前验证该 target 对 exact CurrentAction slot structurally enterable，并 SHALL 复用既有 Action lifecycle / prepared-reuse / 有界 prepared supersession contract 而不得复制第二套 lifecycle state machine：empty slot 的 target 必须可由现有 prepare transition 建立；`prepared A` 的 normal target 只允许 exact A reuse 且不得 duplicate prepare；`prepared` Author A 的不同 Owner-corrected revise target 必须可由有界 supersession transition 建立；`terminal A` 的 target 必须可由现有 prepare transition 建立。候选 target 无法进入时 SHALL 返回 `BLOCKED(action-boundary-not-enterable)`。
+Policy SHALL 在发出 READY_ACTION 前验证 exact CurrentAction slot 可进入，复用 existing lifecycle/prepared-reuse/supersession 以及专用 Archive retry contract，不复制 state machine。empty slot 用普通 prepare；prepared A 的 normal target 仅 exact A reuse；prepared Author 的不同 Owner revise 用 supersession；terminal 的不同 identity 用普通 prepare。只有已核准的安全失败 Archive same identity SHALL 使用窄 retry transition。不可进入时 SHALL 返回 action-boundary-not-enterable。
 
 #### Scenario: Reuse an exact prepared Action without duplicate prepare
-- **WHEN** CurrentAction 为 `prepared propose` 且 candidate legal Action 为 exact `propose`
-- **THEN** Policy SHALL 允许 `READY_ACTION(propose)`，并 SHALL 将其视为 prepared reuse compatibility 而不是要求 duplicate prepare
+- **WHEN** CurrentAction 为 prepared propose 且 legal target 为 propose
+- **THEN** Policy SHALL 返回 READY_ACTION(propose)，不要求 duplicate prepare
 
 #### Scenario: Enter an authorized prepared revise
-- **WHEN** CurrentAction 为 `prepared apply` Author、exact Owner correction target 为 `revise-propose`，且有界 supersession transition 接受同一 target
-- **THEN** structural-enterability check SHALL PASS 并允许 `READY_ACTION(revise-propose)`，但 SHALL NOT 执行该 Action
+- **WHEN** prepared Author apply 的 exact Owner target 为 revise-propose 且 supersession 接受
+- **THEN** Policy SHALL 允许 READY_ACTION(revise-propose)，不执行
 
 #### Scenario: Block the exact same terminal revise Action
-- **WHEN** CurrentAction 为 `terminal revise-explore`，Owner correction 最终 candidate 仍为 exact `revise-explore`
-- **THEN** existing terminal prepare rule SHALL 使 candidate 不可进入，Policy SHALL 返回 `BLOCKED(action-boundary-not-enterable)`
+- **WHEN** terminal revise-explore 的 correction target 仍为 exact revise-explore
+- **THEN** Policy SHALL 返回 action-boundary-not-enterable；Archive retry 例外不适用
 
 #### Scenario: Allow a different structurally enterable revise Action
-- **WHEN** CurrentAction 为 `terminal propose`，Owner correction candidate 为 `revise-explore`，且 existing lifecycle prepare rule 接受该不同 ActionIdentity
-- **THEN** structural-enterability check SHALL PASS 并允许 `READY_ACTION(revise-explore)`
+- **WHEN** terminal propose 的合法 correction 为 revise-explore 且普通 prepare 接受
+- **THEN** Policy SHALL 允许 READY_ACTION(revise-explore)
+
+#### Scenario: Enter only the dedicated Archive retry
+- **WHEN** 安全失败 Archive 的 normal target 为同 identity archive
+- **THEN** Policy SHALL 要求专用 retry seam 接受，否则返回 action-boundary-not-enterable
 
 ### Requirement: Blocked diagnosis is closed and deterministic
-Policy SHALL 使用 closed、machine-distinguishable blocked reason catalog，至少包含：`invalid-policy-input`、`change-not-active`、`archive-completion-state-mismatch`、`terminal-result-missing-or-mismatched`、`unrecognized-or-unsuccessful-author-outcome`、`unrecognized-reviewer-verdict`、`review-rejected`、`reported-boundary-conflict`、`owner-authority-required`、`owner-authority-rejected`、`unsupported-owner-correction`、`action-boundary-not-enterable`。同一组 canonical facts SHALL 产生等价 decision；Policy SHALL NOT 以 free-text、动态 registry、历史 Action package 形状或 nondeterministic fallback 代替该 closed diagnosis。
+Policy SHALL 使用 closed machine-distinguishable catalog，至少包含 invalid-policy-input、change-not-active、archive-completion-state-mismatch、archive-recovery-required、terminal-result-missing-or-mismatched、unrecognized-or-unsuccessful-author-outcome、unrecognized-reviewer-verdict、review-rejected、reported-boundary-conflict、owner-authority-required、owner-authority-rejected、unsupported-owner-correction、action-boundary-not-enterable。同组 canonical facts SHALL 产生等价结果，不使用 free-text、动态 Registry 或不确定 fallback 替代。
 
 #### Scenario: Produce the same blocked reason for the same facts
-- **WHEN** 相同 canonical Policy facts 被重复评估且包含同一个 reported-boundary conflict
-- **THEN** Policy SHALL 每次产生等价 `BLOCKED(reported-boundary-conflict)` decision
+- **WHEN** 相同 facts 包含同一 reported conflict
+- **THEN** Policy SHALL 返回等价 reported-boundary-conflict
 
 #### Scenario: Do not turn checkpoint evaluation into Git authority
-- **WHEN** Policy 返回 `READY_CHECKPOINT_EVALUATION`
-- **THEN** 系统 SHALL 仅把它解释为 legal governance boundary，且不得据此生成 Git permission、执行 commit 或声明 checkpoint authorization 已满足
+- **WHEN** Policy 返回 READY_CHECKPOINT_EVALUATION
+- **THEN** 它 SHALL 仅为合法治理边界，不产生 Git permission 或执行 commit
 
 ### Requirement: Known rejection permits only explicitly authorized corresponding revision
 
@@ -198,3 +210,18 @@ Policy SHALL 使用 closed、machine-distinguishable blocked reason catalog，�
 #### Scenario: Rejection cannot hide a reported conflict or skip stage
 - **WHEN** rejected宣称非null nextBoundary，或Owner请求其他阶段/forward target
 - **THEN** Policy SHALL 分别返回reported-boundary-conflict或unsupported-owner-correction，不以known rejection例外掩盖冲突
+
+### Requirement: Archive failures expose retry or recovery without inventing execution
+Policy SHALL 在 exact current Run linkage 验证后解释封闭 Archive outcome，不读取文件系统或执行 OpenSpec。安全 failed 必须是 active、Author FAIL、null nextBoundary，才可选择 archive；新 start 仍须重新核对真实安全状态、Review/candidate 和 ordinal。partial 必须为 Author FAIL/null，SHALL 返回 archive-recovery-required；composition 无法解析真实 ChangeState 时 SHALL 暴露同类恢复阻断，不伪造 canonical state。失败 Result 非 null reported boundary SHALL 返回 reported-boundary-conflict。无受支持 outcome 的普通 FAIL 保持旧 blocked行为。
+
+#### Scenario: Retry is offered but not executed
+- **WHEN** matching active terminal Archive 具有安全 failed outcome且null boundary
+- **THEN** Policy SHALL 计算 READY_ACTION(archive)，不创建 Run，不执行命令，不要求 Result 自签 next=archive
+
+#### Scenario: Partial stays blocked even after some completion writes
+- **WHEN** matching terminal Archive 为 partial，包括 coordination 已写而其他确认不完整
+- **THEN** Policy/查询 SHALL 保持 archive-recovery-required，不将它解释成 checkpoint-ready或安全重试
+
+#### Scenario: Stale outcome cannot authorize a new attempt
+- **WHEN** failure Result 与当前 context 的 runId或ActionIdentity不匹配
+- **THEN** Policy SHALL 先返回 terminal-result-missing-or-mismatched，不消费旧 retryable 标记

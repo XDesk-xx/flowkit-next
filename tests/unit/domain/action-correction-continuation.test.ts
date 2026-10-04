@@ -186,6 +186,7 @@ for (const verdict of ["approved", "changes-requested", "rejected"] as const)
       if (verdict === "approved") {
         const prefix = ".flowkit/runs/delivery-one/001-change-one";
         const paths = [
+          ".gitattributes",
           ...Object.keys(
             (await directoryHashes(f.repositoryRoot, prefix))!,
           ).map((suffix) => `${prefix}/${suffix}`),
@@ -233,12 +234,6 @@ for (const verdict of ["approved", "changes-requested", "rejected"] as const)
               ...f.base,
               actionId: "archive",
               role: "author",
-              applicableChecks: [
-                {
-                  id: "candidate-check",
-                  reason: "synthetic Archive continuation check",
-                },
-              ],
             })
           ).effect,
           "started",

@@ -52,48 +52,47 @@ For current Change `converge-author-action-guidance` with persisted `projectOrdi
 
 Do not stack another date prefix.
 
-## Package-bound archive preparation
+## Admission and actual execution
 
-Archive 必须共同消费同一 effective Author/Review binding。依赖以独立 scratch snapshot materialize，不将 source node_modules junction 暴露给检查；pnpm11 源 preflight 固定 error/no-install，scratch 局部 no-sync，未知外部 link/shim 拒绝。各实际命令的 raw 流、退出与分类保存在 `archive-diagnostics`，超限或保存失败均不代表 PASS。
+新 Archive descriptor 固定 `archiveContractVersion: 2`。start 只核对 active Change、Policy/Role、唯一 Run 链、approved Review 的 exact effective Author candidate、projectOrdinal、Guidance 和原始证据身份。它不调用原生 validate/dry-run，不接收 applicableChecks，不复制或扫描 repository/dependencies、ignored data symlink 或 pnpm shim。项目 Verification 留在 Apply/Review/Full Test。
 
-丢失响应时先调用 `action inspect` 的 closed target/runId 请求，只读核对真实 effect、必要 diagnostic refs 和剩余步骤；普通 status/next 的 incomplete 不被绕过。明确同 Run `change archive` 只继续已证明的剩余 rename/coordination，已完成只读确认；mixed/unknown/machine partial 阻断，不重复 OpenSpec、不另造 Run。finish 的 `facts.archiveMaterialRefs` 必须逐项等于业务命令返回的 exact 材料引用，不能只凭 status completed。准备/观测材料仍在 artifacts，Run 仍只有三个文件。
+调用本次选定 manager 的 `flowkit action start --input <request.json>`，请求含 repositoryRoot、flowkitHome、deliveryId、changeId、actionId=archive、role=author。started 后调用一次 `flowkit change archive --repository-root <target> --delivery-id <deliveryId> --change-id <changeId> --input <request.json>`；封闭请求仅含相同 target 和 exact runId。该 Run 保存 version-2 prestate 和实际命令材料，每个 Run 至多执行一次 exact OpenSpec 1.10.0 archive。实际工具负责原生 validation/spec sync，之后只进行 persisted ordinal rename 和 coordination active→completed 窄写入。不从 scratch 推断后态，不手动移动 Change 或预写 completion。
 
-Archive readiness is real self-check HOW, not a new Action or lifecycle state. It runs inside the already-decided `archive` invocation only after the exact canonical Guidance identity is frozen into the exact ActionPackage and before archive mutation begins.
+原始 stdout/stderr 每流最多16MiB，超限保留真实前缀并记录失败；命令退出、停止及存储事实与实际前后态共同判断，非零 exit 不等于无副作用。prestate、实际 spec after、完整 suffix/raw mapping、命令和全部必要材料仍位于 artifacts，Run 始终只有 action.md/context.json/result.json。
 
-Check at minimum, when materially applicable:
+## Closed outcome and finish
 
-- the accepted `review-apply` after `apply` / `revise-apply` still corresponds to the exact candidate bytes;
-- no post-review repository/canonical byte drift invalidated that acceptance;
-- the exact Change is still the active archive target and its persisted projectOrdinal remains valid;
-- OpenSpec planning/tasks/delta-sync and archive-target collision/identity facts are ready;
-- an isolated canonical-convergence dry-run succeeds and the resulting converged candidate passes affected domain verification plus any materially applicable engineering gates before real archive mutation;
-- completion-transition readiness is satisfied without requiring a pre-existing `completed` state;
-- handoff/removal facts needed for continuation are complete;
-- no known correction blocker remains.
+以 `flowkit action finish --input <request.json>` 提交真实结果。Author 只填 Author outcome；Reviewer 必须独立执行并只填本人真实 verdict，finish 不创建 Reviewer、Owner 或 Git authority。
 
-Treat post-convergence verification as part of preparation, not as a post-mutation cleanup check. The dry-run MUST exercise the canonical bytes that archive would actually materialize. A verification failure that proves repository/canonical bytes must change is a correction blocker even when OpenSpec structural validation itself passes.
+按实际返回的 `archiveOutcome` 和全部 exact `archiveMaterialRefs` 完成相同 Run 的 `action finish`，保留已有 proofRefs 声明规则：
 
-If readiness is blocked by an environment-only condition and candidate bytes remain unchanged, STOP without archive mutation and allow same-candidate retry. If readiness finds a correction requiring repository/canonical byte mutation, including a post-convergence verification failure, STOP before archive mutation and return to the existing Owner-controlled correction path; changed bytes require a fresh `review-apply` before archive can be attempted again.
+- `{kind:"completed"}`：Author PASS，nextBoundary=null 或 checkpoint；已读回真实归档、spec after 与 completed coordination。
+- `{kind:"failed",effect:"no-mutation"|"rolled-back",retryable:true}`：Author FAIL/null；进程已停止，受控 source/spec/candidate/coordination/两个目标均与前态一致。rolled-back 还必须有正面回滚证明，单纯前后相等不能追认回滚。预存目标保持原 bytes。
+- `{kind:"partial",effect:"recovery-required",retryable:false}`：Author FAIL/null；已产生或无法确认效果，Policy blocked(archive-recovery-required)。业务 partial 可保存完整 terminal 三文件，即使 coordination 无法读取也不猜 active；机器文件 partial 继续保持 incomplete，不能伪造完成。
 
-A valid `review-apply` acceptance makes normal archive execution ready through existing Policy. Do not require a second Owner archive execution authorization.
+只有 finish 的 effect=confirmed 表示 terminal 三文件和 canonical chain 已读回；它不自动表示业务 PASS。
 
-## Canonical convergence
+## Retry and interrupted invocation
 
-在固定 `action start` 已返回 `effect: "started"` 且完成前述隔离 convergence/preflight 后，调用本次选定 manager 安装的 `flowkit change archive --repository-root <target> --delivery-id <deliveryId> --change-id <changeId> --input <request.json>`。封闭请求只含 `repositoryRoot`、`flowkitHome`、`deliveryId`、`changeId` 和该次 start 返回的 exact `runId`；可见目标必须与请求一致。该命令在内部执行 exact OpenSpec validate/archive、canonical spec sync、使用已持久化 projectOrdinal 重命名归档目标并写入完成协调事实；Agent 不预先手动移动 Change 或自行写 completion。
+安全 terminal FAIL 后的新 Archive 必须使用新 occurrence，其 direct parent 是失败 Run。共享来源解析只穿过同 Change 连续已接纳安全 FAIL，取得原 approved review-apply 及其 direct successful Author；不跨 partial/PASS/未知/其他阶段，不跳 parent，不接受 fork、错 target 或不连续 sequence。普通 terminal prepare 仍吸收，专用 Archive retry seam 只消费 Policy 已确定的 ready archive。
 
-核对退出码、JSON `status`/`effect`、`archivePath`、`projectOrdinal`、`runId` 与 target 实际状态。仅 `status="completed"` 且 `effect="archive-and-coordination"` 并读回归档及完成事实后，才用 `action finish` 记录真实 archive Result。`incomplete`、`openspec-unknown`、`archived` 或 `coordination-unknown` 均保留已确认效果和未知部分，停止并交接，不重复运行 OpenSpec archive 或盲重试。
+安全失败后的候选若需修改，必须收到既有 Owner revise-action 的 exact target、单项 revise-propose/revise-apply scope；修订 Run 直接 parent 为失败 Run，可以修改候选，随后必须重新独立 Review。缺或错授权、普通 Author FAIL、partial/completed 均不被兜底。
 
-Do not fork OpenSpec semantics or redesign accepted production behavior during archive.
+丢失响应先用 closed target/runId 请求 `action inspect`，只读核对 frozen descriptor/Guidance、实际 effect 与 remaining。descriptor-only 且尚无 intent、前态精确匹配时才能首次调用；intent 无可验证结果时不重放。真实成功命令与一致后态可只补观察/rename/coordination/finish。已调用失败的同 Run 只 finish；terminal safe FAIL 用新 Run 重试，terminal partial 保持显式恢复交接。重投已完成 Run 只读，不再执行 OpenSpec。
 
-## Completion / continuity materialization
+旧完整 version-1 Run/correction/Archive 按原合同只读兼容；旧 started 交给匹配冻结 Guidance 的原 manager，新 manager 报 incompatible，不改写旧 bytes，不通过 metadata correction 补造 candidateGit。
 
-After successful archive movement/convergence, update only existing Flowkit completion/continuity/handoff facts required by the accepted lifecycle.
+## Candidate Git identity
 
-This is where the Change may become `completed`; never require that state before archive.
+artifactHashes、Explore SHA 和 proof SHA 始终绑定 raw bytes。新成功 Author finish 由 manager 生成 candidateGit version-1，逐路径保存 rawSha256、预期 blobOid、identity/仅 CRLF→LF conversion、有效 text/eol、settings/objectFormat 和相关 indexBasis。Review/Archive 共同核对原 binding，只接受绑定输入或已核实预期输出；不重新猜测历史 candidate。
 
-No hidden next-Change activation is allowed.
+普通 staging 投影必须考虑 index EOL。已有非 binary i/crlf/mixed 后启用 text=auto（含 eol 和继承 autocrlf=true/input）仍可保持 raw identity；新目的路径自身 absent/indexBasis 和属性独立计算，不搬用 source basis。显式 text 也不能无条件判定转换：raw 等于旧 index blob、clean 不同时，stat-cache 命中与仅 stat 变化的普通 add 输出可不同，成功候选前明确 unsupported。无索引 hash-object --path 不能单独证明 ordinary add；禁止 touch、refresh、renormalize、临时 add、写 Git 配置或自动 normalize 来规避。
+
+不执行 active filter/encoding/ident；支持有界 EOL-only 安全转换，managed Run/proof/log、binary/-text 必须 raw==blob。checkpoint 独立消费 Owner exact paths：stage 前核对 raw 和预期 blob、相关属性须存在于拟写入树，stage 后核对 cached rules 与真实 index，commit 后核对实际 blob。Git 失败只交接 Git 剩余步骤，不重做 Archive。
 
 ## Complexity / scope-drift
+
+No hidden next-Change activation is allowed. Normal Archive and same-candidate safe retry do not require a second Owner archive execution authorization.
 
 Do not introduce production redesign, new lifecycle state, ordinal allocator/counter service, Registry/Router/Planner/Runtime, historical mass rename, automatic next Change, or automatic Git action.
 
@@ -117,27 +116,9 @@ Keep `projectOrdinal`, `changeStartSequence`, current Run sequence and physical 
 
 交接只携带下一步确需的文件引用与会影响判断的 Owner 决定（真实 sourceRef、简要决定、材料处理授权与保留边界），不复制聊天或默认传递全部祖先 proof。区分 Explore 实验、已接受决策依据、当前实现验收；保留不等于仍有效，hash 不等于真实执行或审查批准。材料路径变化或授权背景未交接时先核对，只有具体合同影响才构成阻断；未收到授权说明不等于未授权。
 
-## Agent 顺序执行与 canonical Run
-
-读取本次 manager 安装的 exact Guidance，并以当前稳定 manager 的 `status` / `next` 确认单个合法 Action 和 Role。当前发行的固定记录入口只处理一次机械开始或结束，不执行 OpenSpec、编码、Review、测试、下一 Action 或 Git。
-
-1. 准备 JSON 输入：`repositoryRoot`、`flowkitHome`、`deliveryId`、`changeId`、exact `actionId`、实际 `role`。仅当 Policy 已确认当前 prepared/terminal 对应阶段且收到明确 Owner revise 指令时附 `ownerAuthority`，其中 `sourceRef` 对应真实 Owner 输入；普通 Action 不附该字段。`archive` 另附非空 `applicableChecks: [{id,reason}]`；Agent 按本次实际影响声明适用性，`id` 必须对应 target 已配置的 `package.json` script 或 `config/verification/full-test.json` check。固定命令先做隔离 convergence，再执行所选检查；未配置、歧义或失败均不开始 archive。
-2. 调用 `flowkit action start --input <request.json>`。只有返回 `effect: "started"` 且 exact `runId`、目录可读回后，才开始本次实际工作。任何 `blocked`、`not-written`、`written-unconfirmed` 均停止并保留真实 bytes。新开始 descriptor 已绑定当前 Guidance、package、prepared context、前序和 Owner fact；不得自填 Run 编号、GuidanceRef、ActionPackage 或回调。
-3. 按“Canonical convergence”节调用一次固定 `change archive` 并核对其效果，再完成本 Action 的结果整理。必要材料在产生时保存到受控 proof 目录；可调用 `flowkit proof inspect --input <request.json>` 取得当前文件 bytes/SHA-256/Git 原始字节事实。该结果不证明内容真实、测试 PASS 或 Reviewer verdict。无必要新材料时使用空 `proofRefs`，不建空目录。
-4. 形成真实 `RunResultRecord`，以 `flowkit action finish --input <request.json>` 提交 `repositoryRoot`、`flowkitHome`、`deliveryId`、`changeId`、开始返回的 `runId`、实际 `role`、`terminal` 与 `result`。finish 从已存 descriptor 和当前可信事实重建，不接收另一份 Owner fact 或内部 package。Author 只填 Author outcome，Reviewer 必须独立执行并只填本人真实 verdict；Verification、Owner 与 Git 权限均不由 finish 创建。
-5. 仅 `effect: "confirmed"` 表示本次三文件和 canonical chain 已读回，不表示业务 PASS。partial、冲突或未确认写入均保持原样，不覆盖或自动重做工作。Reviewer 的真实 `rejected` 使用 `nextBoundary: null`，可保存为 terminal；新进程查询得到 `blocked(review-rejected)` 后 STOP。仅收到同阶段明确 Owner `revise-action` 指令才允许新的对应 revise Run，不改写旧 verdict。
-6. 独立调用 `flowkit status` / `flowkit next --input <query.json>` 读回本次结果与后续合法边界，然后 STOP；不得自动执行下一 Action。
-
-请求 JSON 使用 `--input -` 时从 stdin 读取，最多 65,536 UTF-8 bytes。命令行显式 `--repository-root`、`--delivery-id`、`--change-id` 如提供，必须与 JSON target 一致。命令拒绝重复 JSON key、未知字段、caller 自填 lifecycle/sequence 与可执行输入。历史完整 Run 保持原字节；旧未知 partial 不由此入口接管。
 
 ## Terminal boundary
 
-After archive completion/materialization:
+报告 exact Change/Run、真实 outcome/effect、archivePath/projectOrdinal、必要材料与 continuation fact 后 STOP。安全失败的 continuation 可为新 Archive 或 Owner 明确修订；partial 只交接显式恢复。成功完成来源供 Final 有界消费当前 trusted Archive PASS、必要失败父链和 approved Review，原五字段 changeCompletions 保持不变，不重新准入无关祖先。
 
-```text
-STOP
-```
-
-Do not activate another Change, finalize the Delivery, or commit/push/merge unless a separate legal boundary supplies those actions.
-
-独立授权的 Change checkpoint 可按本安装 [固定 Git 命令 HOW](../../delivery/repository-integration/references/host-call.md) 调用 `git checkpoint`，消费既有 evaluator 与真实 Owner 来源；不要求 Final/Integration，不把 Git 变成 archive 的一部分。
+Archive、Review approval 与 Verification 均不创建 Git、Delivery Full Test/Final 或下一 Action 权限。独立授权的 Change checkpoint 使用 [固定 Git 命令 HOW](../../delivery/repository-integration/references/host-call.md)，不自动 stage/commit/push。

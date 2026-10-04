@@ -88,6 +88,7 @@ test("exports a closed blocked-reason catalog", () => {
     "invalid-policy-input",
     "change-not-active",
     "archive-completion-state-mismatch",
+    "archive-recovery-required",
     "terminal-result-missing-or-mismatched",
     "unrecognized-or-unsuccessful-author-outcome",
     "unrecognized-reviewer-verdict",

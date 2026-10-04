@@ -1,0 +1,160 @@
+TAP version 13
+# Subtest: corrected Author consumes approved Review without an optional map and preserves continuation guards
+ok 1 - corrected Author consumes approved Review without an optional map and preserves continuation guards
+  ---
+  duration_ms: 28053.4905
+  type: 'test'
+  ...
+# Subtest: corrected Author consumes changes-requested Review without an optional map and preserves continuation guards
+ok 2 - corrected Author consumes changes-requested Review without an optional map and preserves continuation guards
+  ---
+  duration_ms: 17100.4821
+  type: 'test'
+  ...
+# Subtest: corrected Author consumes rejected Review without an optional map and preserves continuation guards
+ok 3 - corrected Author consumes rejected Review without an optional map and preserves continuation guards
+  ---
+  duration_ms: 17430.6765
+  type: 'test'
+  ...
+# Subtest: Reviewer correction appends once, replays read-only, rejects conflicts and preserves all original bytes
+ok 4 - Reviewer correction appends once, replays read-only, rejects conflicts and preserves all original bytes
+  ---
+  duration_ms: 4993.2756
+  type: 'test'
+  ...
+# Subtest: Author correction requires original manifest and a consistent direct Review, never current worktree alone
+ok 5 - Author correction requires original manifest and a consistent direct Review, never current worktree alone
+  ---
+  duration_ms: 5245.4013
+  type: 'test'
+  ...
+# Subtest: correction closed parser and current Role/hash reject misuse before any append
+ok 6 - correction closed parser and current Role/hash reject misuse before any append
+  ---
+  duration_ms: 1455.5838
+  type: 'test'
+  ...
+# Subtest: Author correction checkpoint requires original Run, manifest and supplement in the candidate tree
+ok 7 - Author correction checkpoint requires original Run, manifest and supplement in the candidate tree
+  ---
+  duration_ms: 22998.3216
+  type: 'test'
+  ...
+# Subtest: Author correction cannot inherit a conflicting direct Reviewer candidate
+ok 8 - Author correction cannot inherit a conflicting direct Reviewer candidate
+  ---
+  duration_ms: 1171.31
+  type: 'test'
+  ...
+# Subtest: Author correction cannot inherit a omitted direct Reviewer candidate
+ok 9 - Author correction cannot inherit a omitted direct Reviewer candidate
+  ---
+  duration_ms: 1125.2824
+  type: 'test'
+  ...
+# Subtest: archiveOutcome is closed, exact Role/outcome/next combinations are required; legacy records remain readable
+ok 10 - archiveOutcome is closed, exact Role/outcome/next combinations are required; legacy records remain readable
+  ---
+  duration_ms: 2.8221
+  type: 'test'
+  ...
+# Subtest: only the dedicated Policy-ready Archive seam opens a new occurrence; ordinary terminal prepare absorbs
+ok 11 - only the dedicated Policy-ready Archive seam opens a new occurrence; ordinary terminal prepare absorbs
+  ---
+  duration_ms: 3.6947
+  type: 'test'
+  ...
+# Subtest: continuous safe failed parents resolve exact Review and Author, never skipped, forked, wrong-target, stale PASS or partial
+ok 12 - continuous safe failed parents resolve exact Review and Author, never skipped, forked, wrong-target, stale PASS or partial
+  ---
+  duration_ms: 4.0404
+  type: 'test'
+  ...
+# Subtest: candidateGit has closed path/OID/settings/index shapes without coercion
+ok 13 - candidateGit has closed path/OID/settings/index shapes without coercion
+  ---
+  duration_ms: 0.9882
+  type: 'test'
+  ...
+# Subtest: new CRLF text binds LF; prediction writes neither worktree nor objects/index
+ok 14 - new CRLF text binds LF; prediction writes neither worktree nor objects/index
+  ---
+  duration_ms: 5449.2173
+  type: 'test'
+  ...
+# Subtest: auto and inherited autocrlf preserve modified existing CRLF index
+ok 15 - auto and inherited autocrlf preserve modified existing CRLF index
+  ---
+  duration_ms: 11776.6973
+  type: 'test'
+  ...
+# Subtest: attribute-only clean ambiguity rejects before admission, including only stat changes
+ok 16 - attribute-only clean ambiguity rejects before admission, including only stat changes
+  ---
+  duration_ms: 3754.505
+  type: 'test'
+  ...
+# Subtest: real drift, unsupported filters, and ambiguous index flags cannot inherit a binding
+ok 17 - real drift, unsupported filters, and ambiguous index flags cannot inherit a binding
+  ---
+  duration_ms: 4261.2541
+  type: 'test'
+  ...
+# Subtest: ordinary checkpoint requires bound rules in tree, commits LF blobs and preserves worktree CRLF
+ok 18 - ordinary checkpoint requires bound rules in tree, commits LF blobs and preserves worktree CRLF
+  ---
+  duration_ms: 19589.9342
+  type: 'test'
+  ...
+# Subtest: ordinary checkpoint rejects attribute-only stat ambiguity before staging, including touch-only contrast
+ok 19 - ordinary checkpoint rejects attribute-only stat ambiguity before staging, including touch-only contrast
+  ---
+  duration_ms: 6563.5035
+  type: 'test'
+  ...
+# Subtest: existing CRLF auto and inherited autocrlf stage identity, unexpected settings and unrelated index do not widen scope
+not ok 20 - existing CRLF auto and inherited autocrlf stage identity, unexpected settings and unrelated index do not widen scope
+  ---
+  duration_ms: 939.632
+  type: 'test'
+  location: 'D:\\Projects\\flowkit-next\\tests\\unit\\domain\\git-eol-checkpoint.test.ts:1:2845'
+  failureType: 'testCodeFailure'
+  error: |-
+    {"status":"incomplete","phase":"preflight","reason":"checkpointOperation 无效","observed":{"checkpointCommit":null,"remoteCommit":null},"effect":"none","remaining":["核对本次权限、范围和目标后显式调用"]}
+    + actual - expected
+    
+    + 'incomplete'
+    - 'completed'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'completed'
+  actual: 'incomplete'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (D:\Projects\flowkit-next\tests\unit\domain\git-eol-checkpoint.test.ts:44:115)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: ordinary host: source binding, scoped first commit, dirty reuse, independent bare push
+ok 21 - ordinary host: source binding, scoped first commit, dirty reuse, independent bare push
+  ---
+  duration_ms: 16926.1974
+  type: 'test'
+  ...
+# Subtest: ordinary checkpoint commits a Windows-argv-sized exact path set through bounded stdin
+ok 22 - ordinary checkpoint commits a Windows-argv-sized exact path set through bounded stdin
+  ---
+  duration_ms: 150485.5545
+  type: 'test'
+  ...
+1..22
+# tests 22
+# suites 0
+# pass 21
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 193584.7879

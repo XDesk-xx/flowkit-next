@@ -19,6 +19,7 @@ interface StartedDescriptor {
   readonly changeStartSequence: number;
   readonly actionPackage: ActionPackage;
   readonly preparedContext: RunContextRecord;
+  readonly archiveContractVersion?: 2;
   readonly applicableChecks?: readonly {
     readonly id: string;
     readonly reason: string;
@@ -59,6 +60,9 @@ export async function readDescriptor(
         ...(Object.hasOwn(object, "applicableChecks")
           ? ["applicableChecks"]
           : []),
+        ...(Object.hasOwn(object, "archiveContractVersion")
+          ? ["archiveContractVersion"]
+          : []),
       ]
         .sort()
         .join(",") ||
@@ -69,6 +73,10 @@ export async function readDescriptor(
     !Number.isSafeInteger(object.changeStartSequence) ||
     !isActionPackage(object.actionPackage) ||
     !isRunContextRecord(object.preparedContext) ||
+    (Object.hasOwn(object, "archiveContractVersion") &&
+      (object.archiveContractVersion !== 2 ||
+        object.actionPackage.actionIdentity.actionId !== "archive" ||
+        Object.hasOwn(object, "applicableChecks"))) ||
     (Object.hasOwn(object, "applicableChecks") &&
       (object.actionPackage.actionIdentity.actionId !== "archive" ||
         !Array.isArray(object.applicableChecks) ||

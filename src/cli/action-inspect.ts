@@ -5,6 +5,7 @@ import { resolveActionGuidanceRef } from "../domain/action-guidance-execution.js
 import {
   transitionCurrentAction,
   supersedePreparedAction,
+  retryTerminalArchive,
 } from "../domain/action-lifecycle.js";
 import { formActionPackage } from "../domain/action-package-result-admission.js";
 import {
@@ -15,7 +16,15 @@ import type { ManagerInstallation } from "../internal/manager-installation.js";
 import { uniqueRunGroup } from "../internal/proof-path-owner.js";
 import type { InspectRequest } from "./action-request.js";
 import { readDescriptor } from "./action-descriptor.js";
-import { policyForRecord, resolveRunChain } from "./current-run-chain.js";
+import {
+  policyForRecord,
+  resolveRunChain,
+  archiveReviewSource,
+} from "./current-run-chain.js";
+import {
+  observeArchiveV2,
+  readArchiveV2,
+} from "../internal/archive-effects-v2.js";
 import {
   controlledBytes,
   effectiveRecord,
@@ -25,19 +34,8 @@ import {
   assertReviewBinding,
   checkReviewCandidate,
 } from "./review-candidate.js";
-import { readProjectOrdinal } from "./action-readiness.js";
-import { directoryHashes } from "../internal/archive-file-identities.js";
-import {
-  assertOpenSpecArchiveDate,
-  openSpecArchiveDate,
-} from "../internal/openspec-archive-date.js";
-import { observeOpenSpecActiveChanges } from "../domain/openspec-observation.js";
-import { readCoordinationManifest } from "./trusted-change-coordination.js";
-import {
-  archiveEffectsRoot,
-  observeArchiveEffects,
-  readArchivePrestate,
-} from "../internal/archive-effects.js";
+import { archiveEffectsRoot } from "../internal/archive-effects.js";
+import { assertOpenSpecArchiveDate } from "../internal/openspec-archive-date.js";
 
 export async function inspectStartedAction(
   request: InspectRequest,
@@ -115,10 +113,11 @@ export async function inspectStartedAction(
   const current =
     previousAction?.state === "prepared" && prepared.ownerAuthority !== null
       ? supersedePreparedAction(previousAction, prepared.actionIdentity, policy)
-      : transitionCurrentAction(previousAction, {
+      : (transitionCurrentAction(previousAction, {
           type: "prepare",
           identity: prepared.actionIdentity,
-        });
+        }) ??
+        retryTerminalArchive(previousAction, prepared.actionIdentity, policy));
   const guidance = await resolveActionGuidanceRef(
     installation,
     prepared.actionIdentity.actionId,
@@ -161,96 +160,71 @@ export async function inspectAction(
     let remaining = ["finish"];
     let canContinue = false;
     if (
-      started.descriptor.preparedContext.actionIdentity.actionId ===
-        "archive" &&
+      started.descriptor.archiveContractVersion === 2 &&
       started.names.length === 1
     ) {
-      const pre = await readArchivePrestate(
-        request,
-        started.group,
-        request.runId,
-      );
-      if (
-        started.previous?.context.actionIdentity.actionId !== "review-apply" ||
-        started.previous.result.reviewerVerdict !== "approved"
-      )
-        throw Error("Archive approved Review missing");
-      const review = await effectiveRecord(request, started.previous);
-      const authorOriginal = started.records.find(
-        (record) => record.context.runId === review.context.previousRunId,
-      );
-      if (!authorOriginal) throw Error("Archive Author missing");
-      const author = await effectiveRecord(request, authorOriginal);
+      if (!started.previous) throw Error("Archive predecessor missing");
+      const source = archiveReviewSource(started.records, started.previous);
+      const review = await effectiveRecord(request, source.review);
+      const author = await effectiveRecord(request, source.author);
       assertReviewBinding(author, review.result.facts);
-      const ordinal = await readProjectOrdinal(request);
-      const openSpec = await observeOpenSpecActiveChanges({
-        ...request,
-        installation,
-      });
+      const pre = await readArchiveV2(request, started.group, request.runId);
       if (pre === null) {
-        if (
-          !openSpec.changeIds.includes(request.changeId) ||
-          (
-            await readCoordinationManifest(
-              request.repositoryRoot,
-              request.deliveryId,
-            )
-          ).changes.find((change) => change.id === request.changeId)?.state !==
-            "active"
-        )
-          throw Error("Archive prestate OpenSpec/coordination drift");
         await checkReviewCandidate(request, author, review.result.facts);
-        const date = openSpecArchiveDate();
-        if (
-          (await directoryHashes(
-            request.repositoryRoot,
-            `openspec/changes/${request.changeId}`,
-          )) === null ||
-          (await directoryHashes(
-            request.repositoryRoot,
-            `openspec/changes/archive/${date}-${request.changeId}`,
-          )) !== null ||
-          (await directoryHashes(
-            request.repositoryRoot,
-            `openspec/changes/archive/${date}-${String(ordinal).padStart(3, "0")}-${request.changeId}`,
-          )) !== null
-        )
-          throw Error("Archive unobserved source/target conflict");
         actualEffect = "none";
-        remaining = [
-          "preflight",
-          "openspec",
-          "rename",
-          "coordination",
-          "finish",
-        ];
+        remaining = ["openspec", "rename", "coordination", "finish"];
         canContinue = true;
       } else {
         if (
           pre.descriptorSha256 !== sha256(Buffer.from(started.markdown)) ||
-          pre.reviewRunId !== started.previous?.context.runId ||
           pre.authorRunId !== author.context.runId ||
-          !isDeepStrictEqual(
-            pre.candidate,
-            author.result.facts.artifactHashes,
-          ) ||
-          pre.archivePath !==
-            `openspec/changes/archive/${pre.defaultPath.slice("openspec/changes/archive/".length, "openspec/changes/archive/".length + 10)}-${String(ordinal).padStart(3, "0")}-${request.changeId}`
+          pre.reviewRunId !== review.context.runId ||
+          !isDeepStrictEqual(pre.candidate, author.result.facts.artifactHashes)
         )
-          throw Error("Archive prestate descriptor/parent drift");
-        const observed = await observeArchiveEffects(request, pre);
-        if (
-          openSpec.changeIds.includes(request.changeId) !==
-          (observed.effect === "none")
-        )
-          throw Error("Archive effect/OpenSpec observation conflict");
-        if (observed.effect === "none")
-          assertOpenSpecArchiveDate(pre.defaultPath, request.changeId);
+          throw Error("Archive v2 descriptor/source drift");
+        const observed = await observeArchiveV2(request, started.group, pre);
         actualEffect = observed.effect;
-        remaining = observed.remaining;
-        canContinue = observed.effect !== "unknown";
+        if (observed.effect === "none") {
+          await checkReviewCandidate(request, author, review.result.facts);
+          assertOpenSpecArchiveDate(pre.defaultPath, request.changeId);
+        }
+        remaining =
+          observed.effect === "none"
+            ? ["openspec", "rename", "coordination", "finish"]
+            : observed.effect === "openspec"
+              ? ["rename", "coordination", "finish"]
+              : observed.effect === "archived"
+                ? ["coordination", "finish"]
+                : observed.effect === "completed" ||
+                    observed.effect === "failed"
+                  ? ["finish"]
+                  : ["explicit-recovery"];
+        const recoverableAck =
+          observed.success &&
+          observed.effect === "unknown" &&
+          observed.actual.source === null &&
+          observed.actual.archive === null &&
+          isDeepStrictEqual(observed.actual.defaultArchive, pre.sourceFiles) &&
+          pre.defaultBefore === null &&
+          pre.archiveBefore === null &&
+          observed.actual.coordinationSha256 === pre.coordination.beforeSha256;
+        canContinue =
+          ["none", "openspec", "archived", "completed"].includes(
+            observed.effect,
+          ) || recoverableAck;
+        if (recoverableAck)
+          remaining = ["observe-openspec", "rename", "coordination", "finish"];
       }
     }
+    if (
+      started.names.length === 1 &&
+      started.descriptor.preparedContext.actionIdentity.actionId ===
+        "archive" &&
+      started.descriptor.archiveContractVersion !== 2
+    )
+      throw Error(
+        "archive-contract-incompatible: use the manager matching original descriptor Guidance",
+      );
     if (started.names.length === 3) {
       const occurrence = parseRunOccurrenceId(request.runId)!;
       const record = await readDurableRun({
@@ -265,6 +239,12 @@ export async function inspectAction(
         throw Error("Complete Run is not canonical tip");
       actualEffect = record.context.lifecycleState ?? "unknown";
       remaining = [];
+      const outcome = record.result.facts.archiveOutcome as
+        { kind?: string } | undefined;
+      if (outcome?.kind === "partial") {
+        actualEffect = "recovery-required";
+        remaining = ["explicit-recovery"];
+      } else if (outcome?.kind === "failed") actualEffect = "safe-failed";
     }
     return {
       kind: "action-inspect",

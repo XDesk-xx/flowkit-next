@@ -102,7 +102,8 @@ export async function startCanonicalActionRun(
   commandDescriptor:
     | boolean
     | {
-        readonly applicableChecks: readonly {
+        readonly archiveContractVersion?: 2;
+        readonly applicableChecks?: readonly {
           readonly id: string;
           readonly reason: string;
         }[];
@@ -192,7 +193,9 @@ export async function startCanonicalActionRun(
               commandOrigin: "flowkit-action-start",
               changeStartSequence: input.changeStartSequence,
               ...(typeof commandDescriptor === "object"
-                ? { applicableChecks: commandDescriptor.applicableChecks }
+                ? commandDescriptor.archiveContractVersion === 2
+                  ? { archiveContractVersion: 2 }
+                  : { applicableChecks: commandDescriptor.applicableChecks }
                 : {}),
             }
           : {}),

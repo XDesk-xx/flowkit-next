@@ -149,11 +149,11 @@ test("archive refuses an incomplete competing Run before changing OpenSpec", asy
         ...base,
         actionId: "archive",
         role: "author",
-        applicableChecks: [{ id: "not-configured", reason: "negative probe" }],
+        applicableChecks: [{ id: "retired", reason: "migration" }],
       }),
       (error: unknown) =>
         JSON.parse((error as { stdout?: string }).stdout ?? "{}").error
-          ?.kind === "archive-check-unconfigured",
+          ?.kind === "invalid-request",
     );
     assert.equal(
       (
@@ -167,9 +167,6 @@ test("archive refuses an incomplete competing Run before changing OpenSpec", asy
       ...base,
       actionId: "archive",
       role: "author",
-      applicableChecks: [
-        { id: "test:domain", reason: "affected domain check" },
-      ],
     });
     assert.equal(started.effect, "started");
     await mkdir(
@@ -201,7 +198,7 @@ test("archive refuses an incomplete competing Run before changing OpenSpec", asy
         );
         return (
           archived.status === "incomplete" &&
-          archived.effect === "none" &&
+          archived.effect === "unknown" &&
           archived.archivePath === null
         );
       },

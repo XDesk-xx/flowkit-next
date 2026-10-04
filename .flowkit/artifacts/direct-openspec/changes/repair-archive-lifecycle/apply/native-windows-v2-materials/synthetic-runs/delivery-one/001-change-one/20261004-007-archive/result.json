@@ -1,0 +1,59 @@
+{
+  "runId": "20261004-007-archive",
+  "actionIdentity": {
+    "deliveryId": "delivery-one",
+    "changeId": "change-one",
+    "actionId": "archive"
+  },
+  "authorConclusion": "FAIL",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": null,
+  "facts": {
+    "archiveOutcome": {
+      "kind": "failed",
+      "effect": "no-mutation",
+      "retryable": true
+    },
+    "archiveMaterialRefs": [
+      {
+        "path": ".flowkit/artifacts/delivery-one/changes/001-change-one/archive-diagnostics/3560744c-40e3-40d2-90d7-744bee069cf4/attempt.json",
+        "bytes": 1304,
+        "sha256": "fb1ce14c1fa54b5be4268e1df7183bc394852033c6012b8ad13379cf101b6d9d"
+      },
+      {
+        "path": ".flowkit/artifacts/delivery-one/changes/001-change-one/archive-diagnostics/3560744c-40e3-40d2-90d7-744bee069cf4/commands/openspec-archive/command.json",
+        "bytes": 909,
+        "sha256": "6e57f918a1004b67f5b0d08db8f2291bb03322d166993c750f997b67f51fdf19"
+      },
+      {
+        "path": ".flowkit/artifacts/delivery-one/changes/001-change-one/archive-diagnostics/3560744c-40e3-40d2-90d7-744bee069cf4/commands/openspec-archive/stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": ".flowkit/artifacts/delivery-one/changes/001-change-one/archive-diagnostics/3560744c-40e3-40d2-90d7-744bee069cf4/commands/openspec-archive/stdout.txt",
+        "bytes": 313,
+        "sha256": "bac89b421d15c35a60a7a6fba93aadeefc39c03f7385c837b44bb968afa3a6a5"
+      },
+      {
+        "path": ".flowkit/artifacts/delivery-one/changes/001-change-one/archive-effects/20261004-007-archive/openspec-intent.json",
+        "bytes": 128,
+        "sha256": "842f504469931575c6bcb20d9be77daba287b1ac309a95d00cffdfde85c73811"
+      },
+      {
+        "path": ".flowkit/artifacts/delivery-one/changes/001-change-one/archive-effects/20261004-007-archive/openspec-result.json",
+        "bytes": 618,
+        "sha256": "befcfab37e3015b29ae8b67d4a399b94701a4580926fbe2b2ea767cc5109fc62"
+      },
+      {
+        "path": ".flowkit/artifacts/delivery-one/changes/001-change-one/archive-effects/20261004-007-archive/prestate.json",
+        "bytes": 3034,
+        "sha256": "52eeac66f85d6896b194eeb408c0a36fa071e98d01c4c847432ab01c32ced476"
+      }
+    ],
+    "archivePath": "openspec/changes/archive/2026-10-04-001-change-one",
+    "projectOrdinal": 1,
+    "proofRefs": []
+  }
+}

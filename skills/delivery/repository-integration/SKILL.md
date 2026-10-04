@@ -20,7 +20,7 @@ description: 在独立 Owner Git 授权下消费已确认 Final，并核验明�
 
 ## 固定命令调用
 
-create-new 对授权 regular paths 核对 raw/filter，stage 前核对 index 加授权路径的拟写入树，stage 后与 commit 后分别核对 index/blob。关联已审 Change 时，Author effective 身份、correction 及必要原件/proof 必须在候选树中；Archive 机械迁移/spec 收敛/当前 coordination state 更新仅消费已接纳 terminal Archive 和 exact 材料的允许后态，额外漂移阻断。不得为了通过检查补造 Reviewer receipt、改原 Run、扩张 paths 或 reset 用户 index。correction 使用独立 managed 准入，不修改 parent proofRefs。
+create-new 对授权 regular paths 独立核对 raw fingerprint 与 index-aware 预期 blob，stage 前核对 index 加授权路径的拟写入树，stage 后与 commit 后分别核对 index/blob。相关 .gitattributes 必须存在于拟写入树或授权路径；外部规则/settings 漂移阻断，stage 后复核 cached rules。raw==旧 blob 而 clean 不同的 stat-cache 歧义在真实 staging 前 unsupported，禁止 touch/refresh/renormalize/临时 add 来试算或重绑。关联已审 Change 时，Author effective 身份、correction 及必要原件/proof 必须在候选树中；Archive 机械迁移/spec 收敛/当前 coordination state 更新仅消费已接纳 terminal Archive 和 exact 材料的允许后态，额外漂移阻断。不得为了通过检查补造 Reviewer receipt、改原 Run、扩张 paths 或 reset 用户 index。correction 使用独立 managed 准入，不修改 parent proofRefs。
 
 普通 Start 后 commit / Change checkpoint / push 不需要 Final 或 Integration package。在本安装 `flowkit git checkpoint`、`flowkit git push`、`flowkit git integrate` 中按已授权的 exact 节点选一个，提交封闭 JSON 请求并核对结果后 STOP。`git integrate` 只在真实外部接受关系可核对时确认；PR/merge 的实际接受仍由外部有界 mechanics 完成。具体可见参数、请求字段及部分成功交接见 [固定命令 HOW](references/host-call.md)。targetRoot 是实际 target Git 根，发行命令来自 manager；target 无需复制 Flowkit 资产。
 

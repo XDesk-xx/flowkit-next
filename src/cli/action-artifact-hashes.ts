@@ -9,7 +9,7 @@ import type {
 import type { ManagerInstallation } from "../internal/manager-installation.js";
 import type { ActionTarget, FinishRequest } from "./action-request.js";
 import { blocked } from "./action-error.js";
-import { assertCandidateGitBytes } from "../internal/candidate-git-bytes.js";
+import { candidateGitProjection } from "../internal/candidate-git-bytes.js";
 
 export async function checkArtifactHashes(
   root: string,
@@ -171,9 +171,9 @@ export async function checkResultArtifactsOnFinish(
     facts: JsonObject;
   },
   installation: ManagerInstallation,
-): Promise<void> {
+): Promise<JsonObject | null> {
   await checkExploreResultOnFinish(request, actionId, result);
-  if (!request.terminal || result.authorConclusion !== "PASS") return;
+  if (!request.terminal || result.authorConclusion !== "PASS") return null;
   const hashes = result.facts.artifactHashes;
   if (actionId === "propose" || actionId === "revise-propose") {
     const status = await observeOpenSpecChangeStatus({
@@ -198,7 +198,28 @@ export async function checkResultArtifactsOnFinish(
   }
   if (actionId === "apply" || actionId === "revise-apply") {
     await checkArtifactHashes(request.repositoryRoot, hashes);
-    for (const relative of Object.keys(hashes as JsonObject))
-      await assertCandidateGitBytes(request.repositoryRoot, relative);
   }
+  if (
+    ![
+      "explore",
+      "revise-explore",
+      "propose",
+      "revise-propose",
+      "apply",
+      "revise-apply",
+    ].includes(actionId)
+  )
+    return null;
+  const candidates = isExploreAction(actionId)
+    ? {
+        ...((hashes as JsonObject) ?? {}),
+        [String(result.facts.exploreArtifact)]: result.facts.exploreSha256,
+      }
+    : (hashes as JsonObject);
+  const projection = await candidateGitProjection(
+    request.repositoryRoot,
+    candidates,
+    result.facts.candidateGit,
+  );
+  return JSON.parse(JSON.stringify(projection)) as JsonObject;
 }

@@ -1,7 +1,8 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { syncBuiltinESMExports } from "node:module";
-import fs, { readFile, writeFile } from "node:fs/promises";
+import fs, { mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
+import { tmpdir } from "node:os";
 import path from "node:path";
 import test, { mock } from "node:test";
 import {
@@ -18,6 +19,163 @@ import {
   finalInput,
 } from "./delivery-final-fixture.js";
 import { fixtureInstallation } from "./manager-installation-fixture.js";
+import {
+  writeDurableRun,
+  type DurableRunRecord,
+} from "../../../src/domain/run-result-persistence.js";
+import { archiveCompletionSource } from "../../../src/cli/current-run-chain.js";
+
+test("new bounded completion consumer accepts zero/one/multiple safe failures and checks the final PASS edge", async () => {
+  for (const failures of [0, 1, 3]) {
+    const root = await mkdtemp(
+      path.join(tmpdir(), "flowkit-completion-retry-"),
+    );
+    assert.equal(path.dirname(root), path.resolve(tmpdir()));
+    assert.ok(path.basename(root).startsWith("flowkit-completion-retry-"));
+    const records: DurableRunRecord[] = [];
+    const changeId = "retry-change",
+      selectedDelivery = "retry-delivery";
+    try {
+      const actions = [
+        "apply",
+        "review-apply",
+        ...Array.from({ length: failures }, () => "archive"),
+        "archive",
+      ];
+      for (const [offset, action] of actions.entries()) {
+        const sequence = offset + 1,
+          runId = `20261004-${String(sequence).padStart(3, "0")}-${action}`;
+        const identity = {
+          deliveryId: selectedDelivery,
+          changeId,
+          actionId: action,
+        } as DurableRunRecord["context"]["actionIdentity"];
+        const reviewer = action === "review-apply",
+          failed = action === "archive" && offset < actions.length - 1;
+        const record: DurableRunRecord = {
+          actionMarkdown:
+            "# Synthetic accepted endpoint fixture, no independent Review\n",
+          context: {
+            runId,
+            occurrence: {
+              date: "20261004",
+              sequence,
+              actionId: identity.actionId,
+            },
+            actionIdentity: identity,
+            role: reviewer ? "reviewer" : "author",
+            lifecycleState: "terminal",
+            ownerAuthority: null,
+            previousRunId: records.at(-1)?.context.runId ?? null,
+          },
+          result: {
+            runId,
+            actionIdentity: identity,
+            authorConclusion: reviewer ? null : failed ? "FAIL" : "PASS",
+            reviewerVerdict: reviewer ? "approved" : null,
+            verificationVerdict: null,
+            nextBoundary: null,
+            facts: reviewer
+              ? { reviewedRunId: records.at(-1)!.context.runId }
+              : action === "archive"
+                ? {
+                    archiveOutcome: failed
+                      ? {
+                          kind: "failed",
+                          effect: "no-mutation",
+                          retryable: true,
+                        }
+                      : { kind: "completed" },
+                  }
+                : {},
+          },
+        };
+        await writeDurableRun(
+          {
+            repositoryRoot: root,
+            deliveryId: selectedDelivery,
+            changeId,
+            changeStartSequence: 1,
+            occurrence: record.context.occurrence,
+          },
+          record,
+        );
+        records.push(record);
+      }
+      const select = async (record: DurableRunRecord) => {
+        const prefix = `.flowkit/runs/${selectedDelivery}/001-${changeId}/${record.context.runId}`;
+        const artifacts = await Promise.all(
+          ["action.md", "context.json", "result.json"].map(async (name) => {
+            const artifact = `${prefix}/${name}`,
+              bytes = await readFile(path.join(root, artifact));
+            return {
+              artifact,
+              bytes: bytes.length,
+              contentSha256: createHash("sha256").update(bytes).digest("hex"),
+            };
+          }),
+        );
+        return {
+          runId: record.context.runId,
+          changeStartSequence: 1,
+          sourceRef: `${prefix}/result.json`,
+          artifacts,
+        };
+      };
+      const source: ReadDeliveryRequiredEvidence = {
+        readChangeClosure: async () => ({
+          projectId: "fixture-project",
+          deliveryId: selectedDelivery,
+          changeId,
+          archive: await select(records.at(-1)!),
+          reviewApply: await select(records[1]),
+        }),
+      };
+      const expected = {
+        repositoryRoot: root,
+        projectId: "fixture-project",
+        deliveryId: selectedDelivery,
+        changeIds: [changeId],
+      };
+      const result = await readDeliveryChangeCompletions(source, expected);
+      assert.equal(result?.[0].archiveRunId, records.at(-1)!.context.runId);
+      assert.equal(result?.[0].reviewApplyRunId, records[1].context.runId);
+      const final = records.at(-1)!;
+      assert.throws(() =>
+        archiveCompletionSource(records, {
+          ...final,
+          context: {
+            ...final.context,
+            occurrence: { ...final.context.occurrence, sequence: 99 },
+          },
+        }),
+      );
+      const fork = {
+        ...final,
+        context: {
+          ...final.context,
+          runId: "20261004-099-archive",
+          occurrence: { ...final.context.occurrence, sequence: 99 },
+        },
+      };
+      assert.throws(() => archiveCompletionSource([...records, fork], final));
+      if (failures) {
+        const middle = records[2];
+        const directory = path.join(
+          root,
+          `.flowkit/runs/${selectedDelivery}/001-${changeId}/${middle.context.runId}`,
+        );
+        await rm(directory, { recursive: true });
+        assert.equal(
+          await readDeliveryChangeCompletions(source, expected),
+          null,
+        );
+      }
+    } finally {
+      await rm(root, { recursive: true, force: true, maxRetries: 3 });
+    }
+  }
+});
 
 test("bounded accepted endpoints cover both required Changes, not ancestors or Full Test logs", async () => {
   const f = await createFixture();

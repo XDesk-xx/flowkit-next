@@ -6,7 +6,9 @@
 ## Requirements
 
 ### Requirement: Invocation entry establishes or reuses exactly one prepared current Action
-系统 SHALL 接受一个已由外部 boundary 选择的 canonical Standard Action identity 作为一次 invocation target。若 exact same target 已经是 externally committed `prepared A`，系统 SHALL 复用该 exact prepared CurrentAction。若 current slot 为空，或 current slot 为不同 identity 的 terminal Action 且既有 structural prepare rule 允许 replacement，系统 SHALL 在 invocation 内部只暂存 structurally valid `A/prepared` candidate；在 package-bound preparation/readiness 成功前 SHALL NOT 将该 staged candidate 暴露为新的 externally committed current Action。若 exact current 为 `prepared` Author A，且同一 exact Owner correction boundary 已允许不同的 revise target B，系统 SHALL 可通过有界 supersession transition 暂存 `B/prepared` candidate；只有新 occurrence 的开始及必要完整记录经保存和读回后，B 才能成为对外 current。其他 current-slot/target 组合 SHALL fail closed。本 capability SHALL NOT 决定 target 的 Policy eligibility。
+系统 SHALL 接受一个已由外部 boundary 选择的 canonical Standard Action identity 作为一次 invocation target。若 exact same target 已经是 externally committed `prepared A`，系统 SHALL 复用该 exact prepared CurrentAction。若 current slot 为空，或 current slot 为不同 identity 的 terminal Action 且既有 structural prepare rule 允许 replacement，系统 SHALL 在 invocation 内部只暂存 structurally valid `A/prepared` candidate；在 package-bound admission/readiness 成功前 SHALL NOT 将该 staged candidate 暴露为新的 externally committed current Action。若 exact current 为 `prepared` Author A，且同一 exact Owner correction boundary 已允许不同的 revise target B，系统 SHALL 可通过有界 supersession transition 暂存 `B/prepared` candidate；只有新 occurrence 的开始及必要完整记录经保存和读回后，B 才能成为对外 current。
+
+对于已由 Policy 验证的 retryable terminal Archive，invocation SHALL 复用 action-lifecycle 的专用 Archive retry contract 暂存同 semantic identity 的新 prepared candidate，并绑定新 occurrence 与原 failed Run；不得复用旧 occurrence 或复制另一套 retry state machine。其他 current-slot/target 组合 SHALL fail closed。本 capability SHALL NOT 决定 target 的 Policy eligibility。
 
 #### Scenario: Internally prepare an empty current slot
 - **WHEN** current slot 为空且 invocation target 为 canonical Standard Action A
@@ -23,6 +25,10 @@
 #### Scenario: Stage authorized prepared supersession
 - **WHEN** current 为 `prepared` Author A、Policy 已对同一 A/B 和 exact Owner authority 返回 `READY_ACTION(B)`，且 structural supersession 允许 B
 - **THEN** invocation entry SHALL 仅暂存 `B/prepared`，并 SHALL 以新 occurrence、前序指针、authority 和 canonical GuidanceRef 形成新 ActionPackage；不得先改写 A
+
+#### Scenario: Stage only an eligible Archive retry
+- **WHEN** exact failed Archive 的 retry boundary 已核准且新 occurrence 有效
+- **THEN** invocation SHALL 使用专用结构转换及同一个新 ActionPackage，保留旧 terminal 结果；无有效 boundary 时拒绝
 
 ### Requirement: Each invocation binds execution to one new exact Run occurrence and ActionPackage
 每次实际 Standard Action invocation SHALL 使用 exact invocation target、当前/暂存的 exact prepared Action identity、一个 exact current Run occurrence/context 与 exact canonical GuidanceRef 形成一个 ActionPackage；同一个 externally committed `prepared A` 的后续再次 invocation SHALL 使用新的 exact Run occurrence 来区分 execution occurrence，而 SHALL NOT 通过 `resumed`、retry counter、attempt id、PackageId、PreparationPackage 或 ResultId 建立第二套 execution identity。形成的 package SHALL 满足既有 ActionPackage closed validation contract，并 SHALL 是该 invocation 中 package-bound preparation与后续 execution 的同一 exact package identity。
@@ -69,15 +75,21 @@ candidate Result admission 失败时，系统 SHALL 保持 exact current Action 
 - **THEN** 系统 SHALL 报告 bounded failure并 STOP，且 SHALL NOT 自动执行其他 Standard Action
 
 ### Requirement: Package-bound preparation can block before a newly prepared Action is committed
-当 invocation 需要从空/terminal current slot 建立新的 prepared Action 时，系统 SHALL 在同一个 exact ActionPackage identity 下执行一个只读 preparation/readiness step。若该 step BLOCK/FAIL 于 Action execution 之前，系统 SHALL NOT 调用 Action execution callback，SHALL NOT 暴露/提交 staged prepared candidate，并 SHALL 返回 pre-invocation current Action unchanged。若 preparation PASS，系统才可使用/提交 exact prepared candidate并继续既有 execution/admission/terminal flow。该行为 SHALL NOT 新增 Action、lifecycle state、PreparationPackage、Preparation Run 或 rollback lifecycle。
+当 invocation 需要从空/terminal current slot 建立新的 prepared Action 时，系统 SHALL 在同一个 exact ActionPackage identity 下执行只读 admission/readiness。若该 step BLOCK/FAIL 于 Action execution 之前，系统 SHALL NOT 调用 Action execution callback，SHALL NOT 暴露/提交 staged prepared candidate，并 SHALL 返回 pre-invocation current Action unchanged。若 preparation PASS，系统才可使用/提交 exact prepared candidate并继续既有 execution/admission/terminal flow。该行为 SHALL NOT 新增 Action、lifecycle state、PreparationPackage、Preparation Run 或 rollback lifecycle。
+
+Archive 的该 step SHALL 仅验证 Flowkit lifecycle、Review/candidate、identity、ordinal、Guidance 和记录完整性，不执行原生 archive/validate 预演、repository/dependency snapshot 或项目检查。原生 archive 的成功、失败和 rollback SHALL 属于已经开始的 Archive Run，不能被挪到 preparation 以避免形成失败记录。
 
 #### Scenario: Blocked preparation preserves the terminal review boundary
-- **WHEN** current Action 为 terminal `review-apply`，Policy 已选择 exact `archive` target，且 package-bound archive readiness BLOCKS before archive execution
-- **THEN** invocation SHALL 返回原 terminal `review-apply` current Action unchanged，SHALL NOT 调用 archive execution callback，并 SHALL NOT 暴露新的 `archive/prepared` current Action
+- **WHEN** current Action 为 terminal `review-apply`，Policy 已选择 exact `archive`，但 Flowkit admission 发现候选漂移或 identity/ordinal 无效
+- **THEN** invocation SHALL 返回原 current unchanged，不调用 archive execution callback，也不暴露新的 archive/prepared
 
 #### Scenario: Successful preparation continues the existing Action execution
 - **WHEN** package-bound preparation for exact Action A PASS
 - **THEN** invocation SHALL continue with the same exact ActionPackage into existing Action execution/result-admission/terminalization behavior without creating a second preparation identity
+
+#### Scenario: Native validation fails after an Archive Run starts
+- **WHEN** Flowkit admission 通过而真实 OpenSpec archive 的 delta validation 失败
+- **THEN** 该失败 SHALL 记录在已开始的 Archive Run，不能报告成未进入 Archive 的 preparation failure
 
 ### Requirement: Agent execution uses existing Action contracts without mandatory CLI hosting
 

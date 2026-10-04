@@ -316,6 +316,7 @@ test("Author correction checkpoint requires original Run, manifest and supplemen
       (await directoryHashes(f.repositoryRoot, prefix))!,
     ).map((suffix) => `${prefix}/${suffix}`);
     const paths = [
+      ".gitattributes",
       ...runFiles,
       corrected.correctionRef!,
       "candidate.txt",

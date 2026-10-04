@@ -10,6 +10,7 @@ import {
 import { gitBytes } from "../../../src/internal/git-checkpoint-scope.js";
 import { sha256 } from "../../../src/cli/run-effective-facts.js";
 import { contextFixture } from "./action-context-fixture.js";
+import { candidateGitProjection } from "../../../src/internal/candidate-git-bytes.js";
 
 const exec = promisify(execFile);
 const entry = fileURLToPath(
@@ -24,7 +25,10 @@ export const stages = [
   "apply",
   "review-apply",
 ] as const;
-export async function executionFixture(last = 5) {
+export async function executionFixture(
+  last = 5,
+  configure?: (root: string) => Promise<JsonObject>,
+) {
   const fixture = await contextFixture();
   const root = fixture.repositoryRoot;
   await gitBytes(root, ["init"]);
@@ -51,7 +55,10 @@ export async function executionFixture(last = 5) {
     if (name !== "explore.md") planning[relative] = sha256(bytes);
   }
   await writeFile(path.join(root, "candidate.txt"), "candidate\n");
-  const candidate = { "candidate.txt": sha256(Buffer.from("candidate\n")) };
+  const candidate = {
+    "candidate.txt": sha256(Buffer.from("candidate\n")),
+    ...(configure ? await configure(root) : {}),
+  };
   const base = {
     repositoryRoot: root,
     flowkitHome: fixture.flowkitHome,
@@ -79,7 +86,18 @@ export async function executionFixture(last = 5) {
         ),
       };
     if (actionId === "propose") facts = { ...facts, artifactHashes: planning };
-    if (actionId === "apply") facts = { ...facts, artifactHashes: candidate };
+    if (actionId === "apply")
+      facts = {
+        ...facts,
+        artifactHashes: candidate,
+        ...(configure
+          ? {
+              candidateGit: JSON.parse(
+                JSON.stringify(await candidateGitProjection(root, candidate)),
+              ),
+            }
+          : {}),
+      };
     if (reviewer) facts = { ...facts, reviewedRunId: previous };
     await writeDurableRun(
       { ...base, occurrence, changeStartSequence: 1 },

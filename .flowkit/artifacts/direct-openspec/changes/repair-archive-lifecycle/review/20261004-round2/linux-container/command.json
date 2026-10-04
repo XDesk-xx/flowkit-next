@@ -1,0 +1,22 @@
+{
+  "program": "docker",
+  "args": [
+    "run",
+    "--name",
+    "flowkit-ocr-round2-20261004",
+    "--mount",
+    "type=bind,source=D:/Projects/flowkit-next/.tmp/ocr-archive-round2-snapshot,target=/snapshot,readonly",
+    "--mount",
+    "type=bind,source=D:/Projects/flowkit-next/.flowkit/artifacts/direct-openspec/changes/repair-archive-lifecycle/review/20261004-round2,target=/evidence",
+    "node:22.23.2-bookworm-slim",
+    "sh",
+    "/evidence/linux-setup.sh"
+  ],
+  "cwd": "D:\\Projects\\flowkit-next",
+  "startedAt": "2026-10-04T13:41:44.568Z",
+  "finishedAt": "2026-10-04T13:43:36.496Z",
+  "exitCode": 0,
+  "signal": null,
+  "spawnError": null,
+  "timedOut": false
+}

@@ -1,0 +1,64 @@
+TAP version 13
+# Subtest: published ten HOW assets use the fixed single-Action command path
+ok 1 - published ten HOW assets use the fixed single-Action command path
+  ---
+  duration_ms: 26.466
+  type: 'test'
+  ...
+# Subtest: synthetic HOW sequence preserves start, partial and create-once completion
+ok 2 - synthetic HOW sequence preserves start, partial and create-once completion
+  ---
+  duration_ms: 3200.9897
+  type: 'test'
+  ...
+# Subtest: synthetic HOW distinguishes prepared failure, business FAIL and failed partial save
+ok 3 - synthetic HOW distinguishes prepared failure, business FAIL and failed partial save
+  ---
+  duration_ms: 5330.6361
+  type: 'test'
+  ...
+# Subtest: new CRLF text binds LF; prediction writes neither worktree nor objects/index
+ok 4 - new CRLF text binds LF; prediction writes neither worktree nor objects/index
+  ---
+  duration_ms: 5123.8673
+  type: 'test'
+  ...
+# Subtest: auto and inherited autocrlf preserve modified existing CRLF index
+ok 5 - auto and inherited autocrlf preserve modified existing CRLF index
+  ---
+  duration_ms: 18220.1659
+  type: 'test'
+  ...
+# Subtest: attribute-only clean ambiguity rejects before admission, including only stat changes
+ok 6 - attribute-only clean ambiguity rejects before admission, including only stat changes
+  ---
+  duration_ms: 2558.7903
+  type: 'test'
+  ...
+# Subtest: real drift, unsupported filters, and ambiguous index flags cannot inherit a binding
+ok 7 - real drift, unsupported filters, and ambiguous index flags cannot inherit a binding
+  ---
+  duration_ms: 2501.3301
+  type: 'test'
+  ...
+# Subtest: LF and mixed index bases differ, UTF-8/BOM and binary/-text remain byte exact, unsafe conversions reject
+ok 8 - LF and mixed index bases differ, UTF-8/BOM and binary/-text remain byte exact, unsafe conversions reject
+  ---
+  duration_ms: 11220.0838
+  type: 'test'
+  ...
+# Subtest: safecrlf read-only round-trip judgment agrees with ordinary add
+ok 9 - safecrlf read-only round-trip judgment agrees with ordinary add
+  ---
+  duration_ms: 6733.0588
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 46958.4536

@@ -3,6 +3,7 @@ import {
   isCurrentAction,
   supersedePreparedAction,
   transitionCurrentAction,
+  retryTerminalArchive,
   type ActionIdentity,
   type CurrentAction,
 } from "./action-lifecycle.js";
@@ -22,11 +23,13 @@ import {
   type RunResultRecord,
 } from "./run-result-persistence.js";
 import { isChangeState, type ChangeState } from "./state.js";
+import { isSafeArchiveFailure } from "./archive-outcome.js";
 
 export const POLICY_BLOCKED_REASONS = [
   "invalid-policy-input",
   "change-not-active",
   "archive-completion-state-mismatch",
+  "archive-recovery-required",
   "terminal-result-missing-or-mismatched",
   "unrecognized-or-unsuccessful-author-outcome",
   "unrecognized-reviewer-verdict",
@@ -266,6 +269,14 @@ function normalBoundaryForTerminal(
 ): ActionBoundary | BlockedDecision {
   const actionId = currentAction.identity.actionId;
   if (AUTHOR_ACTIONS.has(actionId)) {
+    if (isSafeArchiveFailure(result))
+      return { kind: "action", actionId: "archive" };
+    if (
+      actionId === "archive" &&
+      (result.facts.archiveOutcome as { kind?: string } | undefined)?.kind ===
+        "partial"
+    )
+      return blocked("archive-recovery-required");
     if (result.authorConclusion !== "PASS") {
       return blocked("unrecognized-or-unsuccessful-author-outcome");
     }
@@ -403,7 +414,13 @@ function isStructurallyEnterable(
     transitionCurrentAction(facts.currentAction, {
       type: "prepare",
       identity,
-    }) !== null
+    }) !== null ||
+    (facts.terminalResult !== null &&
+      isSafeArchiveFailure(facts.terminalResult) &&
+      retryTerminalArchive(facts.currentAction, identity, {
+        kind: "ready-action",
+        actionId,
+      }) !== null)
   );
 }
 
@@ -422,6 +439,21 @@ export function evaluatePolicyAndNextBoundary(input: unknown): PolicyDecision {
   if (facts === null) return blocked("invalid-policy-input");
 
   const current = facts.currentAction;
+  if (
+    current?.state === "terminal" &&
+    current.identity.actionId === "archive" &&
+    facts.terminalResult?.facts.archiveOutcome &&
+    (facts.terminalResult.facts.archiveOutcome as { kind?: string }).kind ===
+      "partial"
+  ) {
+    return terminalFactsMatch(
+      current,
+      facts.terminalRunContext,
+      facts.terminalResult,
+    )
+      ? blocked("archive-recovery-required")
+      : blocked("terminal-result-missing-or-mismatched");
+  }
   if (
     facts.changeState === "completed" &&
     current?.state === "terminal" &&
@@ -530,7 +562,13 @@ export function evaluatePolicyAndNextBoundary(input: unknown): PolicyDecision {
   let actionId = normal.actionId;
   if (facts.ownerCorrection !== null) {
     const requested = facts.ownerCorrection.requestedAction;
-    if (!correctionAllowedForStage(current.identity.actionId, requested)) {
+    const archiveCorrection =
+      isSafeArchiveFailure(result) &&
+      (requested === "revise-propose" || requested === "revise-apply");
+    if (
+      !archiveCorrection &&
+      !correctionAllowedForStage(current.identity.actionId, requested)
+    ) {
       return blocked("unsupported-owner-correction");
     }
     const authorityFailure = correctionAuthorityDecision(

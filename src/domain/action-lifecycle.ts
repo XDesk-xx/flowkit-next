@@ -178,3 +178,24 @@ export function supersedePreparedAction(
   }
   return nextCurrentAction(target, "prepared");
 }
+
+/** New occurrence only; Policy must establish safe Archive retry eligibility. */
+export function retryTerminalArchive(
+  current: unknown,
+  target: unknown,
+  boundary: unknown,
+): CurrentAction | null {
+  if (
+    !isCurrentAction(current) ||
+    !isActionIdentity(target) ||
+    !isRecord(boundary) ||
+    !hasExactlyFields(boundary, SUPERSESSION_BOUNDARY_FIELDS) ||
+    boundary.kind !== "ready-action" ||
+    boundary.actionId !== "archive" ||
+    current.state !== "terminal" ||
+    current.identity.actionId !== "archive" ||
+    !sameActionIdentity(current.identity, target)
+  )
+    return null;
+  return nextCurrentAction(target, "prepared");
+}

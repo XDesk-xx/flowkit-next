@@ -41,7 +41,7 @@ export async function affectedSpecHashes(
 ) {
   const hashes: Record<string, string | null> = {};
   for (const suffix of Object.keys(sourceFiles)) {
-    if (!/^specs\/[^/]+\/spec\.md$/.test(suffix)) continue;
+    if (!/^specs\/(?:[^/]+\/)+spec\.md$/.test(suffix)) continue;
     const relative = `openspec/${suffix}`;
     const file = path.join(root, relative);
     const stat = await lstat(file).catch((error: NodeJS.ErrnoException) => {

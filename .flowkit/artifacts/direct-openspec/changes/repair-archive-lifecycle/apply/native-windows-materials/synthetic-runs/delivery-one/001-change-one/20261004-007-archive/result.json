@@ -1,0 +1,54 @@
+{
+  "runId": "20261004-007-archive",
+  "actionIdentity": {
+    "deliveryId": "delivery-one",
+    "changeId": "change-one",
+    "actionId": "archive"
+  },
+  "authorConclusion": "FAIL",
+  "reviewerVerdict": null,
+  "verificationVerdict": null,
+  "nextBoundary": null,
+  "facts": {
+    "archiveOutcome": {
+      "kind": "failed",
+      "effect": "no-mutation",
+      "retryable": true
+    },
+    "archiveMaterialRefs": [
+      {
+        "path": ".flowkit/artifacts/delivery-one/changes/001-change-one/archive-diagnostics/a0efa950-28a1-4372-9c4e-e94e50a50e50/commands/openspec-archive/command.json",
+        "bytes": 909,
+        "sha256": "6c91031fca08b9642b05dc1ba12851d559bd3d5dae770626a1be036df10db0da"
+      },
+      {
+        "path": ".flowkit/artifacts/delivery-one/changes/001-change-one/archive-diagnostics/a0efa950-28a1-4372-9c4e-e94e50a50e50/commands/openspec-archive/stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": ".flowkit/artifacts/delivery-one/changes/001-change-one/archive-diagnostics/a0efa950-28a1-4372-9c4e-e94e50a50e50/commands/openspec-archive/stdout.txt",
+        "bytes": 313,
+        "sha256": "8d51fffb8b67bf45da4b6cda14f52e8cfaa79f379082972e20955b89d2a2e795"
+      },
+      {
+        "path": ".flowkit/artifacts/delivery-one/changes/001-change-one/archive-effects/20261004-007-archive/openspec-intent.json",
+        "bytes": 128,
+        "sha256": "c0554ce401bba6c1385d0facf20cf6a240231c267d7fb8356d11c02868d174db"
+      },
+      {
+        "path": ".flowkit/artifacts/delivery-one/changes/001-change-one/archive-effects/20261004-007-archive/openspec-result.json",
+        "bytes": 591,
+        "sha256": "b311a697a3bd16f0fe484b0be80ebf693f10e99d4f15b170280f99688c96caf9"
+      },
+      {
+        "path": ".flowkit/artifacts/delivery-one/changes/001-change-one/archive-effects/20261004-007-archive/prestate.json",
+        "bytes": 2830,
+        "sha256": "cbff7a082601857efa546cca126c3e29992275e07735e75a520eec2c75a4c75a"
+      }
+    ],
+    "archivePath": "openspec/changes/archive/2026-10-04-001-change-one",
+    "projectOrdinal": 1,
+    "proofRefs": []
+  }
+}

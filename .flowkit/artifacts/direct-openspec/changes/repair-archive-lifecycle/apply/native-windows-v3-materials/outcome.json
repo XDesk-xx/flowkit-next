@@ -1,0 +1,149 @@
+{
+  "platform": "win32",
+  "node": "v22.23.2",
+  "failed": {
+    "status": "failed",
+    "effect": "no-mutation",
+    "runId": "20261004-007-archive",
+    "archivePath": "openspec/changes/archive/2026-10-04-001-change-one",
+    "archiveOutcome": {
+      "kind": "failed",
+      "effect": "no-mutation",
+      "retryable": true
+    },
+    "archiveMaterialRefs": [
+      {
+        "path": ".flowkit/artifacts/delivery-one/changes/001-change-one/archive-diagnostics/79aae341-fdcf-4a3a-adf3-ea5ac4d7b024/attempt.json",
+        "bytes": 1304,
+        "sha256": "6a32f00279ef87400a87c9cb2b77a5de92007d94258dacd7ed58af14f616596c"
+      },
+      {
+        "path": ".flowkit/artifacts/delivery-one/changes/001-change-one/archive-diagnostics/79aae341-fdcf-4a3a-adf3-ea5ac4d7b024/commands/openspec-archive/command.json",
+        "bytes": 909,
+        "sha256": "0ef0fb9882fa7342f4dc1573943528bb5d012379882ae7f97a8b9437abe41961"
+      },
+      {
+        "path": ".flowkit/artifacts/delivery-one/changes/001-change-one/archive-diagnostics/79aae341-fdcf-4a3a-adf3-ea5ac4d7b024/commands/openspec-archive/stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": ".flowkit/artifacts/delivery-one/changes/001-change-one/archive-diagnostics/79aae341-fdcf-4a3a-adf3-ea5ac4d7b024/commands/openspec-archive/stdout.txt",
+        "bytes": 313,
+        "sha256": "8678ca82fc8c3d317138e3d86512144cab26bfa10ffc6951115317af9989922e"
+      },
+      {
+        "path": ".flowkit/artifacts/delivery-one/changes/001-change-one/archive-effects/20261004-007-archive/openspec-intent.json",
+        "bytes": 128,
+        "sha256": "79203c79421c9ded2754800330c47eccddaed40649ccd280534c91bc23eef565"
+      },
+      {
+        "path": ".flowkit/artifacts/delivery-one/changes/001-change-one/archive-effects/20261004-007-archive/openspec-result.json",
+        "bytes": 618,
+        "sha256": "d554c84eb66c15586eca5fe43ea63d74f7d7bbba05d74a0f124abb63d5de6df4"
+      },
+      {
+        "path": ".flowkit/artifacts/delivery-one/changes/001-change-one/archive-effects/20261004-007-archive/prestate.json",
+        "bytes": 3034,
+        "sha256": "c10948456add6145779d64cf54a61f10160a99c7287a16663e74e892fa982a19"
+      }
+    ]
+  },
+  "archived": {
+    "status": "completed",
+    "effect": "archive-and-coordination",
+    "archivePath": "openspec/changes/archive/2026-10-04-001-change-one",
+    "projectOrdinal": 1,
+    "runId": "20261004-008-archive",
+    "archiveOutcome": {
+      "kind": "completed"
+    },
+    "archiveMaterialRefs": [
+      {
+        "path": ".flowkit/artifacts/delivery-one/changes/001-change-one/archive-diagnostics/837eca7e-65e5-4fb6-85ef-25e74fd3ce29/attempt.json",
+        "bytes": 1304,
+        "sha256": "e2168e7f3a6ac5886c6ecfca6574ea5196dd84bce78963fe2e37729505dbc8f8"
+      },
+      {
+        "path": ".flowkit/artifacts/delivery-one/changes/001-change-one/archive-diagnostics/837eca7e-65e5-4fb6-85ef-25e74fd3ce29/commands/openspec-archive/command.json",
+        "bytes": 909,
+        "sha256": "e5765c2329752e38a6e4141ed1cf10e34cd705aa15f7daf9b1bc8ba1152fd4a4"
+      },
+      {
+        "path": ".flowkit/artifacts/delivery-one/changes/001-change-one/archive-diagnostics/837eca7e-65e5-4fb6-85ef-25e74fd3ce29/commands/openspec-archive/stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": ".flowkit/artifacts/delivery-one/changes/001-change-one/archive-diagnostics/837eca7e-65e5-4fb6-85ef-25e74fd3ce29/commands/openspec-archive/stdout.txt",
+        "bytes": 484,
+        "sha256": "71bf7157e46e7166f9c978776e243ef16e4af60627056924a7f91e8d26682f25"
+      },
+      {
+        "path": ".flowkit/artifacts/delivery-one/changes/001-change-one/archive-effects/20261004-008-archive/coordination-observed.json",
+        "bytes": 265,
+        "sha256": "e4319a655f80c1b494ec90656dc1a35161d475679eeda3020c1195fe1c080fba"
+      },
+      {
+        "path": ".flowkit/artifacts/delivery-one/changes/001-change-one/archive-effects/20261004-008-archive/git-projection.json",
+        "bytes": 3502,
+        "sha256": "0ffa6d308b9804bcb1031b5e34fde4ff0ac577e8cbf9548ac56e8f97cac7bec4"
+      },
+      {
+        "path": ".flowkit/artifacts/delivery-one/changes/001-change-one/archive-effects/20261004-008-archive/openspec-intent.json",
+        "bytes": 128,
+        "sha256": "e5ca14959b1c5c5151d2d04b2c37de90324466482e62e24b90ca68937180f96e"
+      },
+      {
+        "path": ".flowkit/artifacts/delivery-one/changes/001-change-one/archive-effects/20261004-008-archive/openspec-observed.json",
+        "bytes": 883,
+        "sha256": "e754b7124e8f6f78a0230fc61655e2c0218e0cc5425e1a115ab454b3e5bb0657"
+      },
+      {
+        "path": ".flowkit/artifacts/delivery-one/changes/001-change-one/archive-effects/20261004-008-archive/openspec-result.json",
+        "bytes": 454,
+        "sha256": "e6b22fbbcaf727174a504740ce951f001d18f30cd76b8444a93b8ff98005b9ff"
+      },
+      {
+        "path": ".flowkit/artifacts/delivery-one/changes/001-change-one/archive-effects/20261004-008-archive/prestate.json",
+        "bytes": 2947,
+        "sha256": "392bf9f8ab8dec6ae543d083654b55be013cfc66024197f1cdbb1e9e38fa02bf"
+      },
+      {
+        "path": ".flowkit/artifacts/delivery-one/changes/001-change-one/archive-effects/20261004-008-archive/rename-observed.json",
+        "bytes": 752,
+        "sha256": "deee7e8dd4f6c9f549244d623900898935f14fc7f101b6780dd6b04e498f8053"
+      }
+    ]
+  },
+  "checkpoint": {
+    "status": "completed",
+    "phase": "readback",
+    "reason": null,
+    "observed": {
+      "checkpointCommit": "01a362813127f3796c059b376b2b9c8620d4a200",
+      "remoteCommit": null
+    },
+    "effect": "confirmed",
+    "remaining": []
+  },
+  "completions": [
+    {
+      "changeId": "change-one",
+      "archiveRunId": "20261004-008-archive",
+      "reviewApplyRunId": "20260930-006-review-apply",
+      "archiveResultRef": {
+        "artifact": ".flowkit/runs/delivery-one/001-change-one/20261004-008-archive/result.json",
+        "contentSha256": "015f135406c572c7416340cfb862728e3e57addd7d04c0f0aaa18f52c893b9f5",
+        "bytes": 3442
+      },
+      "reviewResultRef": {
+        "artifact": ".flowkit/runs/delivery-one/001-change-one/20260930-006-review-apply/result.json",
+        "contentSha256": "03b39a7d485a1355138740a5fddd12ea079b6c0c95002ab1ecd48d28de48558a",
+        "bytes": 362
+      }
+    }
+  ],
+  "review": "synthetic role fixture, no independent Review",
+  "delivery": "completion consumer only, no Delivery Full Test/Final"
+}

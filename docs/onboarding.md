@@ -73,7 +73,7 @@ node $cli status --input $queryRequestFile
 node $cli next --input $queryRequestFile
 ```
 
-`proof inspect` 请求另含 `runId` 与受控 proof `path`；只有实际必要材料才调用。生产者在 finish 前须将本 Run 正式 proof 目录的**全部文件**逐一纳入本 Run 显式 `proofRefs`，每条含归属、路径、用途、bytes 与 SHA。固定 finish 会枚举本 Run 目录并双向核对；若目录有三个文件而只列一个、目录为空、引用重复或文件无效，会在 terminal 机器文件写入前拒绝并保留开始记录和材料。无新材料时不建空目录，显式使用 `proofRefs: []`。后续 Action 的 handoff 可只交接本次判断需要的已声明引用，不删减原 Run Result 或重扫旧目录。`.tmp` 仅承载可丢弃请求、诊断和隔离实验；需要长期复现的实验脚本按原始字节作为本 Run proof 声明具体用途，不作为标准生命周期入口。finish 请求含 `runId`、`role`、`terminal` 与真实 `RunResultRecord`。仅返回 `effect=confirmed` 才表示三文件和 canonical chain 已读回；这不代表业务 PASS。Policy 允许的 prepared/terminal 同阶段 Owner revise 仅由收到真实 Owner 指令的受信宿主在 start 请求中加入现有 `OwnerAuthorityFact`，finish 不再重填。archive start 另需非空 `applicableChecks: [{id,reason}]`，由 Agent 声明实际适用且已在 target `package.json` scripts 或 `config/verification/full-test.json` checks 中配置的检查；隔离 convergence 后执行，未配置或失败则阻断。Reviewer `rejected` 配 `nextBoundary: null` 可真实保存为 terminal；新查询返回 `blocked(review-rejected)` 后 STOP。仅明确同阶段 Owner `revise-action` 才可开始对应 revise，不改写原 verdict。Review finish 声明 exact `facts.reviewedRunId`，已有 alias/map 必须同一 direct Author；apply/revise-apply PASS 和 review-apply start/finish 核对 raw/filter。普通 Action 不需要新增 Owner fact，Review、Full Test 与 Git 边界仍独立。
+`proof inspect` 请求另含 `runId` 与受控 proof `path`；只有实际必要材料才调用。生产者在 finish 前须将本 Run 正式 proof 目录的**全部文件**逐一纳入本 Run 显式 `proofRefs`，每条含归属、路径、用途、bytes 与 SHA。固定 finish 会枚举本 Run 目录并双向核对；若目录有三个文件而只列一个、目录为空、引用重复或文件无效，会在 terminal 机器文件写入前拒绝并保留开始记录和材料。无新材料时不建空目录，显式使用 `proofRefs: []`。后续 Action 的 handoff 可只交接本次判断需要的已声明引用，不删减原 Run Result 或重扫旧目录。`.tmp` 仅承载可丢弃请求、诊断和隔离实验；需要长期复现的实验脚本按原始字节作为本 Run proof 声明具体用途，不作为标准生命周期入口。finish 请求含 `runId`、`role`、`terminal` 与真实 `RunResultRecord`。仅返回 `effect=confirmed` 才表示三文件和 canonical chain 已读回；这不代表业务 PASS。Policy 允许的 prepared/terminal 同阶段 Owner revise 仅由收到真实 Owner 指令的受信宿主在 start 请求中加入现有 `OwnerAuthorityFact`，finish 不再重填。Archive version 2 的 start 只核对 Flowkit admission，不接收项目 checks，不预演原生 validation/archive，也不扫描依赖、ignored symlink 或 pnpm shim。Reviewer `rejected` 配 `nextBoundary: null` 可真实保存为 terminal；新查询返回 `blocked(review-rejected)` 后 STOP。仅明确同阶段 Owner `revise-action` 才可开始对应 revise，不改写原 verdict。Review finish 声明 exact `facts.reviewedRunId`，已有 alias/map 必须同一 direct Author；成功 Author finish 由 manager 生成 candidateGit version-1；Review/Archive 核对 raw 与原绑定的 Git 身份。普通 Action 不需要新增 Owner fact，Review、Full Test 与 Git 边界仍独立。
 
 ### 可选宿主权限示例
 
@@ -173,9 +173,9 @@ pack dry-run、doctor、CLI 重启和合成 fixtures 不能抵扣真实工作/�
 }
 ```
 
-用 `flowkit action inspect --input inspect.json` 只读核对 descriptor/Guidance/原件、实际 OpenSpec/目录/spec/coordination、diagnostic refs、remaining 与 canContinue。普通 incomplete 查询给 exact locator；machine partial、漂移或未知后态仍停止。收到明确同 Run 继续指令时用原 `change archive` 请求：none 重做当前 preflight；已有 OpenSpec 后态只 rename/coordination；已完成只读确认。业务 completed 后，`action finish` 的 `facts.archiveMaterialRefs` 使用返回的全部 exact refs，才能接纳 terminal Archive。
+用 `flowkit action inspect --input inspect.json` 只读核对 descriptor/Guidance/原件、实际 OpenSpec/目录/spec/coordination、diagnostic refs、remaining 与 canContinue。普通 incomplete 查询给 exact locator；machine partial、漂移或未知后态仍停止。收到明确同 Run 继续指令时用原 `change archive` 请求：无 intent 且前态匹配时首次调用一次实际 OpenSpec；intent 无可验证结果不重放；真实成功命令和一致后态只补剩余观察/rename/coordination；已完成只读确认。`action finish` 使用真实 closed `facts.archiveOutcome` 与返回的全部 exact `facts.archiveMaterialRefs`。completed 为 Author PASS/null 或 checkpoint；failed/no-mutation 或有正面回滚证据的 rolled-back 为 FAIL/null，可新 Run 重试；partial/recovery-required 为 FAIL/null、blocked。业务 partial 可完整 terminal，即使 coordination 损坏也不猜 active；机器 partial 保持 incomplete。新重试的直接 parent 是安全失败，来源只穿过同 Change 连续已接纳安全 FAIL 到 approved Review/direct Author。
 
-pnpm11 源依赖 preflight 为 error/no-install；snapshot 文件与内部 link/shim 都落在独立 scratch，scratch 局部 no-sync 不屏蔽真实 check 失败。诊断每流最多16MiB，超限保留实际前缀并分类失败。必要 raw 流和材料留 artifacts，不以清理 scratch 丢失证据。
+项目 Verification 仍属于 Apply/Review/Full Test，不由 Archive 重跑。安全 Archive FAIL 后的候选修订只用 exact Owner revise-action 与单项 revise-propose/revise-apply scope，修订后重新独立 Review；partial/completed 不自动解锁。旧完整 Run/correction/version-1 Archive 按原合同只读，旧 started 交给匹配冻结 Guidance 的原 manager，新 manager 报 incompatible。诊断每流最多16MiB，超限保留实际前缀并分类失败。必要 raw 流和材料留 artifacts，不以清理 scratch 丢失证据。
 
 `action correct` 只为 active canonical terminal 的缺字段补齐。请求另含以下字段（`expectedRunHashes` 必须换成原三文件实际 SHA-256；下列 zero 值只是字段形状示例，不可执行的授权事实）：
 
@@ -209,4 +209,12 @@ Reviewer 只能补自己当前 Review 缺失的 reviewedRunId/alias，指向唯�
 
 rejected 后的 start 请求使用对应 `revise-explore|revise-propose|revise-apply`、`role: "author"` 和来自真实 Owner 的 `decision: "revise-action"`、same Delivery/Change、exact 单阶段 scope。没有该指令就保留 blocked，不自动下一 Action。
 
-Git create-new 仍需独立 exact path 授权；它在拟写入树、index 和最终 blob 核对 raw 身份。归档后的迁移、spec 与 coordination 后态仅来自同 Change 已接纳 Archive 材料；额外漂移、缺候选树证据或范围外 staged 拒绝，不扩张 paths、不 reset。
+Git create-new 仍需独立 exact path 授权；它独立保留 raw fingerprint，并在拟写入树、index 和最终 blob 核对绑定预期 blob。相关 .gitattributes 必须存在于候选树或授权范围，stage 后验证 cached rules；外部规则/settings 漂移拒绝。version-2 归档的迁移、实际 spec after 与 coordination 后态仅来自同 Change 已接纳 Archive 材料，destination 以自己的属性/indexBasis 投影，不能继承 source basis；额外漂移、缺候选树证据或范围外 staged 拒绝，不扩张 paths、不 reset。
+
+## index-aware Git 候选支持边界
+
+artifactHashes、Explore SHA、proof SHA 始终是 raw SHA-256；candidateGit version-1 保存 objectFormat/settings、逐路径 rawSha256、blobOid、identity/仅 CRLF→LF conversion、text/eol 和 indexBasis（absent 或普通 stage-0 mode/OID/EOL）。新成功 Author finish 由 manager 生成并返回，只允许同值 caller 字段；duplicate 使用原已保存身份，不因文件已归档重算。Review/Archive 只接受原绑定输入或已核实预期输出；旧无字段只保留原 raw==blob 边界，不通过 action correct 回填。
+
+已有非 binary i/crlf/mixed 后启用 text=auto（包括 eol=lf/crlf、继承 autocrlf=true/input）可保留 raw identity。显式 text 也不是无条件转换：raw 等于旧 index blob 而 clean 不同，非 racy stat-cache 命中和仅 stat 变化的普通 add 可以给出不同 blob，在成功候选、Review/Archive 和普通 checkpoint 的 staging 前都明确 unsupported。无索引 hash-object --path 不是充分预测；禁止 touch、refresh、renormalize、临时 add、改 Git 配置或 normalize 来规避。active filter/encoding/ident 不执行，必要 raw Run/proof/log、binary/-text 保持 raw==blob。
+
+Final 完成选择器与接纳器共同解析当前可信 Archive PASS 及必要安全失败父链，取得 approved Review/direct Author，保持原五字段 changeCompletions 与 manifest 顺序；拒绝 partial、未知、缺项、错 target、fork、过期 PASS 或来源冲突，不重新准入无关祖先。Git 失败只处理 Git 剩余步骤，不再调用 OpenSpec。以上均不产生 Review、Full Test、Final、Git 或发布权限。

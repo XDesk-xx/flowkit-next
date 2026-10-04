@@ -44,6 +44,41 @@ export async function resolveActionContext(
     repositoryRoot,
     installation,
   });
+  if (request.deliveryId !== undefined && request.changeId !== undefined) {
+    const history = await readSelectedRunChain({
+      repositoryRoot,
+      deliveryId: request.deliveryId,
+      changeId: request.changeId,
+    });
+    if (
+      history.kind === "canonical" &&
+      history.current?.context.lifecycleState === "terminal" &&
+      history.current.context.actionIdentity.actionId === "archive" &&
+      (
+        history.current.result.facts.archiveOutcome as
+          { kind?: string } | undefined
+      )?.kind === "partial"
+    ) {
+      const changeState = await resolveTrustedChangeCoordination({
+        repositoryRoot,
+        deliveryId: request.deliveryId,
+        changeId: request.changeId,
+      }).catch(() => null);
+      return {
+        status: "recovery-required" as const,
+        repositoryRoot,
+        openSpec: { activeChangeIds: active.changeIds, exactChange: null },
+        selected: {
+          deliveryId: request.deliveryId,
+          changeId: request.changeId,
+          state: changeState,
+          changeState,
+          ownerDecisions: [] as readonly unknown[],
+          history,
+        },
+      };
+    }
+  }
   const directory = path.join(repositoryRoot, "openspec", "delivery-groups");
   let names: string[];
   if (request.deliveryId !== undefined) {
@@ -146,6 +181,20 @@ export async function resolveActionContext(
     | "waiting-owner"
     | "cancelled"
     | "bootstrap-history";
+  const partial =
+    history.current?.context.lifecycleState === "terminal" &&
+    history.current.context.actionIdentity.actionId === "archive" &&
+    (
+      history.current.result.facts.archiveOutcome as
+        { kind?: string } | undefined
+    )?.kind === "partial";
+  if (partial)
+    return {
+      status: "recovery-required" as const,
+      repositoryRoot,
+      openSpec: { activeChangeIds: active.changeIds, exactChange },
+      selected: { ...pair, changeState, history },
+    };
   if (history.kind === "bootstrap-history") {
     status = "bootstrap-history";
   } else if (changeState === "planned") {
@@ -173,7 +222,8 @@ export async function resolveActionContext(
   } else {
     if (
       (!isOpen && history.current !== null) ||
-      history.current?.context.actionIdentity.actionId === "archive"
+      (history.current?.context.actionIdentity.actionId === "archive" &&
+        history.current.result.authorConclusion === "PASS")
     ) {
       throw new ActionContextError(
         "context-inconsistent",

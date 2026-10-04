@@ -9,7 +9,10 @@ import {
   checkExplorePredecessorForReview,
   checkPlanningArtifactHashes,
 } from "./action-artifact-hashes.js";
-import { assertCandidateGitBytes } from "../internal/candidate-git-bytes.js";
+import {
+  assertCandidateGitBytes,
+  candidateGitProjection,
+} from "../internal/candidate-git-bytes.js";
 import { blocked } from "./action-error.js";
 import { checkDeclaredProofs } from "./action-proof.js";
 
@@ -29,7 +32,9 @@ export function assertReviewBinding(
       !isDeepStrictEqual(
         facts.artifactHashes,
         author.result.facts.artifactHashes,
-      ))
+      )) ||
+    (Object.hasOwn(facts, "candidateGit") &&
+      !isDeepStrictEqual(facts.candidateGit, author.result.facts.candidateGit))
   )
     blocked(
       "review-candidate-unbound",
@@ -61,9 +66,27 @@ export async function checkReviewCandidate(
       target.repositoryRoot,
       author.result.facts.artifactHashes,
     );
-    for (const relative of Object.keys(
-      author.result.facts.artifactHashes as JsonObject,
-    ))
-      await assertCandidateGitBytes(target.repositoryRoot, relative);
   }
+  const hashes = (author.result.facts.artifactHashes ?? {}) as JsonObject;
+  const candidates =
+    action === "explore" || action === "revise-explore"
+      ? {
+          ...hashes,
+          [String(
+            author.result.facts.exploreArtifact ??
+              `openspec/changes/${target.changeId}/explore.md`,
+          )]:
+            author.result.facts.exploreSha256 ??
+            hashes[`openspec/changes/${target.changeId}/explore.md`],
+        }
+      : hashes;
+  if (author.result.facts.candidateGit !== undefined)
+    await candidateGitProjection(
+      target.repositoryRoot,
+      candidates,
+      author.result.facts.candidateGit,
+    );
+  else
+    for (const relative of Object.keys(candidates))
+      await assertCandidateGitBytes(target.repositoryRoot, relative);
 }

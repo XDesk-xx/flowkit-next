@@ -294,7 +294,7 @@ OpenSpec 是 formal Change/specification authority。Flowkit 只做 thin integra
 
 历史 archived Change 不因后续 guidance convergence 而重写。
 
-Delivery 内容操作保持轻量：Start 只核对项目、Owner 选定规划和固定 manifest，不要求 Git SHA/clean，也不内嵌 commit。Final 只消费 required Change 的可信已接纳 archive/直接 review-apply 和当前 Full Test，不重放祖先 admission；先窄写完成内容及 null confirmationRef，经相关复验后再发布确认。跨会话和 Integration 仅消费有效确认，不以 completed 或自签 hash 补造成功；Integration 不重新验证 Final 全仓摘要或历史 proof。Git 实际操作/来源/对象核验仍独立，D05 继续 independent-bootstrap，不用 candidate HOW 自我管理。
+Delivery 内容操作保持轻量：Start 只核对项目、Owner 选定规划和固定 manifest，不要求 Git SHA/clean，也不内嵌 commit。Final 只消费 required Change 的当前可信已接纳 Archive PASS、必要连续安全 failed Archive 父链及其 approved review-apply/direct Author 和当前 Full Test，不重放祖先 admission；先窄写完成内容及 null confirmationRef，经相关复验后再发布确认。跨会话和 Integration 仅消费有效确认，不以 completed 或自签 hash 补造成功；Integration 不重新验证 Final 全仓摘要或历史 proof。Git 实际操作/来源/对象核验仍独立，D05 继续 independent-bootstrap，不用 candidate HOW 自我管理。
 
 ## 11. 独立 Archify / Architecture boundary
 
@@ -391,6 +391,8 @@ STOP
 
 `prepare` 是内部 structural event，不是 Standard Action、独立 Run、Owner/Reviewer boundary 或单独 STOP 点。
 
+新 Archive descriptor 固定 version 2，start 仅 admission，不预演原生 archive、跑项目 checks 或扫描依赖。completed 为 PASS/null 或 checkpoint；安全 failed 为 FAIL/null，专用 retry seam 允许新 occurrence 直接 parent 为失败 Run，沿唯一连续安全失败链取得 approved Review；普通 terminal prepare 仍吸收。partial 为 FAIL/null、blocked(archive-recovery-required)，业务 partial 可保存完整 terminal，机器 partial 不伪造完成。候选修订须 exact Owner revise-action 与单项 revise-propose/revise-apply scope，随后重新独立 Review；每 Run 至多一次实际 OpenSpec，未知 intent 不重放。
+
 terminal 后不得自动执行下一 Action。Policy 只计算合法 boundary，实际调用仍需相应 authority/host boundary。
 
 ## 15. Policy / checkpoint boundary
@@ -466,7 +468,9 @@ no trailing whitespace
 EOF exactly one newline
 ```
 
-原始 stdout/stderr 是例外：保留 Buffer bytes，使用 `stdout.txt`、`stderr.txt`、`*.stdout.txt`、`*.stderr.txt`，由 `.flowkit/artifacts/**` 下四条通用 attributes 模式处理，不逐 Change 添加例外。不对全部 artifacts/Run 关闭空白诊断；脚本、Run JSON、命令元数据、摘要仍是结构化文本，不得改名冒充日志。今后新 managed Run/proof 须由 target 有效 Git 属性以 -text 或等效规则保持原始字节；结构化证据继续接受空白诊断，具体 proof 路径在接纳前核对，授权 checkpoint 在提交前核对 index 与已记录身份。历史证据不迁移，Flowkit 不自动写入其他 target 的 Git 配置。此规则独立于 `.gitignore` 和 Full Test 选取范围。
+原始 stdout/stderr 是例外：保留 Buffer bytes，使用 `stdout.txt`、`stderr.txt`、`*.stdout.txt`、`*.stderr.txt`，由 `.flowkit/artifacts/**` 下四条通用 attributes 模式处理，不逐 Change 添加例外。不对全部 artifacts/Run 关闭空白诊断；脚本、Run JSON、命令元数据、摘要仍是结构化文本，不得改名冒充日志。新成功 Author finish 的 candidateGit version-1 区分 raw SHA-256 与 index-aware 预期 Git blob；Review/Archive 共同消费绑定输入或已核实输出，Archive destination 使用自身属性/indexBasis。raw==旧 blob 而 clean 不同的 stat-cache 歧义在成功候选/staging 前 unsupported，不通过 touch/refresh/renormalize/临时 add 规避。checkpoint 的属性须在拟写入树中，stage 后核对 cached rules 与实际 blob，不自动 normalize、重绑或补历史事实。
+
+今后新 managed Run/proof 须由 target 有效 Git 属性以 -text 或等效规则保持原始字节；结构化证据继续接受空白诊断，具体 proof 路径在接纳前核对，授权 checkpoint 在提交前核对 index 与已记录身份。历史证据不迁移，Flowkit 不自动写入其他 target 的 Git 配置。此规则独立于 `.gitignore` 和 Full Test 选取范围。
 
 Git checkpoint 的空白诊断（不是统一提交阻断）：
 

@@ -1,0 +1,109 @@
+TAP version 13
+# Subtest: safe failed Archive permits exact Owner revise and changed candidate, then requires a new role fixture Review
+ok 1 - safe failed Archive permits exact Owner revise and changed candidate, then requires a new role fixture Review
+  ---
+  duration_ms: 61927.2268
+  type: 'test'
+  ...
+# Subtest: safe native FAILs remain immutable, retry parents are exact, PASS checkpoints actual nested after/raw bytes
+ok 2 - safe native FAILs remain immutable, retry parents are exact, PASS checkpoints actual nested after/raw bytes
+  ---
+  duration_ms: 211770.2725
+  type: 'test'
+  ...
+# Subtest: restored native failure is safe but equality cannot invent positive rollback evidence
+not ok 3 - restored native failure is safe but equality cannot invent positive rollback evidence
+  ---
+  duration_ms: 23136.5582
+  type: 'test'
+  location: 'D:\\Projects\\flowkit-next\\tests\\unit\\domain\\action-archive-cli.test.ts:1:6585'
+  failureType: 'testCodeFailure'
+  error: |-
+    The input did not match the regular expression /rollback|rolled-back|outcome/i. Input:
+    
+    'Error: Command failed: C:\\nvm4w\\nodejs\\node.exe --import file:///D:/Projects/flowkit-next/node_modules/.pnpm/tsx@4.23.12/node_modules/tsx/dist/loader.mjs D:\\Projects\\flowkit-next\\src\\cli\\entrypoint.ts action finish --input C:\\Users\\xuser\\AppData\\Local\\Temp\\flowkit-context-Mu1G0b\\target\\request-2.json\n' +
+      '\n' +
+      '{"kind":"error","effect":"blocked","runId":"20261004-007-archive","error":{"kind":"archive-effects-unbound","message":"Safe Archive failure is not proven"}}\n'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+  error: |-
+    Command failed: C:\nvm4w\nodejs\node.exe --import file:///D:/Projects/flowkit-next/node_modules/.pnpm/tsx@4.23.12/node_modules/tsx/dist/loader.mjs D:\Projects\flowkit-next\src\cli\entrypoint.ts action finish --input C:\Users\xuser\AppData\Local\Temp\flowkit-context-Mu1G0b\target\request-2.json
+    
+    {"kind":"error","effect":"blocked","runId":"20261004-007-archive","error":{"kind":"archive-effects-unbound","message":"Safe Archive failure is not proven"}}
+    
+  stack: |-
+    genericNodeError (node:internal/errors:983:15)
+    wrappedFn (node:internal/errors:537:14)
+    ChildProcess.exithandler (node:child_process:417:12)
+    ChildProcess.emit (node:events:519:28)
+    maybeClose (node:internal/child_process:1101:16)
+    ChildProcess._handle.onexit (node:internal/child_process:304:5)
+  operator: 'rejects'
+  stack: |-
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async TestContext.<anonymous> (D:\Projects\flowkit-next\tests\unit\domain\action-archive-cli.test.ts:277:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: candidate drift or late ordinal collision preserves effects and blocks retry without cleanup
+ok 4 - candidate drift or late ordinal collision preserves effects and blocks retry without cleanup
+  ---
+  duration_ms: 43585.3114
+  type: 'test'
+  ...
+# Subtest: nonzero exit after native mutation is terminal partial, corrupt coordination is never guessed active
+ok 5 - nonzero exit after native mutation is terminal partial, corrupt coordination is never guessed active
+  ---
+  duration_ms: 21819.9936
+  type: 'test'
+  ...
+# Subtest: lost successful observation continues only rename/coordination; unknown intent never repeats OpenSpec
+ok 6 - lost successful observation continues only rename/coordination; unknown intent never repeats OpenSpec
+  ---
+  duration_ms: 54962.8661
+  type: 'test'
+  ...
+# Subtest: Propose preparation does not require artifacts that this Action must create
+ok 7 - Propose preparation does not require artifacts that this Action must create
+  ---
+  duration_ms: 20.0649
+  type: 'test'
+  ...
+# Subtest: Archive admission ignores unreviewed dependencies/data, absent checks and native task validation
+ok 8 - Archive admission ignores unreviewed dependencies/data, absent checks and native task validation
+  ---
+  duration_ms: 3446.3182
+  type: 'test'
+  ...
+# Subtest: Archive admission still rejects reviewed raw drift and retired check requests
+ok 9 - Archive admission still rejects reviewed raw drift and retired check requests
+  ---
+  duration_ms: 1558.1707
+  type: 'test'
+  ...
+# Subtest: legacy descriptor shape remains readable but cannot be continued by version-2 manager
+ok 10 - legacy descriptor shape remains readable but cannot be continued by version-2 manager
+  ---
+  duration_ms: 2886.2999
+  type: 'test'
+  ...
+# (node:49876) ExperimentalWarning: The MockTimers API is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: descriptor-only safe failure is finish-only across midnight, never a second invocation
+ok 11 - descriptor-only safe failure is finish-only across midnight, never a second invocation
+  ---
+  duration_ms: 14003.2182
+  type: 'test'
+  ...
+1..11
+# tests 11
+# suites 0
+# pass 10
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 417749.9375

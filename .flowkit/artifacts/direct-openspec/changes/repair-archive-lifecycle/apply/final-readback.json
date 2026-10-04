@@ -1,0 +1,2237 @@
+{
+  "observedAt": "2026-10-04T12:48:57.428Z",
+  "branch": "main",
+  "head": "9b96b150eec8b59c40d1a72eb61054695a6e763b",
+  "files": {
+    "AGENTS.md": "45c38e54613a3cda2215004755fdbd6a26a6caea7380c7269bd4ea57dbccdc9d",
+    "README.md": "460e8eb73fe0e73d594946bd89b73d51f3897a6ebf5978cb6c2193fe266ad832",
+    "docs/onboarding.md": "9defa182b6527cae2436f367737ef2735b2dd0a975f2cae8cdfc1c49008a7d5e",
+    "skills/actions/apply/SKILL.md": "92804473178d822ff2f56ff35bcf5ec78239f7badd02d6b5ee3787d727f4b6c0",
+    "skills/actions/archive/SKILL.md": "64817ed5ee4880069da953671b5346738b4859cfd6b556c7983f61c83f2b4fd4",
+    "skills/actions/explore/SKILL.md": "9c5fb42de0265213f7f4dbf20119c3e3c4d848de212e63070aab0d70d81310e3",
+    "skills/actions/propose/SKILL.md": "c408ed17123ed46e37e517b02f1d9a770b9fdea30bbfca0743431fb200366fb0",
+    "skills/actions/review-apply/SKILL.md": "cc28d9e26ebd10fba863253bb2d20cc38b26ce7324207d50a5d456be0db48194",
+    "skills/actions/review-explore/SKILL.md": "efc227732c498303371ce5b4491842e5666bd4dbd5f79837ca7fa737a75e6d40",
+    "skills/actions/review-propose/SKILL.md": "980769373776d190e363effffcdaf22c8f4c31619014510b55fa583d87e45f81",
+    "skills/actions/revise-apply/SKILL.md": "c3f6f3082e61b1f6ec080ee7a5644ea7f06d56fcda449cb2382460af6f07c1f7",
+    "skills/actions/revise-explore/SKILL.md": "7a8ad4139c2a0458219c8ac821a472ff73dce8d4c4e7bb221275208a42c41d0e",
+    "skills/actions/revise-propose/SKILL.md": "564d9b7aeda95f03fa57e1de32c31717a976f56b5a54cc08154c1054ef5ffe94",
+    "skills/delivery/final/SKILL.md": "5bf5246d6febda093370b059397ac3272797f993cbbfa3b30980c099ee888139",
+    "skills/delivery/repository-integration/SKILL.md": "2cdd773c4cd6301632d0757b880fa9fe95aa53123d649c5c83bf45f2d64fd278",
+    "skills/tools/openspec/SKILL.md": "25b9ad38d2718eabb08de3d09fbe2d1713d7012b979e680578412f9b2203fe99",
+    "src/cli/action-artifact-hashes.ts": "e0700fb723defcf6641673ed16ca14b995b14cd9cea81c9ff1f3bd5156c6f154",
+    "src/cli/action-commands.ts": "a0469c8c0e02493858f740e3f3f84203d434e9ac0e2b24bc86d4dfbc57c6916d",
+    "src/cli/action-context.ts": "6adeaeca55f70d85ac57c515f1462bf756aaefe182dc001b073a2d3f6cd557ec",
+    "src/cli/action-descriptor.ts": "646c6d657407d9603e2d062c1492b629f7280f54e1f88e0e01c377e10a8bc352",
+    "src/cli/action-finish.ts": "f0edd3bc85d62a91959994936513063cbbed4cf3d1991a499b8a0beadb6f9282",
+    "src/cli/action-inspect.ts": "a0dd711e28c1db339096ca5498f169ffd9d436282b1995558b28747c5a3cb3db",
+    "src/cli/action-readiness.ts": "ee0e9a805ad632e3c479c3ec7a6f6693342d94621bc4276ea05f1a9989ec161c",
+    "src/cli/action-request.ts": "a827f5d37df966e0ccc3ec38ba8da6732bc82ae24b7b9d0fb1edc5fd8267c8bc",
+    "src/cli/archive-check-selection.ts": null,
+    "src/cli/archive-finish.ts": "ce69e0692e2e8c39f458b544c1607cff1955df524f30fd478e271f9c4f2a0adf",
+    "src/cli/current-run-chain.ts": "c0dc04be651d84c71172effc9755ee36c9d3afeb4f4baafbe411ae6583ea654b",
+    "src/cli/review-candidate.ts": "e4209f3dc6fbcbb603f3e516a3d96efc7d1b8c4684b832ac0cfc20dd38a8a189",
+    "src/cli/support-change-archive.ts": "c0d2a148c55ba1f7cd86f0aab1b41b1d92b6df5ae3da48f93c7ef7efe65d7fe0",
+    "src/cli/support-delivery-final.ts": "5c541f9e8b4dd149391e7e204cb795fe9a1bacba9f19452768a5fbb4366af8cf",
+    "src/domain/action-lifecycle.ts": "6be10d98fe1bedf2cff5f42a406fbe26f00fe2ae79d196e2ab06fdeaab66c0c2",
+    "src/domain/archive-outcome.ts": "178ec68ecec141e6d49f86cf25c298f3ed7df5028bd63325fe4dc3d155b0643d",
+    "src/domain/canonical-action-run-start.ts": "f16c0f5b8a0a7ec3f32b260d5f1dca7a60beb0e8e5132fcddac64a364d57801f",
+    "src/domain/policy-and-next-boundary.ts": "40ca5faec6f875fee8e78c2a689c8b9fc21af00bb93884391884e63d2ddd4e52",
+    "src/domain/run-result-persistence.ts": "35a33a74239b0bb5bc94887e861f691498a599fb3dfc60d70de7246840a9e97b",
+    "src/domain/single-action-execution.ts": "8c1de63d65b590e0582f2fbc9d73470eb0167fc3c07013e0c1d5c040550780d0",
+    "src/internal/archive-dependency-snapshot.ts": null,
+    "src/internal/archive-effects-v2.ts": "554f7d7805298ca21fb8dd2bdde593522ff5879ef58b5a090c4644f8ab262664",
+    "src/internal/archive-file-identities.ts": "c745b5b0b5a6d3ab3de2f3ac6f35ff8d775f8b2147af263c7e4ad3cfb0a4c522",
+    "src/internal/archive-process.ts": "599e6a528ddbcbca9ca62a7c9ee74410dc523bcf22b3501afa6b3ecc646cec74",
+    "src/internal/candidate-git-bytes.ts": "af3be916cdfeeeff9919520f30d9d0bed69d05ef306b37e6cd558623da5574c4",
+    "src/internal/candidate-git-facts.ts": "0d7e58f63f5181445c1597b7264ad0628f52bb48d8f64553e2455d622499bfb7",
+    "src/internal/checkpoint-candidate-tree.ts": "9a310dae79109c02df80c61385bda6735e620e174564c505f75295935a8f215e",
+    "src/internal/delivery-required-evidence-source.ts": "8ea5ef84d1fd7ad60e5dc2b596702097ffd4eb23118e4b0328cb84a20dfdf89e",
+    "src/internal/git-checkpoint-execution.ts": "3a9dae65538fb06f7a083a5da11fddf4fa27ca21abcfcc754963277add7ebdbe",
+    "src/internal/reviewed-checkpoint-candidate.ts": "2a7326e5ad403001c9e63082bcfc26100fbdc4caaf671ce5cdeefee209a93e9a",
+    "tests/acceptance/native-windows-archive.test.ts": "94504fae389da1039bf64a5fb6dfc875aaa471530c216a3a4f95823401c74022",
+    "tests/installed/manager-action-install.test.ts": "202ec1261c83a62109e163565645b096e4e1664e31e7af7f985a41fc63401dee",
+    "tests/unit/domain/action-archive-cli.test.ts": "59960dd58986f42398670a556f9cd8fe5fcce730804e22c521967b00a9e60b1a",
+    "tests/unit/domain/action-archive-readiness.test.ts": "b0c9f54e8c6e3f2b933835bd0f5918caf93f3e6a71d17af3b629a26b0c9646b8",
+    "tests/unit/domain/action-correction-continuation.test.ts": "f60158bc52e0881d57f19685caee8da86a5b40c68fa260a5b12ec9ca543bac30",
+    "tests/unit/domain/action-correction.test.ts": "085536e1319711438e13b112ec08fe6dbdf08c73b117f350a68d33eaa1e6aff5",
+    "tests/unit/domain/archive-contract-fixture.ts": "0cb9902dc676e997b10647192f4df194fb10da31a4425ab82e045569229de9ad",
+    "tests/unit/domain/archive-date-continuation.test.ts": "6d515395bfe6c414e08b27f1f47d1cecc48421293706bb84f797f449b7cf04ed",
+    "tests/unit/domain/archive-isolation-diagnostics.test.ts": "f716ffa4bee4ba1cc5b287a2193b70c5cf469eaa3d844f54fd56eca73fd214e8",
+    "tests/unit/domain/archive-outcome-retry.test.ts": "b26e44fbac288e3e4b1bc9193f207815114c9dc3c40c6521e0bb681b886d2530",
+    "tests/unit/domain/author-action-guidance.test.ts": "17e588b141300ee8748d158095e8e6261b264e006d83db8edb856b795962b136",
+    "tests/unit/domain/candidate-git-projection.test.ts": "c6187bb98402dd4d7e642588b0aa51004c59881cd1ef4fd6f25f424944937a0b",
+    "tests/unit/domain/delivery-required-evidence-source.test.ts": "7f48479bb63c742dc58033a370e56bd350c4565e3bc07bbfed661c5fe86d19a5",
+    "tests/unit/domain/execution-recovery-fixture.ts": "d3dec0a7fd57a08768ed37f558e2f29100a2457259ecf3e212ed6a3f0723ee9b",
+    "tests/unit/domain/git-eol-checkpoint.test.ts": "88bfca293091f1a7c59def970123d96ece936c4126a15342c23b726246a7aefa",
+    "tests/unit/domain/policy-and-next-boundary.test.ts": "c6375a4b4ea46d69e280519e7d80d1a32dfb8b3bfdbbd8348b0b8d4c43458257",
+    "tests/unit/domain/support-archive-chain.test.ts": "462c6e82cf0fdfd8241f136510c3e3c0acb22085462532ffaaea6fa0312b4b48"
+  },
+  "approvedInputs": {
+    ".openspec.yaml": {
+      "expected": "ad734da2ba5f4c5a6979a8bbb6bad4db20fb21ec275ceca5f24842fbdfaf5bef",
+      "actual": "ad734da2ba5f4c5a6979a8bbb6bad4db20fb21ec275ceca5f24842fbdfaf5bef",
+      "matches": true,
+      "progressOnly": false
+    },
+    "design.md": {
+      "expected": "24d7356182a107ee8425fda138754d95fb24989d007be5285c22902bc143ac19",
+      "actual": "24d7356182a107ee8425fda138754d95fb24989d007be5285c22902bc143ac19",
+      "matches": true,
+      "progressOnly": false
+    },
+    "proposal.md": {
+      "expected": "0bf45790efaf1eee0ccfcedb3e12d58a34da2e3254ea111af3abedb221248d49",
+      "actual": "0bf45790efaf1eee0ccfcedb3e12d58a34da2e3254ea111af3abedb221248d49",
+      "matches": true,
+      "progressOnly": false
+    },
+    "review-propose-02.md": {
+      "expected": "d85f3dfa8d7611cd666d6adacf280bb1a60e391f1b56c4510fa499aea0e17a28",
+      "actual": "d85f3dfa8d7611cd666d6adacf280bb1a60e391f1b56c4510fa499aea0e17a28",
+      "matches": true,
+      "progressOnly": false
+    },
+    "review-propose.md": {
+      "expected": "f2fed40e0da81a3d123fbe55df0ffbf6b19b5da90c6a65188dbcb2b90b80c42e",
+      "actual": "f2fed40e0da81a3d123fbe55df0ffbf6b19b5da90c6a65188dbcb2b90b80c42e",
+      "matches": true,
+      "progressOnly": false
+    },
+    "revise-propose-02.md": {
+      "expected": "fa24665fe648836a6249bead28dab22ebb0f96d03a0a9cf66567d3f9831611c1",
+      "actual": "fa24665fe648836a6249bead28dab22ebb0f96d03a0a9cf66567d3f9831611c1",
+      "matches": true,
+      "progressOnly": false
+    },
+    "revise-propose.md": {
+      "expected": "657043b622464a31df518e9940cb5c00c12e06ec085698805c8ce1905aff6a06",
+      "actual": "657043b622464a31df518e9940cb5c00c12e06ec085698805c8ce1905aff6a06",
+      "matches": true,
+      "progressOnly": false
+    },
+    "specs/action-lifecycle/spec.md": {
+      "expected": "484a22b80610760c5e2a32422e042f6718dcb4e1dab22bb66ff00ac3ba2dd9c8",
+      "actual": "484a22b80610760c5e2a32422e042f6718dcb4e1dab22bb66ff00ac3ba2dd9c8",
+      "matches": true,
+      "progressOnly": false
+    },
+    "specs/author-action-guidance/spec.md": {
+      "expected": "b2938dcef95761688304896c1f3d15d941b92a5616d766cf49f43240ac3f3ad4",
+      "actual": "b2938dcef95761688304896c1f3d15d941b92a5616d766cf49f43240ac3f3ad4",
+      "matches": true,
+      "progressOnly": false
+    },
+    "specs/delivery-finalization/spec.md": {
+      "expected": "e22f48451c5a0d674ea7e63f6ae0e2b602a9c72fb2aa6ef6f36fb0cdcb7b88db",
+      "actual": "e22f48451c5a0d674ea7e63f6ae0e2b602a9c72fb2aa6ef6f36fb0cdcb7b88db",
+      "matches": true,
+      "progressOnly": false
+    },
+    "specs/policy-and-next-boundary/spec.md": {
+      "expected": "9570d9ef466fa012d445c5963c31deaa29009a6cd983c81c2db58d961e405518",
+      "actual": "9570d9ef466fa012d445c5963c31deaa29009a6cd983c81c2db58d961e405518",
+      "matches": true,
+      "progressOnly": false
+    },
+    "specs/repository-integration-and-next-base-continuity/spec.md": {
+      "expected": "3748287f0b44f46bda0cc6c3f6e16cbb329e8307bf2f78f003314329fb7683e3",
+      "actual": "3748287f0b44f46bda0cc6c3f6e16cbb329e8307bf2f78f003314329fb7683e3",
+      "matches": true,
+      "progressOnly": false
+    },
+    "specs/reviewer-action-guidance/spec.md": {
+      "expected": "148c3cfcba7a4f2cf333039e2f5d989ab50905e4c39e6b17428d3bb600fc8270",
+      "actual": "148c3cfcba7a4f2cf333039e2f5d989ab50905e4c39e6b17428d3bb600fc8270",
+      "matches": true,
+      "progressOnly": false
+    },
+    "specs/run-result-persistence/spec.md": {
+      "expected": "9fe2fddc09f28ae8bfeb9d583136162a8f8a2c047abdb082283a54fc3875f4c1",
+      "actual": "9fe2fddc09f28ae8bfeb9d583136162a8f8a2c047abdb082283a54fc3875f4c1",
+      "matches": true,
+      "progressOnly": false
+    },
+    "specs/single-action-execution-terminal-boundary/spec.md": {
+      "expected": "29eb5e0ac4c5bdbc428e2d64d975857b8c03f717fbd86d8a379b53d297e10c43",
+      "actual": "29eb5e0ac4c5bdbc428e2d64d975857b8c03f717fbd86d8a379b53d297e10c43",
+      "matches": true,
+      "progressOnly": false
+    },
+    "specs/stable-action-command-execution/spec.md": {
+      "expected": "dd150684969236d4b4ba200e40b8c24be736f0f193b649a5a08eb009621d7bb7",
+      "actual": "dd150684969236d4b4ba200e40b8c24be736f0f193b649a5a08eb009621d7bb7",
+      "matches": true,
+      "progressOnly": false
+    },
+    "specs/stable-delivery-support-command-execution/spec.md": {
+      "expected": "63251fcdeaf38be83c9310a26adca3f8cf658017680a23fb948fcac87c4c8dcc",
+      "actual": "63251fcdeaf38be83c9310a26adca3f8cf658017680a23fb948fcac87c4c8dcc",
+      "matches": true,
+      "progressOnly": false
+    },
+    "tasks.md": {
+      "expected": "742baeedddfca08a5f9dd3aeceab7666d9b5fbaef64599d83259aa47cbfe51a7",
+      "actual": "1622e7556d71a25615917ecf6e649b9b87bfe461cdf1eb617402fb38c0a484c6",
+      "matches": false,
+      "progressOnly": true
+    }
+  },
+  "checks": {
+    "detached-install": {
+      "command": {
+        "program": "node",
+        "args": [
+          "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+          "--dir",
+          ".tmp/repair-archive-lifecycle-package/installation",
+          "add",
+          "--offline",
+          "--ignore-scripts",
+          "D:/Projects/flowkit-next/.tmp/repair-archive-lifecycle-package/flowkit-next-1.0.0.tgz"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:11:14.602Z",
+        "finishedAt": "2026-10-04T12:11:15.990Z",
+        "exitCode": 0,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 380,
+          "sha256": "1de39ece58619ecc1d1a1e6aac9069e4cfb121ec023df9e68d9b015474f232a9"
+        },
+        "stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    "detached-install-v2": {
+      "command": {
+        "program": "node",
+        "args": [
+          "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+          "--dir",
+          "C:\\Users\\xuser\\AppData\\Local\\Temp\\flowkit-repair-archive-final-EqtTxx",
+          "--ignore-workspace",
+          "add",
+          "--offline",
+          "--ignore-scripts",
+          "D:/Projects/flowkit-next/.tmp/repair-archive-lifecycle-package/flowkit-next-1.0.0.tgz"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:26:35.670Z",
+        "finishedAt": "2026-10-04T12:26:37.251Z",
+        "exitCode": 1,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 544,
+          "sha256": "545927b98648bd254843f9fd1ae14d9e6129062ea3a0032f2bc0c6c21722050f"
+        },
+        "stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    "detached-install-v2-exact": {
+      "command": {
+        "program": "node",
+        "args": [
+          "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+          "--dir",
+          "C:\\Users\\xuser\\AppData\\Local\\Temp\\flowkit-repair-archive-final-EqtTxx",
+          "add",
+          "--offline",
+          "--ignore-scripts",
+          "D:/Projects/flowkit-next/.tmp/repair-archive-lifecycle-package/flowkit-next-1.0.0.tgz"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:28:03.364Z",
+        "finishedAt": "2026-10-04T12:28:05.063Z",
+        "exitCode": 0,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 394,
+          "sha256": "a1773f2314fbf4dd2da80286b237f42a3109bfd170f5a547c98aa89629b3835d"
+        },
+        "stderr.txt": {
+          "bytes": 181,
+          "sha256": "16834415285119a2b7a019b0ea8fcf21fe945de6d2efc45ab2d8ce0e87b02707"
+        }
+      }
+    },
+    "detached-install-v2-pinned": {
+      "command": {
+        "program": "node",
+        "args": [
+          "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+          "--dir",
+          "C:\\Users\\xuser\\AppData\\Local\\Temp\\flowkit-repair-archive-final-EqtTxx",
+          "--ignore-workspace",
+          "add",
+          "--offline",
+          "--ignore-scripts",
+          "D:/Projects/flowkit-next/.tmp/repair-archive-lifecycle-package/flowkit-next-1.0.0.tgz"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:27:21.943Z",
+        "finishedAt": "2026-10-04T12:27:23.365Z",
+        "exitCode": 1,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 544,
+          "sha256": "545927b98648bd254843f9fd1ae14d9e6129062ea3a0032f2bc0c6c21722050f"
+        },
+        "stderr.txt": {
+          "bytes": 181,
+          "sha256": "16834415285119a2b7a019b0ea8fcf21fe945de6d2efc45ab2d8ce0e87b02707"
+        }
+      }
+    },
+    "detached-install-v3": {
+      "command": {
+        "program": "node",
+        "args": [
+          "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+          "--dir",
+          "C:\\Users\\xuser\\AppData\\Local\\Temp\\flowkit-repair-archive-final-EqtTxx",
+          "add",
+          "--offline",
+          "--ignore-scripts",
+          "D:/Projects/flowkit-next/.tmp/repair-archive-lifecycle-package/final-v3/flowkit-next-1.0.0.tgz"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:36:24.780Z",
+        "finishedAt": "2026-10-04T12:36:26.848Z",
+        "exitCode": 0,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 227,
+          "sha256": "92295924c642c266274e29101ff9ea60167b1d8ae13edfd0fff36db9c323a770"
+        },
+        "stderr.txt": {
+          "bytes": 181,
+          "sha256": "16834415285119a2b7a019b0ea8fcf21fe945de6d2efc45ab2d8ce0e87b02707"
+        }
+      }
+    },
+    "detached-pack": {
+      "command": {
+        "program": "node",
+        "args": [
+          "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+          "--config.ignore-scripts=true",
+          "pack",
+          "--pack-destination",
+          ".tmp/repair-archive-lifecycle-package",
+          "--json"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:10:37.967Z",
+        "finishedAt": "2026-10-04T12:10:39.216Z",
+        "exitCode": 0,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 9129,
+          "sha256": "bffcfc67089ab3efffac36e67ea261f3c183697a8154602ff8699060a21f44fe"
+        },
+        "stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    "detached-pack-v2": {
+      "command": {
+        "program": "node",
+        "args": [
+          "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+          "--config.ignore-scripts=true",
+          "pack",
+          "--pack-destination",
+          ".tmp/repair-archive-lifecycle-package",
+          "--json"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:26:16.352Z",
+        "finishedAt": "2026-10-04T12:26:17.596Z",
+        "exitCode": 0,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 9129,
+          "sha256": "bffcfc67089ab3efffac36e67ea261f3c183697a8154602ff8699060a21f44fe"
+        },
+        "stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    "detached-pack-v3": {
+      "command": {
+        "program": "node",
+        "args": [
+          "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+          "--config.ignore-scripts=true",
+          "pack",
+          "--pack-destination",
+          ".tmp/repair-archive-lifecycle-package/final-v3",
+          "--json"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:36:22.380Z",
+        "finishedAt": "2026-10-04T12:36:23.922Z",
+        "exitCode": 0,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 9139,
+          "sha256": "af9df51052bbdcbf1043c5dfeefb5db6a0f97fc17f400941f53835f54d059dea"
+        },
+        "stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    "domain-initial": {
+      "command": {
+        "program": "node",
+        "args": [
+          "--import",
+          "tsx",
+          "--test",
+          "--test-concurrency=4",
+          "tests/unit/domain/*.test.ts"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T11:30:55.542Z",
+        "finishedAt": "2026-10-04T11:37:09.673Z",
+        "exitCode": 1,
+        "signal": null,
+        "spawnError": null
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 92295,
+          "sha256": "f042e39543f2b3f534402a95309849a3fde5caea33947e47fcc2490743ee2421"
+        },
+        "stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    "final-acceptance": {
+      "command": {
+        "program": "node",
+        "args": [
+          "--import",
+          "tsx",
+          "--test",
+          "--test-concurrency=3",
+          "tests/acceptance/git-host.acceptance.test.ts",
+          "tests/acceptance/foundation-manager.acceptance.test.ts"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:10:40.119Z",
+        "finishedAt": "2026-10-04T12:11:06.047Z",
+        "exitCode": 0,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 1709,
+          "sha256": "0fd110b1eb7751afb1276323b6c4ef98987e14da1b6fadbd1d50d4aa172d4fa6"
+        },
+        "stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    "final-acceptance-configured": {
+      "command": {
+        "program": "node",
+        "args": [
+          "--import",
+          "tsx",
+          "--test",
+          "--test-concurrency=3",
+          "tests/acceptance/git-host.acceptance.test.ts",
+          "tests/acceptance/foundation-manager.acceptance.test.ts"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:11:16.737Z",
+        "finishedAt": "2026-10-04T12:11:41.641Z",
+        "exitCode": 0,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 1709,
+          "sha256": "9be794a2237f0b788e6e128cdb41c4b887ad10e9082d04a5a38692b27d6fe42a"
+        },
+        "stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    "final-acceptance-v2": {
+      "command": {
+        "program": "node",
+        "args": [
+          "--import",
+          "tsx",
+          "--test",
+          "--test-concurrency=2",
+          "tests/acceptance/external-tool-runtime.test.ts",
+          "tests/acceptance/whole-manager-detached.test.ts"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:26:35.624Z",
+        "finishedAt": "2026-10-04T12:26:35.870Z",
+        "exitCode": 1,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr.txt": {
+          "bytes": 113,
+          "sha256": "2bc65d5419c509069590d15c361a5d57b7917f69a1b2370e3c45eb2c9e149a7d"
+        }
+      }
+    },
+    "final-acceptance-v2-corrected": {
+      "command": {
+        "program": "node",
+        "args": [
+          "--import",
+          "tsx",
+          "--test",
+          "--test-concurrency=2",
+          "tests/acceptance/git-host.acceptance.test.ts",
+          "tests/acceptance/foundation-manager.acceptance.test.ts"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:27:24.288Z",
+        "finishedAt": "2026-10-04T12:27:52.566Z",
+        "exitCode": 0,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 1708,
+          "sha256": "237c8873a188db9abb37563f4ebb343a4248d74316323763a8b39a37661826c7"
+        },
+        "stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    "final-acceptance-v3": {
+      "command": {
+        "program": "node",
+        "args": [
+          "--import",
+          "tsx",
+          "--test",
+          "--test-concurrency=2",
+          "tests/acceptance/git-host.acceptance.test.ts",
+          "tests/acceptance/foundation-manager.acceptance.test.ts"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:36:47.030Z",
+        "finishedAt": "2026-10-04T12:37:16.457Z",
+        "exitCode": 0,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 1710,
+          "sha256": "88ca77477f98863991f2d3ece7d4bc792f8bc89ffac2b24093f65b2aa713244b"
+        },
+        "stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    "final-apply-instructions": {
+      "command": {
+        "program": "node",
+        "args": [
+          "C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js",
+          "instructions",
+          "apply",
+          "--change",
+          "repair-archive-lifecycle",
+          "--json"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:47:31.169Z",
+        "finishedAt": "2026-10-04T12:47:32.696Z",
+        "exitCode": 0,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 14603,
+          "sha256": "e477f33965a2cb510f0395aa69903d581682c7d9c3f71788f27fad2cdb52a204"
+        },
+        "stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    "final-archive-extended": {
+      "command": {
+        "program": "node",
+        "args": [
+          "--import",
+          "tsx",
+          "--test",
+          "--test-concurrency=2",
+          "tests/unit/domain/action-archive-cli.test.ts",
+          "tests/unit/domain/action-archive-readiness.test.ts",
+          "tests/unit/domain/archive-date-continuation.test.ts"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:24:55.323Z",
+        "finishedAt": "2026-10-04T12:31:53.192Z",
+        "exitCode": 1,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 5132,
+          "sha256": "b4c14e9d045c4284a2ae44d142348700c26a81952e10251c54e846e688b49053"
+        },
+        "stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    "final-build": {
+      "command": {
+        "program": "node",
+        "args": [
+          "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+          "build"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:08:33.837Z",
+        "finishedAt": "2026-10-04T12:08:38.473Z",
+        "exitCode": 0,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr.txt": {
+          "bytes": 36,
+          "sha256": "8f5c6a9c4aade0d032984516a14b38a2d12cb1e6b333ab3568f9dde2ba3e3470"
+        }
+      }
+    },
+    "final-build-v2": {
+      "command": {
+        "program": "node",
+        "args": [
+          "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+          "build"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:25:20.763Z",
+        "finishedAt": "2026-10-04T12:25:26.773Z",
+        "exitCode": 0,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr.txt": {
+          "bytes": 36,
+          "sha256": "8f5c6a9c4aade0d032984516a14b38a2d12cb1e6b333ab3568f9dde2ba3e3470"
+        }
+      }
+    },
+    "final-build-v3": {
+      "command": {
+        "program": "node",
+        "args": [
+          "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+          "build"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:35:41.584Z",
+        "finishedAt": "2026-10-04T12:35:47.746Z",
+        "exitCode": 0,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr.txt": {
+          "bytes": 36,
+          "sha256": "8f5c6a9c4aade0d032984516a14b38a2d12cb1e6b333ab3568f9dde2ba3e3470"
+        }
+      }
+    },
+    "final-corrected-focused": {
+      "command": {
+        "program": "node",
+        "args": [
+          "--import",
+          "tsx",
+          "--test",
+          "--test-concurrency=2",
+          "tests/unit/domain/candidate-git-projection.test.ts",
+          "tests/unit/domain/agent-how-record.test.ts"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:23:03.643Z",
+        "finishedAt": "2026-10-04T12:23:50.748Z",
+        "exitCode": 0,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 2160,
+          "sha256": "c5477ac6d6099498830a6db5fa2a21b01604d192f296b566597385dd0dac190b"
+        },
+        "stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    "final-dependency-health": {
+      "command": {
+        "program": "node",
+        "args": [
+          "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+          "quality:dependency-health"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:07:04.616Z",
+        "finishedAt": "2026-10-04T12:07:11.051Z",
+        "exitCode": 0,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 81,
+          "sha256": "4d51aaaf93cadc0fab337625cdaddb329112d7626f3221607fe3a87676b4ae57"
+        },
+        "stderr.txt": {
+          "bytes": 79,
+          "sha256": "fa9ba6bb542e83e254b5bae92765b5ba9e0505c12e1e49f6c11dbf41c51f8775"
+        }
+      }
+    },
+    "final-dependency-health-v2": {
+      "command": {
+        "program": "node",
+        "args": [
+          "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+          "quality:dependency-health"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:28:27.655Z",
+        "finishedAt": "2026-10-04T12:28:37.817Z",
+        "exitCode": 0,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 821,
+          "sha256": "1f790a4e8de4ee39378a83250b9bde70402ae6c407b6c10cff73ff16d7ef3916"
+        },
+        "stderr.txt": {
+          "bytes": 79,
+          "sha256": "fa9ba6bb542e83e254b5bae92765b5ba9e0505c12e1e49f6c11dbf41c51f8775"
+        }
+      }
+    },
+    "final-dependency-health-v3": {
+      "command": {
+        "program": "node",
+        "args": [
+          "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+          "quality:dependency-health"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:39:03.417Z",
+        "finishedAt": "2026-10-04T12:39:10.769Z",
+        "exitCode": 0,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 81,
+          "sha256": "dca2e4411a72d705b54f9044f064db0e855cd42579fa86d8c5c8945eddf20aa3"
+        },
+        "stderr.txt": {
+          "bytes": 79,
+          "sha256": "fa9ba6bb542e83e254b5bae92765b5ba9e0505c12e1e49f6c11dbf41c51f8775"
+        }
+      }
+    },
+    "final-diff-check": {
+      "command": {
+        "program": "git",
+        "args": [
+          "diff",
+          "--check"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:47:31.290Z",
+        "finishedAt": "2026-10-04T12:47:31.515Z",
+        "exitCode": 0,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    "final-domain": {
+      "command": {
+        "program": "node",
+        "args": [
+          "--import",
+          "tsx",
+          "--test",
+          "--test-concurrency=4",
+          "tests/unit/domain/*.test.ts"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:07:14.651Z",
+        "finishedAt": "2026-10-04T12:13:31.509Z",
+        "exitCode": 1,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 121817,
+          "sha256": "1c2e4c161f8bc349854d84efd28e4ddc6bde1e7bd773f764b9f5e5f7933b87a8"
+        },
+        "stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    "final-domain-v2": {
+      "command": {
+        "program": "node",
+        "args": [
+          "--import",
+          "tsx",
+          "--test",
+          "--test-concurrency=4",
+          "tests/unit/domain/*.test.ts"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:25:20.798Z",
+        "finishedAt": "2026-10-04T12:33:59.444Z",
+        "exitCode": 1,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 95883,
+          "sha256": "d1119be63e3e170e4fcf6bccb96050e46f7c0b0d4d6be1da0e4810c12fc9e143"
+        },
+        "stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    "final-domain-v3": {
+      "command": {
+        "program": "node",
+        "args": [
+          "--import",
+          "tsx",
+          "--test",
+          "--test-concurrency=4",
+          "tests/unit/domain/*.test.ts"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:35:15.443Z",
+        "finishedAt": "2026-10-04T12:43:56.304Z",
+        "exitCode": 0,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 94132,
+          "sha256": "573a8fa2d4ac73338c4a15dcbf87543201cbd66e722480057ca42ebf751f030a"
+        },
+        "stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    "final-entropy": {
+      "command": {
+        "program": "node",
+        "args": [
+          "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+          "quality:entropy"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:07:04.663Z",
+        "finishedAt": "2026-10-04T12:07:09.642Z",
+        "exitCode": 0,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 64,
+          "sha256": "e868c315a14de2856fc8704cfb7576f0ff88b10075e0a705e218ecf7cc99f02a"
+        },
+        "stderr.txt": {
+          "bytes": 49,
+          "sha256": "7db8734f9a79ab0e050617ecdfb19b5819eb70b528b921de90840d1c8efe0973"
+        }
+      }
+    },
+    "final-entropy-tests": {
+      "command": {
+        "program": "node",
+        "args": [
+          "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+          "test:entropy"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:12:53.048Z",
+        "finishedAt": "2026-10-04T12:12:56.996Z",
+        "exitCode": 0,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 1462,
+          "sha256": "ab21219ef9e21a4f02f416e335e4765a7fcf4b6186de08122b637ff45e859348"
+        },
+        "stderr.txt": {
+          "bytes": 66,
+          "sha256": "5eaf6181ee45630d54945f911de790ba816935ea68f2eb6d123a586e0854ca21"
+        }
+      }
+    },
+    "final-entropy-tests-v2": {
+      "command": {
+        "program": "node",
+        "args": [
+          "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+          "test:entropy"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:29:38.536Z",
+        "finishedAt": "2026-10-04T12:29:42.671Z",
+        "exitCode": 0,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 1466,
+          "sha256": "0bd21df79e734864d227489000a2b63d3b83fd4802a8ad93c5e7c38db5b64453"
+        },
+        "stderr.txt": {
+          "bytes": 66,
+          "sha256": "5eaf6181ee45630d54945f911de790ba816935ea68f2eb6d123a586e0854ca21"
+        }
+      }
+    },
+    "final-entropy-v2": {
+      "command": {
+        "program": "node",
+        "args": [
+          "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+          "quality:entropy"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:28:27.717Z",
+        "finishedAt": "2026-10-04T12:28:36.220Z",
+        "exitCode": 0,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 804,
+          "sha256": "0e7edc35a2fbd6733e40024d5c9736ec5a1f40174062f3d19e5964b4603765cb"
+        },
+        "stderr.txt": {
+          "bytes": 49,
+          "sha256": "7db8734f9a79ab0e050617ecdfb19b5819eb70b528b921de90840d1c8efe0973"
+        }
+      }
+    },
+    "final-entropy-v3": {
+      "command": {
+        "program": "node",
+        "args": [
+          "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+          "quality:entropy"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:39:03.410Z",
+        "finishedAt": "2026-10-04T12:39:09.072Z",
+        "exitCode": 0,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 64,
+          "sha256": "e868c315a14de2856fc8704cfb7576f0ff88b10075e0a705e218ecf7cc99f02a"
+        },
+        "stderr.txt": {
+          "bytes": 49,
+          "sha256": "7db8734f9a79ab0e050617ecdfb19b5819eb70b528b921de90840d1c8efe0973"
+        }
+      }
+    },
+    "final-forbidden-tracked": {
+      "command": {
+        "program": "node",
+        "args": [
+          "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+          "check:forbidden-tracked-artifacts"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:12:53.029Z",
+        "finishedAt": "2026-10-04T12:12:54.129Z",
+        "exitCode": 0,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr.txt": {
+          "bytes": 53,
+          "sha256": "5d361c2702ae313e9248029597afce8514cec6d36f887d6bb891fa93419b46d0"
+        }
+      }
+    },
+    "final-forbidden-tracked-v2": {
+      "command": {
+        "program": "node",
+        "args": [
+          "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+          "check:forbidden-tracked-artifacts"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:31:39.792Z",
+        "finishedAt": "2026-10-04T12:31:41.837Z",
+        "exitCode": 0,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr.txt": {
+          "bytes": 53,
+          "sha256": "5d361c2702ae313e9248029597afce8514cec6d36f887d6bb891fa93419b46d0"
+        }
+      }
+    },
+    "final-installed-manager": {
+      "command": {
+        "program": "node",
+        "args": [
+          "--import",
+          "tsx",
+          "tests/installed/manager-action-install.test.ts",
+          "D:/Projects/flowkit-next/.tmp/repair-archive-lifecycle-package/installation/node_modules/flowkit-next/dist/cli/entrypoint.js",
+          "D:/tools/flowkit-manager/node_modules/flowkit-next/dist/cli/entrypoint.js"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:12:42.659Z",
+        "finishedAt": "2026-10-04T12:13:24.095Z",
+        "exitCode": 0,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 784,
+          "sha256": "be5613931ed1a1a37c7fec48e92582053e8ffe8ebfe44477f9519b4841827462"
+        },
+        "stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    "final-installed-manager-v2": {
+      "command": {
+        "program": "node",
+        "args": [
+          "--import",
+          "tsx",
+          "tests/installed/manager-action-install.test.ts",
+          "C:\\Users\\xuser\\AppData\\Local\\Temp\\flowkit-repair-archive-final-EqtTxx\\node_modules\\flowkit-next\\dist\\cli\\entrypoint.js",
+          "D:/tools/flowkit-manager/node_modules/flowkit-next/dist/cli/entrypoint.js"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:28:27.867Z",
+        "finishedAt": "2026-10-04T12:29:42.704Z",
+        "exitCode": 0,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 783,
+          "sha256": "eef62102059976a94a710b693b7cec2f56955672734be2b52e01271b928d916b"
+        },
+        "stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    "final-installed-manager-v3": {
+      "command": {
+        "program": "node",
+        "args": [
+          "--import",
+          "tsx",
+          "tests/installed/manager-action-install.test.ts",
+          "C:\\Users\\xuser\\AppData\\Local\\Temp\\flowkit-repair-archive-final-EqtTxx\\node_modules\\flowkit-next\\dist\\cli\\entrypoint.js",
+          "D:/tools/flowkit-manager/node_modules/flowkit-next/dist/cli/entrypoint.js"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:36:47.053Z",
+        "finishedAt": "2026-10-04T12:37:58.769Z",
+        "exitCode": 0,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 784,
+          "sha256": "58d23ffc56e7f52079a702b6ddb0156aa1d50e418e1b880d72ec3f256d1b97fe"
+        },
+        "stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    "final-native-windows": {
+      "command": {
+        "program": "node",
+        "args": [
+          "--import",
+          "tsx",
+          "--test",
+          "tests/acceptance/native-windows-archive.test.ts"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:08:40.702Z",
+        "finishedAt": "2026-10-04T12:10:32.230Z",
+        "exitCode": 0,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 422,
+          "sha256": "585034556c5f1fa4c70a2fccc34930901593344b71bcd1dcf8d133a88b6e5b7b"
+        },
+        "stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    "final-native-windows-lp": {
+      "command": {
+        "program": "node",
+        "args": [
+          "--import",
+          "tsx",
+          "--test",
+          "tests/acceptance/native-windows-archive.test.ts"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:43:25.550Z",
+        "finishedAt": "2026-10-04T12:45:19.556Z",
+        "exitCode": 0,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 422,
+          "sha256": "0e0f8f516a3aa7304ef8e3b41ccea4ceb8eb5bd3a3e0f66e7a9ba2bf630c439c"
+        },
+        "stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    "final-native-windows-v2": {
+      "command": {
+        "program": "node",
+        "args": [
+          "--import",
+          "tsx",
+          "--test",
+          "tests/acceptance/native-windows-archive.test.ts"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:26:35.507Z",
+        "finishedAt": "2026-10-04T12:29:42.715Z",
+        "exitCode": 0,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 421,
+          "sha256": "5cc1c1441214557e24a2544958867d42ef7950dc36ad0e425ed420799e2570fb"
+        },
+        "stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    "final-native-windows-v3": {
+      "command": {
+        "program": "node",
+        "args": [
+          "--import",
+          "tsx",
+          "--test",
+          "tests/acceptance/native-windows-archive.test.ts"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:36:47.030Z",
+        "finishedAt": "2026-10-04T12:39:34.438Z",
+        "exitCode": 0,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 422,
+          "sha256": "9653e3c8f6a21242642210f273aabe5c64cc762d36cf315d52edce9a02d6de43"
+        },
+        "stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    "final-openspec": {
+      "command": {
+        "program": "node",
+        "args": [
+          "C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js",
+          "validate",
+          "repair-archive-lifecycle",
+          "--type",
+          "change",
+          "--strict",
+          "--json",
+          "--no-interactive"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:12:53.055Z",
+        "finishedAt": "2026-10-04T12:12:54.417Z",
+        "exitCode": 0,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 471,
+          "sha256": "f3e95ba167580554f425b62c1908244a38c35dbd678b392d5d4b01e359c2c6ba"
+        },
+        "stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    "final-openspec-readback": {
+      "command": {
+        "program": "node",
+        "args": [
+          "C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js",
+          "validate",
+          "repair-archive-lifecycle",
+          "--type",
+          "change",
+          "--strict",
+          "--json",
+          "--no-interactive"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:47:31.197Z",
+        "finishedAt": "2026-10-04T12:47:32.744Z",
+        "exitCode": 0,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 471,
+          "sha256": "e2e5437006f8ca718f33abd3c81573503633f1309467b42cb94a14aca1fcbc92"
+        },
+        "stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    "final-owned-source": {
+      "command": {
+        "program": "node",
+        "args": [
+          "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+          "quality:owned-source"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:12:53.029Z",
+        "finishedAt": "2026-10-04T12:12:54.400Z",
+        "exitCode": 0,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 538,
+          "sha256": "c0d7e2d9b051df18f7d83d38ee2be7fe1d8ed810a3a529e5b9e0e68688174795"
+        },
+        "stderr.txt": {
+          "bytes": 74,
+          "sha256": "c86bfec8a0746ef3782ec82faa475c30584c496a247471de3d7d31663d09f15f"
+        }
+      }
+    },
+    "final-owned-source-v2": {
+      "command": {
+        "program": "node",
+        "args": [
+          "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+          "quality:owned-source"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:28:27.804Z",
+        "finishedAt": "2026-10-04T12:28:33.268Z",
+        "exitCode": 0,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 1280,
+          "sha256": "8ab32fe7dc0baff6453183a17ded846ed9618997534d646175af33174548bace"
+        },
+        "stderr.txt": {
+          "bytes": 74,
+          "sha256": "c86bfec8a0746ef3782ec82faa475c30584c496a247471de3d7d31663d09f15f"
+        }
+      }
+    },
+    "final-owned-source-v3": {
+      "command": {
+        "program": "node",
+        "args": [
+          "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+          "quality:owned-source"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:39:03.438Z",
+        "finishedAt": "2026-10-04T12:39:05.475Z",
+        "exitCode": 0,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 538,
+          "sha256": "a12f3ade0a1cde757619d346099699139af01bed5a9505132ccd3ac729746e10"
+        },
+        "stderr.txt": {
+          "bytes": 74,
+          "sha256": "c86bfec8a0746ef3782ec82faa475c30584c496a247471de3d7d31663d09f15f"
+        }
+      }
+    },
+    "final-quality-gate": {
+      "command": {
+        "program": "node",
+        "args": [
+          "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+          "quality:gate"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:07:04.598Z",
+        "finishedAt": "2026-10-04T12:07:19.330Z",
+        "exitCode": 1,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 348,
+          "sha256": "f941467fe0f5b6b439f6ee715067559c82c16dc283b7ef6d9fb234aaaee0ed0c"
+        },
+        "stderr.txt": {
+          "bytes": 192,
+          "sha256": "9ccaf1b94533f97d77e53271cbcbe105b2181b73bdcdc804c213feb0145b94f3"
+        }
+      }
+    },
+    "final-quality-gate-corrected": {
+      "command": {
+        "program": "node",
+        "args": [
+          "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+          "quality:gate"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:12:58.321Z",
+        "finishedAt": "2026-10-04T12:13:09.918Z",
+        "exitCode": 0,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 66,
+          "sha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20"
+        },
+        "stderr.txt": {
+          "bytes": 192,
+          "sha256": "9ccaf1b94533f97d77e53271cbcbe105b2181b73bdcdc804c213feb0145b94f3"
+        }
+      }
+    },
+    "final-quality-gate-lp": {
+      "command": {
+        "program": "node",
+        "args": [
+          "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+          "quality:gate"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:43:43.692Z",
+        "finishedAt": "2026-10-04T12:43:55.658Z",
+        "exitCode": 0,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 66,
+          "sha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20"
+        },
+        "stderr.txt": {
+          "bytes": 192,
+          "sha256": "9ccaf1b94533f97d77e53271cbcbe105b2181b73bdcdc804c213feb0145b94f3"
+        }
+      }
+    },
+    "final-quality-gate-v2": {
+      "command": {
+        "program": "node",
+        "args": [
+          "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+          "quality:gate"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:23:03.667Z",
+        "finishedAt": "2026-10-04T12:23:17.022Z",
+        "exitCode": 0,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 66,
+          "sha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20"
+        },
+        "stderr.txt": {
+          "bytes": 192,
+          "sha256": "9ccaf1b94533f97d77e53271cbcbe105b2181b73bdcdc804c213feb0145b94f3"
+        }
+      }
+    },
+    "final-quality-gate-v3": {
+      "command": {
+        "program": "node",
+        "args": [
+          "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+          "quality:gate"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:25:20.799Z",
+        "finishedAt": "2026-10-04T12:25:37.517Z",
+        "exitCode": 0,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 66,
+          "sha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20"
+        },
+        "stderr.txt": {
+          "bytes": 192,
+          "sha256": "9ccaf1b94533f97d77e53271cbcbe105b2181b73bdcdc804c213feb0145b94f3"
+        }
+      }
+    },
+    "final-quality-gate-v4": {
+      "command": {
+        "program": "node",
+        "args": [
+          "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+          "quality:gate"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:35:41.584Z",
+        "finishedAt": "2026-10-04T12:35:56.112Z",
+        "exitCode": 0,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 66,
+          "sha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20"
+        },
+        "stderr.txt": {
+          "bytes": 192,
+          "sha256": "9ccaf1b94533f97d77e53271cbcbe105b2181b73bdcdc804c213feb0145b94f3"
+        }
+      }
+    },
+    "final-rollback-proof-corrected": {
+      "command": {
+        "program": "node",
+        "args": [
+          "--import",
+          "tsx",
+          "--test",
+          "--test-name-pattern=restored native failure",
+          "tests/unit/domain/action-archive-cli.test.ts"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:32:54.652Z",
+        "finishedAt": "2026-10-04T12:33:15.396Z",
+        "exitCode": 0,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 362,
+          "sha256": "636b7fab3b0914d98ad451c0b421f6f39c1266bc2e1d9f46b39c585bada3c678"
+        },
+        "stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    "final-typecheck": {
+      "command": {
+        "program": "node",
+        "args": [
+          "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+          "typecheck"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:07:04.636Z",
+        "finishedAt": "2026-10-04T12:07:10.878Z",
+        "exitCode": 0,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr.txt": {
+          "bytes": 15,
+          "sha256": "8366207267355d3e3d5bf3bf6e8c94c5f93f6078c34f08973fa2b38cdda6cc92"
+        }
+      }
+    },
+    "final-typecheck-corrected": {
+      "command": {
+        "program": "node",
+        "args": [
+          "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+          "typecheck"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:23:03.627Z",
+        "finishedAt": "2026-10-04T12:23:09.609Z",
+        "exitCode": 0,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr.txt": {
+          "bytes": 15,
+          "sha256": "8366207267355d3e3d5bf3bf6e8c94c5f93f6078c34f08973fa2b38cdda6cc92"
+        }
+      }
+    },
+    "final-typecheck-lp": {
+      "command": {
+        "program": "node",
+        "args": [
+          "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+          "typecheck"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:43:43.690Z",
+        "finishedAt": "2026-10-04T12:43:49.210Z",
+        "exitCode": 0,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr.txt": {
+          "bytes": 15,
+          "sha256": "8366207267355d3e3d5bf3bf6e8c94c5f93f6078c34f08973fa2b38cdda6cc92"
+        }
+      }
+    },
+    "final-typecheck-v3": {
+      "command": {
+        "program": "node",
+        "args": [
+          "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+          "typecheck"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:31:39.786Z",
+        "finishedAt": "2026-10-04T12:31:46.007Z",
+        "exitCode": 0,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr.txt": {
+          "bytes": 15,
+          "sha256": "8366207267355d3e3d5bf3bf6e8c94c5f93f6078c34f08973fa2b38cdda6cc92"
+        }
+      }
+    },
+    "final-typecheck-v4": {
+      "command": {
+        "program": "node",
+        "args": [
+          "C:/nvm4w/nodejs/node_modules/corepack/dist/pnpm.js",
+          "typecheck"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T12:35:41.585Z",
+        "finishedAt": "2026-10-04T12:35:48.817Z",
+        "exitCode": 0,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr.txt": {
+          "bytes": 15,
+          "sha256": "8366207267355d3e3d5bf3bf6e8c94c5f93f6078c34f08973fa2b38cdda6cc92"
+        }
+      }
+    },
+    "lint-initial": {
+      "command": {
+        "program": "node",
+        "args": [
+          "node_modules/eslint/bin/eslint.js",
+          "src",
+          "tests"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T11:31:05.794Z",
+        "finishedAt": "2026-10-04T11:31:11.353Z",
+        "exitCode": 0,
+        "signal": null,
+        "spawnError": null
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    "lint-second": {
+      "command": {
+        "program": "node",
+        "args": [
+          "node_modules/eslint/bin/eslint.js",
+          "src",
+          "tests"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T11:49:14.612Z",
+        "finishedAt": "2026-10-04T11:49:18.692Z",
+        "exitCode": 1,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 182,
+          "sha256": "ba04f8f72cc6200d0fdde1d3b9ddf55c90bfd66bceeefcc94e451dd4d79b54ff"
+        },
+        "stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    "linux-docker-prerequisite": {
+      "command": {
+        "program": "docker",
+        "args": [
+          "info",
+          "--format",
+          "{{.OSType}} {{.Architecture}}"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T11:48:51.083Z",
+        "finishedAt": "2026-10-04T11:49:06.182Z",
+        "exitCode": null,
+        "signal": "SIGTERM",
+        "spawnError": null,
+        "timedOut": true
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    "native-windows-initial": {
+      "command": {
+        "program": "node",
+        "args": [
+          "--import",
+          "tsx",
+          "--test",
+          "tests/acceptance/native-windows-archive.test.ts"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T11:31:21.587Z",
+        "finishedAt": "2026-10-04T11:34:52.591Z",
+        "exitCode": 0,
+        "signal": null,
+        "spawnError": null
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 422,
+          "sha256": "85a85a607bcd6e4c137a20b93469fe3c119935ab4cca284ff55bf6086ff8904b"
+        },
+        "stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    "regression-archive-final": {
+      "command": {
+        "program": "node",
+        "args": [
+          "--import",
+          "tsx",
+          "--test",
+          "--test-concurrency=4",
+          "tests/unit/domain/action-archive-cli.test.ts",
+          "tests/unit/domain/archive-date-continuation.test.ts",
+          "tests/unit/domain/git-eol-checkpoint.test.ts",
+          "tests/unit/domain/archive-outcome-retry.test.ts"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T11:50:01.128Z",
+        "finishedAt": "2026-10-04T11:52:55.990Z",
+        "exitCode": 1,
+        "signal": null,
+        "spawnError": null,
+        "timedOut": false
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 3875,
+          "sha256": "5a7091414787967d64458bbaaf525c036bc14422eefebea0f5be0b0b83e7a348"
+        },
+        "stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    "targeted-git-retry": {
+      "command": {
+        "program": "node",
+        "args": [
+          "--import",
+          "tsx",
+          "--test",
+          "--test-concurrency=4",
+          "tests/unit/domain/archive-outcome-retry.test.ts",
+          "tests/unit/domain/git-eol-checkpoint.test.ts",
+          "tests/unit/domain/candidate-git-projection.test.ts",
+          "tests/unit/domain/action-correction.test.ts",
+          "tests/unit/domain/action-correction-continuation.test.ts",
+          "tests/unit/domain/git-workflow-host.test.ts"
+        ],
+        "cwd": "D:\\Projects\\flowkit-next",
+        "startedAt": "2026-10-04T11:39:41.600Z",
+        "finishedAt": "2026-10-04T11:42:55.310Z",
+        "exitCode": 1,
+        "signal": null,
+        "spawnError": null
+      },
+      "streams": {
+        "stdout.txt": {
+          "bytes": 6579,
+          "sha256": "898224a0c3fcfd3e96cba4ae31321634584281da5407a90a659e6e413189e8f7"
+        },
+        "stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    }
+  },
+  "stagedPaths": [],
+  "historicalRecordsChanged": false,
+  "verificationSha256": "247cbf49b05376d0838a19b821f5bf3147d47e56b8051318b651b0c870395e8f",
+  "nativeWindows": {
+    "platform": "win32",
+    "review": "synthetic role fixture, no independent Review",
+    "delivery": "completion consumer only, no Delivery Full Test/Final",
+    "failed": {
+      "kind": "failed",
+      "effect": "no-mutation",
+      "retryable": true
+    },
+    "completed": {
+      "kind": "completed"
+    },
+    "checkpoint": {
+      "status": "completed",
+      "phase": "readback",
+      "reason": null,
+      "observed": {
+        "checkpointCommit": "710e7acf8e626a274e5bc018db171eb6280faa62",
+        "remoteCommit": null
+      },
+      "effect": "confirmed",
+      "remaining": []
+    },
+    "completions": [
+      {
+        "changeId": "change-one",
+        "archiveRunId": "20261004-008-archive",
+        "reviewApplyRunId": "20260930-006-review-apply",
+        "archiveResultRef": {
+          "artifact": ".flowkit/runs/delivery-one/001-change-one/20261004-008-archive/result.json",
+          "contentSha256": "9e376d50adfb7d8e8ab4bdac81ea476d6162851253b244404f0c212fbeb7a405",
+          "bytes": 3442
+        },
+        "reviewResultRef": {
+          "artifact": ".flowkit/runs/delivery-one/001-change-one/20260930-006-review-apply/result.json",
+          "contentSha256": "03b39a7d485a1355138740a5fddd12ea079b6c0c95002ab1ecd48d28de48558a",
+          "bytes": 362
+        }
+      }
+    ],
+    "materials": {
+      ".flowkit/artifacts/delivery-one/changes/001-change-one/archive-diagnostics/c1376b14-e55e-48fb-9d06-0e39a39972ef/attempt.json": "2b6fdc081ef6dc20a9f6cbda0c94310e740ab8c999e894b5ce40ad42a1b5ec6c",
+      ".flowkit/artifacts/delivery-one/changes/001-change-one/archive-diagnostics/c1376b14-e55e-48fb-9d06-0e39a39972ef/commands/openspec-archive/command.json": "cc6640def1f9d3b9d00abfa5e1dc1f2d17f4900f4967eaf0b449df4fac2119fa",
+      ".flowkit/artifacts/delivery-one/changes/001-change-one/archive-diagnostics/c1376b14-e55e-48fb-9d06-0e39a39972ef/commands/openspec-archive/stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      ".flowkit/artifacts/delivery-one/changes/001-change-one/archive-diagnostics/c1376b14-e55e-48fb-9d06-0e39a39972ef/commands/openspec-archive/stdout.txt": "d0a223463496cd5f103f6d798b0e583bc3ce8adccdd1bfd5254c0e59bdbce63b",
+      ".flowkit/artifacts/delivery-one/changes/001-change-one/archive-effects/20261004-007-archive/openspec-intent.json": "fe3ce9843ae672626615037a8b4734ec09e6b4e4e73eabc94226adf95eb9b215",
+      ".flowkit/artifacts/delivery-one/changes/001-change-one/archive-effects/20261004-007-archive/openspec-result.json": "01f2fb6ac3c09b0d22fdd86a533ad6fa862109ff426119af296cd57e82678620",
+      ".flowkit/artifacts/delivery-one/changes/001-change-one/archive-effects/20261004-007-archive/prestate.json": "cdeb817e66937d1965c65e03b4f1b599f4dc4f0d228711967566945df368a010",
+      ".flowkit/artifacts/delivery-one/changes/001-change-one/archive-diagnostics/6a24de6c-8de3-41f7-a5ce-cc457e9a779e/attempt.json": "42078fa4ddb43469569194f53857c744da04e1bf1b04ebc3b58a6f3a61a7c07d",
+      ".flowkit/artifacts/delivery-one/changes/001-change-one/archive-diagnostics/6a24de6c-8de3-41f7-a5ce-cc457e9a779e/commands/openspec-archive/command.json": "f1c64db83f89e418644a81bc03a401607f4c16d9207229007e127fae5a1acf7e",
+      ".flowkit/artifacts/delivery-one/changes/001-change-one/archive-diagnostics/6a24de6c-8de3-41f7-a5ce-cc457e9a779e/commands/openspec-archive/stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      ".flowkit/artifacts/delivery-one/changes/001-change-one/archive-diagnostics/6a24de6c-8de3-41f7-a5ce-cc457e9a779e/commands/openspec-archive/stdout.txt": "6a5252f0417a698e45b3d5e18a67c69c54b6d49cf2ad79038f2c52fe1ca668fe",
+      ".flowkit/artifacts/delivery-one/changes/001-change-one/archive-effects/20261004-008-archive/coordination-observed.json": "e4319a655f80c1b494ec90656dc1a35161d475679eeda3020c1195fe1c080fba",
+      ".flowkit/artifacts/delivery-one/changes/001-change-one/archive-effects/20261004-008-archive/git-projection.json": "0ffa6d308b9804bcb1031b5e34fde4ff0ac577e8cbf9548ac56e8f97cac7bec4",
+      ".flowkit/artifacts/delivery-one/changes/001-change-one/archive-effects/20261004-008-archive/openspec-intent.json": "439fb491af59944fef3e9ca3bf4b9d73bf96f1bf11659d03cf33ca6aae1d1241",
+      ".flowkit/artifacts/delivery-one/changes/001-change-one/archive-effects/20261004-008-archive/openspec-observed.json": "e754b7124e8f6f78a0230fc61655e2c0218e0cc5425e1a115ab454b3e5bb0657",
+      ".flowkit/artifacts/delivery-one/changes/001-change-one/archive-effects/20261004-008-archive/openspec-result.json": "1293ebfa3efd6b833b6823be380371f8973b749f1fd658474de936d56bf8a964",
+      ".flowkit/artifacts/delivery-one/changes/001-change-one/archive-effects/20261004-008-archive/prestate.json": "5ef0e4c565022955af9aec66bbd25a580b27670e41e2617e57c6a159a9ad9a65",
+      ".flowkit/artifacts/delivery-one/changes/001-change-one/archive-effects/20261004-008-archive/rename-observed.json": "deee7e8dd4f6c9f549244d623900898935f14fc7f101b6780dd6b04e498f8053"
+    }
+  },
+  "repositoryLock": {
+    "sha256": "bf5ef071f2b4b8140f05493ebd53098660250f2cd5a834fe321ce8685bdb65e5",
+    "matchesHead": true
+  },
+  "package": {
+    "bytes": 193977,
+    "sha256": "4a08f65c6cd2a83062615f503036c54805bd9dceb350447749ea08d2ad831e41",
+    "installedRoot": "C:\\Users\\xuser\\AppData\\Local\\Temp\\flowkit-repair-archive-final-EqtTxx",
+    "installedMetadata": {
+      "name": "flowkit-next",
+      "version": "1.0.0",
+      "private": true,
+      "type": "module",
+      "files": [
+        "dist/",
+        "docs/onboarding.md",
+        "skills/actions/",
+        "skills/delivery/",
+        "skills/tools/openspec/",
+        "skills/vendors/openspec/",
+        "config/tools/toolchain.lock.json"
+      ],
+      "engines": {
+        "node": ">=22.20.0"
+      },
+      "dependencies": {
+        "yaml": "^2.9.0"
+      },
+      "devDependencies": {
+        "@eslint/js": "^9.0.0",
+        "@types/node": "^22.0.0",
+        "dependency-cruiser": "^18.2.0",
+        "eslint": "^9.0.0",
+        "prettier": "^3.0.0",
+        "tsx": "^4.0.0",
+        "typescript": "^5.5.0",
+        "typescript-eslint": "^8.0.0"
+      },
+      "bin": {
+        "flowkit": "dist/cli/entrypoint.js"
+      },
+      "scripts": {
+        "typecheck": "tsc --noEmit",
+        "test:domain": "node --import tsx --test tests/unit/domain/*.test.ts",
+        "format": "prettier --write src tests tsconfig.json tsconfig.build.json package.json eslint.config.mjs scripts/check-forbidden-tracked-artifacts.mjs",
+        "format:check": "prettier --check src tests tsconfig.json tsconfig.build.json package.json eslint.config.mjs scripts/check-forbidden-tracked-artifacts.mjs",
+        "build": "node scripts/build-production.mjs",
+        "test:acceptance": "node --import tsx --test tests/acceptance/*.test.ts",
+        "lint": "eslint src tests",
+        "check:forbidden-tracked-artifacts": "node scripts/check-forbidden-tracked-artifacts.mjs",
+        "quality:gate": "pnpm format:check && pnpm lint",
+        "test:bootstrap": "node --import tsx --test tests/unit/bootstrap/*.test.ts",
+        "quality:dependency-health": "depcruise --config dependency-cruiser.config.mjs --output-type err src tests",
+        "test:entropy": "node --test tests/unit/quality/production-reachability.test.mjs",
+        "quality:entropy": "node scripts/check-production-reachability.mjs",
+        "quality:owned-source": "node --import tsx --test tests/unit/quality/owned-source-policy.test.ts"
+      }
+    },
+    "installedFiles": {
+      "dist/cli/action-artifact-hashes.js": "03f802e73c64b8792fe2fd98a9dce8514a8e0e6fe3e9573f2ac4ed9de6bb7c62",
+      "dist/cli/action-commands.js": "369c78d6a51243576633cbae763d90ee20c82d9ef69d5bcc635136fe04b541d0",
+      "dist/cli/action-context.js": "4ba3b1ce563dfd448d5d757a0417c9283806176bae61b49f8d59c2597b5c20df",
+      "dist/cli/action-correct.js": "92af2d20fcaa9b6e8c8cc3872558d6780487e6e96ca2f66d66fa179586fc2171",
+      "dist/cli/action-descriptor.js": "bbbc09971ba7c0e3238ad79431e0b09aaf8369932c312012179465583e717fe3",
+      "dist/cli/action-error.js": "86c074b6c6a9e62629c276bd2a5776e9c2aa971411e3e732a77cd79950d99022",
+      "dist/cli/action-finish.js": "f36c81732bdd49346a8fc5306a75cab765753ec46642376812deaf1df7e738ef",
+      "dist/cli/action-inspect.js": "50a9db06da7f58ddb4fa01b1ac4e33192f13b725216f0b2cd8c155e90f101f60",
+      "dist/cli/action-proof.js": "96ae900b30dd8e741dc45ce569f86c02b3fe9bca1642cdc212d55901c3883c36",
+      "dist/cli/action-readiness.js": "a6ebb80569141a4259b096069d7fc4a18d5e11039485be5030a7638efc59882d",
+      "dist/cli/action-request.js": "b5e78404617c14305ab6b30bbdc221a405514f0fdcf9346795e6b75b04d07d33",
+      "dist/cli/archive-finish.js": "2372354a154f322d038f9bf2fad0eb32f83c8b8cd32edd5ee5a7763bb6d71003",
+      "dist/cli/checkpoint-authorization.js": "174983b78438f3da49ac0cfc1a93a4485bf0b0e295e1705e95266a45134fdba7",
+      "dist/cli/current-run-chain.js": "4a34dbcc68bbf6f70078daba3ff95edacbc9806d360888ab42cddd31a31a507c",
+      "dist/cli/entrypoint.js": "2c6b11a6fc9482b133c17982eec4ba5b2a0bf1f63a1b40d14d25608457dcac3f",
+      "dist/cli/foundation-cli.js": "01f4a3c3a19a5c8f1192c0c8af8a89051e4f04c811c6b74aa621f01f27b236e4",
+      "dist/cli/prepared-owner-correction-start.js": "e4a80bdba8e68a2a06fff09a35f589b1d43aef6fca8c9e20f097444196c0d1f9",
+      "dist/cli/request.js": "b8b264e4f9a3ae2ac978e29313e2a40c111466bff7f55e5dd55e86dc3b131b38",
+      "dist/cli/review-candidate.js": "b41e1bd92dad83b9f59010c7aa3d3879bb158cbc1773325d98f6540a23efe7ab",
+      "dist/cli/run-effective-facts.js": "18c2e401f2b2e5d82f080f4205a8a362803aba18c26744e1b183ea1613682eff",
+      "dist/cli/support-change-activate.js": "ba631da30a3935003b006ca7fc11b8be934ff1d30d3c9e65a91e7fc43f62c61c",
+      "dist/cli/support-change-archive.js": "a066db869d74a304e3d6c597a918f1cc9d067d36bf2d560d19deccbe30965177",
+      "dist/cli/support-commands.js": "ef08d6bf7ad4401ae4001f5ca7de42c84b88418f6502abc2da29d0e2b4818da9",
+      "dist/cli/support-delivery-final.js": "d816a4cca3fde109aed0211e5fd1c3a400175752e4175079f59f9a290276e982",
+      "dist/cli/support-delivery-start.js": "212859d944dd59b4fe7213b3f34c81ce22e640c38df0ba0e56026f912dcdedf8",
+      "dist/cli/support-full-test.js": "3b78726f6ddb14ac32fdbf35e2fc33052a815a9a66d31dacd709866dc7401a43",
+      "dist/cli/support-git-integrate.js": "023197083298a6286dfd5e8b9440db8b48d5c14d63825b3383f05f53bd3f094a",
+      "dist/cli/support-git.js": "94b8df33aac805f063b88e3bf53cdf91fc72f23f67c7f69c25a3b773f080f74d",
+      "dist/cli/support-memo.js": "536e60cf5e2ada467f0711c071a36cbebc5c14bcd22ba449df6553f4c963f2d7",
+      "dist/cli/support-project.js": "07a4cfa66a5cda8a804833059ec138fcd5df79770bfcad544c774a7c19d1daa2",
+      "dist/cli/support-request.js": "13ce917ecbcc65e5ab50981e9eebb138be00ad40622905374a0a8fdd64dd55db",
+      "dist/cli/trusted-change-coordination.js": "2711995c1ee30d55b99db38319d3fb1e33684a181c32a21b8bf64f954ccb3416",
+      "dist/domain/action-guidance-execution.js": "8e13ed2764b53a4c8eb3b25850ee7f3e414071a1e34da4fef79dfd5137d6e341",
+      "dist/domain/action-lifecycle.js": "fb587e9f98d1b207052936de6bf8d705f8af31a41304db90255e90e203d07095",
+      "dist/domain/action-package-result-admission.js": "23f06df3a9fbd9c4934edab1331648f32a67dd0819f6e909726afabffd4043ea",
+      "dist/domain/applicable-check-execution.js": "6ca7bb1bb4a1378a042e13a3827205695ea3a762504f171ac14cb3acb42e402d",
+      "dist/domain/archive-outcome.js": "c8a26daee5a77f28374d71d05cb3726f1a6481059cc3678d9a7ed02bf4e94d74",
+      "dist/domain/authority.js": "a4c5cf83646f19f71bb3fefc6ab0d6b88459630169377a363e8258e666aa48bd",
+      "dist/domain/canonical-action-run-start.js": "86871367dc93ac5309ad490904eb2c19803447457e3228e90f10445b3ad8078c",
+      "dist/domain/cross-delivery-memo-persistence.js": "06f145c15ed5ce77d87718914bd3da9acca169d8971549480f2eda3c023c6347",
+      "dist/domain/cross-delivery-memo.js": "eda2118ffd8c5a6c03cceefcdf26b9ebf82d06ca150d106e63ff8164dd43170a",
+      "dist/domain/delivery-final-execution.js": "e03c410acd64e9e109bc261ce4b6ec8c56f8f54462fdde205b25a259e44613b5",
+      "dist/domain/delivery-final-operation.js": "0201f5515540ac229c8ebff7262f2c86a6ada9e80ded91664bb4ca332cb1d6de",
+      "dist/domain/delivery-finalization.js": "6f9ce3bceec9bd258afed7c3b693903c0daf244b1fc2d0473f953444e4c71c9e",
+      "dist/domain/delivery-full-test-execution.js": "af22929b682fdf839b879a07cf5c237fb5e35676764d6398efcb3dd7d86faf98",
+      "dist/domain/delivery-operation-execution.js": "509fac55120cd408fda30f1df5687f8eea2dfa459e0a4373aa5a3b7e5d1c8470",
+      "dist/domain/delivery-repository-integration-execution.js": "1725b946bdde9ca4ca08866aeabd375418d34edcc813d3bc033ff07ee1258e48",
+      "dist/domain/delivery-repository-integration-operation.js": "ae31742c410f940bcac401a88c37ac2d7ade690a3c8cf8ceaff84b8b2a87eb5f",
+      "dist/domain/delivery-start-execution.js": "f0c92a766a4cb7ce42d33bfab0570933fac19d58880f102ef53e370557142fc0",
+      "dist/domain/git-workflow-host.js": "4584980904cb6063b2a8ee69ee2d120d70662cf97287305c3fdcd4e849ac2dcd",
+      "dist/domain/git-workflow-integration-host.js": "8ace288498aa06b1b250c1161ebf9fc5a652285e7afa226d4184f9933dd74f80",
+      "dist/domain/identity.js": "c1d20b54283b946a32c2e7916b394ef2b13c2ea6e1e3a38576545f768ddacd49",
+      "dist/domain/index.js": "d2172d82c2d7782fcb82f9aac90ca914a3c59be2deb65f6a74a37fdf80ef583c",
+      "dist/domain/managed-tool-resolution.js": "a0aa315703e627400afe516bf5b1dddf1fc046a8a0042789fcc5a4d1ca0fc375",
+      "dist/domain/openspec-observation.js": "b903ea82c971bfaa0798387e5d355fd3565e2f3ff470e2a28dcd49e882141a9f",
+      "dist/domain/policy-and-next-boundary.js": "9738f20f5a52cd311269efabb660a0e82c49ca78ccf43dac4734f9b4b9571acc",
+      "dist/domain/run-result-persistence.js": "af9e99010363b5bb1475e56efe3bf7d52d0d938cf36f905af6f566389c783cd4",
+      "dist/domain/single-action-execution.js": "a462735648b755ef094833cdf643965c9f5b6897ba4b34446728e5ce382d75d3",
+      "dist/domain/state.js": "bef5f68eecff2dbdf571492de4e8fd61e7d19e379e8fa90cdc2c2aa3e50bfbe4",
+      "dist/internal/applicable-check-candidate.js": "821bc0006fa7e43b1ab7e769a0fc6bb56286b87f431cbcd5369fa33ee4d7fd92",
+      "dist/internal/applicable-check-facts.js": "f044735aa815c92e79ab5d19e06058fdbef95d02268fec4f64146a8777ded973",
+      "dist/internal/applicable-check-identity.js": "e4dfe3426da47b61cc2e7e73184d973360d172d3a9f793ffcb5d82e9fcb96db3",
+      "dist/internal/applicable-check-material.js": "6a0d01f2c78c8712ac274221084a00c223214569a8e178a3a05748f2127aff66",
+      "dist/internal/applicable-check-process.js": "52db0596735a822fd787d9ca1ed4f8a0d8c334a4a55e37bfec9a202393eff777",
+      "dist/internal/archive-effects-v2.js": "2e875ca1400fbb7d5c820ea0531490e8b1d8de64ce8d971fb9c6cb0a622c3bb9",
+      "dist/internal/archive-effects.js": "71055e0daa1b1c938b38f615e0d43ea988ffa67a845fa5f26b702e1eab595a74",
+      "dist/internal/archive-file-identities.js": "9af87a9451633b100d0beb47f3be42675490476ead8251269eb4ddc341e863a5",
+      "dist/internal/archive-process.js": "4e20919cf1f3a27223461f763db0882c4aa41423d7d7ded342a9b117bd618359",
+      "dist/internal/candidate-git-bytes.js": "228cbac1f772e94bbeb44c44c1bed2d55c033017da172752435f8f0ec387f8b0",
+      "dist/internal/candidate-git-facts.js": "9879d0e4dfcd4c63211d2b67570e882ddf530b814a95ee3387e535e2ecb1eddf",
+      "dist/internal/change-coordination-write.js": "4ab5756b9bdab53d73dbe34ba0f23947f5f344eeadfb824f636c445e670c96c3",
+      "dist/internal/checkpoint-candidate-tree.js": "d822d84daab154203a80ca67759d2e9655c71fd32074abccdd40bf345f480b10",
+      "dist/internal/delivery-final-coordination.js": "66efb5c52ebf30a8c51dd1931c32c300a10d1ab24a2bc085b6e3080ce46ddc76",
+      "dist/internal/delivery-repository-integration-failure.js": "ecd74115e1e22061a62a248f8294dc30ed73698033efb2c2d778c4edbf1626dd",
+      "dist/internal/delivery-repository-integration-git.js": "14a00ade1a4c0068659e01ea50a126e020814899910a9742f3d262f1cd5f87fb",
+      "dist/internal/delivery-repository-integration-ref.js": "bf5367227356bdda63a09e744b5fc312487000b3137d0f968dcd34a762fff822",
+      "dist/internal/delivery-repository-integration-source.js": "7e543e6baceed9ddf3aa08f73c148da6e3144a0f3e206f517cfa6c5a91e882c5",
+      "dist/internal/delivery-required-evidence-source.js": "45ff3a39384cc2052edf45cb828c345c92af0e3daa68ba45aed40baabcda45ce",
+      "dist/internal/delivery-required-evidence.js": "720663940bd00731425b5c31f60371eee142292727a5812a02e71108dcf628cd",
+      "dist/internal/delivery-start-content.js": "38095f0fe7b1f06a065aa8337ea2b272fa1df9364a054c6c29baf3c8464f351b",
+      "dist/internal/full-test-attempt-readback.js": "521bbea99e6c7c0192a6532fad2928ca72fa7eb4f1ae651fbafa2166427291cc",
+      "dist/internal/full-test-current.js": "4bfaabc4996e728e50b928bf5f3f76fb8d4d857742ae31ba2124fba3204c4cec",
+      "dist/internal/full-test-input.js": "bf70248056382cb535fc14170de0fe9675af335021cb3bf6bc5bfed86948ab92",
+      "dist/internal/full-test-process.js": "73ff42c1aeedcd2f839933fbb657cea19d5fe11b76e18a3bb859ff53f15db4d4",
+      "dist/internal/full-test-result.js": "c1478c23c3afb008dc756bbc09332d8a1f17cd990ec9c2f765af6a84e7ce241b",
+      "dist/internal/full-test-storage.js": "3e50703fe36ec6eb5866072c01808b88f625a3aecb031a06d1bef0bdbbf4af90",
+      "dist/internal/full-test-tool.js": "04d6b81a773b2c6d1f2b39b43a471ca436d94565dd6c224cec0502d127b3e892",
+      "dist/internal/git-checkpoint-execution.js": "39f0294ab2c8d02331741199977324d3620d50f308181df9ad930dd6fb5cb18c",
+      "dist/internal/git-checkpoint-scope.js": "c66d2c881b3870fe70fd8a520f817d962c25615e941a9d68f1eb5313334835a9",
+      "dist/internal/git-index-run-chain.js": "0c89e25f68f1ede1891675646ef5f1f91f84c2b64547f50b2bde7a1d2b563add",
+      "dist/internal/managed-evidence-checkpoint.js": "6dcb75cc34cb72c30ac9982b28523ff3fa71a485b7d83f9517b03efd1e292e9c",
+      "dist/internal/managed-evidence-git.js": "a046f94ba8bf80bcd526c548a12b1658e293c8a60c6eb7b5e125472c2ad685ed",
+      "dist/internal/manager-installation.js": "aeaf0434aff3dce684eb0fba7748d599e35577a2f5b6bcaabb7b5ffbbfbbc5d7",
+      "dist/internal/openspec-archive-date.js": "da12bb483a92ef77b1106ebd60ac5364d700bb538b6ff2e598f555744bcdad09",
+      "dist/internal/openspec-process-outcome.js": "5de068438d72087c724a9d6417d5222d915f1faab64fb633e499ae709654e037",
+      "dist/internal/proof-path-owner.js": "981dda72680f59847c49fb43dfcdd082d613482c4667d2528e65ae17cfd8c072",
+      "dist/internal/reviewed-checkpoint-candidate.js": "076aee5fed7663349fa3475741a807eeefc0195ba8950e3a704be6f4f2ffc318",
+      "skills/actions/apply/SKILL.md": "92804473178d822ff2f56ff35bcf5ec78239f7badd02d6b5ee3787d727f4b6c0",
+      "skills/actions/archive/SKILL.md": "64817ed5ee4880069da953671b5346738b4859cfd6b556c7983f61c83f2b4fd4",
+      "skills/actions/explore/SKILL.md": "9c5fb42de0265213f7f4dbf20119c3e3c4d848de212e63070aab0d70d81310e3",
+      "skills/actions/propose/SKILL.md": "c408ed17123ed46e37e517b02f1d9a770b9fdea30bbfca0743431fb200366fb0",
+      "skills/actions/README.md": "f740bdc8a1d9a8a410775fb99ab4f58ad95cdc216970fac1bb0da893e4b600cc",
+      "skills/actions/review-apply/SKILL.md": "cc28d9e26ebd10fba863253bb2d20cc38b26ce7324207d50a5d456be0db48194",
+      "skills/actions/review-explore/SKILL.md": "efc227732c498303371ce5b4491842e5666bd4dbd5f79837ca7fa737a75e6d40",
+      "skills/actions/review-propose/SKILL.md": "980769373776d190e363effffcdaf22c8f4c31619014510b55fa583d87e45f81",
+      "skills/actions/revise-apply/SKILL.md": "c3f6f3082e61b1f6ec080ee7a5644ea7f06d56fcda449cb2382460af6f07c1f7",
+      "skills/actions/revise-explore/SKILL.md": "7a8ad4139c2a0458219c8ac821a472ff73dce8d4c4e7bb221275208a42c41d0e",
+      "skills/actions/revise-propose/SKILL.md": "564d9b7aeda95f03fa57e1de32c31717a976f56b5a54cc08154c1054ef5ffe94",
+      "skills/delivery/final/SKILL.md": "5bf5246d6febda093370b059397ac3272797f993cbbfa3b30980c099ee888139",
+      "skills/delivery/full-test/SKILL.md": "2ed4de590b8d942dae19d031deb082b9565bfca2c65f7261dde530b5903eb90a",
+      "skills/delivery/repository-integration/references/git-host.mjs": "cd57ff06916b35d8b68ea92734b4e6c3c46ba9cf492ece101f1574713434313b",
+      "skills/delivery/repository-integration/references/host-call.md": "7df7a10f37c3acbe0bcac2b813ee71433c062f35d18c4705e40dd4499cbfbc89",
+      "skills/delivery/repository-integration/SKILL.md": "2cdd773c4cd6301632d0757b880fa9fe95aa53123d649c5c83bf45f2d64fd278",
+      "skills/delivery/start/SKILL.md": "c7cfd1ea10154cfde683c7236b892e1b5c50ad728af0d1a10d5867295c45d93b",
+      "skills/tools/openspec/SKILL.md": "25b9ad38d2718eabb08de3d09fbe2d1713d7012b979e680578412f9b2203fe99",
+      "skills/vendors/openspec/LICENSE": "c3c7235bea1214ab62df643473975c2e8b8848f528901a976693f7d069713e64",
+      "skills/vendors/openspec/openspec-apply-change/SKILL.md": "0cf1cb26935b55d83e240631500c8cee484a7b241c84a705387c0eeb88676ccf",
+      "skills/vendors/openspec/openspec-archive-change/SKILL.md": "3ad0def4d299469fdfd5b05e4842284d65558e6b28710b5962f7f214d6153855",
+      "skills/vendors/openspec/openspec-bulk-archive-change/SKILL.md": "2d962cb0e4e03ef8fc579d79c6444be64833bc2eac27c990ff1ad5d972297db5",
+      "skills/vendors/openspec/openspec-continue-change/SKILL.md": "5120ec867288e4a117949e333f980f51df79e641739c9f4a23df6656311af920",
+      "skills/vendors/openspec/openspec-explore/SKILL.md": "7e0281fc4f094dcced0c5469e7cbceba2dce9f113f22a4e34efcdce4315edf81",
+      "skills/vendors/openspec/openspec-ff-change/SKILL.md": "457be39012799e11581e43185b679c54a50182f3a58453d17c5444a24ab53926",
+      "skills/vendors/openspec/openspec-new-change/SKILL.md": "0752814373e90dc368eb1f4c7fd4b15c3df1b26fa2d6a0e99232b15a29fe4f22",
+      "skills/vendors/openspec/openspec-onboard/SKILL.md": "9add352e1582a7c80213006ef2d0acf188583541a931c209feb09d43ec6bb805",
+      "skills/vendors/openspec/openspec-propose/SKILL.md": "c0537ce311115878e7e0a04e6ff4fc6456056f21024079c228b6b24325e38613",
+      "skills/vendors/openspec/openspec-sync-specs/SKILL.md": "daf0e52b188a3010e1f494427eb6807fb61a68df653403759b2be54a3aa37e74",
+      "skills/vendors/openspec/openspec-update-change/SKILL.md": "f9e08302d75e873e9ca801211e6151e3f9b663ac6205903e7d79b6520cea30f5",
+      "skills/vendors/openspec/openspec-verify-change/SKILL.md": "02a810d3fb265df77ec22891cef25f0510fe0f07b608d837ba361debced81840",
+      "skills/vendors/openspec/README.md": "28ec3c79ef355a7603516503936ffb479b941f4633440f83a71a1366d2caee43",
+      "skills/vendors/openspec/UPSTREAM.json": "207d21394665a4359cf6a308a33f6619b715507a747ba79100dc5bc86d57e649",
+      "docs/onboarding.md": "9defa182b6527cae2436f367737ef2735b2dd0a975f2cae8cdfc1c49008a7d5e",
+      "config/tools/toolchain.lock.json": "a0481fc8a3fddfbcdd65a504e0e7a065e6ab74a3a871af3ab8838d201eecd4a2"
+    },
+    "fixtureDependencyOverride": "yaml@2.9.0 (repository lock version)",
+    "fixtureWorkspace": "overrides:\n  yaml: 2.9.0\n",
+    "fixtureLockSha256": "aadbc85656f207a867f810e81575fecd7cd6c4291921a47383be7ca7dd0b81b1"
+  }
+}

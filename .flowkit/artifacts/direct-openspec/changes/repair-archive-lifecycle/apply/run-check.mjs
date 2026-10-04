@@ -1,0 +1,25 @@
+import { spawn } from "node:child_process";
+import { mkdir, writeFile } from "node:fs/promises";
+import path from "node:path";
+
+const [id, program, ...args] = process.argv.slice(2);
+if (!/^[a-z0-9-]+$/.test(id ?? "") || !program) throw Error("Expected check id, executable and args");
+const directory = path.join(import.meta.dirname, id);
+await mkdir(directory, { recursive: true });
+const startedAt = new Date().toISOString();
+const stdout = [], stderr = [];
+const child = spawn(program, args, { cwd: process.cwd(), windowsHide: true, stdio: ["ignore", "pipe", "pipe"] });
+child.stdout.on("data", bytes => stdout.push(bytes));
+child.stderr.on("data", bytes => stderr.push(bytes));
+let spawnError = null;
+child.on("error", error => { spawnError = error.message; });
+let timedOut = false;
+const timeout = process.env.CHECK_TIMEOUT_MS ? setTimeout(() => { timedOut = true; child.kill(); }, Number(process.env.CHECK_TIMEOUT_MS)) : null;
+const [exitCode, signal] = await new Promise(resolve => child.on("close", (code, terminated) => resolve([code, terminated])));
+if (timeout) clearTimeout(timeout);
+await writeFile(path.join(directory, "stdout.txt"), Buffer.concat(stdout));
+await writeFile(path.join(directory, "stderr.txt"), Buffer.concat(stderr));
+const command = { program, args, cwd: process.cwd(), startedAt, finishedAt: new Date().toISOString(), exitCode, signal, spawnError, timedOut };
+await writeFile(path.join(directory, "command.json"), JSON.stringify(command, null, 2) + "\n");
+process.stdout.write(JSON.stringify({ id, ...command }) + "\n");
+process.exitCode = exitCode ?? 1;

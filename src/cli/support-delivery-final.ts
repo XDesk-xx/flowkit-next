@@ -7,10 +7,13 @@ import type {
 } from "../internal/delivery-required-evidence-source.js";
 import { readStartProjectId } from "../internal/delivery-start-content.js";
 import { fullTestPath } from "../internal/full-test-input.js";
-import { readSelectedRunChain } from "./current-run-chain.js";
+import {
+  readSelectedRunChain,
+  archiveCompletionSource,
+} from "./current-run-chain.js";
 import type { ManagerInstallation } from "../internal/manager-installation.js";
 
-function completionSource(root: string): ReadDeliveryRequiredEvidence {
+export function completionSource(root: string): ReadDeliveryRequiredEvidence {
   return {
     readChangeClosure: async ({ projectId, deliveryId, changeId }) => {
       if (projectId !== (await readStartProjectId(root)))
@@ -29,16 +32,11 @@ function completionSource(root: string): ReadDeliveryRequiredEvidence {
       )
         throw new Error("completion-archive-unavailable");
       const archive = chain.current;
-      const review = chain.records.find(
+      const predecessor = chain.records.find(
         (record) => record.context.runId === archive.context.previousRunId,
       );
-      if (
-        !review ||
-        review.context.actionIdentity.actionId !== "review-apply" ||
-        review.context.lifecycleState !== "terminal" ||
-        review.result.reviewerVerdict !== "approved"
-      )
-        throw new Error("completion-review-unavailable");
+      if (!predecessor) throw new Error("completion-review-unavailable");
+      const { review } = archiveCompletionSource(chain.records, archive);
       const selected = async (
         runId: string,
       ): Promise<AcceptedCompletionRun> => {

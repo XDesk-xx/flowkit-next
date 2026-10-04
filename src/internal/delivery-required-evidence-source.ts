@@ -1,6 +1,7 @@
 import { readFile } from "node:fs/promises";
 import { isDeepStrictEqual } from "node:util";
 import path from "node:path";
+import { archiveCompletionSource } from "../cli/current-run-chain.js";
 import {
   buildRunAddress,
   parseRunOccurrenceId,
@@ -227,11 +228,53 @@ export async function readDeliveryChangeCompletions(
         review.record.context.actionIdentity.actionId !== "review-apply" ||
         review.record.context.role !== "reviewer" ||
         review.record.result.reviewerVerdict !== "approved" ||
-        archive.record.context.previousRunId !== review.record.context.runId ||
         selected.archive.changeStartSequence !==
           selected.reviewApply.changeStartSequence
       )
         return reject();
+      if (archive.record.result.facts.archiveOutcome === undefined) {
+        // Already accepted legacy endpoints retain their original bounded consumer contract.
+        if (
+          archive.record.context.previousRunId !== review.record.context.runId
+        )
+          return reject();
+      } else {
+        const records = [archive.record, review.record];
+        const read = async (runId: string) => {
+          const occurrence = parseRunOccurrenceId(runId);
+          if (!occurrence) throw Error("Invalid completion parent locator");
+          return readDurableRun({
+            repositoryRoot: expected.repositoryRoot,
+            deliveryId: expected.deliveryId,
+            changeId,
+            changeStartSequence: selected.archive.changeStartSequence,
+            occurrence,
+          });
+        };
+        let parentId = archive.record.context.previousRunId;
+        const visited = new Set<string>();
+        while (parentId !== review.record.context.runId) {
+          if (parentId === null || visited.has(parentId)) return reject();
+          visited.add(parentId);
+          const record = await read(parentId);
+          if (record.context.actionIdentity.actionId !== "archive")
+            return reject();
+          records.push(record);
+          parentId = record.context.previousRunId;
+        }
+        if (review.record.context.previousRunId === null) return reject();
+        records.push(await read(review.record.context.previousRunId));
+        const parent = records.find(
+          (record) =>
+            record.context.runId === archive.record.context.previousRunId,
+        );
+        if (
+          !parent ||
+          archiveCompletionSource(records, archive.record).review.context
+            .runId !== review.record.context.runId
+        )
+          return reject();
+      }
       completions.push({
         changeId,
         archiveRunId: selected.archive.runId,

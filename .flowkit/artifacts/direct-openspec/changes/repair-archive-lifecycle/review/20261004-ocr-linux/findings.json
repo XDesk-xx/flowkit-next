@@ -1,0 +1,37 @@
+{
+  "verdict": "changes-requested",
+  "comments": [
+    {
+      "id": "RA-01",
+      "path": "src/internal/candidate-git-bytes.ts",
+      "start_line": 219,
+      "end_line": 228,
+      "category": "bug",
+      "severity": "medium",
+      "priority": 2,
+      "content": "Linux 新增 chmod 755 文件或把已有文件从 644 改成 755 时，真实 git add 输出 100755；此处只接受 absent 对应 100644 或旧 index mode，导致 scoped checkpoint 在实际 staging 后误报 index is neither bound input nor verified output，留下 index 副作用。相同环境的 HEAD 基线两项均 completed。应准确绑定合法输出 mode，并补充原生 Linux mode 回归。"
+    },
+    {
+      "id": "RA-02",
+      "path": "src/internal/reviewed-checkpoint-candidate.ts",
+      "start_line": 318,
+      "end_line": 326,
+      "category": "bug",
+      "severity": "medium",
+      "priority": 2,
+      "content": "Archive v2 只检查默认中间目录前缀与已知源 suffix 的删除，没有排除整个 sourcePath。归档完成后新增旧源目录下陌生文件并将其列入授权 paths，scoped checkpoint 仍 completed，HEAD 同时包含 completed coordination 与重新出现的 active source。应在 staging 前排除 sourcePath 全部前缀，保持 design 第 7 节与 legacy 分支的约束。"
+    },
+    {
+      "id": "RA-03",
+      "path": "src/cli/action-inspect.ts",
+      "start_line": 206,
+      "end_line": 209,
+      "category": "bug",
+      "severity": "medium",
+      "priority": 2,
+      "content": "保存 prestate 后、写 command intent 前跨日或中断至次日，effect=none 被无条件标成 canContinue=true；但真正 continuation 始终因 assertOpenSpecArchiveDate 返回 archive-date-drift。无 intent 分支应与执行共用日期和必要候选检查，返回真实不可续做诊断；保留已有原生效果后的续做能力。"
+    }
+  ],
+  "evidence": "linux-boundary-probes/stdout.txt",
+  "baselineEvidence": "linux-baseline-executable/stdout.txt"
+}

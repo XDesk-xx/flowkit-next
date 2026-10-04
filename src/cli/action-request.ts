@@ -222,6 +222,13 @@ export function parseActionCommandRequest(
     ]);
     if (!isStandardActionId(value.actionId)) fail("invalid exact Action");
     if (
+      value.actionId === "archive" &&
+      Object.hasOwn(value, "applicableChecks")
+    )
+      fail(
+        "Archive contract version 2 no longer accepts applicableChecks; project verification belongs to Apply/Review/Full Test",
+      );
+    if (
       value.ownerAuthority !== undefined &&
       !isOwnerAuthorityFact(value.ownerAuthority)
     )

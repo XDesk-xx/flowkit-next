@@ -1,29 +1,16 @@
 import { execFile } from "node:child_process";
-import {
-  cp,
-  lstat,
-  mkdtemp,
-  readFile,
-  readdir,
-  rename,
-  rm,
-} from "node:fs/promises";
-import { tmpdir } from "node:os";
+import { lstat, readFile, readdir } from "node:fs/promises";
 import path from "node:path";
-import { isDeepStrictEqual, promisify } from "node:util";
+import { promisify } from "node:util";
 import { resolveManagedTool } from "../domain/managed-tool-resolution.js";
-import {
-  parseRunOccurrenceId,
-  readDurableRun,
-  type DurableRunRecord,
-} from "../domain/run-result-persistence.js";
+import type { DurableRunRecord } from "../domain/run-result-persistence.js";
 import type { ManagerInstallation } from "../internal/manager-installation.js";
-import { openSpecArchiveDate } from "../internal/openspec-archive-date.js";
-import {
-  fullTestPath,
-  resolveFullTestProgram,
-} from "../internal/full-test-input.js";
+
 import { resolveActionContext } from "./action-context.js";
+import {
+  archiveReviewSource,
+  readSelectedRunChain,
+} from "./current-run-chain.js";
 import {
   checkArtifactHashes,
   checkExplorePredecessorForReview,
@@ -38,27 +25,6 @@ import {
   checkReviewCandidate,
 } from "./review-candidate.js";
 import { effectiveRecord, runMaterialLocation } from "./run-effective-facts.js";
-import { uniqueRunGroup } from "../internal/proof-path-owner.js";
-import {
-  archiveDiagnosticAttempt,
-  recordArchiveDependencySnapshot,
-  runArchiveProcess,
-} from "../internal/archive-process.js";
-import {
-  archiveChildEnvironment,
-  assertArchiveSourceFiles,
-  copyArchiveDependencies,
-  dependencyInputHashes,
-} from "../internal/archive-dependency-snapshot.js";
-import {
-  affectedSpecHashes,
-  directoryHashes,
-} from "../internal/archive-file-identities.js";
-import { resolveActionGuidanceRef } from "../domain/action-guidance-execution.js";
-import {
-  configuredArchiveChecks,
-  optionalTargetJson,
-} from "./archive-check-selection.js";
 
 const exec = promisify(execFile);
 async function strictValidate(
@@ -230,12 +196,11 @@ export async function packageReadiness(
     action === "review-propose" ||
     action === "apply" ||
     action === "revise-apply" ||
-    action === "review-apply" ||
-    action === "archive"
+    action === "review-apply"
   ) {
     await readableFiles(root, ["proposal.md", "design.md", "tasks.md"]);
   }
-  if (action === "apply" || action === "revise-apply" || action === "archive")
+  if (action === "apply" || action === "revise-apply")
     await strictValidate(request, installation);
   if (["review-propose", "apply", "revise-apply"].includes(action)) {
     const observed = await resolveActionContext(request, installation);
@@ -267,373 +232,42 @@ export async function packageReadiness(
     );
   }
   if (action === "archive") {
-    if (
-      predecessor?.context.actionIdentity.actionId !== "review-apply" ||
-      predecessor.result.reviewerVerdict !== "approved"
-    )
+    if (request.applicableChecks !== undefined)
       blocked(
-        "archive-review-invalid",
-        "Accepted review-apply required",
+        "archive-request-migration",
+        "Archive version 2 does not accept applicableChecks",
         packageRunId,
       );
-    await archiveReadiness(request, predecessor, installation);
+    const history = await readSelectedRunChain(request);
+    if (history.kind !== "canonical" || predecessor === null)
+      blocked(
+        "archive-review-invalid",
+        "Canonical Archive predecessor required",
+        packageRunId,
+      );
+    const { review } = archiveReviewSource(history.records, predecessor);
+    await archiveReadiness(request, review, installation);
   }
   return "ready";
 }
 
-export { configuredArchiveChecks } from "./archive-check-selection.js";
 export async function archiveReadiness(
   request: StartRequest,
   review: DurableRunRecord,
-  installation: ManagerInstallation,
-  diagnostic?: { trigger: "start" | "archive"; runId: string | null },
+  _installation: ManagerInstallation,
 ) {
-  const priorId = review.context.previousRunId;
-  const priorOccurrence = parseRunOccurrenceId(priorId);
-  if (priorOccurrence === null || !request.applicableChecks?.length)
-    blocked(
-      "archive-checks-missing",
-      "Archive requires declared applicable verification",
-    );
-  const group = path.join(
-    request.repositoryRoot,
-    ".flowkit",
-    "runs",
-    request.deliveryId,
-  );
-  const names = (await readdir(group)).filter((name) =>
-    name.endsWith(`-${request.changeId}`),
-  );
-  if (names.length !== 1)
-    blocked("archive-run-group-invalid", "Archive has no unique Run group");
-  const changeStartSequence = Number(
-    names[0].slice(0, -(request.changeId.length + 1)),
-  );
+  void _installation;
   const author = await effectiveRecord(
     request,
-    await readDurableRun({
-      repositoryRoot: request.repositoryRoot,
-      deliveryId: request.deliveryId,
-      changeId: request.changeId,
-      changeStartSequence,
-      occurrence: priorOccurrence,
-    }),
+    (await runMaterialLocation(request, review.context.previousRunId!)).record,
   );
-  await checkReviewCandidate(request, author, review.result.facts);
-  const hashes = author.result.facts.artifactHashes;
-  const manifestText = await readFile(
-    path.join(
-      request.repositoryRoot,
-      "openspec",
-      "delivery-groups",
-      `${request.deliveryId}.yaml`,
-    ),
-    "utf8",
+  const effectiveReview = await effectiveRecord(request, review);
+  assertReviewBinding(author, effectiveReview.result.facts);
+  await checkReviewCandidate(request, author, effectiveReview.result.facts);
+  await checkDeclaredProofs(
+    request,
+    review.context.runId,
+    effectiveReview.result.facts.proofRefs ?? [],
   );
-  const { parse } = await import("yaml");
-  const manifest = parse(manifestText) as {
-    changes?: { id: string; state: string; projectOrdinal?: unknown }[];
-  };
-  const exact = manifest.changes?.find(
-    (change) => change.id === request.changeId,
-  );
-  if (
-    !exact ||
-    exact.state !== "active" ||
-    !Number.isSafeInteger(exact.projectOrdinal)
-  )
-    blocked(
-      "archive-completion-unready",
-      "Completion transition cannot be materialized",
-    );
-  const targetName = `${openSpecArchiveDate()}-${String(exact.projectOrdinal).padStart(3, "0")}-${request.changeId}`;
-  try {
-    await lstat(
-      path.join(
-        request.repositoryRoot,
-        "openspec",
-        "changes",
-        "archive",
-        targetName,
-      ),
-    );
-    blocked("archive-target-collision", "Archive target already exists");
-  } catch (error) {
-    if ((error as NodeJS.ErrnoException).code !== "ENOENT") throw error;
-  }
-  const checks = await configuredArchiveChecks(request);
-  const sourcePath = `openspec/changes/${request.changeId}`;
-  const sourceFiles = await directoryHashes(request.repositoryRoot, sourcePath);
-  if (sourceFiles === null)
-    blocked("archive-source-missing", "Archive source missing");
-  const specsBefore = await affectedSpecHashes(
-    request.repositoryRoot,
-    sourceFiles,
-  );
-  const inputsBefore = await dependencyInputHashes(request.repositoryRoot);
-  const runGroup = uniqueRunGroup(await readdir(group), request.changeId);
-  const attempt = await archiveDiagnosticAttempt(
-    request.repositoryRoot,
-    request.deliveryId,
-    runGroup,
-    {
-      repositoryRoot: request.repositoryRoot,
-      deliveryId: request.deliveryId,
-      changeId: request.changeId,
-      trigger: diagnostic?.trigger ?? "start",
-      runId: diagnostic?.runId ?? null,
-      candidate: hashes,
-      package: { name: installation.name, version: installation.version },
-      reviewRunId: review.context.runId,
-      guidanceRef: await resolveActionGuidanceRef(installation, "archive"),
-    },
-  );
-  const scratch = await mkdtemp(path.join(tmpdir(), "flowkit-archive-"));
-  if (
-    path.dirname(scratch) !== tmpdir() ||
-    !path.basename(scratch).startsWith("flowkit-archive-")
-  )
-    blocked("archive-scratch-invalid", "Unsafe archive scratch directory");
-  try {
-    const packageValue = (await optionalTargetJson(
-      request.repositoryRoot,
-      "package.json",
-    )) as { packageManager?: string } | null;
-    if (packageValue?.packageManager?.startsWith("pnpm@11.")) {
-      const version = await runArchiveProcess(
-        request.repositoryRoot,
-        attempt,
-        "source-pnpm-version",
-        "pnpm",
-        ["--version"],
-        request.repositoryRoot,
-        {
-          timeout: 120_000,
-          shell: process.platform === "win32",
-          env: archiveChildEnvironment(false),
-        },
-      );
-      const actual = (
-        await readFile(
-          path.join(request.repositoryRoot, version.command.stdout),
-          "utf8",
-        )
-      ).trim();
-      if (
-        actual !==
-        packageValue.packageManager.slice("pnpm@".length).split("+")[0]
-      )
-        blocked(
-          "archive-package-manager-mismatch",
-          `Expected ${packageValue.packageManager}, actual pnpm@${actual}; ${version.path}`,
-        );
-      await runArchiveProcess(
-        request.repositoryRoot,
-        attempt,
-        "source-dependencies",
-        "pnpm",
-        [
-          "--config.verify-deps-before-run=error",
-          "exec",
-          "--",
-          process.execPath,
-          "--version",
-        ],
-        request.repositoryRoot,
-        {
-          timeout: 120_000,
-          shell: process.platform === "win32",
-          env: archiveChildEnvironment(false),
-        },
-      );
-    }
-    const workspaceModules: string[] = [];
-    for (const name of await readdir(request.repositoryRoot)) {
-      if (
-        [
-          ".git",
-          ".flowkit",
-          ".tmp",
-          "dist",
-          "node_modules",
-          "architecture",
-        ].includes(name)
-      )
-        continue;
-      workspaceModules.push(
-        ...(
-          await assertArchiveSourceFiles(
-            path.join(request.repositoryRoot, name),
-          )
-        ).map((directory) => path.relative(request.repositoryRoot, directory)),
-      );
-      await cp(
-        path.join(request.repositoryRoot, name),
-        path.join(scratch, name),
-        {
-          recursive: true,
-          force: false,
-          filter: (file) => path.basename(file) !== "node_modules",
-        },
-      );
-    }
-    const mappings = await copyArchiveDependencies(
-      request.repositoryRoot,
-      scratch,
-      workspaceModules,
-    );
-    if (
-      !isDeepStrictEqual(
-        inputsBefore,
-        await dependencyInputHashes(request.repositoryRoot),
-      )
-    )
-      blocked(
-        "archive-dependency-drift",
-        "Source dependency inputs changed during snapshot",
-      );
-    await recordArchiveDependencySnapshot(request.repositoryRoot, attempt, {
-      sourceInputsBefore: inputsBefore,
-      sourceInputsAfterCopy: await dependencyInputHashes(
-        request.repositoryRoot,
-      ),
-      scratchInputs: await dependencyInputHashes(scratch),
-      mappings,
-    });
-    if (
-      !isDeepStrictEqual(
-        await configuredArchiveChecks({ ...request, repositoryRoot: scratch }),
-        checks,
-      )
-    )
-      blocked(
-        "archive-check-config-drift",
-        "Copied target check config changed",
-      );
-    const tool = await resolveManagedTool({
-      installation,
-      flowkitHome: request.flowkitHome,
-      toolId: "openspec",
-    });
-    try {
-      await runArchiveProcess(
-        request.repositoryRoot,
-        attempt,
-        "openspec-convergence",
-        process.execPath,
-        [tool.entrypoint, "archive", request.changeId, "--yes", "--json"],
-        scratch,
-        { timeout: 120_000, env: archiveChildEnvironment(true) },
-      );
-    } catch (error) {
-      blocked(
-        "archive-convergence-failed",
-        `Isolated OpenSpec canonical convergence failed: ${String(error)}`,
-      );
-    }
-    const defaultTarget = path.join(
-      scratch,
-      "openspec",
-      "changes",
-      "archive",
-      `${openSpecArchiveDate()}-${request.changeId}`,
-    );
-    const converged = await lstat(defaultTarget).catch((error) => {
-      if ((error as NodeJS.ErrnoException).code === "ENOENT") return null;
-      throw error;
-    });
-    if (!converged?.isDirectory())
-      blocked(
-        "archive-convergence-failed",
-        "OpenSpec did not create exact archive target",
-      );
-    await rename(
-      defaultTarget,
-      path.join(path.dirname(defaultTarget), targetName),
-    );
-    for (const check of checks) {
-      try {
-        const cwd =
-          check.kind === "configured-command"
-            ? await fullTestPath(scratch, check.cwd)
-            : scratch;
-        const program =
-          check.kind === "configured-command"
-            ? await resolveFullTestProgram(cwd, check.program)
-            : check.runner;
-        const args =
-          check.kind === "configured-command" ? check.args : ["run", check.id];
-        await runArchiveProcess(
-          request.repositoryRoot,
-          attempt,
-          `check-${check.id}`,
-          program,
-          args,
-          cwd,
-          {
-            shell: check.kind === "script" && process.platform === "win32",
-            timeout: 300_000,
-            env: archiveChildEnvironment(true),
-          },
-        );
-      } catch (error) {
-        blocked(
-          "archive-check-failed",
-          `Post-convergence check failed: ${check.id}: ${String(error)}`,
-        );
-      }
-    }
-    if (
-      !isDeepStrictEqual(
-        inputsBefore,
-        await dependencyInputHashes(request.repositoryRoot),
-      )
-    )
-      blocked(
-        "archive-dependency-drift",
-        "Source dependency inputs changed during checks",
-      );
-    await checkReviewCandidate(request, author, review.result.facts);
-    await checkDeclaredProofs(
-      request,
-      review.context.runId,
-      review.result.facts.proofRefs ?? [],
-    );
-    if (
-      !isDeepStrictEqual(
-        sourceFiles,
-        await directoryHashes(request.repositoryRoot, sourcePath),
-      ) ||
-      !isDeepStrictEqual(
-        specsBefore,
-        await affectedSpecHashes(request.repositoryRoot, sourceFiles),
-      )
-    )
-      blocked(
-        "archive-source-drift",
-        "Source Change/spec input changed during checks",
-      );
-    if (
-      !isDeepStrictEqual(
-        sourceFiles,
-        await directoryHashes(
-          scratch,
-          `openspec/changes/archive/${targetName}`,
-        ),
-      )
-    )
-      blocked(
-        "archive-convergence-drift",
-        "Archive changed source content or file set",
-      );
-    return {
-      sourceFiles,
-      specsBefore,
-      specsAfter: await affectedSpecHashes(scratch, sourceFiles),
-      diagnosticRef: attempt,
-      dependencyMappings: mappings,
-    };
-  } finally {
-    await rm(scratch, { recursive: true, force: true });
-  }
+  return { author, review: effectiveReview };
 }

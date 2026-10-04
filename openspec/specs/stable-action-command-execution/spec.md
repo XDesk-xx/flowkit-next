@@ -18,24 +18,29 @@
 - **THEN** 命令 SHALL 在创建新 Run 文件前拒绝并指出冲突，不从 caller 数据改写 Policy 或安装来源
 
 ### Requirement: Start commits a recognizable current-manager descriptor before work
+start SHALL 重新读取可信coordination、必要OpenSpec上下文、唯一前序链及Policy，核对Role、适用Owner authority、各Action机器readiness、Guidance、受控occurrence及必要Git原始证据字节。实质Author/Reviewer判断仍归角色。Archive readiness SHALL 只包含自有lifecycle admission、可信approved Review/candidate、projectOrdinal及identity完整性；不调用原生validate/archive预演、不执行项目checks或repository/dependency snapshot。原生task/delta/collision/rollback失败 SHALL 发生在真实started Run内。
 
-start SHALL 重新读取可信 coordination、OpenSpec、唯一完整前序链及 Policy，并由当前 manager 的固定规则核对 Role、适用 Owner authority、与各 Action 已有合同一致的 package-bound 机器 readiness、当前安装 Guidance、受控 occurrence 与必要 Git 原始字节。仅机器可判条件由命令验证；实质 Author/Reviewer 判断仍归该角色，archive 的固定准备须包含既有 canonical convergence、适用检查与 completion-transition readiness，不能以恒定 ready 或宿主自签布尔值替代。所有可在开始前确定的拒绝 SHALL 发生在首次 Run 文件写入前。成功开始 SHALL create-once 写 `action.md`，使用原有 `# Action started` 标题及其后单个有界 JSON 对象；新命令记录的对象 SHALL 含 `formatVersion: 1`、`commandOrigin: "flowkit-action-start"`、`changeStartSequence`、完整 `actionPackage` 与 matching `preparedContext`。此 marker 仅识别新命令格式，SHALL NOT 单独证明来源或权限。响应 SHALL 给出受控 Run 定位值与实际已写状态；开始写入或读回未确认时 SHALL 不报告可开始业务。
+成功开始 SHALL create-once写并读回action.md，保留 `# Action started`、有界JSON、formatVersion=1、commandOrigin=flowkit-action-start、changeStartSequence、actionPackage和matching preparedContext。新Archive另有archiveContractVersion=2，且新请求不接受applicableChecks；旧字段给明确迁移诊断，不静默跳过。marker不是权限证明。所有admission可判拒绝 SHALL 在首次Run写前发生；写入或读回不确定时不得报告可开始业务。
 
 #### Scenario: Start and work ordering
-- **WHEN** 当前事实全部满足开始条件且目标 occurrence 尚未使用
-- **THEN** start SHALL 保存并读回新格式 `action.md` 后报告已开始，Agent 此后才可进行该次业务工作
+- **WHEN** 当前事实满足admission且occurrence未使用
+- **THEN** start SHALL 保存读回descriptor后才允许本次实际工作
 
 #### Scenario: Preflight or create-once failure
-- **WHEN** package-bound readiness、Guidance、Owner/Role、前序链、Git bytes 或新文件创建任一检查失败
-- **THEN** start SHALL 不报告已开始；已写 bytes SHALL 保留并准确区分未写与写后未确认，不清理或重占 occurrence
+- **WHEN** admission、Guidance、Owner/Role、前序链、证据Git bytes或create-once失败
+- **THEN** start SHALL 不报告已开始，并保留已写bytes、区分not-written与written-unconfirmed
 
 #### Scenario: Archive preparation blocks before mutation
-- **WHEN** `archive` 的 exact review candidate 已漂移、canonical convergence dry-run 或适用验证失败、projectOrdinal 冲突，或 completion-transition readiness 不满足
-- **THEN** start SHALL 在 archive 业务写入与新 `action.md` 前 blocked，保留先前 terminal `review-apply` 与候选 bytes，不把 Reviewer 审查或宿主布尔声明当成准备 PASS
+- **WHEN** Archive候选在Review后漂移、Policy不符、ordinal或identity无效
+- **THEN** start SHALL 在业务和新descriptor前拒绝，保留原边界；原生validation或项目check不属于这里的阻断
 
 #### Scenario: Reviewer readiness does not perform review
-- **WHEN** `review-propose` 有完整、匹配的 Author Proposal Run 和可读规划产物
-- **THEN** start MAY 确认机器输入就绪，但 SHALL 不判断需求质量或生成 `approved` verdict；独立 Reviewer 仍须执行实质审查
+- **WHEN** review-propose有完整匹配的Author和可读规划
+- **THEN** start SHALL 只确认机器就绪，不生成approved；独立Reviewer仍执行实质审查
+
+#### Scenario: Retry start preserves its failed direct predecessor
+- **WHEN** terminal Archive安全失败且新明确archive请求通过重新admission
+- **THEN** start SHALL 用专用retry transition建立新occurrence，parent指向原失败；Review通过唯一失败链解析而不是冒充直接parent
 
 ### Requirement: Finish reconstructs only the exact new start across processes
 
@@ -50,32 +55,43 @@ finish SHALL 从受控 target、Change、唯一 Run 组和 start 给出的定位
 - **THEN** finish SHALL 指出具体不一致并停止，不将目录存在或 JSON marker 当成接管许可
 
 ### Requirement: Finish admits a real role result and preserves partial outcomes
+finish SHALL 接收真实角色结论，验证exact package/current/occurrence/result、候选、proof和reported boundary后才写machine文件。普通Author FAIL/null可保持terminal blocked；Reviewer rejected/null须经exact候选绑定保存terminal并返回review-rejected，不重标changes-requested/approved；unknown token或冲突boundary写前拒绝。Author不得填写Reviewer verdict，命令不得生成Verification PASS。
 
-finish SHALL 接收实际执行者提交的角色对应结论，先经既有 exact package/current/occurrence/result admission，再以拟保存的 terminal 或 prepared context/result 调用现有 Policy 做写前 outcome 与 reported `nextBoundary` 一致性预检；可检测的非法 outcome token 或 boundary SHALL 在首次 `context.json/result.json` 写入前拒绝。真实 Author `FAIL` 且 `nextBoundary=null` MAY 按现有 Run-chain 例外持久化为 terminal blocked，不伪装 PASS 或续行。真实 Reviewer `rejected` 且 `nextBoundary=null` SHALL 在角色、exact候选绑定与其余准入通过后按terminal保存；Policy SHALL 返回已识别 `review-rejected` blocked，canonical链 SHALL 保持可读。该known outcome不伪装成 `changes-requested`、`approved` 或 Author `FAIL`，不自动续行；非null reported boundary仍在首次machine写入前拒绝。其他未识别字符串同样不得以结构 admission 写成 confirmed。`archive` 的 Policy 输入 SHALL 使用已完成业务后可信 materialized `completed` coordination/transition facts，不能假设 active 或由 caller 自称 completed。Author SHALL 不得提交 Reviewer verdict，命令 SHALL 不生成 Verification PASS。必要 proof SHALL 在接纳前按当前引用核对 target、Delivery/Change/Run 归属、regular/readable、SHA-256、原始 Git bytes 与结论一致性；无必要新 proof 时 SHALL 不创建空目录。首次结束 SHALL 仅 create-once 保存缺少的 `context.json` 与 `result.json`，完成三文件、必要材料、唯一 canonical chain 与 Policy 决定读回后才报告 confirmed completion；`confirmed` 只表示记录与链已确认，不表示业务 PASS。写入部分成功 SHALL 保留所有 bytes 并报告 exact incomplete/written-unconfirmed，不补成功、不自动重做业务。
+Archive SHALL 分别校验completed PASS、安全failed FAIL和partial FAIL的真实绑定材料及实际业务状态。只有completed PASS需要可信completed coordination与archived查询形态；安全failed使用可信active/current；可验证terminal partial保持可读与archive-recovery-required，即使业务coordination部分写入或无法可靠解析，也不能伪造completed/active或阻止记录已确认失败。无法验证descriptor/父链或machine写入不完整时仍为incomplete，不补结果。新的Author成功候选可按专门合同增加实测candidateGit机械事实，不改角色结论；同值duplicate只能消费原已存事实。
+
+proof SHALL 核对target/Delivery/Change/Run、regular/readable、SHA-256、原始Git bytes及完整声明；无必要proof不建空目录。首次结束仅create-once保存缺少的context.json/result.json，完整三文件、必要材料、唯一链及对应Policy/query读回后才confirmed；confirmed不是业务PASS。机器partial保持written-unconfirmed，不覆盖或自动重做业务。
 
 #### Scenario: Real result accepted
-- **WHEN** 真实工作已完成、角色结论与本次 package 匹配、proof 核对通过且两文件保存读回成功
-- **THEN** finish SHALL 报告 exact terminal 或真实 prepared failure，并让独立查询读到同一记录
+- **WHEN** 真实工作结论与package匹配、proof有效且保存读回成功
+- **THEN** finish SHALL 报告exact terminal或合法prepared failure，使独立查询读到同一记录
 
 #### Scenario: Context saved but Result save fails
-- **WHEN** `context.json` create-once 成功而 `result.json` 保存或读回失败
-- **THEN** 命令 SHALL 报告 partial/written-unconfirmed 与 exact Run 路径，保留 `action.md/context.json`，不得宣称 terminal 或自动修复
+- **WHEN** context.json成功而result.json保存或读回失败
+- **THEN** finish SHALL 保留已有文件并报written-unconfirmed，不宣称terminal或自动补写
 
 #### Scenario: Wrong reported boundary is rejected before first Result write
-- **WHEN** `review-propose` 的候选 Result 为 `approved` 但 `nextBoundary=archive`，或使用未识别 Reviewer verdict
-- **THEN** finish SHALL 经现有 Policy 预检拒绝且不写 `context.json/result.json`；不得只凭结构 admission 把会使后续 status/next 失效的结果报告为 confirmed
+- **WHEN** approved review-propose报告nextBoundary=archive或使用未知verdict
+- **THEN** finish SHALL 写前拒绝，不能只凭结构合法报告confirmed
 
 #### Scenario: Rejected Reviewer judgment persists as terminal stopped
-- **WHEN** 实际 Reviewer 提交 `rejected` 与 `nextBoundary=null`，且角色、exact Author绑定和其他准入有效
-- **THEN** finish SHALL create-once保存并读回完整terminal三文件和known blocked链，报告confirmed而非业务PASS；不得重标changes-requested或执行下一Action
+- **WHEN** 真实Reviewer rejected/null具有合法角色和exact Author绑定
+- **THEN** finish SHALL 保存terminal三文件和known blocked链，不伪装业务PASS或执行下一Action
 
 #### Scenario: Rejected Reviewer judgment is not a terminal Run in this Change
-- **WHEN** Reviewer虽然提交rejected，但角色/候选绑定无效或nextBoundary非null
-- **THEN** finish SHALL 在首次machine文件写前拒绝并保留开始记录与实际材料；该无效结果不得成为confirmed terminal，也不能重标changes-requested绕过准入
+- **WHEN** rejected的角色/候选绑定无效或nextBoundary非null
+- **THEN** finish SHALL 在首次machine写前拒绝，不能重标verdict绕过
 
 #### Scenario: Complete bytes are not a valid canonical continuation
-- **WHEN** 两个 machine 文件写入后，唯一链或 Policy 读回仍无法确认本次 exact tip
-- **THEN** finish SHALL 保留已写 bytes 并报告 written-unconfirmed，不以单个 `readDurableRun()` 的结构读回宣布完成
+- **WHEN** machine文件已写但唯一链/Policy读回不能确认exact tip
+- **THEN** finish SHALL 保留bytes报written-unconfirmed，不以单个文件结构通过宣布完成
+
+#### Scenario: Failed Archive is confirmed without archived status
+- **WHEN** Archive安全失败、active前态与真实材料可证、三文件成功保存
+- **THEN** finish SHALL confirmed terminal FAIL，独立query为active/current且next可计算archive，不要求archived状态
+
+#### Scenario: Business partial is not a partial machine record
+- **WHEN** Archive业务recovery-required，但实际失败材料、descriptor和唯一父链有效
+- **THEN** finish SHALL 可保存完整terminal partial并使查询blocked；若machine保存失败则另报incomplete
 
 ### Requirement: Duplicate finish and successor competition do not repeat effects
 
@@ -265,29 +281,20 @@ For a new terminal Author `PASS` Result of `apply` or `revise-apply`, `action fi
 - **WHEN** 新 review-apply 已以 exact Author binding 和候选身份完成并 approved
 - **THEN** Archive SHALL 复用该绑定且不再因同一缺失字段首次阻断
 
-### Requirement: Candidate admission rejects Git-filtered byte drift
-
-新 apply/revise-apply PASS、review-apply start 和 finish SHALL 对 exact candidate `artifactHashes` 的现存文件核对 raw SHA-256及 raw/Git-filtered object identity。存在差异、filter 执行失败或候选属性/bytes漂移 SHALL 在对应新记录写前拒绝并列出相关路径，不自动 normalize 或承认映射。intentional -text proof SHALL 保持既有原字节合同；不存在的 deletion 不能以虚假文件 hash 表示。
-
-#### Scenario: CRLF candidate is refused before independent acceptance
-- **WHEN** candidate raw hash 与按目标 Git attributes 过滤后的 hash 不同
-- **THEN** Author PASS 或 Reviewer terminal 写入 SHALL 被阻断，需按项目规则重新形成候选及独立审查
-
-#### Scenario: Exact raw evidence and LF source remain valid
-- **WHEN** candidate raw与filtered身份一致且其他原有合同有效
-- **THEN** 该字节 guard SHALL 通过，不从同值 hash生成 Reviewer或Verification PASS
-
 ### Requirement: Fixed Action inspection exposes partial facts without granting recovery
-
-发行 CLI SHALL 提供 `action inspect`，请求只包含既有共同 target和 exact runId，严格解析并核对可见目标。它 SHALL 只读呈现 descriptor、三文件完整性、相关 diagnostic refs、真实可验证 Archive效果、remaining steps与 canContinue，不写 Run、纠正文件或phase材料。partial SHALL 不被伪称完整 prepared/terminal/current。旧未知格式、wrong root、Guidance drift、fork或mixed effects SHALL 明确 blocked/unknown。
+action inspect SHALL 保留共同target/exact runId封闭请求，严格核对可见目标，只读呈现descriptor、machine完整性、diagnostic refs、真实Archive效果、remaining和canContinue，不写Run/phase/correction。descriptor-only或machine partial不得冒充完整current；完整terminal partial则应明确显示真实已记录失败与recovery-required，不误报文件缺失。wrong root、Guidance drift、fork、mixed/unknown或旧未知格式 SHALL 明确阻断。
 
 #### Scenario: Inspect a descriptor-only Archive
-- **WHEN** 原 target 中存在合法 archive start descriptor且 machine文件未写
-- **THEN** inspect SHALL 给 exact Run与可验证副作用/剩余步骤，普通 status/next仍严格报告 incomplete
+- **WHEN** 原target有合法Archive descriptor而machine尚未写
+- **THEN** inspect SHALL 提供exact locator与可验证效果，普通status/next仍报告incomplete而非空闲
 
 #### Scenario: Claimed effect does not authorize retry
-- **WHEN** caller曾报告 none而现在 target/spec/coordination不能证明完整prestate或poststate
-- **THEN** inspect SHALL 报 unknown且 canContinue=false，不建议重放或创建替代Run
+- **WHEN** caller曾说none但真实source/spec/coordination不能证明安全前态或成功后态
+- **THEN** inspect SHALL 报unknown、canContinue=false，不建议重放或替代Run
+
+#### Scenario: Inspect an immutable terminal partial
+- **WHEN** 三文件完整且记录为Archive partial
+- **THEN** inspect SHALL 区分完整失败记录与未完成业务，只提供显式恢复所需事实，不自动解锁普通retry
 
 ### Requirement: Fixed terminal correction adds only proven missing identities
 
@@ -308,13 +315,69 @@ For a new terminal Author `PASS` Result of `apply` or `revise-apply`, `action fi
 - **THEN** 完全一致且全部验证通过的重投 SHALL 只读确认，其他 SHALL 保留原件并拒绝，不覆盖或形成多条correction链
 
 ### Requirement: Terminal revise start preserves exact Owner and predecessor facts
+fixed start SHALL 接纳既有active terminal阶段Owner revise、known rejected对应revise和安全failed Archive后的窄revise-propose/revise-apply，同时保留prepared Author correction。Owner fact SHALL 为既有revise-action、same target、single requested scope并绑定新package/descriptor/context；新Run指向原tip，不改旧结果。Archive correction核对安全active与原失败链，不要求待修候选仍等于旧Review；直接Archive retry仍要求同候选。
 
-fixed start SHALL 接纳既有Policy允许的active terminal阶段Owner revise及已识别rejected的对应revise，同时保留prepared Author correction合同。Owner输入 SHALL 为既有revise-action exact target/single revise scope，绑定进新package/descriptor/context；新Run指向原tip，原terminal verdict与bytes保持不变。unknown outcome、Author FAIL、invalid chain、prepared Reviewer、completed/archive重开或reported conflict SHALL 不被Owner fact兜底。普通Action不新增Owner审批。
+unknown outcome、普通Author FAIL、invalid chain、prepared Reviewer、partial/completed Archive或reported conflict SHALL 不被Owner fact兜底。普通Action不新增Owner审批。
 
 #### Scenario: Explicit revise follows known rejection
-- **WHEN** review-apply rejected terminal与nextBoundary=null有效，Owner明确授权same Change的revise-apply
-- **THEN** start SHALL 在Policy和structural enterability通过后创建唯一Author successor，不修改原Reviewer结论
+- **WHEN** review-apply rejected/null有效且Owner授权same Change的revise-apply
+- **THEN** start SHALL 经Policy/结构核对建立唯一Author successor，不改原verdict
 
 #### Scenario: Unknown verdict cannot be rescued by Owner fact
-- **WHEN** Review outcome无法识别或原记录/绑定无效
-- **THEN** start SHALL 拒绝，不能把它按known rejected续行
+- **WHEN** Review outcome或原记录/绑定无法验证
+- **THEN** start SHALL 拒绝，不按known rejection续行
+
+#### Scenario: Candidate correction after failed Archive remains reachable
+- **WHEN** 安全failed Archive后需要改delta/源码且Owner授权对应revise
+- **THEN** start SHALL 允许合法修订接原failed parent，后续重新形成候选和独立Review；不得先要求旧candidate unchanged而锁死修订
+
+### Requirement: Candidate admission binds raw bytes to supported Git storage identity
+新成功Author候选 SHALL 在保留raw identity的同时由manager只读生成并核对有界candidateGit绑定，覆盖既有artifactHashes或Explore专用identity的exact文件集合，包括相关 stage-0 indexBasis。caller声明该字段时须与实测完全相同；缺失时由manager生成；不能以其产生Author PASS、Reviewer或Verification权限。Review start/finish SHALL 验证原raw候选、必要proof、有效规则及其索引输入与预期输出关系，仍绑定exact reviewedRunId。索引仍为绑定输入，或已经是满足既有 mode/path 合同的预期 blob，不构成投影漂移；其他相关索引变化须在新接纳前拒绝，不能重算预期追认旧Review。
+
+系统 SHALL 只支持 identity 或可验证的 Git 内建 CRLF→LF 文本投影，预期 blob 必须对应同一 raw、有效属性/设置和相关 index 前态下普通 staging 成功时的存储内容，不含 renormalize 的特殊语义。自动文本模式下，相关 index 已含非 binary CRLF（包括 mixed）的普通条目时 SHALL 保留当前 raw 为 identity；该规则包含 text=auto 及继承 core.autocrlf=true/input 的自动动作。显式 text 不套用该 auto 保留分支；自动模式的 LF/absent 对照按其实际文本判定处理。不能仅以无 -w 的 hash-object --path 输出认定实际 staging 的 blob，也不能将 binary 或 lone CR 错当作非 binary CRLF 索引依据。
+
+clean/EOL 内容与普通 add 的最终 index SHALL 分别判断，不能因显式 text 就承诺 add 必定执行转换。若原普通 stage-0 blob bytes 等于当前 raw，但受支持 clean/EOL 内容不同，系统 SHALL 在保存成功候选前明确 unsupported，并指出路径及 stat-cache 跳过与实际转换的歧义；不得改选旧 blob 为通用 identity 或保存猜测的 LF。该拒绝 SHALL 不依赖 stat/时间戳，raw 不变而仅 stat 改变时仍拒绝，不持久增加 stat 字段或数据库。Review/Archive 输入核对 SHALL 使用相同边界；已核实预期输出按既有输出合同核对，不重绑历史。其他不能证明普通 staging 结果的 cache/索引状态亦须前置拒绝，raw 修改或 stat 不同单独不构成转换必然发生的证明。
+
+active clean filter、working-tree-encoding、ident 转换不得执行或默认为 EOL。仅 EOL 分支须证明有效文本动作、安全 UTF-8/no-NUL 及预期 bytes 只移除了 CRLF 中的 CR；不 trim、不处理 lone CR、不改 BOM/编码或重新序列化。候选生成与 Review 的投影校验 SHALL 不写真实或临时 index/object/worktree，不执行 add 试算、touch、refresh、renormalize、修改配置或复制开发环境。不能可靠解释的转换或索引状态 SHALL 在保存成功候选前明确 unsupported，而不先保存猜测的 blob。合法 raw!=blob 不作为内容漂移；真实 raw/规则/相关索引冲突、未知转换和 map/hash 不符仍拒绝。预期 blob 不保证后续 Git 命令成功，真实安全转换拒绝或执行错误不得被忽略或通过关闭设置绕过。
+
+Run/proof/raw日志和按项目属性标为binary/-text的字节敏感内容 SHALL 保持原bytes；Git投影不能替代原始执行/测试证据。deletion仍按真实删除表示，不制造文件hash。旧无candidateGit记录不自动生成历史投影，raw==blob兼容路径外需真正新候选和独立Review。
+
+#### Scenario: Supported CRLF candidate can be independently accepted
+- **WHEN** raw为CRLF、有效Git规则只形成LF blob、实测投影及其他候选条件有效
+- **THEN** 新Author/Reviewer接纳 SHALL 允许该差异，保存raw与blob绑定，不重写工作区
+
+#### Scenario: Exact raw evidence and LF source remain valid
+- **WHEN** raw证据保持identity，或LF源码的投影等于raw且其余条件有效
+- **THEN** guard SHALL 通过，不从同值hash生成审查或测试PASS
+
+#### Scenario: Explicit CRLF working-tree policy is supported
+- **WHEN** `.cmd/.bat` 被标为text eol=crlf且真实raw为CRLF、普通staging可证明为LF并通过上述支持边界
+- **THEN** 接纳 SHALL 按合法EOL投影核对，不要求Author改成违反该工作区规则的LF文件
+
+#### Scenario: Unknown filter or real content drift stays rejected
+- **WHEN** 有主动filter/encoding/ident转换，或raw候选/绑定规则发生未授权变化
+- **THEN** 接纳 SHALL 明确拒绝且不执行任意filter、不normalize、不继承旧Review
+
+#### Scenario: Automatic text preserves an existing CRLF index
+- **WHEN** 先有 i/crlf，随后启用 text=auto，raw 从 old CRLF 修改为 new CRLF，其他候选条件有效
+- **THEN** 新候选 SHALL 保存 new CRLF 的 identity blob 及原 indexBasis，Review SHALL 按同一依据核对，不采用无索引命令给出的 LF 预测
+
+#### Scenario: Inherited auto conversion and forced text remain distinct
+- **WHEN** 分别使用属性未指定但继承 autocrlf=true/input、显式 text，以及 auto 下 LF/absent 索引对照
+- **THEN** 接纳 SHALL 按普通 staging 的相应索引敏感行为生成可验证 blob，不把所有 CRLF 或所有 eol=lf 输入统一归类
+
+#### Scenario: An unexpected index basis blocks new admission
+- **WHEN** 相关 index 不再是绑定输入或预期输出，存在未合并/非普通/未知条目，或输入读取期间发生漂移
+- **THEN** 新候选或 Review 接纳 SHALL 在结果写前明确拒绝，不修改索引、重算旧绑定或留到 checkpoint 才发现错误预测
+
+#### Scenario: Duplicate finish does not recalculate historical projection
+- **WHEN** 同值finish重投且该Run已有完整candidateGit与原结果
+- **THEN** 命令 SHALL 只读核对已存机械事实，不为旧Run重算、改hash或重执行业务
+
+#### Scenario: Attribute-only normalization cannot guess ordinary add output
+- **WHEN** raw 等于旧 i/crlf blob，仅属性从 -text 变为 text eol=crlf，clean 内容为 LF，而非 racy stat cache 可使普通 add 保留旧 CRLF
+- **THEN** 候选形成 SHALL 在成功 Result 保存前明确 unsupported，不保存 LF 预期、不通过实际 add 试算或触碰时间戳解锁
+
+#### Scenario: Timestamp-only change does not widen supported admission
+- **WHEN** 上述 raw、规则与原 index blob 均未改变，仅 stat 改变后普通 add 可输出 LF
+- **THEN** 候选形成 SHALL 仍按同一保守边界拒绝，不将 stat 变化当成 durable 转换证明；absent 或原 index 已等于预期内容的对照不因该拒绝被阻断

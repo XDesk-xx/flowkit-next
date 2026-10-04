@@ -1,0 +1,469 @@
+{
+  "at": "2026-10-04T14:07:00.682Z",
+  "head": "9b96b150eec8b59c40d1a72eb61054695a6e763b",
+  "branch": "main",
+  "stagedPaths": "",
+  "changeRoot": "D:\\Projects\\flowkit-next\\openspec\\changes\\repair-archive-lifecycle",
+  "archiveRoot": "D:\\Projects\\flowkit-next\\openspec\\changes\\archive\\2026-10-04-repair-archive-lifecycle",
+  "reviewSha256": "2ed5f9761343fa3b574dee79fd82a41b1bf106a0623472d39e62c5f3801eb2af",
+  "checkedReviewedInputs": 346,
+  "cumulativeCandidate": {
+    "AGENTS.md": "45c38e54613a3cda2215004755fdbd6a26a6caea7380c7269bd4ea57dbccdc9d",
+    "README.md": "460e8eb73fe0e73d594946bd89b73d51f3897a6ebf5978cb6c2193fe266ad832",
+    "docs/onboarding.md": "9defa182b6527cae2436f367737ef2735b2dd0a975f2cae8cdfc1c49008a7d5e",
+    "skills/actions/apply/SKILL.md": "92804473178d822ff2f56ff35bcf5ec78239f7badd02d6b5ee3787d727f4b6c0",
+    "skills/actions/archive/SKILL.md": "64817ed5ee4880069da953671b5346738b4859cfd6b556c7983f61c83f2b4fd4",
+    "skills/actions/explore/SKILL.md": "9c5fb42de0265213f7f4dbf20119c3e3c4d848de212e63070aab0d70d81310e3",
+    "skills/actions/propose/SKILL.md": "c408ed17123ed46e37e517b02f1d9a770b9fdea30bbfca0743431fb200366fb0",
+    "skills/actions/review-apply/SKILL.md": "cc28d9e26ebd10fba863253bb2d20cc38b26ce7324207d50a5d456be0db48194",
+    "skills/actions/review-explore/SKILL.md": "efc227732c498303371ce5b4491842e5666bd4dbd5f79837ca7fa737a75e6d40",
+    "skills/actions/review-propose/SKILL.md": "980769373776d190e363effffcdaf22c8f4c31619014510b55fa583d87e45f81",
+    "skills/actions/revise-apply/SKILL.md": "c3f6f3082e61b1f6ec080ee7a5644ea7f06d56fcda449cb2382460af6f07c1f7",
+    "skills/actions/revise-explore/SKILL.md": "7a8ad4139c2a0458219c8ac821a472ff73dce8d4c4e7bb221275208a42c41d0e",
+    "skills/actions/revise-propose/SKILL.md": "564d9b7aeda95f03fa57e1de32c31717a976f56b5a54cc08154c1054ef5ffe94",
+    "skills/delivery/final/SKILL.md": "5bf5246d6febda093370b059397ac3272797f993cbbfa3b30980c099ee888139",
+    "skills/delivery/repository-integration/SKILL.md": "2cdd773c4cd6301632d0757b880fa9fe95aa53123d649c5c83bf45f2d64fd278",
+    "skills/tools/openspec/SKILL.md": "25b9ad38d2718eabb08de3d09fbe2d1713d7012b979e680578412f9b2203fe99",
+    "src/cli/action-artifact-hashes.ts": "e0700fb723defcf6641673ed16ca14b995b14cd9cea81c9ff1f3bd5156c6f154",
+    "src/cli/action-commands.ts": "a0469c8c0e02493858f740e3f3f84203d434e9ac0e2b24bc86d4dfbc57c6916d",
+    "src/cli/action-context.ts": "6adeaeca55f70d85ac57c515f1462bf756aaefe182dc001b073a2d3f6cd557ec",
+    "src/cli/action-descriptor.ts": "646c6d657407d9603e2d062c1492b629f7280f54e1f88e0e01c377e10a8bc352",
+    "src/cli/action-finish.ts": "f0edd3bc85d62a91959994936513063cbbed4cf3d1991a499b8a0beadb6f9282",
+    "src/cli/action-inspect.ts": "f82294f7d37a7cbe2a7e7858c92256864127f9117235e9b295979579511a93d7",
+    "src/cli/action-readiness.ts": "ee0e9a805ad632e3c479c3ec7a6f6693342d94621bc4276ea05f1a9989ec161c",
+    "src/cli/action-request.ts": "a827f5d37df966e0ccc3ec38ba8da6732bc82ae24b7b9d0fb1edc5fd8267c8bc",
+    "src/cli/archive-check-selection.ts": null,
+    "src/cli/archive-finish.ts": "ce69e0692e2e8c39f458b544c1607cff1955df524f30fd478e271f9c4f2a0adf",
+    "src/cli/current-run-chain.ts": "c0dc04be651d84c71172effc9755ee36c9d3afeb4f4baafbe411ae6583ea654b",
+    "src/cli/review-candidate.ts": "e4209f3dc6fbcbb603f3e516a3d96efc7d1b8c4684b832ac0cfc20dd38a8a189",
+    "src/cli/support-change-archive.ts": "c0d2a148c55ba1f7cd86f0aab1b41b1d92b6df5ae3da48f93c7ef7efe65d7fe0",
+    "src/cli/support-delivery-final.ts": "5c541f9e8b4dd149391e7e204cb795fe9a1bacba9f19452768a5fbb4366af8cf",
+    "src/domain/action-lifecycle.ts": "6be10d98fe1bedf2cff5f42a406fbe26f00fe2ae79d196e2ab06fdeaab66c0c2",
+    "src/domain/archive-outcome.ts": "178ec68ecec141e6d49f86cf25c298f3ed7df5028bd63325fe4dc3d155b0643d",
+    "src/domain/canonical-action-run-start.ts": "f16c0f5b8a0a7ec3f32b260d5f1dca7a60beb0e8e5132fcddac64a364d57801f",
+    "src/domain/policy-and-next-boundary.ts": "40ca5faec6f875fee8e78c2a689c8b9fc21af00bb93884391884e63d2ddd4e52",
+    "src/domain/run-result-persistence.ts": "35a33a74239b0bb5bc94887e861f691498a599fb3dfc60d70de7246840a9e97b",
+    "src/domain/single-action-execution.ts": "8c1de63d65b590e0582f2fbc9d73470eb0167fc3c07013e0c1d5c040550780d0",
+    "src/internal/archive-dependency-snapshot.ts": null,
+    "src/internal/archive-effects-v2.ts": "554f7d7805298ca21fb8dd2bdde593522ff5879ef58b5a090c4644f8ab262664",
+    "src/internal/archive-file-identities.ts": "c745b5b0b5a6d3ab3de2f3ac6f35ff8d775f8b2147af263c7e4ad3cfb0a4c522",
+    "src/internal/archive-process.ts": "599e6a528ddbcbca9ca62a7c9ee74410dc523bcf22b3501afa6b3ecc646cec74",
+    "src/internal/candidate-git-bytes.ts": "8811e16e3febabd823f2abb80b74cf147eda0d92ee272e57d4b2ee08ee7c5478",
+    "src/internal/candidate-git-facts.ts": "0d7e58f63f5181445c1597b7264ad0628f52bb48d8f64553e2455d622499bfb7",
+    "src/internal/checkpoint-candidate-tree.ts": "68e3914798aaf7e616fbfcdbcd27ff293e10bca4bdc871f43b3a76b8ac48e691",
+    "src/internal/delivery-required-evidence-source.ts": "8ea5ef84d1fd7ad60e5dc2b596702097ffd4eb23118e4b0328cb84a20dfdf89e",
+    "src/internal/git-checkpoint-execution.ts": "b152678568f90d6e2d0480024dfad17717beb21a97a080f8440028056ac70ef1",
+    "src/internal/reviewed-checkpoint-candidate.ts": "f8da20bbf54f8a1873c46d0fcca07607bb79cf3b74af4fe87f5b30ae835f7301",
+    "tests/acceptance/native-windows-archive.test.ts": "94504fae389da1039bf64a5fb6dfc875aaa471530c216a3a4f95823401c74022",
+    "tests/installed/manager-action-install.test.ts": "202ec1261c83a62109e163565645b096e4e1664e31e7af7f985a41fc63401dee",
+    "tests/unit/domain/action-archive-cli.test.ts": "aa29faa9f00129a801eaf45f532afa55d10d4f0b63d5fdad7ff061cb9b5a920c",
+    "tests/unit/domain/action-archive-readiness.test.ts": "b0c9f54e8c6e3f2b933835bd0f5918caf93f3e6a71d17af3b629a26b0c9646b8",
+    "tests/unit/domain/action-correction-continuation.test.ts": "f60158bc52e0881d57f19685caee8da86a5b40c68fa260a5b12ec9ca543bac30",
+    "tests/unit/domain/action-correction.test.ts": "085536e1319711438e13b112ec08fe6dbdf08c73b117f350a68d33eaa1e6aff5",
+    "tests/unit/domain/archive-contract-fixture.ts": "0cb9902dc676e997b10647192f4df194fb10da31a4425ab82e045569229de9ad",
+    "tests/unit/domain/archive-date-continuation.test.ts": "26f3a74b8f9f8488fd72ed95d22aa772d8426f20ac44e0464332a25fe908203a",
+    "tests/unit/domain/archive-isolation-diagnostics.test.ts": "f716ffa4bee4ba1cc5b287a2193b70c5cf469eaa3d844f54fd56eca73fd214e8",
+    "tests/unit/domain/archive-outcome-retry.test.ts": "b26e44fbac288e3e4b1bc9193f207815114c9dc3c40c6521e0bb681b886d2530",
+    "tests/unit/domain/author-action-guidance.test.ts": "17e588b141300ee8748d158095e8e6261b264e006d83db8edb856b795962b136",
+    "tests/unit/domain/candidate-git-projection.test.ts": "c6187bb98402dd4d7e642588b0aa51004c59881cd1ef4fd6f25f424944937a0b",
+    "tests/unit/domain/delivery-required-evidence-source.test.ts": "7f48479bb63c742dc58033a370e56bd350c4565e3bc07bbfed661c5fe86d19a5",
+    "tests/unit/domain/execution-recovery-fixture.ts": "d3dec0a7fd57a08768ed37f558e2f29100a2457259ecf3e212ed6a3f0723ee9b",
+    "tests/unit/domain/git-eol-checkpoint.test.ts": "3a7c5f29402c3ab22901eaa739ab6dbd8bffff159d47399ab99ff49f9e63ae0e",
+    "tests/unit/domain/policy-and-next-boundary.test.ts": "c6375a4b4ea46d69e280519e7d80d1a32dfb8b3bfdbbd8348b0b8d4c43458257",
+    "tests/unit/domain/support-archive-chain.test.ts": "462c6e82cf0fdfd8241f136510c3e3c0acb22085462532ffaaea6fa0312b4b48"
+  },
+  "tasksCompleted": 26,
+  "changeFiles": {
+    ".openspec.yaml": "ad734da2ba5f4c5a6979a8bbb6bad4db20fb21ec275ceca5f24842fbdfaf5bef",
+    "design.md": "24d7356182a107ee8425fda138754d95fb24989d007be5285c22902bc143ac19",
+    "proposal.md": "0bf45790efaf1eee0ccfcedb3e12d58a34da2e3254ea111af3abedb221248d49",
+    "review-apply-02.md": "2ed5f9761343fa3b574dee79fd82a41b1bf106a0623472d39e62c5f3801eb2af",
+    "review-apply.md": "2c80f8fa872358f8774066576606c3a894f18ea424466926358a41d280871b3b",
+    "review-propose-02.md": "d85f3dfa8d7611cd666d6adacf280bb1a60e391f1b56c4510fa499aea0e17a28",
+    "review-propose-03.md": "ccecbd5bf5098cb5d02cf2b5a754a459cfd7318c5e986f6badb6d5e79a8811e3",
+    "review-propose.md": "f2fed40e0da81a3d123fbe55df0ffbf6b19b5da90c6a65188dbcb2b90b80c42e",
+    "revise-apply.md": "1ce3b3f2f288871c94c8e5d807cf948d385f8a9f17b4f33235b31ece587c7ad7",
+    "revise-propose-02.md": "fa24665fe648836a6249bead28dab22ebb0f96d03a0a9cf66567d3f9831611c1",
+    "revise-propose.md": "657043b622464a31df518e9940cb5c00c12e06ec085698805c8ce1905aff6a06",
+    "specs/action-lifecycle/spec.md": "484a22b80610760c5e2a32422e042f6718dcb4e1dab22bb66ff00ac3ba2dd9c8",
+    "specs/author-action-guidance/spec.md": "b2938dcef95761688304896c1f3d15d941b92a5616d766cf49f43240ac3f3ad4",
+    "specs/delivery-finalization/spec.md": "e22f48451c5a0d674ea7e63f6ae0e2b602a9c72fb2aa6ef6f36fb0cdcb7b88db",
+    "specs/policy-and-next-boundary/spec.md": "9570d9ef466fa012d445c5963c31deaa29009a6cd983c81c2db58d961e405518",
+    "specs/repository-integration-and-next-base-continuity/spec.md": "3748287f0b44f46bda0cc6c3f6e16cbb329e8307bf2f78f003314329fb7683e3",
+    "specs/reviewer-action-guidance/spec.md": "148c3cfcba7a4f2cf333039e2f5d989ab50905e4c39e6b17428d3bb600fc8270",
+    "specs/run-result-persistence/spec.md": "9fe2fddc09f28ae8bfeb9d583136162a8f8a2c047abdb082283a54fc3875f4c1",
+    "specs/single-action-execution-terminal-boundary/spec.md": "29eb5e0ac4c5bdbc428e2d64d975857b8c03f717fbd86d8a379b53d297e10c43",
+    "specs/stable-action-command-execution/spec.md": "dd150684969236d4b4ba200e40b8c24be736f0f193b649a5a08eb009621d7bb7",
+    "specs/stable-delivery-support-command-execution/spec.md": "63251fcdeaf38be83c9310a26adca3f8cf658017680a23fb948fcac87c4c8dcc",
+    "tasks.md": "1622e7556d71a25615917ecf6e649b9b87bfe461cdf1eb617402fb38c0a484c6",
+    "verification.md": "247cbf49b05376d0838a19b821f5bf3147d47e56b8051318b651b0c870395e8f"
+  },
+  "mainSpecFiles": {
+    ".gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "action-guidance-execution/spec.md": "a384aab8f794446a86890c119df03b64b1e0dc7e1c37a67781c835d7e02c6454",
+    "action-lifecycle/spec.md": "b1d6e0dfc72eb489226fa1565cbe9d8c65c3591cc5f316d1d6f6e16ad7826f46",
+    "action-package-and-result-admission/spec.md": "183d56f75e0be8688ac0802aff8ca5bc708e97fc5633a93177a1f27efa0178a9",
+    "applicable-check-execution/spec.md": "e17e6abcc2e12f8d22b3838438782502a2b467a09d0b0d4c4fe3a9488a5c1142",
+    "architecture-and-canonical-diagram-continuity/spec.md": "64f3878e133b3e04d073cd53a75b18b49496580f8d2a5cff7245a1fa0556dc57",
+    "author-action-guidance/spec.md": "78b701631c381451e934b98b4e8377505908020af92d80b4886f205ccc5bdf88",
+    "cross-delivery-memo/spec.md": "459243c17ced1aa20ea3823980b53b2b1a4fd046ccc2ae2c160e11fca60967e9",
+    "delivery-finalization/spec.md": "5085577c51ca0607a1f41b941df053b9e0a12906c7963c067472398faf0739b6",
+    "delivery-operation-execution-and-start-continuity/spec.md": "7404248b4f8ec60b955feb9247dcc4c8792e0958a04a6360bcebfc71891130c4",
+    "formal-full-test-execution-and-correction/spec.md": "fbd4a4e9072219b6da9d9d1fc58130227c389b16cee3ac61a28ce5ddf8cec2b9",
+    "foundation-cli-surface/spec.md": "c5aa87964706086e2b0d884f2317010d89d429e9598d5805ca87aa8889638c8c",
+    "lifecycle-authority-and-identity/spec.md": "e8acf0973421f040cd3431183209c6675a08e422a2e33daf7554c8141333b9f3",
+    "lightweight-engineering-gate/spec.md": "c6e8df45db5bed02888dfac9c9848bed80d8dadd6a6e16aa1ae23d42f6f74312",
+    "managed-toolchain-resolution/spec.md": "a5e6fde020fb82aca8e37b89822bbf365b22ae7fc5c77ad19ca6219f861c7bc1",
+    "openspec-thin-integration/spec.md": "599616b0f468f13128693c32c7c9ffe61a2712d689c27e54504247ed8f1ed516",
+    "policy-and-next-boundary/spec.md": "dcd43c9ba332060ca6be06aae61977965d0afe297598c2a38359f205345b6717",
+    "repository-entropy-hygiene/spec.md": "8705b1153ca73a5a417c5a5787fde2f7a9168e7a51a4c88f6d32ac9f82669bfa",
+    "repository-integration-and-next-base-continuity/spec.md": "2b09856255aed02fe57a78840fe4068ae932457891704586d1298c5b4016033b",
+    "reviewer-action-guidance/spec.md": "2b102540521174a4ca9315073e698f87e34bfc59a6dccb3860bf1b40c441e40f",
+    "run-result-persistence/spec.md": "548a1b7add4002196df1e10f352aaced8ca57208bcbfc4e594456e894e262eb2",
+    "single-action-execution-terminal-boundary/spec.md": "c44868419353bd5868e698949297288495dea36df1d70c691ea6e7d1d04eaed2",
+    "stable-action-command-execution/spec.md": "0b7a7604fd80a28c109960bf77f5a0402f706025ba1e38e741aaf8f8ca301bbf",
+    "stable-delivery-support-command-execution/spec.md": "f9ef898a6e971c1f9f4ee8a10b3e9e481b660592e88a2eeb224ea493591f4eeb",
+    "structural-dependency-health/spec.md": "1b02b4cffd0bf50533f712a00e39ba92868f22786720db12cd434476299c8091"
+  },
+  "specs": {
+    "action-lifecycle": {
+      "mainPath": "D:\\Projects\\flowkit-next\\openspec\\specs\\action-lifecycle\\spec.md",
+      "deltaPath": "D:\\Projects\\flowkit-next\\openspec\\changes\\repair-archive-lifecycle\\specs\\action-lifecycle\\spec.md",
+      "beforeRawSha256": "b1d6e0dfc72eb489226fa1565cbe9d8c65c3591cc5f316d1d6f6e16ad7826f46",
+      "purposePrefixSha256": "023cc2f9893d34f7140992e6f10a1c6bc1b83723d4d1515d61e0ebd449966bc9",
+      "original": {
+        "Action lifecycle state literals are closed and independent": "7482b4898c1d576c5ab1924a80e25e672dbcb243b41c58411c1c5aea414e5acb",
+        "Current Action identity reuses canonical semantic identity": "b563b7d43fdde5b829df21f0add9fee0ce55983ddbf1dd39e076cd70fee1b63f",
+        "Current Action is a single slot": "f11d4654ae43f81a45f54f44533901dedef6627f0ae1e13fb2d3b57cb262f2fa",
+        "Prepare transition is deterministic and fail closed": "96c92cc4448dd8fc47c93a729941cd02bd0b145560f02a68b7f4959cd2ab0f1a",
+        "Structural lifecycle legality does not create Policy eligibility": "80e01310fb6298c990611d53acfa98948d9c1968a33a5061f5f851a67c3face7",
+        "Lifecycle validation and transitions are deterministic and serialization-safe": "b19bf001a4892bc2ce9add2d6a14cc2a42133ed4bc936a8da82c2fec80363d0e",
+        "Terminal transition admits only the exact same prepared Action": "058537ab233ecc3e718e83349ec23012314cec58a2a2869ad0063bf3245482e0",
+        "Terminal remains absorbing after exact prepared completion": "04adc7103bcf77c854fc2cc31e424b27738aa5de5169754e12ad53ff3bf68a42",
+        "Prepared Author supersession is a distinct structural transition": "4d513f68cd837c49fb1779a2cf5b550d679528225b2ec9370f2994a2784c77f0"
+      },
+      "operations": {
+        "Terminal remains absorbing after exact prepared completion": {
+          "operation": "MODIFIED",
+          "sha256": "053806dc01df92a0cd12b60edbe48851d53ce70a26f31e0eb65fdb170d4dbc23"
+        },
+        "Only a failed Archive can use the bounded same-identity retry transition": {
+          "operation": "ADDED",
+          "sha256": "fac4d992ccb219b99c51c6f7f28a35fec2f08b5da49bf204ee22cad6b351d4bd"
+        }
+      }
+    },
+    "author-action-guidance": {
+      "mainPath": "D:\\Projects\\flowkit-next\\openspec\\specs\\author-action-guidance\\spec.md",
+      "deltaPath": "D:\\Projects\\flowkit-next\\openspec\\changes\\repair-archive-lifecycle\\specs\\author-action-guidance\\spec.md",
+      "beforeRawSha256": "78b701631c381451e934b98b4e8377505908020af92d80b4886f205ccc5bdf88",
+      "purposePrefixSha256": "0db09a92341f52216083250e18ebab181b1cec9bdf1306c7b3c54e52848cc990",
+      "original": {
+        "Every Author Standard Action has exactly one canonical product Guidance entry": "573d137f93fe4f9d1ccd1ae78026a503c2b1dffc91ccb3c3b06562bb0a3ac272",
+        "Canonical Author SKILL.md is identity-complete for Flowkit-specific normative HOW": "8ff7cd7461ecddc8c6909abdad8fdcfc8e26e1a318db0e8f22efce69a0125f25",
+        "Author Guidance preserves bounded Action-specific execution discipline": "73514e09c59fcb4bf06ce3472c9d33d7ddd65eddd5b1adde95bd8a9fc7a0a96a",
+        "Mechanical Preflight is internal to apply and revise-apply and reuses existing quality facts": "ed3380e1692b4904f7998601516a081aa2d87c3e437964cfd7b9f0407d8ecb7a",
+        "Project Change ordinal is a durable sequence fact assigned only when a Change first actually enters Explore": "4f37972067620fe5c0b2bb4fc248d1adaa70316ea5771f637be76c4fe8c677d6",
+        "Archive Guidance consumes the persisted project ordinal and never allocates or recomputes it": "eb5e73e0ca226aa7dbefa076cf04d5767bbd6315d4786d579d63cfd6b5f82f59",
+        "Stable Core self-development keeps independent bootstrap ordinal parity without product self-hosting": "3a637ad1628c4e9b4aacddeaed3a5165c15f5915512c0e223d74191d626bea76",
+        "Author canonical artifacts converge to current material truth while Run provenance remains bounded and concise": "3f171d6f14a80563601ed27d90d1008aa0de827ab82dc0e48c8bc6318dd63e1d",
+        "Archive preparation performs real package-bound readiness before archive mutation": "c0cbdb2c17ec0c85d5da4c231bfd8387a99fafed9d78cac7669a7691535bc4ca",
+        "Continuation handoff preserves all materially required uncommitted state": "71cd923aee81e916d271ba7dd9f33ab633ddb7af19ac5f02dd68b98d4257b129",
+        "Proof-based Explore classifies concept ownership and mutation ordering proportionally": "10780f8e957417428cc74d6bcf37b56df370a95265686f641ff00285a29ef753",
+        "Author HOW separates candidate bytes correction from metadata completion and observed recovery": "ae2dae29a360569761e255c0db5631006e863eae2f7dedd358ddf93826510c62"
+      },
+      "operations": {
+        "Archive preparation performs real package-bound readiness before archive mutation": {
+          "operation": "MODIFIED",
+          "sha256": "0338e658ac7bc3c9f782e6067123a89fa4470b1c5aa2de34eeaf1b8ab9dfaa06"
+        },
+        "Author HOW separates candidate bytes correction from metadata completion and observed recovery": {
+          "operation": "MODIFIED",
+          "sha256": "17badd0756086e0ee7f07f0c5b00c4164bdb8e621092fe7437c91af8142dacc4"
+        }
+      }
+    },
+    "delivery-finalization": {
+      "mainPath": "D:\\Projects\\flowkit-next\\openspec\\specs\\delivery-finalization\\spec.md",
+      "deltaPath": "D:\\Projects\\flowkit-next\\openspec\\changes\\repair-archive-lifecycle\\specs\\delivery-finalization\\spec.md",
+      "beforeRawSha256": "5085577c51ca0607a1f41b941df053b9e0a12906c7963c067472398faf0739b6",
+      "purposePrefixSha256": "eb4b48bedff5318ae8aef815228333244eea6a9451a2e7b1d41e3dcdb71972c3",
+      "original": {
+        "Delivery Final consumes complete exact prerequisite outcomes": "c9002acb458caaa3988f80fc60ecb5a8b249f1c8c09213679e46c20ec6425905",
+        "Delivery Final requires one exact bounded Owner authority": "6bc5573056fb23dac4e18803e621ffc80705a81ea8f0a08bda7ca39a517ddbcc",
+        "Trusted host owns one exact Delivery coordination closure": "fd9b3fd492564b288aa14b7d0f5bcc256a76fe96d87f3f6b1c6642995b008465",
+        "Terminal Delivery Final records exact causal continuity and stops without Git": "5349509583903ce64f597edae153c537917d8144b982b0d2d33f0ef8e1a3ed6f",
+        "Final 消费相关已接纳终点而不建立第二证据快照": "57b581e6544462de7e16edaa1cf953f3d3bbe1fc1139fa12bb0a973a0f8d7300"
+      },
+      "operations": {
+        "Delivery Final consumes complete exact prerequisite outcomes": {
+          "operation": "MODIFIED",
+          "sha256": "76017a5573d08a8feda5c17270a9d350c5b387577db07cd574c5921d5f188164"
+        },
+        "Final 消费相关已接纳终点而不建立第二证据快照": {
+          "operation": "MODIFIED",
+          "sha256": "93096a199b51c9dae82e0f86ca18f61380b65bac6a62ca4725e441860dddc964"
+        }
+      }
+    },
+    "policy-and-next-boundary": {
+      "mainPath": "D:\\Projects\\flowkit-next\\openspec\\specs\\policy-and-next-boundary\\spec.md",
+      "deltaPath": "D:\\Projects\\flowkit-next\\openspec\\changes\\repair-archive-lifecycle\\specs\\policy-and-next-boundary\\spec.md",
+      "beforeRawSha256": "dcd43c9ba332060ca6be06aae61977965d0afe297598c2a38359f205345b6717",
+      "purposePrefixSha256": "2456c2ba826c7bf2239f993890d09650032dc2ba26e8dc401485f20fdc7a17de",
+      "original": {
+        "Policy is a pure closed legality decision seam": "4f5ab1e300abb336c6dd44f92bdc2d8f3c75830d0104db120ea80a9a40eb2ff3",
+        "Post-archive completed materialization has highest Change-state precedence": "bbef28f360b71c9d408967d1307328b216b7491c0048227184e23bac1be0e607",
+        "Active Change normal Standard Action boundary is deterministic": "b7e15582fd58d229422a1972b2d04c9176795439186419b2e1ed742c11a46077",
+        "Terminal Result is bound to the exact current Run before outcome or correction evaluation": "a63f57124be17e060b69fd10720b1190457e31b895f5e008541e2591353f1dbb",
+        "Owner correction is bounded, explicit and revise-only": "cc6880c073ef7f82a7c0e8ed3179fb563a9db1f58a57d638b20996427d29bd53",
+        "Every READY Action must be structurally enterable through the existing lifecycle seam": "298eea6b89e96f73ff6eda61ca536296f9d4ab15e6a28cc57b5f01ba822c07a9",
+        "Blocked diagnosis is closed and deterministic": "0cadba3c653f6167ca495a0b8e4316d22ae7b9ba57abe7f021ecd2e66c463d8d",
+        "Known rejection permits only explicitly authorized corresponding revision": "5db74605455d9fd2e14b051a5b6fe051c54b05ad8906781ebbc332fb679946a7"
+      },
+      "operations": {
+        "Post-archive completed materialization has highest Change-state precedence": {
+          "operation": "MODIFIED",
+          "sha256": "064c644b6adeb4613b7812f5946f882759eec0200c58e8e7ccb6c8c7e823f235"
+        },
+        "Active Change normal Standard Action boundary is deterministic": {
+          "operation": "MODIFIED",
+          "sha256": "71df738ae9807d214fe94ec9cd40ff0b9a5b829b2dee5a14b1eb93296b7c5128"
+        },
+        "Owner correction is bounded, explicit and revise-only": {
+          "operation": "MODIFIED",
+          "sha256": "cf917e14d9650c11c296e89a5cf395e57d0639f898762e623329a2c3c2ca3346"
+        },
+        "Every READY Action must be structurally enterable through the existing lifecycle seam": {
+          "operation": "MODIFIED",
+          "sha256": "661ef698658d0b8bc4fcf51dced92bdbf9d08cea50f3edb8845b96e32eaec928"
+        },
+        "Blocked diagnosis is closed and deterministic": {
+          "operation": "MODIFIED",
+          "sha256": "0f739ca4a43ac26e15cd42fbca24e758ef5709ef6a699dc06838a4bc656cde73"
+        },
+        "Archive failures expose retry or recovery without inventing execution": {
+          "operation": "ADDED",
+          "sha256": "911c116da7035ae967fc762a225db85078c9184f5d5564736e7721920e921a18"
+        }
+      }
+    },
+    "repository-integration-and-next-base-continuity": {
+      "mainPath": "D:\\Projects\\flowkit-next\\openspec\\specs\\repository-integration-and-next-base-continuity\\spec.md",
+      "deltaPath": "D:\\Projects\\flowkit-next\\openspec\\changes\\repair-archive-lifecycle\\specs\\repository-integration-and-next-base-continuity\\spec.md",
+      "beforeRawSha256": "2b09856255aed02fe57a78840fe4068ae932457891704586d1298c5b4016033b",
+      "purposePrefixSha256": "a3b58e683d1a8b333cd5fd69b38375a61cfee9da0211cc7700b62ef2961d2c36",
+      "original": {
+        "Repository Integration consumes exact Delivery Final continuity and exact Git prestate": "1dfe754eb64b96bd94a98bc7bf5a304861218ab0ded4d9e0e80cb3511585a7e2",
+        "Repository Integration requires one exact singleton Owner Git authority": "ffaa5afc5fae65edbf1e5a6639cc9072d0ec5fbe5555e397db7e6687d65144aa",
+        "Repository review and merge remain provider-external while terminal Git truth is independently observed": "a2bea515b1f1006e7a1d591a592be3eef8f37d795b58cba137a9ad81289c3696",
+        "Accepted main becomes next Delivery base and terminal execution stops": "983c886ee0e8997345d47bb14e3c66869210fc88989f31f9724d441b6eb523d2",
+        "Repository Integration preserves state-first continuity without transport lifecycle modes": "b3780bd483df9e320f4b1bceeefe8cf32933826ff4f5f15310d09799daf86fcd",
+        "Integration 按明确操作创建或复用 checkpoint": "f532c08ae51ebd3433b26536b3a56876809b51cbd8fb26cfd74d40ba7288b943",
+        "Integration consumes architecture-free Final without restoring retired prerequisites": "e6db30d57876598678dfc55552f28d597a161cfe408118b5783d09f7f4360d7e",
+        "Git workflow nodes use an explicit supported host without owning Action lifecycle": "feed0bc96c626be1372f743131374762b01b6ecf2e789515c3e3ba5675543e66",
+        "Commit scope is checked against the real index without a global clean gate": "5f8534f4b7b9ea615dd422a95ad3a8c5004ef5f28e23c5e168753278eeab01e2",
+        "Git partial effects are reported without automatic recovery": "be7f83dd1e40c8ad4f09372e058f7b90c5dffea3916acd5d848b16ba6d05ccad",
+        "Create-new checkpoint preserves new managed evidence bytes": "bd24fee8a9f02e7483a16b56e4b39bc78a7207629c6679da5bbfb468d833dfad",
+        "Fixed Git commands preserve exact object and remote readback": "aa7b40c6d4d61011104778b6c107882060bdcf4b57a61472f56b221373fe8b12",
+        "Managed checkpoint resolves proof paths against the exact semantic Run owner": "a718d6bb423e7863f748acf58286ec449423ac6340835cebe965d1cc665b6fd5",
+        "Checkpoint preserves raw candidate identity through index and Git blobs": "d225a29bae0f92e6d3116a0cb0776be04e6bc073b8eda885cdab6a7335ef80fd",
+        "Managed metadata supplements are admitted from immutable candidate Git bytes": "76cf27d541e464e11822d1196f068b40f3682dbd114aa61d5c47e24a5a2b8da8"
+      },
+      "operations": {
+        "Checkpoint preserves raw candidate identity through index and Git blobs": {
+          "operation": "MODIFIED",
+          "sha256": "5bde93926c1e1f1ed910f36a799fde9dfcabf144bfd5c3d63f384fc6ef1e6930"
+        }
+      }
+    },
+    "reviewer-action-guidance": {
+      "mainPath": "D:\\Projects\\flowkit-next\\openspec\\specs\\reviewer-action-guidance\\spec.md",
+      "deltaPath": "D:\\Projects\\flowkit-next\\openspec\\changes\\repair-archive-lifecycle\\specs\\reviewer-action-guidance\\spec.md",
+      "beforeRawSha256": "2b102540521174a4ca9315073e698f87e34bfc59a6dccb3860bf1b40c441e40f",
+      "purposePrefixSha256": "85ccccdf82a5062cf6c4c8ae704fe3fa4bd89e144ea1de1e31f38854a54952f3",
+      "original": {
+        "Every Reviewer Standard Action has exactly one canonical product Guidance entry": "ca1b20b45b9a675e9a5730a5c2f140115f110bd1ccb4d278444206712fac81e7",
+        "Canonical Reviewer SKILL.md is identity-complete for execution-critical Reviewer HOW": "8d330c6c298e0d8cdd03a233f00fbaf901f07733d5682eea5a287262edce9839",
+        "Reviewer Guidance preserves independent mutation-free authority boundaries": "df685b8655b5da56fad58f8a4ea387fd9abfdb77d71711ea4dfb988258cd797b",
+        "Each Reviewer Action applies its action-specific acceptance focus while tracing prior accepted boundaries when material": "03cdcf93236a9849077b7c770bd272b35d5e9f9378f9fadec6bbe2a94293a28a",
+        "Every Reviewer Result explains step purpose, complexity/minimality, and new-content/scope drift": "dc6b51e31006e823329d2538ef13edcec809240f49da95e910cb91616a408396",
+        "Reviewer Guidance challenges incidental literals as literals rather than durable invariants": "b9f52710279b2112ea15bc8e0048b1b70eb926c884c6a2576bcbffb6ce77115f",
+        "Stable Core Reviewer bootstrap remains independent from candidate product Reviewer Guidance through D04 closure": "8269786a648024e24b747fc8624fd04abb10c2db50433a0cdbe1fc20e8e74ac7",
+        "Reviewer durable Run and handoff prose remains concise and references canonical artifacts instead of duplicating them": "6d8293972ab1320bfb34e31aecfc6c24274cba7a4031a8e18bca2fc91e70ce3c",
+        "Reviewer HOW preserves exact binding and actual rejected judgment": "680b8a194751f88bc3426f2377820301d8bd3684149785c8e1edba1d82ac2fd3"
+      },
+      "operations": {
+        "Reviewer HOW preserves exact binding and actual rejected judgment": {
+          "operation": "MODIFIED",
+          "sha256": "9b52204b03c2b05520e0844f05b0f241c6d9e4c199be9c52300503b6ddedfeca"
+        }
+      }
+    },
+    "run-result-persistence": {
+      "mainPath": "D:\\Projects\\flowkit-next\\openspec\\specs\\run-result-persistence\\spec.md",
+      "deltaPath": "D:\\Projects\\flowkit-next\\openspec\\changes\\repair-archive-lifecycle\\specs\\run-result-persistence\\spec.md",
+      "beforeRawSha256": "548a1b7add4002196df1e10f352aaced8ca57208bcbfc4e594456e894e262eb2",
+      "purposePrefixSha256": "d63a041299153a5f598dc523dab99011d56a5716ae5ec6879e00b1a7cbcb18e9",
+      "original": {
+        "Run occurrence is distinct from semantic Action identity": "1e381b37c766f64826ee6f563da2ef38c05d8647aaeb7e69a1c7db7ca0b7cf7d",
+        "Flowkit generates the canonical Change-scoped Run address": "4f7ead4db313c6b287fc80f17906f969217ab69c46f9c4e8ebd92e0a52fe9ed6",
+        "One durable Run uses the stable three-file record surface": "4f1319a9063602ffe87713cc1d091202740589d5e8a67e40e3180176452c6243",
+        "Run context round-trip preserves handoff identity and authority facts": "56847b2d4b32601560024e970c403190e831b3c320c1cb2e1428fb1686a03049",
+        "Result round-trip preserves outcome facts without collapsing authority semantics": "c70458d2f2097e33d5dc1c54959feee4fdfef09c2e8d934a1deb1153117fb908",
+        "Run and Result integrity validation fails closed": "a7e34824d5b4d079964d3b989051c820624db3857199aa641f19fda71a1e90ef",
+        "Durable Run occurrence creation is non-overwritable and sequence-unique": "339bdbac5fb27b1b2dbff49cfeefa005a2958e165617b27fb4430e360bfaed31",
+        "Sequential Change-scoped history is readable without becoming a global registry": "33097b0047dabe032aa45174429a559cdd6f10a4fd47f19494c412030706f4b3",
+        "Started and partially saved executions remain visible": "6830605f539fb06776424dca804dda96ec02fcd30a98b0f7a57267ceaa3c8744",
+        "Final records distinguish real failure from absent completion": "d238a4b6817b58af6b30a1bb9aa7b188bac60a33c5de36a100c92196caaa6ba5",
+        "Owner-corrected prepared Run remains immutable in a unique successor chain": "a62952e4835c8285f72c9cca5f3f32cc0b84c8d22be724a467619a7472253892",
+        "New Change Run allocation advances within verified Delivery occupancy": "c3108d1f3783e65c723d76b87a2c64b6db507da737b19be1d8a95f501e76c24b",
+        "Known rejected Reviewer Runs remain durable terminal stopped facts": "ca207e61f2a2ab6b6fc05d28c820b461a3757bdc8169cd6c3a6021e02896527e",
+        "One immutable metadata supplement yields a verified effective facts view": "0ce76d26d3013bcf0d2a65a5c47e6977e21c842af9c84de5a2a2cecc7f21fa6e"
+      },
+      "operations": {
+        "Archive outcomes are closed facts distinct from lifecycle and transport completeness": {
+          "operation": "ADDED",
+          "sha256": "d3eb6a52a12f3cad7dcef0ade9aa3e706d166fd23c0484df4cccf877eca165fb"
+        },
+        "Archive retry history remains one immutable outcome-aware chain": {
+          "operation": "ADDED",
+          "sha256": "f99e78c74b939e98737194e77a7147e9e01cc7d8f1ea087a233b72b808412f2e"
+        },
+        "Candidate Git projection preserves raw identity without rewriting history": {
+          "operation": "ADDED",
+          "sha256": "15eb99f5bacbb970490377cd20feaafd6025b92b8d9071a68d462d35490d7c3d"
+        }
+      }
+    },
+    "single-action-execution-terminal-boundary": {
+      "mainPath": "D:\\Projects\\flowkit-next\\openspec\\specs\\single-action-execution-terminal-boundary\\spec.md",
+      "deltaPath": "D:\\Projects\\flowkit-next\\openspec\\changes\\repair-archive-lifecycle\\specs\\single-action-execution-terminal-boundary\\spec.md",
+      "beforeRawSha256": "c44868419353bd5868e698949297288495dea36df1d70c691ea6e7d1d04eaed2",
+      "purposePrefixSha256": "f3ee95f116266e018eb0ffe42598df1a10d1931704c4fa9e520d9187d2a415b4",
+      "original": {
+        "Invocation entry establishes or reuses exactly one prepared current Action": "7938153841cc6dede1b877997e463e9bfc74020ac84e8c3af7199114d86bc4fe",
+        "Each invocation binds execution to one new exact Run occurrence and ActionPackage": "afbe75d1614eacfca73046221a59f92fe4b04306df8315be3a810288e6ae4912",
+        "Successful admission terminalizes only the exact current Action": "01095f5c7be894df9b37958957126284080b02d702c883711e7c95f3bd5300e1",
+        "Admission failure preserves the prepared Action and stops the invocation": "5973e773546f23d4f5bb8748db82d9924e9a335912e5fd786ef9aaecc7b88150",
+        "Invocation reports result facts and stops exactly once without interpreting Policy": "3e28c3f7298f9233a7246657d6d947de3186281f9fa121587efe994753e6dfa2",
+        "Package-bound preparation can block before a newly prepared Action is committed": "65d524406d61f8013a2fadf36c594f44aecb924b8e199f00e2558427ea5a0d80",
+        "Agent execution uses existing Action contracts without mandatory CLI hosting": "74269bef459e4f5c1906d8863e3e6b494318540efcb8378dd010c557deed1aaa",
+        "One actual Agent execution is recorded before durable completion is reported": "90a82d6c75e5a2d4c8b77dc3c139c1cafbbdd9aa20243c607cbfbe2413516505",
+        "Acceptance measures bounded behavior rather than a mandatory rehearsal count": "31d47238e6a6ae9d90655c1565a29a614b0a658f253eae51ea966fbef85e3935",
+        "Prepared supersession start and failure are ordered and non-destructive": "59a116c7e8510b5f587e88e41f6786fffb2c98d7b1b804df1a9804cbae9ddce6"
+      },
+      "operations": {
+        "Invocation entry establishes or reuses exactly one prepared current Action": {
+          "operation": "MODIFIED",
+          "sha256": "585d751945464d4a703504bcfcef6f30bccc7aa527a501aa12d017256dd17339"
+        },
+        "Package-bound preparation can block before a newly prepared Action is committed": {
+          "operation": "MODIFIED",
+          "sha256": "ebfc6cc01b0a23b3ce95e1ee93625f43a589d879df57deff3382a3deb5bb43f4"
+        }
+      }
+    },
+    "stable-action-command-execution": {
+      "mainPath": "D:\\Projects\\flowkit-next\\openspec\\specs\\stable-action-command-execution\\spec.md",
+      "deltaPath": "D:\\Projects\\flowkit-next\\openspec\\changes\\repair-archive-lifecycle\\specs\\stable-action-command-execution\\spec.md",
+      "beforeRawSha256": "0b7a7604fd80a28c109960bf77f5a0402f706025ba1e38e741aaf8f8ca301bbf",
+      "purposePrefixSha256": "51227e479ac514ba154f113b3b8938297beac9805061a75f14b7bf821468abbb",
+      "original": {
+        "Fixed Action command accepts only bounded data and exact intent": "d44c9bce65d0ad9b95e3a09389d5b8610426069f7712d7eb3a4a2cce1bd6fcd1",
+        "Start commits a recognizable current-manager descriptor before work": "ae0d753843624764c9fce4a151983ee4f8e391c0f91ed1114985ba965da440cb",
+        "Finish reconstructs only the exact new start across processes": "376aa499df7d577d6122b9f02c641495082d011bf8e5d10357026190c2c5b569",
+        "Finish admits a real role result and preserves partial outcomes": "386693b2ff910a87c31438c79aba940d39ff08d7bd074c5a135ee3cf61389480",
+        "Duplicate finish and successor competition do not repeat effects": "045ea39d1464934d2e19a149ef33246a1422d6a6cbe79f80b848132a72bd1cc5",
+        "Fixed proof helper reports exact material facts without authority inflation": "b3751064f5e1214bf1889229a612e268c62b25a0030e19ab76484e797918fca1",
+        "Prepared Owner correction uses the same bounded command path": "51f4be7431fa863ddd00858801e2db4e3f41abcd94051d52f06342787893dad7",
+        "Fixed finish enforces complete proof declarations for its own new Run": "150dc6402cee0f3c0f55254772d4639cd12d266bed14b2bf220bdbb58ebacdb7",
+        "Proof inspection and later consumption resolve one exact Run owner": "f424c8654728fecb3e6482214286c80d0f6f8d3d489db3e66d623f6d110a547a",
+        "Proposal artifact hashes use one repository-root-relative contract": "8852693b2d8fe92fb654dedfe52780476121c764fe8cdf96ed51f9b692edf360",
+        "Successful Explore artifacts are admitted before finish and legacy identities are verified before Review": "f9cf529e4cd9b4c17e227beffc28430415072735532c5db1e46f38d19d4ec012",
+        "Successful Propose and Apply Results satisfy candidate readiness before terminal write": "ac240163f653c2635ea539a4838ba828333595a7de4f88cc1af4dfb6ae1f893e",
+        "Review finish closes exact Author binding before terminal write": "21d3daaf505fa852c0d8a3b8ead85f8561b2643d74c5c2d266504f32e2a96dfd",
+        "Candidate admission rejects Git-filtered byte drift": "16d4eaa765cccc4abc8919b084cc1e84492a337d4b36f4435d6d82e89e8afe49",
+        "Fixed Action inspection exposes partial facts without granting recovery": "ad7a5195792d50f68853b509676fea4f62fb15b1aedb98a2c678d1ddc1b9ff09",
+        "Fixed terminal correction adds only proven missing identities": "b47da659043252e51e79267de77530cfcb994501f139da7f9b3b397549a7ad17",
+        "Terminal revise start preserves exact Owner and predecessor facts": "f2b21a4d0feba64761521c63aa436bb6a5b0f4c89bf936811826326ed5a5083d"
+      },
+      "operations": {
+        "Start commits a recognizable current-manager descriptor before work": {
+          "operation": "MODIFIED",
+          "sha256": "cff066d97037fb954129c7475d16f6ecc91ccfbdb58122de13fc2c7c93cf980e"
+        },
+        "Finish admits a real role result and preserves partial outcomes": {
+          "operation": "MODIFIED",
+          "sha256": "73c5e79a7f9bf1133cc6baf0266389ed91a9e63bed05940d63a230170314a8be"
+        },
+        "Fixed Action inspection exposes partial facts without granting recovery": {
+          "operation": "MODIFIED",
+          "sha256": "097bbce732b02e473653cf292a7b6c610ec4b87be1a134e666e17e88abed294f"
+        },
+        "Terminal revise start preserves exact Owner and predecessor facts": {
+          "operation": "MODIFIED",
+          "sha256": "379f770ebdb7e033edbb4ef706b7b28a0b56270b277f60db6931a5e5dab8102c"
+        },
+        "Candidate admission rejects Git-filtered byte drift": {
+          "operation": "REMOVED",
+          "sha256": "582c94faf9fbd4ed96aa6b864f08eb8b8ee15dab0e9c6108bc8669a9587507cb"
+        },
+        "Candidate admission binds raw bytes to supported Git storage identity": {
+          "operation": "ADDED",
+          "sha256": "404aad4fb5f692975e7e71c99779962612eb0c5ed3f8872da3db8086e48aae5c"
+        }
+      }
+    },
+    "stable-delivery-support-command-execution": {
+      "mainPath": "D:\\Projects\\flowkit-next\\openspec\\specs\\stable-delivery-support-command-execution\\spec.md",
+      "deltaPath": "D:\\Projects\\flowkit-next\\openspec\\changes\\repair-archive-lifecycle\\specs\\stable-delivery-support-command-execution\\spec.md",
+      "beforeRawSha256": "f9ef898a6e971c1f9f4ee8a10b3e9e481b660592e88a2eeb224ea493591f4eeb",
+      "purposePrefixSha256": "b261d6b5518de720ea0d4ba80ad6e62885f2aac68f489b02047b75b9ccef649f",
+      "original": {
+        "Support commands are a closed data-only surface": "fe76c6eecf4b45a6d5c872db255876224adc14e1d26b362081523da812660af6",
+        "Agent-attested Owner input remains a separate authority boundary": "6b131aae2a1d2bf15fc440948b9d341f30e7dd059882f9dc01b77a0b7c045a09",
+        "Project initialization creates only exact project identity": "8dd4ef4fbf88e47ed41bd7f7705184c46092e962c3fd68a7c5e3258a7b801feb",
+        "Delivery Start materializes bounded content without Git authority": "0d02798d35bcd7fb1db59f7cd5b7621003b1cf2518bbf19c7ef9e88754aafb6a",
+        "Change activation is distinct from Standard Action execution": "5c37bc66d35908ca991c5e0fdcccdd386cf11c32b09455b013c3f7781d270ec6",
+        "Memo commands preserve memo ownership and non-blocking meaning": "56d49226cb12f7d8921a9632a4ef5b85a92258794072d38e628292b3c6c2333e",
+        "Archive executes exact OpenSpec convergence inside the current archive Action": "276d7690553307227cc62fbe45c2971b61e670fa1819e2811fd355019ee58682",
+        "Full Test executes one formal attempt and exposes current result": "6e18b6772dc44b8d40c728ffa8a9ee0f904493d7850edc3b20fb642ec4263a59",
+        "Delivery Final consumes accepted completion and confirms in its own boundary": "8444228102c6411f9465ffabf65de4b51290778347b5c4d05a097b3e16cbbdee",
+        "Fixed operation outcomes expose effects without replaying work": "e16596b9890007171af2493a564f6613767ff12b4b3f86e198da6b972bd011fe",
+        "Current owned support HOW matches fixed command requests and outcomes": "2ad30203557eb6713ff9a6d6e78d984a8b0d927b80a30e10280ab7146dbae045",
+        "Ordinary checkpoint stages a bounded exact path set": "448a54089d2aad7ae75ac2eca544d4dbbc319904617ab69c96b842f07b864348",
+        "Optional host permissions remain narrow and visible": "f7fc40542c40107011c0a6373602cd755211479d2a9c798b296a24efc57a85ea",
+        "Archive convergence checks use independent target dependencies": "defad505deb047223eb85a69ed3a3db07fdf4326cb1d3259ce0d087f2529c000",
+        "Archive failure diagnostics retain bounded original process evidence": "8b983d6bdc285d0da0dd7a68da9f5835fc76db361ae31fd59592ffd30affde4b",
+        "Explicit same Run Archive continuation consumes verified actual effects": "cff3d5e422dfa58d14ebdba0f7eb4c32ae9c9c040c0a2319d4014b69266610d4"
+      },
+      "operations": {
+        "Archive executes exact OpenSpec convergence inside the current archive Action": {
+          "operation": "MODIFIED",
+          "sha256": "23f3aec3c0b2e91abbb7e4a7439bd9123d9b6f148a590c6a7f1fae953bc758f7"
+        },
+        "Explicit same Run Archive continuation consumes verified actual effects": {
+          "operation": "MODIFIED",
+          "sha256": "6e66ac80d7c8204f79d0cc1afa1e40a010e403f25b536eef4c631865f28c8750"
+        },
+        "Archive failure diagnostics retain bounded original process evidence": {
+          "operation": "REMOVED",
+          "sha256": "cd8dcf0149e63e77ba66db5c54a25c0d1f2933cc6242fc530896716dec6a4223"
+        },
+        "Archive convergence checks use independent target dependencies": {
+          "operation": "REMOVED",
+          "sha256": "62ed85b2c6a5fec432826d28293c87d9f474b917be9157e7a8de87bc9ab481d6"
+        },
+        "Archive operations retain Run-bound original process diagnostics": {
+          "operation": "ADDED",
+          "sha256": "0de17c9019a7eb1697f1510e1aa3b76cb68475f413b33f5ce40aa62acdda49f9"
+        },
+        "Archive classification is proven by durable effects rather than exit text": {
+          "operation": "ADDED",
+          "sha256": "1a34d5a94a522cbcc404a7105594881c774835f7794d9353dfc2c03adcb8aeae"
+        }
+      }
+    }
+  }
+}

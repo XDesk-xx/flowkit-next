@@ -7,6 +7,8 @@ metadata:
 
 # Revise Explore Action Guidance
 
+成功 Author finish 的 artifactHashes/Explore SHA 保持 raw 含义；manager 生成 candidateGit version-1，调用者只可传同值，duplicate 消费已保存身份，不重新计算历史。普通 staging 投影核对相关 indexBasis、有效 text/eol/settings 和预期 blob；active filter/encoding/ident、raw==旧 blob 而 clean 不同的 stat-cache 歧义均在成功候选前 unsupported，禁止 touch/refresh/renormalize/临时 add 或 normalize 规避。旧事实不回填 Git 投影。
+
 ## Authority
 
 Flowkit/Policy has already decided `revise-explore`. This Guidance owns findings-relevant Author mutation only.
@@ -69,7 +71,7 @@ Keep the three-file Run concise and identify the exact findings addressed, bound
 
 读取本次 manager 安装的 exact Guidance，并以当前稳定 manager 的 `status` / `next` 确认单个合法 Action 和 Role。当前发行的固定记录入口只处理一次机械开始或结束，不执行 OpenSpec、编码、Review、测试、下一 Action 或 Git。
 
-1. 准备 JSON 输入：`repositoryRoot`、`flowkitHome`、`deliveryId`、`changeId`、exact `actionId`、实际 `role`。仅当 Policy 已确认当前 prepared/terminal 对应阶段且收到明确 Owner revise 指令时附 `ownerAuthority`，其中 `sourceRef` 对应真实 Owner 输入；普通 Action 不附该字段。`archive` 另附已配置适用检查的 `applicableChecks: [{id,reason}]`，所选 ID 必须在 target 已配置且不歧义，由 Agent 对适用性负责。
+1. 准备 JSON 输入：`repositoryRoot`、`flowkitHome`、`deliveryId`、`changeId`、exact `actionId`、实际 `role`。仅当 Policy 已确认当前 prepared/terminal 对应阶段且收到明确 Owner revise 指令时附 `ownerAuthority`，其中 `sourceRef` 对应真实 Owner 输入；普通 Action 不附该字段。Archive version 2 的 start 只核对 Flowkit admission，不接收项目 checks；原生 task/spec/目标判断在 started Run 内进行。
 2. 调用 `flowkit action start --input <request.json>`。只有返回 `effect: "started"` 且 exact `runId`、目录可读回后，才开始本次实际工作。任何 `blocked`、`not-written`、`written-unconfirmed` 均停止并保留真实 bytes。新开始 descriptor 已绑定当前 Guidance、package、prepared context、前序和 Owner fact；不得自填 Run 编号、GuidanceRef、ActionPackage 或回调。
 3. 按本 Action 的上文合同完成实际角色工作。必要材料在产生时保存到受控 proof 目录；可调用 `flowkit proof inspect --input <request.json>` 取得当前文件 bytes/SHA-256/Git 原始字节事实。该结果不证明内容真实、测试 PASS 或 Reviewer verdict。无必要新材料时使用空 `proofRefs`，不建空目录。
 4. 形成真实 `RunResultRecord`，以 `flowkit action finish --input <request.json>` 提交 `repositoryRoot`、`flowkitHome`、`deliveryId`、`changeId`、开始返回的 `runId`、实际 `role`、`terminal` 与 `result`。finish 从已存 descriptor 和当前可信事实重建，不接收另一份 Owner fact 或内部 package。Author 只填 Author outcome，Reviewer 必须独立执行并只填本人真实 verdict；Verification、Owner 与 Git 权限均不由 finish 创建。

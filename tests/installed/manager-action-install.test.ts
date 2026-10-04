@@ -1,12 +1,13 @@
 import assert from "node:assert/strict";
 import { execFile } from "node:child_process";
 import { createHash } from "node:crypto";
-import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
+import { mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 import test from "node:test";
 import { promisify } from "node:util";
 import { contextFixture } from "../unit/domain/action-context-fixture.js";
 import { gitBytes } from "../../src/internal/git-checkpoint-scope.js";
+import { archiveFixture } from "../unit/domain/archive-contract-fixture.js";
 
 // Detached installation check: invoke directly with final and previous CLI paths.
 // This file is outside the fixed test:domain and test:acceptance globs.
@@ -18,6 +19,102 @@ if (!finalEntry || !previousEntry)
     "Usage: manager-action-install.test.ts FINAL_ENTRY PREVIOUS_ENTRY",
   );
 const run = promisify(execFile);
+
+test("detached installed manager preserves version-2 failed Run and finishes a new Archive occurrence", async () => {
+  const f = await archiveFixture();
+  let request = 0;
+  const call = async (action: string[], value: unknown) => {
+    const input = path.join(f.root, `installed-${++request}.json`);
+    await writeFile(input, JSON.stringify(value));
+    const args =
+      action[0] === "change"
+        ? [
+            ...action,
+            "--repository-root",
+            f.repositoryRoot,
+            "--delivery-id",
+            f.base.deliveryId,
+            "--change-id",
+            f.base.changeId,
+          ]
+        : action;
+    return cli(finalEntry, args, input).catch((error: { stdout?: string }) => {
+      if (action[0] === "change" && error.stdout)
+        return JSON.parse(error.stdout);
+      throw error;
+    });
+  };
+  try {
+    await writeFile(path.join(f.repositoryRoot, "fail-native"), "fault\n");
+    const start = await call(["action", "start"], {
+      ...f.base,
+      actionId: "archive",
+      role: "author",
+    });
+    const failed = await call(["change", "archive"], {
+      ...f.base,
+      runId: start.runId,
+    });
+    assert.deepEqual(failed.archiveOutcome, {
+      kind: "failed",
+      effect: "no-mutation",
+      retryable: true,
+    });
+    const finish = (runId: unknown, value: Record<string, unknown>) =>
+      call(["action", "finish"], {
+        ...f.base,
+        runId,
+        role: "author",
+        terminal: true,
+        result: {
+          runId,
+          actionIdentity: {
+            deliveryId: f.base.deliveryId,
+            changeId: f.base.changeId,
+            actionId: "archive",
+          },
+          authorConclusion: value.status === "completed" ? "PASS" : "FAIL",
+          reviewerVerdict: null,
+          verificationVerdict: null,
+          nextBoundary: value.status === "completed" ? "checkpoint" : null,
+          facts: {
+            archiveOutcome: value.archiveOutcome,
+            archiveMaterialRefs: value.archiveMaterialRefs,
+            archivePath: value.archivePath,
+            projectOrdinal: 1,
+            proofRefs: [],
+          },
+        },
+      });
+    await finish(start.runId, failed);
+    const saved = await readFile(
+      path.join(start.directory as string, "result.json"),
+    );
+    await rm(path.join(f.repositoryRoot, "fail-native"));
+    const retry = await call(["action", "start"], {
+      ...f.base,
+      actionId: "archive",
+      role: "author",
+    });
+    const archived = await call(["change", "archive"], {
+      ...f.base,
+      runId: retry.runId,
+    });
+    assert.equal(archived.status, "completed", JSON.stringify(archived));
+    await finish(retry.runId, archived);
+    assert.equal((await call(["status"], f.base)).status, "archived");
+    assert.deepEqual(
+      await readFile(path.join(start.directory as string, "result.json")),
+      saved,
+    );
+    assert.equal(
+      await readFile(path.join(f.repositoryRoot, "archive-count.txt"), "utf8"),
+      "2",
+    );
+  } finally {
+    await f.cleanup();
+  }
+});
 
 async function cli(entry: string, action: string[], input: string) {
   const result = await run(

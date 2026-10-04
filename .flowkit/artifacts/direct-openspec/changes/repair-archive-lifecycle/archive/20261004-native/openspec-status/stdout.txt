@@ -1,0 +1,113 @@
+{
+  "changeName": "repair-archive-lifecycle",
+  "schemaName": "spec-driven",
+  "planningHome": {
+    "kind": "repo",
+    "root": "D:\\Projects\\flowkit-next",
+    "changesDir": "D:\\Projects\\flowkit-next\\openspec\\changes",
+    "defaultSchema": "spec-driven"
+  },
+  "changeRoot": "D:\\Projects\\flowkit-next\\openspec\\changes\\repair-archive-lifecycle",
+  "artifactPaths": {
+    "proposal": {
+      "outputPath": "proposal.md",
+      "resolvedOutputPath": "D:\\Projects\\flowkit-next\\openspec\\changes\\repair-archive-lifecycle\\proposal.md",
+      "existingOutputPaths": [
+        "D:\\Projects\\flowkit-next\\openspec\\changes\\repair-archive-lifecycle\\proposal.md"
+      ]
+    },
+    "specs": {
+      "outputPath": "specs/**/*.md",
+      "resolvedOutputPath": "D:\\Projects\\flowkit-next\\openspec\\changes\\repair-archive-lifecycle\\specs\\**\\*.md",
+      "existingOutputPaths": [
+        "D:\\Projects\\flowkit-next\\openspec\\changes\\repair-archive-lifecycle\\specs\\action-lifecycle\\spec.md",
+        "D:\\Projects\\flowkit-next\\openspec\\changes\\repair-archive-lifecycle\\specs\\author-action-guidance\\spec.md",
+        "D:\\Projects\\flowkit-next\\openspec\\changes\\repair-archive-lifecycle\\specs\\delivery-finalization\\spec.md",
+        "D:\\Projects\\flowkit-next\\openspec\\changes\\repair-archive-lifecycle\\specs\\policy-and-next-boundary\\spec.md",
+        "D:\\Projects\\flowkit-next\\openspec\\changes\\repair-archive-lifecycle\\specs\\repository-integration-and-next-base-continuity\\spec.md",
+        "D:\\Projects\\flowkit-next\\openspec\\changes\\repair-archive-lifecycle\\specs\\reviewer-action-guidance\\spec.md",
+        "D:\\Projects\\flowkit-next\\openspec\\changes\\repair-archive-lifecycle\\specs\\run-result-persistence\\spec.md",
+        "D:\\Projects\\flowkit-next\\openspec\\changes\\repair-archive-lifecycle\\specs\\single-action-execution-terminal-boundary\\spec.md",
+        "D:\\Projects\\flowkit-next\\openspec\\changes\\repair-archive-lifecycle\\specs\\stable-action-command-execution\\spec.md",
+        "D:\\Projects\\flowkit-next\\openspec\\changes\\repair-archive-lifecycle\\specs\\stable-delivery-support-command-execution\\spec.md"
+      ]
+    },
+    "design": {
+      "outputPath": "design.md",
+      "resolvedOutputPath": "D:\\Projects\\flowkit-next\\openspec\\changes\\repair-archive-lifecycle\\design.md",
+      "existingOutputPaths": [
+        "D:\\Projects\\flowkit-next\\openspec\\changes\\repair-archive-lifecycle\\design.md"
+      ]
+    },
+    "tasks": {
+      "outputPath": "tasks.md",
+      "resolvedOutputPath": "D:\\Projects\\flowkit-next\\openspec\\changes\\repair-archive-lifecycle\\tasks.md",
+      "existingOutputPaths": [
+        "D:\\Projects\\flowkit-next\\openspec\\changes\\repair-archive-lifecycle\\tasks.md"
+      ]
+    }
+  },
+  "isPlanningComplete": true,
+  "isComplete": true,
+  "applyRequires": [
+    "tasks"
+  ],
+  "nextSteps": [
+    "All planning artifacts are complete. Run openspec instructions apply --change \"repair-archive-lifecycle\" --json to inspect implementation progress."
+  ],
+  "actionContext": {
+    "mode": "repo-local",
+    "sourceOfTruth": "repo",
+    "planningArtifacts": [
+      "proposal",
+      "specs",
+      "design",
+      "tasks"
+    ],
+    "linkedContext": [],
+    "allowedEditRoots": [
+      "D:\\Projects\\flowkit-next"
+    ],
+    "requiresAffectedAreaSelection": false,
+    "constraints": [
+      "Repo-local change artifacts and implementation edits are scoped to this project."
+    ]
+  },
+  "artifacts": [
+    {
+      "id": "proposal",
+      "outputPath": "proposal.md",
+      "status": "done",
+      "requires": []
+    },
+    {
+      "id": "specs",
+      "outputPath": "specs/**/*.md",
+      "status": "done",
+      "requires": [
+        "proposal"
+      ]
+    },
+    {
+      "id": "design",
+      "outputPath": "design.md",
+      "status": "done",
+      "requires": [
+        "proposal"
+      ]
+    },
+    {
+      "id": "tasks",
+      "outputPath": "tasks.md",
+      "status": "done",
+      "requires": [
+        "specs",
+        "design"
+      ]
+    }
+  ],
+  "root": {
+    "path": "D:\\Projects\\flowkit-next",
+    "source": "nearest"
+  }
+}

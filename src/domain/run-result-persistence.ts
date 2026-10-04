@@ -1,5 +1,7 @@
 import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
 import path from "node:path";
+import { isArchiveOutcome } from "./archive-outcome.js";
+import { candidateGitMatchesResult } from "../internal/candidate-git-facts.js";
 
 import {
   APPLICABLE_CHECK_FACTS_KEY,
@@ -361,6 +363,29 @@ export function isRunResultRecord(value: unknown): value is RunResultRecord {
     return false;
   }
   if (!isJsonObject(value.facts)) return false;
+  if (
+    Object.hasOwn(value.facts, "candidateGit") &&
+    !candidateGitMatchesResult({
+      actionIdentity: value.actionIdentity,
+      authorConclusion: value.authorConclusion,
+      facts: value.facts,
+    })
+  )
+    return false;
+  if (Object.hasOwn(value.facts, "archiveOutcome")) {
+    const outcome = value.facts.archiveOutcome;
+    if (
+      value.actionIdentity.actionId !== "archive" ||
+      !isArchiveOutcome(outcome) ||
+      value.reviewerVerdict !== null ||
+      value.verificationVerdict !== null ||
+      (outcome.kind === "completed"
+        ? value.authorConclusion !== "PASS" ||
+          (value.nextBoundary !== null && value.nextBoundary !== "checkpoint")
+        : value.authorConclusion !== "FAIL" || value.nextBoundary !== null)
+    )
+      return false;
+  }
   if (
     Object.hasOwn(value.facts, APPLICABLE_CHECK_FACTS_KEY) &&
     !isApplicableCheckFactSet(value.facts[APPLICABLE_CHECK_FACTS_KEY])

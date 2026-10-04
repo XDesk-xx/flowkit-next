@@ -1,6 +1,18 @@
 import { isDeepStrictEqual } from "node:util";
 import { readdir } from "node:fs/promises";
 import path from "node:path";
+import { archiveReviewSource } from "../cli/current-run-chain.js";
+import { candidateGitProjection } from "./candidate-git-bytes.js";
+import {
+  isCandidateGit,
+  type CandidateGitFile,
+} from "./candidate-git-facts.js";
+import {
+  archiveJson,
+  archiveV2Refs,
+  readArchiveV2,
+  readArchiveV2Projection,
+} from "./archive-effects-v2.js";
 import type { DurableRunRecord } from "../domain/run-result-persistence.js";
 import { assertReviewBinding } from "../cli/review-candidate.js";
 import {
@@ -53,6 +65,28 @@ export async function reviewedCheckpointCandidate(
       );
     expected.set(relative, hash);
   }
+  async function expectProjected(
+    relative: string,
+    hash: string,
+    identity?: CandidateGitFile,
+  ) {
+    if (!identity) {
+      await expect(relative, hash);
+      return;
+    }
+    const raw = await controlledBytes(root, relative);
+    if (
+      sha256(raw) !== hash ||
+      identity.rawSha256 !== hash ||
+      tree.entries.get(relative)?.objectId !== identity.blobOid
+    )
+      throw Error(`Reviewed raw/Git identity drift: ${relative}`);
+    const bytes =
+      identity.conversion === "identity"
+        ? raw
+        : Buffer.from(raw.toString("utf8").replace(/\r\n/g, "\n"));
+    await expect(relative, sha256(bytes));
+  }
   for (const target of targets.values()) {
     const prefix = `.flowkit/runs/${target.deliveryId}/`;
     const present = [...tree.entries.keys()].some(
@@ -100,13 +134,17 @@ export async function reviewedCheckpointCandidate(
       await expect(relative, sha256(bytes));
     }
     const views = new Map<string, DurableRunRecord>();
-    const tipReview =
+    const predecessor =
       chain.tip.context.actionIdentity.actionId === "archive"
         ? chain.records.find(
             (record) =>
               record.context.runId === chain.tip.context.previousRunId,
           )
         : chain.tip;
+    const tipReview =
+      chain.tip.context.actionIdentity.actionId === "archive" && predecessor
+        ? archiveReviewSource(chain.records, predecessor).review
+        : predecessor;
     const required = new Set<string>();
     if (tipReview?.context.actionIdentity.actionId === "review-apply") {
       required.add(tipReview.context.runId);
@@ -154,12 +192,16 @@ export async function reviewedCheckpointCandidate(
       chain.tip.context.actionIdentity.actionId === "archive"
         ? chain.tip
         : null;
-    const review =
+    const reviewParent =
       archive === null
         ? chain.tip
         : chain.records.find(
             (record) => record.context.runId === archive.context.previousRunId,
           );
+    const review =
+      archive !== null && reviewParent
+        ? archiveReviewSource(chain.records, reviewParent).review
+        : reviewParent;
     if (
       review?.context.actionIdentity.actionId !== "review-apply" ||
       review.context.lifecycleState !== "terminal" ||
@@ -196,9 +238,13 @@ export async function reviewedCheckpointCandidate(
     )
       throw Error("Reviewed candidate hashes unavailable");
     if (archive === null) {
+      const projection = isCandidateGit(author?.result.facts.candidateGit)
+        ? author.result.facts.candidateGit
+        : undefined;
+      if (projection) await candidateGitProjection(root, hashes, projection);
       for (const [relative, hash] of Object.entries(hashes)) {
         if (typeof hash !== "string") throw Error("Invalid candidate hash");
-        await expect(relative, hash);
+        await expectProjected(relative, hash, projection?.files[relative]);
       }
       continue;
     }
@@ -208,6 +254,116 @@ export async function reviewedCheckpointCandidate(
     )
       throw Error("Archive is not accepted terminal PASS");
     const group = chain.runRoot.split("/").at(-1)!;
+    const storedPre = await archiveJson(
+      evidenceTarget,
+      `${archiveEffectsRoot(evidenceTarget, group, archive.context.runId)}/prestate.json`,
+    );
+    if (storedPre?.formatVersion === 2) {
+      const pre = await readArchiveV2(
+        evidenceTarget,
+        group,
+        archive.context.runId,
+      );
+      if (
+        !pre ||
+        pre.reviewRunId !== review.context.runId ||
+        pre.authorRunId !== author?.context.runId ||
+        !isDeepStrictEqual(pre.candidate, hashes) ||
+        pre.archivePath !== archive.result.facts.archivePath ||
+        pre.descriptorSha256 !==
+          sha256(
+            chain.bytesByPath.get(
+              `${chain.runRoot}/${archive.context.runId}/action.md`,
+            )!,
+          )
+      )
+        throw Error("Archive v2 candidate binding invalid");
+      const refs = await archiveV2Refs(
+        evidenceTarget,
+        group,
+        archive.context.runId,
+      );
+      if (!isDeepStrictEqual(refs, archive.result.facts.archiveMaterialRefs))
+        throw Error("Archive v2 material binding invalid");
+      for (const ref of refs) await expect(ref.path, ref.sha256);
+      const projection = await readArchiveV2Projection(
+        evidenceTarget,
+        group,
+        archive.context.runId,
+      );
+      const afterHashes = Object.fromEntries(
+        Object.entries(projection.files).map(([file, item]) => [
+          file,
+          item.rawSha256,
+        ]),
+      );
+      await candidateGitProjection(root, afterHashes, projection);
+      const observation = await archiveJson(
+        evidenceTarget,
+        `${archiveEffectsRoot(evidenceTarget, group, archive.context.runId)}/openspec-observed.json`,
+      );
+      const expectedAfter: Record<string, string> = {
+        [pre.coordination.path]: pre.coordination.afterSha256,
+      };
+      for (const [suffix, hash] of Object.entries(pre.sourceFiles))
+        expectedAfter[`${pre.archivePath}/${suffix}`] = hash;
+      for (const [file, hash] of Object.entries(observation.specsAfter))
+        if (hash !== null) expectedAfter[file] = hash as string;
+      if (!isDeepStrictEqual(afterHashes, expectedAfter))
+        throw Error("Archive destination projection set mismatch");
+      const moved = [...tree.entries.keys()]
+        .filter((file) => file.startsWith(pre.archivePath + "/"))
+        .map((file) => file.slice(pre.archivePath.length + 1))
+        .sort();
+      if (
+        !isDeepStrictEqual(moved, Object.keys(pre.sourceFiles).sort()) ||
+        [...tree.entries.keys()].some((file) =>
+          [pre.sourcePath, pre.defaultPath].some(
+            (prefix) => file === prefix || file.startsWith(prefix + "/"),
+          ),
+        )
+      )
+        throw Error("Archive v2 migration set invalid");
+      for (const suffix of Object.keys(pre.sourceFiles))
+        await expect(`${pre.sourcePath}/${suffix}`, null);
+      for (const [file, hash] of Object.entries(observation.specsAfter))
+        if (hash === null) await expect(file, null);
+      for (const [file, hash] of Object.entries(expectedAfter))
+        await expectProjected(file, hash, projection.files[file]);
+      const originalValue: unknown = author?.result.facts.candidateGit;
+      const originalProjection = isCandidateGit(originalValue)
+        ? originalValue
+        : undefined;
+      const unchanged: Record<string, string> = {};
+      for (const [file, hash] of Object.entries(hashes)) {
+        if (typeof hash !== "string") throw Error("Invalid reviewed raw hash");
+        if (file.startsWith(pre.sourcePath + "/")) {
+          if (pre.sourceFiles[file.slice(pre.sourcePath.length + 1)] !== hash)
+            throw Error("Archive source identity mismatch");
+        } else if (Object.hasOwn(pre.specsBefore, file)) {
+          if (pre.specsBefore[file] !== hash)
+            throw Error("Archive canonical before identity mismatch");
+        } else if (file === pre.coordination.path) {
+          if (pre.coordination.beforeSha256 !== hash)
+            throw Error("Archive coordination before mismatch");
+        } else unchanged[file] = hash;
+      }
+      if (originalProjection && Object.keys(unchanged).length) {
+        const binding = {
+          ...originalProjection,
+          files: Object.fromEntries(
+            Object.keys(unchanged).map((file) => [
+              file,
+              originalProjection.files[file],
+            ]),
+          ),
+        };
+        await candidateGitProjection(root, unchanged, binding);
+      }
+      for (const [file, hash] of Object.entries(unchanged))
+        await expectProjected(file, hash, originalProjection?.files[file]);
+      continue;
+    }
     const pre = await readArchivePrestate(
       evidenceTarget,
       group,
@@ -275,10 +431,16 @@ export async function reviewedCheckpointCandidate(
 export async function verifyExpectedCandidateTree(
   tree: CheckpointCandidateTree,
   expected: ReadonlyMap<string, string | null>,
+  entries?: CheckpointCandidateTree["entries"],
 ) {
   for (const [relative, hash] of expected) {
     const bytes = await tree.read(relative);
     if ((bytes === null ? null : sha256(bytes)) !== hash)
       throw Error(`Candidate index/blob drift: ${relative}`);
+    if (
+      entries &&
+      tree.entries.get(relative)?.mode !== entries.get(relative)?.mode
+    )
+      throw Error(`Candidate index/blob mode drift: ${relative}`);
   }
 }

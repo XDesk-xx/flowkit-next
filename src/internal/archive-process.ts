@@ -44,20 +44,6 @@ export async function archiveDiagnosticAttempt(
   return relative;
 }
 
-export async function recordArchiveDependencySnapshot(
-  root: string,
-  attempt: string,
-  facts: object,
-) {
-  const relative = `${attempt}/dependency-snapshot.json`;
-  await assertManagedEvidenceGitBytes(root, relative);
-  await writeFile(
-    path.join(root, relative),
-    JSON.stringify(facts, null, 2) + "\n",
-    { flag: "wx" },
-  );
-}
-
 /** Archive-only subprocess capture, bounded raw streams and create-once diagnostics. */
 export async function runArchiveProcess(
   root: string,

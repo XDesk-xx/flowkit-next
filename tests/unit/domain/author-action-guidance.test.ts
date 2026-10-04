@@ -328,19 +328,20 @@ test("artifact-convergence discipline remains free of hard size Gate, Run schema
 
 test("archive preparation, continuation, and Explore HOW converge without new lifecycle concepts", async () => {
   const archive = await readProductGuidance("archive");
-  assert.match(archive, /Package-bound archive preparation/);
-  assert.match(archive, /exact ActionPackage/);
-  assert.match(archive, /completion-transition readiness/);
-  assert.match(
+  assert.match(archive, /archiveContractVersion: 2/);
+  assert.match(archive, /start 只核对 active Change/);
+  assert.match(archive, /不调用原生 validate\/dry-run/);
+  assert.match(archive, /每个 Run 至多执行一次/);
+  assert.match(archive, /kind:"completed"/);
+  assert.match(archive, /kind:"failed"/);
+  assert.match(archive, /kind:"partial"/);
+  assert.match(archive, /direct parent 是失败 Run/);
+  assert.match(archive, /stat-cache/);
+  assert.match(archive, /禁止 touch/);
+  assert.doesNotMatch(
     archive,
-    /Do not require a second Owner archive execution authorization/,
+    /isolated canonical-convergence dry-run|post-convergence verification/,
   );
-  assert.match(archive, /STOP before archive mutation/);
-  assert.match(archive, /isolated canonical-convergence dry-run/);
-  assert.match(archive, /post-convergence verification/);
-  assert.match(archive, /affected domain verification/);
-  assert.match(archive, /fresh `review-apply`/);
-  assert.doesNotMatch(archive, /pre-archive Standard Action/i);
 
   for (const actionId of ["apply", "revise-apply", "archive"] as const) {
     const guidance = await readProductGuidance(actionId);

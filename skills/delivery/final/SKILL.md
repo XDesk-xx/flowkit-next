@@ -5,6 +5,8 @@ description: 在已授权 Final 边界消费相关完成终点与当前 Full Tes
 
 # Delivery Final
 
+成功终点的 direct parent 可以是连续安全 FAIL；共享 Archive/Review 解析拒绝 partial/未知、缺项、错 target、fork、过期 PASS 或来源冲突。changeCompletions 的原五字段与 manifest 顺序不变，不重新准入无关祖先、不创建完成证据数据库。
+
 只执行已确定的 `delivery-final`。精确 singleton finalize-delivery/delivery-final Owner authority 与同一 manager 的 content-bound Guidance 保持；不回退到 target 同名系统材料或 `.agents/skills/**`。
 
 在本次独立 Owner 授权和下列真实前置均满足后，调用选定 manager 的 `flowkit delivery final --repository-root <target> --delivery-id <deliveryId> --input <request.json>`；封闭请求只含 `repositoryRoot`、`flowkitHome`、`deliveryId`、真实 `ownerAuthority`。读取退出码、JSON `status`/`effect` 和确认引用，再核对已持久化的 Final；不以 caller 布尔值、临时程序或回调替代来源。
@@ -12,7 +14,7 @@ description: 在已授权 Final 边界消费相关完成终点与当前 Full Tes
 ## 有限前置
 
 - 从 canonical manifest 取得全部 required Changes；它们 completed，managed OpenSpec active set 为空。不可由 caller 缩小集合。
-- 使用可信 host 已接纳来源选定每个 Change 唯一 archive 及其直接 approved review-apply；来源负责排除歧义/未完成矛盾。host 实读这两个受控三文件，核对身份、Role、terminal 完成、verdict、linkage 及 source-bound bytes。
+- 使用可信 host 已接纳来源选定每个 Change 当前唯一 trusted Archive PASS 及沿连续安全 failed Archive 父链解析的 approved review-apply；来源负责排除歧义/未完成矛盾。host 实读所选终点及必要安全失败父链的受控三文件，核对身份、Role、terminal 完成、verdict、linkage 及 source-bound bytes。
 - 结构合法、自签 hash 或 caller JSON 不等于已接纳；来源能力缺失报 completion-source-unavailable。不要重放祖先 admission 或遍历历史 proof。
 - 复用 target 当前 fullTestAttempt reader：完整真实 PASS、当前输入及必要材料有效。新的 FAIL/partial/缺失/损坏/输入变化不得回用旧 PASS。verifiedCandidateRef 是 Full Test inputRef，不是 Git candidate。
 - Package 的 changeCompletions 只在本次内存中用于相关重验，不持久复制第二份 evidence 快照。

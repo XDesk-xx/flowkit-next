@@ -1,0 +1,150 @@
+TAP version 13
+# Subtest: safe failed Archive permits exact Owner revise and changed candidate, then requires a new role fixture Review
+ok 1 - safe failed Archive permits exact Owner revise and changed candidate, then requires a new role fixture Review
+  ---
+  duration_ms: 52369.7207
+  type: 'test'
+  ...
+# Subtest: safe native FAILs remain immutable, retry parents are exact, PASS checkpoints actual nested after/raw bytes
+ok 2 - safe native FAILs remain immutable, retry parents are exact, PASS checkpoints actual nested after/raw bytes
+  ---
+  duration_ms: 120363.7954
+  type: 'test'
+  ...
+# Subtest: restored native failure is safe but equality cannot invent positive rollback evidence
+ok 3 - restored native failure is safe but equality cannot invent positive rollback evidence
+  ---
+  duration_ms: 16335.5684
+  type: 'test'
+  ...
+# Subtest: candidate drift or late ordinal collision preserves effects and blocks retry without cleanup
+ok 4 - candidate drift or late ordinal collision preserves effects and blocks retry without cleanup
+  ---
+  duration_ms: 29973.7936
+  type: 'test'
+  ...
+# Subtest: Archive checkpoint rejects any resurrected old source prefix before staging
+ok 5 - Archive checkpoint rejects any resurrected old source prefix before staging
+  ---
+  duration_ms: 49128.4889
+  type: 'test'
+  ...
+# Subtest: nonzero exit after native mutation is terminal partial, corrupt coordination is never guessed active
+ok 6 - nonzero exit after native mutation is terminal partial, corrupt coordination is never guessed active
+  ---
+  duration_ms: 21842.8588
+  type: 'test'
+  ...
+# Subtest: lost successful observation continues only rename/coordination; unknown intent never repeats OpenSpec
+ok 7 - lost successful observation continues only rename/coordination; unknown intent never repeats OpenSpec
+  ---
+  duration_ms: 47315.4154
+  type: 'test'
+  ...
+# Subtest: pre-intent midnight drift is blocked by inspect and execution with immutable prestate
+ok 8 - pre-intent midnight drift is blocked by inspect and execution with immutable prestate
+  ---
+  duration_ms: 15969.4652
+  type: 'test'
+  ...
+# (node:10164) ExperimentalWarning: The MockTimers API is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: acknowledged native success may finish remaining work across midnight
+ok 9 - acknowledged native success may finish remaining work across midnight
+  ---
+  duration_ms: 27459.7016
+  type: 'test'
+  ...
+# Subtest: descriptor-only safe failure is finish-only across midnight, never a second invocation
+ok 10 - descriptor-only safe failure is finish-only across midnight, never a second invocation
+  ---
+  duration_ms: 18006.9698
+  type: 'test'
+  ...
+# Subtest: new CRLF text binds LF; prediction writes neither worktree nor objects/index
+ok 11 - new CRLF text binds LF; prediction writes neither worktree nor objects/index
+  ---
+  duration_ms: 4483.977
+  type: 'test'
+  ...
+# Subtest: auto and inherited autocrlf preserve modified existing CRLF index
+ok 12 - auto and inherited autocrlf preserve modified existing CRLF index
+  ---
+  duration_ms: 17841.9746
+  type: 'test'
+  ...
+# Subtest: attribute-only clean ambiguity rejects before admission, including only stat changes
+ok 13 - attribute-only clean ambiguity rejects before admission, including only stat changes
+  ---
+  duration_ms: 2995.3424
+  type: 'test'
+  ...
+# Subtest: real drift, unsupported filters, and ambiguous index flags cannot inherit a binding
+ok 14 - real drift, unsupported filters, and ambiguous index flags cannot inherit a binding
+  ---
+  duration_ms: 3619.7973
+  type: 'test'
+  ...
+# Subtest: LF and mixed index bases differ, UTF-8/BOM and binary/-text remain byte exact, unsafe conversions reject
+ok 15 - LF and mixed index bases differ, UTF-8/BOM and binary/-text remain byte exact, unsafe conversions reject
+  ---
+  duration_ms: 15961.9536
+  type: 'test'
+  ...
+# Subtest: projection stays read-only while ordinary add enforces safecrlf
+ok 16 - projection stays read-only while ordinary add enforces safecrlf
+  ---
+  duration_ms: 11383.6131
+  type: 'test'
+  ...
+# Subtest: ordinary Linux staging supports new executable and both authorized executable-bit changes
+ok 17 - ordinary Linux staging supports new executable and both authorized executable-bit changes # SKIP
+  ---
+  duration_ms: 1.0308
+  type: 'test'
+  ...
+# Subtest: filemode=false keeps an existing ordinary mode and gives new files 100644
+ok 18 - filemode=false keeps an existing ordinary mode and gives new files 100644 # SKIP
+  ---
+  duration_ms: 0.0968
+  type: 'test'
+  ...
+# Subtest: executable mode drift and non-ordinary targets reject before staging
+ok 19 - executable mode drift and non-ordinary targets reject before staging # SKIP
+  ---
+  duration_ms: 0.8031
+  type: 'test'
+  ...
+# Subtest: ordinary checkpoint requires bound rules in tree, commits LF blobs and preserves worktree CRLF
+ok 20 - ordinary checkpoint requires bound rules in tree, commits LF blobs and preserves worktree CRLF
+  ---
+  duration_ms: 15898.1928
+  type: 'test'
+  ...
+# Subtest: safecrlf rejection remains a real Git failure without disabling settings or committing
+ok 21 - safecrlf rejection remains a real Git failure without disabling settings or committing
+  ---
+  duration_ms: 16151.1446
+  type: 'test'
+  ...
+# Subtest: ordinary checkpoint rejects attribute-only stat ambiguity before staging, including touch-only contrast
+ok 22 - ordinary checkpoint rejects attribute-only stat ambiguity before staging, including touch-only contrast
+  ---
+  duration_ms: 5540.1171
+  type: 'test'
+  ...
+# Subtest: existing CRLF auto and inherited autocrlf stage identity, unexpected settings and unrelated index do not widen scope
+ok 23 - existing CRLF auto and inherited autocrlf stage identity, unexpected settings and unrelated index do not widen scope
+  ---
+  duration_ms: 49209.9869
+  type: 'test'
+  ...
+1..23
+# tests 23
+# suites 0
+# pass 20
+# fail 0
+# cancelled 0
+# skipped 3
+# todo 0
+# duration_ms 337961.4971

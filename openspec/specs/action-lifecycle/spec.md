@@ -95,15 +95,15 @@
 - **THEN** transition SHALL fail closed
 
 ### Requirement: Terminal remains absorbing after exact prepared completion
-系统 SHALL 将 `terminal` 视为同一个 canonical current Action 的 absorbing boundary；`terminal A` SHALL NOT 被再次 terminal 或 re-prepare 为 A。重复 Result 是否可再次 admission 或同一 semantic Action 是否可由后续 Policy 重新选择，不属于本 capability。
+系统 SHALL 将同一 execution occurrence 的 `terminal` 视为 absorbing boundary；`terminal A` SHALL NOT 被再次 terminal，且普通 `prepare A` SHALL 被拒绝。仅本 capability 定义的 Archive-only retry transition SHALL 允许已获合法 retry boundary 的 same semantic Archive identity 形成新 occurrence 的 prepared candidate；它不得重新打开或修改旧 occurrence。重复 Result admission 与具体 retry 的 Policy eligibility 仍不由普通 lifecycle transition 决定。
 
 #### Scenario: Reject duplicate terminal completion
 - **WHEN** current slot 已为 `terminal A` 且再次请求 terminal A
 - **THEN** transition SHALL fail closed，而不得把 duplicate completion 当作新的成功 transition
 
 #### Scenario: Reject same-identity prepare after terminal completion
-- **WHEN** current slot 已为 `terminal A` 且请求 prepare A
-- **THEN** transition SHALL fail closed
+- **WHEN** current slot 已为 `terminal A` 且请求普通 prepare A
+- **THEN** transition SHALL fail closed，包括 archive；只能通过专用合法 retry transition 建立新 Archive occurrence
 
 ### Requirement: Prepared Author supersession is a distinct structural transition
 系统 SHALL 在保持 `prepared/terminal` closed states 和普通 `prepare` 规则不变的前提下，提供只针对 `prepared` Author Action 的有界 supersession transition。输入 SHALL 包含当前 canonical ActionIdentity、不同的同 Delivery/Change revise-family target identity，以及与该 target 精确绑定的已校验 Owner correction boundary；不满足任一条件 SHALL fail closed。结构转换自身 SHALL NOT 创造 Owner authority 或决定 stage eligibility，且未提交新 Run 前 SHALL NOT 对外宣称 current 已替换。
@@ -119,3 +119,14 @@
 #### Scenario: Ordinary prepare remains closed over prepared
 - **WHEN** current 为任意 `prepared A` 且调用方使用普通 `prepare` 请求 A 或不同的 B
 - **THEN** transition SHALL 按既有 prepare 规则拒绝，不得将该请求解释为 supersession
+
+### Requirement: Only a failed Archive can use the bounded same-identity retry transition
+系统 SHALL 为已经由 Policy 核准的 retryable terminal Archive 提供独立结构转换，要求 current 为 `terminal archive`、target 为同 Delivery/Change 的 exact same archive semantic identity，且与 exact current failure 绑定的已校验 boundary 为 `ready-action(archive)`。转换 SHALL 仅产生新 occurrence 的 `prepared` candidate；新 Run 保存读回前不得声明 current 已替换。该转换 SHALL NOT 创造 retry eligibility、Run 序号、Owner authority、第三种 lifecycle state 或通用 same-action retry。
+
+#### Scenario: Retry a safe failed Archive as a new execution
+- **WHEN** exact current Archive 安全失败且专用 retry boundary 有效
+- **THEN** 系统 SHALL 允许同 semantic identity 的新 prepared candidate，旧 terminal Run 不变
+
+#### Scenario: Reject a non-Archive or unsupported retry
+- **WHEN** current 为其他 Action、prepared、completed Archive PASS、recovery-required，或 exact retry boundary 缺失/不匹配
+- **THEN** retry transition SHALL 拒绝，不放宽普通 prepare 或 terminal 规则

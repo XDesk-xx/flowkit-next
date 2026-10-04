@@ -2,6 +2,7 @@ import {
   isActionIdentity,
   isCurrentAction,
   transitionCurrentAction,
+  retryTerminalArchive,
   type ActionIdentity,
   type CurrentAction,
   type CurrentActionSlot,
@@ -63,6 +64,7 @@ function sameActionIdentity(a: ActionIdentity, b: ActionIdentity): boolean {
 function stagePreparedCurrentAction(
   currentAction: unknown,
   target: unknown,
+  retryBoundary?: unknown,
 ): { readonly prepared: CurrentAction; readonly staged: boolean } | null {
   if (!isActionIdentity(target)) return null;
 
@@ -84,10 +86,11 @@ function stagePreparedCurrentAction(
   }
 
   if (currentAction.state === "terminal") {
-    const prepared = transitionCurrentAction(currentAction, {
-      type: "prepare",
-      identity: target,
-    });
+    const prepared =
+      transitionCurrentAction(currentAction, {
+        type: "prepare",
+        identity: target,
+      }) ?? retryTerminalArchive(currentAction, target, retryBoundary);
     return prepared === null ? null : { prepared, staged: true };
   }
 
@@ -108,8 +111,13 @@ export async function invokeSingleAction(
   currentContext: unknown,
   execute: ActionExecutionCallback,
   prepare: ActionPreparationCallback = () => "ready",
+  retryBoundary?: unknown,
 ): Promise<SingleActionInvocationOutcome> {
-  const staged = stagePreparedCurrentAction(currentAction, target);
+  const staged = stagePreparedCurrentAction(
+    currentAction,
+    target,
+    retryBoundary,
+  );
   if (staged === null) {
     return failure(
       isCurrentAction(currentAction) ? currentAction : null,

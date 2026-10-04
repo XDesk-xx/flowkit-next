@@ -1,0 +1,172 @@
+{
+  "changeName": "repair-archive-lifecycle",
+  "changeDir": "D:\\Projects\\flowkit-next\\openspec\\changes\\repair-archive-lifecycle",
+  "schemaName": "spec-driven",
+  "contextFiles": {
+    "proposal": [
+      "D:\\Projects\\flowkit-next\\openspec\\changes\\repair-archive-lifecycle\\proposal.md"
+    ],
+    "specs": [
+      "D:\\Projects\\flowkit-next\\openspec\\changes\\repair-archive-lifecycle\\specs\\action-lifecycle\\spec.md",
+      "D:\\Projects\\flowkit-next\\openspec\\changes\\repair-archive-lifecycle\\specs\\author-action-guidance\\spec.md",
+      "D:\\Projects\\flowkit-next\\openspec\\changes\\repair-archive-lifecycle\\specs\\delivery-finalization\\spec.md",
+      "D:\\Projects\\flowkit-next\\openspec\\changes\\repair-archive-lifecycle\\specs\\policy-and-next-boundary\\spec.md",
+      "D:\\Projects\\flowkit-next\\openspec\\changes\\repair-archive-lifecycle\\specs\\repository-integration-and-next-base-continuity\\spec.md",
+      "D:\\Projects\\flowkit-next\\openspec\\changes\\repair-archive-lifecycle\\specs\\reviewer-action-guidance\\spec.md",
+      "D:\\Projects\\flowkit-next\\openspec\\changes\\repair-archive-lifecycle\\specs\\run-result-persistence\\spec.md",
+      "D:\\Projects\\flowkit-next\\openspec\\changes\\repair-archive-lifecycle\\specs\\single-action-execution-terminal-boundary\\spec.md",
+      "D:\\Projects\\flowkit-next\\openspec\\changes\\repair-archive-lifecycle\\specs\\stable-action-command-execution\\spec.md",
+      "D:\\Projects\\flowkit-next\\openspec\\changes\\repair-archive-lifecycle\\specs\\stable-delivery-support-command-execution\\spec.md"
+    ],
+    "design": [
+      "D:\\Projects\\flowkit-next\\openspec\\changes\\repair-archive-lifecycle\\design.md"
+    ],
+    "tasks": [
+      "D:\\Projects\\flowkit-next\\openspec\\changes\\repair-archive-lifecycle\\tasks.md"
+    ]
+  },
+  "progress": {
+    "total": 26,
+    "complete": 26,
+    "remaining": 0
+  },
+  "tasks": [
+    {
+      "id": "1",
+      "description": "1.1 在既有Run/result校验中增加封闭archiveOutcome三种结构及角色/nextBoundary一致性；用单元测试验证completed、failed、partial、未知值、额外字段和矛盾组合，旧无字段PASS/FAIL保持原读取行为。",
+      "done": true
+    },
+    {
+      "id": "2",
+      "description": "1.2 定义有界candidateGit version-1机械事实及逐路径indexBasis（absent或普通stage-0 entry的mode/OID/EOL），保留artifactHashes等raw含义；用测试验证路径集合、raw绑定、object format/各OID长度、有效设置、索引分类、未合并/未知/非普通条目拒绝、重复/冲突和现有大小上限，不回填旧记录或保存全index快照。",
+      "done": true
+    },
+    {
+      "id": "3",
+      "description": "1.3 新Archive descriptor标识archiveContractVersion=2并移除新start的applicableChecks输入；parser/descriptor测试证明旧请求明确诊断、旧完整记录可读、旧started不被新manager冒充接管，其他Action格式不变。",
+      "done": true
+    },
+    {
+      "id": "4",
+      "description": "2.1 将Archive start收缩为Flowkit admission，移除原生validate/archive预演、项目checks和repo/dependency扫描；针对ignored data symlink、无NODE_PATH的pnpm shim及未配置checks分别验证Run可以开始且这些输入/检查未被访问或执行。",
+      "done": true
+    },
+    {
+      "id": "5",
+      "description": "2.2 在既有target artifacts中实现version-2有界prestate/实际effect与原始命令材料，绑定exact Run/descriptor/Author/Review/tool；通过正常调用及存储失败、缺工具、non-UTF8输出、16MiB超限测试验证真实bytes保留、不生成假PASS。",
+      "done": true
+    },
+    {
+      "id": "6",
+      "description": "2.3 让change archive每个started Run至多执行一次真实受控OpenSpec，再进行ordinal rename和窄coordination写入；测试实际spec after、nested capability路径、完整迁移suffix/raw集合与only-state变化，不再从scratch取得后态。",
+      "done": true
+    },
+    {
+      "id": "7",
+      "description": "2.4 基于已停止进程与实际前后态分类安全failed或partial，rolled-back要求正面证据；验证原生validation/collision、预存目标保留、rollback成功、cleanup失败、并发漂移和结果丢失，非零exit本身不能证明无副作用。",
+      "done": true
+    },
+    {
+      "id": "8",
+      "description": "3.1 建立当前Change唯一父链上的Archive/Review来源解析，穿过连续安全failed但不跨partial/PASS/未知/其他阶段；用两次以上retry、错parent、fork、错target及不连续sequence测试验证原失败保留且直接parent正确。",
+      "done": true
+    },
+    {
+      "id": "9",
+      "description": "3.2 增加专用Archive retry结构转换并接入Policy和单Action组合，不放宽普通prepare；测试安全FAIL→新Archive、普通Author FAIL不重试、same terminal revise仍拒绝、partial blocked及reported-boundary冲突。",
+      "done": true
+    },
+    {
+      "id": "10",
+      "description": "3.3 修改start/finish/inspect和query/Run-chain composition的completed-only与direct-review-only假设；固定CLI测试验证安全FAIL以active/current confirmed读回、业务partial以完整terminal/blocked读回、machine partial仍incomplete，失败时不伪造coordination state。",
+      "done": true
+    },
+    {
+      "id": "11",
+      "description": "3.4 为安全failed Archive开放既有Owner revise-action的revise-propose/revise-apply窄边；测试真实候选修订可进入且parent为失败Run，缺/错授权拒绝，partial/completed及普通Author FAIL不被兜底，修订后必须独立Review。",
+      "done": true
+    },
+    {
+      "id": "12",
+      "description": "3.5 区分descriptor-only同Run剩余步骤与terminal失败的新Run重试；测试intent无结果不盲重放、原生成功后仅补剩余rename/coordination、已完成重投只读、同Run失败不能再次执行OpenSpec、terminal partial保持显式恢复交接。",
+      "done": true
+    },
+    {
+      "id": "13",
+      "description": "4.1 将raw==filtered硬拒绝改为普通staging语义的有界index-aware identity/仅CRLF→LF投影，先拒绝active filter/encoding/ident，不以无-w hash-object --path单独预测；真实Git fixtures覆盖已有非binary i/crlf或mixed后启用text=auto、text=auto eol=lf/crlf及继承autocrlf=true/input，修改后raw仍CRLF应为identity，同时覆盖显式text、已有LF与absent对照。增加raw不变、原i/crlf、仅属性由-text改为text eol=crlf、非racy stat cache命中，以及相同raw/规则/index但仅stat改变的对照；二者在成功候选前均应明确unsupported，独立fixture普通add分别读回CRLF/LF，不能把clean输出当作普通add必然结果。保留LF、mixed EOL、lone CR、UTF-8/BOM、non-UTF8、NUL和safecrlf用例；预测调用前后核对index/object/worktree/config未写，无任意filter、touch、refresh、renormalize或临时add试算，实际add/stat操作只在独立语义fixture中作结果对照，不是产品规避步骤。",
+      "done": true
+    },
+    {
+      "id": "14",
+      "description": "4.2 在新Author成功finish的既有candidate校验后由manager生成candidateGit并返回真实保存身份，兼容同值caller字段与duplicate只读；测试Explore/Propose/Apply候选、冲突字段、保存失败、重投后文件已归档和旧记录不回填，不改变角色outcome。",
+      "done": true
+    },
+    {
+      "id": "15",
+      "description": "4.3 使Review/Archive统一验证raw、有效规则和相关indexBasis/预期输出关系，保留exact reviewedRunId及correction许可；测试已有CRLF auto identity与正常EOL差异可审、index仍为绑定输入或已为预期输出均可核对、非预期index/属性/raw变化及不支持状态在接纳前拒绝。增加属性-only旧CRLF/raw相同而clean为LF的输入在Review/Archive同样拒绝、仅stat变化不解锁及已核实输出可正常消费；旧raw!=blob需新候选、通过支持边界的`.cmd/.bat text eol=crlf`可用，raw证据不变。",
+      "done": true
+    },
+    {
+      "id": "16",
+      "description": "5.1 将checkpoint projected/index/commit比较切换为绑定预期blob，stage前核对相关indexBasis或已核实输出，stage后核对输出而不是旧输入OID，独立保持raw fingerprint和Owner exact scope；真实临时Git仓库贯穿候选生成→Review fixture→scoped staging→index/commit读回，覆盖已有i/crlf+text=auto修改后仍CRLF、继承autocrlf同类分支、已有LF/新文件及正常已暂存输出。增加4.1中属性-only/非racy cache命中与仅stat变化两种拒绝链：成功候选不得保存，Review不得接纳猜测值，普通无Review checkpoint也必须在真实staging前拒绝且index不写；独立语义fixture再执行普通add读回CRLF/LF差异，不能令产品自动touch、renormalize、add试算或stage后重绑。并测试未暂存授权路径、范围外staged、非预期index变化、属性未入候选树和设置漂移，确保失败不扩大stage、不自动normalize或重绑错误预期。",
+      "done": true
+    },
+    {
+      "id": "17",
+      "description": "5.2 将version-2实际Archive transformation与目标路径自身有效规则/indexBasis下的Git projection接入checkpoint及候选树Run reader；测试FAIL→retry→PASS后的合法迁移/spec/coordination、source与archive属性不同，以及相同text=auto属性但source为i/crlf、destination为absent的输出差异；目标已有blob等于迁移raw而clean不同须按同一支持边界拒绝，已发生效果如实保留且不伪造Archive PASS。保留额外删改/错mapping/缺证据拒绝，旧version-1成功材料按原合同验证。",
+      "done": true
+    },
+    {
+      "id": "18",
+      "description": "5.3 保留managed-evidence原bytes、完整proof声明和实际index/blob校验；测试原始CRLF/non-UTF8日志与binary/-text、证据被转换拒绝、Git warning与真实错误区分、commit读回异常报告actual SHA，以及Git失败不会触发第二次OpenSpec或改旧Archive PASS。",
+      "done": true
+    },
+    {
+      "id": "19",
+      "description": "5.4 按delivery-finalization两条修订合同，使support-delivery-final.ts完成选择器与delivery-required-evidence-source.ts接纳器复用共享Archive/Review来源解析，并让delivery-final-execution.ts准备/相关复验消费同一关系；在delivery-required-evidence-source及delivery-final相关fixture回归中验证零次、一次、多次安全FAIL→当前PASS可接纳，R17/R15终点身份及原五字段changeCompletions不变，partial/未知/缺失中间项/错目标/fork/过期PASS/来源不一致拒绝，不重放无关祖先admission；本项不执行真实Delivery Full Test/Final或生成其授权。",
+      "done": true
+    },
+    {
+      "id": "20",
+      "description": "6.1 更新当前Archive/Author/Reviewer、OpenSpec工具、Git及Final完成证据消费HOW和README/onboarding/AGENTS受影响说明，使字段、三类结果、Owner修订、index-aware Git身份、成功终点来源与STOP一致；通过guidance/parser测试和有效文档搜索验证不再要求pre-archive/applicableChecks、成功Archive必须直接父Review、以无索引hash作充分staging预测或显式text无条件转换；明确stat-cache歧义的前置unsupported与禁止touch/renormalize规避，不改变Final/Git授权。",
+      "done": true
+    },
+    {
+      "id": "21",
+      "description": "6.2 删除仅由旧Archive使用的snapshot/check-selection生产模块及孤立导出，改写过时测试而非保留死代码满足历史断言；通过类型检查、production reachability与dependency-health确认无生产引用断裂，共享Full Test/原始证据保护仍存在。",
+      "done": true
+    },
+    {
+      "id": "22",
+      "description": "6.3 增加旧完整Run/correction/version-1 Archive只读和旧started Guidance边界回归，明确新事实后的版本兼容限制；用fixture证明不覆盖旧bytes、不借action correct追认Git投影、不降级清理新记录，更新迁移说明。",
+      "done": true
+    },
+    {
+      "id": "23",
+      "description": "7.1 用受控OpenSpec 1.10.0及真实native Windows Git跑正常Archive、原生安全失败→新Run重试→PASS→scoped checkpoint→required Change completion接纳链，加入LP三路径EOL、已有i/crlf+text=auto修改及继承autocrlf分支、LF/absent对照、`.cmd`和ignored symlink/shim回归；保存命令/exit/原始输出，注明合成Reviewer fixture不是独立审查、完成证据接纳不是实际Delivery Full Test/Final。",
+      "done": true
+    },
+    {
+      "id": "24",
+      "description": "7.2 跑安全FAIL→Owner revise-propose或revise-apply→独立角色fixture Review→Archive链及partial/保存中断反例；验证原失败不可变、候选漂移不能直接retry、terminal partial无自动解锁，标明未执行的真实人工恢复范围。",
+      "done": true
+    },
+    {
+      "id": "25",
+      "description": "7.3 对同一最终candidate执行适用Linux与installed-manager回归，覆盖新descriptor/result版本、EOL投影和原始证据读回；未具备环境时记录明确限制，不能用Windows simulation或旧PASS代替本次平台证据。",
+      "done": true
+    },
+    {
+      "id": "26",
+      "description": "7.4 最后一次集中执行适用typecheck、quality:gate、build、domain/acceptance、dependency-health、entropy及OpenSpec严格校验，形成verification.md并核对diff/未执行项；每个小改动仅跑对应最小测试，本项不是Delivery Formal Full Test/Final，也不授权发布、Git commit/push或消费项目升级。",
+      "done": true
+    }
+  ],
+  "state": "all_done",
+  "instruction": "All tasks are complete! This change is ready to be archived.\nConsider running tests and reviewing the changes before archiving.",
+  "context": "Project: flowkit-next\nOpenSpec is the formal authority for Change proposal / design / specs / tasks / archive.\nDelivery 01 is externally governed; the candidate runtime MUST NOT manage its own Delivery.\nChange identity is semantic id. group is organization metadata only and is not a lifecycle node.\nOwner authorization, Reviewer verdict, Verification evidence and Git authority remain distinct.\nDefault human-readable Agent output is Simplified Chinese while machine literals remain exact.\n",
+  "root": {
+    "path": "D:\\Projects\\flowkit-next",
+    "source": "nearest"
+  }
+}

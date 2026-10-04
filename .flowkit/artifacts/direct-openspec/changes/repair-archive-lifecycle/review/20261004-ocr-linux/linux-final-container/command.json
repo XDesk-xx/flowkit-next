@@ -1,0 +1,22 @@
+{
+  "program": "docker",
+  "args": [
+    "run",
+    "--name",
+    "flowkit-ocr-linux-review-final-20261004",
+    "--user",
+    "node",
+    "--mount",
+    "type=bind,source=D:/Projects/flowkit-next/.flowkit/artifacts/direct-openspec/changes/repair-archive-lifecycle/review/20261004-ocr-linux,target=/evidence",
+    "flowkit-review-local:20261004-tools",
+    "sh",
+    "/evidence/linux-final-checks.sh"
+  ],
+  "cwd": "D:\\Projects\\flowkit-next",
+  "startedAt": "2026-10-04T13:03:22.804Z",
+  "finishedAt": "2026-10-04T13:03:40.349Z",
+  "exitCode": 1,
+  "signal": null,
+  "spawnError": null,
+  "timedOut": false
+}
