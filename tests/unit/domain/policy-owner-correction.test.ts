@@ -435,3 +435,108 @@ test("does not treat normal apply/archive readiness as Owner execution authority
     { kind: "ready-action", actionId: "archive" },
   );
 });
+
+function failedCorrection(action: StandardActionId, target: StandardActionId) {
+  const input = withCorrection(action, target, 301);
+  return {
+    ...input,
+    terminalResult: {
+      ...input.terminalResult,
+      authorConclusion: "FAIL",
+      reviewerVerdict: null,
+      nextBoundary: null,
+    },
+  };
+}
+
+test("six exact terminal Author FAILs permit only reached-stage Owner correction", () => {
+  const stages = [
+    ["explore", "revise-explore"],
+    ["propose", "revise-propose"],
+    ["apply", "revise-apply"],
+  ] as const;
+  const targets = ["revise-explore", "revise-propose", "revise-apply"] as const;
+  stages.forEach((actions, stage) =>
+    actions.forEach((action) => {
+      targets.forEach((target, targetStage) => {
+        const input = failedCorrection(action, target);
+        assert.deepEqual(
+          evaluatePolicyAndNextBoundary(input),
+          targetStage <= stage
+            ? { kind: "ready-action", actionId: target }
+            : { kind: "blocked", reason: "unsupported-owner-correction" },
+        );
+        assert.deepEqual(
+          evaluatePolicyAndNextBoundary({
+            ...input,
+            ownerCorrection: { requestedAction: target, authority: null },
+          }),
+          {
+            kind: "blocked",
+            reason:
+              targetStage <= stage
+                ? "owner-authority-required"
+                : "unsupported-owner-correction",
+          },
+        );
+      });
+      const input = failedCorrection(action, targets[stage]);
+      assert.deepEqual(
+        evaluatePolicyAndNextBoundary({ ...input, ownerCorrection: null }),
+        {
+          kind: "blocked",
+          reason: "unrecognized-or-unsuccessful-author-outcome",
+        },
+      );
+      for (const bad of [
+        { ...authority(targets[stage]), decision: "authorize-apply" },
+        { ...authority(targets[stage]), changeId: "other-change" },
+        { ...authority(targets[stage]), scope: targets },
+        { ...authority(targets[stage]), scope: ["review-apply"] },
+      ])
+        assert.deepEqual(
+          evaluatePolicyAndNextBoundary({
+            ...input,
+            ownerCorrection: {
+              requestedAction: targets[stage],
+              authority: bad,
+            },
+          }),
+          { kind: "blocked", reason: "owner-authority-rejected" },
+        );
+      assert.deepEqual(
+        evaluatePolicyAndNextBoundary({
+          ...input,
+          terminalResult: {
+            ...input.terminalResult,
+            nextBoundary: "review-apply",
+          },
+          ownerCorrection: { requestedAction: targets[stage], authority: null },
+        }),
+        { kind: "blocked", reason: "reported-boundary-conflict" },
+      );
+      for (const override of [
+        { role: "reviewer" },
+        { lifecycleState: "prepared" },
+        { runId: "20260827-302-apply" },
+      ])
+        assert.equal(
+          evaluatePolicyAndNextBoundary({
+            ...input,
+            terminalRunContext: { ...input.terminalRunContext, ...override },
+          }).kind,
+          "blocked",
+        );
+      assert.equal(
+        evaluatePolicyAndNextBoundary({
+          ...input,
+          terminalResult: {
+            ...input.terminalResult,
+            authorConclusion: "UNKNOWN",
+          },
+        }).kind,
+        "blocked",
+      );
+    }),
+  );
+});

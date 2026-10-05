@@ -1,3 +1,4 @@
+import type { JsonBudget } from "../internal/json-budget.js";
 import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { isArchiveOutcome } from "./archive-outcome.js";
@@ -27,16 +28,13 @@ import {
   type DeliveryId,
   type StandardActionId,
 } from "./identity.js";
-
 export const MAX_RUN_SEQUENCE = 999_999;
 export const MAX_RUN_FACTS_JSON_BYTES = 65_536;
-
 export interface RunOccurrence {
   readonly date: string;
   readonly sequence: number;
   readonly actionId: StandardActionId;
 }
-
 export interface RunAddressInput {
   readonly repositoryRoot: string;
   readonly deliveryId: DeliveryId;
@@ -44,14 +42,12 @@ export interface RunAddressInput {
   readonly changeStartSequence: number;
   readonly occurrence: RunOccurrence;
 }
-
 export interface RunAddress {
   readonly repositoryRoot: string;
   readonly changeRoot: string;
   readonly runDirectory: string;
   readonly runId: string;
 }
-
 export interface RunContextRecord {
   readonly runId: string;
   readonly occurrence: RunOccurrence;
@@ -61,13 +57,11 @@ export interface RunContextRecord {
   readonly ownerAuthority: OwnerAuthorityFact | null;
   readonly previousRunId: string | null;
 }
-
 export type JsonPrimitive = string | number | boolean | null;
 export type JsonValue = JsonPrimitive | JsonObject | JsonValue[];
 export interface JsonObject {
   readonly [key: string]: JsonValue;
 }
-
 export interface RunResultRecord {
   readonly runId: string;
   readonly actionIdentity: ActionIdentity;
@@ -77,13 +71,11 @@ export interface RunResultRecord {
   readonly nextBoundary: string | null;
   readonly facts: JsonObject;
 }
-
 export interface DurableRunRecord {
   readonly actionMarkdown: string;
   readonly context: RunContextRecord;
   readonly result: RunResultRecord;
 }
-
 const OCCURRENCE_FIELDS = ["date", "sequence", "actionId"] as const;
 const CONTEXT_FIELDS = [
   "runId",
@@ -106,8 +98,8 @@ const RESULT_FIELDS = [
 const RUN_ID_PATTERN = /^(\d{8})-(\d{3,})-(.+)$/;
 const MAX_ACTION_MARKDOWN_BYTES = 65_536;
 const MAX_OUTCOME_LENGTH = 128;
-const MAX_JSON_DEPTH = 16;
-const MAX_JSON_NODES = 1_024;
+export const MAX_JSON_DEPTH = 16;
+export const MAX_JSON_NODES = 4_096;
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   if (typeof value !== "object" || value === null || Array.isArray(value)) {
@@ -259,45 +251,61 @@ function isOutcomeValue(value: unknown): value is string | null {
   );
 }
 
-function isJsonValueInternal(
-  value: unknown,
-  depth: number,
-  counter: { nodes: number },
-): value is JsonValue {
-  counter.nodes += 1;
-  if (counter.nodes > MAX_JSON_NODES || depth > MAX_JSON_DEPTH) return false;
-
-  if (
-    value === null ||
-    typeof value === "string" ||
-    typeof value === "boolean"
-  ) {
+export function measureRunFacts(value: unknown): {
+  valid: boolean;
+  budget?: JsonBudget;
+} {
+  if (!isRecord(value)) return { valid: false };
+  let nodes = 0;
+  let budget: JsonBudget | undefined;
+  const exceed = (
+    dimension: JsonBudget["dimension"],
+    limit: number,
+    observed: number,
+    measurement: JsonBudget["measurement"],
+  ): false => {
+    budget = {
+      subject: "result-facts",
+      dimension,
+      limit,
+      observed,
+      measurement,
+    };
+    return false;
+  };
+  const visit = (item: unknown, depth: number): boolean => {
+    if (depth > MAX_JSON_DEPTH)
+      return exceed("depth", MAX_JSON_DEPTH, depth, "lower-bound");
+    if (++nodes > MAX_JSON_NODES)
+      return exceed("nodes", MAX_JSON_NODES, nodes, "lower-bound");
+    if (item === null || typeof item === "string" || typeof item === "boolean")
+      return true;
+    if (typeof item === "number") return Number.isFinite(item);
+    if (Array.isArray(item))
+      return item.every((child) => visit(child, depth + 1));
+    if (!isRecord(item)) return false;
+    for (const key in item) {
+      if (Object.hasOwn(item, key) && !visit(item[key], depth + 1))
+        return false;
+    }
     return true;
+  };
+  try {
+    if (!visit(value, 0))
+      return { valid: false, ...(budget === undefined ? {} : { budget }) };
+    const bytes = Buffer.byteLength(JSON.stringify(value), "utf8");
+    if (bytes > MAX_RUN_FACTS_JSON_BYTES) {
+      exceed("bytes", MAX_RUN_FACTS_JSON_BYTES, bytes, "exact");
+      return { valid: false, budget };
+    }
+    return { valid: true };
+  } catch {
+    return { valid: false };
   }
-  if (typeof value === "number") return Number.isFinite(value);
-
-  if (Array.isArray(value)) {
-    return value.every((item) => isJsonValueInternal(item, depth + 1, counter));
-  }
-
-  if (!isRecord(value)) return false;
-  return Object.values(value).every((item) =>
-    isJsonValueInternal(item, depth + 1, counter),
-  );
 }
 
 export function isJsonObject(value: unknown): value is JsonObject {
-  if (!isRecord(value)) return false;
-  const counter = { nodes: 0 };
-  if (!isJsonValueInternal(value, 0, counter)) return false;
-  try {
-    return (
-      Buffer.byteLength(JSON.stringify(value), "utf8") <=
-      MAX_RUN_FACTS_JSON_BYTES
-    );
-  } catch {
-    return false;
-  }
+  return measureRunFacts(value).valid;
 }
 
 export function isRunContextRecord(value: unknown): value is RunContextRecord {
@@ -345,7 +353,9 @@ export function isRunContextRecord(value: unknown): value is RunContextRecord {
   return true;
 }
 
-export function isRunResultRecord(value: unknown): value is RunResultRecord {
+function isRunResultEnvelope(
+  value: unknown,
+): value is Omit<RunResultRecord, "facts"> & { readonly facts: unknown } {
   if (!isRecord(value) || !hasExactlyFields(value, RESULT_FIELDS)) return false;
   if (!isActionIdentity(value.actionIdentity)) return false;
 
@@ -362,7 +372,17 @@ export function isRunResultRecord(value: unknown): value is RunResultRecord {
   if (value.nextBoundary !== null && !isSemanticId(value.nextBoundary)) {
     return false;
   }
-  if (!isJsonObject(value.facts)) return false;
+  return true;
+}
+
+export function runResultFactsBudget(value: unknown): JsonBudget | undefined {
+  return isRunResultEnvelope(value)
+    ? measureRunFacts(value.facts).budget
+    : undefined;
+}
+
+export function isRunResultRecord(value: unknown): value is RunResultRecord {
+  if (!isRunResultEnvelope(value) || !isJsonObject(value.facts)) return false;
   if (
     Object.hasOwn(value.facts, "candidateGit") &&
     !candidateGitMatchesResult({

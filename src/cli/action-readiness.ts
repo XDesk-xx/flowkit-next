@@ -1,5 +1,5 @@
 import { execFile } from "node:child_process";
-import { lstat, readFile, readdir } from "node:fs/promises";
+import { lstat, readFile } from "node:fs/promises";
 import path from "node:path";
 import { promisify } from "node:util";
 import { resolveManagedTool } from "../domain/managed-tool-resolution.js";
@@ -25,6 +25,9 @@ import {
   checkReviewCandidate,
 } from "./review-candidate.js";
 import { effectiveRecord, runMaterialLocation } from "./run-effective-facts.js";
+
+import { readProjectOrdinal } from "./project-ordinal.js";
+export { readProjectOrdinal } from "./project-ordinal.js";
 
 const exec = promisify(execFile);
 async function strictValidate(
@@ -62,55 +65,6 @@ async function readableFiles(
       );
     await readFile(path.join(root, name));
   }
-}
-export async function readProjectOrdinal(
-  target: ActionTarget,
-  allowUnassigned = false,
-): Promise<number> {
-  const { parse } = await import("yaml");
-  const manifestRoot = path.join(
-    target.repositoryRoot,
-    "openspec",
-    "delivery-groups",
-  );
-  const ordinals = new Set<number>();
-  let selected: number | null = null;
-  for (const file of await readdir(manifestRoot)) {
-    if (!file.endsWith(".yaml")) continue;
-    const document = parse(
-      await readFile(path.join(manifestRoot, file), "utf8"),
-    ) as { changes?: { id?: unknown; projectOrdinal?: unknown }[] };
-    if (!Array.isArray(document?.changes))
-      blocked(
-        "project-ordinal-invalid",
-        "Delivery manifest lacks Change entries",
-      );
-    for (const change of document.changes) {
-      const value = change.projectOrdinal;
-      if (value === undefined) continue;
-      if (
-        typeof value !== "number" ||
-        !Number.isSafeInteger(value) ||
-        value < 1 ||
-        ordinals.has(value)
-      )
-        blocked(
-          "project-ordinal-invalid",
-          "Project ordinal is malformed or duplicated",
-        );
-      ordinals.add(value);
-      if (file === `${target.deliveryId}.yaml` && change.id === target.changeId)
-        selected = value;
-    }
-  }
-  if (selected === null && allowUnassigned && ordinals.size > 0)
-    return Math.max(...ordinals) + 1;
-  if (selected === null)
-    blocked(
-      "project-ordinal-invalid",
-      "Exact Change has no assigned project ordinal or durable baseline",
-    );
-  return selected;
 }
 export async function packageReadiness(
   request: StartRequest,
@@ -166,7 +120,7 @@ export async function packageReadiness(
         packageRunId,
       );
     // The ordinal is coordination data; never infer it from Run numbering.
-    await readProjectOrdinal(request, action === "explore");
+    await readProjectOrdinal(request, action === "explore", installation);
   }
   if (
     action === "review-explore" ||

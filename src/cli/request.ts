@@ -5,6 +5,15 @@ import {
   type ChangeId,
   type DeliveryId,
 } from "../domain/identity.js";
+import type { JsonBudget } from "../internal/json-budget.js";
+
+export const MAX_REQUEST_JSON_BYTES = 65_536;
+export const MAX_GIT_REQUEST_JSON_BYTES = 1_048_576;
+export function requestJsonLimit(command: string): number {
+  return ["git checkpoint", "git push", "git integrate"].includes(command)
+    ? MAX_GIT_REQUEST_JSON_BYTES
+    : MAX_REQUEST_JSON_BYTES;
+}
 
 export type FoundationCliCommand = "status" | "next" | "doctor";
 
@@ -19,6 +28,7 @@ export class FoundationCliInputError extends Error {
     kind: FoundationCliInputError["kind"],
     message: string,
     options?: ErrorOptions,
+    readonly budget?: JsonBudget,
   ) {
     super(message, options);
     this.name = "FoundationCliInputError";
@@ -217,9 +227,24 @@ export function parseFoundationCliRequest(
   }
 }
 
-export function parseFoundationCliRequestJson(text: string): unknown {
-  if (Buffer.byteLength(text) > 65_536)
-    fail("invalid-request-json", "request exceeds JSON limit");
+export function parseFoundationCliRequestJson(
+  text: string,
+  limit = MAX_REQUEST_JSON_BYTES,
+): unknown {
+  const observed = Buffer.byteLength(text);
+  if (observed > limit)
+    throw new FoundationCliInputError(
+      "invalid-request-json",
+      "request exceeds JSON limit",
+      undefined,
+      {
+        subject: "request",
+        dimension: "bytes",
+        limit,
+        observed,
+        measurement: "exact",
+      },
+    );
   try {
     assertNoDuplicateJsonKeys(text);
     return JSON.parse(text) as unknown;

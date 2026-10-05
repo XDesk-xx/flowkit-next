@@ -1,9 +1,11 @@
 import { isOwnerAuthorityFact, type OwnerAuthorityFact } from "./authority.js";
 import {
   isCurrentAction,
+  isActionIdentity,
   supersedePreparedAction,
   transitionCurrentAction,
   retryTerminalArchive,
+  reviseFailedTerminalAuthor,
   type ActionIdentity,
   type CurrentAction,
 } from "./action-lifecycle.js";
@@ -24,7 +26,6 @@ import {
 } from "./run-result-persistence.js";
 import { isChangeState, type ChangeState } from "./state.js";
 import { isSafeArchiveFailure } from "./archive-outcome.js";
-
 export const POLICY_BLOCKED_REASONS = [
   "invalid-policy-input",
   "change-not-active",
@@ -40,19 +41,15 @@ export const POLICY_BLOCKED_REASONS = [
   "unsupported-owner-correction",
   "action-boundary-not-enterable",
 ] as const;
-
 export type PolicyBlockedReason = (typeof POLICY_BLOCKED_REASONS)[number];
-
 export type PolicyDecision =
   | { readonly kind: "ready-action"; readonly actionId: StandardActionId }
   | { readonly kind: "ready-checkpoint-evaluation" }
   | { readonly kind: "blocked"; readonly reason: PolicyBlockedReason };
-
 export interface OwnerCorrectionRequest {
   readonly requestedAction: StandardActionId;
   readonly authority?: unknown;
 }
-
 export interface PolicyFacts {
   readonly deliveryId: DeliveryId;
   readonly changeId: ChangeId;
@@ -65,22 +62,18 @@ export interface PolicyFacts {
   readonly preparedResult?: RunResultRecord | null;
   readonly ownerCorrection?: OwnerCorrectionRequest | null;
 }
-
 type BlockedDecision = Extract<PolicyDecision, { readonly kind: "blocked" }>;
-
 type ActionBoundary = {
   readonly kind: "action";
   readonly actionId: StandardActionId;
 };
 type NormalBoundary = ActionBoundary | { readonly kind: "checkpoint" };
-
 type ParsedPolicyFacts = Omit<PolicyFacts, "ownerCorrection"> & {
   readonly ownerCorrection: OwnerCorrectionRequest | null;
   readonly preparedCurrentRunId: string | null;
   readonly preparedRunContext: RunContextRecord | null;
   readonly preparedResult: RunResultRecord | null;
 };
-
 const POLICY_FIELDS = new Set([
   "deliveryId",
   "changeId",
@@ -124,11 +117,9 @@ const PREPARED_AUTHOR_ACTIONS = new Set<StandardActionId>([
   "apply",
   "revise-apply",
 ]);
-
 function blocked(reason: PolicyBlockedReason): BlockedDecision {
   return { kind: "blocked", reason };
 }
-
 function isPlainRecord(value: unknown): value is Record<string, unknown> {
   if (typeof value !== "object" || value === null || Array.isArray(value)) {
     return false;
@@ -136,7 +127,6 @@ function isPlainRecord(value: unknown): value is Record<string, unknown> {
   const prototype = Object.getPrototypeOf(value);
   return prototype === Object.prototype || prototype === null;
 }
-
 function sameActionIdentity(a: ActionIdentity, b: ActionIdentity): boolean {
   return (
     a.deliveryId === b.deliveryId &&
@@ -144,7 +134,6 @@ function sameActionIdentity(a: ActionIdentity, b: ActionIdentity): boolean {
     a.actionId === b.actionId
   );
 }
-
 function parseOwnerCorrection(
   value: unknown,
 ): OwnerCorrectionRequest | null | false {
@@ -162,7 +151,6 @@ function parseOwnerCorrection(
       : {}),
   };
 }
-
 function parsePolicyFacts(value: unknown): ParsedPolicyFacts | null {
   if (!isPlainRecord(value)) return null;
   const keys = Object.keys(value);
@@ -226,7 +214,6 @@ function parsePolicyFacts(value: unknown): ParsedPolicyFacts | null {
     ownerCorrection,
   };
 }
-
 function terminalFactsMatch(
   currentAction: CurrentAction,
   context: RunContextRecord | null,
@@ -239,7 +226,6 @@ function terminalFactsMatch(
     hasMatchingRunLinkage(context, result)
   );
 }
-
 function preparedFactsMatch(facts: ParsedPolicyFacts): boolean {
   const current = facts.currentAction;
   const context = facts.preparedRunContext;
@@ -415,6 +401,12 @@ function isStructurallyEnterable(
       type: "prepare",
       identity,
     }) !== null ||
+    (corrected &&
+      isOrdinaryAuthorFailure(facts.terminalRunContext, facts.terminalResult) &&
+      reviseFailedTerminalAuthor(facts.currentAction, identity, {
+        kind: "ready-action",
+        actionId,
+      }) !== null) ||
     (facts.terminalResult !== null &&
       isSafeArchiveFailure(facts.terminalResult) &&
       retryTerminalArchive(facts.currentAction, identity, {
@@ -527,6 +519,31 @@ export function evaluatePolicyAndNextBoundary(input: unknown): PolicyDecision {
   }
   const result = facts.terminalResult;
   if (result === null) return blocked("terminal-result-missing-or-mismatched");
+  if (
+    PREPARED_AUTHOR_ACTIONS.has(current.identity.actionId) &&
+    result.authorConclusion === "FAIL"
+  ) {
+    if (
+      facts.terminalRunContext?.role !== "author" ||
+      facts.terminalRunContext.lifecycleState !== "terminal" ||
+      result.reviewerVerdict !== null ||
+      result.verificationVerdict !== null
+    )
+      return blocked("invalid-policy-input");
+    if (result.nextBoundary !== null)
+      return blocked("reported-boundary-conflict");
+    if (facts.ownerCorrection === null)
+      return blocked("unrecognized-or-unsuccessful-author-outcome");
+    const requested = facts.ownerCorrection.requestedAction;
+    if (!correctionAllowedForStage(current.identity.actionId, requested))
+      return blocked("unsupported-owner-correction");
+    const failure = correctionAuthorityDecision(
+      facts,
+      requested,
+      facts.ownerCorrection.authority,
+    );
+    return failure ?? readyAction(facts, requested, true);
+  }
   const normal = normalBoundaryForTerminal(current, result);
   if (
     result.reviewerVerdict === "rejected" &&
@@ -581,4 +598,52 @@ export function evaluatePolicyAndNextBoundary(input: unknown): PolicyDecision {
   }
 
   return readyAction(facts, actionId);
+}
+
+export function isOrdinaryAuthorFailure(
+  context: unknown,
+  result: unknown,
+): context is RunContextRecord {
+  return (
+    isRunContextRecord(context) &&
+    isRunResultRecord(result) &&
+    hasMatchingRunLinkage(context, result) &&
+    context.lifecycleState === "terminal" &&
+    context.role === "author" &&
+    PREPARED_AUTHOR_ACTIONS.has(context.actionIdentity.actionId) &&
+    result.authorConclusion === "FAIL" &&
+    result.reviewerVerdict === null &&
+    result.verificationVerdict === null &&
+    result.nextBoundary === null
+  );
+}
+
+/** Shared production guard; the structural helper alone cannot establish FAIL or authority. */
+export function prepareFailedAuthorCorrection(
+  current: unknown,
+  target: unknown,
+  context: unknown,
+  result: unknown,
+  authority: unknown,
+): CurrentAction | null {
+  if (
+    !isCurrentAction(current) ||
+    !isActionIdentity(target) ||
+    !isOrdinaryAuthorFailure(context, result) ||
+    !sameActionIdentity(current.identity, context.actionIdentity)
+  )
+    return null;
+  const boundary = evaluatePolicyAndNextBoundary({
+    deliveryId: target.deliveryId,
+    changeId: target.changeId,
+    changeState: "active",
+    currentAction: current,
+    terminalRunContext: context,
+    terminalResult: result,
+    ownerCorrection: { requestedAction: target.actionId, authority },
+  });
+  return boundary.kind === "ready-action" &&
+    boundary.actionId === target.actionId
+    ? reviseFailedTerminalAuthor(current, target, boundary)
+    : null;
 }

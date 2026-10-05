@@ -1,3 +1,4 @@
+import { prepareFailedAuthorCorrection } from "../domain/policy-and-next-boundary.js";
 import { readFile, readdir, realpath, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { isDeepStrictEqual } from "node:util";
@@ -18,6 +19,7 @@ import {
   buildRunAddress,
   parseRunOccurrenceId,
   readDurableRun,
+  runResultFactsBudget,
   type RunAddressInput,
 } from "../domain/run-result-persistence.js";
 import type { ManagerInstallation } from "../internal/manager-installation.js";
@@ -297,7 +299,14 @@ export async function finishAction(
           type: "prepare",
           identity: prepared.actionIdentity,
         }) ??
-        retryTerminalArchive(previousAction, prepared.actionIdentity, policy))
+        retryTerminalArchive(previousAction, prepared.actionIdentity, policy) ??
+        prepareFailedAuthorCorrection(
+          previousAction,
+          prepared.actionIdentity,
+          previous?.context,
+          previous?.result,
+          prepared.ownerAuthority,
+        ))
       : supersedePreparedAction(
           previousAction,
           prepared.actionIdentity,
@@ -339,10 +348,19 @@ export async function finishAction(
     installation,
   );
   if (candidateGit !== null) {
-    admitted = admitActionResult(packageValue, current, occurrence, {
+    const merged = {
       ...admitted,
       facts: { ...admitted.facts, candidateGit },
-    });
+    };
+    const budget = runResultFactsBudget(merged);
+    if (budget !== undefined)
+      blocked(
+        "result-admission-rejected",
+        "Generated Result facts exceed JSON limit",
+        request.runId,
+        budget,
+      );
+    admitted = admitActionResult(packageValue, current, occurrence, merged);
     if (admitted === null)
       blocked(
         "result-admission-rejected",

@@ -17,6 +17,12 @@ import {
   isRunContextRecord,
   type RunResultRecord,
 } from "./run-result-persistence.js";
+import { isDeepStrictEqual } from "node:util";
+import {
+  prepareFailedAuthorCorrection,
+  evaluatePolicyAndNextBoundary,
+  isOrdinaryAuthorFailure,
+} from "./policy-and-next-boundary.js";
 
 export type ActionExecutionCallback = (
   actionPackage: ActionPackage,
@@ -112,24 +118,102 @@ export async function invokeSingleAction(
   execute: ActionExecutionCallback,
   prepare: ActionPreparationCallback = () => "ready",
   retryBoundary?: unknown,
+  failureSource?: unknown,
 ): Promise<SingleActionInvocationOutcome> {
+  let corrected: CurrentAction | null = null;
+  if (failureSource !== undefined) {
+    if (
+      !failureSource ||
+      typeof failureSource !== "object" ||
+      Array.isArray(failureSource)
+    )
+      return failure(
+        isCurrentAction(currentAction) ? currentAction : null,
+        "entry-rejected",
+      );
+    const source = failureSource as Record<string, unknown>;
+    const keys = [
+      "changeState",
+      "terminalRunContext",
+      "terminalResult",
+      "ownerAuthority",
+    ];
+    const parent = source.terminalRunContext;
+    if (
+      Object.keys(source).length !== keys.length ||
+      !keys.every((k) => Object.hasOwn(source, k)) ||
+      source.changeState !== "active" ||
+      !isActionIdentity(target) ||
+      !isOrdinaryAuthorFailure(parent, source.terminalResult) ||
+      !isRunContextRecord(currentContext) ||
+      currentContext.lifecycleState !== "prepared" ||
+      currentContext.role !== "author" ||
+      !sameActionIdentity(currentContext.actionIdentity, target) ||
+      currentContext.previousRunId !== parent.runId ||
+      currentContext.occurrence.sequence !== parent.occurrence.sequence + 1 ||
+      !isDeepStrictEqual(currentContext.ownerAuthority, source.ownerAuthority)
+    )
+      return failure(
+        isCurrentAction(currentAction) ? currentAction : null,
+        "entry-rejected",
+      );
+    const boundary = evaluatePolicyAndNextBoundary({
+      deliveryId: target.deliveryId,
+      changeId: target.changeId,
+      changeState: "active",
+      currentAction,
+      terminalRunContext: parent,
+      terminalResult: source.terminalResult,
+      ownerCorrection: {
+        requestedAction: target.actionId,
+        authority: source.ownerAuthority,
+      },
+    });
+    if (
+      boundary.kind !== "ready-action" ||
+      boundary.actionId !== target.actionId
+    )
+      return failure(
+        isCurrentAction(currentAction) ? currentAction : null,
+        "entry-rejected",
+      );
+    corrected =
+      prepareFailedAuthorCorrection(
+        currentAction,
+        target,
+        parent,
+        source.terminalResult,
+        source.ownerAuthority,
+      ) ??
+      transitionCurrentAction(currentAction, {
+        type: "prepare",
+        identity: target,
+      });
+    if (corrected === null)
+      return failure(
+        isCurrentAction(currentAction) ? currentAction : null,
+        "entry-rejected",
+      );
+  }
   const staged = stagePreparedCurrentAction(
     currentAction,
     target,
     retryBoundary,
   );
-  if (staged === null) {
+  const entry =
+    corrected === null ? staged : { prepared: corrected, staged: true };
+  if (entry === null) {
     return failure(
       isCurrentAction(currentAction) ? currentAction : null,
       "entry-rejected",
     );
   }
 
-  const { prepared } = staged;
+  const { prepared } = entry;
   const preInvocationCurrentAction = isCurrentAction(currentAction)
     ? currentAction
     : null;
-  const preparationFailureAction = staged.staged
+  const preparationFailureAction = entry.staged
     ? preInvocationCurrentAction
     : prepared;
 

@@ -262,7 +262,7 @@ test("blocks unsuccessful outcomes and reported handoff drift deterministically"
   });
   assert.deepEqual(evaluatePolicyAndNextBoundary(authorFail), {
     kind: "blocked",
-    reason: "unrecognized-or-unsuccessful-author-outcome",
+    reason: "reported-boundary-conflict",
   });
 
   const reviewerUnknown = activeTerminal("review-propose", 41, {

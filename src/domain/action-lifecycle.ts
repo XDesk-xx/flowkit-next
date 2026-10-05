@@ -199,3 +199,24 @@ export function retryTerminalArchive(
     return null;
   return nextCurrentAction(target, "prepared");
 }
+
+/** Structural new occurrence only. Production callers must prove the failed Owner correction. */
+export function reviseFailedTerminalAuthor(
+  current: unknown,
+  target: unknown,
+  boundary: unknown,
+): CurrentAction | null {
+  if (
+    !isCurrentAction(current) ||
+    !isActionIdentity(target) ||
+    !isRecord(boundary) ||
+    !hasExactlyFields(boundary, SUPERSESSION_BOUNDARY_FIELDS) ||
+    boundary.kind !== "ready-action" ||
+    boundary.actionId !== target.actionId ||
+    current.state !== "terminal" ||
+    !REVISE_ACTIONS.has(target.actionId) ||
+    !sameActionIdentity(current.identity, target)
+  )
+    return null;
+  return nextCurrentAction(target, "prepared");
+}

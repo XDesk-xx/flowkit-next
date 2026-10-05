@@ -1,0 +1,84 @@
+{
+  "kind": "direct-openspec-proposal-review-evidence",
+  "reviewedAt": "2026-10-05T12:00:30.198Z",
+  "round": 2,
+  "changeId": "repair-bounded-lifecycle-entry-limits",
+  "head": "96179b50b70a7582e264a7af111436d3ca52f788",
+  "platform": "win32",
+  "node": "v22.23.2",
+  "inputs": {
+    ".openspec.yaml": "c956e2a907cf0aa23d948e300827f91e46ab77d64e288d98285dfe990bb0d989",
+    "explore.md": "4179812ba00c7f5c7a841bfad8a684922505973b8ea447b0953959610c512bd0",
+    "proposal.md": "b632da3e9b6d1a4cb0c8e78f3b6d02dda8e212437d27a2308cdbfed714e8c95c",
+    "design.md": "d71a93a8e4e996cd790d7be8b8c515d989547877e737ffc8bb76410790ccdb48",
+    "tasks.md": "6084cc34e0a5fc635fc583a1b1c5476fdcdf5559315f300f8109c3c6c6a102be",
+    "evidence/explore-probes.mjs": "bddedcb7936b7c2e981b571c09da80a6bc0de9d1f38d8193b6fe1648b80a9f69",
+    "evidence/observations.json": "54e350b3499b45a0cb5c7837173621122194d2bb6d14508967569dae9ec5bbe4",
+    "specs/action-lifecycle/spec.md": "f27e3b939b8337233b449612bbc23026b1e7892c8a293991d8ef9c7e324bf365",
+    "specs/author-action-guidance/spec.md": "58196bdf7bd6105f6e01485eb8eea2cc10c3786247277028b81986445f7b4674",
+    "specs/foundation-cli-surface/spec.md": "ff7d55572c4f11970ce768fafb6e2b773a5811ea8ce5e48f49510d1a10bdc035",
+    "specs/policy-and-next-boundary/spec.md": "b1fb3306ed97fc3ab0c5b7a1336467982fdf5b5732105d21389417b75e204556",
+    "specs/run-result-persistence/spec.md": "de38a82752136cf88ea22e18031b14985146e6246edf8b2fd3acc651c8325733",
+    "specs/single-action-execution-terminal-boundary/spec.md": "3d2097c8f450db75be1e5861ed609a32593eab3aa9eb6b3891d3567916d6f684",
+    "specs/stable-action-command-execution/spec.md": "f9c6cd65533ce0ed8ea608c8bb81de9e8c2f70df7bcbe6c84537daccb188e946"
+  },
+  "priorReview": {
+    "path": "review-propose.md",
+    "sha256": "357b2cfb326cdca3bc411f5669c6c9e11b5f36ef0bab269c48f27746e09b8ebd",
+    "evidencePath": "evidence/review-propose-20261005.json",
+    "evidenceSha256": "db8fb9b4200837d299430fcb8af7d35546b32e89d1fb511aea09bd9b758db041"
+  },
+  "changedInputs": [
+    "proposal.md",
+    "design.md",
+    "tasks.md",
+    "specs/author-action-guidance/spec.md",
+    "specs/foundation-cli-surface/spec.md",
+    "specs/policy-and-next-boundary/spec.md",
+    "specs/run-result-persistence/spec.md",
+    "specs/stable-action-command-execution/spec.md"
+  ],
+  "checks": [
+    {
+      "command": "node C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js validate repair-bounded-lifecycle-entry-limits --strict --json",
+      "exitCode": 0,
+      "result": "1 passed, 0 failed, issues=[]"
+    },
+    {
+      "check": "Current baseline identity",
+      "result": "HEAD unchanged; all 7 Explore source SHA-256 values unchanged; Explore and baseline observations/probe hashes unchanged; previous runtime checks were not rerun or claimed as fresh candidate acceptance"
+    },
+    {
+      "check": "Delta/canonical MODIFIED requirements",
+      "result": "7 requirement names resolve; no existing scenario title removed; semantic review completed"
+    },
+    {
+      "command": "installed manager status / next --input -",
+      "managerRoot": "D:/tools/flowkit-manager/node_modules/flowkit-next",
+      "request": {
+        "repositoryRoot": "D:\\Projects\\flowkit-next",
+        "flowkitHome": "C:/Users/xuser/.flowkit"
+      },
+      "exitCodes": [
+        2,
+        2
+      ],
+      "result": "context-inconsistent: OpenSpec Change has no coordination: repair-bounded-lifecycle-entry-limits"
+    },
+    {
+      "command": "installed manager doctor --input -",
+      "exitCode": 0,
+      "result": "pass; OpenSpec 1.10.0; activeChangeCount=1"
+    }
+  ],
+  "findingClosure": {
+    "RP-01": "closed: ordinal required only for new terminal Explore PASS; genuine FAIL/null record remains admissible; correction still requires original readiness; no automatic reseeding"
+  },
+  "verdict": "approved",
+  "newFindings": [],
+  "limitations": [
+    "Planning review, not implementation acceptance",
+    "No Linux execution or Formal Full Test",
+    "No lifecycle/Git operations; no canonical or bootstrap Run created"
+  ]
+}

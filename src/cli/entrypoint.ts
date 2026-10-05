@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { readFile } from "node:fs/promises";
+import { readRequestInput } from "./request-input.js";
 import { executeSupportCommand } from "./support-commands.js";
 import {
   parseSupportArguments,
@@ -28,6 +28,7 @@ import {
 } from "./foundation-cli.js";
 import {
   FoundationCliInputError,
+  requestJsonLimit,
   parseFoundationCliArguments,
   parseFoundationCliRequest,
   parseFoundationCliRequestJson,
@@ -73,7 +74,8 @@ async function main(): Promise<number> {
           "proof inspect",
           ...SUPPORT_COMMANDS,
         ],
-        input: "--input <path|-> (JSON, at most 65536 UTF-8 bytes)",
+        input:
+          "--input <path|-> (JSON, default 65536 UTF-8 bytes; git checkpoint/push/integrate 1048576 bytes)",
         actionTargetFlags: [
           "--repository-root",
           "--delivery-id",
@@ -109,10 +111,7 @@ async function main(): Promise<number> {
       (argv[0] === "proof" && argv[1] === "inspect")
     ) {
       const { inputPath, visible } = parseActionArguments(argv.slice(2));
-      const inputText =
-        inputPath === "-"
-          ? await readStdin()
-          : await readFile(inputPath, "utf8");
+      const inputText = await readRequestInput(inputPath);
       const command = `${argv[0]} ${argv[1]}` as
         | "action start"
         | "action finish"
@@ -131,22 +130,11 @@ async function main(): Promise<number> {
       ["project", "delivery", "change", "memo", "git"].includes(argv[0] ?? "")
     ) {
       const { command, inputPath, visible } = parseSupportArguments(argv);
-      let requestText: string;
-      try {
-        requestText =
-          inputPath === "-"
-            ? await readStdin()
-            : await readFile(inputPath, "utf8");
-      } catch (error) {
-        throw new FoundationCliInputError(
-          "invalid-arguments",
-          "cannot read --input request file",
-          { cause: error },
-        );
-      }
+      const limit = requestJsonLimit(command);
+      const requestText = await readRequestInput(inputPath, limit);
       const request = parseSupportRequest(
         command,
-        parseFoundationCliRequestJson(requestText),
+        parseFoundationCliRequestJson(requestText, limit),
         visible,
       );
       const result = await executeSupportCommand(
@@ -158,19 +146,7 @@ async function main(): Promise<number> {
       return result.status === "completed" ? 0 : 2;
     }
     const { command, inputPath } = parseFoundationCliArguments(argv);
-    let requestText: string;
-    try {
-      requestText =
-        inputPath === "-"
-          ? await readStdin()
-          : await readFile(inputPath, "utf8");
-    } catch (error) {
-      throw new FoundationCliInputError(
-        "invalid-arguments",
-        "cannot read --input request file",
-        { cause: error },
-      );
-    }
+    const requestText = await readRequestInput(inputPath);
     const raw = parseFoundationCliRequestJson(requestText);
     const request = parseFoundationCliRequest(command, raw);
     writeJson(
@@ -194,7 +170,11 @@ async function main(): Promise<number> {
               kind: "error",
               effect: error.effect,
               runId: error.runId,
-              error: { kind: error.kind, message: error.message },
+              error: {
+                kind: error.kind,
+                message: error.message,
+                ...(error.budget === undefined ? {} : { budget: error.budget }),
+              },
             }
           : error instanceof ActionContextError
             ? {
@@ -207,10 +187,16 @@ async function main(): Promise<number> {
                 },
               }
             : error instanceof FoundationCliInputError &&
-                error.kind === "invalid-request"
+                (error.kind === "invalid-request" || error.budget !== undefined)
               ? {
                   kind: "error",
-                  error: { kind: error.kind, message: error.message },
+                  error: {
+                    kind: error.kind,
+                    message: error.message,
+                    ...(error.budget === undefined
+                      ? {}
+                      : { budget: error.budget }),
+                  },
                 }
               : failure(error.kind),
       );
@@ -219,22 +205,6 @@ async function main(): Promise<number> {
     writeJson(failure("internal-error"));
     return 3;
   }
-}
-
-async function readStdin(): Promise<string> {
-  const chunks: Buffer[] = [];
-  let size = 0;
-  for await (const chunk of process.stdin) {
-    const bytes = Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk);
-    size += bytes.length;
-    if (size > 65_536)
-      throw new FoundationCliInputError(
-        "invalid-request-json",
-        "request exceeds JSON limit",
-      );
-    chunks.push(bytes);
-  }
-  return Buffer.concat(chunks).toString("utf8");
 }
 
 process.exitCode = await main();

@@ -58,7 +58,7 @@ node $cli next --input $requestFile
 | 单次 Action               | 查询合法边界后读对应 Action Skill，真实开始、工作、接纳、固定三文件保存读回，然后 STOP                                                                            |
 | Full Test                 | 进入该授权节点才准备 target 自有 `config/verification/full-test.json`，读取 manager 的 `skills/delivery/full-test/SKILL.md`                                       |
 
-已有 project/manifest/Run 先核对再复用，不复制开发仓库 D05 manifest、ordinal 或 Owner ref。首次 ordinal 无已赋值基线时，按既有 HOW 取得明确初始化决定；不从空目录、数组位置或测试样例推断没有历史。Start 不要求首个 commit/clean worktree，不内嵌 commit。正在用于 Start 的规划仍须可读，不能套用历史退役规则。
+已有 project/manifest/Run 先核对再复用，不复制开发仓库 D05 manifest、ordinal 或 Owner ref。canonical 产品首次 Explore 无已赋值基线时，按发行 Explore HOW 的完整 fresh 判定取得候选 1，start 不写值；descriptor 成功后复核身份、activation、OpenSpec、Run/proof/archive 与 manifest 原 bytes，窄写 exact entry 并读回。其他场景无 baseline 仍需 bounded Owner bootstrap 决定，独立 bootstrap 不自动首值；不从空目录、数组位置或测试样例推断没有历史。Start 不要求首个 commit/clean worktree，不内嵌 commit。正在用于 Start 的规划仍须可读，不能套用历史退役规则。
 
 接入、doctor PASS 均不产生 activation、Role、Review 或 Git 权限。CLI 提供查询 `status/next/doctor`、机械记录 `action start/finish/correct`、只读 `action inspect`、`proof inspect` 和下述固定支持命令；CLI 不编码、不做独立 Review、不自动执行下一 Action。当前 Delivery 由已选定的外部 Stable manager 管理，候选包仅在独立 target 验收。
 
@@ -74,6 +74,12 @@ node $cli next --input $queryRequestFile
 ```
 
 `proof inspect` 请求另含 `runId` 与受控 proof `path`；只有实际必要材料才调用。生产者在 finish 前须将本 Run 正式 proof 目录的**全部文件**逐一纳入本 Run 显式 `proofRefs`，每条含归属、路径、用途、bytes 与 SHA。固定 finish 会枚举本 Run 目录并双向核对；若目录有三个文件而只列一个、目录为空、引用重复或文件无效，会在 terminal 机器文件写入前拒绝并保留开始记录和材料。无新材料时不建空目录，显式使用 `proofRefs: []`。后续 Action 的 handoff 可只交接本次判断需要的已声明引用，不删减原 Run Result 或重扫旧目录。`.tmp` 仅承载可丢弃请求、诊断和隔离实验；需要长期复现的实验脚本按原始字节作为本 Run proof 声明具体用途，不作为标准生命周期入口。finish 请求含 `runId`、`role`、`terminal` 与真实 `RunResultRecord`。仅返回 `effect=confirmed` 才表示三文件和 canonical chain 已读回；这不代表业务 PASS。Policy 允许的 prepared/terminal 同阶段 Owner revise 仅由收到真实 Owner 指令的受信宿主在 start 请求中加入现有 `OwnerAuthorityFact`，finish 不再重填。Archive version 2 的 start 只核对 Flowkit admission，不接收项目 checks，不预演原生 validation/archive，也不扫描依赖、ignored symlink 或 pnpm shim。Reviewer `rejected` 配 `nextBoundary: null` 可真实保存为 terminal；新查询返回 `blocked(review-rejected)` 后 STOP。仅明确同阶段 Owner `revise-action` 才可开始对应 revise，不改写原 verdict。Review finish 声明 exact `facts.reviewedRunId`，已有 alias/map 必须同一 direct Author；成功 Author finish 由 manager 生成 candidateGit version-1；Review/Archive 核对 raw 与原绑定的 Git 身份。普通 Action 不需要新增 Owner fact，Review、Full Test 与 Git 边界仍独立。
+
+普通 explore/revise-explore、propose/revise-propose、apply/revise-apply 的 exact terminal Author FAIL/null 可在明确 Owner revise-action 后修订：先核对真实失败 pair、current identity/role/state 与 nextBoundary=null，再按已到达阶段选择同阶段或此前 revise；授权必须同 target、单项 requested Action scope。三个 revise 自身失败也只能创建直接以失败 Run 为 parent 的同名新 occurrence，旧 terminal 三文件保持原 bytes。start 绑定 Owner/唯一 sequence，inspect/finish 重建同一边；裸 READY、缺/错授权、forward skip、PASS/UNKNOWN/Reviewer/Archive partial 不解锁。真实工作完成后新 PASS 指向自己的 Review，不继承旧 approval，不自动 Review/next；ordinal 与其他机器 readiness 继续适用。
+
+Result facts 保持 65,536 UTF-8 bytes、depth=16（root=0），nodes 上限为 4,096，计根/容器/值、不计 key。请求 envelope 默认 65,536 bytes 先检查；caller facts 超限为 invalid-request + error.budget，manager 生成 candidateGit 后超限为 result-admission-rejected + effect/runId + budget，并在 context/result 首写前拒绝。诊断仅有 subject/dimension/limit/observed/measurement，不复制 facts；depth/nodes 提前停止报 lower-bound，完成序列化后的 bytes 报 exact。保留 descriptor/proof，真实修正后用同 Run finish，不删减 refs/hash、外置 candidateGit 或回写历史来凑预算。
+
+固定 Git checkpoint/push/integrate 的文件/stdin 请求上限为 1,048,576 UTF-8 bytes，仅由已解析命令选择；其他请求和内部 correction/manifest JSON 仍为 65,536。读取按实际 Buffer bytes 有界累计，文件增长也核对；超限 invalid-request-json 使用固定 message 和 request bytes 的安全 budget，I/O 仍为 invalid-arguments。duplicate key、depth=32、closed schema、Owner/exact paths/candidate/index/blob/提交后核对均保持。Git 扩容不扩大 Run/proof/Archive diagnostics。
 
 ### 可选宿主权限示例
 

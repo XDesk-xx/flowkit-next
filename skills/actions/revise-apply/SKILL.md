@@ -11,15 +11,19 @@ metadata:
 
 成功 Author finish 的 artifactHashes/Explore SHA 保持 raw 含义；manager 生成 candidateGit version-1，调用者只可传同值，duplicate 消费已保存身份，不重新计算历史。普通 staging 投影核对相关 indexBasis、有效 text/eol/settings 和预期 blob；active filter/encoding/ident、raw==旧 blob 而 clean 不同的 stat-cache 歧义均在成功候选前 unsupported，禁止 touch/refresh/renormalize/临时 add 或 normalize 规避。旧事实不回填 Git 投影。
 
+普通 explore/revise-explore、propose/revise-propose、apply/revise-apply 的 exact terminal Author FAIL/null 可在明确 Owner revise-action 后修订：先核对真实失败 pair、current identity/role/state 与 nextBoundary=null，再按已到达阶段选择同阶段或此前 revise；授权必须同 target、单项 requested Action scope。三个 revise 自身失败也只能创建直接以失败 Run 为 parent 的同名新 occurrence，旧 terminal 三文件保持原 bytes。start 绑定 Owner/唯一 sequence，inspect/finish 重建同一边；裸 READY、缺/错授权、forward skip、PASS/UNKNOWN/Reviewer/Archive partial 不解锁。真实工作完成后新 PASS 指向自己的 Review，不继承旧 approval，不自动 Review/next；ordinal 与其他机器 readiness 继续适用。
+
+Result facts 保持 65,536 UTF-8 bytes、depth=16（root=0），nodes 上限为 4,096，计根/容器/值、不计 key。请求 envelope 默认 65,536 bytes 先检查；caller facts 超限为 invalid-request + error.budget，manager 生成 candidateGit 后超限为 result-admission-rejected + effect/runId + budget，并在 context/result 首写前拒绝。诊断仅有 subject/dimension/limit/observed/measurement，不复制 facts；depth/nodes 提前停止报 lower-bound，完成序列化后的 bytes 报 exact。保留 descriptor/proof，真实修正后用同 Run finish，不删减 refs/hash、外置 candidateGit 或回写历史来凑预算。
+
 ## Authority
 
-Flowkit/Policy has already decided `revise-apply`. This Guidance owns findings-relevant Author implementation mutation only.
+Flowkit/Policy has already decided `revise-apply`. This Guidance owns findings-relevant or explicitly Owner-scoped Author implementation mutation only.
 
 It does not own Reviewer verdict, Verification truth, archive legality, next Action, Owner authority, Delivery Final, or Git authority.
 
 ## Required inputs
 
-Read the exact Reviewer findings from `review-apply`, approved Proposal chain, current candidate diff, prior valid check facts, and controlling Owner scope.
+Read the exact Reviewer findings from `review-apply` when Review is the source; for an ordinary Author FAIL correction, read the exact failed Run/Result and Owner sourceRef/single Action scope instead. Also read approved Proposal chain, current candidate diff, and prior valid check facts.
 
 ## Revision convergence
 

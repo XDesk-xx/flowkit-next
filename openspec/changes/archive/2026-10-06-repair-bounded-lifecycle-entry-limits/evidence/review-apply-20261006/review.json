@@ -1,0 +1,442 @@
+{
+  "kind": "direct-openspec-apply-review",
+  "reviewedAt": "2026-10-05T16:47:29.991Z",
+  "changeId": "repair-bounded-lifecycle-entry-limits",
+  "head": "96179b50b70a7582e264a7af111436d3ca52f788",
+  "branch": "main",
+  "platform": "win32",
+  "node": "v22.23.2",
+  "verdict": "approved",
+  "findings": [],
+  "ocr": {
+    "mode": "delegate",
+    "llmCalled": false,
+    "total_files": 23,
+    "reviewed_files": 23,
+    "skipped_files": [],
+    "coverage_rate": 1,
+    "workspace_total_files": 53,
+    "manually_reviewed_excluded_files": 30,
+    "rules_groups": 3
+  },
+  "inputs": [
+    {
+      "path": "src/cli/action-commands.ts",
+      "status": "modified",
+      "sha256": "336be59d81f3b4389942a7c63af20f82c9d90fc4e1abf5d31f13150d695592b9",
+      "reviewStatus": "reviewed",
+      "selection": "ocr-reviewable"
+    },
+    {
+      "path": "src/cli/action-error.ts",
+      "status": "modified",
+      "sha256": "e8fba1f715f947b12545faf68fb83925e9eb4984f372fff434b424e38ffee025",
+      "reviewStatus": "reviewed",
+      "selection": "ocr-reviewable"
+    },
+    {
+      "path": "src/cli/action-finish.ts",
+      "status": "modified",
+      "sha256": "71b44a229b7a42778e7cd3ecf3e7c361e893569ac7f8e0924f26747bf9354b70",
+      "reviewStatus": "reviewed",
+      "selection": "ocr-reviewable"
+    },
+    {
+      "path": "src/cli/action-inspect.ts",
+      "status": "modified",
+      "sha256": "44757317f4d698a1fdef94fed64beb3dd153c886736a821bf20bbf77d8fcbb52",
+      "reviewStatus": "reviewed",
+      "selection": "ocr-reviewable"
+    },
+    {
+      "path": "src/cli/action-readiness.ts",
+      "status": "modified",
+      "sha256": "ec341227f75393fe45e0d2cee2a1c537cb7a4d3216333dddeec2bd1bb9fec853",
+      "reviewStatus": "reviewed",
+      "selection": "ocr-reviewable"
+    },
+    {
+      "path": "src/cli/action-request.ts",
+      "status": "modified",
+      "sha256": "1bf35d6e87a1e6a18ab518a0ecac98d04c80cb2e9513f906bc95f9b9fb5fbd2f",
+      "reviewStatus": "reviewed",
+      "selection": "ocr-reviewable"
+    },
+    {
+      "path": "src/cli/entrypoint.ts",
+      "status": "modified",
+      "sha256": "ed9699fc19bbdf0a378d91baff6f7c347569fc0df0f41bee736bdd98cd624716",
+      "reviewStatus": "reviewed",
+      "selection": "ocr-reviewable"
+    },
+    {
+      "path": "src/cli/request.ts",
+      "status": "modified",
+      "sha256": "295ecfb48022235b14f9c8082ad75757b0e2d99652c781f8e1293d7e5e374afe",
+      "reviewStatus": "reviewed",
+      "selection": "ocr-reviewable"
+    },
+    {
+      "path": "src/domain/action-lifecycle.ts",
+      "status": "modified",
+      "sha256": "a2d667d0e57894dcfc04efe37d214ddcba1c68f1b3a90e2a95e86a7bf5c1c101",
+      "reviewStatus": "reviewed",
+      "selection": "ocr-reviewable"
+    },
+    {
+      "path": "src/domain/policy-and-next-boundary.ts",
+      "status": "modified",
+      "sha256": "d2a41d49b0dac8ff8a38b300144eb6a0b3d78fe6e2057118aa478019fa7ea06d",
+      "reviewStatus": "reviewed",
+      "selection": "ocr-reviewable"
+    },
+    {
+      "path": "src/domain/run-result-persistence.ts",
+      "status": "modified",
+      "sha256": "4e5fec280f26a86edfb9d8b4345a7a2ff2da78b538542b7b48d48999cfc1ee1b",
+      "reviewStatus": "reviewed",
+      "selection": "ocr-reviewable"
+    },
+    {
+      "path": "src/domain/single-action-execution.ts",
+      "status": "modified",
+      "sha256": "a8ca9a2d6c9e41bb908c16aaadc4c78f28e76ef8ae86fce29e1aa2559481c6dd",
+      "reviewStatus": "reviewed",
+      "selection": "ocr-reviewable"
+    },
+    {
+      "path": "openspec/changes/repair-bounded-lifecycle-entry-limits/.openspec.yaml",
+      "status": "added",
+      "sha256": "c956e2a907cf0aa23d948e300827f91e46ab77d64e288d98285dfe990bb0d989",
+      "reviewStatus": "reviewed",
+      "selection": "ocr-reviewable"
+    },
+    {
+      "path": "openspec/changes/repair-bounded-lifecycle-entry-limits/evidence/explore-probes.mjs",
+      "status": "added",
+      "sha256": "bddedcb7936b7c2e981b571c09da80a6bc0de9d1f38d8193b6fe1648b80a9f69",
+      "reviewStatus": "reviewed",
+      "selection": "ocr-reviewable"
+    },
+    {
+      "path": "openspec/changes/repair-bounded-lifecycle-entry-limits/evidence/observations.json",
+      "status": "added",
+      "sha256": "54e350b3499b45a0cb5c7837173621122194d2bb6d14508967569dae9ec5bbe4",
+      "reviewStatus": "reviewed",
+      "selection": "ocr-reviewable"
+    },
+    {
+      "path": "openspec/changes/repair-bounded-lifecycle-entry-limits/evidence/review-propose-20261005-02.json",
+      "status": "added",
+      "sha256": "524400411a5987699dbaebda2643fe5c8cd2e67420250c7612c6fff81a1c3343",
+      "reviewStatus": "reviewed",
+      "selection": "ocr-reviewable"
+    },
+    {
+      "path": "openspec/changes/repair-bounded-lifecycle-entry-limits/evidence/review-propose-20261005.json",
+      "status": "added",
+      "sha256": "db8fb9b4200837d299430fcb8af7d35546b32e89d1fb511aea09bd9b758db041",
+      "reviewStatus": "reviewed",
+      "selection": "ocr-reviewable"
+    },
+    {
+      "path": "src/cli/fresh-first-explore.ts",
+      "status": "added",
+      "sha256": "ca17cb7d5e0c604e4cb80857fa521e441702daf6d9ee1cde041787383da0aa60",
+      "reviewStatus": "reviewed",
+      "selection": "ocr-reviewable"
+    },
+    {
+      "path": "src/cli/fresh-run-materials.ts",
+      "status": "added",
+      "sha256": "c0f244658c36a224816f5f88edc16629acc510b8d73097bb4eca508a16e0a11c",
+      "reviewStatus": "reviewed",
+      "selection": "ocr-reviewable"
+    },
+    {
+      "path": "src/cli/project-ordinal.ts",
+      "status": "added",
+      "sha256": "e39d34d6e5fb641c91c1211fccc489bf7ed264e06ed787f138183ddad83431b3",
+      "reviewStatus": "reviewed",
+      "selection": "ocr-reviewable"
+    },
+    {
+      "path": "src/cli/request-input.ts",
+      "status": "added",
+      "sha256": "01d64e27169bd06444dbe199d34d463ea27f3f92af0043e52e14a50fa3535efa",
+      "reviewStatus": "reviewed",
+      "selection": "ocr-reviewable"
+    },
+    {
+      "path": "src/internal/json-budget.ts",
+      "status": "added",
+      "sha256": "6f22f8e3507b27a57ce73acf43a484d6d0ed4cbcf5545b1dcc633b055ad6c1f2",
+      "reviewStatus": "reviewed",
+      "selection": "ocr-reviewable"
+    },
+    {
+      "path": "tests/unit/domain/lifecycle-limit-fixture.ts",
+      "status": "added",
+      "sha256": "74a4c68d821420160d08c7db750984ceba7156b5cd5f33202f1c9d6cf27dfece",
+      "reviewStatus": "reviewed",
+      "selection": "ocr-reviewable"
+    },
+    {
+      "path": ".agents/skills/explore-proof-based/SKILL.md",
+      "status": "modified",
+      "sha256": "1b814fdacd871d7191c701d231ba2544103a223733375a003c2abae376a01c9b",
+      "reviewStatus": "reviewed",
+      "selection": "manual-supplement"
+    },
+    {
+      "path": "docs/onboarding.md",
+      "status": "modified",
+      "sha256": "076f350acb411d5f3e7d48503dc420e2101725252ffccfc0aae3d9ce32907108",
+      "reviewStatus": "reviewed",
+      "selection": "manual-supplement"
+    },
+    {
+      "path": "skills/actions/apply/SKILL.md",
+      "status": "modified",
+      "sha256": "c988d89652183df24a3a0494107c4f68c67bc75dbab49071e6e5457e83005bbd",
+      "reviewStatus": "reviewed",
+      "selection": "manual-supplement"
+    },
+    {
+      "path": "skills/actions/explore/SKILL.md",
+      "status": "modified",
+      "sha256": "f8aa62da4c8603835198b3cf314fc8ee9f22ea10c07426c8389711930b6bbd63",
+      "reviewStatus": "reviewed",
+      "selection": "manual-supplement"
+    },
+    {
+      "path": "skills/actions/propose/SKILL.md",
+      "status": "modified",
+      "sha256": "553c8345f5279848568162442abdb8b8f6b657d72f082ec9a51e7d3f700b07ac",
+      "reviewStatus": "reviewed",
+      "selection": "manual-supplement"
+    },
+    {
+      "path": "skills/actions/revise-apply/SKILL.md",
+      "status": "modified",
+      "sha256": "2b4af3b891b8eabf653b17e162fa270aee105e4331ace193adfbb9225b28b059",
+      "reviewStatus": "reviewed",
+      "selection": "manual-supplement"
+    },
+    {
+      "path": "skills/actions/revise-explore/SKILL.md",
+      "status": "modified",
+      "sha256": "4b5fba6a6ac44eebcb146bd741520345a7d5bb1190500222a327f5f39dbd01e8",
+      "reviewStatus": "reviewed",
+      "selection": "manual-supplement"
+    },
+    {
+      "path": "skills/actions/revise-propose/SKILL.md",
+      "status": "modified",
+      "sha256": "1b5244dabdd895eb0a7ffea54b2ecf9247b54cd9a5cde42719ac6d69a92ba4cb",
+      "reviewStatus": "reviewed",
+      "selection": "manual-supplement"
+    },
+    {
+      "path": "skills/delivery/repository-integration/references/host-call.md",
+      "status": "modified",
+      "sha256": "23f9f186f0c7014016035eb9e4e060c25e664d249b439487952712f27450eb11",
+      "reviewStatus": "reviewed",
+      "selection": "manual-supplement"
+    },
+    {
+      "path": "tests/unit/domain/policy-and-next-boundary.test.ts",
+      "status": "modified",
+      "sha256": "0ebacb0d2a71b3617bf9f86080034a306d13a1dcc1ed444a9bbaeaae5fbcfcc6",
+      "reviewStatus": "reviewed",
+      "selection": "manual-supplement"
+    },
+    {
+      "path": "tests/unit/domain/policy-owner-correction.test.ts",
+      "status": "modified",
+      "sha256": "9b2ff9fd02a6e34e5d5a4e8d609eb3b1951992e09f5c323b86c8e35866bade1a",
+      "reviewStatus": "reviewed",
+      "selection": "manual-supplement"
+    },
+    {
+      "path": "openspec/changes/repair-bounded-lifecycle-entry-limits/design.md",
+      "status": "added",
+      "sha256": "d71a93a8e4e996cd790d7be8b8c515d989547877e737ffc8bb76410790ccdb48",
+      "reviewStatus": "reviewed",
+      "selection": "manual-supplement"
+    },
+    {
+      "path": "openspec/changes/repair-bounded-lifecycle-entry-limits/explore.md",
+      "status": "added",
+      "sha256": "4179812ba00c7f5c7a841bfad8a684922505973b8ea447b0953959610c512bd0",
+      "reviewStatus": "reviewed",
+      "selection": "manual-supplement"
+    },
+    {
+      "path": "openspec/changes/repair-bounded-lifecycle-entry-limits/proposal.md",
+      "status": "added",
+      "sha256": "b632da3e9b6d1a4cb0c8e78f3b6d02dda8e212437d27a2308cdbfed714e8c95c",
+      "reviewStatus": "reviewed",
+      "selection": "manual-supplement"
+    },
+    {
+      "path": "openspec/changes/repair-bounded-lifecycle-entry-limits/review-propose-02.md",
+      "status": "added",
+      "sha256": "e6cd8074b82298e77192477c304d3a810e5b83a7612856e21c8fffe57a69cbeb",
+      "reviewStatus": "reviewed",
+      "selection": "manual-supplement"
+    },
+    {
+      "path": "openspec/changes/repair-bounded-lifecycle-entry-limits/review-propose.md",
+      "status": "added",
+      "sha256": "357b2cfb326cdca3bc411f5669c6c9e11b5f36ef0bab269c48f27746e09b8ebd",
+      "reviewStatus": "reviewed",
+      "selection": "manual-supplement"
+    },
+    {
+      "path": "openspec/changes/repair-bounded-lifecycle-entry-limits/specs/action-lifecycle/spec.md",
+      "status": "added",
+      "sha256": "f27e3b939b8337233b449612bbc23026b1e7892c8a293991d8ef9c7e324bf365",
+      "reviewStatus": "reviewed",
+      "selection": "manual-supplement"
+    },
+    {
+      "path": "openspec/changes/repair-bounded-lifecycle-entry-limits/specs/author-action-guidance/spec.md",
+      "status": "added",
+      "sha256": "58196bdf7bd6105f6e01485eb8eea2cc10c3786247277028b81986445f7b4674",
+      "reviewStatus": "reviewed",
+      "selection": "manual-supplement"
+    },
+    {
+      "path": "openspec/changes/repair-bounded-lifecycle-entry-limits/specs/foundation-cli-surface/spec.md",
+      "status": "added",
+      "sha256": "ff7d55572c4f11970ce768fafb6e2b773a5811ea8ce5e48f49510d1a10bdc035",
+      "reviewStatus": "reviewed",
+      "selection": "manual-supplement"
+    },
+    {
+      "path": "openspec/changes/repair-bounded-lifecycle-entry-limits/specs/policy-and-next-boundary/spec.md",
+      "status": "added",
+      "sha256": "b1fb3306ed97fc3ab0c5b7a1336467982fdf5b5732105d21389417b75e204556",
+      "reviewStatus": "reviewed",
+      "selection": "manual-supplement"
+    },
+    {
+      "path": "openspec/changes/repair-bounded-lifecycle-entry-limits/specs/run-result-persistence/spec.md",
+      "status": "added",
+      "sha256": "de38a82752136cf88ea22e18031b14985146e6246edf8b2fd3acc651c8325733",
+      "reviewStatus": "reviewed",
+      "selection": "manual-supplement"
+    },
+    {
+      "path": "openspec/changes/repair-bounded-lifecycle-entry-limits/specs/single-action-execution-terminal-boundary/spec.md",
+      "status": "added",
+      "sha256": "3d2097c8f450db75be1e5861ed609a32593eab3aa9eb6b3891d3567916d6f684",
+      "reviewStatus": "reviewed",
+      "selection": "manual-supplement"
+    },
+    {
+      "path": "openspec/changes/repair-bounded-lifecycle-entry-limits/specs/stable-action-command-execution/spec.md",
+      "status": "added",
+      "sha256": "f9c6cd65533ce0ed8ea608c8bb81de9e8c2f70df7bcbe6c84537daccb188e946",
+      "reviewStatus": "reviewed",
+      "selection": "manual-supplement"
+    },
+    {
+      "path": "openspec/changes/repair-bounded-lifecycle-entry-limits/tasks.md",
+      "status": "added",
+      "sha256": "b937d6f14bff112f1947a1311ea9521958770f4a8a0e6dd72092b7f3c47d85db",
+      "reviewStatus": "reviewed",
+      "selection": "manual-supplement"
+    },
+    {
+      "path": "openspec/changes/repair-bounded-lifecycle-entry-limits/verification.md",
+      "status": "added",
+      "sha256": "bd2e4edd8fb579cf6146b266cc56e37cf473b6845446cc05bb3c4e5fe6f0075c",
+      "reviewStatus": "reviewed",
+      "selection": "manual-supplement"
+    },
+    {
+      "path": "tests/unit/domain/bounded-json-input.test.ts",
+      "status": "added",
+      "sha256": "090835c4155f514d2aac621b5dc010aa7dbc2b08fd3770600ebe58605935a931",
+      "reviewStatus": "reviewed",
+      "selection": "manual-supplement"
+    },
+    {
+      "path": "tests/unit/domain/failed-author-core.test.ts",
+      "status": "added",
+      "sha256": "5835fd856089432a5a5cbafe23d513aabf3f9a674e83c92269431e5ae42fa0fd",
+      "reviewStatus": "reviewed",
+      "selection": "manual-supplement"
+    },
+    {
+      "path": "tests/unit/domain/failed-author-lifecycle.test.ts",
+      "status": "added",
+      "sha256": "116e81621bf2cd4c0e9e4d5aebf45d63345f678443f474d7eebf9ea70d90c39b",
+      "reviewStatus": "reviewed",
+      "selection": "manual-supplement"
+    },
+    {
+      "path": "tests/unit/domain/fresh-first-explore.test.ts",
+      "status": "added",
+      "sha256": "771a5a3522dfa493ab1f53a415c31fcdfc7d083d304296b8705f9bac095a0272",
+      "reviewStatus": "reviewed",
+      "selection": "manual-supplement"
+    },
+    {
+      "path": "tests/unit/domain/generated-facts-budget.test.ts",
+      "status": "added",
+      "sha256": "a89f9e58f9236f20fb8e63a4ba9801004e64c26300825219efc521807f05d1e1",
+      "reviewStatus": "reviewed",
+      "selection": "manual-supplement"
+    }
+  ],
+  "checks": [
+    {
+      "command": "node --import tsx --test --test-concurrency=4 tests/unit/domain/bounded-json-input.test.ts tests/unit/domain/failed-author-core.test.ts tests/unit/domain/failed-author-lifecycle.test.ts tests/unit/domain/fresh-first-explore.test.ts tests/unit/domain/generated-facts-budget.test.ts tests/unit/domain/policy-owner-correction.test.ts tests/unit/domain/policy-and-next-boundary.test.ts",
+      "exitCode": 0,
+      "tests": 49,
+      "passed": 49,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "command": "pnpm typecheck",
+      "exitCode": 0
+    },
+    {
+      "command": "pnpm build",
+      "exitCode": 0
+    },
+    {
+      "command": "node C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js validate repair-bounded-lifecycle-entry-limits --strict --json",
+      "exitCode": 0,
+      "issues": []
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 0
+    },
+    {
+      "check": "Rebuilt distribution against isolated installed candidate",
+      "checked": 137,
+      "mismatch": [],
+      "tarballSha256": "b77e44c2154133ca59c27ef7eb72c0199a7c743717f79af1b1553a0ef9225ef9"
+    },
+    {
+      "check": "Proposal review identity",
+      "result": "All approved planning input hashes unchanged except tasks.md; tasks completion checked against approved scope and current verification"
+    },
+    {
+      "check": "External manager read-only queries",
+      "result": "status/next exit 2 context-inconsistent: independent OpenSpec Change has no coordination; doctor exit 0 pass/OpenSpec 1.10.0"
+    }
+  ],
+  "limitations": [
+    "No Linux execution or formal Delivery Full Test in this review",
+    "Author-reported complete domain/acceptance/quality suites were read but not independently rerun in full",
+    "Current Change has no formal Flowkit Run; direct OpenSpec review only"
+  ],
+  "scopeDrift": "NONE"
+}

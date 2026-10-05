@@ -9,6 +9,10 @@ metadata:
 
 成功 Author finish 的 artifactHashes/Explore SHA 保持 raw 含义；manager 生成 candidateGit version-1，调用者只可传同值，duplicate 消费已保存身份，不重新计算历史。普通 staging 投影核对相关 indexBasis、有效 text/eol/settings 和预期 blob；active filter/encoding/ident、raw==旧 blob 而 clean 不同的 stat-cache 歧义均在成功候选前 unsupported，禁止 touch/refresh/renormalize/临时 add 或 normalize 规避。旧事实不回填 Git 投影。
 
+普通 explore/revise-explore、propose/revise-propose、apply/revise-apply 的 exact terminal Author FAIL/null 可在明确 Owner revise-action 后修订：先核对真实失败 pair、current identity/role/state 与 nextBoundary=null，再按已到达阶段选择同阶段或此前 revise；授权必须同 target、单项 requested Action scope。三个 revise 自身失败也只能创建直接以失败 Run 为 parent 的同名新 occurrence，旧 terminal 三文件保持原 bytes。start 绑定 Owner/唯一 sequence，inspect/finish 重建同一边；裸 READY、缺/错授权、forward skip、PASS/UNKNOWN/Reviewer/Archive partial 不解锁。真实工作完成后新 PASS 指向自己的 Review，不继承旧 approval，不自动 Review/next；ordinal 与其他机器 readiness 继续适用。
+
+Result facts 保持 65,536 UTF-8 bytes、depth=16（root=0），nodes 上限为 4,096，计根/容器/值、不计 key。请求 envelope 默认 65,536 bytes 先检查；caller facts 超限为 invalid-request + error.budget，manager 生成 candidateGit 后超限为 result-admission-rejected + effect/runId + budget，并在 context/result 首写前拒绝。诊断仅有 subject/dimension/limit/observed/measurement，不复制 facts；depth/nodes 提前停止报 lower-bound，完成序列化后的 bytes 报 exact。保留 descriptor/proof，真实修正后用同 Run finish，不删减 refs/hash、外置 candidateGit 或回写历史来凑预算。
+
 ## Authority
 
 Flowkit/Policy has already decided the exact current Action `explore`.
@@ -32,13 +36,21 @@ For the exact current Change coordination entry:
 
 1. If a valid positive-integer `projectOrdinal` is already present, reuse it unchanged. Do not allocate again.
 2. If `projectOrdinal` is absent, inspect durable already-assigned `projectOrdinal` facts from repository Delivery Change coordination entries.
-3. Require every assigned fact used for sequencing to be a valid positive integer and require assigned ordinals to be unambiguous/unique. If durable facts are malformed, duplicated, contradictory, or otherwise insufficient to derive one next value safely, STOP fail-closed.
-4. Derive the next value as `max(existing assigned projectOrdinal) + 1` and persist it exactly once on the exact current Change coordination entry.
+3. Require every assigned fact used for sequencing to be a valid positive safe integer and require assigned ordinals to be unambiguous/unique. If durable facts are malformed, duplicated, contradictory, or otherwise insufficient to derive one next value safely, STOP fail-closed.
+4. When assigned values exist, derive `max(existing assigned projectOrdinal) + 1`; reject safe-integer overflow. When no assigned baseline exists, use only the canonical fresh branch below. Derive the selected value and persist it exactly once on the exact current Change coordination entry after checking the read bytes and eligibility again.
 5. Planned-only Changes do not reserve numbers. An explored Change that is later cancelled keeps its already-assigned ordinal consumed.
 
 Do not derive or substitute `projectOrdinal` from Delivery manifest array position, Run sequence, `changeStartSequence`, completed/archive counts, physical Run-group prefixes, or archive-directory counting.
 
-If no durable assigned ordinal baseline exists, STOP and require an explicit bounded bootstrap/Owner decision rather than inventing a number.
+无 assigned baseline 时，canonical product-managed first Explore 仅在完整 fresh 判定成立时分配 1：regular/unlinked 的 initialized project，runtimeFamily=new 与有效 projectId；全部 Delivery YAML 名称/id/Change entries 合法，当前 exact active 有可信 activation，其他 entries 全为 planned；exact OpenSpec 唯一 active 为当前 Change；无 Run history，continuation 只允许本次 previousRunId=null 的唯一首个 Explore descriptor-only，root/target/Guidance/Package 一致；无历史或孤立 Change 材料，只有本 Run 归属合法的当前 proof；archive 根 absent/empty。linked、unreadable、malformed、complete/partial/bootstrap/未知 Run、其他 active/cancelled/completed 或 orphan proof 均停止。空的合法中间目录、Delivery Full Test、Memo 和 .tmp 不成为编号来源。独立 bootstrap 不适用此例外。
+
+实际 HOW 在 start 成功后执行：
+
+1. 保存本次读取的全部 Delivery manifest 原 bytes，复核上述各来源；用原 manager 的 action inspect 核对当前 runId，必须 descriptor-only/effect=observed。没有基线时这会重检完整 fresh predicate，不能把 runtime 候选值当持久 seed。
+2. 在窄写之前重读所有相关 manifest bytes 并再次 inspect；来源/文件集合或 eligibility 漂移就 STOP。依既有单写者顺序，只向 exact current active entry 写 projectOrdinal=1（已有 baseline 用安全 max+1，已有当前值复用）。不写其他 entry，不新增计数器、锁或 Run。
+3. 读回完整 manifests，核对当前值及全项目唯一性，再完成 Explore。terminal Explore PASS 的 finish 必须携带与持久值一致的 facts.projectOrdinal；值缺失/重复/冲突拒绝。若在分配前真实失败，仍以 FAIL/null 和完整 proofRefs 保存失败；后续 Owner correction 不豁免 ordinal readiness，也不能清空历史重新取 1。
+
+Project Init、Delivery Start、Activate、只读查询及 action start admission 均不写 ordinal。已有 assigned 分支不强制 fresh 历史判定。无法判定 fresh 且无 baseline 时，STOP 交接 bounded Owner bootstrap 决定。
 
 ## Method
 

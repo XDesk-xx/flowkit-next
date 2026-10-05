@@ -1,0 +1,67 @@
+{
+  "kind": "direct-openspec-proposal-review-evidence",
+  "reviewedAt": "2026-10-05T11:48:30.412Z",
+  "changeId": "repair-bounded-lifecycle-entry-limits",
+  "head": "96179b50b70a7582e264a7af111436d3ca52f788",
+  "platform": "win32",
+  "node": "v22.23.2",
+  "inputs": {
+    ".openspec.yaml": "c956e2a907cf0aa23d948e300827f91e46ab77d64e288d98285dfe990bb0d989",
+    "explore.md": "4179812ba00c7f5c7a841bfad8a684922505973b8ea447b0953959610c512bd0",
+    "proposal.md": "e801ea54476c0359af57cb3e5f575924c6d2c93c412635b83ae009bfd6a4bea0",
+    "design.md": "5978799a81812f073bb35c6d6fabb2a7d7d4f76b740a8d574d960de7092fa226",
+    "tasks.md": "29d6708901ce3e37cfcc07535fd65378c4b8057714f32edf48b6cfea6c03033e",
+    "evidence/explore-probes.mjs": "bddedcb7936b7c2e981b571c09da80a6bc0de9d1f38d8193b6fe1648b80a9f69",
+    "evidence/observations.json": "54e350b3499b45a0cb5c7837173621122194d2bb6d14508967569dae9ec5bbe4",
+    "specs/action-lifecycle/spec.md": "f27e3b939b8337233b449612bbc23026b1e7892c8a293991d8ef9c7e324bf365",
+    "specs/author-action-guidance/spec.md": "1363437b79b711a5f8ab533225a9c9a654d3dd3deb368d914967428aa5236c19",
+    "specs/foundation-cli-surface/spec.md": "f95766278b0a04218e126b764eed9b5e1ba656ab2d1088b4129b2ea5b52e1858",
+    "specs/policy-and-next-boundary/spec.md": "af66c8cdead18f1708df8967c074c8fd63fcb526bf84cb2c7c1ddc11f77c0150",
+    "specs/run-result-persistence/spec.md": "4fd607a857c525959d3f603a5434139dfe09d0596737022f120493a2fd8ccfad",
+    "specs/single-action-execution-terminal-boundary/spec.md": "3d2097c8f450db75be1e5861ed609a32593eab3aa9eb6b3891d3567916d6f684",
+    "specs/stable-action-command-execution/spec.md": "5c9de39129292c8ab65abff8c873409004d5718c23eaf5a601d10f6d2d6927a9"
+  },
+  "checks": [
+    {
+      "command": "node C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js validate repair-bounded-lifecycle-entry-limits --strict --json",
+      "exitCode": 0,
+      "result": "1 passed, 0 failed, no issues"
+    },
+    {
+      "command": "node openspec/changes/repair-bounded-lifecycle-entry-limits/evidence/explore-probes.mjs D:/Projects/flowkit-next D:/tools/flowkit-manager/node_modules/flowkit-next",
+      "exitCode": 0,
+      "result": "17 observations identical to saved baseline; 7 source SHA-256 values match"
+    },
+    {
+      "command": "node --import tsx --test --test-name-pattern=\"terminal Author FAIL with null boundary\" tests/unit/domain/action-command-cli.test.ts",
+      "exitCode": 0,
+      "result": "1 passed, 0 failed; existing Explore FAIL result omits projectOrdinal"
+    },
+    {
+      "command": "external installed manager status / next --input -",
+      "request": {
+        "repositoryRoot": "D:\\Projects\\flowkit-next",
+        "flowkitHome": "C:/Users/xuser/.flowkit"
+      },
+      "exitCodes": [
+        2,
+        2
+      ],
+      "result": "context-inconsistent: OpenSpec Change has no coordination: repair-bounded-lifecycle-entry-limits"
+    },
+    {
+      "command": "external installed manager doctor --input -",
+      "exitCode": 0,
+      "result": "pass, OpenSpec 1.10.0, activeChangeCount=1"
+    },
+    {
+      "check": "Delta/canonical requirement comparison",
+      "result": "7 MODIFIED requirement names match; no pre-existing scenario title removed"
+    }
+  ],
+  "limitations": [
+    "Proposal review only; baseline probes are not candidate implementation acceptance",
+    "No Linux execution or Formal Full Test",
+    "No Flowkit Run, lifecycle advancement, implementation change or Git mutation"
+  ]
+}

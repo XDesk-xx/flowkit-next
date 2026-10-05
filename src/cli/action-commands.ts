@@ -1,3 +1,4 @@
+import { prepareFailedAuthorCorrection } from "../domain/policy-and-next-boundary.js";
 import { finishAction as finish } from "./action-finish.js";
 import { readdir } from "node:fs/promises";
 
@@ -117,7 +118,15 @@ async function start(request: StartRequest, installation: ManagerInstallation) {
       ? (transitionCurrentAction(previousAction, {
           type: "prepare",
           identity,
-        }) ?? retryTerminalArchive(previousAction, identity, policy))
+        }) ??
+        retryTerminalArchive(previousAction, identity, policy) ??
+        prepareFailedAuthorCorrection(
+          previousAction,
+          identity,
+          previous?.context,
+          previous?.result,
+          request.ownerAuthority,
+        ))
       : supersedePreparedAction(previousAction, identity, policy);
   if (current === null)
     blocked("action-transition-invalid", "Cannot prepare exact Action", runId);

@@ -1,0 +1,234 @@
+{
+  "kind": "explore-observations",
+  "recordedAt": "2026-10-05T05:14:53.870Z",
+  "repositoryRoot": "D:\\Projects\\flowkit-next",
+  "repositoryHead": "96179b50b70a7582e264a7af111436d3ca52f788",
+  "managerRoot": "D:\\tools\\flowkit-manager\\node_modules\\flowkit-next",
+  "managerPackage": {
+    "name": "flowkit-next",
+    "version": "1.0.0"
+  },
+  "node": "v22.23.2",
+  "platform": "win32",
+  "sourceSha256": {
+    "src/cli/request.ts": "85ba3d28c3da4efa744300fe8172c4b22a8836e252e310f4162f009818548490",
+    "src/cli/entrypoint.ts": "8cb447ac34ce75516818afe665f61ac5ec449d80aa8e364c5148a415a1470a6b",
+    "src/domain/policy-and-next-boundary.ts": "40ca5faec6f875fee8e78c2a689c8b9fc21af00bb93884391884e63d2ddd4e52",
+    "src/domain/action-lifecycle.ts": "6be10d98fe1bedf2cff5f42a406fbe26f00fe2ae79d196e2ab06fdeaab66c0c2",
+    "src/cli/action-readiness.ts": "ee0e9a805ad632e3c479c3ec7a6f6693342d94621bc4276ea05f1a9989ec161c",
+    "src/domain/run-result-persistence.ts": "35a33a74239b0bb5bc94887e861f691498a599fb3dfc60d70de7246840a9e97b",
+    "src/cli/action-finish.ts": "f0edd3bc85d62a91959994936513063cbbed4cf3d1991a499b8a0beadb6f9282"
+  },
+  "boundary": "Synthetic inputs are not Owner authority, Runs, Review or Verification verdicts; no lifecycle/Git writes executed.",
+  "observations": [
+    {
+      "id": "E01-real-path-set",
+      "paths": 910,
+      "bytes": 131035,
+      "closedRequestShape": "accepted",
+      "transport": {
+        "accepted": false,
+        "message": "request exceeds JSON limit",
+        "kind": "invalid-request-json"
+      }
+    },
+    {
+      "id": "E01-current-byte-boundary",
+      "bytes": 65536,
+      "result": {
+        "accepted": true,
+        "message": null
+      }
+    },
+    {
+      "id": "E01-current-byte-boundary",
+      "bytes": 65537,
+      "result": {
+        "accepted": false,
+        "message": "request exceeds JSON limit"
+      }
+    },
+    {
+      "id": "E02-terminal-author-failure",
+      "actionId": "explore",
+      "correction": "revise-explore",
+      "policy": {
+        "kind": "blocked",
+        "reason": "unrecognized-or-unsuccessful-author-outcome"
+      },
+      "withoutOwner": {
+        "kind": "blocked",
+        "reason": "unrecognized-or-unsuccessful-author-outcome"
+      },
+      "ordinaryPrepareCanEnter": true
+    },
+    {
+      "id": "E02-terminal-author-failure",
+      "actionId": "revise-explore",
+      "correction": "revise-explore",
+      "policy": {
+        "kind": "blocked",
+        "reason": "unrecognized-or-unsuccessful-author-outcome"
+      },
+      "withoutOwner": {
+        "kind": "blocked",
+        "reason": "unrecognized-or-unsuccessful-author-outcome"
+      },
+      "ordinaryPrepareCanEnter": false
+    },
+    {
+      "id": "E02-terminal-author-failure",
+      "actionId": "propose",
+      "correction": "revise-propose",
+      "policy": {
+        "kind": "blocked",
+        "reason": "unrecognized-or-unsuccessful-author-outcome"
+      },
+      "withoutOwner": {
+        "kind": "blocked",
+        "reason": "unrecognized-or-unsuccessful-author-outcome"
+      },
+      "ordinaryPrepareCanEnter": true
+    },
+    {
+      "id": "E02-terminal-author-failure",
+      "actionId": "revise-propose",
+      "correction": "revise-propose",
+      "policy": {
+        "kind": "blocked",
+        "reason": "unrecognized-or-unsuccessful-author-outcome"
+      },
+      "withoutOwner": {
+        "kind": "blocked",
+        "reason": "unrecognized-or-unsuccessful-author-outcome"
+      },
+      "ordinaryPrepareCanEnter": false
+    },
+    {
+      "id": "E02-terminal-author-failure",
+      "actionId": "apply",
+      "correction": "revise-apply",
+      "policy": {
+        "kind": "blocked",
+        "reason": "unrecognized-or-unsuccessful-author-outcome"
+      },
+      "withoutOwner": {
+        "kind": "blocked",
+        "reason": "unrecognized-or-unsuccessful-author-outcome"
+      },
+      "ordinaryPrepareCanEnter": true
+    },
+    {
+      "id": "E02-terminal-author-failure",
+      "actionId": "revise-apply",
+      "correction": "revise-apply",
+      "policy": {
+        "kind": "blocked",
+        "reason": "unrecognized-or-unsuccessful-author-outcome"
+      },
+      "withoutOwner": {
+        "kind": "blocked",
+        "reason": "unrecognized-or-unsuccessful-author-outcome"
+      },
+      "ordinaryPrepareCanEnter": false
+    },
+    {
+      "id": "E04-candidate-budget",
+      "indexBasis": "absent",
+      "firstRejected": {
+        "files": 113,
+        "bytes": 35985,
+        "nodes": 1028,
+        "maxDepth": 5,
+        "accepted": false
+      },
+      "lastWithinBytes": {
+        "files": 205,
+        "bytes": 65333,
+        "nodes": 1856,
+        "maxDepth": 5,
+        "accepted": false
+      },
+      "note": "Measurements only; no larger budget has been implemented or admitted."
+    },
+    {
+      "id": "E04-candidate-budget",
+      "indexBasis": "entry",
+      "firstRejected": {
+        "files": 85,
+        "bytes": 34053,
+        "nodes": 1031,
+        "maxDepth": 5,
+        "accepted": false
+      },
+      "lastWithinBytes": {
+        "files": 163,
+        "bytes": 65301,
+        "nodes": 1967,
+        "maxDepth": 5,
+        "accepted": false
+      },
+      "note": "Measurements only; no larger budget has been implemented or admitted."
+    },
+    {
+      "id": "E01-installed-cli",
+      "mode": "file",
+      "result": {
+        "exitCode": 2,
+        "stdout": {
+          "kind": "error",
+          "error": {
+            "kind": "invalid-request-json"
+          }
+        },
+        "stderr": ""
+      }
+    },
+    {
+      "id": "E01-installed-cli",
+      "mode": "stdin",
+      "result": {
+        "exitCode": 2,
+        "stdout": {
+          "kind": "error",
+          "error": {
+            "kind": "invalid-arguments"
+          }
+        },
+        "stderr": ""
+      }
+    },
+    {
+      "id": "E03-ordinal",
+      "variant": "no-baseline",
+      "result": {
+        "accepted": false,
+        "message": "Exact Change has no assigned project ordinal or durable baseline"
+      }
+    },
+    {
+      "id": "E03-ordinal",
+      "variant": "valid-baseline",
+      "result": {
+        "accepted": true,
+        "value": 9
+      }
+    },
+    {
+      "id": "E03-ordinal",
+      "variant": "duplicate-baseline",
+      "result": {
+        "accepted": false,
+        "message": "Project ordinal is malformed or duplicated"
+      }
+    },
+    {
+      "id": "E03-ordinal",
+      "variant": "malformed-baseline",
+      "result": {
+        "accepted": false,
+        "message": "Project ordinal is malformed or duplicated"
+      }
+    }
+  ]
+}

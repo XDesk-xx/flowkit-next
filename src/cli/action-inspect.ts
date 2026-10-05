@@ -1,3 +1,4 @@
+import { prepareFailedAuthorCorrection } from "../domain/policy-and-next-boundary.js";
 import { lstat, readFile, readdir, realpath } from "node:fs/promises";
 import path from "node:path";
 import { isDeepStrictEqual } from "node:util";
@@ -36,6 +37,7 @@ import {
 } from "./review-candidate.js";
 import { archiveEffectsRoot } from "../internal/archive-effects.js";
 import { assertOpenSpecArchiveDate } from "../internal/openspec-archive-date.js";
+import { readProjectOrdinal } from "./project-ordinal.js";
 
 export async function inspectStartedAction(
   request: InspectRequest,
@@ -117,7 +119,14 @@ export async function inspectStartedAction(
           type: "prepare",
           identity: prepared.actionIdentity,
         }) ??
-        retryTerminalArchive(previousAction, prepared.actionIdentity, policy));
+        retryTerminalArchive(previousAction, prepared.actionIdentity, policy) ??
+        prepareFailedAuthorCorrection(
+          previousAction,
+          prepared.actionIdentity,
+          previous?.context,
+          previous?.result,
+          prepared.ownerAuthority,
+        ));
   const guidance = await resolveActionGuidanceRef(
     installation,
     prepared.actionIdentity.actionId,
@@ -137,6 +146,8 @@ export async function inspectStartedAction(
       throw Error("Linked Run file");
     originalHashes[name] = sha256(await readFile(path.join(directory, name)));
   }
+  if (names.length === 1 && prepared.actionIdentity.actionId === "explore")
+    await readProjectOrdinal(request, true, installation, request.runId);
   return {
     root,
     group,

@@ -46,6 +46,8 @@ Never use Delivery array position, Run number, `changeStartSequence`, completed/
 
 If there is no durable assigned ordinal baseline, STOP for an explicit bounded bootstrap/Owner decision rather than inventing an initial value.
 
+canonical 产品首次 Explore 的完整 fresh 首值 1 例外不适用于 independent bootstrap。本 HOW 保留原无 baseline 的 bounded Owner 决定与开始记录，不调用产品 fresh predicate/发行 Guidance、不自动创建初值、不将 bootstrap 历史转换为 canonical Run。
+
 This is bootstrap HOW maintenance only. It does not decide activation/legality and does not create a Registry, counter service, allocator subsystem, new lifecycle state or self-hosting convergence.
 
 ## Core Principle
@@ -60,7 +62,6 @@ Risk
 → Decision impact
 → Boundary
 ```
-
 
 ## 必要材料与相关交接
 

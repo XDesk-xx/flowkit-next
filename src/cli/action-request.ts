@@ -5,6 +5,7 @@ import {
 } from "../domain/authority.js";
 import {
   isRunResultRecord,
+  runResultFactsBudget,
   parseRunOccurrenceId,
   type RunResultRecord,
   type JsonObject,
@@ -282,7 +283,17 @@ export function parseActionCommandRequest(
       "result",
       "terminal",
     ]);
-    if (!isRunResultRecord(value.result)) fail("invalid Result record");
+    if (!isRunResultRecord(value.result)) {
+      const budget = runResultFactsBudget(value.result);
+      if (budget !== undefined)
+        throw new FoundationCliInputError(
+          "invalid-request",
+          "Result facts exceed JSON limit",
+          undefined,
+          budget,
+        );
+      fail("invalid Result record");
+    }
     if (typeof value.terminal !== "boolean") fail("terminal must be boolean");
     return {
       command,
