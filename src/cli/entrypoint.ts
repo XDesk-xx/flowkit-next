@@ -75,7 +75,7 @@ async function main(): Promise<number> {
           ...SUPPORT_COMMANDS,
         ],
         input:
-          "--input <path|-> (JSON, default 65536 UTF-8 bytes; git checkpoint/push/integrate 1048576 bytes)",
+          "--input <path|-> (JSON, default 65536 UTF-8 bytes; action finish and git checkpoint/push/integrate 1048576 bytes; Result facts 524288 bytes)",
         actionTargetFlags: [
           "--repository-root",
           "--delivery-id",
@@ -111,16 +111,17 @@ async function main(): Promise<number> {
       (argv[0] === "proof" && argv[1] === "inspect")
     ) {
       const { inputPath, visible } = parseActionArguments(argv.slice(2));
-      const inputText = await readRequestInput(inputPath);
       const command = `${argv[0]} ${argv[1]}` as
         | "action start"
         | "action finish"
         | "action inspect"
         | "action correct"
         | "proof inspect";
+      const limit = requestJsonLimit(command);
+      const inputText = await readRequestInput(inputPath, limit);
       const parsed = parseActionCommandRequest(
         command,
-        parseFoundationCliRequestJson(inputText),
+        parseFoundationCliRequestJson(inputText, limit),
       );
       assertVisibleTarget(visible, parsed.request);
       writeJson(await executeActionCommand(parsed, loadManagerInstallation()));

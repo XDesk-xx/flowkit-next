@@ -10,7 +10,10 @@ const exec = promisify(execFile);
 const sourceEntry = fileURLToPath(
   new URL("../../../src/cli/entrypoint.ts", import.meta.url),
 );
-export function limitCli(target: { repositoryRoot: string }) {
+export function limitCli(
+  target: { repositoryRoot: string },
+  timeout = 120_000,
+) {
   let number = 0;
   return async (command: string, request: unknown, accepted = true) => {
     const input = path.join(
@@ -34,7 +37,7 @@ export function limitCli(target: { repositoryRoot: string }) {
       const result = await exec(process.execPath, args, {
         cwd: target.repositoryRoot,
         env,
-        timeout: 120_000,
+        timeout,
         maxBuffer: 8 * 1024 * 1024,
       });
       if (!accepted) throw Error("Rejected command unexpectedly accepted");

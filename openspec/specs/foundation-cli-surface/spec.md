@@ -348,7 +348,7 @@ review/revise 等阶段简称 SHALL 仅在真实查询给出唯一匹配 Action 
 
 ### Requirement: Command-selected request budgets preserve bounded input and safe diagnostics
 
-固定 CLI SHALL 根据已解析命令选择 JSON 请求 byte 预算：仅 git checkpoint、git push、git integrate 为 1,048,576 bytes，其他请求及内部 correction/manifest JSON parser 为 65,536 bytes。请求内容 SHALL NOT 选择额度。CLI help SHALL 在原 input 描述中如实区分默认 65,536 与这三个 Git 命令的 1,048,576 bytes 额度；不提供 caller 可配置预算。文件和 stdin SHALL 按实际读取 bytes 有界收集并在首次观察到超限时拒绝；文件 stat SHALL NOT 代替读取计数，失败/结束 SHALL 关闭 handle。重复 key、depth 32、封闭 schema、Owner 授权、exact paths 和既有 Git 核对 SHALL 保持。
+固定 CLI SHALL 根据已解析命令选择 JSON 请求 byte 预算：action finish、git checkpoint、git push、git integrate 为 1,048,576 bytes，其他请求及内部 correction/manifest JSON parser 为 65,536 bytes。请求内容 SHALL NOT 选择额度。CLI help SHALL 在原 input 描述中如实区分默认 65,536 与 action finish/三个 Git 命令的 1,048,576 bytes 额度；不提供 caller 可配置预算。文件和 stdin SHALL 按实际读取 bytes 有界收集并在首次观察到超限时拒绝；文件 stat SHALL NOT 代替读取计数，失败/结束 SHALL 关闭 handle。重复 key、depth 32、封闭 schema、Owner 授权、exact paths 和既有 Git 核对 SHALL 保持。
 
 容量拒绝 SHALL 保留非零进程结果，request byte overflow 的 error.kind SHALL 为 invalid-request-json、message SHALL 为 request exceeds JSON limit。已有输入错误 SHALL 透传，实际 I/O 故障 SHALL 为 invalid-arguments。容量错误 SHALL 携带封闭 error.budget：subject 仅 request/result-facts，dimension 仅 bytes/depth/nodes，limit/observed 为非负安全整数，measurement 仅 exact/lower-bound；request overflow 使用 request/bytes 与所选 limit。提前停止只能声明 observed 下界；完整测量才声明 exact。输出 SHALL NOT 包含 payload、Owner source 内容、异常 cause 或 stack；非容量错误 SHALL NOT 带 budget。
 
@@ -364,8 +364,8 @@ review/revise 等阶段简称 SHALL 仅在真实查询给出唯一匹配 Action 
 
 #### Scenario: Retain the default request limit
 
-- **WHEN** 普通 Action、查询或内部 correction/manifest 请求超过 65,536 bytes
-- **THEN** parser SHALL 拒绝，不因 body 声称 Git operation 而扩大预算
+- **WHEN** action start/inspect/correct、proof inspect、查询或内部 correction/manifest 请求超过 65,536 bytes
+- **THEN** parser SHALL 拒绝，不因 body 声称 Git operation 或 finish 而扩大预算
 
 #### Scenario: Report the same overflow for files and stdin
 
@@ -385,4 +385,9 @@ review/revise 等阶段简称 SHALL 仅在真实查询给出唯一匹配 Action 
 #### Scenario: Describe the selected budgets in CLI help
 
 - **WHEN** 用户读取既有 CLI help
-- **THEN** help SHALL 同时说明默认 65,536 和 git checkpoint/push/integrate 的 1,048,576 bytes，不再宣称全部请求统一 65,536
+- **THEN** help SHALL 同时说明默认 65,536、action finish/git checkpoint/push/integrate 的 1,048,576 bytes 及 Result facts 的 524,288 bytes，不再宣称全部请求统一 65,536
+
+#### Scenario: Finish accepts complete proof declarations above the ordinary limit
+
+- **WHEN** 合法 action finish 文件/stdin 请求超过 65,536 但不超过 1,048,576 UTF-8 bytes，且最终 Result facts 不超过共享 524,288 bytes/depth/nodes 预算
+- **THEN** CLI SHALL 进入原 target/schema/descriptor/proof/Result admission，不删减 refs/hash；1,048,577 bytes SHALL 在业务写入前以 request budget 拒绝

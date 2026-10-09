@@ -12,6 +12,7 @@ import { gitBytes } from "../../../src/internal/git-checkpoint-scope.js";
 import {
   measureRunFacts,
   isRunResultRecord,
+  MAX_RUN_FACTS_JSON_BYTES,
 } from "../../../src/domain/run-result-persistence.js";
 
 async function candidates(root: string, count: number) {
@@ -75,7 +76,7 @@ test("generated facts byte/node overflow leaves descriptor and proof intact, the
       },
     };
     for (const [padding, dimension] of [
-      ["x".repeat(45_000), "bytes"],
+      ["x".repeat(MAX_RUN_FACTS_JSON_BYTES - 20_000), "bytes"],
       [Array(3_900).fill(0), "nodes"],
     ] as const) {
       const oversized = {
@@ -86,7 +87,7 @@ test("generated facts byte/node overflow leaves descriptor and proof intact, the
         },
       };
       assert.equal(measureRunFacts(oversized.result.facts).valid, true);
-      assert.ok(Buffer.byteLength(JSON.stringify(oversized)) < 65_536);
+      assert.ok(Buffer.byteLength(JSON.stringify(oversized)) < 1_048_576);
       const rejected = await call("action finish", oversized, false);
       assert.equal(rejected.error.kind, "result-admission-rejected");
       assert.equal(rejected.runId, started.runId);

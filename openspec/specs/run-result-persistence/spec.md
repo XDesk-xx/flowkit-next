@@ -302,14 +302,19 @@ Run目录 SHALL 继续仅含原三文件。correction SHALL 为target artifacts�
 
 ### Requirement: Result facts share bounded bytes depth and node admission
 
-Run Result facts SHALL 保持 JSON-compatible、UTF-8 JSON.stringify bytes 至多 65,536、depth 至多 16，并将节点预算限定为 4,096。节点 SHALL 计根、对象/数组容器和所有值，不计 object key；根 depth SHALL 为 0。共享有界 DFS SHALL 先检查 depth，再递增检查 nodes，首次超限即停止，完整兼容遍历后才量 bytes；多个超限 SHALL 按该固定顺序报告首个维度，提前停止计数 SHALL 标为 lower-bound，完整计数 SHALL 标为 exact。已发现的 schema/非 JSON-compatible 错误 SHALL 不被 budget 错误遮蔽；提前容量拒绝 SHALL 不要求遍历未访问部分，也不声明整个 facts schema 合法。
+Run Result facts SHALL 保持 JSON-compatible、UTF-8 JSON.stringify bytes 至多 524,288、depth 至多 16，并将节点预算限定为 4,096。节点 SHALL 计根、对象/数组容器和所有值，不计 object key；根 depth SHALL 为 0。共享有界 DFS SHALL 先检查 depth，再递增检查 nodes，首次超限即停止，完整兼容遍历后才量 bytes；多个超限 SHALL 按该固定顺序报告首个维度，提前停止计数 SHALL 标为 lower-bound，完整计数 SHALL 标为 exact。已发现的 schema/非 JSON-compatible 错误 SHALL 不被 budget 错误遮蔽；提前容量拒绝 SHALL 不要求遍历未访问部分，也不声明整个 facts schema 合法。
 
-生产 writer/admission、readback、Review/Archive/correction 的相关消费者 SHALL 使用同一预算和原完整性规则。Action markdown、proof、Archive diagnostics bytes SHALL 保持；既有 Run SHALL 不改写/重签，不外置或删减 candidateGit 身份以满足预算。节点增加 SHALL 不承诺任意 64 KiB facts 均可接纳。
+生产 writer/admission、readback、Review/Archive/correction 的相关消费者 SHALL 使用同一预算和原完整性规则。Action markdown、proof、Archive diagnostics bytes SHALL 保持；既有 Run SHALL 不改写/重签，不外置或删减 candidateGit 身份以满足预算。byte 扩容 SHALL 不承诺任意 512 KiB facts 均可接纳；depth=16、nodes=4,096 的有界遍历与完整性核对保持。
 
 #### Scenario: Accept valid candidate metadata above the previous node limit
 
 - **WHEN** otherwise-valid facts 为 1,856/1,967 nodes 且在 bytes/depth 预算内
 - **THEN** writer/readers SHALL 接受并继续 schema、角色和完整性核对
+
+#### Scenario: Preserve complete larger proof facts
+
+- **WHEN** otherwise-valid facts 含完整 254 个 proof refs、在 524,288 bytes/depth=16/nodes=4,096 内，包含 manager 生成后的 candidateGit
+- **THEN** finish/writer/readback/Review/Archive SHALL 使用同一预算核对原完整 refs/hash，不外置 metadata、不回写旧 Run；超限仍在机器首写前拒绝
 
 #### Scenario: Enforce the exact node boundary
 
@@ -318,8 +323,8 @@ Run Result facts SHALL 保持 JSON-compatible、UTF-8 JSON.stringify bytes 至�
 
 #### Scenario: Preserve bytes and depth boundaries
 
-- **WHEN** otherwise-valid facts 在 depth 16/17 或 JSON UTF-8 bytes 65,536/65,537 两侧
-- **THEN** 共享 validator SHALL 分别接受和拒绝，不随节点增加放宽其他额度
+- **WHEN** otherwise-valid facts 在 depth 16/17 或 JSON UTF-8 bytes 524,288/524,289 两侧
+- **THEN** 共享 validator SHALL 分别接受和拒绝，不因 byte 扩容放宽 depth/nodes
 
 #### Scenario: Report a deterministic first exceeded dimension
 

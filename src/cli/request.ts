@@ -9,7 +9,9 @@ import type { JsonBudget } from "../internal/json-budget.js";
 
 export const MAX_REQUEST_JSON_BYTES = 65_536;
 export const MAX_GIT_REQUEST_JSON_BYTES = 1_048_576;
+export const MAX_FINISH_REQUEST_JSON_BYTES = 1_048_576;
 export function requestJsonLimit(command: string): number {
+  if (command === "action finish") return MAX_FINISH_REQUEST_JSON_BYTES;
   return ["git checkpoint", "git push", "git integrate"].includes(command)
     ? MAX_GIT_REQUEST_JSON_BYTES
     : MAX_REQUEST_JSON_BYTES;

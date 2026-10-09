@@ -465,5 +465,5 @@ canonical product-managed first Explore readiness SHALL 使用 author-action-gui
 
 #### Scenario: Diagnose the envelope before nested facts
 
-- **WHEN** 整个 finish 请求先超过默认 65,536 bytes
+- **WHEN** 整个 action finish 请求先超过专用 1,048,576 bytes
 - **THEN** CLI SHALL 先输出 request bytes 诊断，不宣称 facts validator 已执行

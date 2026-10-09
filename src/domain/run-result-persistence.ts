@@ -29,7 +29,7 @@ import {
   type StandardActionId,
 } from "./identity.js";
 export const MAX_RUN_SEQUENCE = 999_999;
-export const MAX_RUN_FACTS_JSON_BYTES = 65_536;
+export const MAX_RUN_FACTS_JSON_BYTES = 524_288;
 export interface RunOccurrence {
   readonly date: string;
   readonly sequence: number;

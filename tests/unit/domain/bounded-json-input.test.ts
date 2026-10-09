@@ -83,7 +83,16 @@ test("command-selected parser budgets preserve closed JSON and UTF-8 boundaries"
         e instanceof FoundationCliInputError && e.budget?.limit === 65_536,
     );
   }
-  assert.equal(requestJsonLimit("action finish"), 65_536);
+  assert.equal(requestJsonLimit("action finish"), 1_048_576);
+  for (const command of [
+    "action start",
+    "action inspect",
+    "action correct",
+    "proof inspect",
+    "status",
+    "next",
+  ])
+    assert.equal(requestJsonLimit(command), 65_536);
   assert.deepEqual(
     parseFoundationCliRequestJson("{}".padEnd(1_048_576), 1_048_576),
     {},
@@ -270,12 +279,12 @@ test("facts budget counts root/containers/values and retains bytes/depth", () =>
   });
   assert.equal(isJsonObject(nested(16)), true);
   assert.equal(measureRunFacts(nested(17)).budget?.dimension, "depth");
-  assert.equal(isJsonObject({ s: "x".repeat(65_528) }), true);
-  assert.deepEqual(measureRunFacts({ s: "x".repeat(65_529) }).budget, {
+  assert.equal(isJsonObject({ s: "x".repeat(524_280) }), true);
+  assert.deepEqual(measureRunFacts({ s: "x".repeat(524_281) }).budget, {
     subject: "result-facts",
     dimension: "bytes",
-    limit: 65_536,
-    observed: 65_537,
+    limit: 524_288,
+    observed: 524_289,
     measurement: "exact",
   });
   assert.equal(
@@ -359,6 +368,7 @@ test("finish file/stdin machine capacity errors distinguish caller facts from th
       for (const [facts, dimension] of [
         [{ values: Array(4_095).fill(0) }, "nodes"],
         [{ deep: nested(17) }, "depth"],
+        [{ s: "界".repeat(174_763) }, "bytes"],
       ] as const) {
         const rejected = await cli(
           ["action", "finish"],
@@ -368,7 +378,10 @@ test("finish file/stdin machine capacity errors distinguish caller facts from th
         assert.equal(rejected.error.kind, "invalid-request");
         assert.equal(rejected.error.budget.subject, "result-facts");
         assert.equal(rejected.error.budget.dimension, dimension);
-        assert.equal(rejected.error.budget.measurement, "lower-bound");
+        assert.equal(
+          rejected.error.budget.measurement,
+          dimension === "bytes" ? "exact" : "lower-bound",
+        );
         assert.deepEqual(Object.keys(rejected.error).sort(), [
           "budget",
           "kind",
@@ -377,12 +390,30 @@ test("finish file/stdin machine capacity errors distinguish caller facts from th
       }
       const envelope = await cli(
         ["action", "finish"],
-        JSON.stringify(request).padEnd(65_537),
+        JSON.stringify(request).padEnd(1_048_577),
         transport,
       );
       assert.equal(envelope.error.kind, "invalid-request-json");
       assert.equal(envelope.error.budget.subject, "request");
-      assert.equal(envelope.error.budget.limit, 65_536);
+      assert.equal(envelope.error.budget.limit, 1_048_576);
+      const larger = JSON.stringify({
+        ...request,
+        result: { ...request.result, facts: { note: "界".repeat(40_000) } },
+      });
+      const admitted = await cli(["action", "finish"], larger, transport);
+      assert.equal(admitted.kind, "error");
+      assert.notEqual(admitted.error.kind, "invalid-request-json");
+      assert.notEqual(admitted.error.kind, "invalid-request");
+      const ordinary = await cli(["action", "start"], larger, transport);
+      assert.equal(ordinary.error.kind, "invalid-request-json");
+      assert.equal(ordinary.error.budget.limit, 65_536);
+      const duplicate = larger.replace(
+        '"terminal":true',
+        '"terminal":true,"terminal":true',
+      );
+      const malformed = await cli(["action", "finish"], duplicate, transport);
+      assert.equal(malformed.error.kind, "invalid-request-json");
+      assert.equal(malformed.error.budget, undefined);
     }
   } finally {
     await rm(root, { recursive: true, force: true });
