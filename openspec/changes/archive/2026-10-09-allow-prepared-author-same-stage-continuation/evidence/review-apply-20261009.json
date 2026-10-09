@@ -1,0 +1,774 @@
+{
+  "schemaVersion": 1,
+  "kind": "direct-openspec-apply-review",
+  "role": "reviewer",
+  "changeId": "allow-prepared-author-same-stage-continuation",
+  "reviewedAt": "2026-10-09T04:45:25.827Z",
+  "verdict": "approved",
+  "findings": [],
+  "scopeDrift": "NONE",
+  "head": "0e0d8106d2cdf632e9aacbc61311cbe6e6d762db",
+  "mode": "working-tree",
+  "ocr": {
+    "mode": "delegate",
+    "externalLlmInvoked": false,
+    "total_files": 18,
+    "reviewed_files": 18,
+    "skipped_files": 0,
+    "coverage_rate": 1,
+    "manualSupplement": 32,
+    "totalCandidateFiles": 50,
+    "previewRef": ".flowkit/artifacts/allow-prepared-author-same-stage-continuation/review-apply-20261009/ocr-preview.json",
+    "rulesRef": ".flowkit/artifacts/allow-prepared-author-same-stage-continuation/review-apply-20261009/ocr-rules.json",
+    "coverage": [
+      {
+        "path": "src/cli/current-run-chain.ts",
+        "status": "modified",
+        "insertions": 19,
+        "deletions": 8,
+        "sha256": "accfe307430fccc093437d8190c0232696e68fa72cc95b30886be3953636b8f5",
+        "bytes": 19515,
+        "selection": "ocr-selected",
+        "reviewStatus": "reviewed"
+      },
+      {
+        "path": "src/domain/action-lifecycle.ts",
+        "status": "modified",
+        "insertions": 0,
+        "deletions": 1,
+        "sha256": "d1b889efcc83521491da8ea781c78910a97772d97b180ca193a5d2d362aacfc4",
+        "bytes": 6309,
+        "selection": "ocr-selected",
+        "reviewStatus": "reviewed"
+      },
+      {
+        "path": "src/domain/policy-and-next-boundary.ts",
+        "status": "modified",
+        "insertions": 2,
+        "deletions": 3,
+        "sha256": "983c1c8727506b51127974ae0845035215cfde454e2b5eee32b11423ead23a62",
+        "bytes": 20431,
+        "selection": "ocr-selected",
+        "reviewStatus": "reviewed"
+      },
+      {
+        "path": "openspec/changes/allow-prepared-author-same-stage-continuation/.openspec.yaml",
+        "status": "added",
+        "insertions": 2,
+        "deletions": 0,
+        "sha256": "8ba8273010ceb66cd0ab320b2f49de179fac6fd6f648317c2cc129442eea7dc0",
+        "bytes": 40,
+        "selection": "ocr-selected",
+        "reviewStatus": "reviewed"
+      },
+      {
+        "path": "openspec/changes/allow-prepared-author-same-stage-continuation/evidence/apply-baseline.json",
+        "status": "added",
+        "insertions": 66,
+        "deletions": 0,
+        "sha256": "6af1c10518cda56ffd1086f0a20928e4bbb3508badbed6f8c82e748c91ee0cf8",
+        "bytes": 2576,
+        "selection": "ocr-selected",
+        "reviewStatus": "reviewed"
+      },
+      {
+        "path": "openspec/changes/allow-prepared-author-same-stage-continuation/evidence/apply-source-identities.json",
+        "status": "added",
+        "insertions": 41,
+        "deletions": 0,
+        "sha256": "eb9d65b989caf4ca8727afd3feefa69d7686e62068dfb5b9ad9bc31bef75319f",
+        "bytes": 1529,
+        "selection": "ocr-selected",
+        "reviewStatus": "reviewed"
+      },
+      {
+        "path": "openspec/changes/allow-prepared-author-same-stage-continuation/evidence/baseline-observation.json",
+        "status": "added",
+        "insertions": 176,
+        "deletions": 0,
+        "sha256": "5a73f16a27ea6fa561bbbdcb9e08fd33f77c4096d22a0608157d868a8dfde86d",
+        "bytes": 5486,
+        "selection": "ocr-selected",
+        "reviewStatus": "reviewed"
+      },
+      {
+        "path": "openspec/changes/allow-prepared-author-same-stage-continuation/evidence/code-checks.json",
+        "status": "added",
+        "insertions": 29,
+        "deletions": 0,
+        "sha256": "eba1308b6e5a1be9bfa950f32c92d8a3a590c9971e6d271ab14e05c727bea29d",
+        "bytes": 961,
+        "selection": "ocr-selected",
+        "reviewStatus": "reviewed"
+      },
+      {
+        "path": "openspec/changes/allow-prepared-author-same-stage-continuation/evidence/final-domain.json",
+        "status": "added",
+        "insertions": 33,
+        "deletions": 0,
+        "sha256": "e447adbe84d63d90ec627f5ac94097ae11157d8ba1d415b3d8eeef1aae281921",
+        "bytes": 1046,
+        "selection": "ocr-selected",
+        "reviewStatus": "reviewed"
+      },
+      {
+        "path": "openspec/changes/allow-prepared-author-same-stage-continuation/evidence/installed-acceptance-final.json",
+        "status": "added",
+        "insertions": 35,
+        "deletions": 0,
+        "sha256": "e55221744d668f3af972abd10224086c09f585ce76efd12da16be55c87c5fc7d",
+        "bytes": 1227,
+        "selection": "ocr-selected",
+        "reviewStatus": "reviewed"
+      },
+      {
+        "path": "openspec/changes/allow-prepared-author-same-stage-continuation/evidence/installed-acceptance.json",
+        "status": "added",
+        "insertions": 35,
+        "deletions": 0,
+        "sha256": "35f690cc3f0066b13a7e07decce57b14f908eef1446f8685c5d68caac7aa6329",
+        "bytes": 1203,
+        "selection": "ocr-selected",
+        "reviewStatus": "reviewed"
+      },
+      {
+        "path": "openspec/changes/allow-prepared-author-same-stage-continuation/evidence/installed-continuation-final.json",
+        "status": "added",
+        "insertions": 32,
+        "deletions": 0,
+        "sha256": "3c628cf403ed5c72720d2043294caa4069a5f7e7c4175155d31414904e9e7db3",
+        "bytes": 1089,
+        "selection": "ocr-selected",
+        "reviewStatus": "reviewed"
+      },
+      {
+        "path": "openspec/changes/allow-prepared-author-same-stage-continuation/evidence/installed-continuation.json",
+        "status": "added",
+        "insertions": 32,
+        "deletions": 0,
+        "sha256": "5829c4a1e597b12ab9e7c7026d4180908c210846f6069c4f12d07e4af05cc92b",
+        "bytes": 1065,
+        "selection": "ocr-selected",
+        "reviewStatus": "reviewed"
+      },
+      {
+        "path": "openspec/changes/allow-prepared-author-same-stage-continuation/evidence/package-compatibility.json",
+        "status": "added",
+        "insertions": 686,
+        "deletions": 0,
+        "sha256": "9c7028268e3cafa91fc845ba86385e63d5fe4551993ac852f38e4eadb50d9ce8",
+        "bytes": 25214,
+        "selection": "ocr-selected",
+        "reviewStatus": "reviewed"
+      },
+      {
+        "path": "openspec/changes/allow-prepared-author-same-stage-continuation/evidence/policy-chain-probes.json",
+        "status": "added",
+        "insertions": 244,
+        "deletions": 0,
+        "sha256": "268e72f02bc21c73cbfb90be5765321ca05a76bbf3b1f36c4bbe634532b151b8",
+        "bytes": 5926,
+        "selection": "ocr-selected",
+        "reviewStatus": "reviewed"
+      },
+      {
+        "path": "openspec/changes/allow-prepared-author-same-stage-continuation/evidence/related-regressions.json",
+        "status": "added",
+        "insertions": 42,
+        "deletions": 0,
+        "sha256": "9840a65b0003462ba42f13d39594d8db2d553cdf0cc318db8887c58fc49e08b5",
+        "bytes": 1557,
+        "selection": "ocr-selected",
+        "reviewStatus": "reviewed"
+      },
+      {
+        "path": "openspec/changes/allow-prepared-author-same-stage-continuation/evidence/review-propose-20261009.json",
+        "status": "added",
+        "insertions": 534,
+        "deletions": 0,
+        "sha256": "977ab7692c6993c425137602d3fbc7de5a45ae168bed134493555b686edd7016",
+        "bytes": 17736,
+        "selection": "ocr-selected",
+        "reviewStatus": "reviewed"
+      },
+      {
+        "path": "openspec/changes/allow-prepared-author-same-stage-continuation/evidence/spec-check.json",
+        "status": "added",
+        "insertions": 30,
+        "deletions": 0,
+        "sha256": "ad4036e732cdc376c2326a497da213624ecea16ce81bfd2a247ed036ba212e30",
+        "bytes": 920,
+        "selection": "ocr-selected",
+        "reviewStatus": "reviewed"
+      },
+      {
+        "path": "docs/onboarding.md",
+        "status": "modified",
+        "insertions": 2,
+        "deletions": 0,
+        "exclude_reason": "unsupported_ext",
+        "sha256": "f74e1f125fa440e5b5e83ff92f9407e48b43ccc653de3378d537ec1397c434e8",
+        "bytes": 29327,
+        "selection": "manual-supplement",
+        "reviewStatus": "reviewed"
+      },
+      {
+        "path": "tests/unit/domain/action-lifecycle.test.ts",
+        "status": "modified",
+        "insertions": 39,
+        "deletions": 0,
+        "exclude_reason": "default_path",
+        "sha256": "ad4db6f048ad5c593130b45edf3d64fd00c37d7cde569aab54165db9d941a9e5",
+        "bytes": 7079,
+        "selection": "manual-supplement",
+        "reviewStatus": "reviewed"
+      },
+      {
+        "path": "tests/unit/domain/current-run-chain.test.ts",
+        "status": "modified",
+        "insertions": 83,
+        "deletions": 0,
+        "exclude_reason": "default_path",
+        "sha256": "d4a76e61f2e8a4e1f1a010e24510d9002dd3f88ceb6f4c44eaec53cdacf1b051",
+        "bytes": 12500,
+        "selection": "manual-supplement",
+        "reviewStatus": "reviewed"
+      },
+      {
+        "path": "tests/unit/domain/policy-owner-correction.test.ts",
+        "status": "modified",
+        "insertions": 64,
+        "deletions": 0,
+        "exclude_reason": "default_path",
+        "sha256": "fdacee17d443327c9b1905293b79c3eaa016784bc82211d56c5cedbe1b26f7bd",
+        "bytes": 17989,
+        "selection": "manual-supplement",
+        "reviewStatus": "reviewed"
+      },
+      {
+        "path": "tests/unit/domain/prepared-owner-correction-start.test.ts",
+        "status": "modified",
+        "insertions": 44,
+        "deletions": 0,
+        "exclude_reason": "default_path",
+        "sha256": "268fcf80959c7bf069928ae91e3748fe820bb56f599cf5be2a66746c10b4bf37",
+        "bytes": 11041,
+        "selection": "manual-supplement",
+        "reviewStatus": "reviewed"
+      },
+      {
+        "path": ".flowkit/artifacts/allow-prepared-author-same-stage-continuation/verification/code-checks.stderr.txt",
+        "status": "added",
+        "insertions": 5,
+        "deletions": 0,
+        "exclude_reason": "unsupported_ext",
+        "sha256": "dac80812af5128e14434c348aadbeaf6f7c2885449e287ead608227d6744f759",
+        "bytes": 243,
+        "selection": "manual-supplement",
+        "reviewStatus": "reviewed"
+      },
+      {
+        "path": ".flowkit/artifacts/allow-prepared-author-same-stage-continuation/verification/code-checks.stdout.txt",
+        "status": "added",
+        "insertions": 2,
+        "deletions": 0,
+        "exclude_reason": "unsupported_ext",
+        "sha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20",
+        "bytes": 66,
+        "selection": "manual-supplement",
+        "reviewStatus": "reviewed"
+      },
+      {
+        "path": ".flowkit/artifacts/allow-prepared-author-same-stage-continuation/verification/final-domain.stderr.txt",
+        "status": "added",
+        "insertions": 0,
+        "deletions": 0,
+        "exclude_reason": "unsupported_ext",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "selection": "manual-supplement",
+        "reviewStatus": "reviewed"
+      },
+      {
+        "path": ".flowkit/artifacts/allow-prepared-author-same-stage-continuation/verification/final-domain.stdout.txt",
+        "status": "added",
+        "insertions": 226,
+        "deletions": 0,
+        "exclude_reason": "unsupported_ext",
+        "sha256": "06f742e3bbbbd63c485aaf1e063350ac6df6202f8e87b5bd446c4ba59b87ec81",
+        "bytes": 7861,
+        "selection": "manual-supplement",
+        "reviewStatus": "reviewed"
+      },
+      {
+        "path": ".flowkit/artifacts/allow-prepared-author-same-stage-continuation/verification/installed-acceptance-final.stderr.txt",
+        "status": "added",
+        "insertions": 0,
+        "deletions": 0,
+        "exclude_reason": "unsupported_ext",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "selection": "manual-supplement",
+        "reviewStatus": "reviewed"
+      },
+      {
+        "path": ".flowkit/artifacts/allow-prepared-author-same-stage-continuation/verification/installed-acceptance-final.stdout.txt",
+        "status": "added",
+        "insertions": 58,
+        "deletions": 0,
+        "exclude_reason": "unsupported_ext",
+        "sha256": "85bd58e419f504e1d8a45b238f75d1b6abe5315cc50616e410d1940bccd2a9d4",
+        "bytes": 2012,
+        "selection": "manual-supplement",
+        "reviewStatus": "reviewed"
+      },
+      {
+        "path": ".flowkit/artifacts/allow-prepared-author-same-stage-continuation/verification/installed-acceptance.stderr.txt",
+        "status": "added",
+        "insertions": 0,
+        "deletions": 0,
+        "exclude_reason": "unsupported_ext",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "selection": "manual-supplement",
+        "reviewStatus": "reviewed"
+      },
+      {
+        "path": ".flowkit/artifacts/allow-prepared-author-same-stage-continuation/verification/installed-acceptance.stdout.txt",
+        "status": "added",
+        "insertions": 58,
+        "deletions": 0,
+        "exclude_reason": "unsupported_ext",
+        "sha256": "6520273a1bef074807893aee1808e215ba2d7217e48d74015dc2d3a01d40ae66",
+        "bytes": 2015,
+        "selection": "manual-supplement",
+        "reviewStatus": "reviewed"
+      },
+      {
+        "path": ".flowkit/artifacts/allow-prepared-author-same-stage-continuation/verification/installed-continuation-final.stderr.txt",
+        "status": "added",
+        "insertions": 0,
+        "deletions": 0,
+        "exclude_reason": "unsupported_ext",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "selection": "manual-supplement",
+        "reviewStatus": "reviewed"
+      },
+      {
+        "path": ".flowkit/artifacts/allow-prepared-author-same-stage-continuation/verification/installed-continuation-final.stdout.txt",
+        "status": "added",
+        "insertions": 46,
+        "deletions": 0,
+        "exclude_reason": "unsupported_ext",
+        "sha256": "3e454a53b22bde8d5edd112df7724a097fd50760efda1b2a7bbc64d6b783221a",
+        "bytes": 1628,
+        "selection": "manual-supplement",
+        "reviewStatus": "reviewed"
+      },
+      {
+        "path": ".flowkit/artifacts/allow-prepared-author-same-stage-continuation/verification/installed-continuation.stderr.txt",
+        "status": "added",
+        "insertions": 0,
+        "deletions": 0,
+        "exclude_reason": "unsupported_ext",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "selection": "manual-supplement",
+        "reviewStatus": "reviewed"
+      },
+      {
+        "path": ".flowkit/artifacts/allow-prepared-author-same-stage-continuation/verification/installed-continuation.stdout.txt",
+        "status": "added",
+        "insertions": 46,
+        "deletions": 0,
+        "exclude_reason": "unsupported_ext",
+        "sha256": "0e4831b6ed520491a37f82f8630ab1c9768024f31bcdea6daebe7af20537d3cc",
+        "bytes": 1630,
+        "selection": "manual-supplement",
+        "reviewStatus": "reviewed"
+      },
+      {
+        "path": ".flowkit/artifacts/allow-prepared-author-same-stage-continuation/verification/related-regressions.stderr.txt",
+        "status": "added",
+        "insertions": 0,
+        "deletions": 0,
+        "exclude_reason": "unsupported_ext",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "selection": "manual-supplement",
+        "reviewStatus": "reviewed"
+      },
+      {
+        "path": ".flowkit/artifacts/allow-prepared-author-same-stage-continuation/verification/related-regressions.stdout.txt",
+        "status": "added",
+        "insertions": 412,
+        "deletions": 0,
+        "exclude_reason": "unsupported_ext",
+        "sha256": "ea615d3dcdfd3d10d90f70dc81eed51723040111e6b99b6b59518cfc4df7b824",
+        "bytes": 15503,
+        "selection": "manual-supplement",
+        "reviewStatus": "reviewed"
+      },
+      {
+        "path": ".flowkit/artifacts/allow-prepared-author-same-stage-continuation/verification/spec-check.stderr.txt",
+        "status": "added",
+        "insertions": 0,
+        "deletions": 0,
+        "exclude_reason": "unsupported_ext",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "selection": "manual-supplement",
+        "reviewStatus": "reviewed"
+      },
+      {
+        "path": ".flowkit/artifacts/allow-prepared-author-same-stage-continuation/verification/spec-check.stdout.txt",
+        "status": "added",
+        "insertions": 1,
+        "deletions": 0,
+        "exclude_reason": "unsupported_ext",
+        "sha256": "9cfe40e27daa3383583478e2025e83c200731075f8effaa247c2c19f74c2a6bc",
+        "bytes": 64,
+        "selection": "manual-supplement",
+        "reviewStatus": "reviewed"
+      },
+      {
+        "path": "openspec/changes/allow-prepared-author-same-stage-continuation/design.md",
+        "status": "added",
+        "insertions": 89,
+        "deletions": 0,
+        "exclude_reason": "unsupported_ext",
+        "sha256": "df2fb12151bbc32f61bf6c17f85f2e8c7959f039bcc0780f0bc9e620000aeb70",
+        "bytes": 8794,
+        "selection": "manual-supplement",
+        "reviewStatus": "reviewed"
+      },
+      {
+        "path": "openspec/changes/allow-prepared-author-same-stage-continuation/explore.md",
+        "status": "added",
+        "insertions": 133,
+        "deletions": 0,
+        "exclude_reason": "unsupported_ext",
+        "sha256": "e8be30132868fb0a5e42477c2173bcb7934e804b6f5ec53a5997e47a93276b59",
+        "bytes": 13291,
+        "selection": "manual-supplement",
+        "reviewStatus": "reviewed"
+      },
+      {
+        "path": "openspec/changes/allow-prepared-author-same-stage-continuation/proposal.md",
+        "status": "added",
+        "insertions": 32,
+        "deletions": 0,
+        "exclude_reason": "unsupported_ext",
+        "sha256": "26d148dc731850eb39647501022ca683eb7560004722953c698886db92a3eea7",
+        "bytes": 2972,
+        "selection": "manual-supplement",
+        "reviewStatus": "reviewed"
+      },
+      {
+        "path": "openspec/changes/allow-prepared-author-same-stage-continuation/review-propose.md",
+        "status": "added",
+        "insertions": 38,
+        "deletions": 0,
+        "exclude_reason": "unsupported_ext",
+        "sha256": "98060defa879b2cc740b1e2e9fd7bb55ebc19df0378de85f5d67f188c6b503d8",
+        "bytes": 3595,
+        "selection": "manual-supplement",
+        "reviewStatus": "reviewed"
+      },
+      {
+        "path": "openspec/changes/allow-prepared-author-same-stage-continuation/specs/action-lifecycle/spec.md",
+        "status": "added",
+        "insertions": 37,
+        "deletions": 0,
+        "exclude_reason": "unsupported_ext",
+        "sha256": "285bd5f8002203f3f5c4a6e97aad887b74f7143265846eefb014aa215af4a7e0",
+        "bytes": 3638,
+        "selection": "manual-supplement",
+        "reviewStatus": "reviewed"
+      },
+      {
+        "path": "openspec/changes/allow-prepared-author-same-stage-continuation/specs/policy-and-next-boundary/spec.md",
+        "status": "added",
+        "insertions": 37,
+        "deletions": 0,
+        "exclude_reason": "unsupported_ext",
+        "sha256": "24983691388069c1d7cb8f5c478197d2ab52c18946932c0e59f2a9d6d791abac",
+        "bytes": 3650,
+        "selection": "manual-supplement",
+        "reviewStatus": "reviewed"
+      },
+      {
+        "path": "openspec/changes/allow-prepared-author-same-stage-continuation/specs/run-result-persistence/spec.md",
+        "status": "added",
+        "insertions": 31,
+        "deletions": 0,
+        "exclude_reason": "unsupported_ext",
+        "sha256": "bd0c6c02fa08012ffecf4cf2f91378587171b1231105b4c001790fb0a7b69983",
+        "bytes": 3454,
+        "selection": "manual-supplement",
+        "reviewStatus": "reviewed"
+      },
+      {
+        "path": "openspec/changes/allow-prepared-author-same-stage-continuation/specs/stable-action-command-execution/spec.md",
+        "status": "added",
+        "insertions": 41,
+        "deletions": 0,
+        "exclude_reason": "unsupported_ext",
+        "sha256": "319055dc170c1f04ee1679c1784ab316e2169445f612227659de6b28ccc9543d",
+        "bytes": 5013,
+        "selection": "manual-supplement",
+        "reviewStatus": "reviewed"
+      },
+      {
+        "path": "openspec/changes/allow-prepared-author-same-stage-continuation/tasks.md",
+        "status": "added",
+        "insertions": 21,
+        "deletions": 0,
+        "exclude_reason": "unsupported_ext",
+        "sha256": "efd913eb381a5d5734f29f6c03c2ac646eab66779d01034cb84e36a8e8300a43",
+        "bytes": 3664,
+        "selection": "manual-supplement",
+        "reviewStatus": "reviewed"
+      },
+      {
+        "path": "openspec/changes/allow-prepared-author-same-stage-continuation/verification.md",
+        "status": "added",
+        "insertions": 56,
+        "deletions": 0,
+        "exclude_reason": "unsupported_ext",
+        "sha256": "7a3cab2a25ce6a68b5c51d082d4890392df535633b9884daa414026866eafe47",
+        "bytes": 5441,
+        "selection": "manual-supplement",
+        "reviewStatus": "reviewed"
+      },
+      {
+        "path": "tests/unit/domain/prepared-author-continuation.test.ts",
+        "status": "added",
+        "insertions": 511,
+        "deletions": 0,
+        "exclude_reason": "default_path",
+        "sha256": "1a51d2b6058bb1f32fcf9444fd666f77d98c1133c5a0aa0d164276d780115039",
+        "bytes": 16108,
+        "selection": "manual-supplement",
+        "reviewStatus": "reviewed"
+      }
+    ]
+  },
+  "identityCheckRef": ".flowkit/artifacts/allow-prepared-author-same-stage-continuation/review-apply-20261009/identity-check.json",
+  "checks": [
+    {
+      "label": "build",
+      "command": {
+        "executable": "C:\\nvm4w\\nodejs\\node.exe",
+        "args": [
+          "scripts/build-production.mjs"
+        ]
+      },
+      "startedAt": "2026-10-09T04:42:01.806Z",
+      "finishedAt": "2026-10-09T04:42:04.840Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "tests": 0,
+      "passed": 0,
+      "failed": 0,
+      "skipped": 0,
+      "stdout": {
+        "path": ".flowkit/artifacts/allow-prepared-author-same-stage-continuation/review-apply-20261009/build.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/allow-prepared-author-same-stage-continuation/review-apply-20261009/build.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "domain",
+      "command": {
+        "executable": "C:\\nvm4w\\nodejs\\node.exe",
+        "args": [
+          "--import",
+          "tsx",
+          "--test",
+          "--test-concurrency=3",
+          "tests/unit/domain/action-lifecycle.test.ts",
+          "tests/unit/domain/policy-owner-correction.test.ts",
+          "tests/unit/domain/current-run-chain.test.ts",
+          "tests/unit/domain/prepared-owner-correction-start.test.ts",
+          "tests/unit/domain/failed-author-core.test.ts",
+          "tests/unit/domain/failed-author-lifecycle.test.ts",
+          "tests/unit/domain/rejected-review-recovery.test.ts",
+          "tests/unit/domain/archive-outcome-retry.test.ts",
+          "tests/unit/domain/prepared-proof-checkpoint.test.ts",
+          "tests/unit/domain/action-proof-closure.test.ts",
+          "tests/unit/domain/bounded-json-input.test.ts",
+          "tests/unit/domain/generated-facts-budget.test.ts"
+        ]
+      },
+      "startedAt": "2026-10-09T04:42:11.108Z",
+      "finishedAt": "2026-10-09T04:44:34.247Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "tests": 67,
+      "passed": 67,
+      "failed": 0,
+      "skipped": 0,
+      "stdout": {
+        "path": ".flowkit/artifacts/allow-prepared-author-same-stage-continuation/review-apply-20261009/domain.stdout.txt",
+        "bytes": 15505,
+        "sha256": "920ec4bf524b7267e1a331430a6eeb219edb751e3c1ee05ee280bfae395798d3"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/allow-prepared-author-same-stage-continuation/review-apply-20261009/domain.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "continuation",
+      "command": {
+        "executable": "C:\\nvm4w\\nodejs\\node.exe",
+        "args": [
+          "--import",
+          "tsx",
+          "--test",
+          "tests/unit/domain/prepared-author-continuation.test.ts"
+        ]
+      },
+      "startedAt": "2026-10-09T04:42:11.114Z",
+      "finishedAt": "2026-10-09T04:44:29.889Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "tests": 6,
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0,
+      "stdout": {
+        "path": ".flowkit/artifacts/allow-prepared-author-same-stage-continuation/review-apply-20261009/continuation.stdout.txt",
+        "bytes": 1630,
+        "sha256": "a9743ed151c33e89f2d8d2763645c7255243d03bdea4cef4410b0f599b11de58"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/allow-prepared-author-same-stage-continuation/review-apply-20261009/continuation.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "acceptance",
+      "command": {
+        "executable": "C:\\nvm4w\\nodejs\\node.exe",
+        "args": [
+          "--import",
+          "tsx",
+          "--test",
+          "tests/acceptance/foundation-manager.acceptance.test.ts",
+          "tests/acceptance/git-host.acceptance.test.ts",
+          "tests/acceptance/native-windows-archive.test.ts"
+        ]
+      },
+      "startedAt": "2026-10-09T04:42:11.123Z",
+      "finishedAt": "2026-10-09T04:43:00.762Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "tests": 8,
+      "passed": 7,
+      "failed": 0,
+      "skipped": 1,
+      "stdout": {
+        "path": ".flowkit/artifacts/allow-prepared-author-same-stage-continuation/review-apply-20261009/acceptance.stdout.txt",
+        "bytes": 2014,
+        "sha256": "0a4b5021cb17389da711caaccecc8fcb35a74fe35d0f1b7f6c102fa0e91bb3d7"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/allow-prepared-author-same-stage-continuation/review-apply-20261009/acceptance.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "quality",
+      "command": {
+        "executable": "powershell.exe",
+        "args": [
+          "-NoProfile",
+          "-Command",
+          "pnpm typecheck; if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }; pnpm quality:gate; exit $LASTEXITCODE"
+        ]
+      },
+      "startedAt": "2026-10-09T04:42:11.116Z",
+      "finishedAt": "2026-10-09T04:42:49.883Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "tests": 0,
+      "passed": 0,
+      "failed": 0,
+      "skipped": 0,
+      "stdout": {
+        "path": ".flowkit/artifacts/allow-prepared-author-same-stage-continuation/review-apply-20261009/quality.stdout.txt",
+        "bytes": 66,
+        "sha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/allow-prepared-author-same-stage-continuation/review-apply-20261009/quality.stderr.txt",
+        "bytes": 207,
+        "sha256": "23ee101eeca741424b35ea6e723efb7c62e26c1b7b2ded24a9c30f24adb01b8f"
+      }
+    },
+    {
+      "label": "spec",
+      "command": {
+        "executable": "C:\\nvm4w\\nodejs\\node.exe",
+        "args": [
+          "C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js",
+          "validate",
+          "allow-prepared-author-same-stage-continuation",
+          "--strict",
+          "--json"
+        ]
+      },
+      "startedAt": "2026-10-09T04:42:11.136Z",
+      "finishedAt": "2026-10-09T04:42:13.313Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "tests": 0,
+      "passed": 0,
+      "failed": 0,
+      "skipped": 0,
+      "stdout": {
+        "path": ".flowkit/artifacts/allow-prepared-author-same-stage-continuation/review-apply-20261009/spec.stdout.txt",
+        "bytes": 492,
+        "sha256": "15054a487aad2b46395700e49fb35be4bfaf01dcde62273f72370a4de577b89d"
+      },
+      "stderr": {
+        "path": ".flowkit/artifacts/allow-prepared-author-same-stage-continuation/review-apply-20261009/spec.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "installedTestEnvironment": {
+    "FLOWKIT_APPLY_TEST_ENTRY": "D:/Projects/flowkit-next/.tmp/prepared-continuation-package/install-final/node_modules/flowkit-next/dist/cli/entrypoint.js",
+    "FLOWKIT_ACCEPTANCE_INSTALLATION": "D:/Projects/flowkit-next/.tmp/prepared-continuation-package/install-final/node_modules/flowkit-next",
+    "FLOWKIT_HOME": "C:/Users/xuser/.flowkit"
+  },
+  "liveCompatibilityRef": ".flowkit/artifacts/allow-prepared-author-same-stage-continuation/review-apply-20261009/live-compatibility.json",
+  "candidateInputsUnchanged": true,
+  "limits": [
+    "Windows host; native Windows exact OpenSpec conditional acceptance skipped",
+    "No Linux x64 detached run; not Formal Full Test",
+    "No Flowkit Run, Author mutation, manager update, original-project new Run or Git mutation"
+  ],
+  "report": {
+    "path": "openspec/changes/allow-prepared-author-same-stage-continuation/review-apply.md",
+    "sha256": "191f1aa9e4c5151fa7cf25d9cab82f6f77448541f7a9c47439b521fce1ccc64c"
+  }
+}

@@ -1,0 +1,4 @@
+$ tsc --noEmit
+$ pnpm format:check && pnpm lint
+$ prettier --check src tests tsconfig.json tsconfig.build.json package.json eslint.config.mjs scripts/check-forbidden-tracked-artifacts.mjs
+$ eslint src tests

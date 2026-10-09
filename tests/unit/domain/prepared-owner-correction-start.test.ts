@@ -275,6 +275,50 @@ test("Owner corrected start rechecks coordination immediately before writing", a
   }
 });
 
+test("Owner corrected start rejects a competing tip created during readiness without writing its requested occurrence", async () => {
+  const f = await fixture();
+  try {
+    await assert.rejects(
+      startPreparedOwnerCorrectionRun(
+        f.installation,
+        f.input,
+        f.flowkitHome,
+        f.authority,
+        f.guidanceRef,
+        async () => {
+          const candidate = record(6, "revise-explore", f.records.at(-1)!);
+          await writeDurableRun(
+            { ...f.input, occurrence: candidate.context.occurrence },
+            {
+              ...candidate,
+              context: {
+                ...candidate.context,
+                ownerAuthority: { ...f.authority, scope: ["revise-explore"] },
+              },
+            },
+          );
+          return "ready" as const;
+        },
+      ),
+      /preparation blocked/,
+    );
+    await assert.rejects(readdir(buildRunAddress(f.input)!.runDirectory), {
+      code: "ENOENT",
+    });
+    assert.deepEqual(
+      await Promise.all(
+        ["action.md", "context.json", "result.json"].map((name) =>
+          readFile(path.join(f.oldDirectory, name)),
+        ),
+      ),
+      f.oldBytes,
+    );
+    assert.deepEqual(await readFile(f.proofPath), f.proofBytes);
+  } finally {
+    await f.cleanup();
+  }
+});
+
 test("Owner corrected start creates one linked partial then completed revise reaches Review", async () => {
   const f = await fixture();
   try {

@@ -1,0 +1,412 @@
+TAP version 13
+# Subtest: accepts exactly prepared and terminal lifecycle states
+ok 1 - accepts exactly prepared and terminal lifecycle states
+  ---
+  duration_ms: 2.8566
+  type: 'test'
+  ...
+# Subtest: validates canonical ActionIdentity and CurrentAction without normalization
+ok 2 - validates canonical ActionIdentity and CurrentAction without normalization
+  ---
+  duration_ms: 1.2538
+  type: 'test'
+  ...
+# Subtest: prepares an empty slot and terminalizes the exact prepared Action
+ok 3 - prepares an empty slot and terminalizes the exact prepared Action
+  ---
+  duration_ms: 0.5557
+  type: 'test'
+  ...
+# Subtest: rejects removed resume events and malformed lifecycle inputs
+ok 4 - rejects removed resume events and malformed lifecycle inputs
+  ---
+  duration_ms: 0.1979
+  type: 'test'
+  ...
+# Subtest: rejects duplicate or replacement prepare over a prepared Action
+ok 5 - rejects duplicate or replacement prepare over a prepared Action
+  ---
+  duration_ms: 0.2774
+  type: 'test'
+  ...
+# Subtest: bounded prepared Author supersession keeps the original slot untouched
+ok 6 - bounded prepared Author supersession keeps the original slot untouched
+  ---
+  duration_ms: 0.4345
+  type: 'test'
+  ...
+# Subtest: same-revise prepared supersession stages a new candidate without reopening the old slot
+ok 7 - same-revise prepared supersession stages a new candidate without reopening the old slot
+  ---
+  duration_ms: 0.5238
+  type: 'test'
+  ...
+# Subtest: rejects terminal from empty or identity mismatch
+ok 8 - rejects terminal from empty or identity mismatch
+  ---
+  duration_ms: 0.2128
+  type: 'test'
+  ...
+# Subtest: keeps terminal absorbing for same identity
+ok 9 - keeps terminal absorbing for same identity
+  ---
+  duration_ms: 0.4992
+  type: 'test'
+  ...
+# Subtest: allows terminal replacement only for a different canonical identity
+ok 10 - allows terminal replacement only for a different canonical identity
+  ---
+  duration_ms: 0.7404
+  type: 'test'
+  ...
+# Subtest: uses semantic equality and remains pure
+ok 11 - uses semantic equality and remains pure
+  ---
+  duration_ms: 0.4799
+  type: 'test'
+  ...
+# Subtest: encodes structural lifecycle only, not Policy or authority
+ok 12 - encodes structural lifecycle only, not Policy or authority
+  ---
+  duration_ms: 1.394
+  type: 'test'
+  ...
+# Subtest: Run proof closure checks change-one without omission
+ok 13 - Run proof closure checks change-one without omission
+  ---
+  duration_ms: 6588.6763
+  type: 'test'
+  ...
+# Subtest: Run proof closure checks 001-change-one without omission
+ok 14 - Run proof closure checks 001-change-one without omission
+  ---
+  duration_ms: 7802.1314
+  type: 'test'
+  ...
+# Subtest: archiveOutcome is closed, exact Role/outcome/next combinations are required; legacy records remain readable
+ok 15 - archiveOutcome is closed, exact Role/outcome/next combinations are required; legacy records remain readable
+  ---
+  duration_ms: 3.909
+  type: 'test'
+  ...
+# Subtest: only the dedicated Policy-ready Archive seam opens a new occurrence; ordinary terminal prepare absorbs
+ok 16 - only the dedicated Policy-ready Archive seam opens a new occurrence; ordinary terminal prepare absorbs
+  ---
+  duration_ms: 3.9363
+  type: 'test'
+  ...
+# Subtest: continuous safe failed parents resolve exact Review and Author, never skipped, forked, wrong-target, stale PASS or partial
+ok 17 - continuous safe failed parents resolve exact Review and Author, never skipped, forked, wrong-target, stale PASS or partial
+  ---
+  duration_ms: 14.8131
+  type: 'test'
+  ...
+# Subtest: candidateGit has closed path/OID/settings/index shapes without coercion
+ok 18 - candidateGit has closed path/OID/settings/index shapes without coercion
+  ---
+  duration_ms: 2.03
+  type: 'test'
+  ...
+# Subtest: command-selected parser budgets preserve closed JSON and UTF-8 boundaries
+ok 19 - command-selected parser budgets preserve closed JSON and UTF-8 boundaries
+  ---
+  duration_ms: 63.9105
+  type: 'test'
+  ...
+# Subtest: bounded collection counts growing file bytes and closes on overflow
+ok 20 - bounded collection counts growing file bytes and closes on overflow
+  ---
+  duration_ms: 42.0655
+  type: 'test'
+  ...
+# Subtest: file/stdin CLI overflow stays safe and Git transport does not create authority
+ok 21 - file/stdin CLI overflow stays safe and Git transport does not create authority
+  ---
+  duration_ms: 13998.4612
+  type: 'test'
+  ...
+# Subtest: facts budget counts root/containers/values and retains bytes/depth
+ok 22 - facts budget counts root/containers/values and retains bytes/depth
+  ---
+  duration_ms: 9.0673
+  type: 'test'
+  ...
+# Subtest: finish caller facts diagnose capacity without masking invalid Result envelope
+ok 23 - finish caller facts diagnose capacity without masking invalid Result envelope
+  ---
+  duration_ms: 2.3835
+  type: 'test'
+  ...
+# Subtest: finish file/stdin machine capacity errors distinguish caller facts from the outer request
+ok 24 - finish file/stdin machine capacity errors distinguish caller facts from the outer request
+  ---
+  duration_ms: 16157.7457
+  type: 'test'
+  ...
+# Subtest: chain tip follows Policy links, not sequence or input ordering
+ok 25 - chain tip follows Policy links, not sequence or input ordering
+  ---
+  duration_ms: 8.1037
+  type: 'test'
+  ...
+# Subtest: reject disconnected higher root, fork, missing parent, cycle, duplicate sequence and Role
+ok 26 - reject disconnected higher root, fork, missing parent, cycle, duplicate sequence and Role
+  ---
+  duration_ms: 3.5932
+  type: 'test'
+  ...
+# Subtest: Owner correction uses existing Policy and rejects wrong authority
+ok 27 - Owner correction uses existing Policy and rejects wrong authority
+  ---
+  duration_ms: 1.7995
+  type: 'test'
+  ...
+# Subtest: complete prepared failure retries same Action with a new occurrence
+ok 28 - complete prepared failure retries same Action with a new occurrence
+  ---
+  duration_ms: 0.5165
+  type: 'test'
+  ...
+# Subtest: LP 089 shaped prepared Apply accepts one Owner-linked revise tip without changing the predecessor
+ok 29 - LP 089 shaped prepared Apply accepts one Owner-linked revise tip without changing the predecessor
+  ---
+  duration_ms: 7.4133
+  type: 'test'
+  ...
+# Subtest: same-revise prepared successors always validate child authority before selecting the tip
+ok 30 - same-revise prepared successors always validate child authority before selecting the tip
+  ---
+  duration_ms: 14.3555
+  type: 'test'
+  ...
+# Subtest: canonical disk history reads selected group only and keeps partial visible
+ok 31 - canonical disk history reads selected group only and keeps partial visible
+  ---
+  duration_ms: 64.9335
+  type: 'test'
+  ...
+# Subtest: explicit bootstrap history is display-only; mixed and unmarked groups rejected
+ok 32 - explicit bootstrap history is display-only; mixed and unmarked groups rejected
+  ---
+  duration_ms: 70.531
+  type: 'test'
+  ...
+# Subtest: actual terminal Author FAIL stays current rather than reusing prior PASS
+ok 33 - actual terminal Author FAIL stays current rather than reusing prior PASS
+  ---
+  duration_ms: 2.4744
+  type: 'test'
+  ...
+# Subtest: revise-explore requires exact failed source in the kernel; bare READY and ordinary prepare do not reopen terminal
+ok 34 - revise-explore requires exact failed source in the kernel; bare READY and ordinary prepare do not reopen terminal
+  ---
+  duration_ms: 22.7961
+  type: 'test'
+  ...
+# Subtest: revise-propose requires exact failed source in the kernel; bare READY and ordinary prepare do not reopen terminal
+ok 35 - revise-propose requires exact failed source in the kernel; bare READY and ordinary prepare do not reopen terminal
+  ---
+  duration_ms: 7.8506
+  type: 'test'
+  ...
+# Subtest: revise-apply requires exact failed source in the kernel; bare READY and ordinary prepare do not reopen terminal
+ok 36 - revise-apply requires exact failed source in the kernel; bare READY and ordinary prepare do not reopen terminal
+  ---
+  duration_ms: 10.5197
+  type: 'test'
+  ...
+# Subtest: explore FAIL and its revise FAIL create exact new Owner-authorized successors across processes
+ok 37 - explore FAIL and its revise FAIL create exact new Owner-authorized successors across processes
+  ---
+  duration_ms: 38762.9695
+  type: 'test'
+  ...
+# Subtest: propose FAIL and its revise FAIL create exact new Owner-authorized successors across processes
+ok 38 - propose FAIL and its revise FAIL create exact new Owner-authorized successors across processes
+  ---
+  duration_ms: 25931.4929
+  type: 'test'
+  ...
+# Subtest: apply FAIL and its revise FAIL create exact new Owner-authorized successors across processes
+ok 39 - apply FAIL and its revise FAIL create exact new Owner-authorized successors across processes
+  ---
+  duration_ms: 25369.6298
+  type: 'test'
+  ...
+# Subtest: generated facts byte/node overflow leaves descriptor and proof intact, then same Run finishes corrected input
+ok 40 - generated facts byte/node overflow leaves descriptor and proof intact, then same Run finishes corrected input
+  ---
+  duration_ms: 25593.6086
+  type: 'test'
+  ...
+# Subtest: bounded absent candidate of 206 files is accepted by finish/readback/Review/Archive; immutable oversized readback rejects
+ok 41 - bounded absent candidate of 206 files is accepted by finish/readback/Review/Archive; immutable oversized readback rejects
+  ---
+  duration_ms: 24403.0415
+  type: 'test'
+  ...
+# Subtest: bounded entry candidate of 164 files is accepted by finish/readback/Review/Archive; immutable oversized readback rejects
+ok 42 - bounded entry candidate of 164 files is accepted by finish/readback/Review/Archive; immutable oversized readback rejects
+  ---
+  duration_ms: 20860.2565
+  type: 'test'
+  ...
+# Subtest: prepared Author correction accepts same or earlier stage after exact current pair
+ok 43 - prepared Author correction accepts same or earlier stage after exact current pair
+  ---
+  duration_ms: 5.8761
+  type: 'test'
+  ...
+# Subtest: prepared continuation preserves the reached-stage matrix including three same-revise identities
+ok 44 - prepared continuation preserves the reached-stage matrix including three same-revise identities
+  ---
+  duration_ms: 4.0488
+  type: 'test'
+  ...
+# Subtest: same-revise prepared correction cannot borrow reuse readiness or parent authority
+ok 45 - same-revise prepared correction cannot borrow reuse readiness or parent authority
+  ---
+  duration_ms: 1.4852
+  type: 'test'
+  ...
+# Subtest: prepared correction rejects missing, stale and contradictory current Run facts
+ok 46 - prepared correction rejects missing, stale and contradictory current Run facts
+  ---
+  duration_ms: 0.7906
+  type: 'test'
+  ...
+# Subtest: allows the fifteen reached-stage Owner corrections that lifecycle can enter
+ok 47 - allows the fifteen reached-stage Owner corrections that lifecycle can enter
+  ---
+  duration_ms: 2.5494
+  type: 'test'
+  ...
+# Subtest: requires exact matching revise-action Owner authority
+ok 48 - requires exact matching revise-action Owner authority
+  ---
+  duration_ms: 0.8004
+  type: 'test'
+  ...
+# Subtest: rejects forward skip, prepared switching, archive reopening and completed correction
+ok 49 - rejects forward skip, prepared switching, archive reopening and completed correction
+  ---
+  duration_ms: 0.69
+  type: 'test'
+  ...
+# Subtest: reported-boundary conflict wins before a valid Owner correction
+ok 50 - reported-boundary conflict wins before a valid Owner correction
+  ---
+  duration_ms: 0.7121
+  type: 'test'
+  ...
+# Subtest: does not treat normal apply/archive readiness as Owner execution authority
+ok 51 - does not treat normal apply/archive readiness as Owner execution authority
+  ---
+  duration_ms: 2.7543
+  type: 'test'
+  ...
+# Subtest: six exact terminal Author FAILs permit only reached-stage Owner correction
+ok 52 - six exact terminal Author FAILs permit only reached-stage Owner correction
+  ---
+  duration_ms: 6.3849
+  type: 'test'
+  ...
+# Subtest: Owner corrected start rejects bad authority/readiness before writing and preserves old bytes
+ok 53 - Owner corrected start rejects bad authority/readiness before writing and preserves old bytes
+  ---
+  duration_ms: 1773.9639
+  type: 'test'
+  ...
+# Subtest: Owner corrected start requires active trusted coordination before writing
+ok 54 - Owner corrected start requires active trusted coordination before writing
+  ---
+  duration_ms: 2025.6472
+  type: 'test'
+  ...
+# Subtest: Owner corrected start rechecks coordination immediately before writing
+ok 55 - Owner corrected start rechecks coordination immediately before writing
+  ---
+  duration_ms: 1258.0028
+  type: 'test'
+  ...
+# Subtest: Owner corrected start rejects a competing tip created during readiness without writing its requested occurrence
+ok 56 - Owner corrected start rejects a competing tip created during readiness without writing its requested occurrence
+  ---
+  duration_ms: 1163.1305
+  type: 'test'
+  ...
+# Subtest: Owner corrected start creates one linked partial then completed revise reaches Review
+ok 57 - Owner corrected start creates one linked partial then completed revise reaches Review
+  ---
+  duration_ms: 2844.1047
+  type: 'test'
+  ...
+# Subtest: candidate index admits prepared proof with Owner correction
+ok 58 - candidate index admits prepared proof with Owner correction
+  ---
+  duration_ms: 12267.1803
+  type: 'test'
+  ...
+# Subtest: candidate index admits same-Action continuation and rejects worktree-only successor
+ok 59 - candidate index admits same-Action continuation and rejects worktree-only successor
+  ---
+  duration_ms: 14140.6044
+  type: 'test'
+  ...
+# Subtest: candidate reader rejects incomplete, duplicate, illegal and fake prepared chains
+ok 60 - candidate reader rejects incomplete, duplicate, illegal and fake prepared chains
+  ---
+  duration_ms: 14702.3171
+  type: 'test'
+  ...
+# Subtest: candidate reader rejects conflicted stage and index-only malformed identity
+ok 61 - candidate reader rejects conflicted stage and index-only malformed identity
+  ---
+  duration_ms: 5792.3544
+  type: 'test'
+  ...
+# Subtest: prepared proof rejects declaration and owner byte drift
+ok 62 - prepared proof rejects declaration and owner byte drift
+  ---
+  duration_ms: 14279.78
+  type: 'test'
+  ...
+# Subtest: committed prepared owner cannot be disguised as terminal by worktree drift
+ok 63 - committed prepared owner cannot be disguised as terminal by worktree drift
+  ---
+  duration_ms: 19302.1091
+  type: 'test'
+  ...
+# Subtest: committed terminal owner still admits a proof-only checkpoint
+ok 64 - committed terminal owner still admits a proof-only checkpoint
+  ---
+  duration_ms: 2072.6015
+  type: 'test'
+  ...
+# Subtest: explore Review rejected/null persists across processes and exact Owner revise preserves verdict
+ok 65 - explore Review rejected/null persists across processes and exact Owner revise preserves verdict
+  ---
+  duration_ms: 14459.8733
+  type: 'test'
+  ...
+# Subtest: propose Review rejected/null persists across processes and exact Owner revise preserves verdict
+ok 66 - propose Review rejected/null persists across processes and exact Owner revise preserves verdict
+  ---
+  duration_ms: 17443.626
+  type: 'test'
+  ...
+# Subtest: apply Review rejected/null persists across processes and exact Owner revise preserves verdict
+ok 67 - apply Review rejected/null persists across processes and exact Owner revise preserves verdict
+  ---
+  duration_ms: 15125.3902
+  type: 'test'
+  ...
+1..67
+# tests 67
+# suites 0
+# pass 67
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 133651.8247

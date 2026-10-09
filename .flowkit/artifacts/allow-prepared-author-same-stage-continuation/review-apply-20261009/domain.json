@@ -1,0 +1,43 @@
+{
+  "label": "domain",
+  "command": {
+    "executable": "C:\\nvm4w\\nodejs\\node.exe",
+    "args": [
+      "--import",
+      "tsx",
+      "--test",
+      "--test-concurrency=3",
+      "tests/unit/domain/action-lifecycle.test.ts",
+      "tests/unit/domain/policy-owner-correction.test.ts",
+      "tests/unit/domain/current-run-chain.test.ts",
+      "tests/unit/domain/prepared-owner-correction-start.test.ts",
+      "tests/unit/domain/failed-author-core.test.ts",
+      "tests/unit/domain/failed-author-lifecycle.test.ts",
+      "tests/unit/domain/rejected-review-recovery.test.ts",
+      "tests/unit/domain/archive-outcome-retry.test.ts",
+      "tests/unit/domain/prepared-proof-checkpoint.test.ts",
+      "tests/unit/domain/action-proof-closure.test.ts",
+      "tests/unit/domain/bounded-json-input.test.ts",
+      "tests/unit/domain/generated-facts-budget.test.ts"
+    ]
+  },
+  "startedAt": "2026-10-09T04:42:11.108Z",
+  "finishedAt": "2026-10-09T04:44:34.247Z",
+  "exitCode": 0,
+  "signal": null,
+  "error": null,
+  "tests": 67,
+  "passed": 67,
+  "failed": 0,
+  "skipped": 0,
+  "stdout": {
+    "path": ".flowkit/artifacts/allow-prepared-author-same-stage-continuation/review-apply-20261009/domain.stdout.txt",
+    "bytes": 15505,
+    "sha256": "920ec4bf524b7267e1a331430a6eeb219edb751e3c1ee05ee280bfae395798d3"
+  },
+  "stderr": {
+    "path": ".flowkit/artifacts/allow-prepared-author-same-stage-continuation/review-apply-20261009/domain.stderr.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

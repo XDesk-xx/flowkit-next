@@ -197,6 +197,70 @@ test("prepared Author correction accepts same or earlier stage after exact curre
   );
 });
 
+test("prepared continuation preserves the reached-stage matrix including three same-revise identities", () => {
+  const stages = [
+    ["explore", "revise-explore"],
+    ["propose", "revise-propose"],
+    ["apply", "revise-apply"],
+  ] as const;
+  const targets = ["revise-explore", "revise-propose", "revise-apply"] as const;
+  for (const [stage, actions] of stages.entries())
+    for (const current of actions)
+      for (const [targetStage, target] of targets.entries()) {
+        const input = preparedCorrection(current, target);
+        const before = structuredClone(input);
+        assert.deepEqual(
+          evaluatePolicyAndNextBoundary(input),
+          targetStage <= stage
+            ? { kind: "ready-action", actionId: target }
+            : { kind: "blocked", reason: "unsupported-owner-correction" },
+        );
+        assert.deepEqual(input, before);
+      }
+});
+
+test("same-revise prepared correction cannot borrow reuse readiness or parent authority", () => {
+  for (const actionId of [
+    "revise-explore",
+    "revise-propose",
+    "revise-apply",
+  ] as const) {
+    const valid = preparedCorrection(actionId, actionId);
+    for (const override of [
+      { preparedCurrentRunId: "stale" },
+      { preparedResult: null },
+      { preparedRunContext: { ...valid.preparedRunContext, role: "reviewer" } },
+      {
+        preparedResult: {
+          ...valid.preparedResult,
+          nextBoundary: "review-apply",
+        },
+      },
+    ])
+      assert.deepEqual(
+        evaluatePolicyAndNextBoundary({ ...valid, ...override }),
+        { kind: "blocked", reason: "invalid-policy-input" },
+      );
+    for (const auth of [
+      null,
+      { ...authority(actionId), decision: "activate-change" },
+      { ...authority(actionId), scope: ["apply"] },
+      { ...authority(actionId), changeId: "other" },
+    ])
+      assert.equal(
+        evaluatePolicyAndNextBoundary({
+          ...valid,
+          ownerCorrection: { requestedAction: actionId, authority: auth },
+        }).kind,
+        "blocked",
+      );
+    assert.deepEqual(
+      evaluatePolicyAndNextBoundary({ ...valid, ownerCorrection: null }),
+      { kind: "ready-action", actionId },
+    );
+  }
+});
+
 test("prepared correction rejects missing, stale and contradictory current Run facts", () => {
   const valid = preparedCorrection("apply", "revise-propose");
   const invalid = [

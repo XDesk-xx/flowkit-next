@@ -1,0 +1,29 @@
+{
+  "label": "code-checks",
+  "command": {
+    "executable": "powershell.exe",
+    "args": [
+      "-NoProfile",
+      "-Command",
+      "pnpm typecheck; if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }; pnpm build; if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }; pnpm quality:gate; exit $LASTEXITCODE"
+    ],
+    "env": {}
+  },
+  "startedAt": "2026-10-09T04:31:04.346Z",
+  "finishedAt": "2026-10-09T04:31:30.998Z",
+  "exitCode": 0,
+  "tests": 0,
+  "passed": 0,
+  "failed": 0,
+  "skipped": 0,
+  "stdout": {
+    "path": ".flowkit/artifacts/allow-prepared-author-same-stage-continuation/verification/code-checks.stdout.txt",
+    "bytes": 66,
+    "sha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20"
+  },
+  "stderr": {
+    "path": ".flowkit/artifacts/allow-prepared-author-same-stage-continuation/verification/code-checks.stderr.txt",
+    "bytes": 243,
+    "sha256": "dac80812af5128e14434c348aadbeaf6f7c2885449e287ead608227d6744f759"
+  }
+}

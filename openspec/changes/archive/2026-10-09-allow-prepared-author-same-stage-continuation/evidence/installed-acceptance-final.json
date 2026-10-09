@@ -1,0 +1,35 @@
+{
+  "label": "installed-acceptance-final",
+  "command": {
+    "executable": "C:\\nvm4w\\nodejs\\node.exe",
+    "args": [
+      "--import",
+      "tsx",
+      "--test",
+      "tests/acceptance/foundation-manager.acceptance.test.ts",
+      "tests/acceptance/git-host.acceptance.test.ts",
+      "tests/acceptance/native-windows-archive.test.ts"
+    ],
+    "env": {
+      "FLOWKIT_HOME": "C:/Users/xuser/.flowkit",
+      "FLOWKIT_ACCEPTANCE_INSTALLATION": "D:/Projects/flowkit-next/.tmp/prepared-continuation-package/install-final/node_modules/flowkit-next"
+    }
+  },
+  "startedAt": "2026-10-09T04:32:58.669Z",
+  "finishedAt": "2026-10-09T04:33:28.303Z",
+  "exitCode": 0,
+  "tests": 8,
+  "passed": 7,
+  "failed": 0,
+  "skipped": 1,
+  "stdout": {
+    "path": ".flowkit/artifacts/allow-prepared-author-same-stage-continuation/verification/installed-acceptance-final.stdout.txt",
+    "bytes": 2012,
+    "sha256": "85bd58e419f504e1d8a45b238f75d1b6abe5315cc50616e410d1940bccd2a9d4"
+  },
+  "stderr": {
+    "path": ".flowkit/artifacts/allow-prepared-author-same-stage-continuation/verification/installed-acceptance-final.stderr.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

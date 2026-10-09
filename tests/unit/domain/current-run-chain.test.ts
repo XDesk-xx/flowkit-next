@@ -214,6 +214,89 @@ test("LP 089 shaped prepared Apply accepts one Owner-linked revise tip without c
   }
 });
 
+test("same-revise prepared successors always validate child authority before selecting the tip", () => {
+  for (const [stage, ids] of [
+    ["explore", ["explore"]],
+    ["propose", ["explore", "review-explore", "propose"]],
+    [
+      "apply",
+      ["explore", "review-explore", "propose", "review-propose", "apply"],
+    ],
+  ] as const) {
+    const history: DurableRunRecord[] = [];
+    for (const id of ids)
+      history.push(record(history.length + 1, id, history.at(-1) ?? null));
+    const prior = history.pop()!;
+    const original: DurableRunRecord = {
+      ...prior,
+      context: { ...prior.context, lifecycleState: "prepared" },
+      result: { ...prior.result, authorConclusion: null },
+    };
+    history.push(original);
+    const revise = `revise-${stage}` as const;
+    const authority = {
+      ref: `owner:${"a".repeat(64)}`,
+      decision: "revise-action" as const,
+      deliveryId: "delivery-one",
+      changeId: "change-one",
+      scope: [revise],
+      sourceRef: "synthetic:prepared-continuation",
+    };
+    for (let i = 0; i < 3; i++) {
+      const next = record(history.length + 1, revise, history.at(-1)!);
+      history.push({
+        ...next,
+        context: {
+          ...next.context,
+          ownerAuthority: authority,
+          lifecycleState: "prepared",
+        },
+        result: { ...next.result, authorConclusion: null },
+      });
+    }
+    const tip = history.at(-1)!;
+    const before = JSON.stringify(history);
+    assert.equal(resolveRunChain([...history].reverse()), tip);
+    for (const auth of [
+      null,
+      { ...authority, decision: "activate-change" as const },
+      { ...authority, scope: ["apply"] },
+      { ...authority, changeId: "other" },
+      { ...authority, deliveryId: "other" },
+    ]) {
+      const invalid = {
+        ...tip,
+        context: { ...tip.context, ownerAuthority: auth },
+      };
+      assert.throws(
+        () => resolveRunChain([...history.slice(0, -1), invalid]),
+        ActionContextError,
+      );
+    }
+    const fork = record(history.length + 1, revise, history.at(-2)!);
+    assert.throws(
+      () =>
+        resolveRunChain([
+          ...history,
+          { ...fork, context: { ...fork.context, ownerAuthority: authority } },
+        ]),
+      ActionContextError,
+    );
+    assert.throws(
+      () =>
+        resolveRunChain([
+          ...history.slice(0, -1),
+          {
+            ...tip,
+            context: { ...tip.context, previousRunId: original.context.runId },
+          },
+        ]),
+      ActionContextError,
+    );
+    assert.equal(JSON.stringify(history), before);
+  }
+});
+
 test("canonical disk history reads selected group only and keeps partial visible", async () => {
   const repositoryRoot = await mkdtemp(
     path.join(os.tmpdir(), "flowkit-chain-"),

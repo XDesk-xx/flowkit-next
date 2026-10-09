@@ -386,10 +386,9 @@ function isStructurallyEnterable(
     actionId,
   };
   if (facts.currentAction?.state === "prepared") {
-    if (sameActionIdentity(facts.currentAction.identity, identity))
-      return !corrected;
+    if (!corrected)
+      return sameActionIdentity(facts.currentAction.identity, identity);
     return (
-      corrected &&
       supersedePreparedAction(facts.currentAction, identity, {
         kind: "ready-action",
         actionId,

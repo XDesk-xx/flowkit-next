@@ -1,0 +1,244 @@
+{
+  "fixtureNotice": "Synthetic in-memory function inputs only. No synthetic Run, Result or Owner authority was persisted or used for live execution.",
+  "matrix": [
+    {
+      "current": "explore",
+      "target": "revise-explore",
+      "policy": {
+        "kind": "ready-action",
+        "actionId": "revise-explore"
+      },
+      "structurallyEnterable": true
+    },
+    {
+      "current": "explore",
+      "target": "revise-propose",
+      "policy": {
+        "kind": "blocked",
+        "reason": "unsupported-owner-correction"
+      },
+      "structurallyEnterable": true
+    },
+    {
+      "current": "explore",
+      "target": "revise-apply",
+      "policy": {
+        "kind": "blocked",
+        "reason": "unsupported-owner-correction"
+      },
+      "structurallyEnterable": true
+    },
+    {
+      "current": "revise-explore",
+      "target": "revise-explore",
+      "policy": {
+        "kind": "blocked",
+        "reason": "action-boundary-not-enterable"
+      },
+      "structurallyEnterable": false
+    },
+    {
+      "current": "revise-explore",
+      "target": "revise-propose",
+      "policy": {
+        "kind": "blocked",
+        "reason": "unsupported-owner-correction"
+      },
+      "structurallyEnterable": true
+    },
+    {
+      "current": "revise-explore",
+      "target": "revise-apply",
+      "policy": {
+        "kind": "blocked",
+        "reason": "unsupported-owner-correction"
+      },
+      "structurallyEnterable": true
+    },
+    {
+      "current": "propose",
+      "target": "revise-explore",
+      "policy": {
+        "kind": "ready-action",
+        "actionId": "revise-explore"
+      },
+      "structurallyEnterable": true
+    },
+    {
+      "current": "propose",
+      "target": "revise-propose",
+      "policy": {
+        "kind": "ready-action",
+        "actionId": "revise-propose"
+      },
+      "structurallyEnterable": true
+    },
+    {
+      "current": "propose",
+      "target": "revise-apply",
+      "policy": {
+        "kind": "blocked",
+        "reason": "unsupported-owner-correction"
+      },
+      "structurallyEnterable": true
+    },
+    {
+      "current": "revise-propose",
+      "target": "revise-explore",
+      "policy": {
+        "kind": "ready-action",
+        "actionId": "revise-explore"
+      },
+      "structurallyEnterable": true
+    },
+    {
+      "current": "revise-propose",
+      "target": "revise-propose",
+      "policy": {
+        "kind": "blocked",
+        "reason": "action-boundary-not-enterable"
+      },
+      "structurallyEnterable": false
+    },
+    {
+      "current": "revise-propose",
+      "target": "revise-apply",
+      "policy": {
+        "kind": "blocked",
+        "reason": "unsupported-owner-correction"
+      },
+      "structurallyEnterable": true
+    },
+    {
+      "current": "apply",
+      "target": "revise-explore",
+      "policy": {
+        "kind": "ready-action",
+        "actionId": "revise-explore"
+      },
+      "structurallyEnterable": true
+    },
+    {
+      "current": "apply",
+      "target": "revise-propose",
+      "policy": {
+        "kind": "ready-action",
+        "actionId": "revise-propose"
+      },
+      "structurallyEnterable": true
+    },
+    {
+      "current": "apply",
+      "target": "revise-apply",
+      "policy": {
+        "kind": "ready-action",
+        "actionId": "revise-apply"
+      },
+      "structurallyEnterable": true
+    },
+    {
+      "current": "revise-apply",
+      "target": "revise-explore",
+      "policy": {
+        "kind": "ready-action",
+        "actionId": "revise-explore"
+      },
+      "structurallyEnterable": true
+    },
+    {
+      "current": "revise-apply",
+      "target": "revise-propose",
+      "policy": {
+        "kind": "ready-action",
+        "actionId": "revise-propose"
+      },
+      "structurallyEnterable": true
+    },
+    {
+      "current": "revise-apply",
+      "target": "revise-apply",
+      "policy": {
+        "kind": "blocked",
+        "reason": "action-boundary-not-enterable"
+      },
+      "structurallyEnterable": false
+    }
+  ],
+  "histories": [
+    {
+      "parentAction": "revise-explore",
+      "childAction": "revise-explore",
+      "authorityScope": null,
+      "acceptedTip": "20261009-003-revise-explore",
+      "error": null
+    },
+    {
+      "parentAction": "revise-explore",
+      "childAction": "revise-explore",
+      "authorityScope": [
+        "revise-explore"
+      ],
+      "acceptedTip": "20261009-003-revise-explore",
+      "error": null
+    },
+    {
+      "parentAction": "revise-explore",
+      "childAction": "revise-explore",
+      "authorityScope": [
+        "revise-apply"
+      ],
+      "acceptedTip": "20261009-003-revise-explore",
+      "error": null
+    },
+    {
+      "parentAction": "revise-propose",
+      "childAction": "revise-propose",
+      "authorityScope": null,
+      "acceptedTip": "20261009-005-revise-propose",
+      "error": null
+    },
+    {
+      "parentAction": "revise-propose",
+      "childAction": "revise-propose",
+      "authorityScope": [
+        "revise-propose"
+      ],
+      "acceptedTip": "20261009-005-revise-propose",
+      "error": null
+    },
+    {
+      "parentAction": "revise-propose",
+      "childAction": "revise-propose",
+      "authorityScope": [
+        "revise-apply"
+      ],
+      "acceptedTip": "20261009-005-revise-propose",
+      "error": null
+    },
+    {
+      "parentAction": "revise-apply",
+      "childAction": "revise-apply",
+      "authorityScope": null,
+      "acceptedTip": "20261009-007-revise-apply",
+      "error": null
+    },
+    {
+      "parentAction": "revise-apply",
+      "childAction": "revise-apply",
+      "authorityScope": [
+        "revise-apply"
+      ],
+      "acceptedTip": "20261009-007-revise-apply",
+      "error": null
+    },
+    {
+      "parentAction": "revise-apply",
+      "childAction": "revise-apply",
+      "authorityScope": [
+        "revise-propose"
+      ],
+      "acceptedTip": "20261009-007-revise-apply",
+      "error": null
+    }
+  ]
+}

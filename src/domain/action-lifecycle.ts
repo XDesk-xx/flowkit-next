@@ -171,7 +171,6 @@ export function supersedePreparedAction(
     !REVISE_ACTIONS.has(target.actionId) ||
     current.identity.deliveryId !== target.deliveryId ||
     current.identity.changeId !== target.changeId ||
-    sameActionIdentity(current.identity, target) ||
     boundary.actionId !== target.actionId
   ) {
     return null;

@@ -1,0 +1,30 @@
+{
+  "label": "quality",
+  "command": {
+    "executable": "powershell.exe",
+    "args": [
+      "-NoProfile",
+      "-Command",
+      "pnpm typecheck; if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }; pnpm quality:gate; exit $LASTEXITCODE"
+    ]
+  },
+  "startedAt": "2026-10-09T04:42:11.116Z",
+  "finishedAt": "2026-10-09T04:42:49.883Z",
+  "exitCode": 0,
+  "signal": null,
+  "error": null,
+  "tests": 0,
+  "passed": 0,
+  "failed": 0,
+  "skipped": 0,
+  "stdout": {
+    "path": ".flowkit/artifacts/allow-prepared-author-same-stage-continuation/review-apply-20261009/quality.stdout.txt",
+    "bytes": 66,
+    "sha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20"
+  },
+  "stderr": {
+    "path": ".flowkit/artifacts/allow-prepared-author-same-stage-continuation/review-apply-20261009/quality.stderr.txt",
+    "bytes": 207,
+    "sha256": "23ee101eeca741424b35ea6e723efb7c62e26c1b7b2ded24a9c30f24adb01b8f"
+  }
+}

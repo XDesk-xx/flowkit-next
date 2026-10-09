@@ -1,0 +1,33 @@
+{
+  "label": "acceptance",
+  "command": {
+    "executable": "C:\\nvm4w\\nodejs\\node.exe",
+    "args": [
+      "--import",
+      "tsx",
+      "--test",
+      "tests/acceptance/foundation-manager.acceptance.test.ts",
+      "tests/acceptance/git-host.acceptance.test.ts",
+      "tests/acceptance/native-windows-archive.test.ts"
+    ]
+  },
+  "startedAt": "2026-10-09T04:42:11.123Z",
+  "finishedAt": "2026-10-09T04:43:00.762Z",
+  "exitCode": 0,
+  "signal": null,
+  "error": null,
+  "tests": 8,
+  "passed": 7,
+  "failed": 0,
+  "skipped": 1,
+  "stdout": {
+    "path": ".flowkit/artifacts/allow-prepared-author-same-stage-continuation/review-apply-20261009/acceptance.stdout.txt",
+    "bytes": 2014,
+    "sha256": "0a4b5021cb17389da711caaccecc8fcb35a74fe35d0f1b7f6c102fa0e91bb3d7"
+  },
+  "stderr": {
+    "path": ".flowkit/artifacts/allow-prepared-author-same-stage-continuation/review-apply-20261009/acceptance.stderr.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

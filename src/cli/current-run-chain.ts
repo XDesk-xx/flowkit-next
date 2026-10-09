@@ -275,19 +275,30 @@ export function resolveRunChain(
       ...context.actionIdentity,
       changeState: recordChangeState(parent),
     };
-    let boundary = policyForRecord(parent, input);
+    const preparedReviseSuccessor =
+      parent.context.lifecycleState === "prepared" &&
+      context.actionIdentity.actionId.startsWith("revise-") &&
+      parent.context.actionIdentity.actionId ===
+        context.actionIdentity.actionId;
+    const correctionInput = {
+      ...input,
+      ownerCorrection: {
+        requestedAction: context.actionIdentity.actionId,
+        authority: context.ownerAuthority,
+      },
+    };
+    // Reuse READY describes the parent; a new same-revise occurrence needs its own correction.
+    let boundary = policyForRecord(
+      parent,
+      preparedReviseSuccessor ? correctionInput : input,
+    );
     if (
+      !preparedReviseSuccessor &&
       (boundary.kind !== "ready-action" ||
         boundary.actionId !== context.actionIdentity.actionId) &&
       context.ownerAuthority !== null
     ) {
-      boundary = policyForRecord(parent, {
-        ...input,
-        ownerCorrection: {
-          requestedAction: context.actionIdentity.actionId,
-          authority: context.ownerAuthority,
-        },
-      });
+      boundary = policyForRecord(parent, correctionInput);
     }
     if (
       boundary.kind !== "ready-action" ||

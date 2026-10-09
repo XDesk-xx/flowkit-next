@@ -1,0 +1,42 @@
+{
+  "label": "related-regressions",
+  "command": {
+    "executable": "C:\\nvm4w\\nodejs\\node.exe",
+    "args": [
+      "--import",
+      "tsx",
+      "--test",
+      "--test-concurrency=3",
+      "tests/unit/domain/action-lifecycle.test.ts",
+      "tests/unit/domain/policy-owner-correction.test.ts",
+      "tests/unit/domain/current-run-chain.test.ts",
+      "tests/unit/domain/prepared-owner-correction-start.test.ts",
+      "tests/unit/domain/failed-author-core.test.ts",
+      "tests/unit/domain/failed-author-lifecycle.test.ts",
+      "tests/unit/domain/rejected-review-recovery.test.ts",
+      "tests/unit/domain/archive-outcome-retry.test.ts",
+      "tests/unit/domain/prepared-proof-checkpoint.test.ts",
+      "tests/unit/domain/action-proof-closure.test.ts",
+      "tests/unit/domain/bounded-json-input.test.ts",
+      "tests/unit/domain/generated-facts-budget.test.ts"
+    ],
+    "env": {}
+  },
+  "startedAt": "2026-10-09T04:29:25.081Z",
+  "finishedAt": "2026-10-09T04:31:38.899Z",
+  "exitCode": 0,
+  "tests": 67,
+  "passed": 67,
+  "failed": 0,
+  "skipped": 0,
+  "stdout": {
+    "path": ".flowkit/artifacts/allow-prepared-author-same-stage-continuation/verification/related-regressions.stdout.txt",
+    "bytes": 15503,
+    "sha256": "ea615d3dcdfd3d10d90f70dc81eed51723040111e6b99b6b59518cfc4df7b824"
+  },
+  "stderr": {
+    "path": ".flowkit/artifacts/allow-prepared-author-same-stage-continuation/verification/related-regressions.stderr.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

@@ -1,0 +1,46 @@
+TAP version 13
+# Subtest: explore prepared continuation preserves bytes through two same-revise rounds and latest Review start
+ok 1 - explore prepared continuation preserves bytes through two same-revise rounds and latest Review start
+  ---
+  duration_ms: 48683.4524
+  type: 'test'
+  ...
+# Subtest: propose prepared continuation preserves bytes through two same-revise rounds and latest Review start
+ok 2 - propose prepared continuation preserves bytes through two same-revise rounds and latest Review start
+  ---
+  duration_ms: 31530.7245
+  type: 'test'
+  ...
+# Subtest: apply prepared continuation preserves bytes through two same-revise rounds and latest Review start
+ok 3 - apply prepared continuation preserves bytes through two same-revise rounds and latest Review start
+  ---
+  duration_ms: 32670.5423
+  type: 'test'
+  ...
+# Subtest: fixed prepared start rejects invalid authority, ordinary targets and incomplete parent without new writes
+ok 4 - fixed prepared start rejects invalid authority, ordinary targets and incomplete parent without new writes
+  ---
+  duration_ms: 11462.9677
+  type: 'test'
+  ...
+# Subtest: prepared Reviewer and Archive cannot borrow Author continuation authority
+ok 5 - prepared Reviewer and Archive cannot borrow Author continuation authority
+  ---
+  duration_ms: 2060.2682
+  type: 'test'
+  ...
+# Subtest: prepared Explore forward skip remains rejected by fixed start
+ok 6 - prepared Explore forward skip remains rejected by fixed start
+  ---
+  duration_ms: 3579.0183
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 130409.7294

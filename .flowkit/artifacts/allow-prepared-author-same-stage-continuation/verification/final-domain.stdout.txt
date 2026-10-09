@@ -1,0 +1,226 @@
+TAP version 13
+# Subtest: accepts exactly prepared and terminal lifecycle states
+ok 1 - accepts exactly prepared and terminal lifecycle states
+  ---
+  duration_ms: 2.472
+  type: 'test'
+  ...
+# Subtest: validates canonical ActionIdentity and CurrentAction without normalization
+ok 2 - validates canonical ActionIdentity and CurrentAction without normalization
+  ---
+  duration_ms: 0.4715
+  type: 'test'
+  ...
+# Subtest: prepares an empty slot and terminalizes the exact prepared Action
+ok 3 - prepares an empty slot and terminalizes the exact prepared Action
+  ---
+  duration_ms: 0.3938
+  type: 'test'
+  ...
+# Subtest: rejects removed resume events and malformed lifecycle inputs
+ok 4 - rejects removed resume events and malformed lifecycle inputs
+  ---
+  duration_ms: 0.178
+  type: 'test'
+  ...
+# Subtest: rejects duplicate or replacement prepare over a prepared Action
+ok 5 - rejects duplicate or replacement prepare over a prepared Action
+  ---
+  duration_ms: 0.1766
+  type: 'test'
+  ...
+# Subtest: bounded prepared Author supersession keeps the original slot untouched
+ok 6 - bounded prepared Author supersession keeps the original slot untouched
+  ---
+  duration_ms: 0.4479
+  type: 'test'
+  ...
+# Subtest: same-revise prepared supersession stages a new candidate without reopening the old slot
+ok 7 - same-revise prepared supersession stages a new candidate without reopening the old slot
+  ---
+  duration_ms: 0.5085
+  type: 'test'
+  ...
+# Subtest: rejects terminal from empty or identity mismatch
+ok 8 - rejects terminal from empty or identity mismatch
+  ---
+  duration_ms: 0.1544
+  type: 'test'
+  ...
+# Subtest: keeps terminal absorbing for same identity
+ok 9 - keeps terminal absorbing for same identity
+  ---
+  duration_ms: 1.0294
+  type: 'test'
+  ...
+# Subtest: allows terminal replacement only for a different canonical identity
+ok 10 - allows terminal replacement only for a different canonical identity
+  ---
+  duration_ms: 1.1555
+  type: 'test'
+  ...
+# Subtest: uses semantic equality and remains pure
+ok 11 - uses semantic equality and remains pure
+  ---
+  duration_ms: 0.6205
+  type: 'test'
+  ...
+# Subtest: encodes structural lifecycle only, not Policy or authority
+ok 12 - encodes structural lifecycle only, not Policy or authority
+  ---
+  duration_ms: 1.1948
+  type: 'test'
+  ...
+# Subtest: chain tip follows Policy links, not sequence or input ordering
+ok 13 - chain tip follows Policy links, not sequence or input ordering
+  ---
+  duration_ms: 5.6049
+  type: 'test'
+  ...
+# Subtest: reject disconnected higher root, fork, missing parent, cycle, duplicate sequence and Role
+ok 14 - reject disconnected higher root, fork, missing parent, cycle, duplicate sequence and Role
+  ---
+  duration_ms: 1.7912
+  type: 'test'
+  ...
+# Subtest: Owner correction uses existing Policy and rejects wrong authority
+ok 15 - Owner correction uses existing Policy and rejects wrong authority
+  ---
+  duration_ms: 1.6548
+  type: 'test'
+  ...
+# Subtest: complete prepared failure retries same Action with a new occurrence
+ok 16 - complete prepared failure retries same Action with a new occurrence
+  ---
+  duration_ms: 1.5636
+  type: 'test'
+  ...
+# Subtest: LP 089 shaped prepared Apply accepts one Owner-linked revise tip without changing the predecessor
+ok 17 - LP 089 shaped prepared Apply accepts one Owner-linked revise tip without changing the predecessor
+  ---
+  duration_ms: 7.6189
+  type: 'test'
+  ...
+# Subtest: same-revise prepared successors always validate child authority before selecting the tip
+ok 18 - same-revise prepared successors always validate child authority before selecting the tip
+  ---
+  duration_ms: 13.1208
+  type: 'test'
+  ...
+# Subtest: canonical disk history reads selected group only and keeps partial visible
+ok 19 - canonical disk history reads selected group only and keeps partial visible
+  ---
+  duration_ms: 90.4477
+  type: 'test'
+  ...
+# Subtest: explicit bootstrap history is display-only; mixed and unmarked groups rejected
+ok 20 - explicit bootstrap history is display-only; mixed and unmarked groups rejected
+  ---
+  duration_ms: 180.2824
+  type: 'test'
+  ...
+# Subtest: actual terminal Author FAIL stays current rather than reusing prior PASS
+ok 21 - actual terminal Author FAIL stays current rather than reusing prior PASS
+  ---
+  duration_ms: 0.9064
+  type: 'test'
+  ...
+# Subtest: prepared Author correction accepts same or earlier stage after exact current pair
+ok 22 - prepared Author correction accepts same or earlier stage after exact current pair
+  ---
+  duration_ms: 5.438
+  type: 'test'
+  ...
+# Subtest: prepared continuation preserves the reached-stage matrix including three same-revise identities
+ok 23 - prepared continuation preserves the reached-stage matrix including three same-revise identities
+  ---
+  duration_ms: 15.8941
+  type: 'test'
+  ...
+# Subtest: same-revise prepared correction cannot borrow reuse readiness or parent authority
+ok 24 - same-revise prepared correction cannot borrow reuse readiness or parent authority
+  ---
+  duration_ms: 3.0089
+  type: 'test'
+  ...
+# Subtest: prepared correction rejects missing, stale and contradictory current Run facts
+ok 25 - prepared correction rejects missing, stale and contradictory current Run facts
+  ---
+  duration_ms: 0.7063
+  type: 'test'
+  ...
+# Subtest: allows the fifteen reached-stage Owner corrections that lifecycle can enter
+ok 26 - allows the fifteen reached-stage Owner corrections that lifecycle can enter
+  ---
+  duration_ms: 2.9463
+  type: 'test'
+  ...
+# Subtest: requires exact matching revise-action Owner authority
+ok 27 - requires exact matching revise-action Owner authority
+  ---
+  duration_ms: 0.3966
+  type: 'test'
+  ...
+# Subtest: rejects forward skip, prepared switching, archive reopening and completed correction
+ok 28 - rejects forward skip, prepared switching, archive reopening and completed correction
+  ---
+  duration_ms: 0.4433
+  type: 'test'
+  ...
+# Subtest: reported-boundary conflict wins before a valid Owner correction
+ok 29 - reported-boundary conflict wins before a valid Owner correction
+  ---
+  duration_ms: 0.6705
+  type: 'test'
+  ...
+# Subtest: does not treat normal apply/archive readiness as Owner execution authority
+ok 30 - does not treat normal apply/archive readiness as Owner execution authority
+  ---
+  duration_ms: 0.6099
+  type: 'test'
+  ...
+# Subtest: six exact terminal Author FAILs permit only reached-stage Owner correction
+ok 31 - six exact terminal Author FAILs permit only reached-stage Owner correction
+  ---
+  duration_ms: 4.8941
+  type: 'test'
+  ...
+# Subtest: Owner corrected start rejects bad authority/readiness before writing and preserves old bytes
+ok 32 - Owner corrected start rejects bad authority/readiness before writing and preserves old bytes
+  ---
+  duration_ms: 915.9814
+  type: 'test'
+  ...
+# Subtest: Owner corrected start requires active trusted coordination before writing
+ok 33 - Owner corrected start requires active trusted coordination before writing
+  ---
+  duration_ms: 1287.289
+  type: 'test'
+  ...
+# Subtest: Owner corrected start rechecks coordination immediately before writing
+ok 34 - Owner corrected start rechecks coordination immediately before writing
+  ---
+  duration_ms: 1091.169
+  type: 'test'
+  ...
+# Subtest: Owner corrected start rejects a competing tip created during readiness without writing its requested occurrence
+ok 35 - Owner corrected start rejects a competing tip created during readiness without writing its requested occurrence
+  ---
+  duration_ms: 810.5297
+  type: 'test'
+  ...
+# Subtest: Owner corrected start creates one linked partial then completed revise reaches Review
+ok 36 - Owner corrected start creates one linked partial then completed revise reaches Review
+  ---
+  duration_ms: 2096.4815
+  type: 'test'
+  ...
+1..36
+# tests 36
+# suites 0
+# pass 36
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 7453.8449

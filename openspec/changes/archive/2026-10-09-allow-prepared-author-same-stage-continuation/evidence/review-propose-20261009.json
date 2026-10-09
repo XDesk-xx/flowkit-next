@@ -1,0 +1,534 @@
+{
+  "schemaVersion": 1,
+  "kind": "direct-openspec-proposal-review",
+  "date": "2026-10-09",
+  "changeId": "allow-prepared-author-same-stage-continuation",
+  "role": "reviewer",
+  "verdict": "approved",
+  "findings": [],
+  "repository": {
+    "root": "D:/Projects/flowkit-next",
+    "branch": "main",
+    "head": "0e0d8106d2cdf632e9aacbc61311cbe6e6d762db"
+  },
+  "manager": {
+    "root": "D:/tools/flowkit-manager/node_modules/flowkit-next",
+    "version": "1.0.0",
+    "dependency": "file:../../releases/flowkit-next-1.0.0-0e0d8106d2cd.tgz"
+  },
+  "checks": [
+    {
+      "command": "fixed manager status --input -",
+      "exitCode": 2,
+      "result": "context-inconsistent",
+      "message": "OpenSpec Change has no coordination: allow-prepared-author-same-stage-continuation"
+    },
+    {
+      "command": "fixed manager next --input -",
+      "exitCode": 2,
+      "result": "context-inconsistent",
+      "message": "OpenSpec Change has no coordination: allow-prepared-author-same-stage-continuation"
+    },
+    {
+      "command": "fixed manager doctor --input -",
+      "exitCode": 0,
+      "status": "pass",
+      "openspecVersion": "1.10.0"
+    },
+    {
+      "command": "node C:/Users/xuser/.flowkit/tools/openspec/1.10.0/bin/openspec.js validate allow-prepared-author-same-stage-continuation --strict --json",
+      "exitCode": 0,
+      "valid": true,
+      "issues": []
+    },
+    {
+      "command": "node --import tsx --test tests/unit/domain/current-run-chain.test.ts tests/unit/domain/policy-owner-correction.test.ts",
+      "exitCode": 0,
+      "tests": 16,
+      "passed": 16,
+      "failed": 0
+    },
+    {
+      "command": "node --import tsx --input-type=module (independent in-memory source probes)",
+      "exitCode": 0,
+      "policyCases": 18,
+      "chainCases": 9,
+      "matchesExploreEvidence": true
+    }
+  ],
+  "liveReadback": {
+    "runDirectory": "D:\\AI\\src\\LearningPlatform\\.flowkit\\runs\\d10-complete-course-to-classroom\\010-source-resource-preparation-and-package-production\\20261008-015-revise-apply",
+    "runHashes": {
+      "action.md": "241afa839dcb0e2d0f485b86530b3ebd39cdc895a9eb8d9d9426aa7a3b885773",
+      "context.json": "6a2537b509a81de866a04101082242a2d6bc76403f0a78f73818221d83e4693f",
+      "result.json": "d3b92ecec527bfc5b6d4e9c599016d8f2f3be6bf835ce183ee59d366824cd86f"
+    },
+    "unchanged": true,
+    "proofCount": 337,
+    "proofBytes": 3083257,
+    "proofMismatches": [],
+    "queries": [
+      {
+        "command": "status",
+        "exitCode": 0,
+        "result": {
+          "kind": "status",
+          "status": "current",
+          "repositoryRoot": "D:\\AI\\src\\LearningPlatform",
+          "deliveryId": "d10-complete-course-to-classroom",
+          "changeId": "source-resource-preparation-and-package-production",
+          "changeState": "active",
+          "currentRun": {
+            "runId": "20261008-015-revise-apply",
+            "actionId": "revise-apply",
+            "state": "prepared",
+            "role": "author",
+            "supersededPreparedRunId": "20261008-014-apply",
+            "ownerAuthorityRef": "owner:67a67bc53c1ddae6eb9e632c606272f82a13f59c6600103d7a47132438741f85"
+          },
+          "openSpec": {
+            "activeChangeIds": [
+              "source-resource-preparation-and-package-production"
+            ],
+            "exactChange": {
+              "changeId": "source-resource-preparation-and-package-production",
+              "schemaName": "spec-driven",
+              "changeRoot": "D:\\AI\\src\\LearningPlatform\\openspec\\changes\\source-resource-preparation-and-package-production",
+              "isPlanningComplete": true,
+              "isComplete": true,
+              "artifacts": [
+                {
+                  "id": "proposal",
+                  "status": "done",
+                  "requires": [],
+                  "missingDeps": []
+                },
+                {
+                  "id": "specs",
+                  "status": "done",
+                  "requires": [
+                    "proposal"
+                  ],
+                  "missingDeps": []
+                },
+                {
+                  "id": "design",
+                  "status": "done",
+                  "requires": [
+                    "proposal"
+                  ],
+                  "missingDeps": []
+                },
+                {
+                  "id": "tasks",
+                  "status": "done",
+                  "requires": [
+                    "specs",
+                    "design"
+                  ],
+                  "missingDeps": []
+                }
+              ]
+            }
+          }
+        },
+        "stderr": ""
+      },
+      {
+        "command": "next",
+        "exitCode": 0,
+        "result": {
+          "kind": "next",
+          "decision": {
+            "kind": "ready-action",
+            "actionId": "revise-apply"
+          },
+          "checkpoint": {
+            "authorized": false,
+            "reason": "policy-not-ready"
+          }
+        },
+        "stderr": ""
+      },
+      {
+        "command": "action inspect",
+        "exitCode": 0,
+        "result": {
+          "kind": "action-inspect",
+          "effect": "observed",
+          "runId": "20261008-015-revise-apply",
+          "completeness": "complete",
+          "originalHashes": {
+            "action.md": "241afa839dcb0e2d0f485b86530b3ebd39cdc895a9eb8d9d9426aa7a3b885773",
+            "context.json": "6a2537b509a81de866a04101082242a2d6bc76403f0a78f73818221d83e4693f",
+            "result.json": "d3b92ecec527bfc5b6d4e9c599016d8f2f3be6bf835ce183ee59d366824cd86f"
+          },
+          "actualEffect": "prepared",
+          "remaining": [],
+          "canContinue": false,
+          "archiveEffectsRef": ".flowkit/artifacts/d10-complete-course-to-classroom/changes/010-source-resource-preparation-and-package-production/archive-effects/20261008-015-revise-apply",
+          "diagnosticRefs": []
+        },
+        "stderr": ""
+      }
+    ]
+  },
+  "guidance": [
+    {
+      "path": "skills/actions/apply/SKILL.md",
+      "sha256": "c988d89652183df24a3a0494107c4f68c67bc75dbab49071e6e5457e83005bbd",
+      "installedSha256": "c988d89652183df24a3a0494107c4f68c67bc75dbab49071e6e5457e83005bbd"
+    },
+    {
+      "path": "skills/actions/archive/SKILL.md",
+      "sha256": "64817ed5ee4880069da953671b5346738b4859cfd6b556c7983f61c83f2b4fd4",
+      "installedSha256": "64817ed5ee4880069da953671b5346738b4859cfd6b556c7983f61c83f2b4fd4"
+    },
+    {
+      "path": "skills/actions/explore/SKILL.md",
+      "sha256": "f8aa62da4c8603835198b3cf314fc8ee9f22ea10c07426c8389711930b6bbd63",
+      "installedSha256": "f8aa62da4c8603835198b3cf314fc8ee9f22ea10c07426c8389711930b6bbd63"
+    },
+    {
+      "path": "skills/actions/propose/SKILL.md",
+      "sha256": "553c8345f5279848568162442abdb8b8f6b657d72f082ec9a51e7d3f700b07ac",
+      "installedSha256": "553c8345f5279848568162442abdb8b8f6b657d72f082ec9a51e7d3f700b07ac"
+    },
+    {
+      "path": "skills/actions/README.md",
+      "sha256": "f740bdc8a1d9a8a410775fb99ab4f58ad95cdc216970fac1bb0da893e4b600cc",
+      "installedSha256": "f740bdc8a1d9a8a410775fb99ab4f58ad95cdc216970fac1bb0da893e4b600cc"
+    },
+    {
+      "path": "skills/actions/review-apply/SKILL.md",
+      "sha256": "cc28d9e26ebd10fba863253bb2d20cc38b26ce7324207d50a5d456be0db48194",
+      "installedSha256": "cc28d9e26ebd10fba863253bb2d20cc38b26ce7324207d50a5d456be0db48194"
+    },
+    {
+      "path": "skills/actions/review-explore/SKILL.md",
+      "sha256": "efc227732c498303371ce5b4491842e5666bd4dbd5f79837ca7fa737a75e6d40",
+      "installedSha256": "efc227732c498303371ce5b4491842e5666bd4dbd5f79837ca7fa737a75e6d40"
+    },
+    {
+      "path": "skills/actions/review-propose/SKILL.md",
+      "sha256": "980769373776d190e363effffcdaf22c8f4c31619014510b55fa583d87e45f81",
+      "installedSha256": "980769373776d190e363effffcdaf22c8f4c31619014510b55fa583d87e45f81"
+    },
+    {
+      "path": "skills/actions/revise-apply/SKILL.md",
+      "sha256": "2b4af3b891b8eabf653b17e162fa270aee105e4331ace193adfbb9225b28b059",
+      "installedSha256": "2b4af3b891b8eabf653b17e162fa270aee105e4331ace193adfbb9225b28b059"
+    },
+    {
+      "path": "skills/actions/revise-explore/SKILL.md",
+      "sha256": "4b5fba6a6ac44eebcb146bd741520345a7d5bb1190500222a327f5f39dbd01e8",
+      "installedSha256": "4b5fba6a6ac44eebcb146bd741520345a7d5bb1190500222a327f5f39dbd01e8"
+    },
+    {
+      "path": "skills/actions/revise-propose/SKILL.md",
+      "sha256": "1b5244dabdd895eb0a7ffea54b2ecf9247b54cd9a5cde42719ac6d69a92ba4cb",
+      "installedSha256": "1b5244dabdd895eb0a7ffea54b2ecf9247b54cd9a5cde42719ac6d69a92ba4cb"
+    }
+  ],
+  "inputs": [
+    {
+      "path": "openspec/changes/allow-prepared-author-same-stage-continuation/.openspec.yaml",
+      "sha256": "8ba8273010ceb66cd0ab320b2f49de179fac6fd6f648317c2cc129442eea7dc0"
+    },
+    {
+      "path": "openspec/changes/allow-prepared-author-same-stage-continuation/design.md",
+      "sha256": "df2fb12151bbc32f61bf6c17f85f2e8c7959f039bcc0780f0bc9e620000aeb70"
+    },
+    {
+      "path": "openspec/changes/allow-prepared-author-same-stage-continuation/evidence/baseline-observation.json",
+      "sha256": "5a73f16a27ea6fa561bbbdcb9e08fd33f77c4096d22a0608157d868a8dfde86d"
+    },
+    {
+      "path": "openspec/changes/allow-prepared-author-same-stage-continuation/evidence/policy-chain-probes.json",
+      "sha256": "268e72f02bc21c73cbfb90be5765321ca05a76bbf3b1f36c4bbe634532b151b8"
+    },
+    {
+      "path": "openspec/changes/allow-prepared-author-same-stage-continuation/explore.md",
+      "sha256": "e8be30132868fb0a5e42477c2173bcb7934e804b6f5ec53a5997e47a93276b59"
+    },
+    {
+      "path": "openspec/changes/allow-prepared-author-same-stage-continuation/proposal.md",
+      "sha256": "26d148dc731850eb39647501022ca683eb7560004722953c698886db92a3eea7"
+    },
+    {
+      "path": "openspec/changes/allow-prepared-author-same-stage-continuation/specs/action-lifecycle/spec.md",
+      "sha256": "285bd5f8002203f3f5c4a6e97aad887b74f7143265846eefb014aa215af4a7e0"
+    },
+    {
+      "path": "openspec/changes/allow-prepared-author-same-stage-continuation/specs/policy-and-next-boundary/spec.md",
+      "sha256": "24983691388069c1d7cb8f5c478197d2ab52c18946932c0e59f2a9d6d791abac"
+    },
+    {
+      "path": "openspec/changes/allow-prepared-author-same-stage-continuation/specs/run-result-persistence/spec.md",
+      "sha256": "bd0c6c02fa08012ffecf4cf2f91378587171b1231105b4c001790fb0a7b69983"
+    },
+    {
+      "path": "openspec/changes/allow-prepared-author-same-stage-continuation/specs/stable-action-command-execution/spec.md",
+      "sha256": "319055dc170c1f04ee1679c1784ab316e2169445f612227659de6b28ccc9543d"
+    },
+    {
+      "path": "openspec/changes/allow-prepared-author-same-stage-continuation/tasks.md",
+      "sha256": "f653d1fe7035c315016c368ad60897ebd37ad52579ef3cba26446e1967abdb20"
+    }
+  ],
+  "probes": {
+    "kind": "independent-source-baseline-probes",
+    "synthetic": true,
+    "persistedRuns": false,
+    "policyCases": 18,
+    "chainCases": 9,
+    "matchesExploreEvidence": true,
+    "matrix": [
+      {
+        "current": "explore",
+        "target": "revise-explore",
+        "policy": {
+          "kind": "ready-action",
+          "actionId": "revise-explore"
+        },
+        "structurallyEnterable": true
+      },
+      {
+        "current": "explore",
+        "target": "revise-propose",
+        "policy": {
+          "kind": "blocked",
+          "reason": "unsupported-owner-correction"
+        },
+        "structurallyEnterable": true
+      },
+      {
+        "current": "explore",
+        "target": "revise-apply",
+        "policy": {
+          "kind": "blocked",
+          "reason": "unsupported-owner-correction"
+        },
+        "structurallyEnterable": true
+      },
+      {
+        "current": "revise-explore",
+        "target": "revise-explore",
+        "policy": {
+          "kind": "blocked",
+          "reason": "action-boundary-not-enterable"
+        },
+        "structurallyEnterable": false
+      },
+      {
+        "current": "revise-explore",
+        "target": "revise-propose",
+        "policy": {
+          "kind": "blocked",
+          "reason": "unsupported-owner-correction"
+        },
+        "structurallyEnterable": true
+      },
+      {
+        "current": "revise-explore",
+        "target": "revise-apply",
+        "policy": {
+          "kind": "blocked",
+          "reason": "unsupported-owner-correction"
+        },
+        "structurallyEnterable": true
+      },
+      {
+        "current": "propose",
+        "target": "revise-explore",
+        "policy": {
+          "kind": "ready-action",
+          "actionId": "revise-explore"
+        },
+        "structurallyEnterable": true
+      },
+      {
+        "current": "propose",
+        "target": "revise-propose",
+        "policy": {
+          "kind": "ready-action",
+          "actionId": "revise-propose"
+        },
+        "structurallyEnterable": true
+      },
+      {
+        "current": "propose",
+        "target": "revise-apply",
+        "policy": {
+          "kind": "blocked",
+          "reason": "unsupported-owner-correction"
+        },
+        "structurallyEnterable": true
+      },
+      {
+        "current": "revise-propose",
+        "target": "revise-explore",
+        "policy": {
+          "kind": "ready-action",
+          "actionId": "revise-explore"
+        },
+        "structurallyEnterable": true
+      },
+      {
+        "current": "revise-propose",
+        "target": "revise-propose",
+        "policy": {
+          "kind": "blocked",
+          "reason": "action-boundary-not-enterable"
+        },
+        "structurallyEnterable": false
+      },
+      {
+        "current": "revise-propose",
+        "target": "revise-apply",
+        "policy": {
+          "kind": "blocked",
+          "reason": "unsupported-owner-correction"
+        },
+        "structurallyEnterable": true
+      },
+      {
+        "current": "apply",
+        "target": "revise-explore",
+        "policy": {
+          "kind": "ready-action",
+          "actionId": "revise-explore"
+        },
+        "structurallyEnterable": true
+      },
+      {
+        "current": "apply",
+        "target": "revise-propose",
+        "policy": {
+          "kind": "ready-action",
+          "actionId": "revise-propose"
+        },
+        "structurallyEnterable": true
+      },
+      {
+        "current": "apply",
+        "target": "revise-apply",
+        "policy": {
+          "kind": "ready-action",
+          "actionId": "revise-apply"
+        },
+        "structurallyEnterable": true
+      },
+      {
+        "current": "revise-apply",
+        "target": "revise-explore",
+        "policy": {
+          "kind": "ready-action",
+          "actionId": "revise-explore"
+        },
+        "structurallyEnterable": true
+      },
+      {
+        "current": "revise-apply",
+        "target": "revise-propose",
+        "policy": {
+          "kind": "ready-action",
+          "actionId": "revise-propose"
+        },
+        "structurallyEnterable": true
+      },
+      {
+        "current": "revise-apply",
+        "target": "revise-apply",
+        "policy": {
+          "kind": "blocked",
+          "reason": "action-boundary-not-enterable"
+        },
+        "structurallyEnterable": false
+      }
+    ],
+    "histories": [
+      {
+        "parentAction": "revise-explore",
+        "childAction": "revise-explore",
+        "authorityScope": null,
+        "acceptedTip": "20261009-003-revise-explore",
+        "error": null
+      },
+      {
+        "parentAction": "revise-explore",
+        "childAction": "revise-explore",
+        "authorityScope": [
+          "revise-explore"
+        ],
+        "acceptedTip": "20261009-003-revise-explore",
+        "error": null
+      },
+      {
+        "parentAction": "revise-explore",
+        "childAction": "revise-explore",
+        "authorityScope": [
+          "revise-apply"
+        ],
+        "acceptedTip": "20261009-003-revise-explore",
+        "error": null
+      },
+      {
+        "parentAction": "revise-propose",
+        "childAction": "revise-propose",
+        "authorityScope": null,
+        "acceptedTip": "20261009-005-revise-propose",
+        "error": null
+      },
+      {
+        "parentAction": "revise-propose",
+        "childAction": "revise-propose",
+        "authorityScope": [
+          "revise-propose"
+        ],
+        "acceptedTip": "20261009-005-revise-propose",
+        "error": null
+      },
+      {
+        "parentAction": "revise-propose",
+        "childAction": "revise-propose",
+        "authorityScope": [
+          "revise-apply"
+        ],
+        "acceptedTip": "20261009-005-revise-propose",
+        "error": null
+      },
+      {
+        "parentAction": "revise-apply",
+        "childAction": "revise-apply",
+        "authorityScope": null,
+        "acceptedTip": "20261009-007-revise-apply",
+        "error": null
+      },
+      {
+        "parentAction": "revise-apply",
+        "childAction": "revise-apply",
+        "authorityScope": [
+          "revise-apply"
+        ],
+        "acceptedTip": "20261009-007-revise-apply",
+        "error": null
+      },
+      {
+        "parentAction": "revise-apply",
+        "childAction": "revise-apply",
+        "authorityScope": [
+          "revise-propose"
+        ],
+        "acceptedTip": "20261009-007-revise-apply",
+        "error": null
+      }
+    ]
+  },
+  "limits": [
+    "Proposal readiness only; no new implementation acceptance or Formal Full Test verdict.",
+    "Windows host baseline checks only; Linux acceptance remains Apply work.",
+    "No Flowkit Run, Author artifact mutation, manager installation or Git operation.",
+    "Installed manager readback is the current baseline, not proof that the proposed new continuation already works."
+  ]
+}

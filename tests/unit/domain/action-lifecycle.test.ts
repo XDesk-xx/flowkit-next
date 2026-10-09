@@ -138,6 +138,45 @@ test("bounded prepared Author supersession keeps the original slot untouched", (
   }
 });
 
+test("same-revise prepared supersession stages a new candidate without reopening the old slot", () => {
+  for (const actionId of [
+    "revise-explore",
+    "revise-propose",
+    "revise-apply",
+  ] as const) {
+    const identity = { ...identityA, actionId };
+    const before = current(identity, "prepared");
+    const snapshot = structuredClone(before);
+    const boundary = { kind: "ready-action", actionId };
+    assert.deepEqual(
+      supersedePreparedAction(before, identity, boundary),
+      before,
+    );
+    assert.deepEqual(before, snapshot);
+    assert.equal(
+      transitionCurrentAction(before, event("prepare", identity)),
+      null,
+    );
+    assert.equal(supersedePreparedAction(before, identity, null), null);
+    assert.equal(
+      supersedePreparedAction(
+        before,
+        { ...identity, deliveryId: "other" },
+        boundary,
+      ),
+      null,
+    );
+    assert.equal(
+      supersedePreparedAction(
+        current(identity, "terminal"),
+        identity,
+        boundary,
+      ),
+      null,
+    );
+  }
+});
+
 test("rejects terminal from empty or identity mismatch", () => {
   assert.equal(
     transitionCurrentAction(null, event("terminal", identityA)),

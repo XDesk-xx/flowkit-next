@@ -1,0 +1,176 @@
+{
+  "observedAt": "2026-10-09T04:01:16.719Z",
+  "repository": {
+    "root": "D:/Projects/flowkit-next",
+    "head": "0e0d8106d2cdf632e9aacbc61311cbe6e6d762db",
+    "branch": "main"
+  },
+  "manager": {
+    "root": "D:/tools/flowkit-manager/node_modules/flowkit-next",
+    "package": "1.0.0",
+    "dependency": "file:../../releases/flowkit-next-1.0.0-0e0d8106d2cd.tgz"
+  },
+  "live": {
+    "repositoryRoot": "D:/AI/src/LearningPlatform",
+    "runId": "20261008-015-revise-apply",
+    "context": {
+      "runId": "20261008-015-revise-apply",
+      "occurrence": {
+        "date": "20261008",
+        "sequence": 15,
+        "actionId": "revise-apply"
+      },
+      "actionIdentity": {
+        "deliveryId": "d10-complete-course-to-classroom",
+        "changeId": "source-resource-preparation-and-package-production",
+        "actionId": "revise-apply"
+      },
+      "role": "author",
+      "lifecycleState": "prepared",
+      "ownerAuthority": {
+        "ref": "owner:67a67bc53c1ddae6eb9e632c606272f82a13f59c6600103d7a47132438741f85",
+        "decision": "revise-action",
+        "deliveryId": "d10-complete-course-to-classroom",
+        "changeId": "source-resource-preparation-and-package-production",
+        "sourceRef": "current-session:user-revise-apply-after-prepared-014-to-preparation-export",
+        "scope": [
+          "revise-apply"
+        ]
+      },
+      "previousRunId": "20261008-014-apply"
+    },
+    "outcomes": {
+      "authorConclusion": null,
+      "reviewerVerdict": null,
+      "verificationVerdict": null,
+      "nextBoundary": null
+    },
+    "runFiles": {
+      "action.md": {
+        "bytes": 2169,
+        "sha256": "241afa839dcb0e2d0f485b86530b3ebd39cdc895a9eb8d9d9426aa7a3b885773"
+      },
+      "context.json": {
+        "bytes": 822,
+        "sha256": "6a2537b509a81de866a04101082242a2d6bc76403f0a78f73818221d83e4693f"
+      },
+      "result.json": {
+        "bytes": 203879,
+        "sha256": "d3b92ecec527bfc5b6d4e9c599016d8f2f3be6bf835ce183ee59d366824cd86f"
+      }
+    },
+    "proof": {
+      "count": 337,
+      "totalBytes": 3083257,
+      "snapshotSha256": "df6ab224a1d680697f8ddcf5052c46a74c0b6bbdb033a1c1c6be7cf2c23efc37",
+      "mismatches": []
+    },
+    "runFilesUnchangedDuringProbe": true
+  },
+  "queries": {
+    "status": {
+      "kind": "status",
+      "status": "current",
+      "repositoryRoot": "D:\\AI\\src\\LearningPlatform",
+      "deliveryId": "d10-complete-course-to-classroom",
+      "changeId": "source-resource-preparation-and-package-production",
+      "changeState": "active",
+      "currentRun": {
+        "runId": "20261008-015-revise-apply",
+        "actionId": "revise-apply",
+        "state": "prepared",
+        "role": "author",
+        "supersededPreparedRunId": "20261008-014-apply",
+        "ownerAuthorityRef": "owner:67a67bc53c1ddae6eb9e632c606272f82a13f59c6600103d7a47132438741f85"
+      },
+      "openSpec": {
+        "activeChangeIds": [
+          "source-resource-preparation-and-package-production"
+        ],
+        "exactChange": {
+          "changeId": "source-resource-preparation-and-package-production",
+          "schemaName": "spec-driven",
+          "changeRoot": "D:\\AI\\src\\LearningPlatform\\openspec\\changes\\source-resource-preparation-and-package-production",
+          "isPlanningComplete": true,
+          "isComplete": true,
+          "artifacts": [
+            {
+              "id": "proposal",
+              "status": "done",
+              "requires": [],
+              "missingDeps": []
+            },
+            {
+              "id": "specs",
+              "status": "done",
+              "requires": [
+                "proposal"
+              ],
+              "missingDeps": []
+            },
+            {
+              "id": "design",
+              "status": "done",
+              "requires": [
+                "proposal"
+              ],
+              "missingDeps": []
+            },
+            {
+              "id": "tasks",
+              "status": "done",
+              "requires": [
+                "specs",
+                "design"
+              ],
+              "missingDeps": []
+            }
+          ]
+        }
+      }
+    },
+    "next": {
+      "kind": "next",
+      "decision": {
+        "kind": "ready-action",
+        "actionId": "revise-apply"
+      },
+      "checkpoint": {
+        "authorized": false,
+        "reason": "policy-not-ready"
+      }
+    },
+    "inspect": {
+      "kind": "action-inspect",
+      "effect": "observed",
+      "runId": "20261008-015-revise-apply",
+      "completeness": "complete",
+      "originalHashes": {
+        "action.md": "241afa839dcb0e2d0f485b86530b3ebd39cdc895a9eb8d9d9426aa7a3b885773",
+        "context.json": "6a2537b509a81de866a04101082242a2d6bc76403f0a78f73818221d83e4693f",
+        "result.json": "d3b92ecec527bfc5b6d4e9c599016d8f2f3be6bf835ce183ee59d366824cd86f"
+      },
+      "actualEffect": "prepared",
+      "remaining": [],
+      "canContinue": false,
+      "archiveEffectsRef": ".flowkit/artifacts/d10-complete-course-to-classroom/changes/010-source-resource-preparation-and-package-production/archive-effects/20261008-015-revise-apply",
+      "diagnosticRefs": []
+    },
+    "doctor": {
+      "kind": "doctor",
+      "status": "pass",
+      "diagnostics": [
+        {
+          "id": "openspec-runtime",
+          "status": "pass",
+          "version": "1.10.0"
+        },
+        {
+          "id": "openspec-root",
+          "status": "pass",
+          "activeChangeCount": 1
+        }
+      ]
+    }
+  }
+}
